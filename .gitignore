@@ -1,1 +1,4 @@
 complete_dataset/
+.venv/
+.vscode/
+__pycache__/
