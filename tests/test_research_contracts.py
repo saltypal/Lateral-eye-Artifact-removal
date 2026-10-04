@@ -7,13 +7,23 @@ import zipfile
 from scipy.io import savemat
 from eog_vmd_fcm_bgru.channel_regions import region_ids, fuse_residuals
 from eog_vmd_fcm_bgru.vmd_expert import decompose
-from eog_vmd_fcm_bgru.student import SharedChannelStudent
+from eog_vmd_fcm_bgru.student import SharedChannelStudent, reconstruction_loss
 from eog_vmd_fcm_bgru.provenance import read_osf
 from eog_vmd_fcm_bgru.spatial_expert import ICAExpert, armbr_correction
 from eog_vmd_fcm_bgru.dataset_io import annotated_score_slice, trial_condition
 from eog_vmd_fcm_bgru.bundle_io import merge_supplement, digest_file
 
 torch.set_num_threads(2)
+
+
+def test_padded_electrodes_do_not_change_training_loss():
+    torch.manual_seed(42)
+    prediction, target = torch.randn(2, 3, 65), torch.randn(2, 3, 65)
+    expected = reconstruction_loss(prediction, target, torch.ones(2, 3))
+    padded_prediction = torch.cat([prediction, torch.full((2, 4, 65), 1e6)], dim=1)
+    padded_target = torch.cat([target, torch.zeros(2, 4, 65)], dim=1)
+    mask = torch.cat([torch.ones(2, 3), torch.zeros(2, 4)], dim=1)
+    torch.testing.assert_close(reconstruction_loss(padded_prediction, padded_target, mask), expected)
 
 
 def test_supplement_verifies_inventory_hashes_and_preserves_existing_files(tmp_path):

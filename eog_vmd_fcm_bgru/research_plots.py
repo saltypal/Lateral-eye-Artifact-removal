@@ -52,14 +52,50 @@ def grid_figures(output):
         axis.scatter(rows.clean_relative_change * 100, rows.rmse_improvement_fraction * 100,
                      marker=marker, color=color, s=35, alpha=0.7, label=label)
     axis.axhline(0, color=GREY, linewidth=1)
-    axis.axvline(20, color=GREY, linestyle="--", linewidth=1)
+    maximum_change = float((summary.clean_relative_change * 100).max())
+    if maximum_change >= 16:
+        axis.axvline(20, color=GREY, linestyle="--", linewidth=1)
+    else:
+        axis.set_xlim(left=0, right=max(1, maximum_change * 1.15))
     axis.set(xlabel="Modification to clean EEG (% relative norm)", ylabel="RMSE improvement over raw EEG (%)",
              title="VMD correction versus clean-signal modification")
     axis.legend(loc="best", fontsize=9)
     axis.grid(alpha=0.15)
-    figure.text(0.02, 0.01, "Development subset only. Guardrails also require clean alpha and beta band errors ≤1 dB; this is not a noninferiority test.", fontsize=9)
+    figure.text(0.02, 0.01, "Development subset only. Guardrails: modification ≤20%, clean alpha/beta errors ≤1 dB. This is not a noninferiority test.", fontsize=9)
     figure.tight_layout(rect=(0, 0.05, 1, 1))
     save(figure, output, "vmd_preservation_tradeoff", ["vmd_grid_summary.csv", "grid_coverage.json"])
+
+
+def student_figures(output):
+    """Fixed held-out examples and measured cap timing; no fitted trend claims."""
+    arrays = np.load(output / "student_test_predictions.npz", allow_pickle=False)
+    time = np.arange(arrays["raw"].shape[-1]) / 200
+    count = len(arrays["record_ids"])
+    figure, axes = plt.subplots(count, 1, figsize=(11, 3 * count), squeeze=False, sharex=True)
+    for index, record in enumerate(arrays["record_ids"]):
+        axis = axes[index, 0]
+        axis.plot(time, arrays["raw"][index, 0], color=GREY, linewidth=1, alpha=0.7, label="Contaminated")
+        axis.plot(time, arrays["target"][index, 0], color=BLUE, linewidth=1.3, label="Paired clean target")
+        axis.plot(time, arrays["predictions"][index, 0], color=ORANGE, linewidth=1, label="Student")
+        axis.set(title=f"Held-out record {record}, anonymous channel 0", ylabel="Source amplitude units")
+        axis.grid(alpha=0.15)
+        axis.legend(loc="upper right", ncol=3, fontsize=9)
+    axes[-1, 0].set_xlabel("Time within scored window (seconds)")
+    figure.suptitle("EEG-only model · fixed held-out channels, without selecting the best-looking example")
+    figure.tight_layout(rect=(0, 0, 1, 0.95))
+    save(figure, output, "student_heldout_waveforms", ["student_test_predictions.npz", "student_metrics.csv"])
+    timing = pd.read_csv(output / "student_latency_scaling.csv")
+    figure, axis = plt.subplots(figsize=(8, 5))
+    axis.plot(timing.channels, timing.median_ms, marker="o", color=BLUE, label="Measured median")
+    axis.plot(timing.channels, timing.p95_ms, marker="s", color=ORANGE, label="Measured p95")
+    axis.set(xscale="log", xlabel="Valid EEG channels", ylabel="Offline forward time (ms)",
+             title=f"Cap-size timing · {timing.device.iloc[0]}, batch 1, 1,024 samples",
+             xticks=timing.channels, xticklabels=[str(value) for value in timing.channels])
+    axis.legend()
+    axis.grid(alpha=0.15)
+    figure.text(0.02, 0.01, "Synthetic tensors; 3 warmups and 10 timed forwards per size. Excludes acquisition/preprocessing. No accuracy or live deadline claim.", fontsize=8)
+    figure.tight_layout(rect=(0, 0.07, 1, 1))
+    save(figure, output, "student_channel_scaling", ["student_latency_scaling.csv", "training_summary.json"])
 
 
 def example_modes(raw, clean, modes, residual, centers, output):

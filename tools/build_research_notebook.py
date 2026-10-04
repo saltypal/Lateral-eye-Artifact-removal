@@ -125,7 +125,7 @@ OUT.mkdir(parents=True, exist_ok=True)
                             rows = list(csv.reader(handle))
                         markup = "<table>" + "".join("<tr>" + "".join("<td>" + html.escape(value) + "</td>" for value in row) + "</tr>" for row in rows[:25]) + "</table>"
                         display(HTML(markup))
-                for name in ("vmd_center_frequency_sweep", "vmd_preservation_tradeoff", "vmd_mode_vectors"):
+                for name in ("vmd_center_frequency_sweep", "vmd_preservation_tradeoff", "vmd_mode_vectors", "student_heldout_waveforms", "student_channel_scaling"):
                     if (OUT / (name + ".png")).exists():
                         display(Image(filename=str(OUT / (name + ".png"))))
                 print("Saved artifacts", len(list(OUT.rglob("*"))), "in", OUT)

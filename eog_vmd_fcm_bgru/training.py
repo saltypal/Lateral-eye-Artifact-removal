@@ -55,9 +55,14 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
     for record in coverage["train"]:
         raw = dirty[record, :, segment]
         temporal = np.zeros_like(raw)
+        clean_temporal = np.zeros_like(raw)
+        convergence_ok = True
         if expert is not None:
-            temporal, _ = expert.artifact(raw, strength=vmd_config["strength"])
+            temporal, detail = expert.artifact(raw, strength=vmd_config["strength"])
+            clean_temporal, clean_detail = expert.artifact(clean[record, :, segment], strength=vmd_config["strength"])
+            convergence_ok = not any(row["hit_iteration_limit"] for row in detail + clean_detail)
         teacher = temporal
+        clean_teacher = clean_temporal
         if expert is not None and "ica" in spatial_config:
             try:
                 parts = spatial_config["ica"].split(":")
@@ -65,15 +70,26 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
                 strength = float(parts[2]) if len(parts) == 3 else 1.0
                 spatial = ICAExpert.fit(dirty[record, :, :CALIBRATION], eog[record, :, :CALIBRATION], method)
                 refined = strength * spatial.residual(raw, float(threshold), True, vmd_config["K"], vmd_config["alpha"])
+                clean_refined = strength * spatial.residual(clean[record, :, segment], float(threshold), True,
+                                                            vmd_config["K"], vmd_config["alpha"])
                 teacher = 0.5 * temporal + 0.5 * refined
+                clean_teacher = 0.5 * clean_temporal + 0.5 * clean_refined
             except Exception as error:
                 teacher_diagnostics.append({"record": record, "ica_teacher_error": repr(error)})
         teacher_rmse = paired_metrics(raw - teacher, clean[record, :, segment])["rmse"]
         raw_rmse = paired_metrics(raw, clean[record, :, segment])["rmse"]
-        usable = expert is not None and teacher_rmse < raw_rmse
+        clean_target = clean[record, :, segment]
+        preservation = paired_metrics(clean_target - clean_teacher, clean_target)
+        clean_change = modification_metrics(clean_target - clean_teacher, clean_target)["relative_change"]
+        preservation_ok = clean_change <= 0.20 and preservation["alpha_error_db"] <= 1 and preservation["beta_error_db"] <= 1
+        usable = expert is not None and teacher_rmse < raw_rmse and preservation_ok and convergence_ok
         teachers.append(teacher if usable else np.zeros_like(teacher))
         teacher_diagnostics.append({"record": record, "teacher_rmse": teacher_rmse, "raw_rmse": raw_rmse,
+                                    "clean_relative_change": clean_change, "clean_alpha_error_db": preservation["alpha_error_db"],
+                                    "clean_beta_error_db": preservation["beta_error_db"],
+                                    "preservation_guard_pass": bool(preservation_ok), "vmd_convergence_pass": bool(convergence_ok),
                                     "distillation_enabled": bool(usable)})
+        print("Training teacher", record, "accepted", usable, flush=True)
     save_json(output / "teacher_diagnostics.json", teacher_diagnostics)
     teacher = torch.from_numpy(np.stack(teachers).astype(np.float32))
     usable = torch.tensor([row["distillation_enabled"] for row in teacher_diagnostics if "distillation_enabled" in row])
@@ -160,6 +176,8 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
     latency_scaling(network, output, device)
     from .export_model import export_and_verify
     export_and_verify(network, output, dirty[coverage["test"], :, segment].copy(), np.stack(predictions))
+    from .research_plots import student_figures
+    student_figures(output)
 
 
 def evaluate_osf_student(network, root, output, device):

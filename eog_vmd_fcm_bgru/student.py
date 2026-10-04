@@ -71,5 +71,6 @@ def reconstruction_loss(prediction, target, mask):
     derivative = (derivative_error ** 2 * weights).sum() / denominator
     predicted_spectrum = torch.fft.rfft(prediction, dim=-1).abs()
     target_spectrum = torch.fft.rfft(target, dim=-1).abs()
-    spectral = ((torch.log1p(predicted_spectrum) - torch.log1p(target_spectrum)) ** 2 * weights).mean()
+    spectral_denominator = (weights.sum() * predicted_spectrum.shape[-1]).clamp_min(1)
+    spectral = ((torch.log1p(predicted_spectrum) - torch.log1p(target_spectrum)) ** 2 * weights).sum() / spectral_denominator
     return mse + 0.1 * derivative + 0.05 * spectral
