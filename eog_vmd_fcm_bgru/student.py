@@ -74,3 +74,24 @@ def reconstruction_loss(prediction, target, mask):
     spectral_denominator = (weights.sum() * predicted_spectrum.shape[-1]).clamp_min(1)
     spectral = ((torch.log1p(predicted_spectrum) - torch.log1p(target_spectrum)) ** 2 * weights).sum() / spectral_denominator
     return mse + 0.1 * derivative + 0.05 * spectral
+
+
+def paired_gate_loss(gate, contaminated, clean, channel_mask):
+    """Supervise intervention from true paired power burden, not EOG amplitude.
+
+    Each gate token covers an equal part of the waveform. Positive burden is
+    greater than -10 dB; clean is at most -20 dB. Intermediate tokens do not
+    train the binary classifier. They still train waveform reconstruction.
+    """
+    shape = gate.shape
+    artifact = contaminated - clean
+    artifact_power = F.adaptive_avg_pool1d(artifact.square().reshape(-1, 1, artifact.shape[-1]), shape[-1]).reshape(shape)
+    clean_power = F.adaptive_avg_pool1d(clean.square().reshape(-1, 1, clean.shape[-1]), shape[-1]).reshape(shape)
+    valid_energy = clean_power > 1e-12
+    positive = artifact_power > 0.1 * clean_power
+    negative = artifact_power <= 0.01 * clean_power
+    valid = (positive | negative) & valid_energy & channel_mask.bool()[..., None]
+    labels = positive.to(gate.dtype)
+    error = F.binary_cross_entropy(gate.clamp(1e-6, 1 - 1e-6), labels, reduction="none")
+    loss = (error * valid).sum() / valid.sum().clamp_min(1)
+    return loss, labels, valid

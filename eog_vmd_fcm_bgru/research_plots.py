@@ -81,7 +81,7 @@ def student_figures(output):
         axis.grid(alpha=0.15)
         axis.legend(loc="upper right", ncol=3, fontsize=9)
     axes[-1, 0].set_xlabel("Time within scored window (seconds)")
-    figure.suptitle("EEG-only model · fixed held-out channels, without selecting the best-looking example")
+    figure.suptitle("EEG-only model · fixed held-out channel examples")
     figure.tight_layout(rect=(0, 0, 1, 0.95))
     save(figure, output, "student_heldout_waveforms", ["student_test_predictions.npz", "student_metrics.csv"])
     timing = pd.read_csv(output / "student_latency_scaling.csv")
@@ -96,6 +96,39 @@ def student_figures(output):
     figure.text(0.02, 0.01, "Synthetic tensors; 3 warmups and 10 timed forwards per size. Excludes acquisition/preprocessing. No accuracy or live deadline claim.", fontsize=8)
     figure.tight_layout(rect=(0, 0.07, 1, 1))
     save(figure, output, "student_channel_scaling", ["student_latency_scaling.csv", "training_summary.json"])
+
+
+def neural_search_figures(output):
+    grid = pd.read_csv(output / "neural_grid.csv")
+    selected = json.loads((output / "selected_neural.json").read_text())
+    figure, axis = plt.subplots(figsize=(8, 6))
+    rows = grid[grid.clean_relative_change_worst_record <= 0.05]
+    axis.scatter(rows.clean_relative_change_worst_record * 100, rows.rmse_improvement_fraction * 100,
+                 c=rows.identity_weight, cmap="viridis", s=12, alpha=0.4)
+    axis.axvline(1, color=GREY, linestyle="--", label="1% development preservation bound")
+    axis.axhline(10, color=GREY, linestyle=":", label="10% development error reduction target")
+    axis.scatter(selected["clean_relative_change_worst_record"] * 100, selected["rmse_improvement_fraction"] * 100,
+                 color=ORANGE, marker="*", s=180, label="Validation selection")
+    axis.set(xlabel="Worst record mean clean modification (%)", ylabel="Validation RMSE reduction (%)",
+             title="Neural validation search · clean preservation versus correction")
+    axis.legend(fontsize=9)
+    axis.grid(alpha=0.15)
+    figure.text(0.02, 0.01, "8 validation records, 3 windows each. Epochs and strengths are development candidates. Only points within 5% modification shown; full grid saved.", fontsize=8)
+    figure.tight_layout(rect=(0, 0.06, 1, 1))
+    save(figure, output, "neural_validation_tradeoff", ["neural_grid.csv", "selected_neural.json"])
+    records = pd.read_csv(output / "student_record_metrics.csv")
+    comparison = records.pivot(index="record", columns="method", values="rmse")
+    figure, axis = plt.subplots(figsize=(9, 5))
+    positions = np.arange(len(comparison))
+    axis.bar(positions - 0.18, comparison.raw, width=0.36, color=GREY, label="Contaminated")
+    axis.bar(positions + 0.18, comparison.eeg_only_student, width=0.36, color=BLUE, label="EEG-only student")
+    axis.set(xticks=positions, xticklabels=[str(value) + ("*" if value in [5, 14] else "") for value in comparison.index],
+             xlabel="Held-out record (* previously inspected smoke record)", ylabel="Record mean RMSE (source units)",
+             title="Frozen selected model · all eight held-out records, three windows each")
+    axis.legend()
+    axis.grid(axis="y", alpha=0.15)
+    figure.tight_layout()
+    save(figure, output, "neural_record_comparison", ["student_record_metrics.csv", "search_protocol.json"])
 
 
 def example_modes(raw, clean, modes, residual, centers, output):

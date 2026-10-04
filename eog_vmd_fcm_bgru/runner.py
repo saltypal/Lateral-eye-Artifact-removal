@@ -8,7 +8,7 @@ from .provenance import audit, save_json
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "train"], required=True)
+    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "train", "neural-search"], required=True)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -32,6 +32,9 @@ def main():
     elif args.phase == "train":
         from .training import train_campaign
         train_campaign(args.data_root, args.output, device=device, profile="kaggle_smoke")
+    elif args.phase == "neural-search":
+        from .neural_search import search_student
+        search_student(args.data_root, args.output, device=device)
     elif args.phase == "calibration":
         from .calibration_check import check_calibration
         check_calibration(args.data_root, args.output)

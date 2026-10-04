@@ -180,10 +180,11 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
     student_figures(output)
 
 
-def evaluate_osf_student(network, root, output, device):
+def evaluate_osf_student(network, root, output, device, session_limit=2):
     """Frozen Protocol Z subset, without treating OSF proxies as clean truth."""
     rows = []
-    for path in sorted((root / "Dataset1_OSF").rglob("*_prep.set"))[:2]:
+    coverage = []
+    for path in sorted((root / "Dataset1_OSF").rglob("*_prep.set"))[:session_limit]:
         seen = set()
         for trial in list(osf_trials(path))[5:]:
             labels = trial["labels"]
@@ -214,6 +215,10 @@ def evaluate_osf_student(network, root, output, device):
             pd.DataFrame(rows).to_csv(output / "student_osf_proxies.csv", index=False)
             if len(seen) == 4:
                 break
+        coverage.append({"session": path.stem, "conditions_scored": sorted(seen),
+                         "unscored_calibration_trials": 5, "policy": "first genuinely annotated interval per condition"})
+        save_json(output / "student_osf_coverage.json", coverage)
+        print("Frozen student OSF", path.stem, sorted(seen), flush=True)
 
 
 def latency_scaling(network, output, device):

@@ -27,6 +27,21 @@ def test_publisher_crop_matching_preserves_explicit_provenance():
     assert not matched[2]["exact_float32_matches"]
 
 
+def test_paired_gate_labels_ignore_intermediate_burden_and_padding():
+    from eog_vmd_fcm_bgru.student import paired_gate_loss
+    clean = torch.ones(1, 4, 16)
+    dirty = clean + torch.tensor([0.05, 0.2, 0.5, 0.5]).reshape(1, 4, 1)
+    gate = torch.full((1, 4, 4), 0.5, requires_grad=True)
+    loss, labels, valid = paired_gate_loss(gate, dirty, clean, torch.tensor([[1, 1, 1, 0]]))
+    assert valid[0, 0].all() and not labels[0, 0].any()
+    assert not valid[0, 1].any()
+    assert valid[0, 2].all() and labels[0, 2].all()
+    assert not valid[0, 3].any()
+    loss.backward()
+    assert gate.grad[0, 0].mean() > 0 and gate.grad[0, 2].mean() < 0
+    assert not gate.grad[0, 1].any() and not gate.grad[0, 3].any()
+
+
 def test_padded_electrodes_do_not_change_training_loss():
     torch.manual_seed(42)
     prediction, target = torch.randn(2, 3, 65), torch.randn(2, 3, 65)
