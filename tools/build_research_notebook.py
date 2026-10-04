@@ -54,7 +54,15 @@ OUT.mkdir(parents=True, exist_ok=True)
             if test.returncode:
                 raise RuntimeError("Kaggle numeric contract tests failed")
         ''')]
-    if phase == "report":
+    if phase == "klados-group-audit":
+        notebook.cells += [md("## 3. Audit publisher contamination-coefficient grouping\nOriginal MATLAB sources are hash checked. This diagnostic does not invent participant identities or change an already evaluated split."),
+            code('''
+                subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.runner", "--phase", "klados-group-audit",
+                    "--data-root", "/kaggle/input", "--manifest", "/kaggle/input", "--output", str(OUT)],
+                    cwd=CHECKOUT, env=PROCESS_ENV)
+                print((OUT / "klados_coefficient_group_summary.json").read_text())
+            ''')]
+    elif phase == "report":
         notebook.cells += [
             md("## 3. Read saved experiment evidence\nThis report uses completed kernel outputs. It does not tune parameters or reload the original source signals."),
             code('''

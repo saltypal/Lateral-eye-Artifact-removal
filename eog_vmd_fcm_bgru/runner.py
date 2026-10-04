@@ -8,7 +8,7 @@ from .provenance import audit, save_json
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], required=True)
+    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], required=True)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -23,6 +23,12 @@ def main():
     if args.phase == "report":
         from .campaign_report import build_report
         build_report(args.output, repository)
+        return
+    if args.phase == "klados-group-audit":
+        from .klados_group_audit import inspect_coefficient_groups
+        from .provenance import environment
+        save_json(args.output / "environment.json", environment(repository))
+        inspect_coefficient_groups(args.data_root, args.output, repository)
         return
     if args.phase == "restore":
         from .restore_sources import restore_study04
