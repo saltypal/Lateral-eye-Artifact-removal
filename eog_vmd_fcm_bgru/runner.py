@@ -8,7 +8,7 @@ from .provenance import audit, save_json
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], required=True)
+    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "snr-audit", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], required=True)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -23,6 +23,10 @@ def main():
     if args.phase == "report":
         from .campaign_report import build_report
         build_report(args.output, repository)
+        return
+    if args.phase == "snr-audit":
+        from .snr_audit import audit_snr
+        audit_snr(args.output, repository)
         return
     if args.phase == "klados-group-audit":
         from .klados_group_audit import inspect_coefficient_groups

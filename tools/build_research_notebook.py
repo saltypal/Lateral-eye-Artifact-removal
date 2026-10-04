@@ -54,7 +54,15 @@ OUT.mkdir(parents=True, exist_ok=True)
             if test.returncode:
                 raise RuntimeError("Kaggle numeric contract tests failed")
         ''')]
-    if phase in {"klados-group-audit", "vmd-engine"}:
+    if phase == "snr-audit":
+        notebook.cells += [md("## 3. Audit paired-clean SNR from saved outputs\nNo new training or parameter selection. Record means and pooled energy ratios are separate estimands."),
+            code('''
+                subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.runner", "--phase", PHASE,
+                    "--data-root", "/kaggle/input", "--manifest", "/kaggle/input", "--output", str(OUT)],
+                    cwd=CHECKOUT, env=PROCESS_ENV)
+                print((OUT / "snr_audit_summary.json").read_text())
+            ''')]
+    elif phase in {"klados-group-audit", "vmd-engine"}:
         description = ("Audit publisher contamination-coefficient grouping. Do not invent subject identities."
                        if phase == "klados-group-audit" else
                        "Verify VMD engine parity on training-only publisher inputs and measure fresh-process resources.")

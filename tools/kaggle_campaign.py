@@ -212,7 +212,7 @@ def submit(phase: str, sha: str) -> None:
         raise ValueError("Push this commit to origin before launching Kaggle")
     # Kaggle may accept a kernel push while dropping an invalid attachment.
     # Fail before submission until the private data is actually accessible.
-    if phase not in {"contracts", "report", "klados-group-audit", "vmd-engine"}:
+    if phase not in {"contracts", "report", "klados-group-audit", "vmd-engine", "snr-audit"}:
         verify_remote_inventory()
     from build_research_notebook import build
     stage = WORK / phase
@@ -221,8 +221,9 @@ def submit(phase: str, sha: str) -> None:
     metadata = {"id": f"{OWNER}/region-aware-eog-{phase}", "title": f"Region Aware EOG {phase.title()}",
                 "code_file": "Region_Aware_EOG_Kaggle.ipynb", "language": "python", "kernel_type": "notebook",
                 "is_private": True, "enable_gpu": phase in {"train", "neural-search"}, "enable_internet": True,
-                "dataset_sources": [] if phase in {"contracts", "report", "klados-group-audit", "vmd-engine"} else [DATASET], "competition_sources": [],
+                "dataset_sources": [] if phase in {"contracts", "report", "klados-group-audit", "vmd-engine", "snr-audit"} else [DATASET], "competition_sources": [],
                 "kernel_sources": ([f"{OWNER}/region-aware-eog-klados-source"] if phase in {"klados-group-audit", "vmd-engine"} else
+                                   [f"{OWNER}/region-aware-eog-{item}" for item in ["neural-search", "benchmark"]] if phase == "snr-audit" else
                                    [f"{OWNER}/region-aware-eog-{item}" for item in ["neural-search", "calibration", "vmd-convergence"]] if phase == "report" else
                                    [f"{OWNER}/region-aware-eog-benchmark", f"{OWNER}/region-aware-eog-restore"] if phase in {"train", "calibration", "neural-search", "vmd-convergence", "vmd-robust-grid"}
                                    else [f"{OWNER}/region-aware-eog-restore"] if phase == "benchmark" else [])}
@@ -239,7 +240,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["auth-check", "prepare", "upload", "package-opaque", "upload-opaque", "recover-upload", "inventory-check", "dataset-status", "submit", "status", "retrieve"])
     parser.add_argument("--source", type=Path)
-    parser.add_argument("--phase", choices=["contracts", "audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], default="audit")
+    parser.add_argument("--phase", choices=["contracts", "audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "snr-audit", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], default="audit")
     parser.add_argument("--sha")
     parser.add_argument("--upload-cache", type=Path)
     args = parser.parse_args()
