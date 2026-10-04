@@ -1,11 +1,12 @@
 """Summarize saved remote evidence without tuning from OSF or test results."""
 import json
+import shutil
 from pathlib import Path
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from .provenance import save_json, sha256_file, environment
-from .research_plots import save, BLUE, ORANGE, GREY
+from .research_plots import save, neural_search_figures, BLUE, ORANGE, GREY
 
 
 def unique_source(filename):
@@ -84,6 +85,9 @@ def build_report(output, repository):
     regional_figures(studies, output)
     fresh_waveforms(neural, output)
     numerical_figures(convergence, output)
+    for filename in ["neural_grid.csv", "selected_neural.json", "student_record_metrics.csv", "search_protocol.json"]:
+        shutil.copyfile(neural / filename, output / filename)
+    neural_search_figures(output)
     training = json.loads((neural / "training_summary.json").read_text())
     bounds = pd.read_csv(neural / "fresh_record_bootstrap.csv").set_index("metric")
     summary = {"osf_sessions_evaluated": int(frame.session.nunique()), "osf_participants": int(frame.participant.nunique()),
@@ -97,6 +101,19 @@ def build_report(output, repository):
         "streaming_certified": False, "complete_eog_removal": False, "victory": False,
         "scope": "saved feasibility/development evidence; OSF correlation reduction and rest stability are proxies"}
     save_json(output / "campaign_evidence_summary.json", summary)
+    text = ["# Measured EOG campaign evidence", "", "The current models reduce some ocular contamination. Complete blink/lateral removal and final superiority have not been established.", "",
+        f"The frozen student covered {summary['osf_sessions_evaluated']} original OSF sessions, {summary['osf_participants']} globally identified people, and all four studies. Each session supplied one genuinely annotated post-calibration interval for each of four conditions. This is balanced condition coverage, not every time sample.", "",
+        f"Across six previously untouched held-out Klados records, mean record RMSE reduction versus raw was {100 * summary['test_rmse_reduction_mean']:.2f}% and mean SNR gain was {summary['test_snr_gain_mean_db']:.3f} dB. Mean clean modification was {100 * summary['test_clean_relative_change_mean']:.3f}%, with a one-sided 95% record-bootstrap upper bound of {100 * summary['test_clean_relative_change_one_sided_95_upper']:.3f}%. Participant identities are unavailable for Klados. Two earlier inspected smoke records are excluded from these bounds.", "",
+        "The selected model passes its development preservation guard but misses the 10% development error-reduction target. The full five-fold/three-seed matched-legacy comparison, participant-purged adaptation and streaming evaluation remain incomplete. OSF correlation reduction and stability relative to raw do not measure paired neural recovery.", "",
+        "## Frozen OSF ocular proxies", "", "| Condition | Variant | Region | Mean EOG correlation reduction | 95% participant interval |", "|---|---|---|---:|---:|"]
+    for condition, metric in [("blink", "veog_corr_reduction"), ("horizontal", "heog_corr_reduction")]:
+        selected_rows = global_frame[(global_frame.condition == condition) & (global_frame.metric == metric)]
+        for _, row in selected_rows.iterrows():
+            text.append(f"| {condition} | {row.variant} | {row.region} | {row['mean']:.5f} | [{row.ci95_lower:.5f}, {row.ci95_upper:.5f}] |")
+    text += ["", "## Numerical VMD finding", "", "Absolute stopping thresholds depend on input amplitude. RMS-normalized stopping restored unit invariance in the measured training-channel diagnostic. The six stopping-rule candidates still failed the combined development preservation/convergence guard. The expanded normalized K/alpha search is a separate phase; it does not retroactively change this student's teacher.", "",
+        "## User concerns and provenance", "", "The repository documents the genuine K=3..10/alpha search, why five modes were only a starting choice, adaptive mode vectors versus fixed Welch bands, mode generation/residual retention, computational cost and transformer necessity, frontal/posterior hypotheses and their limitations. See docs/VMD_Concerns_and_Explanation.md and docs/Recovered_Klados_Provenance.md. All four NPY exports match publisher start crops; recording 45 was omitted. Channel-row and participant identities remain unverified.", "",
+        "All calculations and figures were generated on Kaggle. report_source_ledger.json records exact input hashes and source commits. Figures are accompanied by SVG and source manifests."]
+    (output / "Measured_Campaign_Report.md").write_text("\n".join(text) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2), flush=True)
 
 
@@ -153,7 +170,8 @@ def numerical_figures(source, output):
         normalized = "True" in config
         axes[0].plot(group.input_scale, group.restored_vector_relative_difference, marker="o", linestyle="-" if normalized else "--", label=config)
         axes[1].plot(group.input_scale, group.scaled_iterations, marker="o", linestyle="-" if normalized else "--")
-    axes[0].set(xscale="log", yscale="symlog", linthresh=1e-7, xlabel="Input amplitude multiplier", ylabel="Rescaled vector relative difference")
+    axes[0].set_yscale("symlog", linthresh=1e-7)
+    axes[0].set(xscale="log", xlabel="Input amplitude multiplier", ylabel="Rescaled vector relative difference")
     axes[1].set(xscale="log", xlabel="Input amplitude multiplier", ylabel="Solver iterations")
     axes[0].legend(fontsize=7)
     for axis in axes:

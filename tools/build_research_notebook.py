@@ -63,7 +63,7 @@ OUT.mkdir(parents=True, exist_ok=True)
                     cwd=CHECKOUT, env=PROCESS_ENV)
                 from IPython.display import display, Image
                 print((OUT / "campaign_evidence_summary.json").read_text())
-                for name in ["osf_region_artifact_comparison", "fresh_heldout_waveforms", "vmd_unit_scaling_diagnostic"]:
+                for name in ["osf_region_artifact_comparison", "fresh_heldout_waveforms", "vmd_unit_scaling_diagnostic", "neural_validation_tradeoff", "neural_record_comparison"]:
                     display(Image(filename=str(OUT / (name + ".png"))))
                 print("Saved report artifacts", len(list(OUT.rglob("*"))), "in", OUT)
             ''')]
