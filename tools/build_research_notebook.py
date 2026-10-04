@@ -54,7 +54,20 @@ OUT.mkdir(parents=True, exist_ok=True)
             if test.returncode:
                 raise RuntimeError("Kaggle numeric contract tests failed")
         ''')]
-    if phase != "contracts":
+    if phase == "report":
+        notebook.cells += [
+            md("## 3. Read saved experiment evidence\nThis report uses completed kernel outputs. It does not tune parameters or reload the original source signals."),
+            code('''
+                subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.runner", "--phase", "report",
+                    "--data-root", "/kaggle/input", "--manifest", "/kaggle/input", "--output", str(OUT)],
+                    cwd=CHECKOUT, env=PROCESS_ENV)
+                from IPython.display import display, Image
+                print((OUT / "campaign_evidence_summary.json").read_text())
+                for name in ["osf_region_artifact_comparison", "fresh_heldout_waveforms", "vmd_unit_scaling_diagnostic"]:
+                    display(Image(filename=str(OUT / (name + ".png"))))
+                print("Saved report artifacts", len(list(OUT.rglob("*"))), "in", OUT)
+            ''')]
+    elif phase != "contracts":
         notebook.cells += [
             md("## 3. Verify and unpack the complete private input\nThe opaque ZIP preserves original nested archives and hidden metadata. Container and individual-file SHA256 checks prevent silently omitted source data."),
             code('''

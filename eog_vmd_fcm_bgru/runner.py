@@ -8,7 +8,7 @@ from .provenance import audit, save_json
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "train", "neural-search", "vmd-convergence"], required=True)
+    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "train", "neural-search", "vmd-convergence", "report"], required=True)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -20,6 +20,10 @@ def main():
     save_json(args.output / "run_config.json", {"phase": args.phase, "git_sha": sha, "seed": 42,
               "data_root": str(args.data_root), "device": device, "gpu_count": torch.cuda.device_count(),
               "gpu_names": [torch.cuda.get_device_name(index) for index in range(torch.cuda.device_count())]})
+    if args.phase == "report":
+        from .campaign_report import build_report
+        build_report(args.output, repository)
+        return
     if args.phase == "restore":
         from .restore_sources import restore_study04
         restore_study04(args.data_root, repository / "data_provenance/osf_study04_catalog.json", args.output)

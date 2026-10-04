@@ -10,12 +10,36 @@ import subprocess
 import sys
 import time
 import zipfile
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 REPOSITORY = Path(__file__).resolve().parents[1]
 WORK = REPOSITORY / ".kaggle-work"
 OWNER = "satyapaladugu"
 DATASET = f"{OWNER}/lateral-eye-complete-dataset"
+
+
+def refresh_oauth_if_due() -> None:
+    """Avoid the installed SDK's 30-minute delay after access-token expiry."""
+    credentials_path = Path.home() / ".kaggle" / "credentials.json"
+    if not credentials_path.exists():
+        return
+    metadata = json.loads(credentials_path.read_text())
+    expiry = metadata.get("access_token_expiration")
+    if not expiry or datetime.fromisoformat(expiry) > datetime.now(timezone.utc) + timedelta(minutes=1):
+        return
+    # The official SDK refreshes/saves credentials; token values never enter
+    # project logs, artifacts, shell arguments or Git.
+    from kaggle.api.kaggle_api_extended import KaggleApi
+    from kagglesdk.kaggle_creds import KaggleCredentials
+    api = KaggleApi()
+    api.authenticate()
+    with api.build_kaggle_client() as client:
+        credentials = KaggleCredentials.load(client)
+        if credentials is None:
+            raise RuntimeError("Kaggle OAuth credentials are unavailable")
+        credentials.refresh_access_token()
+    print("Refreshed Kaggle OAuth access; credentials were not printed")
 
 
 def run_cli(arguments: list[str], capture=False) -> str:
@@ -26,6 +50,8 @@ def run_cli(arguments: list[str], capture=False) -> str:
     process_environment = os.environ.copy()
     process_environment["KAGGLE_CONFIG_DIR"] = str(config)
     process_environment["PYTHONUTF8"] = "1"
+    os.environ["KAGGLE_CONFIG_DIR"] = str(config)
+    refresh_oauth_if_due()
     result = subprocess.run([shutil.which("kaggle") or "kaggle", *arguments], env=process_environment,
                             check=True, capture_output=capture, text=True, encoding="utf-8")
     return result.stdout if capture else ""
@@ -95,6 +121,7 @@ def recover_uploaded_archive(cache_path: Path) -> None:
     """
     import importlib
     os.environ["KAGGLE_CONFIG_DIR"] = str(REPOSITORY / ".kaggle-config")
+    refresh_oauth_if_due()
     sdk = importlib.import_module("kaggle.api.kaggle_api_extended")
     cached = json.loads(cache_path.read_text(encoding="utf-8"))
     if not cached.get("upload_complete") or time.time() - cached["timestamp"] > 24 * 3600:
@@ -139,6 +166,7 @@ def verify_remote_inventory() -> dict:
     """
     import importlib
     os.environ["KAGGLE_CONFIG_DIR"] = str(REPOSITORY / ".kaggle-config")
+    refresh_oauth_if_due()
     sdk = importlib.import_module("kaggle.api.kaggle_api_extended")
     api = sdk.KaggleApi()
     api.authenticate()
@@ -184,7 +212,7 @@ def submit(phase: str, sha: str) -> None:
         raise ValueError("Push this commit to origin before launching Kaggle")
     # Kaggle may accept a kernel push while dropping an invalid attachment.
     # Fail before submission until the private data is actually accessible.
-    if phase != "contracts":
+    if phase not in {"contracts", "report"}:
         verify_remote_inventory()
     from build_research_notebook import build
     stage = WORK / phase
@@ -193,8 +221,9 @@ def submit(phase: str, sha: str) -> None:
     metadata = {"id": f"{OWNER}/region-aware-eog-{phase}", "title": f"Region Aware EOG {phase.title()}",
                 "code_file": "Region_Aware_EOG_Kaggle.ipynb", "language": "python", "kernel_type": "notebook",
                 "is_private": True, "enable_gpu": phase in {"train", "neural-search"}, "enable_internet": True,
-                "dataset_sources": [] if phase == "contracts" else [DATASET], "competition_sources": [],
-                "kernel_sources": ([f"{OWNER}/region-aware-eog-benchmark", f"{OWNER}/region-aware-eog-restore"] if phase in {"train", "calibration", "neural-search", "vmd-convergence"}
+                "dataset_sources": [] if phase in {"contracts", "report"} else [DATASET], "competition_sources": [],
+                "kernel_sources": ([f"{OWNER}/region-aware-eog-{item}" for item in ["neural-search", "calibration", "vmd-convergence"]] if phase == "report" else
+                                   [f"{OWNER}/region-aware-eog-benchmark", f"{OWNER}/region-aware-eog-restore"] if phase in {"train", "calibration", "neural-search", "vmd-convergence"}
                                    else [f"{OWNER}/region-aware-eog-restore"] if phase == "benchmark" else [])}
     if phase in {"train", "neural-search"}:
         metadata["machine_shape"] = "NvidiaTeslaT4"
@@ -209,7 +238,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["auth-check", "prepare", "upload", "package-opaque", "upload-opaque", "recover-upload", "inventory-check", "dataset-status", "submit", "status", "retrieve"])
     parser.add_argument("--source", type=Path)
-    parser.add_argument("--phase", choices=["contracts", "audit", "restore", "benchmark", "calibration", "klados-source", "train", "neural-search", "vmd-convergence"], default="audit")
+    parser.add_argument("--phase", choices=["contracts", "audit", "restore", "benchmark", "calibration", "klados-source", "train", "neural-search", "vmd-convergence", "report"], default="audit")
     parser.add_argument("--sha")
     parser.add_argument("--upload-cache", type=Path)
     args = parser.parse_args()

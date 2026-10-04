@@ -15,7 +15,9 @@ GREY = "#6B7280"
 def save(figure, output, name, sources):
     figure.savefig(output / f"{name}.png", dpi=180, bbox_inches="tight")
     figure.savefig(output / f"{name}.svg", bbox_inches="tight")
-    save_json(output / f"{name}.sources.json", {"sources": sources, "scope": "kaggle_smoke; no final-study inference"})
+    run_path = output / "run_config.json"
+    phase = json.loads(run_path.read_text()).get("phase", "unknown") if run_path.exists() else "unknown"
+    save_json(output / f"{name}.sources.json", {"sources": sources, "phase": phase, "full_study_inference": False})
     plt.close(figure)
 
 
@@ -103,8 +105,9 @@ def neural_search_figures(output):
     selected = json.loads((output / "selected_neural.json").read_text())
     figure, axis = plt.subplots(figsize=(8, 6))
     rows = grid[grid.clean_relative_change_worst_record <= 0.05]
-    axis.scatter(rows.clean_relative_change_worst_record * 100, rows.rmse_improvement_fraction * 100,
+    colors = axis.scatter(rows.clean_relative_change_worst_record * 100, rows.rmse_improvement_fraction * 100,
                  c=rows.identity_weight, cmap="viridis", s=12, alpha=0.4)
+    figure.colorbar(colors, ax=axis, label="Clean identity loss weight")
     axis.axvline(1, color=GREY, linestyle="--", label="1% development preservation bound")
     axis.axhline(10, color=GREY, linestyle=":", label="10% development error reduction target")
     axis.scatter(selected["clean_relative_change_worst_record"] * 100, selected["rmse_improvement_fraction"] * 100,
