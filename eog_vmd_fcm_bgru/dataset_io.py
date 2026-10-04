@@ -21,7 +21,10 @@ def klados_arrays(root):
     dirty = np.load(path / "klados_contaminated_eeg.npy", allow_pickle=False)
     clean = np.load(path / "klados_pure_eeg.npy", allow_pickle=False)
     eog = [np.load(path / f"klados_{name}.npy", allow_pickle=False) for name in ("heog", "veog")]
-    references = np.stack([value.reshape(len(dirty), -1, dirty.shape[-1])[:, 0] for value in eog], axis=1)
+    reshaped = [value.reshape(len(dirty), -1, dirty.shape[-1]) for value in eog]
+    if any(value.shape[1] != 1 for value in reshaped):
+        raise ValueError("Klados EOG has multiple reference rows; an explicit mapping is required")
+    references = np.stack([value[:, 0] for value in reshaped], axis=1)
     return preprocess(dirty), preprocess(clean), preprocess(references)
 
 

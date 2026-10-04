@@ -10,8 +10,9 @@ from .channel_regions import REGION_NAMES, region_ids, fuse_residuals
 from .dataset_io import klados_arrays, split_records, osf_trials
 from .evaluation import paired_metrics, modification_metrics, ocular_proxies
 from .provenance import save_json
-from .spatial_expert import ICAExpert, ridge_residual, asr_correction
+from .spatial_expert import ICAExpert, ridge_residual, asr_correction, fit_asr
 from .vmd_expert import ModeExpert
+from .research_plots import grid_figures, example_modes
 
 K_GRID = list(range(3, 11))
 ALPHA_GRID = [250, 500, 1000, 2000, 4000]
@@ -93,6 +94,7 @@ def vmd_search(dirty, clean, eog, split, output):
                                             & (aggregate.clean_alpha_error_db <= 1.0)
                                             & (aggregate.clean_beta_error_db <= 1.0))
     aggregate.to_csv(output / "vmd_grid_summary.csv", index=False)
+    grid_figures(output)
     feasible = aggregate[aggregate.preservation_guard_pass & (aggregate.rmse_improvement_fraction > 0)]
     if feasible.empty:
         save_json(output / "classical_gate.json", {"vmd_feasible": False,
@@ -108,41 +110,70 @@ def vmd_search(dirty, clean, eog, split, output):
     expert = ModeExpert.fit(training, references, configuration["K"], configuration["alpha"])
     with (output / "vmd_expert.pkl").open("wb") as handle:
         pickle.dump(expert, handle)
+    from .vmd_expert import decompose
+    raw = dirty[validation_records[0], channels[0], segment]
+    target = clean[validation_records[0], channels[0], segment]
+    vectors, residual, detail = decompose(raw, configuration["K"], configuration["alpha"])
+    np.savez_compressed(output / "vmd_example.npz", raw=raw, target=target, modes=vectors, residual=residual)
+    save_json(output / "vmd_example_metadata.json", {"record": validation_records[0], "channel": channels[0],
+              "fs": 200, "sample_interval": [CALIBRATION, CALIBRATION + WINDOW], **detail})
+    example_modes(raw, target, vectors, residual, detail["centers_hz"], output)
     return expert, configuration
 
 
 def spatial_search(dirty, clean, eog, split, output):
     rows, failures = [], []
     segment = slice(CALIBRATION, CALIBRATION + WINDOW)
+    def preservation(corrected_clean, target):
+        change = modification_metrics(corrected_clean[:, segment], target[:, segment])
+        quality = paired_metrics(corrected_clean[:, segment], target[:, segment])
+        return {"clean_relative_change": change["relative_change"], "clean_alpha_error_db": quality["alpha_error_db"],
+                "clean_beta_error_db": quality["beta_error_db"], "clean_covariance_error": quality["covariance_error"]}
     for record in split["val"][:2]:
         raw, target = dirty[record], clean[record]
         for penalty in [0.1, 1.0, 10.0]:
             residual = ridge_residual(raw, eog[record], CALIBRATION, penalty)
             rows.append({"method": "ridge_eog", "parameter": str(penalty), "record": record,
-                         **paired_metrics((raw - residual)[:, segment], target[:, segment])})
+                         **paired_metrics((raw - residual)[:, segment], target[:, segment]),
+                         **preservation(target - residual, target)})
         for method in ["picard", "infomax"]:
             try:
                 expert = ICAExpert.fit(raw[:, :CALIBRATION], eog[record, :, :CALIBRATION], method)
                 for threshold in [0.2, 0.3, 0.4]:
                     residual = expert.residual(raw, threshold)
+                    clean_residual = expert.residual(target, threshold)
                     rows.append({"method": "ica", "parameter": f"{method}:{threshold}", "record": record,
-                                 **paired_metrics((raw - residual)[:, segment], target[:, segment])})
+                                 **paired_metrics((raw - residual)[:, segment], target[:, segment]),
+                                 **preservation(target - clean_residual, target)})
             except Exception as error:
                 failures.append({"method": method, "record": record, "error": repr(error)})
         for cutoff in [10, 20, 30]:
             try:
-                corrected = asr_correction(raw, CALIBRATION, cutoff)
+                estimator = fit_asr(raw, CALIBRATION, cutoff)
+                corrected = np.asarray(estimator.transform(raw))
+                clean_corrected = np.asarray(estimator.transform(target))
                 rows.append({"method": "asr", "parameter": str(cutoff), "record": record,
-                             **paired_metrics(corrected[:, segment], target[:, segment])})
+                             **paired_metrics(corrected[:, segment], target[:, segment]),
+                             **preservation(clean_corrected, target)})
             except Exception as error:
                 failures.append({"method": "asr", "cutoff": cutoff, "record": record, "error": repr(error)})
         csv(rows, output / "spatial_grid_records.csv")
         save_json(output / "spatial_failures.json", failures)
     summary = pd.DataFrame(rows).groupby(["method", "parameter"], as_index=False).mean(numeric_only=True)
+    summary["preservation_guard_pass"] = ((summary.clean_relative_change <= 0.20)
+                                          & (summary.clean_alpha_error_db <= 1)
+                                          & (summary.clean_beta_error_db <= 1))
     summary.to_csv(output / "spatial_grid_summary.csv", index=False)
     selected = {}
     for method, group in summary.groupby("method"):
-        selected[method] = str(group.sort_values("rmse").iloc[0]["parameter"])
+        if method == "ridge_eog":
+            # EOG-reference baseline remains explicit even when the clean-EEG
+            # counterfactual with the original EOG violates preservation.
+            selected[method] = str(group.sort_values("rmse").iloc[0]["parameter"])
+        else:
+            feasible = group[group.preservation_guard_pass]
+            if not feasible.empty:
+                selected[method] = str(feasible.sort_values("rmse").iloc[0]["parameter"])
     save_json(output / "selected_spatial.json", selected)
     return selected
 

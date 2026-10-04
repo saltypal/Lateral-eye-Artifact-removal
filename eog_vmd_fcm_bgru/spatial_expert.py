@@ -71,13 +71,18 @@ class ICAExpert:
         return self.source_to_scalp @ removed
 
 
-def asr_correction(eeg, calibration_samples, cutoff=20):
+def fit_asr(eeg, calibration_samples, cutoff=20):
     from mne_denoise.asr import ASR
     calibration = eeg[:, :calibration_samples]
     if calibration.shape[-1] < 2000 or np.linalg.matrix_rank(calibration - calibration.mean(axis=-1, keepdims=True)) < 2:
         raise ValueError("ASR unavailable: insufficient calibration or rank")
     estimator = ASR(sfreq=200, cutoff=cutoff, calibration="auto", random_state=42)
     estimator.fit(calibration)
+    return estimator
+
+
+def asr_correction(eeg, calibration_samples, cutoff=20):
+    estimator = fit_asr(eeg, calibration_samples, cutoff)
     corrected = np.asarray(estimator.transform(eeg))
     if corrected.shape != eeg.shape or not np.isfinite(corrected).all():
         raise ValueError("ASR shape/finite contract failed")

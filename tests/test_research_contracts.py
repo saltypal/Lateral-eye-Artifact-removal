@@ -1,7 +1,15 @@
 """Run only on Kaggle for this campaign. Numeric fixtures are not dataset evidence."""
 import numpy as np
+import torch
+import pytest
+from scipy.io import savemat
 from eog_vmd_fcm_bgru.channel_regions import region_ids, fuse_residuals
 from eog_vmd_fcm_bgru.vmd_expert import decompose
+from eog_vmd_fcm_bgru.student import SharedChannelStudent
+from eog_vmd_fcm_bgru.provenance import read_osf
+from eog_vmd_fcm_bgru.spatial_expert import ICAExpert
+
+torch.set_num_threads(2)
 
 
 def test_vmd_odd_length_residual_keeps_alignment():
@@ -25,3 +33,64 @@ def test_fusion_identity_and_permutation():
     expected = fuse_residuals(eeg, a, b, names)[order]
     actual = fuse_residuals(eeg[order], a[order], b[order], [names[i] for i in order])
     np.testing.assert_allclose(actual, expected)
+
+
+def test_student_padding_and_metadata_permutation_do_not_change_valid_outputs():
+    torch.manual_seed(42)
+    model = SharedChannelStudent().eval()
+    eeg = torch.randn(1, 4, 129)
+    mask = torch.ones(1, 4)
+    regions = torch.tensor([[0, 1, 2, 3]])
+    with torch.no_grad():
+        expected = model(eeg, mask, regions)["cleaned"]
+        padded = torch.cat([eeg, torch.full((1, 2, 129), 1e6)], dim=1)
+        padded_mask = torch.cat([mask, torch.zeros(1, 2)], dim=1)
+        padded_regions = torch.cat([regions, torch.full((1, 2), 3)], dim=1)
+        actual = model(padded, padded_mask, padded_regions)["cleaned"]
+        torch.testing.assert_close(actual[:, :4], expected, atol=1e-5, rtol=1e-5)
+        torch.testing.assert_close(actual[:, 4:], padded[:, 4:], atol=0, rtol=0)
+        order = [2, 0, 3, 1]
+        reordered = model(eeg[:, order], mask[:, order], regions[:, order])["cleaned"]
+        torch.testing.assert_close(reordered, expected[:, order], atol=1e-5, rtol=1e-5)
+
+
+def test_student_channel_count_does_not_change_parameter_count_and_reload(tmp_path):
+    torch.manual_seed(42)
+    model = SharedChannelStudent().eval()
+    parameter_count = sum(item.numel() for item in model.parameters())
+    with torch.no_grad():
+        for count in [1, 8, 19, 32, 64, 128]:
+            x = torch.randn(1, count, 65)
+            output = model(x, torch.ones(1, count), torch.full((1, count), 3))
+            assert output["cleaned"].shape == x.shape
+            assert torch.isfinite(output["cleaned"]).all()
+            assert sum(item.numel() for item in model.parameters()) == parameter_count
+        torch.save(model.state_dict(), tmp_path / "state.pt")
+        restored = SharedChannelStudent().eval()
+        restored.load_state_dict(torch.load(tmp_path / "state.pt", weights_only=True))
+        torch.testing.assert_close(restored(x, torch.ones(1, count), torch.full((1, count), 3))["cleaned"], output["cleaned"])
+
+
+def test_eeglab_annotations_keep_integer_codes_and_do_not_enter_eeg(tmp_path):
+    data = np.zeros((5, 101, 2), dtype=np.float32)
+    data[:3] = np.random.default_rng(42).normal(size=(3, 101, 2))
+    data[3, :, 0], data[3, :, 1] = 1, 5
+    data[4, :, 0], data[4, :, 1] = 2, 4
+    locations = [{"labels": name, "type": "EEG"} for name in ["Fp1", "O1", "HEOG", "artifactclasses", "label"]]
+    path = tmp_path / "study02_p01_prep.set"
+    savemat(path, {"EEG": {"nbchan": 5, "pnts": 101, "trials": 2, "srate": 200,
+                          "data": data, "chanlocs": locations, "ref": "original"}})
+    item = read_osf(path)
+    assert item["data"].shape == (2, 5, 101)
+    assert item["eeg_indices"] == [0, 1]
+    assert item["eog_indices"] == [2]
+    assert set(np.unique(item["sample_labels"])) == {1, 5}
+    assert item["trial_labels"] == [2, 4]
+    assert item["participant"] == "p01"
+
+
+def test_short_or_rank_deficient_ica_calibration_is_rejected():
+    with pytest.raises(ValueError, match="10 seconds"):
+        ICAExpert.fit(np.ones((3, 1000)), np.ones((2, 1000)))
+    with pytest.raises(ValueError, match="deficient rank"):
+        ICAExpert.fit(np.ones((3, 2000)), np.ones((2, 2000)))
