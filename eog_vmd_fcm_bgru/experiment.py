@@ -187,10 +187,11 @@ def frozen_methods(raw, references, names, expert, vmd_config, spatial_config):
     """Both hybrid residuals refer to the same raw signal; ICA is global."""
     start = time.perf_counter()
     yield "raw", raw, {"runtime_s": 0}
-    estimate, _ = expert.artifact(raw[:, CALIBRATION:CALIBRATION + WINDOW], strength=vmd_config["strength"])
     artifact = np.zeros_like(raw)
-    artifact[:, CALIBRATION:CALIBRATION + WINDOW] = estimate
-    yield "vmd_fcm", raw - artifact, {"runtime_s": time.perf_counter() - start}
+    if expert is not None:
+        estimate, _ = expert.artifact(raw[:, CALIBRATION:CALIBRATION + WINDOW], strength=vmd_config["strength"])
+        artifact[:, CALIBRATION:CALIBRATION + WINDOW] = estimate
+        yield "vmd_fcm", raw - artifact, {"runtime_s": time.perf_counter() - start}
     if "asr" in spatial_config:
         try:
             yield "asr", asr_correction(raw, CALIBRATION, int(spatial_config["asr"])), {"eog_required": False}
@@ -199,7 +200,8 @@ def frozen_methods(raw, references, names, expert, vmd_config, spatial_config):
     try:
         armbr, metadata = armbr_correction(raw, names, CALIBRATION)
         yield "armbr", armbr, metadata
-        yield "vmd_armbr_hybrid", fuse_residuals(raw, artifact, raw - armbr, names, 0.8, 0.2, 0.5), metadata
+        if expert is not None:
+            yield "vmd_armbr_hybrid", fuse_residuals(raw, artifact, raw - armbr, names, 0.8, 0.2, 0.5), metadata
     except Exception as error:
         yield "armbr_unavailable", None, {"reason": repr(error)}
     if references.shape[0] == 0:
@@ -212,6 +214,8 @@ def frozen_methods(raw, references, names, expert, vmd_config, spatial_config):
             ica = ICAExpert.fit(raw[:, :CALIBRATION], references[:, :CALIBRATION], method)
             residual = ica.residual(raw, float(threshold))
             yield "ica", raw - residual, {"rank": ica.rank, "eog_required": True}
+            if expert is None:
+                return
             # VMD is evaluated on an explicitly bounded segment; no trial join.
             refined_segment = ica.residual(raw[:, CALIBRATION:CALIBRATION + WINDOW], float(threshold), True,
                                            vmd_config["K"], vmd_config["alpha"])
@@ -235,9 +239,10 @@ def benchmark(root: Path, output: Path, profile="kaggle_smoke"):
     outcome = vmd_search(dirty, clean, references, split, output)
     spatial = spatial_search(dirty, clean, references, split, output)
     if outcome is None:
-        print("VMD feasibility gate failed; no VMD teacher promoted", flush=True)
-        return
-    expert, config = outcome
+        print("VMD feasibility gate failed; evaluating spatial alternatives without a VMD teacher", flush=True)
+        expert, config = None, None
+    else:
+        expert, config = outcome
     rows, exclusions = [], []
     scoring = slice(CALIBRATION, CALIBRATION + WINDOW)
     for record in split["test"][:2]:
@@ -285,7 +290,8 @@ def benchmark(root: Path, output: Path, profile="kaggle_smoke"):
                 break
     save_json(output / "benchmark_exclusions.json", exclusions)
     pd.DataFrame(rows).groupby("method").mean(numeric_only=True).to_csv(output / "benchmark_summary.csv")
-    save_json(output / "classical_gate.json", {"vmd_feasible": True, "profile": profile,
+    save_json(output / "classical_gate.json", {"vmd_feasible": outcome is not None, "profile": profile,
+              "paired_only_training_allowed": True,
               "test_records_scored": split["test"][:2], "osf_sessions_requested": [p.stem for p in sessions],
               "claim": "bounded feasibility only; no complete-removal or superiority claim", "victory": False})
     print("Classical smoke complete; full validation remains required", flush=True)

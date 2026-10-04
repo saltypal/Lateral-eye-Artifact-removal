@@ -59,12 +59,25 @@ def read_osf(path: Path) -> dict:
     eeg = payload.get("EEG", payload)
     channels, samples, trials = (int(eeg[name]) for name in ("nbchan", "pnts", "trials"))
     data = eeg["data"]
+    external_source = None
     if isinstance(data, str):
-        external = (path.parent / data).resolve()
-        if external.parent != path.parent.resolve():
-            raise ValueError("External FDT must be in the session directory")
+        declared = data
+        basename = declared.replace("\\", "/").rsplit("/", 1)[-1]
+        external = (path.parent / basename).resolve()
+        if not external.is_file():
+            # EEGLAB exports can retain an old data filename. MNE's pinned
+            # reader uses the same-session .fdt companion in this case.
+            companion = path.with_suffix(".fdt").resolve()
+            if not companion.is_file():
+                raise FileNotFoundError(f"FDT absent: declared={declared!r}; companion={companion.name!r}")
+            external = companion
+        if external.parent != path.parent.resolve() or external.suffix.lower() != ".fdt":
+            raise ValueError("External FDT must be a same-directory session file")
         if external.stat().st_size != channels * samples * trials * 4:
             raise ValueError("External FDT length does not match declared dimensions")
+        external_source = {"declared": declared, "resolved": external.name,
+                           "same_session_companion_fallback": basename != external.name}
+        print("OSF external data", path.stem, external_source, flush=True)
         data = np.memmap(external, dtype="<f4", mode="r", shape=(channels, samples, trials), order="F")
     else:
         data = np.asarray(data).reshape(channels, samples, trials, order="F")
@@ -118,7 +131,8 @@ def read_osf(path: Path) -> dict:
     return {"path": path, "study": match[1], "participant": match[2], "fs": float(eeg["srate"]),
             "data": data, "names": names, "locations": locations, "eeg_indices": eeg_indices,
             "eog_indices": eog_indices, "annotations": annotations, "sample_labels": sample_labels,
-            "trial_labels": trial_labels, "reference": str(eeg.get("ref", "not declared"))}
+            "trial_labels": trial_labels, "external_source": external_source,
+            "reference": str(eeg.get("ref", "not declared"))}
 
 
 def audit(root: Path, manifest_path: Path, output: Path, repository: Path) -> dict:
@@ -173,6 +187,7 @@ def audit(root: Path, manifest_path: Path, output: Path, repository: Path) -> di
                                  "status": "usable" if valid.sum() >= 1 else "excluded",
                                  "sampling_hz": item["fs"], "trials": data.shape[0], "samples_per_trial": data.shape[-1],
                                  "reference": item["reference"], "eeg_names": names,
+                                 "external_source": item["external_source"],
                                  "valid_channels": valid.tolist(), "coordinates_eeglab_unconverted": coordinates,
                                  "eog_names": [item["names"][i] for i in item["eog_indices"]],
                                  "trial_labels": item["trial_labels"],

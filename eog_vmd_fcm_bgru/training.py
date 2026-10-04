@@ -35,13 +35,15 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
         raise RuntimeError("Attach one completed benchmark output before training")
     benchmark = gates[0].parent
     gate = json.loads(gates[0].read_text())
-    if not gate.get("vmd_feasible"):
-        raise RuntimeError("VMD feasibility failed; investigate the classical branch first")
     split = json.loads((benchmark / "record_split.json").read_text())
-    vmd_config = json.loads((benchmark / "selected_vmd.json").read_text())
     spatial_config = json.loads((benchmark / "selected_spatial.json").read_text())
-    with (benchmark / "vmd_expert.pkl").open("rb") as handle:
-        expert = pickle.load(handle)
+    expert, vmd_config = None, None
+    if gate.get("vmd_feasible"):
+        vmd_config = json.loads((benchmark / "selected_vmd.json").read_text())
+        with (benchmark / "vmd_expert.pkl").open("rb") as handle:
+            expert = pickle.load(handle)
+    elif not gate.get("paired_only_training_allowed"):
+        raise RuntimeError("Failed or incomplete benchmark; no authorized training path")
     dirty, clean, eog = klados_arrays(root)
     seed_everything(42)
     torch.set_num_threads(2)
@@ -52,9 +54,11 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
     teachers, teacher_diagnostics = [], []
     for record in coverage["train"]:
         raw = dirty[record, :, segment]
-        temporal, _ = expert.artifact(raw, strength=vmd_config["strength"])
+        temporal = np.zeros_like(raw)
+        if expert is not None:
+            temporal, _ = expert.artifact(raw, strength=vmd_config["strength"])
         teacher = temporal
-        if "ica" in spatial_config:
+        if expert is not None and "ica" in spatial_config:
             try:
                 method, threshold = spatial_config["ica"].split(":")
                 spatial = ICAExpert.fit(dirty[record, :, :CALIBRATION], eog[record, :, :CALIBRATION], method)
@@ -64,7 +68,7 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
                 teacher_diagnostics.append({"record": record, "ica_teacher_error": repr(error)})
         teacher_rmse = paired_metrics(raw - teacher, clean[record, :, segment])["rmse"]
         raw_rmse = paired_metrics(raw, clean[record, :, segment])["rmse"]
-        usable = teacher_rmse < raw_rmse
+        usable = expert is not None and teacher_rmse < raw_rmse
         teachers.append(teacher if usable else np.zeros_like(teacher))
         teacher_diagnostics.append({"record": record, "teacher_rmse": teacher_rmse, "raw_rmse": raw_rmse,
                                     "distillation_enabled": bool(usable)})
@@ -148,6 +152,7 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
               "epochs": 20, "parameters": parameter_count, "device": device,
               "runtime_s": time.perf_counter() - started, "input": "EEG only; no runtime EOG, VMD or ICA",
               "offline": True, "regions": "unknown Klados electrode provenance; fixed regional priors unvalidated",
+              "training_mode": "paired plus validated teacher" if expert is not None else "paired only; VMD teacher rejected",
               "full_validation": False, "victory": False})
     evaluate_osf_student(network, root, output, device)
     latency_scaling(network, output, device)
