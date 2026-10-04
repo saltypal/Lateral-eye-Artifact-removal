@@ -28,7 +28,7 @@ ENV_ROOT = TEMP_ROOT / "environment"
 subprocess.check_call([sys.executable, "-m", "venv", "--without-pip", "--system-site-packages", str(ENV_ROOT)])
 ENV_PY = ENV_ROOT / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
 # Kaggle's OS Python omits ensurepip; host pip can install into a pip-free venv.
-subprocess.check_call([sys.executable, "-m", "pip", "--python", str(ENV_PY), "install", "--quiet", "-r", str(CHECKOUT / "requirements-research.txt")])
+subprocess.check_call([sys.executable, "-m", "pip", "--python", str(ENV_PY), "install", "--quiet", "--progress-bar", "off", "-r", str(CHECKOUT / "requirements-research.txt")])
 PROCESS_ENV = os.environ.copy()
 PROCESS_ENV["PYTHONPATH"] = str(CHECKOUT)
 PROCESS_ENV["PYTHONUNBUFFERED"] = "1"
@@ -69,6 +69,7 @@ OUT.mkdir(parents=True, exist_ok=True)
                     if archives:
                         container = payload.get("archive")
                         if container:
+                            print("Verifying outer archive", container["name"], flush=True)
                             expected_archive = attached / container["name"]
                             digest = hashlib.sha256()
                             with expected_archive.open("rb") as handle:
@@ -78,6 +79,7 @@ OUT.mkdir(parents=True, exist_ok=True)
                                 raise RuntimeError("Outer research archive SHA256 mismatch")
                         extraction = TEMP_ROOT / "data"
                         extraction.mkdir()
+                        print("Extracting complete research input", flush=True)
                         for archive_path in archives:
                             with zipfile.ZipFile(archive_path) as archive:
                                 for member in archive.infolist():

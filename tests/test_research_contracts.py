@@ -71,15 +71,21 @@ def test_student_channel_count_does_not_change_parameter_count_and_reload(tmp_pa
         torch.testing.assert_close(restored(x, torch.ones(1, count), torch.full((1, count), 3))["cleaned"], output["cleaned"])
 
 
-def test_eeglab_annotations_keep_integer_codes_and_do_not_enter_eeg(tmp_path):
+@pytest.mark.parametrize("format", ["scipy", "v7.3"])
+def test_eeglab_annotations_keep_integer_codes_and_do_not_enter_eeg(tmp_path, format):
     data = np.zeros((5, 101, 2), dtype=np.float32)
     data[:3] = np.random.default_rng(42).normal(size=(3, 101, 2))
     data[3, :, 0], data[3, :, 1] = 1, 5
     data[4, :, 0], data[4, :, 1] = 2, 4
     locations = [{"labels": name, "type": "EEG"} for name in ["Fp1", "O1", "HEOG", "artifactclasses", "label"]]
     path = tmp_path / "study02_p01_prep.set"
-    savemat(path, {"EEG": {"nbchan": 5, "pnts": 101, "trials": 2, "srate": 200,
-                          "data": data, "chanlocs": locations, "ref": "original"}})
+    payload = {"EEG": {"nbchan": 5, "pnts": 101, "trials": 2, "srate": 200,
+                       "data": data, "chanlocs": locations, "ref": "original"}}
+    if format == "scipy":
+        savemat(path, payload)
+    else:
+        import hdf5storage
+        hdf5storage.savemat(str(path), payload, appendmat=False, format="7.3", store_python_metadata=False)
     item = read_osf(path)
     assert item["data"].shape == (2, 5, 101)
     assert item["eeg_indices"] == [0, 1]
@@ -87,6 +93,7 @@ def test_eeglab_annotations_keep_integer_codes_and_do_not_enter_eeg(tmp_path):
     assert set(np.unique(item["sample_labels"])) == {1, 5}
     assert item["trial_labels"] == [2, 4]
     assert item["participant"] == "p01"
+    np.testing.assert_array_equal(item["data"], np.moveaxis(data, -1, 0))
 
 
 def test_short_or_rank_deficient_ica_calibration_is_rejected():

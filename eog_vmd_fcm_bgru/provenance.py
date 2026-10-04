@@ -32,7 +32,8 @@ def save_json(path: Path, value) -> None:
 def environment(repository: Path) -> dict:
     packages = {}
     for name in ["numpy", "scipy", "pandas", "mne", "torch", "vmdpy",
-                 "scikit-fuzzy", "scikit-learn", "python-picard", "mne-denoise", "ARMBR"]:
+                 "scikit-fuzzy", "scikit-learn", "python-picard", "mne-denoise", "ARMBR",
+                 "pymatreader", "h5py", "hdf5storage"]:
         try:
             packages[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:
@@ -48,7 +49,13 @@ def read_osf(path: Path) -> dict:
     Keeping original units avoids MNE's EEG-to-volts conversion rounding integer
     annotation channels to zero. Each trial remains a separate continuous unit.
     """
-    payload = loadmat(path, simplify_cells=True)
+    try:
+        payload = loadmat(path, simplify_cells=True)
+    except NotImplementedError:
+        # Original OSF .set files use MATLAB v7.3/HDF5. pymatreader restores
+        # MATLAB axis order and resolves references without EEG unit scaling.
+        from pymatreader import read_mat
+        payload = read_mat(path)
     eeg = payload.get("EEG", payload)
     channels, samples, trials = (int(eeg[name]) for name in ("nbchan", "pnts", "trials"))
     data = eeg["data"]
@@ -64,7 +71,23 @@ def read_osf(path: Path) -> dict:
     data = np.moveaxis(data, -1, 0)
     locations = eeg["chanlocs"]
     if isinstance(locations, dict):
-        locations = [locations]
+        labels = locations["labels"]
+        if isinstance(labels, str):
+            locations = [locations]
+        else:
+            # pymatreader represents struct arrays as columns of field values.
+            if len(labels) != channels:
+                raise ValueError("Channel-location columns have inconsistent length")
+            columns = locations
+            locations = []
+            for index in range(channels):
+                location = {}
+                for key, column in columns.items():
+                    if isinstance(column, (list, tuple, np.ndarray)) and len(column) == channels:
+                        location[key] = column[index]
+                    else:
+                        location[key] = column
+                locations.append(location)
     locations = list(locations)
     names = [str(item["labels"]).strip() for item in locations]
     if len(names) != channels or len(set(name.upper() for name in names)) != channels:
@@ -100,6 +123,7 @@ def read_osf(path: Path) -> dict:
 
 def audit(root: Path, manifest_path: Path, output: Path, repository: Path) -> dict:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    print("Auditing individual source SHA256 values", len(manifest["files"]), flush=True)
     integrity = []
     for entry in manifest["files"]:
         path = root / entry["path"]
@@ -108,6 +132,7 @@ def audit(root: Path, manifest_path: Path, output: Path, repository: Path) -> di
     save_json(output / "integrity.json", integrity)
     if not all(item["match"] for item in integrity):
         raise RuntimeError("Uploaded dataset failed source hash verification")
+    print("All source hashes match; inspecting Klados arrays", flush=True)
     klados = root / "klados"
     arrays = {name: np.load(klados / filename, mmap_mode="r", allow_pickle=False)
               for name, filename in {"dirty": "klados_contaminated_eeg.npy", "clean": "klados_pure_eeg.npy",
@@ -126,6 +151,7 @@ def audit(root: Path, manifest_path: Path, output: Path, repository: Path) -> di
     save_json(output / "klados_record_groups.json", fingerprints)
     session_rows = []
     for path in sorted((root / "Dataset1_OSF").rglob("*_prep.set")):
+        print("Auditing OSF session", path.stem, flush=True)
         try:
             item = read_osf(path)
             data = item["data"][:, item["eeg_indices"]]
@@ -153,6 +179,7 @@ def audit(root: Path, manifest_path: Path, output: Path, repository: Path) -> di
                                  "sample_label_counts": {str(code): int((labels == code).sum()) for code in range(7)} if labels is not None else None})
         except Exception as error:
             session_rows.append({"file": str(path.relative_to(root)), "status": "excluded", "reason": repr(error)})
+            print("OSF exclusion", path.stem, repr(error), flush=True)
     save_json(output / "osf_sessions.json", session_rows)
     block_sessions = {path.name.replace("_block_dt.mat", "") for path in (root / "Dataset1_OSF").rglob("*_block_dt.mat")}
     set_sessions = {path.name.replace("_prep.set", "") for path in (root / "Dataset1_OSF").rglob("*_prep.set")}

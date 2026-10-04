@@ -177,6 +177,11 @@ def verify_remote_inventory() -> dict:
 def submit(phase: str, sha: str) -> None:
     if len(sha) != 40 or any(character not in "0123456789abcdef" for character in sha):
         raise ValueError("Use an explicit 40-character Git SHA")
+    subprocess.run(["git", "-C", str(REPOSITORY), "cat-file", "-e", sha + "^{commit}"], check=True)
+    # A syntactically valid SHA can still be absent from the remote checkout.
+    published = subprocess.check_output(["git", "-C", str(REPOSITORY), "branch", "-r", "--contains", sha], text=True)
+    if not any(line.strip().startswith("origin/") for line in published.splitlines()):
+        raise ValueError("Push this commit to origin before launching Kaggle")
     # Kaggle may accept a kernel push while dropping an invalid attachment.
     # Fail before submission until the private data is actually accessible.
     if phase != "contracts":
