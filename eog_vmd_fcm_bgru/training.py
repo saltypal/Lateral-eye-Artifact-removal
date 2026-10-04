@@ -60,9 +60,11 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
         teacher = temporal
         if expert is not None and "ica" in spatial_config:
             try:
-                method, threshold = spatial_config["ica"].split(":")
+                parts = spatial_config["ica"].split(":")
+                method, threshold = parts[:2]
+                strength = float(parts[2]) if len(parts) == 3 else 1.0
                 spatial = ICAExpert.fit(dirty[record, :, :CALIBRATION], eog[record, :, :CALIBRATION], method)
-                refined = spatial.residual(raw, float(threshold), True, vmd_config["K"], vmd_config["alpha"])
+                refined = strength * spatial.residual(raw, float(threshold), True, vmd_config["K"], vmd_config["alpha"])
                 teacher = 0.5 * temporal + 0.5 * refined
             except Exception as error:
                 teacher_diagnostics.append({"record": record, "ica_teacher_error": repr(error)})

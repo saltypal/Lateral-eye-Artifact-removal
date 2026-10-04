@@ -147,12 +147,13 @@ def spatial_search(dirty, clean, eog, split, output):
         for method in ["picard", "infomax"]:
             try:
                 expert = ICAExpert.fit(raw[:, :CALIBRATION], eog[record, :, :CALIBRATION], method)
-                for threshold in [0.2, 0.3, 0.4]:
+                for threshold in [0.2, 0.4, 0.6, 0.8]:
                     residual = expert.residual(raw, threshold)
                     clean_residual = expert.residual(target, threshold)
-                    rows.append({"method": "ica", "parameter": f"{method}:{threshold}", "record": record,
-                                 **paired_metrics((raw - residual)[:, segment], target[:, segment]),
-                                 **preservation(target - clean_residual, target)})
+                    for strength in [0.25, 0.5, 0.75, 1.0]:
+                        rows.append({"method": "ica", "parameter": f"{method}:{threshold}:{strength}", "record": record,
+                                     **paired_metrics((raw - strength * residual)[:, segment], target[:, segment]),
+                                     **preservation(target - strength * clean_residual, target)})
             except Exception as error:
                 failures.append({"method": method, "record": record, "error": repr(error)})
         for cutoff in [10, 20, 30]:
@@ -167,6 +168,7 @@ def spatial_search(dirty, clean, eog, split, output):
                 failures.append({"method": "asr", "cutoff": cutoff, "record": record, "error": repr(error)})
         csv(rows, output / "spatial_grid_records.csv")
         save_json(output / "spatial_failures.json", failures)
+        print("Spatial grid saved", record, len(rows), "rows", flush=True)
     summary = pd.DataFrame(rows).groupby(["method", "parameter"], as_index=False).mean(numeric_only=True)
     summary["preservation_guard_pass"] = ((summary.clean_relative_change <= 0.20)
                                           & (summary.clean_alpha_error_db <= 1)
@@ -233,20 +235,22 @@ def frozen_methods(raw, references, names, expert, vmd_config, spatial_config, s
     yield "ridge_eog", raw - ridge, {"eog_required": True}
     if "ica" in spatial_config:
         try:
-            method, threshold = spatial_config["ica"].split(":")
+            parts = spatial_config["ica"].split(":")
+            method, threshold = parts[:2]
+            strength = float(parts[2]) if len(parts) == 3 else 1.0
             if spatial_state is None:
                 ica = ICAExpert.fit(raw[:, :CALIBRATION], references[:, :CALIBRATION], method)
             elif spatial_state["ica"] is None:
                 raise ValueError(spatial_state["errors"].get("ica", "No valid ICA calibration"))
             else:
                 ica = spatial_state["ica"]
-            residual = ica.residual(raw, float(threshold))
+            residual = strength * ica.residual(raw, float(threshold))
             yield "ica", raw - residual, {"rank": ica.rank, "eog_required": True}
             if expert is None:
                 return
             # VMD is evaluated on an explicitly bounded segment; no trial join.
-            refined_segment = ica.residual(raw[:, scoring], float(threshold), True,
-                                           vmd_config["K"], vmd_config["alpha"])
+            refined_segment = strength * ica.residual(raw[:, scoring], float(threshold), True,
+                                                      vmd_config["K"], vmd_config["alpha"])
             refined = np.zeros_like(raw)
             refined[:, scoring] = refined_segment
             yield "ica_source_vmd", raw - refined, {"rank": ica.rank, "eog_required": True}

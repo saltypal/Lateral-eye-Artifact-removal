@@ -100,7 +100,8 @@ def armbr_correction(eeg, names, calibration_samples):
     if not blink_channels:
         raise ValueError("ARMBR unavailable: verified frontopolar channel names required")
     from ARMBR import run_armbr
-    _, threshold, mask, _, _, projection = run_armbr(eeg[:, :calibration_samples].T, blink_channels, [], 200, -1)
+    # The pinned author package uses MNE filtering, which requires float64.
+    _, threshold, mask, _, _, projection = run_armbr(np.asarray(eeg[:, :calibration_samples].T, dtype=np.float64), blink_channels, [], 200, -1)
     projection = np.asarray(projection)
     if projection.shape != (len(eeg), len(eeg)) or not np.isfinite(projection).all() or not np.any(mask):
         raise ValueError("ARMBR unavailable: calibration found no valid blink projection")
@@ -145,7 +146,7 @@ def session_spatial_calibration(trials, configuration):
         try:
             highpass = signal.butter(4, 1, fs=200, btype="highpass", output="sos")
             fitting = np.concatenate([signal.sosfiltfilt(highpass, trial["eeg"], axis=-1) for trial in trials], axis=1)
-            method, _ = configuration["ica"].split(":")
+            method = configuration["ica"].split(":")[0]
             state["ica"] = ICAExpert.fit(pooled, pooled_references, method, calibration_highpass=fitting)
         except Exception as error:
             state["errors"]["ica"] = repr(error)
@@ -165,7 +166,7 @@ def session_spatial_calibration(trials, configuration):
             try:
                 from ARMBR import run_armbr
                 indices = [index for index, name in enumerate(names) if name.upper() in {"FP1", "FP2", "FPZ"}]
-                _, alpha, mask, _, _, projection = run_armbr(trial["eeg"].T, indices, [], 200, -1)
+                _, alpha, mask, _, _, projection = run_armbr(np.asarray(trial["eeg"].T, dtype=np.float64), indices, [], 200, -1)
                 projection = np.asarray(projection)
                 if projection.shape == (len(names), len(names)) and np.isfinite(projection).all() and np.any(mask):
                     state["armbr_projection"] = projection

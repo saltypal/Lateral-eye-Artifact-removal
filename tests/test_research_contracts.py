@@ -141,6 +141,19 @@ def test_armbr_does_not_guess_frontal_channel_order():
         armbr_correction(np.ones((19, 2000)), ["unknown"] * 19, 2000)
 
 
+def test_armbr_adapter_passes_float64_and_applies_projection_once(monkeypatch):
+    import ARMBR
+    projection = np.eye(3) * 0.75
+    def fake_author_method(values, blink_channels, *arguments):
+        assert values.dtype == np.float64
+        assert blink_channels == [0]
+        return values @ projection, 2.0, np.ones(len(values), dtype=bool), None, None, projection
+    monkeypatch.setattr(ARMBR, "run_armbr", fake_author_method)
+    eeg = np.ones((3, 2000), dtype=np.float32)
+    corrected, _ = armbr_correction(eeg, ["Fpz", "O1", "Cz"], 2000)
+    np.testing.assert_allclose(corrected, eeg * 0.75)
+
+
 def test_osf_smoke_scoring_contains_real_events_after_calibration():
     labels = np.zeros(5000, dtype=int)
     labels[4800:4850] = 5
