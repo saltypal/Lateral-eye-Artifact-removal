@@ -194,7 +194,7 @@ def submit(phase: str, sha: str) -> None:
                 "code_file": "Region_Aware_EOG_Kaggle.ipynb", "language": "python", "kernel_type": "notebook",
                 "is_private": True, "enable_gpu": phase == "train", "enable_internet": True,
                 "dataset_sources": [] if phase == "contracts" else [DATASET], "competition_sources": [],
-                "kernel_sources": ([f"{OWNER}/region-aware-eog-benchmark", f"{OWNER}/region-aware-eog-restore"] if phase == "train"
+                "kernel_sources": ([f"{OWNER}/region-aware-eog-benchmark", f"{OWNER}/region-aware-eog-restore"] if phase in {"train", "calibration"}
                                    else [f"{OWNER}/region-aware-eog-restore"] if phase == "benchmark" else [])}
     if phase == "train":
         metadata["machine_shape"] = "NvidiaTeslaT4"
@@ -209,7 +209,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["auth-check", "prepare", "upload", "package-opaque", "upload-opaque", "recover-upload", "inventory-check", "dataset-status", "submit", "status", "retrieve"])
     parser.add_argument("--source", type=Path)
-    parser.add_argument("--phase", choices=["contracts", "audit", "restore", "benchmark", "train"], default="audit")
+    parser.add_argument("--phase", choices=["contracts", "audit", "restore", "benchmark", "calibration", "train"], default="audit")
     parser.add_argument("--sha")
     parser.add_argument("--upload-cache", type=Path)
     args = parser.parse_args()

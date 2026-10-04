@@ -98,8 +98,8 @@ OUT.mkdir(parents=True, exist_ok=True)
                 supplements = list(Path("/kaggle/input").rglob("supplement_manifest.json")) if IN_KAGGLE else []
                 if len(supplements) > 1:
                     raise RuntimeError("Attach at most one verified OSF restoration output")
-                if PHASE == "train" and len(supplements) != 1:
-                    raise RuntimeError("Training requires the completed study04 restoration output")
+                if PHASE in {"train", "calibration"} and len(supplements) != 1:
+                    raise RuntimeError("This phase requires the completed study04 restoration output")
                 if supplements:
                     subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.bundle_io", "--root", str(DATA_ROOT),
                                            "--manifest", str(supplements[0]), "--output", str(OUT / "attached_supplement.json")],
@@ -116,7 +116,7 @@ OUT.mkdir(parents=True, exist_ok=True)
             code('''
                 from IPython.display import Image, HTML, display
                 import csv, html
-                for filename in ("audit_summary.json", "classical_gate.json", "selected_vmd.json", "training_summary.json"):
+                for filename in ("audit_summary.json", "classical_gate.json", "selected_vmd.json", "training_summary.json", "calibration_check_summary.json", "fresh_load_verification.json"):
                     if (OUT / filename).exists():
                         print(filename, (OUT / filename).read_text())
                 for filename in ("benchmark_summary.csv", "student_metrics.csv"):

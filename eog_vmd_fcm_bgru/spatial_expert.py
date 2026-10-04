@@ -46,7 +46,7 @@ class ICAExpert:
                                               random_state=seed, max_iter=1000, verbose=False)
         decomposition.fit(fitting, verbose=False)
         if decomposition.n_iter_ >= 1000:
-            raise RuntimeError("ICA did not converge")
+            raise RuntimeError(f"ICA did not converge: method={method}, rank={rank}, channels={len(names)}, samples={calibration_eeg.shape[-1]}, iterations={decomposition.n_iter_}")
         sources = decomposition.get_sources(raw).get_data()
         scores = np.asarray([max((abs(np.corrcoef(source, reference)[0, 1]) for reference in calibration_eog
                                   if np.std(reference) > 0), default=0) for source in sources])
@@ -143,13 +143,24 @@ def session_spatial_calibration(trials, configuration):
                                   centered @ (pooled - pooled.mean(axis=-1, keepdims=True)).T).T
         state["ridge"] = (weights, mean)
     if "ica" in configuration and len(pooled_references):
-        try:
-            highpass = signal.butter(4, 1, fs=200, btype="highpass", output="sos")
-            fitting = np.concatenate([signal.sosfiltfilt(highpass, trial["eeg"], axis=-1) for trial in trials], axis=1)
-            method = configuration["ica"].split(":")[0]
-            state["ica"] = ICAExpert.fit(pooled, pooled_references, method, calibration_highpass=fitting)
-        except Exception as error:
-            state["errors"]["ica"] = repr(error)
+        highpass = signal.butter(4, 1, fs=200, btype="highpass", output="sos")
+        fitting = np.concatenate([signal.sosfiltfilt(highpass, trial["eeg"], axis=-1) for trial in trials], axis=1)
+        methods = [configuration["ica"].split(":")[0]]
+        if configuration.get("ica_fallback") and configuration["ica_fallback"] not in methods:
+            methods.append(configuration["ica_fallback"])
+        state["ica_attempts"] = []
+        for method in methods:
+            print("OSF input-only ICA calibration", method, "channels", len(names), "samples", pooled.shape[-1], flush=True)
+            try:
+                state["ica"] = ICAExpert.fit(pooled, pooled_references, method, calibration_highpass=fitting)
+                state["ica_method"] = method
+                state["errors"].pop("ica", None)
+                state["ica_attempts"].append({"method": method, "converged": True,
+                                              "iterations": state["ica"].decomposition.n_iter_})
+                break
+            except Exception as error:
+                state["errors"]["ica"] = repr(error)
+                state["ica_attempts"].append({"method": method, "converged": False, "error": repr(error)})
     if "asr" in configuration:
         continuous = next((trial["eeg"] for trial in trials if trial["eeg"].shape[-1] >= 2000), None)
         if continuous is None:
