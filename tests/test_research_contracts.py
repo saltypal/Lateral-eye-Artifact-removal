@@ -2,6 +2,8 @@
 import numpy as np
 import torch
 import pytest
+import json
+import zipfile
 from scipy.io import savemat
 from eog_vmd_fcm_bgru.channel_regions import region_ids, fuse_residuals
 from eog_vmd_fcm_bgru.vmd_expert import decompose
@@ -9,8 +11,31 @@ from eog_vmd_fcm_bgru.student import SharedChannelStudent
 from eog_vmd_fcm_bgru.provenance import read_osf
 from eog_vmd_fcm_bgru.spatial_expert import ICAExpert, armbr_correction
 from eog_vmd_fcm_bgru.dataset_io import annotated_score_slice, trial_condition
+from eog_vmd_fcm_bgru.bundle_io import merge_supplement, digest_file
 
 torch.set_num_threads(2)
+
+
+def test_supplement_verifies_inventory_hashes_and_preserves_existing_files(tmp_path):
+    root = tmp_path / "data"
+    root.mkdir()
+    relative = "Dataset1_OSF/study04/study04_p03_prep.set"
+    container = tmp_path / "supplement.eogbundle"
+    content = b"verified fixture source"
+    import hashlib
+    with zipfile.ZipFile(container, "w") as archive:
+        archive.writestr(relative, content)
+    manifest = tmp_path / "supplement_manifest.json"
+    manifest.write_text(json.dumps({"source": "test fixture", "files": [{"path": relative, "bytes": len(content),
+                              "sha256": hashlib.sha256(content).hexdigest()}],
+                        "archive": {"name": container.name, "bytes": container.stat().st_size,
+                                    "sha256": digest_file(container)}}))
+    merge_supplement(root, manifest, tmp_path / "verification.json")
+    assert (root / relative).read_bytes() == content
+    (root / relative).write_bytes(b"preserve mismatched original")
+    with pytest.raises(ValueError, match="existing files were preserved"):
+        merge_supplement(root, manifest, tmp_path / "verification.json")
+    assert (root / relative).read_bytes() == b"preserve mismatched original"
 
 
 def test_vmd_odd_length_residual_keeps_alignment():

@@ -194,7 +194,7 @@ def submit(phase: str, sha: str) -> None:
                 "code_file": "Region_Aware_EOG_Kaggle.ipynb", "language": "python", "kernel_type": "notebook",
                 "is_private": True, "enable_gpu": phase == "train", "enable_internet": True,
                 "dataset_sources": [] if phase == "contracts" else [DATASET], "competition_sources": [],
-                "kernel_sources": [f"{OWNER}/region-aware-eog-benchmark"] if phase == "train" else []}
+                "kernel_sources": [f"{OWNER}/region-aware-eog-benchmark", f"{OWNER}/region-aware-eog-restore"] if phase == "train" else []}
     if phase == "train":
         metadata["machine_shape"] = "NvidiaTeslaT4"
     (stage / "kernel-metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")

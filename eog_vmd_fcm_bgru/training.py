@@ -156,6 +156,8 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
               "full_validation": False, "victory": False})
     evaluate_osf_student(network, root, output, device)
     latency_scaling(network, output, device)
+    from .export_model import export_and_verify
+    export_and_verify(network, output, dirty[coverage["test"], :, segment].copy(), np.stack(predictions))
 
 
 def evaluate_osf_student(network, root, output, device):

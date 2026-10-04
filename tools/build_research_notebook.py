@@ -95,6 +95,15 @@ OUT.mkdir(parents=True, exist_ok=True)
                 else:
                     DATA_ROOT = Path(os.environ["EOG_DATA_ROOT"]).resolve()
                     MANIFEST = Path(os.environ["EOG_SOURCE_MANIFEST"]).resolve()
+                supplements = list(Path("/kaggle/input").rglob("supplement_manifest.json")) if IN_KAGGLE else []
+                if len(supplements) > 1:
+                    raise RuntimeError("Attach at most one verified OSF restoration output")
+                if PHASE == "train" and len(supplements) != 1:
+                    raise RuntimeError("Training requires the completed study04 restoration output")
+                if supplements:
+                    subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.bundle_io", "--root", str(DATA_ROOT),
+                                           "--manifest", str(supplements[0]), "--output", str(OUT / "attached_supplement.json")],
+                                          cwd=CHECKOUT, env=PROCESS_ENV)
                 print("Input", DATA_ROOT, "Output", OUT)
             '''),
             md("## 4. Dataset audit and gated execution\nSource modules run in the isolated interpreter. Every-file integrity, aligned paired arrays and usable original OSF sessions are required. OSF labels stay integer annotations, trials remain separate, and unknown Klados channel/subject mapping cannot support anatomical/subject-independent claims."),
