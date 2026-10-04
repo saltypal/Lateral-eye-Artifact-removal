@@ -7,10 +7,10 @@ import traceback
 import numpy as np
 import pandas as pd
 from .channel_regions import REGION_NAMES, region_ids, fuse_residuals
-from .dataset_io import klados_arrays, split_records, osf_trials
+from .dataset_io import klados_arrays, split_records, osf_trials, trial_condition, annotated_score_slice, reference_matrix
 from .evaluation import paired_metrics, modification_metrics, ocular_proxies
 from .provenance import save_json
-from .spatial_expert import ICAExpert, ridge_residual, asr_correction, fit_asr, armbr_correction
+from .spatial_expert import ICAExpert, ridge_residual, asr_correction, fit_asr, armbr_correction, session_spatial_calibration
 from .vmd_expert import ModeExpert
 from .research_plots import grid_figures, example_modes
 
@@ -100,6 +100,17 @@ def vmd_search(dirty, clean, eog, split, output):
     aggregate["convergence_guard_pass"] = aggregate.iteration_limit_fraction == 0
     aggregate.to_csv(output / "vmd_grid_summary.csv", index=False)
     grid_figures(output)
+    # Always show actual vectors for the historical reference configuration,
+    # including when its correction is rejected. A diagnostic is not a winner.
+    from .vmd_expert import decompose
+    raw = dirty[validation_records[0], channels[0], segment]
+    target = clean[validation_records[0], channels[0], segment]
+    vectors, residual, detail = decompose(raw, 5, 1000)
+    np.savez_compressed(output / "vmd_example.npz", raw=raw, target=target, modes=vectors, residual=residual)
+    save_json(output / "vmd_example_metadata.json", {"record": validation_records[0], "channel": channels[0],
+              "fs": 200, "K": 5, "alpha": 1000, "purpose": "historical-reference vector explanation; not selected winner",
+              "sample_interval": [CALIBRATION, CALIBRATION + WINDOW], **detail})
+    example_modes(raw, target, vectors, residual, detail["centers_hz"], output)
     feasible = aggregate[aggregate.preservation_guard_pass & aggregate.convergence_guard_pass & (aggregate.rmse_improvement_fraction > 0)]
     if feasible.empty:
         save_json(output / "classical_gate.json", {"vmd_feasible": False,
@@ -115,14 +126,6 @@ def vmd_search(dirty, clean, eog, split, output):
     expert = ModeExpert.fit(training, references, configuration["K"], configuration["alpha"])
     with (output / "vmd_expert.pkl").open("wb") as handle:
         pickle.dump(expert, handle)
-    from .vmd_expert import decompose
-    raw = dirty[validation_records[0], channels[0], segment]
-    target = clean[validation_records[0], channels[0], segment]
-    vectors, residual, detail = decompose(raw, configuration["K"], configuration["alpha"])
-    np.savez_compressed(output / "vmd_example.npz", raw=raw, target=target, modes=vectors, residual=residual)
-    save_json(output / "vmd_example_metadata.json", {"record": validation_records[0], "channel": channels[0],
-              "fs": 200, "sample_interval": [CALIBRATION, CALIBRATION + WINDOW], **detail})
-    example_modes(raw, target, vectors, residual, detail["centers_hz"], output)
     return expert, configuration
 
 
@@ -183,22 +186,35 @@ def spatial_search(dirty, clean, eog, split, output):
     return selected
 
 
-def frozen_methods(raw, references, names, expert, vmd_config, spatial_config):
+def frozen_methods(raw, references, names, expert, vmd_config, spatial_config, scoring_start=CALIBRATION, spatial_state=None):
     """Both hybrid residuals refer to the same raw signal; ICA is global."""
     start = time.perf_counter()
+    scoring = slice(scoring_start, scoring_start + WINDOW)
     yield "raw", raw, {"runtime_s": 0}
     artifact = np.zeros_like(raw)
     if expert is not None:
-        estimate, _ = expert.artifact(raw[:, CALIBRATION:CALIBRATION + WINDOW], strength=vmd_config["strength"])
-        artifact[:, CALIBRATION:CALIBRATION + WINDOW] = estimate
+        estimate, _ = expert.artifact(raw[:, scoring], strength=vmd_config["strength"])
+        artifact[:, scoring] = estimate
         yield "vmd_fcm", raw - artifact, {"runtime_s": time.perf_counter() - start}
     if "asr" in spatial_config:
         try:
-            yield "asr", asr_correction(raw, CALIBRATION, int(spatial_config["asr"])), {"eog_required": False}
+            if spatial_state is None:
+                corrected = asr_correction(raw, CALIBRATION, int(spatial_config["asr"]))
+            elif spatial_state["asr"] is None:
+                raise ValueError(spatial_state["errors"].get("asr", "No valid ASR calibration"))
+            else:
+                corrected = np.asarray(spatial_state["asr"].transform(raw))
+            yield "asr", corrected, {"eog_required": False}
         except Exception as error:
             yield "asr_unavailable", None, {"reason": repr(error)}
     try:
-        armbr, metadata = armbr_correction(raw, names, CALIBRATION)
+        if spatial_state is None:
+            armbr, metadata = armbr_correction(raw, names, CALIBRATION)
+        elif spatial_state["armbr_projection"] is None:
+            raise ValueError(spatial_state["errors"].get("armbr", "No valid ARMBR calibration"))
+        else:
+            armbr = (raw.T @ spatial_state["armbr_projection"]).T
+            metadata = spatial_state["armbr_metadata"]
         yield "armbr", armbr, metadata
         if expert is not None:
             yield "vmd_armbr_hybrid", fuse_residuals(raw, artifact, raw - armbr, names, 0.8, 0.2, 0.5), metadata
@@ -207,20 +223,32 @@ def frozen_methods(raw, references, names, expert, vmd_config, spatial_config):
     if references.shape[0] == 0:
         return
     penalty = float(spatial_config["ridge_eog"])
-    yield "ridge_eog", raw - ridge_residual(raw, references, CALIBRATION, penalty), {"eog_required": True}
+    if spatial_state is None:
+        ridge = ridge_residual(raw, references, CALIBRATION, penalty)
+    elif spatial_state["ridge"] is not None:
+        weights, reference_mean = spatial_state["ridge"]
+        ridge = weights @ (references - reference_mean)
+    else:
+        ridge = np.zeros_like(raw)
+    yield "ridge_eog", raw - ridge, {"eog_required": True}
     if "ica" in spatial_config:
         try:
             method, threshold = spatial_config["ica"].split(":")
-            ica = ICAExpert.fit(raw[:, :CALIBRATION], references[:, :CALIBRATION], method)
+            if spatial_state is None:
+                ica = ICAExpert.fit(raw[:, :CALIBRATION], references[:, :CALIBRATION], method)
+            elif spatial_state["ica"] is None:
+                raise ValueError(spatial_state["errors"].get("ica", "No valid ICA calibration"))
+            else:
+                ica = spatial_state["ica"]
             residual = ica.residual(raw, float(threshold))
             yield "ica", raw - residual, {"rank": ica.rank, "eog_required": True}
             if expert is None:
                 return
             # VMD is evaluated on an explicitly bounded segment; no trial join.
-            refined_segment = ica.residual(raw[:, CALIBRATION:CALIBRATION + WINDOW], float(threshold), True,
+            refined_segment = ica.residual(raw[:, scoring], float(threshold), True,
                                            vmd_config["K"], vmd_config["alpha"])
             refined = np.zeros_like(raw)
-            refined[:, CALIBRATION:CALIBRATION + WINDOW] = refined_segment
+            refined[:, scoring] = refined_segment
             yield "ica_source_vmd", raw - refined, {"rank": ica.rank, "eog_required": True}
             yield "shared_hybrid", fuse_residuals(raw, artifact, refined, names, 0.5, 0.5, 0.5), {}
             yield "regional_hybrid", fuse_residuals(raw, artifact, refined, names, 0.8, 0.2, 0.5), {
@@ -254,22 +282,29 @@ def benchmark(root: Path, output: Path, profile="kaggle_smoke"):
             rows.append({"dataset": "klados", "record": record, "method": method,
                          **paired_metrics(corrected[:, scoring], clean[record, :, scoring])})
         csv(rows, output / "benchmark_records.csv")
-    # Protocol Z: frozen Klados choices. Select first horizontal and blink trial
+    # Protocol Z: frozen Klados choices. Select one trial per declared condition
     # from at most two sessions for explicit smoke coverage; no OSF tuning.
     sessions = sorted((root / "Dataset1_OSF").rglob("*_prep.set"))[:2]
-    osf_rows = []
+    osf_rows, calibration_rows = [], []
     for path in sessions:
         seen = set()
-        for trial in osf_trials(path):
+        trials = list(osf_trials(path))
+        calibration = trials[:5]
+        state = session_spatial_calibration(calibration, spatial)
+        calibration_rows.append({"session": path.stem, "unscored_trial_ids": state["trial_ids"],
+                                 "errors": state["errors"], "reference_names": reference_matrix(calibration[0])[1],
+                                 "strategy": "independent trials; no temporal operations across joins"})
+        for trial in trials[5:]:
             labels = trial["labels"]
-            if labels is None or trial["eeg"].shape[-1] < CALIBRATION + WINDOW:
+            if labels is None or trial["eeg"].shape[-1] < WINDOW:
                 continue
-            present = "horizontal" if np.isin(labels, [1, 2]).any() else "blink" if (labels == 5).any() else None
-            if present is None or present in seen:
+            present = trial_condition(trial)
+            scoring = annotated_score_slice(trial, calibration=0)
+            if present is None or present in seen or scoring is None:
                 continue
             seen.add(present)
-            refs = np.stack(list(trial["eog"].values())) if trial["eog"] else np.empty((0, trial["eeg"].shape[-1]))
-            for method, corrected, metadata in frozen_methods(trial["eeg"], refs, trial["names"], expert, config, spatial):
+            refs, _ = reference_matrix(trial)
+            for method, corrected, metadata in frozen_methods(trial["eeg"], refs, trial["names"], expert, config, spatial, scoring.start, state):
                 if corrected is None:
                     exclusions.append({"session": path.stem, "trial": trial["trial"], "method": method, **metadata})
                     continue
@@ -284,11 +319,13 @@ def benchmark(root: Path, output: Path, profile="kaggle_smoke"):
                     osf_rows.append({"study": trial["study"], "participant": trial["participant"],
                                      "session": trial["session"], "trial": trial["trial"], "coverage_type": present,
                                      "method": method, "region": region_name, "channels": int(members.sum()),
+                                     "scoring_start": scoring.start, "scoring_stop": scoring.stop,
                                      **ocular_proxies(raw, cleaned, eog, labels[scoring])})
             csv(osf_rows, output / "osf_region_proxies.csv")
-            if len(seen) == 2:
+            if len(seen) == 4:
                 break
     save_json(output / "benchmark_exclusions.json", exclusions)
+    save_json(output / "osf_calibration.json", calibration_rows)
     pd.DataFrame(rows).groupby("method").mean(numeric_only=True).to_csv(output / "benchmark_summary.csv")
     save_json(output / "classical_gate.json", {"vmd_feasible": outcome is not None, "profile": profile,
               "paired_only_training_allowed": True,

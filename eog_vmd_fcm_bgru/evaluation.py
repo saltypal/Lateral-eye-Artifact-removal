@@ -63,6 +63,8 @@ def modification_metrics(estimate, raw):
 
 def ocular_proxies(raw, cleaned, eog, labels):
     result = modification_metrics(cleaned, raw)
+    result["energy_retained_ratio"] = relative_norm(cleaned, raw) ** 2
+    result["raw_preservation_correlation"] = float(np.nanmean([correlation(a, b) for a, b in zip(raw, cleaned)]))
     for name, reference in eog.items():
         before = np.asarray([abs(correlation(channel, reference)) for channel in raw])
         after = np.asarray([abs(correlation(channel, reference)) for channel in cleaned])
@@ -74,4 +76,15 @@ def ocular_proxies(raw, cleaned, eog, labels):
         result[f"{name}_samples"] = int(selected.sum())
         result[f"{name}_rms_ratio"] = relative_norm(cleaned[:, selected], raw[:, selected]) if selected.any() else float("nan")
         result[f"{name}_relative_change"] = relative_norm(cleaned[:, selected] - raw[:, selected], raw[:, selected]) if selected.any() else float("nan")
+    # Spectral stability needs contiguous rest intervals; concatenating gaps
+    # would create artificial edges and invalidate a frequency comparison.
+    rest = labels == 6 if labels is not None else np.zeros(raw.shape[-1], dtype=bool)
+    changes = np.diff(np.pad(rest.astype(int), (1, 1)))
+    blocks = [(begin, end) for begin, end in zip(np.flatnonzero(changes == 1), np.flatnonzero(changes == -1))
+              if end - begin >= PSD_CONTRACT["nperseg"]]
+    result["rest_spectral_contiguous_samples"] = sum(end - begin for begin, end in blocks)
+    rest_measurements = [(end - begin, paired_metrics(cleaned[:, begin:end], raw[:, begin:end])) for begin, end in blocks]
+    for name in ["spectral_rrmse", "alpha_error_db", "beta_error_db", "covariance_error"]:
+        valid = [(weight, scores[name]) for weight, scores in rest_measurements if np.isfinite(scores[name])]
+        result["rest_raw_" + name] = float(np.average([score for _, score in valid], weights=[weight for weight, _ in valid])) if valid else float("nan")
     return result

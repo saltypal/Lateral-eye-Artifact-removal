@@ -54,6 +54,41 @@ def osf_trials(path):
             positions = np.minimum((np.arange(eeg.shape[-1]) * item["fs"] / 200).astype(int), item["sample_labels"].shape[-1] - 1)
             labels = item["sample_labels"][trial, positions]
         yield {"eeg": eeg, "eog": eog, "labels": labels, "trial": trial,
+               "trial_label": item["trial_labels"][trial] if item["trial_labels"] is not None else None,
                "names": [name for name, keep in zip([item["names"][i] for i in item["eeg_indices"]], valid) if keep],
                "study": item["study"], "participant": item["participant"], "session": path.stem,
                "native_fs": item["fs"], "reference": item["reference"]}
+
+
+def trial_condition(trial):
+    """Use the declared trial condition, without inventing sample events."""
+    conditions = {1: "rest", 2: "horizontal", 3: "vertical", 4: "blink"}
+    return conditions.get(trial.get("trial_label"))
+
+
+def reference_matrix(trial):
+    """Prefer verified bipolar HEOG/VEOG; retain other eye signals as sidecars."""
+    selected = [(name, value) for name, value in trial["eog"].items() if name.upper() in {"HEOG", "VEOG"}]
+    names = [name for name, _ in selected]
+    if not selected:
+        return np.empty((0, trial["eeg"].shape[-1]), dtype=np.float32), names
+    return np.stack([value for _, value in selected]), names
+
+
+def annotated_score_slice(trial, calibration=2000, window=1024):
+    """A common smoke interval containing genuine post-calibration annotations.
+
+    Labels define evaluation coverage only. They never enter correction, model
+    selection or thresholds. Full-session evaluation is a separate protocol.
+    """
+    codes = {"rest": [6], "horizontal": [1, 2], "vertical": [3, 4], "blink": [5]}
+    condition = trial_condition(trial)
+    labels = trial["labels"]
+    samples = trial["eeg"].shape[-1]
+    if condition not in codes or labels is None or samples < calibration + window:
+        return None
+    events = np.flatnonzero(np.isin(labels[calibration:], codes[condition])) + calibration
+    if len(events) == 0:
+        return None
+    start = min(max(calibration, int(events[0]) - window // 4), samples - window)
+    return slice(start, start + window)

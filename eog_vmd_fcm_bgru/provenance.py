@@ -110,7 +110,8 @@ def read_osf(path: Path) -> dict:
     eog_aliases = {"EOG", "HEOG", "VEOG", "EOGH", "EOGV", "LEOG", "REOG", "UEOG", "DEOG",
                    "EOG1", "EOG2", "EOG3", "EOG4", "HEOG1", "HEOG2", "VEOG1", "VEOG2"}
     eog_indices = [i for i, name in enumerate(normalized)
-                   if name in eog_aliases or str(locations[i].get("type", "")).upper() == "EOG"]
+                   if name in eog_aliases or name.startswith(("EOG", "HEOG", "VEOG", "EYE"))
+                   or str(locations[i].get("type", "")).upper() == "EOG"]
     excluded = set(annotations.values()) | set(eog_indices)
     eeg_indices = [i for i, item in enumerate(locations) if i not in excluded
                    and str(item.get("type", "EEG")).upper() in ("", "EEG")]

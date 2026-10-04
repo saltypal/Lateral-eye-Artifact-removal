@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 import torch
 from torch.utils.data import DataLoader, TensorDataset
-from .dataset_io import klados_arrays, osf_trials
+from .dataset_io import klados_arrays, osf_trials, trial_condition, annotated_score_slice
 from .channel_regions import REGION_NAMES, region_ids
 from .evaluation import paired_metrics, modification_metrics, ocular_proxies
 from .experiment import CALIBRATION, WINDOW
@@ -163,15 +163,15 @@ def evaluate_osf_student(network, root, output, device):
     rows = []
     for path in sorted((root / "Dataset1_OSF").rglob("*_prep.set"))[:2]:
         seen = set()
-        for trial in osf_trials(path):
+        for trial in list(osf_trials(path))[5:]:
             labels = trial["labels"]
-            if labels is None or trial["eeg"].shape[-1] < CALIBRATION + WINDOW:
+            if labels is None or trial["eeg"].shape[-1] < WINDOW:
                 continue
-            kind = "horizontal" if np.isin(labels, [1, 2]).any() else "blink" if (labels == 5).any() else None
-            if kind is None or kind in seen:
+            kind = trial_condition(trial)
+            segment = annotated_score_slice(trial, calibration=0)
+            if kind is None or kind in seen or segment is None:
                 continue
             seen.add(kind)
-            segment = slice(CALIBRATION, CALIBRATION + WINDOW)
             raw = trial["eeg"][:, segment]
             values = torch.from_numpy(raw[None].copy()).to(device)
             mask = torch.ones(values.shape[:2], device=device)
@@ -187,9 +187,10 @@ def evaluate_osf_student(network, root, output, device):
                         rows.append({"study": trial["study"], "participant": trial["participant"],
                                      "session": trial["session"], "trial": trial["trial"], "coverage_type": kind,
                                      "variant": variant, "region": name, "channels": int(keep.sum()),
+                                     "scoring_start": segment.start, "scoring_stop": segment.stop,
                                      **ocular_proxies(raw[keep], predicted[keep], eog, labels[segment])})
             pd.DataFrame(rows).to_csv(output / "student_osf_proxies.csv", index=False)
-            if len(seen) == 2:
+            if len(seen) == 4:
                 break
 
 
