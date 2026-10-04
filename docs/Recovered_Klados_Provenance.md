@@ -13,3 +13,9 @@ The [original article](https://doi.org/10.1016/j.dib.2016.06.032), read through 
 The article describes 27 people and 54 recordings. It does not identify which `simN` belongs to which person. Neither consecutive pairs nor pairs separated by 27 are automatically valid participant groups. Subject-independent Klados claims therefore remain blocked. Named OSF EEG electrodes and globally unique participant identifiers support the regional and participant-isolated OSF analyses.
 
 The amplitude scale between source and NPY is verified as unchanged. The physical unit is still unspecified in the recovered files/article. The current experiment deliberately applies its declared filter to input and paired target; the source was already filtered, so this is a second filtering pass and should be disclosed in matched comparisons. It cannot recreate frequencies removed by the original acquisition preprocessing.
+
+## Contamination coefficients do not recover subjects
+
+The Kaggle coefficient audit, Git `5d918edb887b0965eb9dc0519af0ce5d43353b33`, passed 22 tests in 7.00 seconds. It fitted the documented two-reference linear contamination formula against each complete publisher dirty-minus-clean matrix. All 54 recordings passed the rank-two/relative-residual guard. Complete-link sensitivity analysis at relative coefficient tolerance 1e-7 grouped all 54 into one common group, rather than 27 stable pairs. Therefore these coefficients cannot supply participant labels or a meaningful subject grouping for this download.
+
+The paper describes subject-specific coefficient estimation; the downloaded arrays do not expose that variation in this audit. This discrepancy must be recorded, not resolved by inventing a pairing. Saved coefficient fits and sensitivity tables allow independent review. The already evaluated engineering split is unchanged.

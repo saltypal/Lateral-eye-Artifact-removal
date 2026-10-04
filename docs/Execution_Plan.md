@@ -24,7 +24,8 @@ Run these in the isolated repository:
 ```powershell
 python tools/kaggle_campaign.py auth-check
 python tools/kaggle_campaign.py prepare --source "D:\Bunker\BrainComputerInterface\Lateral Eye Dataset\complete_dataset"
-python tools/kaggle_campaign.py upload
+python tools/kaggle_campaign.py package-opaque
+python tools/kaggle_campaign.py upload-opaque
 python tools/kaggle_campaign.py dataset-status
 python tools/kaggle_campaign.py submit --phase audit --sha EXACT_40_CHARACTER_COMMIT
 python tools/kaggle_campaign.py status --phase audit
@@ -32,6 +33,8 @@ python tools/kaggle_campaign.py retrieve --phase audit
 ```
 
 The controller isolates CLI configuration so an obsolete legacy key cannot shadow OAuth. It never prints credentials. The dataset is private, contains all constituent files, and uses `other` license metadata because constituent upstream terms apply. It does not assert one public redistribution license for the entire bundle.
+
+The commands above describe preparation of a new dataset version. Version 3 is already complete: use `inventory-check` and attach it rather than uploading it again. Source-only/report phases attach the required saved kernel outputs without unpacking the 3 GB original bundle. The OAuth controller refreshes expiring credentials through the official SDK.
 
 The notebook starts from a new temporary exact-commit clone, records environment and package versions, and rejects non-Kaggle experiments by default. For an explicitly authorized portable Local/Colab run set `EOG_ALLOW_NON_KAGGLE=1`, `EOG_DATA_ROOT`, `EOG_SOURCE_MANIFEST`, and a persistent `EOG_PERSISTENT_RESULTS`. CUDA is detected; multiple GPUs are recorded but not automatically used; unsupported TPU falls back explicitly to CPU rather than pretending CUDA code works on XLA.
 

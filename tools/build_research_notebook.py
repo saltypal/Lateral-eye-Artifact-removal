@@ -54,13 +54,17 @@ OUT.mkdir(parents=True, exist_ok=True)
             if test.returncode:
                 raise RuntimeError("Kaggle numeric contract tests failed")
         ''')]
-    if phase == "klados-group-audit":
-        notebook.cells += [md("## 3. Audit publisher contamination-coefficient grouping\nOriginal MATLAB sources are hash checked. This diagnostic does not invent participant identities or change an already evaluated split."),
+    if phase in {"klados-group-audit", "vmd-engine"}:
+        description = ("Audit publisher contamination-coefficient grouping. Do not invent subject identities."
+                       if phase == "klados-group-audit" else
+                       "Verify VMD engine parity on training-only publisher inputs and measure fresh-process resources.")
+        notebook.cells += [md("## 3. " + description + "\nOriginal MATLAB source hashes are verified. No held-out clean signal selects a parameter."),
             code('''
-                subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.runner", "--phase", "klados-group-audit",
+                subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.runner", "--phase", PHASE,
                     "--data-root", "/kaggle/input", "--manifest", "/kaggle/input", "--output", str(OUT)],
                     cwd=CHECKOUT, env=PROCESS_ENV)
-                print((OUT / "klados_coefficient_group_summary.json").read_text())
+                summary_name = "klados_coefficient_group_summary.json" if PHASE == "klados-group-audit" else "vmd_engine_gate.json"
+                print((OUT / summary_name).read_text())
             ''')]
     elif phase == "report":
         notebook.cells += [

@@ -16,6 +16,22 @@ from eog_vmd_fcm_bgru.bundle_io import merge_supplement, digest_file
 torch.set_num_threads(2)
 
 
+@pytest.mark.parametrize("length,modes,alpha", [(128, 3, 250), (129, 5, 1000), (257, 8, 2000)])
+def test_rolling_vmd_matches_independent_reference_and_retains_residual(length, modes, alpha):
+    from eog_vmd_fcm_bgru.vmd_rolling import rolling_decompose
+    time = np.arange(length) / 200
+    values = np.sin(2 * np.pi * 3 * time) + 0.3 * np.sin(2 * np.pi * 19 * time)
+    expected, _, reference = decompose(values, modes, alpha, relative_tolerance=True, tolerance=1e-6)
+    actual, residual, measured = rolling_decompose(values, modes, alpha)
+    np.testing.assert_allclose(actual, expected, atol=2e-6, rtol=1e-5)
+    np.testing.assert_allclose(measured["centers_hz"], reference["centers_hz"], atol=1e-5)
+    assert measured["iterations"] == reference["iterations"]
+    np.testing.assert_allclose(actual.sum(axis=0) + residual, values, atol=1e-6)
+    scaled, _, scaled_detail = rolling_decompose(values * 1e-6, modes, alpha)
+    np.testing.assert_allclose(scaled / 1e-6, actual, atol=2e-6, rtol=1e-5)
+    assert scaled_detail["iterations"] == measured["iterations"]
+
+
 def test_publisher_crop_matching_preserves_explicit_provenance():
     from eog_vmd_fcm_bgru.klados_source_check import exact_prefix_matches
     original = np.arange(21, dtype=np.float32).reshape(3, 7)

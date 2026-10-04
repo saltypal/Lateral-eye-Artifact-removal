@@ -48,6 +48,14 @@ The center-frequency figure displays each K=3..10 for each of the five alphas. T
 
 Source evidence is saved in `vmd_grid_summary.csv`, `vmd_centers.json`, `vmd_example.npz`, `vmd_example_metadata.json` and matching PNG/SVG figures, under the retrieved benchmark run directory. The second benchmark preserves this grid and broadens conservative ICA strength after the original full-subtraction choices failed development preservation.
 
+### Input units and a stricter validation check
+
+The original vmdpy stopping threshold is absolute in spectral-update amplitude. On the tested training channel, multiplying amplitudes by 1e-6 made its tolerance 1e-7 stop after one iteration and return zero modes. Multiplication by 1e6 required many more iterations. This is a numerical unit dependency, not physiology. Our explicit RMS-normalized variant divides each padded input by its RMS before VMD and restores amplitudes afterward. On that diagnostic, both unit changes then retained essentially the same vectors, centers and iteration counts.
+
+The six normalized/absolute stopping settings at K=5/alpha=2000, four strengths and all eight validation records/two channels failed the joint 1% mean-clean, 0.5 dB alpha/beta and zero-iteration-limit guard. The earlier two-record selection was therefore not a final safe optimum. A separate normalized 40-setting K/alpha grid investigates this failure; it does not alter already frozen checkpoints. No claim that five modes is globally best follows from the preliminary subset.
+
+The next computational gate compares a two-iterate, positive-spectrum VMD implementation with pinned vmdpy on odd/even numerical fixtures and actual training channels. It preserves the reference's returned-iterate convention and retains the residual. Lower storage cost alone is not denoising-quality evidence. A directly mode-conditioned neural candidate is a separate hypothesis; the current 20,892-parameter student receives raw EEG at inference, with only optional safe teacher supervision.
+
 ## Hybrid and region handling
 
 The VMD temporal expert and full-montage ICA source expert both estimate artifacts relative to the same input. Candidate ICA sources can receive VMD refinement, which preserves portions of a mixed component instead of rejecting it wholesale. Fixed regional fusion subtracts a convex mixture of the two estimates; a learned router is a separate ablation. Verified frontal electrodes get a stronger VMD prior, verified posterior electrodes get a more conservative spatial prior, and central/unknown channels use a shared rule. Neither branch is assumed to be anatomically optimal. Posterior pass-through is not unconditional because posterior EEG can also contain ocular contamination.
