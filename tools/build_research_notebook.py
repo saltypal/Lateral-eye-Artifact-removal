@@ -109,6 +109,10 @@ def build(path: Path, phase="audit", sha="") -> None:
             for filename in ("benchmark_summary.csv", "student_metrics.csv"):
                 if (OUT / filename).exists():
                     display(pd.read_csv(OUT / filename).round(4))
+            from IPython.display import Image
+            for name in ("vmd_center_frequency_sweep", "vmd_preservation_tradeoff", "vmd_mode_vectors"):
+                if (OUT / (name + ".png")).exists():
+                    display(Image(filename=str(OUT / (name + ".png"))))
             print("Saved", len(list(OUT.rglob("*"))), "artifacts in", OUT)
         ''')]
     contract_cell = code('''

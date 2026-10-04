@@ -87,3 +87,20 @@ def asr_correction(eeg, calibration_samples, cutoff=20):
     if corrected.shape != eeg.shape or not np.isfinite(corrected).all():
         raise ValueError("ASR shape/finite contract failed")
     return corrected
+
+
+def armbr_correction(eeg, names, calibration_samples):
+    """Author ARMBR blink baseline, requiring verified frontopolar names."""
+    blink_channels = [index for index, name in enumerate(names) if name.strip().upper() in {"FP1", "FP2", "FPZ"}]
+    if not blink_channels:
+        raise ValueError("ARMBR unavailable: verified frontopolar channel names required")
+    from ARMBR import run_armbr
+    _, threshold, mask, _, _, projection = run_armbr(eeg[:, :calibration_samples].T, blink_channels, [], 200, -1)
+    projection = np.asarray(projection)
+    if projection.shape != (len(eeg), len(eeg)) or not np.isfinite(projection).all() or not np.any(mask):
+        raise ValueError("ARMBR unavailable: calibration found no valid blink projection")
+    corrected = (eeg.T @ projection).T
+    if corrected.shape != eeg.shape or not np.isfinite(corrected).all():
+        raise ValueError("ARMBR finite/shape contract failed")
+    return corrected, {"author_auto_threshold": float(threshold), "calibration_blink_samples": int(np.sum(mask)),
+                       "scope": "blink-specific comparator; horizontal-eye efficacy not assumed"}

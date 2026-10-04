@@ -7,7 +7,7 @@ from eog_vmd_fcm_bgru.channel_regions import region_ids, fuse_residuals
 from eog_vmd_fcm_bgru.vmd_expert import decompose
 from eog_vmd_fcm_bgru.student import SharedChannelStudent
 from eog_vmd_fcm_bgru.provenance import read_osf
-from eog_vmd_fcm_bgru.spatial_expert import ICAExpert
+from eog_vmd_fcm_bgru.spatial_expert import ICAExpert, armbr_correction
 
 torch.set_num_threads(2)
 
@@ -94,3 +94,8 @@ def test_short_or_rank_deficient_ica_calibration_is_rejected():
         ICAExpert.fit(np.ones((3, 1000)), np.ones((2, 1000)))
     with pytest.raises(ValueError, match="deficient rank"):
         ICAExpert.fit(np.ones((3, 2000)), np.ones((2, 2000)))
+
+
+def test_armbr_does_not_guess_frontal_channel_order():
+    with pytest.raises(ValueError, match="verified frontopolar"):
+        armbr_correction(np.ones((19, 2000)), ["unknown"] * 19, 2000)

@@ -10,7 +10,7 @@ from .channel_regions import REGION_NAMES, region_ids, fuse_residuals
 from .dataset_io import klados_arrays, split_records, osf_trials
 from .evaluation import paired_metrics, modification_metrics, ocular_proxies
 from .provenance import save_json
-from .spatial_expert import ICAExpert, ridge_residual, asr_correction, fit_asr
+from .spatial_expert import ICAExpert, ridge_residual, asr_correction, fit_asr, armbr_correction
 from .vmd_expert import ModeExpert
 from .research_plots import grid_figures, example_modes
 
@@ -78,6 +78,10 @@ def vmd_search(dirty, clean, eog, split, output):
                                  "clean_relative_change": change["relative_change"],
                                  "clean_alpha_error_db": preservation["alpha_error_db"],
                                  "clean_beta_error_db": preservation["beta_error_db"],
+                                 "iteration_limit_fraction": float(np.mean([d["hit_iteration_limit"] for d in diagnostics])),
+                                 "minimum_center_spacing_hz": float(np.mean([d["nearest_center_hz"] for d in diagnostics])),
+                                 "mean_adjacent_psd_overlap": float(np.mean([np.mean(d["adjacent_psd_overlap"]) for d in diagnostics])),
+                                 "mean_decomposition_residual_ratio": float(np.mean([d["residual_ratio"] for d in diagnostics])),
                                  "runtime_s": time.perf_counter() - started})
         except Exception as error:
             failures.append({"K": modes, "alpha": alpha, "error": repr(error),
@@ -93,9 +97,10 @@ def vmd_search(dirty, clean, eog, split, output):
     aggregate["preservation_guard_pass"] = ((aggregate.clean_relative_change <= 0.20)
                                             & (aggregate.clean_alpha_error_db <= 1.0)
                                             & (aggregate.clean_beta_error_db <= 1.0))
+    aggregate["convergence_guard_pass"] = aggregate.iteration_limit_fraction == 0
     aggregate.to_csv(output / "vmd_grid_summary.csv", index=False)
     grid_figures(output)
-    feasible = aggregate[aggregate.preservation_guard_pass & (aggregate.rmse_improvement_fraction > 0)]
+    feasible = aggregate[aggregate.preservation_guard_pass & aggregate.convergence_guard_pass & (aggregate.rmse_improvement_fraction > 0)]
     if feasible.empty:
         save_json(output / "classical_gate.json", {"vmd_feasible": False,
                   "reason": "No development candidate improved RMSE within clean-preservation guardrails",
@@ -186,15 +191,21 @@ def frozen_methods(raw, references, names, expert, vmd_config, spatial_config):
     artifact = np.zeros_like(raw)
     artifact[:, CALIBRATION:CALIBRATION + WINDOW] = estimate
     yield "vmd_fcm", raw - artifact, {"runtime_s": time.perf_counter() - start}
-    if references.shape[0] == 0:
-        return
-    penalty = float(spatial_config["ridge_eog"])
-    yield "ridge_eog", raw - ridge_residual(raw, references, CALIBRATION, penalty), {"eog_required": True}
     if "asr" in spatial_config:
         try:
             yield "asr", asr_correction(raw, CALIBRATION, int(spatial_config["asr"])), {"eog_required": False}
         except Exception as error:
             yield "asr_unavailable", None, {"reason": repr(error)}
+    try:
+        armbr, metadata = armbr_correction(raw, names, CALIBRATION)
+        yield "armbr", armbr, metadata
+        yield "vmd_armbr_hybrid", fuse_residuals(raw, artifact, raw - armbr, names, 0.8, 0.2, 0.5), metadata
+    except Exception as error:
+        yield "armbr_unavailable", None, {"reason": repr(error)}
+    if references.shape[0] == 0:
+        return
+    penalty = float(spatial_config["ridge_eog"])
+    yield "ridge_eog", raw - ridge_residual(raw, references, CALIBRATION, penalty), {"eog_required": True}
     if "ica" in spatial_config:
         try:
             method, threshold = spatial_config["ica"].split(":")

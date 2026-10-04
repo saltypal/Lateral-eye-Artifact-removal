@@ -39,6 +39,11 @@ def decompose(values, modes=5, alpha=1000, fs=200):
                    "residual_ratio": float(np.linalg.norm(residual) / max(np.linalg.norm(values), np.finfo(float).tiny)),
                    "runtime_s": elapsed,
                    "vmdpy_iterative_array_lower_bound_bytes": int(500 * (2 * padded.size) * (modes + 1) * 16)}
+    import platform
+    diagnostics["measured_process_high_water_rss_kib_linux"] = None
+    if platform.system() == "Linux":
+        import resource
+        diagnostics["measured_process_high_water_rss_kib_linux"] = int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
     return vectors.astype(np.float32), residual.astype(np.float32), diagnostics
 
 
