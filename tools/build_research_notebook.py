@@ -1,133 +1,123 @@
-"""Build the portable notebook from modular source; no experiments run locally."""
+"""Portable Git-backed notebook; numerical work uses a fresh isolated interpreter."""
 from pathlib import Path
 import textwrap
 import nbformat
 
 
-def build(path: Path, phase="audit", sha="") -> None:
+def build(path: Path, phase="audit", sha=""):
     notebook = nbformat.v4.new_notebook()
     md = nbformat.v4.new_markdown_cell
-    code = lambda source: nbformat.v4.new_code_cell(textwrap.dedent(source).strip())
-    notebook.cells = [md("# Region-aware blink and lateral-eye artifact removal\n\nThis notebook orchestrates reusable Git modules. Audit precedes classical benchmarking, which precedes neural training. No superiority result is assumed. Outputs persist when the completed Kaggle kernel version is saved; retrieve them before resetting the runtime."),
-        md("## 1. Clean reset and exact source sync\nA fresh temporary checkout prevents stale code. Local/Colab/Kaggle paths and accelerators are detected; local execution requires an explicit opt-in because this campaign runs experiments on Kaggle."),
-        code(f'''
-            import os, sys, tempfile, subprocess, pathlib, json, platform, zipfile
-            from pathlib import Path
-            IN_KAGGLE = Path("/kaggle/input").exists()
-            IN_COLAB = "google.colab" in sys.modules or "COLAB_RELEASE_TAG" in os.environ
-            ENVIRONMENT = "kaggle" if IN_KAGGLE else "colab" if IN_COLAB else "local"
-            if not IN_KAGGLE and os.environ.get("EOG_ALLOW_NON_KAGGLE") != "1":
-                raise RuntimeError("Kaggle-only campaign. Portable non-Kaggle execution needs explicit EOG_ALLOW_NON_KAGGLE=1.")
-            PHASE = {phase!r}
-            COMMIT = {sha!r} or os.environ.get("EOG_COMMIT", "research/region-aware-eog-kaggle")
-            REPOSITORY_URL = "https://github.com/saltypal/Lateral-eye-Artifact-removal.git"
-            # A new clone replaces transient project state without deleting user files.
-            CHECKOUT = Path(tempfile.mkdtemp(prefix="eog-source-")) / "repository"
-            subprocess.check_call(["git", "clone", "--quiet", REPOSITORY_URL, str(CHECKOUT)])
-            subprocess.check_call(["git", "-C", str(CHECKOUT), "checkout", "--quiet", COMMIT])
-            GIT_SHA = subprocess.check_output(["git", "-C", str(CHECKOUT), "rev-parse", "HEAD"], text=True).strip()
-            subprocess.check_call([sys.executable, "-m", "pip", "install", "--quiet", "-r", str(CHECKOUT / "requirements-research.txt")])
-            sys.path.insert(0, str(CHECKOUT))
-            for module in list(sys.modules):
-                if module == "eog_vmd_fcm_bgru" or module.startswith("eog_vmd_fcm_bgru."):
-                    del sys.modules[module]
-            import torch
-            DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
-            TPU_AVAILABLE = os.environ.get("TPU_NAME") is not None or os.environ.get("COLAB_TPU_ADDR") is not None
-            print(dict(environment=ENVIRONMENT, sha=GIT_SHA, device=DEVICE, gpu_count=torch.cuda.device_count(), tpu_available=TPU_AVAILABLE))
-            if TPU_AVAILABLE and not torch.cuda.is_available():
-                print("TPU detected. PyTorch-XLA backend not validated; CPU path is explicit.")
-            ROOT_WORK = Path("/kaggle/working") if IN_KAGGLE else Path(os.environ.get("EOG_PERSISTENT_RESULTS", "./eog-results")).resolve()
-            RUN_ID = PHASE + "-" + GIT_SHA[:12]
-            OUT = ROOT_WORK / "results" / RUN_ID
-            OUT.mkdir(parents=True, exist_ok=True)
-        '''),
-        md("## 2. Attach and verify all source data\nThe private upload includes the complete tree. ZIP members are checked before extraction. Every source file is verified against its local SHA256; derivatives do not count as independent recordings."),
+    def code(source):
+        return nbformat.v4.new_code_cell(textwrap.dedent(source).strip())
+    settings = f"PHASE = {phase!r}\nCOMMIT = {sha!r} or os.environ.get('EOG_COMMIT', 'research/region-aware-eog-kaggle')\n"
+    setup = '''
+import os, sys, tempfile, subprocess, json, hashlib, zipfile
+from pathlib import Path
+''' + settings + '''
+IN_KAGGLE = Path("/kaggle/input").exists()
+IN_COLAB = "google.colab" in sys.modules or "COLAB_RELEASE_TAG" in os.environ
+ENVIRONMENT = "kaggle" if IN_KAGGLE else "colab" if IN_COLAB else "local"
+if not IN_KAGGLE and os.environ.get("EOG_ALLOW_NON_KAGGLE") != "1":
+    raise RuntimeError("Kaggle-only campaign; portable execution needs explicit EOG_ALLOW_NON_KAGGLE=1")
+TEMP_ROOT = Path(tempfile.mkdtemp(prefix="eog-run-"))
+CHECKOUT = TEMP_ROOT / "repository"
+subprocess.check_call(["git", "clone", "--quiet", "https://github.com/saltypal/Lateral-eye-Artifact-removal.git", str(CHECKOUT)])
+subprocess.check_call(["git", "-C", str(CHECKOUT), "checkout", "--quiet", COMMIT])
+GIT_SHA = subprocess.check_output(["git", "-C", str(CHECKOUT), "rev-parse", "HEAD"], text=True).strip()
+ENV_ROOT = TEMP_ROOT / "environment"
+subprocess.check_call([sys.executable, "-m", "venv", "--system-site-packages", str(ENV_ROOT)])
+ENV_PY = ENV_ROOT / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+subprocess.check_call([str(ENV_PY), "-m", "pip", "install", "--quiet", "-r", str(CHECKOUT / "requirements-research.txt")])
+PROCESS_ENV = os.environ.copy()
+PROCESS_ENV["PYTHONPATH"] = str(CHECKOUT)
+PROCESS_ENV["PYTHONUNBUFFERED"] = "1"
+hardware = subprocess.check_output([str(ENV_PY), "-c", "import torch,json; print(json.dumps(dict(device='cuda:0' if torch.cuda.is_available() else 'cpu',gpu_count=torch.cuda.device_count())))"], text=True, env=PROCESS_ENV)
+print("Environment", ENVIRONMENT, "Commit", GIT_SHA, "Hardware", hardware.strip())
+if os.environ.get("TPU_NAME") or os.environ.get("COLAB_TPU_ADDR"):
+    print("TPU detected. PyTorch-XLA is unvalidated; explicit CPU path applies without CUDA.")
+ROOT_WORK = Path("/kaggle/working") if IN_KAGGLE else Path(os.environ.get("EOG_PERSISTENT_RESULTS", "./eog-results")).resolve()
+OUT = ROOT_WORK / "results" / (PHASE + "-" + GIT_SHA[:12])
+OUT.mkdir(parents=True, exist_ok=True)
+'''
+    notebook.cells = [
+        md("# Region-aware blink and lateral-eye artifact removal\n\nAudit, VMD/ICA/ASR/ARMBR development search, regional comparison, and one EEG-only student. The feasibility profile does not establish complete removal or final superiority. Source modules and exact commits are the authority."),
+        md("## 1. Clean source reset and isolated runtime\nA fresh Git checkout and Python environment prevent stale code and already-loaded NumPy binary conflicts. Runtime Torch/accelerators remain available through system packages; pinned analysis dependencies install into the isolated environment."),
+        code(setup),
+        md("## 2. Numeric contract tests in a fresh interpreter\nSynthetic fixtures test alignment, masking/permutation, checkpoint reload and annotation handling. They are not cleaning-quality evidence."),
         code('''
-            if IN_KAGGLE:
-                manifests = list(Path("/kaggle/input").rglob("source_manifest.json"))
-                if len(manifests) != 1:
-                    raise RuntimeError("Attach exactly one complete dataset with source_manifest.json")
-                MANIFEST = manifests[0]
-                attached = MANIFEST.parent
-                archives = list(attached.glob("*.zip")) + list(attached.glob("*.eogbundle"))
-                if archives:
-                    from eog_vmd_fcm_bgru.provenance import sha256_file
-                    container = json.loads(MANIFEST.read_text()).get("archive")
-                    if container:
-                        expected_archive = attached / container["name"]
-                        if expected_archive.stat().st_size != container["bytes"] or sha256_file(expected_archive) != container["sha256"]:
-                            raise RuntimeError("Outer research archive failed SHA256 verification")
-                    DATA_ROOT = Path(tempfile.mkdtemp(prefix="eog-data-"))
-                    for archive_path in archives:
-                        with zipfile.ZipFile(archive_path) as archive:
-                            for member in archive.infolist():
-                                target = (DATA_ROOT / member.filename).resolve()
-                                if not target.is_relative_to(DATA_ROOT.resolve()):
-                                    raise ValueError("Unsafe ZIP path")
-                            archive.extractall(DATA_ROOT)
-                    candidates = list(DATA_ROOT.rglob("klados_contaminated_eeg.npy"))
-                    if len(candidates) != 1:
-                        raise RuntimeError("Ambiguous Klados dataset")
-                    DATA_ROOT = candidates[0].parent.parent
-                else:
+            test = subprocess.run([str(ENV_PY), "-m", "pytest", str(CHECKOUT / "tests"), "-q"], cwd=CHECKOUT,
+                                  env=PROCESS_ENV, capture_output=True, text=True)
+            (OUT / "contract_tests.txt").write_text(test.stdout + test.stderr)
+            print(test.stdout)
+            print(test.stderr)
+            if test.returncode:
+                raise RuntimeError("Kaggle numeric contract tests failed")
+        ''')]
+    if phase != "contracts":
+        notebook.cells += [
+            md("## 3. Verify and unpack the complete private input\nThe opaque ZIP preserves original nested archives and hidden metadata. Container and individual-file SHA256 checks prevent silently omitted source data."),
+            code('''
+                if IN_KAGGLE:
+                    manifests = list(Path("/kaggle/input").rglob("source_manifest.json"))
+                    if len(manifests) != 1:
+                        raise RuntimeError("Attach exactly one complete research dataset")
+                    MANIFEST = manifests[0]
+                    attached = MANIFEST.parent
+                    payload = json.loads(MANIFEST.read_text())
+                    archives = list(attached.glob("*.eogbundle")) + list(attached.glob("*.zip"))
+                    if archives:
+                        container = payload.get("archive")
+                        if container:
+                            expected_archive = attached / container["name"]
+                            digest = hashlib.sha256()
+                            with expected_archive.open("rb") as handle:
+                                for block in iter(lambda: handle.read(8 * 1024 * 1024), b""):
+                                    digest.update(block)
+                            if expected_archive.stat().st_size != container["bytes"] or digest.hexdigest() != container["sha256"]:
+                                raise RuntimeError("Outer research archive SHA256 mismatch")
+                        extraction = TEMP_ROOT / "data"
+                        extraction.mkdir()
+                        for archive_path in archives:
+                            with zipfile.ZipFile(archive_path) as archive:
+                                for member in archive.infolist():
+                                    target = (extraction / member.filename).resolve()
+                                    if not target.is_relative_to(extraction.resolve()):
+                                        raise ValueError("Unsafe ZIP path")
+                                archive.extractall(extraction)
+                        attached = extraction
                     candidates = list(attached.rglob("klados_contaminated_eeg.npy"))
                     if len(candidates) != 1:
                         raise RuntimeError("Missing or ambiguous Klados dataset")
                     DATA_ROOT = candidates[0].parent.parent
-            else:
-                DATA_ROOT = Path(os.environ["EOG_DATA_ROOT"]).resolve()
-                MANIFEST = Path(os.environ["EOG_SOURCE_MANIFEST"]).resolve()
-            print("Input", DATA_ROOT, "Output", OUT)
-        '''),
-        md("## 3. Audit gate\nRead original labels without EEG unit conversion. Preserve trial boundaries, original participant identities, and all valid EEG channels. Unknown Klados electrode and subject metadata cannot support anatomical or subject-independent claims."),
-        code('''
-            from eog_vmd_fcm_bgru.provenance import audit, save_json
-            summary = audit(DATA_ROOT, MANIFEST, OUT, CHECKOUT)
-            save_json(OUT / "run_config.json", {"phase": PHASE, "git_sha": GIT_SHA, "seed": 42, "data_root": str(DATA_ROOT), "device": DEVICE})
-            if not summary["proceed_to_classical_gate"]:
-                raise RuntimeError("Audit gate failed; inspect exclusions before running experiments")
-        '''),
-        md("## 4. Phase execution"),
-        code('''
-            if PHASE == "benchmark":
-                from eog_vmd_fcm_bgru.experiment import benchmark
-                benchmark(DATA_ROOT, OUT, profile="kaggle_smoke")
-            elif PHASE == "train":
-                from eog_vmd_fcm_bgru.training import train_campaign
-                train_campaign(DATA_ROOT, OUT, device=DEVICE, profile="kaggle_smoke")
-            else:
-                print("Audit complete. Review the saved manifest before submitting the benchmark phase.")
-        '''),
-        md("## 5. Results and persistence\nNo clean EEG exists for OSF. OSF outputs are suppression/preservation proxies. A smoke run cannot pass the full-study victory gate. Save the completed kernel version and retrieve outputs with the campaign controller."),
-        code('''
-            import pandas as pd
-            sessions = json.loads((OUT / "osf_sessions.json").read_text())
-            usable = pd.DataFrame([item for item in sessions if item["status"] == "usable"])
-            if not usable.empty:
-                display(usable.groupby("study").agg(sessions=("session", "count"), participants=("participant", "nunique"), sampling_hz=("sampling_hz", "first")))
-            for filename in ("benchmark_summary.csv", "student_metrics.csv"):
-                if (OUT / filename).exists():
-                    display(pd.read_csv(OUT / filename).round(4))
-            from IPython.display import Image
-            for name in ("vmd_center_frequency_sweep", "vmd_preservation_tradeoff", "vmd_mode_vectors"):
-                if (OUT / (name + ".png")).exists():
-                    display(Image(filename=str(OUT / (name + ".png"))))
-            print("Saved", len(list(OUT.rglob("*"))), "artifacts in", OUT)
-        ''')]
-    contract_cell = code('''
-        test = subprocess.run([sys.executable, "-m", "pytest", str(CHECKOUT / "tests"), "-q"],
-                              cwd=CHECKOUT, capture_output=True, text=True)
-        (OUT / "contract_tests.txt").write_text(test.stdout + test.stderr)
-        print(test.stdout)
-        print(test.stderr)
-        if test.returncode:
-            raise RuntimeError("Numeric contract tests failed on Kaggle")
-    ''')
-    if phase == "contracts":
-        notebook.cells = notebook.cells[:3] + [md("## Kaggle numeric contract tests\nSynthetic fixtures validate implementation invariants; they are not dataset performance evidence."), contract_cell]
-    else:
-        notebook.cells.insert(3, contract_cell)
+                else:
+                    DATA_ROOT = Path(os.environ["EOG_DATA_ROOT"]).resolve()
+                    MANIFEST = Path(os.environ["EOG_SOURCE_MANIFEST"]).resolve()
+                print("Input", DATA_ROOT, "Output", OUT)
+            '''),
+            md("## 4. Dataset audit and gated execution\nSource modules run in the isolated interpreter. Every-file integrity, aligned paired arrays and usable original OSF sessions are required. OSF labels stay integer annotations, trials remain separate, and unknown Klados channel/subject mapping cannot support anatomical/subject-independent claims."),
+            code('''
+                subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.runner", "--phase", PHASE,
+                                       "--data-root", str(DATA_ROOT), "--manifest", str(MANIFEST), "--output", str(OUT)],
+                                      cwd=CHECKOUT, env=PROCESS_ENV)
+            '''),
+            md("## 5. Saved evidence and persistence\nOSF results are suppression/preservation proxies because clean targets do not exist. A smoke run cannot satisfy the full five-fold/three-seed victory gate. Save the completed Kaggle kernel version and retrieve outputs; /kaggle/working alone is temporary."),
+            code('''
+                from IPython.display import Image, HTML, display
+                import csv, html
+                for filename in ("audit_summary.json", "classical_gate.json", "selected_vmd.json", "training_summary.json"):
+                    if (OUT / filename).exists():
+                        print(filename, (OUT / filename).read_text())
+                for filename in ("benchmark_summary.csv", "student_metrics.csv"):
+                    if (OUT / filename).exists():
+                        with (OUT / filename).open() as handle:
+                            rows = list(csv.reader(handle))
+                        markup = "<table>" + "".join("<tr>" + "".join("<td>" + html.escape(value) + "</td>" for value in row) + "</tr>" for row in rows[:25]) + "</table>"
+                        display(HTML(markup))
+                for name in ("vmd_center_frequency_sweep", "vmd_preservation_tradeoff", "vmd_mode_vectors"):
+                    if (OUT / (name + ".png")).exists():
+                        display(Image(filename=str(OUT / (name + ".png"))))
+                print("Saved artifacts", len(list(OUT.rglob("*"))), "in", OUT)
+            ''')]
     notebook.metadata = {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"}, "language_info": {"name": "python"}}
     nbformat.validate(notebook)
     path.parent.mkdir(parents=True, exist_ok=True)
