@@ -25,9 +25,10 @@ subprocess.check_call(["git", "clone", "--quiet", "https://github.com/saltypal/L
 subprocess.check_call(["git", "-C", str(CHECKOUT), "checkout", "--quiet", COMMIT])
 GIT_SHA = subprocess.check_output(["git", "-C", str(CHECKOUT), "rev-parse", "HEAD"], text=True).strip()
 ENV_ROOT = TEMP_ROOT / "environment"
-subprocess.check_call([sys.executable, "-m", "venv", "--system-site-packages", str(ENV_ROOT)])
+subprocess.check_call([sys.executable, "-m", "venv", "--without-pip", "--system-site-packages", str(ENV_ROOT)])
 ENV_PY = ENV_ROOT / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
-subprocess.check_call([str(ENV_PY), "-m", "pip", "install", "--quiet", "-r", str(CHECKOUT / "requirements-research.txt")])
+# Kaggle's OS Python omits ensurepip; host pip can install into a pip-free venv.
+subprocess.check_call([sys.executable, "-m", "pip", "--python", str(ENV_PY), "install", "--quiet", "-r", str(CHECKOUT / "requirements-research.txt")])
 PROCESS_ENV = os.environ.copy()
 PROCESS_ENV["PYTHONPATH"] = str(CHECKOUT)
 PROCESS_ENV["PYTHONUNBUFFERED"] = "1"
