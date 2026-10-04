@@ -111,7 +111,7 @@ OUT.mkdir(parents=True, exist_ok=True)
                 supplements = list(Path("/kaggle/input").rglob("supplement_manifest.json")) if IN_KAGGLE else []
                 if len(supplements) > 1:
                     raise RuntimeError("Attach at most one verified OSF restoration output")
-                if PHASE in {"train", "calibration", "neural-search", "vmd-convergence"} and len(supplements) != 1:
+                if PHASE in {"train", "calibration", "neural-search", "vmd-convergence", "vmd-robust-grid"} and len(supplements) != 1:
                     raise RuntimeError("This phase requires the completed study04 restoration output")
                 if supplements:
                     subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.bundle_io", "--root", str(DATA_ROOT),

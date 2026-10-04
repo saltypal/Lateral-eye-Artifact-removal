@@ -8,7 +8,7 @@ from .provenance import audit, save_json
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "train", "neural-search", "vmd-convergence", "report"], required=True)
+    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], required=True)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -39,9 +39,9 @@ def main():
     elif args.phase == "neural-search":
         from .neural_search import search_student
         search_student(args.data_root, args.output, device=device)
-    elif args.phase == "vmd-convergence":
+    elif args.phase in {"vmd-convergence", "vmd-robust-grid"}:
         from .vmd_convergence_check import check_vmd_convergence
-        check_vmd_convergence(args.data_root, args.output)
+        check_vmd_convergence(args.data_root, args.output, full_grid=args.phase == "vmd-robust-grid")
     elif args.phase == "calibration":
         from .calibration_check import check_calibration
         check_calibration(args.data_root, args.output)

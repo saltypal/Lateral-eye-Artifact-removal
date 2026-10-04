@@ -223,7 +223,7 @@ def submit(phase: str, sha: str) -> None:
                 "is_private": True, "enable_gpu": phase in {"train", "neural-search"}, "enable_internet": True,
                 "dataset_sources": [] if phase in {"contracts", "report"} else [DATASET], "competition_sources": [],
                 "kernel_sources": ([f"{OWNER}/region-aware-eog-{item}" for item in ["neural-search", "calibration", "vmd-convergence"]] if phase == "report" else
-                                   [f"{OWNER}/region-aware-eog-benchmark", f"{OWNER}/region-aware-eog-restore"] if phase in {"train", "calibration", "neural-search", "vmd-convergence"}
+                                   [f"{OWNER}/region-aware-eog-benchmark", f"{OWNER}/region-aware-eog-restore"] if phase in {"train", "calibration", "neural-search", "vmd-convergence", "vmd-robust-grid"}
                                    else [f"{OWNER}/region-aware-eog-restore"] if phase == "benchmark" else [])}
     if phase in {"train", "neural-search"}:
         metadata["machine_shape"] = "NvidiaTeslaT4"
@@ -238,7 +238,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["auth-check", "prepare", "upload", "package-opaque", "upload-opaque", "recover-upload", "inventory-check", "dataset-status", "submit", "status", "retrieve"])
     parser.add_argument("--source", type=Path)
-    parser.add_argument("--phase", choices=["contracts", "audit", "restore", "benchmark", "calibration", "klados-source", "train", "neural-search", "vmd-convergence", "report"], default="audit")
+    parser.add_argument("--phase", choices=["contracts", "audit", "restore", "benchmark", "calibration", "klados-source", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], default="audit")
     parser.add_argument("--sha")
     parser.add_argument("--upload-cache", type=Path)
     args = parser.parse_args()
