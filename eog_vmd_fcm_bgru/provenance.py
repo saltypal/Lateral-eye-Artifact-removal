@@ -71,7 +71,8 @@ def read_osf(path: Path) -> dict:
         raise ValueError("Missing or duplicate channel names")
     normalized = [name.upper().replace("-", "").replace("_", "") for name in names]
     annotations = {name: normalized.index(name) for name in ["ARTIFACTCLASSES", "LABEL", "BLOCK"] if name in normalized}
-    eog_aliases = {"HEOG", "VEOG", "EOGH", "EOGV", "LEOG", "REOG", "UEOG", "DEOG"}
+    eog_aliases = {"EOG", "HEOG", "VEOG", "EOGH", "EOGV", "LEOG", "REOG", "UEOG", "DEOG",
+                   "EOG1", "EOG2", "EOG3", "EOG4", "HEOG1", "HEOG2", "VEOG1", "VEOG2"}
     eog_indices = [i for i, name in enumerate(normalized)
                    if name in eog_aliases or str(locations[i].get("type", "")).upper() == "EOG"]
     excluded = set(annotations.values()) | set(eog_indices)

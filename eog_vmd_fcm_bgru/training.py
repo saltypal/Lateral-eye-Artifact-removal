@@ -8,8 +8,9 @@ import numpy as np
 import pandas as pd
 import torch
 from torch.utils.data import DataLoader, TensorDataset
-from .dataset_io import klados_arrays
-from .evaluation import paired_metrics, modification_metrics
+from .dataset_io import klados_arrays, osf_trials
+from .channel_regions import REGION_NAMES, region_ids
+from .evaluation import paired_metrics, modification_metrics, ocular_proxies
 from .experiment import CALIBRATION, WINDOW
 from .provenance import save_json
 from .spatial_expert import ICAExpert
@@ -148,3 +149,69 @@ def train_campaign(root, output, device="cpu", profile="kaggle_smoke"):
               "runtime_s": time.perf_counter() - started, "input": "EEG only; no runtime EOG, VMD or ICA",
               "offline": True, "regions": "unknown Klados electrode provenance; fixed regional priors unvalidated",
               "full_validation": False, "victory": False})
+    evaluate_osf_student(network, root, output, device)
+    latency_scaling(network, output, device)
+
+
+def evaluate_osf_student(network, root, output, device):
+    """Frozen Protocol Z subset, without treating OSF proxies as clean truth."""
+    rows = []
+    for path in sorted((root / "Dataset1_OSF").rglob("*_prep.set"))[:2]:
+        seen = set()
+        for trial in osf_trials(path):
+            labels = trial["labels"]
+            if labels is None or trial["eeg"].shape[-1] < CALIBRATION + WINDOW:
+                continue
+            kind = "horizontal" if np.isin(labels, [1, 2]).any() else "blink" if (labels == 5).any() else None
+            if kind is None or kind in seen:
+                continue
+            seen.add(kind)
+            segment = slice(CALIBRATION, CALIBRATION + WINDOW)
+            raw = trial["eeg"][:, segment]
+            values = torch.from_numpy(raw[None].copy()).to(device)
+            mask = torch.ones(values.shape[:2], device=device)
+            ids = region_ids(trial["names"])
+            eog = {name: value[segment] for name, value in trial["eog"].items()}
+            for variant in ["shared_student", "regional_prior_student"]:
+                regions = torch.from_numpy(ids[None]).to(device) if variant == "regional_prior_student" else torch.full(values.shape[:2], 3, device=device, dtype=torch.long)
+                with torch.no_grad():
+                    predicted = network(values, mask, regions)["cleaned"].cpu().numpy()[0]
+                for region, name in enumerate(REGION_NAMES):
+                    keep = ids == region
+                    if keep.any():
+                        rows.append({"study": trial["study"], "participant": trial["participant"],
+                                     "session": trial["session"], "trial": trial["trial"], "coverage_type": kind,
+                                     "variant": variant, "region": name, "channels": int(keep.sum()),
+                                     **ocular_proxies(raw[keep], predicted[keep], eog, labels[segment])})
+            pd.DataFrame(rows).to_csv(output / "student_osf_proxies.csv", index=False)
+            if len(seen) == 2:
+                break
+
+
+def latency_scaling(network, output, device):
+    """Measured offline inference timing; synthetic cap tensors, not accuracy."""
+    rows = []
+    for channels in [1, 8, 19, 32, 64, 128]:
+        values = torch.randn(1, channels, WINDOW, device=device)
+        mask = torch.ones(values.shape[:2], device=device)
+        regions = torch.full(values.shape[:2], 3, device=device, dtype=torch.long)
+        with torch.no_grad():
+            for _ in range(3):
+                network(values, mask, regions)
+            if device.startswith("cuda"):
+                torch.cuda.synchronize()
+                baseline = torch.cuda.memory_allocated()
+                torch.cuda.reset_peak_memory_stats()
+            measurements = []
+            for _ in range(10):
+                started = time.perf_counter()
+                network(values, mask, regions)
+                if device.startswith("cuda"):
+                    torch.cuda.synchronize()
+                measurements.append((time.perf_counter() - started) * 1000)
+            peak = torch.cuda.max_memory_allocated() - baseline if device.startswith("cuda") else None
+        rows.append({"channels": channels, "samples": WINDOW, "batch": 1, "repetitions": 10,
+                     "median_ms": float(np.median(measurements)), "p95_ms": float(np.percentile(measurements, 95)),
+                     "cuda_extra_peak_allocated_bytes": peak, "device": device,
+                     "scope": "synthetic offline tensor throughput; no real-time certification"})
+    pd.DataFrame(rows).to_csv(output / "student_latency_scaling.csv", index=False)

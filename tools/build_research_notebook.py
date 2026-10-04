@@ -50,8 +50,14 @@ def build(path: Path, phase="audit", sha="") -> None:
                     raise RuntimeError("Attach exactly one complete dataset with source_manifest.json")
                 MANIFEST = manifests[0]
                 attached = MANIFEST.parent
-                archives = list(attached.glob("*.zip"))
+                archives = list(attached.glob("*.zip")) + list(attached.glob("*.eogbundle"))
                 if archives:
+                    from eog_vmd_fcm_bgru.provenance import sha256_file
+                    container = json.loads(MANIFEST.read_text()).get("archive")
+                    if container:
+                        expected_archive = attached / container["name"]
+                        if expected_archive.stat().st_size != container["bytes"] or sha256_file(expected_archive) != container["sha256"]:
+                            raise RuntimeError("Outer research archive failed SHA256 verification")
                     DATA_ROOT = Path(tempfile.mkdtemp(prefix="eog-data-"))
                     for archive_path in archives:
                         with zipfile.ZipFile(archive_path) as archive:
