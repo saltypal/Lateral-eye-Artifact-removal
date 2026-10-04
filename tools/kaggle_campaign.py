@@ -16,14 +16,17 @@ OWNER = "satyapaladugu"
 DATASET = f"{OWNER}/lateral-eye-complete-dataset"
 
 
-def run_cli(arguments: list[str]) -> None:
+def run_cli(arguments: list[str], capture=False) -> str:
     # A stale legacy config previously shadowed valid OAuth credentials. OAuth
     # remains in ~/.kaggle/credentials.json; this empty per-task config is safe.
     config = REPOSITORY / ".kaggle-config"
     config.mkdir(exist_ok=True)
     process_environment = os.environ.copy()
     process_environment["KAGGLE_CONFIG_DIR"] = str(config)
-    subprocess.run([shutil.which("kaggle") or "kaggle", *arguments], env=process_environment, check=True)
+    process_environment["PYTHONUTF8"] = "1"
+    result = subprocess.run([shutil.which("kaggle") or "kaggle", *arguments], env=process_environment,
+                            check=True, capture_output=capture, text=True, encoding="utf-8")
+    return result.stdout if capture else ""
 
 
 def prepare(source: Path) -> None:
@@ -60,6 +63,10 @@ def prepare(source: Path) -> None:
 def submit(phase: str, sha: str) -> None:
     if len(sha) != 40 or any(character not in "0123456789abcdef" for character in sha):
         raise ValueError("Use an explicit 40-character Git SHA")
+    # Kaggle may accept a kernel push while dropping an invalid attachment.
+    # Fail before submission until the private data is actually accessible.
+    if phase != "contracts":
+        run_cli(["datasets", "files", DATASET], capture=True)
     from build_research_notebook import build
     stage = WORK / phase
     stage.mkdir(parents=True, exist_ok=True)
@@ -67,18 +74,21 @@ def submit(phase: str, sha: str) -> None:
     metadata = {"id": f"{OWNER}/region-aware-eog-{phase}", "title": f"Region Aware EOG {phase.title()}",
                 "code_file": "Region_Aware_EOG_Kaggle.ipynb", "language": "python", "kernel_type": "notebook",
                 "is_private": True, "enable_gpu": phase == "train", "enable_internet": True,
-                "dataset_sources": [DATASET], "competition_sources": [], "kernel_sources": []}
+                "dataset_sources": [] if phase == "contracts" else [DATASET], "competition_sources": [], "kernel_sources": []}
     if phase == "train":
         metadata["machine_shape"] = "NvidiaTeslaT4"
     (stage / "kernel-metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
-    run_cli(["kernels", "push", "-p", str(stage)])
+    response = run_cli(["kernels", "push", "-p", str(stage)], capture=True)
+    print(response)
+    if "not valid dataset sources" in response or "could not be added" in response:
+        raise RuntimeError("Kaggle rejected the dataset attachment; kernel execution is invalid")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["auth-check", "prepare", "upload", "dataset-status", "submit", "status", "retrieve"])
     parser.add_argument("--source", type=Path)
-    parser.add_argument("--phase", choices=["audit", "benchmark", "train"], default="audit")
+    parser.add_argument("--phase", choices=["contracts", "audit", "benchmark", "train"], default="audit")
     parser.add_argument("--sha")
     args = parser.parse_args()
     if args.action == "prepare":

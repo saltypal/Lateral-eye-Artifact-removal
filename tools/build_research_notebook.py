@@ -105,6 +105,19 @@ def build(path: Path, phase="audit", sha="") -> None:
                     display(pd.read_csv(OUT / filename).round(4))
             print("Saved", len(list(OUT.rglob("*"))), "artifacts in", OUT)
         ''')]
+    contract_cell = code('''
+        test = subprocess.run([sys.executable, "-m", "pytest", str(CHECKOUT / "tests"), "-q"],
+                              cwd=CHECKOUT, capture_output=True, text=True)
+        (OUT / "contract_tests.txt").write_text(test.stdout + test.stderr)
+        print(test.stdout)
+        print(test.stderr)
+        if test.returncode:
+            raise RuntimeError("Numeric contract tests failed on Kaggle")
+    ''')
+    if phase == "contracts":
+        notebook.cells = notebook.cells[:3] + [md("## Kaggle numeric contract tests\nSynthetic fixtures validate implementation invariants; they are not dataset performance evidence."), contract_cell]
+    else:
+        notebook.cells.insert(3, contract_cell)
     notebook.metadata = {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"}, "language_info": {"name": "python"}}
     nbformat.validate(notebook)
     path.parent.mkdir(parents=True, exist_ok=True)
