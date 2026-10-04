@@ -8,7 +8,7 @@ from .provenance import audit, save_json
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phase", choices=["audit", "benchmark", "train"], required=True)
+    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "train"], required=True)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -20,6 +20,9 @@ def main():
     save_json(args.output / "run_config.json", {"phase": args.phase, "git_sha": sha, "seed": 42,
               "data_root": str(args.data_root), "device": device, "gpu_count": torch.cuda.device_count(),
               "gpu_names": [torch.cuda.get_device_name(index) for index in range(torch.cuda.device_count())]})
+    if args.phase == "restore":
+        from .restore_sources import restore_study04
+        restore_study04(args.data_root, repository / "data_provenance/osf_study04_catalog.json", args.output)
     summary = audit(args.data_root, args.manifest, args.output, repository)
     if not summary["proceed_to_classical_gate"]:
         raise RuntimeError("Dataset audit gate failed; inspect saved exclusions")

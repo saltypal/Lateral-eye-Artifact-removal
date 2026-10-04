@@ -208,7 +208,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["auth-check", "prepare", "upload", "package-opaque", "upload-opaque", "recover-upload", "inventory-check", "dataset-status", "submit", "status", "retrieve"])
     parser.add_argument("--source", type=Path)
-    parser.add_argument("--phase", choices=["contracts", "audit", "benchmark", "train"], default="audit")
+    parser.add_argument("--phase", choices=["contracts", "audit", "restore", "benchmark", "train"], default="audit")
     parser.add_argument("--sha")
     parser.add_argument("--upload-cache", type=Path)
     args = parser.parse_args()
