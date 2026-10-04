@@ -1,0 +1,977 @@
+{
+  "verification_git_sha": "88615e8621766cb4e8e3e021afa0527d8de86869",
+  "source": "https://data.mendeley.com/datasets/wb6yvr725d/4",
+  "operation": "source[:,0:5401], scale 1, unchanged row order, exact float32 match",
+  "anatomical_row_names": "unverified",
+  "participant_ids": "unverified",
+  "unused_originals": {
+    "klados_pure_eeg.npy": [
+      "root/sim45_resampled"
+    ],
+    "klados_contaminated_eeg.npy": [
+      "root/sim45_con"
+    ],
+    "klados_heog.npy": [
+      "root/heog_45"
+    ],
+    "klados_veog.npy": [
+      "root/veog_45"
+    ]
+  },
+  "records": [
+    {
+      "npy_record": 0,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          1
+        ],
+        "klados_contaminated_eeg.npy": [
+          1
+        ],
+        "klados_heog.npy": [
+          1
+        ],
+        "klados_veog.npy": [
+          1
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 1,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          2
+        ],
+        "klados_contaminated_eeg.npy": [
+          2
+        ],
+        "klados_heog.npy": [
+          2
+        ],
+        "klados_veog.npy": [
+          2
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 2,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          3
+        ],
+        "klados_contaminated_eeg.npy": [
+          3
+        ],
+        "klados_heog.npy": [
+          3
+        ],
+        "klados_veog.npy": [
+          3
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 3,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          4
+        ],
+        "klados_contaminated_eeg.npy": [
+          4
+        ],
+        "klados_heog.npy": [
+          4
+        ],
+        "klados_veog.npy": [
+          4
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 4,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          5
+        ],
+        "klados_contaminated_eeg.npy": [
+          5
+        ],
+        "klados_heog.npy": [
+          5
+        ],
+        "klados_veog.npy": [
+          5
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 5,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          6
+        ],
+        "klados_contaminated_eeg.npy": [
+          6
+        ],
+        "klados_heog.npy": [
+          6
+        ],
+        "klados_veog.npy": [
+          6
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 6,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          7
+        ],
+        "klados_contaminated_eeg.npy": [
+          7
+        ],
+        "klados_heog.npy": [
+          7
+        ],
+        "klados_veog.npy": [
+          7
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 7,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          8
+        ],
+        "klados_contaminated_eeg.npy": [
+          8
+        ],
+        "klados_heog.npy": [
+          8
+        ],
+        "klados_veog.npy": [
+          8
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 8,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          9
+        ],
+        "klados_contaminated_eeg.npy": [
+          9
+        ],
+        "klados_heog.npy": [
+          9
+        ],
+        "klados_veog.npy": [
+          9
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 9,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          10
+        ],
+        "klados_contaminated_eeg.npy": [
+          10
+        ],
+        "klados_heog.npy": [
+          10
+        ],
+        "klados_veog.npy": [
+          10
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 10,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          11
+        ],
+        "klados_contaminated_eeg.npy": [
+          11
+        ],
+        "klados_heog.npy": [
+          11
+        ],
+        "klados_veog.npy": [
+          11
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 11,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          12
+        ],
+        "klados_contaminated_eeg.npy": [
+          12
+        ],
+        "klados_heog.npy": [
+          12
+        ],
+        "klados_veog.npy": [
+          12
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 12,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          13
+        ],
+        "klados_contaminated_eeg.npy": [
+          13
+        ],
+        "klados_heog.npy": [
+          13
+        ],
+        "klados_veog.npy": [
+          13
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 13,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          14
+        ],
+        "klados_contaminated_eeg.npy": [
+          14
+        ],
+        "klados_heog.npy": [
+          14
+        ],
+        "klados_veog.npy": [
+          14
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 14,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          15
+        ],
+        "klados_contaminated_eeg.npy": [
+          15
+        ],
+        "klados_heog.npy": [
+          15
+        ],
+        "klados_veog.npy": [
+          15
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 15,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          16
+        ],
+        "klados_contaminated_eeg.npy": [
+          16
+        ],
+        "klados_heog.npy": [
+          16
+        ],
+        "klados_veog.npy": [
+          16
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 16,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          17
+        ],
+        "klados_contaminated_eeg.npy": [
+          17
+        ],
+        "klados_heog.npy": [
+          17
+        ],
+        "klados_veog.npy": [
+          17
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 17,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          18
+        ],
+        "klados_contaminated_eeg.npy": [
+          18
+        ],
+        "klados_heog.npy": [
+          18
+        ],
+        "klados_veog.npy": [
+          18
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 18,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          19
+        ],
+        "klados_contaminated_eeg.npy": [
+          19
+        ],
+        "klados_heog.npy": [
+          19
+        ],
+        "klados_veog.npy": [
+          19
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 19,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          20
+        ],
+        "klados_contaminated_eeg.npy": [
+          20
+        ],
+        "klados_heog.npy": [
+          20
+        ],
+        "klados_veog.npy": [
+          20
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 20,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          21
+        ],
+        "klados_contaminated_eeg.npy": [
+          21
+        ],
+        "klados_heog.npy": [
+          21
+        ],
+        "klados_veog.npy": [
+          21
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 21,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          22
+        ],
+        "klados_contaminated_eeg.npy": [
+          22
+        ],
+        "klados_heog.npy": [
+          22
+        ],
+        "klados_veog.npy": [
+          22
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 22,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          23
+        ],
+        "klados_contaminated_eeg.npy": [
+          23
+        ],
+        "klados_heog.npy": [
+          23
+        ],
+        "klados_veog.npy": [
+          23
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 23,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          24
+        ],
+        "klados_contaminated_eeg.npy": [
+          24
+        ],
+        "klados_heog.npy": [
+          24
+        ],
+        "klados_veog.npy": [
+          24
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 24,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          25
+        ],
+        "klados_contaminated_eeg.npy": [
+          25
+        ],
+        "klados_heog.npy": [
+          25
+        ],
+        "klados_veog.npy": [
+          25
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 25,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          26
+        ],
+        "klados_contaminated_eeg.npy": [
+          26
+        ],
+        "klados_heog.npy": [
+          26
+        ],
+        "klados_veog.npy": [
+          26
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 26,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          27
+        ],
+        "klados_contaminated_eeg.npy": [
+          27
+        ],
+        "klados_heog.npy": [
+          27
+        ],
+        "klados_veog.npy": [
+          27
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 27,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          28
+        ],
+        "klados_contaminated_eeg.npy": [
+          28
+        ],
+        "klados_heog.npy": [
+          28
+        ],
+        "klados_veog.npy": [
+          28
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 28,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          29
+        ],
+        "klados_contaminated_eeg.npy": [
+          29
+        ],
+        "klados_heog.npy": [
+          29
+        ],
+        "klados_veog.npy": [
+          29
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 29,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          30
+        ],
+        "klados_contaminated_eeg.npy": [
+          30
+        ],
+        "klados_heog.npy": [
+          30
+        ],
+        "klados_veog.npy": [
+          30
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 30,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          31
+        ],
+        "klados_contaminated_eeg.npy": [
+          31
+        ],
+        "klados_heog.npy": [
+          31
+        ],
+        "klados_veog.npy": [
+          31
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 31,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          32
+        ],
+        "klados_contaminated_eeg.npy": [
+          32
+        ],
+        "klados_heog.npy": [
+          32
+        ],
+        "klados_veog.npy": [
+          32
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 32,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          33
+        ],
+        "klados_contaminated_eeg.npy": [
+          33
+        ],
+        "klados_heog.npy": [
+          33
+        ],
+        "klados_veog.npy": [
+          33
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 33,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          34
+        ],
+        "klados_contaminated_eeg.npy": [
+          34
+        ],
+        "klados_heog.npy": [
+          34
+        ],
+        "klados_veog.npy": [
+          34
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 34,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          35
+        ],
+        "klados_contaminated_eeg.npy": [
+          35
+        ],
+        "klados_heog.npy": [
+          35
+        ],
+        "klados_veog.npy": [
+          35
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 35,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          36
+        ],
+        "klados_contaminated_eeg.npy": [
+          36
+        ],
+        "klados_heog.npy": [
+          36
+        ],
+        "klados_veog.npy": [
+          36
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 36,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          37
+        ],
+        "klados_contaminated_eeg.npy": [
+          37
+        ],
+        "klados_heog.npy": [
+          37
+        ],
+        "klados_veog.npy": [
+          37
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 37,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          38
+        ],
+        "klados_contaminated_eeg.npy": [
+          38
+        ],
+        "klados_heog.npy": [
+          38
+        ],
+        "klados_veog.npy": [
+          38
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 38,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          39
+        ],
+        "klados_contaminated_eeg.npy": [
+          39
+        ],
+        "klados_heog.npy": [
+          39
+        ],
+        "klados_veog.npy": [
+          39
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 39,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          40
+        ],
+        "klados_contaminated_eeg.npy": [
+          40
+        ],
+        "klados_heog.npy": [
+          40
+        ],
+        "klados_veog.npy": [
+          40
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 40,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          41
+        ],
+        "klados_contaminated_eeg.npy": [
+          41
+        ],
+        "klados_heog.npy": [
+          41
+        ],
+        "klados_veog.npy": [
+          41
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 41,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          42
+        ],
+        "klados_contaminated_eeg.npy": [
+          42
+        ],
+        "klados_heog.npy": [
+          42
+        ],
+        "klados_veog.npy": [
+          42
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 42,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          43
+        ],
+        "klados_contaminated_eeg.npy": [
+          43
+        ],
+        "klados_heog.npy": [
+          43
+        ],
+        "klados_veog.npy": [
+          43
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 43,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          44
+        ],
+        "klados_contaminated_eeg.npy": [
+          44
+        ],
+        "klados_heog.npy": [
+          44
+        ],
+        "klados_veog.npy": [
+          44
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 44,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          46
+        ],
+        "klados_contaminated_eeg.npy": [
+          46
+        ],
+        "klados_heog.npy": [
+          46
+        ],
+        "klados_veog.npy": [
+          46
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 45,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          47
+        ],
+        "klados_contaminated_eeg.npy": [
+          47
+        ],
+        "klados_heog.npy": [
+          47
+        ],
+        "klados_veog.npy": [
+          47
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 46,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          48
+        ],
+        "klados_contaminated_eeg.npy": [
+          48
+        ],
+        "klados_heog.npy": [
+          48
+        ],
+        "klados_veog.npy": [
+          48
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 47,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          49
+        ],
+        "klados_contaminated_eeg.npy": [
+          49
+        ],
+        "klados_heog.npy": [
+          49
+        ],
+        "klados_veog.npy": [
+          49
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 48,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          50
+        ],
+        "klados_contaminated_eeg.npy": [
+          50
+        ],
+        "klados_heog.npy": [
+          50
+        ],
+        "klados_veog.npy": [
+          50
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 49,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          51
+        ],
+        "klados_contaminated_eeg.npy": [
+          51
+        ],
+        "klados_heog.npy": [
+          51
+        ],
+        "klados_veog.npy": [
+          51
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 50,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          52
+        ],
+        "klados_contaminated_eeg.npy": [
+          52
+        ],
+        "klados_heog.npy": [
+          52
+        ],
+        "klados_veog.npy": [
+          52
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 51,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          53
+        ],
+        "klados_contaminated_eeg.npy": [
+          53
+        ],
+        "klados_heog.npy": [
+          53
+        ],
+        "klados_veog.npy": [
+          53
+        ]
+      },
+      "aligned_unique_source_id": true
+    },
+    {
+      "npy_record": 52,
+      "publisher_ids": {
+        "klados_pure_eeg.npy": [
+          54
+        ],
+        "klados_contaminated_eeg.npy": [
+          54
+        ],
+        "klados_heog.npy": [
+          54
+        ],
+        "klados_veog.npy": [
+          54
+        ]
+      },
+      "aligned_unique_source_id": true
+    }
+  ]
+}
