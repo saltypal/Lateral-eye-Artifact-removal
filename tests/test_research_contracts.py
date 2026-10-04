@@ -16,6 +16,17 @@ from eog_vmd_fcm_bgru.bundle_io import merge_supplement, digest_file
 torch.set_num_threads(2)
 
 
+def test_publisher_crop_matching_preserves_explicit_provenance():
+    from eog_vmd_fcm_bgru.klados_source_check import exact_prefix_matches
+    original = np.arange(21, dtype=np.float32).reshape(3, 7)
+    exported = np.stack([original[:, :5], original[:, 1:6], original[::-1, :5]])
+    matched = exact_prefix_matches(exported, [("root/sim2", original)])
+    assert matched[0]["exact_float32_matches"] == [{"source_path": "root/sim2", "amplitude_scale": 1.0,
+        "source_samples": 7, "start_sample": 0, "stop_sample": 5, "operation": "exact start crop"}]
+    assert not matched[1]["exact_float32_matches"]
+    assert not matched[2]["exact_float32_matches"]
+
+
 def test_padded_electrodes_do_not_change_training_loss():
     torch.manual_seed(42)
     prediction, target = torch.randn(2, 3, 65), torch.randn(2, 3, 65)

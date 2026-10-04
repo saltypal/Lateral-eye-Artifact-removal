@@ -1,6 +1,7 @@
 """Inspect publisher MATLAB originals and test exact NPY provenance on Kaggle."""
 import hashlib
 import json
+import re
 from pathlib import Path
 import urllib.request
 import numpy as np
@@ -53,6 +54,23 @@ def fingerprint(value):
     return hashlib.sha256(np.ascontiguousarray(value, dtype=np.float32).tobytes()).hexdigest()
 
 
+def exact_prefix_matches(exported, original_records):
+    """Check a declared start crop; never infer offsets or reorder electrodes."""
+    lookup = {}
+    for location, record in original_records:
+        if record.ndim != 2 or record.shape[0] != exported.shape[1] or record.shape[1] < exported.shape[2]:
+            continue
+        length = exported.shape[2]
+        for scale in [1.0, 1e6, 1e-6]:
+            candidate = record[:, :length] * scale
+            lookup.setdefault(fingerprint(candidate), []).append({
+                "source_path": location, "amplitude_scale": scale,
+                "source_samples": record.shape[1], "start_sample": 0, "stop_sample": length,
+                "operation": "full record" if record.shape[1] == length else "exact start crop"})
+    return [{"npy_record": index, "exact_float32_matches": lookup.get(fingerprint(record), [])}
+            for index, record in enumerate(exported)]
+
+
 def inspect_originals(root, output, catalog_path):
     catalog = json.loads(catalog_path.read_text())
     original = output / "publisher_matlab"
@@ -82,26 +100,40 @@ def inspect_originals(root, output, catalog_path):
     save_json(output / "klados_matlab_structure.json", structures)
     matches = {}
     for npy_name, mat_name in [("klados_pure_eeg.npy", "Pure_Data.mat"),
-                               ("klados_contaminated_eeg.npy", "Contaminated_Data.mat")]:
+                               ("klados_contaminated_eeg.npy", "Contaminated_Data.mat"),
+                               ("klados_heog.npy", "HEOG.mat"), ("klados_veog.npy", "VEOG.mat")]:
         exported = np.load(root / "klados" / npy_name, allow_pickle=False)
-        original_records = list(matrices(payloads[mat_name]))
-        lookup = {}
-        for location, record in original_records:
-            if record.shape != exported.shape[1:]:
-                continue
-            for scale in [1.0, 1e6, 1e-6]:
-                lookup.setdefault(fingerprint(record * scale), []).append({"source_path": location, "amplitude_scale": scale})
-        record_matches = [{"npy_record": index, "exact_float32_matches": lookup.get(fingerprint(record), [])}
-                          for index, record in enumerate(exported)]
+        if "eog.npy" in npy_name:
+            exported = exported.reshape(len(exported), 1, exported.shape[-1])
+            original_records = [("root/" + key, np.asarray(value).reshape(1, -1))
+                                for key, value in payloads[mat_name].items() if not key.startswith("__")]
+        else:
+            original_records = list(matrices(payloads[mat_name]))
+        record_matches = exact_prefix_matches(exported, original_records)
+        used = {match["source_path"] for record in record_matches for match in record["exact_float32_matches"]}
         matches[npy_name] = {"export_shape": list(exported.shape), "source_matrix_candidates": len(original_records),
                              "source_shapes": sorted({str(record.shape) for _, record in original_records}),
                              "matched_records": sum(bool(item["exact_float32_matches"]) for item in record_matches),
                              "record_matches": record_matches,
-                             "test": "exact full matrix after explicit axis transpose and declared amplitude scales; no filtering/trimming"}
+                             "unused_originals": [name for name, _ in original_records if name not in used],
+                             "test": "exact float32 start crop at sample 0; declared axis/scales; no filtering, offsets or electrode reordering"}
         print("Klados exact source matches", npy_name, matches[npy_name]["matched_records"], "of", len(exported), flush=True)
     save_json(output / "klados_original_matches.json", matches)
+    alignment = []
+    for index in range(len(exported)):
+        ids = {}
+        for name, result in matches.items():
+            options = result["record_matches"][index]["exact_float32_matches"]
+            ids[name] = sorted({int(re.search(r"(?:sim|heog_|veog_)(\d+)", option["source_path"]).group(1))
+                                for option in options})
+        aligned = all(len(numbers) == 1 for numbers in ids.values()) and len({numbers[0] for numbers in ids.values() if numbers}) == 1
+        alignment.append({"npy_record": index, "publisher_ids": ids, "aligned_unique_source_id": aligned})
+    save_json(output / "klados_export_alignment.json", alignment)
     save_json(output / "klados_provenance_check_summary.json", {"source": catalog["source"], "publisher_files_verified": len(verified),
               "clean_records_exactly_matched": matches["klados_pure_eeg.npy"]["matched_records"],
               "contaminated_records_exactly_matched": matches["klados_contaminated_eeg.npy"]["matched_records"],
+              "heog_records_exactly_matched": matches["klados_heog.npy"]["matched_records"],
+              "veog_records_exactly_matched": matches["klados_veog.npy"]["matched_records"],
+              "all_four_exports_unique_and_aligned": all(row["aligned_unique_source_id"] for row in alignment),
               "anatomical_mapping": "unresolved until named source fields or explicit row-order documentation is reviewed",
               "subject_mapping": "unresolved; source cell indices are not automatically subject IDs", "victory": False})
