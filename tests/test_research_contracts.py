@@ -42,6 +42,17 @@ def test_paired_gate_labels_ignore_intermediate_burden_and_padding():
     assert not gate.grad[0, 1].any() and not gate.grad[0, 3].any()
 
 
+def test_rms_normalized_vmd_is_invariant_to_amplitude_units():
+    time = np.arange(129) / 200
+    values = np.sin(2 * np.pi * 7 * time) + 0.2 * np.sin(2 * np.pi * 20 * time)
+    expected, _, detail = decompose(values, modes=3, relative_tolerance=True, tolerance=1e-6)
+    for factor in [1e-6, 1e6]:
+        actual, _, changed = decompose(values * factor, modes=3, relative_tolerance=True, tolerance=1e-6)
+        np.testing.assert_allclose(actual / factor, expected, rtol=2e-4, atol=1e-5)
+        np.testing.assert_allclose(changed["centers_hz"], detail["centers_hz"], atol=1e-6)
+        assert changed["iterations"] == detail["iterations"]
+
+
 def test_padded_electrodes_do_not_change_training_loss():
     torch.manual_seed(42)
     prediction, target = torch.randn(2, 3, 65), torch.randn(2, 3, 65)

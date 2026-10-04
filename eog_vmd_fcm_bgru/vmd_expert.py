@@ -9,17 +9,22 @@ from vmdpy import VMD
 from .signal_features import mode_descriptor
 
 
-def decompose(values, modes=5, alpha=1000, fs=200):
+def decompose(values, modes=5, alpha=1000, fs=200, relative_tolerance=False, tolerance=1e-7):
     values = np.asarray(values, dtype=np.float64)
     if values.ndim != 1 or not np.isfinite(values).all() or values.size < 32:
         raise ValueError("VMD needs a finite one-dimensional continuous segment")
     padded = np.pad(values, (0, values.size % 2), mode="edge")
+    if not np.isfinite(tolerance) or tolerance <= 0:
+        raise ValueError("VMD convergence tolerance must be finite and positive")
+    amplitude_scale = float(np.sqrt(np.mean(padded ** 2))) if relative_tolerance else 1.0
+    if amplitude_scale <= np.finfo(float).tiny:
+        raise ValueError("RMS-normalized VMD requires a nonzero signal")
     start = time.perf_counter()
-    vectors, _, frequencies = VMD(padded, alpha, 0, modes, 0, 1, 1e-7)
+    vectors, _, frequencies = VMD(padded / amplitude_scale, alpha, 0, modes, 0, 1, tolerance)
     elapsed = time.perf_counter() - start
     if not np.isfinite(vectors).all() or frequencies.size == 0:
         raise RuntimeError("Nonfinite VMD solution")
-    vectors = vectors[:, :values.size]
+    vectors = vectors[:, :values.size] * amplitude_scale
     centers = frequencies[-1] * fs
     order = np.argsort(centers)
     vectors, centers = vectors[order], centers[order]
@@ -38,6 +43,8 @@ def decompose(values, modes=5, alpha=1000, fs=200):
                    "iterations": int(len(frequencies)), "hit_iteration_limit": bool(len(frequencies) >= 499),
                    "residual_ratio": float(np.linalg.norm(residual) / max(np.linalg.norm(values), np.finfo(float).tiny)),
                    "runtime_s": elapsed,
+                   "rms_normalized_stopping": bool(relative_tolerance), "stopping_tolerance": tolerance,
+                   "solver_amplitude_scale": amplitude_scale,
                    "vmdpy_iterative_array_lower_bound_bytes": int(500 * (2 * padded.size) * (modes + 1) * 16)}
     import platform
     diagnostics["measured_process_high_water_rss_kib_linux"] = None
@@ -61,12 +68,14 @@ class ModeExpert:
     scaler: StandardScaler
     centers: np.ndarray
     ocular_cluster: int
+    relative_tolerance: bool = False
+    tolerance: float = 1e-7
 
     @classmethod
-    def fit(cls, training_channels, training_eog, modes=5, alpha=1000, seed=42):
+    def fit(cls, training_channels, training_eog, modes=5, alpha=1000, seed=42, relative_tolerance=False, tolerance=1e-7):
         features, evidence = [], []
         for values, references in zip(training_channels, training_eog):
-            vectors, _, _ = decompose(values, modes, alpha)
+            vectors, _, _ = decompose(values, modes, alpha, relative_tolerance=relative_tolerance, tolerance=tolerance)
             features.extend(descriptors(vectors))
             for vector in vectors:
                 correlations = [abs(np.corrcoef(vector, ref)[0, 1]) for ref in references
@@ -77,12 +86,13 @@ class ModeExpert:
         centers, membership, _, _, _, _, _ = fuzz.cluster.cmeans(scaler.transform(features).T, c=2, m=2,
                                                                error=1e-5, maxiter=300, seed=seed)
         weighted_evidence = (membership * np.asarray(evidence)[None]).sum(axis=-1) / np.maximum(membership.sum(axis=-1), 1e-12)
-        return cls(modes, alpha, scaler, centers, int(weighted_evidence.argmax()))
+        return cls(modes, alpha, scaler, centers, int(weighted_evidence.argmax()), relative_tolerance, tolerance)
 
     def artifact(self, eeg, strength=1.0, soft=True):
         artifacts, all_diagnostics = [], []
         for values in eeg:
-            vectors, _, diagnostics = decompose(values, self.modes, self.alpha)
+            vectors, _, diagnostics = decompose(values, self.modes, self.alpha,
+                                                relative_tolerance=self.relative_tolerance, tolerance=self.tolerance)
             membership, _, _, _, _, _ = fuzz.cluster.cmeans_predict(self.scaler.transform(descriptors(vectors)).T,
                                                                    self.centers, m=2, error=1e-5, maxiter=300, seed=0)
             weights = membership[self.ocular_cluster]
