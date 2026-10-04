@@ -8,7 +8,7 @@ from .provenance import audit, save_json
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "train"], required=True)
+    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "train"], required=True)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -35,6 +35,9 @@ def main():
     elif args.phase == "calibration":
         from .calibration_check import check_calibration
         check_calibration(args.data_root, args.output)
+    elif args.phase == "klados-source":
+        from .klados_source_check import inspect_originals
+        inspect_originals(args.data_root, args.output, repository / "data_provenance/klados_mendeley_v4_catalog.json")
     print("Phase completed", args.phase, "at", sha, flush=True)
 
 
