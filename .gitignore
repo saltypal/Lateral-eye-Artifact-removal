@@ -2,3 +2,7 @@ complete_dataset/
 .venv/
 .vscode/
 __pycache__/
+.kaggle-config/
+.kaggle-work/
+results/
+*.pyc
