@@ -159,6 +159,8 @@ class EOGContextGainStudent(EOGGainStudent):
         nn.init.zeros_(self.gains[-1].weight)
         nn.init.zeros_(self.gains[-1].bias)
         self.threshold_logit = nn.Parameter(torch.tensor(0.5108256))  # 0.6 in bounded [0.1,0.9].
+        self.inference_gate_mode = "soft"
+        self.inference_gate_offset = 0.0
 
     def correction_gains(self, features, correlations, mask, regions):
         frontal = mask.bool() & (regions == 0)
@@ -166,5 +168,11 @@ class EOGContextGainStudent(EOGGainStudent):
         evidence = correlations[:, :, 0].abs().masked_fill(~support[..., None], 0).amax(dim=1)
         repeated = evidence[:, None].expand(-1, features.shape[1], -1)
         threshold = 0.1 + 0.8 * torch.sigmoid(self.threshold_logit)
-        gate = torch.sigmoid(40 * (evidence.amax(dim=-1, keepdim=True) - threshold))
+        maximum = evidence.amax(dim=-1, keepdim=True)
+        if self.inference_gate_mode == "soft":
+            gate = torch.sigmoid(40 * (maximum - threshold))
+        elif self.inference_gate_mode == "hard":
+            gate = (maximum >= threshold + self.inference_gate_offset).to(features.dtype)
+        else:
+            raise ValueError("Unknown inference gate mode")
         return 2 * torch.tanh(self.gains(torch.cat([features, repeated], dim=-1))) * gate[:, None]

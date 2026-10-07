@@ -73,3 +73,16 @@ def test_frontal_support_controls_posterior_gain_without_losing_sign():
     torch.testing.assert_close(model.correction_gains(features, correlations, mask, regions), supported)
     correlations.zero_()
     assert model.correction_gains(features, correlations, mask, regions).abs().max() < 1e-7
+
+
+def test_hard_support_gate_is_exact_identity_below_learned_threshold():
+    model = EOGContextGainStudent()
+    model.inference_gate_mode = "hard"
+    with torch.no_grad():
+        model.gains[-1].bias.fill_(0.5)
+    features, correlations = torch.zeros(1, 2, 15), torch.zeros(1, 2, 4, 2)
+    mask, regions = torch.ones(1, 2), torch.full((1, 2), 3)
+    correlations[0, 0, 0, 0] = 0.55
+    assert not model.correction_gains(features, correlations, mask, regions).any()
+    correlations[0, 0, 0, 0] = 0.7
+    assert model.correction_gains(features, correlations, mask, regions).min() > 0.8

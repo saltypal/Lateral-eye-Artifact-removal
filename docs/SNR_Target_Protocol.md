@@ -85,3 +85,23 @@ selection. Test cache verification and scoring follow the completed sweep.
 The source cache SHA and exact earlier Git revision are recorded. This
 refinement was specified from validation behavior before reviewing the first
 neural campaign's final test results. It remains runtime-EOG-assisted.
+
+## Conservative deployment gate
+
+The soft shared-support model scored 18.0249 dB on the reused test set, but
+its worst-record mean clean change was 1.3785%, exceeding the 1% guard.
+`snr-guard` retains exactly those validation-selected neural weights and
+compares the soft gate with a hard gate at the learned correlation threshold
+plus fixed offsets {0,0.025,0.05}, crossed with the existing five strengths.
+Twenty rules are selected on validation SNR under a tighter 0.25% worst-record
+mean clean-change margin and the same spectral limits. The reported test
+limit remains 1%; no test waveform determines a threshold/offset/strength.
+The gate creates exact identity below its evidence threshold instead of a
+small logistic correction. This is a measured inference-rule ablation, not
+additional training. Checkpoints must restore the selected inference mode
+and offset alongside the original neural weights and correction strength.
+
+This extra preservation refinement is motivated by a reused-test failure.
+It must be labeled development-exposed; a fresh locked confirmation remains
+required before a generalization claim. Baseline preservation flags with no
+clean-input measurement are missing, not a reported safety failure.

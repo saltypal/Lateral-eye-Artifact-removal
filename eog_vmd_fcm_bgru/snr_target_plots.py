@@ -22,6 +22,14 @@ def plot_snr_campaign(output, model_names):
     fig, axes = plt.subplots(1, len(model_names), figsize=(6 * len(model_names), 4), constrained_layout=True, squeeze=False)
     for axis, name in zip(axes[0], model_names):
         grid = pd.read_csv(output / name / "validation_grid.csv")
+        if "config_id" not in grid:
+            axis.scatter(grid.clean_relative_change_worst_record * 100, grid.validation_snr_db, color="#247c96")
+            axis.axvline(0.25, color="#62686b", linestyle=":")
+            axis.axhline(15, color="#62686b", linestyle="--")
+            axis.set_title("Validation-only deployment gate selection")
+            axis.set_xlabel("Worst-record mean clean change (%)")
+            axis.set_ylabel("Validation mean record SNR (dB)")
+            continue
         for config, subset in grid[grid.strength == 1].groupby("config_id"):
             axis.plot(subset.epoch, subset.validation_snr_db, label=f"Config {config}")
         axis.axhline(15, color="#b84430", linestyle="--")

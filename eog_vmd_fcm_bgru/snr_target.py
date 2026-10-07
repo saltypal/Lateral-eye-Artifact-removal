@@ -199,6 +199,9 @@ def evaluate(name, arrays, keys, output, device):
         state = torch.load(folder / f"best_{variant}.pt", map_location=device, weights_only=True)
         network = MODELS[name]().to(device)
         network.load_state_dict(state["model"])
+        if hasattr(network, "inference_gate_mode"):
+            network.inference_gate_mode = state["selection"].get("inference_gate_mode", "soft")
+            network.inference_gate_offset = state["selection"].get("inference_gate_offset", 0.0)
         artifact, identity_artifact = prediction(network, arrays, device)
         strength = state["selection"]["strength"]
         predicted = arrays[0] - strength * artifact
@@ -244,6 +247,9 @@ def transfer_diagnostic(root, output, device, model_names):
         state = torch.load(output / name / "best_safe.pt", map_location=device, weights_only=True)
         network = constructor().to(device).eval()
         network.load_state_dict(state["model"])
+        if hasattr(network, "inference_gate_mode"):
+            network.inference_gate_mode = state["selection"].get("inference_gate_mode", "soft")
+            network.inference_gate_offset = state["selection"].get("inference_gate_offset", 0.0)
         networks[name] = (network, state["selection"]["strength"])
     rows, timings, exclusions = [], [], []
     sessions = {}

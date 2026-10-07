@@ -8,7 +8,7 @@ from .provenance import audit, save_json
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "snr-audit", "reference-guided", "reference-refine", "reference-safe", "snr-target", "snr-context", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], required=True)
+    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "snr-audit", "reference-guided", "reference-refine", "reference-safe", "snr-target", "snr-context", "snr-guard", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], required=True)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -58,6 +58,9 @@ def main():
     elif args.phase in {"snr-target", "snr-context"}:
         from .snr_target import run_snr_target
         run_snr_target(args.data_root, args.output, device=device, context=args.phase == "snr-context")
+    elif args.phase == "snr-guard":
+        from .snr_guard import run_snr_guard
+        run_snr_guard(args.data_root, args.output, device=device)
     elif args.phase in {"reference-guided", "reference-refine", "reference-safe"}:
         from .reference_guided_study import run_reference_guided
         run_reference_guided(args.data_root, args.output,
