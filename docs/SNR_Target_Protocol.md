@@ -51,7 +51,7 @@ under <=1% worst-record window-mean clean modification and <=0.5 dB mean
 alpha/beta errors. A separate unconstrained validation winner is retained
 as a diagnostic and must never replace the safe deployment claim.
 
-No held-out inference or target-dependent calculation runs until every
+No held-out prediction or quality metric runs until every
 configuration in both contracts has finished. Frozen raw and reference-VMD
 baselines use identical scoring windows. Final outputs include all window/
 record metrics, safe and unconstrained checkpoints, histories, numerical
@@ -66,3 +66,22 @@ targets for controlled denoising comparisons. Our actual data remain Klados
 and OSF. This development sweep cannot establish full five-fold/three-seed
 success, unseen-participant performance, cap-transfer accuracy or complete
 ocular removal. The target is a measurement criterion, not a promise.
+
+## Shared-support refinement
+
+The first EOG gain experiment reached 18.6566 dB validation SNR in a
+checkpoint that did not pass preservation. This validation evidence motivates
+`snr-context`: the same four loss/rate settings and 160 epochs, with a
+cap-level support gate in `EOGContextGainStudent`. It pools the maximum
+absolute raw-EEG HEOG/VEOG correlation over observed support channels.
+Verified frontal rows are preferred; unknown montages use all observed rows.
+Two pooled evidence features join the existing per-channel descriptors.
+A sigmoid gate with slope 40 and learned threshold bounded [0.1,0.9]
+(initialized 0.6) multiplies the separate signed correction gains. This
+does not average away the signed projection or classify eye-movement type.
+
+Only train/validation cache signals and keys are checked/reused during
+selection. Test cache verification and scoring follow the completed sweep.
+The source cache SHA and exact earlier Git revision are recorded. This
+refinement was specified from validation behavior before reviewing the first
+neural campaign's final test results. It remains runtime-EOG-assisted.

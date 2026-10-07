@@ -1,6 +1,7 @@
 """Kaggle-only, validation-selected 15/20-dB neural development campaign."""
 from pathlib import Path
 import json
+import shutil
 import time
 import numpy as np
 import pandas as pd
@@ -14,13 +15,14 @@ from .provenance import save_json, sha256_file
 from .training import seed_everything
 from .vmd_rolling import rolling_decompose
 from .reference_guided_study import window_evidence, artifact_from_evidence, ordered_references
-from .snr_student import (VMDSpatialStudent, EOGGainStudent, masked_snr_db,
+from .snr_student import (VMDSpatialStudent, EOGGainStudent, EOGContextGainStudent, masked_snr_db,
                           snr_target_loss, identity_penalty)
 
 STARTS = [2000, 3024, 4048]
 WINDOW = 1024
 STRENGTHS = [0.0, 0.25, 0.5, 0.75, 1.0]
-MODELS = {"eeg_vmd_student": VMDSpatialStudent, "eog_vmd_gain_student": EOGGainStudent}
+MODELS = {"eeg_vmd_student": VMDSpatialStudent, "eog_vmd_gain_student": EOGGainStudent,
+          "eog_vmd_context_student": EOGContextGainStudent}
 
 
 def unique_input(name):
@@ -235,9 +237,10 @@ def teachers(train, keys, selected, output):
     return torch.from_numpy(np.stack(rows)), torch.tensor(accepted)
 
 
-def transfer_diagnostic(root, output, device):
+def transfer_diagnostic(root, output, device, model_names):
     networks = {}
-    for name, constructor in MODELS.items():
+    for name in model_names:
+        constructor = MODELS[name]
         state = torch.load(output / name / "best_safe.pt", map_location=device, weights_only=True)
         network = constructor().to(device).eval()
         network.load_state_dict(state["model"])
@@ -294,7 +297,27 @@ def transfer_diagnostic(root, output, device):
     save_json(output / "osf_transfer_exclusions.json", exclusions)
 
 
-def run_snr_target(root, output, device):
+def load_verified_cache(source, part, dirty, clean, eyes, records, output):
+    path = source / f"{part}_vmd_cache.npz"
+    payload = np.load(path, allow_pickle=False)
+    keys = [(int(record), int(start)) for record, start in payload["keys"]]
+    expected = [(record, start) for record in records for start in STARTS]
+    if keys != expected:
+        raise ValueError("Prior-run cache keys differ from frozen split")
+    for name, values in [("raw", dirty), ("clean", clean), ("eyes", eyes)]:
+        actual = np.stack([values[record, :, start:start + WINDOW] for record, start in expected])
+        if not np.array_equal(actual, payload[name]):
+            raise ValueError("Prior-run cache signal differs from verified source: " + name)
+    arrays = [torch.from_numpy(payload[name].copy()) for name in
+              ["raw", "clean", "eyes", "modes", "clean_modes", "valid", "clean_valid"]]
+    shutil.copyfile(path, output / path.name)
+    save_json(output / f"{part}_cache_reuse.json", {"source_sha256": sha256_file(path),
+        "signal_and_keys_verified": True, "records": records, "previous_source": str(source)})
+    print("SNR verified cache reuse", part, len(keys), flush=True)
+    return arrays, keys
+
+
+def run_snr_target(root, output, device, context=False):
     torch.set_num_threads(2)
     benchmark = unique_input("record_split.json").parent
     source_selection = unique_input("reference_selected.json")
@@ -306,6 +329,12 @@ def run_snr_target(root, output, device):
     if any(set(groups[i]) & set(groups[j]) for i in range(3) for j in range(i + 1, 3)):
         raise ValueError("Record split leakage")
     dirty, clean, eyes = klados_arrays(root)
+    model_names = ["eog_vmd_context_student"] if context else ["eeg_vmd_student", "eog_vmd_gain_student"]
+    reuse_source = unique_input("snr_target_protocol.json").parent if context else None
+    if reuse_source is not None:
+        prior = json.loads((reuse_source / "snr_target_protocol.json").read_text())
+        if prior["split"] != split or prior["K"] != 3 or prior["alpha"] != 2000 or prior["max_iterations"] != 2000:
+            raise ValueError("Incompatible completed SNR-target cache")
     if max(STARTS) + WINDOW > dirty.shape[-1]:
         raise ValueError("Fixed windows exceed recordings")
     cached = np.load(source_selection.parent / "training_mode_cache.npz", allow_pickle=False)
@@ -326,17 +355,24 @@ def run_snr_target(root, output, device):
         "source_teacher_git_sha": json.loads((source_selection.parent / "run_config.json").read_text())["git_sha"],
         "augmentation": "15% training-channel dropout only; no split-crossing synthesis",
         "device": device, "full_validation": False}
+    if context:
+        protocol["model_inputs"] = {"eog_vmd_context_student": "EEG, VMD and runtime HEOG/VEOG; shared support evidence"}
+        protocol["support_gate"] = "verified frontal maximum raw absolute EOG correlation; all observed rows fallback; learned bounded threshold, slope40"
+        protocol["development_reason"] = "local EOG gain model reached target validation SNR but failed preservation; shared support separates cap-level intervention from per-channel amplitude"
+        protocol["cache_source_git_sha"] = json.loads((reuse_source / "run_config.json").read_text())["git_sha"]
     save_json(output / "snr_target_protocol.json", protocol)
     arrays, keys = {}, {}
     for part in ["train", "val"]:
-        arrays[part], keys[part] = construct_cache(dirty, clean, eyes, split[part], part, output, training_cache)
+        arrays[part], keys[part] = (load_verified_cache(reuse_source, part, dirty, clean, eyes, split[part], output)
+            if context else construct_cache(dirty, clean, eyes, split[part], part, output, training_cache))
     teacher, enabled = teachers(arrays["train"], keys["train"], source, output)
     selections = {}
     started = time.perf_counter()
-    for name in MODELS:
+    for name in model_names:
         selections[name] = train_model(name, arrays["train"], arrays["val"], split, output, device, protocol, teacher, enabled)
     # No held-out clean or inference is accessed for the parameter sweep above.
-    arrays["test"], keys["test"] = construct_cache(dirty, clean, eyes, split["test"], "test", output)
+    arrays["test"], keys["test"] = (load_verified_cache(reuse_source, "test", dirty, clean, eyes, split["test"], output)
+        if context else construct_cache(dirty, clean, eyes, split["test"], "test", output))
     rows = []
     for index, (record, start) in enumerate(keys["test"]):
         raw, target = arrays["test"][0][index].numpy(), arrays["test"][1][index].numpy()
@@ -346,7 +382,7 @@ def run_snr_target(root, output, device):
         artifact = artifact_from_evidence(evidence, "correlation", source["selected"]["threshold"], True)
         rows.append({"method": "frozen_reference_vmd", "record": record, "start": start,
                      **paired_metrics(raw - source["selected"]["strength"] * artifact, target)})
-    for name in MODELS:
+    for name in model_names:
         rows.extend(evaluate(name, arrays["test"], keys["test"], output, device))
     frame = pd.DataFrame(rows)
     frame.to_csv(output / "test_window_metrics.csv", index=False)
@@ -361,12 +397,12 @@ def run_snr_target(root, output, device):
     result = {"selections": selections, "test": summary.replace({np.nan: None}).to_dict(orient="records"),
         "runtime_training_and_final_evaluation_s": time.perf_counter() - started,
         "snr_definition": "10 log10(sum(clean^2)/sum((estimate-clean)^2)); macro windows within record then records",
-        "parameters": {name: sum(p.numel() for p in constructor().parameters()) for name, constructor in MODELS.items()},
+        "parameters": {name: sum(p.numel() for p in MODELS[name]().parameters()) for name in model_names},
         "target_15db_met_with_preservation": {name: bool((summary.loc[summary.method == name + "_safe", "snr_db"].iloc[0] >= 15)
-            and summary.loc[summary.method == name + "_safe", "heldout_preservation_pass"].iloc[0]) for name in MODELS},
+            and summary.loc[summary.method == name + "_safe", "heldout_preservation_pass"].iloc[0]) for name in model_names},
         "heldout_is_new": False, "complete_removal": False, "full_validation": False, "victory": False}
     save_json(output / "snr_target_summary.json", finite_json(result))
     print("FINAL SNR", summary[["method", "snr_db", "rmse", "clean_relative_change"]].to_string(index=False), flush=True)
-    transfer_diagnostic(root, output, device)
+    transfer_diagnostic(root, output, device, model_names)
     from .snr_target_plots import plot_snr_campaign
-    plot_snr_campaign(output)
+    plot_snr_campaign(output, model_names)

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def plot_snr_campaign(output):
+def plot_snr_campaign(output, model_names):
     frame = pd.read_csv(output / "test_summary.csv")
     fig, axis = plt.subplots(figsize=(11, 5), constrained_layout=True)
     labels = frame.method.str.replace("_", " ")
@@ -19,8 +19,8 @@ def plot_snr_campaign(output):
         axis.text(value + 0.1, position, f"{value:.2f}", va="center")
     fig.savefig(output / "snr_target_test_comparison.png", dpi=170)
     plt.close(fig)
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4), constrained_layout=True)
-    for axis, name in zip(axes, ["eeg_vmd_student", "eog_vmd_gain_student"]):
+    fig, axes = plt.subplots(1, len(model_names), figsize=(6 * len(model_names), 4), constrained_layout=True, squeeze=False)
+    for axis, name in zip(axes[0], model_names):
         grid = pd.read_csv(output / name / "validation_grid.csv")
         for config, subset in grid[grid.strength == 1].groupby("config_id"):
             axis.plot(subset.epoch, subset.validation_snr_db, label=f"Config {config}")

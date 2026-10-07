@@ -2,7 +2,7 @@
 import pytest
 import torch
 from eog_vmd_fcm_bgru.snr_student import (masked_snr_db, snr_target_loss,
-    identity_penalty, VMDSpatialStudent, EOGGainStudent)
+    identity_penalty, VMDSpatialStudent, EOGGainStudent, EOGContextGainStudent)
 
 
 def test_snr_has_known_db_gradient_and_is_scale_sensitive():
@@ -30,7 +30,7 @@ def test_snr_and_identity_ignore_padded_garbage():
     assert identity_penalty(target * 0, target, torch.ones(1, 2)) == 0
 
 
-@pytest.mark.parametrize("constructor", [VMDSpatialStudent, EOGGainStudent])
+@pytest.mark.parametrize("constructor", [VMDSpatialStudent, EOGGainStudent, EOGContextGainStudent])
 def test_student_permutation_padding_identity_and_checkpoint(constructor, tmp_path):
     torch.manual_seed(17)
     model = constructor().eval()
@@ -57,3 +57,19 @@ def test_student_permutation_padding_identity_and_checkpoint(constructor, tmp_pa
     reloaded = constructor().eval()
     reloaded.load_state_dict(torch.load(checkpoint, weights_only=True))
     torch.testing.assert_close(reloaded(eeg, modes, eyes, mask, regions)["artifact"], expected)
+
+
+def test_frontal_support_controls_posterior_gain_without_losing_sign():
+    model = EOGContextGainStudent()
+    with torch.no_grad():
+        model.gains[-1].bias.fill_(0.5)
+    features = torch.zeros(1, 3, 15)
+    correlations = torch.zeros(1, 3, 4, 2)
+    correlations[0, 0, 0, 0] = 0.9
+    mask, regions = torch.ones(1, 3), torch.tensor([[0, 1, 1]])
+    supported = model.correction_gains(features, correlations, mask, regions)
+    assert supported[0, 2, 0] > 0.8
+    correlations[0, 0, 0, 0] = -0.9
+    torch.testing.assert_close(model.correction_gains(features, correlations, mask, regions), supported)
+    correlations.zero_()
+    assert model.correction_gains(features, correlations, mask, regions).abs().max() < 1e-7

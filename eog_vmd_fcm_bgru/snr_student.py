@@ -115,6 +115,9 @@ class EOGGainStudent(nn.Module):
         nn.init.zeros_(self.gains[-1].weight)
         nn.init.zeros_(self.gains[-1].bias)
 
+    def correction_gains(self, features, correlations, mask, regions):
+        return 2 * torch.tanh(self.gains(features))
+
     def forward(self, eeg, modes, references, mask, regions):
         if references.shape != (eeg.shape[0], 2, eeg.shape[-1]):
             raise ValueError("Explicit aligned HEOG and VEOG are required")
@@ -136,7 +139,32 @@ class EOGGainStudent(nn.Module):
         # regression amplitudes + 1 known-frontal flag = 15 shared features.
         features = torch.cat([correlations.flatten(2), fraction, kurtosis,
                               coefficients / rms[:, :, :1], (regions == 0).to(eeg.dtype)[..., None]], dim=-1)
-        gain = 2 * torch.tanh(self.gains(features))
+        gain = self.correction_gains(features, correlations, mask, regions)
         artifact = (components * gain[..., None]).sum(dim=2)
         artifact = torch.where(mask.bool()[..., None], artifact, torch.zeros_like(artifact))
         return {"artifact": artifact, "cleaned": eeg - artifact}
+
+
+class EOGContextGainStudent(EOGGainStudent):
+    """Shared support evidence gates signed corrections throughout the cap.
+
+    Prefer verified frontal support when available; unknown montages use all
+    observed channels. This fallback never invents a frontal electrode order.
+    The signed HEOG/VEOG projection itself is unchanged by this evidence pool.
+    """
+    def __init__(self):
+        super().__init__()
+        self.gains = nn.Sequential(nn.Linear(17, 48), nn.GELU(), nn.Linear(48, 32),
+                                   nn.GELU(), nn.Linear(32, 2))
+        nn.init.zeros_(self.gains[-1].weight)
+        nn.init.zeros_(self.gains[-1].bias)
+        self.threshold_logit = nn.Parameter(torch.tensor(0.5108256))  # 0.6 in bounded [0.1,0.9].
+
+    def correction_gains(self, features, correlations, mask, regions):
+        frontal = mask.bool() & (regions == 0)
+        support = torch.where(frontal.any(dim=1, keepdim=True), frontal, mask.bool())
+        evidence = correlations[:, :, 0].abs().masked_fill(~support[..., None], 0).amax(dim=1)
+        repeated = evidence[:, None].expand(-1, features.shape[1], -1)
+        threshold = 0.1 + 0.8 * torch.sigmoid(self.threshold_logit)
+        gate = torch.sigmoid(40 * (evidence.amax(dim=-1, keepdim=True) - threshold))
+        return 2 * torch.tanh(self.gains(torch.cat([features, repeated], dim=-1))) * gate[:, None]
