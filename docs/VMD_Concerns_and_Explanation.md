@@ -58,6 +58,15 @@ The next computational gate compares a two-iterate, positive-spectrum VMD implem
 
 ## Hybrid and region handling
 
+The 2026-10-08 extension retains raw frontal support observations in posterior
+ICA and corrects only posterior output rows. Frontal outputs use a separate
+VMD correction. It compares soft HEOG/VEOG correlation selection, two/three
+FCM clusters, whole-mode attenuation and EOG-projected mode attenuation.
+The two correlations remain separate features, rather than treating a cluster
+as a verified blink/lateral label. These current classical variants require
+runtime EOG references; an EEG-only neural deployment is a separate model.
+See `Frontal_Support_Protocol.md` for calibration, validation and failure gates.
+
 The VMD temporal expert and full-montage ICA source expert both estimate artifacts relative to the same input. Candidate ICA sources can receive VMD refinement, which preserves portions of a mixed component instead of rejecting it wholesale. Fixed regional fusion subtracts a convex mixture of the two estimates; a learned router is a separate ablation. Verified frontal electrodes get a stronger VMD prior, verified posterior electrodes get a more conservative spatial prior, and central/unknown channels use a shared rule. Neither branch is assumed to be anatomically optimal. Posterior pass-through is not unconditional because posterior EEG can also contain ocular contamination.
 
 Klados channel order is currently unverified; no paired frontal/posterior claim is valid until its extraction mapping is recovered. Named OSF electrodes support regional proxy comparisons. Position metadata moves with a channel under permutation; EOG and annotation channels never enter the EEG-only model. Padded or flat channels are excluded by a mask. Channelwise weights and masked pooling make the parameter count independent of the number of cap channels, but performance for arbitrarily many or unseen layouts still requires experiments.

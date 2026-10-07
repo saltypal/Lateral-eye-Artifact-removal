@@ -8,7 +8,7 @@ from .provenance import audit, save_json
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "snr-audit", "reference-guided", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], required=True)
+    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "snr-audit", "reference-guided", "reference-refine", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], required=True)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -55,9 +55,9 @@ def main():
     elif args.phase == "neural-search":
         from .neural_search import search_student
         search_student(args.data_root, args.output, device=device)
-    elif args.phase == "reference-guided":
+    elif args.phase in {"reference-guided", "reference-refine"}:
         from .reference_guided_study import run_reference_guided
-        run_reference_guided(args.data_root, args.output)
+        run_reference_guided(args.data_root, args.output, max_iterations=2000 if args.phase == "reference-refine" else 500)
     elif args.phase in {"vmd-convergence", "vmd-robust-grid"}:
         from .vmd_convergence_check import check_vmd_convergence
         check_vmd_convergence(args.data_root, args.output, full_grid=args.phase == "vmd-robust-grid")

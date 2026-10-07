@@ -79,6 +79,22 @@ The first diagnostic cannot certify N-channel accuracy, complete removal or
 SNR >10 dB. Full grouped multi-seed validation, all-session OSF isolation,
 covariance preservation and streaming remain separate gates.
 
+## Numerical refinement after the first run
+
+The first run at `bae9bcf40f08c8de39db5359177550edeba7e7e8` passed 31 tests.
+All 703 training channel decompositions converged, but ten validation channel
+decompositions reached the 500-iteration budget in four of 24 windows. Thus
+none of the 96 candidates was accepted. The correlation-only EOG-projection
+candidate at threshold 0.6/strength 1 had validation SNR 10.212 dB and
+worst-record mean clean change 0.506%, but remains rejected at that revision.
+
+`reference-refine` raises the uniform numerical budget to 2000 iterations,
+retaining K=3, alpha=2000, tolerance 1e-6 and every original quality guard. It
+refits on the same training data and repeats the same validation comparison.
+No held-out score informs this numerical adjustment. A new test checks the
+rolling implementation against pinned vmdpy with only its iteration-budget
+constant changed to 2000. The original failed quality gate is preserved.
+
 Reference: MNE's official ICA documentation describes EOG correlation scoring,
 channel selection and component reconstruction:
 https://mne.tools/stable/generated/mne.preprocessing.ICA.html

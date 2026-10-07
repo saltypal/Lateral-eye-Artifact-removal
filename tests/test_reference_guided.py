@@ -28,6 +28,30 @@ def test_signed_correlations_handle_constants_and_reject_misalignment():
         aligned_correlations(vectors * np.nan, eyes)
 
 
+def test_extended_vmd_budget_matches_independent_reference_with_same_budget():
+    import inspect
+    from vmdpy import VMD
+    from eog_vmd_fcm_bgru.vmd_rolling import rolling_decompose
+    eyes, brain = signals()
+    values = eyes[0, :129] + 0.3 * brain[:129]
+    # Change only the pinned reference's budget, not its update equations.
+    source = inspect.getsource(VMD)
+    assert source.count("Niter = 500") == 1
+    namespace = dict(VMD.__globals__)
+    exec(compile(source.replace("Niter = 500", "Niter = 2000"), "extended_vmdpy_reference", "exec"), namespace)
+    padded = np.pad(values, (0, len(values) % 2), mode="edge")
+    scale = np.sqrt(np.mean(padded ** 2))
+    expected, _, frequencies = namespace["VMD"](padded / scale, 2000, 0, 3, 0, 1, 1e-6)
+    order = np.argsort(frequencies[-1])
+    actual, _, details = rolling_decompose(values, modes=3, alpha=2000, max_iterations=2000)
+    np.testing.assert_allclose(actual, expected[order, :len(values)] * scale, atol=2e-6, rtol=1e-5)
+    np.testing.assert_allclose(details["centers_hz"], frequencies[-1, order] * 200, atol=1e-5)
+    assert details["iterations"] == len(frequencies)
+    assert not details["hit_iteration_limit"]
+    _, _, short = rolling_decompose(values, modes=3, alpha=2000, max_iterations=3)
+    assert short["hit_iteration_limit"]
+
+
 def test_reference_projection_preserves_neural_activity_inside_a_mixed_mode():
     eyes, brain = signals()
     mixed = (eyes[0] + brain)[None]

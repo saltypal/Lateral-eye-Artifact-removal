@@ -1,5 +1,11 @@
 # Model and search design
 
+The active 2026-10-08 classical extension is specified in
+`Frontal_Support_Protocol.md`: raw frontal support for posterior ICA and
+train-only EOG-guided mode clustering. Its first Kaggle run is pending numerical
+validation. The earlier global-fusion and student sections below document
+existing prototypes, not a claim that this new regional split already works.
+
 The active experiment is a bounded feasibility study. It cannot certify complete EOG removal, unseen-montage accuracy, streaming safety, or superiority over the published/previous notebook. Those require the full research-contract gates.
 
 ## Inspectable processing path

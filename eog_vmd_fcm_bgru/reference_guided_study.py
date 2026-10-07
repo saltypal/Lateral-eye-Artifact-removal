@@ -26,10 +26,10 @@ THRESHOLDS = [0.2, 0.4, 0.6, 0.8]
 STRENGTHS = [0.25, 0.5, 0.75, 1.0]
 
 
-def decompose_rows(values):
+def decompose_rows(values, max_iterations=500):
     vectors, diagnostics = [], []
     for row in values:
-        modes, _, detail = rolling_decompose(row, K, ALPHA)
+        modes, _, detail = rolling_decompose(row, K, ALPHA, max_iterations=max_iterations)
         vectors.append(modes)
         diagnostics.append(detail)
     return np.stack(vectors), diagnostics
@@ -60,12 +60,12 @@ def artifact_from_evidence(evidence, selector, threshold, projection):
     return np.sum(selected * weights[..., None], axis=1)
 
 
-def klados_development(root, output, split):
+def klados_development(root, output, split, max_iterations=500):
     dirty, clean, eog = klados_arrays(root)
     training_modes, training_references, training_keys, diagnostics = [], [], [], []
     for record in split["train"]:
         segment = slice(STARTS[0], STARTS[0] + WINDOW)
-        modes, details = decompose_rows(dirty[record, :, segment])
+        modes, details = decompose_rows(dirty[record, :, segment], max_iterations)
         for channel, (vectors, detail) in enumerate(zip(modes, details)):
             training_modes.append(vectors)
             training_references.append(eog[record, :, segment])
@@ -93,8 +93,8 @@ def klados_development(root, output, split):
         for start in STARTS:
             segment = slice(start, start + WINDOW)
             raw, target, references = dirty[record, :, segment], clean[record, :, segment], eog[record, :, segment]
-            raw_vectors, raw_detail = decompose_rows(raw)
-            clean_vectors, clean_detail = decompose_rows(target)
+            raw_vectors, raw_detail = decompose_rows(raw, max_iterations)
+            clean_vectors, clean_detail = decompose_rows(target, max_iterations)
             for kind, details in [("dirty", raw_detail), ("clean", clean_detail)]:
                 diagnostics.extend({"split": "val", "record": record, "channel": channel,
                                     "input": kind, "start": start, **detail}
@@ -142,6 +142,7 @@ def klados_development(root, output, split):
     # A single overall development winner is frozen before the OSF diagnostic.
     save_json(output / "reference_selected.json", finite_json({"selected": selected,
         "K": K, "alpha": ALPHA, "rms_normalized": True, "tolerance": 1e-6,
+        "max_iterations": max_iterations,
         "candidate_count": len(settings), "training_record_count": len(split["train"]),
         "validation_records": split["val"], "validation_channels": dirty.shape[1],
         "starts": STARTS, "all_training_decompositions_converged": all_training_converged,
@@ -170,7 +171,7 @@ def fit_routed_ica(calibration, fit_indices):
     return None, attempts
 
 
-def osf_support_diagnostic(root, output, selectors, selected):
+def osf_support_diagnostic(root, output, selectors, selected, max_iterations=500):
     sessions = [sorted((root / "Dataset1_OSF" / study).glob("*_prep.set"))[0]
                 for study in ["study01", "study02", "study03", "study04"]]
     rows, calibration_rows, failures, runtime_rows = [], [], [], []
@@ -225,7 +226,7 @@ def osf_support_diagnostic(root, output, selectors, selected):
             frontal_residual = np.zeros_like(raw)
             if selected is not None and len(frontal):
                 started = time.perf_counter()
-                vectors, details = decompose_rows(raw[frontal])
+                vectors, details = decompose_rows(raw[frontal], max_iterations)
                 evidence = window_evidence(vectors, eyes, selectors)
                 candidate = artifact_from_evidence(evidence, selected["selector"],
                     selected["threshold"], selected["projection"]) * selected["strength"]
@@ -269,7 +270,7 @@ def osf_support_diagnostic(root, output, selectors, selected):
         "winner_selected_from_osf": False, "all_session_validation": False}
 
 
-def run_reference_guided(root, output):
+def run_reference_guided(root, output, max_iterations=500):
     gate_path = unique_source("vmd_engine_gate.json")
     gate = json.loads(gate_path.read_text())
     if not gate["parity_pass"]:
@@ -279,13 +280,14 @@ def run_reference_guided(root, output):
     save_json(output / "reference_guided_protocol.json", {
         "split": split, "heldout_test_used": False, "reference_order": ["HEOG", "VEOG"],
         "runtime_references_required": True, "K": K, "alpha": ALPHA,
+        "max_iterations": max_iterations, "stopping_tolerance": 1e-6,
         "reference_ridge_penalty": 0.01, "correlation_thresholds": THRESHOLDS,
         "correction_strengths": STRENGTHS, "window_starts": STARTS, "seed": 42,
         "source_ledger": [{"path": str(path), "sha256": sha256_file(path)} for path in [gate_path, split_path]],
         "numerical_execution": "Kaggle only", "full_validation": False})
     with threadpool_limits(limits=2):
-        selectors, selected = klados_development(root, output, split)
-        diagnostic = osf_support_diagnostic(root, output, selectors, selected)
+        selectors, selected = klados_development(root, output, split, max_iterations)
+        diagnostic = osf_support_diagnostic(root, output, selectors, selected, max_iterations)
     save_json(output / "reference_guided_summary.json", finite_json({
         "development_vmd_selected": selected, "posterior_support": diagnostic,
         "heldout_quality_measured": False, "complete_removal_established": False,
