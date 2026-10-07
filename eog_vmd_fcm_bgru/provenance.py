@@ -33,7 +33,7 @@ def environment(repository: Path) -> dict:
     packages = {}
     for name in ["numpy", "scipy", "pandas", "mne", "torch", "vmdpy",
                  "scikit-fuzzy", "scikit-learn", "python-picard", "mne-denoise", "ARMBR",
-                 "pymatreader", "h5py", "hdf5storage"]:
+                 "pymatreader", "h5py", "hdf5storage", "threadpoolctl"]:
         try:
             packages[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:
