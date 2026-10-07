@@ -131,7 +131,7 @@ OUT.mkdir(parents=True, exist_ok=True)
                 supplements = list(Path("/kaggle/input").rglob("supplement_manifest.json")) if IN_KAGGLE else []
                 if len(supplements) > 1:
                     raise RuntimeError("Attach at most one verified OSF restoration output")
-                if PHASE in {"train", "calibration", "neural-search", "vmd-convergence", "vmd-robust-grid", "reference-guided", "reference-refine", "reference-safe"} and len(supplements) != 1:
+                if PHASE in {"train", "calibration", "neural-search", "vmd-convergence", "vmd-robust-grid", "reference-guided", "reference-refine", "reference-safe", "snr-target"} and len(supplements) != 1:
                     raise RuntimeError("This phase requires the completed study04 restoration output")
                 if supplements:
                     subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.bundle_io", "--root", str(DATA_ROOT),
@@ -149,7 +149,7 @@ OUT.mkdir(parents=True, exist_ok=True)
             code('''
                 from IPython.display import Image, HTML, display
                 import csv, html
-                for filename in ("audit_summary.json", "classical_gate.json", "selected_vmd.json", "training_summary.json", "calibration_check_summary.json", "klados_provenance_check_summary.json", "convergence_check_summary.json", "reference_guided_summary.json", "fresh_load_verification.json"):
+                for filename in ("audit_summary.json", "classical_gate.json", "selected_vmd.json", "training_summary.json", "calibration_check_summary.json", "klados_provenance_check_summary.json", "convergence_check_summary.json", "reference_guided_summary.json", "snr_target_summary.json", "fresh_load_verification.json"):
                     if (OUT / filename).exists():
                         print(filename, (OUT / filename).read_text())
                 for filename in ("benchmark_summary.csv", "student_metrics.csv"):
@@ -158,7 +158,7 @@ OUT.mkdir(parents=True, exist_ok=True)
                             rows = list(csv.reader(handle))
                         markup = "<table>" + "".join("<tr>" + "".join("<td>" + html.escape(value) + "</td>" for value in row) + "</tr>" for row in rows[:25]) + "</table>"
                         display(HTML(markup))
-                for name in ("vmd_center_frequency_sweep", "vmd_preservation_tradeoff", "vmd_mode_vectors", "student_heldout_waveforms", "student_channel_scaling", "neural_validation_tradeoff", "neural_record_comparison"):
+                for name in ("vmd_center_frequency_sweep", "vmd_preservation_tradeoff", "vmd_mode_vectors", "student_heldout_waveforms", "student_channel_scaling", "neural_validation_tradeoff", "neural_record_comparison", "snr_target_test_comparison", "snr_target_training_curves"):
                     if (OUT / (name + ".png")).exists():
                         display(Image(filename=str(OUT / (name + ".png"))))
                 print("Saved artifacts", len(list(OUT.rglob("*"))), "in", OUT)
