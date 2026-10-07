@@ -144,6 +144,8 @@ def klados_development(root, output, split, max_iterations=500, passthrough=Fals
     record_means = frame.groupby(columns + ["record"], as_index=False).mean(numeric_only=True)
     record_means.to_csv(output / "reference_validation_records.csv", index=False)
     summary = record_means.groupby(columns, as_index=False).mean(numeric_only=True)
+    # Recording IDs and window starts identify samples; their means are not metrics.
+    summary = summary.drop(columns=["record", "start"])
     worst = record_means.groupby(columns).clean_relative_change.max().reset_index(name="worst_record_clean_change")
     summary = summary.merge(worst, on=columns)
     all_training_converged = not any(detail["hit_iteration_limit"] for detail in diagnostics if detail["split"] == "train")
