@@ -120,3 +120,20 @@ def test_posterior_correction_uses_raw_frontal_support_without_modifying_it():
     np.testing.assert_array_equal(actual[[1, 2, 4]], 0)
     with pytest.raises(ValueError, match="include"):
         routed_ica_residual(eeg, [1, 4], [0], FakeICA())
+
+
+def test_unconverged_vmd_channel_never_enters_clustering_or_changes_eeg():
+    from eog_vmd_fcm_bgru.reference_guided_study import window_evidence, artifact_from_evidence
+    eyes, brain = signals()
+    vectors = np.stack([np.stack([eyes[0] * 1000, brain]), np.stack([eyes[1], brain])])
+    class CheckingSelector:
+        def evidence(self, values, references):
+            np.testing.assert_array_equal(values, vectors[1])
+            return {"cluster_weight": np.ones(len(values))}
+    evidence = window_evidence(vectors, eyes, {"checked": CheckingSelector()}, [False, True])
+    for projection in [False, True]:
+        removed = artifact_from_evidence(evidence, "checked", 0.4, projection)
+        np.testing.assert_array_equal(removed[0], 0)
+        assert np.linalg.norm(removed[1]) > 0
+        eeg = np.stack([brain + eyes[0], brain + eyes[1]])
+        np.testing.assert_array_equal((eeg - removed)[0], eeg[0])

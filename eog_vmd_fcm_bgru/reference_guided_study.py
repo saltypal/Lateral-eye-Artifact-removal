@@ -42,14 +42,21 @@ def ordered_references(trial):
     return np.stack([eyes["HEOG"], eyes["VEOG"]])
 
 
-def window_evidence(vectors, references, selectors):
-    correlations = np.stack([aligned_correlations(row, references) for row in vectors])
-    cluster_weights = {"correlation": np.ones(vectors.shape[:2])}
-    for name, selector in selectors.items():
-        cluster_weights[name] = np.stack([selector.evidence(row, references)["cluster_weight"] for row in vectors])
-    projected = reference_projection(vectors.reshape(-1, vectors.shape[-1]), references).reshape(vectors.shape)
+def window_evidence(vectors, references, selectors, valid_channels=None):
+    valid = np.ones(len(vectors), dtype=bool) if valid_channels is None else np.asarray(valid_channels, dtype=bool)
+    if valid.shape != (len(vectors),):
+        raise ValueError("VMD convergence mask must align with EEG rows")
+    correlations = np.zeros((*vectors.shape[:2], len(references)))
+    projected = np.zeros_like(vectors, dtype=np.float64)
+    cluster_weights = {name: np.zeros(vectors.shape[:2]) for name in ["correlation", *selectors]}
+    for channel in np.flatnonzero(valid):
+        correlations[channel] = aligned_correlations(vectors[channel], references)
+        projected[channel] = reference_projection(vectors[channel], references)
+        cluster_weights["correlation"][channel] = 1
+        for name, selector in selectors.items():
+            cluster_weights[name][channel] = selector.evidence(vectors[channel], references)["cluster_weight"]
     return {"vectors": vectors, "projected": projected, "correlations": correlations,
-            "cluster_weights": cluster_weights}
+            "cluster_weights": cluster_weights, "valid_channels": valid}
 
 
 def artifact_from_evidence(evidence, selector, threshold, projection):
@@ -57,10 +64,12 @@ def artifact_from_evidence(evidence, selector, threshold, projection):
     weights = soft_correlation_gate(correlations.reshape(-1, correlations.shape[-1]), threshold)
     weights = weights.reshape(correlations.shape[:2]) * evidence["cluster_weights"][selector]
     selected = evidence["projected"] if projection else evidence["vectors"]
-    return np.sum(selected * weights[..., None], axis=1)
+    artifact = np.sum(selected * weights[..., None], axis=1)
+    artifact[~evidence["valid_channels"]] = 0
+    return artifact
 
 
-def klados_development(root, output, split, max_iterations=500):
+def klados_development(root, output, split, max_iterations=500, passthrough=False):
     dirty, clean, eog = klados_arrays(root)
     training_modes, training_references, training_keys, diagnostics = [], [], [], []
     for record in split["train"]:
@@ -99,8 +108,10 @@ def klados_development(root, output, split, max_iterations=500):
                 diagnostics.extend({"split": "val", "record": record, "channel": channel,
                                     "input": kind, "start": start, **detail}
                                    for channel, detail in enumerate(details))
-            raw_evidence = window_evidence(raw_vectors, references, selectors)
-            clean_evidence = window_evidence(clean_vectors, references, selectors)
+            raw_valid = np.asarray([not detail["hit_iteration_limit"] for detail in raw_detail])
+            clean_valid = np.asarray([not detail["hit_iteration_limit"] for detail in clean_detail])
+            raw_evidence = window_evidence(raw_vectors, references, selectors, raw_valid if passthrough else None)
+            clean_evidence = window_evidence(clean_vectors, references, selectors, clean_valid if passthrough else None)
             baseline = paired_metrics(raw.astype(np.float64), target.astype(np.float64))
             converged = not any(detail["hit_iteration_limit"] for detail in raw_detail + clean_detail)
             raw_artifacts, clean_artifacts = {}, {}
@@ -121,7 +132,10 @@ def klados_development(root, output, split, max_iterations=500):
                     "clean_relative_change": change["relative_change"],
                     "clean_alpha_error_db": preservation["alpha_error_db"],
                     "clean_beta_error_db": preservation["beta_error_db"],
-                    "convergence_pass": converged})
+                    "convergence_pass": converged,
+                    "correction_convergence_pass": converged or passthrough,
+                    "dirty_passthrough_channels": int((~raw_valid).sum()) if passthrough else 0,
+                    "clean_passthrough_channels": int((~clean_valid).sum()) if passthrough else 0})
             print("Reference-guided validation saved", record, start, flush=True)
         pd.DataFrame(rows).to_csv(output / "reference_validation_windows.csv", index=False)
         save_json(output / "reference_vmd_diagnostics.json", finite_json(diagnostics))
@@ -135,7 +149,7 @@ def klados_development(root, output, split, max_iterations=500):
     all_training_converged = not any(detail["hit_iteration_limit"] for detail in diagnostics if detail["split"] == "train")
     summary["feasible"] = ((summary.worst_record_clean_change <= 0.01)
         & (summary.clean_alpha_error_db <= 0.5) & (summary.clean_beta_error_db <= 0.5)
-        & (summary.convergence_pass == 1) & all_training_converged & (summary.rmse_improvement_fraction > 0))
+        & (summary.correction_convergence_pass == 1) & all_training_converged & (summary.rmse_improvement_fraction > 0))
     summary.to_csv(output / "reference_validation_summary.csv", index=False)
     feasible = summary[summary.feasible]
     selected = None if feasible.empty else feasible.sort_values(["rmse", "selector", "threshold"]).iloc[0].to_dict()
@@ -143,6 +157,8 @@ def klados_development(root, output, split, max_iterations=500):
     save_json(output / "reference_selected.json", finite_json({"selected": selected,
         "K": K, "alpha": ALPHA, "rms_normalized": True, "tolerance": 1e-6,
         "max_iterations": max_iterations,
+        "iteration_limit_policy": "channel_identity_passthrough" if passthrough else "reject_candidate",
+        "quality_margins_unchanged": True,
         "candidate_count": len(settings), "training_record_count": len(split["train"]),
         "validation_records": split["val"], "validation_channels": dirty.shape[1],
         "starts": STARTS, "all_training_decompositions_converged": all_training_converged,
@@ -227,7 +243,8 @@ def osf_support_diagnostic(root, output, selectors, selected, max_iterations=500
             if selected is not None and len(frontal):
                 started = time.perf_counter()
                 vectors, details = decompose_rows(raw[frontal], max_iterations)
-                evidence = window_evidence(vectors, eyes, selectors)
+                valid = [not detail["hit_iteration_limit"] for detail in details]
+                evidence = window_evidence(vectors, eyes, selectors, valid)
                 candidate = artifact_from_evidence(evidence, selected["selector"],
                     selected["threshold"], selected["projection"]) * selected["strength"]
                 for position, detail in enumerate(details):
@@ -270,7 +287,7 @@ def osf_support_diagnostic(root, output, selectors, selected, max_iterations=500
         "winner_selected_from_osf": False, "all_session_validation": False}
 
 
-def run_reference_guided(root, output, max_iterations=500):
+def run_reference_guided(root, output, max_iterations=500, passthrough=False):
     gate_path = unique_source("vmd_engine_gate.json")
     gate = json.loads(gate_path.read_text())
     if not gate["parity_pass"]:
@@ -281,12 +298,13 @@ def run_reference_guided(root, output, max_iterations=500):
         "split": split, "heldout_test_used": False, "reference_order": ["HEOG", "VEOG"],
         "runtime_references_required": True, "K": K, "alpha": ALPHA,
         "max_iterations": max_iterations, "stopping_tolerance": 1e-6,
+        "iteration_limit_policy": "channel_identity_passthrough" if passthrough else "reject_candidate",
         "reference_ridge_penalty": 0.01, "correlation_thresholds": THRESHOLDS,
         "correction_strengths": STRENGTHS, "window_starts": STARTS, "seed": 42,
         "source_ledger": [{"path": str(path), "sha256": sha256_file(path)} for path in [gate_path, split_path]],
         "numerical_execution": "Kaggle only", "full_validation": False})
     with threadpool_limits(limits=2):
-        selectors, selected = klados_development(root, output, split, max_iterations)
+        selectors, selected = klados_development(root, output, split, max_iterations, passthrough)
         diagnostic = osf_support_diagnostic(root, output, selectors, selected, max_iterations)
     save_json(output / "reference_guided_summary.json", finite_json({
         "development_vmd_selected": selected, "posterior_support": diagnostic,

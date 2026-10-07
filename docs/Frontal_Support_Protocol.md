@@ -75,6 +75,12 @@ examples. Learning requires validated training or updates; deployment alone
 does not improve a network. Measure device memory, latency and quality before
 claiming the student is easier to deploy.
 
+The neural frontal-context branch must retain left/right information rather
+than only averaging all frontal features: opposite-polarity horizontal ocular
+patterns can cancel in a mean. Verified side/position metadata and signed
+bilateral context are candidate inputs. Unknown Klados row identities cannot
+be used to invent left/right labels for that training experiment.
+
 The first diagnostic cannot certify N-channel accuracy, complete removal or
 SNR >10 dB. Full grouped multi-seed validation, all-session OSF isolation,
 covariance preservation and streaming remain separate gates.
@@ -94,6 +100,18 @@ refits on the same training data and repeats the same validation comparison.
 No held-out score informs this numerical adjustment. A new test checks the
 rolling implementation against pinned vmdpy with only its iteration-budget
 constant changed to 2000. The original failed quality gate is preserved.
+
+The 2000-iteration run at `574d669ca5bd3505c43b9c38b1aa8b121594a35a`
+passed 32 tests but retained two capped validation decompositions. No setting
+was accepted. `reference-safe` changes the actual cleaner: a capped channel
+receives exactly zero estimated artifact, never enters mode clustering, and
+passes through unchanged. All original EEG rows remain in the quality score.
+It applies the same fallback to dirty and clean counterfactual inputs and
+records their separate fallback counts. Only corrections from converged
+decompositions may be applied; training clustering must still fully converge.
+The original one-percent clean and 0.5-dB spectral limits remain unchanged.
+This explicit fallback replaces the earlier reject-the-entire-candidate policy;
+it does not assert that every attempted decomposition converged.
 
 Reference: MNE's official ICA documentation describes EOG correlation scoring,
 channel selection and component reconstruction:
