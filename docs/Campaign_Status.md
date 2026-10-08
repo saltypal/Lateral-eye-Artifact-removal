@@ -1,6 +1,6 @@
 # Kaggle campaign status
 
-Updated 2026-10-08. This is an execution ledger, not a performance report.
+Updated 2026-10-09. This is an execution ledger, not a performance report.
 
 ## Measured and verified
 
@@ -35,9 +35,11 @@ Updated 2026-10-08. This is an execution ledger, not a performance report.
 
 ## Running and pending
 
+- SNR-target (`583b6942b1aaccaccc54f290750e98b7cdf7233c`), SNR-context (`2ec0b3cd3da636cc3aed3b476ff890a6f56e2627`) and SNR-guard (`0b183e6c09f6ecfbb3ed4818028eb5abbdf842fc`) all completed on Kaggle. Their numerical tests passed 37/39/40 respectively. Twelve 160-epoch neural training configurations and twenty final inference-rule comparisons were completed. The guarded EOG-assisted VMD neural model scored 17.9272 dB mean SNR across eight reused test records/all 19 rows/three windows, versus raw 2.9021 and frozen reference VMD 9.4057 dB. It made zero change to scored clean inputs and passed the recorded preservation gate. These are development-exposed record-held-out scores, with one record below 15 dB; fresh/subject-separated confirmation is not established. Checkpoints/tables/predictions/plots were retrieved. See `SNR_Target_Results_2026-10-08.md`.
+
 - Restored-source attachment, every-file verification and fresh inference have passed subsequent Kaggle regression runs.
 - The accepted reference-safe settings require broader frozen evaluation; the two rejected numerical-policy runs remain archived. Full multi-seed/grouped and all-session regional validation has not been completed.
-- The current fast student uses raw EEG at inference. Neural deployment and direct VMD-mode conditioning are deferred until the revised classical target passes its quality gate. The EOG-guided classical cleaner requires runtime HEOG/VEOG; the planned EEG-only student is a distinct deployment contract.
+- The older fast student uses raw EEG at inference. New VMD-conditioned neural training is completed, but its 15-dB target is met only by the runtime-HEOG/VEOG-assisted shared-support model. EEG-only distillation, wearable latency, unknown-cap accuracy and integration with posterior ICA remain separate pending experiments.
 - A development smoke grid cannot justify final optimality. Five grouped folds, three seeds, matched old/recent baselines, OSF study/participant isolation and a separate streaming study remain required by the research contract.
 
 ## Resolved infrastructure failures
