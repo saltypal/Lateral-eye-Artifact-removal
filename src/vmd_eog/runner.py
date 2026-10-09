@@ -11,6 +11,7 @@ import time
 import resource
 from .contracts import require_kaggle, require_approval
 from .io import atomic_json, sha256_file
+from .artifacts import record_parent_identities
 
 
 def execute(stage, input_root, output, profile):
@@ -18,6 +19,7 @@ def execute(stage, input_root, output, profile):
     root=Path(__file__).resolve().parents[2]
     config=json.loads((root/"configs/campaign.json").read_text())
     atomic_json(output/"configuration.json",config)
+    record_parent_identities(input_root,output,config)
     require_approval(stage,input_root,config)
     packages={}
     for name in ("numpy","scipy","mne","pandas","scikit-learn","vmdpy","torch","python-picard"):

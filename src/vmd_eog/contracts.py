@@ -31,6 +31,18 @@ def require_approval(stage, input_root, config):
         raise RuntimeError("Explicit conditional model authorization is absent")
     if not gate.get("selected_recipe_hash") or not gate.get("evidence_hashes"):
         raise RuntimeError("Classical gate has no traceable evidence")
+    from .artifacts import verify_parent
+    directory=files[0].parent
+    verify_parent(directory,("classical_gate.json","approved_recipe.json","review_summary.json"))
+    recipe=json.loads((directory/"approved_recipe.json").read_text())
+    if canonical_hash(recipe)!=gate["selected_recipe_hash"]:
+        raise RuntimeError("Approved recipe differs from passing evidence snapshot")
+    review=json.loads((directory/"review_summary.json").read_text())
+    selected=[r for r in review.get("methods",[]) if r["method"]==gate.get("selected_method")]
+    if len(selected)!=1 or not selected[0].get("passed") or not all(selected[0].get("gates",{}).values()):
+        raise RuntimeError("Selected method does not satisfy archived classical gates")
+    if gate.get("reserved_confirmation_opened") is not False:
+        raise RuntimeError("Classical selection has opened reserved confirmation data")
 
 
 @dataclass(frozen=True)

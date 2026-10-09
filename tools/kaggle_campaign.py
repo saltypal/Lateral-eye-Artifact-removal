@@ -45,7 +45,12 @@ def git(*args):
 
 def submit(args):
     sha = git("ls-remote","origin","refs/heads/"+BRANCH).split()[0]
-    if git("rev-parse","HEAD") != sha:
+    if args.source_sha:
+        if not re.fullmatch(r"[0-9a-f]{40}",args.source_sha):
+            raise ValueError("Reproduction needs an exact archived 40-character SHA")
+        git("merge-base","--is-ancestor",args.source_sha,sha)
+        sha=args.source_sha
+    elif git("rev-parse","HEAD") != sha:
         raise RuntimeError("Push current implementation before submitting latest-SHA experiment")
     if git("status","--porcelain","--untracked-files=no"):
         raise RuntimeError("Tracked edits are uncommitted")
@@ -54,6 +59,7 @@ def submit(args):
     stage.mkdir(parents=True,exist_ok=False)
     spec = {"run_id":run_id,"stage":args.stage,"git_sha":sha,"campaign_id":"vmd-eog-20261010",
             "profile":args.profile,"parent_run":args.parent_run,
+            "source_resolution":"archived reproduction" if args.source_sha else "latest published at launch",
             "kernel_sources":args.kernel_source or [],"dataset_sources":args.dataset_source or []}
     if args.stage not in ("contracts",) and not spec["dataset_sources"]:
         spec["dataset_sources"] = [OWNER+"/lateral-eye-complete-dataset"]
@@ -84,6 +90,7 @@ def main():
     submit_parser.add_argument("--run-id")
     submit_parser.add_argument("--profile",choices=("pilot","full"),default="pilot")
     submit_parser.add_argument("--parent-run")
+    submit_parser.add_argument("--source-sha",help="Exact archived SHA for an explicitly reproducible rerun")
     submit_parser.add_argument("--kernel-source",action="append")
     submit_parser.add_argument("--dataset-source",action="append")
     for command in ("status","retrieve"):

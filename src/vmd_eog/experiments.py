@@ -12,6 +12,7 @@ from .io import atomic_json, read_jsonl, sha256_file, write_jsonl
 from .metrics import paired, ocular, preservation_pass
 from .posterior import fit_mwf, fit_ica
 from .reference import correlations, project, signed_context
+from .artifacts import verify_parent
 
 
 def corpus_parent(input_root):
@@ -19,6 +20,7 @@ def corpus_parent(input_root):
     if json.loads((path/"execution_state.json").read_text())["status"]!="complete":
         raise ValueError("Corpus parent incomplete")
     rows=read_jsonl(path/"corpus_manifest.jsonl")
+    verify_parent(path,("corpus_summary.json","corpus_manifest.jsonl","split_manifest.json"))
     if any(r["partition"]["role"]!="development" for r in rows):
         raise ValueError("Development job contains reserved confirmation examples")
     return path,rows
@@ -79,8 +81,14 @@ def run_vmd(input_root,output,config,profile):
         for k,alpha in itertools.product(grid["K"],grid["alpha"]):
             modes=[]; associations=[]
             for j,i in enumerate(indices):
-                vectors,residual,info=decompose(eeg[j],k,alpha,config)
-                feature=mode_features(vectors,refs,config["fs"])
+                try:
+                    vectors,residual,info=decompose(eeg[j],k,alpha,config)
+                    feature=mode_features(vectors,refs,config["fs"])
+                except Exception as error:
+                    vectors=np.zeros((k,eeg.shape[-1])); residual=eeg[j].copy()
+                    feature=np.zeros((k,4))
+                    info={"hit_iteration_limit":False,"centers_hz":[],"status":"passthrough",
+                        "failure":f"{type(error).__name__}: {error}"}
                 filename=f"{row['example_id']}-channel{i}-K{k}-alpha{alpha}.npz"
                 np.savez_compressed(cache/filename,modes=vectors,residual=residual,features=feature,
                     channel_name=data["channel_names"][i],centers_hz=np.asarray(info["centers_hz"]))
@@ -88,8 +96,9 @@ def run_vmd(input_root,output,config,profile):
                     "channel":str(data["channel_names"][i]),"K":k,"alpha":alpha,"array":"decompositions/"+filename,**info})
                 # Iteration-limited fits are preserved for diagnosis but score
                 # as passthrough; a stalled solver cannot silently correct EEG.
-                modes.append(np.zeros_like(vectors) if info["hit_iteration_limit"] else vectors)
-                associations.append(np.zeros(k) if info["hit_iteration_limit"] else feature[:,0])
+                unusable=info["hit_iteration_limit"] or bool(info.get("failure"))
+                modes.append(np.zeros_like(vectors) if unusable else vectors)
+                associations.append(np.zeros(k) if unusable else feature[:,0])
             modes=np.asarray(modes); associations=np.asarray(associations)
             for lags,penalty in itertools.product(grid["lag_banks"],grid["ridge_penalties"]):
                 projected=np.stack([project(v,refs,lags,penalty)[0] for v in modes])
@@ -288,8 +297,12 @@ def run_regional(input_root,output,config,profile):
         ids_shared=np.flatnonzero(~np.isin(data["regions"],[0,1]))
         begin=time.perf_counter(); raw=data["eeg"]
         direct_art,direct_diag=frontal_artifact(data,direct,config)
-        front_art,front_diag=frontal_artifact(data,vmd,config,ids_front)
         shared_art,shared_diag=frontal_artifact(data,vmd,config)
+        # The shared ablation already decomposes these exact frontal inputs.
+        # Reuse its estimate without changing any regional information access.
+        front_art=np.zeros_like(raw,dtype=float); front_art[ids_front]=shared_art[ids_front]
+        front_names=set(data["channel_names"][ids_front].tolist())
+        front_diag=[d for d in shared_diag if d.get("channel") in front_names or "channel" not in d]
         mwf_art,mwf_diag=posterior_artifact(data,cal,mwf,config,fit_cache,row["calibration"])
         ica_art,ica_diag=posterior_artifact(data,cal,ica,config,fit_cache,row["calibration"])
         posterior_only=None if ica is None else {**ica,"support":"posterior"}
@@ -321,9 +334,69 @@ def run_regional(input_root,output,config,profile):
             write_jsonl(output/"regional_diagnostics.jsonl",diagnostics)
     pd.DataFrame(results).to_csv(output/"regional_scores.csv",index=False)
     write_jsonl(output/"regional_diagnostics.jsonl",diagnostics)
+    run_native_comparison(parent,rows,vf,pf,output,config)
     atomic_json(output/"regional_summary.json",{"profile":profile,"results":len(results),"methods":method_names,"participants":len(folds),
         "source_isolation":"grouped recipient/donor fold exclusion","all_corrections_relative_to":"original input","composed_subtractions":1,
         "confirmation_opened":False})
+
+
+def run_native_comparison(parent,rows,frontal_recipes,posterior_recipes,output,config):
+    """OSF has association proxies; unknown-montage Klados has legacy pairs."""
+    results=[]; diagnostics=[]; fits={}
+    for number,row in enumerate(rows):
+        kind=row["target_kind"]
+        if kind=="controlled_recipient_reference": continue
+        fold=str(row["partition"]["fold"])
+        front=frontal_recipes.get(fold,{})
+        post=posterior_recipes.get(fold,{})
+        direct=recipe_only(front["direct"],"frontal") if "direct" in front else None
+        vmd=recipe_only(front["vmd_projected"],"frontal") if "vmd_projected" in front else None
+        data=dict(np.load(parent/row["array_path"],allow_pickle=False))
+        raw=data["eeg"]
+        direct_art,direct_diag=frontal_artifact(data,direct,config)
+        shared_art,shared_diag=frontal_artifact(data,vmd,config)
+        corrections={"identity":np.zeros_like(raw),"direct":direct_art,"shared_vmd":shared_art}
+        diags={"identity":[],"direct":direct_diag,"shared_vmd":shared_diag}
+        if kind=="real_proxy":
+            cal=dict(np.load(parent/row["calibration"],allow_pickle=False))
+            frontal_ids=np.flatnonzero(data["regions"]==0)
+            common_ids=np.flatnonzero(~np.isin(data["regions"],[0,1]))
+            common=np.zeros_like(raw,dtype=float)
+            common[frontal_ids]=shared_art[frontal_ids]
+            common[common_ids]=direct_art[common_ids]
+            for method in ("mwf","ica"):
+                recipe=recipe_only(post[method],"posterior") if method in post else None
+                artifact,diag=posterior_artifact(data,cal,recipe,config,fits,row["calibration"])
+                corrections["regional_"+method]=common+artifact
+                diags["regional_"+method]=shared_diag+[diag]
+        before=ocular(raw,data["references"])
+        for method,artifact in corrections.items():
+            cleaned=raw-artifact
+            after=ocular(cleaned,data["references"])
+            record={"example_id":row["example_id"],"source":row["recipient"],"condition":row["condition"],
+                "dataset":row["dataset"],"method":method,"target_kind":kind,
+                "heog_before":before["heog_abs"],"heog_after":after["heog_abs"],
+                "veog_before":before["veog_abs"],"veog_after":after["veog_abs"],
+                "joint_r2_before":before["joint_eog_r2"],"joint_r2_after":after["joint_eog_r2"],
+                "failure_count":sum(bool(d.get("failure")) for d in diags[method])}
+            if kind=="legacy_paired":
+                record.update(paired(cleaned,data["paired_reference"],config["fs"]))
+                record["scope"]="legacy development-exposed; unknown participants, units and montage"
+            else:
+                change=paired(cleaned,raw,config["fs"])
+                record.update({"modification_relative_rms":change["relative_error"],
+                    "alpha_modification_db":change["alpha_db"],"beta_modification_db":change["beta_db"],
+                    "covariance_modification":change["covariance"]})
+                record["scope"]="native ocular association and modification proxies; no reconstruction SNR"
+            results.append(record)
+            diagnostics.append({"example_id":row["example_id"],"method":method,"diagnostics":diags[method]})
+        print("NATIVE_COMPARISON",number+1,len(rows),row["example_id"],flush=True)
+        if number%20==0: pd.DataFrame(results).to_csv(output/"native_legacy_scores.csv",index=False)
+    pd.DataFrame(results).to_csv(output/"native_legacy_scores.csv",index=False)
+    write_jsonl(output/"native_legacy_diagnostics.jsonl",diagnostics)
+    atomic_json(output/"native_legacy_summary.json",{"examples":sum(r["target_kind"]!="controlled_recipient_reference" for r in rows),
+        "result_rows":len(results),"regional_klados_anatomy_inferred":False,
+        "native_snr_claim":False,"used_for_confirmation_selection":False})
 
 
 def confidence_interval(values,seed=42):
@@ -415,8 +488,10 @@ def run_review(input_root,output,config,profile):
 def plot_modes(diagnostics,cache,output):
     import matplotlib; matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    first=next((d for d in diagnostics if d["condition"]=="blink"),diagnostics[0])
-    same=[d for d in diagnostics if d["example_id"]==first["example_id"] and d["channel"]==first["channel"]]
+    valid=[d for d in diagnostics if not d.get("failure")]
+    if not valid: return
+    first=next((d for d in valid if d["condition"]=="blink"),valid[0])
+    same=[d for d in valid if d["example_id"]==first["example_id"] and d["channel"]==first["channel"]]
     fig,axes=plt.subplots(1,5,figsize=(18,4),sharey=True)
     for axis,alpha in zip(axes,sorted(set(d["alpha"] for d in same))):
         for row in same:
