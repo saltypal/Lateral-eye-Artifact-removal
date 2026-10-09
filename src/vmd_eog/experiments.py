@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from .contracts import canonical_hash
 from .corpus import unique_parent
-from .frontal import decompose, mode_features
+from .frontal import decompose, mode_features, FCMSelection
 from .io import atomic_json, read_jsonl, sha256_file, write_jsonl
 from .metrics import paired, ocular, preservation_pass
 from .posterior import fit_mwf, fit_ica
@@ -86,7 +86,10 @@ def run_vmd(input_root,output,config,profile):
                     channel_name=data["channel_names"][i],centers_hz=np.asarray(info["centers_hz"]))
                 diagnostics.append({"example_id":row["example_id"],"recipient":row["recipient"],"condition":row["condition"],
                     "channel":str(data["channel_names"][i]),"K":k,"alpha":alpha,"array":"decompositions/"+filename,**info})
-                modes.append(vectors); associations.append(feature[:,0])
+                # Iteration-limited fits are preserved for diagnosis but score
+                # as passthrough; a stalled solver cannot silently correct EEG.
+                modes.append(np.zeros_like(vectors) if info["hit_iteration_limit"] else vectors)
+                associations.append(np.zeros(k) if info["hit_iteration_limit"] else feature[:,0])
             modes=np.asarray(modes); associations=np.asarray(associations)
             for lags,penalty in itertools.product(grid["lag_banks"],grid["ridge_penalties"]):
                 projected=np.stack([project(v,refs,lags,penalty)[0] for v in modes])
@@ -128,6 +131,50 @@ def run_vmd(input_root,output,config,profile):
         "iteration_limit_fits":sum(d["hit_iteration_limit"] for d in diagnostics),"split_hash":json.loads((parent/"corpus_summary.json").read_text())["split_hash"],
         "caveat":"development search; final regional preservation/correlation gates not yet evaluated"})
     plot_modes(diagnostics,cache,output)
+    run_fcm_ablation(parent,rows,table,pd.DataFrame(grouped),diagnostics,cache,output,config)
+
+
+def run_fcm_ablation(parent,rows,table,grouped,diagnostics,cache,output,config):
+    """FCM centers are fit outside each target's recipient/donor source bucket."""
+    folds={r["recipient"]:r["partition"]["fold"] for r in rows}
+    recipes=grouped_selection(table,grouped,folds,config["preservation"])
+    index={}
+    for info in diagnostics:
+        index.setdefault((info["example_id"],info["K"],info["alpha"]),[]).append(info)
+    models={}; records=[]
+    for fold,choices in recipes.items():
+        if "vmd_projected" not in choices: continue
+        recipe=recipe_only(choices["vmd_projected"],"frontal")
+        k=int(recipe["K"]); alpha=recipe["alpha"]
+        training=[r for r in rows if str(folds[r["recipient"]])!=fold]
+        features=[]
+        for row in training:
+            for info in index.get((row["example_id"],k,alpha),[]):
+                if info["hit_iteration_limit"]: continue
+                features.append(np.load(cache/Path(info["array"]).name,allow_pickle=False)["features"])
+        if not features: continue
+        for clusters in config["classical_grid"]["fcm_clusters"]:
+            model=FCMSelection.fit(np.concatenate(features),clusters,config["seed"])
+            models[f"fold{fold}-clusters{clusters}"]={"recipe":recipe,"centers":model.centers.tolist(),"mean":model.mean.tolist(),
+                "scale":model.scale.tolist(),"ocular_clusters":model.ocular_clusters.tolist(),
+                "fitted_recipients":sorted({r["recipient"] for r in training}),
+                "fitted_donors":sorted({r["donor"] for r in training}),"heldout_fold":int(fold)}
+            for row in rows:
+                if str(folds[row["recipient"]])!=fold: continue
+                data=dict(np.load(parent/row["array_path"],allow_pickle=False)); cleaned=[]; targets=[]
+                for info in index.get((row["example_id"],k,alpha),[]):
+                    item=np.load(cache/Path(info["array"]).name,allow_pickle=False)
+                    modes=item["modes"]; channel=data["channel_names"].tolist().index(info["channel"])
+                    estimate,_=project(modes,data["references"],recipe["lags"],recipe["penalty"])
+                    selected=(item["features"][:,0]>=recipe["threshold"]) & (model.predict(item["features"])>=.5)
+                    artifact=np.zeros(modes.shape[-1]) if info["hit_iteration_limit"] else (estimate*selected[:,None]).sum(axis=0)*recipe["strength"]
+                    cleaned.append(data["eeg"][channel]-artifact); targets.append(data["paired_reference"][channel])
+                if cleaned:
+                    snr,rrmse=fast_metric(np.asarray(cleaned),np.asarray(targets))
+                    records.append({"example_id":row["example_id"],"recipient":row["recipient"],"donor":row["donor"],"condition":row["condition"],
+                        "fold":int(fold),"clusters":clusters,"snr_db":snr,"rrmse":rrmse,"method":"vmd_fcm_projected"})
+    atomic_json(output/"fcm_train_only_models.json",models)
+    pd.DataFrame(records).to_csv(output/"vmd_fcm_scores.csv",index=False)
 
 
 def grouped_selection(table,scores,recipient_folds,limits,method_key="method"):
@@ -143,9 +190,13 @@ def grouped_selection(table,scores,recipient_folds,limits,method_key="method"):
             else:
                 summary=candidate_summary(group.to_dict("records"))
                 snr=summary["mean_snr_db"]; change=summary["worst_source_mean_clean_change"]
-            summaries.append({"candidate_hash":key,"fold_selection_snr":snr,"clean_change":change})
+            additional=True
+            if "clean_alpha_db" in group:
+                clean=group[group.condition=="clean"].groupby("recipient")[["clean_alpha_db","clean_beta_db","covariance_error"]].mean()
+                additional=bool(len(clean) and clean.clean_alpha_db.max()<=limits["alpha_db"] and clean.clean_beta_db.max()<=limits["beta_db"] and clean.covariance_error.max()<=limits["covariance"])
+            summaries.append({"candidate_hash":key,"fold_selection_snr":snr,"clean_change":change,"training_preservation":additional})
         joined=table.merge(pd.DataFrame(summaries),on="candidate_hash")
-        feasible=joined[joined.clean_change<=limits["clean_change"]].sort_values("fold_selection_snr",ascending=False)
+        feasible=joined[(joined.clean_change<=limits["clean_change"]) & joined.training_preservation].sort_values("fold_selection_snr",ascending=False)
         recipes={}
         for name,group in feasible.groupby(method_key):
             recipes[str(name)]={key:(None if isinstance(value,float) and not np.isfinite(value) else value)
@@ -167,6 +218,9 @@ def frontal_artifact(data,recipe,config,selected_ids=None):
         for i in ids:
             try:
                 modes,residual,info=decompose(data["eeg"][i],int(recipe["K"]),recipe["alpha"],config)
+                if info["hit_iteration_limit"]:
+                    diagnostic.append({"channel":str(data["channel_names"][i]),"failure":"VMD iteration cap","status":"passthrough",**info})
+                    continue
                 features=mode_features(modes,data["references"],config["fs"])
                 selection=features[:,0]>=recipe["threshold"]
                 estimates=project(modes,data["references"],recipe["lags"],recipe["penalty"])[0] if method=="vmd_projected" else modes
@@ -355,7 +409,8 @@ def run_review(input_root,output,config,profile):
 def plot_modes(diagnostics,cache,output):
     import matplotlib; matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    first=diagnostics[0]; same=[d for d in diagnostics if d["example_id"]==first["example_id"] and d["channel"]==first["channel"]]
+    first=next((d for d in diagnostics if d["condition"]=="blink"),diagnostics[0])
+    same=[d for d in diagnostics if d["example_id"]==first["example_id"] and d["channel"]==first["channel"]]
     fig,axes=plt.subplots(1,5,figsize=(18,4),sharey=True)
     for axis,alpha in zip(axes,sorted(set(d["alpha"] for d in same))):
         for row in same:
