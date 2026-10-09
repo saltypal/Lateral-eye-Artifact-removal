@@ -7,16 +7,19 @@ import sys
 import numpy as np
 import torch
 from .provenance import save_json, sha256_file
+from .model_factory import architecture_metadata
 
 
-def export_and_verify(network, output, eeg, expected):
+def export_and_verify(network, output, eeg, expected, mask=None, regions=None, hemispheres=None,
+                      coordinates=None, coordinate_mask=None):
     bundle = output / "offline_model"
     bundle.mkdir(exist_ok=True)
     run = json.loads((output / "run_config.json").read_text())
     training = json.loads((output / "training_summary.json").read_text())
+    architecture_id, architecture, schema_version = architecture_metadata(network)
     torch.save({name: value.detach().cpu() for name, value in network.state_dict().items()}, bundle / "model.pt")
     metadata = {"git_sha": run["git_sha"], "model_sha256": sha256_file(bundle / "model.pt"),
-                "architecture": {"features": network.features, "hidden": network.gru.hidden_size}, "training": training,
+                "bundle_schema_version": schema_version, "architecture_id": architecture_id, "architecture": architecture, "training": training,
                 "preprocessing": {"fs": 200, "band_hz": [0.5, 40], "butterworth_order": 4,
                                   "filter": "scipy.signal.sosfiltfilt per independent trial",
                                   "resampling": "scipy.signal.resample_poly before filtering",
@@ -30,8 +33,21 @@ def export_and_verify(network, output, eeg, expected):
                 "quality_limit": "feasibility checkpoint; no complete-removal or unseen-cap accuracy certification"}
     save_json(bundle / "model_contract.json", metadata)
     fixture = output / "fresh_load_input.npz"
-    np.savez_compressed(fixture, eeg=eeg, fs=200, mask=np.ones(eeg.shape[:2], dtype=np.int64),
-                        regions=np.full(eeg.shape[:2], 3, dtype=np.int64))
+    mask = np.ones(eeg.shape[:2], dtype=np.int64) if mask is None else mask
+    regions = np.full(eeg.shape[:2], 3, dtype=np.int64) if regions is None else regions
+    fixture_payload = {"eeg": eeg, "fs": 200, "mask": mask, "regions": regions}
+    if hemispheres is not None:
+        fixture_payload["hemispheres"] = hemispheres
+    if coordinates is not None:
+        fixture_payload["coordinates"] = coordinates
+    if coordinate_mask is not None:
+        fixture_payload["coordinate_mask"] = coordinate_mask
+    if schema_version == 2:
+        metadata["inputs"].update({"hemispheres": "[B,C] left=0,right=1,midline=2,unknown=3",
+                                   "coordinates": "optional [B,C,D] verified coordinates",
+                                   "coordinate_mask": "optional [B,C] coordinate validity"})
+        save_json(bundle / "model_contract.json", metadata)
+    np.savez_compressed(fixture, **fixture_payload)
     prediction_path = output / "fresh_load_output.npz"
     subprocess.run([sys.executable, "-m", "eog_vmd_fcm_bgru.inference", "--bundle", str(bundle),
                     "--input", str(fixture), "--output", str(prediction_path), "--preprocessed"],

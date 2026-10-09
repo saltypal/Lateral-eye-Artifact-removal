@@ -8,11 +8,20 @@ from .provenance import audit, save_json
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "snr-audit", "reference-guided", "reference-refine", "reference-safe", "snr-target", "snr-context", "snr-guard", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], required=True)
-    parser.add_argument("--data-root", type=Path, required=True)
-    parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument("--phase", choices=["audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "snr-audit", "reference-guided", "reference-refine", "reference-safe", "snr-target", "snr-context", "snr-guard", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"])
+    parser.add_argument("--run-spec", type=Path)
+    parser.add_argument("--data-root", type=Path)
+    parser.add_argument("--manifest", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    if args.run_spec is not None:
+        if args.phase:
+            parser.error("Choose --run-spec or --phase")
+        from .campaign_v2 import execute
+        execute(args.run_spec, args.output, args.data_root or Path("/kaggle/input"))
+        return
+    if args.phase is None or args.data_root is None or args.manifest is None:
+        parser.error("Legacy execution requires --phase, --data-root and --manifest")
     repository = Path(__file__).resolve().parents[1]
     args.output.mkdir(parents=True, exist_ok=True)
     device = "cuda:0" if torch.cuda.is_available() else "cpu"

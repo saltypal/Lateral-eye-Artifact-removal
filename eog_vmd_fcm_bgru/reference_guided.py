@@ -47,6 +47,80 @@ def reference_projection(vectors, references, penalty=0.01):
     return weights @ reference
 
 
+def lagged_reference_matrix(references, lags=(0,)):
+    """Return zero-padded signed HEOG/VEOG lag regressors.
+
+    A lag is expressed in samples and means ``reference[t - lag]``.  This is
+    deliberately a finite-window construction: it never wraps samples from
+    the end of an epoch to its start.  The caller chooses lags during
+    development and freezes them before validation/test use.
+    """
+    references = np.asarray(references, dtype=np.float64)
+    if references.ndim != 2 or not np.isfinite(references).all():
+        raise ValueError("References must have finite [reference, samples] shape")
+    if not lags:
+        raise ValueError("At least one EOG lag is required")
+    original_lags = tuple(lags)
+    lags = tuple(int(value) for value in original_lags)
+    if any(value != original for value, original in zip(lags, original_lags)):
+        raise ValueError("EOG lags must be integers")
+    rows = []
+    samples = references.shape[1]
+    for lag in lags:
+        shifted = np.zeros_like(references)
+        if abs(lag) < samples:
+            if lag >= 0:
+                shifted[:, lag:] = references[:, :samples - lag]
+            else:
+                shifted[:, :samples + lag] = references[:, -lag:]
+        rows.append(shifted)
+    return np.concatenate(rows, axis=0)
+
+
+def signed_lagged_reference_projection(vectors, references, lags=(0,), penalty=0.01):
+    """Window-adaptive joint ridge projection onto signed, lagged EOG.
+
+    This is an EOG-assisted *teacher* operation.  Coefficients are estimated
+    independently in each correction window because VMD mode indices are not
+    stable identities across windows.  Only the recipe (lags, penalty and
+    global mode-gating rule) is transferable.  Means in the EEG modes are
+    preserved, and zero/constant EOG regressors are ignored.
+
+    Returns ``(projected, details)`` where ``projected`` has the shape of
+    ``vectors`` and details are safe to write to a run manifest.
+    """
+    vectors = np.asarray(vectors, dtype=np.float64)
+    if vectors.ndim != 2 or not np.isfinite(vectors).all():
+        raise ValueError("Modes must have finite [mode, samples] shape")
+    regressors = lagged_reference_matrix(references, lags)
+    if regressors.shape[1] != vectors.shape[1]:
+        raise ValueError("Modes and references must have the same sample count")
+    if not np.isfinite(penalty) or penalty <= 0:
+        raise ValueError("Reference ridge penalty must be positive and finite")
+
+    centered = regressors - regressors.mean(axis=1, keepdims=True)
+    rms = np.sqrt(np.mean(centered ** 2, axis=1))
+    keep = rms > np.finfo(float).tiny
+    if not keep.any():
+        return np.zeros_like(vectors), {
+            "lags": list(map(int, lags)), "usable_regressors": 0,
+            "coefficient_shape": [int(vectors.shape[0]), 0],
+            "window_adaptive": True,
+        }
+    design = centered[keep] / rms[keep, None]
+    covariance = design @ design.T
+    regularization = penalty * np.trace(covariance) / len(design)
+    mode_centered = vectors - vectors.mean(axis=1, keepdims=True)
+    coefficients = np.linalg.solve(
+        covariance + regularization * np.eye(len(design)), design @ mode_centered.T
+    ).T
+    return coefficients @ design, {
+        "lags": list(map(int, lags)), "usable_regressors": int(keep.sum()),
+        "coefficient_shape": [int(value) for value in coefficients.shape],
+        "window_adaptive": True,
+    }
+
+
 def soft_correlation_gate(correlations, threshold):
     """Zero below threshold, linear attenuation up to absolute correlation one."""
     if not np.isfinite(threshold) or not 0 <= threshold < 1:

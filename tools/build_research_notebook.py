@@ -2,6 +2,7 @@
 from pathlib import Path
 import textwrap
 import nbformat
+import json
 
 
 def build(path: Path, phase="audit", sha=""):
@@ -163,6 +164,66 @@ OUT.mkdir(parents=True, exist_ok=True)
                         display(Image(filename=str(OUT / (name + ".png"))))
                 print("Saved artifacts", len(list(OUT.rglob("*"))), "in", OUT)
             ''')]
+    notebook.metadata = {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"}, "language_info": {"name": "python"}}
+    nbformat.validate(notebook)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    nbformat.write(notebook, path)
+
+
+def build_v2(path: Path, spec: dict):
+    """Standalone exact-commit notebook for one immutable campaign stage."""
+    notebook = nbformat.v4.new_notebook()
+    md = nbformat.v4.new_markdown_cell
+    def code(source):
+        return nbformat.v4.new_code_cell(textwrap.dedent(source).strip())
+    setup = '''
+import os, sys, tempfile, subprocess, json
+from pathlib import Path
+''' + "SPEC = json.loads(" + repr(json.dumps(spec, allow_nan=False)) + ")\n" + '''
+IN_KAGGLE = Path("/kaggle/input").exists()
+IN_COLAB = "google.colab" in sys.modules or "COLAB_RELEASE_TAG" in os.environ
+ENVIRONMENT = "kaggle" if IN_KAGGLE else "colab" if IN_COLAB else "local"
+if not IN_KAGGLE and os.environ.get("EOG_ALLOW_NON_KAGGLE") != "1":
+    raise RuntimeError("This campaign executes on Kaggle. Portability needs explicit EOG_ALLOW_NON_KAGGLE=1.")
+# Every rerun creates a fresh checkout and interpreter: existing copies cannot contaminate the run.
+TEMP_ROOT = Path(tempfile.mkdtemp(prefix="eog-v2-"))
+CHECKOUT = TEMP_ROOT / "repository"
+subprocess.check_call(["git", "clone", "--quiet", "https://github.com/saltypal/Lateral-eye-Artifact-removal.git", str(CHECKOUT)])
+subprocess.check_call(["git", "-C", str(CHECKOUT), "checkout", "--quiet", SPEC["git_sha"]])
+actual_sha = subprocess.check_output(["git", "-C", str(CHECKOUT), "rev-parse", "HEAD"], text=True).strip()
+if actual_sha != SPEC["git_sha"]:
+    raise RuntimeError("Exact commit checkout failed")
+ENV_ROOT = TEMP_ROOT / "environment"
+subprocess.check_call([sys.executable, "-m", "venv", "--without-pip", "--system-site-packages", str(ENV_ROOT)])
+ENV_PY = ENV_ROOT / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+subprocess.check_call([sys.executable, "-m", "pip", "--python", str(ENV_PY), "install", "--quiet", "--progress-bar", "off", "-r", str(CHECKOUT / "requirements-research.txt")])
+PROCESS_ENV = os.environ.copy()
+PROCESS_ENV.update(PYTHONPATH=str(CHECKOUT), PYTHONUNBUFFERED="1")
+ROOT_WORK = Path("/kaggle/working") if IN_KAGGLE else Path(os.environ["EOG_PERSISTENT_RESULTS"]).resolve()
+OUT = ROOT_WORK / "results" / SPEC["campaign_id"] / SPEC["run_id"]
+OUT.mkdir(parents=True, exist_ok=True)
+SPEC_PATH = TEMP_ROOT / "run_spec.json"
+SPEC_PATH.write_text(json.dumps(SPEC, indent=2), encoding="utf-8")
+print("Environment:", ENVIRONMENT, "Commit:", actual_sha, "Stage:", SPEC["stage"], "Persistent output:", OUT)
+'''
+    notebook.cells = [
+        md("# Regional blink and lateral-eye removal — version 2\n\nOne immutable run, using source modules from an exact Git commit. EEG-only student deployment is separate from the EOG-assisted VMD/spatial teacher. This notebook records measured scope and does not assume complete artifact removal."),
+        md("## Clean reset and Git synchronization\nFresh temporary source and interpreter on every execution. CUDA is detected by the modules; TPU is recorded but training on XLA has not been qualified. Kaggle output persists when a saved run completes; retrieve it through the CLI before deleting any kernel."),
+        code(setup),
+        md("## Execute the declared stage\nSource checksums, exact parent run IDs and artifact checksums are verified before processing. Failures save their traceback and run state. Numerical contract tests run in the dedicated contracts stage."),
+        code('''
+            subprocess.check_call([str(ENV_PY), "-m", "eog_vmd_fcm_bgru.campaign_v2",
+                "--run-spec", str(SPEC_PATH), "--output", str(OUT), "--attachment-root", "/kaggle/input" if IN_KAGGLE else os.environ["EOG_ATTACHMENT_ROOT"]],
+                cwd=CHECKOUT, env=PROCESS_ENV)
+        '''),
+        md("## Inspect persisted evidence\nThe run manifest lists every saved file and checksum. A completed contract or provenance job is not a denoising accuracy result."),
+        code('''
+            print((OUT / "stage_summary.json").read_text())
+            print((OUT / "run_manifest.json").read_text())
+            from IPython.display import display, Image
+            for figure in sorted(OUT.glob("*.png")):
+                display(Image(filename=str(figure)))
+        ''')]
     notebook.metadata = {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"}, "language_info": {"name": "python"}}
     nbformat.validate(notebook)
     path.parent.mkdir(parents=True, exist_ok=True)

@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -240,15 +241,74 @@ def submit(phase: str, sha: str) -> None:
         raise RuntimeError("Kaggle rejected the dataset attachment; kernel execution is invalid")
 
 
+def submit_v2(spec_path: Path) -> None:
+    """Launch an exact-commit notebook with explicit datasets and parent runs."""
+    sys.path.insert(0, str(REPOSITORY))
+    from eog_vmd_fcm_bgru.campaign_contracts import RunSpec
+    from build_research_notebook import build_v2
+    spec = RunSpec.load(spec_path)
+    published = subprocess.check_output(["git", "-C", str(REPOSITORY), "branch", "-r", "--contains", spec.git_sha], text=True)
+    if not any(line.strip().startswith("origin/") for line in published.splitlines()):
+        raise ValueError("Push the exact RunSpec commit before Kaggle submission")
+    stage = WORK / "v2" / spec.run_id
+    if (stage / "submission.json").exists():
+        raise FileExistsError("Run already submitted; use a new run ID")
+    stage.mkdir(parents=True, exist_ok=True)
+    datasets = list(spec.inputs.get("datasets", []))
+    if DATASET in datasets:
+        verify_remote_inventory()
+    parents = list(spec.inputs.get("parents", {}).values())
+    kernels = list(dict.fromkeys([item["kernel_ref"] for item in parents] + spec.inputs.get("source_restore_kernels", [])))
+    slug = "eog-v2-" + re.sub(r"[^a-z0-9-]", "-", spec.run_id.lower())
+    if len(slug) > 80:
+        raise ValueError("Run ID produces an excessively long Kaggle slug")
+    kernel_ref = f"{OWNER}/{slug}"
+    spec.write(stage / "run_spec.json")
+    normalized = json.loads((stage / "run_spec.json").read_text())
+    build_v2(stage / "Regional_EOG_V2.ipynb", normalized)
+    gpu = spec.stage in {"student-paired", "student-distill", "final-eval", "export"} and spec.config.get("accelerator", "gpu") == "gpu"
+    metadata = {"id": kernel_ref, "title": f"Regional EOG V2 {spec.run_id}",
+                "code_file": "Regional_EOG_V2.ipynb", "language": "python", "kernel_type": "notebook",
+                "is_private": True, "enable_gpu": gpu, "enable_internet": True,
+                "dataset_sources": datasets, "kernel_sources": kernels, "competition_sources": []}
+    if gpu:
+        metadata["machine_shape"] = "NvidiaTeslaT4"
+    (stage / "kernel-metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
+    response = run_cli(["kernels", "push", "-p", str(stage)], capture=True)
+    print(response)
+    if "not valid dataset sources" in response or "could not be added" in response:
+        raise RuntimeError("Kaggle rejected an attachment; submission is unusable")
+    (stage / "submission.json").write_text(json.dumps({"campaign_id": spec.campaign_id,
+        "run_id": spec.run_id, "stage": spec.stage, "git_sha": spec.git_sha,
+        "kernel_ref": kernel_ref, "run_spec_sha256": hashlib.sha256((stage / "run_spec.json").read_bytes()).hexdigest(),
+        "response": response}, indent=2), encoding="utf-8")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["auth-check", "prepare", "upload", "package-opaque", "upload-opaque", "recover-upload", "inventory-check", "dataset-status", "submit", "status", "retrieve"])
+    parser.add_argument("action", choices=["auth-check", "prepare", "upload", "package-opaque", "upload-opaque", "recover-upload", "inventory-check", "dataset-status", "submit", "status", "retrieve", "submit-v2", "status-v2", "retrieve-v2"])
     parser.add_argument("--source", type=Path)
     parser.add_argument("--phase", choices=["contracts", "audit", "restore", "benchmark", "calibration", "klados-source", "klados-group-audit", "vmd-engine", "snr-audit", "reference-guided", "reference-refine", "reference-safe", "snr-target", "snr-context", "snr-guard", "train", "neural-search", "vmd-convergence", "vmd-robust-grid", "report"], default="audit")
     parser.add_argument("--sha")
     parser.add_argument("--upload-cache", type=Path)
+    parser.add_argument("--run-spec", type=Path)
+    parser.add_argument("--run-id")
     args = parser.parse_args()
-    if args.action == "prepare":
+    if args.action == "submit-v2":
+        if args.run_spec is None:
+            parser.error("submit-v2 requires --run-spec")
+        submit_v2(args.run_spec)
+    elif args.action in {"status-v2", "retrieve-v2"}:
+        if not args.run_id or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}", args.run_id):
+            parser.error("A valid --run-id is required")
+        state = json.loads((WORK / "v2" / args.run_id / "submission.json").read_text())
+        if args.action == "status-v2":
+            run_cli(["kernels", "status", state["kernel_ref"]])
+        else:
+            target = REPOSITORY / "results" / state["campaign_id"] / args.run_id
+            target.mkdir(parents=True, exist_ok=True)
+            run_cli(["kernels", "output", state["kernel_ref"], "-p", str(target), "--force"])
+    elif args.action == "prepare":
         if args.source is None:
             parser.error("prepare requires --source")
         prepare(args.source)
