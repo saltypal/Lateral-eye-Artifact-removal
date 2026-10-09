@@ -138,6 +138,7 @@ def run_vmd(input_root,output,config,profile):
         "candidates":len(table),"selection_examples":len(rows),"recipient_sources":len(set(r["recipient"] for r in rows)),
         "frontal_selection_channels":selected_channels,"runtime_s":time.perf_counter()-started,
         "iteration_limit_fits":sum(d["hit_iteration_limit"] for d in diagnostics),"split_hash":json.loads((parent/"corpus_summary.json").read_text())["split_hash"],
+        "failed_mode_fits":sum(bool(d.get("failure")) for d in diagnostics),
         "caveat":"development search; final regional preservation/correlation gates not yet evaluated"})
     plot_modes(diagnostics,cache,output)
     run_fcm_ablation(parent,rows,table,pd.DataFrame(grouped),diagnostics,cache,output,config)
@@ -159,7 +160,7 @@ def run_fcm_ablation(parent,rows,table,grouped,diagnostics,cache,output,config):
         features=[]
         for row in training:
             for info in index.get((row["example_id"],k,alpha),[]):
-                if info["hit_iteration_limit"]: continue
+                if info["hit_iteration_limit"] or info.get("failure"): continue
                 features.append(np.load(cache/Path(info["array"]).name,allow_pickle=False)["features"])
         if not features: continue
         for clusters in config["classical_grid"]["fcm_clusters"]:
@@ -176,7 +177,7 @@ def run_fcm_ablation(parent,rows,table,grouped,diagnostics,cache,output,config):
                     modes=item["modes"]; channel=data["channel_names"].tolist().index(info["channel"])
                     estimate,_=project(modes,data["references"],recipe["lags"],recipe["penalty"])
                     selected=(item["features"][:,0]>=recipe["threshold"]) & (model.predict(item["features"])>=.5)
-                    artifact=np.zeros(modes.shape[-1]) if info["hit_iteration_limit"] else (estimate*selected[:,None]).sum(axis=0)*recipe["strength"]
+                    artifact=np.zeros(modes.shape[-1]) if info["hit_iteration_limit"] or info.get("failure") else (estimate*selected[:,None]).sum(axis=0)*recipe["strength"]
                     cleaned.append(data["eeg"][channel]-artifact); targets.append(data["paired_reference"][channel])
                 if cleaned:
                     snr,rrmse=fast_metric(np.asarray(cleaned),np.asarray(targets))
@@ -281,7 +282,8 @@ def run_regional(input_root,output,config,profile):
         "policy":"held-out recipient and donor fold excluded from global configuration selection"})
     results=[]; diagnostics=[]; fit_cache={}; failures=[]
     arrays=output/"predictions"; arrays.mkdir()
-    method_names=["identity","direct","shared_vmd","regional_mwf","regional_ica","regional_no_context"]
+    method_names=["identity","direct","shared_vmd","regional_mwf","regional_ica","regional_no_context",
+        "regional_mwf_direct_frontal","regional_ica_direct_frontal"]
     for number,row in enumerate(rows):
         # Paired legacy fixtures are separately scored later: unknown anatomy
         # never enters regional feature construction or grouped fresh results.
@@ -310,8 +312,12 @@ def run_regional(input_root,output,config,profile):
         common=np.zeros_like(raw,dtype=float); common[ids_shared]=direct_art[ids_shared]
         corrections={"identity":np.zeros_like(raw),"direct":direct_art,"shared_vmd":shared_art,
             "regional_mwf":front_art+mwf_art+common,"regional_ica":front_art+ica_art+common,"regional_no_context":front_art+no_art+common}
+        direct_front=np.zeros_like(raw,dtype=float); direct_front[ids_front]=direct_art[ids_front]
+        corrections.update(regional_mwf_direct_frontal=direct_front+mwf_art+common,
+            regional_ica_direct_frontal=direct_front+ica_art+common)
         diags={"identity":[],"direct":direct_diag,"shared_vmd":shared_diag,
             "regional_mwf":front_diag+[mwf_diag],"regional_ica":front_diag+[ica_diag],"regional_no_context":front_diag+[no_diag]}
+        diags.update(regional_mwf_direct_frontal=direct_diag+[mwf_diag],regional_ica_direct_frontal=direct_diag+[ica_diag])
         for method in method_names:
             cleaned=raw-corrections[method]
             metrics=paired(cleaned,target,config["fs"])
@@ -413,6 +419,10 @@ def run_review(input_root,output,config,profile):
     posterior=unique_parent(input_root,"posterior_summary.json").parent
     corpus=unique_parent(input_root,"corpus_summary.json").parent
     contract=unique_parent(input_root,"contracts_summary.json").parent
+    verify_parent(region,("regional_scores.csv","grouped_recipe_selections.json","native_legacy_scores.csv"))
+    verify_parent(vmd,("vmd_search.csv","selected_frontal.json","mode_diagnostics.jsonl"))
+    verify_parent(posterior,("posterior_search.csv","selected_posterior.json"))
+    verify_parent(contract,("contracts_summary.json",))
     results=pd.read_csv(region/"regional_scores.csv")
     scores=results[results.region=="whole_montage"]
     comparator=scores[scores.method=="direct"].set_index("example_id")
@@ -442,6 +452,12 @@ def run_review(input_root,output,config,profile):
             "failure_count":int(group.failure_count.fillna(0).sum()),"gates":gates,"passed":all(gates.values()),
             "conditions":dirty.groupby("condition").snr_db.mean().to_dict()})
     direct=next(r for r in reports if r["method"]=="direct")
+    for report in reports:
+        if report["method"] not in ("regional_mwf","regional_ica"): continue
+        matched=next(r for r in reports if r["method"]==report["method"]+"_direct_frontal")
+        report["matched_frontal_regression_gain_db"]=report["mean_snr_db"]-matched["mean_snr_db"]
+        report["gates"]["vmd_matched_benefit"]=report["matched_frontal_regression_gain_db"]>=.1
+        report["passed"]=all(report["gates"].values())
     valid=[r for r in reports if r["method"] in ("regional_mwf","regional_ica") and r["passed"] and r["mean_snr_db"]>=direct["mean_snr_db"]+.1]
     selected=max(valid,key=lambda r:r["mean_snr_db"]) if valid else None
     contracts_ok=json.loads((contract/"contracts_summary.json").read_text())["passed"]
@@ -462,7 +478,7 @@ def run_review(input_root,output,config,profile):
         "posterior_grid":posterior/"posterior_search.csv","corpus":corpus/"corpus_summary.json","contracts":contract/"contracts_summary.json"}.items()}
     gate={"campaign_id":config["campaign_id"],"passed":passed,"model_authorization":config["model_authorization"],
         "selected_recipe_hash":canonical_hash(recipe),"evidence_hashes":evidence,"selected_method":None if selected is None else selected["method"],
-        "requirement":"All preservation/paired-correlation gates, >=15dB controlled development SNR and >0.1dB advantage over matched direct regression",
+        "requirement":"All preservation/paired-correlation gates, >=15dB controlled development SNR and >=0.1dB advantage over direct regression both alone and with identical posterior expert",
         "failure_reasons":[] if passed else ["No regional VMD hybrid passed every gate and the matched direct-regression benefit requirement"],
         "reserved_confirmation_opened":False,"native_clean_recovery_claim":False}
     atomic_json(output/"classical_gate.json",gate)
@@ -483,6 +499,57 @@ def run_review(input_root,output,config,profile):
         "Controlled SNR is relative to retained LEMON recipient EEG with unknown native cleanliness. Reference-projected mixture recipes can favor regression; native OSF receives ocular suppression proxies, not reconstruction SNR.",
         "If the gate fails, do not tune reserved data, relax preservation limits or train a student from an unvalidated teacher."]
     (output/"APPROACH_REVIEW.md").write_text("\n\n".join(lines))
+    plot_review(results,pd.read_csv(region/"native_legacy_scores.csv"),reports,output,config)
+    import shutil
+    review_files={"vmd_search.csv":vmd,"posterior_search.csv":posterior,
+        "vmd_fcm_scores.csv":vmd,"mode_diagnostics.jsonl":vmd,"posterior_fit_diagnostics.jsonl":posterior,
+        "native_legacy_scores.csv":region,"native_legacy_summary.json":region}
+    for name,parent in review_files.items():
+        verify_parent(parent,(name,))
+        shutil.copy2(parent/name,output/name)
+    for name in ("K_sweep_centers.png","mode_vectors_example.png"):
+        if (vmd/name).exists():
+            verify_parent(vmd,(name,))
+            shutil.copy2(vmd/name,output/name)
+
+
+def plot_review(results,native,reports,output,config):
+    import matplotlib; matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    whole=results[(results.region=="whole_montage")&(results.condition!="clean")]
+    grouped=whole.groupby(["method","condition","recipient"]).snr_db.mean()
+    rows=[]
+    for (method,condition),values in grouped.groupby(level=[0,1]):
+        interval=confidence_interval(values,config["seed"])
+        rows.append({"method":method,"condition":condition,"mean_snr_db":float(values.mean()),
+            "ci95_lower":interval[0],"ci95_upper":interval[1],"sources":len(values)})
+    table=pd.DataFrame(rows); table.to_csv(output/"condition_source_uncertainty.csv",index=False)
+    fig,axes=plt.subplots(1,3,figsize=(16,5),sharey=True)
+    for axis,condition in zip(axes,("blink","lateral","mixed")):
+        data=table[table.condition==condition]
+        axis.bar(data.method,data.mean_snr_db,color="steelblue")
+        axis.errorbar(np.arange(len(data)),data.mean_snr_db,
+            yerr=np.stack([data.mean_snr_db-data.ci95_lower,data.ci95_upper-data.mean_snr_db]),
+            fmt="none",ecolor="black",capsize=3)
+        axis.axhline(15,color="darkgreen",linestyle="--",label="15 dB target")
+        axis.set_title(condition); axis.tick_params(axis="x",rotation=70)
+    axes[0].set_ylabel("Recipient-balanced controlled SNR (dB)")
+    fig.tight_layout(); fig.savefig(output/"condition_SNR.png",dpi=160); plt.close(fig)
+    fig,axis=plt.subplots(figsize=(9,6))
+    for report in reports:
+        x=100*report["worst_source_mean_clean_change"]; y=report["mean_snr_db"]
+        axis.scatter(x,y,s=60); axis.annotate(report["method"],(x,y),xytext=(4,4),textcoords="offset points")
+    axis.axvline(1,color="darkred",linestyle="--"); axis.axhline(15,color="darkgreen",linestyle="--")
+    axis.set(xlabel="Worst recipient mean clean modification (%)",ylabel="Recipient-balanced controlled SNR (dB)",
+        title="Recovery and EEG preservation must pass together")
+    fig.tight_layout(); fig.savefig(output/"recovery_preservation.png",dpi=160); plt.close(fig)
+    proxy=native[native.target_kind=="real_proxy"]
+    if len(proxy):
+        summaries=proxy.groupby(["method","condition","source"])[["joint_r2_before","joint_r2_after","modification_relative_rms"]].mean()
+        summaries.groupby(level=[0,1]).mean().to_csv(output/"OSF_source_balanced_proxies.csv")
+    legacy=native[native.target_kind=="legacy_paired"]
+    if len(legacy):
+        legacy.groupby(["method","source"]).snr_db.mean().groupby("method").mean().to_csv(output/"Klados_legacy_record_balanced_SNR.csv")
 
 
 def plot_modes(diagnostics,cache,output):
