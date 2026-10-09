@@ -59,8 +59,10 @@ Failed jobs are retained and repaired on Git, with new notebook versions/run IDs
 `contracts-003`: 21 passed; `contracts-004`: 22 passed.
 `audit-001`: 375 original files and one supplement verified; all 45 OSF sessions
 eligible, 36 development caches and no confirmation caches. Forty raw LEMON
-identities are frozen (32 development, eight confirmation). `corpus-001` is
-running; its result and SNR are not yet established. Neural work remains closed.
+identities are frozen (32 development, eight confirmation). `corpus-001` failed
+on stale BrainVision companion names and is retained. `source-fixture-001`
+passed the real-source repair and 26 tests. `corpus-002` is the repaired full
+run; controlled SNR is not yet established. Neural work remains closed.
 
 ## Execution evidence
 

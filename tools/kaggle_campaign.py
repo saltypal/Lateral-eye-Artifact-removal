@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import re
 import subprocess
 import sys
 from build_notebooks import build
@@ -66,7 +67,12 @@ def submit(args):
                 "dataset_sources":spec["dataset_sources"],"kernel_sources":spec["kernel_sources"],"competition_sources":[]}
     (stage/"kernel-metadata.json").write_text(json.dumps(metadata,indent=2))
     (stage/"run_spec.json").write_text(json.dumps(spec,indent=2))
-    print(cli(["kernels","push","-p",str(stage)]))
+    message=cli(["kernels","push","-p",str(stage)])
+    print(message)
+    version=re.search(r"Kernel version (\d+) successfully pushed",message)
+    if version:
+        spec["kernel_version"]=int(version.group(1))
+        (stage/"run_spec.json").write_text(json.dumps(spec,indent=2))
     print(json.dumps({"run_id":run_id,"kernel":kernel,"git_sha":sha}))
 
 
@@ -82,6 +88,7 @@ def main():
     submit_parser.add_argument("--dataset-source",action="append")
     for command in ("status","retrieve"):
         item=sub.add_parser(command); item.add_argument("--run-id",required=True)
+        if command=="retrieve": item.add_argument("--file-pattern")
     sub.add_parser("auth-check")
     args=parser.parse_args()
     if args.command=="submit":
@@ -95,7 +102,9 @@ def main():
         else:
             out=ROOT/"results"/spec["campaign_id"]/args.run_id
             out.mkdir(parents=True,exist_ok=True)
-            print(cli(["kernels","output",spec["kernel"],"-p",str(out),"--force"]))
+            command=["kernels","output",spec["kernel"],"-p",str(out),"--force","--page-size","200"]
+            if args.file_pattern: command += ["--file-pattern",args.file_pattern]
+            print(cli(command))
             identities=list(out.rglob("run_spec.json"))
             if len(identities)!=1 or json.loads(identities[0].read_text()).get("run_id")!=args.run_id:
                 raise RuntimeError("Retrieved output identity differs from requested run; retain evidence")
