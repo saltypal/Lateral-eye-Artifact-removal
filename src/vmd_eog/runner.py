@@ -17,6 +17,7 @@ def execute(stage, input_root, output, profile):
     require_kaggle()
     root=Path(__file__).resolve().parents[2]
     config=json.loads((root/"configs/campaign.json").read_text())
+    atomic_json(output/"configuration.json",config)
     require_approval(stage,input_root,config)
     packages={}
     for name in ("numpy","scipy","mne","pandas","scikit-learn","vmdpy","torch","python-picard"):

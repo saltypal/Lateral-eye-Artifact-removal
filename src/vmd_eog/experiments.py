@@ -306,7 +306,8 @@ def run_regional(input_root,output,config,profile):
             results.append({"example_id":row["example_id"],"recipient":row["recipient"],"donor":row["donor"],"condition":row["condition"],
                 "input_snr_db":row.get("input_snr_db"),"method":method,"fold":int(fold),**metrics,
                 "heog_before":before["heog_abs"],"heog_after":after["heog_abs"],"veog_before":before["veog_abs"],"veog_after":after["veog_abs"],
-                "region":"whole_montage","failure_count":sum(bool(d.get("failure")) for d in diags[method])})
+                "region":"whole_montage","eog_joint_r2_before":before["joint_eog_r2"],"eog_joint_r2_after":after["joint_eog_r2"],
+                "failure_count":sum(bool(d.get("failure")) for d in diags[method])})
             for region,label in ((0,"frontal"),(1,"posterior")):
                 ids=np.flatnonzero(data["regions"]==region)
                 if len(ids): results.append({"example_id":row["example_id"],"recipient":row["recipient"],"donor":row["donor"],"condition":row["condition"],
@@ -378,6 +379,11 @@ def run_review(input_root,output,config,profile):
         "posterior":json.loads((posterior/"selected_posterior.json").read_text()),
         "grouped_selections":json.loads((region/"grouped_recipe_selections.json").read_text()),
         "input":"EEG+HEOG+VEOG classical teacher; exported student EEG-only","offline":True}
+    if selected is not None:
+        method="mwf" if selected["method"]=="regional_mwf" else "ica"
+        posterior_table=pd.read_csv(posterior/"posterior_search.csv")
+        choices=posterior_table[(posterior_table.method==method)&posterior_table.quick_preservation_gate].sort_values("mean_snr_db",ascending=False)
+        if len(choices): recipe["posterior"]=recipe_only(choices.iloc[0].to_dict(),"posterior")
     atomic_json(output/"approved_recipe.json",recipe)
     evidence={name:sha256_file(path) for name,path in {"regional_scores":region/"regional_scores.csv","vmd_grid":vmd/"vmd_search.csv",
         "posterior_grid":posterior/"posterior_search.csv","corpus":corpus/"corpus_summary.json","contracts":contract/"contracts_summary.json"}.items()}
@@ -465,7 +471,7 @@ def run_posterior(input_root,output,config,profile):
             ranks=grids["mwf_ranks"] if method=="mwf" else [None]
             thresholds=grids["thresholds"]
             for lags,rank,threshold in itertools.product(bank,ranks,thresholds):
-                fit_key=(calibration_key,method,support,tuple(lags),rank,threshold if method=="ica" else None)
+                fit_key=(calibration_key,method,support,tuple(lags),rank)
                 if fit_key not in fits:
                     start=time.perf_counter()
                     try:
@@ -477,7 +483,7 @@ def run_posterior(input_root,output,config,profile):
                         "threshold":threshold if method=="ica" else None,"fit_runtime_s":time.perf_counter()-start,
                         "failure":fits[fit_key][1],"status":"passthrough" if fits[fit_key][1] else "fitted"})
                 expert,error=fits[fit_key]
-                correction=np.zeros_like(data["eeg"][ids]) if expert is None else expert.artifact(scoring)[out_rows]
+                correction=np.zeros_like(data["eeg"][ids]) if expert is None else (expert.artifact(scoring,threshold=threshold) if method=="ica" else expert.artifact(scoring))[out_rows]
                 assoc=np.max(np.abs(correlations(data["eeg"][ids],data["references"],20)),axis=1)
                 correction*= (assoc>=threshold)[:,None]
                 for strength in grids["strengths"]:

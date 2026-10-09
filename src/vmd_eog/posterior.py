@@ -76,9 +76,10 @@ class ICAExpert:
     associations: np.ndarray
     converged: bool
 
-    def artifact(self,values,strength=1.):
+    def artifact(self,values,strength=1.,threshold=None):
         sources=self.unmixing@(values-self.mean[:,None])
-        return strength*self.mixing[:,self.selected]@sources[self.selected]
+        selected=self.selected if threshold is None else np.flatnonzero(np.max(np.abs(self.associations),axis=1)>=threshold)
+        return strength*self.mixing[:,selected]@sources[selected]
 
 
 def fit_ica(values,references,threshold=.6,seed=42,method="picard"):

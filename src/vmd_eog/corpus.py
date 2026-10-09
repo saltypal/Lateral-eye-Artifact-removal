@@ -7,6 +7,7 @@ import tempfile
 import urllib.request
 import numpy as np
 from .contracts import canonical_hash
+from .brainvision import repair_links
 from .data import channel_metadata
 from .io import atomic_json, read_jsonl, sha256_file, write_jsonl
 from .posterior import boundary_valid
@@ -42,7 +43,11 @@ def prepare_lemon(source,temp_root,config,profile):
         stream.extractall(folder,filter="data")
     headers=sorted(folder.rglob("*.vhdr"))
     if len(headers)!=1: raise ValueError("Expected one raw BrainVision recording per participant")
-    raw=mne.io.read_raw_brainvision(headers[0],preload=False,verbose="ERROR")
+    inventory=[str(p.relative_to(folder)) for p in folder.rglob("*") if p.is_file() and p!=archive]
+    print("LEMON_ARCHIVE_FILES",source["participant"],inventory,flush=True)
+    resolved,repair=repair_links(headers[0])
+    print("LEMON_HEADER_REPAIR",source["participant"],repair,flush=True)
+    raw=mne.io.read_raw_brainvision(resolved,preload=False,verbose="ERROR")
     eog=[name for name in raw.ch_names if "EOG" in name.upper()]
     if not eog: raise ValueError("Raw LEMON requires identifiable ocular reference")
     raw.set_channel_types({name:"eog" for name in eog},verbose="ERROR")
@@ -72,6 +77,7 @@ def prepare_lemon(source,temp_root,config,profile):
     record={"participant":"lemon:"+source["participant"],"channel_names":names,
         "native_fs":raw.info["sfreq"],"archive_sha256":digest,"url":source["url"],
         "source_header_sha256":sha256_file(headers[0]),"eog_channels":eog,
+        "header_repair":repair,"archive_files":inventory,
         "reference":"original raw publisher reference retained","units":"volts (MNE conversion)",
         "low_ocular_policy":"scoring RMS <= recipient calibration RMS; fixed before algorithm evaluation",
         "calibration_end_sample_native":cut,"native_clean_status":"unknown; controlled target is retained recipient EEG"}
@@ -208,3 +214,13 @@ def build_corpus(input_root,output,config,profile):
         "reserved_confirmation_opened":False,"native_clean_target":"unknown; controlled reconstruction is defined relative to retained recipient signal"}
     atomic_json(output/"corpus_summary.json",summary)
     if not controlled: raise RuntimeError("No eligible fresh controlled corpus; cannot proceed to SNR experiments")
+
+
+def source_fixture(input_root,output,config,profile):
+    parent=unique_parent(input_root,"audit_summary.json").parent
+    external=json.loads((parent/"external_sources.json").read_text())
+    split=json.loads((parent/"split_manifest.json").read_text())
+    source=next(s for s in external["lemon"] if split["partitions"]["lemon"]["lemon:"+s["participant"]]["role"]=="development")
+    record,calibration,windows=prepare_lemon(source,tempfile.mkdtemp(prefix="lemon-fixture-"),config,"pilot")
+    atomic_json(output/"source_fixture_summary.json",{"passed":True,"record":record,"calibration_shape":list(calibration.shape),
+        "scoring_windows":len(windows),"confirmation_opened":False})

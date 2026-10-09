@@ -36,8 +36,16 @@ def paired(cleaned, target, fs=200):
 
 def ocular(eeg, references):
     values = correlations(eeg, references)
+    centered=np.asarray(eeg,float)-np.asarray(eeg,float).mean(axis=-1,keepdims=True)
+    refs=np.asarray(references,float)-np.asarray(references,float).mean(axis=-1,keepdims=True)
+    coefficients=centered@refs.T@np.linalg.pinv(refs@refs.T,rcond=1e-8)
+    projected=coefficients@refs
+    energy=(centered**2).sum(axis=1)
+    joint=np.divide((projected**2).sum(axis=1),energy,out=np.zeros(len(centered)),where=energy>1e-24)
+    joint=np.clip(joint,0,1)
     return {"heog_abs": float(np.abs(values[:, 0]).mean()), "veog_abs": float(np.abs(values[:, 1]).mean()),
-            "per_channel_signed": values.tolist(), "interpretation": "native ocular-association proxy, not paired reconstruction"}
+            "per_channel_signed": values.tolist(),"joint_eog_r2":float(joint.mean()),"per_channel_joint_eog_r2":joint.tolist(),
+            "interpretation": "native ocular-association proxy, not paired reconstruction"}
 
 
 def preservation_pass(metrics, limits):

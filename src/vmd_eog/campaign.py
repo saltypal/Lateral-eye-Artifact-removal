@@ -11,6 +11,9 @@ def execute(stage, input_root, output, config, profile):
     elif stage == "corpus":
         from .corpus import build_corpus
         build_corpus(input_root, output, config, profile)
+    elif stage == "source-fixture":
+        from .corpus import source_fixture
+        source_fixture(input_root,output,config,profile)
     elif stage in ("vmd", "posterior", "regional", "review"):
         from .experiments import run_stage
         run_stage(stage, input_root, output, config, profile)
