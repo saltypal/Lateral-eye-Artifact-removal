@@ -56,3 +56,12 @@ def test_original_eeglab_trial_channel_axis_and_labels(tmp_path):
     np.testing.assert_array_equal(source["data"][:,2,0],[55.,66.])
     assert source["eeg_indices"]==[0,1] and source["eog_indices"]==[2,3]
     np.testing.assert_array_equal(source["sample_labels"][:,0],[5,6])
+
+
+def test_train_only_fcm_fit_separates_feature_populations():
+    rng=np.random.default_rng(15)
+    neural=rng.normal([.1,.2,1.,.3],[.01,.01,.01,.01],size=(40,4))
+    ocular=rng.normal([.9,.9,2.,.7],[.01,.01,.01,.01],size=(40,4))
+    model=FCMSelection.fit(np.concatenate([neural,ocular]),clusters=2,seed=42)
+    assert model.predict(neural).mean()<.1
+    assert model.predict(ocular).mean()>.9

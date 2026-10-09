@@ -31,3 +31,20 @@ def test_mwf_requires_calibration_types():
     import pytest
     with pytest.raises(ValueError,match="ocular/rest"):
         fit_mwf(np.ones((3,300)),np.ones(300),rank=1)
+
+
+def test_ica_known_ocular_sources_and_rank_deficient_montage():
+    from vmd_eog.posterior import fit_ica
+    rng=np.random.default_rng(72)
+    neural=rng.normal(size=8192)
+    heog=rng.laplace(size=8192); veog=rng.uniform(-2,2,size=8192)
+    sources=np.stack([neural,heog,veog])
+    mixing=np.array([[1.,.7,.5],[1.,-.5,.7],[.5,.8,-.7],[.3,-.9,.2]])
+    eeg=mixing@sources
+    expert=fit_ica(eeg,sources[1:],threshold=.7,seed=42)
+    prediction=eeg-expert.artifact(eeg,threshold=.7)
+    target=mixing[:,0,None]*neural[None,:]
+    assert expert.unmixing.shape==(3,4)
+    assert len(expert.selected)==2
+    assert np.linalg.norm(prediction-target)/np.linalg.norm(target)<.15
+    assert np.mean([np.corrcoef(a,b)[0,1] for a,b in zip(prediction,target)])>.98
