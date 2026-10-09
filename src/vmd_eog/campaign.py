@@ -14,6 +14,9 @@ def execute(stage, input_root, output, config, profile):
     elif stage == "source-fixture":
         from .corpus import source_fixture
         source_fixture(input_root,output,config,profile)
+    elif stage == "classical-fixture":
+        from .classical_fixture import run_fixture
+        run_fixture(output,config)
     elif stage in ("vmd", "posterior", "regional", "review"):
         from .experiments import run_stage
         run_stage(stage, input_root, output, config, profile)

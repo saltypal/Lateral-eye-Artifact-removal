@@ -20,6 +20,7 @@ STAGES = [
 ]
 
 DETAILS = {
+    "classical-fixture":"Bounded synthetic software integration on Kaggle: generate five synthetic source buckets, execute reduced VMD/posterior searches, regional matched ablations, OSF-style proxies, legacy-style paired scoring and the review gate. The reduced fixture grid is explicitly saved and cannot replace the forty-setting production search. Synthetic pilot results must never authorize neural development. All numerical contracts run first.",
     "source-fixture":"Focused Kaggle reproduction of raw LEMON BrainVision archive loading. Verify original archive/header hashes and actual EEG/marker inventory. Resolve only a unique same-directory renamed companion, retain original header bytes and disclose the temporary loading-header changes. Never invent event annotations or modify EEG payloads. Validate one development participant before resuming the full corpus.",
     "contracts": "Validate exact lag sign/edges, signed per-channel reference association, unit-invariant VMD parity, residual retention, overlap-add, analytic GEVD operators and source reservation. Failures stop the campaign; old draft tests are not evidence for this run.",
     "audit": "Required inputs: checksummed private original bundle plus the study04 FDT supplement. Inspect original EEG/EOG/label types and global participant IDs, keep unknown Klados anatomy unknown, freeze 20% confirmation identities before windows. Development caches contain separate calibration and scoring trials. Magdeburg waveform access stays closed.",
