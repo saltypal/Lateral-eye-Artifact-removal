@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.kaggle-work/
+.kaggle-config/
+results/
+.venv/

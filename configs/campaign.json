@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "campaign_id": "vmd-eog-20261010",
+  "branch": "research/vmd-eog-removal-notebooks",
+  "fs": 200, "window": 1024, "hop": 512, "seed": 42,
+  "confirmation_fraction": 0.2, "outer_folds": 5, "inner_folds": 3,
+  "classical_grid": {
+    "K": [3,4,5,6,7,8,9,10],
+    "alpha": [250,500,1000,2000,4000],
+    "tolerance": 0.000001, "max_iterations": 2000,
+    "thresholds": [0.2,0.4,0.6,0.8], "strengths": [0.25,0.5,0.75,1.0],
+    "lag_banks": [[0],[-10,0,10],[-20,-10,0,10,20]],
+    "ridge_penalties": [0.001,0.01,0.1], "fcm_clusters": [2,3],
+    "mwf_ranks": [1,2,3,4], "mwf_lags": [[0],[-10,-5,0,5,10]]
+  },
+  "preservation": {"clean_change": 0.01,"alpha_db": 0.5,"beta_db": 0.5,"covariance": 0.02,"pearson_deterioration": 0.005},
+  "source_dataset": "satyapaladugu/lateral-eye-complete-dataset",
+  "supplement_kernel": "satyapaladugu/region-aware-eog-restore",
+  "pilot": {"osf_per_study": 2,"lemon_participants": 8,"windows_per_condition": 1},
+  "model_authorization": "Proceed to models if all classical gates pass"
+}
