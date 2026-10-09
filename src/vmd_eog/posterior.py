@@ -6,6 +6,7 @@ Only positive selected generalized excess eigenvalues contribute.
 """
 from dataclasses import dataclass
 import numpy as np
+import warnings
 from scipy.linalg import eigh
 from sklearn.covariance import LedoitWolf
 from .reference import lag_matrix, correlations
@@ -90,8 +91,13 @@ def fit_ica(values,references,threshold=.6,seed=42,method="picard"):
     components=int((spectrum>max(spectrum.max()*1e-7,1e-20)).sum())
     if components<2 or values.shape[-1]<20*components:
         raise ValueError("ICA calibration rank or duration insufficient")
-    whiten,weights,sources=picard(centered,n_components=components,ortho=False,extended=True,
-        whiten=True,max_iter=1000,tol=1e-7,random_state=seed,verbose=False)
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        whiten,weights,sources=picard(centered,n_components=components,ortho=False,extended=True,
+            whiten=True,max_iter=1000,tol=1e-7,random_state=seed,verbose=False)
+    convergence_errors=[str(w.message) for w in caught if "converg" in str(w.message).lower()]
+    if convergence_errors:
+        raise RuntimeError("ICA convergence failed: "+"; ".join(convergence_errors))
     unmixing=weights@whiten
     mixing=np.linalg.pinv(unmixing)
     association=correlations(sources,references,20)

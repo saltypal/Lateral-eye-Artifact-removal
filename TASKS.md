@@ -1,8 +1,9 @@
 # Fresh VMD EOG removal: task ledger
 
 Started 2026-10-10. Fresh project, independent source modules and notebooks.
-Numerical work runs exclusively on Kaggle. No neural training before the
-classical experiment checkpoint is reviewed.
+Numerical work runs exclusively on Kaggle. The authoritative target ledger is
+TARGETS.md. The user now authorizes models automatically only if all classical
+gates pass; no neural training starts before that machine-checked gate.
 
 - [x] Verify Kaggle authentication as satyapaladugu.
 - [x] Preserve prior draft and create a clean VMD_EOG_Removal project.

@@ -6,7 +6,7 @@ from .reference import correlations
 
 def paired(cleaned, target, fs=200):
     cleaned, target = np.asarray(cleaned, float), np.asarray(target, float)
-    if cleaned.shape != target.shape or not np.isfinite(cleaned).all():
+    if cleaned.shape != target.shape or not np.isfinite(cleaned).all() or not np.isfinite(target).all():
         raise ValueError("Invalid paired prediction")
     energy = float(np.sum(target ** 2))
     error = float(np.sum((cleaned - target) ** 2))

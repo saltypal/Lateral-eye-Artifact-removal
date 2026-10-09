@@ -75,6 +75,7 @@ def prepare_lemon(source,temp_root,config,profile):
         "reference":"original raw publisher reference retained","units":"volts (MNE conversion)",
         "low_ocular_policy":"scoring RMS <= recipient calibration RMS; fixed before algorithm evaluation",
         "calibration_end_sample_native":cut,"native_clean_status":"unknown; controlled target is retained recipient EEG"}
+    raw.close()
     return record,calibration[:count],[candidates[i] for i in positions]
 
 
@@ -192,6 +193,11 @@ def build_corpus(input_root,output,config,profile):
         except Exception as error:
             failures.append({"source":source["participant"],"error":f"{type(error).__name__}: {error}"})
             print("LEMON_FAILED",failures[-1],flush=True)
+        finally:
+            raw_folder=(Path(temporary)/source["participant"]).resolve()
+            if not raw_folder.is_relative_to(Path(temporary).resolve()):
+                raise ValueError("Raw cleanup path escapes task temporary directory")
+            if raw_folder.exists(): shutil.rmtree(raw_folder)
         write_jsonl(output/"recipient_manifest.jsonl",recipients)
         write_jsonl(output/"corpus_manifest.jsonl",examples)
         atomic_json(output/"source_failures.json",failures)
