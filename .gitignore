@@ -4,3 +4,9 @@ __pycache__/
 .kaggle-config/
 results/
 .venv/
+data/
+*.eogbundle
+*.fdt
+*.npy
+*.npz
+*.pt

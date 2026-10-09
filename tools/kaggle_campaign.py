@@ -96,6 +96,9 @@ def main():
             out=ROOT/"results"/spec["campaign_id"]/args.run_id
             out.mkdir(parents=True,exist_ok=True)
             print(cli(["kernels","output",spec["kernel"],"-p",str(out),"--force"]))
+            identities=list(out.rglob("run_spec.json"))
+            if len(identities)!=1 or json.loads(identities[0].read_text()).get("run_id")!=args.run_id:
+                raise RuntimeError("Retrieved output identity differs from requested run; retain evidence")
             print("Retrieved:",out)
 
 

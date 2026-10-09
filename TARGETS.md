@@ -6,9 +6,9 @@ User authorizes models automatically only if all classical gates pass.
 
 ## Phase A — classical evidence
 
-- [ ] T01 Preserve scaffold/draft and publish dedicated Git branch.
+- [x] T01 Preserve scaffold/draft and publish dedicated Git branch.
 - [ ] T02 Create independent notebook workflows and reusable modules.
-- [ ] T03 Implement latest-published-SHA launch, saved versions and run persistence.
+- [x] T03 Implement latest-published-SHA launch, saved versions and run persistence.
 - [ ] T04 Pass data-axis, lags, masks, metrics and solver tests on Kaggle.
 - [ ] T05 Audit original Klados/OSF and historical exposure.
 - [ ] T06 Audit raw LEMON and reserved Magdeburg source metadata.

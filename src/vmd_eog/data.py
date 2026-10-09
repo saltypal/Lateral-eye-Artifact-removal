@@ -1,272 +1,216 @@
-"""Fresh, Kaggle-executed data preparation for the VMD-EOG campaign.
-
-The module makes data lineage explicit.  It does not claim that a low-EOG OSF
-segment is biologically clean, and it never guesses Klados channel metadata.
-"""
-from __future__ import annotations
-
+"""Verified source adapters and frozen participant partitions, executed on Kaggle."""
 import hashlib
 import json
 from pathlib import Path
-from fractions import Fraction
-from typing import Any
-
+import re
+import urllib.request
 import numpy as np
-from scipy import signal
-from scipy.io import loadmat
+from .contracts import canonical_hash
+from .io import atomic_json, sha256_file, write_jsonl
+from .osf_reader import read_osf
+from .signal import preprocess, calibration_trials
 
-try:  # Root's shared I/O module is deliberately small and dependency-free.
-    from .io import atomic_json, sha256_file, write_jsonl
-except ImportError:  # Keeps this module independently importable during package assembly.
-    def sha256_file(path: Path) -> str:
-        digest = hashlib.sha256()
-        with Path(path).open("rb") as handle:
-            for block in iter(lambda: handle.read(8 * 1024 * 1024), b""):
-                digest.update(block)
-        return digest.hexdigest()
-
-    def atomic_json(path: Path, value: Any) -> None:
-        Path(path).write_text(json.dumps(value, indent=2, sort_keys=True), encoding="utf-8")
-
-    def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
-        Path(path).write_text("".join(json.dumps(row, sort_keys=True) + "\n" for row in rows), encoding="utf-8")
+FRONTAL = {"FP1", "FP2", "FPZ", "AFZ", "FZ"} | {f"{p}{n}" for p in ("AF", "F") for n in range(1,11)}
+POSTERIOR = {"PZ", "POZ", "OZ", "IZ", "O1", "O2"} | {f"{p}{n}" for p in ("P", "PO") for n in range(1,11)}
+_preprocess = preprocess
 
 
-FS = 200
-REGIONS = ("frontal", "posterior", "central_temporal", "unknown")
-FRONTAL = {"FP1", "FP2", "FPZ", "AFZ", "FZ"} | {f"{p}{n}" for p in ("AF", "F") for n in range(1, 11)}
-POSTERIOR = {"PZ", "POZ", "OZ", "IZ", "O1", "O2"} | {f"{p}{n}" for p in ("P", "PO") for n in range(1, 11)}
-
-
-def _hash_json(value: Any) -> str:
-    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
-
-
-def _region(name: str) -> int:
+def _region(name):
     name = name.strip().upper()
-    if name in FRONTAL:
-        return 0
-    if name in POSTERIOR:
-        return 1
-    if name.startswith(("FC", "FT", "C", "CP", "TP", "T")):
-        return 2
+    if name in FRONTAL: return 0
+    if name in POSTERIOR: return 1
+    if re.fullmatch(r"(?:FC|FT|C|CP|TP|T)(?:\d+|Z)", name): return 2
     return 3
 
 
-def _hemisphere(name: str) -> int:
+def _hemisphere(name):
     name = name.strip().upper()
-    if name.startswith("UNKNOWN_"):
-        return 3
-    digits = "".join(char for char in name if char.isdigit())
-    if not digits or name.endswith("Z"):
-        return 2
-    return 0 if int(digits) % 2 else 1
+    if _region(name) == 3: return 3
+    if name.endswith("Z"): return 2
+    return 0 if int(re.search(r"\d+$",name).group()) % 2 else 1
 
 
-def _preprocess(values: np.ndarray, native_fs: float) -> np.ndarray:
-    """Resample complete trial first, then zero-phase filter under the offline contract."""
-    if native_fs <= 80:
-        raise ValueError("Native Nyquist cannot support 40 Hz")
-    values = np.asarray(values, dtype=np.float64)
-    if native_fs != FS:
-        ratio = Fraction(FS / native_fs).limit_denominator(10_000)
-        values = signal.resample_poly(values, ratio.numerator, ratio.denominator, axis=-1)
-    sos = signal.butter(4, [0.5, 40], fs=FS, btype="bandpass", output="sos")
-    return signal.sosfiltfilt(sos, values, axis=-1).astype(np.float32)
+def eog_axes(item):
+    """Only named, documented derivatives; EOG1/EOG2 do not establish orientation."""
+    names = [name.upper().replace("-", "").replace("_", "") for name in item["names"]]
+    indices = []
+    for aliases in ({"HEOG", "EOGH"}, {"VEOG", "EOGV"}):
+        matches = [i for i,name in enumerate(names) if name in aliases and i in item["eog_indices"]]
+        if len(matches) != 1:
+            raise ValueError("HEOG/VEOG orientation absent or ambiguous")
+        indices.append(matches[0])
+    return indices
 
 
-def _mat_eeg(path: Path) -> dict[str, Any]:
-    """Read EEGLAB .set payloads, including v7.3 files and external .fdt arrays.
-
-    This is copied as transparent source rather than importing any legacy module.
-    """
-    try:
-        payload = loadmat(path, simplify_cells=True)
-    except NotImplementedError:
-        from pymatreader import read_mat
-        payload = read_mat(path)
-    eeg = payload.get("EEG", payload)
-    channels, samples, trials = (int(eeg[key]) for key in ("nbchan", "pnts", "trials"))
-    raw = eeg["data"]
-    if isinstance(raw, str):
-        declared = raw.replace("\\", "/").rsplit("/", 1)[-1]
-        fdt = path.parent / declared
-        if not fdt.is_file():
-            fdt = path.with_suffix(".fdt")
-        if not fdt.is_file() or fdt.stat().st_size != channels * samples * trials * 4:
-            raise ValueError(f"Invalid EEGLAB FDT companion for {path.name}")
-        raw = np.memmap(fdt, dtype="<f4", mode="r", shape=(channels, samples, trials), order="F")
-    else:
-        raw = np.asarray(raw).reshape(channels, samples, trials, order="F")
-    locations = eeg["chanlocs"]
-    if isinstance(locations, dict):
-        labels = locations["labels"]
-        if isinstance(labels, str):
-            locations = [locations]
-        else:
-            locations = [{key: (value[index] if isinstance(value, (list, tuple, np.ndarray)) and len(value) == channels else value)
-                          for key, value in locations.items()} for index in range(channels)]
-    locations = list(locations)
-    names = [str(item["labels"]).strip() for item in locations]
-    if len(names) != channels or len({name.upper() for name in names}) != channels:
-        raise ValueError(f"Missing/duplicate EEGLAB labels in {path.name}")
-    normalized = [name.upper().replace("-", "").replace("_", "") for name in names]
-    aliases = {"EOG", "HEOG", "VEOG", "EOGH", "EOGV", "LEOG", "REOG", "UEOG", "DEOG", "EOG1", "EOG2"}
-    eog_indices = [index for index, name in enumerate(normalized) if name in aliases]
-    eeg_indices = [index for index in range(channels) if index not in eog_indices and normalized[index] not in {"LABEL", "BLOCK", "ARTIFACTCLASSES"}]
-    return {"data": np.moveaxis(raw, -1, 0), "fs": float(eeg["srate"]), "names": names,
-            "locations": locations, "eeg_indices": eeg_indices, "eog_indices": eog_indices}
-
-
-def _find_axis(names: list[str], values: np.ndarray, axis: str) -> np.ndarray | None:
-    aliases = {"HEOG": {"HEOG", "EOGH", "LEOG", "REOG", "EOG1"}, "VEOG": {"VEOG", "EOGV", "UEOG", "DEOG", "EOG2"}}
-    matches = [index for index, name in enumerate(names) if name.upper().replace("-", "").replace("_", "") in aliases[axis]]
-    if not matches:
-        return None
-    return values[matches[0]]
-
-
-def _coords(locations, indices) -> tuple[np.ndarray, np.ndarray]:
-    coordinates, mask = [], []
-    for index in indices:
-        current = []
+def channel_metadata(names, locations=None):
+    coords, valid = [], []
+    for i in range(len(names)):
+        point = []
         for axis in ("X", "Y", "Z"):
-            raw = np.asarray(locations[index].get(axis, [])).reshape(-1)
-            current.append(float(raw[0]) if raw.size == 1 and np.isfinite(raw[0]) else 0.0)
-        ok = all(np.isfinite(current)) and any(current)
-        coordinates.append(current if ok else [0., 0., 0.])
-        mask.append(ok)
-    return np.asarray(coordinates, dtype=np.float32), np.asarray(mask, dtype=bool)
+            value = np.asarray((locations or [{}]*len(names))[i].get(axis,[])).reshape(-1)
+            point.append(float(value[0]) if value.size == 1 and np.isfinite(value[0]) else 0.)
+        ok = bool(np.linalg.norm(point) > 0)
+        coords.append(point); valid.append(ok)
+    return {"channel_names":np.asarray(names,dtype="U64"),
+        "regions":np.asarray([_region(n) for n in names],dtype=np.int64),
+        "hemispheres":np.asarray([_hemisphere(n) for n in names],dtype=np.int64),
+        "coordinates":np.asarray(coords,dtype=np.float32),"coordinate_mask":np.asarray(valid),
+        "mask":np.ones(len(names),dtype=bool)}
 
 
-def _groups(records: list[dict[str, Any]], seed: int) -> dict[str, str]:
-    units = {}
-    for record in records:
-        participant = record.get("participant_id")
-        key = "participant:" + participant if participant and record.get("participant_verified") else "clean:" + record.get("clean_hash", record["record_id"])
-        units.setdefault(key, []).append(record["record_id"])
-    order = sorted(units, key=lambda key: hashlib.sha256(f"{seed}:{key}".encode()).hexdigest())
-    labels = ("train", "val", "test")
-    assignment = {}
-    for position, key in enumerate(order):
-        assignment.update({record_id: labels[(position * 3) // max(1, len(order))] for record_id in units[key]})
-    return assignment
+def freeze_groups(ids, seed=42, fraction=.2, folds=5):
+    """Freeze identities before extracting any windows; deterministic hash shuffle."""
+    ids = sorted(set(ids),key=lambda x:hashlib.sha256(f"{seed}:{x}".encode()).hexdigest())
+    if len(ids) < 5: raise ValueError("At least five independent identities required")
+    reserved = max(1,int(np.ceil(len(ids)*fraction)))
+    result = {}
+    for i,identity in enumerate(ids):
+        role = "confirmation" if i < reserved else "development"
+        result[identity] = {"role":role,"fold":None if i < reserved else (i-reserved)%folds}
+    return result
 
 
-def _save_array(path: Path, eeg, names, channels, *, paired_reference=None, references=None) -> None:
-    count = eeg.shape[0]
-    if channels:
-        coordinates, coordinate_mask = _coords(channels["locations"], channels["indices"])
-    else:
-        coordinates, coordinate_mask = np.zeros((count, 3), np.float32), np.zeros(count, bool)
-    output = {"eeg": np.asarray(eeg, dtype=np.float32), "mask": np.ones(count, bool),
-              "regions": np.asarray([_region(name) for name in names], np.int64),
-              "hemispheres": np.asarray([_hemisphere(name) for name in names], np.int64),
-              "coordinates": coordinates, "coordinate_mask": coordinate_mask,
-              "channel_names": np.asarray(names, dtype="U64")}
-    if paired_reference is not None:
-        output["paired_reference"] = np.asarray(paired_reference, dtype=np.float32)
-    if references is not None:
-        output["references"] = np.asarray(references, dtype=np.float32)
-    np.savez_compressed(path, **output)
+def lemon_sources(count=40):
+    # Publisher page embeds official archive URLs in checkbox values. HTTP is
+    # metadata only: its historical underscore hostname has a mismatched TLS cert.
+    page = "http://fcon_1000.projects.nitrc.org/indi/retro/MPI_LEMON/downloads/download_EEG.html"
+    html = urllib.request.urlopen(page,timeout=60).read().decode()
+    urls = sorted(set(re.findall(r'https://fcp-indi\.s3\.amazonaws\.com/[^"<>\s]+/EEG_Raw_BIDS_ID/sub-\d+\.tar\.gz',html)))
+    if len(urls) < count: raise ValueError("Publisher raw source list is incomplete")
+    return [{"participant":Path(url).name.split(".")[0],"url":url,"dataset":"raw_LEMON",
+             "historical_exposure":"not previously used by this project","metadata_page":page} for url in urls[:count]]
 
 
-def prepare_corpus(source_root: Path, output: Path, config: dict) -> dict:
-    """Create frozen manifests and actual NPZ examples. Invoke only from a Kaggle job."""
-    source_root, output = Path(source_root), Path(output)
-    output.mkdir(parents=True, exist_ok=True)
-    window, hop, max_windows = int(config.get("window", 1024)), int(config.get("hop", 512)), int(config.get("max_windows_per_record", 2))
-    if window <= 0 or hop <= 0 or max_windows <= 0:
-        raise ValueError("window, hop and max_windows_per_record must be positive")
-    records: list[dict[str, Any]] = []
-    klados = source_root / "klados"
-    clean_path, dirty_path = klados / "klados_pure_eeg.npy", klados / "klados_contaminated_eeg.npy"
-    if clean_path.is_file() and dirty_path.is_file():
-        clean = np.load(clean_path, allow_pickle=False)
-        dirty = np.load(dirty_path, allow_pickle=False)
-        if clean.shape != dirty.shape or clean.ndim != 3:
-            raise ValueError("Klados paired arrays are not aligned [record,channel,sample]")
-        for index in range(len(clean)):
-            records.append({"record_id": f"klados:{index}", "dataset": "klados", "index": index,
-                            "participant_id": None, "participant_verified": False,
-                            "clean_hash": hashlib.sha256(np.ascontiguousarray(clean[index]).tobytes()).hexdigest(),
-                            "units": "unknown", "region_metadata": "unknown", "paired_clean": True,
-                            "limitations": ["Klados channel order, units and participant IDs are unresolved."]})
-    osf_entries = []
-    for path in sorted((source_root / "Dataset1_OSF").rglob("*_prep.set")):
-        item = _mat_eeg(path)
-        participant = path.stem.split("_")[1] if "_" in path.stem else path.stem
-        # Existing source readme states IDs are globally unique across studies.
-        record = {"record_id": f"osf:{participant}:{path.stem}", "dataset": "osf", "source_path": str(path.relative_to(source_root)),
-                  "participant_id": participant, "participant_verified": True, "fs": item["fs"], "paired_clean": False,
-                  "units": "source_units_preserved", "region_metadata": "verified_eeglab_names",
-                  "limitations": ["Native clean target is unknown; controlled targets are recipient references only."]}
-        records.append(record); osf_entries.append((record, item))
-    if not records:
-        raise ValueError("No supported Klados or OSF sources found")
-    split = _groups(records, int(config.get("seed", 42)))
-    atomic_json(output / "split_manifest.json", {"schema_version": 1, "assignment": split,
-                "policy": "verified global OSF participant IDs; otherwise duplicate paired-clean hashes", "limits": "Klados is not participant independent."})
-    arrays = output / "arrays"; arrays.mkdir(exist_ok=True)
-    entries: list[dict[str, Any]] = []
-    # Paired Klados engineering corpus.  Full records are preprocessed before windows.
-    if clean_path.is_file() and dirty_path.is_file():
-        heog = np.load(klados / "klados_heog.npy", allow_pickle=False).reshape(len(clean), -1, clean.shape[-1])[:, 0]
-        veog = np.load(klados / "klados_veog.npy", allow_pickle=False).reshape(len(clean), -1, clean.shape[-1])[:, 0]
-        clean_f, dirty_f, refs_f = _preprocess(clean, FS), _preprocess(dirty, FS), _preprocess(np.stack([heog, veog], axis=1), FS)
-        for record in (row for row in records if row["dataset"] == "klados"):
-            for start in range(0, clean_f.shape[-1] - window + 1, hop)[:max_windows]:
-                filename = f"klados_{record['index']}_{start}.npz"; path = arrays / filename
-                names = [f"UNKNOWN_{index}" for index in range(clean_f.shape[1])]
-                _save_array(path, dirty_f[record["index"], :, start:start + window], names, {}, paired_reference=clean_f[record["index"], :, start:start + window], references=refs_f[record["index"], :, start:start + window])
-                entries.append({"example_id": filename[:-4], "record_id": record["record_id"], "recipient_id": record["record_id"], "donor_id": None,
-                                "split_role": split[record["record_id"]], "array_path": f"arrays/{filename}", "target_kind": "paired_klados_engineering",
-                                "native_clean_status": "paired publisher array; units/metadata unknown", "channel_names": names})
-    # Controlled OSF mixtures.  Donor and recipient must be distinct frozen participant groups.
-    burdens, prepared = {}, []
-    for record, item in osf_entries:
-        eeg = _preprocess(item["data"][:, item["eeg_indices"]], item["fs"])
-        heog, veog = _find_axis(item["names"], item["data"], "HEOG"), _find_axis(item["names"], item["data"], "VEOG")
-        if heog is None or veog is None:
-            continue
-        eye = _preprocess(np.stack([heog, veog]), item["fs"])
-        burdens[record["record_id"]] = float(np.sqrt(np.mean(eye ** 2)))
-        prepared.append((record, item, eeg, eye))
-    train_burdens = [burdens[row["record_id"]] for row, *_ in prepared if split[row["record_id"]] == "train"]
-    threshold = float(np.quantile(train_burdens, float(config.get("low_eog_quantile", .25)))) if train_burdens else None
-    for record, item, eeg, eye in prepared:
-        if threshold is None or burdens[record["record_id"]] > threshold:
-            continue
-        eligible = [(drecord, ditem, deeg, deye) for drecord, ditem, deeg, deye in prepared
-                    if split[drecord["record_id"]] == split[record["record_id"]] and drecord["participant_id"] != record["participant_id"]]
-        if not eligible:
-            continue
-        donor, donor_item, donor_eeg, donor_eye = eligible[0]
-        recipient_names = [item["names"][index] for index in item["eeg_indices"]]
-        donor_names = [donor_item["names"][index] for index in donor_item["eeg_indices"]]
-        donor_lookup = {name.upper(): index for index, name in enumerate(donor_names)}
-        field = np.zeros((len(recipient_names), donor_eeg.shape[-1]), dtype=np.float32)
-        design = np.c_[np.ones(donor_eye.shape[-1]), donor_eye.T]
-        for target, name in enumerate(recipient_names):
-            source = donor_lookup.get(name.upper())
-            if source is not None:
-                beta, *_ = np.linalg.lstsq(design, donor_eeg[:, source].T, rcond=None)
-                field[target] = (design[:, 1:] @ beta[1:]).astype(np.float32)
-        channels = {"locations": item["locations"], "indices": item["eeg_indices"]}
-        available = min(eeg.shape[-1], field.shape[-1], donor_eye.shape[-1])
-        for start in range(0, available - window + 1, hop)[:max_windows]:
-            filename = f"osf_{record['participant_id']}_{donor['participant_id']}_{start}.npz"; path = arrays / filename
-            mixed = eeg[0, :, start:start + window] + field[:, start:start + window]
-            target = eeg[0, :, start:start + window]
-            _save_array(path, mixed, recipient_names, channels, paired_reference=target, references=donor_eye[:, start:start + window])
-            entries.append({"example_id": filename[:-4], "record_id": record["record_id"], "participant_id": record["participant_id"],
-                            "recipient_id": record["record_id"], "donor_id": donor["record_id"], "split_role": split[record["record_id"]],
-                            "array_path": f"arrays/{filename}", "target_kind": "controlled_osf_recipient_reference", "native_clean_status": "unknown",
-                            "channel_names": recipient_names, "recipe": {"field": "empirical donor EEG projected on HEOG/VEOG", "low_eog_threshold_train_only": threshold}})
-    write_jsonl(output / "recording_manifest.jsonl", records)
-    write_jsonl(output / "corpus_manifest.jsonl", entries)
-    summary = {"schema_version": 1, "recordings": len(records), "examples": len(entries), "split_hash": _hash_json(split),
-               "low_eog_threshold": threshold, "native_clean_warning": "OSF native EEG is not asserted clean.",
-               "klados_warning": "Klados examples are engineering paired data with unknown channel/participant metadata."}
-    atomic_json(output / "corpus_summary.json", summary)
+def audit_sources(root, output, config, profile):
+    """Inventory all original sessions; waveform caches contain development only."""
+    output = Path(output); caches=output/"source_cache"; caches.mkdir()
+    readme = root/"Dataset1_OSF/readme.txt"
+    description = readme.read_text(encoding="utf-8-sig")
+    if "participant ids are unique across all studies" not in description:
+        raise ValueError("Global participant identity evidence missing")
+    files = sorted((root/"Dataset1_OSF").rglob("*_prep.set"))
+    identities = []
+    for path in files:
+        match = re.fullmatch(r"(study\d+)_(p\d+)_prep",path.stem)
+        if match is None: raise ValueError("Unexpected original source naming")
+        identities.append("osf:"+match[2])
+    partitions = {"osf":freeze_groups(identities,config["seed"],config["confirmation_fraction"],config["outer_folds"])}
+    lemon = lemon_sources(40)
+    partitions["lemon"] = freeze_groups(["lemon:"+r["participant"] for r in lemon],config["seed"],config["confirmation_fraction"],config["outer_folds"])
+    atomic_json(output/"split_manifest.json",{"policy":"freeze recipients and donors independently before windows",
+        "partitions":partitions,"hash":canonical_hash(partitions),"seed":config["seed"],
+        "limits":"OSF historical exposure remains development exposure; Klados participant identities unknown."})
+    atomic_json(output/"external_sources.json",{"lemon":lemon,"magdeburg":{
+        "doi":"10.24352/UB.OVGU-2020-155","participant_count":18,"fs":250,"eeg_channels":30,
+        "role":"independent waveform evaluation after model freeze","waveforms_loaded":False,
+        "reuse_license":"must verify source license before redistributing"}})
+    rows=[]; selected={}; failures=[]
+    for path,identity in zip(files,identities):
+        row={"record_id":path.stem,"participant":identity,"dataset":"osf","path":str(path.relative_to(root)),
+             "source_sha256":sha256_file(path),"partition":partitions["osf"][identity],
+             "historical_exposure":"dataset used in previous development","paired_clean":False}
+        try:
+            item=read_osf(path); refs=eog_axes(item)
+            names=[item["names"][i] for i in item["eeg_indices"]]
+            row.update(native_fs=item["fs"],shape=list(item["data"].shape),channel_names=names,
+                reference=item["reference"],trial_labels=item["trial_labels"],eog_names=[item["names"][i] for i in refs],
+                previous_filtering="source preprocessed; see publisher protocol; original reference retained",
+                region_counts={str(k):int(sum(_region(n)==k for n in names)) for k in range(4)})
+            if row["partition"]["role"]=="confirmation":
+                row["waveform_role"]="reserved; no cache generated"
+            else:
+                take = profile=="full" or selected.get(item["study"],0)<config["pilot"]["osf_per_study"]
+                if take:
+                    selected[item["study"]]=selected.get(item["study"],0)+1
+                    cache_osf(item,refs,caches,row,config,profile)
+            row["eligible"]=True
+        except Exception as error:
+            row.update(eligible=False,error=f"{type(error).__name__}: {error}")
+            failures.append(row["record_id"])
+        rows.append(row); print("AUDIT",row["record_id"],row["eligible"],flush=True)
+        write_jsonl(output/"recording_manifest.jsonl",rows)
+    klados=root/"klados"
+    shapes={}
+    for path in sorted(klados.glob("klados_*.npy")):
+        data=np.load(path,mmap_mode="r",allow_pickle=False)
+        shapes[path.name]={"shape":list(data.shape),"dtype":str(data.dtype),"sha256":sha256_file(path)}
+    atomic_json(output/"klados_audit.json",{"arrays":shapes,"metadata":"channel order, units and participants unknown",
+        "role":"historically exposed paired engineering comparison; no anatomical assignments",
+        "publisher_alignment":"legacy export audit identified 53 records cropped to 5401 samples; revalidation required"})
+    cache_klados(klados,caches,config,profile)
+    summary={"sessions":len(rows),"participants":len(partitions["osf"]),"eligible_sessions":sum(r["eligible"] for r in rows),
+        "source_failures":failures,"cached_development_sessions":sum(selected.values()),"profile":profile,
+        "split_hash":canonical_hash(partitions),"confirmation_waveform_cache_generated":False}
+    atomic_json(output/"audit_summary.json",summary)
     return summary
+
+
+def cache_osf(item,refs,caches,row,config,profile):
+    indices=item["eeg_indices"]+refs
+    trials=[trial[indices] for trial in item["data"]]
+    block=item["annotations"].get("BLOCK")
+    if block is not None:
+        labels=np.round(item["data"][:,block,0]).astype(int)
+    else: labels=np.zeros(len(trials),int)
+    if np.any(labels==1) and np.any(labels==2):
+        cal_ids=np.flatnonzero(labels==1).tolist(); score_ids=np.flatnonzero(labels==2).tolist()
+        cal=[trials[i] for i in cal_ids]; score=[trials[i] for i in score_ids]
+        policy="declared block 1 calibration, block 2 scoring; independent trial filtering"
+    else:
+        cal,score,error=calibration_trials(trials,item["fs"])
+        if error: raise ValueError(error)
+        cal_ids=list(range(len(cal))); score_ids=list(range(len(cal),len(trials)))
+        policy="chronological prefix with whole-trial boundaries"
+    names=[item["names"][i] for i in item["eeg_indices"]]
+    metadata=channel_metadata(names,[item["locations"][i] for i in item["eeg_indices"]])
+    cal_arrays=[preprocess(x,item["fs"]) for x in cal]
+    # Covariance/ICA concatenate already independently filtered calibration trials.
+    # Lag estimators receive a validity mask so fitting never crosses joins.
+    joined=np.concatenate(cal_arrays,axis=-1)
+    boundaries=np.cumsum([x.shape[-1] for x in cal_arrays])[:-1]
+    trial_types=[(item["trial_labels"] or [0]*len(trials))[i] for i in cal_ids]
+    cal_labels=np.concatenate([np.full(x.shape[-1],t,int) for x,t in zip(cal_arrays,trial_types)])
+    directory=caches/row["record_id"]; directory.mkdir()
+    np.savez_compressed(directory/"calibration.npz",eeg=joined[:-2],references=joined[-2:],
+        boundaries=boundaries,trial_types=cal_labels,**metadata)
+    windows=[]; counts={}; limit=config["pilot"]["windows_per_condition"] if profile=="pilot" else 8
+    for trial,trial_id in zip(score,score_ids):
+        kind=(item["trial_labels"] or [0]*len(trials))[trial_id]
+        values=preprocess(trial,item["fs"])
+        for start in range(0,values.shape[-1]-config["window"]+1,config["hop"]):
+            if counts.get(kind,0)>=limit: break
+            name=f"trial-{trial_id:04d}-start-{start:05d}.npz"
+            np.savez_compressed(directory/name,eeg=values[:-2,start:start+config["window"]],
+                references=values[-2:,start:start+config["window"]],**metadata)
+            windows.append({"array":name,"trial":trial_id,"start":start,"condition":{1:"rest",2:"lateral",3:"vertical",4:"blink"}.get(kind,"unknown")})
+            counts[kind]=counts.get(kind,0)+1
+    row["calibration_policy"]=policy
+    row["cache"]="source_cache/"+row["record_id"]
+    atomic_json(directory/"record.json",{**row,"windows":windows,"calibration_trial_ids":cal_ids,"scoring_trial_ids":score_ids})
+
+
+def cache_klados(root,caches,config,profile):
+    arrays={key:np.load(root/f"klados_{key}.npy",mmap_mode="r",allow_pickle=False) for key in ("pure_eeg","contaminated_eeg","heog","veog")}
+    clean=arrays["pure_eeg"]; dirty=arrays["contaminated_eeg"]
+    if clean.shape!=dirty.shape or clean.ndim!=3: raise ValueError("Klados paired layout invalid")
+    records=[]; limit=4 if profile=="pilot" else len(clean)
+    for i in range(min(len(clean),limit)):
+        refs=np.stack([arrays[k][i].reshape(-1,clean.shape[-1])[0] for k in ("heog","veog")])
+        combined=np.concatenate([clean[i],dirty[i],refs],axis=0)
+        cal,score,error=calibration_trials([combined],200)
+        if error: raise ValueError("Klados: "+error)
+        calibration=preprocess(cal[0],200); scoring=preprocess(score[0],200)
+        count=clean.shape[1]; meta=channel_metadata([f"UNKNOWN_{c}" for c in range(count)])
+        name=f"klados-{i:03d}"; directory=caches/name; directory.mkdir()
+        np.savez_compressed(directory/"calibration.npz",eeg=calibration[count:2*count],references=calibration[-2:],
+            boundaries=np.asarray([],int),trial_types=np.zeros(calibration.shape[-1],int),**meta)
+        windows=[]
+        for start in list(range(0,scoring.shape[-1]-config["window"]+1,config["hop"]))[:(1 if profile=="pilot" else 4)]:
+            path=f"paired-{start:05d}.npz"; segment=scoring[:,start:start+config["window"]]
+            np.savez_compressed(directory/path,eeg=segment[count:2*count],paired_reference=segment[:count],references=segment[-2:],**meta)
+            windows.append({"array":path,"condition":"mixed","start":start})
+        record={"record_id":name,"dataset":"klados","participant":None,"partition":{"role":"development","fold":i%config["outer_folds"]},
+            "target_kind":"legacy_paired","participant_verified":False,"windows":windows,"source_row":i,
+            "clean_hash":hashlib.sha256(np.ascontiguousarray(clean[i]).tobytes()).hexdigest()}
+        atomic_json(directory/"record.json",record); records.append(record)
+    write_jsonl(caches/"klados_manifest.jsonl",records)
