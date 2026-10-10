@@ -76,14 +76,19 @@ def submit(args):
     spec["kernel"] = kernel
     notebook = stage/"experiment.ipynb"
     build(notebook,args.stage,spec)
-    metadata = {"id":kernel,"title":"VMD EOG "+args.stage.title(),"code_file":notebook.name,
+    metadata = {"id":kernel,"title":slug.replace('-', ' ').title(),"code_file":notebook.name,
                 "language":"python","kernel_type":"notebook","is_private":True,"enable_internet":True,
-                "enable_gpu":args.stage in ("student-paired","student-distill","router-train","autovmd-search"),
+                "enable_gpu":args.stage in ("student-paired","student-distill","router-train","autovmd-search","neural-fixture"),
                 "dataset_sources":spec["dataset_sources"],"kernel_sources":spec["kernel_sources"],"competition_sources":[]}
     (stage/"kernel-metadata.json").write_text(json.dumps(metadata,indent=2))
     (stage/"run_spec.json").write_text(json.dumps(spec,indent=2))
     message=cli(["kernels","push","-p",str(stage)])
+    (stage/"submission.txt").write_text(message,encoding="utf-8")
     print(message)
+    published = re.search(r"https://www.kaggle.com/code/([^\s]+)",message)
+    if published:
+        spec["requested_kernel"] = kernel
+        spec["kernel"] = published.group(1).rstrip('/')
     version=re.search(r"Kernel version (\d+) successfully pushed",message)
     if version:
         spec["kernel_version"]=int(version.group(1))
