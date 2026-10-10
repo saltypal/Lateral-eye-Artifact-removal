@@ -96,6 +96,10 @@ def forward(model,data,bundle,mask=None):
 def validate(model,dataset,device,config,save_directory=None):
     model.eval()
     records = []
+    required_folds = experiment.get("inner_folds",[0])
+    required_epochs = experiment.get("epochs",5)
+    required_seeds = experiment.get("seeds",[42])
+    required_rates = experiment.get("learning_rates",[.001])
     if save_directory:
         save_directory.mkdir(parents=True,exist_ok=True)
     failures = []
@@ -196,8 +200,41 @@ def train_experiment(input_root,output,config,profile,experiment):
     accumulation = config["neural"]["effective_batch"]
     best = None
     stale,history = 0,[]
+    environment = json.loads((output/"environment.json").read_text())
+    immutable_experiment = {key:value for key,value in experiment.items() if key not in ("resume_from","runtime_budget_s")}
+    identity = {"git_sha":environment["git_sha"],"configuration_hash":canonical_hash(config),
+        "corpus_manifest_sha256":sha256_file(parent/"corpus_manifest.jsonl"),
+        "partitions_sha256":sha256_file(output/"neural_partitions.json"),
+        "experiment_hash":canonical_hash(immutable_experiment),"profile":profile}
+    first_epoch = 0
+    if experiment.get("resume_from"):
+        candidates = []
+        for path in Path(input_root).rglob("run_spec.json"):
+            if json.loads(path.read_text())["run_id"] == experiment["resume_from"]:
+                candidates.append(path.parent)
+        if len(candidates) != 1:
+            raise ValueError("Resume parent is missing or ambiguous")
+        previous = candidates[0]
+        verify_parent(previous,("last_checkpoint.pt",))
+        saved = torch.load(previous/"last_checkpoint.pt",map_location="cpu",weights_only=True)
+        if saved.get("identity") != identity:
+            raise ValueError("Resume source/data/split/configuration identity differs")
+        model.load_state_dict(saved["state_dict"])
+        optimizer.load_state_dict(saved["optimizer"])
+        scaler.load_state_dict(saved["scaler"])
+        torch.set_rng_state(saved["torch_rng"])
+        torch.cuda.set_rng_state_all(saved["cuda_rng"])
+        sampler.generator.set_state(saved["sampler_rng"])
+        random.setstate(saved["python_rng"])
+        numpy_rng = saved["numpy_rng"]
+        np.random.set_state((numpy_rng[0],np.asarray(numpy_rng[1],dtype=np.uint32),*numpy_rng[2:]))
+        best,history,stale = saved["best"],saved["history"],saved["stale"]
+        first_epoch = saved["epoch"]
+        if first_epoch >= experiment["epochs"] or stale >= config["neural"]["patience"]:
+            raise ValueError("Completed or early-stopped experiment does not need resume")
     started = time.perf_counter()
-    for epoch in range(experiment["epochs"]):
+    paused_runtime = False
+    for epoch in range(first_epoch,experiment["epochs"]):
         model.train(); optimizer.zero_grad(set_to_none=True)
         total_loss = 0.
         sampled = list(sampler)
@@ -238,14 +275,27 @@ def train_experiment(input_root,output,config,profile,experiment):
         pd.DataFrame(history).to_csv(output/"training_history.csv",index=False)
         torch.save({"state_dict":model.state_dict(),"optimizer":optimizer.state_dict(),"scaler":scaler.state_dict(),
             "epoch":epoch+1,"torch_rng":torch.get_rng_state(),"cuda_rng":torch.cuda.get_rng_state_all(),
-            "sampler_rng":sampler.generator.get_state(),"experiment":experiment},output/"last_checkpoint.pt")
+            "sampler_rng":sampler.generator.get_state(),"experiment":experiment,"identity":identity,
+            "best":best,"history":history,"stale":stale,"python_rng":random.getstate(),
+            "numpy_rng":[np.random.get_state()[0],np.random.get_state()[1].tolist(),*np.random.get_state()[2:]]},output/"last_checkpoint.pt")
         print("NEURAL_EPOCH",epoch+1,history[-1],flush=True)
         if stale >= config["neural"]["patience"]:
             break
+        if time.perf_counter()-started >= experiment.get("runtime_budget_s",36000) and epoch+1 < experiment["epochs"]:
+            paused_runtime = True
+            break
+    if best is None:
+        raise ValueError("No trained epoch/checkpoint exists")
+    # A resumed run may never beat its inherited best epoch. Publish that
+    # checkpoint into this run as well, so its artifact set is self-contained.
+    torch.save({"state_dict":best["state"],"experiment":experiment,
+        "configuration_hash":canonical_hash(config),
+        "corpus_manifest_sha256":sha256_file(parent/"corpus_manifest.jsonl"),
+        "epoch":best["epoch"]},output/"best_model.pt")
     model.load_state_dict(best["state"])
     frame,summary = validate(model,val_data,device,config,output/"validation_predictions")
     frame.to_csv(output/"neural_validation_channels.csv.gz",index=False)
-    if experiment["evaluate_outer"]:
+    if experiment["evaluate_outer"] and not paused_runtime:
         outer_data = PairedWindows(parent,outer,config,experiment,input_root)
         outer_frame,outer_summary = validate(model,outer_data,device,config,output/"outer_predictions")
         outer_frame.to_csv(output/"neural_outer_channels.csv.gz",index=False)
@@ -253,7 +303,8 @@ def train_experiment(input_root,output,config,profile,experiment):
     summary.update({"campaign_id":config["campaign_id"],"experiment":experiment,"best_epoch":best["epoch"],
         "epochs_completed":len(history),"runtime_s":time.perf_counter()-started,"parameter_count":sum(p.numel() for p in model.parameters()),
         "checkpoint_sha256":sha256_file(output/"best_model.pt"),"reserved_confirmation_opened":False,
-        "paired_reference":"retained low-ocular recipient EEG; no artifact-free claim", "screening_only":profile == "pilot"})
+        "paired_reference":"retained low-ocular recipient EEG; no artifact-free claim", "screening_only":profile == "pilot",
+        "training_complete":not paused_runtime,"paused_runtime":paused_runtime,"resume_identity":identity})
     atomic_json(output/"training_summary.json",summary)
     import matplotlib.pyplot as plt
     figure,axes = plt.subplots(1,2,figsize=(11,4))
@@ -317,11 +368,34 @@ def select_search(input_root,output,config,experiment):
             raise ValueError("Search parent belongs to another fold/campaign")
         if summary["reserved_confirmation_opened"] is not False or spec.get("evaluate_outer"):
             raise ValueError("Outer/confirmation evidence cannot select a candidate")
+        if summary.get("training_complete",True) is not True or summary.get("paused_runtime",False):
+            raise ValueError("Paused training cannot select or promote a candidate")
+        if (spec["arm"] != "regional" or spec["epochs"] != required_epochs
+                or spec["loss_profile"] != experiment.get("loss_profile","mse")
+                or spec["inner_fold"] not in required_folds
+                or spec["seed"] not in required_seeds
+                or spec["learning_rate"] not in required_rates):
+            raise ValueError("Search parent differs from declared matched training budget")
         records.append({"K":spec["K"],"alpha":spec["alpha"],"snr_db":summary["snr_db"],
-            "preservation_passed":summary["preservation_passed"],"runtime_s":summary["runtime_s"],"epochs":summary["epochs_completed"]})
-    if len(records) != required or len({(row["K"],row["alpha"]) for row in records}) != required:
+            "preservation_passed":summary["preservation_passed"],"runtime_s":summary["runtime_s"],
+            "epochs":summary["epochs_completed"],"inner_fold":spec["inner_fold"],
+            "seed":spec["seed"],"learning_rate":spec["learning_rate"]})
+    expected_per_candidate = len(required_folds)*len(required_seeds)*len(required_rates)
+    keys = {(row["K"],row["alpha"],row["inner_fold"],row["seed"],row["learning_rate"]) for row in records}
+    if len(records) != required*expected_per_candidate or len(keys) != len(records):
         raise ValueError("Search rung is incomplete or duplicated")
-    frame = pd.DataFrame(records).sort_values(["preservation_passed","snr_db"],ascending=[False,False])
+    raw = pd.DataFrame(records)
+    groups = raw.groupby(["K","alpha"])
+    if len(groups) != required or not (groups.size() == expected_per_candidate).all():
+        raise ValueError("Every candidate needs all declared folds, seeds and rates")
+    raw.to_csv(output/"autovmd_selection_runs.csv",index=False)
+    # Rates remain separate alternatives; do not average a poor optimizer
+    # setting into the selected recipe. Fold and seed uncertainty stays saved.
+    frame = raw.groupby(["K","alpha","learning_rate"],as_index=False).agg(
+        snr_db=("snr_db","mean"),preservation_passed=("preservation_passed","all"),
+        runtime_s=("runtime_s","mean"))
+    frame = frame.sort_values(["preservation_passed","snr_db"],ascending=[False,False])
+    frame = frame.drop_duplicates(["K","alpha"])
     frame.to_csv(output/"autovmd_selection.csv",index=False)
     atomic_json(output/"autovmd_selection_summary.json",{"campaign_id":config["campaign_id"],
         "candidates":len(records),"promoted":frame.head(experiment.get("keep",8)).to_dict("records"),
