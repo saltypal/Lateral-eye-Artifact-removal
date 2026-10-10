@@ -96,10 +96,6 @@ def forward(model,data,bundle,mask=None):
 def validate(model,dataset,device,config,save_directory=None):
     model.eval()
     records = []
-    required_folds = experiment.get("inner_folds",[0])
-    required_epochs = experiment.get("epochs",5)
-    required_seeds = experiment.get("seeds",[42])
-    required_rates = experiment.get("learning_rates",[.001])
     if save_directory:
         save_directory.mkdir(parents=True,exist_ok=True)
     failures = []
@@ -359,6 +355,10 @@ def select_search(input_root,output,config,experiment):
     """Aggregate only a complete, source-compatible declared screening rung."""
     parents = list(Path(input_root).rglob("training_summary.json"))
     required = experiment.get("required_candidates",40)
+    required_folds = experiment.get("inner_folds",[0])
+    required_epochs = experiment.get("epochs",5)
+    required_seeds = experiment.get("seeds",[42])
+    required_rates = experiment.get("learning_rates",[.001])
     records = []
     for path in parents:
         verify_parent(path.parent,(path.name,"neural_partitions.json"))
