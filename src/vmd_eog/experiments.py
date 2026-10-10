@@ -13,6 +13,7 @@ from .metrics import paired, ocular, preservation_pass
 from .posterior import fit_mwf, fit_ica
 from .reference import correlations, project, signed_context
 from .artifacts import verify_parent
+from .paper_evaluation import save_protocol, write_paired, write_native
 
 
 def corpus_parent(input_root):
@@ -282,6 +283,7 @@ def run_regional(input_root,output,config,profile):
         "policy":"held-out recipient and donor fold excluded from global configuration selection"})
     results=[]; diagnostics=[]; fit_cache={}; failures=[]
     arrays=output/"predictions"; arrays.mkdir()
+    save_protocol(output)
     method_names=["identity","direct","shared_vmd","regional_mwf","regional_ica","regional_no_context",
         "regional_mwf_direct_frontal","regional_ica_direct_frontal"]
     for number,row in enumerate(rows):
@@ -321,6 +323,10 @@ def run_regional(input_root,output,config,profile):
         for method in method_names:
             cleaned=raw-corrections[method]
             metrics=paired(cleaned,target,config["fs"])
+            write_paired(output,{"example_id":row["example_id"],"recipient":row["recipient"],
+                "donor":row["donor"],"condition":row["condition"],"method":method,
+                "input_snr_db":row.get("input_snr_db"),"dataset":row["dataset"]},
+                cleaned,target,raw,data["channel_names"],data["regions"])
             before=ocular(raw,data["references"]); after=ocular(cleaned,data["references"])
             results.append({"example_id":row["example_id"],"recipient":row["recipient"],"donor":row["donor"],"condition":row["condition"],
                 "input_snr_db":row.get("input_snr_db"),"method":method,"fold":int(fold),**metrics,
@@ -386,9 +392,16 @@ def run_native_comparison(parent,rows,frontal_recipes,posterior_recipes,output,c
                 "joint_r2_before":before["joint_eog_r2"],"joint_r2_after":after["joint_eog_r2"],
                 "failure_count":sum(bool(d.get("failure")) for d in diags[method])}
             if kind=="legacy_paired":
+                write_paired(output,{"example_id":row["example_id"],"recipient":row["recipient"],
+                    "donor":row.get("donor"),"condition":row["condition"],"method":method,
+                    "input_snr_db":row.get("input_snr_db"),"dataset":row["dataset"]},
+                    cleaned,data["paired_reference"],raw,data["channel_names"],data["regions"])
                 record.update(paired(cleaned,data["paired_reference"],config["fs"]))
                 record["scope"]="legacy development-exposed; unknown participants, units and montage"
             else:
+                write_native(output,{"example_id":row["example_id"],"source":row["recipient"],
+                    "condition":row["condition"],"method":method,"dataset":row["dataset"]},
+                    cleaned,raw,data["references"],data["channel_names"],data["regions"],config["fs"])
                 change=paired(cleaned,raw,config["fs"])
                 record.update({"modification_relative_rms":change["relative_error"],
                     "alpha_modification_db":change["alpha_db"],"beta_modification_db":change["beta_db"],
@@ -463,6 +476,11 @@ def run_review(input_root,output,config,profile):
     contracts_ok=json.loads((contract/"contracts_summary.json").read_text())["passed"]
     source=json.loads((corpus/"corpus_summary.json").read_text())
     passed=selected is not None and contracts_ok and not source["reserved_confirmation_opened"]
+    project_gates_passed=passed
+    # User requested the prescribed papers' evaluation on 2026-10-10. A
+    # project-only review must not automatically release neural development.
+    paper_evaluation_complete=False
+    passed=passed and paper_evaluation_complete
     recipe={"method":None if selected is None else selected["method"],
         "frontal":json.loads((vmd/"selected_frontal.json").read_text())["vmd_projected"],
         "posterior":json.loads((posterior/"selected_posterior.json").read_text()),
@@ -485,10 +503,12 @@ def run_review(input_root,output,config,profile):
         shutil.copy2(path,saved)
         evidence_files[name]=str(saved.relative_to(output))
     gate={"campaign_id":config["campaign_id"],"passed":passed,"model_authorization":config["model_authorization"],
+        "project_gates_passed":project_gates_passed,"paper_evaluation_complete":paper_evaluation_complete,
         "selected_recipe_hash":canonical_hash(recipe),"evidence_hashes":evidence,"evidence_files":evidence_files,
         "selected_method":None if selected is None else selected["method"],
         "requirement":"All preservation/paired-correlation gates, >=15dB controlled development SNR and >=0.1dB advantage over direct regression both alone and with identical posterior expert",
-        "failure_reasons":[] if passed else ["No regional VMD hybrid passed every gate and the matched direct-regression benefit requirement"],
+        "failure_reasons":(["No regional VMD hybrid passed every project gate and matched regression benefit requirement"] if not project_gates_passed else [])
+            + (["Prescribed-paper evaluation and adapted-protocol review are incomplete"] if not paper_evaluation_complete else []),
         "reserved_confirmation_opened":False,"native_clean_recovery_claim":False}
     atomic_json(output/"classical_gate.json",gate)
     atomic_json(output/"review_summary.json",{"classical_gate_passed":passed,"methods":reports,"profile":profile,

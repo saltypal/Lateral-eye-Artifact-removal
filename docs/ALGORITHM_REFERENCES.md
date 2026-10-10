@@ -1,5 +1,9 @@
 # References that affect implementation
 
+Evaluation equations, source locations, discrepancies and adaptations are
+specified in [EVALUATION_PROTOCOL.md](EVALUATION_PROTOCOL.md). Project preservation
+thresholds are not paper-standard metrics or published acceptance thresholds.
+
 ## VMD
 
 Dragomiretskiy and Zosso, *Variational Mode Decomposition*, IEEE Transactions on Signal Processing (2014), [DOI](https://doi.org/10.1109/TSP.2013.2288675). The algorithm learns band-limited modes and center frequencies jointly. It does not justify K=5 by naming five physiological EEG bands.

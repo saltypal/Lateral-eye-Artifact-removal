@@ -4,7 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 
-PHASE_A = ("contracts", "audit", "source-fixture", "classical-fixture", "corpus", "vmd", "posterior", "regional", "review")
+PHASE_A = ("contracts", "audit", "source-fixture", "classical-fixture", "paper-fixture", "corpus", "vmd", "posterior", "regional", "review")
 PHASE_B = ("teacher-oof", "student-paired", "student-distill", "freeze", "final-eval", "export")
 
 
@@ -27,6 +27,8 @@ def require_approval(stage, input_root, config):
     gate = json.loads(files[0].read_text())
     if gate.get("campaign_id") != config["campaign_id"] or gate.get("passed") is not True:
         raise RuntimeError("Classical gate is not passing for this campaign")
+    if gate.get("paper_evaluation_complete") is not True:
+        raise RuntimeError("Prescribed paper evaluation is incomplete; old project metrics cannot authorize models")
     if config.get("model_authorization") != "Proceed to models if all classical gates pass":
         raise RuntimeError("Explicit conditional model authorization is absent")
     if not gate.get("selected_recipe_hash") or not gate.get("evidence_hashes"):

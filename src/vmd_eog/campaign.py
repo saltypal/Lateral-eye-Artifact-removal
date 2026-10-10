@@ -17,6 +17,9 @@ def execute(stage, input_root, output, config, profile):
     elif stage == "classical-fixture":
         from .classical_fixture import run_fixture
         run_fixture(output,config)
+    elif stage == "paper-fixture":
+        from .paper_evaluation import run_fixture
+        run_fixture(output)
     elif stage in ("vmd", "posterior", "regional", "review"):
         from .experiments import run_stage
         run_stage(stage, input_root, output, config, profile)

@@ -128,3 +128,13 @@ without a separate model for each cap. This is a planned student property until
 its mask, permutation, missing-context, CPU reload and 10–50-channel benchmarks
 pass after the classical gate. Offline filtering and bidirectional recurrence
 do not constitute a causal streaming implementation.
+
+## Evaluation correction, 2026-10-10
+
+The primary evaluation is now mapped to the prescribed VMD papers,
+OSF/EEGOAR-Net and Klados in [EVALUATION_PROTOCOL.md](EVALUATION_PROTOCOL.md).
+The original lag-maximized EOG proxy, joint R² and clean-preservation thresholds
+are supplementary project diagnostics. Native paper evaluation uses zero-lag
+Pearson separately by ocular condition, rest RMSE and resting spectral power.
+Old global-energy SNR summaries and new per-channel SNR tables are distinct.
+No old project-only review can authorize model development.

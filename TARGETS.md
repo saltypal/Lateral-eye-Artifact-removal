@@ -45,6 +45,19 @@ User authorizes models automatically only if all classical gates pass.
 
 ## Acceptance
 
+2026-10-10 evaluation correction: primary methods must follow the prescribed
+VMD papers + OSF/EEGOAR-Net + Klados. Exact mappings and disclosed adaptations
+are in `docs/EVALUATION_PROTOCOL.md`. Old project diagnostics remain supplementary.
+Automatic regional/review chaining was stopped while this correction is tested;
+the current VMD/posterior searches retain their immutable development objectives.
+Models remain closed until paper evaluation is complete as well as project gates.
+
+- [ ] E01 Validate the paper metric implementation on Kaggle.
+- [ ] E02 Produce per-channel paired and condition-specific native paper tables.
+- [ ] E03 Evaluate source-level paired permutations and Bonferroni families.
+- [ ] E04 Qualify eight-second native chance analysis or report it unavailable.
+- [ ] E05 Complete paper/protocol review before releasing models.
+
 Fresh controlled mean SNR >=15 dB; 20 dB stretch. Clean modification <=1%,
 alpha/beta <=0.5 dB, clean covariance <=0.02, comparator Pearson deterioration
 <=0.005. Engineering gates, not biological guarantees. Unknown Klados anatomy,

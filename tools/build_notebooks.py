@@ -11,6 +11,7 @@ STAGES = [
     ("05_Posterior_Experts", "posterior", "Validate GEVD-MWF and ICA with raw frontal support on unscored calibration."),
     ("06_Regional_Comparison", "regional", "Compare disjoint regional correction, shared processing and context ablations."),
     ("07_Approach_Review", "review", "Review all candidates and preservation; authorize models only on passing gates."),
+    ("07a_Paper_Metric_Contracts", "paper-fixture", "Validate source-mapped equations before any formal paper evaluation."),
     ("08_Teacher_Crossfit", "teacher-oof", "After passing gates, generate source-isolated teacher targets."),
     ("09_EEG_Only_Student", "student-paired", "After passing gates, train one EEG-only baseline."),
     ("10_Distillation_Ablations", "student-distill", "Evaluate teacher supervision and declared loss/architecture additions."),
@@ -20,6 +21,7 @@ STAGES = [
 ]
 
 DETAILS = {
+    "paper-fixture": "Validate IVMD-SOBI RRMSE/MSE and the disclosed printed CC discrepancy, ordinary condition-specific EEG-EOG Pearson from EEGOAR-Net/Kobler, rest RMSE, Welch 2-second/1-second overlap with the paper's bands, explicit PSNR scaling and participant-level paired permutation. Read docs/EVALUATION_PROTOCOL.md for exact source locations and adaptations. SNR output, SNR improvement, PSNR and linear input RMS ratio are separate quantities. No synthetic fixture or old project-only gate can authorize models.",
     "classical-fixture":"Bounded synthetic software integration on Kaggle: generate five synthetic source buckets, execute reduced VMD/posterior searches, regional matched ablations, OSF-style proxies, legacy-style paired scoring and the review gate. The reduced fixture grid is explicitly saved and cannot replace the forty-setting production search. Synthetic pilot results must never authorize neural development. All numerical contracts run first.",
     "source-fixture":"Focused Kaggle reproduction of raw LEMON BrainVision archive loading. Verify original archive/header hashes and actual EEG/marker inventory. Resolve only a unique same-directory renamed companion, retain original header bytes and disclose the temporary loading-header changes. Never invent event annotations or modify EEG payloads. Validate one development participant before resuming the full corpus.",
     "contracts": "Validate exact lag sign/edges, signed per-channel reference association, unit-invariant VMD parity, residual retention, overlap-add, analytic GEVD operators and source reservation. Failures stop the campaign; old draft tests are not evidence for this run.",
@@ -102,13 +104,13 @@ print('Git source:', ACTUAL_SHA)
 '''
     tables = '''import csv
 from itertools import islice
-for name in ('vmd_search.csv','posterior_search.csv','review_methods.csv','condition_source_uncertainty.csv'):
+for name in ('vmd_search.csv','posterior_search.csv','review_methods.csv','condition_source_uncertainty.csv','paper_metric_fixture.csv','paper_paired_channels.csv','paper_native_channels.csv','paper_rest_bandpower_channels.csv'):
     path = OUT/name
     if path.exists():
         print(name, '(first 8 saved rows; complete table remains in outputs)')
         with path.open() as handle:
             display(list(islice(csv.DictReader(handle),8)))
-for name in ('selected_frontal.json','selected_posterior.json','classical_gate.json'):
+for name in ('selected_frontal.json','selected_posterior.json','classical_gate.json','paper_evaluation_protocol.json','paper_metric_fixture_summary.json'):
     if (OUT/name).exists():
         print(name, (OUT/name).read_text()[:8000])
 review = OUT/'APPROACH_REVIEW.md'

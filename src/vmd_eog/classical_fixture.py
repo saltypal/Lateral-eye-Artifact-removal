@@ -59,6 +59,7 @@ def run_fixture(output,config):
                 "partition":{"role":"development","fold":participant}})
     for kind,dataset in (("real_proxy","osf"),("legacy_paired","klados")):
         row={**rows[-1],"example_id":"fixture-"+kind,"target_kind":kind,"dataset":dataset}
+        if kind=="real_proxy": row["condition"]="blink"
         rows.append(row)
     write_jsonl(corpus/"corpus_manifest.jsonl",rows)
     atomic_json(corpus/"split_manifest.json",{"hash":canonical_hash({"synthetic":True})})
