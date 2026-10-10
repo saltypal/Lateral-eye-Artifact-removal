@@ -53,6 +53,7 @@ the current VMD/posterior searches retain their immutable development objectives
 Models remain closed until paper evaluation is complete as well as project gates.
 
 - [x] E01 Validate the paper metric implementation on Kaggle: `paper-fixture-001`, source `e90857b`, 36 tests passed; saved artifact hashes verified.
+  Latest paper contracts `paper-fixture-002` at `ed091f9` passed 40 tests on Kaggle.
   Full classical integration `classical-fixture-004` at `f193e26` also passed
   39 tests and all VMD/posterior/regional/review stages, including the new
   paper-channel tables and paired statistics. Synthetic evidence cannot authorize models.
@@ -82,7 +83,8 @@ run, completed with 3,840 controlled examples, 32 recipient participants and
 31 donor participants, zero download failures and 1,346 native/legacy examples.
 `classical-fixture-001` passed bounded synthetic VMD/posterior/regional/review
 integration and correctly rejected model authorization from pilot evidence.
-Full `vmd-001` and `posterior-001` searches are active. Controlled research SNR
+Full `posterior-001` completed: 304 candidates, 608 fits, zero fit failures.
+Its archived selection objective is development evidence; `vmd-001` remains active. Controlled research SNR
 is not yet established. Neural work remains closed.
 
 ## Execution evidence
