@@ -52,7 +52,7 @@ Automatic regional/review chaining was stopped while this correction is tested;
 the current VMD/posterior searches retain their immutable development objectives.
 Models remain closed until paper evaluation is complete as well as project gates.
 
-- [ ] E01 Validate the paper metric implementation on Kaggle.
+- [x] E01 Validate the paper metric implementation on Kaggle: `paper-fixture-001`, source `e90857b`, 36 tests passed; saved artifact hashes verified.
 - [ ] E02 Produce per-channel paired and condition-specific native paper tables.
 - [ ] E03 Evaluate source-level paired permutations and Bonferroni families.
 - [ ] E04 Qualify eight-second native chance analysis or report it unavailable.

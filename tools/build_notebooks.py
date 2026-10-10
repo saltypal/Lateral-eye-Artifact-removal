@@ -104,7 +104,7 @@ print('Git source:', ACTUAL_SHA)
 '''
     tables = '''import csv
 from itertools import islice
-for name in ('vmd_search.csv','posterior_search.csv','review_methods.csv','condition_source_uncertainty.csv','paper_metric_fixture.csv','paper_paired_channels.csv','paper_native_channels.csv','paper_rest_bandpower_channels.csv'):
+for name in ('vmd_search.csv','posterior_search.csv','review_methods.csv','condition_source_uncertainty.csv','paper_metric_fixture.csv','paper_paired_channels.csv','paper_native_channels.csv','paper_rest_bandpower_channels.csv','paper_paired_source_means.csv','paper_native_source_means.csv','paper_paired_permutation_tests.csv','paper_native_permutation_tests.csv'):
     path = OUT/name
     if path.exists():
         print(name, '(first 8 saved rows; complete table remains in outputs)')

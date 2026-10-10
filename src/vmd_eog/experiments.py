@@ -347,6 +347,8 @@ def run_regional(input_root,output,config,profile):
     pd.DataFrame(results).to_csv(output/"regional_scores.csv",index=False)
     write_jsonl(output/"regional_diagnostics.jsonl",diagnostics)
     run_native_comparison(parent,rows,vf,pf,output,config)
+    from .paper_report import write_reports
+    write_reports(output)
     atomic_json(output/"regional_summary.json",{"profile":profile,"results":len(results),"methods":method_names,"participants":len(folds),
         "source_isolation":"grouped recipient/donor fold exclusion","all_corrections_relative_to":"original input","composed_subtractions":1,
         "confirmation_opened":False})

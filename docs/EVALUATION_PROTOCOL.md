@@ -64,6 +64,17 @@ before/after correlations use the unchanged EOG. Keep per-channel results and
 verified regional summaries. Do not compute paired SNR/RRMSE against the
 uncorrected native EEG or a teacher target and describe them as reconstruction.
 
+EEGOAR averages four regions with channel assignments in supplementary section
+S.II. That supplement could not be retrieved. Our frontal/posterior/shared
+algorithm regions are not asserted to reproduce its four regions. Keep
+per-channel paper tables and whole-montage summaries; exact four-region
+replication remains unverified rather than guessing the channel sets.
+
+The EEGOAR manuscript describes five folds with nine test and 36 training/
+validation participants per fold. Our audit found 45 sessions but 39 global
+OSF participant identities. We retain grouped verified participant identities;
+we do not assume sessions are independent people to match the paper's numbers.
+
 The Kobler demo concatenates condition-specific scoring trials before ordinary
 Pearson/RMSE evaluation. Computing each 5.12-second cache window and averaging
 is an **adapted window protocol**, not identical to that concatenation. Saved
