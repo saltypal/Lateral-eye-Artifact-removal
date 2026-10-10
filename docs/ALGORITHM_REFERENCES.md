@@ -12,8 +12,6 @@ Dragomiretskiy and Zosso, *Variational Mode Decomposition*, IEEE Transactions on
 
 Selection compares K=3..10, alpha 250/500/1000/2000/4000, lag banks, ridge penalties, association thresholds and strengths. Center proximity alone cannot prove over-segmentation: bandwidth and spectral overlap also matter. Retained EEG and grouped recovery decide whether extra modes help.
 
-## Posterior MWF
-
 ## Frontal VMD–SOBI candidate
 
 [Xiong et al., SVM–IVMD–SOBI](https://mdpi-res.com/d_attachment/sensors/sensors-24-01642/article_deploy/sensors-24-01642-v2.pdf?version=1709543478),
