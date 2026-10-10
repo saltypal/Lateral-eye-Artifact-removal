@@ -113,6 +113,18 @@ def run_diagnosis(input_root, output, config, profile):
                 artifacts[f"vmd_mode_threshold_{threshold:g}"]=np.zeros_like(raw) if unusable else centered_modes[mask].sum(0)*selected["strength"]
                 current_mask=current_features[:,0]>=threshold
                 artifacts[f"vmd_unit_invariant_threshold_{threshold:g}"]=np.zeros_like(raw) if unusable else centered_modes[current_mask].sum(0)*selected["strength"]
+            # A stricter raw-channel trigger may protect clean inputs while
+            # allowing lower-association contributions inside ocular windows.
+            # The paper uses an SVM trigger; this is an EOG-assisted adaptation.
+            for bank_index,lags in enumerate(config["classical_grid"]["lag_banks"]):
+                projected_modes,_=project(modes,references,lags,selected["penalty"])
+                matched_direct,_=project(raw,references,lags,selected["penalty"])
+                artifacts[f"direct_bank_{bank_index}"]=matched_direct[0]*channel_gate*selected["strength"]
+                for outer in config["classical_grid"]["thresholds"]:
+                    for inner in config["classical_grid"]["thresholds"]:
+                        name=f"vmd_dual_bank_{bank_index}_outer_{outer:g}_mode_{inner:g}"
+                        artifacts[name]=dual_gate_correction(projected_modes,current_features[:,0],
+                            association,outer,inner,selected["strength"],unusable)
             for method,artifact in artifacts.items():
                 cleaned=raw-artifact
                 metrics=paired_channels(cleaned,target)
@@ -146,6 +158,8 @@ def run_diagnosis(input_root, output, config, profile):
         "hypotheses":["Per-mode gating excludes ocular contributions", "VMD residual contains projected ocular activity",
                       "Zero-mean scoring projection retains ocular baseline excursions"],
         "experimental_baseline":"unscored calibration lag-major EOG means; coefficients still fit scoring EEG without targets",
+        "two_stage_detection":"declared raw-channel and mode association threshold banks; EOG-assisted adaptation, not paper SVM replication",
+        "dual_gate_selection_status":"mechanism ablation only; no replacement recipe selected or authorized",
         "mean_removed_snr_is_acceptance_metric":False,
         "reserved_confirmation_opened":False,"model_authorization":False,
         "max_projection_closure_relative_error":max(row["projection_closure_relative_error"] for row in closure),
@@ -157,8 +171,9 @@ def plot_diagnosis(summary, clean, output):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    methods=list(summary.index)
-    fig,axes=plt.subplots(1,2,figsize=(15,8),sharey=True)
+    methods=[method for method in summary.index if "vmd_dual_" not in method or
+             method.startswith("vmd_dual_bank_0_outer_0.6_")]
+    fig,axes=plt.subplots(1,2,figsize=(16,11),sharey=True)
     axes[0].scatter(summary.loc[methods,"snr_energy_db"],np.arange(len(methods)))
     axes[0].set_xlabel("Fz development output SNR (dB), recipient mean")
     axes[1].scatter(100*clean.reindex(methods),np.arange(len(methods)))
@@ -172,3 +187,17 @@ def plot_diagnosis(summary, clean, output):
     fig.tight_layout()
     fig.savefig(output/"vmd_correction_controls.png",dpi=160)
     plt.close(fig)
+
+
+def dual_gate_correction(projections, mode_associations, channel_association,
+                         outer_threshold, mode_threshold, strength, unusable=False):
+    """Estimate only from EEG/EOG; mode sensitivity cannot bypass the outer gate."""
+    projections=np.asarray(projections,float)
+    associations=np.asarray(mode_associations,float)
+    if projections.ndim!=2 or associations.shape!=(len(projections),):
+        raise ValueError("One association per mode projection is required")
+    if not np.isfinite(projections).all() or not np.isfinite(associations).all() or not np.isfinite(channel_association):
+        raise ValueError("Finite inference projections and associations required")
+    if unusable or abs(channel_association)<outer_threshold:
+        return np.zeros(projections.shape[-1])
+    return strength*projections[np.abs(associations)>=mode_threshold].sum(axis=0)

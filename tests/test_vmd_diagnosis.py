@@ -1,7 +1,7 @@
 """Controls distinguish a solver failure policy from a mode-selection failure."""
 import numpy as np
 import pytest
-from vmd_eog.vmd_diagnosis import correction_controls
+from vmd_eog.vmd_diagnosis import correction_controls, dual_gate_correction
 
 
 def test_mode_residual_controls_use_actual_components():
@@ -20,3 +20,12 @@ def test_capped_modes_pass_through_but_algebraic_control_remains_inspectable():
     np.testing.assert_allclose(results["vmd_all_components_closure"],[4.5,6.5])
     with pytest.raises(ValueError,match="sample lengths"):
         correction_controls([[1.,2.]],[1.],[True],True,1.,False)
+
+
+def test_outer_gate_cannot_be_bypassed_by_lower_mode_threshold():
+    modes=np.array([[1.,2.,3.],[4.,5.,6.]])
+    for unusable,association in ((False,.59),(True,.9)):
+        actual=dual_gate_correction(modes,[.99,.99],association,.6,.2,1.,unusable)
+        np.testing.assert_array_equal(actual,[0.,0.,0.])
+    actual=dual_gate_correction(modes,[.3,.1],-.8,.6,.2,.5)
+    np.testing.assert_allclose(actual,.5*modes[0])

@@ -126,6 +126,15 @@ complete-condition participant means, original source units for rest RMSE and
 adapted chance thresholds only where computed. These additions await Kaggle
 execution and visual inspection; authoring alone is not validation.
 
+`classical-fixture-006` and `vmd-diagnosis-002` at `9ed2d35` passed 59 tests
+on Kaggle. The fixture passed all four integration stages and primary/native
+figure rendering. The diagnostic's 14 payload hashes matched and its figure
+was inspected. Lower mode thresholds improved Fz recovery but changed clean
+EEG by 35.0809%; residual correction changed it by 2.9008%. Neither passes.
+Separate raw-window and mode gates are the next mechanism ablation, with all
+three declared lag banks and matched direct comparators. It cannot itself
+authorize a teacher or neural training.
+
 ## Execution evidence
 
 - Kaggle monitor: GPT-6 Luna high resumed after its usage reset and monitors the active regional run. Primary agent owns diagnosis, implementation and repairs.

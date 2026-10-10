@@ -110,10 +110,18 @@ def main():
             out=ROOT/"results"/spec["campaign_id"]/args.run_id
             out.mkdir(parents=True,exist_ok=True)
             command=["kernels","output",spec["kernel"],"-p",str(out),"--force","--page-size","200"]
-            if args.file_pattern: command += ["--file-pattern",args.file_pattern]
+            if args.file_pattern:
+                # Identity must accompany even a targeted plot/log download.
+                # Otherwise a correct new retrieval misleadingly fails simply
+                # because its user-specified pattern excluded run_spec.json.
+                pattern="(?:"+args.file_pattern+")|(?:run_spec\\.json$)"
+                command += ["--file-pattern",pattern]
             print(cli(command))
             identities=list(out.rglob("run_spec.json"))
-            if len(identities)!=1 or json.loads(identities[0].read_text()).get("run_id")!=args.run_id:
+            if len(identities)!=1:
+                raise RuntimeError("Retrieved output has missing or ambiguous run identity; retain evidence")
+            retrieved=json.loads(identities[0].read_text())
+            if any(retrieved.get(key)!=spec.get(key) for key in ("run_id","git_sha","stage","campaign_id")):
                 raise RuntimeError("Retrieved output identity differs from requested run; retain evidence")
             print("Retrieved:",out)
 

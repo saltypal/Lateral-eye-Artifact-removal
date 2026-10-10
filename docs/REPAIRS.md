@@ -21,3 +21,13 @@ These run on Kaggle. Archived experiments and cache features keep their
 original source identities; they are not retrospectively called repaired.
 The rolling VMD solver itself already has RMS-normalized parity tests.
 
+## Targeted artifact retrieval identity
+
+Retrieving `classical-fixture-006` with a filename filter that omitted
+`run_spec.json` downloaded valid outputs but raised a misleading identity
+error. No numerical kernel failed. The orchestration tool now always includes
+the saved run specification alongside filtered outputs and checks run ID,
+source SHA, stage and campaign. Missing/ambiguous identity is distinguished
+from an actual identity mismatch. The first retrieval and its outputs remain
+preserved; the explicit identity-inclusive retry verifies the same saved run.
+
