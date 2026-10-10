@@ -20,6 +20,9 @@ def execute(stage, input_root, output, config, profile):
     elif stage == "paper-fixture":
         from .paper_evaluation import run_fixture
         run_fixture(output)
+    elif stage == "native-protocol":
+        from .native_protocol import run_native_protocol
+        run_native_protocol(input_root, output, config, profile)
     elif stage in ("vmd", "posterior", "regional", "review"):
         from .experiments import run_stage
         run_stage(stage, input_root, output, config, profile)

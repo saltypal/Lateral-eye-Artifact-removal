@@ -12,6 +12,7 @@ STAGES = [
     ("06_Regional_Comparison", "regional", "Compare disjoint regional correction, shared processing and context ablations."),
     ("07_Approach_Review", "review", "Review all candidates and preservation; authorize models only on passing gates."),
     ("07a_Paper_Metric_Contracts", "paper-fixture", "Validate source-mapped equations before any formal paper evaluation."),
+    ("07b_Native_Paper_Protocol", "native-protocol", "Evaluate complete native conditions and an explicitly adapted eight-second chance analysis."),
     ("08_Teacher_Crossfit", "teacher-oof", "After passing gates, generate source-isolated teacher targets."),
     ("09_EEG_Only_Student", "student-paired", "After passing gates, train one EEG-only baseline."),
     ("10_Distillation_Ablations", "student-distill", "Evaluate teacher supervision and declared loss/architecture additions."),
@@ -21,6 +22,7 @@ STAGES = [
 ]
 
 DETAILS = {
+    "native-protocol": "Required parents: completed corpus, VMD and posterior kernels plus the original source bundle. Reuse frozen development-only calibration/scoring trial IDs and held-out-fold recipes. Correct complete trials with aligned reference windows and one overlap-add subtraction. Match author-code condition concatenation for per-channel rest RMSE and ordinary Pearson, retaining signed and absolute results. Prefer verified publisher HEOG_lpf/VEOG_lpf; disclose raw fallback. Welch segments never cross trial joins. Bootstrap five distinct verified participants and eight-second rest/ocular banks for 5,000 draws; whole-montage averaging and non-overlapping bank sampling are declared adaptations, not exact paper-region replication or equivalence. See docs/NATIVE_PROTOCOL_PLAN.md. A two-record pilot must pass before the full job.",
     "paper-fixture": "Validate IVMD-SOBI RRMSE/MSE and the disclosed printed CC discrepancy, ordinary condition-specific EEG-EOG Pearson from EEGOAR-Net/Kobler, rest RMSE, Welch 2-second/1-second overlap with the paper's bands, explicit PSNR scaling and participant-level paired permutation. Read docs/EVALUATION_PROTOCOL.md for exact source locations and adaptations. SNR output, SNR improvement, PSNR and linear input RMS ratio are separate quantities. No synthetic fixture or old project-only gate can authorize models.",
     "classical-fixture":"Bounded synthetic software integration on Kaggle: generate five synthetic source buckets, execute reduced VMD/posterior searches, regional matched ablations, OSF-style proxies, legacy-style paired scoring and the review gate. The reduced fixture grid is explicitly saved and cannot replace the forty-setting production search. Synthetic pilot results must never authorize neural development. All numerical contracts run first.",
     "source-fixture":"Focused Kaggle reproduction of raw LEMON BrainVision archive loading. Verify original archive/header hashes and actual EEG/marker inventory. Resolve only a unique same-directory renamed companion, retain original header bytes and disclose the temporary loading-header changes. Never invent event annotations or modify EEG payloads. Validate one development participant before resuming the full corpus.",
@@ -104,7 +106,7 @@ print('Git source:', ACTUAL_SHA)
 '''
     tables = '''import csv
 from itertools import islice
-for name in ('vmd_search.csv','posterior_search.csv','review_methods.csv','condition_source_uncertainty.csv','paper_metric_fixture.csv','paper_paired_channels.csv','paper_native_channels.csv','paper_rest_bandpower_channels.csv','paper_paired_source_means.csv','paper_native_source_means.csv','paper_paired_permutation_tests.csv','paper_native_permutation_tests.csv'):
+for name in ('vmd_search.csv','posterior_search.csv','review_methods.csv','condition_source_uncertainty.csv','paper_metric_fixture.csv','paper_paired_channels.csv','paper_native_channels.csv','paper_rest_bandpower_channels.csv','paper_paired_source_means.csv','paper_native_source_means.csv','paper_paired_permutation_tests.csv','paper_native_permutation_tests.csv','native_condition_channels.csv','native_condition_participants.csv','native_condition_permutations.csv'):
     path = OUT/name
     if path.exists():
         print(name, '(first 8 saved rows; complete table remains in outputs)')

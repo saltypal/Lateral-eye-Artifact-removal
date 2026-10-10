@@ -15,8 +15,8 @@ User authorizes models automatically only if all classical gates pass.
 - [x] T07 Freeze participant, recipient/donor and cross-fit partitions (39 OSF/40 LEMON identities).
 - [x] T08 Validate filtering, calibration boundaries and overlap-add (Kaggle contracts and audit caches).
 - [x] T09 Generate coherent controlled mixtures with complete recipe manifests (3,840 examples; corpus-002).
-- [ ] T10 Run all 40 K/alpha decompositions and preserve every candidate.
-- [ ] T11 Save vectors, centers, overlap, residuals, convergence and cost.
+- [x] T10 Run all 40 K/alpha decompositions and preserve every candidate (vmd-001: 5,120 fits, 11,664 candidates).
+- [x] T11 Save vectors, centers, overlap, residuals, convergence and cost (673 iteration-cap fits retained; zero failed mode fits).
 - [ ] T12 Compare VMD against matched direct EOG regression.
 - [ ] T13 Validate GEVD-MWF and raw-frontal-supported ICA.
 - [x] T14 Qualify SGEYESUB or record why unavailable (original MATLAB pipeline not qualified).
@@ -48,8 +48,10 @@ User authorizes models automatically only if all classical gates pass.
 2026-10-10 evaluation correction: primary methods must follow the prescribed
 VMD papers + OSF/EEGOAR-Net + Klados. Exact mappings and disclosed adaptations
 are in `docs/EVALUATION_PROTOCOL.md`. Old project diagnostics remain supplementary.
-Automatic regional/review chaining was stopped while this correction is tested;
-the current VMD/posterior searches retain their immutable development objectives.
+Automatic regional/review chaining was stopped while this correction was tested,
+then resumed after the Kaggle fixtures passed. The completed VMD/posterior
+searches retain their immutable development objectives. Regional-paper-001 is
+running at source 8fed92a and adds the prescribed paper tables and statistics.
 Models remain closed until paper evaluation is complete as well as project gates.
 
 - [x] E01 Validate the paper metric implementation on Kaggle: `paper-fixture-001`, source `e90857b`, 36 tests passed; saved artifact hashes verified.
@@ -59,7 +61,7 @@ Models remain closed until paper evaluation is complete as well as project gates
   paper-channel tables and paired statistics. Synthetic evidence cannot authorize models.
 - [ ] E02 Produce per-channel paired and condition-specific native paper tables.
 - [ ] E03 Evaluate source-level paired permutations and Bonferroni families.
-- [ ] E04 Qualify eight-second native chance analysis or report it unavailable.
+- [ ] E04 Qualify eight-second native chance analysis or report it unavailable (complete-trial extension implemented; awaiting Kaggle fixtures/pilot).
 - [ ] E05 Complete paper/protocol review before releasing models.
 
 Fresh controlled mean SNR >=15 dB; 20 dB stretch. Clean modification <=1%,
@@ -84,12 +86,17 @@ run, completed with 3,840 controlled examples, 32 recipient participants and
 `classical-fixture-001` passed bounded synthetic VMD/posterior/regional/review
 integration and correctly rejected model authorization from pilot evidence.
 Full `posterior-001` completed: 304 candidates, 608 fits, zero fit failures.
-Its archived selection objective is development evidence; `vmd-001` remains active. Controlled research SNR
-is not yet established. Neural work remains closed.
+Its archived selection objective is development evidence. `vmd-001` completed:
+40 settings, 5,120 fits, 11,664 correction candidates; 673 iteration-cap fits
+and zero failed mode fits. Fourteen retrieved artifacts passed checksum checks.
+The global projected-correction selection is K=4, alpha=2000, but the preferred
+selection channel available in this corpus was Fz only. This does not establish
+all-frontal optimality. Full regional comparison is running; controlled research
+SNR and classical acceptance remain unestablished. Neural work remains closed.
 
 ## Execution evidence
 
-- Kaggle monitor: GPT-6 Luna high was started; its usage limit was reached. Primary agent now monitors directly through Kaggle CLI.
+- Kaggle monitor: GPT-6 Luna high resumed after its usage reset and monitors the active regional run. Primary agent owns diagnosis, implementation and repairs.
 - Read-only auth/source verification succeeded; source is ready.
 - Archived draft has 55 passed/2 failed numerical fixtures, not current validation.
 - Current tests, audit and focused real-source repair passed on Kaggle. Corpus and algorithm research gates remain pending.
