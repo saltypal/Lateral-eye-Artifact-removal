@@ -9,12 +9,12 @@ All numerical tests, decompositions, optimization, plots and model evaluation ru
 - [x] Separate configuration, authorization and explicit checksummed legacy imports.
 - [x] Require the exact original study04 restoration archive; preflight development source paths/hashes.
 - [x] Persist native per-record progress, spectra and chance banks.
-- [ ] Verify repaired source loading and complete paired-data readiness on Kaggle.
-- [ ] Neural contracts: decomposition closure, identity, masks, variable C/K, permutation and optimization.
+- [x] Kaggle readiness 001: 66 tests, 3,840 pairs, 32 recipients, 31 donors, 36 OSF development records; confirmation closed.
+- [x] Neural fixture 001: 75 tests and all six model arms; CUDA optimization and fresh CPU reload passed. Synthetic software evidence only.
 - [ ] Forty-setting all-frontal AutoVMD caches, balanced across conditions/input levels.
 - [ ] Source-excluded successive screening (40/8/2 candidates; 5/15/80 epochs).
-- [ ] Fixed-band, regional VMD, no-context, all-VMD and raw-only matched neural experiments.
-- [ ] Paired TCN-BiGRU deployment baseline and loss profiles.
+- [x] Implement fixed-band, regional VMD, no-context, all-VMD and raw-only matched model arms (222,211 parameters).
+- [x] Implement paired TCN-BiGRU student (47,427 parameters) and loss profiles; real-data experiments remain pending.
 - [ ] Grouped five-outer/three-inner-fold selection and shortlisted seeds 42/3407/2026.
 - [ ] Optional qualified, nested cross-fitted teachers and student distillation.
 - [ ] Native OSF, legacy Klados and separate EEGdenoiseNet benchmark.

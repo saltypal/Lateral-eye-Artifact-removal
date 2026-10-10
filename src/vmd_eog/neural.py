@@ -241,3 +241,9 @@ class DeploymentStudent(nn.Module):
         fused = self.fusion(torch.cat((encoded,context),2).reshape(-1,2*self.width,length))
         artifact = self.heads(fused,metadata["regions"].reshape(-1)).reshape(batch,channels,length)*scale*mask[:,:,None]
         return {"cleaned":eeg-artifact,"artifact":artifact,"diagnostics":{}}
+
+
+def build_model(arm,config):
+    if arm == "student":
+        return DeploymentStudent(config["neural"]["width"],config["fs"])
+    return RegionalBandRouter(config["neural"]["width"],arm,config["fs"],config["neural"]["component_drop_probability"])

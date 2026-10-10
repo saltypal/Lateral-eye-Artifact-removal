@@ -14,15 +14,9 @@ from .contracts import canonical_hash
 from .experiments import corpus_parent
 from .io import atomic_json,read_jsonl,sha256_file
 from .metrics import paired
-from .neural import DeploymentStudent,RegionalBandRouter,input_scale
+from .neural import DeploymentStudent,RegionalBandRouter,input_scale,build_model
 from .neural_losses import paired_objective
 from .paper_metrics import paired_channels,resting_spectrum
-
-
-def build_model(arm,config):
-    if arm == "student":
-        return DeploymentStudent(config["neural"]["width"],config["fs"])
-    return RegionalBandRouter(config["neural"]["width"],arm,config["fs"],config["neural"]["component_drop_probability"])
 
 
 def inner_partition(rows,outer_fold,inner_fold=0):
