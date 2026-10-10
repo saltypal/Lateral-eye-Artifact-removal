@@ -122,6 +122,24 @@ Preserve them as user-requested engineering gates and report them separately.
 No neural progression may rely on the old metrics alone: paper-grounded evaluation
 and its source/aggregation evidence must be complete first.
 
+The complete-trial extension is implemented in `native_protocol.py` and notebook
+07b. It preserves the source's LPF EOG derivatives if present and otherwise
+labels raw-reference fallback. It applies the campaign's additional EEG filtering
+per trial; it does not assert identical preprocessing to the original paper.
+Its Welch average is weighted by the number of within-trial segments. The null
+analysis uses contiguous non-overlapping eight-second banks, five distinct
+participants per draw, uniformly sampled session/window banks, and 5,000 draws.
+The statistic is a channel mean followed by a participant mean; this is explicitly
+a whole-montage adaptation and cannot establish the paper's four-region chance
+equivalence. Ineligible conditions remain unavailable with an explicit reason.
+
+Review qualification is computed from complete immutable artifacts, source
+coverage, unchanged fold recipes and declared adaptations. It cannot be enabled
+by a hard-coded flag. The >=15 dB output-SNR gate and matched VMD benefit use
+the channel-first source-balanced paper tables; archived pooled-energy gates
+remain additional project checks. The statistical tables do not themselves
+prove biological preservation or authorize model development.
+
 Dora/Biswal 2020 and Saini 2020 remain algorithm references. Their full evaluation
 equations have not been verified in this correction. Do not attribute equations
 to them or claim a replication until the primary methods are available.

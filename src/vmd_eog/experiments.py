@@ -438,6 +438,15 @@ def run_review(input_root,output,config,profile):
     verify_parent(vmd,("vmd_search.csv","selected_frontal.json","mode_diagnostics.jsonl"))
     verify_parent(posterior,("posterior_search.csv","selected_posterior.json"))
     verify_parent(contract,("contracts_summary.json",))
+    native_files=list(Path(input_root).rglob("native_protocol_summary.json"))
+    if len(native_files)>1:
+        raise ValueError("Attach one immutable full native protocol run")
+    native=None if not native_files else native_files[0].parent
+    if native is not None:
+        verify_parent(native)
+    from .paper_qualification import qualify_paper_evidence
+    qualification=qualify_paper_evidence(region,corpus,native)
+    atomic_json(output/"paper_evidence_qualification.json",qualification)
     results=pd.read_csv(region/"regional_scores.csv")
     scores=results[results.region=="whole_montage"]
     comparator=scores[scores.method=="direct"].set_index("example_id")
@@ -466,22 +475,36 @@ def run_review(input_root,output,config,profile):
             "worst_source_mean_covariance":float(clean_source.covariance.max()),"worst_source_mean_pearson_deterioration":float(per_source_cc.max()),
             "failure_count":int(group.failure_count.fillna(0).sum()),"gates":gates,"passed":all(gates.values()),
             "conditions":dirty.groupby("condition").snr_db.mean().to_dict()})
+    # The requested output-SNR target now uses channel-first paper tables.
+    # Retain archived pooled-energy numbers as supplementary diagnostics.
+    for report in reports:
+        primary=qualification["paired_synopsis"].get(report["method"],{})
+        channel_snr=primary.get("snr_energy_db")
+        report["paper_channel_mean_snr_db"]=channel_snr
+        report["gates"]["paper_channel_snr15"]=channel_snr is not None and channel_snr>=15.
+        report["passed"]=all(report["gates"].values())
     direct=next(r for r in reports if r["method"]=="direct")
     for report in reports:
         if report["method"] not in ("regional_mwf","regional_ica"): continue
         matched=next(r for r in reports if r["method"]==report["method"]+"_direct_frontal")
         report["matched_frontal_regression_gain_db"]=report["mean_snr_db"]-matched["mean_snr_db"]
         report["gates"]["vmd_matched_benefit"]=report["matched_frontal_regression_gain_db"]>=.1
+        primary=report["paper_channel_mean_snr_db"]
+        matched_primary=matched["paper_channel_mean_snr_db"]
+        report["paper_matched_frontal_regression_gain_db"]=None if primary is None or matched_primary is None else primary-matched_primary
+        report["gates"]["paper_vmd_matched_benefit"]=report["paper_matched_frontal_regression_gain_db"] is not None and report["paper_matched_frontal_regression_gain_db"]>=.1
         report["passed"]=all(report["gates"].values())
-    valid=[r for r in reports if r["method"] in ("regional_mwf","regional_ica") and r["passed"] and r["mean_snr_db"]>=direct["mean_snr_db"]+.1]
-    selected=max(valid,key=lambda r:r["mean_snr_db"]) if valid else None
+    valid=[r for r in reports if r["method"] in ("regional_mwf","regional_ica") and r["passed"]
+        and direct["paper_channel_mean_snr_db"] is not None
+        and r["paper_channel_mean_snr_db"]>=direct["paper_channel_mean_snr_db"]+.1]
+    selected=max(valid,key=lambda r:r["paper_channel_mean_snr_db"]) if valid else None
     contracts_ok=json.loads((contract/"contracts_summary.json").read_text())["passed"]
     source=json.loads((corpus/"corpus_summary.json").read_text())
     passed=selected is not None and contracts_ok and not source["reserved_confirmation_opened"]
     project_gates_passed=passed
     # User requested the prescribed papers' evaluation on 2026-10-10. A
     # project-only review must not automatically release neural development.
-    paper_evaluation_complete=False
+    paper_evaluation_complete=qualification["complete"]
     passed=passed and paper_evaluation_complete
     recipe={"method":None if selected is None else selected["method"],
         "frontal":json.loads((vmd/"selected_frontal.json").read_text())["vmd_projected"],
@@ -497,6 +520,11 @@ def run_review(input_root,output,config,profile):
     import shutil
     evidence_paths={"regional_scores":region/"regional_scores.csv","vmd_grid":vmd/"vmd_search.csv",
         "posterior_grid":posterior/"posterior_search.csv","corpus":corpus/"corpus_summary.json","contracts":contract/"contracts_summary.json"}
+    evidence_paths["paper_qualification"]=output/"paper_evidence_qualification.json"
+    if native is not None:
+        for name in ("native_protocol_summary.json","native_source_ledger.jsonl","native_condition_participants.csv",
+                     "native_condition_permutations.csv","native_chance_summary.json","native_recipe_selections.json"):
+            evidence_paths["native_"+Path(name).stem]=native/name
     paper_files=("paper_evaluation_protocol.json","paper_metric_report_summary.json","paper_paired_source_means.csv",
         "paper_native_source_means.csv","paper_paired_permutation_tests.csv","paper_native_permutation_tests.csv","EVALUATION_PROTOCOL.md")
     for name in paper_files:
@@ -514,7 +542,7 @@ def run_review(input_root,output,config,profile):
         "selected_method":None if selected is None else selected["method"],
         "requirement":"All preservation/paired-correlation gates, >=15dB controlled development SNR and >=0.1dB advantage over direct regression both alone and with identical posterior expert",
         "failure_reasons":(["No regional VMD hybrid passed every project gate and matched regression benefit requirement"] if not project_gates_passed else [])
-            + (["Prescribed-paper evaluation and adapted-protocol review are incomplete"] if not paper_evaluation_complete else []),
+            + qualification["reasons"],
         "reserved_confirmation_opened":False,"native_clean_recovery_claim":False}
     atomic_json(output/"classical_gate.json",gate)
     atomic_json(output/"review_summary.json",{"classical_gate_passed":passed,"methods":reports,"profile":profile,
