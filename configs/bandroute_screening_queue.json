@@ -1,0 +1,1023 @@
+{
+  "campaign_id": "vmd-bandroute-20261010",
+  "purpose": "Complete the matched forty-recipe first screening rung; preserve clean-gate failures and keep outer/confirmation evaluation closed. Existing first candidate remains archived and reused.",
+  "max_active": {
+    "cpu": 0,
+    "gpu": 1
+  },
+  "external_parents": [
+    "cache-k10-001",
+    "cache-k3-001",
+    "cache-k4-001",
+    "cache-k5-002",
+    "cache-k6-001",
+    "cache-k7-001",
+    "cache-k8-001",
+    "cache-k9-001",
+    "corpus-002",
+    "neural-fixture-001",
+    "research-ready-001"
+  ],
+  "jobs": [
+    {
+      "run_id": "search-f0-k3-a250-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k3-a250",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k3-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 3,
+        "alpha": 250,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k3-a500-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k3-a500",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k3-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 3,
+        "alpha": 500,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k3-a1000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k3-a1000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k3-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 3,
+        "alpha": 1000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k3-a2000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k3-a2000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k3-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 3,
+        "alpha": 2000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k3-a4000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k3-a4000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k3-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 3,
+        "alpha": 4000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k4-a250-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k4-a250",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k4-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 4,
+        "alpha": 250,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k4-a500-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k4-a500",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k4-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 4,
+        "alpha": 500,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k4-a1000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k4-a1000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k4-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 4,
+        "alpha": 1000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k4-a2000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k4-a2000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k4-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 4,
+        "alpha": 2000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k4-a4000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k4-a4000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k4-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 4,
+        "alpha": 4000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k5-a250-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k5-a250",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k5-002"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 5,
+        "alpha": 250,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k5-a500-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k5-a500",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k5-002"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 5,
+        "alpha": 500,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k5-a1000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k5-a1000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k5-002"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 5,
+        "alpha": 1000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k5-a2000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k5-a2000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k5-002"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 5,
+        "alpha": 2000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k5-a4000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k5-a4000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k5-002"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 5,
+        "alpha": 4000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k6-a250-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k6-a250",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k6-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 6,
+        "alpha": 250,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k6-a500-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k6-a500",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k6-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 6,
+        "alpha": 500,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k6-a1000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k6-a1000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k6-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 6,
+        "alpha": 1000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k6-a2000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k6-a2000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k6-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 6,
+        "alpha": 2000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k6-a4000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k6-a4000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k6-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 6,
+        "alpha": 4000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k7-a250-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k7-a250",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k7-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 7,
+        "alpha": 250,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k7-a500-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k7-a500",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k7-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 7,
+        "alpha": 500,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k7-a1000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k7-a1000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k7-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 7,
+        "alpha": 1000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k7-a2000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k7-a2000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k7-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 7,
+        "alpha": 2000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k7-a4000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k7-a4000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k7-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 7,
+        "alpha": 4000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k8-a250-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k8-a250",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k8-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 8,
+        "alpha": 250,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k8-a500-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k8-a500",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k8-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 8,
+        "alpha": 500,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k8-a1000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k8-a1000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k8-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 8,
+        "alpha": 1000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k8-a2000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k8-a2000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k8-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 8,
+        "alpha": 2000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k8-a4000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k8-a4000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k8-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 8,
+        "alpha": 4000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k9-a250-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k9-a250",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k9-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 9,
+        "alpha": 250,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k9-a500-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k9-a500",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k9-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 9,
+        "alpha": 500,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k9-a1000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k9-a1000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k9-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 9,
+        "alpha": 1000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k9-a2000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k9-a2000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k9-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 9,
+        "alpha": 2000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k9-a4000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k9-a4000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k9-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 9,
+        "alpha": 4000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k10-a250-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k10-a250",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k10-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 10,
+        "alpha": 250,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k10-a500-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k10-a500",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k10-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 10,
+        "alpha": 500,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k10-a1000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k10-a1000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k10-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 10,
+        "alpha": 1000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k10-a2000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k10-a2000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k10-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 10,
+        "alpha": 2000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    },
+    {
+      "run_id": "search-f0-k10-a4000-001",
+      "stage": "router-train",
+      "kernel_slug": "vmd-band-search-f0-k10-a4000",
+      "parents": [
+        "research-ready-001",
+        "corpus-002",
+        "neural-fixture-001",
+        "cache-k10-001"
+      ],
+      "experiment": {
+        "arm": "regional",
+        "K": 10,
+        "alpha": 4000,
+        "outer_fold": 0,
+        "inner_fold": 0,
+        "seed": 42,
+        "epochs": 5,
+        "selection_only": true,
+        "loss_profile": "mse",
+        "learning_rate": 0.001,
+        "evaluate_outer": false
+      },
+      "profile": "pilot"
+    }
+  ]
+}
