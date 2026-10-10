@@ -58,6 +58,10 @@ def main():
     required = set(queue["external_parents"])|{job["run_id"] for job in jobs}
     if len({job["run_id"] for job in jobs}) != len(jobs):
         raise ValueError("Duplicate queued run IDs")
+    if state.get("error"):
+        state.setdefault("prior_stops",[]).append({
+            "error":state.pop("error"),"updated_utc":state.get("updated_utc"),
+            "note":"Archived on explicit coordinator restart; failed run evidence remains preserved"})
     state.update(status="monitoring",queue=str(args.queue),scientific_qualification=False)
     save(path,state)
     try:

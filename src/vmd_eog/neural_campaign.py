@@ -8,6 +8,9 @@ def execute(stage, input_root, output, config, profile, experiment):
     if stage == "neural-fixture":
         from .neural_experiments import run_fixture
         return run_fixture(output, config)
+    if stage == "neural-diagnosis":
+        from .neural_diagnosis import run_diagnosis
+        return run_diagnosis(input_root, output, config, experiment)
     if stage == "autovmd-cache":
         from .autovmd import build_cache
         return build_cache(input_root, output, config, experiment)

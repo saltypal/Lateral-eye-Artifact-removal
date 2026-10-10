@@ -6,7 +6,7 @@ from pathlib import Path
 
 PHASE_A = ("contracts", "audit", "source-fixture", "classical-fixture", "paper-fixture", "native-protocol", "vmd-diagnosis", "vmd-sobi", "corpus", "vmd", "posterior", "regional", "review")
 PHASE_B = ("teacher-oof", "student-paired", "student-distill", "freeze", "final-eval", "export")
-RESEARCH_STAGES = ("research-ready", "neural-fixture", "autovmd-cache", "autovmd-search", "router-train", "neural-review", "benchmark")
+RESEARCH_STAGES = ("research-ready", "neural-fixture", "neural-diagnosis", "autovmd-cache", "autovmd-search", "router-train", "neural-review", "benchmark")
 
 
 def canonical_hash(value):

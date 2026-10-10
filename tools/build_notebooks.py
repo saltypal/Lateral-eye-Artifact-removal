@@ -47,6 +47,7 @@ DETAILS = {
 
 
 NEW_STAGES = [
+    ("21_Neural_Preservation_Diagnosis", "neural-diagnosis", "Audit exact clean targets and saved neural distortion before expanding training."),
     ("14_Research_Readiness", "research-ready", "Verify restored OSF sources and all frozen development pairs."),
     ("15_Neural_Contracts", "neural-fixture", "Validate neural identity, masks, routing and optimization on Kaggle."),
     ("16_AutoVMD_Cache", "autovmd-cache", "Cache balanced all-frontal decompositions for all forty settings."),
@@ -55,6 +56,7 @@ NEW_STAGES = [
     ("19_Paired_Deployment_Student", "student-paired", "Paired-only TCN-BiGRU deployment baseline.")
 ]
 DETAILS.update({
+    "neural-diagnosis":"Attach readiness, corpus and the completed MSE pilot outputs. Verify actual clean arrays equal their paired targets with zero added artifact, mixture closure, saved prediction identities and complete validation coverage. Compare against the exact identity control and save projection gains and correction errors. This diagnoses data and predictions; it cannot establish that a proposed loss fixes preservation.",
     "research-ready":"Attach the pinned corpus and original/restored source bundles. Verify all development source paths before trial processing, reproduce the restored study04 session and validate every paired example and source bucket. A passing readiness artifact permits paired neural research; it does not assert scientific accuracy or teacher qualification.",
     "neural-fixture":"Synthetic software contracts only: components sum to input, zero heads reproduce identity, variable channel/mode masks and permutation, no-context behavior, finite optimization and model reload. This fixture cannot establish denoising accuracy.",
     "autovmd-cache":"Attach readiness and corpus. RMS-normalized K=3..10, alpha=250/500/1000/2000/4000; retain residual and physical descriptors. Shard by explicit settings and save every numerical failure. Source-balanced search includes clean/blink/lateral/mixed and -5/0/+5dB inputs, with all verified frontal channels.",
