@@ -29,3 +29,20 @@ counts, reconstruction/projection closure, residual projection RMS and error
 bias. True controlled artifact values appear only in diagnosis, never inference.
 This first mechanism check retains the original Fz scope; an improvement there
 must subsequently survive all-frontal, full-regional and grouped comparisons.
+
+Verified first diagnostic (`vmd-diagnosis-001`, source fc79b30) passed 51 tests
+and retained all 128 selection examples. Maximum relative reconstruction error
+was 5.5863e-8 and mode-plus-residual projection closure error was 5.8510e-8.
+Matched direct regression scored 8.6741 dB; the all-components algebraic control
+scored identically. This matched comparator has lag zero and differs from the
+original best direct-regression candidate (10.4617 dB with a wider lag bank).
+VMD calibration baselines scored 5.2706 versus 5.2274 dB for the original mode
+correction. Thus baseline handling alone does not explain the recovery deficit.
+All six initial controls reported zero modification on the scored clean subset.
+
+The next saved notebook version adds explicit all-mode, residual and capped-fit
+controls, per-mode projection magnitudes and the declared association-threshold
+ablations. It uses actual summed component projections for the closure control.
+These are mechanism experiments, not a selected replacement teacher. Lower
+thresholds must report their clean-input cost; no threshold is accepted just
+because its dirty-input SNR improves.

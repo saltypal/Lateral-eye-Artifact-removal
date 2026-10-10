@@ -10,6 +10,34 @@ from .experiments import corpus_parent, selection_rows
 from .io import atomic_json, read_jsonl
 from .paper_metrics import paired_channels
 from .reference import project, calibration_reference_baseline, correlations
+from .frontal import mode_features
+
+
+def correction_controls(mode_projection, residual_projection, selected_modes,
+                        channel_gate, strength, unusable):
+    """Isolate mode rejection, residual retention and convergence policy.
+
+    Inputs contain EEG/EOG projections only. Targets never select a mode or
+    correction. The all-components control is a linearity check, not a claim
+    that VMD adds information to ordinary reference regression.
+    """
+    modes = np.asarray(mode_projection, float)
+    residual = np.asarray(residual_projection, float).reshape(-1)
+    selected = np.asarray(selected_modes, bool)
+    if modes.ndim != 2 or selected.shape != (len(modes),):
+        raise ValueError("Mode projections and selection mask disagree")
+    if residual.shape != (modes.shape[-1],):
+        raise ValueError("Residual and modes have different sample lengths")
+    all_modes = modes.sum(axis=0)
+    selected_correction = modes[selected].sum(axis=0)
+    valid = 0. if unusable else 1.
+    gated_strength = float(channel_gate)*strength
+    return {
+        "vmd_all_modes_channel_gate": valid*all_modes*gated_strength,
+        "vmd_selected_plus_residual": valid*(selected_correction+residual)*strength,
+        "vmd_all_components_converged": valid*(all_modes+residual)*gated_strength,
+        "vmd_all_components_closure": (all_modes+residual)*gated_strength,
+    }
 
 
 def run_diagnosis(input_root, output, config, profile):
@@ -27,6 +55,7 @@ def run_diagnosis(input_root, output, config, profile):
         lookup.setdefault(info["example_id"],[]).append(info)
     records=[]
     closure=[]
+    mode_rows=[]
     for row in selection_rows(rows):
         data=dict(np.load(corpus/row["array_path"],allow_pickle=False))
         calibration=dict(np.load(corpus/row["calibration"],allow_pickle=False))
@@ -40,6 +69,7 @@ def run_diagnosis(input_root, output, config, profile):
             modes,residual=saved["modes"],saved["residual"]
             references=data["references"]
             selected_modes=saved["features"][:,0]>=selected["threshold"]
+            current_features=mode_features(modes,references,config["fs"])
             unusable=info["hit_iteration_limit"] or bool(info.get("failure"))
             artifacts={}
             direct,_=project(raw,references,selected["lags"],selected["penalty"])
@@ -50,9 +80,20 @@ def run_diagnosis(input_root, output, config, profile):
                 "projection_closure_relative_error":float(np.linalg.norm(closure_error)/max(np.linalg.norm(direct),1e-30)),
                 "reconstruction_relative_error":float(np.linalg.norm(raw-modes.sum(0)-residual)/max(np.linalg.norm(raw),1e-30)),
                 "selected_modes":int(selected_modes.sum()),"total_modes":len(modes),
+                "discarded_mode_projection_rms":float(np.sqrt(np.mean(centered_modes[~selected_modes].sum(0)**2))),
+                "selected_mode_projection_rms":float(np.sqrt(np.mean(centered_modes[selected_modes].sum(0)**2))),
                 "iteration_cap":unusable,"residual_projection_rms":float(np.sqrt(np.mean(residual_projection**2))),
                 "input_true_artifact_mean":float(np.mean(data["true_artifact"][index])),
                 "inference_uses_true_artifact":False})
+            for mode_index, projection in enumerate(centered_modes):
+                mode_rows.append({"example_id":row["example_id"],"recipient":row["recipient"],
+                    "condition":row["condition"],"channel":info["channel"],"mode":mode_index+1,
+                    "center_hz":float(saved["centers_hz"][mode_index]),
+                    "eog_association":float(saved["features"][mode_index,0]),
+                    "unit_invariant_eog_association":float(current_features[mode_index,0]),
+                    "selected":bool(selected_modes[mode_index]),
+                    "projected_rms":float(np.sqrt(np.mean(projection**2))),
+                    "iteration_cap":unusable})
             association=float(np.max(np.abs(correlations(raw,references,20))))
             channel_gate=association>=selected["threshold"]
             anchored_direct,_=project(raw,references,selected["lags"],selected["penalty"],reference_baseline=baseline)
@@ -63,7 +104,15 @@ def run_diagnosis(input_root, output, config, profile):
             artifacts["vmd_original_projected"]=np.zeros_like(raw) if unusable else (centered_modes*selected_modes[:,None]).sum(0)*selected["strength"]
             artifacts["vmd_calibration_baseline"]=np.zeros_like(raw) if unusable else (anchored_modes*selected_modes[:,None]).sum(0)*selected["strength"]
             # Closure is an algebraic control, not an independent VMD gain.
-            artifacts["vmd_all_components_closure"]=direct[0]*channel_gate*selected["strength"]
+            artifacts.update(correction_controls(centered_modes,residual_projection,selected_modes,
+                channel_gate,selected["strength"],unusable))
+            # Declared-grid threshold ablations diagnose sensitivity only.
+            # This notebook does not select a replacement teacher from them.
+            for threshold in config["classical_grid"]["thresholds"]:
+                mask=saved["features"][:,0]>=threshold
+                artifacts[f"vmd_mode_threshold_{threshold:g}"]=np.zeros_like(raw) if unusable else centered_modes[mask].sum(0)*selected["strength"]
+                current_mask=current_features[:,0]>=threshold
+                artifacts[f"vmd_unit_invariant_threshold_{threshold:g}"]=np.zeros_like(raw) if unusable else centered_modes[current_mask].sum(0)*selected["strength"]
             for method,artifact in artifacts.items():
                 cleaned=raw-artifact
                 metrics=paired_channels(cleaned,target)
@@ -83,12 +132,14 @@ def run_diagnosis(input_root, output, config, profile):
     frame=pd.DataFrame(records)
     frame.to_csv(output/"vmd_diagnosis_channels.csv",index=False)
     pd.DataFrame(closure).to_csv(output/"vmd_projection_closure.csv",index=False)
+    pd.DataFrame(mode_rows).to_csv(output/"vmd_mode_projection_diagnostics.csv",index=False)
     fields=["snr_energy_db","rrmse_time","pearson_cc","mean_bias_fraction"]
     dirty=frame[frame.condition!="clean"].groupby(["recipient","method"])[fields].agg(lambda values:np.asarray(values,float).mean())
     summary=dirty.groupby("method")[fields].agg(lambda values:np.asarray(values,float).mean())
     summary.to_csv(output/"vmd_diagnosis_method_means.csv")
     clean=frame[frame.condition=="clean"].groupby(["recipient","method"]).rrmse_time.mean().groupby("method").max()
     clean.rename("worst_recipient_clean_rrmse").to_csv(output/"vmd_diagnosis_clean_preservation.csv")
+    plot_diagnosis(summary,clean,output)
     atomic_json(output/"vmd_diagnosis_summary.json",{
         "profile":profile,"recipe":selected,"examples":frame.example_id.nunique(),
         "scope":"preliminary preferred frontal selection channels; mechanism diagnosis, not final teacher approval",
@@ -99,3 +150,25 @@ def run_diagnosis(input_root, output, config, profile):
         "reserved_confirmation_opened":False,"model_authorization":False,
         "max_projection_closure_relative_error":max(row["projection_closure_relative_error"] for row in closure),
         "max_reconstruction_relative_error":max(row["reconstruction_relative_error"] for row in closure)})
+
+
+def plot_diagnosis(summary, clean, output):
+    """Executed on Kaggle; juxtapose recovery with clean-input modification."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    methods=list(summary.index)
+    fig,axes=plt.subplots(1,2,figsize=(15,8),sharey=True)
+    axes[0].scatter(summary.loc[methods,"snr_energy_db"],np.arange(len(methods)))
+    axes[0].set_xlabel("Fz development output SNR (dB), recipient mean")
+    axes[1].scatter(100*clean.reindex(methods),np.arange(len(methods)))
+    axes[1].axvline(1.,color="#555555",linestyle="--")
+    axes[1].set_xlabel("Worst recipient clean RRMSE (%)")
+    axes[0].set_yticks(np.arange(len(methods)),methods)
+    axes[0].invert_yaxis()
+    for axis in axes:
+        axis.grid(axis="x",alpha=.15)
+    fig.suptitle("Correction mechanism controls: fixed K/alpha, preliminary Fz subset")
+    fig.tight_layout()
+    fig.savefig(output/"vmd_correction_controls.png",dpi=160)
+    plt.close(fig)

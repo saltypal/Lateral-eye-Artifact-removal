@@ -112,8 +112,19 @@ unavailable; the full run evaluates eligibility across development sources.
 
 `contracts-007` at `bf7047e` passed 54 tests on Kaggle, including dimensional
 feature invariance, calibration reference baselines and projection linearity.
-The separate `vmd-diagnosis-001` run remains active at source `fc79b30`; no
-calibration-baseline improvement is claimed before those outputs are checked.
+The separate `vmd-diagnosis-001` run completed at source `fc79b30` with 51 tests.
+All 12 saved payload hashes matched after retrieval. Reconstruction and projection
+closure errors were below 6e-8. The calibration-baseline control changed Fz SNR
+only from 5.2274 to 5.2706 dB; it does not resolve the deficit. Matched lag-zero
+direct regression scored 8.6741 dB. The next diagnostic version isolates discarded
+projections, residuals, capped fits and threshold sensitivity. Its results must
+retain clean-preservation outcomes before any teacher change is accepted.
+
+The final review now includes channel-first primary metric figures alongside
+explicitly labelled supplementary pooled-energy figures. Native plots use
+complete-condition participant means, original source units for rest RMSE and
+adapted chance thresholds only where computed. These additions await Kaggle
+execution and visual inspection; authoring alone is not validation.
 
 ## Execution evidence
 

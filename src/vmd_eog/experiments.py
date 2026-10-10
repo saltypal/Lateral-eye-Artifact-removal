@@ -581,6 +581,8 @@ def run_review(input_root,output,config,profile):
         "If the gate fails, do not tune reserved data, relax preservation limits or train a student from an unvalidated teacher."]
     (output/"APPROACH_REVIEW.md").write_text("\n\n".join(lines))
     plot_review(results,pd.read_csv(region/"native_legacy_scores.csv"),reports,output,config)
+    from .paper_figures import plot_paper_review
+    plot_paper_review(region,native,output,config["seed"])
     import shutil
     review_files={"vmd_search.csv":vmd,"posterior_search.csv":posterior,
         "vmd_fcm_scores.csv":vmd,"mode_diagnostics.jsonl":vmd,"posterior_fit_diagnostics.jsonl":posterior,
@@ -618,15 +620,15 @@ def plot_review(results,native,reports,output,config):
             xerr=np.stack([data.mean_snr_db-data.ci95_lower,data.ci95_upper-data.mean_snr_db]),
             fmt="o",color="#315e82",ecolor="#333333",capsize=3)
         axis.axvline(15,color="#444444",linestyle="--",label="15 dB target")
-        axis.set_title(condition); axis.set_xlabel("Controlled SNR (dB)")
+        axis.set_title(condition); axis.set_xlabel("Supplementary pooled-energy SNR (dB)")
         axis.grid(axis="x",alpha=.15)
     axes[0].set_yticks(np.arange(len(methods)),[labels[m] for m in methods]); axes[0].invert_yaxis()
-    fig.suptitle("Recipient-balanced development means with participant-bootstrap 95% intervals")
+    fig.suptitle("Supplementary archived objective: recipient means and participant-bootstrap 95% intervals")
     fig.tight_layout(); fig.savefig(output/"condition_SNR.png",dpi=160); plt.close(fig)
     report_by_method={r["method"]:r for r in reports}
     fig,axes=plt.subplots(1,2,figsize=(14,6),sharey=True)
     for axis,key,scale,threshold,title in ((axes[0],"worst_source_mean_clean_change",100.,1.,"Worst recipient mean clean modification (%)"),
-        (axes[1],"mean_snr_db",1.,15.,"Recipient-balanced controlled SNR (dB)")):
+        (axes[1],"mean_snr_db",1.,15.,"Supplementary pooled-energy SNR (dB)")):
         values=[scale*report_by_method[m][key] for m in methods]
         axis.scatter(values,np.arange(len(methods)),color="#315e82",s=45)
         axis.axvline(threshold,color="#444444",linestyle="--")
