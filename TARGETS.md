@@ -137,9 +137,10 @@ authorize a teacher or neural training.
 
 ## Execution evidence
 
-- Kaggle monitor: GPT-6 Luna high monitors regional-paper-001, native-protocol-full-001 and the latest VMD diagnostic. Primary agent owns diagnosis, implementation and repairs.
+- Kaggle monitor: GPT-6 Luna high monitors regional-paper-001, native-protocol-full-001 and the latest VMD mechanism comparison. Primary agent owns diagnosis, implementation and repairs.
 - Read-only auth/source verification succeeded; source is ready.
 - Archived draft has 55 passed/2 failed numerical fixtures, not current validation.
 - Current tests, audit, real-source repair and full controlled corpus passed their engineering checks on Kaggle. Classical accuracy/preservation acceptance and all model work remain pending.
 - Classical-fixture-006: 70 retrieved payloads matched the immutable manifest; 216 waveform/cache payloads remain available on Kaggle and were not retrieved locally. Its saved source/run identity and completed four-stage log were verified.
 - VMD-diagnosis-003: 60 tests passed, 128 preferred-frontal examples, all 14 retrieved payload hashes matched. Two-stage gating at outer 0.6 retained scored clean inputs, but the displayed lag-bank-1/mode-0.2 candidate reached only 8.8051 dB versus 10.4617 dB for matched direct regression. No teacher is approved. A new notebook 04b implements the paper-inspired VMD–SOBI candidate; numerical contracts and its 12-example Kaggle pilot must pass before a full mechanism comparison.
+- VMD-SOBI-pilot-001 at `7210c1`: 63 tests passed on Kaggle, including independent joint-diagonalization, identifiable source-recovery and entropy oracles. Twelve development examples completed with zero fit failures. All 14 retrieved payload hashes matched; 12 waveform payloads remain on Kaggle. The saved plot was visually inspected. Best displayed projected-source candidate reached 8.8538 dB versus 8.9368 dB for matched lag-zero regression; worst-recipient scored clean RRMSE was zero for both. Whole-source and entropy-assisted removal were weaker. This is software and bounded mechanism evidence, not teacher approval or a 15 dB result. A 128-example comparison is the next declared check; reserved confirmation remains closed.

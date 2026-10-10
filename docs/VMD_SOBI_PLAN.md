@@ -50,3 +50,19 @@ permits a 128-example mechanism comparison, not teacher approval. Promotion
 requires recipient/donor-grouped parameter selection, full frontal channels,
 regional/posterior integration, native suppression/preservation and all
 existing acceptance gates. Confirmation sources remain closed.
+
+## Pilot evidence and next checkpoint
+
+Run `vmd-sobi-pilot-001`, source `7210c108d34012a0003a7527a9cb5cbb94160cca`,
+completed on Kaggle with 63 tests passing and zero fit failures across 12
+development examples. Its 14 retrieved payload hashes matched the immutable
+manifest, and the diagnostic plot was inspected. Projected source correction
+at delay bank 0 / association threshold 0.2 reached 8.8538 dB; matched lag-zero
+regression reached 8.9368 dB. Scored clean RRMSE was zero for both. Whole-source
+and entropy-assisted subtraction performed worse. These small-subset results
+do not establish superiority, and cannot be compared directly with the prior
+128-example diagnostic mean.
+
+The software checkpoint permits the declared 128-example mechanism comparison.
+It retains the same cached VMD recipe, controls, candidate bank and failure
+policy. No recipe is promoted and no neural training is authorized by this run.
