@@ -497,6 +497,10 @@ def run_review(input_root,output,config,profile):
     import shutil
     evidence_paths={"regional_scores":region/"regional_scores.csv","vmd_grid":vmd/"vmd_search.csv",
         "posterior_grid":posterior/"posterior_search.csv","corpus":corpus/"corpus_summary.json","contracts":contract/"contracts_summary.json"}
+    paper_files=("paper_evaluation_protocol.json","paper_metric_report_summary.json","paper_paired_source_means.csv",
+        "paper_native_source_means.csv","paper_paired_permutation_tests.csv","paper_native_permutation_tests.csv","EVALUATION_PROTOCOL.md")
+    for name in paper_files:
+        if (region/name).exists(): evidence_paths["paper_"+Path(name).stem]=region/name
     evidence={name:sha256_file(path) for name,path in evidence_paths.items()}
     evidence_directory=output/"evidence"; evidence_directory.mkdir()
     evidence_files={}
@@ -514,10 +518,28 @@ def run_review(input_root,output,config,profile):
         "reserved_confirmation_opened":False,"native_clean_recovery_claim":False}
     atomic_json(output/"classical_gate.json",gate)
     atomic_json(output/"review_summary.json",{"classical_gate_passed":passed,"methods":reports,"profile":profile,
+        "paper_evaluation_complete":paper_evaluation_complete,
+        "primary_evaluation_protocol":"paper-grounded-v1-20261010",
         "status":"models conditionally authorized" if passed else "classical gate failed; models remain closed"})
     pd.DataFrame([{k:v for k,v in report.items() if not isinstance(v,(dict,list))} for report in reports]).to_csv(output/"review_methods.csv",index=False)
     lines=["# Classical approach review",f"\nGate passed: **{passed}**. These are grouped development results; confirmation remains closed.",
-        "\n| Method | Mean controlled SNR dB | Worst source clean change | Gates |", "|---|---:|---:|---|"]
+        "\nPrimary evaluation follows the prescribed VMD and EEGOAR-Net sources. Exact equations, limitations and adapted aggregation are archived in the paper protocol. Old project metrics are supplementary; a project-only pass does not authorize models."]
+    if (region/"paper_paired_source_means.csv").exists():
+        paper=pd.read_csv(region/"paper_paired_source_means.csv")
+        paper=paper[(paper.dataset=="controlled_LEMON_OSF") & (paper.condition!="clean")]
+        if len(paper):
+            # Source/condition/input-level means are balanced in this synopsis;
+            # the original stratified tables and eligibility are also retained.
+            from .paper_report import paired_synopsis
+            synopsis=paired_synopsis(paper)
+            synopsis.to_csv(output/"paper_primary_synopsis.csv")
+            lines += ["\n## Paper-based paired metrics (adapted source-balanced synopsis)",
+                "\n| Method | RRMSE | MSE (V²) | Pearson CC | Channel-first output SNR (dB) |",
+                "|---|---:|---:|---:|---:|"]
+            for method,values in synopsis.iterrows():
+                lines.append(f"| {method} | {values.rrmse_time:.5g} | {values.mse:.5g} | {values.pearson_cc:.5g} | {values.snr_energy_db:.4g} |")
+    lines += ["\n## Supplementary project gates (archived pooled-energy objective)",
+        "\n| Method | Pooled-energy controlled SNR dB | Worst source clean change | Project gates |", "|---|---:|---:|---|"]
     for report in reports:
         lines.append(f"| {report['method']} | {report['mean_snr_db']:.3f} | {100*report['worst_source_mean_clean_change']:.3f}% | {report['passed']} |")
     lines += ["\n## Original scientific concerns",

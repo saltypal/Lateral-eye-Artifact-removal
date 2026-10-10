@@ -42,7 +42,9 @@ def write_paired(output, metadata, cleaned, target, raw, names, regions):
     for channel, name in enumerate(names):
         record = {**metadata, "channel": str(name), "channel_index": channel,
                   "region_code": int(regions[channel]), "protocol_id": PROTOCOL_ID,
-                  "rmse_mse_units": "verified source units only; consult corpus provenance"}
+                  "rmse_mse_units": ("V and V^2 (MNE-converted recipient target)" if metadata["dataset"]=="controlled_LEMON_OSF"
+                      else "arbitrary fixture units" if metadata["dataset"]=="synthetic_fixture"
+                      else "unknown original array units; no microvolt interpretation")}
         for key, values in metrics.items():
             value = float(values[channel])
             record[key] = value
@@ -64,7 +66,8 @@ def write_native(output, metadata, cleaned, raw, references, names, regions, fs)
     for channel, name in enumerate(names):
         record = {**metadata, "channel": str(name), "channel_index": channel,
                   "region_code": int(regions[channel]), "protocol_id": PROTOCOL_ID,
-                  "scoring_unit": "cached window (adapted)", "chance_level_claim": False}
+                  "scoring_unit": "cached window (adapted)", "chance_level_claim": False,
+                  "rmse_units": "original source array units; microvolt scale not independently verified"}
         for key in fields:
             value = float(metrics[key][channel]) if key in metrics else np.nan
             record[key] = value

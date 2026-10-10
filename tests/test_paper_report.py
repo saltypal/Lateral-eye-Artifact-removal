@@ -3,7 +3,7 @@ import json
 import numpy as np
 import pandas as pd
 import pytest
-from vmd_eog.paper_report import example_means, comparison_family
+from vmd_eog.paper_report import example_means, comparison_family, paired_synopsis
 from vmd_eog.contracts import require_approval
 
 
@@ -33,3 +33,12 @@ def test_old_project_only_gate_cannot_authorize_models(tmp_path):
     (tmp_path/"classical_gate.json").write_text(json.dumps(gate))
     with pytest.raises(RuntimeError, match="Prescribed paper evaluation is incomplete"):
         require_approval("student-paired", tmp_path, {"campaign_id": "fixture"})
+
+
+def test_synopsis_balances_participants_and_keeps_invalid_metric():
+    frame = pd.DataFrame({"method": ["a"]*3, "recipient": ["p1", "p1", "p2"],
+        "snr_energy_db": [0., 20., 30.], "rrmse_time": [1., .1, .03],
+        "mse": [1., 1., 1.], "pearson_cc": [.8, np.nan, .9]})
+    result = paired_synopsis(frame).loc["a"]
+    assert result.snr_energy_db == 20.
+    assert np.isnan(result.pearson_cc)

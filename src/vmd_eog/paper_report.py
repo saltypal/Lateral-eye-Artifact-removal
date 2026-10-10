@@ -9,6 +9,13 @@ PAIRED_METRICS = ("rrmse_time", "mse", "rmse", "pearson_cc", "snr_energy_db")
 NATIVE_METRICS = ("rest_rmse", "eeg_eog_abs_r_after")
 
 
+def paired_synopsis(source_table):
+    metrics = ["rrmse_time", "mse", "pearson_cc", "snr_energy_db"]
+    strict_mean = lambda values: np.asarray(values, float).mean()
+    participant = source_table.groupby(["method", "recipient"])[metrics].agg(strict_mean)
+    return participant.groupby("method")[metrics].agg(strict_mean)
+
+
 def example_means(frame, identities, metrics):
     """Channel-first means; an undefined channel invalidates that metric unit.
 
