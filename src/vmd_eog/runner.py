@@ -14,6 +14,15 @@ from .io import atomic_json, sha256_file
 from .artifacts import record_parent_identities
 
 
+def dispatch_stage(stage, input_root, output, config, profile, experiment):
+    """Route implemented schema-2 stages through their campaign dispatcher."""
+    from . import campaign, neural_campaign
+    if config.get("schema_version") == 2 and stage in neural_campaign.IMPLEMENTED_STAGES:
+        neural_campaign.execute(stage, input_root, output, config, profile, experiment or {})
+    else:
+        campaign.execute(stage, input_root, output, config, profile)
+
+
 def execute(stage, input_root, output, profile, config_path="configs/campaign.json", experiment=None):
     require_kaggle()
     root=Path(__file__).resolve().parents[2]
@@ -37,12 +46,7 @@ def execute(stage, input_root, output, profile, config_path="configs/campaign.js
         {"passed":result.returncode==0,"tests_sha256":sha256_file(output/"tests.txt")})
     if result.returncode: raise RuntimeError("Numerical contracts failed")
     if stage=="contracts": return
-    from . import campaign
-    if config.get("schema_version") == 2 and stage in ("research-ready", "neural-fixture", "autovmd-cache", "autovmd-search", "router-train", "student-paired", "neural-review"):
-        from .neural_campaign import execute as neural_execute
-        neural_execute(stage,Path(input_root),output,config,profile,experiment or {})
-    else:
-        campaign.execute(stage,Path(input_root),output,config,profile)
+    dispatch_stage(stage, Path(input_root), output, config, profile, experiment)
 
 
 def main():

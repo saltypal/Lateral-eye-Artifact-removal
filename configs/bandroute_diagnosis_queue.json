@@ -11,7 +11,7 @@
   ],
   "jobs": [
     {
-      "run_id": "neural-diagnosis-001",
+      "run_id": "neural-diagnosis-002",
       "stage": "neural-diagnosis",
       "kernel_slug": "vmd-band-neural-diagnosis",
       "profile": "full",
@@ -25,7 +25,8 @@
         "parents": [
           "fixed-pilot-001",
           "student-pilot-001"
-        ]
+        ],
+        "repair_of": "neural-diagnosis-001"
       }
     },
     {
@@ -37,7 +38,7 @@
         "research-ready-001",
         "corpus-002",
         "neural-fixture-001",
-        "neural-diagnosis-001"
+        "neural-diagnosis-002"
       ],
       "experiment": {
         "arm": "fixed",
@@ -59,7 +60,7 @@
         "research-ready-001",
         "corpus-002",
         "neural-fixture-001",
-        "neural-diagnosis-001"
+        "neural-diagnosis-002"
       ],
       "experiment": {
         "arm": "student",

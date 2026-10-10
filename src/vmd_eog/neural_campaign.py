@@ -1,5 +1,10 @@
 """New campaign dispatch; readiness never masquerades as accuracy qualification."""
 
+IMPLEMENTED_STAGES = (
+    "research-ready", "neural-fixture", "neural-diagnosis", "autovmd-cache",
+    "autovmd-search", "router-train", "student-paired",
+)
+
 
 def execute(stage, input_root, output, config, profile, experiment):
     if stage == "research-ready":
