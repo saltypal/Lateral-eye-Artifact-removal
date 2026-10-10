@@ -46,7 +46,7 @@ def _extract_checked(archive_path, root):
         archive.extractall(root)
 
 
-def unpack_source(input_root, temporary_root, output):
+def unpack_source(input_root, temporary_root, output, required_supplement=None):
     manifests = list(Path(input_root).rglob('source_manifest.json'))
     if len(manifests) != 1:
         raise ValueError('Attach exactly one original source bundle')
@@ -72,6 +72,9 @@ def unpack_source(input_root, temporary_root, output):
     supplements = list(Path(input_root).rglob('supplement_manifest.json'))
     if len(supplements) > 1:
         raise ValueError('Ambiguous source supplement')
+    if required_supplement:
+        if len(supplements) != 1 or json.loads(supplements[0].read_text())["archive"]["sha256"] != required_supplement:
+            raise ValueError('Required frozen study04 supplement is missing or differs')
     for supplement in supplements:
         declaration = json.loads(supplement.read_text(encoding='utf-8'))
         item = declaration['archive']

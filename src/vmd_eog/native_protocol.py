@@ -11,6 +11,7 @@ from scipy.signal import resample_poly
 from .io import atomic_json, unpack_source, write_jsonl, sha256_file
 from .paper_metrics import pearson, ratio, resting_spectrum, EEGOAR_BANDS
 from .paper_report import comparison_family
+from .contracts import canonical_hash
 
 
 CONDITIONS = {1: "rest", 2: "lateral", 3: "vertical", 4: "blink"}
@@ -192,7 +193,8 @@ def run_native_protocol(input_root, output, config, profile):
     front = grouped_selection(pd.read_csv(vmd/"vmd_search.csv"), pd.read_csv(vmd/"vmd_grouped_candidates.csv.gz"), folds, config["preservation"])
     post = grouped_selection(pd.read_csv(posterior/"posterior_search.csv"), pd.read_csv(posterior/"posterior_scores.csv"), folds, config["preservation"])
     atomic_json(output/"native_recipe_selections.json", {"frontal": front, "posterior": post})
-    source = unpack_source(input_root, tempfile.mkdtemp(prefix="eog-native-"), output)
+    source = unpack_source(input_root, tempfile.mkdtemp(prefix="eog-native-"), output,
+                           config.get("required_supplement_sha256"))
     ledger = sorted((parent/"calibration").glob("*/record.json"))
     ledger = [path for path in ledger if json.loads(path.read_text())["dataset"] == "osf"]
     if profile == "pilot":
@@ -200,6 +202,9 @@ def run_native_protocol(input_root, output, config, profile):
     if not ledger:
         raise ValueError("No development OSF recordings in the frozen corpus")
     write_jsonl(output/"native_source_ledger.jsonl", [json.loads(path.read_text()) for path in ledger])
+    # Fail before the first expensive trial, rather than after hours of processing.
+    from .readiness import verify_source_ledger
+    verify_source_ledger(source, [json.loads(path.read_text()) for path in ledger], output)
     metrics, spectra, failures, bank_records = [], [], [], []
     predictions = output/"native_trial_predictions"
     predictions.mkdir()
@@ -294,6 +299,19 @@ def run_native_protocol(input_root, output, config, profile):
                     "units": "original EEG source array units; microvolt scale unverified"})
         pd.DataFrame(metrics).to_csv(output/"native_condition_channels.csv", index=False)
         write_jsonl(output/"native_failures.jsonl", failures)
+        checkpoint = output/"record_progress"/record["record_id"]
+        checkpoint.mkdir(parents=True, exist_ok=True)
+        np.savez_compressed(checkpoint/"chance_banks.npz", **{
+            condition: np.stack(banks[condition]) if banks[condition] else np.empty((0,))
+            for condition in CONDITIONS.values()})
+        for index, entry in enumerate(spectra):
+            if entry["record_id"] == record["record_id"]:
+                np.savez_compressed(checkpoint/f"spectrum-{index}.npz", **entry["spectrum"])
+        atomic_json(checkpoint/"completed_record.json", {
+            "record_id":record["record_id"], "source_sha256":record["source_sha256"],
+            "configuration_hash":canonical_hash(config),
+            "status":"complete", "bank_identity":banks["bank_identity"],
+            "note":"Recovery evidence; reuse requires matching source, code, recipes and configuration."})
     bank_metadata = [{key: value for key, value in record.items() if key not in CONDITIONS.values()} for record in bank_records]
     atomic_json(output/"native_bank_inventory.json", bank_metadata)
     chance_bootstrap(bank_records, output, config["seed"])

@@ -57,19 +57,28 @@ def submit(args):
     run_id = args.run_id or args.stage+"-"+datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
     stage = WORK/run_id
     stage.mkdir(parents=True,exist_ok=False)
-    spec = {"run_id":run_id,"stage":args.stage,"git_sha":sha,"campaign_id":"vmd-eog-20261010",
+    config_path = getattr(args,"config",None) or "configs/campaign.json"
+    configuration = json.loads((ROOT/config_path).read_text())
+    experiment_path = getattr(args,"experiment_spec",None)
+    experiment = json.loads(Path(experiment_path).read_text()) if experiment_path else {}
+    spec = {"run_id":run_id,"stage":args.stage,"git_sha":sha,"campaign_id":configuration["campaign_id"],
+            "config_path":config_path, "experiment":experiment,
             "profile":args.profile,"parent_run":args.parent_run,
             "source_resolution":"archived reproduction" if args.source_sha else "latest published at launch",
             "kernel_sources":args.kernel_source or [],"dataset_sources":args.dataset_source or []}
     if args.stage not in ("contracts",) and not spec["dataset_sources"]:
         spec["dataset_sources"] = [OWNER+"/lateral-eye-complete-dataset"]
-    kernel = OWNER+"/vmd-eog-"+args.stage
+    prefix = "vmd-band-" if configuration.get("schema_version") == 2 else "vmd-eog-"
+    slug = getattr(args,"kernel_slug",None) or prefix+args.stage
+    if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,49}",slug):
+        raise ValueError("Invalid Kaggle kernel slug")
+    kernel = OWNER+"/"+slug
     spec["kernel"] = kernel
     notebook = stage/"experiment.ipynb"
     build(notebook,args.stage,spec)
     metadata = {"id":kernel,"title":"VMD EOG "+args.stage.title(),"code_file":notebook.name,
                 "language":"python","kernel_type":"notebook","is_private":True,"enable_internet":True,
-                "enable_gpu":args.stage in ("student-paired","student-distill"),
+                "enable_gpu":args.stage in ("student-paired","student-distill","router-train","autovmd-search"),
                 "dataset_sources":spec["dataset_sources"],"kernel_sources":spec["kernel_sources"],"competition_sources":[]}
     (stage/"kernel-metadata.json").write_text(json.dumps(metadata,indent=2))
     (stage/"run_spec.json").write_text(json.dumps(spec,indent=2))
@@ -93,6 +102,9 @@ def main():
     submit_parser.add_argument("--source-sha",help="Exact archived SHA for an explicitly reproducible rerun")
     submit_parser.add_argument("--kernel-source",action="append")
     submit_parser.add_argument("--dataset-source",action="append")
+    submit_parser.add_argument("--config",default="configs/campaign.json")
+    submit_parser.add_argument("--experiment-spec",help="JSON experiment/fold/cache specification")
+    submit_parser.add_argument("--kernel-slug",help="Separate sharded notebooks without overwriting active kernels")
     for command in ("status","retrieve"):
         item=sub.add_parser(command); item.add_argument("--run-id",required=True)
         if command=="retrieve": item.add_argument("--file-pattern")

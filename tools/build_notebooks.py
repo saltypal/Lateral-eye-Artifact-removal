@@ -46,6 +46,23 @@ DETAILS = {
 }
 
 
+NEW_STAGES = [
+    ("14_Research_Readiness", "research-ready", "Verify restored OSF sources and all frozen development pairs."),
+    ("15_Neural_Contracts", "neural-fixture", "Validate neural identity, masks, routing and optimization on Kaggle."),
+    ("16_AutoVMD_Cache", "autovmd-cache", "Cache balanced all-frontal decompositions for all forty settings."),
+    ("17_AutoVMD_Selection", "autovmd-search", "Nested development-only successive screening."),
+    ("18_Regional_Router", "router-train", "Matched EEG-only regional and fixed-band neural experiments."),
+    ("19_Paired_Deployment_Student", "student-paired", "Paired-only TCN-BiGRU deployment baseline.")
+]
+DETAILS.update({
+    "research-ready":"Attach the pinned corpus and original/restored source bundles. Verify all development source paths before trial processing, reproduce the restored study04 session and validate every paired example and source bucket. A passing readiness artifact permits paired neural research; it does not assert scientific accuracy or teacher qualification.",
+    "neural-fixture":"Synthetic software contracts only: components sum to input, zero heads reproduce identity, variable channel/mode masks and permutation, no-context behavior, finite optimization and model reload. This fixture cannot establish denoising accuracy.",
+    "autovmd-cache":"Attach readiness and corpus. RMS-normalized K=3..10, alpha=250/500/1000/2000/4000; retain residual and physical descriptors. Shard by explicit settings and save every numerical failure. Source-balanced search includes clean/blink/lateral/mixed and -5/0/+5dB inputs, with all verified frontal channels.",
+    "autovmd-search":"Require complete source-excluded inner-fold evidence. Rank forty five-epoch candidates, eight fifteen-epoch candidates and two full-training candidates. Record rejected candidates; do not tune on outer evaluation or confirmation sources.",
+    "router-train":"Width-32 shared frequency-conditioned routing with raw full-band context. Compare fixed-band, frontal-VMD/posterior-Fourier, no-context, all-VMD and raw-only arms. EEG/EOG references never enter model inference; subtract one artifact estimate from the original input. Configurations freeze across epochs.",
+})
+
+
 def cell(kind, source):
     result = {"cell_type": kind, "metadata": {}, "source": source.splitlines(keepends=True)}
     if kind == "code":
@@ -85,10 +102,13 @@ PROCESS_ENV['OMP_NUM_THREADS'] = '2'
 OUT = Path('/kaggle/working/results') / RUN_SPEC['campaign_id'] / RUN_SPEC['run_id']
 OUT.mkdir(parents=True,exist_ok=False)
 (OUT/'run_spec.json').write_text(json.dumps(RUN_SPEC,indent=2))
+(OUT/'experiment.json').write_text(json.dumps(RUN_SPEC.get('experiment',{}),indent=2))
 print('Exact Git SHA:', ACTUAL_SHA, 'Stage:', RUN_SPEC['stage'], 'Output:',OUT,flush=True)
 '''
     execute = '''command = [str(ENV_PY),'-m','vmd_eog.runner','--stage',RUN_SPEC['stage'],
-           '--input','/kaggle/input','--output',str(OUT),'--profile',RUN_SPEC['profile']]
+           '--input','/kaggle/input','--output',str(OUT),'--profile',RUN_SPEC['profile'],
+           '--config',RUN_SPEC.get('config_path','configs/campaign.json'),
+           '--experiment',str(OUT/'experiment.json')]
 process = subprocess.run(command,cwd=CHECKOUT,env=PROCESS_ENV)
 if process.returncode:
     raise RuntimeError('Stage failed; inspect saved execution_state.json and kernel logs')
@@ -101,7 +121,7 @@ for report in sorted(OUT.glob('*summary.json')):
     print(report.name, report.read_text()[:16000])
 print('Persist this completed kernel version and retrieve outputs before launching a dependent stage.')
 '''
-    inspect_modules = '''CONFIGURATION = json.loads((CHECKOUT/'configs/campaign.json').read_text())
+    inspect_modules = '''CONFIGURATION = json.loads((CHECKOUT/RUN_SPEC.get('config_path','configs/campaign.json')).read_text())
 print('Declared signal contract:', {key: CONFIGURATION[key] for key in ('fs','window','hop','seed')})
 print('Preservation limits:', CONFIGURATION['preservation'])
 print('Algorithm explanation: docs/SCIENTIFIC_EXPLANATION.md in the pinned checkout')
@@ -124,17 +144,20 @@ if review.exists():
     from IPython.display import Markdown
     display(Markdown(review.read_text()))
 '''
-    descriptions = {item[1]: item[2] for item in STAGES}
+    descriptions = {item[1]: item[2] for item in STAGES+NEW_STAGES}
+    detail = DETAILS[stage]
+    if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':
+        detail = 'Requires verified research readiness. Paired-only EEG TCN-BiGRU, input-derived scaling, signed metadata context, zero correction heads and no runtime EOG/VMD. Classical accuracy gates do not prevent paired learning.'
     notebook = {"nbformat":4,"nbformat_minor":5,"metadata":{"kernelspec":{"display_name":"Python 3","language":"python","name":"python3"}},
         "cells":[cell("markdown", "# Regional VMD EOG removal — "+stage+"\n\n"+descriptions.get(stage,stage)),
-                 cell("markdown", "## Scientific question, inputs and contracts\n\n"+DETAILS[stage]),
+                 cell("markdown", "## Scientific question, inputs and contracts\n\n"+detail),
                  cell("markdown", "## Fresh source and environment\nResolve latest published code once and pin it. New temporary clones avoid stale Python imports; original inputs remain immutable."),
                  cell("code",setup),
                  cell("markdown", "## Inspect the pinned algorithm contract\nThe source modules remain inspectable in this checkout. Mode vectors, references and paired targets have distinct roles; the accompanying explanation defines their shapes and inference boundaries."),
                  cell("code",inspect_modules),
                  cell("markdown", "## Execute reusable modules\nHEOG/VEOG are teacher/evaluation information. Clean targets cannot enter inference. Failed numerical or scientific gates stop dependent work."),
                  cell("code",execute),
-                 cell("markdown", "## Saved configurations and result tables\nThese are saved outputs from this run, not variables inherited from another notebook. Search tables describe development selection; the classical gate decides whether model work is authorized."),
+                 cell("markdown", "## Saved configurations and result tables\nThese are immutable outputs from this run. Readiness, teacher eligibility and final scientific qualification are distinct decisions."),
                  cell("code",tables),
                  cell("markdown", "## Inspect evidence and persist outputs\nNative real EEG has no clean-reference SNR. Pass-through failures remain counted. Parameters and physiological frequency bands are distinct."),
                  cell("code",inspect)]}

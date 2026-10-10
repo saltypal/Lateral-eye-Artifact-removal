@@ -6,6 +6,7 @@ from pathlib import Path
 
 PHASE_A = ("contracts", "audit", "source-fixture", "classical-fixture", "paper-fixture", "native-protocol", "vmd-diagnosis", "vmd-sobi", "corpus", "vmd", "posterior", "regional", "review")
 PHASE_B = ("teacher-oof", "student-paired", "student-distill", "freeze", "final-eval", "export")
+RESEARCH_STAGES = ("research-ready", "neural-fixture", "autovmd-cache", "autovmd-search", "router-train", "neural-review", "benchmark")
 
 
 def canonical_hash(value):
@@ -19,6 +20,27 @@ def require_kaggle():
 
 
 def require_approval(stage, input_root, config):
+    if config.get("schema_version") == 2:
+        if config.get("model_authorization") != "Parallel paired learning after verified research readiness":
+            raise RuntimeError("New campaign authorization is absent")
+        if stage in ("contracts", "research-ready", "neural-fixture", "native-protocol", "paper-fixture"):
+            return
+        if stage in RESEARCH_STAGES + PHASE_B:
+            from .artifacts import verify_parent
+            files = list(Path(input_root).rglob("research_ready.json"))
+            if len(files) != 1:
+                raise RuntimeError("Need exactly one research readiness parent")
+            verify_parent(files[0].parent, ("research_ready.json",))
+            gate = json.loads(files[0].read_text())
+            if gate.get("campaign_id") != config["campaign_id"] or gate.get("passed") is not True:
+                raise RuntimeError("Research readiness did not pass")
+            if gate.get("reserved_confirmation_opened") is not False:
+                raise RuntimeError("Research readiness has opened reserved sources")
+            if stage in ("teacher-oof", "student-distill"):
+                require_gate(input_root, "teacher_eligible.json", config)
+            if stage in ("final-eval", "export"):
+                require_gate(input_root, "model_freeze.json", config)
+            return
     if stage not in PHASE_B:
         return
     files = list(Path(input_root).rglob("classical_gate.json"))
@@ -55,6 +77,17 @@ def require_approval(stage, input_root, config):
             raise RuntimeError("Classical evidence snapshot differs from recorded hash")
 
 
+def require_gate(input_root, name, config):
+    from .artifacts import verify_parent
+    files = list(Path(input_root).rglob(name))
+    if len(files) != 1:
+        raise RuntimeError("Need exactly one " + name)
+    verify_parent(files[0].parent, (name,))
+    gate = json.loads(files[0].read_text())
+    if gate.get("campaign_id") != config["campaign_id"] or gate.get("passed") is not True:
+        raise RuntimeError(name + " has not passed")
+
+
 @dataclass(frozen=True)
 class RunSpec:
     run_id: str
@@ -67,7 +100,7 @@ class RunSpec:
     dataset_sources: tuple = ()
 
     def validate(self):
-        if self.stage not in PHASE_A + PHASE_B:
+        if self.stage not in PHASE_A + PHASE_B + RESEARCH_STAGES:
             raise ValueError("Unknown campaign stage")
         if len(self.git_sha) != 40 or any(c not in "0123456789abcdef" for c in self.git_sha):
             raise ValueError("RunSpec needs the exact published Git SHA")

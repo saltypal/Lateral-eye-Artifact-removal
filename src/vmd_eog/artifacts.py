@@ -28,13 +28,20 @@ def record_parent_identities(input_root, output, config):
         directory = spec_path.parent
         verify_parent(directory)
         spec = json.loads(spec_path.read_text())
-        if spec.get("campaign_id") != config["campaign_id"]:
-            raise ValueError("Parent belongs to another campaign")
         previous = json.loads((directory / "configuration.json").read_text())
-        if canonical_hash(previous) != canonical_hash(config):
+        imported = spec.get("campaign_id") != config["campaign_id"]
+        if imported:
+            expected = config.get("imported_parents", {}).get(spec["run_id"])
+            if expected != sha256_file(directory / "artifact_manifest.json"):
+                raise ValueError("Cross-campaign parent is not explicitly checksummed for import")
+            critical = ("fs", "window", "hop", "seed", "confirmation_fraction", "outer_folds", "source_dataset")
+            if any(previous.get(key) != config.get(key) for key in critical):
+                raise ValueError("Imported source/split/preprocessing configuration differs")
+        elif canonical_hash(previous) != canonical_hash(config):
             raise ValueError("Parent configuration differs; launch an explicit new campaign")
         identities.append({"run_id": spec["run_id"], "stage": spec["stage"],
             "git_sha": spec["git_sha"], "kernel_sources": spec.get("kernel_sources", []),
-            "artifact_manifest_sha256": sha256_file(directory / "artifact_manifest.json")})
+            "artifact_manifest_sha256": sha256_file(directory / "artifact_manifest.json"),
+            "original_campaign_id": spec["campaign_id"], "explicit_import": imported})
     atomic_json(Path(output) / "parent_identities.json", identities)
     return identities

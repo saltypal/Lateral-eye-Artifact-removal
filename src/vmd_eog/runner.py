@@ -14,10 +14,12 @@ from .io import atomic_json, sha256_file
 from .artifacts import record_parent_identities
 
 
-def execute(stage, input_root, output, profile):
+def execute(stage, input_root, output, profile, config_path="configs/campaign.json", experiment=None):
     require_kaggle()
     root=Path(__file__).resolve().parents[2]
-    config=json.loads((root/"configs/campaign.json").read_text())
+    config=json.loads((root/config_path).read_text())
+    if experiment:
+        atomic_json(output/"experiment.json", experiment)
     atomic_json(output/"configuration.json",config)
     record_parent_identities(input_root,output,config)
     require_approval(stage,input_root,config)
@@ -36,18 +38,25 @@ def execute(stage, input_root, output, profile):
     if result.returncode: raise RuntimeError("Numerical contracts failed")
     if stage=="contracts": return
     from . import campaign
-    campaign.execute(stage,Path(input_root),output,config,profile)
+    if config.get("schema_version") == 2 and stage in ("research-ready", "neural-fixture", "autovmd-cache", "autovmd-search", "router-train", "student-paired", "neural-review"):
+        from .neural_campaign import execute as neural_execute
+        neural_execute(stage,Path(input_root),output,config,profile,experiment or {})
+    else:
+        campaign.execute(stage,Path(input_root),output,config,profile)
 
 
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--stage",required=True); parser.add_argument("--input",type=Path,required=True)
     parser.add_argument("--output",type=Path,required=True); parser.add_argument("--profile",default="pilot")
+    parser.add_argument("--config",default="configs/campaign.json")
+    parser.add_argument("--experiment",type=Path)
     args=parser.parse_args(); args.output.mkdir(parents=True,exist_ok=True)
     started=time.perf_counter()
     atomic_json(args.output/"execution_state.json",{"stage":args.stage,"status":"running"})
     try:
-        execute(args.stage,args.input,args.output,args.profile)
+        experiment=json.loads(args.experiment.read_text()) if args.experiment else None
+        execute(args.stage,args.input,args.output,args.profile,args.config,experiment)
     except Exception as error:
         atomic_json(args.output/"execution_state.json",{"stage":args.stage,"status":"failed","error":str(error),"traceback":traceback.format_exc()})
         raise
