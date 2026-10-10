@@ -93,14 +93,41 @@ for report in sorted(OUT.glob('*summary.json')):
     print(report.name, report.read_text()[:16000])
 print('Persist this completed kernel version and retrieve outputs before launching a dependent stage.')
 '''
+    inspect_modules = '''CONFIGURATION = json.loads((CHECKOUT/'configs/campaign.json').read_text())
+print('Declared signal contract:', {key: CONFIGURATION[key] for key in ('fs','window','hop','seed')})
+print('Preservation limits:', CONFIGURATION['preservation'])
+print('Algorithm explanation: docs/SCIENTIFIC_EXPLANATION.md in the pinned checkout')
+print('Modules: signal.py -> reference.py/frontal.py/posterior.py -> experiments.py -> review evidence')
+print('Git source:', ACTUAL_SHA)
+'''
+    tables = '''import csv
+from itertools import islice
+for name in ('vmd_search.csv','posterior_search.csv','review_methods.csv','condition_source_uncertainty.csv'):
+    path = OUT/name
+    if path.exists():
+        print(name, '(first 8 saved rows; complete table remains in outputs)')
+        with path.open() as handle:
+            display(list(islice(csv.DictReader(handle),8)))
+for name in ('selected_frontal.json','selected_posterior.json','classical_gate.json'):
+    if (OUT/name).exists():
+        print(name, (OUT/name).read_text()[:8000])
+review = OUT/'APPROACH_REVIEW.md'
+if review.exists():
+    from IPython.display import Markdown
+    display(Markdown(review.read_text()))
+'''
     descriptions = {item[1]: item[2] for item in STAGES}
     notebook = {"nbformat":4,"nbformat_minor":5,"metadata":{"kernelspec":{"display_name":"Python 3","language":"python","name":"python3"}},
         "cells":[cell("markdown", "# Regional VMD EOG removal — "+stage+"\n\n"+descriptions.get(stage,stage)),
                  cell("markdown", "## Scientific question, inputs and contracts\n\n"+DETAILS[stage]),
                  cell("markdown", "## Fresh source and environment\nResolve latest published code once and pin it. New temporary clones avoid stale Python imports; original inputs remain immutable."),
                  cell("code",setup),
+                 cell("markdown", "## Inspect the pinned algorithm contract\nThe source modules remain inspectable in this checkout. Mode vectors, references and paired targets have distinct roles; the accompanying explanation defines their shapes and inference boundaries."),
+                 cell("code",inspect_modules),
                  cell("markdown", "## Execute reusable modules\nHEOG/VEOG are teacher/evaluation information. Clean targets cannot enter inference. Failed numerical or scientific gates stop dependent work."),
                  cell("code",execute),
+                 cell("markdown", "## Saved configurations and result tables\nThese are saved outputs from this run, not variables inherited from another notebook. Search tables describe development selection; the classical gate decides whether model work is authorized."),
+                 cell("code",tables),
                  cell("markdown", "## Inspect evidence and persist outputs\nNative real EEG has no clean-reference SNR. Pass-through failures remain counted. Parameters and physiological frequency bands are distinct."),
                  cell("code",inspect)]}
     for index, item in enumerate(notebook["cells"]):

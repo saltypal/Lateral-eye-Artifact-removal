@@ -5,12 +5,14 @@ from .contracts import canonical_hash
 from .io import atomic_json, sha256_file
 
 
-def verify_parent(directory, required=()):
+def verify_parent(directory, required=None):
     directory = Path(directory)
     state = json.loads((directory / "execution_state.json").read_text())
     if state.get("status") != "complete":
         raise ValueError(f"Parent is incomplete: {directory}")
     manifest = json.loads((directory / "artifact_manifest.json").read_text())
+    if required is None:
+        required=tuple(manifest)
     for name in required:
         candidate = (directory / name).resolve()
         if not candidate.is_relative_to(directory.resolve()):
@@ -24,7 +26,7 @@ def record_parent_identities(input_root, output, config):
     identities = []
     for spec_path in sorted(Path(input_root).rglob("run_spec.json")):
         directory = spec_path.parent
-        verify_parent(directory, ("run_spec.json", "configuration.json", "environment.json"))
+        verify_parent(directory)
         spec = json.loads(spec_path.read_text())
         if spec.get("campaign_id") != config["campaign_id"]:
             raise ValueError("Parent belongs to another campaign")

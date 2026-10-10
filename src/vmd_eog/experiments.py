@@ -474,10 +474,19 @@ def run_review(input_root,output,config,profile):
         choices=posterior_table[(posterior_table.method==method)&posterior_table.quick_preservation_gate].sort_values("mean_snr_db",ascending=False)
         if len(choices): recipe["posterior"]=recipe_only(choices.iloc[0].to_dict(),"posterior")
     atomic_json(output/"approved_recipe.json",recipe)
-    evidence={name:sha256_file(path) for name,path in {"regional_scores":region/"regional_scores.csv","vmd_grid":vmd/"vmd_search.csv",
-        "posterior_grid":posterior/"posterior_search.csv","corpus":corpus/"corpus_summary.json","contracts":contract/"contracts_summary.json"}.items()}
+    import shutil
+    evidence_paths={"regional_scores":region/"regional_scores.csv","vmd_grid":vmd/"vmd_search.csv",
+        "posterior_grid":posterior/"posterior_search.csv","corpus":corpus/"corpus_summary.json","contracts":contract/"contracts_summary.json"}
+    evidence={name:sha256_file(path) for name,path in evidence_paths.items()}
+    evidence_directory=output/"evidence"; evidence_directory.mkdir()
+    evidence_files={}
+    for name,path in evidence_paths.items():
+        saved=evidence_directory/(name+path.suffix)
+        shutil.copy2(path,saved)
+        evidence_files[name]=str(saved.relative_to(output))
     gate={"campaign_id":config["campaign_id"],"passed":passed,"model_authorization":config["model_authorization"],
-        "selected_recipe_hash":canonical_hash(recipe),"evidence_hashes":evidence,"selected_method":None if selected is None else selected["method"],
+        "selected_recipe_hash":canonical_hash(recipe),"evidence_hashes":evidence,"evidence_files":evidence_files,
+        "selected_method":None if selected is None else selected["method"],
         "requirement":"All preservation/paired-correlation gates, >=15dB controlled development SNR and >=0.1dB advantage over direct regression both alone and with identical posterior expert",
         "failure_reasons":[] if passed else ["No regional VMD hybrid passed every gate and the matched direct-regression benefit requirement"],
         "reserved_confirmation_opened":False,"native_clean_recovery_claim":False}
@@ -524,24 +533,35 @@ def plot_review(results,native,reports,output,config):
         rows.append({"method":method,"condition":condition,"mean_snr_db":float(values.mean()),
             "ci95_lower":interval[0],"ci95_upper":interval[1],"sources":len(values)})
     table=pd.DataFrame(rows); table.to_csv(output/"condition_source_uncertainty.csv",index=False)
-    fig,axes=plt.subplots(1,3,figsize=(16,5),sharey=True)
+    labels={"identity":"Input / identity","direct":"Direct EOG regression","shared_vmd":"Shared VMD",
+        "regional_mwf":"VMD + posterior MWF","regional_ica":"VMD + posterior ICA",
+        "regional_no_context":"VMD + posterior-only ICA",
+        "regional_mwf_direct_frontal":"Regression + posterior MWF",
+        "regional_ica_direct_frontal":"Regression + posterior ICA"}
+    methods=list(labels)
+    fig,axes=plt.subplots(1,3,figsize=(17,6),sharey=True)
     for axis,condition in zip(axes,("blink","lateral","mixed")):
-        data=table[table.condition==condition]
-        axis.bar(data.method,data.mean_snr_db,color="steelblue")
-        axis.errorbar(np.arange(len(data)),data.mean_snr_db,
-            yerr=np.stack([data.mean_snr_db-data.ci95_lower,data.ci95_upper-data.mean_snr_db]),
-            fmt="none",ecolor="black",capsize=3)
-        axis.axhline(15,color="darkgreen",linestyle="--",label="15 dB target")
-        axis.set_title(condition); axis.tick_params(axis="x",rotation=70)
-    axes[0].set_ylabel("Recipient-balanced controlled SNR (dB)")
+        data=table[table.condition==condition].set_index("method").reindex(methods)
+        axis.errorbar(data.mean_snr_db,np.arange(len(methods)),
+            xerr=np.stack([data.mean_snr_db-data.ci95_lower,data.ci95_upper-data.mean_snr_db]),
+            fmt="o",color="#315e82",ecolor="#333333",capsize=3)
+        axis.axvline(15,color="#444444",linestyle="--",label="15 dB target")
+        axis.set_title(condition); axis.set_xlabel("Controlled SNR (dB)")
+        axis.grid(axis="x",alpha=.15)
+    axes[0].set_yticks(np.arange(len(methods)),[labels[m] for m in methods]); axes[0].invert_yaxis()
+    fig.suptitle("Recipient-balanced development means with participant-bootstrap 95% intervals")
     fig.tight_layout(); fig.savefig(output/"condition_SNR.png",dpi=160); plt.close(fig)
-    fig,axis=plt.subplots(figsize=(9,6))
-    for report in reports:
-        x=100*report["worst_source_mean_clean_change"]; y=report["mean_snr_db"]
-        axis.scatter(x,y,s=60); axis.annotate(report["method"],(x,y),xytext=(4,4),textcoords="offset points")
-    axis.axvline(1,color="darkred",linestyle="--"); axis.axhline(15,color="darkgreen",linestyle="--")
-    axis.set(xlabel="Worst recipient mean clean modification (%)",ylabel="Recipient-balanced controlled SNR (dB)",
-        title="Recovery and EEG preservation must pass together")
+    report_by_method={r["method"]:r for r in reports}
+    fig,axes=plt.subplots(1,2,figsize=(14,6),sharey=True)
+    for axis,key,scale,threshold,title in ((axes[0],"worst_source_mean_clean_change",100.,1.,"Worst recipient mean clean modification (%)"),
+        (axes[1],"mean_snr_db",1.,15.,"Recipient-balanced controlled SNR (dB)")):
+        values=[scale*report_by_method[m][key] for m in methods]
+        axis.scatter(values,np.arange(len(methods)),color="#315e82",s=45)
+        axis.axvline(threshold,color="#444444",linestyle="--")
+        for i,value in enumerate(values): axis.annotate(f"{value:.3g}",(value,i),xytext=(5,5),textcoords="offset points")
+        axis.set_xlabel(title); axis.grid(axis="x",alpha=.15)
+    axes[0].set_yticks(np.arange(len(methods)),[labels[m] for m in methods]); axes[0].invert_yaxis()
+    fig.suptitle("Recovery and EEG preservation must pass together; dashed lines are acceptance limits")
     fig.tight_layout(); fig.savefig(output/"recovery_preservation.png",dpi=160); plt.close(fig)
     proxy=native[native.target_kind=="real_proxy"]
     if len(proxy):

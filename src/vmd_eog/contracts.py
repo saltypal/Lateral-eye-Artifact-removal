@@ -43,6 +43,14 @@ def require_approval(stage, input_root, config):
         raise RuntimeError("Selected method does not satisfy archived classical gates")
     if gate.get("reserved_confirmation_opened") is not False:
         raise RuntimeError("Classical selection has opened reserved confirmation data")
+    from .io import sha256_file
+    for name,digest in gate["evidence_hashes"].items():
+        relative=gate.get("evidence_files",{}).get(name)
+        if relative is None:
+            raise RuntimeError("Classical evidence payload is absent")
+        verify_parent(directory,(relative,))
+        if sha256_file(directory/relative)!=digest:
+            raise RuntimeError("Classical evidence snapshot differs from recorded hash")
 
 
 @dataclass(frozen=True)
