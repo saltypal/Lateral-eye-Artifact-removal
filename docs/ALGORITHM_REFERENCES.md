@@ -14,6 +14,22 @@ Selection compares K=3..10, alpha 250/500/1000/2000/4000, lag banks, ridge penal
 
 ## Posterior MWF
 
+## Frontal VMD–SOBI candidate
+
+[Xiong et al., SVM–IVMD–SOBI](https://mdpi-res.com/d_attachment/sensors/sensors-24-01642/article_deploy/sensors-24-01642-v2.pdf?version=1709543478),
+sections 2.1–2.4, motivates a separate contamination detector and mode-domain
+second-order source separation. `sobi.py` independently implements whitening,
+symmetric delayed covariances and orthogonal Jacobi joint diagonalization;
+`vmd_sobi.py` evaluates reconstructed source subtraction versus EOG-projected
+source correction. Source means and the VMD residual stay in the input.
+Declared delay banks and EOG-based detection are adaptations, not the paper's
+unspecified delay bank or SVM/GA replication. Approximate entropy uses m=2,
+r=0.15 SD with self matches and a declared 0.4 threshold for the optional
+entropy-plus-EOG branch. No superiority is assumed before Kaggle evidence.
+The bounded plan and promotion criteria are in `VMD_SOBI_PLAN.md`.
+
+## Posterior MWF implementation
+
 [Authors' MATLAB implementation](https://github.com/exporl/mwf-artifact-removal) provides calibration-mask covariance and generalized-eigenvalue artifact estimation. Our `posterior.py` adapts its GEVD operator, with Ledoit–Wolf covariance regularization and selectable positive excess rank. Analytic diagonal and nonorthogonal fixtures check the equation independently. This is an adaptation with changed covariance estimation, not a claim of full MATLAB pipeline replication.
 
 Posterior-only estimation and signed frontal support are compared under the same inputs. Calibration lag columns exclude trial joins. Increasing rank or lag embedding changes preservation and cubic spatial-fitting cost; neither is assumed beneficial.

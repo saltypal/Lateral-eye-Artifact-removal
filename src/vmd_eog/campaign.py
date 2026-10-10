@@ -26,6 +26,9 @@ def execute(stage, input_root, output, config, profile):
     elif stage == "vmd-diagnosis":
         from .vmd_diagnosis import run_diagnosis
         run_diagnosis(input_root, output, config, profile)
+    elif stage == "vmd-sobi":
+        from .vmd_sobi import run_sobi_comparison
+        run_sobi_comparison(input_root,output,config,profile)
     elif stage in ("vmd", "posterior", "regional", "review"):
         from .experiments import run_stage
         run_stage(stage, input_root, output, config, profile)
