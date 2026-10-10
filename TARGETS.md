@@ -9,7 +9,7 @@ User authorizes models automatically only if all classical gates pass.
 - [x] T01 Preserve scaffold/draft and publish dedicated Git branch.
 - [ ] T02 Create independent notebook workflows and reusable modules.
 - [x] T03 Implement latest-published-SHA launch, saved versions and run persistence.
-- [x] T04 Pass data-axis, lags, masks, metrics and solver tests on Kaggle (29 tests; contracts-006).
+- [x] T04 Pass data-axis, lags, masks, metrics and solver tests on Kaggle (59 tests; classical-fixture-006 and vmd-diagnosis-002).
 - [x] T05 Audit original Klados/OSF and historical exposure (45 eligible OSF sessions; audit-001).
 - [x] T06 Audit raw LEMON and reserved Magdeburg source metadata (32 raw development sources loaded; external metadata frozen).
 - [x] T07 Freeze participant, recipient/donor and cross-fit partitions (39 OSF/40 LEMON identities).
@@ -17,8 +17,8 @@ User authorizes models automatically only if all classical gates pass.
 - [x] T09 Generate coherent controlled mixtures with complete recipe manifests (3,840 examples; corpus-002).
 - [x] T10 Run all 40 K/alpha decompositions and preserve every candidate (vmd-001: 5,120 fits, 11,664 candidates).
 - [x] T11 Save vectors, centers, overlap, residuals, convergence and cost (673 iteration-cap fits retained; zero failed mode fits).
-- [ ] T12 Compare VMD against matched direct EOG regression.
-- [ ] T13 Validate GEVD-MWF and raw-frontal-supported ICA.
+- [ ] T12 Compare VMD against matched direct EOG regression (Fz comparison complete; full regional comparison running).
+- [ ] T13 Validate GEVD-MWF and raw-frontal-supported ICA (analytic/software contracts passed, 608 search fits completed; full regional/native evidence pending).
 - [x] T14 Qualify SGEYESUB or record why unavailable (original MATLAB pipeline not qualified).
 - [ ] T15 Integrate signed frontal context and single correction subtraction.
 - [ ] T16 Complete regional/shared/no-context preservation ablations.
@@ -66,7 +66,7 @@ Models remain closed until paper evaluation is complete as well as project gates
   correctly remained closed for synthetic evidence.
 - [ ] E02 Produce per-channel paired and condition-specific native paper tables.
 - [ ] E03 Evaluate source-level paired permutations and Bonferroni families.
-- [ ] E04 Qualify eight-second native chance analysis or report it unavailable (complete-trial extension implemented; awaiting Kaggle fixtures/pilot).
+- [ ] E04 Qualify eight-second native chance analysis or report it unavailable (fixtures and two-record pilot passed; pilot correctly unavailable with two participants, full evaluation running).
 - [ ] E05 Complete paper/protocol review before releasing models.
 
 Fresh controlled mean SNR >=15 dB; 20 dB stretch. Clean modification <=1%,
@@ -137,7 +137,8 @@ authorize a teacher or neural training.
 
 ## Execution evidence
 
-- Kaggle monitor: GPT-6 Luna high resumed after its usage reset and monitors the active regional run. Primary agent owns diagnosis, implementation and repairs.
+- Kaggle monitor: GPT-6 Luna high monitors regional-paper-001, native-protocol-full-001 and the latest VMD diagnostic. Primary agent owns diagnosis, implementation and repairs.
 - Read-only auth/source verification succeeded; source is ready.
 - Archived draft has 55 passed/2 failed numerical fixtures, not current validation.
-- Current tests, audit and focused real-source repair passed on Kaggle. Corpus and algorithm research gates remain pending.
+- Current tests, audit, real-source repair and full controlled corpus passed their engineering checks on Kaggle. Classical accuracy/preservation acceptance and all model work remain pending.
+- Classical-fixture-006: 70 retrieved payloads matched the immutable manifest; 216 waveform/cache payloads remain available on Kaggle and were not retrieved locally. Its saved source/run identity and completed four-stage log were verified.
