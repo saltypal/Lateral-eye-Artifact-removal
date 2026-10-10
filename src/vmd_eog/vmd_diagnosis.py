@@ -1,0 +1,101 @@
+"""Inspect VMD correction failure mechanisms without changing old results."""
+import json
+from pathlib import Path
+import numpy as np
+import pandas as pd
+
+from .artifacts import verify_parent
+from .corpus import unique_parent
+from .experiments import corpus_parent, selection_rows
+from .io import atomic_json, read_jsonl
+from .paper_metrics import paired_channels
+from .reference import project, calibration_reference_baseline, correlations
+
+
+def run_diagnosis(input_root, output, config, profile):
+    """Use saved vectors, never refit VMD or tune on reserved sources."""
+    corpus, rows=corpus_parent(input_root)
+    vmd=unique_parent(input_root,"vmd_summary.json").parent
+    verify_parent(vmd,("selected_frontal.json","mode_diagnostics.jsonl"))
+    selected=json.loads((vmd/"selected_frontal.json").read_text())["vmd_projected"]
+    if selected is None:
+        raise ValueError("No preliminary projected recipe available for diagnosis")
+    infos=[row for row in read_jsonl(vmd/"mode_diagnostics.jsonl")
+           if row["K"]==selected["K"] and row["alpha"]==selected["alpha"]]
+    lookup={}
+    for info in infos:
+        lookup.setdefault(info["example_id"],[]).append(info)
+    records=[]
+    closure=[]
+    for row in selection_rows(rows):
+        data=dict(np.load(corpus/row["array_path"],allow_pickle=False))
+        calibration=dict(np.load(corpus/row["calibration"],allow_pickle=False))
+        baseline=calibration_reference_baseline(calibration["references"],calibration["boundaries"],selected["lags"])
+        for info in lookup.get(row["example_id"],[]):
+            verify_parent(vmd,(info["array"],))
+            saved=dict(np.load(vmd/info["array"],allow_pickle=False))
+            index=data["channel_names"].tolist().index(info["channel"])
+            raw=np.asarray(data["eeg"][index],float)
+            target=data["paired_reference"][index]
+            modes,residual=saved["modes"],saved["residual"]
+            references=data["references"]
+            selected_modes=saved["features"][:,0]>=selected["threshold"]
+            unusable=info["hit_iteration_limit"] or bool(info.get("failure"))
+            artifacts={}
+            direct,_=project(raw,references,selected["lags"],selected["penalty"])
+            centered_modes,_=project(modes,references,selected["lags"],selected["penalty"])
+            residual_projection,_=project(residual,references,selected["lags"],selected["penalty"])
+            closure_error=direct[0]-(centered_modes.sum(0)+residual_projection[0])
+            closure.append({"example_id":row["example_id"],"channel":info["channel"],
+                "projection_closure_relative_error":float(np.linalg.norm(closure_error)/max(np.linalg.norm(direct),1e-30)),
+                "reconstruction_relative_error":float(np.linalg.norm(raw-modes.sum(0)-residual)/max(np.linalg.norm(raw),1e-30)),
+                "selected_modes":int(selected_modes.sum()),"total_modes":len(modes),
+                "iteration_cap":unusable,"residual_projection_rms":float(np.sqrt(np.mean(residual_projection**2))),
+                "input_true_artifact_mean":float(np.mean(data["true_artifact"][index])),
+                "inference_uses_true_artifact":False})
+            association=float(np.max(np.abs(correlations(raw,references,20))))
+            channel_gate=association>=selected["threshold"]
+            anchored_direct,_=project(raw,references,selected["lags"],selected["penalty"],reference_baseline=baseline)
+            anchored_modes,_=project(modes,references,selected["lags"],selected["penalty"],reference_baseline=baseline)
+            artifacts["identity"]=np.zeros_like(raw)
+            artifacts["direct_matched_centered"]=direct[0]*channel_gate*selected["strength"]
+            artifacts["direct_matched_calibration_baseline"]=anchored_direct[0]*channel_gate*selected["strength"]
+            artifacts["vmd_original_projected"]=np.zeros_like(raw) if unusable else (centered_modes*selected_modes[:,None]).sum(0)*selected["strength"]
+            artifacts["vmd_calibration_baseline"]=np.zeros_like(raw) if unusable else (anchored_modes*selected_modes[:,None]).sum(0)*selected["strength"]
+            # Closure is an algebraic control, not an independent VMD gain.
+            artifacts["vmd_all_components_closure"]=direct[0]*channel_gate*selected["strength"]
+            for method,artifact in artifacts.items():
+                cleaned=raw-artifact
+                metrics=paired_channels(cleaned,target)
+                error=np.asarray(cleaned-target,float)
+                mean_error=float(error.mean())
+                mse=float(np.mean(error**2))
+                centered_mse=float(np.mean((error-mean_error)**2))
+                records.append({"example_id":row["example_id"],"recipient":row["recipient"],"donor":row["donor"],
+                    "condition":row["condition"],"channel":info["channel"],"method":method,
+                    **{key:float(values[0]) for key,values in metrics.items()},
+                    "mean_error":mean_error,"bias_mse":mean_error**2,"centered_mse":centered_mse,
+                    "mse_partition_error":abs(mse-mean_error**2-centered_mse),
+                    "mean_bias_fraction":mean_error**2/mse if mse>0 else np.nan,
+                    "iteration_cap":unusable,"selected_modes":int(selected_modes.sum()),
+                    "inference_target_access":False})
+        print("VMD_DIAGNOSIS",row["example_id"],flush=True)
+    frame=pd.DataFrame(records)
+    frame.to_csv(output/"vmd_diagnosis_channels.csv",index=False)
+    pd.DataFrame(closure).to_csv(output/"vmd_projection_closure.csv",index=False)
+    fields=["snr_energy_db","rrmse_time","pearson_cc","mean_bias_fraction"]
+    dirty=frame[frame.condition!="clean"].groupby(["recipient","method"])[fields].agg(lambda values:np.asarray(values,float).mean())
+    summary=dirty.groupby("method")[fields].agg(lambda values:np.asarray(values,float).mean())
+    summary.to_csv(output/"vmd_diagnosis_method_means.csv")
+    clean=frame[frame.condition=="clean"].groupby(["recipient","method"]).rrmse_time.mean().groupby("method").max()
+    clean.rename("worst_recipient_clean_rrmse").to_csv(output/"vmd_diagnosis_clean_preservation.csv")
+    atomic_json(output/"vmd_diagnosis_summary.json",{
+        "profile":profile,"recipe":selected,"examples":frame.example_id.nunique(),
+        "scope":"preliminary preferred frontal selection channels; mechanism diagnosis, not final teacher approval",
+        "hypotheses":["Per-mode gating excludes ocular contributions", "VMD residual contains projected ocular activity",
+                      "Zero-mean scoring projection retains ocular baseline excursions"],
+        "experimental_baseline":"unscored calibration lag-major EOG means; coefficients still fit scoring EEG without targets",
+        "mean_removed_snr_is_acceptance_metric":False,
+        "reserved_confirmation_opened":False,"model_authorization":False,
+        "max_projection_closure_relative_error":max(row["projection_closure_relative_error"] for row in closure),
+        "max_reconstruction_relative_error":max(row["reconstruction_relative_error"] for row in closure)})

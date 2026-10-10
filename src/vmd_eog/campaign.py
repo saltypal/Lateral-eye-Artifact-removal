@@ -23,6 +23,9 @@ def execute(stage, input_root, output, config, profile):
     elif stage == "native-protocol":
         from .native_protocol import run_native_protocol
         run_native_protocol(input_root, output, config, profile)
+    elif stage == "vmd-diagnosis":
+        from .vmd_diagnosis import run_diagnosis
+        run_diagnosis(input_root, output, config, profile)
     elif stage in ("vmd", "posterior", "regional", "review"):
         from .experiments import run_stage
         run_stage(stage, input_root, output, config, profile)

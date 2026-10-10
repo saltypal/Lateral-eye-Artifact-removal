@@ -4,7 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 
-PHASE_A = ("contracts", "audit", "source-fixture", "classical-fixture", "paper-fixture", "native-protocol", "corpus", "vmd", "posterior", "regional", "review")
+PHASE_A = ("contracts", "audit", "source-fixture", "classical-fixture", "paper-fixture", "native-protocol", "vmd-diagnosis", "corpus", "vmd", "posterior", "regional", "review")
 PHASE_B = ("teacher-oof", "student-paired", "student-distill", "freeze", "final-eval", "export")
 
 

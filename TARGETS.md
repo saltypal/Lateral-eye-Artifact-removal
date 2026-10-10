@@ -59,6 +59,11 @@ Models remain closed until paper evaluation is complete as well as project gates
   Full classical integration `classical-fixture-004` at `f193e26` also passed
   39 tests and all VMD/posterior/regional/review stages, including the new
   paper-channel tables and paired statistics. Synthetic evidence cannot authorize models.
+  `paper-fixture-003` at `ace3a9a` passed 45 tests, including complete-condition
+  moments, aligned multi-method overlap-add, eight-second banks and participant
+  grouping. All 11 retrieved artifact hashes matched. `classical-fixture-005`
+  at `b6b7771` passed 48 tests and all four integration stages; model gate
+  correctly remained closed for synthetic evidence.
 - [ ] E02 Produce per-channel paired and condition-specific native paper tables.
 - [ ] E03 Evaluate source-level paired permutations and Bonferroni families.
 - [ ] E04 Qualify eight-second native chance analysis or report it unavailable (complete-trial extension implemented; awaiting Kaggle fixtures/pilot).
@@ -93,6 +98,12 @@ The global projected-correction selection is K=4, alpha=2000, but the preferred
 selection channel available in this corpus was Fz only. This does not establish
 all-frontal optimality. Full regional comparison is running; controlled research
 SNR and classical acceptance remain unestablished. Neural work remains closed.
+
+The original Fz selected scores are 5.2274 dB for projected VMD versus 10.4617 dB
+for direct regression. No VMD benefit is established. A separate notebook 04a
+diagnoses reconstruction, mode/residual projection closure and calibration
+baseline handling; it will not overwrite the original search. Notebook 07b's
+two-record complete-trial OSF pilot is running before full native evaluation.
 
 ## Execution evidence
 

@@ -27,8 +27,15 @@ def lag_matrix(values, lags=(0,)):
     return np.asarray(rows), valid
 
 
-def project(values, references, lags=(0,), penalty=0.01):
-    """Window-adaptive ridge; no clean target, no cross-window mode coefficients."""
+def project(values, references, lags=(0,), penalty=0.01, *, reference_baseline=None):
+    """Window-adaptive ridge, optionally anchored to an unscored EOG baseline.
+
+    Coefficients always fit centered scoring data without a clean target.
+    The default artifact has zero scoring-window mean, preserving the old
+    algorithm. An explicit calibration baseline instead retains reference
+    excursions relative to that baseline. This experimental option must be
+    evaluated for EEG preservation before replacing the default.
+    """
     values = np.atleast_2d(np.asarray(values, dtype=np.float64))
     design, valid = lag_matrix(references, lags)
     if values.shape[-1] != design.shape[-1] or valid.sum() < 2 * design.shape[0]:
@@ -41,9 +48,33 @@ def project(values, references, lags=(0,), penalty=0.01):
     covariance = design[:, valid] @ design[:, valid].T / valid.sum()
     cross = design[:, valid] @ centered[:, valid].T / valid.sum()
     coefficients = np.linalg.solve(covariance + penalty * np.eye(len(design)), cross)
+    if reference_baseline is not None:
+        baseline=np.asarray(reference_baseline,dtype=float)
+        if baseline.shape!=(len(design),) or not np.isfinite(baseline).all():
+            raise ValueError("Calibration reference baseline must match lag-major reference rows")
+        design += (mean-baseline[:,None])/np.maximum(scale,1e-12)
+        design[scale[:,0]<=1e-12]=0
     artifact = coefficients.T @ design
     artifact[:, ~valid] = 0
     return artifact, valid
+
+
+def calibration_reference_baseline(references, boundaries=(), lags=(0,)):
+    """Unscored lag-major EOG means; unavailable samples never cross joins."""
+    references=np.asarray(references,dtype=float)
+    design,valid=lag_matrix(references,lags)
+    for boundary in boundaries:
+        if int(boundary)!=boundary or not 0<int(boundary)<references.shape[-1]:
+            raise ValueError("Invalid calibration trial boundary")
+        boundary=int(boundary)
+        for lag in lags:
+            if lag>0:
+                valid[boundary:boundary+lag]=False
+            elif lag<0:
+                valid[boundary+lag:boundary]=False
+    if valid.sum()<2*len(design):
+        raise ValueError("Insufficient calibration samples for an EOG baseline")
+    return design[:,valid].mean(axis=-1)
 
 
 def correlations(values, references, max_lag=20):
