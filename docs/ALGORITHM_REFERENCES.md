@@ -4,6 +4,12 @@ Evaluation equations, source locations, discrepancies and adaptations are
 specified in [EVALUATION_PROTOCOL.md](EVALUATION_PROTOCOL.md). Project preservation
 thresholds are not paper-standard metrics or published acceptance thresholds.
 
+The [2026-10-10 alternatives review](RESEARCH_ALTERNATIVES_20261010.md) and
+`notebooks/20_Literature_Challengers.ipynb` distinguish existing controls from
+new selective-ICA, frontal-MVMD, VME-GMETV and deterministic neural-refinement
+challengers. They record access gaps and proposed experiments; no alternative
+is promoted or substituted into the active campaign by this literature review.
+
 ## VMD
 
 Dragomiretskiy and Zosso, *Variational Mode Decomposition*, IEEE Transactions on Signal Processing (2014), [DOI](https://doi.org/10.1109/TSP.2013.2288675). The algorithm learns band-limited modes and center frequencies jointly. It does not justify K=5 by naming five physiological EEG bands.
