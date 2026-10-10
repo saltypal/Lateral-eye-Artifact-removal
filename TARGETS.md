@@ -103,7 +103,17 @@ The original Fz selected scores are 5.2274 dB for projected VMD versus 10.4617 d
 for direct regression. No VMD benefit is established. A separate notebook 04a
 diagnoses reconstruction, mode/residual projection closure and calibration
 baseline handling; it will not overwrite the original search. Notebook 07b's
-two-record complete-trial OSF pilot is running before full native evaluation.
+two-record pilot completed with 51 scoring trials and verified publisher
+HEOG_lpf/VEOG_lpf references. Its 24 failure events were iteration-cap
+pass-throughs only; all 15 retrieved artifact hashes matched. The full native
+run `native-protocol-full-001` is launched at `bf7047e`, version 2. The pilot
+had fewer than five participants, so its chance analysis correctly stayed
+unavailable; the full run evaluates eligibility across development sources.
+
+`contracts-007` at `bf7047e` passed 54 tests on Kaggle, including dimensional
+feature invariance, calibration reference baselines and projection linearity.
+The separate `vmd-diagnosis-001` run remains active at source `fc79b30`; no
+calibration-baseline improvement is claimed before those outputs are checked.
 
 ## Execution evidence
 

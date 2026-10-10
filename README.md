@@ -30,3 +30,16 @@ python tools/kaggle_campaign.py submit --stage vmd --run-id vmd-new --profile fu
 Use `--source-sha <exact archived SHA>` for reproduction. Keep parent kernel
 versions pinned and give every rerun a new ID. `docs/SCIENTIFIC_EXPLANATION.md`
 explains mode vectors, frequency bins, regional cooperation, metrics and cost.
+
+The review that includes complete-trial native evaluation waits for immutable
+parents before submission. It remains strictly classical:
+
+```powershell
+python tools/phase_a_chain.py --vmd-run vmd-001 --posterior-run posterior-001 --corpus-run corpus-002 --contracts-run contracts-007 --fixture-run classical-fixture-005 --regional-run regional-paper-001 --native-run native-protocol-full-001 --review-run review-paper-002 --interval 45
+```
+
+Notebook 04a diagnoses VMD reconstruction, correction gates and ocular baseline
+handling; notebook 07b evaluates complete native conditions. Native OSF receives
+paper-based correlation/RMSE/PSD measures, never clean-reference reconstruction
+SNR. Five-participant/eight-second null sampling is an explicitly declared
+adaptation. See `docs/EVALUATION_PROTOCOL.md` for source equations and limitations.

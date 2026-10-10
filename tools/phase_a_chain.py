@@ -89,6 +89,7 @@ def main():
     parser.add_argument("--fixture-run",required=True)
     parser.add_argument("--regional-run",required=True)
     parser.add_argument("--review-run",required=True)
+    parser.add_argument("--native-run",help="Optional full-trial paper evaluation for final classical qualification")
     parser.add_argument("--interval",type=int,default=45)
     args=parser.parse_args()
     if not 30<=args.interval<=60: raise ValueError("Monitoring interval must be 30–60 seconds")
@@ -98,11 +99,15 @@ def main():
     save_state(path,state)
     try:
         parents=[args.corpus_run,args.contracts_run,args.fixture_run,args.vmd_run,args.posterior_run]
+        if args.native_run:
+            parents.append(args.native_run)
         wait_for(parents,args.interval,state,path)
         regional_sources=[pinned_kernel(r) for r in (args.corpus_run,args.vmd_run,args.posterior_run)]
         launch("regional",args.regional_run,regional_sources)
         wait_for([args.regional_run],args.interval,state,path)
         review_sources=[pinned_kernel(r) for r in (args.contracts_run,args.corpus_run,args.vmd_run,args.posterior_run,args.regional_run)]
+        if args.native_run:
+            review_sources.append(pinned_kernel(args.native_run))
         launch("review",args.review_run,review_sources)
         wait_for([args.review_run],args.interval,state,path)
         state["status"]="review completed; primary agent must inspect scientific gate"
