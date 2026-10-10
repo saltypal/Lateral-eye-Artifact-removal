@@ -21,15 +21,18 @@ def decompose(values,k,alpha,config):
 
 
 def mode_features(modes,refs,fs=200):
+    modes=np.asarray(modes,dtype=float)
     associations=np.max(np.abs(correlations(modes,refs,20)),axis=1)
     power=np.abs(np.fft.rfft(modes,axis=-1))**2
     frequencies=np.fft.rfftfreq(modes.shape[-1],1/fs)
     energy=power.sum(axis=-1)
-    low=power[:,frequencies<8].sum(axis=1)/np.maximum(energy,1e-20)
-    fourth=np.mean((modes-modes.mean(axis=-1,keepdims=True))**4,axis=1)
-    variance=np.var(modes,axis=1)
-    kurtosis=fourth/np.maximum(variance**2,1e-20)
-    return np.column_stack([associations,low,np.log1p(kurtosis),energy/np.maximum(energy.sum(),1e-20)])
+    low=np.divide(power[:,frequencies<8].sum(axis=1),energy,out=np.zeros_like(energy),where=energy>0)
+    centered=modes-modes.mean(axis=-1,keepdims=True)
+    scale=np.sqrt(np.mean(centered**2,axis=-1,keepdims=True))
+    normalized=np.divide(centered,scale,out=np.zeros_like(centered),where=scale>0)
+    kurtosis=np.mean(normalized**4,axis=-1)
+    fractions=energy/energy.sum() if energy.sum()>0 else np.zeros_like(energy)
+    return np.column_stack([associations,low,np.log1p(kurtosis),fractions])
 
 
 def correct_modes(modes,refs,lags=(0,),penalty=.01,threshold=.6,strength=1.,kind="projected",fcm=None):

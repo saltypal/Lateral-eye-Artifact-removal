@@ -42,8 +42,10 @@ def project(values, references, lags=(0,), penalty=0.01, *, reference_baseline=N
         raise ValueError("Reference alignment/effective sample failure")
     mean = design[:, valid].mean(axis=1, keepdims=True)
     scale = design[:, valid].std(axis=1, keepdims=True)
-    design = (design - mean) / np.maximum(scale, 1e-12)
-    design[scale[:, 0] <= 1e-12] = 0
+    nonconstant=scale[:,0]>0
+    safe_scale=np.where(nonconstant[:,None],scale,1.)
+    design = (design - mean) / safe_scale
+    design[~nonconstant] = 0
     centered = values - values[:, valid].mean(axis=1, keepdims=True)
     covariance = design[:, valid] @ design[:, valid].T / valid.sum()
     cross = design[:, valid] @ centered[:, valid].T / valid.sum()
@@ -52,8 +54,8 @@ def project(values, references, lags=(0,), penalty=0.01, *, reference_baseline=N
         baseline=np.asarray(reference_baseline,dtype=float)
         if baseline.shape!=(len(design),) or not np.isfinite(baseline).all():
             raise ValueError("Calibration reference baseline must match lag-major reference rows")
-        design += (mean-baseline[:,None])/np.maximum(scale,1e-12)
-        design[scale[:,0]<=1e-12]=0
+        design += (mean-baseline[:,None])/safe_scale
+        design[~nonconstant]=0
     artifact = coefficients.T @ design
     artifact[:, ~valid] = 0
     return artifact, valid
@@ -79,15 +81,18 @@ def calibration_reference_baseline(references, boundaries=(), lags=(0,)):
 
 def correlations(values, references, max_lag=20):
     """Return signed peak association [channel,reference]; each channel stays distinct."""
-    values = np.atleast_2d(values)
-    references = np.atleast_2d(references)
+    values = np.atleast_2d(np.asarray(values,dtype=float))
+    references = np.atleast_2d(np.asarray(references,dtype=float))
     best = np.zeros((len(values), len(references)))
     for lag in range(-max_lag, max_lag + 1):
         design, valid = lag_matrix(references, (lag,))
         x = values[:, valid] - values[:, valid].mean(axis=-1, keepdims=True)
         r = design[:, valid] - design[:, valid].mean(axis=-1, keepdims=True)
-        denominator = np.linalg.norm(x, axis=1)[:, None] * np.linalg.norm(r, axis=1)[None]
-        current = np.divide(x @ r.T, denominator, out=np.zeros_like(best), where=denominator > 1e-12)
+        xnorm=np.linalg.norm(x,axis=1,keepdims=True)
+        rnorm=np.linalg.norm(r,axis=1,keepdims=True)
+        x=np.divide(x,xnorm,out=np.zeros_like(x),where=xnorm>0)
+        r=np.divide(r,rnorm,out=np.zeros_like(r),where=rnorm>0)
+        current = np.clip(x @ r.T,-1.,1.)
         best = np.where(np.abs(current) > np.abs(best), current, best)
     return best
 

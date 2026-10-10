@@ -7,3 +7,17 @@
 Focused diagnosis/repair checks actual archive filenames on Kaggle. A temporary loading header may resolve a missing declaration to one uniquely identified same-directory renamed companion. The original header, binary EEG and marker payloads remain unchanged; original and repaired header hashes and every resolution are recorded. Ambiguous/missing companions fail rather than inventing annotations. The full corpus resumes only after the one-source fixture succeeds.
 
 `source-fixture-001` passed at `ce959d81af7a22328b6507933d0c9ece9435920f`: 26 tests passed; sub-032305's archive contains sub-032305.eeg/.vmrk/.vhdr but declares sub-010006.eeg/.vmrk. Both links were resolved; original payload hashes were recorded. MNE loaded 61 EEG channels and VEOG at 2500Hz; the unscored prefix resampled to [61,24000], with four eligible scoring windows. No confirmation participant was opened. The repaired full corpus is `corpus-002`.
+# 2026-10-10: dimensionless feature scaling
+
+Static inspection found absolute numerical floors in mode kurtosis and
+correlation/reference normalization. In particular, dividing the fourth
+moment by `max(variance**2, 1e-20)` is unit-dependent for small volt-scaled
+signals. Standardize modes before the fourth moment and normalize each
+nonconstant correlation vector by its own norm. Ridge references use their
+nonzero standard deviation; genuinely constant channels remain zero.
+
+New numerical contracts compare volts/microvolts and small reference scales.
+These run on Kaggle. Archived experiments and cache features keep their
+original source identities; they are not retrospectively called repaired.
+The rolling VMD solver itself already has RMS-normalized parity tests.
+
