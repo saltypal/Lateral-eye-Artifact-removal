@@ -241,6 +241,9 @@ def candidates(config, profile):
             result.append({"family": family, "kind": "apen_whole", "K": K, "alpha": 2000,
                 "trigger": .4, "component_threshold": .4, "strength": 1.,
                 "lags": [0], "penalty": .01, "sobi_bank": 0})
+    for spec in result:
+        spec["comparison_arm"] = (spec["family"] if spec["K"] is None else
+                                  f"{spec['family']}_K{spec['K']}")
     return {canonical_hash(spec): spec for spec in result}
 
 
@@ -279,16 +282,28 @@ def grouped_selection(scores, specs, output, config):
             if set(train[name]) & set(heldout[name]):
                 raise ValueError("Frontal grouped selection leaks " + name)
         train_summary = summary(train, specs, config["preservation"])
-        for family in sorted(set(train_summary.family)):
-            feasible = train_summary[(train_summary.family == family) & train_summary.selection_eligible]
-            key = identity if feasible.empty else feasible.sort_values(
-                ["snr_energy_db", "candidate_hash"], ascending=[False, True]).iloc[0].candidate_hash
+        for family in sorted(set(train_summary.comparison_arm)):
+            arm = train_summary[train_summary.comparison_arm == family]
+            if family.startswith("svm_sobi_apen_fixed_adaptation"):
+                # Other outer-fold detector predictions may come from fits
+                # that saw this fold. Even preservation-triggered fallback
+                # would be a leaked selection, despite having only one recipe.
+                if len(arm) != 1:
+                    raise ValueError("SVM must have one predeclared recipe")
+                key = arm.iloc[0].candidate_hash
+                policy = "predeclared fixed recipe; no selection or fallback using crossfit predictions"
+            else:
+                feasible = arm[arm.selection_eligible]
+                key = identity if feasible.empty else feasible.sort_values(
+                    ["snr_energy_db", "candidate_hash"], ascending=[False, True]).iloc[0].candidate_hash
+                policy = "correction settings selected on other source buckets; K fixed within arm"
             evaluated = heldout[heldout.candidate_hash == key].copy()
             evaluated["evaluated_family"] = family
             evaluated["selection_fold"] = fold
             heldout_scores.append(evaluated)
             chosen.append({"fold": int(fold), "family": family, "selected": specs[key],
                 "candidate_hash": key, "fallback_identity": key == identity and family != "identity",
+                "selection_policy": policy,
                 "scope": "family-wise source-excluded selection; final family winner not qualified"})
     write_jsonl(output / "frontal_fold_selections.jsonl", chosen)
     result = pd.concat(heldout_scores, ignore_index=True)

@@ -10,7 +10,7 @@ import pytest
 from vmd_eog.frontal_campaign import validate_policy
 from vmd_eog.frontal_methods import (frontal_indices, fuzzy_entropy,
     estimate_components, reference_intervals, FrontalCorrector)
-from vmd_eog.frontal_replication import candidates, fit_detectors, summary, detector_features
+from vmd_eog.frontal_replication import candidates, fit_detectors, summary, detector_features, grouped_selection
 from vmd_eog.frontal_native import validate_record_selection
 
 
@@ -100,6 +100,9 @@ def test_fixed_candidate_bank_has_no_all_channel_or_adaptive_vmd():
     assert {spec["alpha"] for spec in specs.values()} == {None, 2000}
     svm = [spec for spec in specs.values() if spec["family"] == "svm_sobi_apen_fixed_adaptation"]
     assert len(svm) == 1 and svm[0]["K"] == 3
+    for spec in specs.values():
+        if spec["K"] is not None:
+            assert spec["comparison_arm"].endswith(f"_K{spec['K']}")
 
 
 def test_whole_montage_interface_changes_frontal_only_and_has_no_target_argument():
@@ -177,3 +180,25 @@ def test_external_mode_cache_cannot_smuggle_a_posterior_decomposition():
     with pytest.raises(ValueError, match="precisely"):
         corrector.denoise(original, np.stack([samples, samples]), np.stack([samples, samples]),
             ["F3", "P3"], [0, 1], mode_bundles={0: bundle, 1: bundle})
+
+
+def test_fixed_svm_evaluation_is_not_gated_by_other_outer_fold_predictions(tmp_path):
+    specs = {
+        "identity": dict(family="identity", comparison_arm="identity"),
+        "direct": dict(family="direct", comparison_arm="direct"),
+        "svm": dict(family="svm_sobi_apen_fixed_adaptation", K=3,
+                    comparison_arm="svm_sobi_apen_fixed_adaptation_K3")}
+    records = []
+    for fold in range(2):
+        for condition in ("blink", "clean"):
+            for candidate, spec in specs.items():
+                records.append(dict(candidate_hash=candidate, family=spec["family"],
+                    example_id=f"{fold}-{condition}", channel="F3", recipient=f"r{fold}",
+                    donor=f"d{fold}", fold=fold, condition=condition, input_snr_db=0.,
+                    snr_energy_db=12., rrmse_time=.1, pearson_cc=.9, mse=.01,
+                    snr_improvement_db=12., failure=None, alpha_db=0., beta_db=0.,
+                    covariance_error=0., clean_change=.5 if candidate == "svm" else 0.))
+    result = grouped_selection(pd.DataFrame(records), specs, tmp_path, configuration())
+    svm = result[result.evaluated_family == "svm_sobi_apen_fixed_adaptation_K3"]
+    assert set(svm.candidate_hash) == {"svm"}
+    assert (svm[svm.condition == "clean"].clean_change > .01).all()

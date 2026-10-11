@@ -47,6 +47,12 @@ against the independently selected direct comparator. SVM has one predeclared
 K3 correction recipe; nested tuning of crossfit detector predictions is excluded.
 Native preservation, uncertainty and final family selection remain required.
 
+In the follow-up, K3 and K4 are separate fixed comparison arms. Correction
+parameters are selected within an arm; K is never selected by this workflow.
+The single SVM recipe is evaluated as predeclared, without selecting an identity
+fallback from other outer-fold detector predictions that may have seen the
+current heldout fold. Its preservation failures are reported, not hidden.
+
 Persist candidates, channel scores, per-example recovery shards, fold/exclusion
 identities, per-axis association, solver diagnostics, mode frequency/bandwidth
 information and failures. The pilot saves every candidate prediction. Partial
