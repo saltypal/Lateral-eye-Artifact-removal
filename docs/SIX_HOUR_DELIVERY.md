@@ -77,3 +77,7 @@ Next bounded diagnosis: test consistent volts-to-microvolts conversion of all fr
 ## Current measured checkpoint, 11:16 UTC
 
 Frontal hybrid002 and evidence001 are complete, downloaded and checksummed. Units audit001 is complete: consistent model unit conversion changes output SNR by less than 0.001 dB, ruling out a major unit-floor explanation for this transfer failure. The frozen hybrid remains unqualified; its largest weakness is lateral movement. Signed lagged calibration-transfer versus K3-mode gain estimation is running as frontal-calibration-hybrid-001, source96c6cfd. Full classical002 remains running on its original pinned source. Latest source1b26969 includes the second reconstruction-check repair and explicit repaired-run queue support. No new model fitting, posterior VMD, confirmation access or AutoVMD occurs.
+
+## Frontal target reached on development data
+
+The fixed frontal VMD + signed calibration-transfer hybrid achieved 17.112814 dB over 320 examples / 32 recipients / 13 verified frontal channels. All controlled preservation gates passed; three decomposition failures remain included as pass-through. Matched calibration without VMD scored 18.193247 dB. Both pass the controlled 15-dB gate; VMD superiority is not established and neither is independently qualified. Proceed to frozen native diagnostic validation and matched uncertainty; posterior integration still requires the frontal native review.

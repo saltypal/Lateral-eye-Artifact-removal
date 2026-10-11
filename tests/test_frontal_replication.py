@@ -116,6 +116,22 @@ def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions()
     assert not clean_artifact.any()
 
 
+def test_native_calibration_requires_both_matched_controlled_gates(tmp_path,monkeypatch):
+    from vmd_eog import frontal_native
+    monkeypatch.setattr(frontal_native,"verify_parent",lambda *args:None)
+    summary = dict(calibration_hybrid=True,scope="verified_frontal_only",
+        reserved_confirmation_opened=False,autovmd_executed=False,K=3,alpha=2000)
+    (tmp_path/"frontal_transfer_summary.json").write_text(json.dumps(summary))
+    gates = [dict(arm="calibration_raw_gain",controlled_development_gates_pass=True),
+             dict(arm="K3_calibration_mode_gain",controlled_development_gates_pass=False)]
+    (tmp_path/"frontal_controlled_gates.json").write_text(json.dumps(gates))
+    with pytest.raises(ValueError,match="passed controlled gates"):
+        frontal_native.calibration_parent(tmp_path)
+    gates[1]["controlled_development_gates_pass"] = True
+    (tmp_path/"frontal_controlled_gates.json").write_text(json.dumps(gates))
+    assert frontal_native.calibration_parent(tmp_path) == tmp_path
+
+
 def test_fixed_gain_axis_support_and_zero_calibration_offset_contracts():
     import torch
     from vmd_eog.frontal_frozen_transfer import gain_adapter

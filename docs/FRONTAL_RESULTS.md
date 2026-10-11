@@ -170,3 +170,11 @@ Bounded next tests preserve K3/2000, splits and targets: (1) consistent model in
 The second reconstruction check inside FrontalCorrector also needed float64 summation. The previous reader-only audit did not exercise that layer; it cannot be called a full end-to-end repair. Source e5dd5a8 fixes both checks with the original tolerance and adds a regression fixture. The running full002 uses its older pinned source; any resulting failure stays archived and requires a new version.
 
 Unit audit001 measured 8.76494 dB for microvolt-adapted frozen transfer versus 8.76523 dB unscaled, and 8.90178 dB anchored versus 8.90208 dB unscaled anchored. The numerical-floor hypothesis did not explain the observed performance gap. Preserve this negative control rather than describing unit conversion as an improvement.
+
+## New calibrated frontal result
+
+frontal-calibration-hybrid-001, source96c6cfd7c5109b6984c154d432348069c6c69db0, completed all 320 development examples and 116 numerical tests. K3/2000 calibration-mode gain achieved output SNR 17.112814 dB, improvement 22.585995 dB, temporal RRMSE 0.192181 and Pearson CC 0.973700. Three channel/example decomposition failures remain scored pass-through. All controlled engineering gates passed, with zero synthetic clean modification, alpha/beta change and clean covariance error.
+
+The matched calibrated raw-gain control achieved 18.193247 dB, RRMSE 0.160311 and CC 0.981142 with no failures, also passing controlled gates. Therefore VMD has not demonstrated added benefit over that matched calibration control. Fixed windowwise direct regression scored 11.807489 dB and failed clean gates. The historical frozen-model transfer scored 8.765227 dB.
+
+This is verified frontal-only, participant-balanced controlled development evidence on regression-generated ocular fields. It does not improve the archived 17.92721 score on an identical benchmark, establish independent generalization, qualify posterior integration or provide an EEG-only deployment model. Unscored calibration learned signed lagged transfer; scoring input alone fitted correction strength; paired targets entered only evaluation. Native OSF validation and matched uncertainty are next.

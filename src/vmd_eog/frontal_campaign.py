@@ -6,7 +6,7 @@ from .artifacts import verify_parent
 from .contracts import canonical_hash
 
 
-STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid")
+STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration")
 FIXED_SETTINGS = ((3, 2000), (4, 2000))
 
 
@@ -49,6 +49,9 @@ def require_checkpoint(stage, input_root, config):
     if stage == "frontal-native":
         from .frontal_native import controlled_parent
         controlled_parent(input_root)
+    if stage == "frontal-native-calibration":
+        from .frontal_native import calibration_parent
+        calibration_parent(input_root)
     if stage == "frontal-evaluation":
         from .frontal_evaluation import selected_parent
         selected_parent(input_root)
@@ -71,9 +74,10 @@ def execute(stage, input_root, output, config, profile, experiment):
             hybrid=stage in ("frontal-gain-hybrid", "frontal-gain-unit-audit"),
             unit_audit=stage == "frontal-gain-unit-audit",
             calibration_hybrid=stage == "frontal-calibration-hybrid")
-    if stage == "frontal-native":
+    if stage in ("frontal-native", "frontal-native-calibration"):
         from .frontal_native import run_native
-        return run_native(input_root, output, config, profile)
+        return run_native(input_root, output, config, profile,
+            calibration_hybrid=stage == "frontal-native-calibration")
     if stage == "frontal-evidence":
         from .frontal_evidence import run_evidence
         return run_evidence(input_root, output, config)

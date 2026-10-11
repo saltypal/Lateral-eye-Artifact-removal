@@ -32,8 +32,20 @@ def run_evidence(input_root, output, config):
     intervals_path = output / "frontal_uncertainty.json"
     intervals = json.loads(intervals_path.read_text())
     for item in intervals:
-        item["scope"] = "frozen-weight frontal transfer on development sources; no final winner qualification"
+        item["scope"] = "fixed-recipe frontal development evidence; no final winner qualification"
     atomic_json(intervals_path, intervals)
+    if summary.get("calibration_hybrid"):
+        matched = scores[scores.evaluated_family.isin(
+            ["calibration_raw_gain","K3_calibration_mode_gain"])].copy()
+        matched.loc[matched.evaluated_family == "calibration_raw_gain","evaluated_family"] = "direct"
+        matched_output = output / "matched_calibration"
+        matched_output.mkdir()
+        uncertainty_report(matched,matched_output,config)
+        reports = json.loads((matched_output / "frontal_uncertainty.json").read_text())
+        for item in reports:
+            item["comparator"] = "matched calibration_raw_gain; identical information and gates"
+            item["scope"] = "VMD gain estimation versus raw gain estimation on development sources"
+        atomic_json(matched_output / "frontal_uncertainty.json",reports)
     plot_results(scores, output)
     condition_means = scores[scores.condition != "clean"].groupby(
         ["evaluated_family", "recipient", "condition", "input_snr_db"])[

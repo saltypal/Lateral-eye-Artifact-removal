@@ -54,14 +54,33 @@ def validate_record_selection(record, evidence):
         raise ValueError("Native detector has no verified unit-invariant calibration normalization")
 
 
-def run_native(input_root, output, config, profile):
+def calibration_parent(input_root):
+    paths = list(Path(input_root).rglob("frontal_transfer_summary.json"))
+    if len(paths) != 1:
+        raise ValueError("Attach exactly one completed calibration hybrid parent")
+    parent = paths[0].parent
+    verify_parent(parent,("frontal_transfer_summary.json","frontal_controlled_gates.json"))
+    summary = json.loads(paths[0].read_text())
+    if (summary.get("calibration_hybrid") is not True or summary.get("scope") != "verified_frontal_only" or
+            summary.get("reserved_confirmation_opened") is not False or summary.get("autovmd_executed") is not False or
+            summary.get("K") != 3 or summary.get("alpha") != 2000):
+        raise ValueError("Calibration hybrid parent scope or recipe differs")
+    gates = {row["arm"]:row for row in json.loads((parent/"frontal_controlled_gates.json").read_text())}
+    for arm in ("calibration_raw_gain","K3_calibration_mode_gain"):
+        if not gates.get(arm,{}).get("controlled_development_gates_pass"):
+            raise ValueError("Calibration hybrid has not passed controlled gates: "+arm)
+    return parent
+
+
+def run_native(input_root, output, config, profile, calibration_hybrid=False):
     parent, _ = corpus_parent(input_root)
-    experiment = controlled_parent(input_root)
-    selections = read_jsonl(experiment / "frontal_fold_selections.jsonl")
+    experiment = calibration_parent(input_root) if calibration_hybrid else controlled_parent(input_root)
+    selections = [] if calibration_hybrid else read_jsonl(experiment / "frontal_fold_selections.jsonl")
     by_fold = {}
     for selection in selections:
         by_fold.setdefault(selection["fold"], {})[selection["family"]] = selection
-    detector_evidence = {item["fold"]: item for item in read_jsonl(experiment / "frontal_detector_folds.jsonl")}
+    detector_evidence = {} if calibration_hybrid else {
+        item["fold"]: item for item in read_jsonl(experiment / "frontal_detector_folds.jsonl")}
     source = unpack_source(input_root, tempfile.mkdtemp(prefix="frontal-native-"), output,
                            config["required_supplement_sha256"])
     records = [json.loads(path.read_text()) for path in (parent / "calibration").glob("*/record.json")]
@@ -78,8 +97,10 @@ def run_native(input_root, output, config, profile):
     write_jsonl(output / "native_frontal_sources.jsonl", records)
     atomic_json(output / "native_frontal_recipe_identity.json", {
         "parent_manifest_sha256": sha256_file(experiment / "artifact_manifest.json"),
-        "policy": "source-excluded family-wise recipes reused unchanged; no native selection",
-        "families": sorted({item["family"] for item in selections})})
+        "policy": ("fixed calibration hybrid; no global detector fitting or native retuning; development-exposed sources"
+                   if calibration_hybrid else "source-excluded family-wise recipes reused unchanged; no native selection"),
+        "families": (["identity","direct","calibration_raw_gain","K3_calibration_mode_gain"]
+                     if calibration_hybrid else sorted({item["family"] for item in selections}))})
     save_protocol(output)
     predictions = output / "native_frontal_predictions"
     predictions.mkdir()
@@ -91,7 +112,8 @@ def run_native(input_root, output, config, profile):
     trial_count, started = 0, time.perf_counter()
     for record in records:
         fold = record["partition"]["fold"]
-        validate_record_selection(record, detector_evidence[fold])
+        if not calibration_hybrid:
+            validate_record_selection(record, detector_evidence[fold])
         item = read_osf(source / record["path"])
         from .data import eog_axes
         raw_refs = eog_axes(item)
@@ -107,12 +129,19 @@ def run_native(input_root, output, config, profile):
         ids = frontal_indices(calibration["eeg"], names, regions, mask)
         if not len(ids):
             raise ValueError("Native record has no verified frontal channels")
-        detector_path = f"detectors/fold-{fold}.joblib"
-        verify_parent(experiment, (detector_path,))
-        detector = joblib.load(experiment / detector_path)
-        estimators = {family: FrontalCorrector(selection["selected"], config, detector=detector)
-                      for family, selection in by_fold[fold].items()}
-        methods = tuple(sorted(estimators))
+        if calibration_hybrid:
+            estimators = {
+                "identity":FrontalCorrector(dict(family="identity"),config),
+                "direct":FrontalCorrector(dict(family="direct",trigger=.4,strength=1.,
+                    lags=[-10,0,10],penalty=.01),config)}
+            methods = tuple(sorted([*estimators,"calibration_raw_gain","K3_calibration_mode_gain"]))
+        else:
+            detector_path = f"detectors/fold-{fold}.joblib"
+            verify_parent(experiment, (detector_path,))
+            detector = joblib.load(experiment / detector_path)
+            estimators = {family: FrontalCorrector(selection["selected"], config, detector=detector)
+                          for family, selection in by_fold[fold].items()}
+            methods = tuple(sorted(estimators))
         moments = {}
         for trial_id in record["scoring_trial_ids"]:
             condition = CONDITIONS.get(item["trial_labels"][trial_id])
@@ -133,8 +162,9 @@ def run_native(input_root, output, config, profile):
                 window_count += 1
                 # Each approved decomposition is computed once per frontal
                 # window, regardless of how many correction families use it.
-                required = {corrector.spec["K"] for corrector in estimators.values()
-                            if corrector.spec["family"] not in ("identity", "direct")}
+                required = ({3} if calibration_hybrid else
+                    {corrector.spec["K"] for corrector in estimators.values()
+                     if corrector.spec["family"] not in ("identity", "direct")})
                 bundles = {K: decompose_frontal(window_eeg, names, regions, FixedRecipe(K), config, mask)
                            for K in required}
                 # Retain a deterministic first-window mode example per trial,
@@ -148,10 +178,17 @@ def run_native(input_root, output, config, profile):
                         vectors[f"K{K}_residual"] = np.stack([bundle[int(index)][1] for index in ids])
                     np.savez_compressed(mode_directory / f"{record['record_id']}-trial-{trial_id:04d}.npz", **vectors)
                 artifacts = {}
-                for family, corrector in estimators.items():
-                    _, artifact, diagnostic = corrector.denoise(window_eeg, window_refs,
-                        calibration["references"], names, regions, mask,
-                        mode_bundles=bundles.get(corrector.spec.get("K")), calibration_eeg=calibration["eeg"])
+                for family in methods:
+                    if family in ("calibration_raw_gain","K3_calibration_mode_gain"):
+                        from .frontal_calibration_transfer import calibration_transfer
+                        _,artifact,diagnostic = calibration_transfer(window_eeg,window_refs,
+                            calibration,names,regions,mask,
+                            bundles=bundles[3] if family == "K3_calibration_mode_gain" else None)
+                    else:
+                        corrector = estimators[family]
+                        _, artifact, diagnostic = corrector.denoise(window_eeg, window_refs,
+                            calibration["references"], names, regions, mask,
+                            mode_bundles=bundles.get(corrector.spec.get("K")), calibration_eeg=calibration["eeg"])
                     artifacts[family] = artifact
                     trial_decisions.append({"record_id": record["record_id"], "trial": trial_id,
                         "window": window_count, "method": family, "decisions": diagnostic,
@@ -225,4 +262,7 @@ def run_native(input_root, output, config, profile):
         "mode_examples": "first window per trial; not selected by favorable output",
         "successful_decisions_saved": True,
         "scientific_accuracy_qualified": False, "teacher_qualified": False,
+        "calibration_hybrid":calibration_hybrid,
+        "development_exposed_sources":calibration_hybrid,
+        "autovmd_executed":False,
         "paper_four_region_replication": False, "regional_integration_authorized": False})
