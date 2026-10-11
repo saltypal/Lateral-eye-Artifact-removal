@@ -109,3 +109,7 @@ publishing source, use:
 ```powershell
 python tools/kaggle_campaign.py submit --stage vmd-sobi --run-id vmd-sobi-new --profile pilot --kernel-source satyapaladugu/vmd-eog-corpus/2 --kernel-source satyapaladugu/vmd-eog-vmd/1
 ```
+
+## Comprehensive research ledger
+
+[Work So Far.md](<Work So Far.md>) records the methodology, historical and current results, stopped AutoVMD work, posterior evidence, failures and remaining qualification. [Continuing logging contract](docs/RESEARCH_LOGGING_CONTRACT.md) defines updates for every meaningful experiment. Refresh saved metadata with `python tools/build_work_ledger.py`; this does not poll Kaggle or run EEG evaluation.
