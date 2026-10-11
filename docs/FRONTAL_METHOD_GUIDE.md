@@ -55,6 +55,33 @@ projection can leave ocular mean offsets and inflate residual error.
 
 ## Important files and flow
 
+### Calibrated signed-field VMD hybrid
+
+`frontal_calibration_transfer.py` fits a six-row lagged HEOG/VEOG ridge model
+on unscored calibration EEG. The lag-major rows represent HEOG and VEOG at
+-10, 0 and +10 samples. Each frontal channel receives signed spatial transfer
+coefficients, with calibration trial joins excluded from fitting.
+
+On a scoring window, those frozen coefficients predict an ocular field. The
+shared-gain arm estimates one bounded gain from eye-associated K3 mode vectors.
+The original EEG still defines intervention support, and the final correction
+subtracts the estimated field once from the original. It does not replace EEG
+with the sum of retained modes. Its matched raw arm estimates the same gain
+without VMD, with otherwise identical references, calibration and gates.
+
+The signed-axis challenger splits the calibrated field into horizontal and
+vertical contributions and estimates two montage-wide gains. RMS normalization
+and ridge regularization stabilize the two-variable fit. It changes correction
+gain estimation, not K/alpha or source partitions. All variants are project
+extensions, not exact author reproductions.
+
+The shared VMD hybrid measured 17.112814 dB controlled development SNR; its
+matched raw arm measured 18.193247 dB. Thus VMD has not yet demonstrated an
+advantage. The recipient/donor-aware approximate interval for the VMD mean is
+14.45-19.75 dB, and severe lateral movement at -5 dB input remains 8.95 dB.
+The regression-generated mixture construction favors calibrated transfer.
+Real OSF suppression and resting-EEG preservation must be checked separately.
+
 | File | Responsibility |
 |---|---|
 | `frontal_campaign.py` | Frontal-first authorization, fixed settings and parent checkpoints |

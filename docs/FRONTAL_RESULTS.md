@@ -178,3 +178,18 @@ frontal-calibration-hybrid-001, source96c6cfd7c5109b6984c154d432348069c6c69db0, 
 The matched calibrated raw-gain control achieved 18.193247 dB, RRMSE 0.160311 and CC 0.981142 with no failures, also passing controlled gates. Therefore VMD has not demonstrated added benefit over that matched calibration control. Fixed windowwise direct regression scored 11.807489 dB and failed clean gates. The historical frozen-model transfer scored 8.765227 dB.
 
 This is verified frontal-only, participant-balanced controlled development evidence on regression-generated ocular fields. It does not improve the archived 17.92721 score on an identical benchmark, establish independent generalization, qualify posterior integration or provide an EEG-only deployment model. Unscored calibration learned signed lagged transfer; scoring input alone fitted correction strength; paired targets entered only evaluation. Native OSF validation and matched uncertainty are next.
+
+The completed evidence notebook reports approximate recipient/donor Poisson
+multiplier uncertainty (32 recipients, five donors): VMD mean interval
+14.4481-19.7451 dB. VMD minus matched calibrated raw gain is -1.0804 dB,
+interval -2.4207 to +0.2482 dB. This does not support VMD superiority.
+Condition/input-level VMD outputs are blink 16.84/20.06/22.11, lateral
+8.95/13.13/16.62 and mixed 15.99/19.10/21.20 dB at -5/0/+5 dB input.
+These approximate intervals are supplemental project statistics, not the
+prescribed papers' native participant permutation procedure.
+
+Native calibration version001 failed at strict JSON decision saving, after
+the first trial prediction was produced. Its outputs are preserved. Version002
+repairs scalar serialization without changing numerical settings. Separate
+signed HEOG/VEOG gain fitting is evaluated as a fixed mechanistic challenger
+in frontal-axis-hybrid-001; its result remains pending.
