@@ -8,7 +8,7 @@ from pathlib import Path
 from kaggle_campaign import ROOT, WORK, BRANCH, cli, git
 
 
-def submit(run_id):
+def submit(run_id, diagnose=False):
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]+", run_id):
         raise ValueError("Invalid replay run ID")
     config = json.loads((ROOT/"configs/guard17_replay.json").read_text())
@@ -20,7 +20,11 @@ def submit(run_id):
             "kernel": "satyapaladugu/guarded-vmd-k3-alpha2000-archived-reproduction", "profile": "archived-replay",
             "kernel_sources": config["kernel_sources"], "dataset_sources": config["dataset_sources"],
             "recipe": config, "fresh_confirmation": False, "teacher_qualified": False}
-    notebook = json.loads((ROOT/"notebooks/23_Guarded_K3_Alpha2000_Reproduction.ipynb").read_text())
+    if diagnose:
+        spec["stage"] = "guard17-source-audit"
+        spec["kernel"] = "satyapaladugu/guarded-vmd-archived-source-audit"
+    notebook_name = "31_Guarded_VMD_Source_Audit.ipynb" if diagnose else "23_Guarded_K3_Alpha2000_Reproduction.ipynb"
+    notebook = json.loads((ROOT/"notebooks"/notebook_name).read_text())
     for cell in notebook["cells"]:
         if cell["cell_type"] == "code":
             source = ''.join(cell["source"])
@@ -31,7 +35,8 @@ def submit(run_id):
     folder = WORK/run_id
     folder.mkdir(parents=True, exist_ok=False)
     (folder/"experiment.ipynb").write_text(json.dumps(notebook, indent=2))
-    metadata = {"id": spec["kernel"], "title": "Guarded VMD K3 Alpha2000 Archived Reproduction",
+    title = "Guarded VMD Archived Source Audit" if diagnose else "Guarded VMD K3 Alpha2000 Archived Reproduction"
+    metadata = {"id": spec["kernel"], "title": title,
                 "code_file": "experiment.ipynb", "language": "python", "kernel_type": "notebook",
                 "is_private": True, "enable_internet": True, "enable_gpu": False,
                 "kernel_sources": spec["kernel_sources"], "dataset_sources": spec["dataset_sources"],
@@ -53,5 +58,7 @@ def submit(run_id):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True)
-    submit(parser.parse_args().run_id)
+    parser.add_argument("--diagnose", action="store_true")
+    args = parser.parse_args()
+    submit(args.run_id, args.diagnose)
 
