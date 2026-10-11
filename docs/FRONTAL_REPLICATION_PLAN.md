@@ -10,8 +10,9 @@ waveform work, fitting, evaluation and figures are on Kaggle.
 
 AutoVMD is disabled. On 11 October the authenticated Kaggle status for
 `satyapaladugu/vmd-band-search-f0-k4-a1000` was CANCEL_ACKNOWLEDGED.
-Historical caches remain immutable. The archived guard replay reported ERROR;
-it is owned by the separate historical replay workflow, not this campaign.
+Historical caches remain immutable. The earlier archived replay ERROR is retained;
+the repaired cache-only replay guard17-cache-replay-003 reproduced17.92721 dB.
+It remains a separate unknown-montage, EOG-assisted historical benchmark.
 
 All VMD calls are frontal only, with names checked against declared anatomical
 metadata. Unknown/E1 and posterior/central/FC names are not assigned frontal.
@@ -241,3 +242,15 @@ queue can launch full version 002. Its exact completed notebook version is
 attached as a repair-evidence parent. Earlier failed outputs remain preserved.
 Run python tools/frontal_queue.py to monitor the repair/full/native chain;
 do not start a second copy while the PID in orchestration/queue.pid is active.
+
+
+## Deadline campaign progress
+
+The latest source/data/metric fixtures have passed on Kaggle; the best new
+controlled frontal VMD result is17.11281 dB, not a native reconstruction claim.
+Native frontal preservation still fails, so regional integration and new
+EEG-only models have not begun. Gain-adjusted event support is a bounded repair
+experiment at fixed K3/2000; it is not a restarted AutoVMD selector.
+
+Confirmed12:18 UTC: the old AutoVMD search kernel remains
+CANCEL_ACKNOWLEDGED. Only completed immutable decomposition caches are reused.
