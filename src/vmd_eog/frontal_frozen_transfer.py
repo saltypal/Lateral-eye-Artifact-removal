@@ -101,7 +101,7 @@ def gain_adapter(model_class, axis_gate=False, anchored=False):
     return Adapter()
 
 
-def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, calibration_hybrid=False, axis_hybrid=False, event_hybrid=False):
+def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, calibration_hybrid=False, axis_hybrid=False, event_hybrid=False,event_gain_scaled=False):
     parents = list(Path(input_root).rglob("snr_target_protocol.json"))
     if len(parents) != 1:
         raise ValueError("Attach exactly one archived model parent")
@@ -200,6 +200,17 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, cal
                     else:
                         estimates[name],artifacts[name],arm_details[name] = gate_artifact(
                             data["eeg"],artifacts[base],data["references"],gate,arm_details[base])
+                if event_gain_scaled:
+                    for base,name in (("calibration_raw_gain","calibration_raw_scaled_event_gain"),
+                                      ("K3_calibration_mode_gain","K3_calibration_scaled_event_gain")):
+                        if isinstance(gate,str):
+                            estimates[name] = np.asarray(data["eeg"],dtype=float).copy()
+                            artifacts[name] = np.zeros_like(estimates[name])
+                            arm_details[name] = [{"channel":str(data["channel_names"][index]),
+                                "failure":"event_calibration: "+gate} for index in ids]
+                        else:
+                            estimates[name],artifacts[name],arm_details[name] = gate_artifact(
+                                data["eeg"],artifacts[base],data["references"],gate,arm_details[base],gain_scaled=True)
             if axis_hybrid:
                 for name,mode_context in (("calibration_raw_axis_gain",None),("K3_calibration_axis_gain",bundles)):
                     estimates[name],artifacts[name],arm_details[name] = calibration_transfer(
@@ -252,6 +263,7 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, cal
         "failure_rows": len(failures), "K":3, "alpha":2000, "weights_trained":False,
         "predeclared_arms":list(estimates), "hybrid_ablation":hybrid or calibration_hybrid,
         "calibration_hybrid":calibration_hybrid, "axis_hybrid":axis_hybrid,"event_hybrid":event_hybrid,
+        "event_gain_scaled":event_gain_scaled,
         "mean_anchor_source":"unscored calibration EOG only",
         "unit_audit":unit_audit, "model_input_scales":unit_scales, "output_units":"volts",
         "autovmd_executed":False, "reserved_confirmation_opened":False,

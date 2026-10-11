@@ -169,6 +169,23 @@ def test_reference_event_support_uses_only_unscored_labels_and_preserves_units()
     np.testing.assert_array_equal(clean,original)
     assert not correction.any()
     json.dumps(details,allow_nan=False)
+    # Gain adjustment must preserve the ordinary detector at unity and cannot
+    # mutate the publisher's evaluation references.
+    preserved = contaminated.copy()
+    ordinary = gate_artifact(original,artifact,contaminated,detector,[{'gain':1.}])
+    adjusted = gate_artifact(original,artifact,contaminated,detector,[{'gain':1.}],gain_scaled=True)
+    np.testing.assert_array_equal(adjusted[0],ordinary[0])
+    np.testing.assert_array_equal(contaminated,preserved)
+    assert adjusted[2][0]['detector_gain'] == 1.
+    zero = gate_artifact(original,artifact,contaminated,detector,[{'gain':0.}],gain_scaled=True)
+    np.testing.assert_array_equal(zero[0],original)
+    tiny = gate_artifact(original*1e-6,artifact*1e-6,contaminated*1e-6,
+                         second,[{'gain':1.}],gain_scaled=True)
+    np.testing.assert_allclose(tiny[0],adjusted[0]*1e-6)
+    for bad in ([{'gain':None}], [{'gain':float('nan')}], [{'gain':-1.}],
+                [{'gain':1.},{'gain':2.}]):
+        with pytest.raises(ValueError,match='gain'):
+            gate_artifact(original,artifact,contaminated,detector,bad,gain_scaled=True)
     with pytest.raises(ValueError,match='resting'):
         fit_event_support({**calibration,'trial_types':np.full(3*length,2)})
 

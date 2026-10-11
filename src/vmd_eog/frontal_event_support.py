@@ -105,8 +105,23 @@ def fit_event_support(calibration):
     return ReferenceEventSupport(classifier,center,scale,difference_scale,threshold,counts)
 
 
-def gate_artifact(original,artifact,references,gate,diagnostics):
-    support,metadata = gate.support(references)
+def gate_artifact(original,artifact,references,gate,diagnostics,gain_scaled=False):
+    detector_references = np.asarray(references,dtype=float)
+    detector_gain = 1.
+    if gain_scaled:
+        # Controlled mixtures change EEG ocular strength without scaling the
+        # donor references. Convert detector excursions to calibration-equivalent
+        # strength using the already estimated montage-wide field gain.
+        gains = [row.get("gain") for row in diagnostics]
+        if not gains or any(value is None or not np.isfinite(value) or value < 0 for value in gains):
+            raise ValueError("Gain-adjusted support requires finite shared field gains")
+        if any(value != gains[0] for value in gains):
+            raise ValueError("Gain-adjusted support requires one montage-wide gain")
+        detector_gain = float(gains[0])
+        detector_references = gate.center[:,None]+detector_gain*(detector_references-gate.center[:,None])
+    support,metadata = gate.support(detector_references)
+    metadata.update(gain_adjusted_support=bool(gain_scaled),detector_gain=detector_gain,
+                    original_evaluation_references_unchanged=True)
     corrected_artifact = np.asarray(artifact)*support[None]
     details = [{**row,**metadata} for row in diagnostics]
     return np.asarray(original,dtype=float)-corrected_artifact,corrected_artifact,details

@@ -40,6 +40,8 @@ def run_evidence(input_root, output, config):
             matched_arms.append(("calibration_raw_axis_gain","K3_calibration_axis_gain","matched_axis_calibration"))
         if summary.get("event_hybrid"):
             matched_arms.append(("calibration_raw_event_gain","K3_calibration_event_gain","matched_event_calibration"))
+        if summary.get("event_gain_scaled"):
+            matched_arms.append(("calibration_raw_scaled_event_gain","K3_calibration_scaled_event_gain","matched_gain_adjusted_events"))
         for raw_arm,vmd_arm,directory in matched_arms:
             matched = scores[scores.evaluated_family.isin([raw_arm,vmd_arm])].copy()
             matched.loc[matched.evaluated_family == raw_arm,"evaluated_family"] = "direct"

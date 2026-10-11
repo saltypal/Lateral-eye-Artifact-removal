@@ -6,7 +6,7 @@ from .artifacts import verify_parent
 from .contracts import canonical_hash
 
 
-STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration", "frontal-axis-calibration", "frontal-event-calibration", "frontal-native-events")
+STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration", "frontal-axis-calibration", "frontal-event-calibration", "frontal-native-events", "frontal-event-gain-calibration")
 FIXED_SETTINGS = ((3, 2000), (4, 2000))
 
 
@@ -68,14 +68,15 @@ def execute(stage, input_root, output, config, profile, experiment):
     if stage == "frontal-hybrid-evidence":
         from .frontal_hybrid_evidence import run_evidence
         return run_evidence(input_root, output, config)
-    if stage in ("frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-axis-calibration", "frontal-event-calibration"):
+    if stage in ("frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-axis-calibration", "frontal-event-calibration", "frontal-event-gain-calibration"):
         from .frontal_frozen_transfer import run_transfer
         return run_transfer(input_root, output, config,
             hybrid=stage in ("frontal-gain-hybrid", "frontal-gain-unit-audit"),
             unit_audit=stage == "frontal-gain-unit-audit",
-            calibration_hybrid=stage in ("frontal-calibration-hybrid", "frontal-axis-calibration", "frontal-event-calibration"),
+            calibration_hybrid=stage in ("frontal-calibration-hybrid", "frontal-axis-calibration", "frontal-event-calibration", "frontal-event-gain-calibration"),
             axis_hybrid=stage == "frontal-axis-calibration",
-            event_hybrid=stage == "frontal-event-calibration")
+            event_hybrid=stage in ("frontal-event-calibration", "frontal-event-gain-calibration"),
+            event_gain_scaled=stage == "frontal-event-gain-calibration")
     if stage in ("frontal-native", "frontal-native-calibration", "frontal-native-events"):
         from .frontal_native import run_native
         return run_native(input_root, output, config, profile,
