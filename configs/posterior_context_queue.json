@@ -1,16 +1,45 @@
 {
   "campaign_id": "vmd-bandroute-20261010",
   "purpose": "Independently monitor the CPU posterior-context pilot. Full comparison starts only after primary inspection of pilot evidence.",
-  "max_active": {"cpu": 1, "gpu": 0},
-  "external_parents": ["corpus-002", "research-ready-001"],
+  "max_active": {
+    "cpu": 1,
+    "gpu": 0
+  },
+  "external_parents": [
+    "corpus-002",
+    "research-ready-001"
+  ],
   "jobs": [
     {
       "run_id": "posterior-context-pilot-001",
       "stage": "posterior-context",
       "kernel_slug": "vmd-band-posterior-context",
-      "parents": ["corpus-002", "research-ready-001"],
-      "experiment": {"purpose": "matched_posterior_context"},
+      "parents": [
+        "corpus-002",
+        "research-ready-001"
+      ],
+      "experiment": {
+        "purpose": "matched_posterior_context"
+      },
       "profile": "pilot"
+    },
+    {
+      "run_id": "posterior-context-full-001",
+      "stage": "posterior-context",
+      "kernel_slug": "vmd-band-posterior-full",
+      "parents": [
+        "corpus-002",
+        "research-ready-001",
+        "posterior-context-pilot-001"
+      ],
+      "experiment": {
+        "purpose": "matched_posterior_context",
+        "reviewed_pilot": "posterior-context-pilot-001",
+        "pilot_source_sha": "6d3210bcc816cbf0739ab20b4e39a5fb0d55616a",
+        "pilot_tests_passed": 92,
+        "pilot_fit_failures": 0
+      },
+      "profile": "full"
     }
   ]
 }
