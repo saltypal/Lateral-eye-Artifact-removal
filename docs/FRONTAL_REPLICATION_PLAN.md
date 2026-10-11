@@ -178,3 +178,27 @@ warnings. Retrieved artifacts verify the same run identity and passing checkpoin
 Future notebook setup saves the run identity before clone/dependency installation
 and reports each bootstrap phase, so setup failures remain attributable and
 recoverable. This does not change a running notebook's pinned source.
+
+## Bounded job orchestration
+
+From `VMD_EOG_Removal`, run:
+
+```powershell
+python tools/frontal_queue.py
+```
+
+This is local orchestration, not local numerical execution. It checks Kaggle
+every 45 seconds and saves append-only events under
+`results/vmd-frontal-replication-20261011/orchestration/events.jsonl`.
+Completed outputs must match their source/run identity, checksums, passing tests,
+completion state and closed-confirmation policy before they become parents.
+The repaired pilot launches inspection; the correction screen launches frozen
+full evaluation; full evaluation launches a two-record native pilot with the
+checksum-pinned restoration version. Actual saved parent versions are resolved
+from their submission specifications rather than assumed.
+
+The queue ends at frontal review. An API exception or kernel failure stops
+dependent submissions for primary-agent diagnosis. It cannot launch AutoVMD,
+posterior integration, teacher construction, neural training or confirmation.
+Do not start two copies. After diagnosis, rerunning resumes using verified saved
+artifacts and existing run IDs; it does not overwrite completed or failed runs.
