@@ -101,7 +101,7 @@ def gain_adapter(model_class, axis_gate=False, anchored=False):
     return Adapter()
 
 
-def run_transfer(input_root, output, config, hybrid=False, unit_audit=False):
+def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, calibration_hybrid=False):
     parents = list(Path(input_root).rglob("snr_target_protocol.json"))
     if len(parents) != 1:
         raise ValueError("Attach exactly one archived model parent")
@@ -172,6 +172,12 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False):
                     calibration["references"].mean(-1)*unit_scales[name],dtype=np.float32)[None,:,None].copy())
             estimates[name], artifacts[name], arm_details[name] = apply_frontal(network, data["eeg"], data["references"],
                 data["channel_names"], data["regions"], data["mask"], bundles, unit_scale=unit_scales[name])
+        if calibration_hybrid:
+            from .frontal_calibration_transfer import calibration_transfer
+            for name,mode_context in (("calibration_raw_gain",None),("K3_calibration_mode_gain",bundles)):
+                estimates[name],artifacts[name],arm_details[name] = calibration_transfer(
+                    data["eeg"],data["references"],calibration,data["channel_names"],
+                    data["regions"],data["mask"],bundles=mode_context)
         direct = FrontalCorrector(selections[row["partition"]["fold"]]["selected"], config)
         comparator, _, _ = direct.denoise(data["eeg"], data["references"], calibration["references"],
             data["channel_names"], data["regions"], data["mask"], calibration_eeg=calibration["eeg"])
@@ -214,7 +220,8 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False):
         "examples": len(rows), "checkpoint_sha256": CHECKPOINT_SHA, "model_source_sha256": sha256_file(path),
         "model_source_git_sha": LEGACY_SHA, "trained_anatomy_feature_disabled": True,
         "failure_rows": len(failures), "K":3, "alpha":2000, "weights_trained":False,
-        "predeclared_arms":list(models), "hybrid_ablation":hybrid, "mean_anchor_source":"unscored calibration EOG only",
+        "predeclared_arms":list(estimates), "hybrid_ablation":hybrid or calibration_hybrid,
+        "calibration_hybrid":calibration_hybrid, "mean_anchor_source":"unscored calibration EOG only",
         "unit_audit":unit_audit, "model_input_scales":unit_scales, "output_units":"volts",
         "autovmd_executed":False, "reserved_confirmation_opened":False,
         "native_validation_required":True, "qualification":False,

@@ -158,3 +158,13 @@ vectors and residuals. A cancellation/damage regression fixture and full
 actual-reader Kaggle audit 002 must pass before rontal-full-002 starts.
 The failed full version 001 is retained. Scientific accuracy and preservation
 thresholds remain unchanged.
+
+## Deadline campaign: frozen frontal transfer
+
+Archived guard17-cache-replay-003 reproduced 17.92721 dB with the original frozen K3/2000 reference-assisted model on its pinned, development-exposed Klados cache. This is historical whole-cap reconstruction, not a new verified frontal result.
+
+Frontal-gain-hybrid-002 completed 320 examples / 32 recipients / 13 frontal channels; 115 numerical tests passed in the follow-up evidence stage. Frozen transfer output SNR was 8.76523 dB; anchoring 8.90208 dB; separate-axis support 7.84840 dB; combined 7.94956 dB. Matched direct regression reached 11.80749 dB, but its worst clean modification was 0.21764 and clean covariance error 0.23846. No arm passed qualification gates. Saved condition plots show lateral correction is the main weakness. Frontal-hybrid-evidence-001 saved condition tables, approximate recipient/donor uncertainty and inspectable figures, without changing predictions.
+
+Bounded next tests preserve K3/2000, splits and targets: (1) consistent model input-unit conversion to diagnose absolute floors; (2) signed lagged calibration transfer with a matched raw versus VMD-supported pooled correction gain. The calibration hybrid is a project extension, not author reproduction. It closely matches the synthetic regression-field construction; native validation remains mandatory. Neither test trains weights, performs AutoVMD or decomposes posterior EEG.
+
+The second reconstruction check inside FrontalCorrector also needed float64 summation. The previous reader-only audit did not exercise that layer; it cannot be called a full end-to-end repair. Source e5dd5a8 fixes both checks with the original tolerance and adds a regression fixture. The running full002 uses its older pinned source; any resulting failure stays archived and requires a new version.

@@ -86,6 +86,36 @@ def test_corrector_reconstruction_uses_same_float64_contract_as_cache_reader():
     assert not artifact.any()
 
 
+def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions():
+    from vmd_eog.frontal_calibration_transfer import calibration_transfer
+    from vmd_eog.reference import lag_matrix
+    generator = np.random.default_rng(78)
+    refs = generator.normal(size=(2,256))
+    cal_refs = generator.normal(size=(2,2048))
+    matrix = np.array([[.8,-.3,.4,.1,-.2,.2],[-.6,.2,-.4,.1,.3,-.2],[0.,0.,0.,0.,0.,0.]])
+    design, valid = lag_matrix(refs,(-10,0,10))
+    cal_design,_ = lag_matrix(cal_refs,(-10,0,10))
+    field = matrix@design
+    field[:,~valid] = 0
+    original = field + generator.normal(size=field.shape)*.005
+    calibration = dict(eeg=matrix@cal_design,references=cal_refs,boundaries=np.array([1024]))
+    names, regions, mask = np.array(["F3","F4","P3"]),np.array([0,0,1]),np.ones(3,bool)
+    bundles = {index:(np.stack([field[index],np.zeros(256),np.zeros(256)]),original[index]-field[index],{}) for index in (0,1)}
+    corrected, artifact, detail = calibration_transfer(original,refs,calibration,names,regions,mask,bundles)
+    assert all(row["triggered"] for row in detail)
+    assert np.linalg.norm(corrected[:2]) < .05*np.linalg.norm(original[:2])
+    np.testing.assert_array_equal(corrected[2],original[2])
+    scaled_cal = {**calibration,"eeg":calibration["eeg"]*1e-6,"references":cal_refs*1e-6}
+    scaled_modes = {index:(modes*1e-6,residual*1e-6,info) for index,(modes,residual,info) in bundles.items()}
+    scaled,_,_ = calibration_transfer(original*1e-6,refs*1e-6,scaled_cal,names,regions,mask,scaled_modes)
+    np.testing.assert_allclose(scaled,corrected*1e-6,rtol=1e-8,atol=1e-12)
+    np.testing.assert_allclose(original-corrected,artifact)
+    zero_refs = np.zeros_like(refs)
+    clean,clean_artifact,_ = calibration_transfer(original,zero_refs,calibration,names,regions,mask)
+    np.testing.assert_array_equal(clean,original)
+    assert not clean_artifact.any()
+
+
 def test_fixed_gain_axis_support_and_zero_calibration_offset_contracts():
     import torch
     from vmd_eog.frontal_frozen_transfer import gain_adapter
