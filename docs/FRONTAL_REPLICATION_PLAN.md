@@ -192,8 +192,8 @@ every 45 seconds and saves append-only events under
 `results/vmd-frontal-replication-20261011/orchestration/events.jsonl`.
 Completed outputs must match their source/run identity, checksums, passing tests,
 completion state and closed-confirmation policy before they become parents.
-The repaired pilot launches inspection; the correction screen launches frozen
-full evaluation; full evaluation launches a two-record native pilot with the
+The first completed repaired pilot or correction screen launches inspection;
+the correction screen launches frozen full evaluation; full evaluation launches a two-record native pilot with the
 checksum-pinned restoration version. Actual saved parent versions are resolved
 from their submission specifications rather than assumed.
 
@@ -202,3 +202,17 @@ dependent submissions for primary-agent diagnosis. It cannot launch AutoVMD,
 posterior integration, teacher construction, neural training or confirmation.
 Do not start two copies. After diagnosis, rerunning resumes using verified saved
 artifacts and existing run IDs; it does not overwrite completed or failed runs.
+
+The completed `frontal-screen-001` evaluated 708 correction candidates on 20
+development examples, with zero failure rows and 499.97 seconds numerical-stage
+runtime. Retrieved source-balanced output SNR: direct 12.7468 dB, projected
+VMD K3 12.1386 dB, projected VMD K4 12.3030 dB. Their CC deteriorations versus
+direct were .01392 and .01327, respectively, outside .005. These provisional
+five-recipient results do not qualify VMD or meet the 15 dB target. The immutable
+full 320-example evaluation was launched at `1d18d81` without retuning.
+
+Inspection may use this completed screen rather than waiting for the smaller
+repaired pilot. Because a full screen saves score tables instead of every grid
+prediction, the inspection verifies all five paired metric vectors against
+archived selected-arm scores, including null/perfect-score statuses and source
+units. Pilot NPZ waveform parity remains an additional check when available.

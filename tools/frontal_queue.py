@@ -144,6 +144,10 @@ def step():
                 raise RuntimeError("Screen interface differs; stop before full evaluation")
             submit("frontal-full-001", "frontal-evaluation", "vmd-frontal-full-evaluation",
                    BASE + CACHES + [kernel_parent(run_id)], "full", run_id)
+            # A completed screen supports a stronger frozen-recipe mechanism
+            # audit without waiting for a separately delayed smaller pilot.
+            submit("frontal-evidence-001", "frontal-evidence", "vmd-frontal-result-inspection",
+                   BASE + CACHES + [kernel_parent(run_id)], parent_run=run_id)
         elif run_id == "frontal-full-001":
             if summary.get("evaluation_complete") is not True:
                 raise RuntimeError("Full evaluation is incomplete; native validation blocked")

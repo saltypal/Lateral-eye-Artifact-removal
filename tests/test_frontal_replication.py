@@ -14,6 +14,7 @@ from vmd_eog.frontal_replication import candidates, fit_detectors, summary, dete
 from vmd_eog.frontal_native import validate_record_selection
 from vmd_eog.frontal_evaluation import validate_evaluation_sources
 from vmd_eog.frontal_review import controlled_gates, strict_mean
+from vmd_eog.frontal_evidence import check_metric_parity
 
 
 def configuration():
@@ -259,3 +260,19 @@ def test_controlled_gates_refuse_missing_channel_rows():
     frame = pd.DataFrame(rows[:-1])
     reviewed = {row["arm"]: row for row in controlled_gates(frame, configuration())}
     assert not reviewed["direct"]["gates"]["row_coverage"]
+
+
+def test_interface_metric_parity_preserves_units_and_missing_metric_status():
+    metrics = dict(mse=np.array([2e-12, 0.]), rrmse_time=np.array([.1, 0.]),
+        pearson_cc=np.array([.99, 1.]), snr_energy_db=np.array([20., np.inf]),
+        snr_improvement_db=np.array([25., np.nan]))
+    saved = pd.DataFrame(dict(channel=["F3", "F4"], mse=[2e-12, 0.],
+        rrmse_time=[.1, 0.], pearson_cc=[.99, 1.], snr_energy_db=[20., np.nan],
+        snr_improvement_db=[25., np.nan]))
+    check_metric_parity(metrics, saved.iloc[::-1], ["F3", "F4"])
+    changed = saved.copy()
+    changed.loc[0, "mse"] = 2e-10
+    with pytest.raises(AssertionError, match="mse"):
+        check_metric_parity(metrics, changed, ["F3", "F4"])
+    with pytest.raises(ValueError, match="missing"):
+        check_metric_parity(metrics, saved.iloc[:1], ["F3", "F4"])

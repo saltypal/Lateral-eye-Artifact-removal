@@ -15,13 +15,29 @@ from .paper_metrics import paired_channels
 from .reference import project, calibration_reference_baseline
 
 
+def check_metric_parity(metrics, saved_rows, channel_names):
+    """Compare reusable inference with archived scoring without fitting targets."""
+    if saved_rows.channel.duplicated().any() or set(saved_rows.channel) != set(channel_names):
+        raise ValueError("Archived interface scores have missing or duplicate channels")
+    ordered = saved_rows.set_index("channel").loc[list(channel_names)]
+    for name in ("mse", "rrmse_time", "pearson_cc", "snr_energy_db", "snr_improvement_db"):
+        current = np.asarray([finite_value(value) for value in metrics[name]], dtype=float)
+        archived = ordered[name].to_numpy(float)
+        # MSE retains squared source units; a broad microvolt tolerance would
+        # conceal a completely different prediction for volt-scale signals.
+        tolerance = 1e-20 if name == "mse" else 1e-7
+        np.testing.assert_allclose(current, archived, rtol=1e-5, atol=tolerance, equal_nan=True,
+                                   err_msg="Reusable frontal interface disagrees with archived " + name)
+
+
 def run_evidence(input_root, output, config):
     comparisons = list(Path(input_root).rglob("frontal_summary.json"))
     if len(comparisons) != 1:
         raise ValueError("Attach one completed frontal comparison")
     experiment = comparisons[0].parent
     verify_parent(experiment, ("frontal_summary.json", "frontal_selection_manifest.jsonl",
-                              "frontal_fold_selections.jsonl", "frontal_detector_folds.jsonl"))
+                              "frontal_fold_selections.jsonl", "frontal_detector_folds.jsonl",
+                              "frontal_oof_scores.csv"))
     summary = json.loads(comparisons[0].read_text())
     if summary["reserved_confirmation_opened"] or summary["scope"] != "verified_frontal_only":
         raise ValueError("Frontal evidence parent scope differs")
@@ -29,6 +45,7 @@ def run_evidence(input_root, output, config):
     if any("amplitude_scaling" not in row for row in evidence.values()):
         raise ValueError("Evidence interface requires the calibrated-detector follow-up")
     corpus, _ = corpus_parent(input_root)
+    archived_scores = pd.read_csv(experiment / "frontal_oof_scores.csv")
     rows = read_jsonl(experiment / "frontal_selection_manifest.jsonl")
     # Predeclared first example per condition, independent of cleaning results.
     representative = {}
@@ -42,6 +59,7 @@ def run_evidence(input_root, output, config):
     vectors = output / "frontal_vectors"
     vectors.mkdir()
     parity_count = 0
+    metric_parity_count = 0
     for row in representative.values():
         data = dict(np.load(corpus / row["array_path"], allow_pickle=False))
         calibration = dict(np.load(corpus / row["calibration"], allow_pickle=False))
@@ -58,6 +76,11 @@ def run_evidence(input_root, output, config):
                 calibration["references"], data["channel_names"], data["regions"], data["mask"],
                 mode_bundles=mode_bundles.get(corrector.spec.get("K")), calibration_eeg=calibration["eeg"])
             cleaned[family] = result[ids]
+            archived = archived_scores[(archived_scores.example_id == row["example_id"]) &
+                                       (archived_scores.evaluated_family == family)]
+            check_metric_parity(paired_channels(result[ids], data["paired_reference"][ids], data["eeg"][ids]),
+                                archived, data["channel_names"][ids])
+            metric_parity_count += 1
             decisions.append({"example_id": row["example_id"], "family": family, "decisions": detail,
                               "inference_target_access": False})
             saved = experiment / "frontal_shards" / (row["example_id"] + ".npz")
@@ -109,6 +132,7 @@ def run_evidence(input_root, output, config):
         "parent_manifest_sha256": sha256_file(experiment / "artifact_manifest.json"),
         "representative_policy": "first sorted example per condition; not selected for favorable output",
         "representative_examples": len(representative), "interface_prediction_parity_checks": parity_count,
+        "interface_metric_parity_checks": metric_parity_count,
         "source_profile": summary["profile"], "scope": "verified_frontal_only",
         "autovmd_executed": False, "new_decomposition_executed": False,
         "reserved_confirmation_opened": False, "scientific_accuracy_qualified": False,
