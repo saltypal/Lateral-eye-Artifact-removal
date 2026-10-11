@@ -81,3 +81,12 @@ Frontal hybrid002 and evidence001 are complete, downloaded and checksummed. Unit
 ## Frontal target reached on development data
 
 The fixed frontal VMD + signed calibration-transfer hybrid achieved 17.112814 dB over 320 examples / 32 recipients / 13 verified frontal channels. All controlled preservation gates passed; three decomposition failures remain included as pass-through. Matched calibration without VMD scored 18.193247 dB. Both pass the controlled 15-dB gate; VMD superiority is not established and neither is independently qualified. Proceed to frozen native diagnostic validation and matched uncertainty; posterior integration still requires the frontal native review.
+
+## Native decision-output repair
+
+Native calibration run 001 failed while saving first-trial decisions: a NumPy
+boolean from the field-association comparison cannot be encoded by strict JSON.
+Convert the association and intervention decision to Python float/bool at their
+producer and add a serialization assertion to the numerical fixture. Preserve
+the failed run. Version 002 uses identical numerical settings, source partitions
+and acceptance gates; it repairs persistence rather than tuning the algorithm.

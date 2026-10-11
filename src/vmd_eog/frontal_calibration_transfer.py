@@ -61,7 +61,7 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
     centered_field = field_valid-field_valid.mean(-1,keepdims=True)
     denominator = float(np.sum(centered_field**2))
     input_energy = float(np.sum(centered_input**2))
-    association = (float(np.sum(centered_input*centered_field)) /
+    association = float(np.sum(centered_input*centered_field) /
         np.sqrt(denominator*input_energy)) if denominator > 0 and input_energy > 0 else 0.
     selected = []
     failed = set()
@@ -90,7 +90,8 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
         if gain_denominator > 0 else 0.)
     # Fixed safety bound, not selected using the controlled target amplitudes.
     gain = float(np.clip(gain,0.,8.))
-    triggered = association >= threshold
+    # Decisions are saved as strict JSON; NumPy scalar booleans are not JSON values.
+    triggered = bool(association >= threshold)
     if triggered:
         artifact[ids[usable]] = gain*field[usable]
     details = [{"channel":str(names[index]),"field_association":association,

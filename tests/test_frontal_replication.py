@@ -103,6 +103,9 @@ def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions()
     bundles = {index:(np.stack([field[index],np.zeros(256),np.zeros(256)]),original[index]-field[index],{}) for index in (0,1)}
     corrected, artifact, detail = calibration_transfer(original,refs,calibration,names,regions,mask,bundles)
     assert all(row["triggered"] for row in detail)
+    # Native trials persist these decisions before marking a record complete.
+    restored = json.loads(json.dumps(detail,allow_nan=False))
+    assert all(type(row["triggered"]) is bool for row in restored)
     assert np.linalg.norm(corrected[:2]) < .05*np.linalg.norm(original[:2])
     np.testing.assert_array_equal(corrected[2],original[2])
     scaled_cal = {**calibration,"eeg":calibration["eeg"]*1e-6,"references":cal_refs*1e-6}
