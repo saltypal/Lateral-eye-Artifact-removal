@@ -13,7 +13,8 @@ from .reference import lag_matrix, correlations
 
 
 def calibration_transfer(eeg, references, calibration, names, regions, mask,
-                         bundles=None, threshold=.4, lags=(-10,0,10), penalty=.01):
+                         bundles=None, threshold=.4, lags=(-10,0,10), penalty=.01,
+                         gain_mode="shared"):
     """Return correction in original units; clean targets are never accepted.
 
     A shared gain reduces independent per-channel projection of neural content.
@@ -36,6 +37,8 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
         raise ValueError("Finite, same-channel calibration and aligned eye references required")
     if not 0 <= threshold <= 1 or penalty <= 0 or 0 not in lags:
         raise ValueError("Invalid declared calibration-transfer settings")
+    if gain_mode not in ("shared", "axis"):
+        raise ValueError("Gain mode must be shared or axis")
     design, valid = lag_matrix(cal_refs,lags)
     valid &= boundary_valid(cal_eeg.shape[-1],calibration.get("boundaries",()),lags)
     if valid.sum() < max(128,2*len(design)):
@@ -92,10 +95,36 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
     gain = float(np.clip(gain,0.,8.))
     # Decisions are saved as strict JSON; NumPy scalar booleans are not JSON values.
     triggered = bool(association >= threshold)
+    axis_gains = None
+    if gain_mode == "axis":
+        # lag_matrix is lag-major: HEOG rows 0,2,4 and VEOG rows 1,3,5.
+        # Calibration fixes each signed spatial field; scoring fits only two
+        # montage-wide gains. This is not a per-channel target regression.
+        axis_fields = np.stack([coefficients[axis::2].T @ score_design[axis::2]
+                                for axis in range(2)])
+        axis_fields[:,:,~score_valid] = 0
+        centered_axes = axis_fields[:,:,score_valid]
+        centered_axes -= centered_axes.mean(-1,keepdims=True)
+        features = centered_axes[:,usable].reshape(2,-1)
+        observation = observed[usable].reshape(-1)
+        rms = np.sqrt(np.mean(features**2,axis=1)) if observation.size else np.zeros(2)
+        active_axes = rms > 0
+        axis_gains = np.zeros(2)
+        if active_axes.any():
+            normalized = features[active_axes]/rms[active_axes,None]
+            gram = normalized @ normalized.T / observation.size
+            rhs = normalized @ observation / observation.size
+            solved = np.linalg.solve(gram+penalty*np.eye(len(gram)),rhs)
+            axis_gains[active_axes] = np.clip(solved/rms[active_axes],0.,8.)
+        estimated_field = np.einsum("a,act->ct",axis_gains,axis_fields)
+    else:
+        estimated_field = gain*field
     if triggered:
-        artifact[ids[usable]] = gain*field[usable]
+        artifact[ids[usable]] = estimated_field[usable]
     details = [{"channel":str(names[index]),"field_association":association,
-        "gain":gain,"triggered":triggered,"lags":list(lags),"penalty":penalty,
+        "gain":gain if axis_gains is None else None,"gain_mode":gain_mode,
+        "axis_gains":axis_gains.tolist() if axis_gains is not None else None,
+        "triggered":triggered,"lags":list(lags),"penalty":penalty,
         "selected_modes":selected[local] if bundles is not None else None,
         "failure":"scored_passthrough" if int(index) in failed else None,
         "inference_target_access":False} for local,index in enumerate(ids)]

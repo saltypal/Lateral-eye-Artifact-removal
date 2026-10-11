@@ -86,7 +86,8 @@ def test_corrector_reconstruction_uses_same_float64_contract_as_cache_reader():
     assert not artifact.any()
 
 
-def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions():
+@pytest.mark.parametrize("gain_mode",["shared","axis"])
+def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions(gain_mode):
     from vmd_eog.frontal_calibration_transfer import calibration_transfer
     from vmd_eog.reference import lag_matrix
     generator = np.random.default_rng(78)
@@ -101,7 +102,7 @@ def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions()
     calibration = dict(eeg=matrix@cal_design,references=cal_refs,boundaries=np.array([1024]))
     names, regions, mask = np.array(["F3","F4","P3"]),np.array([0,0,1]),np.ones(3,bool)
     bundles = {index:(np.stack([field[index],np.zeros(256),np.zeros(256)]),original[index]-field[index],{}) for index in (0,1)}
-    corrected, artifact, detail = calibration_transfer(original,refs,calibration,names,regions,mask,bundles)
+    corrected, artifact, detail = calibration_transfer(original,refs,calibration,names,regions,mask,bundles,gain_mode=gain_mode)
     assert all(row["triggered"] for row in detail)
     # Native trials persist these decisions before marking a record complete.
     restored = json.loads(json.dumps(detail,allow_nan=False))
@@ -110,13 +111,33 @@ def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions()
     np.testing.assert_array_equal(corrected[2],original[2])
     scaled_cal = {**calibration,"eeg":calibration["eeg"]*1e-6,"references":cal_refs*1e-6}
     scaled_modes = {index:(modes*1e-6,residual*1e-6,info) for index,(modes,residual,info) in bundles.items()}
-    scaled,_,_ = calibration_transfer(original*1e-6,refs*1e-6,scaled_cal,names,regions,mask,scaled_modes)
+    scaled,_,_ = calibration_transfer(original*1e-6,refs*1e-6,scaled_cal,names,regions,mask,scaled_modes,gain_mode=gain_mode)
     np.testing.assert_allclose(scaled,corrected*1e-6,rtol=1e-8,atol=1e-12)
     np.testing.assert_allclose(original-corrected,artifact)
     zero_refs = np.zeros_like(refs)
-    clean,clean_artifact,_ = calibration_transfer(original,zero_refs,calibration,names,regions,mask)
+    clean,clean_artifact,_ = calibration_transfer(original,zero_refs,calibration,names,regions,mask,gain_mode=gain_mode)
     np.testing.assert_array_equal(clean,original)
     assert not clean_artifact.any()
+
+
+def test_axis_gain_recovers_distinct_horizontal_vertical_amplitudes():
+    from vmd_eog.frontal_calibration_transfer import calibration_transfer
+    generator = np.random.default_rng(934)
+    cal_refs = generator.normal(size=(2,4096))
+    refs = generator.normal(size=(2,1024))
+    cal_refs -= cal_refs.mean(-1,keepdims=True)
+    refs -= refs.mean(-1,keepdims=True)
+    calibrated_field = np.stack([cal_refs[0],-cal_refs[1]])
+    ocular = np.stack([1.8*refs[0],-.4*refs[1]])
+    calibration = dict(eeg=calibrated_field,references=cal_refs)
+    metadata = dict(names=["F3","F4"],regions=[0,0],mask=np.ones(2,bool))
+    shared,_,_ = calibration_transfer(ocular,refs,calibration,lags=(0,),**metadata)
+    corrected,artifact,details = calibration_transfer(ocular,refs,calibration,
+        lags=(0,),gain_mode="axis",**metadata)
+    assert np.linalg.norm(corrected) < .05*np.linalg.norm(ocular)
+    assert np.linalg.norm(shared) > .2*np.linalg.norm(ocular)
+    np.testing.assert_allclose(artifact+corrected,ocular)
+    assert all(row["gain_mode"] == "axis" for row in json.loads(json.dumps(details,allow_nan=False)))
 
 
 def test_native_calibration_requires_both_matched_controlled_gates(tmp_path,monkeypatch):

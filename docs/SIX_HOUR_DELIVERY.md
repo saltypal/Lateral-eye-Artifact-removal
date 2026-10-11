@@ -90,3 +90,7 @@ Convert the association and intervention decision to Python float/bool at their
 producer and add a serialization assertion to the numerical fixture. Preserve
 the failed run. Version 002 uses identical numerical settings, source partitions
 and acceptance gates; it repairs persistence rather than tuning the algorithm.
+
+## Bounded signed-axis challenger
+
+Frontal-axis-calibration compares two signed ocular gains against the unchanged shared-gain calibration hybrid. K3/2000, lag bank, ridge, support threshold and mode threshold are fixed. RMS-normalized two-variable ridge fits HEOG and VEOG gains from raw EEG or eye-associated VMD modes; no clean target enters inference. Numerical fixtures cover distinct gains, units, frontal scope, strict JSON and known-field reconstruction. Evaluate all development examples; do not claim superiority or promote before preservation, uncertainty and native evidence. No AutoVMD or posterior decomposition is authorized.

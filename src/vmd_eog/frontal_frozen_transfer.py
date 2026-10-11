@@ -101,7 +101,7 @@ def gain_adapter(model_class, axis_gate=False, anchored=False):
     return Adapter()
 
 
-def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, calibration_hybrid=False):
+def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, calibration_hybrid=False, axis_hybrid=False):
     parents = list(Path(input_root).rglob("snr_target_protocol.json"))
     if len(parents) != 1:
         raise ValueError("Attach exactly one archived model parent")
@@ -178,6 +178,11 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, cal
                 estimates[name],artifacts[name],arm_details[name] = calibration_transfer(
                     data["eeg"],data["references"],calibration,data["channel_names"],
                     data["regions"],data["mask"],bundles=mode_context)
+            if axis_hybrid:
+                for name,mode_context in (("calibration_raw_axis_gain",None),("K3_calibration_axis_gain",bundles)):
+                    estimates[name],artifacts[name],arm_details[name] = calibration_transfer(
+                        data["eeg"],data["references"],calibration,data["channel_names"],
+                        data["regions"],data["mask"],bundles=mode_context,gain_mode="axis")
         direct = FrontalCorrector(selections[row["partition"]["fold"]]["selected"], config)
         comparator, _, _ = direct.denoise(data["eeg"], data["references"], calibration["references"],
             data["channel_names"], data["regions"], data["mask"], calibration_eeg=calibration["eeg"])
@@ -221,9 +226,11 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, cal
         "model_source_git_sha": LEGACY_SHA, "trained_anatomy_feature_disabled": True,
         "failure_rows": len(failures), "K":3, "alpha":2000, "weights_trained":False,
         "predeclared_arms":list(estimates), "hybrid_ablation":hybrid or calibration_hybrid,
-        "calibration_hybrid":calibration_hybrid, "mean_anchor_source":"unscored calibration EOG only",
+        "calibration_hybrid":calibration_hybrid, "axis_hybrid":axis_hybrid,
+        "mean_anchor_source":"unscored calibration EOG only",
         "unit_audit":unit_audit, "model_input_scales":unit_scales, "output_units":"volts",
         "autovmd_executed":False, "reserved_confirmation_opened":False,
         "native_validation_required":True, "qualification":False,
-        "method":"frozen historical gain-model transfer; explicit frontal-only adaptation"})
+        "method":"fixed signed calibration-field hybrid with frozen transfer control" if calibration_hybrid
+            else "frozen historical gain-model transfer; explicit frontal-only adaptation"})
     atomic_json(output / "frontal_transfer_failures.json", failures)
