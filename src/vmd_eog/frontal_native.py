@@ -267,6 +267,24 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
         record_means.to_csv(output / "native_frontal_preservation_records.csv", index=False)
         record_means.groupby(["source", "method"])[fields].agg(strict_mean).reset_index().to_csv(
             output / "native_frontal_preservation_participants.csv", index=False)
+        # These are the already declared project engineering checks, separate
+        # from the primary paper-native correlation, RMSE and spectral reports.
+        limits = config["preservation"]
+        reviews = []
+        for method,group in record_means.groupby("method"):
+            finite = bool(np.isfinite(group[fields].to_numpy()).all())
+            complete = bool(group.record_id.nunique() == len(records))
+            worst = {field:float(group[field].max()) if finite else None for field in fields}
+            gates = dict(coverage=complete and finite,
+                clean_modification=finite and worst["relative_error"] <= limits["clean_change"],
+                clean_alpha=finite and worst["alpha_db"] <= limits["alpha_db"],
+                clean_beta=finite and worst["beta_db"] <= limits["beta_db"],
+                clean_covariance=finite and worst["covariance"] <= limits["covariance"])
+            reviews.append(dict(method=method,worst_record=worst,gates=gates,
+                native_preservation_gates_pass=all(gates.values()),recordings=len(records),
+                scope="development-exposed native preservation proxy; rest is not proven artifact-free",
+                independent_validation=False,teacher_qualified=False))
+        atomic_json(output / "native_frontal_preservation_gates.json",reviews)
     atomic_json(output / "native_frontal_summary.json", {
         "profile": profile, "recordings": len(records), "scoring_trials": trial_count,
         "failure_count": len(failures), "runtime_s": time.perf_counter() - started,
