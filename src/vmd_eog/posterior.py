@@ -82,7 +82,7 @@ class ICAExpert:
         return strength*self.mixing[:,selected]@sources[selected]
 
 
-def fit_ica(values,references,threshold=.6,seed=42,method="picard"):
+def fit_ica(values,references,threshold=.6,seed=42,method="picard",*,boundaries=()):
     from picard import picard
     values=np.asarray(values,dtype=np.float64)
     mean=values.mean(axis=-1)
@@ -101,7 +101,7 @@ def fit_ica(values,references,threshold=.6,seed=42,method="picard"):
         raise RuntimeError("ICA convergence failed: "+"; ".join(convergence_errors))
     unmixing=weights@whiten
     mixing=np.linalg.pinv(unmixing)
-    association=correlations(sources,references,20)
+    association=correlations(sources,references,20,boundaries=boundaries)
     selected=np.flatnonzero(np.max(np.abs(association),axis=1)>=threshold)
     # Picard emits a convergence warning when unsuccessful; flag the fit via
     # an explicit independence residual in experiment diagnostics as well.

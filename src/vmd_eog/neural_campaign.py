@@ -2,11 +2,14 @@
 
 IMPLEMENTED_STAGES = (
     "research-ready", "neural-fixture", "neural-diagnosis", "autovmd-cache",
-    "autovmd-search", "router-train", "student-paired",
+    "autovmd-search", "router-train", "student-paired", "posterior-context",
 )
 
 
 def execute(stage, input_root, output, config, profile, experiment):
+    if stage == "posterior-context":
+        from .posterior_context import run_comparison
+        return run_comparison(input_root, output, config, profile, experiment)
     if stage == "research-ready":
         from .readiness import run_readiness
         return run_readiness(input_root, output, config)

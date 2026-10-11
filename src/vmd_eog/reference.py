@@ -79,13 +79,23 @@ def calibration_reference_baseline(references, boundaries=(), lags=(0,)):
     return design[:,valid].mean(axis=-1)
 
 
-def correlations(values, references, max_lag=20):
+def correlations(values, references, max_lag=20, *, boundaries=()):
     """Return signed peak association [channel,reference]; each channel stays distinct."""
     values = np.atleast_2d(np.asarray(values,dtype=float))
     references = np.atleast_2d(np.asarray(references,dtype=float))
     best = np.zeros((len(values), len(references)))
     for lag in range(-max_lag, max_lag + 1):
         design, valid = lag_matrix(references, (lag,))
+        for edge in boundaries:
+            if int(edge) != edge or not 0 < edge < values.shape[-1]:
+                raise ValueError("Invalid correlation trial boundary")
+            edge = int(edge)
+            if lag > 0:
+                valid[edge:edge+lag] = False
+            elif lag < 0:
+                valid[edge+lag:edge] = False
+        if valid.sum() < 2:
+            continue
         x = values[:, valid] - values[:, valid].mean(axis=-1, keepdims=True)
         r = design[:, valid] - design[:, valid].mean(axis=-1, keepdims=True)
         xnorm=np.linalg.norm(x,axis=1,keepdims=True)
@@ -106,4 +116,5 @@ def signed_context(eeg, names, regions, hemispheres):
     left, right, midline = summaries
     common = np.mean([s for s, ok in zip(summaries, available) if ok], axis=0) if any(available) else np.zeros(eeg.shape[-1])
     lateral = right - left if available[0] and available[1] else np.zeros_like(common)
-    return {"common": common, "lateral": lateral, "midline": midline, "available": available}
+    return {"left": left, "right": right, "common": common, "lateral": lateral,
+            "midline": midline, "available": available}
