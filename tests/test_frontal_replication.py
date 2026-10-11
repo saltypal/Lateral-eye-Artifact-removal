@@ -21,6 +21,40 @@ def configuration():
     return json.loads((Path(__file__).parents[1] / "configs/frontal_replication.json").read_text())
 
 
+def test_frozen_transfer_only_corrects_verified_frontal_and_preserves_permutation():
+    from vmd_eog.frontal_frozen_transfer import apply_frontal
+    eeg = np.arange(4*64, dtype=np.float32).reshape(4,64) + 1
+    names = np.array(["F3", "P3", "F4", "Cz"])
+    regions = np.array([0,1,0,2])
+    refs = np.ones((2,64), dtype=np.float32)
+    bundles = {index: (np.ones((3,64)), np.zeros(64), {}) for index in (0,2)}
+    def model(values, modes, eyes, mask, features):
+        assert values.shape[1] == 2
+        assert (features == 3).all()
+        return {"artifact": values*.25}
+    cleaned, artifact, _ = apply_frontal(model,eeg,refs,names,regions,np.ones(4,bool),bundles)
+    np.testing.assert_array_equal(cleaned[[1,3]],eeg[[1,3]])
+    np.testing.assert_allclose(cleaned[[0,2]],eeg[[0,2]]*.75)
+    order = np.array([2,3,0,1])
+    changed = {local: bundles[int(original)] for local,original in enumerate(order) if int(original) in bundles}
+    result, _, _ = apply_frontal(model,eeg[order],refs,names[order],regions[order],np.ones(4,bool),changed)
+    np.testing.assert_array_equal(result,cleaned[order])
+    np.testing.assert_array_equal(eeg-cleaned,artifact)
+
+
+def test_frozen_transfer_failed_decomposition_is_scored_passthrough():
+    from vmd_eog.frontal_frozen_transfer import apply_frontal
+    values = np.ones((1,64),dtype=np.float32)
+    def model(eeg,*args):
+        return {"artifact":eeg*.5}
+    modes = {0:(np.ones((3,64)),np.zeros(64),{"hit_iteration_limit":True})}
+    cleaned, artifact, diagnostics = apply_frontal(model,values,np.ones((2,64)),np.array(["Fz"]),np.array([0]),np.ones(1,bool),modes)
+    np.testing.assert_array_equal(cleaned,values)
+    assert not artifact.any() and diagnostics[0]["failure"] == "scored_passthrough"
+    with pytest.raises(ValueError,match="exactly"):
+        apply_frontal(model,values,np.ones((2,64)),np.array(["Fz"]),np.array([0]),np.ones(1,bool),{})
+
+
 def test_archived_reconstruction_precision_preserves_vectors_and_detects_damage():
     modes = np.array([[1.], [.1]], dtype=np.float32)
     residual = np.array([-1.1], dtype=np.float32)
