@@ -6,7 +6,7 @@ from .artifacts import verify_parent
 from .contracts import canonical_hash
 
 
-STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation")
+STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit")
 FIXED_SETTINGS = ((3, 2000), (4, 2000))
 
 
@@ -59,6 +59,9 @@ def execute(stage, input_root, output, config, profile, experiment):
     from .frontal_replication import run_fixture, run_comparison
     if stage == "frontal-fixture":
         return run_fixture(output, config)
+    if stage == "frontal-cache-audit":
+        from .frontal_cache_audit import run_audit
+        return run_audit(input_root, output, config)
     if stage == "frontal-native":
         from .frontal_native import run_native
         return run_native(input_root, output, config, profile)
