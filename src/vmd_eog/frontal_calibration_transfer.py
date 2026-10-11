@@ -37,8 +37,10 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
         raise ValueError("Finite, same-channel calibration and aligned eye references required")
     if not 0 <= threshold <= 1 or penalty <= 0 or 0 not in lags:
         raise ValueError("Invalid declared calibration-transfer settings")
-    if gain_mode not in ("shared", "axis"):
-        raise ValueError("Gain mode must be shared or axis")
+    if gain_mode not in ("shared", "axis", "mode_projection"):
+        raise ValueError("Gain mode must be shared, axis or mode_projection")
+    if gain_mode == "mode_projection" and bundles is None:
+        raise ValueError("Mode-projected gain requires verified frontal VMD bundles")
     design, valid = lag_matrix(cal_refs,lags)
     valid &= boundary_valid(cal_eeg.shape[-1],calibration.get("boundaries",()),lags)
     if valid.sum() < max(128,2*len(design)):
@@ -89,8 +91,25 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
     usable = np.asarray([int(index) not in failed for index in ids])
     observed = values[:,score_valid]-values[:,score_valid].mean(-1,keepdims=True)
     gain_denominator = float(np.sum(centered_field[usable]**2))
-    gain = (float(np.sum(observed[usable]*centered_field[usable]))/gain_denominator
-        if gain_denominator > 0 else 0.)
+    gain_numerator = float(np.sum(observed[usable]*centered_field[usable]))
+    projected_fraction = None
+    if gain_mode == "mode_projection":
+        # Fit the calibration field into the selected-mode span before estimating
+        # its gain. Both numerator and denominator then use the same subspace.
+        # This fit accepts no clean target and cannot create posterior modes.
+        projected = np.zeros_like(centered_field)
+        for local,index in enumerate(ids):
+            if not usable[local] or not selected[local]:
+                continue
+            vectors = np.asarray(bundles[int(index)][0],dtype=np.float64)[selected[local]][:,score_valid]
+            vectors = vectors-vectors.mean(-1,keepdims=True)
+            coefficients_in_modes = np.linalg.lstsq(vectors.T,centered_field[local],rcond=None)[0]
+            projected[local] = coefficients_in_modes @ vectors
+        projection_energy = float(np.sum(projected[usable]**2))
+        projected_fraction = projection_energy/gain_denominator if gain_denominator > 0 else 0.
+        gain_numerator = float(np.sum(observed[usable]*projected[usable]))
+        gain_denominator = projection_energy
+    gain = gain_numerator/gain_denominator if gain_denominator > 0 else 0.
     # Fixed safety bound, not selected using the controlled target amplitudes.
     gain = float(np.clip(gain,0.,8.))
     # Decisions are saved as strict JSON; NumPy scalar booleans are not JSON values.
@@ -125,6 +144,7 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
         "gain":gain if axis_gains is None else None,"gain_mode":gain_mode,
         "axis_gains":axis_gains.tolist() if axis_gains is not None else None,
         "triggered":triggered,"lags":list(lags),"penalty":penalty,
+        "field_projection_energy_fraction":projected_fraction,
         "selected_modes":selected[local] if bundles is not None else None,
         "failure":"scored_passthrough" if int(index) in failed else None,
         "inference_target_access":False} for local,index in enumerate(ids)]

@@ -86,7 +86,7 @@ def test_corrector_reconstruction_uses_same_float64_contract_as_cache_reader():
     assert not artifact.any()
 
 
-@pytest.mark.parametrize("gain_mode",["shared","axis"])
+@pytest.mark.parametrize("gain_mode",["shared","axis","mode_projection"])
 def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions(gain_mode):
     from vmd_eog.frontal_calibration_transfer import calibration_transfer
     from vmd_eog.reference import lag_matrix
@@ -115,7 +115,7 @@ def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions(g
     np.testing.assert_allclose(scaled,corrected*1e-6,rtol=1e-8,atol=1e-12)
     np.testing.assert_allclose(original-corrected,artifact)
     zero_refs = np.zeros_like(refs)
-    clean,clean_artifact,_ = calibration_transfer(original,zero_refs,calibration,names,regions,mask,gain_mode=gain_mode)
+    clean,clean_artifact,_ = calibration_transfer(original,zero_refs,calibration,names,regions,mask,bundles=bundles if gain_mode=="mode_projection" else None,gain_mode=gain_mode)
     np.testing.assert_array_equal(clean,original)
     assert not clean_artifact.any()
 
@@ -176,6 +176,11 @@ def test_reference_event_support_uses_only_unscored_labels_and_preserves_units()
     adjusted = gate_artifact(original,artifact,contaminated,detector,[{'gain':1.}],gain_scaled=True)
     np.testing.assert_array_equal(adjusted[0],ordinary[0])
     np.testing.assert_array_equal(contaminated,preserved)
+    routed = gate_artifact(original,artifact,contaminated,detector,[{'gain':1.}],whole_window=True)
+    np.testing.assert_array_equal(routed[1],artifact)
+    assert routed[2][0]['whole_window_routing'] is True
+    quiet_routed = gate_artifact(original,artifact,quiet,detector,[{'gain':1.}],whole_window=True)
+    np.testing.assert_array_equal(quiet_routed[0],original)
     assert adjusted[2][0]['detector_gain'] == 1.
     zero = gate_artifact(original,artifact,contaminated,detector,[{'gain':0.}],gain_scaled=True)
     np.testing.assert_array_equal(zero[0],original)

@@ -105,7 +105,7 @@ def fit_event_support(calibration):
     return ReferenceEventSupport(classifier,center,scale,difference_scale,threshold,counts)
 
 
-def gate_artifact(original,artifact,references,gate,diagnostics,gain_scaled=False):
+def gate_artifact(original,artifact,references,gate,diagnostics,gain_scaled=False,whole_window=False):
     detector_references = np.asarray(references,dtype=float)
     detector_gain = 1.
     if gain_scaled:
@@ -120,6 +120,11 @@ def gate_artifact(original,artifact,references,gate,diagnostics,gain_scaled=Fals
         detector_gain = float(gains[0])
         detector_references = gate.center[:,None]+detector_gain*(detector_references-gate.center[:,None])
     support,metadata = gate.support(detector_references)
+    if whole_window:
+        metadata["detector_support_mean"] = float(support.mean())
+        support = np.full(len(support),float(np.any(support > 0)))
+        metadata["support_mean"] = float(support.mean())
+    metadata["whole_window_routing"] = bool(whole_window)
     metadata.update(gain_adjusted_support=bool(gain_scaled),detector_gain=detector_gain,
                     original_evaluation_references_unchanged=True)
     corrected_artifact = np.asarray(artifact)*support[None]
