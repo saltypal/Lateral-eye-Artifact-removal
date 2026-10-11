@@ -39,3 +39,21 @@ Missing replication settings and unknown electrode identities remain disclosed.
 If the six-hour scope cannot qualify EEG-only export or independent validation,
 deliver the reproducible research system and report those stages incomplete.
 Never tune on reserved sources or relax preservation checks to obtain 17 dB.
+
+## Active launches
+
+Frontal cache audit 002 passed 110 tests and all 8,320 actual-reader checks.
+Full retry `frontal-full-002` launched with source `48f07fb` and pinned repair
+parent `satyapaladugu/vmd-frontal-cache-audit/2`.
+
+Historical source audit `guard17-source-audit-001` launched separately with
+legacy source `0b183e6` and audit source `fa336be`. It quantifies the previous
+replay mismatch without accepting it or editing archived samples.
+
+The bounded frontal extension is K3/2000 selective mode correction with
+separate signed HEOG/VEOG gains, calibration anchoring and ocular support.
+Compare it against the reproduced frozen gain model and matched direct
+regression. Retain input means, residuals and clean controls. Posterior
+communication uses separately estimated frontal ocular activity; no posterior
+VMD. An extension is superior only if matched scores and preservation support
+that claim. New neural deployment remains a later qualification task.
