@@ -518,3 +518,25 @@ def test_interface_metric_parity_preserves_units_and_missing_metric_status():
         check_metric_parity(metrics, changed, ["F3", "F4"])
     with pytest.raises(ValueError, match="missing"):
         check_metric_parity(metrics, saved.iloc[:1], ["F3", "F4"])
+
+
+def test_axis_amplitude_support_is_monotonic_unit_invariant_and_separate():
+    from vmd_eog.frontal_event_support import fit_axis_amplitude_support
+    rng = np.random.default_rng(971)
+    rest = rng.normal(size=(2,2048))
+    calibration = dict(references=rest,trial_types=np.ones(2048),boundaries=np.array([1024]))
+    gate = fit_axis_amplitude_support(calibration)
+    quiet = np.broadcast_to(gate.center[:,None],(2,1024)).copy()
+    assert not gate.support(quiet)[0].any()
+    lateral = quiet.copy()
+    lateral[0] += 5*np.sin(np.arange(1024)/16)
+    initial,metadata = gate.support(lateral)
+    assert initial.mean() > .8 and metadata['axis_detected_windows'][0] > 0
+    assert metadata['axis_detected_windows'][1] == 0
+    stronger = gate.center[:,None]+2*(lateral-gate.center[:,None])
+    assert np.all(gate.support(stronger)[0] >= initial)
+    second = fit_axis_amplitude_support({**calibration,'references':rest*1e-6})
+    np.testing.assert_allclose(second.support(lateral*1e-6)[0],initial)
+    json.dumps(metadata,allow_nan=False)
+    with pytest.raises(ValueError,match='boundaries'):
+        fit_axis_amplitude_support({**calibration,'boundaries':np.array([512,512])})

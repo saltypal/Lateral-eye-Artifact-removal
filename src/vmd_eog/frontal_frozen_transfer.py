@@ -101,7 +101,7 @@ def gain_adapter(model_class, axis_gate=False, anchored=False):
     return Adapter()
 
 
-def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, calibration_hybrid=False, axis_hybrid=False, event_hybrid=False,event_gain_scaled=False):
+def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, calibration_hybrid=False, axis_hybrid=False, event_hybrid=False,event_gain_scaled=False,monotonic_events=False):
     parents = list(Path(input_root).rglob("snr_target_protocol.json"))
     if len(parents) != 1:
         raise ValueError("Attach exactly one archived model parent")
@@ -182,11 +182,12 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, cal
                     data["eeg"],data["references"],calibration,data["channel_names"],
                     data["regions"],data["mask"],bundles=mode_context)
             if event_hybrid:
-                from .frontal_event_support import fit_event_support,gate_artifact
+                from .frontal_event_support import fit_event_support,fit_axis_amplitude_support,gate_artifact
                 key = row["calibration"]
                 if key not in event_gates:
                     try:
-                        event_gates[key] = fit_event_support(calibration)
+                        event_gates[key] = (fit_axis_amplitude_support(calibration) if monotonic_events
+                                            else fit_event_support(calibration))
                     except ValueError as error:
                         event_gates[key] = str(error)
                 gate = event_gates[key]
@@ -263,7 +264,7 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, cal
         "failure_rows": len(failures), "K":3, "alpha":2000, "weights_trained":False,
         "predeclared_arms":list(estimates), "hybrid_ablation":hybrid or calibration_hybrid,
         "calibration_hybrid":calibration_hybrid, "axis_hybrid":axis_hybrid,"event_hybrid":event_hybrid,
-        "event_gain_scaled":event_gain_scaled,
+        "event_gain_scaled":event_gain_scaled,"monotonic_events":monotonic_events,
         "mean_anchor_source":"unscored calibration EOG only",
         "unit_audit":unit_audit, "model_input_scales":unit_scales, "output_units":"volts",
         "autovmd_executed":False, "reserved_confirmation_opened":False,

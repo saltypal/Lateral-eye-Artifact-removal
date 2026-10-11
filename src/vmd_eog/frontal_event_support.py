@@ -125,3 +125,70 @@ def gate_artifact(original,artifact,references,gate,diagnostics,gain_scaled=Fals
     corrected_artifact = np.asarray(artifact)*support[None]
     details = [{**row,**metadata} for row in diagnostics]
     return np.asarray(original,dtype=float)-corrected_artifact,corrected_artifact,details
+
+
+@dataclass
+class AxisAmplitudeSupport:
+    """Monotonic HEOG/VEOG detector fitted only on resting calibration."""
+    center: np.ndarray
+    thresholds: np.ndarray
+    calibration_counts: dict
+    window: int = 256
+    hop: int = 128
+
+    def support(self,references):
+        values = np.asarray(references,dtype=float)
+        if values.ndim != 2 or values.shape[0] != 2 or not np.isfinite(values).all():
+            raise ValueError("Finite named HEOG/VEOG required for event support")
+        length = values.shape[-1]
+        if length < self.window:
+            raise ValueError("Event-support scoring segment is too short")
+        starts = sorted(set([*range(0,length-self.window+1,self.hop),length-self.window]))
+        support = np.zeros(length)
+        counts = [0,0]
+        for start in starts:
+            segment = values[:,start:start+self.window]-self.center[:,None]
+            amplitude = np.stack([np.std(segment,axis=1),np.quantile(np.abs(segment),.95,axis=1)])
+            # Axis-wise OR retains horizontal evidence even when VEOG is quiet.
+            detected_axes = np.any(amplitude > self.thresholds,axis=0)
+            counts = [count+int(event) for count,event in zip(counts,detected_axes)]
+            if detected_axes.any():
+                support[start:start+self.window] = 1.
+        support = maximum_filter1d(support,size=41,mode="constant")
+        kernel = np.hanning(43)[1:-1]
+        kernel /= kernel.sum()
+        support *= np.convolve(support,kernel,mode="same")
+        return support,{"support_mean":float(support.mean()),
+            "axis_thresholds":self.thresholds.tolist(),"axis_detected_windows":counts,
+            "calibration_counts":self.calibration_counts,
+            "support_policy":"monotonic per-axis STD or 95th amplitude exceeds all unscored calibration rest windows; HEOG OR VEOG",
+            "scoring_condition_access":False,"support_window":self.window,"support_hop":self.hop}
+
+
+def fit_axis_amplitude_support(calibration):
+    references = np.asarray(calibration["references"],dtype=float)
+    labels = np.asarray(calibration.get("trial_types",[]))
+    if (references.ndim != 2 or references.shape[0] != 2 or
+            labels.shape != (references.shape[-1],) or not np.isfinite(references).all()):
+        raise ValueError("Aligned finite reference/condition calibration required")
+    resting = labels == 1
+    if resting.sum() < 512:
+        raise ValueError("Insufficient resting event calibration")
+    center = np.median(references[:,resting],axis=1)
+    bounds = np.asarray(calibration.get("boundaries",[]),dtype=int)
+    if np.any(bounds <= 0) or np.any(bounds >= len(labels)) or np.any(np.diff(bounds) <= 0):
+        raise ValueError("Invalid event-calibration trial boundaries")
+    features = []
+    edges = [0,*bounds.tolist(),len(labels)]
+    for left,right in zip(edges[:-1],edges[1:]):
+        for start in range(left,right-255,128):
+            if not np.all(labels[start:start+256] == 1):
+                continue
+            segment = references[:,start:start+256]-center[:,None]
+            features.append(np.stack([np.std(segment,axis=1),np.quantile(np.abs(segment),.95,axis=1)]))
+    if len(features) < 4:
+        raise ValueError("Need four whole resting calibration windows")
+    thresholds = np.max(features,axis=0)
+    if not np.all(thresholds > 0):
+        raise ValueError("Resting reference amplitude must be nonzero")
+    return AxisAmplitudeSupport(center,thresholds,{"rest":len(features),"ocular_fitting":0})
