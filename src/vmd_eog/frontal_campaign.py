@@ -6,7 +6,7 @@ from .artifacts import verify_parent
 from .contracts import canonical_hash
 
 
-STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence")
+STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation")
 FIXED_SETTINGS = ((3, 2000), (4, 2000))
 
 
@@ -49,6 +49,9 @@ def require_checkpoint(stage, input_root, config):
     if stage == "frontal-native":
         from .frontal_native import controlled_parent
         controlled_parent(input_root)
+    if stage == "frontal-evaluation":
+        from .frontal_evaluation import selected_parent
+        selected_parent(input_root)
 
 
 def execute(stage, input_root, output, config, profile, experiment):
@@ -62,4 +65,7 @@ def execute(stage, input_root, output, config, profile, experiment):
     if stage == "frontal-evidence":
         from .frontal_evidence import run_evidence
         return run_evidence(input_root, output, config)
+    if stage == "frontal-evaluation":
+        from .frontal_evaluation import evaluate
+        return evaluate(input_root, output, config)
     return run_comparison(input_root, output, config, profile, experiment or {})

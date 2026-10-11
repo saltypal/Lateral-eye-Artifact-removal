@@ -12,6 +12,7 @@ from vmd_eog.frontal_methods import (frontal_indices, fuzzy_entropy,
     estimate_components, reference_intervals, FrontalCorrector)
 from vmd_eog.frontal_replication import candidates, fit_detectors, summary, detector_features, grouped_selection
 from vmd_eog.frontal_native import validate_record_selection
+from vmd_eog.frontal_evaluation import validate_evaluation_sources
 
 
 def configuration():
@@ -205,3 +206,14 @@ def test_fixed_svm_evaluation_is_not_gated_by_other_outer_fold_predictions(tmp_p
     svm = result[result.evaluated_family == "svm_sobi_apen_fixed_adaptation_K3"]
     assert set(svm.candidate_hash) == {"svm"}
     assert (svm[svm.condition == "clean"].clean_change > .01).all()
+
+
+def test_full_evaluation_preserves_recipient_and_donor_exclusions():
+    row = dict(recipient="r2", donor="d2", partition=dict(role="development", fold=2))
+    evidence = dict(fold=2, training_recipients=["r1"], training_donors=["d1"])
+    validate_evaluation_sources(row, evidence)
+    for key, value in (("training_recipients", ["r2"]), ("training_donors", ["d2"])):
+        with pytest.raises(ValueError, match="exposed"):
+            validate_evaluation_sources(row, {**evidence, key: value})
+    with pytest.raises(ValueError, match="reserved"):
+        validate_evaluation_sources({**row, "partition": dict(role="confirmation", fold=2)}, evidence)

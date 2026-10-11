@@ -1,0 +1,5 @@
+{
+  "purpose": "fixed_frontal_replication",
+  "selection_subset": "source-balanced pilot recipients",
+  "description": "Screen the full declared correction bank on 20 development examples; source-excluded recipes require a separate 320-example evaluation. No K or alpha selection."
+}

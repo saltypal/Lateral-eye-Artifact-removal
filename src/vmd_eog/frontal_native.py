@@ -36,7 +36,8 @@ def controlled_parent(input_root):
     verify_parent(directory, ("frontal_summary.json", "frontal_fold_selections.jsonl",
                               "frontal_detector_folds.jsonl"))
     summary = json.loads(paths[0].read_text())
-    if summary.get("profile") != "full" or summary.get("reserved_confirmation_opened") is not False:
+    if (summary.get("profile") != "full" or summary.get("evaluation_complete") is not True or
+            summary.get("reserved_confirmation_opened") is not False):
         raise ValueError("Native validation requires full development comparison with confirmation closed")
     return directory
 

@@ -23,7 +23,8 @@ manifest, waveform, solver, corpus, split and scope identities.
 
 Inputs: corpus/2, readiness/1, passing frontal fixture, K3 cache/1 and K4 cache/1.
 Pilot: one recipient per frozen bucket, clean and blink/lateral/mixed at 0 dB.
-Full: first deterministic window per recipient/condition/-5/0/5 dB (320 examples).
+Full heldout evaluation: first deterministic window per
+recipient/condition/-5/0/5 dB (320 examples).
 Both score **every verified frontal channel** and leave every other channel alone.
 
 Matched controls: identity and direct joint HEOG/VEOG ridge. Mode mechanisms:
@@ -138,6 +139,17 @@ CC deterioration for projected VMD was .00572, above the .005 engineering limit.
 The nominal mixture is 0 dB across the montage; actual frontal identity SNR was
 -5.0547 dB. Lateral is weaker than blink/mixed. No target or preservation limit
 is relaxed. The second pilot remains separate and fixes units/selection logic.
+
+To bound CPU cost, the follow-up full correction bank is screened on the same
+20-example source-balanced development subset, with each outer fold's recipes
+selected using the other four buckets. A separate `frontal-evaluation` stage
+reuses those recipes unchanged across all 320 eligible examples. This is a
+limited training-source selection design, not the five-inner-fold neural search.
+The screen saves `evaluation_complete=false`; native validation refuses it.
+All 320 selected predictions and channel/record outcomes are saved by evaluation.
+Notebook 28 executes the screen with `configs/frontal_screen.json`; notebook 29
+executes the full evaluation. Missing artifacts or exposed recipients/donors
+stop the dependent stage. No correction choice is retuned on its scoring bucket.
 
 Notebook 27 provides saved mode vectors, residuals, HEOG/VEOG support, selected
 waveforms, reusable-interface parity and evaluation-only lag/energy-coverage

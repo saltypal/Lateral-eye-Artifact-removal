@@ -357,7 +357,10 @@ def run_comparison(input_root, output, config, profile, experiment):
     if experiment.get("purpose", "fixed_frontal_replication") != "fixed_frontal_replication":
         raise ValueError("Undeclared frontal experiment purpose")
     parent, corpus_rows = corpus_parent(input_root)
-    rows = select_examples(corpus_rows, profile)
+    subset = experiment.get("selection_subset")
+    if subset not in (None, "source-balanced pilot recipients"):
+        raise ValueError("Undeclared correction-selection subset")
+    rows = select_examples(corpus_rows, "pilot" if subset else profile)
     specs = candidates(config, profile)
     atomic_json(output / "frontal_candidates.json", specs)
     write_jsonl(output / "frontal_selection_manifest.jsonl", rows)
@@ -494,6 +497,7 @@ def run_comparison(input_root, output, config, profile, experiment):
     atomic_json(output / "frontal_summary.json", {"examples": len(rows), "candidates": len(specs),
         "recipients": int(scores.recipient.nunique()), "frontal_channels": sorted(scores.channel.unique()),
         "failure_rows": len(failures), "profile": profile, "runtime_s": time.perf_counter() - started,
+        "selection_subset": subset, "evaluation_complete": subset is None and profile == "full",
         "autovmd_executed": False, "fixed_recipes": config["fixed_recipes"], "scope": "verified_frontal_only",
         "teacher_qualified": False, "regional_integration_authorized": False, "model_training_authorized": False,
         "native_validation_complete": False, "reserved_confirmation_opened": False,
