@@ -60,7 +60,46 @@ def apply_frontal(model, eeg, references, names, regions, mask, bundles):
     return np.asarray(eeg, dtype=np.float64) - artifact, artifact, diagnostics
 
 
-def run_transfer(input_root, output, config):
+def gain_adapter(model_class, axis_gate=False, anchored=False):
+    """Frozen-weight adaptations; calibration references never include targets."""
+    class Adapter(model_class):
+        calibration_mean = None
+
+        def correction_gains(self, features, correlations, mask, regions):
+            gains = super().correction_gains(features, correlations, mask, regions)
+            if axis_gate:
+                # Rows here are already verified frontal. Signed reference
+                # coefficients remain intact; only intervention support differs.
+                evidence = correlations[:, :, 0].abs().masked_fill(~mask.bool()[..., None], 0).amax(dim=1)
+                threshold = .1 + .8 * torch.sigmoid(self.threshold_logit)
+                gains = gains * (evidence >= threshold)[:, None].to(gains.dtype)
+            self.latest_gains = gains
+            return gains
+
+        def forward(self, eeg, modes, references, mask, regions):
+            result = super().forward(eeg, modes, references, mask, regions)
+            if anchored:
+                if self.calibration_mean is None:
+                    raise ValueError("Mean anchoring requires disjoint calibration references")
+                mean = references.mean(dim=-1, keepdim=True)
+                eyes = references - mean
+                scale = eyes.square().mean(dim=-1, keepdim=True).sqrt().clamp_min(1e-6)
+                eyes = eyes / scale
+                values = eeg - eeg.mean(dim=-1, keepdim=True)
+                length = eeg.shape[-1]
+                gram = eyes @ eyes.transpose(1,2) / length
+                regularized = gram + 1e-4 * torch.eye(2, device=eeg.device, dtype=eeg.dtype)[None]
+                coefficients = torch.linalg.solve(regularized, eyes @ values.transpose(1,2) / length).transpose(1,2)
+                offset = ((mean - self.calibration_mean) / scale).squeeze(-1)
+                bias = (coefficients * self.latest_gains * offset[:,None]).sum(-1,keepdim=True)
+                bias = torch.where(mask.bool()[...,None],bias,torch.zeros_like(bias))
+                artifact = result["artifact"] + bias
+                result = {"artifact":artifact, "cleaned":eeg-artifact}
+            return result
+    return Adapter()
+
+
+def run_transfer(input_root, output, config, hybrid=False):
     parents = list(Path(input_root).rglob("snr_target_protocol.json"))
     if len(parents) != 1:
         raise ValueError("Attach exactly one archived model parent")
@@ -79,6 +118,14 @@ def run_transfer(input_root, output, config):
     state = torch.load(checkpoint, map_location="cpu", weights_only=True)
     model.load_state_dict(state["model"])
     model.inference_gate_mode, model.inference_gate_offset = "hard", 0.
+    models = {"frozen_K3_gain_transfer": model}
+    if hybrid:
+        for name, axis, anchored in (("K3_axis_gate",True,False),
+                ("K3_calibration_anchor",False,True), ("K3_axis_gate_anchor",True,True)):
+            adapted = gain_adapter(module.EOGContextGainStudent, axis, anchored).eval()
+            adapted.load_state_dict(state["model"])
+            adapted.inference_gate_mode, adapted.inference_gate_offset = "hard", 0.
+            models[name] = adapted
     torch.set_num_threads(2)
     parent = selected_parent(input_root)
     selections = {row["fold"]: row for row in read_jsonl(parent / "frontal_fold_selections.jsonl")
@@ -96,21 +143,26 @@ def run_transfer(input_root, output, config):
         calibration = dict(np.load(corpus / row["calibration"], allow_pickle=False))
         ids = frontal_indices(data["eeg"], data["channel_names"], data["regions"], data["mask"])
         bundles = cache.load(row, data, FixedRecipe(3))
-        prediction, artifact, details = apply_frontal(model, data["eeg"], data["references"],
-            data["channel_names"], data["regions"], data["mask"], bundles)
+        estimates, arm_details, artifacts = {}, {}, {}
+        for name, network in models.items():
+            if hasattr(network,"calibration_mean"):
+                network.calibration_mean = torch.from_numpy(np.asarray(
+                    calibration["references"].mean(-1),dtype=np.float32)[None,:,None].copy())
+            estimates[name], artifacts[name], arm_details[name] = apply_frontal(network, data["eeg"], data["references"],
+                data["channel_names"], data["regions"], data["mask"], bundles)
         direct = FrontalCorrector(selections[row["partition"]["fold"]]["selected"], config)
         comparator, _, _ = direct.denoise(data["eeg"], data["references"], calibration["references"],
             data["channel_names"], data["regions"], data["mask"], calibration_eeg=calibration["eeg"])
         outside = np.ones(len(data["eeg"]), dtype=bool)
         outside[ids] = False
-        if not np.array_equal(prediction[outside], data["eeg"][outside]):
+        if any(not np.array_equal(prediction[outside], data["eeg"][outside]) for prediction in estimates.values()):
             raise RuntimeError("Frozen transfer changed nonfrontal input")
         target, original = data["paired_reference"][ids], data["eeg"][ids]
-        for arm, corrected in (("identity", data["eeg"]), ("direct", comparator), ("frozen_K3_gain_transfer", prediction)):
+        for arm, corrected in {"identity": data["eeg"], "direct": comparator, **estimates}.items():
             paper = paired_channels(corrected[ids], target, original)
             preservation = paired(corrected[ids], target, config["fs"])
             for local, index in enumerate(ids):
-                failure = details[local]["failure"] if arm == "frozen_K3_gain_transfer" else None
+                failure = arm_details[arm][local]["failure"] if arm in arm_details else None
                 scores.append({"example_id": row["example_id"], "recipient": row["recipient"], "donor": row["donor"],
                     "condition": row["condition"], "input_snr_db": row["input_snr_db"], "channel": str(data["channel_names"][index]),
                     "evaluated_family": arm, "failure": failure, "clean_change": float(paper["rrmse_time"][local]),
@@ -118,9 +170,11 @@ def run_transfer(input_root, output, config):
                     "covariance_error": preservation["covariance"],
                     **{metric: finite_value(values[local]) for metric, values in paper.items()}})
                 if failure:
-                    failures.append({"example_id": row["example_id"], "channel": str(data["channel_names"][index]), "failure": failure})
+                    failures.append({"example_id": row["example_id"], "arm":arm, "channel": str(data["channel_names"][index]), "failure": failure})
         np.savez_compressed(shards / (row["example_id"]+".npz"), original=original, target=target,
-            cleaned=prediction[ids], comparator=comparator[ids], artifact=artifact[ids], names=data["channel_names"][ids])
+            comparator=comparator[ids], names=data["channel_names"][ids],
+            **{name:values[ids] for name,values in estimates.items()},
+            **{"artifact_"+name:values[ids] for name,values in artifacts.items()})
         atomic_json(output / "frontal_transfer_progress.json", {"completed": number+1, "total": len(rows)})
         if (number+1) % 20 == 0:
             print("FRONTAL_FROZEN_TRANSFER", number+1, len(rows), flush=True)
@@ -138,6 +192,7 @@ def run_transfer(input_root, output, config):
         "examples": len(rows), "checkpoint_sha256": CHECKPOINT_SHA, "model_source_sha256": sha256_file(path),
         "model_source_git_sha": LEGACY_SHA, "trained_anatomy_feature_disabled": True,
         "failure_rows": len(failures), "K":3, "alpha":2000, "weights_trained":False,
+        "predeclared_arms":list(models), "hybrid_ablation":hybrid, "mean_anchor_source":"unscored calibration EOG only",
         "autovmd_executed":False, "reserved_confirmation_opened":False,
         "native_validation_required":True, "qualification":False,
         "method":"frozen historical gain-model transfer; explicit frontal-only adaptation"})

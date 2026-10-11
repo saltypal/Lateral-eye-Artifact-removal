@@ -55,6 +55,35 @@ def test_frozen_transfer_failed_decomposition_is_scored_passthrough():
         apply_frontal(model,values,np.ones((2,64)),np.array(["Fz"]),np.array([0]),np.ones(1,bool),{})
 
 
+def test_fixed_gain_axis_support_and_zero_calibration_offset_contracts():
+    import torch
+    from vmd_eog.frontal_frozen_transfer import gain_adapter
+    class Base(torch.nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.threshold_logit = torch.nn.Parameter(torch.tensor(0.))
+        def correction_gains(self,features,correlations,mask,regions):
+            return torch.ones(features.shape[0],features.shape[1],2)
+        def forward(self,eeg,modes,references,mask,regions):
+            correlations = torch.zeros(eeg.shape[0],eeg.shape[1],1,2)
+            correlations[:,:,:,0] = .9
+            correlations[:,:,:,1] = .1
+            self.correction_gains(eeg[:,:,:1],correlations,mask,regions)
+            return {"artifact":torch.zeros_like(eeg),"cleaned":eeg}
+    model = gain_adapter(Base,axis_gate=True,anchored=True)
+    time = torch.arange(64,dtype=torch.float32)
+    references = torch.stack([torch.sin(time/5)+2,torch.cos(time/7)-3])[None]
+    eeg = references[:,:1]*.3 + references[:,1:]*.2 + 1
+    mask, regions = torch.ones(1,1),torch.full((1,1),3)
+    with pytest.raises(ValueError,match="calibration"):
+        model(eeg,torch.zeros(1,1,3,64),references,mask,regions)
+    model.calibration_mean = references.mean(-1,keepdim=True)
+    result = model(eeg,torch.zeros(1,1,3,64),references,mask,regions)
+    torch.testing.assert_close(model.latest_gains,torch.tensor([[[1.,0.]]]))
+    torch.testing.assert_close(result["artifact"],torch.zeros_like(eeg))
+    torch.testing.assert_close(result["cleaned"],eeg)
+
+
 def test_archived_reconstruction_precision_preserves_vectors_and_detects_damage():
     modes = np.array([[1.], [.1]], dtype=np.float32)
     residual = np.array([-1.1], dtype=np.float32)
