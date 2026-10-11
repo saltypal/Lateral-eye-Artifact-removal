@@ -54,7 +54,7 @@ def validate_record_selection(record, evidence):
         raise ValueError("Native detector has no verified unit-invariant calibration normalization")
 
 
-def calibration_parent(input_root,event_hybrid=False):
+def calibration_parent(input_root,event_hybrid=False,event_gain_scaled=False):
     paths = list(Path(input_root).rglob("frontal_transfer_summary.json"))
     if len(paths) != 1:
         raise ValueError("Attach exactly one completed calibration hybrid parent")
@@ -70,16 +70,21 @@ def calibration_parent(input_root,event_hybrid=False):
     if event_hybrid:
         if summary.get("event_hybrid") is not True:
             raise ValueError("Native event validation requires the completed event hybrid")
-        required_arms.extend(["calibration_raw_event_gain","K3_calibration_event_gain"])
+        if event_gain_scaled:
+            if summary.get("event_gain_scaled") is not True:
+                raise ValueError("Gain-adjusted native validation requires the matching completed parent")
+            required_arms.extend(["calibration_raw_scaled_event_gain","K3_calibration_scaled_event_gain"])
+        else:
+            required_arms.extend(["calibration_raw_event_gain","K3_calibration_event_gain"])
     for arm in required_arms:
         if not gates.get(arm,{}).get("controlled_development_gates_pass"):
             raise ValueError("Calibration hybrid has not passed controlled gates: "+arm)
     return parent
 
 
-def run_native(input_root, output, config, profile, calibration_hybrid=False,event_hybrid=False):
+def run_native(input_root, output, config, profile, calibration_hybrid=False,event_hybrid=False,event_gain_scaled=False):
     parent, _ = corpus_parent(input_root)
-    experiment = calibration_parent(input_root,event_hybrid=event_hybrid) if calibration_hybrid else controlled_parent(input_root)
+    experiment = calibration_parent(input_root,event_hybrid=event_hybrid,event_gain_scaled=event_gain_scaled) if calibration_hybrid else controlled_parent(input_root)
     selections = [] if calibration_hybrid else read_jsonl(experiment / "frontal_fold_selections.jsonl")
     by_fold = {}
     for selection in selections:
@@ -105,7 +110,8 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
         "policy": ("fixed calibration hybrid; no global detector fitting or native retuning; development-exposed sources"
                    if calibration_hybrid else "source-excluded family-wise recipes reused unchanged; no native selection"),
         "families": (["identity","direct","calibration_raw_gain","K3_calibration_mode_gain"] +
-                     (["calibration_raw_event_gain","K3_calibration_event_gain"] if event_hybrid else [])
+                     (["calibration_raw_event_gain","K3_calibration_event_gain"] if event_hybrid else []) +
+                     (["calibration_raw_scaled_event_gain","K3_calibration_scaled_event_gain"] if event_gain_scaled else [])
                      if calibration_hybrid else sorted({item["family"] for item in selections}))})
     save_protocol(output)
     predictions = output / "native_frontal_predictions"
@@ -145,6 +151,8 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
                 from .frontal_event_support import fit_event_support
                 event_gate = fit_event_support(calibration)
                 methods = tuple(sorted([*methods,"calibration_raw_event_gain","K3_calibration_event_gain"]))
+                if event_gain_scaled:
+                    methods = tuple(sorted([*methods,"calibration_raw_scaled_event_gain","K3_calibration_scaled_event_gain"]))
         else:
             detector_path = f"detectors/fold-{fold}.joblib"
             verify_parent(experiment, (detector_path,))
@@ -190,14 +198,16 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
                 artifacts = {}
                 for family in methods:
                     if family in ("calibration_raw_gain","K3_calibration_mode_gain",
-                                  "calibration_raw_event_gain","K3_calibration_event_gain"):
+                                  "calibration_raw_event_gain","K3_calibration_event_gain",
+                                  "calibration_raw_scaled_event_gain","K3_calibration_scaled_event_gain"):
                         from .frontal_calibration_transfer import calibration_transfer
                         _,artifact,diagnostic = calibration_transfer(window_eeg,window_refs,
                             calibration,names,regions,mask,
                             bundles=bundles[3] if family.startswith("K3_") else None)
                         if family.endswith("event_gain"):
                             from .frontal_event_support import gate_artifact
-                            _,artifact,diagnostic = gate_artifact(window_eeg,artifact,window_refs,event_gate,diagnostic)
+                            _,artifact,diagnostic = gate_artifact(window_eeg,artifact,window_refs,event_gate,diagnostic,
+                                gain_scaled=family.endswith("scaled_event_gain"))
                     else:
                         corrector = estimators[family]
                         _, artifact, diagnostic = corrector.denoise(window_eeg, window_refs,

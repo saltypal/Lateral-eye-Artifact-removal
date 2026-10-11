@@ -204,6 +204,20 @@ def test_native_calibration_requires_both_matched_controlled_gates(tmp_path,monk
     gates[1]["controlled_development_gates_pass"] = True
     (tmp_path/"frontal_controlled_gates.json").write_text(json.dumps(gates))
     assert frontal_native.calibration_parent(tmp_path) == tmp_path
+    summary.update(event_hybrid=True,event_gain_scaled=True)
+    (tmp_path/"frontal_transfer_summary.json").write_text(json.dumps(summary))
+    gates.extend([dict(arm="calibration_raw_event_gain",controlled_development_gates_pass=False),
+        dict(arm="K3_calibration_event_gain",controlled_development_gates_pass=False),
+        dict(arm="calibration_raw_scaled_event_gain",controlled_development_gates_pass=True),
+        dict(arm="K3_calibration_scaled_event_gain",controlled_development_gates_pass=True)])
+    (tmp_path/"frontal_controlled_gates.json").write_text(json.dumps(gates))
+    with pytest.raises(ValueError,match="passed controlled gates"):
+        frontal_native.calibration_parent(tmp_path,event_hybrid=True)
+    assert frontal_native.calibration_parent(tmp_path,event_hybrid=True,event_gain_scaled=True)==tmp_path
+    gates[-1]["controlled_development_gates_pass"] = False
+    (tmp_path/"frontal_controlled_gates.json").write_text(json.dumps(gates))
+    with pytest.raises(ValueError,match="passed controlled gates"):
+        frontal_native.calibration_parent(tmp_path,event_hybrid=True,event_gain_scaled=True)
 
 
 def test_fixed_gain_axis_support_and_zero_calibration_offset_contracts():
