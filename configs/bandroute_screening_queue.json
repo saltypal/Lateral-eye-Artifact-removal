@@ -195,7 +195,7 @@
       "profile": "pilot"
     },
     {
-      "run_id": "search-f0-k4-a1000-001",
+      "run_id": "search-f0-k4-a1000-002",
       "stage": "router-train",
       "kernel_slug": "vmd-band-search-f0-k4-a1000",
       "parents": [
@@ -217,7 +217,8 @@
         "learning_rate": 0.001,
         "evaluate_outer": false
       },
-      "profile": "pilot"
+      "profile": "pilot",
+      "source_sha": "d3e0df07ccf167da33945d7469e06cbc101f3b9e"
     },
     {
       "run_id": "search-f0-k4-a2000-001",
