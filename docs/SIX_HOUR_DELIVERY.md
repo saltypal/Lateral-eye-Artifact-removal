@@ -94,3 +94,7 @@ and acceptance gates; it repairs persistence rather than tuning the algorithm.
 ## Bounded signed-axis challenger
 
 Frontal-axis-calibration compares two signed ocular gains against the unchanged shared-gain calibration hybrid. K3/2000, lag bank, ridge, support threshold and mode threshold are fixed. RMS-normalized two-variable ridge fits HEOG and VEOG gains from raw EEG or eye-associated VMD modes; no clean target enters inference. Numerical fixtures cover distinct gains, units, frontal scope, strict JSON and known-field reconstruction. Evaluate all development examples; do not claim superiority or promote before preservation, uncertainty and native evidence. No AutoVMD or posterior decomposition is authorized.
+
+## Native checkpoint failed preservation
+
+Native calibration002 completed 51 trials and117 tests; blink and lateral suppression improved, but rest changes of31.8/45.6 percent fail preservation. Signed-axis gain001 completed119 tests and scored15.40 dB, below shared17.11. Preserve both results. Prioritize rest-calibrated event restriction before regional integration; do not relax the1 percent gate or start new neural fitting. Notebooks39/40 document the controlled comparison and gated native follow-up.

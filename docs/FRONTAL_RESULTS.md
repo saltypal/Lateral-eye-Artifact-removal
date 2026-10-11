@@ -193,3 +193,11 @@ the first trial prediction was produced. Its outputs are preserved. Version002
 repairs scalar serialization without changing numerical settings. Separate
 signed HEOG/VEOG gain fitting is evaluated as a fixed mechanistic challenger
 in frontal-axis-hybrid-001; its result remains pending.
+
+## Native preservation failure and detector extension
+
+Native calibration002 completed 117 tests and 51 trials from two development-exposed OSF recordings. VMD blink correlations dropped from 0.913/0.959 to 0.051/0.106; lateral correlations from 0.273/0.422 to 0.025/0.045. These are suppression proxies, not reconstruction SNR. Rest-relative modification was 0.318/0.456, alpha error 1.030/1.934 dB and covariance error 0.171/0.392, failing the declared preservation gates. Do not authorize posterior integration or neural training from the controlled SNR alone.
+
+Signed-axis hybrid001 passed 119 tests: VMD axis gain scored 15.396155 dB versus unchanged shared-gain 17.112814; matched raw-axis gain 17.091567 versus shared raw18.193247. The axis challenger does not improve mean accuracy.
+
+New event-support comparison fits a reference-only logistic detector on each unscored calibration recording using rest/ocular trial labels. It thresholds above all calibration-rest logits and probability0.9, then restricts and tapers artifact correction within detected intervals. No scored condition or paired target enters inference. Settings are fixed; labels/detector fitting use only the authorized calibration. This is a new development extension motivated by native preservation failure, not independently validated evidence.

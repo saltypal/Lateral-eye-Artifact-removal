@@ -19,7 +19,7 @@ from .frontal_evaluation import selected_parent, validate_evaluation_sources
 from .frontal_methods import FixedRecipe, FrontalCorrector, frontal_indices
 from .frontal_replication import ArchivedModes, finite_value
 from .frontal_review import strict_mean, save_controlled_review
-from .io import atomic_json, read_jsonl, sha256_file
+from .io import atomic_json, read_jsonl, sha256_file, write_jsonl
 from .metrics import paired
 from .paper_metrics import paired_channels
 from .posterior_context import select_examples
@@ -101,7 +101,7 @@ def gain_adapter(model_class, axis_gate=False, anchored=False):
     return Adapter()
 
 
-def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, calibration_hybrid=False, axis_hybrid=False):
+def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, calibration_hybrid=False, axis_hybrid=False, event_hybrid=False):
     parents = list(Path(input_root).rglob("snr_target_protocol.json"))
     if len(parents) != 1:
         raise ValueError("Attach exactly one archived model parent")
@@ -157,8 +157,11 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, cal
     cache = ArchivedModes(input_root, corpus, config)
     rows = select_examples(manifest, "full")
     scores, failures = [], []
+    event_gates = {}
     shards = output / "transfer_predictions"
     shards.mkdir()
+    decisions = output / "transfer_decisions"
+    decisions.mkdir()
     for number, row in enumerate(rows):
         validate_evaluation_sources(row, exclusions[row["partition"]["fold"]])
         data = dict(np.load(corpus / row["array_path"], allow_pickle=False))
@@ -178,6 +181,25 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, cal
                 estimates[name],artifacts[name],arm_details[name] = calibration_transfer(
                     data["eeg"],data["references"],calibration,data["channel_names"],
                     data["regions"],data["mask"],bundles=mode_context)
+            if event_hybrid:
+                from .frontal_event_support import fit_event_support,gate_artifact
+                key = row["calibration"]
+                if key not in event_gates:
+                    try:
+                        event_gates[key] = fit_event_support(calibration)
+                    except ValueError as error:
+                        event_gates[key] = str(error)
+                gate = event_gates[key]
+                for base,name in (("calibration_raw_gain","calibration_raw_event_gain"),
+                                  ("K3_calibration_mode_gain","K3_calibration_event_gain")):
+                    if isinstance(gate,str):
+                        estimates[name] = np.asarray(data["eeg"],dtype=float).copy()
+                        artifacts[name] = np.zeros_like(estimates[name])
+                        arm_details[name] = [{"channel":str(data["channel_names"][index]),
+                            "failure":"event_calibration: "+gate} for index in ids]
+                    else:
+                        estimates[name],artifacts[name],arm_details[name] = gate_artifact(
+                            data["eeg"],artifacts[base],data["references"],gate,arm_details[base])
             if axis_hybrid:
                 for name,mode_context in (("calibration_raw_axis_gain",None),("K3_calibration_axis_gain",bundles)):
                     estimates[name],artifacts[name],arm_details[name] = calibration_transfer(
@@ -204,6 +226,9 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, cal
                     **{metric: finite_value(values[local]) for metric, values in paper.items()}})
                 if failure:
                     failures.append({"example_id": row["example_id"], "arm":arm, "channel": str(data["channel_names"][index]), "failure": failure})
+        write_jsonl(decisions / (row["example_id"]+".jsonl"),[
+            {"example_id":row["example_id"],"arm":arm,"decisions":details}
+            for arm,details in arm_details.items()])
         np.savez_compressed(shards / (row["example_id"]+".npz"), original=original, target=target,
             comparator=comparator[ids], names=data["channel_names"][ids],
             **{name:values[ids] for name,values in estimates.items()},
@@ -226,7 +251,7 @@ def run_transfer(input_root, output, config, hybrid=False, unit_audit=False, cal
         "model_source_git_sha": LEGACY_SHA, "trained_anatomy_feature_disabled": True,
         "failure_rows": len(failures), "K":3, "alpha":2000, "weights_trained":False,
         "predeclared_arms":list(estimates), "hybrid_ablation":hybrid or calibration_hybrid,
-        "calibration_hybrid":calibration_hybrid, "axis_hybrid":axis_hybrid,
+        "calibration_hybrid":calibration_hybrid, "axis_hybrid":axis_hybrid,"event_hybrid":event_hybrid,
         "mean_anchor_source":"unscored calibration EOG only",
         "unit_audit":unit_audit, "model_input_scales":unit_scales, "output_units":"volts",
         "autovmd_executed":False, "reserved_confirmation_opened":False,

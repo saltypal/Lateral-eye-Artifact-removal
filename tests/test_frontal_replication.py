@@ -140,6 +140,39 @@ def test_axis_gain_recovers_distinct_horizontal_vertical_amplitudes():
     assert all(row["gain_mode"] == "axis" for row in json.loads(json.dumps(details,allow_nan=False)))
 
 
+def test_reference_event_support_uses_only_unscored_labels_and_preserves_units():
+    from vmd_eog.frontal_event_support import fit_event_support,gate_artifact
+    generator = np.random.default_rng(742)
+    length = 2048
+    time = np.arange(length)/200.
+    rest = generator.normal(scale=.1,size=(2,length))
+    blink = generator.normal(scale=.1,size=(2,length))
+    blink[1] += 3*np.sin(2*np.pi*2*time)
+    lateral = generator.normal(scale=.1,size=(2,length))
+    lateral[0] += 3*np.sin(2*np.pi*2*time)
+    calibration = dict(references=np.concatenate([rest,blink,lateral],axis=1),
+        trial_types=np.repeat([1,2,3],length),boundaries=np.array([length,2*length]))
+    detector = fit_event_support(calibration)
+    quiet = np.zeros((2,1024))
+    support,metadata = detector.support(quiet)
+    assert not support.any() and metadata['scoring_condition_access'] is False
+    contaminated = blink[:,:1024]
+    support,_ = detector.support(contaminated)
+    assert support.mean() > .8
+    rescaled = {**calibration,'references':calibration['references']*1e-6}
+    second = fit_event_support(rescaled)
+    np.testing.assert_allclose(second.support(contaminated*1e-6)[0],support)
+    original = np.ones((3,1024))
+    artifact = np.zeros_like(original)
+    artifact[0] = .5
+    clean,correction,details = gate_artifact(original,artifact,quiet,detector,[{'channel':'Fz'}])
+    np.testing.assert_array_equal(clean,original)
+    assert not correction.any()
+    json.dumps(details,allow_nan=False)
+    with pytest.raises(ValueError,match='resting'):
+        fit_event_support({**calibration,'trial_types':np.full(3*length,2)})
+
+
 def test_native_calibration_requires_both_matched_controlled_gates(tmp_path,monkeypatch):
     from vmd_eog import frontal_native
     monkeypatch.setattr(frontal_native,"verify_parent",lambda *args:None)
