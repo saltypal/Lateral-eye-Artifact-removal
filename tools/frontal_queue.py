@@ -21,6 +21,7 @@ BASE = ["satyapaladugu/vmd-eog-corpus/2",
         "satyapaladugu/vmd-eog-research-ready/1",
         "satyapaladugu/vmd-frontal-review-contracts/1"]
 CACHES = ["satyapaladugu/vmd-band-cache-k3/1", "satyapaladugu/vmd-band-cache-k4/1"]
+FULL_RUN = "frontal-full-002"  # 001 is preserved failed evidence, never overwritten.
 REPORT_FILES = (r"(?:summary|execution_state|tests|resource_summary|environment|artifact_manifest|"
                 r"frontal_fold_selections|frontal_detector_folds|frontal_oof|frontal_uncertainty|"
                 r"frontal_progress|frontal_search|frontal_failures|frontal_mechanism_diagnostics|"
@@ -118,12 +119,30 @@ def submit(run_id, stage, slug, parents, profile="pilot", parent_run=None):
 
 
 def step():
+    repair = None
+    repair_id = "frontal-cache-audit-002"
+    if (ROOT / ".kaggle-work" / repair_id).exists():
+        repair = retrieved(repair_id, "frontal_cache_audit_summary.json")
+        if repair is None:
+            state = status(repair_id)
+            if state in ("ERROR", "CANCEL_ACKNOWLEDGED"):
+                raise RuntimeError("Repair audit stopped: " + state)
+            if state != "COMPLETE":
+                record("waiting_for_repair_audit", run_id=repair_id)
+                return False
+            print(command("retrieve", "--run-id", repair_id,
+                          "--file-pattern", REPORT_FILES + "|frontal_cache_audit"), flush=True)
+            repair = collect(repair_id, "frontal_cache_audit_summary.json")
+        if (repair.get("archived_reader_passed") is not True or
+                repair.get("float64_reconstruction_failures") != 0 or
+                repair.get("examples") != 320 or repair.get("channel_recipe_checks") != 8320):
+            raise RuntimeError("Repair audit lacks full unchanged-tolerance evidence")
     active = []
     for run_id, summary_name in (
             ("frontal-pilot-002", "frontal_summary.json"),
             ("frontal-screen-001", "frontal_summary.json"),
             ("frontal-evidence-001", "frontal_evidence_summary.json"),
-            ("frontal-full-001", "frontal_summary.json"),
+            (FULL_RUN, "frontal_summary.json"),
             ("frontal-native-pilot-001", "native_frontal_summary.json")):
         if not (ROOT / ".kaggle-work" / run_id).exists():
             continue
@@ -142,13 +161,15 @@ def step():
         elif run_id == "frontal-screen-001":
             if summary.get("evaluation_complete") is not False or summary.get("selection_subset") != "source-balanced pilot recipients":
                 raise RuntimeError("Screen interface differs; stop before full evaluation")
-            submit("frontal-full-001", "frontal-evaluation", "vmd-frontal-full-evaluation",
+            if repair is None:
+                raise RuntimeError("Repaired full evaluation requires completed cache audit")
+            submit(FULL_RUN, "frontal-evaluation", "vmd-frontal-full-evaluation",
                    BASE + CACHES + [kernel_parent(run_id)], "full", run_id)
             # A completed screen supports a stronger frozen-recipe mechanism
             # audit without waiting for a separately delayed smaller pilot.
             submit("frontal-evidence-001", "frontal-evidence", "vmd-frontal-result-inspection",
                    BASE + CACHES + [kernel_parent(run_id)], parent_run=run_id)
-        elif run_id == "frontal-full-001":
+        elif run_id == FULL_RUN:
             if summary.get("evaluation_complete") is not True:
                 raise RuntimeError("Full evaluation is incomplete; native validation blocked")
             submit("frontal-native-pilot-001", "frontal-native", "vmd-frontal-native-pilot",

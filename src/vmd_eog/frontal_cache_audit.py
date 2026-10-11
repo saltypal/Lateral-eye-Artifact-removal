@@ -46,6 +46,9 @@ def run_audit(input_root, output, config):
                         "rms_relative_error_float64": float(np.linalg.norm(difference)/max(np.linalg.norm(reference), 1e-30)),
                         "worst_sample": int(np.argmax(np.abs(difference))),
                         "signal_peak": float(np.max(np.abs(reference)))})
+            # Exercise the actual repaired reader, including masks, identities,
+            # shape checks and the unchanged reconstruction tolerance.
+            cache.load(row, data, FixedRecipe(K))
         if (number+1) % 40 == 0:
             pd.DataFrame(records).to_csv(output / "frontal_cache_audit.csv", index=False)
             print("FRONTAL_CACHE_AUDIT", number+1, len(rows), flush=True)
@@ -62,4 +65,5 @@ def run_audit(input_root, output, config):
         "maximum_error_float64": float(frame.max_abs_error_float64.max()),
         "maximum_rms_relative_error": float(frame.rms_relative_error_float64.max()),
         "cache_mutated": False, "decompositions_computed": 0,
+        "archived_reader_passed": True,
         "qualification": False, "purpose": "diagnosis; unchanged reconstruction tolerance"})

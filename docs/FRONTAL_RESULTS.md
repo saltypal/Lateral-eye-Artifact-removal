@@ -143,3 +143,18 @@ Native validation, posterior integration and neural training remain blocked at
 this checkpoint. The Luna monitoring agent became unavailable due to its usage
 limit; the primary agent continues diagnosis and the local diagnostic watcher
 provides 45-second status polling.
+
+### Cache diagnosis confirmed and bounded repair
+
+Read-only audit 001 completed at fda250: 109 tests passed; all 320 examples,
+8,320 channel/recipe checks. One float32 sum failed: K4, F7,
+sub-032339-000-blink-snr+5. Float64 accumulation passed every check under the
+unchanged rtol=1e-5/atol=1e-11 contract. No solver failures, cache mutation or
+new decompositions occurred. Maximum relative RMS reconstruction error was
+3.992e-8. This is accumulation precision, not a failed VMD decomposition.
+
+Repair changes only verification accumulation to float64, preserving all mode
+vectors and residuals. A cancellation/damage regression fixture and full
+actual-reader Kaggle audit 002 must pass before rontal-full-002 starts.
+The failed full version 001 is retained. Scientific accuracy and preservation
+thresholds remain unchanged.

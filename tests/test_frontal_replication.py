@@ -10,7 +10,7 @@ import pytest
 from vmd_eog.frontal_campaign import validate_policy
 from vmd_eog.frontal_methods import (frontal_indices, fuzzy_entropy,
     estimate_components, reference_intervals, FrontalCorrector)
-from vmd_eog.frontal_replication import candidates, fit_detectors, summary, detector_features, grouped_selection
+from vmd_eog.frontal_replication import candidates, fit_detectors, summary, detector_features, grouped_selection, validate_cached_reconstruction
 from vmd_eog.frontal_native import validate_record_selection
 from vmd_eog.frontal_evaluation import validate_evaluation_sources
 from vmd_eog.frontal_review import controlled_gates, strict_mean
@@ -19,6 +19,20 @@ from vmd_eog.frontal_evidence import check_metric_parity
 
 def configuration():
     return json.loads((Path(__file__).parents[1] / "configs/frontal_replication.json").read_text())
+
+
+def test_archived_reconstruction_precision_preserves_vectors_and_detects_damage():
+    modes = np.array([[1.], [.1]], dtype=np.float32)
+    residual = np.array([-1.1], dtype=np.float32)
+    reference = modes.astype(np.float64).sum(0) + residual.astype(np.float64)
+    assert not np.allclose(modes.sum(0) + residual, reference, rtol=1e-5, atol=1e-11)
+    before_modes, before_residual = modes.copy(), residual.copy()
+    validate_cached_reconstruction(modes, residual, reference)
+    np.testing.assert_array_equal(modes, before_modes)
+    np.testing.assert_array_equal(residual, before_residual)
+    assert modes.dtype == np.float32 and residual.dtype == np.float32
+    with pytest.raises(ValueError, match="fail reconstruction"):
+        validate_cached_reconstruction(modes, residual + .001, reference)
 
 
 def test_frontal_policy_blocks_autovmd_neural_and_arbitrary_recipes():

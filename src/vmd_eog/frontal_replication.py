@@ -152,6 +152,18 @@ def uncertainty_report(oof, output, config, repetitions=2000):
     atomic_json(output / "frontal_uncertainty.json", reports)
 
 
+def validate_cached_reconstruction(modes, residual, reference):
+    """Check archived float32 vectors using float64 accumulation.
+
+    Summation rounding near a zero crossing must not masquerade as a damaged
+    cache. The reference and tolerance are unchanged; vectors are never edited.
+    """
+    reconstructed = np.asarray(modes).sum(axis=0, dtype=np.float64)
+    reconstructed = reconstructed + np.asarray(residual, dtype=np.float64)
+    if not np.allclose(reconstructed, reference, rtol=1e-5, atol=1e-11):
+        raise ValueError("Cached modes plus residual fail reconstruction")
+
+
 class ArchivedModes:
     """Read only two checksum-verified settings from previously completed caches."""
     def __init__(self, input_root, corpus, config):
@@ -206,8 +218,7 @@ class ArchivedModes:
                 if info.get("failure"):
                     modes[:] = 0
                     residual = data["eeg"][index].copy()
-                if not np.allclose(modes.sum(0) + residual, data["eeg"][index], rtol=1e-5, atol=1e-11):
-                    raise ValueError("Cached modes plus residual fail reconstruction")
+                validate_cached_reconstruction(modes, residual, data["eeg"][index])
                 result[int(index)] = (modes, residual, info)
         return result
 
