@@ -86,7 +86,8 @@ transition into posterior or neural work bypasses scientific checkpoints.
 - [x] Initial Kaggle numerical checks: frontal-fixture-001, 99 passed at e8bd484.
 - [x] Kaggle whole-montage checks: frontal-fixture-002, 101 passed at 9419b73.
 - [x] Native interfaces/unit checks: frontal-fixture-003, 104 passed at ef4a4c8.
-- [ ] Validate separate fixed arms and nonleaking fixed-SVM evaluation on Kaggle.
+- [x] Validate separate fixed arms and nonleaking fixed-SVM evaluation on Kaggle.
+- [x] Latest foundation checks: frontal-fixture-004, 106 passed at 638d496.
 - [x] First pilot completed: 20 examples/72 candidates, zero failure rows.
 - [ ] Complete calibrated-detector, separate-K follow-up and waveform inspection.
 - [ ] Complete full source-excluded frontal comparison and uncertainty.
@@ -155,3 +156,17 @@ Notebook 27 provides saved mode vectors, residuals, HEOG/VEOG support, selected
 waveforms, reusable-interface parity and evaluation-only lag/energy-coverage
 diagnostics. Its diagnostic reference design follows the mixture construction
 and cannot substitute for native evidence.
+
+`frontal-fixture-004` (contracts version 4) completed at
+`638d496c244bdf8a2ae02ce3b4415949e22e029e`: 106 tests passed, 14 warnings.
+The repaired 72-candidate pilot and 708-candidate correction screen were both
+RUNNING at the live check on 11 October. Their completion and results are not
+yet verified. This screen varies only correction parameters within the two
+fixed K/alpha arms; it is not AutoVMD.
+
+The full evaluation additionally writes `frontal_controlled_gates.json` and a
+readable `frontal_controlled_review.md`. Every arm must cover the identity
+example/channel rows, preserve finite accuracy and clean metrics, and satisfy
+the unchanged engineering limits. A short bad clean record cannot disappear
+inside its participant average. Controlled gates never authorize integration
+before native validation. Undefined values propagate through all summary levels.

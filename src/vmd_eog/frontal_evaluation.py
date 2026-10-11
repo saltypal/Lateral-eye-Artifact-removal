@@ -16,6 +16,7 @@ from .contracts import canonical_hash
 from .experiments import corpus_parent
 from .frontal_methods import FixedRecipe, FrontalCorrector, frontal_indices
 from .frontal_replication import ArchivedModes, finite_value, plot_results, uncertainty_report
+from .frontal_review import strict_mean, save_controlled_review
 from .io import atomic_json, read_jsonl, sha256_file, write_jsonl
 from .metrics import paired
 from .paper_evaluation import save_protocol
@@ -138,18 +139,18 @@ def evaluate(input_root, output, config):
     frame.to_csv(output / "frontal_oof_scores.csv", index=False)
     dirty = frame[frame.condition != "clean"]
     fields = ["snr_energy_db", "rrmse_time", "pearson_cc", "mse", "snr_improvement_db", "cc_deterioration"]
-    balanced = dirty.groupby(["evaluated_family", "recipient", "condition", "input_snr_db"])[fields].agg(
-        lambda values: np.asarray(values, float).mean())
-    recipients = balanced.groupby(["evaluated_family", "recipient"]).mean()
+    balanced = dirty.groupby(["evaluated_family", "recipient", "condition", "input_snr_db"])[fields].agg(strict_mean)
+    recipients = balanced.groupby(["evaluated_family", "recipient"]).agg(strict_mean)
     recipients.reset_index().to_csv(output / "frontal_oof_recipients.csv", index=False)
-    recipients.groupby("evaluated_family").mean().to_csv(output / "frontal_oof_means.csv")
-    balanced.groupby(["evaluated_family", "condition", "input_snr_db"]).mean().to_csv(
+    recipients.groupby("evaluated_family").agg(strict_mean).to_csv(output / "frontal_oof_means.csv")
+    balanced.groupby(["evaluated_family", "condition", "input_snr_db"]).agg(strict_mean).to_csv(
         output / "frontal_oof_conditions.csv")
     clean = frame[frame.condition == "clean"]
     clean.groupby(["evaluated_family", "recipient"])[
         ["clean_change", "alpha_db", "beta_db", "covariance_error"]].agg(
         lambda values: np.asarray(values, float).mean()).to_csv(output / "frontal_clean_preservation.csv")
     uncertainty_report(frame, output, config)
+    save_controlled_review(frame, output, config)
     write_jsonl(output / "frontal_component_diagnostics.jsonl", decisions)
     write_jsonl(output / "frontal_mode_diagnostics.jsonl", mode_records)
     plot_results(frame, output)

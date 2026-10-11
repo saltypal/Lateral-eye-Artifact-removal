@@ -13,6 +13,7 @@ from vmd_eog.frontal_methods import (frontal_indices, fuzzy_entropy,
 from vmd_eog.frontal_replication import candidates, fit_detectors, summary, detector_features, grouped_selection
 from vmd_eog.frontal_native import validate_record_selection
 from vmd_eog.frontal_evaluation import validate_evaluation_sources
+from vmd_eog.frontal_review import controlled_gates, strict_mean
 
 
 def configuration():
@@ -217,3 +218,44 @@ def test_full_evaluation_preserves_recipient_and_donor_exclusions():
             validate_evaluation_sources(row, {**evidence, key: value})
     with pytest.raises(ValueError, match="reserved"):
         validate_evaluation_sources({**row, "partition": dict(role="confirmation", fold=2)}, evidence)
+
+
+def test_controlled_gates_keep_bad_records_and_undefined_metrics_visible():
+    rows = []
+    for arm in ("identity", "direct", "vmd_projected_K3"):
+        for number, condition in enumerate(("blink", "clean", "clean")):
+            rows.append(dict(evaluated_family=arm, example_id=f"e{number}",
+                channel="F3", recipient="r1", donor="d1", condition=condition,
+                input_snr_db=0., snr_energy_db=16., mse=.01, rrmse_time=.1,
+                pearson_cc=.99, cc_deterioration=0., clean_change=0.,
+                alpha_db=0., beta_db=0., covariance_error=0., failure=None))
+    frame = pd.DataFrame(rows)
+    initial = {row["arm"]: row for row in controlled_gates(frame, configuration())}
+    assert initial["vmd_projected_K3"]["controlled_development_gates_pass"]
+    assert not initial["vmd_projected_K3"]["regional_integration_authorized"]
+    # Its participant mean is only .0075, but one clean record exceeds .01.
+    bad = (frame.evaluated_family == "vmd_projected_K3") & (frame.example_id == "e2")
+    frame.loc[bad, "clean_change"] = .015
+    reviewed = {row["arm"]: row for row in controlled_gates(frame, configuration())}
+    assert not reviewed["vmd_projected_K3"]["gates"]["clean_modification"]
+    dirty = (frame.evaluated_family == "vmd_projected_K3") & (frame.condition == "blink")
+    frame.loc[dirty, "mse"] = np.nan
+    reviewed = {row["arm"]: row for row in controlled_gates(frame, configuration())}
+    assert not reviewed["vmd_projected_K3"]["gates"]["accuracy_coverage"]
+    assert reviewed["vmd_projected_K3"]["mean_output_snr_db"] is None
+    assert np.isnan(strict_mean([1., np.nan]))
+
+
+def test_controlled_gates_refuse_missing_channel_rows():
+    rows = []
+    for arm in ("identity", "direct"):
+        for condition in ("clean", "blink"):
+            for channel in ("F3", "F4"):
+                rows.append(dict(evaluated_family=arm, example_id=condition,
+                    channel=channel, recipient="r1", condition=condition,
+                    input_snr_db=0., snr_energy_db=16., mse=.01, rrmse_time=.1,
+                    pearson_cc=.99, cc_deterioration=0., clean_change=0.,
+                    alpha_db=0., beta_db=0., covariance_error=0., failure=None))
+    frame = pd.DataFrame(rows[:-1])
+    reviewed = {row["arm"]: row for row in controlled_gates(frame, configuration())}
+    assert not reviewed["direct"]["gates"]["row_coverage"]

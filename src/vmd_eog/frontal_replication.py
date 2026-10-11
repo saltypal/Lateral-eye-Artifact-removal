@@ -28,6 +28,7 @@ from .paper_evaluation import save_protocol
 from .paper_metrics import paired_channels
 from .posterior_context import select_examples
 from .reference import correlations, project
+from .frontal_review import strict_mean
 from .sobi import approximate_entropy
 
 
@@ -117,7 +118,7 @@ def uncertainty_report(oof, output, config, repetitions=2000):
     paired_scores = dirty.merge(comparator, on=["example_id", "channel"], validate="many_to_one")
     paired_scores["snr_delta"] = paired_scores.snr_energy_db - paired_scores.comparator_snr
     units = paired_scores.groupby(["evaluated_family", "recipient", "donor", "condition", "input_snr_db"])[
-        ["snr_energy_db", "snr_delta"]].mean().reset_index()
+        ["snr_energy_db", "snr_delta"]].agg(strict_mean).reset_index()
     recipients, donors = sorted(units.recipient.unique()), sorted(units.donor.unique())
     recipient_map = {value: index for index, value in enumerate(recipients)}
     donor_map = {value: index for index, value in enumerate(donors)}
@@ -330,9 +331,10 @@ def grouped_selection(scores, specs, output, config):
     result.to_csv(output / "frontal_oof_scores.csv", index=False)
     dirty = result[result.condition != "clean"]
     balanced = dirty.groupby(["evaluated_family", "recipient", "condition", "input_snr_db"])[
-        ["snr_energy_db", "rrmse_time", "pearson_cc", "mse", "snr_improvement_db", "cc_deterioration"]].mean()
-    balanced.groupby(["evaluated_family", "recipient"]).mean().reset_index().to_csv(output / "frontal_oof_recipients.csv", index=False)
-    balanced.groupby("evaluated_family").mean().to_csv(output / "frontal_oof_means.csv")
+        ["snr_energy_db", "rrmse_time", "pearson_cc", "mse", "snr_improvement_db", "cc_deterioration"]].agg(strict_mean)
+    recipients = balanced.groupby(["evaluated_family", "recipient"]).agg(strict_mean)
+    recipients.reset_index().to_csv(output / "frontal_oof_recipients.csv", index=False)
+    recipients.groupby("evaluated_family").agg(strict_mean).to_csv(output / "frontal_oof_means.csv")
     return result
 
 
