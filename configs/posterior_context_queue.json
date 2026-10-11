@@ -1,0 +1,16 @@
+{
+  "campaign_id": "vmd-bandroute-20261010",
+  "purpose": "Independently monitor the CPU posterior-context pilot. Full comparison starts only after primary inspection of pilot evidence.",
+  "max_active": {"cpu": 1, "gpu": 0},
+  "external_parents": ["corpus-002", "research-ready-001"],
+  "jobs": [
+    {
+      "run_id": "posterior-context-pilot-001",
+      "stage": "posterior-context",
+      "kernel_slug": "vmd-band-posterior-context",
+      "parents": ["corpus-002", "research-ready-001"],
+      "experiment": {"purpose": "matched_posterior_context"},
+      "profile": "pilot"
+    }
+  ]
+}

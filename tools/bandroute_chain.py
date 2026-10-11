@@ -48,11 +48,14 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--queue",type=Path,required=True)
     parser.add_argument("--interval",type=int,default=45)
+    parser.add_argument("--state-file",type=Path,default=WORK/"bandroute-controller.json",
+                        help="Separate state for an independently monitored CPU/GPU queue")
     args = parser.parse_args()
     if not 30 <= args.interval <= 60:
         raise ValueError("Polling must be 30–60 seconds")
     queue = json.loads(args.queue.read_text())
-    path = WORK/"bandroute-controller.json"
+    path = args.state_file
+    path.parent.mkdir(parents=True,exist_ok=True)
     state = json.loads(path.read_text()) if path.exists() else {"verified":{},"statuses":{},"api_errors":{}}
     jobs = queue["jobs"]
     required = set(queue["external_parents"])|{job["run_id"] for job in jobs}
