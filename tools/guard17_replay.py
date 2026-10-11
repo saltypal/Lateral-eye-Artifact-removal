@@ -39,8 +39,9 @@ def submit(run_id, diagnose=False, cached_replay=False, kernel_slug=None):
             source = ''.join(cell["source"])
             source = source.replace("RUN_SPEC = None  # injected by guard17_replay.py", "RUN_SPEC = "+repr(spec))
             if cached_replay:
-                source = source.replace("result = subprocess.run(command,cwd=CHECKOUT,env=PROCESS_ENV)",
-                    "command.append('--replay-archived-cache')\nresult = subprocess.run(command,cwd=CHECKOUT,env=PROCESS_ENV)")
+                marker = "result = subprocess.run(command,cwd=CHECKOUT,env=AUDIT_ENV)"
+                if marker in source:
+                    source = source.replace(marker, "command.append('--replay-archived-cache')\n" + marker)
             ast.parse(source)
             cell["source"] = source.splitlines(keepends=True)
             cell["execution_count"], cell["outputs"] = None, []
@@ -50,6 +51,8 @@ def submit(run_id, diagnose=False, cached_replay=False, kernel_slug=None):
     title = "Guarded VMD Archived Source Audit" if diagnose else "Guarded VMD K3 Alpha2000 Archived Reproduction"
     if cached_replay:
         title = "Guarded VMD Frozen Archive Replay"
+    if kernel_slug:
+        title = kernel_slug.replace('-', ' ').title()
     metadata = {"id": spec["kernel"], "title": title,
                 "code_file": "experiment.ipynb", "language": "python", "kernel_type": "notebook",
                 "is_private": True, "enable_internet": True, "enable_gpu": False,
