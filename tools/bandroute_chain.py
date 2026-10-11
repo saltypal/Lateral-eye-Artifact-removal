@@ -54,6 +54,8 @@ def main():
     if not 30 <= args.interval <= 60:
         raise ValueError("Polling must be 30–60 seconds")
     queue = json.loads(args.queue.read_text())
+    if queue.get("execution_status") == "stopped_by_user":
+        raise RuntimeError("Queue explicitly stopped by user: " + queue.get("stop_reason", ""))
     path = args.state_file
     path.parent.mkdir(parents=True,exist_ok=True)
     state = json.loads(path.read_text()) if path.exists() else {"verified":{},"statuses":{},"api_errors":{}}

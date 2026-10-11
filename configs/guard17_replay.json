@@ -1,0 +1,28 @@
+{
+  "campaign_id": "vmd-bandroute-20261010",
+  "stage": "guard17-replay",
+  "legacy_git_sha": "0b183e6c09f6ecfbb3ed4818028eb5abbdf842fc",
+  "source_checkpoint_sha256": "4bb7c1b0cfa0e8341c4053ab3099efb16832f045f99e37afde1904a93c2cd0a9",
+  "source_checkpoint_git_sha": "2ec0b3cd3da636cc3aed3b476ff890a6f56e2627",
+  "K": 3,
+  "alpha": 2000,
+  "model": "EOGContextGainStudent",
+  "epoch": 110,
+  "identity_weight": 0.2,
+  "learning_rate": 0.001,
+  "inference_gate_mode": "hard",
+  "inference_gate_offset": 0.0,
+  "strength": 1.0,
+  "expected_historical_snr_db": 17.927211250454842,
+  "role": "archived development reproduction; not fresh confirmation or current teacher qualification",
+  "kernel_sources": [
+    "satyapaladugu/region-aware-eog-benchmark/2",
+    "satyapaladugu/region-aware-eog-restore/1",
+    "satyapaladugu/region-aware-eog-vmd-engine/1",
+    "satyapaladugu/region-aware-eog-reference-safe/1",
+    "satyapaladugu/region-aware-eog-snr-context/1"
+  ],
+  "dataset_sources": ["satyapaladugu/lateral-eye-complete-dataset"],
+  "enable_gpu": false,
+  "reason_cpu": "Frozen-weight inference and cached-mode reproduction; no retraining and no dependency on the stalled GPU session"
+}

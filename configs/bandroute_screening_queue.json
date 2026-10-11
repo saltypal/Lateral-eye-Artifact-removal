@@ -1020,5 +1020,7 @@
       },
       "profile": "pilot"
     }
-  ]
+  ],
+  "execution_status": "stopped_by_user",
+  "stop_reason": "Switch to historical K3 alpha2000 EOG-context hard-gated recipe; do not auto-resume this sweep"
 }
