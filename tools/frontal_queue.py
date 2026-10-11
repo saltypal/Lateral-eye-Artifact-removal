@@ -118,7 +118,7 @@ def submit(run_id, stage, slug, parents, profile="pilot", parent_run=None):
     record("dependent_notebook_submitted", run_id=run_id, stage=stage, parents=parents)
 
 
-def step():
+def step(full_run=FULL_RUN, skip_superseded_pilot=False):
     repair = None
     repair_id = "frontal-cache-audit-002"
     if (ROOT / ".kaggle-work" / repair_id).exists():
@@ -142,9 +142,13 @@ def step():
             ("frontal-pilot-002", "frontal_summary.json"),
             ("frontal-screen-001", "frontal_summary.json"),
             ("frontal-evidence-001", "frontal_evidence_summary.json"),
-            (FULL_RUN, "frontal_summary.json"),
+            (full_run, "frontal_summary.json"),
             ("frontal-native-pilot-001", "native_frontal_summary.json")):
         if not (ROOT / ".kaggle-work" / run_id).exists():
+            continue
+        if run_id == "frontal-pilot-002" and skip_superseded_pilot:
+            # The completed full-bank screen and mechanism report are the
+            # actual parents. Keep the optional older pilot as historical work.
             continue
         summary = retrieved(run_id, summary_name)
         if summary is None:
@@ -163,13 +167,13 @@ def step():
                 raise RuntimeError("Screen interface differs; stop before full evaluation")
             if repair is None:
                 raise RuntimeError("Repaired full evaluation requires completed cache audit")
-            submit(FULL_RUN, "frontal-evaluation", "vmd-frontal-full-evaluation",
+            submit(full_run, "frontal-evaluation", "vmd-frontal-full-evaluation",
                    BASE + CACHES + [kernel_parent(run_id), kernel_parent(repair_id)], "full", run_id)
             # A completed screen supports a stronger frozen-recipe mechanism
             # audit without waiting for a separately delayed smaller pilot.
             submit("frontal-evidence-001", "frontal-evidence", "vmd-frontal-result-inspection",
                    BASE + CACHES + [kernel_parent(run_id)], parent_run=run_id)
-        elif run_id == FULL_RUN:
+        elif run_id == full_run:
             if summary.get("evaluation_complete") is not True:
                 raise RuntimeError("Full evaluation is incomplete; native validation blocked")
             submit("frontal-native-pilot-001", "frontal-native", "vmd-frontal-native-pilot",
@@ -190,6 +194,9 @@ def main():
     parser.add_argument("--once", action="store_true", help="One orchestration poll, including eligible submissions")
     parser.add_argument("--watch-run", help="Monitor and retrieve one diagnostic run without launching dependents")
     parser.add_argument("--summary-name", default="frontal_cache_audit_summary.json")
+    parser.add_argument("--full-run",default=FULL_RUN,help="New run identity for a repaired full-evaluation version")
+    parser.add_argument("--skip-superseded-pilot",action="store_true",
+                        help="Use completed full-bank screen/evidence; do not wait on the older optional pilot")
     args = parser.parse_args()
     record("queue_started", scope="frontal only; no AutoVMD or neural/posterior launch")
     while True:
@@ -208,7 +215,7 @@ def main():
                     return
                 time.sleep(45)
                 continue
-            if step() or args.once:
+            if step(args.full_run,args.skip_superseded_pilot) or args.once:
                 return
         except Exception as error:
             record("queue_stopped_for_diagnosis", error=str(error))
