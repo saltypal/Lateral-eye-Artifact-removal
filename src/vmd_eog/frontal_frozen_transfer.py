@@ -107,6 +107,13 @@ def run_transfer(input_root, output, config, hybrid=False):
     if sha256_file(checkpoint) != CHECKPOINT_SHA:
         raise ValueError("Frozen source checkpoint digest differs")
     repository = Path(__file__).resolve().parents[2]
+    # Campaign notebooks intentionally shallow-clone the current branch. The
+    # unrelated archived model commit must be fetched explicitly; HEAD stays
+    # pinned to the experiment source throughout.
+    subprocess.check_call(["git", "-C", str(repository), "fetch", "--quiet", "--depth", "1", "origin", LEGACY_SHA])
+    resolved = subprocess.check_output(["git", "-C", str(repository), "rev-parse", LEGACY_SHA+"^{commit}"], text=True).strip()
+    if resolved != LEGACY_SHA:
+        raise ValueError("Archived model source identity differs")
     source = subprocess.check_output(["git", "-C", str(repository), "show",
         LEGACY_SHA+":eog_vmd_fcm_bgru/snr_student.py"])
     path = output / "archived_snr_student.py"

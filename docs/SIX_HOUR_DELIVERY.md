@@ -14,7 +14,8 @@ the already archived unknown-montage Klados cache and cannot establish anatomy.
 - [x] Launch full 320-example frontal retry; native pilot follows on completion.
 - [x] Inspect archived 17.9272 dB recipe and previous replay failure.
 - [ ] Resolve archived raw/clean/EOG cache versus current-source mismatch.
-- [ ] Reproduce frozen K3/2000 + EOGContextGainStudent + hard support gate.
+- [x] Reproduce frozen K3/2000 + EOGContextGainStudent + hard support gate on
+      the explicitly declared archived cache: 17.927210 dB, no retraining.
 - [ ] Test a bounded development-only hybrid extension with separate blink/lateral
       evidence and calibration-anchored selective correction; keep K3/2000 fixed.
 - [ ] Reuse versioned posterior candidates with disjoint regional correction after
@@ -57,3 +58,12 @@ regression. Retain input means, residuals and clean controls. Posterior
 communication uses separately estimated frontal ocular activity; no posterior
 VMD. An extension is superior only if matched scores and preservation support
 that claim. New neural deployment remains a later qualification task.
+
+## Frontal gain transfer repair
+
+Standalone frontal transfer 001 passed all 112 numerical tests but failed source
+loading: its shallow current-branch clone omitted the unrelated legacy commit.
+Repair explicitly fetches that exact commit without changing experiment HEAD.
+The four-arm hybrid includes the frozen transfer control, so one repaired hybrid
+run replaces a redundant separate transfer retry. No thresholds or data checks
+are weakened. Existing failures and their output manifests remain preserved.
