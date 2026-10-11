@@ -216,3 +216,9 @@ repaired pilot. Because a full screen saves score tables instead of every grid
 prediction, the inspection verifies all five paired metric vectors against
 archived selected-arm scores, including null/perfect-score statuses and source
 units. Pilot NPZ waveform parity remains an additional check when available.
+
+The native job verifies the full development SET/FDT ledger before choosing its
+two-record pilot. Reserved records are rejected before verification. Every trial
+retains all successful/failing window decisions plus the deterministic first
+window's frontal modes and residual, and the complete corrected waveform.
+These native outputs remain recoverable evidence even when an accuracy gate fails.

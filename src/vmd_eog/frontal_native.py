@@ -66,11 +66,15 @@ def run_native(input_root, output, config, profile):
                            config["required_supplement_sha256"])
     records = [json.loads(path.read_text()) for path in (parent / "calibration").glob("*/record.json")]
     records = sorted((record for record in records if record["dataset"] == "osf"), key=lambda row: row["record_id"])
-    if profile == "pilot":
-        records = records[:2]
     if not records:
         raise ValueError("No frozen development OSF records")
+    if any(record["partition"]["role"] != "development" for record in records):
+        raise ValueError("Reserved native source encountered before source verification")
+    # Verify the entire eligible development ledger before selecting the small
+    # waveform pilot; a missing later SET/FDT should fail before scored trials.
     verify_source_ledger(source, records, output)
+    if profile == "pilot":
+        records = records[:2]
     write_jsonl(output / "native_frontal_sources.jsonl", records)
     atomic_json(output / "native_frontal_recipe_identity.json", {
         "parent_manifest_sha256": sha256_file(experiment / "artifact_manifest.json"),
@@ -79,6 +83,10 @@ def run_native(input_root, output, config, profile):
     save_protocol(output)
     predictions = output / "native_frontal_predictions"
     predictions.mkdir()
+    decision_directory = output / "native_frontal_decisions"
+    decision_directory.mkdir()
+    mode_directory = output / "native_frontal_mode_examples"
+    mode_directory.mkdir()
     metrics, spectra, preservation, failures = [], [], [], []
     trial_count, started = 0, time.perf_counter()
     for record in records:
@@ -118,6 +126,7 @@ def run_native(input_root, output, config, profile):
             if eval_refs.shape[-1] != eeg.shape[-1]:
                 raise ValueError("Native reference alignment differs")
             window_count = 0
+            trial_decisions = []
 
             def estimate(window_eeg, window_refs):
                 nonlocal window_count
@@ -128,12 +137,25 @@ def run_native(input_root, output, config, profile):
                             if corrector.spec["family"] not in ("identity", "direct")}
                 bundles = {K: decompose_frontal(window_eeg, names, regions, FixedRecipe(K), config, mask)
                            for K in required}
+                # Retain a deterministic first-window mode example per trial,
+                # and successful decisions for every window. No favorable
+                # window is selected after examining its output.
+                if window_count == 1 and bundles:
+                    vectors = {"original": window_eeg[ids], "references": window_refs,
+                               "channel_names": names[ids]}
+                    for K, bundle in bundles.items():
+                        vectors[f"K{K}_modes"] = np.stack([bundle[int(index)][0] for index in ids])
+                        vectors[f"K{K}_residual"] = np.stack([bundle[int(index)][1] for index in ids])
+                    np.savez_compressed(mode_directory / f"{record['record_id']}-trial-{trial_id:04d}.npz", **vectors)
                 artifacts = {}
                 for family, corrector in estimators.items():
                     _, artifact, diagnostic = corrector.denoise(window_eeg, window_refs,
                         calibration["references"], names, regions, mask,
                         mode_bundles=bundles.get(corrector.spec.get("K")), calibration_eeg=calibration["eeg"])
                     artifacts[family] = artifact
+                    trial_decisions.append({"record_id": record["record_id"], "trial": trial_id,
+                        "window": window_count, "method": family, "decisions": diagnostic,
+                        "inference_target_access": False})
                     for detail in diagnostic:
                         if detail.get("failure"):
                             failures.append({"record_id": record["record_id"], "trial": trial_id,
@@ -163,6 +185,7 @@ def run_native(input_root, output, config, profile):
             np.savez_compressed(predictions / f"{record['record_id']}-trial-{trial_id:04d}.npz",
                 original=eeg, evaluation_references=eval_refs, inference_references=refs,
                 channel_names=names, regions=regions, **cleaned)
+            write_jsonl(decision_directory / f"{record['record_id']}-trial-{trial_id:04d}.jsonl", trial_decisions)
             trial_count += 1
             print("FRONTAL_NATIVE_TRIAL", record["record_id"], trial_id, condition, window_count, flush=True)
         for (condition, family), summary in moments.items():
@@ -199,5 +222,7 @@ def run_native(input_root, output, config, profile):
         "scope": "verified_frontal_only", "nonfrontal_changed": False,
         "reserved_confirmation_opened": False, "native_reconstruction_snr_claim": False,
         "trial_join_filtering": False, "native_parameter_retuning": False,
+        "mode_examples": "first window per trial; not selected by favorable output",
+        "successful_decisions_saved": True,
         "scientific_accuracy_qualified": False, "teacher_qualified": False,
         "paper_four_region_replication": False, "regional_integration_authorized": False})
