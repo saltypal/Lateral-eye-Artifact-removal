@@ -70,7 +70,8 @@ transition into posterior or neural work bypasses scientific checkpoints.
 - [x] Inspect author code and record reproduction gaps and reference access.
 - [x] Author fixed-frontal modules, anatomy guards and explicit adapters.
 - [x] Author numerical tests, config and Kaggle notebooks.
-- [ ] Pass numerical checks on Kaggle and inspect saved fixture evidence.
+- [x] Initial Kaggle numerical checks: frontal-fixture-001, 99 passed at e8bd484.
+- [ ] Validate the whole-montage interface and expanded checks on Kaggle.
 - [ ] Complete pilot; inspect waveforms and recovery/clean modification.
 - [ ] Complete full source-excluded frontal comparison and uncertainty.
 - [ ] Native OSF whole-trial frontal suppression/rest preservation.
@@ -84,3 +85,12 @@ transition into posterior or neural work bypasses scientific checkpoints.
 - [ ] Final report: K/alpha, mode vectors/bins, preserved EEG, SNR and limitations.
 
 The ledger describes implementation and checkpoints, not measured success.
+
+## Verified evidence
+
+`frontal-fixture-001` (Kaggle `vmd-frontal-contracts`, version 1) completed at
+`e8bd4848b462f03222ceac8ca9077bf9ca2feb40`. Retrieved tests report 99 passed,
+14 warnings. The synthetic fixture verifies F3-only decomposition, residual
+reconstruction and closed confirmation sources. It does not establish measured
+ocular cleaning accuracy. The next fixture checks the whole-montage interface
+before launching the fixed-recipe pilot.

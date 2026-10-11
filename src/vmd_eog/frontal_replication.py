@@ -96,6 +96,54 @@ def fit_detectors(parent, rows, config):
     return detectors, evidence
 
 
+def uncertainty_report(oof, output, config, repetitions=2000):
+    """Paired recipient/donor multiplier bootstrap; project statistical analysis.
+
+    Source means are condition/input balanced first. Independent Poisson(1)
+    recipient and donor weights acknowledge both reused source populations;
+    this is an explicitly labelled approximation, not a paper-native test.
+    """
+    dirty = oof[oof.condition != "clean"]
+    columns = ["example_id", "channel", "snr_energy_db"]
+    comparator = dirty[dirty.evaluated_family == "direct"][columns]
+    comparator = comparator.rename(columns={"snr_energy_db": "comparator_snr"})
+    paired_scores = dirty.merge(comparator, on=["example_id", "channel"], validate="many_to_one")
+    paired_scores["snr_delta"] = paired_scores.snr_energy_db - paired_scores.comparator_snr
+    units = paired_scores.groupby(["evaluated_family", "recipient", "donor", "condition", "input_snr_db"])[
+        ["snr_energy_db", "snr_delta"]].mean().reset_index()
+    recipients, donors = sorted(units.recipient.unique()), sorted(units.donor.unique())
+    recipient_map = {value: index for index, value in enumerate(recipients)}
+    donor_map = {value: index for index, value in enumerate(donors)}
+    generator = np.random.default_rng(config["seed"])
+    recipient_weights = generator.poisson(1., size=(repetitions, len(recipients)))
+    donor_weights = generator.poisson(1., size=(repetitions, len(donors)))
+    reports = []
+    for family, group in units.groupby("evaluated_family"):
+        rindex = np.asarray([recipient_map[value] for value in group.recipient])
+        dindex = np.asarray([donor_map[value] for value in group.donor])
+        weights = recipient_weights[:, rindex] * donor_weights[:, dindex]
+        # Each recipient contributes equal weight even if its eligible source
+        # combinations differ. Missing bootstrap mass remains an invalid draw.
+        counts = group.groupby("recipient").size()
+        weights = weights / np.asarray([counts[value] for value in group.recipient])[None]
+        mass = weights.sum(axis=1)
+        usable = mass > 0
+        for metric in ("snr_energy_db", "snr_delta"):
+            values = group[metric].to_numpy()
+            if not np.isfinite(values).all():
+                reports.append({"family": family, "metric": metric, "status": "undefined metric coverage"})
+                continue
+            boot = (weights[usable] @ values) / mass[usable]
+            point = float(group.groupby("recipient")[metric].mean().mean())
+            reports.append({"family": family, "metric": metric, "mean": point,
+                "ci95_lower": float(np.quantile(boot, .025)), "ci95_upper": float(np.quantile(boot, .975)),
+                "valid_draws": int(usable.sum()), "requested_draws": repetitions,
+                "recipients": len(recipients), "donors": len(donors),
+                "method": "recipient/donor Poisson multiplier percentile interval; project approximation",
+                "scope": "development family-wise OOF; no final winner qualification"})
+    atomic_json(output / "frontal_uncertainty.json", reports)
+
+
 class ArchivedModes:
     """Read only two checksum-verified settings from previously completed caches."""
     def __init__(self, input_root, corpus, config):
@@ -193,6 +241,10 @@ def summary(scores, specs, limits):
     table = []
     for key, group in scores.groupby("candidate_hash"):
         dirty, clean = group[group.condition != "clean"], group[group.condition == "clean"]
+        accuracy_columns = ["snr_energy_db", "rrmse_time", "pearson_cc", "mse", "snr_improvement_db"]
+        preservation_columns = ["clean_change", "alpha_db", "beta_db", "covariance_error"]
+        complete_accuracy = bool(len(dirty) and np.isfinite(dirty[accuracy_columns].to_numpy()).all())
+        complete_preservation = bool(len(clean) and np.isfinite(clean[preservation_columns].to_numpy()).all())
         balanced = dirty.groupby(["recipient", "condition", "input_snr_db"])[
             ["snr_energy_db", "rrmse_time", "pearson_cc", "mse", "snr_improvement_db"]].mean().groupby("recipient").mean()
         clean_balanced = clean.groupby("recipient")[["clean_change", "alpha_db", "beta_db", "covariance_error"]].mean()
@@ -202,7 +254,10 @@ def summary(scores, specs, limits):
                  "covariance": bool(len(clean_balanced) and clean_balanced.covariance_error.max() <= limits["covariance"])}
         table.append({"candidate_hash": key, **specs[key], **balanced.mean().to_dict(),
             "worst_recipient_clean_change": float(clean_balanced.clean_change.max()),
-            "partial_preservation_pass": all(gates.values()), "recipients": len(balanced),
+            "partial_preservation_pass": complete_preservation and all(gates.values()),
+            "selection_eligible": complete_accuracy and complete_preservation and all(gates.values()),
+            "accuracy_coverage_complete": complete_accuracy,
+            "preservation_coverage_complete": complete_preservation, "recipients": len(balanced),
             "failed_channel_examples": int(group.failure.notna().sum()),
             **{"gate_" + name: value for name, value in gates.items()}})
     return pd.DataFrame(table)
@@ -218,7 +273,7 @@ def grouped_selection(scores, specs, output, config):
                 raise ValueError("Frontal grouped selection leaks " + name)
         train_summary = summary(train, specs, config["preservation"])
         for family in sorted(set(train_summary.family)):
-            feasible = train_summary[(train_summary.family == family) & train_summary.partial_preservation_pass]
+            feasible = train_summary[(train_summary.family == family) & train_summary.selection_eligible]
             key = identity if feasible.empty else feasible.sort_values(
                 ["snr_energy_db", "candidate_hash"], ascending=[False, True]).iloc[0].candidate_hash
             evaluated = heldout[heldout.candidate_hash == key].copy()
@@ -275,6 +330,11 @@ def run_comparison(input_root, output, config, profile, experiment):
     cache = ArchivedModes(input_root, parent, config)
     detectors, detector_evidence = fit_detectors(parent, rows, config)
     write_jsonl(output / "frontal_detector_folds.jsonl", detector_evidence)
+    import joblib
+    detector_dir = output / "detectors"
+    detector_dir.mkdir(exist_ok=True)
+    for fold, detector in detectors.items():
+        joblib.dump(detector, detector_dir / f"fold-{fold}.joblib")
     shards = output / "frontal_shards"
     shards.mkdir(exist_ok=True)
     all_scores, failures, diagnostics = [], [], []
@@ -386,6 +446,7 @@ def run_comparison(input_root, output, config, profile, experiment):
     search = summary(scores, specs, config["preservation"])
     search.to_csv(output / "frontal_search.csv", index=False)
     oof = grouped_selection(scores, specs, output, config)
+    uncertainty_report(oof, output, config)
     write_jsonl(output / "frontal_component_diagnostics.jsonl", diagnostics)
     mode_records = []
     for row in rows:

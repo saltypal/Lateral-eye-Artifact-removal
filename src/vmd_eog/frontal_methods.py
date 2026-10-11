@@ -184,3 +184,74 @@ def author_selector_adaptation(sources, reference):
     selected = entropy + association > .3
     return selected, {"fuzzy_entropy": entropy.tolist(), "absolute_cc": association.tolist(),
                       "selection_threshold": .3, "exact_author_parity": False}
+
+
+class FrontalCorrector:
+    """Whole-montage research interface; nonfrontal rows remain exactly original.
+
+    Inputs are EEG [C,T], named HEOG/VEOG [2,T], unscored reference calibration
+    and verified channel metadata. No paired clean target is accepted.
+    A fitted SVM is required only for the separately labelled SVM adaptation.
+    """
+    def __init__(self, spec, config, detector=None):
+        self.spec = dict(spec)
+        self.config = config
+        self.detector = detector
+        self.last_diagnostics = []
+
+    def denoise(self, eeg, references, calibration_references, channel_names, regions, mask=None):
+        original = np.asarray(eeg, dtype=float)
+        references = np.asarray(references, dtype=float)
+        indices = frontal_indices(original, channel_names, regions, mask)
+        if references.shape != (2, original.shape[-1]) or not np.isfinite(references).all():
+            raise ValueError("Aligned finite named HEOG/VEOG references required")
+        family = self.spec["family"]
+        if family == "svm_sobi_apen_fixed_adaptation" and self.detector is None:
+            raise ValueError("SVM adaptation needs its source-excluded fitted detector")
+        artifact = np.zeros_like(original)
+        self.last_diagnostics = []
+        if family == "identity" or not len(indices):
+            return original.copy(), artifact, self.last_diagnostics
+        bundles = None
+        if family != "direct":
+            recipe = FixedRecipe(self.spec["K"], self.spec["alpha"], self.config["fs"])
+            bundles = decompose_frontal(original, channel_names, regions, recipe, self.config, mask)
+        for index in indices:
+            association = float(np.max(np.abs(correlations(original[index], references, 20))))
+            if family == "svm_sobi_apen_fixed_adaptation":
+                from .frontal_replication import detector_features
+                trigger = bool(self.detector.predict(detector_features(original[index], self.config["fs"])[None])[0])
+            else:
+                trigger = association >= self.spec["trigger"]
+            detail = {"channel": str(channel_names[index]), "triggered": trigger,
+                      "scope": "verified_frontal_only", "inference_target_access": False}
+            try:
+                if trigger and family == "direct":
+                    artifact[index] = self.spec["strength"] * project(original[index], references,
+                        self.spec["lags"], self.spec["penalty"])[0][0]
+                elif trigger:
+                    modes, residual, info = bundles[int(index)]
+                    detail.update(info)
+                    if info.get("failure") or info.get("hit_iteration_limit"):
+                        raise RuntimeError(info.get("failure") or "VMD iteration limit")
+                    components, mixing = modes, None
+                    if "sobi" in family or family == "author2022_selector_adaptation":
+                        expert = prepare_sobi(modes, self.spec.get("sobi_bank", 0))
+                        components, mixing = expert.sources, expert.mixing
+                    if family == "author2022_selector_adaptation":
+                        selected_h, evidence_h = author_selector_adaptation(components, references[0])
+                        selected_v, evidence_v = author_selector_adaptation(components, references[1])
+                        selected = selected_h | selected_v
+                        artifact[index] = self.spec["strength"] * (mixing[:, selected] @ components[selected]).sum(0)
+                        detail.update(HEOG=evidence_h, VEOG=evidence_v)
+                    else:
+                        artifact[index], selection = estimate_components(components, references,
+                            self.spec, calibration_references, mixing=mixing, fs=self.config["fs"])
+                        detail.update(selection)
+                if not np.isfinite(artifact[index]).all():
+                    raise FloatingPointError("Nonfinite frontal artifact estimate")
+            except (ValueError, RuntimeError, FloatingPointError, np.linalg.LinAlgError) as error:
+                artifact[index] = 0
+                detail.update(failure=str(error), status="scored_passthrough")
+            self.last_diagnostics.append(detail)
+        return original - artifact, artifact, self.last_diagnostics

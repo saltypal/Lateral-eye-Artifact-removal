@@ -4,12 +4,13 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 import pytest
 
 from vmd_eog.frontal_campaign import validate_policy
 from vmd_eog.frontal_methods import (frontal_indices, fuzzy_entropy,
-    estimate_components, reference_intervals)
-from vmd_eog.frontal_replication import candidates, fit_detectors
+    estimate_components, reference_intervals, FrontalCorrector)
+from vmd_eog.frontal_replication import candidates, fit_detectors, summary
 
 
 def configuration():
@@ -98,6 +99,34 @@ def test_fixed_candidate_bank_has_no_all_channel_or_adaptive_vmd():
     assert {spec["alpha"] for spec in specs.values()} == {None, 2000}
     svm = [spec for spec in specs.values() if spec["family"] == "svm_sobi_apen_fixed_adaptation"]
     assert len(svm) == 1 and svm[0]["K"] == 3
+
+
+def test_whole_montage_interface_changes_frontal_only_and_has_no_target_argument():
+    times = np.arange(1024)/200
+    references = np.stack([np.sin(2*np.pi*2*times), np.cos(2*np.pi*3*times)])
+    brain = np.sin(2*np.pi*12*times)
+    original = np.stack([brain+2*references[0], brain+references[1], brain])
+    spec = dict(family="direct", trigger=.4, lags=[0], penalty=.01, strength=1.)
+    corrector = FrontalCorrector(spec, configuration())
+    cleaned, artifact, diagnostics = corrector.denoise(original, references, references,
+        ["F3", "P3", "E1"], [0, 1, 3])
+    np.testing.assert_array_equal(cleaned[1:], original[1:])
+    np.testing.assert_array_equal(artifact[1:], np.zeros_like(original[1:]))
+    assert np.linalg.norm(cleaned[0]-brain) < np.linalg.norm(original[0]-brain)*.1
+    assert len(diagnostics) == 1 and diagnostics[0]["channel"] == "F3"
+
+
+def test_undefined_accuracy_cannot_win_selection_by_silent_mean_exclusion():
+    common = dict(candidate_hash="a", recipient="r1", input_snr_db=0.,
+        snr_energy_db=12., rrmse_time=.1, pearson_cc=.9, mse=.01,
+        snr_improvement_db=12., failure=None, clean_change=0., alpha_db=0.,
+        beta_db=0., covariance_error=0.)
+    rows = [dict(common, condition="blink"), dict(common, condition="blink", mse=np.nan),
+            dict(common, condition="clean", input_snr_db=np.nan)]
+    report = summary(pd.DataFrame(rows), {"a": dict(family="direct")}, configuration()["preservation"])
+    assert report.iloc[0].partial_preservation_pass
+    assert not report.iloc[0].accuracy_coverage_complete
+    assert not report.iloc[0].selection_eligible
 
 
 def test_detector_refuses_donor_crossfold_leakage(tmp_path):
