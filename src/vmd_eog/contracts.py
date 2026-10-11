@@ -20,6 +20,9 @@ def require_kaggle():
 
 
 def require_approval(stage, input_root, config):
+    if config.get("schema_version") == 3:
+        from .frontal_campaign import require_checkpoint
+        return require_checkpoint(stage, input_root, config)
     if config.get("schema_version") == 2:
         if config.get("model_authorization") != "Parallel paired learning after verified research readiness":
             raise RuntimeError("New campaign authorization is absent")

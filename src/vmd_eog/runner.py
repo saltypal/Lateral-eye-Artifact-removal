@@ -16,6 +16,9 @@ from .artifacts import record_parent_identities
 
 def dispatch_stage(stage, input_root, output, config, profile, experiment):
     """Route implemented schema-2 stages through their campaign dispatcher."""
+    if config.get("schema_version") == 3:
+        from .frontal_campaign import execute as frontal_execute
+        return frontal_execute(stage, input_root, output, config, profile, experiment or {})
     from . import campaign, neural_campaign
     if config.get("schema_version") == 2 and stage in neural_campaign.IMPLEMENTED_STAGES:
         neural_campaign.execute(stage, input_root, output, config, profile, experiment or {})

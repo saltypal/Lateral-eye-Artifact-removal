@@ -59,6 +59,10 @@ def submit(args):
     stage.mkdir(parents=True,exist_ok=False)
     config_path = getattr(args,"config",None) or "configs/campaign.json"
     configuration = json.loads((ROOT/config_path).read_text())
+    if configuration.get("schema_version") == 3:
+        sys.path.insert(0, str(ROOT / "src"))
+        from vmd_eog.frontal_campaign import validate_policy
+        validate_policy(configuration, args.stage)
     experiment_path = getattr(args,"experiment_spec",None)
     experiment = json.loads(Path(experiment_path).read_text()) if experiment_path else {}
     spec = {"run_id":run_id,"stage":args.stage,"git_sha":sha,"campaign_id":configuration["campaign_id"],
@@ -68,7 +72,7 @@ def submit(args):
             "kernel_sources":args.kernel_source or [],"dataset_sources":args.dataset_source or []}
     if args.stage not in ("contracts",) and not spec["dataset_sources"]:
         spec["dataset_sources"] = [OWNER+"/lateral-eye-complete-dataset"]
-    prefix = "vmd-band-" if configuration.get("schema_version") == 2 else "vmd-eog-"
+    prefix = {2: "vmd-band-", 3: "vmd-frontal-"}.get(configuration.get("schema_version"), "vmd-eog-")
     slug = getattr(args,"kernel_slug",None) or prefix+args.stage
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,49}",slug):
         raise ValueError("Invalid Kaggle kernel slug")

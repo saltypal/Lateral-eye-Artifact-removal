@@ -47,6 +47,8 @@ DETAILS = {
 
 
 NEW_STAGES = [
+    ("24_Frontal_Contracts", "frontal-fixture", "Validate fixed-recipe frontal masks, reconstruction and reference boundaries."),
+    ("25_Frontal_Replication_Comparison", "frontal-comparison", "Compare fixed frontal VMD corrections and declared paper adaptations without AutoVMD."),
     ("22_Posterior_Context", "posterior-context", "Matched ICA and GEVD-MWF posterior experts with raw and signed frontal support."),
     ("21_Neural_Preservation_Diagnosis", "neural-diagnosis", "Audit exact clean targets and saved neural distortion before expanding training."),
     ("14_Research_Readiness", "research-ready", "Verify restored OSF sources and all frozen development pairs."),
@@ -57,6 +59,8 @@ NEW_STAGES = [
     ("19_Paired_Deployment_Student", "student-paired", "Paired-only TCN-BiGRU deployment baseline.")
 ]
 DETAILS.update({
+    "frontal-fixture": "Synthetic software checkpoint for configs/frontal_replication.json. Numerical tests run on Kaggle. Only verified F/AF/FP channels may enter VMD. K3/alpha2000 and the fixed K4/alpha2000 comparator are permitted; AutoVMD and model stages are blocked. Check reconstruction, signed HEOG/VEOG selection, reference-event calibration, unit behavior and channel/mode permutations. No synthetic test authorizes accuracy, posterior integration or neural training.",
+    "frontal-comparison": "Attach exact corpus/2, readiness/1, frontal fixture and completed K3/K4 cache versions. Import only checksum-verified fixed alpha2000 entries; do not rerun a search. All verified frontal channels are scored; posterior/shared/unknown remain untouched. Compare identity, direct regression, whole-mode, projected-mode, interval-projected and SOBI correction plus explicitly labelled 2022 selector and 2024 SVM/ApEn adaptations. The author repository lacks entropy/evaluation helpers; custom VMD initialization differs, so no author-code parity is claimed. SVM receives EEG only and fits outside heldout recipient/donor sources. It uses a declared feature subset, RBF C=1/gamma=scale, 5.12-second windows, no mRMR and no GA. References are unchanged HEOG/VEOG; target and true artifact never enter inference. Save per-channel predictions for the pilot, per-example score shards, full candidate grids, convergence failures, modes/frequency diagnostics and grouped family-wise selection. Pilot uses one recipient per source bucket; full uses the source-balanced 320-example development subset. Partial preservation and development SNR are not teacher qualification. See docs/FRONTAL_REPLICATION_PLAN.md and docs/FRONTAL_PAPER_AUDIT.md.",
     "posterior-context":"Attach pinned corpus and passing research-readiness artifacts. CPU-only classical experiment independent of the GPU frontal sweep. Compare ICA and regularized GEVD-MWF with posterior-only, common-average, signed left/right/midline/common/right-minus-left, raw frontal and full-montage support; correct posterior outputs only. Metadata determines stable support layouts; missing-context flags are saved. Both experts fit only unscored calibration, including trial-join protection for ICA reference association. Pilot: one recipient per frozen fold, clean plus 0 dB blink/lateral/mixed; MWF ranks 1/2, both declared lag banks, thresholds .4/.6 and strengths .5/1. Full: all eligible recipients, -5/0/5 dB, ranks 1..4 and all declared thresholds/strengths. Save complete per-channel paper MSE/temporal RRMSE/Pearson/output-SNR/improvement, per-example shards, convergence failures and source-excluded recipe selection. Identity and fixed .01-ridge EOG regression controls share the original input. Calibration/scoring layouts and donor/recipient disjointness are enforced. Signed virtual channels are redundant; rank/regularization effects are disclosed. Partial preservation screening does not qualify a teacher; paired-correlation comparator and native OSF validation remain separate. Read docs/POSTERIOR_CONTEXT_PLAN.md.",
     "neural-diagnosis":"Attach readiness, corpus and the completed MSE pilot outputs. Verify actual clean arrays equal their paired targets with zero added artifact, mixture closure, saved prediction identities and complete validation coverage. Compare against the exact identity control and save projection gains and correction errors. This diagnoses data and predictions; it cannot establish that a proposed loss fixes preservation.",
     "research-ready":"Attach the pinned corpus and original/restored source bundles. Verify all development source paths before trial processing, reproduce the restored study04 session and validate every paired example and source bucket. A passing readiness artifact permits paired neural research; it does not assert scientific accuracy or teacher qualification.",
@@ -146,6 +150,12 @@ for name in ('posterior_context_search.csv','posterior_context_oof_scores.csv'):
         print(name, '(first 8 rows; complete paper metrics and failure records saved)')
         with path.open() as handle:
             display(list(islice(csv.DictReader(handle),8)))
+for name in ('frontal_search.csv','frontal_oof_means.csv','frontal_oof_recipients.csv'):
+    path = OUT/name
+    if path.exists():
+        print(name, '(first 12 rows; complete table saved)')
+        with path.open() as handle:
+            display(list(islice(csv.DictReader(handle),12)))
 for name in ('selected_frontal.json','selected_posterior.json','classical_gate.json','paper_evaluation_protocol.json','paper_metric_fixture_summary.json'):
     if (OUT/name).exists():
         print(name, (OUT/name).read_text()[:8000])

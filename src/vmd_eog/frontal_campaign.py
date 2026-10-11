@@ -1,0 +1,56 @@
+"""Policy for the fixed-recipe, frontal-only campaign; no numerical imports."""
+import json
+from pathlib import Path
+
+from .artifacts import verify_parent
+from .contracts import canonical_hash
+
+
+STAGES = ("frontal-fixture", "frontal-comparison")
+FIXED_SETTINGS = ((3, 2000), (4, 2000))
+
+
+def validate_policy(config, stage):
+    if config.get("schema_version") != 3:
+        raise ValueError("Frontal campaign requires schema 3")
+    if config.get("scope") != "verified_frontal_only":
+        raise ValueError("VMD scope must be verified frontal only")
+    if config.get("autovmd_enabled") is not False:
+        raise ValueError("AutoVMD is stopped in this campaign")
+    if stage not in STAGES:
+        raise RuntimeError("Stage is outside the implemented frontal-first checkpoint: " + stage)
+    settings = tuple((row["K"], row["alpha"]) for row in config["fixed_recipes"])
+    if settings != FIXED_SETTINGS:
+        raise ValueError("Only the two approved fixed recipes are permitted")
+    if config.get("reserved_access") != "closed until verified freeze":
+        raise ValueError("Reserved sources must remain closed")
+    if config.get("model_authorization") != "After validated frontal and regional classical evidence":
+        raise ValueError("Classical-first sequencing differs from authorization")
+
+
+def require_checkpoint(stage, input_root, config):
+    validate_policy(config, stage)
+    if stage == "frontal-fixture":
+        return
+    readiness = list(Path(input_root).rglob("research_ready.json"))
+    fixtures = list(Path(input_root).rglob("frontal_fixture_summary.json"))
+    if len(readiness) != 1 or len(fixtures) != 1:
+        raise RuntimeError("Need exactly one readiness and one frontal fixture parent")
+    verify_parent(readiness[0].parent, ("research_ready.json",))
+    ready = json.loads(readiness[0].read_text())
+    if ready.get("passed") is not True or ready.get("reserved_confirmation_opened") is not False:
+        raise RuntimeError("Imported readiness has not passed with confirmation closed")
+    if ready.get("target_definition") != config["target_definition"]:
+        raise RuntimeError("Readiness target definition differs")
+    verify_parent(fixtures[0].parent, ("frontal_fixture_summary.json",))
+    fixture = json.loads(fixtures[0].read_text())
+    if fixture.get("passed") is not True or fixture.get("configuration_hash") != canonical_hash(config):
+        raise RuntimeError("Frontal numerical checkpoint differs or failed")
+
+
+def execute(stage, input_root, output, config, profile, experiment):
+    validate_policy(config, stage)
+    from .frontal_replication import run_fixture, run_comparison
+    if stage == "frontal-fixture":
+        return run_fixture(output, config)
+    return run_comparison(input_root, output, config, profile, experiment or {})
