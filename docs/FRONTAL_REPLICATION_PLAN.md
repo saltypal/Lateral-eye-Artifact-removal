@@ -78,7 +78,8 @@ transition into posterior or neural work bypasses scientific checkpoints.
 - [x] Author numerical tests, config and Kaggle notebooks.
 - [x] Initial Kaggle numerical checks: frontal-fixture-001, 99 passed at e8bd484.
 - [x] Kaggle whole-montage checks: frontal-fixture-002, 101 passed at 9419b73.
-- [ ] Validate native interfaces and calibration-unit checks on Kaggle.
+- [x] Native interfaces/unit checks: frontal-fixture-003, 104 passed at ef4a4c8.
+- [ ] Validate separate fixed arms and nonleaking fixed-SVM evaluation on Kaggle.
 - [ ] Complete pilot; inspect waveforms and recovery/clean modification.
 - [ ] Complete full source-excluded frontal comparison and uncertainty.
 - [ ] Native OSF whole-trial frontal suppression/rest preservation.
@@ -114,3 +115,10 @@ Native implementation is authored in `frontal_native.py`, notebook 26. It
 requires a completed **full** frontal comparison, the original bundle and the
 checksum-pinned restoration version. It reuses family-wise fold recipes without
 native retuning; source-excluded calibrated SVM checkpoints are mandatory.
+
+`frontal-fixture-003` (contracts version 3) completed at
+`ef4a4c873fad5a88f0ea2de0cf10061ec8c6b0b0` with 104 passing tests and 14 warnings.
+That verifies unit-invariant detector features, native donor exclusion and cache
+scope guards. A later commit additionally separates K arms and removes any SVM
+fallback decision from crossfit predictions; its regression check runs in the
+next pilot. These checks are software evidence, not native waveform results.

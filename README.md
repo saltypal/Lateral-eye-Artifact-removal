@@ -1,5 +1,38 @@
 # Regional VMD EOG removal
 
+## Active workflow: fixed frontal VMD replication
+
+Campaign `vmd-frontal-replication-20261011` uses
+`configs/frontal_replication.json`. **AutoVMD is stopped.** The cancelled search,
+caches and older workflows remain historical evidence. Do not restart their
+search/screening queues. K3/alpha2000 and K4/alpha2000 are separate fixed arms;
+correction settings can be selected within an arm, but K is not auto-selected.
+
+Only verified frontal channels receive VMD. Posterior/shared/unknown EEG stays
+unchanged until a validated frontal system is integrated with the other chat's
+versioned posterior experts. Reproduction gaps and adaptations are explicit in
+`docs/FRONTAL_PAPER_AUDIT.md`; execution and the target checklist are in
+`docs/FRONTAL_REPLICATION_PLAN.md`.
+
+Notebooks 24/25/26 execute numerical contracts, frontal comparisons and native
+OSF validation. Reusable implementation is in `frontal_methods.py`,
+`frontal_replication.py` and `frontal_native.py`. The sequence is frontal
+validation, regional integration, then EEG-only students. Neither software tests
+nor the historical EOG-assisted 17.9 dB result qualifies the new system.
+
+From this directory:
+
+```powershell
+python tools/kaggle_campaign.py status --run-id frontal-pilot-001
+python tools/kaggle_campaign.py retrieve --run-id frontal-pilot-001
+```
+
+## Historical workflows
+
+The commands and original campaign notes below document earlier work. Active
+launches use the frontal configuration and the exact parent versions recorded
+in their run specifications.
+
 Kaggle notebooks execute and explain the classical research stages. Reusable
 algorithms live in `src/vmd_eog`. Git branch
 `research/vmd-eog-removal-notebooks` is the source of truth. Each fresh launch
