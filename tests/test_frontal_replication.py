@@ -103,6 +103,9 @@ def test_fixed_candidate_bank_has_no_all_channel_or_adaptive_vmd():
     for spec in specs.values():
         if spec["K"] is not None:
             assert spec["comparison_arm"].endswith(f"_K{spec['K']}")
+    projected = [spec for spec in specs.values() if spec["family"] == "vmd_projected"]
+    assert {tuple(spec["lags"]) for spec in projected} == {(0,), (-10,0,10), (-20,-10,0,10,20)}
+    assert {spec["penalty"] for spec in projected} == {.001,.01,.1}
 
 
 def test_whole_montage_interface_changes_frontal_only_and_has_no_target_argument():

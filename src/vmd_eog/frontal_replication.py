@@ -241,6 +241,19 @@ def candidates(config, profile):
             result.append({"family": family, "kind": "apen_whole", "K": K, "alpha": 2000,
                 "trigger": .4, "component_threshold": .4, "strength": 1.,
                 "lags": [0], "penalty": .01, "sobi_bank": 0})
+    if profile != "pilot":
+        # Bounded lag/ridge ablation, not a Cartesian multiplication of every
+        # threshold/strength setting. Lateral mixtures contain lagged fields;
+        # leaving every mode arm instantaneous would handicap the comparison.
+        for K, (family, kind), bank, penalty in itertools.product((3, 4),
+                (("vmd_whole", "whole"), ("vmd_projected", "projected"),
+                 ("vmd_interval", "interval_projected"), ("sobi_projected", "projected")),
+                grid["lag_banks"], grid["ridge_penalties"]):
+            if kind == "whole":
+                continue
+            result.append({"family": family, "kind": kind, "K": K, "alpha": 2000,
+                "trigger": .4, "component_threshold": .2, "strength": 1.,
+                "lags": bank, "penalty": penalty, "sobi_bank": 0})
     for spec in result:
         spec["comparison_arm"] = (spec["family"] if spec["K"] is None else
                                   f"{spec['family']}_K{spec['K']}")
@@ -422,7 +435,8 @@ def run_comparison(input_root, output, config, profile, experiment):
                                 "adaptations": ["joint observed HEOG/VEOG", "outer EOG gate", "independent SOBI and entropy", "fixed project recipe"]})
                         artifacts[local] = state["estimates"][estimate_key]
                     else:
-                        estimate_key = (spec["K"], family, spec["component_threshold"])
+                        estimate_key = (spec["K"], family, spec["component_threshold"],
+                                        tuple(spec["lags"]), spec["penalty"])
                         if estimate_key not in state["estimates"]:
                             unit_strength = {**spec, "strength": 1.}
                             estimate, detail = estimate_components(components, references, unit_strength,

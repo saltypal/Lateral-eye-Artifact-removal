@@ -41,6 +41,12 @@ coefficient fitting. Event support uses unchanged HEOG/VEOG standardized by
 unscored calibration: 3 SD, 100-ms expanded support, tapered edges. These are
 declared project choices, not paper constants or native zero-correlation targets.
 
+The full follow-up adds a bounded lag/ridge ablation to the three projected
+mode families: trigger .4, component threshold .2, strength 1, all declared lag
+banks and ridge penalties. It does not multiply these settings across the full
+threshold/strength grid. Projection cache keys include lag and penalty so a
+different lag bank cannot accidentally reuse an instantaneous estimate.
+
 Partial selection screens clean modification, alpha/beta and covariance using
 training sources only. Family-wise heldout reports include CC deterioration
 against the independently selected direct comparator. SVM has one predeclared
@@ -80,7 +86,8 @@ transition into posterior or neural work bypasses scientific checkpoints.
 - [x] Kaggle whole-montage checks: frontal-fixture-002, 101 passed at 9419b73.
 - [x] Native interfaces/unit checks: frontal-fixture-003, 104 passed at ef4a4c8.
 - [ ] Validate separate fixed arms and nonleaking fixed-SVM evaluation on Kaggle.
-- [ ] Complete pilot; inspect waveforms and recovery/clean modification.
+- [x] First pilot completed: 20 examples/72 candidates, zero failure rows.
+- [ ] Complete calibrated-detector, separate-K follow-up and waveform inspection.
 - [ ] Complete full source-excluded frontal comparison and uncertainty.
 - [ ] Native OSF whole-trial frontal suppression/rest preservation.
 - [ ] Obtain full 2020 method; establish author parity where eligible.
@@ -122,3 +129,17 @@ That verifies unit-invariant detector features, native donor exclusion and cache
 scope guards. A later commit additionally separates K arms and removes any SVM
 fallback decision from crossfit predictions; its regression check runs in the
 next pilot. These checks are software evidence, not native waveform results.
+
+First-pilot source-balanced frontal output SNR: direct 12.6737 dB,
+selective VMD 12.2655 dB, projected SOBI 12.2389 dB. Whole-mode removal was
+1.9262 dB. This is five-recipient development evidence with provisional earlier
+selection, not confirmation accuracy. VMD has not shown benefit over regression;
+CC deterioration for projected VMD was .00572, above the .005 engineering limit.
+The nominal mixture is 0 dB across the montage; actual frontal identity SNR was
+-5.0547 dB. Lateral is weaker than blink/mixed. No target or preservation limit
+is relaxed. The second pilot remains separate and fixes units/selection logic.
+
+Notebook 27 provides saved mode vectors, residuals, HEOG/VEOG support, selected
+waveforms, reusable-interface parity and evaluation-only lag/energy-coverage
+diagnostics. Its diagnostic reference design follows the mixture construction
+and cannot substitute for native evidence.
