@@ -164,7 +164,7 @@ def step():
             if repair is None:
                 raise RuntimeError("Repaired full evaluation requires completed cache audit")
             submit(FULL_RUN, "frontal-evaluation", "vmd-frontal-full-evaluation",
-                   BASE + CACHES + [kernel_parent(run_id)], "full", run_id)
+                   BASE + CACHES + [kernel_parent(run_id), kernel_parent(repair_id)], "full", run_id)
             # A completed screen supports a stronger frozen-recipe mechanism
             # audit without waiting for a separately delayed smaller pilot.
             submit("frontal-evidence-001", "frontal-evidence", "vmd-frontal-result-inspection",

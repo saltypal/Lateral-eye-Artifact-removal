@@ -230,3 +230,14 @@ four mode-vector archives and plots were retrieved. The preselected lateral Fz
 example exposed 6.39% interval-energy coverage versus 94.74% for blink. Anchored
 lag correction improved that lateral diagnostic but ungated projection altered
 clean EEG; no new inference recipe or gate relaxation follows from this example.
+
+## Repair checkpoint — 11 October 2026
+
+Full version 001 failed at example 292 (291 saved) because float32 summation
+failed the unchanged reconstruction tolerance. Audit 001 verified 8,320 channel/
+recipe checks: one float32 failure, zero float64 failures, zero solver failures.
+Audit 002 exercises the actual repaired reader and regression tests before the
+queue can launch full version 002. Its exact completed notebook version is
+attached as a repair-evidence parent. Earlier failed outputs remain preserved.
+Run python tools/frontal_queue.py to monitor the repair/full/native chain;
+do not start a second copy while the PID in orchestration/queue.pid is active.
