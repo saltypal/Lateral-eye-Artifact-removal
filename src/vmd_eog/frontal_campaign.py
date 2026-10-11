@@ -6,7 +6,7 @@ from .artifacts import verify_parent
 from .contracts import canonical_hash
 
 
-STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration", "frontal-axis-calibration", "frontal-event-calibration", "frontal-native-events", "frontal-event-gain-calibration", "frontal-native-gain-events", "frontal-axis-events")
+STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration", "frontal-axis-calibration", "frontal-event-calibration", "frontal-native-events", "frontal-event-gain-calibration", "frontal-native-gain-events", "frontal-axis-events", "frontal-native-axis-events", "frontal-native-scaled-axis-events")
 FIXED_SETTINGS = ((3, 2000), (4, 2000))
 
 
@@ -49,10 +49,11 @@ def require_checkpoint(stage, input_root, config):
     if stage == "frontal-native":
         from .frontal_native import controlled_parent
         controlled_parent(input_root)
-    if stage in ("frontal-native-calibration", "frontal-native-events", "frontal-native-gain-events"):
+    if stage in ("frontal-native-calibration", "frontal-native-events", "frontal-native-gain-events", "frontal-native-axis-events", "frontal-native-scaled-axis-events"):
         from .frontal_native import calibration_parent
-        calibration_parent(input_root,event_hybrid=stage in ("frontal-native-events","frontal-native-gain-events"),
-            event_gain_scaled=stage == "frontal-native-gain-events")
+        calibration_parent(input_root,event_hybrid=stage in ("frontal-native-events","frontal-native-gain-events","frontal-native-axis-events","frontal-native-scaled-axis-events"),
+            event_gain_scaled=stage in ("frontal-native-gain-events","frontal-native-scaled-axis-events"),
+            monotonic_events=stage in ("frontal-native-axis-events","frontal-native-scaled-axis-events"))
     if stage == "frontal-evaluation":
         from .frontal_evaluation import selected_parent
         selected_parent(input_root)
@@ -79,12 +80,13 @@ def execute(stage, input_root, output, config, profile, experiment):
             event_hybrid=stage in ("frontal-event-calibration", "frontal-event-gain-calibration", "frontal-axis-events"),
             event_gain_scaled=stage in ("frontal-event-gain-calibration", "frontal-axis-events"),
             monotonic_events=stage == "frontal-axis-events")
-    if stage in ("frontal-native", "frontal-native-calibration", "frontal-native-events", "frontal-native-gain-events"):
+    if stage in ("frontal-native", "frontal-native-calibration", "frontal-native-events", "frontal-native-gain-events", "frontal-native-axis-events", "frontal-native-scaled-axis-events"):
         from .frontal_native import run_native
         return run_native(input_root, output, config, profile,
-            calibration_hybrid=stage in ("frontal-native-calibration", "frontal-native-events", "frontal-native-gain-events"),
-            event_hybrid=stage in ("frontal-native-events","frontal-native-gain-events"),
-            event_gain_scaled=stage == "frontal-native-gain-events")
+            calibration_hybrid=stage in ("frontal-native-calibration", "frontal-native-events", "frontal-native-gain-events", "frontal-native-axis-events", "frontal-native-scaled-axis-events"),
+            event_hybrid=stage in ("frontal-native-events","frontal-native-gain-events","frontal-native-axis-events","frontal-native-scaled-axis-events"),
+            event_gain_scaled=stage in ("frontal-native-gain-events","frontal-native-scaled-axis-events"),
+            monotonic_events=stage in ("frontal-native-axis-events","frontal-native-scaled-axis-events"))
     if stage == "frontal-evidence":
         from .frontal_evidence import run_evidence
         return run_evidence(input_root, output, config)

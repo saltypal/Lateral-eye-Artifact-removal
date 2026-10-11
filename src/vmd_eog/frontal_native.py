@@ -54,7 +54,7 @@ def validate_record_selection(record, evidence):
         raise ValueError("Native detector has no verified unit-invariant calibration normalization")
 
 
-def calibration_parent(input_root,event_hybrid=False,event_gain_scaled=False):
+def calibration_parent(input_root,event_hybrid=False,event_gain_scaled=False,monotonic_events=False):
     paths = list(Path(input_root).rglob("frontal_transfer_summary.json"))
     if len(paths) != 1:
         raise ValueError("Attach exactly one completed calibration hybrid parent")
@@ -65,6 +65,8 @@ def calibration_parent(input_root,event_hybrid=False,event_gain_scaled=False):
             summary.get("reserved_confirmation_opened") is not False or summary.get("autovmd_executed") is not False or
             summary.get("K") != 3 or summary.get("alpha") != 2000):
         raise ValueError("Calibration hybrid parent scope or recipe differs")
+    if monotonic_events and summary.get("monotonic_events") is not True:
+        raise ValueError("Monotonic native validation requires the matching detector parent")
     gates = {row["arm"]:row for row in json.loads((parent/"frontal_controlled_gates.json").read_text())}
     required_arms = ["calibration_raw_gain","K3_calibration_mode_gain"]
     if event_hybrid:
@@ -82,9 +84,9 @@ def calibration_parent(input_root,event_hybrid=False,event_gain_scaled=False):
     return parent
 
 
-def run_native(input_root, output, config, profile, calibration_hybrid=False,event_hybrid=False,event_gain_scaled=False):
+def run_native(input_root, output, config, profile, calibration_hybrid=False,event_hybrid=False,event_gain_scaled=False,monotonic_events=False):
     parent, _ = corpus_parent(input_root)
-    experiment = calibration_parent(input_root,event_hybrid=event_hybrid,event_gain_scaled=event_gain_scaled) if calibration_hybrid else controlled_parent(input_root)
+    experiment = calibration_parent(input_root,event_hybrid=event_hybrid,event_gain_scaled=event_gain_scaled,monotonic_events=monotonic_events) if calibration_hybrid else controlled_parent(input_root)
     selections = [] if calibration_hybrid else read_jsonl(experiment / "frontal_fold_selections.jsonl")
     by_fold = {}
     for selection in selections:
@@ -107,6 +109,7 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
     write_jsonl(output / "native_frontal_sources.jsonl", records)
     atomic_json(output / "native_frontal_recipe_identity.json", {
         "parent_manifest_sha256": sha256_file(experiment / "artifact_manifest.json"),
+        "event_detector": "monotonic_axis_amplitude" if monotonic_events else "logistic_reference" if event_hybrid else None,
         "policy": ("fixed calibration hybrid; no global detector fitting or native retuning; development-exposed sources"
                    if calibration_hybrid else "source-excluded family-wise recipes reused unchanged; no native selection"),
         "families": (["identity","direct","calibration_raw_gain","K3_calibration_mode_gain"] +
@@ -148,8 +151,9 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
                     lags=[-10,0,10],penalty=.01),config)}
             methods = tuple(sorted([*estimators,"calibration_raw_gain","K3_calibration_mode_gain"]))
             if event_hybrid:
-                from .frontal_event_support import fit_event_support
-                event_gate = fit_event_support(calibration)
+                from .frontal_event_support import fit_event_support,fit_axis_amplitude_support
+                event_gate = (fit_axis_amplitude_support(calibration) if monotonic_events
+                              else fit_event_support(calibration))
                 methods = tuple(sorted([*methods,"calibration_raw_event_gain","K3_calibration_event_gain"]))
                 if event_gain_scaled:
                     methods = tuple(sorted([*methods,"calibration_raw_scaled_event_gain","K3_calibration_scaled_event_gain"]))

@@ -214,6 +214,11 @@ def test_native_calibration_requires_both_matched_controlled_gates(tmp_path,monk
     with pytest.raises(ValueError,match="passed controlled gates"):
         frontal_native.calibration_parent(tmp_path,event_hybrid=True)
     assert frontal_native.calibration_parent(tmp_path,event_hybrid=True,event_gain_scaled=True)==tmp_path
+    with pytest.raises(ValueError,match="matching detector parent"):
+        frontal_native.calibration_parent(tmp_path,event_hybrid=True,event_gain_scaled=True,monotonic_events=True)
+    summary['monotonic_events'] = True
+    (tmp_path/"frontal_transfer_summary.json").write_text(json.dumps(summary))
+    assert frontal_native.calibration_parent(tmp_path,event_hybrid=True,event_gain_scaled=True,monotonic_events=True)==tmp_path
     gates[-1]["controlled_development_gates_pass"] = False
     (tmp_path/"frontal_controlled_gates.json").write_text(json.dumps(gates))
     with pytest.raises(ValueError,match="passed controlled gates"):
