@@ -88,6 +88,7 @@ transition into posterior or neural work bypasses scientific checkpoints.
 - [x] Native interfaces/unit checks: frontal-fixture-003, 104 passed at ef4a4c8.
 - [x] Validate separate fixed arms and nonleaking fixed-SVM evaluation on Kaggle.
 - [x] Latest foundation checks: frontal-fixture-004, 106 passed at 638d496.
+- [x] Strict metric coverage/worst-record reporting: frontal-fixture-005, 108 passed at 08f33ac.
 - [x] First pilot completed: 20 examples/72 candidates, zero failure rows.
 - [ ] Complete calibrated-detector, separate-K follow-up and waveform inspection.
 - [ ] Complete full source-excluded frontal comparison and uncertainty.
@@ -170,3 +171,10 @@ example/channel rows, preserve finite accuracy and clean metrics, and satisfy
 the unchanged engineering limits. A short bad clean record cannot disappear
 inside its participant average. Controlled gates never authorize integration
 before native validation. Undefined values propagate through all summary levels.
+
+`frontal-fixture-005` (separate review-contracts kernel, version 1) completed at
+`08f33ace0979e589be24969ceeca80071984ed45`, with 108 passing tests and 14
+warnings. Retrieved artifacts verify the same run identity and passing checkpoint.
+Future notebook setup saves the run identity before clone/dependency installation
+and reports each bootstrap phase, so setup failures remain attributable and
+recoverable. This does not change a running notebook's pinned source.

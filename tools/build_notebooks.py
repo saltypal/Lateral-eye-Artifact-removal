@@ -97,25 +97,36 @@ CHECKOUT = TEMP_ROOT / 'repository'
 REPOSITORY_URL = 'https://github.com/saltypal/Lateral-eye-Artifact-removal.git'
 BRANCH = 'research/vmd-eog-removal-notebooks'
 ''' + 'RUN_SPEC = ' + repr(spec) + '''
+OUT = Path('/kaggle/working/results') / RUN_SPEC['campaign_id'] / RUN_SPEC['run_id']
+OUT.mkdir(parents=True,exist_ok=False)
+(OUT/'run_spec.json').write_text(json.dumps(RUN_SPEC,indent=2))
+(OUT/'experiment.json').write_text(json.dumps(RUN_SPEC.get('experiment',{}),indent=2))
+(OUT/'execution_state.json').write_text(json.dumps({'stage':RUN_SPEC['stage'],'status':'bootstrap_running'}))
+print('BOOTSTRAP_START', RUN_SPEC['run_id'], RUN_SPEC['git_sha'], flush=True)
+def bootstrap_call(command, phase):
+    print('BOOTSTRAP_PHASE', RUN_SPEC['run_id'], phase, flush=True)
+    result = subprocess.run(command)
+    if result.returncode:
+        (OUT/'execution_state.json').write_text(json.dumps({'stage':RUN_SPEC['stage'],
+            'status':'failed','failure_layer':'bootstrap','phase':phase,'exit_code':result.returncode}))
+        raise RuntimeError('Bootstrap failed during '+phase+'; retained run identity and status in '+str(OUT))
 # Manual launches resolve latest once; CLI launches already have its exact SHA.
 if not RUN_SPEC['git_sha']:
     line = subprocess.check_output(['git','ls-remote',REPOSITORY_URL,'refs/heads/'+BRANCH], text=True).strip()
     RUN_SPEC['git_sha'] = line.split()[0]
-subprocess.check_call(['git','clone','--quiet','--branch',BRANCH,'--single-branch',REPOSITORY_URL,str(CHECKOUT)])
-subprocess.check_call(['git','-C',str(CHECKOUT),'checkout','--quiet',RUN_SPEC['git_sha']])
+bootstrap_call(['git','clone','--quiet','--branch',BRANCH,'--single-branch',REPOSITORY_URL,str(CHECKOUT)], 'clone')
+bootstrap_call(['git','-C',str(CHECKOUT),'checkout','--quiet',RUN_SPEC['git_sha']], 'checkout')
 ACTUAL_SHA = subprocess.check_output(['git','-C',str(CHECKOUT),'rev-parse','HEAD'],text=True).strip()
 if ACTUAL_SHA != RUN_SPEC['git_sha']:
     raise RuntimeError('Source SHA mismatch')
 ENV_ROOT = TEMP_ROOT / 'environment'
-subprocess.check_call([sys.executable,'-m','venv','--without-pip','--system-site-packages',str(ENV_ROOT)])
+bootstrap_call([sys.executable,'-m','venv','--without-pip','--system-site-packages',str(ENV_ROOT)], 'environment')
 ENV_PY = ENV_ROOT / 'bin/python'
-subprocess.check_call([sys.executable,'-m','pip','--python',str(ENV_PY),'install','--quiet','--progress-bar','off','-r',str(CHECKOUT/'requirements.txt')])
+bootstrap_call([sys.executable,'-m','pip','--python',str(ENV_PY),'install','--quiet','--progress-bar','off','-r',str(CHECKOUT/'requirements.txt')], 'dependencies')
 PROCESS_ENV = os.environ.copy()
 PROCESS_ENV['PYTHONPATH'] = str(CHECKOUT/'src')
 PROCESS_ENV['PYTHONUNBUFFERED'] = '1'
 PROCESS_ENV['OMP_NUM_THREADS'] = '2'
-OUT = Path('/kaggle/working/results') / RUN_SPEC['campaign_id'] / RUN_SPEC['run_id']
-OUT.mkdir(parents=True,exist_ok=False)
 (OUT/'run_spec.json').write_text(json.dumps(RUN_SPEC,indent=2))
 (OUT/'experiment.json').write_text(json.dumps(RUN_SPEC.get('experiment',{}),indent=2))
 print('Exact Git SHA:', ACTUAL_SHA, 'Stage:', RUN_SPEC['stage'], 'Output:',OUT,flush=True)
@@ -173,6 +184,11 @@ for name in ('frontal_search.csv','frontal_oof_means.csv','frontal_oof_recipient
 for name in ('selected_frontal.json','selected_posterior.json','classical_gate.json','paper_evaluation_protocol.json','paper_metric_fixture_summary.json'):
     if (OUT/name).exists():
         print(name, (OUT/name).read_text()[:8000])
+if (OUT/'frontal_controlled_gates.json').exists():
+    print('Controlled engineering gates:', (OUT/'frontal_controlled_gates.json').read_text())
+if (OUT/'frontal_controlled_review.md').exists():
+    from IPython.display import Markdown
+    display(Markdown((OUT/'frontal_controlled_review.md').read_text()))
 review = OUT/'APPROACH_REVIEW.md'
 if review.exists():
     from IPython.display import Markdown
