@@ -19,6 +19,7 @@ def command(*arguments):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True)
+    parser.add_argument("--file-pattern", default="guard17_|execution_state|artifact_manifest|contract_tests|environment|configuration")
     args = parser.parse_args()
     requested = json.loads((WORK / args.run_id / "run_spec.json").read_text())
     destination = ROOT / "results" / requested["campaign_id"] / args.run_id
@@ -32,7 +33,7 @@ def main():
             handle.write(json.dumps(message) + "\n")
         if "KernelWorkerStatus.COMPLETE" in response or "KernelWorkerStatus.ERROR" in response:
             print(command("retrieve", "--run-id", args.run_id,
-                "--file-pattern", "guard17_|execution_state|artifact_manifest|contract_tests|environment|configuration"), flush=True)
+                "--file-pattern", args.file_pattern), flush=True)
             identities = list(destination.rglob("run_spec.json"))
             if len(identities) != 1:
                 raise RuntimeError("Missing or ambiguous retrieved run identity")
