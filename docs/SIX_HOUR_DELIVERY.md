@@ -98,3 +98,17 @@ Frontal-axis-calibration compares two signed ocular gains against the unchanged 
 ## Native checkpoint failed preservation
 
 Native calibration002 completed 51 trials and117 tests; blink and lateral suppression improved, but rest changes of31.8/45.6 percent fail preservation. Signed-axis gain001 completed119 tests and scored15.40 dB, below shared17.11. Preserve both results. Prioritize rest-calibrated event restriction before regional integration; do not relax the1 percent gate or start new neural fitting. Notebooks39/40 document the controlled comparison and gated native follow-up.
+
+
+## 12:16 UTC checkpoint
+
+- Historical archived replay: 17.92721 dB, frozen EOG-assisted system, not fresh EEG-only evidence.
+- New controlled frontal calibration: 17.11281 dB; matched raw 18.19325 dB. All 320 prediction archives downloaded with manifest checksums.
+- Native calibration pilot: complete, preservation failed. No posterior integration or student fitting authorized.
+- Axis gain: 15.39616 dB; unchanged shared gain remains better.
+- Unscaled event gate: 12.08040 dB, controlled accuracy/correlation failed.
+- Gain-adjusted detector: frontal-gain-event-hybrid-001 running, pinned5ea61d9; detector adaptation only, original correction and evaluation references unchanged.
+- Prepared gated native follow-up: notebook42, publishedb025743. Launch requires matched controlled event gates. This does not overwrite the active job source.
+- Paper-adaptation full002 remains RUNNING; matching live log unavailable. API status alone does not verify numerical progress.
+
+Deadline remains16:27 UTC. Recover evidence before spending the final90 minutes on additional runs. If native preservation remains failed, deliver the best reproducible research method and explicitly retain incomplete regional/model qualification rather than declare production readiness.

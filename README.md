@@ -23,9 +23,26 @@ nor the historical EOG-assisted 17.9 dB result qualifies the new system.
 From this directory:
 
 ```powershell
-python tools/kaggle_campaign.py status --run-id frontal-pilot-001
-python tools/kaggle_campaign.py retrieve --run-id frontal-pilot-001
+python tools/kaggle_campaign.py status --run-id frontal-gain-event-hybrid-001
+python tools/kaggle_campaign.py retrieve --run-id frontal-calibration-hybrid-001
 ```
+
+## Measured delivery status (12:16 UTC, 11 October 2026)
+
+The archived frozen EOG-assisted VMD system reproduced **17.92721 dB** on
+its reused unknown-montage benchmark. The new verified-frontal K3/2000
+calibration hybrid achieved **17.11281 dB** on controlled development data;
+matched raw calibration scored **18.19325 dB**. The benchmarks and aggregation
+are different. VMD superiority and independent qualification are unproven.
+
+Native blink/lateral suppression improved but resting modification of 32-46%
+failed preservation. Separate-axis gain and unscaled event gating were negative
+controls. Notebook 41 tests gain-adjusted event support; notebook 42 will run
+native validation only if the corresponding controlled gates pass. Posterior
+integration and new EEG-only neural development remain blocked by frontal
+preservation. See [measured results](docs/FRONTAL_RESULTS.md) and
+[deadline checklist](docs/SIX_HOUR_DELIVERY.md). Every live run pins one SHA;
+later commits do not change a running experiment.
 
 ## Historical workflows
 
