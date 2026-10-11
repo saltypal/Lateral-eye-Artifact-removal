@@ -17,7 +17,7 @@ def submit(run_id):
         raise RuntimeError("Commit and push the replay notebook/configuration before launch")
     spec = {"run_id": run_id, "stage": config["stage"], "campaign_id": config["campaign_id"],
             "git_sha": config["legacy_git_sha"], "orchestrator_git_sha": author_sha,
-            "kernel": "satyapaladugu/vmd-guard17-k3-alpha2000", "profile": "archived-replay",
+            "kernel": "satyapaladugu/guarded-vmd-k3-alpha2000-archived-reproduction", "profile": "archived-replay",
             "kernel_sources": config["kernel_sources"], "dataset_sources": config["dataset_sources"],
             "recipe": config, "fresh_confirmation": False, "teacher_qualified": False}
     notebook = json.loads((ROOT/"notebooks/23_Guarded_K3_Alpha2000_Reproduction.ipynb").read_text())
@@ -54,3 +54,4 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True)
     submit(parser.parse_args().run_id)
+
