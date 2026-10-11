@@ -8,7 +8,7 @@ from pathlib import Path
 from kaggle_campaign import ROOT, WORK, BRANCH, cli, git
 
 
-def submit(run_id, diagnose=False, cached_replay=False):
+def submit(run_id, diagnose=False, cached_replay=False, kernel_slug=None):
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]+", run_id):
         raise ValueError("Invalid replay run ID")
     config = json.loads((ROOT/"configs/guard17_replay.json").read_text())
@@ -28,6 +28,10 @@ def submit(run_id, diagnose=False, cached_replay=False):
     if cached_replay:
         spec["stage"] = "guard17-archived-cache-replay"
         spec["kernel"] = "satyapaladugu/guarded-vmd-frozen-archive-replay"
+    if kernel_slug:
+        if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,49}", kernel_slug):
+            raise ValueError("Invalid kernel slug")
+        spec["kernel"] = "satyapaladugu/" + kernel_slug
     notebook_name = "31_Guarded_VMD_Source_Audit.ipynb" if diagnose else "23_Guarded_K3_Alpha2000_Reproduction.ipynb"
     notebook = json.loads((ROOT/"notebooks"/notebook_name).read_text())
     for cell in notebook["cells"]:
@@ -70,6 +74,7 @@ if __name__ == "__main__":
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--diagnose", action="store_true")
     parser.add_argument("--cached-replay", action="store_true")
+    parser.add_argument("--kernel-slug")
     args = parser.parse_args()
-    submit(args.run_id, args.diagnose, args.cached_replay)
+    submit(args.run_id, args.diagnose, args.cached_replay, args.kernel_slug)
 
