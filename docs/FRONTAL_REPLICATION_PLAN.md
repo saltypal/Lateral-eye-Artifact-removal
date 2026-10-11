@@ -71,7 +71,8 @@ transition into posterior or neural work bypasses scientific checkpoints.
 - [x] Author fixed-frontal modules, anatomy guards and explicit adapters.
 - [x] Author numerical tests, config and Kaggle notebooks.
 - [x] Initial Kaggle numerical checks: frontal-fixture-001, 99 passed at e8bd484.
-- [ ] Validate the whole-montage interface and expanded checks on Kaggle.
+- [x] Kaggle whole-montage checks: frontal-fixture-002, 101 passed at 9419b73.
+- [ ] Validate native interfaces and calibration-unit checks on Kaggle.
 - [ ] Complete pilot; inspect waveforms and recovery/clean modification.
 - [ ] Complete full source-excluded frontal comparison and uncertainty.
 - [ ] Native OSF whole-trial frontal suppression/rest preservation.
@@ -94,3 +95,16 @@ The ledger describes implementation and checkpoints, not measured success.
 reconstruction and closed confirmation sources. It does not establish measured
 ocular cleaning accuracy. The next fixture checks the whole-montage interface
 before launching the fixed-recipe pilot.
+
+`frontal-fixture-002` (same kernel, version 2) completed at
+`9419b733771431e88fe3f6e7354e43048efec3df`, with 101 passing tests and 14 warnings.
+`frontal-pilot-001` was submitted at that same SHA, attached to five exact
+parent versions, including contracts/2. It compares 72 fixed-recipe correction
+candidates on 20 development examples. Its SVM uses the first absolute-SD
+feature; the follow-up replaces that feature with a same-channel unscored
+calibration-SD ratio before native transfer. Preserve both versions explicitly.
+
+Native implementation is authored in `frontal_native.py`, notebook 26. It
+requires a completed **full** frontal comparison, the original bundle and the
+checksum-pinned restoration version. It reuses family-wise fold recipes without
+native retuning; source-excluded calibrated SVM checkpoints are mandatory.

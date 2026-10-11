@@ -49,6 +49,7 @@ DETAILS = {
 NEW_STAGES = [
     ("24_Frontal_Contracts", "frontal-fixture", "Validate fixed-recipe frontal masks, reconstruction and reference boundaries."),
     ("25_Frontal_Replication_Comparison", "frontal-comparison", "Compare fixed frontal VMD corrections and declared paper adaptations without AutoVMD."),
+    ("26_Frontal_Native_OSF", "frontal-native", "Validate fixed frontal recipes on complete OSF trials without posterior correction."),
     ("22_Posterior_Context", "posterior-context", "Matched ICA and GEVD-MWF posterior experts with raw and signed frontal support."),
     ("21_Neural_Preservation_Diagnosis", "neural-diagnosis", "Audit exact clean targets and saved neural distortion before expanding training."),
     ("14_Research_Readiness", "research-ready", "Verify restored OSF sources and all frozen development pairs."),
@@ -59,6 +60,7 @@ NEW_STAGES = [
     ("19_Paired_Deployment_Student", "student-paired", "Paired-only TCN-BiGRU deployment baseline.")
 ]
 DETAILS.update({
+    "frontal-native": "Attach the passing frontal fixture, readiness, corpus, completed full frontal comparison and pinned region-aware-eog-restore/1 source supplement. Verify every development SET/FDT before processing; preserve whole-trial calibration/scoring exclusions. Reuse source-excluded family-wise frontal recipes and detector checkpoints without native retuning. Only verified frontal channels receive VMD; posterior/shared/unknown rows remain exactly original. Cache K3/K4 decompositions once per window, retain the residual and overlap-add one artifact estimate. Report unchanged publisher HEOG_lpf association for lateral and VEOG_lpf for blink/vertical, with explicit raw-reference fallback. Preserve source units; SVM amplitude uses unscored same-channel calibration SD. Save complete trials, record checkpoints, signed/absolute ordinary CC, rest RMSE, PSD, covariance and modification. There is no native reconstruction SNR. Pilot covers two records; full covers every eligible development record. Per-participant paper-based permutation is separate from engineering gates. Source-code parity and full qualification remain explicit limitations.",
     "frontal-fixture": "Synthetic software checkpoint for configs/frontal_replication.json. Numerical tests run on Kaggle. Only verified F/AF/FP channels may enter VMD. K3/alpha2000 and the fixed K4/alpha2000 comparator are permitted; AutoVMD and model stages are blocked. Check reconstruction, signed HEOG/VEOG selection, reference-event calibration, unit behavior and channel/mode permutations. No synthetic test authorizes accuracy, posterior integration or neural training.",
     "frontal-comparison": "Attach exact corpus/2, readiness/1, frontal fixture and completed K3/K4 cache versions. Import only checksum-verified fixed alpha2000 entries; do not rerun a search. All verified frontal channels are scored; posterior/shared/unknown remain untouched. Compare identity, direct regression, whole-mode, projected-mode, interval-projected and SOBI correction plus explicitly labelled 2022 selector and 2024 SVM/ApEn adaptations. The author repository lacks entropy/evaluation helpers; custom VMD initialization differs, so no author-code parity is claimed. SVM receives EEG only and fits outside heldout recipient/donor sources. It uses a declared feature subset, RBF C=1/gamma=scale, 5.12-second windows, no mRMR and no GA. References are unchanged HEOG/VEOG; target and true artifact never enter inference. Save per-channel predictions for the pilot, per-example score shards, full candidate grids, convergence failures, modes/frequency diagnostics and grouped family-wise selection. Pilot uses one recipient per source bucket; full uses the source-balanced 320-example development subset. Partial preservation and development SNR are not teacher qualification. See docs/FRONTAL_REPLICATION_PLAN.md and docs/FRONTAL_PAPER_AUDIT.md.",
     "posterior-context":"Attach pinned corpus and passing research-readiness artifacts. CPU-only classical experiment independent of the GPU frontal sweep. Compare ICA and regularized GEVD-MWF with posterior-only, common-average, signed left/right/midline/common/right-minus-left, raw frontal and full-montage support; correct posterior outputs only. Metadata determines stable support layouts; missing-context flags are saved. Both experts fit only unscored calibration, including trial-join protection for ICA reference association. Pilot: one recipient per frozen fold, clean plus 0 dB blink/lateral/mixed; MWF ranks 1/2, both declared lag banks, thresholds .4/.6 and strengths .5/1. Full: all eligible recipients, -5/0/5 dB, ranks 1..4 and all declared thresholds/strengths. Save complete per-channel paper MSE/temporal RRMSE/Pearson/output-SNR/improvement, per-example shards, convergence failures and source-excluded recipe selection. Identity and fixed .01-ridge EOG regression controls share the original input. Calibration/scoring layouts and donor/recipient disjointness are enforced. Signed virtual channels are redundant; rank/regularization effects are disclosed. Partial preservation screening does not qualify a teacher; paired-correlation comparator and native OSF validation remain separate. Read docs/POSTERIOR_CONTEXT_PLAN.md.",
@@ -132,8 +134,13 @@ print('Persist this completed kernel version and retrieve outputs before launchi
     inspect_modules = '''CONFIGURATION = json.loads((CHECKOUT/RUN_SPEC.get('config_path','configs/campaign.json')).read_text())
 print('Declared signal contract:', {key: CONFIGURATION[key] for key in ('fs','window','hop','seed')})
 print('Preservation limits:', CONFIGURATION['preservation'])
-print('Algorithm explanation: docs/SCIENTIFIC_EXPLANATION.md in the pinned checkout')
-print('Modules: signal.py -> reference.py/frontal.py/posterior.py -> experiments.py -> review evidence')
+if CONFIGURATION.get('schema_version') == 3:
+    print('Modules: frontal_campaign.py -> frontal_methods.py -> frontal_replication.py/frontal_native.py')
+    print((CHECKOUT/'docs/FRONTAL_PAPER_AUDIT.md').read_text())
+    print('Scope: verified frontal only; AutoVMD stopped; posterior unchanged')
+else:
+    print('Algorithm explanation: docs/SCIENTIFIC_EXPLANATION.md in the pinned checkout')
+    print('Modules: signal.py -> reference.py/frontal.py/posterior.py -> experiments.py -> review evidence')
 print('Git source:', ACTUAL_SHA)
 '''
     tables = '''import csv
@@ -150,7 +157,8 @@ for name in ('posterior_context_search.csv','posterior_context_oof_scores.csv'):
         print(name, '(first 8 rows; complete paper metrics and failure records saved)')
         with path.open() as handle:
             display(list(islice(csv.DictReader(handle),8)))
-for name in ('frontal_search.csv','frontal_oof_means.csv','frontal_oof_recipients.csv'):
+for name in ('frontal_search.csv','frontal_oof_means.csv','frontal_oof_recipients.csv',
+             'native_frontal_preservation_records.csv','native_frontal_preservation_participants.csv'):
     path = OUT/name
     if path.exists():
         print(name, '(first 12 rows; complete table saved)')

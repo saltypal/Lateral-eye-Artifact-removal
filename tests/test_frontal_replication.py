@@ -10,7 +10,8 @@ import pytest
 from vmd_eog.frontal_campaign import validate_policy
 from vmd_eog.frontal_methods import (frontal_indices, fuzzy_entropy,
     estimate_components, reference_intervals, FrontalCorrector)
-from vmd_eog.frontal_replication import candidates, fit_detectors, summary
+from vmd_eog.frontal_replication import candidates, fit_detectors, summary, detector_features
+from vmd_eog.frontal_native import validate_record_selection
 
 
 def configuration():
@@ -138,6 +139,41 @@ def test_detector_refuses_donor_crossfold_leakage(tmp_path):
             np.savez(tmp_path/name, eeg=generator.normal(size=(1,1024)),
                 channel_names=np.array(["F3"]), regions=np.array([0]), mask=np.array([True]))
             rows.append(dict(array_path=name, recipient=f"r{fold}", donor="same-donor",
-                             partition={"fold":fold}, condition=condition))
+                             calibration=name, partition={"fold":fold}, condition=condition))
     with pytest.raises(ValueError, match="leaks donor"):
         fit_detectors(tmp_path, rows, configuration())
+
+
+def test_detector_features_do_not_confuse_volts_and_microvolts():
+    generator = np.random.default_rng(20)
+    signal = generator.normal(size=1024) * 1e-5
+    calibration = generator.normal(size=4000) * 2e-5
+    first = detector_features(signal, 200, calibration.std())
+    second = detector_features(signal * 1e6, 200, calibration.std() * 1e6)
+    np.testing.assert_allclose(first, second, rtol=1e-10, atol=1e-10)
+    with pytest.raises(ValueError, match="calibration"):
+        detector_features(signal, 200, 0.)
+
+
+def test_native_detector_rejects_source_exposure_and_unverified_scaling():
+    record = dict(participant="osf:p03", partition=dict(role="development", fold=2))
+    evidence = dict(fold=2, training_donors=["osf:p04"],
+        amplitude_scaling="unscored same-channel calibration SD; no scoring target scaling")
+    validate_record_selection(record, evidence)
+    with pytest.raises(ValueError, match="exposed"):
+        validate_record_selection(record, {**evidence, "training_donors": ["osf:p03"]})
+    with pytest.raises(ValueError, match="normalization"):
+        validate_record_selection(record, {**evidence, "amplitude_scaling": None})
+
+
+def test_external_mode_cache_cannot_smuggle_a_posterior_decomposition():
+    samples = np.sin(2*np.pi*3*np.arange(1024)/200)
+    original = np.stack([samples, samples])
+    spec = dict(family="vmd_projected", K=3, alpha=2000, trigger=.4,
+                component_threshold=.2, kind="projected", strength=1., lags=[0], penalty=.01)
+    corrector = FrontalCorrector(spec, configuration())
+    bundle = (np.stack([samples, np.zeros_like(samples), np.zeros_like(samples)]),
+              np.zeros_like(samples), {})
+    with pytest.raises(ValueError, match="precisely"):
+        corrector.denoise(original, np.stack([samples, samples]), np.stack([samples, samples]),
+            ["F3", "P3"], [0, 1], mode_bundles={0: bundle, 1: bundle})

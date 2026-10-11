@@ -6,7 +6,7 @@ from .artifacts import verify_parent
 from .contracts import canonical_hash
 
 
-STAGES = ("frontal-fixture", "frontal-comparison")
+STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native")
 FIXED_SETTINGS = ((3, 2000), (4, 2000))
 
 
@@ -46,6 +46,9 @@ def require_checkpoint(stage, input_root, config):
     fixture = json.loads(fixtures[0].read_text())
     if fixture.get("passed") is not True or fixture.get("configuration_hash") != canonical_hash(config):
         raise RuntimeError("Frontal numerical checkpoint differs or failed")
+    if stage == "frontal-native":
+        from .frontal_native import controlled_parent
+        controlled_parent(input_root)
 
 
 def execute(stage, input_root, output, config, profile, experiment):
@@ -53,4 +56,7 @@ def execute(stage, input_root, output, config, profile, experiment):
     from .frontal_replication import run_fixture, run_comparison
     if stage == "frontal-fixture":
         return run_fixture(output, config)
+    if stage == "frontal-native":
+        from .frontal_native import run_native
+        return run_native(input_root, output, config, profile)
     return run_comparison(input_root, output, config, profile, experiment or {})

@@ -199,7 +199,8 @@ class FrontalCorrector:
         self.detector = detector
         self.last_diagnostics = []
 
-    def denoise(self, eeg, references, calibration_references, channel_names, regions, mask=None):
+    def denoise(self, eeg, references, calibration_references, channel_names, regions,
+                mask=None, mode_bundles=None, calibration_eeg=None):
         original = np.asarray(eeg, dtype=float)
         references = np.asarray(references, dtype=float)
         indices = frontal_indices(original, channel_names, regions, mask)
@@ -208,6 +209,12 @@ class FrontalCorrector:
         family = self.spec["family"]
         if family == "svm_sobi_apen_fixed_adaptation" and self.detector is None:
             raise ValueError("SVM adaptation needs its source-excluded fitted detector")
+        if family == "svm_sobi_apen_fixed_adaptation":
+            calibration_eeg = np.asarray(calibration_eeg, dtype=float)
+            if (calibration_eeg.ndim != 2 or calibration_eeg.shape[0] != len(original) or
+                    not np.isfinite(calibration_eeg).all() or
+                    np.any(calibration_eeg[indices].std(axis=-1) <= 0)):
+                raise ValueError("SVM adaptation needs unscored same-unit EEG calibration")
         artifact = np.zeros_like(original)
         self.last_diagnostics = []
         if family == "identity" or not len(indices):
@@ -215,12 +222,23 @@ class FrontalCorrector:
         bundles = None
         if family != "direct":
             recipe = FixedRecipe(self.spec["K"], self.spec["alpha"], self.config["fs"])
-            bundles = decompose_frontal(original, channel_names, regions, recipe, self.config, mask)
+            bundles = (decompose_frontal(original, channel_names, regions, recipe, self.config, mask)
+                       if mode_bundles is None else mode_bundles)
+            if set(bundles) != set(indices.tolist()):
+                raise ValueError("Mode cache must contain precisely the verified frontal rows")
+            for index, (modes, residual, info) in bundles.items():
+                if (np.asarray(modes).shape != (recipe.K, original.shape[-1]) or
+                        np.asarray(residual).shape != (original.shape[-1],) or
+                        not np.isfinite(modes).all() or not np.isfinite(residual).all() or
+                        not np.allclose(np.asarray(modes).sum(0) + residual, original[index],
+                                        rtol=1e-5, atol=1e-11)):
+                    raise ValueError("Mode cache shape, finiteness or reconstruction differs")
         for index in indices:
             association = float(np.max(np.abs(correlations(original[index], references, 20))))
             if family == "svm_sobi_apen_fixed_adaptation":
                 from .frontal_replication import detector_features
-                trigger = bool(self.detector.predict(detector_features(original[index], self.config["fs"])[None])[0])
+                trigger = bool(self.detector.predict(detector_features(original[index], self.config["fs"],
+                    calibration_eeg[index].std())[None])[0])
             else:
                 trigger = association >= self.spec["trigger"]
             detail = {"channel": str(channel_names[index]), "triggered": trigger,

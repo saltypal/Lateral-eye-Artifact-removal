@@ -36,13 +36,15 @@ def finite_value(value):
     return float(value) if np.isfinite(value) else None
 
 
-def detector_features(values, fs):
+def detector_features(values, fs, calibration_scale):
     """Declared subset of the 2024 feature families, at project window length.
 
     RBF SVM C=1 and gamma=scale; no mRMR or unspecified nonlinear features.
     Consequently this is explicitly a fixed-parameter adaptation.
     """
     values = np.asarray(values, dtype=float)
+    if not np.isfinite(calibration_scale) or calibration_scale <= 0:
+        raise ValueError("Detector needs positive unscored same-unit calibration SD")
     centered = values - values.mean()
     scale = np.sqrt(np.mean(centered ** 2))
     unit = centered / scale if scale > 0 else np.zeros_like(centered)
@@ -57,17 +59,21 @@ def detector_features(values, fs):
              for lo, hi in ((.5, 4), (4, 8), (8, 13), (13, 30), (30, 40))]
     asymmetry = float(skew(unit)) if scale > 0 else 0.
     peakedness = float(kurtosis(unit, fisher=False)) if scale > 0 else 0.
-    return np.asarray([np.log(max(scale, 1e-30)), asymmetry, peakedness,
+    return np.asarray([np.log(max(scale / calibration_scale, 1e-30)), asymmetry, peakedness,
                        variance, mobility, complexity, *bands])
 
 
 def fit_detectors(parent, rows, config):
     features, labels, folds, source_rows = [], [], [], []
     for row in rows:
+        with np.load(parent / row["calibration"], allow_pickle=False) as calibration:
+            calibration_eeg = calibration["eeg"].copy()
         with np.load(parent / row["array_path"], allow_pickle=False) as data:
+            if calibration_eeg.shape[0] != data["eeg"].shape[0]:
+                raise ValueError("Detector calibration channel axis differs")
             ids = frontal_indices(data["eeg"], data["channel_names"], data["regions"], data["mask"])
             for index in ids:
-                features.append(detector_features(data["eeg"][index], config["fs"]))
+                features.append(detector_features(data["eeg"][index], config["fs"], calibration_eeg[index].std()))
                 labels.append(int(row["condition"] != "clean"))
                 folds.append(row["partition"]["fold"])
                 source_rows.append(row)
@@ -89,7 +95,8 @@ def fit_detectors(parent, rows, config):
             "training_donors": sorted({r["donor"] for r in train_rows}),
             "heldout_recipients": sorted({r["recipient"] for r in heldout}),
             "heldout_donors": sorted({r["donor"] for r in heldout}),
-            "features": "log input SD, skewness, kurtosis, Hjorth activity/mobility/complexity, five relative PSD bins",
+            "features": "log input/calibration SD ratio, skewness, kurtosis, Hjorth activity/mobility/complexity, five relative PSD bins",
+            "amplitude_scaling": "unscored same-channel calibration SD; no scoring target scaling",
             "labels": "declared clean versus ocular mixture condition, not target reconstruction values",
             "mrmr": False, "C": 1., "gamma": "scale", "window_samples": config["window"],
             "paper_replication": False})
@@ -353,7 +360,7 @@ def run_comparison(input_root, output, config, profile, experiment):
         channel_state = {}
         for local, index in enumerate(ids):
             predicted = bool(detectors[row["partition"]["fold"]].predict(
-                detector_features(original[local], config["fs"])[None])[0])
+                detector_features(original[local], config["fs"], calibration["eeg"][index].std())[None])[0])
             channel_state[int(index)] = {"svm": predicted, "fits": {}, "projections": {}, "estimates": {}}
         example_scores, predictions = [], {}
         for key, spec in specs.items():

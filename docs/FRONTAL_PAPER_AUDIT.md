@@ -57,6 +57,12 @@ outside both heldout recipients and donors; only one correction recipe is
 predeclared to avoid retuning it with contaminated nested crossfit predictions.
 Status: **fixed-parameter adaptation**, not full SVM-IVMD-SOBI reproduction.
 
+The follow-up implementation scales the input-SD feature by the unscored,
+same-channel calibration SD. This avoids confusing MNE volts with EEGLAB source
+units on native transfer; calibration and scoring use the same source scale.
+The first pilot used absolute SD and remains archived as such. No targets fit
+this scaling. The normalization is a project adaptation, not a paper setting.
+
 ## Metric evidence and scope
 
 Use docs/EVALUATION_PROTOCOL.md. Ordinary Pearson CC, MSE and temporal RRMSE
