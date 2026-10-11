@@ -12,7 +12,7 @@ from .frontal_methods import FixedRecipe, FrontalCorrector, frontal_indices, ref
 from .frontal_replication import ArchivedModes, finite_value
 from .io import atomic_json, read_jsonl, sha256_file, write_jsonl
 from .paper_metrics import paired_channels
-from .reference import project
+from .reference import project, calibration_reference_baseline
 
 
 def run_evidence(input_root, output, config):
@@ -72,10 +72,15 @@ def run_evidence(input_root, output, config):
         artifact = original - target
         instantaneous = project(original, data["references"], [0], .01)[0]
         lagged = project(original, data["references"], [-10, 0, 10], .01)[0]
+        baseline = calibration_reference_baseline(calibration["references"],
+            calibration.get("boundaries", ()), [-10, 0, 10])
+        anchored = project(original, data["references"], [-10, 0, 10], .01,
+                           reference_baseline=baseline)[0]
         # Evaluation-only matched lag diagnostic. Its design matches the donor
         # mixture construction; it is not evidence for native generalization.
         diagnostics = {"instantaneous": paired_channels(original-instantaneous, target, original),
-                       "lagged": paired_channels(original-lagged, target, original)}
+                       "lagged": paired_channels(original-lagged, target, original),
+                       "anchored": paired_channels(original-anchored, target, original)}
         for local, index in enumerate(ids):
             energy = float((artifact[local] ** 2).sum())
             retained = float((artifact[local] ** 2 * np.maximum(support[0], support[1])).sum())
@@ -86,6 +91,9 @@ def run_evidence(input_root, output, config):
                 "true_artifact_energy_supported": retained / energy if energy > 0 else None,
                 "instantaneous_output_db": finite_value(diagnostics["instantaneous"]["snr_energy_db"][local]),
                 "lagged_output_db": finite_value(diagnostics["lagged"]["snr_energy_db"][local]),
+                "calibration_anchored_output_db": finite_value(diagnostics["anchored"]["snr_energy_db"][local]),
+                "lagged_mean_bias_squared": float((original[local]-lagged[local]-target[local]).mean()**2),
+                "anchored_mean_bias_squared": float((original[local]-anchored[local]-target[local]).mean()**2),
                 "target_access": "diagnostic only; never used in estimate or selection"})
         np.savez_compressed(vectors / (row["example_id"] + ".npz"),
             original=original, target=target, references=data["references"], support=support,
