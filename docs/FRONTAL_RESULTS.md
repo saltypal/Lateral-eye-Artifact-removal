@@ -126,14 +126,14 @@ events and hidden-process logs live in
 errors stop dependent submissions for diagnosis. Every numerical stage remains
 on Kaggle and records an exact published source SHA and parent versions.
 
-## Failure and repair checkpoint — 11 October 2026, 09:01 UTC
+## Failure and repair checkpoint â€” 11 October 2026, 09:01 UTC
 
-Full evaluation rontal-full-001 failed after 291/320 examples at the strict
+Full evaluation frontal-full-001 failed after 291/320 examples at the strict
 archived mode-plus-residual reconstruction check. Saved progress and individual
 example outputs remain evidence; this run is not complete and cannot qualify a
 method or supply the native parent. The dependent queue stopped as designed.
 
-Focused Kaggle notebook rontal-cache-audit-001 (source fda250, kernel
+Focused Kaggle notebook frontal-cache-audit-001 (source efda250, kernel
 satyapaladugu/vmd-frontal-cache-audit/1) inspects both fixed archives over all
 320 development examples without any VMD fitting or cache modification. It
 compares float32 and float64 summation at the unchanged tolerance. The potential
@@ -146,7 +146,7 @@ provides 45-second status polling.
 
 ### Cache diagnosis confirmed and bounded repair
 
-Read-only audit 001 completed at fda250: 109 tests passed; all 320 examples,
+Read-only audit 001 completed at efda250: 109 tests passed; all 320 examples,
 8,320 channel/recipe checks. One float32 sum failed: K4, F7,
 sub-032339-000-blink-snr+5. Float64 accumulation passed every check under the
 unchanged rtol=1e-5/atol=1e-11 contract. No solver failures, cache mutation or
@@ -155,7 +155,7 @@ new decompositions occurred. Maximum relative RMS reconstruction error was
 
 Repair changes only verification accumulation to float64, preserving all mode
 vectors and residuals. A cancellation/damage regression fixture and full
-actual-reader Kaggle audit 002 must pass before rontal-full-002 starts.
+actual-reader Kaggle audit 002 must pass before frontal-full-002 starts.
 The failed full version 001 is retained. Scientific accuracy and preservation
 thresholds remain unchanged.
 
@@ -168,3 +168,5 @@ Frontal-gain-hybrid-002 completed 320 examples / 32 recipients / 13 frontal chan
 Bounded next tests preserve K3/2000, splits and targets: (1) consistent model input-unit conversion to diagnose absolute floors; (2) signed lagged calibration transfer with a matched raw versus VMD-supported pooled correction gain. The calibration hybrid is a project extension, not author reproduction. It closely matches the synthetic regression-field construction; native validation remains mandatory. Neither test trains weights, performs AutoVMD or decomposes posterior EEG.
 
 The second reconstruction check inside FrontalCorrector also needed float64 summation. The previous reader-only audit did not exercise that layer; it cannot be called a full end-to-end repair. Source e5dd5a8 fixes both checks with the original tolerance and adds a regression fixture. The running full002 uses its older pinned source; any resulting failure stays archived and requires a new version.
+
+Unit audit001 measured 8.76494 dB for microvolt-adapted frozen transfer versus 8.76523 dB unscaled, and 8.90178 dB anchored versus 8.90208 dB unscaled anchored. The numerical-floor hypothesis did not explain the observed performance gap. Preserve this negative control rather than describing unit conversion as an improvement.

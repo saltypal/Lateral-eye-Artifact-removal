@@ -13,10 +13,10 @@ the already archived unknown-montage Klados cache and cannot establish anatomy.
 - [x] Verify actual repaired reader and 110 numerical tests on Kaggle.
 - [x] Launch full 320-example frontal retry; native pilot follows on completion.
 - [x] Inspect archived 17.9272 dB recipe and previous replay failure.
-- [ ] Resolve archived raw/clean/EOG cache versus current-source mismatch.
+- [x] Quantify the archived/current-source mismatch and replay the immutable archive; exact current-source identity remains false.
 - [x] Reproduce frozen K3/2000 + EOGContextGainStudent + hard support gate on
       the explicitly declared archived cache: 17.927210 dB, no retraining.
-- [ ] Test a bounded development-only hybrid extension with separate blink/lateral
+- [x] Test a bounded development-only hybrid extension with separate blink/lateral
       evidence and calibration-anchored selective correction; keep K3/2000 fixed.
 - [ ] Reuse versioned posterior candidates with disjoint regional correction after
       frontal validation; do not repeat the other chat's broad posterior search.
@@ -25,8 +25,8 @@ the already archived unknown-montage Klados cache and cannot establish anatomy.
 
 ## Time allocation and stop rules
 
-Hour 0–1: cache/source diagnosis and historical replay. Hour 1–3: bounded hybrid
-experiments and ongoing controlled frontal evaluation. Hour 3–4.5: eligible
+Hour 0â€“1: cache/source diagnosis and historical replay. Hour 1â€“3: bounded hybrid
+experiments and ongoing controlled frontal evaluation. Hour 3â€“4.5: eligible
 native/regional checks. Final 1.5 hours: artifact retrieval, fresh loading and
 report. No new large experiment should displace evidence recovery near deadline.
 
@@ -73,3 +73,7 @@ are weakened. Existing failures and their output manifests remain preserved.
 The four-arm run frontal-gain-hybrid-002 completed on all 320 development examples with passing numerical tests. Frozen K3 transfer scored 8.76523 dB; calibration anchoring 8.90208 dB; independent-axis gating 7.84840 dB; both changes 7.94956 dB. Direct regression scored 11.80749 dB but failed worst-clean modification (0.21764) and covariance (0.23846). No hybrid passed the controlled accuracy/correlation gates; none is qualified. These frontal per-channel metrics are not interchangeable with archived whole-cap 17.92721 dB.
 
 Next bounded diagnosis: test consistent volts-to-microvolts conversion of all frozen-model inputs and restore correction outputs to volts. K/alpha, checkpoint, split, thresholds and targets remain unchanged. Absolute model floors may distort small volt-scale mode features; this is a hypothesis until the matched Kaggle comparison finishes. A second cache reconstruction check in FrontalCorrector also needed float64 accumulation at the unchanged tolerance; the earlier reader-only audit did not cover that second check. Add a regression fixture and retain previous run evidence.
+
+## Current measured checkpoint, 11:16 UTC
+
+Frontal hybrid002 and evidence001 are complete, downloaded and checksummed. Units audit001 is complete: consistent model unit conversion changes output SNR by less than 0.001 dB, ruling out a major unit-floor explanation for this transfer failure. The frozen hybrid remains unqualified; its largest weakness is lateral movement. Signed lagged calibration-transfer versus K3-mode gain estimation is running as frontal-calibration-hybrid-001, source96c6cfd. Full classical002 remains running on its original pinned source. Latest source1b26969 includes the second reconstruction-check repair and explicit repaired-run queue support. No new model fitting, posterior VMD, confirmation access or AutoVMD occurs.
