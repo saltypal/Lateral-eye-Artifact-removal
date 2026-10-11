@@ -125,3 +125,21 @@ events and hidden-process logs live in
 `results/vmd-frontal-replication-20261011/orchestration/`. Failed kernels or API
 errors stop dependent submissions for diagnosis. Every numerical stage remains
 on Kaggle and records an exact published source SHA and parent versions.
+
+## Failure and repair checkpoint — 11 October 2026, 09:01 UTC
+
+Full evaluation rontal-full-001 failed after 291/320 examples at the strict
+archived mode-plus-residual reconstruction check. Saved progress and individual
+example outputs remain evidence; this run is not complete and cannot qualify a
+method or supply the native parent. The dependent queue stopped as designed.
+
+Focused Kaggle notebook rontal-cache-audit-001 (source fda250, kernel
+satyapaladugu/vmd-frontal-cache-audit/1) inspects both fixed archives over all
+320 development examples without any VMD fitting or cache modification. It
+compares float32 and float64 summation at the unchanged tolerance. The potential
+float32 accumulation explanation remains a hypothesis until its outputs verify it.
+
+Native validation, posterior integration and neural training remain blocked at
+this checkpoint. The Luna monitoring agent became unavailable due to its usage
+limit; the primary agent continues diagnosis and the local diagnostic watcher
+provides 45-second status polling.

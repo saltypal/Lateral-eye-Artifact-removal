@@ -66,6 +66,10 @@ def main():
         execute(args.stage,args.input,args.output,args.profile,args.config,experiment)
     except Exception as error:
         atomic_json(args.output/"execution_state.json",{"stage":args.stage,"status":"failed","error":str(error),"traceback":traceback.format_exc()})
+        # Failed runs retain verifiable partial evidence too. This manifest does
+        # not turn failure into completion or authorize dependent experiments.
+        artifacts={str(path.relative_to(args.output)):sha256_file(path) for path in args.output.rglob("*") if path.is_file() and path.name not in ("execution_state.json","artifact_manifest.json")}
+        atomic_json(args.output/"artifact_manifest.json",artifacts)
         raise
     atomic_json(args.output/"resource_summary.json",{"wall_time_s":time.perf_counter()-started,
         "peak_resident_memory_kib":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss})

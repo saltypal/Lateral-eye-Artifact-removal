@@ -167,10 +167,26 @@ def step():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--once", action="store_true", help="One orchestration poll, including eligible submissions")
+    parser.add_argument("--watch-run", help="Monitor and retrieve one diagnostic run without launching dependents")
+    parser.add_argument("--summary-name", default="frontal_cache_audit_summary.json")
     args = parser.parse_args()
     record("queue_started", scope="frontal only; no AutoVMD or neural/posterior launch")
     while True:
         try:
+            if args.watch_run:
+                state = status(args.watch_run)
+                if state == "COMPLETE":
+                    print(command("retrieve", "--run-id", args.watch_run,
+                                  "--file-pattern", REPORT_FILES + "|frontal_cache_audit"), flush=True)
+                    collect(args.watch_run, args.summary_name)
+                    record("diagnostic_review_checkpoint", run_id=args.watch_run)
+                    return
+                if state in ("ERROR", "CANCEL_ACKNOWLEDGED"):
+                    raise RuntimeError("Diagnostic run stopped: " + args.watch_run + " is " + state)
+                if args.once:
+                    return
+                time.sleep(45)
+                continue
             if step() or args.once:
                 return
         except Exception as error:
