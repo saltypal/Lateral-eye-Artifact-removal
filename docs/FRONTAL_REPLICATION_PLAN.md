@@ -90,7 +90,8 @@ transition into posterior or neural work bypasses scientific checkpoints.
 - [x] Latest foundation checks: frontal-fixture-004, 106 passed at 638d496.
 - [x] Strict metric coverage/worst-record reporting: frontal-fixture-005, 108 passed at 08f33ac.
 - [x] First pilot completed: 20 examples/72 candidates, zero failure rows.
-- [ ] Complete calibrated-detector, separate-K follow-up and waveform inspection.
+- [x] Complete separate-K correction screen and calibrated-detector waveform inspection.
+- [ ] Resolve or retrieve delayed smaller repaired pilot without replacing its evidence.
 - [ ] Complete full source-excluded frontal comparison and uncertainty.
 - [ ] Native OSF whole-trial frontal suppression/rest preservation.
 - [ ] Obtain full 2020 method; establish author parity where eligible.
@@ -222,3 +223,10 @@ two-record pilot. Reserved records are rejected before verification. Every trial
 retains all successful/failing window decisions plus the deterministic first
 window's frontal modes and residual, and the complete corrected waveform.
 These native outputs remain recoverable evidence even when an accuracy gate fails.
+
+`frontal-evidence-001` completed at `c40721a`, with 109 passing tests and 52
+selected-arm metric-parity checks. No new VMD decomposition or AutoVMD ran. Its
+four mode-vector archives and plots were retrieved. The preselected lateral Fz
+example exposed 6.39% interval-energy coverage versus 94.74% for blink. Anchored
+lag correction improved that lateral diagnostic but ungated projection altered
+clean EEG; no new inference recipe or gate relaxation follows from this example.

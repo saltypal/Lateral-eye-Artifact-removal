@@ -13,6 +13,8 @@ Read the append-only orchestration events for newer job states.
   residual retention, numerical fallback and immutable cache verification.
 - Exact Git/versioned-parent notebook launches and recoverable per-example outputs.
 - Kaggle fixture 005: 108 passed, 14 warnings, zero failures at `08f33ac`.
+- Kaggle waveform inspection: 109 passed, 14 warnings, zero failures at `c40721a`;
+  52 selected-arm metric-vector parity checks passed on four predetermined examples.
 
 AutoVMD cancellation was verified and its historical artifacts retained. The
 new correction bank is not a K/alpha selector. Author-code parity remains
@@ -68,7 +70,10 @@ does not establish retention of all neural activity during ocular contamination.
   reconstruction residuals, actual waveform/score parity, interval-energy coverage,
   lag mismatch and calibration-anchored mean-offset diagnostics. Run
   `frontal-evidence-001` launched at `c40721a6c2c459a025834a29361fcc56731e4f16`;
-  RUNNING at this snapshot. Targets are diagnostic-only and never enter inference.
+  COMPLETE and retrieved. Targets are diagnostic-only and never enter inference.
+  The screen saved tables rather than every grid prediction; NPZ prediction-parity
+  checks are therefore zero, while all 52 metric-vector checks passed. Four mode
+  vector/residual archives and blink/lateral/mixed/clean plots were also downloaded.
 - Smaller repaired pilot `frontal-pilot-002` remains RUNNING; its logs have not
   yet matched the requested run. That is unavailable progress evidence, not a
   numerical success or confirmed exception. The screen supplies current recipes
@@ -78,6 +83,33 @@ does not establish retention of all neural activity during ocular contamination.
   compares unchanged HEOG/VEOG association and rest RMSE/PSD/preservation.
 - Posterior integration, EEG-only student training, external evaluation and export
   remain pending. The local queue stops at frontal review and cannot launch them.
+
+## First mechanism evidence
+
+These observations use the first sorted Fz example in each condition, not an
+optimized or representative population estimate. The lateral example's 3-SD
+interval support covered 6.39% of known ocular-artifact energy; blink support
+covered 94.74%. This explains a plausible weakness of interval-only correction,
+but support thresholds still require grouped preservation/accuracy validation.
+
+For that lateral example, ungated instantaneous projection scored 7.7897 dB,
+short-lag projection 10.6197 dB, and calibration-anchored short-lag projection
+11.6112 dB. Mean-bias squared decreased from 9.6009e-14 to 2.3347e-15 source
+units squared under anchoring. However, the clean example's ungated lag
+projection scored only 12.1585 dB against unchanged input. Those diagnostic
+corrections therefore cannot be adopted without the association/preservation
+gates. Blink/mixed examples did not improve under extra lag terms. More lags are
+not automatically better, and no target was used to fit any projection.
+
+The source-normalized Fz plots show adaptive K3/K4 center frequencies and retained
+residuals; they are not five physiological bands. This is mechanism evidence on
+the regression-generated corpus, not independent native EEG or final SNR evidence.
+
+The posterior report was inspected read-only. Its immutable future integration
+parent is `satyapaladugu/vmd-band-posterior-full/1`, source `a25acb9`, with the same
+corpus/2 and preprocessing. Its best-candidate search table is not a source-excluded
+winner estimate and teacher qualification is false. It will not be silently treated
+as a qualified ICA/MWF result or rerun as another broad posterior search.
 
 ## Recover and inspect
 
