@@ -32,7 +32,7 @@ def main():
             handle.write(json.dumps(message) + "\n")
         if "KernelWorkerStatus.COMPLETE" in response or "KernelWorkerStatus.ERROR" in response:
             print(command("retrieve", "--run-id", args.run_id,
-                "--file-pattern", "guard17_source_audit|execution_state|artifact_manifest|contract_tests|environment|configuration"), flush=True)
+                "--file-pattern", "guard17_|execution_state|artifact_manifest|contract_tests|environment|configuration"), flush=True)
             identities = list(destination.rglob("run_spec.json"))
             if len(identities) != 1:
                 raise RuntimeError("Missing or ambiguous retrieved run identity")

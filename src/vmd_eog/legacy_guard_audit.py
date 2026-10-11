@@ -74,10 +74,78 @@ def diagnose(root, output, expected_checkpoint):
     print(json.dumps(report, indent=2), flush=True)
 
 
+def replay_archived_cache(output, expected_checkpoint):
+    """Reproduce frozen inference on a separately declared archived data source.
+
+    This never asserts equality with newly preprocessed original recordings.
+    The preceding source audit remains in the same output directory, including
+    every mismatch. Archived-cache results cannot qualify fresh frontal EEG.
+    """
+    import pandas as pd
+    import torch
+    from eog_vmd_fcm_bgru.evaluation import paired_metrics, modification_metrics
+    from eog_vmd_fcm_bgru.snr_student import EOGContextGainStudent
+    from eog_vmd_fcm_bgru.snr_target import unique_input, prediction
+    parent = unique_input("snr_target_protocol.json").parent
+    checkpoint = parent / "eog_vmd_context_student/best_safe.pt"
+    if digest(checkpoint) != expected_checkpoint:
+        raise ValueError("Archived checkpoint digest differs")
+    state = torch.load(checkpoint, map_location="cpu", weights_only=True)
+    if (state["selection"]["epoch"] != 110 or
+            state["selection"]["identity_weight"] != .2 or
+            state["selection"]["learning_rate"] != .001):
+        raise ValueError("Archived frozen checkpoint recipe differs")
+    torch.set_num_threads(2)
+    model = EOGContextGainStudent().eval()
+    model.load_state_dict(state["model"])
+    model.inference_gate_mode, model.inference_gate_offset = "hard", 0.
+    path = parent / "test_vmd_cache.npz"
+    with np.load(path, allow_pickle=False) as cache:
+        arrays = [torch.from_numpy(cache[name].copy()) for name in
+            ("raw", "clean", "eyes", "modes", "clean_modes", "valid", "clean_valid")]
+        keys = cache["keys"].copy()
+    artifact, identity_artifact = prediction(model, arrays, "cpu")
+    cleaned = (arrays[0] - artifact).numpy()
+    identity = (arrays[1] - identity_artifact).numpy()
+    scores = []
+    for index, (record, start) in enumerate(keys):
+        target = arrays[1][index].numpy()
+        for method, result in (("raw", arrays[0][index].numpy()), ("archived_guarded_vmd", cleaned[index])):
+            clean_result = target if method == "raw" else identity[index]
+            scores.append({"method": method, "record": int(record), "start": int(start),
+                **paired_metrics(result, target),
+                **{"clean_"+key: value for key, value in modification_metrics(clean_result, target).items()}})
+    frame = pd.DataFrame(scores)
+    frame.to_csv(output / "guard17_archived_window_metrics.csv", index=False)
+    means = frame.groupby(["method", "record"]).mean(numeric_only=True).groupby("method").mean(numeric_only=True)
+    means.to_csv(output / "guard17_archived_record_macro.csv")
+    np.savez_compressed(output / "guard17_archived_predictions.npz", keys=keys,
+        raw=arrays[0].numpy(), target=arrays[1].numpy(), cleaned=cleaned, identity=identity)
+    torch.save({"model": model.state_dict(), "inference_gate_mode": "hard",
+        "inference_gate_offset": 0., "strength": 1., "source_checkpoint_sha256": expected_checkpoint},
+        output / "guard17_archived_frozen.pt")
+    source_audit = json.loads((output / "guard17_source_audit.json").read_text())
+    report = {"scope": "historical unknown-montage frozen inference on pinned archived cache",
+        "source_checkpoint_sha256": expected_checkpoint, "cache_sha256": digest(path),
+        "K": 3, "alpha": 2000, "runtime_eog_required": True, "model": "EOGContextGainStudent",
+        "gate": "hard", "offset": 0., "strength": 1., "parameter_search": False,
+        "fresh_confirmation": False, "verified_frontal_claim": False,
+        "original_source_exact_match": all(row["exact_equal"] for row in source_audit["comparison"]),
+        "reported_source_mismatch_preserved": True, "teacher_qualified": False,
+        "source": "archived test_vmd_cache.npz; not newly preprocessed original recordings",
+        "aggregation": "window SNR across all valid EEG rows, then record mean, then records in dB",
+        "results": means.reset_index().to_dict(orient="records")}
+    (output / "guard17_archived_replay.json").write_text(json.dumps(report, indent=2, allow_nan=False))
+    print(json.dumps(report, indent=2), flush=True)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--checkpoint-sha256", required=True)
+    parser.add_argument("--replay-archived-cache", action="store_true")
     args = parser.parse_args()
     diagnose(args.root, args.output, args.checkpoint_sha256)
+    if args.replay_archived_cache:
+        replay_archived_cache(args.output, args.checkpoint_sha256)

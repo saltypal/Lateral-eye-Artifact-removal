@@ -8,7 +8,7 @@ from pathlib import Path
 from kaggle_campaign import ROOT, WORK, BRANCH, cli, git
 
 
-def submit(run_id, diagnose=False):
+def submit(run_id, diagnose=False, cached_replay=False):
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]+", run_id):
         raise ValueError("Invalid replay run ID")
     config = json.loads((ROOT/"configs/guard17_replay.json").read_text())
@@ -20,15 +20,23 @@ def submit(run_id, diagnose=False):
             "kernel": "satyapaladugu/guarded-vmd-k3-alpha2000-archived-reproduction", "profile": "archived-replay",
             "kernel_sources": config["kernel_sources"], "dataset_sources": config["dataset_sources"],
             "recipe": config, "fresh_confirmation": False, "teacher_qualified": False}
+    if cached_replay:
+        diagnose = True
     if diagnose:
         spec["stage"] = "guard17-source-audit"
         spec["kernel"] = "satyapaladugu/guarded-vmd-archived-source-audit"
+    if cached_replay:
+        spec["stage"] = "guard17-archived-cache-replay"
+        spec["kernel"] = "satyapaladugu/guarded-vmd-frozen-archive-replay"
     notebook_name = "31_Guarded_VMD_Source_Audit.ipynb" if diagnose else "23_Guarded_K3_Alpha2000_Reproduction.ipynb"
     notebook = json.loads((ROOT/"notebooks"/notebook_name).read_text())
     for cell in notebook["cells"]:
         if cell["cell_type"] == "code":
             source = ''.join(cell["source"])
             source = source.replace("RUN_SPEC = None  # injected by guard17_replay.py", "RUN_SPEC = "+repr(spec))
+            if cached_replay:
+                source = source.replace("result = subprocess.run(command,cwd=CHECKOUT,env=PROCESS_ENV)",
+                    "command.append('--replay-archived-cache')\nresult = subprocess.run(command,cwd=CHECKOUT,env=PROCESS_ENV)")
             ast.parse(source)
             cell["source"] = source.splitlines(keepends=True)
             cell["execution_count"], cell["outputs"] = None, []
@@ -36,6 +44,8 @@ def submit(run_id, diagnose=False):
     folder.mkdir(parents=True, exist_ok=False)
     (folder/"experiment.ipynb").write_text(json.dumps(notebook, indent=2))
     title = "Guarded VMD Archived Source Audit" if diagnose else "Guarded VMD K3 Alpha2000 Archived Reproduction"
+    if cached_replay:
+        title = "Guarded VMD Frozen Archive Replay"
     metadata = {"id": spec["kernel"], "title": title,
                 "code_file": "experiment.ipynb", "language": "python", "kernel_type": "notebook",
                 "is_private": True, "enable_internet": True, "enable_gpu": False,
@@ -59,6 +69,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--diagnose", action="store_true")
+    parser.add_argument("--cached-replay", action="store_true")
     args = parser.parse_args()
-    submit(args.run_id, args.diagnose)
+    submit(args.run_id, args.diagnose, args.cached_replay)
 
