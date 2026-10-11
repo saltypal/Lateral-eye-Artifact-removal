@@ -6,7 +6,7 @@ from .artifacts import verify_parent
 from .contracts import canonical_hash
 
 
-STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid")
+STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit")
 FIXED_SETTINGS = ((3, 2000), (4, 2000))
 
 
@@ -62,9 +62,14 @@ def execute(stage, input_root, output, config, profile, experiment):
     if stage == "frontal-cache-audit":
         from .frontal_cache_audit import run_audit
         return run_audit(input_root, output, config)
-    if stage in ("frontal-frozen-transfer", "frontal-gain-hybrid"):
+    if stage == "frontal-hybrid-evidence":
+        from .frontal_hybrid_evidence import run_evidence
+        return run_evidence(input_root, output, config)
+    if stage in ("frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-gain-unit-audit"):
         from .frontal_frozen_transfer import run_transfer
-        return run_transfer(input_root, output, config, hybrid=stage == "frontal-gain-hybrid")
+        return run_transfer(input_root, output, config,
+            hybrid=stage in ("frontal-gain-hybrid", "frontal-gain-unit-audit"),
+            unit_audit=stage == "frontal-gain-unit-audit")
     if stage == "frontal-native":
         from .frontal_native import run_native
         return run_native(input_root, output, config, profile)

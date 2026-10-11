@@ -1,0 +1,49 @@
+"""Review immutable frozen-gain results without fitting or altering predictions."""
+import json
+from pathlib import Path
+
+import pandas as pd
+
+from .artifacts import verify_parent
+from .io import atomic_json, sha256_file
+from .frontal_replication import uncertainty_report, plot_results
+from .frontal_review import save_controlled_review, strict_mean
+
+
+def run_evidence(input_root, output, config):
+    candidates = list(Path(input_root).rglob("frontal_transfer_summary.json"))
+    if len(candidates) != 1:
+        raise ValueError("Attach exactly one completed fixed-gain hybrid parent")
+    parent = candidates[0].parent
+    verify_parent(parent, ("frontal_transfer_summary.json", "frontal_transfer_scores.csv"))
+    summary = json.loads(candidates[0].read_text())
+    if (summary.get("scope") != "verified_frontal_only" or
+            summary.get("hybrid_ablation") is not True or
+            summary.get("weights_trained") is not False or
+            summary.get("autovmd_executed") is not False or
+            summary.get("reserved_confirmation_opened") is not False):
+        raise ValueError("Hybrid parent scope or information-access contract differs")
+    scores = pd.read_csv(parent / "frontal_transfer_scores.csv")
+    expected = {"identity", "direct", *summary["predeclared_arms"]}
+    if set(scores.evaluated_family) != expected:
+        raise ValueError("Required matched arms are missing or additional arms appeared")
+    save_controlled_review(scores, output, config)
+    uncertainty_report(scores, output, config)
+    intervals_path = output / "frontal_uncertainty.json"
+    intervals = json.loads(intervals_path.read_text())
+    for item in intervals:
+        item["scope"] = "frozen-weight frontal transfer on development sources; no final winner qualification"
+    atomic_json(intervals_path, intervals)
+    plot_results(scores, output)
+    condition_means = scores[scores.condition != "clean"].groupby(
+        ["evaluated_family", "recipient", "condition", "input_snr_db"])[
+        ["snr_energy_db", "snr_improvement_db", "mse", "rrmse_time", "pearson_cc"]].agg(strict_mean)
+    condition_means.groupby(["evaluated_family", "condition", "input_snr_db"]).agg(strict_mean).to_csv(
+        output / "frontal_hybrid_condition_means.csv")
+    atomic_json(output / "frontal_hybrid_evidence_summary.json", {
+        "scope": "verified_frontal_only", "scores_sha256": sha256_file(parent / "frontal_transfer_scores.csv"),
+        "parent_run": json.loads((parent / "run_spec.json").read_text())["run_id"],
+        "prediction_changes": False, "parameter_selection": False, "weights_trained": False,
+        "autovmd_executed": False, "reserved_confirmation_opened": False,
+        "uncertainty_method": "recipient/donor Poisson multiplier approximation; not a paper-native test",
+        "native_validation_required": True, "qualification": False})

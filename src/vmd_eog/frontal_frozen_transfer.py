@@ -29,8 +29,10 @@ LEGACY_SHA = "0b183e6c09f6ecfbb3ed4818028eb5abbdf842fc"
 CHECKPOINT_SHA = "4bb7c1b0cfa0e8341c4053ab3099efb16832f045f99e37afde1904a93c2cd0a9"
 
 
-def apply_frontal(model, eeg, references, names, regions, mask, bundles):
+def apply_frontal(model, eeg, references, names, regions, mask, bundles, unit_scale=1.):
     """One subtraction from original EEG; paired clean targets are not inputs."""
+    if not np.isfinite(unit_scale) or unit_scale <= 0:
+        raise ValueError("Model unit scale must be positive and finite")
     ids = frontal_indices(eeg, names, regions, mask)
     artifact = np.zeros_like(eeg, dtype=np.float64)
     if not len(ids):
@@ -42,15 +44,15 @@ def apply_frontal(model, eeg, references, names, regions, mask, bundles):
         raise ValueError("Frozen transfer requires fixed K3 modes")
     usable = np.asarray([not (bundles[int(index)][2].get("failure") or
         bundles[int(index)][2].get("hit_iteration_limit")) for index in ids])
-    values = torch.from_numpy(np.asarray(eeg[ids], dtype=np.float32)[None].copy())
-    eyes = torch.from_numpy(np.asarray(references, dtype=np.float32)[None].copy())
-    vectors = torch.from_numpy(np.asarray(modes, dtype=np.float32)[None].copy())
+    values = torch.from_numpy(np.asarray(eeg[ids] * unit_scale, dtype=np.float32)[None].copy())
+    eyes = torch.from_numpy(np.asarray(references * unit_scale, dtype=np.float32)[None].copy())
+    vectors = torch.from_numpy(np.asarray(modes * unit_scale, dtype=np.float32)[None].copy())
     keep = torch.ones(values.shape[:2], dtype=torch.float32)
     # The frozen model was trained with this feature equal to zero. Do not
     # activate an untrained feature merely because the caller now has anatomy.
     feature_regions = torch.full(values.shape[:2], 3, dtype=torch.long)
     with torch.no_grad():
-        estimated = model(values, vectors, eyes, keep, feature_regions)["artifact"].numpy()[0]
+        estimated = model(values, vectors, eyes, keep, feature_regions)["artifact"].numpy()[0] / unit_scale
     diagnostics = []
     for local, index in enumerate(ids):
         failed = not usable[local] or not np.isfinite(estimated[local]).all()
@@ -99,7 +101,7 @@ def gain_adapter(model_class, axis_gate=False, anchored=False):
     return Adapter()
 
 
-def run_transfer(input_root, output, config, hybrid=False):
+def run_transfer(input_root, output, config, hybrid=False, unit_audit=False):
     parents = list(Path(input_root).rglob("snr_target_protocol.json"))
     if len(parents) != 1:
         raise ValueError("Attach exactly one archived model parent")
@@ -126,6 +128,7 @@ def run_transfer(input_root, output, config, hybrid=False):
     model.load_state_dict(state["model"])
     model.inference_gate_mode, model.inference_gate_offset = "hard", 0.
     models = {"frozen_K3_gain_transfer": model}
+    unit_scales = {"frozen_K3_gain_transfer": 1.}
     if hybrid:
         for name, axis, anchored in (("K3_axis_gate",True,False),
                 ("K3_calibration_anchor",False,True), ("K3_axis_gate_anchor",True,True)):
@@ -133,6 +136,18 @@ def run_transfer(input_root, output, config, hybrid=False):
             adapted.load_state_dict(state["model"])
             adapted.inference_gate_mode, adapted.inference_gate_offset = "hard", 0.
             models[name] = adapted
+            unit_scales[name] = 1.
+    if unit_audit:
+        # Corpus amplitudes are verified MNE volts. The archived model uses
+        # absolute floors originally exercised on much larger numeric inputs.
+        # Convert every input together, then restore the artifact to volts.
+        for name, axis, anchored in (("K3_microvolt_transfer",False,False),
+                ("K3_microvolt_anchor",False,True)):
+            adapted = gain_adapter(module.EOGContextGainStudent, axis, anchored).eval()
+            adapted.load_state_dict(state["model"])
+            adapted.inference_gate_mode, adapted.inference_gate_offset = "hard", 0.
+            models[name] = adapted
+            unit_scales[name] = 1e6
     torch.set_num_threads(2)
     parent = selected_parent(input_root)
     selections = {row["fold"]: row for row in read_jsonl(parent / "frontal_fold_selections.jsonl")
@@ -154,9 +169,9 @@ def run_transfer(input_root, output, config, hybrid=False):
         for name, network in models.items():
             if hasattr(network,"calibration_mean"):
                 network.calibration_mean = torch.from_numpy(np.asarray(
-                    calibration["references"].mean(-1),dtype=np.float32)[None,:,None].copy())
+                    calibration["references"].mean(-1)*unit_scales[name],dtype=np.float32)[None,:,None].copy())
             estimates[name], artifacts[name], arm_details[name] = apply_frontal(network, data["eeg"], data["references"],
-                data["channel_names"], data["regions"], data["mask"], bundles)
+                data["channel_names"], data["regions"], data["mask"], bundles, unit_scale=unit_scales[name])
         direct = FrontalCorrector(selections[row["partition"]["fold"]]["selected"], config)
         comparator, _, _ = direct.denoise(data["eeg"], data["references"], calibration["references"],
             data["channel_names"], data["regions"], data["mask"], calibration_eeg=calibration["eeg"])
@@ -200,6 +215,7 @@ def run_transfer(input_root, output, config, hybrid=False):
         "model_source_git_sha": LEGACY_SHA, "trained_anatomy_feature_disabled": True,
         "failure_rows": len(failures), "K":3, "alpha":2000, "weights_trained":False,
         "predeclared_arms":list(models), "hybrid_ablation":hybrid, "mean_anchor_source":"unscored calibration EOG only",
+        "unit_audit":unit_audit, "model_input_scales":unit_scales, "output_units":"volts",
         "autovmd_executed":False, "reserved_confirmation_opened":False,
         "native_validation_required":True, "qualification":False,
         "method":"frozen historical gain-model transfer; explicit frontal-only adaptation"})

@@ -55,6 +55,37 @@ def test_frozen_transfer_failed_decomposition_is_scored_passthrough():
         apply_frontal(model,values,np.ones((2,64)),np.array(["Fz"]),np.array([0]),np.ones(1,bool),{})
 
 
+def test_gain_unit_adapter_converts_all_inputs_and_restores_output_units():
+    from vmd_eog.frontal_frozen_transfer import apply_frontal
+    values = np.full((1,64),2e-5)
+    references = np.full((2,64),3e-5)
+    bundles = {0:(np.full((3,64),4e-6),np.zeros(64),{})}
+    def model(eeg,modes,eyes,*args):
+        np.testing.assert_allclose(eeg.numpy(),20.,rtol=1e-6)
+        np.testing.assert_allclose(modes.numpy(),4.,rtol=1e-6)
+        np.testing.assert_allclose(eyes.numpy(),30.,rtol=1e-6)
+        return {"artifact":eeg*.25}
+    cleaned, artifact, _ = apply_frontal(model,values,references,
+        np.array(["Fz"]),np.array([0]),np.ones(1,bool),bundles,unit_scale=1e6)
+    np.testing.assert_allclose(cleaned,values*.75,rtol=1e-6)
+    np.testing.assert_allclose(artifact,values*.25,rtol=1e-6)
+    with pytest.raises(ValueError,match="positive"):
+        apply_frontal(model,values,references,np.array(["Fz"]),np.array([0]),np.ones(1,bool),bundles,unit_scale=0.)
+
+
+def test_corrector_reconstruction_uses_same_float64_contract_as_cache_reader():
+    modes = np.tile(np.array([[1.], [.1], [0.]],dtype=np.float32),(1,64))
+    residual = np.full(64,-1.1,dtype=np.float32)
+    original = modes.sum(0,dtype=np.float64) + residual.astype(np.float64)
+    spec = dict(family="vmd_projected",K=3,alpha=2000,trigger=.99,
+                component_threshold=.2,kind="projected",strength=1.,lags=[0],penalty=.01)
+    corrector = FrontalCorrector(spec,configuration())
+    result, artifact, _ = corrector.denoise(original[None],np.zeros((2,64)),np.zeros((2,64)),
+        ["Fz"],[0],mode_bundles={0:(modes,residual,{})})
+    np.testing.assert_array_equal(result,original[None])
+    assert not artifact.any()
+
+
 def test_fixed_gain_axis_support_and_zero_calibration_offset_contracts():
     import torch
     from vmd_eog.frontal_frozen_transfer import gain_adapter

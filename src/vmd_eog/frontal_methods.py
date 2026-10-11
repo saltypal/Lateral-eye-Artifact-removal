@@ -230,7 +230,7 @@ class FrontalCorrector:
                 if (np.asarray(modes).shape != (recipe.K, original.shape[-1]) or
                         np.asarray(residual).shape != (original.shape[-1],) or
                         not np.isfinite(modes).all() or not np.isfinite(residual).all() or
-                        not np.allclose(np.asarray(modes).sum(0) + residual, original[index],
+                        not np.allclose(np.asarray(modes).sum(0, dtype=np.float64) + np.asarray(residual, dtype=np.float64), original[index],
                                         rtol=1e-5, atol=1e-11)):
                     raise ValueError("Mode cache shape, finiteness or reconstruction differs")
         for index in indices:

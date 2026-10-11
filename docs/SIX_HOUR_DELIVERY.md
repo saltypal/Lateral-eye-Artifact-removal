@@ -67,3 +67,9 @@ Repair explicitly fetches that exact commit without changing experiment HEAD.
 The four-arm hybrid includes the frozen transfer control, so one repaired hybrid
 run replaces a redundant separate transfer retry. No thresholds or data checks
 are weakened. Existing failures and their output manifests remain preserved.
+
+## Frozen frontal hybrid result and next diagnosis
+
+The four-arm run frontal-gain-hybrid-002 completed on all 320 development examples with passing numerical tests. Frozen K3 transfer scored 8.76523 dB; calibration anchoring 8.90208 dB; independent-axis gating 7.84840 dB; both changes 7.94956 dB. Direct regression scored 11.80749 dB but failed worst-clean modification (0.21764) and covariance (0.23846). No hybrid passed the controlled accuracy/correlation gates; none is qualified. These frontal per-channel metrics are not interchangeable with archived whole-cap 17.92721 dB.
+
+Next bounded diagnosis: test consistent volts-to-microvolts conversion of all frozen-model inputs and restore correction outputs to volts. K/alpha, checkpoint, split, thresholds and targets remain unchanged. Absolute model floors may distort small volt-scale mode features; this is a hypothesis until the matched Kaggle comparison finishes. A second cache reconstruction check in FrontalCorrector also needed float64 accumulation at the unchanged tolerance; the earlier reader-only audit did not cover that second check. Add a regression fixture and retain previous run evidence.
