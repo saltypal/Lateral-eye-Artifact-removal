@@ -307,13 +307,44 @@ User authorized proceeding with regional composition. Added schema4 exploratory 
 
 `regional-pilot-001` accepted as Kaggle version1, source `69e79ac0391d102a6be1f3193159554b8a4077ff`, notebook `satyapaladugu/vmd-regional-composition-pilot/1`. API RUNNING verified12October2026. Matching live log was unavailable; this is observability uncertainty, not a numerical failure. Added a45-second primary orchestration chain: retrieve/checksum pilot evidence, require completed tests and posterior parity, then submit unchanged full320-example comparison. The chain stops on contract/kernel/API failure and never launches neural training or opens confirmation. A successful pilot/full run remains unqualified while native preservation fails.
 
+
+## Regional completion review — 2026-10-12T20:45:35.697627+00:00
+
+# Regional integration results — 13 October 2026
+
+Verified full controlled development comparison; not independent or production qualification.
+
+Run `regional-full-001`, notebook `satyapaladugu/vmd-regional-composition-full/1`, source `eadff90f6411ba48e6f8cc133b08c211da95d157`. Completed320examples/32recipients/53arms/320posterior calibration fits, zero posterior fit failures.126tests and19,200 metric parity checks passed. Numerical runtime2736.146906s (approximately45.6minutes).15downloaded summary/test/metric payloads checked against artifact manifest; full waveform retrieval is not asserted.
+
+| Arm | Whole-cap output SNR dB | SNR improvement dB | Pearson CC |
+|---|---:|---:|---:|
+| K3_calibration_event_gain+ica:full | 8.857765 | 5.682199 | 0.855250 |
+| K3_calibration_mode_gain+direct:posterior | 9.094213 | 5.918647 | 0.859318 |
+| K3_calibration_mode_gain+ica:full | 9.089350 | 5.913784 | 0.858279 |
+| K3_calibration_mode_gain+mwf:signed_context | 8.709587 | 5.534021 | 0.852230 |
+| K3_calibration_mode_gain+pass | 8.314914 | 5.139348 | 0.847655 |
+| calibration_raw_gain+direct:posterior | 9.337592 | 6.162026 | 0.861007 |
+| identity | 3.175566 | 0.000000 | 0.733878 |
+
+The VMD+full-ICA arm retains frontal17.112814dB and posterior13.522890dB but whole-cap9.089350dB. Both region estimates use original EEG and disjoint outputs. Central/shared/unknown rows are passed through; their separate error contribution was not scored as its own scope. Whole-cap scoring includes those available rows. The lower whole-cap score is not evidence that ICA reduced the frontal result; regional SNR cannot be added. A Kaggle-only error/coverage diagnostic is needed before attributing the entire gap to unchanged channels.
+
+Best whole-cap point estimate is calibrated raw frontal+direct posterior9.337592dB. No whole-cap arm reaches15dB. VMD+direct and VMD+fullICA pass the controlled CC deterioration criterion, but fail output SNR. Temporal VMD+ICA and signed MWF additionally fail CC deterioration. Synthetic clean preservation remains zero modification; native preservation is unresolved. Three inherited VMD failed example/channel cases remain scored pass-through. The170failure-labelled whole-cap rows reflect example-wide propagation of those failure labels, not170distinct decomposition failures.
+
+Full source-excluded posterior review gives direct13.541703dB, ICAfull13.522890dB, ICAsigned12.862756dB and MWFsigned12.335080dB. Only direct/fullICA meet the added mean CC deterioration screen among these posterior methods. These are inherited partial-gate recipes without retuning; the review does not establish native or teacher qualification.
+
+Monitoring interruption: pilot finished and launched full automatically. A nonzero Kaggle status API call stopped the local chain while full continued. On13October live status confirmed bothCOMPLETE; full outputs were then retrieved and checksum-verified. This was an observability failure, not kernel numerical failure. No models or confirmation evaluation launched.
+
+Next decision: run a focused Kaggle breakdown of original/corrected errors for frontal, posterior and remaining channel names/masks; also report channel-first versus pooled-energy aggregation. Preserve all input/target/split identities. Select a declared central/shared non-VMD policy only after this evidence and native preservation review. Do not silently relabel unknown anatomy or call this a17dB whole-cap system.
+
+Saved results: `results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001`.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
 
-Metadata captured `2026-10-12T16:26:25.850186+00:00` at repository HEAD `69e79ac0391d102a6be1f3193159554b8a4077ff`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
+Metadata captured `2026-10-12T20:45:35.839739+00:00` at repository HEAD `eadff90f6411ba48e6f8cc133b08c211da95d157`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
 
-## Appendix A. All 98 recorded launch specifications
+## Appendix A. All 99 recorded launch specifications
 
 ### audit-001
 
@@ -2868,6 +2899,36 @@ Metadata captured `2026-10-12T16:26:25.850186+00:00` at repository HEAD `69e79ac
   ],
   "kernel": "satyapaladugu/vmd-band-posterior-context",
   "requested_kernel": "satyapaladugu/vmd-band-posterior-context",
+  "kernel_version": 1
+}
+```
+
+### regional-full-001
+
+[.kaggle-work/regional-full-001/run_spec.json](.kaggle-work/regional-full-001/run_spec.json); SHA256 `ed8075ed59cc9b107e27ac354f5cd2b0806e454c9410fdeaa2f012b4bd0e5128`.
+
+```json
+{
+  "run_id": "regional-full-001",
+  "stage": "regional-integration",
+  "git_sha": "eadff90f6411ba48e6f8cc133b08c211da95d157",
+  "campaign_id": "vmd-regional-integration-20261012",
+  "config_path": "configs/regional_integration.json",
+  "experiment": {},
+  "profile": "full",
+  "parent_run": "regional-pilot-001",
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [
+    "satyapaladugu/vmd-eog-corpus/2",
+    "satyapaladugu/vmd-eog-research-ready/1",
+    "satyapaladugu/vmd-frontal-monotonic-axis-events/1",
+    "satyapaladugu/vmd-band-posterior-full/1"
+  ],
+  "dataset_sources": [
+    "satyapaladugu/lateral-eye-complete-dataset"
+  ],
+  "kernel": "satyapaladugu/vmd-regional-composition-full",
+  "requested_kernel": "satyapaladugu/vmd-regional-composition-full",
   "kernel_version": 1
 }
 ```
@@ -8774,6 +8835,104 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 }
 ```
 
+### results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/execution_state.json
+
+[Saved payload](results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/execution_state.json); SHA256 `24f7ff70292b95f613583c0a2a4c6d9b038f7ed7a4674bc0eb2b0df118415f31`.
+
+```json
+{
+  "stage": "regional-integration",
+  "status": "complete",
+  "artifacts": 346
+}
+```
+
+### results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_summary.json
+
+[Saved payload](results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_summary.json); SHA256 `df4d3e8429dcc39bd32a9ac5013fc0610620026d2532ccbc19b282c1515711fe`.
+
+```json
+{
+  "examples": 320,
+  "recipients": 32,
+  "arms": 53,
+  "posterior_calibration_fits": 320,
+  "fit_failures": 0,
+  "runtime_s": 2736.1469064020002,
+  "posterior_parity_checks": 19200,
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "autovmd_executed": false,
+  "VMD_scope": "verified frontal K3/2000 caches only",
+  "weights_trained": false,
+  "qualification": false,
+  "reserved_confirmation_opened": false,
+  "native_preservation_unresolved": true,
+  "selection": "inherited source-excluded posterior recipes with partial original gates; no retuning",
+  "comparator": "calibration_raw_gain+direct:posterior",
+  "scoring": "channel-first participant-balanced primary; pooled energy supplementary"
+}
+```
+
+### results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/stage_tests_summary.json
+
+[Saved payload](results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/stage_tests_summary.json); SHA256 `401fa9db2a3c8c711b6ea02cb04e5675d1fd14a0c1e79f2a5bf255f5405051cf`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "cf157b236baf93c59be96e9c0032bdc60a597b4657755b2ace1a9021ec456f6c"
+}
+```
+
+### results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/execution_state.json
+
+[Saved payload](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/execution_state.json); SHA256 `58b267230bd0105cf302d9689bef1e8c10103e575c7cc3217b443b9d3836f64a`.
+
+```json
+{
+  "stage": "regional-integration",
+  "status": "complete",
+  "artifacts": 46
+}
+```
+
+### results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_summary.json
+
+[Saved payload](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_summary.json); SHA256 `b61ab8ebcdda3df2dbcac5b48bf82764d51e5db50fc9d0936dd25d2e28e722ad`.
+
+```json
+{
+  "examples": 20,
+  "recipients": 5,
+  "arms": 53,
+  "posterior_calibration_fits": 50,
+  "fit_failures": 0,
+  "runtime_s": 351.43134738900005,
+  "posterior_parity_checks": 1200,
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "autovmd_executed": false,
+  "VMD_scope": "verified frontal K3/2000 caches only",
+  "weights_trained": false,
+  "qualification": false,
+  "reserved_confirmation_opened": false,
+  "native_preservation_unresolved": true,
+  "selection": "inherited source-excluded posterior recipes with partial original gates; no retuning",
+  "comparator": "calibration_raw_gain+direct:posterior",
+  "scoring": "channel-first participant-balanced primary; pooled energy supplementary"
+}
+```
+
+### results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/stage_tests_summary.json
+
+[Saved payload](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/stage_tests_summary.json); SHA256 `b18bd0fab0d690462b99621899521dc756b71b80624aae5ad6966fa5a3399b60`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "a6b35bc8d1cd7347e7517caddddfbe0cbd85cba5d5e8f60af3e24136dff669bc"
+}
+```
+
 ## Appendix C. Exhaustive local metric/source/record/log index
 
 Large per-channel and candidate tables remain lossless in the linked files. This indexes available evidence, including partial failures; it does not assert complete remote retrieval. [Checksummed machine-readable index](docs/work_so_far_evidence_index.json).
@@ -9808,7 +9967,24 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-frontal-replication-20261011/frontal-subspace-window-001/results/vmd-frontal-replication-20261011/frontal-subspace-window-001/tests.txt](results/vmd-frontal-replication-20261011/frontal-subspace-window-001/results/vmd-frontal-replication-20261011/frontal-subspace-window-001/tests.txt) | 2557 | `f3412029a6cc5eeffea84b2eaddea72ec956f9ae59916f06e5208a3cb68c0497` |
 | [results/vmd-frontal-replication-20261011/frontal-subspace-window-001/watch_events.jsonl](results/vmd-frontal-replication-20261011/frontal-subspace-window-001/watch_events.jsonl) | 2471 | `cf15b3a43e95de02c76184cd8eb07556f51c35aeaf635cfec57ef7a74f8f5998` |
 | [results/vmd-frontal-replication-20261011/orchestration/events.jsonl](results/vmd-frontal-replication-20261011/orchestration/events.jsonl) | 190815 | `22bc6b02c5506921d1f876e798ca359cd47ee1bb5f45f2dbf94a9d224a2343ea` |
-| [results/vmd-regional-integration-20261012/regional-pilot-001/watch_events.jsonl](results/vmd-regional-integration-20261012/regional-pilot-001/watch_events.jsonl) | 354 | `d95c612e81618a5da0668e870120a53ed5417117273463d00faed8102702e8de` |
+| [results/vmd-regional-integration-20261012/regional-full-001/chain_events.jsonl](results/vmd-regional-integration-20261012/regional-full-001/chain_events.jsonl) | 10325 | `4051c5ac8bf163efda5a25f2cff379b5b7c6210c5a8b5b1b233feaa38b6d0bc6` |
+| [results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/posterior_metric_parity.csv](results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/posterior_metric_parity.csv) | 2534141 | `44bab231ecdb18c0dc0f1be4e2ee6e85bebdcfb5ae6d636f47f2a719f3efd367` |
+| [results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/posterior_oof_review.csv](results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/posterior_oof_review.csv) | 1766 | `d05311fd908c80dc0e4d227c7bda04ee99c6630e4d3517666a680bf5cf50a8dd` |
+| [results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_calibration_fits.jsonl](results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_calibration_fits.jsonl) | 62663 | `d979c7003111ff2471d6a7e88dfe7fc2e8eb2a01bacc3ec9507fddc8b9482fdd` |
+| [results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_condition_means.csv](results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_condition_means.csv) | 249344 | `6711354d5c04f604ce419b92864783a4ef222f7ec91d688adb8e888256931a51` |
+| [results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_method_means.csv](results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_method_means.csv) | 25917 | `ba6181d7861e3904ba4e6ec4ef1fd2d6a50a9fc4420988ab012c6f52c8d0aff7` |
+| [results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/tests.txt](results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/tests.txt) | 2557 | `cf157b236baf93c59be96e9c0032bdc60a597b4657755b2ace1a9021ec456f6c` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/chain_events.jsonl](results/vmd-regional-integration-20261012/regional-pilot-001/chain_events.jsonl) | 3364 | `588f6e1573a5d6945885ba425e448fbef36093d3c1bbdfa150703c98d6283a82` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/inherited_posterior_selections.jsonl](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/inherited_posterior_selections.jsonl) | 17776 | `9f1d7b06f27d115cc5b7ae5aa4b431463ce2cfa0fb4f4cedbc03844e7b8a4f10` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/posterior_metric_parity.csv](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/posterior_metric_parity.csv) | 153202 | `f60bea725069bcc45709e736a31786eb622f890c7fa396c84d48f477b82331df` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/posterior_oof_review.csv](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/posterior_oof_review.csv) | 1766 | `d05311fd908c80dc0e4d227c7bda04ee99c6630e4d3517666a680bf5cf50a8dd` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_calibration_fits.jsonl](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_calibration_fits.jsonl) | 9788 | `dcd4f909593c988c5c40289ae0c2a4db007116350067090d8a7487860c90c890` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_condition_means.csv](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_condition_means.csv) | 83225 | `f15e375a75ca10ff5776c1dfda8371078defebaa64ec943ea144c67ac9582651` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_example_scores.csv](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_example_scores.csv) | 603692 | `d5aed1841e03f5095d767d8ba633e08218d6053e059c8f8458d42172e253a54b` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_method_means.csv](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_method_means.csv) | 26036 | `16f9f018688161ff483c852d52cf4c29f353f023e3b81cfa555a2982b65d8f3f` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_selection_manifest.jsonl](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_selection_manifest.jsonl) | 24406 | `b1c5a9d47aa0d0d55504e9a57b156dd36fe9fcc963134dce115cba707847ab27` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/tests.txt](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/tests.txt) | 2557 | `a6b35bc8d1cd7347e7517caddddfbe0cbd85cba5d5e8f60af3e24136dff669bc` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/watch_events.jsonl](results/vmd-regional-integration-20261012/regional-pilot-001/watch_events.jsonl) | 532 | `f1899284bd76ee0ce751c86290b56a22fb2d7d0f22df41f030c5781e6b7906e7` |
 
 ## Appendix D. Verbatim record/participant/condition tables
 
@@ -12339,6 +12515,822 @@ identity,-5.473181121702266,0.0,3.0582390300864297e-10,2.307985957107543,0.47281
 
 ```
 
+### results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_method_means.csv
+
+```csv
+scope,evaluated_family,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration
+frontal,K3_calibration_event_gain+direct:posterior,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+ica:common_context,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+ica:full,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+ica:posterior,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+ica:raw_frontal,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+ica:signed_context,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+identity:posterior,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+mwf:common_context,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+mwf:full,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+mwf:posterior,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+mwf:raw_frontal,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+mwf:signed_context,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_event_gain+pass,5.86478031572762e-12,0.23763672179951584,0.9601853849644897,16.079988113876666,21.55316923557893,0.020956495278189047
+frontal,K3_calibration_mode_gain+direct:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+ica:common_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+ica:full,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+ica:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+ica:raw_frontal,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+ica:signed_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+identity:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+mwf:common_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+mwf:full,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+mwf:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+mwf:raw_frontal,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+mwf:signed_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,K3_calibration_mode_gain+pass,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,calibration_raw_event_gain+direct:posterior,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+ica:common_context,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+ica:full,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+ica:posterior,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+ica:raw_frontal,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+ica:signed_context,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+identity:posterior,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+mwf:common_context,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+mwf:full,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+mwf:posterior,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+mwf:raw_frontal,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+mwf:signed_context,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_event_gain+pass,4.558930948750918e-12,0.20637014896446282,0.967592436801286,17.10978465497015,22.582965776672413,0.013549443441392708
+frontal,calibration_raw_gain+direct:posterior,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+ica:common_context,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+ica:full,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+ica:posterior,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+ica:raw_frontal,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+ica:signed_context,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+identity:posterior,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+mwf:common_context,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+mwf:full,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+mwf:posterior,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+mwf:raw_frontal,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+mwf:signed_context,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,calibration_raw_gain+pass,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0
+frontal,identity,3.0582390300864297e-10,2.307985957107543,0.47281897982007526,-5.473181121702266,0.0,0.5083229004226034
+posterior,K3_calibration_event_gain+direct:posterior,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,K3_calibration_event_gain+ica:common_context,1.2302582910636393e-11,0.3093636899772294,0.9407162250251428,12.438216457870643,1.3562707729005656,0.020762237748963755
+posterior,K3_calibration_event_gain+ica:full,9.254098606504458e-12,0.258617607434592,0.9581008190576468,13.522890251447372,2.4409445664772944,0.0033776437164599552
+posterior,K3_calibration_event_gain+ica:posterior,1.3600912557103092e-11,0.3346249865264828,0.9315639798126298,11.814993928548862,0.7330482435787847,0.029914482961476876
+posterior,K3_calibration_event_gain+ica:raw_frontal,1.1965382304991623e-11,0.27434770188375024,0.9518027154439956,13.168184622243292,2.086238937273215,0.009675747330110906
+posterior,K3_calibration_event_gain+ica:signed_context,1.0758536202158061e-11,0.28408216569176437,0.950239680305032,12.862756312039577,1.7808106270694992,0.011238782469074579
+posterior,K3_calibration_event_gain+identity:posterior,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+posterior,K3_calibration_event_gain+mwf:common_context,1.3535249998086352e-11,0.32195098570403724,0.9385494981434137,12.242835012901402,1.1608893279313257,0.02292896463069294
+posterior,K3_calibration_event_gain+mwf:full,1.63086845560965e-11,0.351914444296921,0.9253098490092769,11.830932936633541,0.7489872516634642,0.036168613764829625
+posterior,K3_calibration_event_gain+mwf:posterior,1.504928336012467e-11,0.3453214237773072,0.9283207302913494,11.684876239715177,0.6029305547450987,0.03315773248275716
+posterior,K3_calibration_event_gain+mwf:raw_frontal,1.5194219397034083e-11,0.34018491084800373,0.9304261377510641,11.867231461673029,0.7852857767029523,0.03105232502304247
+posterior,K3_calibration_event_gain+mwf:signed_context,1.3541257118177809e-11,0.3202478734430023,0.9392097171713197,12.33508008140162,1.253134396431541,0.022268745602786952
+posterior,K3_calibration_event_gain+pass,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+posterior,K3_calibration_mode_gain+direct:posterior,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,K3_calibration_mode_gain+ica:common_context,1.2302582910636393e-11,0.3093636899772294,0.9407162250251428,12.438216457870643,1.3562707729005656,0.020762237748963755
+posterior,K3_calibration_mode_gain+ica:full,9.254098606504458e-12,0.258617607434592,0.9581008190576468,13.522890251447372,2.4409445664772944,0.0033776437164599552
+posterior,K3_calibration_mode_gain+ica:posterior,1.3600912557103092e-11,0.3346249865264828,0.9315639798126298,11.814993928548862,0.7330482435787847,0.029914482961476876
+posterior,K3_calibration_mode_gain+ica:raw_frontal,1.1965382304991623e-11,0.27434770188375024,0.9518027154439956,13.168184622243292,2.086238937273215,0.009675747330110906
+posterior,K3_calibration_mode_gain+ica:signed_context,1.0758536202158061e-11,0.28408216569176437,0.950239680305032,12.862756312039577,1.7808106270694992,0.011238782469074579
+posterior,K3_calibration_mode_gain+identity:posterior,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+posterior,K3_calibration_mode_gain+mwf:common_context,1.3535249998086352e-11,0.32195098570403724,0.9385494981434137,12.242835012901402,1.1608893279313257,0.02292896463069294
+posterior,K3_calibration_mode_gain+mwf:full,1.63086845560965e-11,0.351914444296921,0.9253098490092769,11.830932936633541,0.7489872516634642,0.036168613764829625
+posterior,K3_calibration_mode_gain+mwf:posterior,1.504928336012467e-11,0.3453214237773072,0.9283207302913494,11.684876239715177,0.6029305547450987,0.03315773248275716
+posterior,K3_calibration_mode_gain+mwf:raw_frontal,1.5194219397034083e-11,0.34018491084800373,0.9304261377510641,11.867231461673029,0.7852857767029523,0.03105232502304247
+posterior,K3_calibration_mode_gain+mwf:signed_context,1.3541257118177809e-11,0.3202478734430023,0.9392097171713197,12.33508008140162,1.253134396431541,0.022268745602786952
+posterior,K3_calibration_mode_gain+pass,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+posterior,calibration_raw_event_gain+direct:posterior,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,calibration_raw_event_gain+ica:common_context,1.2302582910636393e-11,0.3093636899772294,0.9407162250251428,12.438216457870643,1.3562707729005656,0.020762237748963755
+posterior,calibration_raw_event_gain+ica:full,9.254098606504458e-12,0.258617607434592,0.9581008190576468,13.522890251447372,2.4409445664772944,0.0033776437164599552
+posterior,calibration_raw_event_gain+ica:posterior,1.3600912557103092e-11,0.3346249865264828,0.9315639798126298,11.814993928548862,0.7330482435787847,0.029914482961476876
+posterior,calibration_raw_event_gain+ica:raw_frontal,1.1965382304991623e-11,0.27434770188375024,0.9518027154439956,13.168184622243292,2.086238937273215,0.009675747330110906
+posterior,calibration_raw_event_gain+ica:signed_context,1.0758536202158061e-11,0.28408216569176437,0.950239680305032,12.862756312039577,1.7808106270694992,0.011238782469074579
+posterior,calibration_raw_event_gain+identity:posterior,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+posterior,calibration_raw_event_gain+mwf:common_context,1.3535249998086352e-11,0.32195098570403724,0.9385494981434137,12.242835012901402,1.1608893279313257,0.02292896463069294
+posterior,calibration_raw_event_gain+mwf:full,1.63086845560965e-11,0.351914444296921,0.9253098490092769,11.830932936633541,0.7489872516634642,0.036168613764829625
+posterior,calibration_raw_event_gain+mwf:posterior,1.504928336012467e-11,0.3453214237773072,0.9283207302913494,11.684876239715177,0.6029305547450987,0.03315773248275716
+posterior,calibration_raw_event_gain+mwf:raw_frontal,1.5194219397034083e-11,0.34018491084800373,0.9304261377510641,11.867231461673029,0.7852857767029523,0.03105232502304247
+posterior,calibration_raw_event_gain+mwf:signed_context,1.3541257118177809e-11,0.3202478734430023,0.9392097171713197,12.33508008140162,1.253134396431541,0.022268745602786952
+posterior,calibration_raw_event_gain+pass,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+posterior,calibration_raw_gain+direct:posterior,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,calibration_raw_gain+ica:common_context,1.2302582910636393e-11,0.3093636899772294,0.9407162250251428,12.438216457870643,1.3562707729005656,0.020762237748963755
+posterior,calibration_raw_gain+ica:full,9.254098606504458e-12,0.258617607434592,0.9581008190576468,13.522890251447372,2.4409445664772944,0.0033776437164599552
+posterior,calibration_raw_gain+ica:posterior,1.3600912557103092e-11,0.3346249865264828,0.9315639798126298,11.814993928548862,0.7330482435787847,0.029914482961476876
+posterior,calibration_raw_gain+ica:raw_frontal,1.1965382304991623e-11,0.27434770188375024,0.9518027154439956,13.168184622243292,2.086238937273215,0.009675747330110906
+posterior,calibration_raw_gain+ica:signed_context,1.0758536202158061e-11,0.28408216569176437,0.950239680305032,12.862756312039577,1.7808106270694992,0.011238782469074579
+posterior,calibration_raw_gain+identity:posterior,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+posterior,calibration_raw_gain+mwf:common_context,1.3535249998086352e-11,0.32195098570403724,0.9385494981434137,12.242835012901402,1.1608893279313257,0.02292896463069294
+posterior,calibration_raw_gain+mwf:full,1.63086845560965e-11,0.351914444296921,0.9253098490092769,11.830932936633541,0.7489872516634642,0.036168613764829625
+posterior,calibration_raw_gain+mwf:posterior,1.504928336012467e-11,0.3453214237773072,0.9283207302913494,11.684876239715177,0.6029305547450987,0.03315773248275716
+posterior,calibration_raw_gain+mwf:raw_frontal,1.5194219397034083e-11,0.34018491084800373,0.9304261377510641,11.867231461673029,0.7852857767029523,0.03105232502304247
+posterior,calibration_raw_gain+mwf:signed_context,1.3541257118177809e-11,0.3202478734430023,0.9392097171713197,12.33508008140162,1.253134396431541,0.022268745602786952
+posterior,calibration_raw_gain+pass,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+posterior,identity,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+whole,K3_calibration_event_gain+direct:posterior,3.0043670847767916e-11,0.6390633162695478,0.856288865086154,8.86262889498671,5.687062808663281,0.004718494776875208
+whole,K3_calibration_event_gain+ica:common_context,3.169751312046136e-11,0.6567988363951636,0.8497734264480716,8.516388774367671,5.340822688044242,0.011233933414957584
+whole,K3_calibration_event_gain+ica:full,3.0724345900697426e-11,0.6408208126189283,0.8552496017403516,8.85776546127803,5.6821993749546,0.0057577581226776935
+whole,K3_calibration_event_gain+ica:posterior,3.2112657910118247e-11,0.6649260241018042,0.8468228456003828,8.314605694567716,5.1390396082442855,0.014184514262646379
+whole,K3_calibration_event_gain+ica:raw_frontal,3.155084852960688e-11,0.6456501735965752,0.8533246738873641,8.747926344480552,5.572360258157123,0.007682685975665129
+whole,K3_calibration_event_gain+ica:signed_context,3.118632634952071e-11,0.6486643909490101,0.8528321224425397,8.652481355463046,5.4769152691396155,0.008175237420489565
+whole,K3_calibration_event_gain+identity:posterior,3.3312733916411564e-11,0.6778011349050512,0.844625536004004,8.08332961064633,4.907763524322901,0.016381823859025174
+whole,K3_calibration_event_gain+mwf:common_context,3.211095854353122e-11,0.6610486025603115,0.8489790744323382,8.447631252568089,5.2720651662446585,0.012028285430690983
+whole,K3_calibration_event_gain+mwf:full,3.300169862129786e-11,0.6705828309340514,0.8447506672280138,8.317742379848571,5.142176293525141,0.016256692635015436
+whole,K3_calibration_event_gain+mwf:posterior,3.2590015355139207e-11,0.6685135398634817,0.8457110214568386,8.269964162504227,5.094398076180798,0.015296338406190612
+whole,K3_calibration_event_gain+mwf:raw_frontal,3.2643340387277425e-11,0.6668068096845511,0.8464033280379031,8.329900506300806,5.154334419977376,0.014604031825126193
+whole,K3_calibration_event_gain+mwf:signed_context,3.2108211634883506e-11,0.660454119783703,0.8492004235535577,8.478002371955863,5.302436285632434,0.011806936309471449
+whole,K3_calibration_event_gain+pass,3.3312733916411564e-11,0.6778011349050512,0.844625536004004,8.08332961064633,4.907763524322901,0.016381823859025174
+whole,K3_calibration_mode_gain+direct:posterior,2.969267477308817e-11,0.6288738896168573,0.8593182989942653,9.094213302573191,5.918647216249759,0.001689060868763931
+whole,K3_calibration_mode_gain+ica:common_context,3.134651704578163e-11,0.6466094097424728,0.8528028603561829,8.747973181954151,5.57240709563072,0.008204499506846307
+whole,K3_calibration_mode_gain+ica:full,3.037334982601769e-11,0.6306313859662376,0.8582790356484628,9.08934986886451,5.913783782541079,0.0027283242145664166
+whole,K3_calibration_mode_gain+ica:posterior,3.176166183543851e-11,0.6547365974491137,0.8498522795084942,8.546190102154196,5.3706240158307645,0.011155080354535104
+whole,K3_calibration_mode_gain+ica:raw_frontal,3.1199852454927143e-11,0.6354607469438844,0.8563541077954755,8.979510752067032,5.803944665743602,0.004653252067553853
+whole,K3_calibration_mode_gain+ica:signed_context,3.0835330274840975e-11,0.6384749642963194,0.855861556350651,8.884065763049524,5.708499676726094,0.005145803512378288
+whole,K3_calibration_mode_gain+identity:posterior,3.296173784173183e-11,0.6676117082523607,0.8476549699121154,8.314914018232809,5.139347931909381,0.013352389950913895
+whole,K3_calibration_mode_gain+mwf:common_context,3.175996246885148e-11,0.6508591759076209,0.8520085083404495,8.679215660154567,5.503649573831137,0.008998851522579707
+whole,K3_calibration_mode_gain+mwf:full,3.265070254661812e-11,0.6603934042813608,0.8477801011361251,8.54932678743505,5.373760701111619,0.013227258726904159
+whole,K3_calibration_mode_gain+mwf:posterior,3.223901928045947e-11,0.6583241132107911,0.8487404553649499,8.501548570090707,5.325982483767276,0.012266904498079337
+whole,K3_calibration_mode_gain+mwf:raw_frontal,3.229234431259769e-11,0.6566173830318605,0.8494327619460142,8.561484913887282,5.385918827563854,0.011574597917014918
+whole,K3_calibration_mode_gain+mwf:signed_context,3.1757215560203776e-11,0.6502646931310123,0.8522298574616691,8.709586779542342,5.534020693218913,0.008777502401360174
+whole,K3_calibration_mode_gain+pass,3.296173784173183e-11,0.6676117082523607,0.8476549699121154,8.314914018232809,5.139347931909381,0.013352389950913895
+whole,calibration_raw_event_gain+direct:posterior,2.974681783510397e-11,0.6319707409992412,0.8579703589720699,9.094720469842823,5.919154383519393,0.0030370008909593954
+whole,calibration_raw_event_gain+ica:common_context,3.140066010779741e-11,0.649706261124857,0.8514549203339875,8.748480349223783,5.572914262900355,0.009552439529041772
+whole,calibration_raw_event_gain+ica:full,3.0427492888033484e-11,0.6337282373486217,0.8569310956262675,9.089857036134141,5.914290949810712,0.0040762642367618805
+whole,calibration_raw_event_gain+ica:posterior,3.181580489745429e-11,0.6578334488314976,0.8485043394862988,8.546697269423827,5.371131183100399,0.012503020376730567
+whole,calibration_raw_event_gain+ica:raw_frontal,3.125399551694294e-11,0.6385575983262686,0.85500616777328,8.980017919336666,5.8044518330132355,0.006001192089749317
+whole,calibration_raw_event_gain+ica:signed_context,3.088947333685676e-11,0.6415718156787035,0.8545136163284555,8.884572930319159,5.709006843995727,0.006493743534573752
+whole,calibration_raw_event_gain+identity:posterior,3.3015880903747616e-11,0.6707085596347448,0.8463070298899199,8.315421185502444,5.139855099179013,0.014700329973109359
+whole,calibration_raw_event_gain+mwf:common_context,3.181410553086728e-11,0.6539560272900049,0.850660568318254,8.6797228274242,5.50415674110077,0.010346791544775172
+whole,calibration_raw_event_gain+mwf:full,3.270484560863391e-11,0.663490255663745,0.8464321611139296,8.549833954704685,5.374267868381254,0.014575198749099624
+whole,calibration_raw_event_gain+mwf:posterior,3.2293162342475265e-11,0.6614209645931752,0.8473925153427544,8.50205573736034,5.32648965103691,0.0136148445202748
+whole,calibration_raw_event_gain+mwf:raw_frontal,3.234648737461348e-11,0.6597142344142446,0.8480848219238188,8.561992081156918,5.386425994833488,0.012922537939210381
+whole,calibration_raw_event_gain+mwf:signed_context,3.1811358622219564e-11,0.6533615445133965,0.8508819174394736,8.710093946811977,5.534527860488546,0.010125442423555637
+whole,calibration_raw_event_gain+pass,3.3015880903747616e-11,0.6707085596347448,0.8463070298899199,8.315421185502444,5.139855099179013,0.014700329973109359
+whole,calibration_raw_gain+direct:posterior,2.939768237296982e-11,0.6216468328128884,0.8610073598630292,9.337591725170055,6.1620256388466235,0.0
+whole,calibration_raw_gain+ica:common_context,3.105152464566328e-11,0.6393823529385041,0.8544919212249469,8.991351604551015,5.815785518227585,0.006515438638082377
+whole,calibration_raw_gain+ica:full,3.0078357425899344e-11,0.6234043291622687,0.8599680965172267,9.332728291461375,6.1571622051379435,0.001039263345802485
+whole,calibration_raw_gain+ica:posterior,3.146666943532016e-11,0.6475095406451448,0.851541340377258,8.78956852475106,5.6140024384276295,0.00946601948577117
+whole,calibration_raw_gain+ica:raw_frontal,3.090486005480879e-11,0.6282336901399157,0.8580431686642394,9.222889174663898,6.047323088340466,0.0029641911987899217
+whole,calibration_raw_gain+ica:signed_context,3.0540337874722624e-11,0.6312479074923506,0.8575506172194148,9.12744418564639,5.951878099322959,0.0034567426436143567
+whole,calibration_raw_gain+identity:posterior,3.266674544161348e-11,0.660384651448392,0.8493440307808793,8.558292440829675,5.382726354506245,0.011663329082149964
+whole,calibration_raw_gain+mwf:common_context,3.146497006873313e-11,0.643632119103652,0.8536975692092135,8.92259408275143,5.7470279964280016,0.007309790653815776
+whole,calibration_raw_gain+mwf:full,3.235571014649977e-11,0.653166347477392,0.849469162004889,8.792705210031915,5.617139123708483,0.011538197858140229
+whole,calibration_raw_gain+mwf:posterior,3.1944026880341125e-11,0.6510970564068222,0.8504295162337138,8.74492699268757,5.569360906364141,0.010577843629315405
+whole,calibration_raw_gain+mwf:raw_frontal,3.1997351912479343e-11,0.6493903262278916,0.8511218228147783,8.804863336484148,5.629297250160718,0.009885537048250985
+whole,calibration_raw_gain+mwf:signed_context,3.1462223160085425e-11,0.6430376363270436,0.853918918330433,8.952965202139207,5.777399115815777,0.007088441532596242
+whole,calibration_raw_gain+pass,3.266674544161348e-11,0.660384651448392,0.8493440307808793,8.558292440829675,5.382726354506245,0.011663329082149964
+whole,identity,1.0160743601979166e-10,1.1482843114884855,0.7338779272370579,3.17556608632343,0.0,0.1271294326259712
+
+```
+
+### results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_condition_means.csv
+
+```csv
+scope,evaluated_family,condition,input_snr_db,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration
+frontal,K3_calibration_event_gain+direct:posterior,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+direct:posterior,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+direct:posterior,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+ica:common_context,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+ica:common_context,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+ica:common_context,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+ica:full,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+ica:full,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+ica:full,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+ica:posterior,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+ica:posterior,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+ica:posterior,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+ica:raw_frontal,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+ica:raw_frontal,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+ica:raw_frontal,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+ica:signed_context,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+ica:signed_context,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+ica:signed_context,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+identity:posterior,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+identity:posterior,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+identity:posterior,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+mwf:common_context,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+mwf:common_context,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+mwf:common_context,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+mwf:full,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+mwf:full,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+mwf:full,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+mwf:posterior,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+mwf:posterior,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+mwf:posterior,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+mwf:raw_frontal,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+mwf:raw_frontal,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+mwf:raw_frontal,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+mwf:signed_context,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+mwf:signed_context,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+mwf:signed_context,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_event_gain+pass,blink,0.0,2.4297770779669625e-12,0.1937838210694146,0.9657364020282205,20.017722829530943,26.269310859510313,0.02985502895573402
+frontal,K3_calibration_event_gain+pass,lateral,0.0,2.9737371131981313e-12,0.2129699063784051,0.9733800293329932,14.5996607718381,17.28740147396774,0.011784832747607424
+frontal,K3_calibration_event_gain+pass,mixed,0.0,4.674495602721809e-13,0.0874712491356622,0.9950628663205869,22.43993554786293,28.664766701351812,0.00011244261128507717
+frontal,K3_calibration_mode_gain+direct:posterior,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+direct:posterior,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+direct:posterior,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+ica:common_context,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+ica:common_context,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+ica:common_context,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+ica:full,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+ica:full,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+ica:full,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+ica:posterior,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+ica:posterior,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+ica:posterior,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+ica:raw_frontal,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+ica:raw_frontal,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+ica:raw_frontal,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+ica:signed_context,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+ica:signed_context,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+ica:signed_context,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+identity:posterior,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+identity:posterior,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+identity:posterior,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+mwf:common_context,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+mwf:common_context,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+mwf:common_context,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+mwf:full,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+mwf:full,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+mwf:full,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+mwf:posterior,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+mwf:posterior,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+mwf:posterior,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+mwf:raw_frontal,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+mwf:raw_frontal,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+mwf:raw_frontal,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+mwf:signed_context,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+mwf:signed_context,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+mwf:signed_context,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,K3_calibration_mode_gain+pass,blink,0.0,4.294542236843802e-13,0.08261137269560065,0.9954305976830625,23.201651553746018,29.453239583725388,0.00016083330089207323
+frontal,K3_calibration_mode_gain+pass,lateral,0.0,2.967211175818643e-12,0.21236238360231643,0.9735284613087412,14.626488676451084,17.314229378580727,0.011636400771859566
+frontal,K3_calibration_mode_gain+pass,mixed,0.0,4.662057405634115e-13,0.08720858331799088,0.9950815305402909,22.48757841378644,28.712409567275323,9.377839158100087e-05
+frontal,calibration_raw_event_gain+direct:posterior,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+direct:posterior,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+direct:posterior,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+ica:common_context,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+ica:common_context,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+ica:common_context,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+ica:full,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+ica:full,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+ica:full,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+ica:posterior,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+ica:posterior,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+ica:posterior,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+ica:raw_frontal,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+ica:raw_frontal,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+ica:raw_frontal,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+ica:signed_context,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+ica:signed_context,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+ica:signed_context,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+identity:posterior,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+identity:posterior,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+identity:posterior,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+mwf:common_context,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+mwf:common_context,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+mwf:common_context,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+mwf:full,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+mwf:full,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+mwf:full,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+mwf:posterior,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+mwf:posterior,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+mwf:posterior,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+mwf:raw_frontal,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+mwf:raw_frontal,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+mwf:raw_frontal,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+mwf:signed_context,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+mwf:signed_context,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+mwf:signed_context,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_event_gain+pass,blink,0.0,2.3449256240145376e-12,0.1974008282716418,0.9657158154507645,19.212187984274877,25.463776014254247,0.02987561553319022
+frontal,calibration_raw_event_gain+pass,lateral,0.0,2.1650790670842735e-12,0.15513316037748393,0.9851432548469848,17.248393175196703,19.93613387732635,2.1607233615864668e-05
+frontal,calibration_raw_event_gain+pass,mixed,0.0,3.837873824869741e-13,0.09031241077597986,0.995172670198567,21.792583599718398,28.017414753207277,2.638733304961304e-06
+frontal,calibration_raw_gain+direct:posterior,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+direct:posterior,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+direct:posterior,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+ica:common_context,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+ica:common_context,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+ica:common_context,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+ica:full,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+ica:full,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+ica:full,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+ica:posterior,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+ica:posterior,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+ica:posterior,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+ica:raw_frontal,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+ica:raw_frontal,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+ica:raw_frontal,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+ica:signed_context,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+ica:signed_context,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+ica:signed_context,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+identity:posterior,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+identity:posterior,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+identity:posterior,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+mwf:common_context,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+mwf:common_context,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+mwf:common_context,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+mwf:full,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+mwf:full,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+mwf:full,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+mwf:posterior,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+mwf:posterior,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+mwf:posterior,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+mwf:raw_frontal,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+mwf:raw_frontal,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+mwf:raw_frontal,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+mwf:signed_context,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+mwf:signed_context,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+mwf:signed_context,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,calibration_raw_gain+pass,blink,0.0,3.526090904659592e-13,0.0852614394083287,0.9955914309839546,22.475981154273747,28.727569184253117,0.0
+frontal,calibration_raw_gain+pass,lateral,0.0,2.168213763650694e-12,0.15493473745061706,0.9851648620806006,17.267339440621733,19.955080142751374,0.0
+frontal,calibration_raw_gain+pass,mixed,0.0,3.8373824552221794e-13,0.09026706261923867,0.995175308931872,21.802249837255296,28.027080990744178,0.0
+frontal,identity,blink,0.0,1.8725255230337384e-10,2.14968773410422,0.4546857827111019,-6.251588029979372,0.0,0.5409056482728527
+frontal,identity,lateral,0.0,1.2310817168743872e-10,1.4988742784911033,0.5882350892661458,-2.687740702129639,0.0,0.3969297728144549
+frontal,identity,mixed,0.0,1.8546285323762506e-10,2.1378686636675908,0.45638617107269724,-6.224831153488883,0.0,0.5387891378591746
+posterior,K3_calibration_event_gain+direct:posterior,blink,0.0,3.0692251547260963e-12,0.19937466266926773,0.9786515934494787,14.648717853450972,1.348349308258662,0.0
+posterior,K3_calibration_event_gain+direct:posterior,lateral,0.0,1.0175367485551423e-11,0.33023841398060466,0.9406806123789373,10.613575497793505,3.0691280693836434,0.0
+posterior,K3_calibration_event_gain+direct:posterior,mixed,0.0,3.0916210802573075e-12,0.20473553581695364,0.9779632054192293,14.338166420604463,1.6210652121825038,0.0
+posterior,K3_calibration_event_gain+ica:common_context,blink,0.0,3.0465773610615368e-12,0.1991404290208739,0.9789507259890062,14.724987109021797,1.4246185638294873,-0.0002991325395273844
+posterior,K3_calibration_event_gain+ica:common_context,lateral,0.0,1.6381307358325243e-11,0.4807767176091738,0.8879414302117578,7.666606637191601,0.12215920878173851,0.05273918216717936
+posterior,K3_calibration_event_gain+ica:common_context,mixed,0.0,3.1049768635586835e-12,0.21053770412034267,0.9769635252096041,14.133790656933261,1.4166894485113017,0.000999680209625206
+posterior,K3_calibration_event_gain+ica:full,blink,0.0,3.0196348705139173e-12,0.1978261360768502,0.979338188425178,14.762321924698437,1.4619533795061253,-0.0006865949756992692
+posterior,K3_calibration_event_gain+ica:full,lateral,0.0,9.843338616127293e-12,0.288582981352877,0.9521155874340839,11.847783835355761,4.303336406945899,-0.011434975055146717
+posterior,K3_calibration_event_gain+ica:full,mixed,0.0,3.012413865016675e-12,0.2041959147975015,0.9783155845109348,14.424043550043915,1.7069423416219582,-0.00035237909170550674
+posterior,K3_calibration_event_gain+ica:posterior,blink,0.0,3.6097398471183526e-12,0.22612638231087184,0.9714940392232375,13.706128574768908,0.40576002957659946,0.007157554226241124
+posterior,K3_calibration_event_gain+ica:posterior,lateral,0.0,1.605510674674018e-11,0.4521715901422317,0.8938013657979367,8.049009763556032,0.5045623351461698,0.046879246581000664
+posterior,K3_calibration_event_gain+ica:posterior,mixed,0.0,3.821203905148774e-12,0.2379690401165727,0.9692945361861129,13.131119619798266,0.41401841137630946,0.008668669233116504
+posterior,K3_calibration_event_gain+ica:raw_frontal,blink,0.0,3.063480212135423e-12,0.20071670637242006,0.978871178067612,14.59187935614915,1.2915108109568398,-0.00021958461813333102
+posterior,K3_calibration_event_gain+ica:raw_frontal,lateral,0.0,9.938477996711503e-12,0.30141906872171464,0.9492173542749693,11.352529877273154,3.808082448863291,-0.008536741896032003
+posterior,K3_calibration_event_gain+ica:raw_frontal,mixed,0.0,3.073339100854108e-12,0.20771626256853626,0.9777710940956924,14.209097967238444,1.4919967588164842,0.0001921113235369785
+posterior,K3_calibration_event_gain+ica:signed_context,blink,0.0,3.2270079284464735e-12,0.21069851992458416,0.9763393595048587,14.236121878413622,0.9357533332213135,0.002312233944619989
+posterior,K3_calibration_event_gain+ica:signed_context,lateral,0.0,1.1741469661725797e-11,0.38261073743118656,0.9234060974324544,9.520440765084716,1.9759933366748534,0.017274514946482793
+posterior,K3_calibration_event_gain+ica:signed_context,mixed,0.0,3.25159931458849e-12,0.2192976075706011,0.9748643096231193,13.797516390680803,1.0804151822588435,0.0030988957961099904
+posterior,K3_calibration_event_gain+identity:posterior,blink,0.0,3.971722877092216e-12,0.24104975323263095,0.9688687939650654,13.300368545192308,0.0,0.009782799484413282
+posterior,K3_calibration_event_gain+identity:posterior,lateral,0.0,1.727999109435021e-11,0.4943668668061922,0.8850268881406448,7.54444742840986,0.0,0.05565372423829246
+posterior,K3_calibration_event_gain+identity:posterior,mixed,0.0,4.296609195488265e-12,0.2540559469513714,0.9662970185356847,12.717101208421958,0.0,0.01166618688354457
+posterior,K3_calibration_event_gain+mwf:common_context,blink,0.0,3.022842100950642e-12,0.1959535661261973,0.9794663085798426,14.832531730800838,1.5321631856085283,-0.0008147151303639344
+posterior,K3_calibration_event_gain+mwf:common_context,lateral,0.0,1.5989239740816085e-11,0.4653619594107611,0.8943769402495374,7.927788154095191,0.38334072568532856,0.04630367212939987
+posterior,K3_calibration_event_gain+mwf:common_context,mixed,0.0,3.082343884139895e-12,0.2082919357757666,0.977281476538075,14.20184867900537,1.4847474705834105,0.0006817288811543674
+posterior,K3_calibration_event_gain+mwf:full,blink,0.0,3.2221344128672075e-12,0.2118638546332252,0.9635975644437039,14.757260835045855,1.4568922898535464,0.015054029005774803
+posterior,K3_calibration_event_gain+mwf:full,lateral,0.0,1.727658182472388e-11,0.5020922303326733,0.8738099279876282,7.466595358864308,-0.07785206954555336,0.06687068439130894
+posterior,K3_calibration_event_gain+mwf:full,mixed,0.0,3.3424234815624646e-12,0.22577345344496455,0.9618623406854658,13.931576875635278,1.2144756672133195,0.016100864733763546
+posterior,K3_calibration_event_gain+mwf:posterior,blink,0.0,3.3311270442554076e-12,0.22078582117081774,0.9699710978630535,13.944189507836942,0.6438209626446323,0.00868049558642514
+posterior,K3_calibration_event_gain+mwf:posterior,lateral,0.0,1.6219488410660925e-11,0.47166639709084046,0.886159293897876,7.882314356138828,0.3378669277289662,0.054521318481061246
+posterior,K3_calibration_event_gain+mwf:posterior,mixed,0.0,3.4561759364790943e-12,0.23195199648516365,0.9675725618397572,13.396113525941994,0.6790123175200342,0.01039064357947231
+posterior,K3_calibration_event_gain+mwf:raw_frontal,blink,0.0,3.2509334104368533e-12,0.21632064825401534,0.9648236881571263,14.338975035074782,1.0386064898824703,0.013827905292352394
+posterior,K3_calibration_event_gain+mwf:raw_frontal,lateral,0.0,1.6303384357285544e-11,0.45932562386319586,0.886407646319946,8.098584909830489,0.5541374814206284,0.05427296605899118
+posterior,K3_calibration_event_gain+mwf:raw_frontal,mixed,0.0,3.3448354919720958e-12,0.2272338823585319,0.9629979698188015,13.741209737524908,1.024108529102953,0.014965235600427954
+posterior,K3_calibration_event_gain+mwf:signed_context,blink,0.0,3.04220806131374e-12,0.1960908253115364,0.9791687472119028,14.915944945413298,1.6155764002209891,-0.000517153762424162
+posterior,K3_calibration_event_gain+mwf:signed_context,lateral,0.0,1.605453737074051e-11,0.4652934895092903,0.894619148031188,7.9439880478112475,0.3995406194013854,0.046061464347749284
+posterior,K3_calibration_event_gain+mwf:signed_context,mixed,0.0,3.0920464341536726e-12,0.20863459032642492,0.9770689720100918,14.249745535539821,1.5326443271178625,0.0008942334091374638
+posterior,K3_calibration_event_gain+pass,blink,0.0,3.971722877092216e-12,0.24104975323263095,0.9688687939650654,13.300368545192308,0.0,0.009782799484413282
+posterior,K3_calibration_event_gain+pass,lateral,0.0,1.727999109435021e-11,0.4943668668061922,0.8850268881406448,7.54444742840986,0.0,0.05565372423829246
+posterior,K3_calibration_event_gain+pass,mixed,0.0,4.296609195488265e-12,0.2540559469513714,0.9662970185356847,12.717101208421958,0.0,0.01166618688354457
+posterior,K3_calibration_mode_gain+direct:posterior,blink,0.0,3.0692251547260963e-12,0.19937466266926773,0.9786515934494787,14.648717853450972,1.348349308258662,0.0
+posterior,K3_calibration_mode_gain+direct:posterior,lateral,0.0,1.0175367485551423e-11,0.33023841398060466,0.9406806123789373,10.613575497793505,3.0691280693836434,0.0
+posterior,K3_calibration_mode_gain+direct:posterior,mixed,0.0,3.0916210802573075e-12,0.20473553581695364,0.9779632054192293,14.338166420604463,1.6210652121825038,0.0
+posterior,K3_calibration_mode_gain+ica:common_context,blink,0.0,3.0465773610615368e-12,0.1991404290208739,0.9789507259890062,14.724987109021797,1.4246185638294873,-0.0002991325395273844
+posterior,K3_calibration_mode_gain+ica:common_context,lateral,0.0,1.6381307358325243e-11,0.4807767176091738,0.8879414302117578,7.666606637191601,0.12215920878173851,0.05273918216717936
+posterior,K3_calibration_mode_gain+ica:common_context,mixed,0.0,3.1049768635586835e-12,0.21053770412034267,0.9769635252096041,14.133790656933261,1.4166894485113017,0.000999680209625206
+posterior,K3_calibration_mode_gain+ica:full,blink,0.0,3.0196348705139173e-12,0.1978261360768502,0.979338188425178,14.762321924698437,1.4619533795061253,-0.0006865949756992692
+posterior,K3_calibration_mode_gain+ica:full,lateral,0.0,9.843338616127293e-12,0.288582981352877,0.9521155874340839,11.847783835355761,4.303336406945899,-0.011434975055146717
+posterior,K3_calibration_mode_gain+ica:full,mixed,0.0,3.012413865016675e-12,0.2041959147975015,0.9783155845109348,14.424043550043915,1.7069423416219582,-0.00035237909170550674
+posterior,K3_calibration_mode_gain+ica:posterior,blink,0.0,3.6097398471183526e-12,0.22612638231087184,0.9714940392232375,13.706128574768908,0.40576002957659946,0.007157554226241124
+posterior,K3_calibration_mode_gain+ica:posterior,lateral,0.0,1.605510674674018e-11,0.4521715901422317,0.8938013657979367,8.049009763556032,0.5045623351461698,0.046879246581000664
+posterior,K3_calibration_mode_gain+ica:posterior,mixed,0.0,3.821203905148774e-12,0.2379690401165727,0.9692945361861129,13.131119619798266,0.41401841137630946,0.008668669233116504
+posterior,K3_calibration_mode_gain+ica:raw_frontal,blink,0.0,3.063480212135423e-12,0.20071670637242006,0.978871178067612,14.59187935614915,1.2915108109568398,-0.00021958461813333102
+posterior,K3_calibration_mode_gain+ica:raw_frontal,lateral,0.0,9.938477996711503e-12,0.30141906872171464,0.9492173542749693,11.352529877273154,3.808082448863291,-0.008536741896032003
+posterior,K3_calibration_mode_gain+ica:raw_frontal,mixed,0.0,3.073339100854108e-12,0.20771626256853626,0.9777710940956924,14.209097967238444,1.4919967588164842,0.0001921113235369785
+posterior,K3_calibration_mode_gain+ica:signed_context,blink,0.0,3.2270079284464735e-12,0.21069851992458416,0.9763393595048587,14.236121878413622,0.9357533332213135,0.002312233944619989
+posterior,K3_calibration_mode_gain+ica:signed_context,lateral,0.0,1.1741469661725797e-11,0.38261073743118656,0.9234060974324544,9.520440765084716,1.9759933366748534,0.017274514946482793
+posterior,K3_calibration_mode_gain+ica:signed_context,mixed,0.0,3.25159931458849e-12,0.2192976075706011,0.9748643096231193,13.797516390680803,1.0804151822588435,0.0030988957961099904
+posterior,K3_calibration_mode_gain+identity:posterior,blink,0.0,3.971722877092216e-12,0.24104975323263095,0.9688687939650654,13.300368545192308,0.0,0.009782799484413282
+posterior,K3_calibration_mode_gain+identity:posterior,lateral,0.0,1.727999109435021e-11,0.4943668668061922,0.8850268881406448,7.54444742840986,0.0,0.05565372423829246
+posterior,K3_calibration_mode_gain+identity:posterior,mixed,0.0,4.296609195488265e-12,0.2540559469513714,0.9662970185356847,12.717101208421958,0.0,0.01166618688354457
+posterior,K3_calibration_mode_gain+mwf:common_context,blink,0.0,3.022842100950642e-12,0.1959535661261973,0.9794663085798426,14.832531730800838,1.5321631856085283,-0.0008147151303639344
+posterior,K3_calibration_mode_gain+mwf:common_context,lateral,0.0,1.5989239740816085e-11,0.4653619594107611,0.8943769402495374,7.927788154095191,0.38334072568532856,0.04630367212939987
+posterior,K3_calibration_mode_gain+mwf:common_context,mixed,0.0,3.082343884139895e-12,0.2082919357757666,0.977281476538075,14.20184867900537,1.4847474705834105,0.0006817288811543674
+posterior,K3_calibration_mode_gain+mwf:full,blink,0.0,3.2221344128672075e-12,0.2118638546332252,0.9635975644437039,14.757260835045855,1.4568922898535464,0.015054029005774803
+posterior,K3_calibration_mode_gain+mwf:full,lateral,0.0,1.727658182472388e-11,0.5020922303326733,0.8738099279876282,7.466595358864308,-0.07785206954555336,0.06687068439130894
+posterior,K3_calibration_mode_gain+mwf:full,mixed,0.0,3.3424234815624646e-12,0.22577345344496455,0.9618623406854658,13.931576875635278,1.2144756672133195,0.016100864733763546
+posterior,K3_calibration_mode_gain+mwf:posterior,blink,0.0,3.3311270442554076e-12,0.22078582117081774,0.9699710978630535,13.944189507836942,0.6438209626446323,0.00868049558642514
+posterior,K3_calibration_mode_gain+mwf:posterior,lateral,0.0,1.6219488410660925e-11,0.47166639709084046,0.886159293897876,7.882314356138828,0.3378669277289662,0.054521318481061246
+posterior,K3_calibration_mode_gain+mwf:posterior,mixed,0.0,3.4561759364790943e-12,0.23195199648516365,0.9675725618397572,13.396113525941994,0.6790123175200342,0.01039064357947231
+posterior,K3_calibration_mode_gain+mwf:raw_frontal,blink,0.0,3.2509334104368533e-12,0.21632064825401534,0.9648236881571263,14.338975035074782,1.0386064898824703,0.013827905292352394
+posterior,K3_calibration_mode_gain+mwf:raw_frontal,lateral,0.0,1.6303384357285544e-11,0.45932562386319586,0.886407646319946,8.098584909830489,0.5541374814206284,0.05427296605899118
+posterior,K3_calibration_mode_gain+mwf:raw_frontal,mixed,0.0,3.3448354919720958e-12,0.2272338823585319,0.9629979698188015,13.741209737524908,1.024108529102953,0.014965235600427954
+posterior,K3_calibration_mode_gain+mwf:signed_context,blink,0.0,3.04220806131374e-12,0.1960908253115364,0.9791687472119028,14.915944945413298,1.6155764002209891,-0.000517153762424162
+posterior,K3_calibration_mode_gain+mwf:signed_context,lateral,0.0,1.605453737074051e-11,0.4652934895092903,0.894619148031188,7.9439880478112475,0.3995406194013854,0.046061464347749284
+posterior,K3_calibration_mode_gain+mwf:signed_context,mixed,0.0,3.0920464341536726e-12,0.20863459032642492,0.9770689720100918,14.249745535539821,1.5326443271178625,0.0008942334091374638
+posterior,K3_calibration_mode_gain+pass,blink,0.0,3.971722877092216e-12,0.24104975323263095,0.9688687939650654,13.300368545192308,0.0,0.009782799484413282
+posterior,K3_calibration_mode_gain+pass,lateral,0.0,1.727999109435021e-11,0.4943668668061922,0.8850268881406448,7.54444742840986,0.0,0.05565372423829246
+posterior,K3_calibration_mode_gain+pass,mixed,0.0,4.296609195488265e-12,0.2540559469513714,0.9662970185356847,12.717101208421958,0.0,0.01166618688354457
+posterior,calibration_raw_event_gain+direct:posterior,blink,0.0,3.0692251547260963e-12,0.19937466266926773,0.9786515934494787,14.648717853450972,1.348349308258662,0.0
+posterior,calibration_raw_event_gain+direct:posterior,lateral,0.0,1.0175367485551423e-11,0.33023841398060466,0.9406806123789373,10.613575497793505,3.0691280693836434,0.0
+posterior,calibration_raw_event_gain+direct:posterior,mixed,0.0,3.0916210802573075e-12,0.20473553581695364,0.9779632054192293,14.338166420604463,1.6210652121825038,0.0
+posterior,calibration_raw_event_gain+ica:common_context,blink,0.0,3.0465773610615368e-12,0.1991404290208739,0.9789507259890062,14.724987109021797,1.4246185638294873,-0.0002991325395273844
+posterior,calibration_raw_event_gain+ica:common_context,lateral,0.0,1.6381307358325243e-11,0.4807767176091738,0.8879414302117578,7.666606637191601,0.12215920878173851,0.05273918216717936
+posterior,calibration_raw_event_gain+ica:common_context,mixed,0.0,3.1049768635586835e-12,0.21053770412034267,0.9769635252096041,14.133790656933261,1.4166894485113017,0.000999680209625206
+posterior,calibration_raw_event_gain+ica:full,blink,0.0,3.0196348705139173e-12,0.1978261360768502,0.979338188425178,14.762321924698437,1.4619533795061253,-0.0006865949756992692
+posterior,calibration_raw_event_gain+ica:full,lateral,0.0,9.843338616127293e-12,0.288582981352877,0.9521155874340839,11.847783835355761,4.303336406945899,-0.011434975055146717
+posterior,calibration_raw_event_gain+ica:full,mixed,0.0,3.012413865016675e-12,0.2041959147975015,0.9783155845109348,14.424043550043915,1.7069423416219582,-0.00035237909170550674
+posterior,calibration_raw_event_gain+ica:posterior,blink,0.0,3.6097398471183526e-12,0.22612638231087184,0.9714940392232375,13.706128574768908,0.40576002957659946,0.007157554226241124
+posterior,calibration_raw_event_gain+ica:posterior,lateral,0.0,1.605510674674018e-11,0.4521715901422317,0.8938013657979367,8.049009763556032,0.5045623351461698,0.046879246581000664
+posterior,calibration_raw_event_gain+ica:posterior,mixed,0.0,3.821203905148774e-12,0.2379690401165727,0.9692945361861129,13.131119619798266,0.41401841137630946,0.008668669233116504
+posterior,calibration_raw_event_gain+ica:raw_frontal,blink,0.0,3.063480212135423e-12,0.20071670637242006,0.978871178067612,14.59187935614915,1.2915108109568398,-0.00021958461813333102
+posterior,calibration_raw_event_gain+ica:raw_frontal,lateral,0.0,9.938477996711503e-12,0.30141906872171464,0.9492173542749693,11.352529877273154,3.808082448863291,-0.008536741896032003
+posterior,calibration_raw_event_gain+ica:raw_frontal,mixed,0.0,3.073339100854108e-12,0.20771626256853626,0.9777710940956924,14.209097967238444,1.4919967588164842,0.0001921113235369785
+posterior,calibration_raw_event_gain+ica:signed_context,blink,0.0,3.2270079284464735e-12,0.21069851992458416,0.9763393595048587,14.236121878413622,0.9357533332213135,0.002312233944619989
+posterior,calibration_raw_event_gain+ica:signed_context,lateral,0.0,1.1741469661725797e-11,0.38261073743118656,0.9234060974324544,9.520440765084716,1.9759933366748534,0.017274514946482793
+posterior,calibration_raw_event_gain+ica:signed_context,mixed,0.0,3.25159931458849e-12,0.2192976075706011,0.9748643096231193,13.797516390680803,1.0804151822588435,0.0030988957961099904
+posterior,calibration_raw_event_gain+identity:posterior,blink,0.0,3.971722877092216e-12,0.24104975323263095,0.9688687939650654,13.300368545192308,0.0,0.009782799484413282
+posterior,calibration_raw_event_gain+identity:posterior,lateral,0.0,1.727999109435021e-11,0.4943668668061922,0.8850268881406448,7.54444742840986,0.0,0.05565372423829246
+posterior,calibration_raw_event_gain+identity:posterior,mixed,0.0,4.296609195488265e-12,0.2540559469513714,0.9662970185356847,12.717101208421958,0.0,0.01166618688354457
+posterior,calibration_raw_event_gain+mwf:common_context,blink,0.0,3.022842100950642e-12,0.1959535661261973,0.9794663085798426,14.832531730800838,1.5321631856085283,-0.0008147151303639344
+posterior,calibration_raw_event_gain+mwf:common_context,lateral,0.0,1.5989239740816085e-11,0.4653619594107611,0.8943769402495374,7.927788154095191,0.38334072568532856,0.04630367212939987
+posterior,calibration_raw_event_gain+mwf:common_context,mixed,0.0,3.082343884139895e-12,0.2082919357757666,0.977281476538075,14.20184867900537,1.4847474705834105,0.0006817288811543674
+posterior,calibration_raw_event_gain+mwf:full,blink,0.0,3.2221344128672075e-12,0.2118638546332252,0.9635975644437039,14.757260835045855,1.4568922898535464,0.015054029005774803
+posterior,calibration_raw_event_gain+mwf:full,lateral,0.0,1.727658182472388e-11,0.5020922303326733,0.8738099279876282,7.466595358864308,-0.07785206954555336,0.06687068439130894
+posterior,calibration_raw_event_gain+mwf:full,mixed,0.0,3.3424234815624646e-12,0.22577345344496455,0.9618623406854658,13.931576875635278,1.2144756672133195,0.016100864733763546
+posterior,calibration_raw_event_gain+mwf:posterior,blink,0.0,3.3311270442554076e-12,0.22078582117081774,0.9699710978630535,13.944189507836942,0.6438209626446323,0.00868049558642514
+posterior,calibration_raw_event_gain+mwf:posterior,lateral,0.0,1.6219488410660925e-11,0.47166639709084046,0.886159293897876,7.882314356138828,0.3378669277289662,0.054521318481061246
+posterior,calibration_raw_event_gain+mwf:posterior,mixed,0.0,3.4561759364790943e-12,0.23195199648516365,0.9675725618397572,13.396113525941994,0.6790123175200342,0.01039064357947231
+posterior,calibration_raw_event_gain+mwf:raw_frontal,blink,0.0,3.2509334104368533e-12,0.21632064825401534,0.9648236881571263,14.338975035074782,1.0386064898824703,0.013827905292352394
+posterior,calibration_raw_event_gain+mwf:raw_frontal,lateral,0.0,1.6303384357285544e-11,0.45932562386319586,0.886407646319946,8.098584909830489,0.5541374814206284,0.05427296605899118
+posterior,calibration_raw_event_gain+mwf:raw_frontal,mixed,0.0,3.3448354919720958e-12,0.2272338823585319,0.9629979698188015,13.741209737524908,1.024108529102953,0.014965235600427954
+posterior,calibration_raw_event_gain+mwf:signed_context,blink,0.0,3.04220806131374e-12,0.1960908253115364,0.9791687472119028,14.915944945413298,1.6155764002209891,-0.000517153762424162
+posterior,calibration_raw_event_gain+mwf:signed_context,lateral,0.0,1.605453737074051e-11,0.4652934895092903,0.894619148031188,7.9439880478112475,0.3995406194013854,0.046061464347749284
+posterior,calibration_raw_event_gain+mwf:signed_context,mixed,0.0,3.0920464341536726e-12,0.20863459032642492,0.9770689720100918,14.249745535539821,1.5326443271178625,0.0008942334091374638
+posterior,calibration_raw_event_gain+pass,blink,0.0,3.971722877092216e-12,0.24104975323263095,0.9688687939650654,13.300368545192308,0.0,0.009782799484413282
+posterior,calibration_raw_event_gain+pass,lateral,0.0,1.727999109435021e-11,0.4943668668061922,0.8850268881406448,7.54444742840986,0.0,0.05565372423829246
+posterior,calibration_raw_event_gain+pass,mixed,0.0,4.296609195488265e-12,0.2540559469513714,0.9662970185356847,12.717101208421958,0.0,0.01166618688354457
+posterior,calibration_raw_gain+direct:posterior,blink,0.0,3.0692251547260963e-12,0.19937466266926773,0.9786515934494787,14.648717853450972,1.348349308258662,0.0
+posterior,calibration_raw_gain+direct:posterior,lateral,0.0,1.0175367485551423e-11,0.33023841398060466,0.9406806123789373,10.613575497793505,3.0691280693836434,0.0
+posterior,calibration_raw_gain+direct:posterior,mixed,0.0,3.0916210802573075e-12,0.20473553581695364,0.9779632054192293,14.338166420604463,1.6210652121825038,0.0
+posterior,calibration_raw_gain+ica:common_context,blink,0.0,3.0465773610615368e-12,0.1991404290208739,0.9789507259890062,14.724987109021797,1.4246185638294873,-0.0002991325395273844
+posterior,calibration_raw_gain+ica:common_context,lateral,0.0,1.6381307358325243e-11,0.4807767176091738,0.8879414302117578,7.666606637191601,0.12215920878173851,0.05273918216717936
+posterior,calibration_raw_gain+ica:common_context,mixed,0.0,3.1049768635586835e-12,0.21053770412034267,0.9769635252096041,14.133790656933261,1.4166894485113017,0.000999680209625206
+posterior,calibration_raw_gain+ica:full,blink,0.0,3.0196348705139173e-12,0.1978261360768502,0.979338188425178,14.762321924698437,1.4619533795061253,-0.0006865949756992692
+posterior,calibration_raw_gain+ica:full,lateral,0.0,9.843338616127293e-12,0.288582981352877,0.9521155874340839,11.847783835355761,4.303336406945899,-0.011434975055146717
+posterior,calibration_raw_gain+ica:full,mixed,0.0,3.012413865016675e-12,0.2041959147975015,0.9783155845109348,14.424043550043915,1.7069423416219582,-0.00035237909170550674
+posterior,calibration_raw_gain+ica:posterior,blink,0.0,3.6097398471183526e-12,0.22612638231087184,0.9714940392232375,13.706128574768908,0.40576002957659946,0.007157554226241124
+posterior,calibration_raw_gain+ica:posterior,lateral,0.0,1.605510674674018e-11,0.4521715901422317,0.8938013657979367,8.049009763556032,0.5045623351461698,0.046879246581000664
+posterior,calibration_raw_gain+ica:posterior,mixed,0.0,3.821203905148774e-12,0.2379690401165727,0.9692945361861129,13.131119619798266,0.41401841137630946,0.008668669233116504
+posterior,calibration_raw_gain+ica:raw_frontal,blink,0.0,3.063480212135423e-12,0.20071670637242006,0.978871178067612,14.59187935614915,1.2915108109568398,-0.00021958461813333102
+posterior,calibration_raw_gain+ica:raw_frontal,lateral,0.0,9.938477996711503e-12,0.30141906872171464,0.9492173542749693,11.352529877273154,3.808082448863291,-0.008536741896032003
+posterior,calibration_raw_gain+ica:raw_frontal,mixed,0.0,3.073339100854108e-12,0.20771626256853626,0.9777710940956924,14.209097967238444,1.4919967588164842,0.0001921113235369785
+posterior,calibration_raw_gain+ica:signed_context,blink,0.0,3.2270079284464735e-12,0.21069851992458416,0.9763393595048587,14.236121878413622,0.9357533332213135,0.002312233944619989
+posterior,calibration_raw_gain+ica:signed_context,lateral,0.0,1.1741469661725797e-11,0.38261073743118656,0.9234060974324544,9.520440765084716,1.9759933366748534,0.017274514946482793
+posterior,calibration_raw_gain+ica:signed_context,mixed,0.0,3.25159931458849e-12,0.2192976075706011,0.9748643096231193,13.797516390680803,1.0804151822588435,0.0030988957961099904
+posterior,calibration_raw_gain+identity:posterior,blink,0.0,3.971722877092216e-12,0.24104975323263095,0.9688687939650654,13.300368545192308,0.0,0.009782799484413282
+posterior,calibration_raw_gain+identity:posterior,lateral,0.0,1.727999109435021e-11,0.4943668668061922,0.8850268881406448,7.54444742840986,0.0,0.05565372423829246
+posterior,calibration_raw_gain+identity:posterior,mixed,0.0,4.296609195488265e-12,0.2540559469513714,0.9662970185356847,12.717101208421958,0.0,0.01166618688354457
+posterior,calibration_raw_gain+mwf:common_context,blink,0.0,3.022842100950642e-12,0.1959535661261973,0.9794663085798426,14.832531730800838,1.5321631856085283,-0.0008147151303639344
+posterior,calibration_raw_gain+mwf:common_context,lateral,0.0,1.5989239740816085e-11,0.4653619594107611,0.8943769402495374,7.927788154095191,0.38334072568532856,0.04630367212939987
+posterior,calibration_raw_gain+mwf:common_context,mixed,0.0,3.082343884139895e-12,0.2082919357757666,0.977281476538075,14.20184867900537,1.4847474705834105,0.0006817288811543674
+posterior,calibration_raw_gain+mwf:full,blink,0.0,3.2221344128672075e-12,0.2118638546332252,0.9635975644437039,14.757260835045855,1.4568922898535464,0.015054029005774803
+posterior,calibration_raw_gain+mwf:full,lateral,0.0,1.727658182472388e-11,0.5020922303326733,0.8738099279876282,7.466595358864308,-0.07785206954555336,0.06687068439130894
+posterior,calibration_raw_gain+mwf:full,mixed,0.0,3.3424234815624646e-12,0.22577345344496455,0.9618623406854658,13.931576875635278,1.2144756672133195,0.016100864733763546
+posterior,calibration_raw_gain+mwf:posterior,blink,0.0,3.3311270442554076e-12,0.22078582117081774,0.9699710978630535,13.944189507836942,0.6438209626446323,0.00868049558642514
+posterior,calibration_raw_gain+mwf:posterior,lateral,0.0,1.6219488410660925e-11,0.47166639709084046,0.886159293897876,7.882314356138828,0.3378669277289662,0.054521318481061246
+posterior,calibration_raw_gain+mwf:posterior,mixed,0.0,3.4561759364790943e-12,0.23195199648516365,0.9675725618397572,13.396113525941994,0.6790123175200342,0.01039064357947231
+posterior,calibration_raw_gain+mwf:raw_frontal,blink,0.0,3.2509334104368533e-12,0.21632064825401534,0.9648236881571263,14.338975035074782,1.0386064898824703,0.013827905292352394
+posterior,calibration_raw_gain+mwf:raw_frontal,lateral,0.0,1.6303384357285544e-11,0.45932562386319586,0.886407646319946,8.098584909830489,0.5541374814206284,0.05427296605899118
+posterior,calibration_raw_gain+mwf:raw_frontal,mixed,0.0,3.3448354919720958e-12,0.2272338823585319,0.9629979698188015,13.741209737524908,1.024108529102953,0.014965235600427954
+posterior,calibration_raw_gain+mwf:signed_context,blink,0.0,3.04220806131374e-12,0.1960908253115364,0.9791687472119028,14.915944945413298,1.6155764002209891,-0.000517153762424162
+posterior,calibration_raw_gain+mwf:signed_context,lateral,0.0,1.605453737074051e-11,0.4652934895092903,0.894619148031188,7.9439880478112475,0.3995406194013854,0.046061464347749284
+posterior,calibration_raw_gain+mwf:signed_context,mixed,0.0,3.0920464341536726e-12,0.20863459032642492,0.9770689720100918,14.249745535539821,1.5326443271178625,0.0008942334091374638
+posterior,calibration_raw_gain+pass,blink,0.0,3.971722877092216e-12,0.24104975323263095,0.9688687939650654,13.300368545192308,0.0,0.009782799484413282
+posterior,calibration_raw_gain+pass,lateral,0.0,1.727999109435021e-11,0.4943668668061922,0.8850268881406448,7.54444742840986,0.0,0.05565372423829246
+posterior,calibration_raw_gain+pass,mixed,0.0,4.296609195488265e-12,0.2540559469513714,0.9662970185356847,12.717101208421958,0.0,0.01166618688354457
+posterior,identity,blink,0.0,3.971722877092216e-12,0.24104975323263095,0.9688687939650654,13.300368545192308,0.0,0.009782799484413282
+posterior,identity,lateral,0.0,1.727999109435021e-11,0.4943668668061922,0.8850268881406448,7.54444742840986,0.0,0.05565372423829246
+posterior,identity,mixed,0.0,4.296609195488265e-12,0.2540559469513714,0.9662970185356847,12.717101208421958,0.0,0.01166618688354457
+whole,K3_calibration_event_gain+direct:posterior,blink,0.0,1.1842161858781044e-11,0.5075117462797138,0.884704153424523,10.471441256994648,6.421387512618553,0.00668814659228759
+whole,K3_calibration_event_gain+direct:posterior,lateral,0.0,2.4547747068793713e-11,0.6126303583475656,0.8511392772575075,7.513008469951655,4.905815277632959,0.0026752735647715864
+whole,K3_calibration_event_gain+direct:posterior,mixed,0.0,1.1714140748197943e-11,0.4906124730085062,0.8895430141558727,10.811296144746827,7.039335264614967,2.160863410265619e-05
+whole,K3_calibration_event_gain+ica:common_context,blink,0.0,1.1834486027113682e-11,0.5073857097394944,0.8848047041273619,10.497993752035448,6.447940007659357,0.00658759588944879
+whole,K3_calibration_event_gain+ica:common_context,lateral,0.0,2.6523002585903092e-11,0.6601098974457196,0.8345142607342136,6.579183522259785,3.9719903299410886,0.019300290088065424
+whole,K3_calibration_event_gain+ica:common_context,mixed,0.0,1.1717075682935902e-11,0.4923505085251854,0.8892449352880215,10.750628766466363,6.978667886334501,0.00031968750195387016
+whole,K3_calibration_event_gain+ica:full,blink,0.0,1.1825889008516942e-11,0.506976364689795,0.8849253869524016,10.509308233874881,6.459254489498788,0.006466913064409054
+whole,K3_calibration_event_gain+ica:full,lateral,0.0,2.4446976322472128e-11,0.5996048794764423,0.8547082932042667,7.8985666125943625,5.291373420275667,-0.000893742381987501
+whole,K3_calibration_event_gain+ica:full,mixed,0.0,1.1687555137458609e-11,0.49034906461935057,0.8896675741128357,10.842954656918604,7.07099377678674,-0.00010295132286024112
+whole,K3_calibration_event_gain+ica:posterior,blink,0.0,1.2016677095877041e-11,0.5161068048876878,0.8823886759236302,10.169263765576002,6.11921002119991,0.009003624093180347
+whole,K3_calibration_event_gain+ica:posterior,lateral,0.0,2.6438027824138898e-11,0.6516727000745571,0.8360785365939678,6.691524160130318,4.0843309678116215,0.017736014228311284
+whole,K3_calibration_event_gain+ica:posterior,mixed,0.0,1.1949296703060096e-11,0.5012394448004723,0.8867545879877635,10.426183750779483,6.6542228706476205,0.0028100348022118953
+whole,K3_calibration_event_gain+ica:raw_frontal,blink,0.0,1.1840119201254027e-11,0.50792557156078,0.8847721715369896,10.453599979844222,6.403546235468127,0.0066201284798210885
+whole,K3_calibration_event_gain+ica:raw_frontal,lateral,0.0,2.447722158476211e-11,0.603554861868772,0.8538120653790822,7.746537826091346,5.13934463377265,2.485443197042421e-06
+whole,K3_calibration_event_gain+ica:raw_frontal,mixed,0.0,1.170744118285487e-11,0.49150529367640017,0.8894890834539702,10.772527390816581,7.000566510684718,7.553933600531871e-05
+whole,K3_calibration_event_gain+ica:signed_context,blink,0.0,1.1893411282874654e-11,0.5111717392607039,0.8839472910014676,10.33766108326526,6.287607338889165,0.00744500901534313
+whole,K3_calibration_event_gain+ica:signed_context,lateral,0.0,2.503969301932638e-11,0.6287421151647132,0.845824453919211,7.172271614646457,4.56507842232776,0.007990096903068072
+whole,K3_calibration_event_gain+ica:signed_context,mixed,0.0,1.1765317477885656e-11,0.49524045395210115,0.8885491141287121,10.639511448437343,6.867550568305478,0.001015508661263205
+whole,K3_calibration_event_gain+identity:posterior,blink,0.0,1.2128670718518888e-11,0.520726559893656,0.8816145031216802,10.042837722066405,5.992783977690312,0.009777796895130314
+whole,K3_calibration_event_gain+identity:posterior,lateral,0.0,2.6810275946359114e-11,0.6644849526100586,0.8335387465716904,6.538754215939683,3.9315610236209872,0.020275804250588683
+whole,K3_calibration_event_gain+identity:posterior,mixed,0.0,1.2098382423776533e-11,0.5062369313478313,0.8858612188436977,10.296757565714511,6.5247966855826505,0.0037034039462776067
+whole,K3_calibration_event_gain+mwf:common_context,blink,0.0,1.1827551248407325e-11,0.506446938773009,0.8849581053780373,10.528783263157491,6.4787295187814,0.006434194638773376
+whole,K3_calibration_event_gain+mwf:common_context,lateral,0.0,2.6405018341339106e-11,0.6554434550988433,0.8364769007672116,6.658350774086313,4.051157581767617,0.01733765005506758
+whole,K3_calibration_event_gain+mwf:common_context,mixed,0.0,1.1710386875159044e-11,0.4916880029018449,0.8893393304637938,10.770208548264803,6.99824766813294,0.0002252923261815581
+whole,K3_calibration_event_gain+mwf:full,blink,0.0,1.1891342596674327e-11,0.5113887463691055,0.8801049242135581,10.506048750866537,6.455995006490444,0.011287375803252415
+whole,K3_calibration_event_gain+mwf:full,lateral,0.0,2.6798255405115936e-11,0.6667677739009058,0.8301635177263448,6.51571373013018,3.9085205378114845,0.02365103309593451
+whole,K3_calibration_event_gain+mwf:full,mixed,0.0,1.1793468033058119e-11,0.4971308977443519,0.8846227322048744,10.68519796102753,6.913237080895667,0.00494189058510087
+whole,K3_calibration_event_gain+mwf:posterior,blink,0.0,1.1926053672377959e-11,0.5142974527046824,0.8820091716798967,10.246045720067901,6.1959919756918085,0.009383128336914024
+whole,K3_calibration_event_gain+mwf:posterior,lateral,0.0,2.646845427628703e-11,0.6572495414955515,0.8339693505602034,6.6469519269419,4.039758734623203,0.0198452002620759
+whole,K3_calibration_event_gain+mwf:posterior,mixed,0.0,1.1830174129118077e-11,0.4991911757753747,0.8863203276969095,10.512572414090972,6.740611533959109,0.0032442950930658917
+whole,K3_calibration_event_gain+mwf:raw_frontal,blink,0.0,1.1899959903265207e-11,0.5127783177775685,0.8804763159653621,10.374583552949286,6.324529808573194,0.01091598405144845
+whole,K3_calibration_event_gain+mwf:raw_frontal,lateral,0.0,2.6500120478548306e-11,0.6535470324025995,0.8340284005873911,6.713183067059042,4.105989874740344,0.019786150234888143
+whole,K3_calibration_event_gain+mwf:raw_frontal,mixed,0.0,1.1793667548238638e-11,0.4975812465290696,0.8849694402510462,10.625633054736703,6.85367217460484,0.004595182538929107
+whole,K3_calibration_event_gain+mwf:signed_context,blink,0.0,1.1834226867824185e-11,0.5065225144151251,0.8848561965665148,10.554324592043281,6.504270847667191,0.006536103450295804
+whole,K3_calibration_event_gain+mwf:signed_context,lateral,0.0,2.6422359403668148e-11,0.655349884488104,0.8365662851803958,6.664623146310468,4.057429953991772,0.017248265641883403
+whole,K3_calibration_event_gain+mwf:signed_context,mixed,0.0,1.171373999218664e-11,0.4918134391267198,0.8892662882252493,10.785192468873593,7.01323158874173,0.0002983345647260989
+whole,K3_calibration_event_gain+pass,blink,0.0,1.2128670718518888e-11,0.520726559893656,0.8816145031216802,10.042837722066405,5.992783977690312,0.009777796895130314
+whole,K3_calibration_event_gain+pass,lateral,0.0,2.6810275946359114e-11,0.6644849526100586,0.8335387465716904,6.538754215939683,3.9315610236209872,0.020275804250588683
+whole,K3_calibration_event_gain+pass,mixed,0.0,1.2098382423776533e-11,0.5062369313478313,0.8858612188436977,10.296757565714511,6.5247966855826505,0.0037034039462776067
+whole,K3_calibration_mode_gain+direct:posterior,blink,0.0,1.1393810319597514e-11,0.482592353583695,0.8913597967568162,11.185496065578677,7.135442321202585,3.2503259994573787e-05
+whole,K3_calibration_mode_gain+direct:posterior,lateral,0.0,2.4546268039397232e-11,0.6124927128329085,0.8511730161444738,7.519072637555307,4.911879445236612,0.002641534677805258
+whole,K3_calibration_mode_gain+direct:posterior,mixed,0.0,1.1713857889621702e-11,0.4905524924042656,0.8895472517188207,10.822225438901608,7.0502645587697454,1.7371071154574603e-05
+whole,K3_calibration_mode_gain+ica:common_context,blink,0.0,1.1386134487930147e-11,0.48246631704347553,0.891460347459655,11.212048560619477,7.161994816243384,-6.804744284422751e-05
+whole,K3_calibration_mode_gain+ica:common_context,lateral,0.0,2.652152355650661e-11,0.6599722519310627,0.83454799962118,6.585247689863439,3.978054497544742,0.0192665512010991
+whole,K3_calibration_mode_gain+ica:common_context,mixed,0.0,1.1716792824359659e-11,0.49229052792094485,0.8892491728509695,10.761558060621145,6.989597180489282,0.0003154499390057885
+whole,K3_calibration_mode_gain+ica:full,blink,0.0,1.1377537469333407e-11,0.48205697199377634,0.8915810302846946,11.22336304245891,7.173309298082818,-0.00018873026788396343
+whole,K3_calibration_mode_gain+ica:full,lateral,0.0,2.444549729307564e-11,0.5994672339617851,0.854742032091233,7.904630780198015,5.29743758787932,-0.0009274812689538291
+whole,K3_calibration_mode_gain+ica:full,mixed,0.0,1.1687272278882366e-11,0.49028908401511,0.8896718116757836,10.853883951073382,7.081923070941521,-0.00010718888580832269
+whole,K3_calibration_mode_gain+ica:posterior,blink,0.0,1.156832555669351e-11,0.4911874121916691,0.8890443192559235,10.883318574160032,6.83326482978394,0.0023479807608873314
+whole,K3_calibration_mode_gain+ica:posterior,lateral,0.0,2.643654879474242e-11,0.6515350545599,0.8361122754809343,6.69758832773397,4.090395135415274,0.017702275341344952
+whole,K3_calibration_mode_gain+ica:posterior,mixed,0.0,1.1949013844483853e-11,0.5011794641962318,0.8867588255507115,10.43711304493426,6.6651521648024,0.0028057972392638137
+whole,K3_calibration_mode_gain+ica:raw_frontal,blink,0.0,1.1391767662070494e-11,0.48300617886476116,0.8914278148692827,11.16765478842825,7.117601044052156,-3.551485247192763e-05
+whole,K3_calibration_mode_gain+ica:raw_frontal,lateral,0.0,2.447574255536563e-11,0.603417216354115,0.8538458042660484,7.752601993694998,5.145408801376303,-3.125344376928539e-05
+whole,K3_calibration_mode_gain+ica:raw_frontal,mixed,0.0,1.1707158324278628e-11,0.4914453130721597,0.8894933210169181,10.783456684971359,7.011495804839496,7.130177305723714e-05
+whole,K3_calibration_mode_gain+ica:signed_context,blink,0.0,1.1445059743691119e-11,0.4862523465646852,0.8906029343337607,11.051715891849287,7.001662147473195,0.0007893656830501129
+whole,K3_calibration_mode_gain+ica:signed_context,lateral,0.0,2.5038213989929885e-11,0.6286044696500561,0.8458581928061776,7.178335782250109,4.571142589931413,0.007956358016101745
+whole,K3_calibration_mode_gain+ica:signed_context,mixed,0.0,1.1765034619309413e-11,0.4951804733478607,0.8885533516916603,10.65044074259212,6.878479862460258,0.0010112710983151234
+whole,K3_calibration_mode_gain+identity:posterior,blink,0.0,1.1680319179335357e-11,0.49580716719763734,0.8882701464539734,10.756892530650434,6.706838786274342,0.003122153562837295
+whole,K3_calibration_mode_gain+identity:posterior,lateral,0.0,2.6808796916962627e-11,0.6643473070954017,0.8335724854586568,6.544818383543335,3.9376251912246403,0.020242065363622355
+whole,K3_calibration_mode_gain+identity:posterior,mixed,0.0,1.209809956520029e-11,0.5061769507435907,0.8858654564066459,10.307686859869293,6.535725979737431,0.003699166383329526
+whole,K3_calibration_mode_gain+mwf:common_context,blink,0.0,1.1379199709223791e-11,0.4815275460769903,0.8916137487103304,11.242838071741522,7.192784327365428,-0.00022144869351963984
+whole,K3_calibration_mode_gain+mwf:common_context,lateral,0.0,2.640353931194262e-11,0.655305809584186,0.8365106396541779,6.664414941689965,4.057221749371269,0.017303911168101253
+whole,K3_calibration_mode_gain+mwf:common_context,mixed,0.0,1.1710104016582803e-11,0.49162802229760433,0.889343568026742,10.78113784241958,7.00917696228772,0.00022105476323347646
+whole,K3_calibration_mode_gain+mwf:full,blink,0.0,1.1442991057490792e-11,0.48646935367308675,0.8867605675458513,11.220103559450568,7.170049815074473,0.0046317324709594
+whole,K3_calibration_mode_gain+mwf:full,lateral,0.0,2.6796776375719455e-11,0.6666301283862488,0.8301972566133109,6.521777897733832,3.9145847054151366,0.02361729420896818
+whole,K3_calibration_mode_gain+mwf:full,mixed,0.0,1.179318517448188e-11,0.4970709171401113,0.8846269697678226,10.696127255182308,6.924166375050445,0.004937653022152788
+whole,K3_calibration_mode_gain+mwf:posterior,blink,0.0,1.1477702133194424e-11,0.4893780600086638,0.8886648150121896,10.960100528651932,6.910046784275837,0.002727485004621006
+whole,K3_calibration_mode_gain+mwf:posterior,lateral,0.0,2.6466975246890548e-11,0.6571118959808946,0.8340030894471695,6.653016094545552,4.045822902226855,0.01981146137510957
+whole,K3_calibration_mode_gain+mwf:posterior,mixed,0.0,1.1829891270541835e-11,0.49913119517113413,0.8863245652598575,10.52350170824575,6.751540828113889,0.0032400575301178096
+whole,K3_calibration_mode_gain+mwf:raw_frontal,blink,0.0,1.1451608364081672e-11,0.4878589250815498,0.8871319592976553,11.088638361533317,7.038584617157224,0.004260340719155434
+whole,K3_calibration_mode_gain+mwf:raw_frontal,lateral,0.0,2.649864144915182e-11,0.6534093868879425,0.8340621394743574,6.719247234662694,4.112054042343997,0.019752411347921814
+whole,K3_calibration_mode_gain+mwf:raw_frontal,mixed,0.0,1.1793384689662395e-11,0.49752126592482904,0.8849736778139944,10.636562348891482,6.864601468759619,0.0045909449759810265
+whole,K3_calibration_mode_gain+mwf:signed_context,blink,0.0,1.1385875328640653e-11,0.4816031217191063,0.891511839898808,11.268379400627314,7.218325656251219,-0.00011953988199721144
+whole,K3_calibration_mode_gain+mwf:signed_context,lateral,0.0,2.642088037427166e-11,0.655212238973447,0.8366000240673621,6.6706873139141205,4.063494121595424,0.017214526754917078
+whole,K3_calibration_mode_gain+mwf:signed_context,mixed,0.0,1.1713457133610398e-11,0.4917534585224793,0.8892705257881973,10.79612176302837,7.02416088289651,0.00029409700177801724
+whole,K3_calibration_mode_gain+pass,blink,0.0,1.1680319179335357e-11,0.49580716719763734,0.8882701464539734,10.756892530650434,6.706838786274342,0.003122153562837295
+whole,K3_calibration_mode_gain+pass,lateral,0.0,2.6808796916962627e-11,0.6643473070954017,0.8335724854586568,6.544818383543335,3.9376251912246403,0.020242065363622355
+whole,K3_calibration_mode_gain+pass,mixed,0.0,1.209809956520029e-11,0.5061769507435907,0.8858654564066459,10.307686859869293,6.535725979737431,0.003699166383329526
+whole,calibration_raw_event_gain+direct:posterior,blink,0.0,1.1823202867489107e-11,0.5083693448351099,0.8846960480915499,10.283688624942524,6.233634880566432,0.006696251925260806
+whole,calibration_raw_event_gain+direct:posterior,lateral,0.0,2.4364465501843275e-11,0.5995035750730006,0.8538096558709934,8.11427808343051,5.507084891111813,4.8949512857031025e-06
+whole,calibration_raw_event_gain+direct:posterior,mixed,0.0,1.1695398120741376e-11,0.4912935494775857,0.8895640352665952,10.659924600528885,6.887963720397025,5.875233801948668e-07
+whole,calibration_raw_event_gain+ica:common_context,blink,0.0,1.1815527035821745e-11,0.5082433082948905,0.8847965987943885,10.310241119983324,6.260187375607232,0.006595701222422005
+whole,calibration_raw_event_gain+ica:common_context,lateral,0.0,2.633972101895266e-11,0.6469831141711546,0.8371846393476996,7.180453135738638,4.573259943419943,0.016629911474579543
+whole,calibration_raw_event_gain+ica:common_context,mixed,0.0,1.1698333055479331e-11,0.4930315849942649,0.889265956398744,10.599257222248422,6.82729634211656,0.00029866639123140887
+whole,calibration_raw_event_gain+ica:full,blink,0.0,1.1806930017225002e-11,0.5078339632451911,0.8849172816194285,10.321555601822757,6.2715018574466646,0.00647501839738227
+whole,calibration_raw_event_gain+ica:full,lateral,0.0,2.426369475552169e-11,0.5864780962018773,0.8573786718177526,8.499836226073217,5.892643033754521,-0.003564120995473384
+whole,calibration_raw_event_gain+ica:full,mixed,0.0,1.1668812510002041e-11,0.49103014108842996,0.889688595223558,10.69158311270066,6.9196222325688,-0.00012397243358270243
+whole,calibration_raw_event_gain+ica:posterior,blink,0.0,1.1997718104585104e-11,0.5169644034430839,0.8823805705906572,9.98151113352388,5.931457389147786,0.009011729426153563
+whole,calibration_raw_event_gain+ica:posterior,lateral,0.0,2.6254746257188462e-11,0.6385459167999921,0.8387489152074536,7.292793773609171,4.685600581290474,0.015065635614825398
+whole,calibration_raw_event_gain+ica:posterior,mixed,0.0,1.1930554075603529e-11,0.5019205212695518,0.8867756090984859,10.27481220656154,6.502851326429678,0.0027890136914894338
+whole,calibration_raw_event_gain+ica:raw_frontal,blink,0.0,1.1821160209962089e-11,0.5087831701161759,0.8847640662040164,10.265847347792095,6.215793603416003,0.006628233812794306
+whole,calibration_raw_event_gain+ica:raw_frontal,lateral,0.0,2.4293940017811674e-11,0.590428078594207,0.856482443992568,8.3478074395702,5.740614247251503,-0.0026678931702888405
+whole,calibration_raw_event_gain+ica:raw_frontal,mixed,0.0,1.1688698555398302e-11,0.49218637014547967,0.8895101045646925,10.621155846598636,6.849194966466776,5.451822528285742e-05
+whole,calibration_raw_event_gain+ica:signed_context,blink,0.0,1.1874452291582713e-11,0.5120293378161,0.8839391856684944,10.149908451213133,6.099854706837041,0.0074531143483163465
+whole,calibration_raw_event_gain+ica:signed_context,lateral,0.0,2.4856411452375934e-11,0.6156153318901483,0.848494832532697,7.773541228125309,5.166348035806614,0.005319718289582189
+whole,calibration_raw_event_gain+ica:signed_context,mixed,0.0,1.1746574850429085e-11,0.49592153042118065,0.8885701352394346,10.4881399042194,6.716179024087536,0.0009944875505407437
+whole,calibration_raw_event_gain+identity:posterior,blink,0.0,1.2109711727226951e-11,0.5215841584490521,0.8816063977887071,9.855085090014281,5.805031345638189,0.009785902228103526
+whole,calibration_raw_event_gain+identity:posterior,lateral,0.0,2.6626994379408676e-11,0.6513581693354936,0.8362091251851762,7.140023829418537,4.53283063709984,0.017605425637102802
+whole,calibration_raw_event_gain+identity:posterior,mixed,0.0,1.2079639796319965e-11,0.5069180078169108,0.8858822399544202,10.145386021496572,6.3734251413647085,0.003682382835555145
+whole,calibration_raw_event_gain+mwf:common_context,blink,0.0,1.1808592257115386e-11,0.5073045373284051,0.8849500000450641,10.341030631105369,6.2909768867292755,0.006442299971746593
+whole,calibration_raw_event_gain+mwf:common_context,lateral,0.0,2.622173677438867e-11,0.6423166718242781,0.8391472793806974,7.259620387565167,4.65242719524647,0.014667271441581694
+whole,calibration_raw_event_gain+mwf:common_context,mixed,0.0,1.1691644247702476e-11,0.4923690793709244,0.8893603515745163,10.618837004046858,6.846876123914997,0.0002042712154590968
+whole,calibration_raw_event_gain+mwf:full,blink,0.0,1.1872383605382386e-11,0.5122463449245016,0.880096818880585,10.318296118814413,6.26824237443832,0.011295481136225631
+whole,calibration_raw_event_gain+mwf:full,lateral,0.0,2.6614973838165497e-11,0.6536409906263408,0.8328338963398305,7.116983343609034,4.509790151290337,0.02098065448244863
+whole,calibration_raw_event_gain+mwf:full,mixed,0.0,1.1774725405601552e-11,0.4978119742134314,0.8846437533155969,10.533826416809585,6.761865536677723,0.004920869474378408
+whole,calibration_raw_event_gain+mwf:posterior,blink,0.0,1.1907094681086018e-11,0.5151550512600787,0.8820010663469235,10.058293088015777,6.0082393436396835,0.00939123366988724
+whole,calibration_raw_event_gain+mwf:posterior,lateral,0.0,2.6285172709336593e-11,0.6441227582209865,0.8366397291736891,7.248221540420755,4.641028348102057,0.01717482164859002
+whole,calibration_raw_event_gain+mwf:posterior,mixed,0.0,1.181143150166151e-11,0.4998722522444542,0.886341348807632,10.361200869873029,6.589239989741166,0.00322327398234343
+whole,calibration_raw_event_gain+mwf:raw_frontal,blink,0.0,1.188100091197327e-11,0.5136359163329647,0.8804682106323891,10.186830920897165,6.13677717652107,0.010924089384421666
+whole,calibration_raw_event_gain+mwf:raw_frontal,lateral,0.0,2.6316838911597867e-11,0.6404202491280346,0.8366987792008768,7.314452680537895,4.707259488219199,0.017115771621402258
+whole,calibration_raw_event_gain+mwf:raw_frontal,mixed,0.0,1.1774924920782074e-11,0.4982623229981491,0.8849904613617687,10.47426151051876,6.702300630386898,0.004574161428206646
+whole,calibration_raw_event_gain+mwf:signed_context,blink,0.0,1.1815267876532247e-11,0.5073801129705212,0.8848480912335417,10.366571959991159,6.3165182156150665,0.00654420878326902
+whole,calibration_raw_event_gain+mwf:signed_context,lateral,0.0,2.623907783671771e-11,0.6422231012135391,0.8392366637938815,7.265892759789321,4.6586995674706255,0.014577887028397522
+whole,calibration_raw_event_gain+mwf:signed_context,mixed,0.0,1.1694997364730072e-11,0.4924945155957993,0.8892873093359718,10.63382092465565,6.861860044523787,0.00027731345400363764
+whole,calibration_raw_event_gain+pass,blink,0.0,1.2109711727226951e-11,0.5215841584490521,0.8816063977887071,9.855085090014281,5.805031345638189,0.009785902228103526
+whole,calibration_raw_event_gain+pass,lateral,0.0,2.6626994379408676e-11,0.6513581693354936,0.8362091251851762,7.140023829418537,4.53283063709984,0.017605425637102802
+whole,calibration_raw_event_gain+pass,mixed,0.0,1.2079639796319965e-11,0.5069180078169108,0.8858822399544202,10.145386021496572,6.3734251413647085,0.003682382835555145
+whole,calibration_raw_gain+direct:posterior,blink,0.0,1.1376648870280129e-11,0.4832344867628516,0.8913923000168108,11.015268735532459,6.965214991156365,0.0
+whole,calibration_raw_gain+direct:posterior,lateral,0.0,2.4365171107611952e-11,0.5994589069054679,0.8538145508222792,8.118526781525297,5.5113335892066,0.0
+whole,calibration_raw_gain+direct:posterior,mixed,0.0,1.1695386523281614e-11,0.49128331685988214,0.8895646227899754,10.662106700269101,6.890145820137237,0.0
+whole,calibration_raw_gain+ica:common_context,blink,0.0,1.1368973038612764e-11,0.48310845022263216,0.8914928507196495,11.041821230573259,6.991767486197165,-0.00010055070283880126
+whole,calibration_raw_gain+ica:common_context,lateral,0.0,2.6340426624721333e-11,0.6469384460036219,0.8371895342989853,7.184701833833428,4.577508641514731,0.016625016523293838
+whole,calibration_raw_gain+ica:common_context,mixed,0.0,1.169832145801957e-11,0.4930213523765614,0.8892665439221243,10.601439321988632,6.8294784418567716,0.00029807886785121403
+whole,calibration_raw_gain+ica:full,blink,0.0,1.1360376020016023e-11,0.4826991051729328,0.8916135335446892,11.053135712412692,7.003081968036599,-0.0002212335278785372
+whole,calibration_raw_gain+ica:full,lateral,0.0,2.4264400361290367e-11,0.5864334280343445,0.8573835667690384,8.504084924168007,5.896891731849309,-0.003569015946759087
+whole,calibration_raw_gain+ica:full,mixed,0.0,1.166880091254228e-11,0.4910199084707266,0.8896891827469382,10.693765212440873,6.92180433230901,-0.00012455995696289732
+whole,calibration_raw_gain+ica:posterior,blink,0.0,1.1551164107376126e-11,0.4918295453708256,0.8890768225159178,10.713091244113812,6.663037499737721,0.002315477500892758
+whole,calibration_raw_gain+ica:posterior,lateral,0.0,2.6255451862957136e-11,0.6385012486324593,0.8387538101587395,7.297042471703961,4.689849279385263,0.015060740663539698
+whole,calibration_raw_gain+ica:posterior,mixed,0.0,1.1930542478143768e-11,0.5019102886518484,0.886776196621866,10.276994306301754,6.5050334261698906,0.002788426168109239
+whole,calibration_raw_gain+ica:raw_frontal,blink,0.0,1.137460621275311e-11,0.4836483120439176,0.8914603181292773,10.997427458382031,6.947373714005937,-6.801811246650139e-05
+whole,calibration_raw_gain+ica:raw_frontal,lateral,0.0,2.4294645623580348e-11,0.5903834104266742,0.8564873389438536,8.352056137664988,5.744862945346293,-0.0026727881215745436
+whole,calibration_raw_gain+ica:raw_frontal,mixed,0.0,1.1688686957938541e-11,0.49217613752777617,0.8895106920880727,10.62333794633885,6.851377066206988,5.393070190266254e-05
+whole,calibration_raw_gain+ica:signed_context,blink,0.0,1.1427898294373735e-11,0.4868944797438416,0.890635437593755,10.88148856180307,6.831434817426977,0.0007568624230555392
+whole,calibration_raw_gain+ica:signed_context,lateral,0.0,2.4857117058144608e-11,0.6155706637226155,0.848499727483983,7.777789926220097,5.1705967339014025,0.005314823338296487
+whole,calibration_raw_gain+ica:signed_context,mixed,0.0,1.1746563252969325e-11,0.49591129780347715,0.8885707227628149,10.49032200395961,6.71836112382775,0.0009939000271605488
+whole,calibration_raw_gain+identity:posterior,blink,0.0,1.166315773001797e-11,0.4964493003767938,0.888302649713968,10.586665200604216,6.536611456228123,0.0030896503028427216
+whole,calibration_raw_gain+identity:posterior,lateral,0.0,2.662769998517735e-11,0.651313501167961,0.8362140201364621,7.144272527513325,4.537079335194629,0.017600530685817097
+whole,calibration_raw_gain+identity:posterior,mixed,0.0,1.2079628198860202e-11,0.5069077751992073,0.8858828274778003,10.147568121236782,6.375607241104921,0.0036817953121749515
+whole,calibration_raw_gain+mwf:common_context,blink,0.0,1.1362038259906408e-11,0.48216967925614673,0.8916462519703249,11.072610741695302,7.022556997319211,-0.00025395195351421353
+whole,calibration_raw_gain+mwf:common_context,lateral,0.0,2.622244238015735e-11,0.6422720036567453,0.8391521743319833,7.263869085659955,4.656675893341259,0.014662376490295993
+whole,calibration_raw_gain+mwf:common_context,mixed,0.0,1.1691632650242714e-11,0.4923588467532209,0.8893609390978965,10.621019103787072,6.849058223655208,0.00020368369207890194
+whole,calibration_raw_gain+mwf:full,blink,0.0,1.1425829608173408e-11,0.4871114868522432,0.8867930708058459,11.049876229404347,6.999822485028254,0.004599229210964827
+whole,calibration_raw_gain+mwf:full,lateral,0.0,2.6615679443934178e-11,0.6535963224588082,0.8328387912911163,7.121232041703823,4.514038849385127,0.020975759531162923
+whole,calibration_raw_gain+mwf:full,mixed,0.0,1.177471380814179e-11,0.49780174159572776,0.884644340838977,10.536008516549797,6.764047636417937,0.004920281950998212
+whole,calibration_raw_gain+mwf:posterior,blink,0.0,1.1460540683877039e-11,0.4900201931878202,0.8886973182721842,10.78987319860571,6.73981945422962,0.002694981744626432
+whole,calibration_raw_gain+mwf:posterior,lateral,0.0,2.6285878315105264e-11,0.6440780900534538,0.8366446241249749,7.252470238515542,4.645277046196846,0.017169926697304314
+whole,calibration_raw_gain+mwf:posterior,mixed,0.0,1.181141990420175e-11,0.4998620196267507,0.8863419363310122,10.363382969613241,6.591422089481379,0.0032226864589632357
+whole,calibration_raw_gain+mwf:raw_frontal,blink,0.0,1.1434446914764288e-11,0.48850105826070633,0.8871644625576497,10.918411031487096,6.868357287111005,0.004227837459160861
+whole,calibration_raw_gain+mwf:raw_frontal,lateral,0.0,2.631754451736654e-11,0.6403755809605018,0.8367036741521627,7.318701378632683,4.711508186313987,0.017110876670116553
+whole,calibration_raw_gain+mwf:raw_frontal,mixed,0.0,1.177491332332231e-11,0.49825209038044554,0.8849910488851489,10.476443610258974,6.7044827301271095,0.00457357390482645
+whole,calibration_raw_gain+mwf:signed_context,blink,0.0,1.1368713879323266e-11,0.48224525489826287,0.8915443431588026,11.09815207058109,7.048098326205,-0.0001520431419917852
+whole,calibration_raw_gain+mwf:signed_context,lateral,0.0,2.6239783442486383e-11,0.6421784330460063,0.8392415587451673,7.27014145788411,4.662948265565414,0.014572992077111819
+whole,calibration_raw_gain+mwf:signed_context,mixed,0.0,1.169498576727031e-11,0.49248428297809577,0.889287896859352,10.636003024395862,6.864042144263999,0.0002767259306234427
+whole,calibration_raw_gain+pass,blink,0.0,1.166315773001797e-11,0.4964493003767938,0.888302649713968,10.586665200604216,6.536611456228123,0.0030896503028427216
+whole,calibration_raw_gain+pass,lateral,0.0,2.662769998517735e-11,0.651313501167961,0.8362140201364621,7.144272527513325,4.537079335194629,0.017600530685817097
+whole,calibration_raw_gain+pass,mixed,0.0,1.2079628198860202e-11,0.5069077751992073,0.8858828274778003,10.147568121236782,6.375607241104921,0.0036817953121749515
+whole,identity,blink,0.0,5.405000417545658e-11,0.9653610323685099,0.765401388119484,4.050053744376092,0.0,0.12599091189732672
+whole,identity,lateral,0.0,5.405000417545659e-11,0.9566285386419777,0.7460506262013439,2.607193192318696,0.0,0.10776392462093527
+whole,identity,mixed,0.0,5.405000417545658e-11,0.971981919604259,0.7634649648825707,3.7719608801318616,0.0,0.1260996579074047
+
+```
+
+### results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_method_means.csv
+
+```csv
+scope,evaluated_family,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration
+frontal,K3_calibration_event_gain+direct:posterior,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+ica:common_context,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+ica:full,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+ica:posterior,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+ica:raw_frontal,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+ica:signed_context,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+identity:posterior,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+mwf:common_context,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+mwf:full,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+mwf:posterior,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+mwf:raw_frontal,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+mwf:signed_context,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_event_gain+pass,1.9569879171457583e-12,0.16474165886116066,0.9780597658939335,19.01910638307732,24.073826344943292,0.013917434771542175
+frontal,K3_calibration_mode_gain+direct:posterior,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+ica:common_context,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+ica:full,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+ica:posterior,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+ica:raw_frontal,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+ica:signed_context,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+identity:posterior,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+mwf:common_context,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+mwf:full,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+mwf:posterior,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+mwf:raw_frontal,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+mwf:signed_context,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,K3_calibration_mode_gain+pass,1.2876237133554783e-12,0.12739411320530264,0.9880135298440316,20.105239547994515,25.159959509860478,0.003963670821444213
+frontal,calibration_raw_event_gain+direct:posterior,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+ica:common_context,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+ica:full,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+ica:posterior,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+ica:raw_frontal,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+ica:signed_context,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+identity:posterior,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+mwf:common_context,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+mwf:full,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+mwf:posterior,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+mwf:raw_frontal,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+mwf:signed_context,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_event_gain+pass,1.631264024528595e-12,0.14761546647503518,0.9820105801654387,19.41772158639666,24.472441548262623,0.009966620500037018
+frontal,calibration_raw_gain+direct:posterior,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+ica:common_context,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+ica:full,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+ica:posterior,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+ica:raw_frontal,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+ica:signed_context,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+identity:posterior,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+mwf:common_context,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+mwf:full,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+mwf:posterior,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+mwf:raw_frontal,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+mwf:signed_context,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,calibration_raw_gain+pass,9.68187033212957e-13,0.11015441315939481,0.9919772006654757,20.51519014405026,25.569910105916225,0.0
+frontal,identity,1.6527452574281257e-10,1.9288102254209711,0.49976901434998167,-5.054719961865965,0.0,0.4922081863154942
+posterior,K3_calibration_event_gain+direct:posterior,5.4454045735116085e-12,0.24478287082227532,0.9657651370825484,13.200153257282981,2.0128475299416033,0.0
+posterior,K3_calibration_event_gain+ica:common_context,7.510953860981822e-12,0.29681828358346346,0.9479518938034561,12.175128134382218,0.9878224070408426,0.017813243279092398
+posterior,K3_calibration_event_gain+ica:full,5.291795783885962e-12,0.2302016774090762,0.9699231201233989,13.678049770032706,2.4907440426913277,-0.004157983040850499
+posterior,K3_calibration_event_gain+ica:posterior,7.828683499669103e-12,0.3054223375232254,0.9448633137357623,11.628752652707735,0.44144692536635954,0.0209018233467861
+posterior,K3_calibration_event_gain+ica:raw_frontal,5.358432436567011e-12,0.23661734588755698,0.9686198754794246,13.384502400220248,2.1971966728788717,-0.0028547383968761187
+posterior,K3_calibration_event_gain+ica:signed_context,6.0733589682535885e-12,0.2708689549754572,0.9582032555201442,12.51802634472638,1.3307206173850035,0.007561881562404257
+posterior,K3_calibration_event_gain+identity:posterior,8.516107722310231e-12,0.3298241889967315,0.9400642335471318,11.187305727341375,0.0,0.02570090353541677
+posterior,K3_calibration_event_gain+mwf:common_context,7.364808575302209e-12,0.2898691537709083,0.9503749084558182,12.320722854633798,1.1334171272924225,0.015390228626730104
+posterior,K3_calibration_event_gain+mwf:full,7.947046573051186e-12,0.31324317947028774,0.9330899443722661,12.051811023181815,0.8645052958404376,0.03267519271028242
+posterior,K3_calibration_event_gain+mwf:posterior,7.668930463798474e-12,0.3081347382489406,0.9412343178668957,11.740872463305923,0.5535667359645442,0.024530819215652894
+posterior,K3_calibration_event_gain+mwf:raw_frontal,7.63305108656483e-12,0.30096005149191435,0.9380764347652913,12.059589894143393,0.8722841668020171,0.027688702317257174
+posterior,K3_calibration_event_gain+mwf:signed_context,7.396263955402641e-12,0.2900063017157505,0.9502856224177275,12.369892842921455,1.1825871155800793,0.015479514664820861
+posterior,K3_calibration_event_gain+pass,8.516107722310231e-12,0.3298241889967315,0.9400642335471318,11.187305727341375,0.0,0.02570090353541677
+posterior,K3_calibration_mode_gain+direct:posterior,5.4454045735116085e-12,0.24478287082227532,0.9657651370825484,13.200153257282981,2.0128475299416033,0.0
+posterior,K3_calibration_mode_gain+ica:common_context,7.510953860981822e-12,0.29681828358346346,0.9479518938034561,12.175128134382218,0.9878224070408426,0.017813243279092398
+posterior,K3_calibration_mode_gain+ica:full,5.291795783885962e-12,0.2302016774090762,0.9699231201233989,13.678049770032706,2.4907440426913277,-0.004157983040850499
+posterior,K3_calibration_mode_gain+ica:posterior,7.828683499669103e-12,0.3054223375232254,0.9448633137357623,11.628752652707735,0.44144692536635954,0.0209018233467861
+posterior,K3_calibration_mode_gain+ica:raw_frontal,5.358432436567011e-12,0.23661734588755698,0.9686198754794246,13.384502400220248,2.1971966728788717,-0.0028547383968761187
+posterior,K3_calibration_mode_gain+ica:signed_context,6.0733589682535885e-12,0.2708689549754572,0.9582032555201442,12.51802634472638,1.3307206173850035,0.007561881562404257
+posterior,K3_calibration_mode_gain+identity:posterior,8.516107722310231e-12,0.3298241889967315,0.9400642335471318,11.187305727341375,0.0,0.02570090353541677
+posterior,K3_calibration_mode_gain+mwf:common_context,7.364808575302209e-12,0.2898691537709083,0.9503749084558182,12.320722854633798,1.1334171272924225,0.015390228626730104
+posterior,K3_calibration_mode_gain+mwf:full,7.947046573051186e-12,0.31324317947028774,0.9330899443722661,12.051811023181815,0.8645052958404376,0.03267519271028242
+posterior,K3_calibration_mode_gain+mwf:posterior,7.668930463798474e-12,0.3081347382489406,0.9412343178668957,11.740872463305923,0.5535667359645442,0.024530819215652894
+posterior,K3_calibration_mode_gain+mwf:raw_frontal,7.63305108656483e-12,0.30096005149191435,0.9380764347652913,12.059589894143393,0.8722841668020171,0.027688702317257174
+posterior,K3_calibration_mode_gain+mwf:signed_context,7.396263955402641e-12,0.2900063017157505,0.9502856224177275,12.369892842921455,1.1825871155800793,0.015479514664820861
+posterior,K3_calibration_mode_gain+pass,8.516107722310231e-12,0.3298241889967315,0.9400642335471318,11.187305727341375,0.0,0.02570090353541677
+posterior,calibration_raw_event_gain+direct:posterior,5.4454045735116085e-12,0.24478287082227532,0.9657651370825484,13.200153257282981,2.0128475299416033,0.0
+posterior,calibration_raw_event_gain+ica:common_context,7.510953860981822e-12,0.29681828358346346,0.9479518938034561,12.175128134382218,0.9878224070408426,0.017813243279092398
+posterior,calibration_raw_event_gain+ica:full,5.291795783885962e-12,0.2302016774090762,0.9699231201233989,13.678049770032706,2.4907440426913277,-0.004157983040850499
+posterior,calibration_raw_event_gain+ica:posterior,7.828683499669103e-12,0.3054223375232254,0.9448633137357623,11.628752652707735,0.44144692536635954,0.0209018233467861
+posterior,calibration_raw_event_gain+ica:raw_frontal,5.358432436567011e-12,0.23661734588755698,0.9686198754794246,13.384502400220248,2.1971966728788717,-0.0028547383968761187
+posterior,calibration_raw_event_gain+ica:signed_context,6.0733589682535885e-12,0.2708689549754572,0.9582032555201442,12.51802634472638,1.3307206173850035,0.007561881562404257
+posterior,calibration_raw_event_gain+identity:posterior,8.516107722310231e-12,0.3298241889967315,0.9400642335471318,11.187305727341375,0.0,0.02570090353541677
+posterior,calibration_raw_event_gain+mwf:common_context,7.364808575302209e-12,0.2898691537709083,0.9503749084558182,12.320722854633798,1.1334171272924225,0.015390228626730104
+posterior,calibration_raw_event_gain+mwf:full,7.947046573051186e-12,0.31324317947028774,0.9330899443722661,12.051811023181815,0.8645052958404376,0.03267519271028242
+posterior,calibration_raw_event_gain+mwf:posterior,7.668930463798474e-12,0.3081347382489406,0.9412343178668957,11.740872463305923,0.5535667359645442,0.024530819215652894
+posterior,calibration_raw_event_gain+mwf:raw_frontal,7.63305108656483e-12,0.30096005149191435,0.9380764347652913,12.059589894143393,0.8722841668020171,0.027688702317257174
+posterior,calibration_raw_event_gain+mwf:signed_context,7.396263955402641e-12,0.2900063017157505,0.9502856224177275,12.369892842921455,1.1825871155800793,0.015479514664820861
+posterior,calibration_raw_event_gain+pass,8.516107722310231e-12,0.3298241889967315,0.9400642335471318,11.187305727341375,0.0,0.02570090353541677
+posterior,calibration_raw_gain+direct:posterior,5.4454045735116085e-12,0.24478287082227532,0.9657651370825484,13.200153257282981,2.0128475299416033,0.0
+posterior,calibration_raw_gain+ica:common_context,7.510953860981822e-12,0.29681828358346346,0.9479518938034561,12.175128134382218,0.9878224070408426,0.017813243279092398
+posterior,calibration_raw_gain+ica:full,5.291795783885962e-12,0.2302016774090762,0.9699231201233989,13.678049770032706,2.4907440426913277,-0.004157983040850499
+posterior,calibration_raw_gain+ica:posterior,7.828683499669103e-12,0.3054223375232254,0.9448633137357623,11.628752652707735,0.44144692536635954,0.0209018233467861
+posterior,calibration_raw_gain+ica:raw_frontal,5.358432436567011e-12,0.23661734588755698,0.9686198754794246,13.384502400220248,2.1971966728788717,-0.0028547383968761187
+posterior,calibration_raw_gain+ica:signed_context,6.0733589682535885e-12,0.2708689549754572,0.9582032555201442,12.51802634472638,1.3307206173850035,0.007561881562404257
+posterior,calibration_raw_gain+identity:posterior,8.516107722310231e-12,0.3298241889967315,0.9400642335471318,11.187305727341375,0.0,0.02570090353541677
+posterior,calibration_raw_gain+mwf:common_context,7.364808575302209e-12,0.2898691537709083,0.9503749084558182,12.320722854633798,1.1334171272924225,0.015390228626730104
+posterior,calibration_raw_gain+mwf:full,7.947046573051186e-12,0.31324317947028774,0.9330899443722661,12.051811023181815,0.8645052958404376,0.03267519271028242
+posterior,calibration_raw_gain+mwf:posterior,7.668930463798474e-12,0.3081347382489406,0.9412343178668957,11.740872463305923,0.5535667359645442,0.024530819215652894
+posterior,calibration_raw_gain+mwf:raw_frontal,7.63305108656483e-12,0.30096005149191435,0.9380764347652913,12.059589894143393,0.8722841668020171,0.027688702317257174
+posterior,calibration_raw_gain+mwf:signed_context,7.396263955402641e-12,0.2900063017157505,0.9502856224177275,12.369892842921455,1.1825871155800793,0.015479514664820861
+posterior,calibration_raw_gain+pass,8.516107722310231e-12,0.3298241889967315,0.9400642335471318,11.187305727341375,0.0,0.02570090353541677
+posterior,identity,8.516107722310231e-12,0.3298241889967315,0.9400642335471318,11.187305727341375,0.0,0.02570090353541677
+whole,K3_calibration_event_gain+direct:posterior,1.6034683225257567e-11,0.5369181925452619,0.875128814945968,9.598581957231044,6.12217935162216,0.0031283429303872777
+whole,K3_calibration_event_gain+ica:common_context,1.6691521431984226e-11,0.5532820385701331,0.8695213000498658,9.275935346920532,5.799532741311649,0.008735857826489361
+whole,K3_calibration_event_gain+ica:full,1.5986806822815893e-11,0.5323101029285292,0.876433751423168,9.750276501129282,6.273873895520398,0.0018234064531871038
+whole,K3_calibration_event_gain+ica:posterior,1.680133387435868e-11,0.5563396499209057,0.8684072668351206,9.095657225495268,5.619254619886384,0.00984989104123451
+whole,K3_calibration_event_gain+ica:raw_frontal,1.6008260656290338e-11,0.534328575701984,0.8760244401233473,9.657555065584049,6.181152459975165,0.002232717753007817
+whole,K3_calibration_event_gain+ica:signed_context,1.623280726002889e-11,0.5450514361258395,0.8727736196831302,9.383148048783019,5.906745443174134,0.005483538193224802
+whole,K3_calibration_event_gain+identity:posterior,1.7012443029551508e-11,0.5638161479505153,0.8670048228456896,8.959449834573535,5.483047228964651,0.011252335030665535
+whole,K3_calibration_event_gain+mwf:common_context,1.664765215496849e-11,0.5511927989245657,0.8702581122030143,9.319114195169536,5.842711589560652,0.007999045673340838
+whole,K3_calibration_event_gain+mwf:full,1.6827688678282795e-11,0.5584291393381211,0.8649637247149258,9.235653480674749,5.759250875065865,0.013293433161429266
+whole,K3_calibration_event_gain+mwf:posterior,1.6741560692594353e-11,0.5569127233252029,0.8674329499790032,9.135190020366924,5.658787414758041,0.010824207897351936
+whole,K3_calibration_event_gain+mwf:raw_frontal,1.673124931001738e-11,0.5546355322364126,0.8664913856012666,9.237799891581677,5.7613972859727935,0.011765772275088567
+whole,K3_calibration_event_gain+mwf:signed_context,1.6656775421226324e-11,0.5512286126766497,0.8702295899907201,9.334713402409113,5.858310796800231,0.008027567885635103
+whole,K3_calibration_event_gain+pass,1.7012443029551508e-11,0.5638161479505153,0.8670048228456896,8.959449834573535,5.483047228964651,0.011252335030665535
+whole,K3_calibration_mode_gain+direct:posterior,1.5884645416205484e-11,0.5285458529402897,0.877360021540037,9.842264714011865,6.365862108402981,0.0008971363363181357
+whole,K3_calibration_mode_gain+ica:common_context,1.6541483622932143e-11,0.544909698965161,0.8717525066439349,9.519618103701353,6.0432154980924695,0.0065046512324202195
+whole,K3_calibration_mode_gain+ica:full,1.5836769013763807e-11,0.5239377633235571,0.8786649580172371,9.993959257910102,6.517556652301219,-0.00040780014088203834
+whole,K3_calibration_mode_gain+ica:posterior,1.6651296065306595e-11,0.5479673103159337,0.8706384734291897,9.339339982276089,5.862937376667205,0.007618684447165366
+whole,K3_calibration_mode_gain+ica:raw_frontal,1.5858222847238248e-11,0.5259562360970119,0.8782556467174164,9.901237822364868,6.424835216755985,1.5111589386747684e-06
+whole,K3_calibration_mode_gain+ica:signed_context,1.608276945097681e-11,0.5366790965208673,0.8750048262771994,9.626830805563838,6.1504281999549555,0.0032523315991556606
+whole,K3_calibration_mode_gain+identity:posterior,1.6862405220499425e-11,0.5554438083455433,0.8692360294397586,9.203132591354354,5.726729985745472,0.009021128436596393
+whole,K3_calibration_mode_gain+mwf:common_context,1.6497614345916405e-11,0.5428204593195936,0.8724893187970834,9.562796951950357,6.086394346341473,0.005767839079271695
+whole,K3_calibration_mode_gain+mwf:full,1.6677650869230705e-11,0.5500567997331489,0.867194931308995,9.479336237455568,6.002933631846685,0.011062226567360124
+whole,K3_calibration_mode_gain+mwf:posterior,1.6591522883542267e-11,0.5485403837202308,0.8696641565730723,9.378872777147745,5.9024701715388606,0.008593001303282796
+whole,K3_calibration_mode_gain+mwf:raw_frontal,1.6581211500965298e-11,0.5462631926314405,0.8687225921953357,9.481482648362498,6.0050800427536135,0.009534565681019423
+whole,K3_calibration_mode_gain+mwf:signed_context,1.6506737612174238e-11,0.5428562730716775,0.8724607965847891,9.578396159189936,6.101993553581051,0.0057963612915659605
+whole,K3_calibration_mode_gain+pass,1.6862405220499425e-11,0.5554438083455433,0.8692360294397586,9.203132591354354,5.726729985745472,0.009021128436596393
+whole,calibration_raw_event_gain+direct:posterior,1.5961022163357923e-11,0.5330554897952321,0.8760232464097129,9.685963769633972,6.2095611640250885,0.0022339114666422343
+whole,calibration_raw_event_gain+ica:common_context,1.6617860370084576e-11,0.5494193358201034,0.8704157315136107,9.363317159323461,5.886914553714577,0.00784142636274432
+whole,calibration_raw_event_gain+ica:full,1.5913145760916246e-11,0.5284474001784994,0.877328182886913,9.837658313532213,6.361255707923328,0.0009289749894420612
+whole,calibration_raw_event_gain+ica:posterior,1.672767281245903e-11,0.552476947170876,0.8693016982988656,9.183039037898196,5.706636432289313,0.008955459577489465
+whole,calibration_raw_event_gain+ica:raw_frontal,1.5934599594390687e-11,0.5304658729519542,0.8769188715870924,9.744936877986978,6.268534272378094,0.001338286289262774
+whole,calibration_raw_event_gain+ica:signed_context,1.6159146198129244e-11,0.5411887333758096,0.8736680511468753,9.470529861185948,5.994127255577064,0.0045891067294797595
+whole,calibration_raw_event_gain+identity:posterior,1.6938781967651864e-11,0.5599534452004856,0.8678992543094346,9.046831646976463,5.570429041367579,0.01035790356692049
+whole,calibration_raw_event_gain+mwf:common_context,1.6573991093068844e-11,0.5473300961745359,0.8711525436667593,9.406496007572464,5.93009340196358,0.007104614209595794
+whole,calibration_raw_event_gain+mwf:full,1.6754027616383145e-11,0.5545664365880912,0.8658581561786708,9.323035293077677,5.846632687468794,0.012399001697684223
+whole,calibration_raw_event_gain+mwf:posterior,1.6667899630694706e-11,0.5530500205751732,0.8683273814427481,9.222571832769852,5.746169227160969,0.009929776433606896
+whole,calibration_raw_event_gain+mwf:raw_frontal,1.6657588248117737e-11,0.5507728294863827,0.8673858170650115,9.325181703984606,5.848779098375722,0.010871340811343524
+whole,calibration_raw_event_gain+mwf:signed_context,1.658311435932668e-11,0.5473659099266198,0.8711240214544651,9.422095214812042,5.945692609203159,0.00713313642189006
+whole,calibration_raw_event_gain+pass,1.6938781967651864e-11,0.5599534452004856,0.8678992543094346,9.046831646976463,5.570429041367579,0.01035790356692049
+whole,calibration_raw_gain+direct:posterior,1.58124021670579e-11,0.5246589035094005,0.8782571578763552,9.931967405775618,6.455564800166735,0.0
+whole,calibration_raw_gain+ica:common_context,1.6469240373784556e-11,0.5410227495342719,0.872649642980253,9.609320795465106,6.132918189856223,0.005607514896102084
+whole,calibration_raw_gain+ica:full,1.5764525764616223e-11,0.5200508138926679,0.8795620943535551,10.083661949673855,6.607259344064973,-0.0013049364772001737
+whole,calibration_raw_gain+ica:posterior,1.657905281615901e-11,0.5440803608850444,0.8715356097655078,9.429042674039842,5.9526400684309575,0.006721548110847231
+whole,calibration_raw_gain+ica:raw_frontal,1.5785979598090667e-11,0.5220692866661226,0.8791527830537346,9.990940514128622,6.514537908519739,-0.0008956251773794609
+whole,calibration_raw_gain+ica:signed_context,1.601052620182922e-11,0.5327921470899781,0.8759019626135176,9.716533497327593,6.240130891718708,0.0023551952628375248
+whole,calibration_raw_gain+identity:posterior,1.6790161971351838e-11,0.551556858914654,0.8701331657760768,9.292835283118109,5.8164326775092245,0.008123992100278258
+whole,calibration_raw_gain+mwf:common_context,1.642537109676882e-11,0.5389335098887045,0.8733864551334015,9.652499643714108,6.176097038105225,0.004870702742953561
+whole,calibration_raw_gain+mwf:full,1.6605407620083124e-11,0.5461698503022598,0.868092067645313,9.569038929219323,6.0926363236104395,0.010165090231041986
+whole,calibration_raw_gain+mwf:posterior,1.6519279634394683e-11,0.5446534342893417,0.8705612929093904,9.468575468911498,5.992172863302615,0.0076958649669646596
+whole,calibration_raw_gain+mwf:raw_frontal,1.6508968251817714e-11,0.5423762432005512,0.8696197285316538,9.57118534012625,6.094782734517367,0.008637429344701287
+whole,calibration_raw_gain+mwf:signed_context,1.6434494363026653e-11,0.5389693236407883,0.8733579329211073,9.668098850953687,6.191696245344804,0.004899224955247825
+whole,calibration_raw_gain+pass,1.6790161971351838e-11,0.551556858914654,0.8701331657760768,9.292835283118109,5.8164326775092245,0.008123992100278258
+whole,identity,5.405000417545658e-11,0.9646571635382488,0.7583056597344662,3.4764026056088833,0.0,0.11995149814188891
+
+```
+
 ## Appendix E. Detailed historical protocols, findings and repairs
 
 Snapshots preserve all original detail. Earlier future-tense plans and statuses are historical, not current conclusions. Stopped AutoVMD plans are not active authorization.
@@ -14716,7 +15708,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [notebooks/44_Native_Monotonic_Axis_Events.ipynb](<notebooks/44_Native_Monotonic_Axis_Events.ipynb>) | 11960 | `3eae130b156821c5d464460bec7ac3e0a408368c49fd8892c7ee87966caaf4ee` |
 | [notebooks/45_Native_Scaled_Axis_Events.ipynb](<notebooks/45_Native_Scaled_Axis_Events.ipynb>) | 12036 | `57cf240df1be58c7528e6ec3c8cf7d4ea102ab682d1f17bc751933df4404179d` |
 | [notebooks/46_Frontal_Subspace_And_Window_Routing.ipynb](<notebooks/46_Frontal_Subspace_And_Window_Routing.ipynb>) | 12255 | `08f49c2a9dd2cf217f9792b34d258ca51316571c0d89e6f50a7edb2efd77430e` |
-| [notebooks/47_Regional_Integration.ipynb](<notebooks/47_Regional_Integration.ipynb>) | 12256 | `93e36591837f4917504d4aa04a0305840b81c3e681c4f9981763835b30689841` |
+| [notebooks/47_Regional_Integration.ipynb](<notebooks/47_Regional_Integration.ipynb>) | 12684 | `be2ecc2af8c2ebada2fa5991e322059ba66574fe4e0f44b8ea3becbf06515bce` |
 | [tests/test_artifacts.py](<tests/test_artifacts.py>) | 777 | `ccd2badb790151ebe841704a952af7efbc980b0031c9a17185175a5238ec2d8b` |
 | [tests/test_autovmd.py](<tests/test_autovmd.py>) | 1271 | `42bcf6e4e7dc1644f0745e52e6be225d3dafed204ef97fddf507e75a8f838a49` |
 | [tests/test_brainvision.py](<tests/test_brainvision.py>) | 1240 | `5b1eb58e28f241c48d10f15290fe20e280812cf22c377847a4fb0135490e2813` |
@@ -14743,7 +15735,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_sobi.py](<tests/test_sobi.py>) | 2486 | `3f90b70c5e0228615d7eb97ecc4ceca3dc75804513a6c72e4cc0ed09f1934a76` |
 | [tests/test_vmd_diagnosis.py](<tests/test_vmd_diagnosis.py>) | 1644 | `85824e2e028f45c78f6110b8c184cff63e9587d9f13a753bbd18787c9902acfd` |
 | [tools/bandroute_chain.py](<tools/bandroute_chain.py>) | 6369 | `81a1a5600f259f0e0b37d8e9df6f891aa60cf68c8a62ddee1457c09f34b4ffd3` |
-| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 45342 | `4111f2451b5391119131a5122cecf6c8888906e819768bee1084f542d953cad8` |
+| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 45718 | `90ffd3c5fe3d61fe1ed2616f66b4248b8f2718ba8f0606651c8166977ea46134` |
 | [tools/build_work_ledger.py](<tools/build_work_ledger.py>) | 6181 | `6746c506238ba6adf819fae92fd7571a466b68238c83fc3619d2966424e965a2` |
 | [tools/download_vmd_cache.py](<tools/download_vmd_cache.py>) | 7475 | `c3b3d1bbb9fb62cad4fc26b76d75b6bab514c117a8387cf7306465e8c52929e1` |
 | [tools/frontal_queue.py](<tools/frontal_queue.py>) | 11738 | `71a59007d3ec9137b558fee20870164cd7d3e6dc4181ebeeb25260b499d67e62` |

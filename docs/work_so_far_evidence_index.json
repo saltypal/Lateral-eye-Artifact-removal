@@ -1,6 +1,6 @@
 {
-  "snapshot_utc": "2026-10-12T16:26:25.850186+00:00",
-  "git_sha": "69e79ac0391d102a6be1f3193159554b8a4077ff",
+  "snapshot_utc": "2026-10-12T20:45:35.839739+00:00",
+  "git_sha": "eadff90f6411ba48e6f8cc133b08c211da95d157",
   "tables_and_logs": [
     {
       "path": "results/review-fast/frontal-event-hybrid-001/results/vmd-frontal-replication-20261011/frontal-event-hybrid-001/tests.txt",
@@ -5143,9 +5143,94 @@
       "sha256": "22bc6b02c5506921d1f876e798ca359cd47ee1bb5f45f2dbf94a9d224a2343ea"
     },
     {
+      "path": "results/vmd-regional-integration-20261012/regional-full-001/chain_events.jsonl",
+      "bytes": 10325,
+      "sha256": "4051c5ac8bf163efda5a25f2cff379b5b7c6210c5a8b5b1b233feaa38b6d0bc6"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/posterior_metric_parity.csv",
+      "bytes": 2534141,
+      "sha256": "44bab231ecdb18c0dc0f1be4e2ee6e85bebdcfb5ae6d636f47f2a719f3efd367"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/posterior_oof_review.csv",
+      "bytes": 1766,
+      "sha256": "d05311fd908c80dc0e4d227c7bda04ee99c6630e4d3517666a680bf5cf50a8dd"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_calibration_fits.jsonl",
+      "bytes": 62663,
+      "sha256": "d979c7003111ff2471d6a7e88dfe7fc2e8eb2a01bacc3ec9507fddc8b9482fdd"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_condition_means.csv",
+      "bytes": 249344,
+      "sha256": "6711354d5c04f604ce419b92864783a4ef222f7ec91d688adb8e888256931a51"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/regional_method_means.csv",
+      "bytes": 25917,
+      "sha256": "ba6181d7861e3904ba4e6ec4ef1fd2d6a50a9fc4420988ab012c6f52c8d0aff7"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001/tests.txt",
+      "bytes": 2557,
+      "sha256": "cf157b236baf93c59be96e9c0032bdc60a597b4657755b2ace1a9021ec456f6c"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-pilot-001/chain_events.jsonl",
+      "bytes": 3364,
+      "sha256": "588f6e1573a5d6945885ba425e448fbef36093d3c1bbdfa150703c98d6283a82"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/inherited_posterior_selections.jsonl",
+      "bytes": 17776,
+      "sha256": "9f1d7b06f27d115cc5b7ae5aa4b431463ce2cfa0fb4f4cedbc03844e7b8a4f10"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/posterior_metric_parity.csv",
+      "bytes": 153202,
+      "sha256": "f60bea725069bcc45709e736a31786eb622f890c7fa396c84d48f477b82331df"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/posterior_oof_review.csv",
+      "bytes": 1766,
+      "sha256": "d05311fd908c80dc0e4d227c7bda04ee99c6630e4d3517666a680bf5cf50a8dd"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_calibration_fits.jsonl",
+      "bytes": 9788,
+      "sha256": "dcd4f909593c988c5c40289ae0c2a4db007116350067090d8a7487860c90c890"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_condition_means.csv",
+      "bytes": 83225,
+      "sha256": "f15e375a75ca10ff5776c1dfda8371078defebaa64ec943ea144c67ac9582651"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_example_scores.csv",
+      "bytes": 603692,
+      "sha256": "d5aed1841e03f5095d767d8ba633e08218d6053e059c8f8458d42172e253a54b"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_method_means.csv",
+      "bytes": 26036,
+      "sha256": "16f9f018688161ff483c852d52cf4c29f353f023e3b81cfa555a2982b65d8f3f"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_selection_manifest.jsonl",
+      "bytes": 24406,
+      "sha256": "b1c5a9d47aa0d0d55504e9a57b156dd36fe9fcc963134dce115cba707847ab27"
+    },
+    {
+      "path": "results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/tests.txt",
+      "bytes": 2557,
+      "sha256": "a6b35bc8d1cd7347e7517caddddfbe0cbd85cba5d5e8f60af3e24136dff669bc"
+    },
+    {
       "path": "results/vmd-regional-integration-20261012/regional-pilot-001/watch_events.jsonl",
-      "bytes": 354,
-      "sha256": "d95c612e81618a5da0668e870120a53ed5417117273463d00faed8102702e8de"
+      "bytes": 532,
+      "sha256": "f1899284bd76ee0ce751c86290b56a22fb2d7d0f22df41f030c5781e6b7906e7"
     }
   ]
 }
