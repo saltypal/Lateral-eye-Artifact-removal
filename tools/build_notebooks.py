@@ -186,7 +186,11 @@ print('Persist this completed kernel version and retrieve outputs before launchi
     inspect_modules = '''CONFIGURATION = json.loads((CHECKOUT/RUN_SPEC.get('config_path','configs/campaign.json')).read_text())
 print('Declared signal contract:', {key: CONFIGURATION[key] for key in ('fs','window','hop','seed')})
 print('Preservation limits:', CONFIGURATION['preservation'])
-if CONFIGURATION.get('schema_version') == 3:
+if CONFIGURATION.get('schema_version') == 4:
+    print('Modules: regional_integration.py, posterior_context.py, artifacts.py')
+    print((CHECKOUT/'docs/REGIONAL_INTEGRATION_PLAN.md').read_text())
+    print('Frontal VMD only; stopped AutoVMD; no model or confirmation qualification')
+elif CONFIGURATION.get('schema_version') == 3:
     print('Modules: frontal_campaign.py -> frontal_methods.py -> frontal_replication.py/frontal_native.py')
     print((CHECKOUT/'docs/FRONTAL_PAPER_AUDIT.md').read_text())
     print('Scope: verified frontal only; AutoVMD stopped; posterior unchanged')
@@ -197,7 +201,7 @@ print('Git source:', ACTUAL_SHA)
 '''
     tables = '''import csv
 from itertools import islice
-for name in ('vmd_search.csv','posterior_search.csv','review_methods.csv','condition_source_uncertainty.csv','paper_metric_fixture.csv','paper_paired_channels.csv','paper_native_channels.csv','paper_rest_bandpower_channels.csv','paper_paired_source_means.csv','paper_native_source_means.csv','paper_paired_permutation_tests.csv','paper_native_permutation_tests.csv','native_condition_channels.csv','native_condition_participants.csv','native_condition_permutations.csv','vmd_diagnosis_method_means.csv','vmd_diagnosis_clean_preservation.csv','vmd_mode_projection_diagnostics.csv','paper_plot_participant_conditions.csv','vmd_sobi_method_means.csv','vmd_sobi_clean_preservation.csv'):
+for name in ('regional_method_means.csv','regional_condition_means.csv','posterior_oof_review.csv','vmd_search.csv','posterior_search.csv','review_methods.csv','condition_source_uncertainty.csv','paper_metric_fixture.csv','paper_paired_channels.csv','paper_native_channels.csv','paper_rest_bandpower_channels.csv','paper_paired_source_means.csv','paper_native_source_means.csv','paper_paired_permutation_tests.csv','paper_native_permutation_tests.csv','native_condition_channels.csv','native_condition_participants.csv','native_condition_permutations.csv','vmd_diagnosis_method_means.csv','vmd_diagnosis_clean_preservation.csv','vmd_mode_projection_diagnostics.csv','paper_plot_participant_conditions.csv','vmd_sobi_method_means.csv','vmd_sobi_clean_preservation.csv'):
     path = OUT/name
     if path.exists():
         print(name, '(first 8 saved rows; complete table remains in outputs)')
