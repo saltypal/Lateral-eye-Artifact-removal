@@ -7,7 +7,12 @@ The user authorized the immediate four-arm verified central/shared extension:
 [CENTRAL_COVERAGE_PLAN.md](CENTRAL_COVERAGE_PLAN.md), reviewed by GPT-6.1 Sol
 with extra-high reasoning in
 [CENTRAL_COVERAGE_PLANNING_REVIEW.md](CENTRAL_COVERAGE_PLANNING_REVIEW.md).
-Its numerical pilot precedes the broader challenger sequence below.
+Its pilot and full run are verified; see
+[CENTRAL_COVERAGE_RESULTS.md](CENTRAL_COVERAGE_RESULTS.md). Whole-cap output
+SNR is 13.162704 dB; frontal CC and native preservation still fail qualification.
+The immediate experiment is now notebook 50's single matched raw-frontal
+context arm: [MATCHED_CONTEXT_PLAN.md](MATCHED_CONTEXT_PLAN.md).
+The bounded native frontal repair follows this attribution comparison.
 Mode: Super Code. Independent read-only audits prepare reviewable contracts;
 the primary owns implementation, Git publication and Kaggle submissions.
 

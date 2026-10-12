@@ -4,6 +4,42 @@ Planning only. Do not insert these changes into the frozen central-coverage
 pilot. This follows its evidence review and requires a separate run specification.
 Keep K3/alpha2000 fixed, AutoVMD stopped and all numerical execution on Kaggle.
 
+The immediate prerequisite is now the matched-context attribution experiment
+in notebook 50. The full central-coverage result is verified at 13.162704 dB
+whole-cap output SNR; it does not qualify the frozen frontal branch.
+
+## Implementation readiness audit
+
+The Luna audit identifies a minimal opt-in implementation: expose two signed
+joint-ridge fields from `calibration_transfer`, using lag-major HEOG rows
+`0::2` and VEOG rows `1::2`, and multiply both by the existing shared gain.
+This is different from the already-tested independent-axis-gain method.
+Preserve the default three-result API and current numerical outputs.
+Add `AxisAmplitudeSupport.support_axes` while keeping `support` unchanged.
+Per-axis threshold, dilation and taper retain the current 256/128 detector
+and 41-sample extension. Require field-sum, zero-support, one-axis isolation,
+unit/permutation, missing-context and original-input composition fixtures.
+
+The audit also identifies a separate boundary question: native support is
+currently computed inside each padded 1024-sample overlap-add window. A
+whole-trial support track with a position-aware window callback may reduce
+seam sensitivity. Do not introduce that change only into the separate-axis
+arm, because it would confound this first support ablation. Keep the current
+window policy matched for both arms first; declare whole-trial support as a
+separate subsequent ablation if justified. Reflection and support must remain
+inside each scoring trial; do not cross trial or calibration joins.
+
+Native precedent: `frontal-native-monotonic-001`, source
+`437198ca4d4ea4aff3003bb15775c8b29fb49ac9`, parent
+`frontal-monotonic-events-001` at
+`939fadf435440b3cac7436f03c3ce6d80dfa52aa`. The native precedent is a
+development-exposed p02/p03 pilot, not a full native or independent cohort.
+Pin corpus/2, readiness/1, review-contracts/1, controlled monotonic/1 and
+the verified restore/1/source bundle. Check all required native waveforms
+before execution. Old native admission compares against an earlier weaker
+controlled comparator; a new exploratory stage must retain the present
+calibrated-raw CC failure and must not silently call it qualified.
+
 ## Measured reason for the experiment
 
 The native monotonic-support experiment reduced worst resting modification
