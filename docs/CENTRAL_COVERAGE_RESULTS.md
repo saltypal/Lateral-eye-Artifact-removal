@@ -128,3 +128,7 @@ Exact negative-arm worst whole clean quantities from the gates JSON:
 
 - `central_axis_gated_ridge`: `{"alpha_db": 1.3023931215994582, "beta_db": 0.5619537683069719, "clean_change": 1.915830001959485, "covariance_error": 5.625731319344903}`.
 - `central_frozen_ridge`: `{"alpha_db": 1.3613739297781697, "beta_db": 0.8029255386055149, "clean_change": 1.9160656639715836, "covariance_error": 5.627902870480572}`.
+
+Native status clarification: frontal preservation failed on the tested two
+development recordings; the new central transfer has not been tested on native
+EEG. Exact controlled clean identity does not overturn those native failures.

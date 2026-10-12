@@ -766,6 +766,19 @@ The full comparison remains pending; Luna monitors status30–60 seconds and
 a bounded primary downloader verifies completion, hashes and scope.
 AutoVMD/models/confirmation remain closed; scientific qualification is false.
 
+
+### Independent interpretation audit during full matched run
+
+GPT-6.1 Sol extra-high read-only review found no reported-number mismatch.
+Use approximate95%percentile interval terminology. Zero-containing raw-minus-
+VMD intervals do not establish equivalence or justify removing VMD; both
+scored frontal branches remain VMD. Five ocular donors remain the source
+limit even with32recipient sources. Valid resampling draws are not independent
+replications; `favors_candidate` is point direction, not significance.
+Native frontal preservation failed on the tested two development recordings;
+native central transfer remains untested. Synthetic identity cannot override
+those failures. Full comparison remains unchanged; qualification=false.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

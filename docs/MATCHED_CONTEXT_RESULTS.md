@@ -35,7 +35,7 @@ recipient/donor Poisson multiplier approximation, not a paper-native metric or
 a reproduced significance procedure. Accuracy excludes clean controls; finite
 failure/pass-through observations remain in the complete cohort.
 
-| Scope | Candidate | Comparator | Output SNR difference dB | 95% interval dB | Valid draws |
+| Scope | Candidate | Comparator | Output SNR difference dB | Approximate 95% percentile interval dB | Valid draws |
 |---|---|---|---:|---|---:|
 | whole | central_frontal_raw_context | frozen_regional | 3.936741 | [3.249903, 5.044596] | 1835/2000 |
 | central_shared | central_frontal_raw_context | frozen_regional | 8.678918 | [6.999791, 11.253330] | 1835/2000 |
@@ -51,7 +51,7 @@ The previous full coverage table was also analyzed on Kaggle without repeating
 any fits. It contains 32 recipient sources but only five ocular donor sources;
 this limits external generalization and the uncertainty method remains approximate.
 
-| Full coverage scope | VMD context minus frozen baseline dB | 95% interval dB | Valid draws |
+| Full coverage scope | VMD context minus frozen baseline dB | Approximate 95% percentile interval dB | Valid draws |
 |---|---:|---|---:|
 | whole | 4.068490 | [3.208717, 4.897776] | 1991/2000 |
 | central_shared | 8.949300 | [6.964664, 10.766403] | 1991/2000 |
@@ -60,7 +60,8 @@ this limits external generalization and the uncertainty method remains approxima
 
 Both context arms leave controlled clean inputs exactly unchanged, with zero
 clean alpha/beta and covariance errors. Both retain the failed frozen frontal
-CC gate. Native preservation remains unresolved, and the whole target of15 dB
+CC gate. Native frontal preservation failed on the tested two development recordings;
+native central transfer remains untested. The whole target of15 dB
 is unmet. `qualification=false`; no neural models or reserved sources opened.
 
 Inherited whole failure-labelled rows are56 per arm, central26, frontal13 and
@@ -85,3 +86,14 @@ source `c285e5398ba5cb31a3cf2163b81c48f2b767bf7e`.
 Only documentation changed after the pilot numerical source; recipe and
 implementation are unchanged. Full320-example/32-recipient results are pending.
 No full result is inferred from the five-recipient pilot.
+
+## Independent interpretation review
+
+GPT-6.1 Sol with extra-high reasoning checked the saved pilot and prior full
+uncertainty tables read-only. It found no numeric mismatch. An interval
+containing zero does not establish equivalence or prove that VMD is unnecessary;
+both context arms keep VMD-scored frontal outputs. Five donors remain the
+ocular-source replication limit despite32recipients/320mixtures. Valid
+bootstrap draw counts are resampling counts, not additional experiments.
+The saved `favors_candidate` flag describes the point-estimate direction,
+not a significance test. Qualification remains false.
