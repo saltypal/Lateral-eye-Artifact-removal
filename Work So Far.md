@@ -423,6 +423,38 @@ not proof of kernel error. Parent waveform verification, numerical tests and dia
 results remain pending. D03 is authored; D02/D04/D05 remain open until execution
 outputs satisfy their acceptance criteria. Full diagnostic is not yet launched.
 
+## Diagnostic pilot verified, retrieval repair and full launch — 2026-10-12T21:40:13Z
+
+Pilot regional-diagnostic-pilot-001 completed50examples/5recipients/9frozen arms.
+Kaggle134tests passed (14warnings);154,440channel-metric and450whole pooled
+parity checks passed. Numerical diagnostic runtime32.386186495s, excluding setup,
+parent verification and tests. Parent/split and frozen-scope checks passed.
+
+Automatic chain stopped after the CLI saved an HTML502body as artifact_manifest.json.
+This was a retrieval failure, not kernel failure. Preserved the body under
+retrieval_failures/artifact_manifest_502.html, redownloaded the manifest and verified
+all22retrieved payloads. A completion/checksum receipt is saved outside the parent
+artifact directory. Added bounded manifest retries preserving invalid bodies to
+diagnostic_chain.py. Scientific criteria and numerical implementation are unchanged.
+
+Pilot VMD-mode-gain plus direct posterior correction: channel-first whole SNR
+10.002234845dB; frontal20.176007422; posterior13.653155966; central/shared2.323553645.
+These pilot estimates are not replacements for the32-recipient full results.
+Mean recipient/condition/input-balanced reconstruction-error shares are central/shared
+0.8932861185, frontal0.0149768037 and posterior0.0917370778. Unknown group has no
+energy in this pilot. Central/shared modification energy is zero. Whole mean
+per-example pooled SNR5.625439358dB is supplementary, distinct from primary10.0022.
+This is evidence that pass-through central/shared rows dominate this pilot's remaining
+error; it is not a guaranteed gain from adding their correction or permission to
+guess anatomy. Native preservation remains unresolved and qualification false.
+
+After verified pilot gates, submitted regional-diagnostic-full-001 as version1 of
+satyapaladugu/vmd-regional-error-full, original numerical source
+220e83d1b713cff862cf800fe4dc978dc4b87d5b, attached original regional-full-001/1 only.
+It scores320examples/32recipients without refitting or changing parameters. Full
+status/completion and full-cohort attribution remain to be checked. AutoVMD,
+models and reserved evaluation remain closed.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

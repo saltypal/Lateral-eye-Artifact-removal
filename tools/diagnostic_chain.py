@@ -16,6 +16,30 @@ from kaggle_campaign import ROOT, WORK
 PATTERN = "diagnostic_|execution_state|artifact_manifest|stage_tests|tests.txt|environment|configuration|resource_summary|parent_identities"
 
 
+def manifest_with_retry(parent, destination, run_id):
+    """Kaggle downloads can return an HTML 502 body with a successful CLI exit."""
+    path = parent / "artifact_manifest.json"
+    for attempt in range(4):
+        try:
+            value = json.loads(path.read_text(encoding="utf-8"))
+            if not isinstance(value, dict) or not value:
+                raise ValueError("Missing artifact hashes")
+            return value
+        except (json.JSONDecodeError, ValueError, OSError) as error:
+            evidence = destination / "retrieval_failures"
+            evidence.mkdir(exist_ok=True)
+            timestamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
+            if path.exists():
+                (evidence / ("manifest-invalid-" + timestamp + ".txt")).write_bytes(path.read_bytes())
+            print("MANIFEST_RETRIEVAL_RETRY", run_id, attempt + 1, str(error), flush=True)
+            if attempt == 3:
+                raise RuntimeError("Manifest retrieval failed repeatedly; kernel outcome not relabelled") from error
+            retry = call("retrieve", "--run-id", run_id, "--file-pattern", "artifact_manifest.json$")
+            if retry.returncode:
+                print(retry.stderr[-2000:], flush=True)
+            time.sleep(5)
+
+
 def call(*arguments):
     return subprocess.run([sys.executable, str(ROOT / "tools/kaggle_campaign.py"), *arguments],
                           cwd=ROOT, text=True, encoding="utf-8", capture_output=True)
@@ -57,7 +81,7 @@ def monitor(run_id):
                 if actual.get(key) != spec.get(key):
                     raise RuntimeError("Retrieved identity differs: " + key)
             state = json.loads((parent / "execution_state.json").read_text())
-            manifest = json.loads((parent / "artifact_manifest.json").read_text())
+            manifest = manifest_with_retry(parent, destination, run_id)
             verified = []
             for path in parent.rglob("*"):
                 if not path.is_file() or path.name in ("execution_state.json", "artifact_manifest.json"):
