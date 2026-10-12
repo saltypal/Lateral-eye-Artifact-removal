@@ -12,7 +12,7 @@ The most important findings are:
 - Current frontal calibrated K3/2000 hybrid: **17.112814 dB** on controlled LEMON–OSF development mixtures. Matched calibrated raw gain: **18.193247 dB**. VMD has not demonstrated superiority over this control.
 - Temporal monotonic support: frontal VMD **16.079988 dB**, passing controlled gates, but native worst-record resting modification **18.512966%** and covariance error **0.127834** fail the declared preservation criteria. Alpha/beta preservation passes for that native pilot.
 - Posterior best-candidate development table: direct EOG regression **13.542 dB**, full-montage-supported ICA **13.523 dB**. These are partial-gate search results, not a qualified held-out winner.
-- No measured combined regional score, independently qualified EEG-only deployment model, final external validation or complete 10–50-channel export qualification exists yet.
+- Completed regional development comparison: frontal VMD + posterior direct regression **9.094213 dB** whole cap; frontal VMD + full ICA posterior output **9.089350 dB**; matched raw frontal + direct posterior **9.337592 dB**. The 15 dB target and native preservation qualification remain unmet. No independently qualified EEG-only deployment model, final external validation or complete 10–50-channel export qualification exists yet.
 
 ## 1. Objective, workflow and changes in direction
 
@@ -20,7 +20,7 @@ The objective is simultaneous blink/vertical and lateral-eye suppression with ne
 
 The chronological development path is dataset/signal audit → classical comparisons → AutoVMD/band-routing implementation and short neural pilots → user-stopped AutoVMD → fixed frontal-only VMD adaptations → historical guarded-model replay → calibrated frontal transfer and preservation challengers → separate posterior support comparisons. These stages have distinct configurations and evidence. A successful result from one stage does not retroactively qualify another.
 
-The active direction is fixed **frontal VMD artifact estimation**, an independent **posterior estimator**, and one final artifact subtraction. AutoVMD is stopped; its code/caches/failures remain historical evidence. The immediate next technical stage is exploratory regional integration. It must be distinguished from scientific qualification because native preservation remains unresolved. New teacher/student or production claims must satisfy their separate gates.
+The active direction is fixed **frontal VMD artifact estimation**, an independent **posterior estimator**, and one final artifact subtraction. AutoVMD is stopped; its code/caches/failures remain historical evidence. Exploratory regional integration is complete. The next stage is a regional/channel error diagnostic, native preservation repair and bounded posterior challengers before estimated frontal-field transfer. Qualification remains unresolved. New teacher/student or production claims must satisfy their separate gates.
 
 All numerical tests, decompositions, fitting, evaluation, training and plotting run on Kaggle. Local work authors modules/notebooks, inspects saved evidence, performs Git operations and submits/retrieves jobs. Reusable code is in Git, not trapped in notebook cells. Every notebook pins an exact published SHA and versioned parents, checks out fresh code and saves persistent campaign/run artifacts.
 
@@ -342,6 +342,39 @@ Saved results: `results/vmd-regional-integration-20261012/regional-full-001/resu
 ## Posterior literature challengers — 2026-10-12T20:49:18.832454+00:00
 
 Reviewed SGEYESUB reference implementation, selective wavelet-enhanced ICA, dual-HEOG/VEOG adaptive RLS, frontal-estimated ocular propagation and ASR. These are proposed challengers, not new measured results. SGEYESUB matches our native OSF calibration source; selective waveletICA addresses component-wide neural loss. Event-gated adaptive fitting and frontal VMD-artifact transfer are explicitly adaptations. No posterior-specific superiority, EOG-free SGEYESUB deployment or guaranteed SNR gain is claimed. Details and primary sources: [POSTERIOR_CHALLENGERS_20261013.md](docs/POSTERIOR_CHALLENGERS_20261013.md). Central/shared error coverage must be diagnosed before attributing the whole-cap shortfall to posterior methodology. No numerical job launched for this review.
+
+## Active checklist and delegated preparation — 2026-10-12T21:04:23Z
+
+User requested a following task list and explicitly authorized GPT-6 Luna agents
+with high reasoning for independent work. Three read-only preparation audits covered
+regional error/coverage, SGEYESUB eligibility/parity and selective wavelet–ICA/frontal
+artifact transfer. No new numerical processing, tests or Kaggle job ran for this action.
+The primary replaced stale TASKS.md, preserved its prior contents under docs/history,
+marked TARGETS.md historical and created docs/REGIONAL_NEXT_STEPS_20261013.md.
+The published commit for this documentation action is recorded by Git history; it
+is not an experiment source SHA or measured result.
+
+The diagnostic audit confirms predictions retain original/target/channel/mask/region
+and each arm, while channel score tables lack anatomical membership metadata. A
+metadata join supports coverage; exact pooled-energy attribution needs prediction
+arrays or verified sufficient statistics on Kaggle. Existing region codes 0/1/2/3
+must remain frontal/posterior/central-shared/unclassified, without inferred anatomy.
+
+The SGEYESUB audit found original ARTIFACTCLASSES sample labels are parsed but lost
+in the current calibration cache. Project trial labels and author sample labels have
+different meanings. Additive label recovery/alignment and per-record class eligibility
+must precede fitting. Author solver/dependencies and reference preprocessing need
+parity; this is not interchangeable with generic GEVD. Wavelet audit identified
+calibration ICA reuse, physical-frequency/interval contracts and explicit replication
+versus Picard/EOG-assisted adaptation labels.
+
+The fixed K3/2000 frontal method remains unchanged; AutoVMD remains stopped. Next
+implementation is diagnostic parent verification/module/notebook, with independent
+calibration recovery and challenger preparation where feasible. Numerical challenger
+pilots depend on fixtures and diagnostic review; estimated frontal-field transfer
+depends on separate calibration estimates. Native preservation, teacher qualification,
+models and reserved evaluation retain their gates. Existing numerical results and
+failures are unchanged. No production, SNR improvement or new job status is claimed.
 
 <!-- BEGIN GENERATED EVIDENCE -->
 

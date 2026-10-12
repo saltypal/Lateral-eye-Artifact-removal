@@ -1,5 +1,10 @@
 # Project target checklist
 
+> Historical campaign ledger. The active 13 October 2026 checklist is
+> [TASKS.md](TASKS.md), with dependencies in
+> [REGIONAL_NEXT_STEPS_20261013.md](docs/REGIONAL_NEXT_STEPS_20261013.md).
+> AutoVMD is stopped; old pending/running statements below retain their original context.
+
 Campaign: `vmd-eog-20261010`. All numerical work runs on Kaggle.
 Task states: planned → implemented → Kaggle-tested → research-validated → complete.
 User authorizes models automatically only if all classical gates pass.
