@@ -168,6 +168,150 @@ def test_fewer_than_two_chunks_fails_closed_without_decomposition(tmp_path, monk
     assert result["boundaries"].size == 0
 
 
+def test_raw_context_is_oof_bounded_and_skips_vmd_and_cache(tmp_path, monkeypatch):
+    data = calibration()
+    data["references"][:, :CHUNK_SAMPLES] = 0.
+    fit_calls = []
+
+    def unexpected_vmd(*args, **kwargs):
+        raise AssertionError("raw context must not decompose or load VMD modes")
+
+    def transfer(eeg, references, fitted_calibration, names, regions, mask, **kwargs):
+        heldout_index = next(
+            index for index in range(4)
+            if np.array_equal(
+                eeg,
+                data["eeg"][:, index * CHUNK_SAMPLES:(index + 1) * CHUNK_SAMPLES],
+            )
+        )
+        training_indices = [index for index in range(4) if index != heldout_index]
+        expected_eeg = np.concatenate([
+            data["eeg"][:, index * CHUNK_SAMPLES:(index + 1) * CHUNK_SAMPLES]
+            for index in training_indices
+        ], axis=-1)
+        expected_references = np.concatenate([
+            data["references"][:, index * CHUNK_SAMPLES:(index + 1) * CHUNK_SAMPLES]
+            for index in training_indices
+        ], axis=-1)
+        np.testing.assert_array_equal(fitted_calibration["eeg"], expected_eeg)
+        np.testing.assert_array_equal(fitted_calibration["references"], expected_references)
+        fit_calls.append({
+            "training_eeg": fitted_calibration["eeg"].copy(),
+            "training_references": fitted_calibration["references"].copy(),
+            "training_boundaries": fitted_calibration["boundaries"].copy(),
+            "heldout_index": heldout_index,
+            "bundle": kwargs["bundles"],
+            "parameters": kwargs,
+        })
+        artifact = np.zeros_like(eeg, dtype=np.float64)
+        if heldout_index != 0:
+            artifact[:3] = references[0][None, :]
+        return eeg - artifact, artifact, [{"triggered": True}]
+
+    monkeypatch.setattr(context_module, "decompose_frontal", unexpected_vmd)
+    monkeypatch.setattr(context_module, "_load_or_build_modes", unexpected_vmd)
+    monkeypatch.setattr(context_module, "calibration_transfer", transfer)
+    cache_folder = tmp_path / "raw_context_must_not_be_created"
+
+    result = fit_context_calibration(
+        data, config(), cache_folder, "d" * 64, representation="raw",
+    )
+
+    assert result["eeg"].shape == (5, 4 * CHUNK_SAMPLES)
+    assert result["predictors"].shape == (5, 4 * CHUNK_SAMPLES)
+    np.testing.assert_array_equal(result["boundaries"], [1024, 2048, 3072])
+    assert result["metadata"]["available"] is True
+    assert result["metadata"]["representation"] == "raw"
+    assert result["metadata"]["cache_metadata"] is None
+    raw_identity_keys = (
+        "cache_version", "representation", "calibration_sha256",
+        "implementation_sha256", "transfer_parameters", "chunk_samples",
+        "chunk_policy", "max_chunks",
+    )
+    raw_identity = {key: result["metadata"][key] for key in raw_identity_keys}
+    assert context_module.canonical_hash(raw_identity) == result["metadata"]["cache_hash"]
+    expected_chunks = select_calibration_chunks(
+        data["trial_types"], data["boundaries"], length=data["eeg"].shape[-1],
+    )
+    assert result["metadata"]["selected_chunks"] == expected_chunks
+    assert len(fit_calls) == 4
+    np.testing.assert_array_equal(result["predictors"][:, :CHUNK_SAMPLES],
+                                  np.zeros((len(CONTEXT_KEYS), CHUNK_SAMPLES)))
+    assert not cache_folder.exists()
+    for call in fit_calls:
+        assert call["bundle"] is None
+        assert call["training_eeg"].shape[-1] == 3 * CHUNK_SAMPLES
+        np.testing.assert_array_equal(call["training_boundaries"], [1024, 2048])
+        expected_training_indices = [index for index in range(4)
+                                     if index != call["heldout_index"]]
+        expected_training_eeg = np.concatenate([
+            data["eeg"][:, index * CHUNK_SAMPLES:(index + 1) * CHUNK_SAMPLES]
+            for index in expected_training_indices
+        ], axis=-1)
+        expected_training_refs = np.concatenate([
+            data["references"][:, index * CHUNK_SAMPLES:(index + 1) * CHUNK_SAMPLES]
+            for index in expected_training_indices
+        ], axis=-1)
+        # Exact complement equality verifies the held-out chunk is excluded
+        # from both EEG and reference fit samples, beyond a length check.
+        np.testing.assert_array_equal(call["training_eeg"], expected_training_eeg)
+        np.testing.assert_array_equal(call["training_references"], expected_training_refs)
+        assert call["parameters"]["threshold"] == 0.4
+        assert call["parameters"]["lags"] == (-10, 0, 10)
+        assert call["parameters"]["penalty"] == 0.01
+        assert call["parameters"]["gain_mode"] == "shared"
+
+
+def test_raw_context_unavailable_and_fit_failures_are_closed(tmp_path, monkeypatch):
+    data = calibration()
+
+    def unexpected_vmd(*args, **kwargs):
+        raise AssertionError("raw context must not call a VMD path")
+
+    monkeypatch.setattr(context_module, "decompose_frontal", unexpected_vmd)
+    monkeypatch.setattr(context_module, "_load_or_build_modes", unexpected_vmd)
+
+    unknown = fit_context_calibration(data, config(), tmp_path / "unknown", "e" * 64,
+                                      representation="guessed")
+    assert unknown["metadata"]["available"] is False
+    assert "unknown" in unknown["metadata"]["failure"]
+    assert not (tmp_path / "unknown").exists()
+
+    invalid_config = {**config(), "fs": 250}
+    invalid = fit_context_calibration(data, invalid_config, tmp_path / "invalid", "e" * 64,
+                                      representation="raw")
+    assert invalid["metadata"]["available"] is False
+    assert "invalid calibration contract" in invalid["metadata"]["failure"]
+    assert not (tmp_path / "invalid").exists()
+
+    short = calibration(types=(1,), chunks_per_trial=1)
+    fewer = fit_context_calibration(short, config(), tmp_path / "short", "e" * 64,
+                                    representation="raw")
+    assert fewer["metadata"]["available"] is False
+    assert "fewer than two" in fewer["metadata"]["failure"]
+    assert not (tmp_path / "short").exists()
+
+    def invalid_transfer(*args, **kwargs):
+        raise ValueError("invalid raw-reference fit")
+
+    monkeypatch.setattr(context_module, "calibration_transfer", invalid_transfer)
+    failed_fit = fit_context_calibration(data, config(), tmp_path / "failed", "e" * 64,
+                                         representation="raw")
+    assert failed_fit["metadata"]["available"] is False
+    assert "cross-fit failed" in failed_fit["metadata"]["failure"]
+    assert not (tmp_path / "failed").exists()
+
+    monkeypatch.setattr(
+        context_module, "calibration_transfer",
+        lambda eeg, references, *args, **kwargs: (eeg.copy(), np.zeros_like(eeg), []),
+    )
+    zero = fit_context_calibration(data, config(), tmp_path / "zero", "e" * 64,
+                                   representation="raw")
+    assert zero["metadata"]["available"] is False
+    assert "entirely zero" in zero["metadata"]["failure"]
+    assert not (tmp_path / "zero").exists()
+
+
 def test_invalid_crossfit_fails_closed(tmp_path, monkeypatch):
     data = calibration()
 

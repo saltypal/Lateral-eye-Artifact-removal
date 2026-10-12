@@ -56,8 +56,8 @@ statements do not supersede this list.
 
 - [x] CC01 Author fixed four-arm coverage module, calibration-context cache, contracts and notebook 49.
 - [x] CC02 Run 50-example Kaggle pilot; verify numerical tests, checksum recovery and frozen-branch parity.
-- [ ] CC03 Run 320-example development comparison after verified pilot: 164 tests and 600 frozen-branch checks passed. Pilot context whole-cap 13.994230 dB vs frozen10.002235; no qualification.
-- [ ] CC04 Report preservation failures, amplitude mismatch, per-condition results and explicit qualification status.
+- [x] CC03 Run 320-example development comparison after verified pilot: 164 tests and 600 frozen-branch checks passed. Pilot context whole-cap 13.994230 dB vs frozen10.002235; full verified: 13.162704 vs9.094213 dB,164 tests and3,840 parity checks. No qualification.
+- [x] CC04 Report preservation failures, amplitude mismatch, per-condition results and explicit qualification status.
 
 ## Wave 2 — bounded classical challengers
 
@@ -116,3 +116,10 @@ statements do not supersede this list.
 Checkboxes mean the named deliverable is complete. An audit is not a passed numerical
 experiment. Record authored/launched/completed/verified/qualified separately.
 At checklist creation no new diagnostic, challenger or neural job has launched.
+
+## Matched context attribution — immediate next stage
+
+- [ ] MC01 Publish one matched raw OOF context arm and notebook 50.
+- [ ] MC02 Verify Kaggle tests, 50-example pilot and checksummed recovery.
+- [ ] MC03 Run unchanged 320-example comparison and source-aware uncertainty.
+- [ ] MC04 Report VMD contribution, failures and preservation before native frontal repair.

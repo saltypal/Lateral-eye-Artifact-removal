@@ -121,6 +121,10 @@ NEW_STAGES.append(("49_Regional_Central_Coverage", "regional-coverage", "Compare
 DETAILS["regional-coverage"] = "Attach pinned corpus/2, regional-full-001/1 and full diagnostic/1. Preserve exact source partitions and all frozen frontal/posterior waveforms. Compare central pass-through, calibration-frozen dual-reference ridge, separate HEOG/VEOG event-gated ridge, and transfer from cross-fitted fixed-K3 frontal calibration artifacts. No AutoVMD or parameter search. Calibration VMD uses at most four whole within-trial 1024 chunks, with held-out chunk fitting. Save coefficients, mode caches, failures, predictions and paper metrics. Explicitly disclose controlled EEG/EOG amplitude mismatch and limited calibration coverage. Unknown anatomy remains untouched; one original-input subtraction. Completion is exploratory and never authorizes models or confirmation."
 
 
+NEW_STAGES.append(("50_Regional_Matched_Frontal_Context", "regional-context-match", "Isolate raw versus VMD frontal artifact context for central transfer."))
+DETAILS["regional-context-match"] = "Attach corpus/2, regional-full/1, diagnostic-full/1 and verified central-coverage-full/1, with explicit manifest identities. Reuse every old scored output. Fit exactly one additional central raw-artifact-context arm on the identical four OOF calibration chunks and ridge policy. Frontal and posterior scored outputs remain fixed VMD/direct outputs for both context arms. Raw scoring context comes from the archived calibrated raw frontal artifact estimate, not a paired target or stored mixture amplitude. No new VMD decompositions, AutoVMD, recipe search, neural models or confirmation access. Save whole/cohort/condition/region paper metrics, preservation failures, fit availability and recipient/donor-aware project uncertainty. Identical clean outputs do not qualify native preservation."
+
+
 def cell(kind, source):
     result = {"cell_type": kind, "metadata": {}, "source": source.splitlines(keepends=True)}
     if kind == "code":
@@ -194,7 +198,10 @@ print('Persist this completed kernel version and retrieve outputs before launchi
 print('Declared signal contract:', {key: CONFIGURATION[key] for key in ('fs','window','hop','seed')})
 print('Preservation limits:', CONFIGURATION['preservation'])
 if CONFIGURATION.get('schema_version') == 4:
-    if RUN_SPEC['stage'] == 'regional-coverage':
+    if RUN_SPEC['stage'] == 'regional-context-match':
+        print('Modules: regional_context_match.py, calibration_frontal_context.py, coverage_uncertainty.py')
+        print((CHECKOUT/'docs/MATCHED_CONTEXT_PLAN.md').read_text())
+    elif RUN_SPEC['stage'] == 'regional-coverage':
         print('Modules: regional_coverage.py, nonfrontal_ridge.py, calibration_frontal_context.py')
         print((CHECKOUT/'docs/CENTRAL_COVERAGE_PLAN.md').read_text())
     elif RUN_SPEC['stage'] == 'regional-diagnostic':
@@ -249,10 +256,10 @@ if review.exists():
     display(Markdown(review.read_text()))
 '''
     descriptions = {item[1]: item[2] for item in STAGES+NEW_STAGES}
-    if stage == 'regional-coverage':
+    if stage in ('regional-coverage', 'regional-context-match'):
         tables = '''from IPython.display import display
 import pandas as pd
-for name in ('coverage_method_means.csv', 'coverage_condition_means.csv', 'coverage_example_scores.csv'):
+for name in ('coverage_method_means.csv', 'coverage_condition_means.csv', 'coverage_uncertainty_intervals.csv', 'coverage_example_scores.csv'):
     path = OUT/name
     if path.exists():
         print(name, '(first 20 rows; complete table saved)')

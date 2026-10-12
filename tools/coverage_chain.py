@@ -11,7 +11,7 @@ from diagnostic_chain import call, manifest_with_retry
 from kaggle_campaign import ROOT, WORK
 
 
-PATTERN = "coverage_(summary|method_means|condition_means|controlled_gates|calibration_fits|decisions|recipient_means|channel_scores|example_scores|whole|central_shared)|stage_tests|tests.txt|environment|configuration|resource_summary|parent_identities"
+PATTERN = "coverage_(summary|method_means|condition_means|controlled_gates|calibration_fits|decisions|recipient_means|channel_scores|example_scores|whole|central_shared|uncertainty|paired)|stage_tests|tests.txt|environment|configuration|resource_summary|parent_identities"
 
 
 def monitor(run_id):

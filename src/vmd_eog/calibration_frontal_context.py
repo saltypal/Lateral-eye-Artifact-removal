@@ -63,7 +63,7 @@ def _boundaries(boundaries, length):
     return tuple(int(value) for value in values)
 
 
-def _validate_calibration(calibration, channel_names, regions, mask, recipe):
+def _validate_calibration(calibration, channel_names, regions, mask, recipe=None):
     eeg = np.asarray(calibration["eeg"], dtype=np.float64)
     references = np.asarray(calibration["references"], dtype=np.float64)
     labels = np.asarray(calibration["trial_types"])
@@ -80,7 +80,7 @@ def _validate_calibration(calibration, channel_names, regions, mask, recipe):
     if not np.issubdtype(labels.dtype, np.integer):
         raise ValueError("Calibration trial types must be integer labels")
     joins = _boundaries(calibration.get("boundaries", ()), eeg.shape[-1])
-    if (recipe.K != 3 or recipe.alpha != 2000 or recipe.fs != 200
+    if recipe is not None and (recipe.K != 3 or recipe.alpha != 2000 or recipe.fs != 200
             or recipe.tolerance != 1e-6 or recipe.max_iterations != 2000
             or recipe.initialization != "uniform" or recipe.normalization != "input_RMS"):
         raise ValueError("Calibration context requires the pinned frontal K3/alpha2000 recipe")
@@ -157,6 +157,7 @@ def _cache_identity(calibration_sha256, recipe):
     implementation_hash = _implementation_hash()
     identity = {
         "cache_version": CACHE_VERSION,
+        "representation": "vmd",
         "calibration_sha256": calibration_sha256,
         "recipe": recipe_values,
         "recipe_hash": recipe_hash,
@@ -168,6 +169,23 @@ def _cache_identity(calibration_sha256, recipe):
             "initialization": recipe.initialization,
             "normalization": recipe.normalization,
         },
+        "chunk_samples": CHUNK_SAMPLES,
+        "chunk_policy": "nonoverlapping full chunks inside trial and label runs",
+        "max_chunks": MAX_CHUNKS,
+    }
+    return identity, canonical_hash(identity)
+
+
+def _raw_identity(calibration_sha256):
+    """Identify raw-reference calibration without invoking or caching VMD."""
+    if not re.fullmatch(r"[0-9a-f]{64}", str(calibration_sha256)):
+        raise ValueError("A lowercase 64-character calibration SHA-256 is required")
+    identity = {
+        "cache_version": CACHE_VERSION,
+        "representation": "raw",
+        "calibration_sha256": calibration_sha256,
+        "implementation_sha256": _implementation_hash(),
+        "transfer_parameters": TRANSFER_PARAMETERS,
         "chunk_samples": CHUNK_SAMPLES,
         "chunk_policy": "nonoverlapping full chunks inside trial and label runs",
         "max_chunks": MAX_CHUNKS,
@@ -356,17 +374,36 @@ def score_context(frontal_artifact, channel_names, regions, mask, hemispheres):
     return features, flags
 
 
-def fit_context_calibration(calibration, config, destination, cache_id):
-    """Build OOF calibration EEG/context arrays and a passive K3 mode cache.
+def fit_context_calibration(calibration, config, destination, cache_id, representation="vmd"):
+    """Build OOF calibration EEG/context arrays for VMD or raw references.
 
     The returned dict has ``eeg [C,N]``, ``predictors [5,N]``,
-    ``boundaries`` between selected chunks, and auditable ``metadata``.
+    ``boundaries`` between selected chunks, and auditable ``metadata``. The
+    default VMD representation uses a passive K3 mode cache; raw-reference
+    context passes ``bundles=None`` and never creates or reads that cache.
     A failed fit makes the whole context unavailable and returns empty arrays;
     a valid zero artifact for an individual rest chunk remains a zero predictor
     block so downstream ridge fitting can learn an identity-preserving case.
     """
+    if representation not in ("vmd", "raw"):
+        try:
+            eeg_channels = int(np.asarray(calibration.get("eeg", np.empty((0, 0)))).shape[0])
+        except Exception:
+            eeg_channels = 0
+        return _unavailable(eeg_channels, {
+            "cache_version": CACHE_VERSION,
+            "representation": str(representation),
+            "calibration_sha256": str(cache_id),
+            "reserved_confirmation_opened": False,
+            "paired_target_access": False,
+            "scoring_eeg_access": False,
+        }, "unknown calibration context representation")
+    recipe = None
     try:
-        recipe = FixedRecipe(3, 2000, fs=int(config.get("fs", 200)))
+        if representation == "vmd":
+            recipe = FixedRecipe(3, 2000, fs=int(config.get("fs", 200)))
+        elif int(config.get("fs", 200)) != 200:
+            raise ValueError("Calibration context requires the fixed 200 Hz project sampling rate")
         if int(config.get("window", -1)) != CHUNK_SAMPLES:
             raise ValueError("Calibration context requires the fixed 1024-sample project window")
         channel_names = calibration["channel_names"]
@@ -376,7 +413,10 @@ def fit_context_calibration(calibration, config, destination, cache_id):
         eeg, references, labels, names, region_values, channel_mask, joins = _validate_calibration(
             calibration, channel_names, regions, mask, recipe,
         )
-        identity, cache_hash = _cache_identity(cache_id, recipe)
+        if representation == "vmd":
+            identity, cache_hash = _cache_identity(cache_id, recipe)
+        else:
+            identity, cache_hash = _raw_identity(cache_id)
     except Exception as error:
         try:
             eeg_channels = int(np.asarray(calibration.get("eeg", np.empty((0, 0)))).shape[0])
@@ -384,6 +424,7 @@ def fit_context_calibration(calibration, config, destination, cache_id):
             eeg_channels = 0
         return _unavailable(eeg_channels, {
             "cache_version": CACHE_VERSION,
+            "representation": representation,
             "calibration_sha256": str(cache_id),
             "reserved_confirmation_opened": False,
             "paired_target_access": False,
@@ -393,11 +434,12 @@ def fit_context_calibration(calibration, config, destination, cache_id):
     base_quality = {
         **identity,
         "cache_hash": cache_hash,
+        "representation": representation,
         "transfer_parameters": TRANSFER_PARAMETERS,
         "crossfit_policy": "leave-one-selected-chunk-out; complement chunks concatenated with explicit joins",
         "max_chunk_adaptation": "at most four nonoverlapping 1024-sample chunks; selected types prioritized 1..4",
         "calibration_sha256": cache_id,
-        "recipe_hash": recipe.identity(),
+        "recipe_hash": recipe.identity() if recipe is not None else None,
         "selected_chunks": _plain(selected),
         "chunk_join_boundaries": [],
         "reserved_confirmation_opened": False,
@@ -408,14 +450,19 @@ def fit_context_calibration(calibration, config, destination, cache_id):
         return _unavailable(eeg.shape[0], base_quality,
                             "fewer than two eligible whole calibration chunks")
 
-    try:
-        modes, residuals, valid_modes, frontal_ids, cache_metadata = _load_or_build_modes(
-            calibration, selected, eeg, names, region_values, channel_mask,
-            config, recipe, destination, identity, cache_hash,
-        )
-    except Exception as error:
-        return _unavailable(eeg.shape[0], base_quality,
-                            f"frontal calibration mode cache failed: {type(error).__name__}: {error}")
+    cache_metadata = None
+    modes = residuals = valid_modes = frontal_ids = None
+    if representation == "vmd":
+        try:
+            modes, residuals, valid_modes, frontal_ids, cache_metadata = _load_or_build_modes(
+                calibration, selected, eeg, names, region_values, channel_mask,
+                config, recipe, destination, identity, cache_hash,
+            )
+        except Exception as error:
+            return _unavailable(eeg.shape[0], base_quality,
+                                f"frontal calibration mode cache failed: {type(error).__name__}: {error}")
+    else:
+        frontal_ids = frontal_indices(eeg, names, region_values, channel_mask)
 
     chunks_eeg, chunks_artifact, chunks_quality = [], [], []
     for heldout_index, chunk in enumerate(selected):
@@ -428,14 +475,16 @@ def fit_context_calibration(calibration, config, destination, cache_id):
         training = {"eeg": training_eeg, "references": training_refs,
                     "boundaries": training_boundaries}
         start, stop = chunk["start"], chunk["stop"]
-        bundle = {
-            int(channel_index): (
-                modes[heldout_index, local].copy(),
-                residuals[heldout_index, local].copy(),
-                {"failure": "cached calibration VMD failure"} if not valid_modes[heldout_index, local] else {},
-            )
-            for local, channel_index in enumerate(frontal_ids)
-        }
+        bundle = None
+        if representation == "vmd":
+            bundle = {
+                int(channel_index): (
+                    modes[heldout_index, local].copy(),
+                    residuals[heldout_index, local].copy(),
+                    {"failure": "cached calibration VMD failure"} if not valid_modes[heldout_index, local] else {},
+                )
+                for local, channel_index in enumerate(frontal_ids)
+            }
         try:
             _, artifact, details = calibration_transfer(
                 eeg[:, start:stop], references[:, start:stop], training,
@@ -448,9 +497,10 @@ def fit_context_calibration(calibration, config, destination, cache_id):
             if artifact.shape != (eeg.shape[0], CHUNK_SAMPLES) or not np.isfinite(artifact).all():
                 raise ValueError("calibration transfer returned invalid artifact axes or values")
             effective_mask = channel_mask.copy()
-            effective_mask[frontal_ids[~valid_modes[heldout_index]]] = False
-            if not np.any(effective_mask[frontal_ids]):
-                raise ValueError("held-out chunk has no usable frontal VMD channels")
+            if representation == "vmd":
+                effective_mask[frontal_ids[~valid_modes[heldout_index]]] = False
+                if not np.any(effective_mask[frontal_ids]):
+                    raise ValueError("held-out chunk has no usable frontal VMD channels")
             feature, feature_flags = score_context(
                 artifact, names, region_values, effective_mask, hemispheres,
             )
@@ -477,6 +527,7 @@ def fit_context_calibration(calibration, config, destination, cache_id):
         return _unavailable(eeg.shape[0], {
             **base_quality,
             "cache_metadata": cache_metadata,
+            "representation": representation,
             "crossfit_chunks_completed": chunks_quality,
         }, "cross-fitted frontal context is entirely zero")
     return {
