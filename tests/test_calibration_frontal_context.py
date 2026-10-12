@@ -81,14 +81,33 @@ def test_calibration_context_is_oof_bounded_cached_and_has_fixed_metadata(tmp_pa
         return result
 
     def transfer(eeg, references, fitted_calibration, names, regions, mask, **kwargs):
+        heldout_index = next(
+            index for index in range(4)
+            if np.array_equal(
+                eeg,
+                data["eeg"][:, index * CHUNK_SAMPLES:(index + 1) * CHUNK_SAMPLES],
+            )
+        )
+        expected_training_indices = [index for index in range(4) if index != heldout_index]
+        expected_training_eeg = np.concatenate([
+            data["eeg"][:, index * CHUNK_SAMPLES:(index + 1) * CHUNK_SAMPLES]
+            for index in expected_training_indices
+        ], axis=-1)
+        expected_training_references = np.concatenate([
+            data["references"][:, index * CHUNK_SAMPLES:(index + 1) * CHUNK_SAMPLES]
+            for index in expected_training_indices
+        ], axis=-1)
+        np.testing.assert_array_equal(fitted_calibration["eeg"], expected_training_eeg)
+        np.testing.assert_array_equal(fitted_calibration["references"], expected_training_references)
         fit_calls.append({
             "training_length": fitted_calibration["eeg"].shape[-1],
             "training_boundaries": fitted_calibration["boundaries"].copy(),
-            "heldout_first": float(eeg[0, 0]),
+            "heldout_index": heldout_index,
             "parameters": kwargs,
         })
         artifact = np.zeros_like(eeg, dtype=np.float64)
-        artifact[:3] = references[0][None, :]
+        if heldout_index != 0:
+            artifact[:3] = references[0][None, :]
         return eeg - artifact, artifact, [{"triggered": True}]
 
     monkeypatch.setattr(context_module, "decompose_frontal", decompose)
