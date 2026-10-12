@@ -117,6 +117,9 @@ DETAILS["regional-integration"] = "Four immutable frontal arms (calibrated raw/V
 NEW_STAGES.append(("48_Regional_Error_Diagnostic", "regional-diagnostic", "Locate frozen regional reconstruction errors without changing methods."))
 DETAILS["regional-diagnostic"] = "Attach regional-full-001/1 only; verify manifest, source, split, channel masks and required predictions. Separate frontal/posterior/central-shared/unknown error energies and coverage. Reproduce frozen-arm channel paper metrics and whole pooled SNR; full execution also reconciles archived participant-balanced means. No fitting, correction change, VMD search or neural training. Pilot precedes full diagnostic. Preserve undefined metrics and failures; save exact tables and figures. Attribution of development error is not scientific qualification."
 
+NEW_STAGES.append(("49_Regional_Central_Coverage", "regional-coverage", "Compare four central/shared coverage policies with frozen frontal and posterior outputs."))
+DETAILS["regional-coverage"] = "Attach pinned corpus/2, regional-full-001/1 and full diagnostic/1. Preserve exact source partitions and all frozen frontal/posterior waveforms. Compare central pass-through, calibration-frozen dual-reference ridge, separate HEOG/VEOG event-gated ridge, and transfer from cross-fitted fixed-K3 frontal calibration artifacts. No AutoVMD or parameter search. Calibration VMD uses at most four whole within-trial 1024 chunks, with held-out chunk fitting. Save coefficients, mode caches, failures, predictions and paper metrics. Explicitly disclose controlled EEG/EOG amplitude mismatch and limited calibration coverage. Unknown anatomy remains untouched; one original-input subtraction. Completion is exploratory and never authorizes models or confirmation."
+
 
 def cell(kind, source):
     result = {"cell_type": kind, "metadata": {}, "source": source.splitlines(keepends=True)}
@@ -191,7 +194,10 @@ print('Persist this completed kernel version and retrieve outputs before launchi
 print('Declared signal contract:', {key: CONFIGURATION[key] for key in ('fs','window','hop','seed')})
 print('Preservation limits:', CONFIGURATION['preservation'])
 if CONFIGURATION.get('schema_version') == 4:
-    if RUN_SPEC['stage'] == 'regional-diagnostic':
+    if RUN_SPEC['stage'] == 'regional-coverage':
+        print('Modules: regional_coverage.py, nonfrontal_ridge.py, calibration_frontal_context.py')
+        print((CHECKOUT/'docs/CENTRAL_COVERAGE_PLAN.md').read_text())
+    elif RUN_SPEC['stage'] == 'regional-diagnostic':
         print('Modules: regional_diagnostic.py, paper_metrics.py, artifacts.py')
         print((CHECKOUT/'docs/REGIONAL_NEXT_STEPS_20261013.md').read_text())
     else:
@@ -243,6 +249,17 @@ if review.exists():
     display(Markdown(review.read_text()))
 '''
     descriptions = {item[1]: item[2] for item in STAGES+NEW_STAGES}
+    if stage == 'regional-coverage':
+        tables = '''from IPython.display import display
+import pandas as pd
+for name in ('coverage_method_means.csv', 'coverage_condition_means.csv', 'coverage_example_scores.csv'):
+    path = OUT/name
+    if path.exists():
+        print(name, '(first 20 rows; complete table saved)')
+        display(pd.read_csv(path).head(20))
+if (OUT/'coverage_controlled_gates.json').exists():
+    print((OUT/'coverage_controlled_gates.json').read_text())
+'''
     if stage == 'regional-diagnostic':
         tables = '''from IPython.display import display
 import pandas as pd

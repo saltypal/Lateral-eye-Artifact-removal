@@ -455,6 +455,33 @@ It scores320examples/32recipients without refitting or changing parameters. Full
 status/completion and full-cohort attribution remain to be checked. AutoVMD,
 models and reserved evaluation remain closed.
 
+## 13 October 2026 — full frozen error diagnostic verified; coverage extension authorized
+
+Run `regional-diagnostic-full-001`, Kaggle `satyapaladugu/vmd-regional-error-full/1`,
+source `220e83d1b713cff862cf800fe4dc978dc4b87d5b`: completed 320 examples/32
+recipients/nine frozen arms. Passed 134 tests, 988,200 channel parity checks,
+2,880 pooled checks and 162 archived balanced-mean checks. Retrieved 22
+payloads with verified checksums; manifest
+`9903c8aec9f584a81057ae60eda96200cef6d0dc47a03403410e968d00bab578`.
+
+K3 mode-gain + direct posterior: frontal 17.112814 dB, posterior 13.541703 dB,
+central/shared 1.954134 dB and whole 9.094213 dB (channel-first recipient-balanced).
+Untouched central/shared has 87.9066% mean per-example balanced error share,
+frontal 2.9326%, posterior 9.1608%. Whole pooled-energy mean is separately
+5.565526 dB. This verifies the coverage bottleneck; it does not qualify the
+method or establish VMD superiority. Native preservation is unresolved;
+frontal CC deterioration .00744148 also exceeds the .005 engineering gate.
+
+User authorized four-arm central/shared coverage experiment: keep saved
+frontal/posterior outputs fixed; compare pass-through, calibration-frozen
+HEOG/VEOG ridge, separate-axis gated ridge, and transfer from OOF estimated
+frontal VMD calibration artifacts. No AutoVMD, broad search, models or reserved
+access. New campaign `vmd-central-coverage-20261013`; capped four whole
+within-trial calibration chunks, fixed K3/2000. Authoring is in progress;
+no result for this extension is claimed here. Controlled mixtures keep
+unscaled donor references while changing EEG ocular amplitude, including clean
+controls; frozen-transfer bias and overcorrection must remain disclosed.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

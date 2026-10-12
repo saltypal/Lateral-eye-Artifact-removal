@@ -31,18 +31,18 @@ statements do not supersede this list.
 
 - [x] D01 Audit prediction schemas and specify error/coverage diagnostic.
   Owner: Luna `error_audit_plan`; read-only audit complete, no numerical validation.
-- [ ] D02 Verify immutable parent waveforms/manifests and source/split compatibility.
+- [x] D02 Verify immutable parent waveforms/manifests and source/split compatibility.
   Owner: primary; use versioned Kaggle parents where possible.
-  Pilot passed parent contracts for 50 scoring examples; full parent validation pending.
+  Full parent contracts passed for all 320 examples; source/split identities verified.
 - [x] D03 Implement diagnostic module, fixtures and exact-SHA Kaggle notebook.
   Authored notebook 48, frozen nine-arm diagnostic and eight numerical fixtures;
-  syntax/notebook schema checked locally. Numerical validation awaits Kaggle.
-- [ ] D04 Run Kaggle fixture/pilot, then full diagnostic after parity passes.
+  syntax/notebook schema checked locally. Numerical fixtures passed on Kaggle in pilot and full diagnostic.
+- [x] D04 Run Kaggle fixture/pilot, then full diagnostic after parity passes.
   Pilot complete: 134 tests, 154,440 channel-metric checks and 450 pooled checks.
   Twenty-two payloads checksum-verified after 502-manifest retrieval repair;
-  full diagnostic version1 submitted at the unchanged pilot source 220e83d.
-- [ ] D05 Publish channel/region error energy, coverage and SNR aggregation report;
-  identify the measured bottleneck before choosing new correction coverage.
+  Full version1 completed at unchanged source 220e83d: 988,200 channel, 2,880 pooled and 162 balanced-mean checks passed.
+- [x] D05 Publish channel/region error energy, coverage and SNR aggregation report;
+  Full report: docs/REGIONAL_DIAGNOSTIC_RESULTS.md. Untouched central/shared contributes 87.9066% mean balanced error share.
 - [ ] N01 Audit native false corrections, references, resting eligibility and gating.
   Owner: primary; preparation overlaps the independent audit lanes.
 - [x] S01 Audit SGEYESUB author implementation, dependencies and OSF calibration prerequisites.
@@ -51,6 +51,13 @@ statements do not supersede this list.
   versioned calibration artifact; verify resampling alignment and per-record class coverage.
 - [x] W01 Audit selective wavelet–ICA, 200 Hz scales and frontal transfer interfaces.
   Owner: Luna `wavelet_preservation_plan`; read-only audit complete, no numerical validation.
+
+## Immediate approved coverage experiment
+
+- [x] CC01 Author fixed four-arm coverage module, calibration-context cache, contracts and notebook 49.
+- [ ] CC02 Run 50-example Kaggle pilot; verify numerical tests, checksum recovery and frozen-branch parity.
+- [ ] CC03 Run 320-example development comparison only after pilot numerical contracts pass.
+- [ ] CC04 Report preservation failures, amplitude mismatch, per-condition results and explicit qualification status.
 
 ## Wave 2 — bounded classical challengers
 

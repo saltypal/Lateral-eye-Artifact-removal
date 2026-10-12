@@ -17,6 +17,9 @@ from .artifacts import record_parent_identities
 def dispatch_stage(stage, input_root, output, config, profile, experiment):
     """Route implemented schema-2 stages through their campaign dispatcher."""
     if config.get("schema_version") == 4:
+        if stage == "regional-coverage":
+            from .regional_coverage import run
+            return run(input_root, output, config, profile)
         if stage == "regional-diagnostic":
             from .regional_diagnostic import run
             return run(input_root, output, config, profile)
