@@ -482,6 +482,25 @@ no result for this extension is claimed here. Controlled mixtures keep
 unscaled donor references while changing EEG ocular amplitude, including clean
 controls; frozen-transfer bias and overcorrection must remain disclosed.
 
+## 13 October 2026 — central coverage pilot submitted; Sol planning review
+
+Authored and published the four-arm extension plus identity/raw-frontal controls,
+notebook 49 and numerical fixtures in source
+`9e4f0ccaf01aac30e13e9091e0fc1bfdfe93895d`.
+Kaggle `satyapaladugu/vmd-central-coverage-pilot/1`, run
+`central-coverage-pilot-001`, was submitted and API status confirmed RUNNING.
+This is a 50-example/five-recipient development pilot, not an achieved result.
+Pinned parents: corpus/2, regional-composition-full/1 and regional-error-full/1.
+Local validation was syntax/notebook schema only; numerical tests run remotely.
+
+At the user's request GPT-6.1 Sol with extra-high reasoning independently reviewed
+planning. Its recommendations are preserved in
+`docs/CENTRAL_COVERAGE_PLANNING_REVIEW.md`. Retain zero-rest OOF chunks, save
+per-example metric shards, disclose controlled amplitude identifiability and keep
+per-region gates visible. These fixes preserve the approved comparison. Frontal
+CC failure and native preservation remain blockers to qualification. Luna monitors
+status; local recovery checks payload hashes. No AutoVMD or models started.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

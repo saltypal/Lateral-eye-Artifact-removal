@@ -1,6 +1,13 @@
 # Regional diagnostic and challenger execution plan
 
 Created 13 October 2026. Active checklist: [TASKS.md](../TASKS.md).
+Update: the full frozen diagnostic is verified; see
+[REGIONAL_DIAGNOSTIC_RESULTS.md](REGIONAL_DIAGNOSTIC_RESULTS.md).
+The user authorized the immediate four-arm verified central/shared extension:
+[CENTRAL_COVERAGE_PLAN.md](CENTRAL_COVERAGE_PLAN.md), reviewed by GPT-6.1 Sol
+with extra-high reasoning in
+[CENTRAL_COVERAGE_PLANNING_REVIEW.md](CENTRAL_COVERAGE_PLANNING_REVIEW.md).
+Its numerical pilot precedes the broader challenger sequence below.
 Mode: Super Code. Independent read-only audits prepare reviewable contracts;
 the primary owns implementation, Git publication and Kaggle submissions.
 
