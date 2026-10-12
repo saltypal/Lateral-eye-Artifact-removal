@@ -407,6 +407,22 @@ execution. Run IDs planned: regional-diagnostic-pilot-001 and regional-diagnosti
 campaign vmd-regional-challengers-20261013. Published SHA and submission identity will
 be recorded after launch. No new accuracy/preservation qualification is asserted.
 
+## Diagnostic pilot launch — 2026-10-12T21:18:30Z
+
+Kaggle accepted regional-diagnostic-pilot-001 as version1 of
+satyapaladugu/vmd-regional-error-pilot, source
+220e83d1b713cff862cf800fe4dc978dc4b87d5b. Attached only
+satyapaladugu/vmd-regional-composition-full/1; no raw dataset attachment or GPU.
+Live API status RUNNING confirmed. Primary diagnostic_chain.py is polling every
+45seconds, with bounded API retries, metadata/checksum retrieval and pilot→full
+submission only after tests and metric parity pass. Full source will remain this
+same pinned implementation. It does not launch models or challenger fits.
+
+Live log request had no matching run identity yet; this is unavailable log evidence,
+not proof of kernel error. Parent waveform verification, numerical tests and diagnostic
+results remain pending. D03 is authored; D02/D04/D05 remain open until execution
+outputs satisfy their acceptance criteria. Full diagnostic is not yet launched.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
