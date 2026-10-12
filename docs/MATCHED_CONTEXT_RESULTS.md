@@ -7,7 +7,8 @@ Kaggle `satyapaladugu/vmd-matched-context-pilot/1`, exact published source
 `c8159e17ba857cee2c0bc08284d98c5931fc4fed`. Manifest SHA256
 `670cf0577b61c9ce30e39c90b72517ce9cc4060b4de72c8f2776c27c0223f6ce`.
 Completion state and 26 critical payloads checksum-verified before interpretation.
-The separately tracked waveform/fit receipt records expanded recovery.
+Expanded recovery is complete: all50 prediction NPZs,50 decision JSONs and
+five raw-context ridge fits are local, with136 manifest-listed payloads verified.
 
 180 tests passed, 14 dependency warnings; 150 frozen regional checks,
 300 preserved parent predictions and 171,600 preserved metric checks passed.
@@ -74,3 +75,13 @@ wall time, peak memory, framework versions and parent identities remain in the
 saved run artifacts. The full same-recipe comparison follows numerical/parity/
 persistence verification. Native shared-gain/separate-axis support remains the
 next safety experiment after this attribution review.
+
+## Full run launch
+
+After the numerical/parity/persistence checks, the unchanged recipe was
+submitted as `context-match-full-001`,
+Kaggle `satyapaladugu/vmd-matched-context-full/1`, exact latest published
+source `c285e5398ba5cb31a3cf2163b81c48f2b767bf7e`.
+Only documentation changed after the pilot numerical source; recipe and
+implementation are unchanged. Full320-example/32-recipient results are pending.
+No full result is inferred from the five-recipient pilot.

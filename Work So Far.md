@@ -750,6 +750,22 @@ saved run artifacts. The full same-recipe comparison follows numerical/parity/
 persistence verification. Native shared-gain/separate-axis support remains the
 next safety experiment after this attribution review.
 
+
+### Matched context full launch and pilot waveform recovery — 13 October 2026 IST
+
+Pilot recovery verified136 payloads, including all50 prediction NPZs,50
+decision JSONs and five raw ridge models. The matched whole/central pilot
+figure was visually inspected. Raw-versus-VMD intervals contain zero.
+
+`context-match-full-001` is submitted at exact latest published source
+`c285e5398ba5cb31a3cf2163b81c48f2b767bf7e`,
+Kaggle `satyapaladugu/vmd-matched-context-full/1`, campaign
+`vmd-context-match-20261013`. The same four versioned parents and fixed recipe
+are attached. Only documentation changed since the verified pilot code.
+The full comparison remains pending; Luna monitors status30–60 seconds and
+a bounded primary downloader verifies completion, hashes and scope.
+AutoVMD/models/confirmation remain closed; scientific qualification is false.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

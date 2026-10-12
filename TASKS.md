@@ -121,5 +121,5 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 
 - [x] MC01 Publish one matched raw OOF context arm and notebook 50.
 - [x] MC02 Verify Kaggle tests, 50-example pilot and checksummed recovery. Run context-match-pilot-001/1 launched at c8159e1; 180 tests,150 branch checks,300 parent predictions and171,600 metric checks passed; critical outputs checksum-verified.
-- [ ] MC03 Run unchanged 320-example comparison and source-aware uncertainty.
+- [ ] MC03 Run unchanged 320-example comparison and source-aware uncertainty. Full context-match-full-001/1 launched at c285e53; pending result. Prior full coverage uncertainty completed on Kaggle.
 - [ ] MC04 Report VMD contribution, failures and preservation before native frontal repair.
