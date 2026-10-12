@@ -129,6 +129,6 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 
 - [x] FP01 Expose jointly fitted axis fields with unchanged shared gain; preserve default parity.
 - [x] FP02 Add separate HEOG/VEOG temporal supports; keep existing OR-support policy unchanged.
-- [ ] FP03 Run Kaggle fixtures including cancelling fields and one-axis isolation.
-- [ ] FP04 Run exploratory native pilot with identity and matched raw/VMD OR/separate support.
+- [ ] FP03 Run Kaggle fixtures including cancelling fields and one-axis isolation. Launched in frontal-native-separate-axis-001 at ce6f31d; pending numerical validation.
+- [ ] FP04 Run exploratory native pilot with identity and matched raw/VMD OR/separate support. Kaggle version1 launched; no result inferred.
 - [ ] FP05 Recover, verify and report preservation/suppression before any bounded tuning.

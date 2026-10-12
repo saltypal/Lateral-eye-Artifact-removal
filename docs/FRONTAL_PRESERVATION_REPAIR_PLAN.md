@@ -161,3 +161,15 @@ correction contributions, not independently identified pure ocular sources.
 Reduced resting correction alone is insufficient: compare matched suppression
 and preservation per recording. Two development-exposed recordings do not
 establish population safety, and the controlled CC failure remains unresolved.
+
+
+## Pilot launch
+
+Run `frontal-native-separate-axis-001`, Kaggle
+`satyapaladugu/vmd-frontal-native-separate-axis/1`, pinned source
+`ce6f31d672f5061cfaae44a22c2318e4e4afc351`, submitted13 October2026 IST.
+Six versioned parents: corpus/2, readiness/1, frontal review contracts/1,
+controlled monotonic/1, native monotonic/1 and restoration/1. Raw source
+attachment is unchanged. All numerical tests run before signal processing.
+The pilot is pending numerical verification; no benefit is presumed from launch.
+Luna monitors30–60 seconds; primary retrieves and verifies completed outputs.

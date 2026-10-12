@@ -828,6 +828,18 @@ all-one/all-zero support and source/scope fixtures. Numerical tests are
 pending Kaggle; local validation is AST/schema/diff inspection only.
 Notebook51 and docs/FRONTAL_PRESERVATION_REPAIR_PLAN.md document the stage.
 
+
+## 2026-10-13 IST: native separate-axis pilot launched
+
+Published source `ce6f31d672f5061cfaae44a22c2318e4e4afc351` and launched
+`frontal-native-separate-axis-001`, Kaggle
+`satyapaladugu/vmd-frontal-native-separate-axis/1`. Six immutable parent
+versions include the old native pilot for all-trial baseline parity.
+Read-only Sol extra-high pre-launch review found one host-notebook import
+boundary bug; it was fixed before publication by reading pinned source text
+instead. No numerical test was run locally. Luna monitors status every30–60
+seconds; primary owns retrieval and repair. Launch is not qualification.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
