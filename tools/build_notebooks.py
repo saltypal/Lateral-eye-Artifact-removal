@@ -114,6 +114,10 @@ NEW_STAGES.append(("47_Regional_Integration", "regional-integration", "Compose f
 DETAILS["regional-integration"] = "Four immutable frontal arms (calibrated raw/VMD, ungated/monotonic temporal support) cross inherited posterior direct/ICA/MWF fold recipes and pass-through. No parameter search or neural fitting. Validate parent checksums, exact frontal input/target/channel parity, posterior OOF coverage and reproduced metrics, disjoint masks and one subtraction. Save regional/whole-cap paper metrics, participant-balanced output SNR and separate pooled-energy summaries. Native preservation remains unresolved; completion does not qualify teachers or deployment."
 
 
+NEW_STAGES.append(("48_Regional_Error_Diagnostic", "regional-diagnostic", "Locate frozen regional reconstruction errors without changing methods."))
+DETAILS["regional-diagnostic"] = "Attach regional-full-001/1 only; verify manifest, source, split, channel masks and required predictions. Separate frontal/posterior/central-shared/unknown error energies and coverage. Reproduce frozen-arm channel paper metrics and whole pooled SNR; full execution also reconciles archived participant-balanced means. No fitting, correction change, VMD search or neural training. Pilot precedes full diagnostic. Preserve undefined metrics and failures; save exact tables and figures. Attribution of development error is not scientific qualification."
+
+
 def cell(kind, source):
     result = {"cell_type": kind, "metadata": {}, "source": source.splitlines(keepends=True)}
     if kind == "code":
@@ -187,8 +191,12 @@ print('Persist this completed kernel version and retrieve outputs before launchi
 print('Declared signal contract:', {key: CONFIGURATION[key] for key in ('fs','window','hop','seed')})
 print('Preservation limits:', CONFIGURATION['preservation'])
 if CONFIGURATION.get('schema_version') == 4:
-    print('Modules: regional_integration.py, posterior_context.py, artifacts.py')
-    print((CHECKOUT/'docs/REGIONAL_INTEGRATION_PLAN.md').read_text())
+    if RUN_SPEC['stage'] == 'regional-diagnostic':
+        print('Modules: regional_diagnostic.py, paper_metrics.py, artifacts.py')
+        print((CHECKOUT/'docs/REGIONAL_NEXT_STEPS_20261013.md').read_text())
+    else:
+        print('Modules: regional_integration.py, posterior_context.py, artifacts.py')
+        print((CHECKOUT/'docs/REGIONAL_INTEGRATION_PLAN.md').read_text())
     print('Frontal VMD only; stopped AutoVMD; no model or confirmation qualification')
 elif CONFIGURATION.get('schema_version') == 3:
     print('Modules: frontal_campaign.py -> frontal_methods.py -> frontal_replication.py/frontal_native.py')
@@ -235,6 +243,15 @@ if review.exists():
     display(Markdown(review.read_text()))
 '''
     descriptions = {item[1]: item[2] for item in STAGES+NEW_STAGES}
+    if stage == 'regional-diagnostic':
+        tables = '''from IPython.display import display
+import pandas as pd
+for name in ('diagnostic_group_means.csv', 'diagnostic_energy_means.csv', 'diagnostic_global_pooled_energies.csv'):
+    path = OUT/name
+    if path.exists():
+        print(name, '(first 20 rows; complete table saved)')
+        display(pd.read_csv(path).head(20))
+'''
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':
         detail = 'Requires verified research readiness. Paired-only EEG TCN-BiGRU, input-derived scaling, signed metadata context, zero correction heads and no runtime EOG/VMD. Classical accuracy gates do not prevent paired learning.'

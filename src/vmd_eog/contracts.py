@@ -21,6 +21,9 @@ def require_kaggle():
 
 def require_approval(stage, input_root, config):
     if config.get("schema_version") == 4:
+        if stage == "regional-diagnostic":
+            from .regional_diagnostic import readiness
+            return readiness(input_root, config)
         if stage != "regional-integration":
             raise RuntimeError("Regional exploration does not authorize models or final evaluation")
         from .regional_integration import readiness

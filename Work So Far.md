@@ -376,6 +376,37 @@ depends on separate calibration estimates. Native preservation, teacher qualific
 models and reserved evaluation retain their gates. Existing numerical results and
 failures are unchanged. No production, SNR improvement or new job status is claimed.
 
+## Regional diagnostic implementation — 2026-10-12T21:16:00Z
+
+Started the authorized first execution stage: modules in regional_diagnostic.py,
+schema4 diagnostic dispatch/readiness, eight numerical fixtures, configuration and
+notebook48. The diagnostic imports only regional-full-001/1, manifest
+5725d477ee035d0e9ef32bfe193c74a8e54aef4456341718a107a9a4b24c4291,
+source eadff90f6411ba48e6f8cc133b08c211da95d157 and split
+9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c.
+The parent live status was COMPLETE; its manifest lists320prediction payloads.
+Those waveforms are not present locally and will be verified/read on Kaggle.
+
+Nine predeclared frozen arms: identity; calibrated raw frontal with pass-through,
+direct and fullICA posterior; K3 mode gain with pass-through, direct, fullICA and
+signedMWF posterior; K3 event gain with fullICA posterior. No new correction fit,
+parameter selection, decomposition, model or reserved access. This diagnostic
+uses paired targets for evaluation only. Main scope and fixed K3/2000 stay unchanged.
+
+Pilot selects one development recipient per existing fold; full covers the original
+320examples/32recipients after passing tests, parent checks and saved-metric parity.
+Reconcile channel-first paper metrics, whole pooled-energy scores and full balanced
+means, preserving undefined outcomes. Save separate frontal/posterior/central-shared/
+unknown energies, counts, exact channel scores, error shares and figures. API failures
+are monitoring errors; new diagnostic_chain.py retries status and verifies outputs
+before automatic full submission. It never launches models or challenger fitting.
+
+Source/notebook syntax and notebook schema checked locally; no numerical test ran
+locally. Numerical validation and artifact availability remain pending until Kaggle
+execution. Run IDs planned: regional-diagnostic-pilot-001 and regional-diagnostic-full-001,
+campaign vmd-regional-challengers-20261013. Published SHA and submission identity will
+be recorded after launch. No new accuracy/preservation qualification is asserted.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

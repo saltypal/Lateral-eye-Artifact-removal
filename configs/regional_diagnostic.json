@@ -1,0 +1,109 @@
+{
+  "branch": "research/vmd-eog-removal-notebooks",
+  "fs": 200,
+  "window": 1024,
+  "hop": 512,
+  "seed": 42,
+  "confirmation_fraction": 0.2,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "source_dataset": "satyapaladugu/lateral-eye-complete-dataset",
+  "required_supplement_sha256": "79a3c4f2e1c1d545b477aa3de05fdc9c1c07c0355b820755392d8a5519e67e65",
+  "preservation": {
+    "clean_change": 0.01,
+    "alpha_db": 0.5,
+    "beta_db": 0.5,
+    "covariance": 0.02,
+    "pearson_deterioration": 0.005
+  },
+  "target_definition": "controlled_recipient_reference; low-ocular LEMON plus donor-calibration ridge ocular field",
+  "reserved_access": "closed until verified freeze",
+  "schema_version": 4,
+  "campaign_id": "vmd-regional-challengers-20261013",
+  "scope": "frozen_regional_error_diagnostic",
+  "autovmd_enabled": false,
+  "model_authorization": "Diagnostic only; no models, no final evaluation",
+  "fixed_recipes": [
+    {
+      "K": 3,
+      "alpha": 2000
+    }
+  ],
+  "require_archived_modes": true,
+  "classical_grid": {
+    "tolerance": 1e-06,
+    "max_iterations": 2000,
+    "thresholds": [
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "strengths": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "lag_banks": [
+      [
+        0
+      ],
+      [
+        -10,
+        0,
+        10
+      ],
+      [
+        -20,
+        -10,
+        0,
+        10,
+        20
+      ]
+    ],
+    "ridge_penalties": [
+      0.001,
+      0.01,
+      0.1
+    ]
+  },
+  "imported_parents": {
+    "regional-full-001": "5725d477ee035d0e9ef32bfe193c74a8e54aef4456341718a107a9a4b24c4291"
+  },
+  "acceptance": {
+    "controlled_output_snr_db": 15,
+    "stretch_output_snr_db": 20
+  },
+  "paper_implementations": {
+    "liu_zhang_2022": "selector_structure_adaptation; author parity pending missing helpers",
+    "dora_biswal_2020": "deferred until full numerical methods available",
+    "xiong_2024": "fixed_recipe_SVM_SOBI_ApEn_adaptation; GA deferred"
+  },
+  "pending_stages": [
+    "regional error diagnostic",
+    "native preservation",
+    "bounded posterior challengers"
+  ],
+  "diagnostic_parent": {
+    "run_id": "regional-full-001",
+    "git_sha": "eadff90f6411ba48e6f8cc133b08c211da95d157",
+    "campaign_id": "vmd-regional-integration-20261012",
+    "manifest_sha256": "5725d477ee035d0e9ef32bfe193c74a8e54aef4456341718a107a9a4b24c4291",
+    "split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+    "examples": 320,
+    "recipients": 32,
+    "kernel": "satyapaladugu/vmd-regional-composition-full/1"
+  },
+  "diagnostic_arms": [
+    "identity",
+    "calibration_raw_gain+pass",
+    "calibration_raw_gain+direct:posterior",
+    "calibration_raw_gain+ica:full",
+    "K3_calibration_mode_gain+pass",
+    "K3_calibration_mode_gain+direct:posterior",
+    "K3_calibration_mode_gain+ica:full",
+    "K3_calibration_event_gain+ica:full",
+    "K3_calibration_mode_gain+mwf:signed_context"
+  ]
+}

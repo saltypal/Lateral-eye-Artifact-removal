@@ -33,7 +33,9 @@ statements do not supersede this list.
   Owner: Luna `error_audit_plan`; read-only audit complete, no numerical validation.
 - [ ] D02 Verify immutable parent waveforms/manifests and source/split compatibility.
   Owner: primary; use versioned Kaggle parents where possible.
-- [ ] D03 Implement diagnostic module, fixtures and exact-SHA Kaggle notebook.
+- [x] D03 Implement diagnostic module, fixtures and exact-SHA Kaggle notebook.
+  Authored notebook 48, frozen nine-arm diagnostic and eight numerical fixtures;
+  syntax/notebook schema checked locally. Numerical validation awaits Kaggle.
 - [ ] D04 Run Kaggle fixture/pilot, then full diagnostic after parity passes.
 - [ ] D05 Publish channel/region error energy, coverage and SNR aggregation report;
   identify the measured bottleneck before choosing new correction coverage.
