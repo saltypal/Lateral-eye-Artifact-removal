@@ -534,6 +534,24 @@ frontal mechanistic ablation separates HEOG/VEOG support while retaining one
 shared gain, without adding it to the frozen coverage comparison. This is
 planning, not an implemented or measured improvement.
 
+## 13 October 2026 — pilot waveform recovery complete; full coverage launched
+
+All 50 prediction NPZ shards and five context ridge models recovered;
+243 payloads checksum-verified against pilot manifest. The larger count includes
+per-example metric shards and cached calibration modes. No numerical work ran
+locally. Tables/figures reviewed; pilot evidence preserved in
+`docs/CENTRAL_COVERAGE_RESULTS.md`. Qualified=false despite the context arm's
+13.994230 dB controlled whole-cap mean and clean identity on this pilot.
+
+Submitted `central-coverage-full-001`,
+`satyapaladugu/vmd-central-coverage-full/1`, source
+`731b2e5daca33585d5cb5ca012271e69d9d19c22`, same fixed numerical recipe,
+320 development examples/32 recipients. Source updates since the pilot add
+stronger test exclusion/zero-rest checks, fit-count metadata and bounded
+retrieval infrastructure; there is no correction change or search. Luna
+monitors every30–60s; primary checksum watcher is active. Full scores pending,
+no SNR success or production qualification claimed.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
