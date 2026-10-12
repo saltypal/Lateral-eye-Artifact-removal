@@ -297,13 +297,23 @@ python tools/kaggle_campaign.py status --run-id <run-id>
 python tools/kaggle_campaign.py retrieve --run-id <run-id>
 ```
 
+
+## Regional integration implementation — 2026-10-12T16:24:41.312926+00:00
+
+User authorized proceeding with regional composition. Added schema4 exploratory campaign `vmd-regional-integration-20261012`, reusable `regional_integration.py` and notebook47 at source69e79ac. Four immutable frontal variants (raw/VMD shared calibration gain, each ungated or monotonic temporal support) combine with inherited posterior fold-selected recipes and pass-through. No AutoVMD, new parameter search, teacher qualification or model authorization. Numerical tests run on Kaggle. The pilot uses one recipient per frozen bucket with clean and nominal0dB blink/lateral/mixed. Full320 examples follows passing contracts and prediction parity. Native preservation remains unresolved. Raw frontal signed/common support is inherited; estimated-frontal-artifact communication is a later experiment. Posterior OOF scores receive the missing CC-deterioration report without reselection. All failures and shared/unknown pass-through remain scored. Local AST/notebook authoring passed; numerical/visual validation remains pending. A local ledger-update command initially failed on the Windows default text encoding; corrected to explicit UTF-8, with no numerical consequence.
+
+
+### Regional pilot launch and monitoring
+
+`regional-pilot-001` accepted as Kaggle version1, source `69e79ac0391d102a6be1f3193159554b8a4077ff`, notebook `satyapaladugu/vmd-regional-composition-pilot/1`. API RUNNING verified12October2026. Matching live log was unavailable; this is observability uncertainty, not a numerical failure. Added a45-second primary orchestration chain: retrieve/checksum pilot evidence, require completed tests and posterior parity, then submit unchanged full320-example comparison. The chain stops on contract/kernel/API failure and never launches neural training or opens confirmation. A successful pilot/full run remains unqualified while native preservation fails.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
 
-Metadata captured `2026-10-12T16:24:01.763979+00:00` at repository HEAD `990e771dd9da1b9390a73fcdb4cc77d4ba7795f7`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
+Metadata captured `2026-10-12T16:26:25.850186+00:00` at repository HEAD `69e79ac0391d102a6be1f3193159554b8a4077ff`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
 
-## Appendix A. All 97 recorded launch specifications
+## Appendix A. All 98 recorded launch specifications
 
 ### audit-001
 
@@ -2884,6 +2894,36 @@ Metadata captured `2026-10-12T16:24:01.763979+00:00` at repository HEAD `990e771
     "satyapaladugu/lateral-eye-complete-dataset"
   ],
   "kernel": "satyapaladugu/vmd-eog-regional",
+  "kernel_version": 1
+}
+```
+
+### regional-pilot-001
+
+[.kaggle-work/regional-pilot-001/run_spec.json](.kaggle-work/regional-pilot-001/run_spec.json); SHA256 `97f13933468060bcaeb38e55213d39da41a6bcd6c2d76e8f9a938b971f2aaa11`.
+
+```json
+{
+  "run_id": "regional-pilot-001",
+  "stage": "regional-integration",
+  "git_sha": "69e79ac0391d102a6be1f3193159554b8a4077ff",
+  "campaign_id": "vmd-regional-integration-20261012",
+  "config_path": "configs/regional_integration.json",
+  "experiment": {},
+  "profile": "pilot",
+  "parent_run": null,
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [
+    "satyapaladugu/vmd-eog-corpus/2",
+    "satyapaladugu/vmd-eog-research-ready/1",
+    "satyapaladugu/vmd-frontal-monotonic-axis-events/1",
+    "satyapaladugu/vmd-band-posterior-full/1"
+  ],
+  "dataset_sources": [
+    "satyapaladugu/lateral-eye-complete-dataset"
+  ],
+  "kernel": "satyapaladugu/vmd-regional-composition-pilot",
+  "requested_kernel": "satyapaladugu/vmd-regional-composition-pilot",
   "kernel_version": 1
 }
 ```
@@ -9768,6 +9808,7 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-frontal-replication-20261011/frontal-subspace-window-001/results/vmd-frontal-replication-20261011/frontal-subspace-window-001/tests.txt](results/vmd-frontal-replication-20261011/frontal-subspace-window-001/results/vmd-frontal-replication-20261011/frontal-subspace-window-001/tests.txt) | 2557 | `f3412029a6cc5eeffea84b2eaddea72ec956f9ae59916f06e5208a3cb68c0497` |
 | [results/vmd-frontal-replication-20261011/frontal-subspace-window-001/watch_events.jsonl](results/vmd-frontal-replication-20261011/frontal-subspace-window-001/watch_events.jsonl) | 2471 | `cf15b3a43e95de02c76184cd8eb07556f51c35aeaf635cfec57ef7a74f8f5998` |
 | [results/vmd-frontal-replication-20261011/orchestration/events.jsonl](results/vmd-frontal-replication-20261011/orchestration/events.jsonl) | 190815 | `22bc6b02c5506921d1f876e798ca359cd47ee1bb5f45f2dbf94a9d224a2343ea` |
+| [results/vmd-regional-integration-20261012/regional-pilot-001/watch_events.jsonl](results/vmd-regional-integration-20261012/regional-pilot-001/watch_events.jsonl) | 354 | `d95c612e81618a5da0668e870120a53ed5417117273463d00faed8102702e8de` |
 
 ## Appendix D. Verbatim record/participant/condition tables
 
@@ -14710,4 +14751,5 @@ Current file identities below make the architecture inspectable; each launched e
 | [tools/kaggle_campaign.py](<tools/kaggle_campaign.py>) | 7907 | `1d9efca46df141c9295702e59a5f9e72d500e3bf67d373e8eb46ed52a6feb568` |
 | [tools/kaggle_log.py](<tools/kaggle_log.py>) | 1485 | `05d7b5b4acb3da503b9e34f13165f973d34bf21aa449af1e6683fb97764094e0` |
 | [tools/phase_a_chain.py](<tools/phase_a_chain.py>) | 5442 | `ba46e9386fd5c45b1f6904f36a8e9514508ccd99ddf817b2c8357aa6627bde16` |
+| [tools/regional_chain.py](<tools/regional_chain.py>) | 3447 | `87567309f60fe17f740de68041587a1eb1ac6f541065ddb8441a495503b36f41` |
 | [tools/run_watch.py](<tools/run_watch.py>) | 3083 | `67591f279ca00f8de29c500c6ba1a382417d7dea7668c7a5702a8932c629d6eb` |
