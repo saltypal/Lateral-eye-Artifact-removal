@@ -338,6 +338,11 @@ Next decision: run a focused Kaggle breakdown of original/corrected errors for f
 
 Saved results: `results/vmd-regional-integration-20261012/regional-full-001/results/vmd-regional-integration-20261012/regional-full-001`.
 
+
+## Posterior literature challengers — 2026-10-12T20:49:18.832454+00:00
+
+Reviewed SGEYESUB reference implementation, selective wavelet-enhanced ICA, dual-HEOG/VEOG adaptive RLS, frontal-estimated ocular propagation and ASR. These are proposed challengers, not new measured results. SGEYESUB matches our native OSF calibration source; selective waveletICA addresses component-wide neural loss. Event-gated adaptive fitting and frontal VMD-artifact transfer are explicitly adaptations. No posterior-specific superiority, EOG-free SGEYESUB deployment or guaranteed SNR gain is claimed. Details and primary sources: [POSTERIOR_CHALLENGERS_20261013.md](docs/POSTERIOR_CHALLENGERS_20261013.md). Central/shared error coverage must be diagnosed before attributing the whole-cap shortfall to posterior methodology. No numerical job launched for this review.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
