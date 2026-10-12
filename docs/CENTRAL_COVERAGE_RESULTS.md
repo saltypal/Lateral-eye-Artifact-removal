@@ -58,8 +58,8 @@ Kaggle `satyapaladugu/vmd-central-coverage-full/1`.
 Immutable manifest SHA256
 `ad75aa2f3e75b9242c16fc701432ffaa61a8eb16f6ad14520ad23eb4971e97ee`.
 The bounded downloader verified the summary/test/metric payloads and actual
-complete execution state. Waveform and fit retrieval is tracked separately
-in the run's retrieval receipt.
+complete execution state. Full waveform/fit retrieval is complete: 320 prediction NPZs, 320 decision
+JSONs and 32 context-ridge fits; 818 payloads checksum-verified in the receipt.
 
 All 164 tests passed (14 dependency deprecation warnings), and 3,840 frozen
 branch checks passed. All 32 EOG ridge, detector and VMD-context calibration

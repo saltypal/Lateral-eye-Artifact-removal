@@ -119,7 +119,7 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 
 ## Matched context attribution — immediate next stage
 
-- [ ] MC01 Publish one matched raw OOF context arm and notebook 50.
-- [ ] MC02 Verify Kaggle tests, 50-example pilot and checksummed recovery.
+- [x] MC01 Publish one matched raw OOF context arm and notebook 50.
+- [ ] MC02 Verify Kaggle tests, 50-example pilot and checksummed recovery. Run context-match-pilot-001/1 launched at c8159e1; pending numerical evidence.
 - [ ] MC03 Run unchanged 320-example comparison and source-aware uncertainty.
 - [ ] MC04 Report VMD contribution, failures and preservation before native frontal repair.

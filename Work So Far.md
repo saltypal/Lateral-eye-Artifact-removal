@@ -634,6 +634,42 @@ Exact negative-arm worst whole clean quantities from the gates JSON:
 - `central_axis_gated_ridge`: `{"alpha_db": 1.3023931215994582, "beta_db": 0.5619537683069719, "clean_change": 1.915830001959485, "covariance_error": 5.625731319344903}`.
 - `central_frozen_ridge`: `{"alpha_db": 1.3613739297781697, "beta_db": 0.8029255386055149, "clean_change": 1.9160656639715836, "covariance_error": 5.627902870480572}`.
 
+
+### Matched context pilot launch and full-cache recovery — 13 October 2026 IST
+
+Full `central-coverage-full-001` waveform/fit recovery completed: all 320
+prediction NPZs, 320 per-example decision JSONs and 32 context-ridge fits are
+local. The receipt verifies 818 manifest-listed payloads, including passive
+mode caches and fit records. Identity/state/manifest accompany the payloads.
+The completed Kaggle full notebook's whole-cap figure was visually inspected.
+
+New campaign `vmd-context-match-20261013`, run `context-match-pilot-001`,
+Kaggle `satyapaladugu/vmd-matched-context-pilot/1`, exact published source
+`c8159e17ba857cee2c0bc08284d98c5931fc4fed`.
+Versioned parents are corpus/2, regional-composition-full/1,
+regional-error-full/1 and central-coverage-full/1.
+
+This new scientific question adds exactly one raw frontal-artifact context
+arm; all six old outputs stay immutable. The same four OOF calibration chunks,
+threshold .4, shared gain, lag bank (-10,0,10), ridge .01 and signed summaries
+fit a separate raw-context central transfer. New raw context uses bundles=None
+and never runs VMD. Scored frontal/posterior outputs stay VMD/direct for both
+context arms. Calibration selection, transfer settings and saved metrics are
+checked against the original full parent.
+
+New source-aware uncertainty is a labelled project Poisson multiplier
+approximation, not a paper-native metric or permutation reproduction. It
+retains finite failure/pass-through observations and counts their flags; clean
+controls remain in preservation tables and are excluded from accuracy intervals.
+The current schema does not contain spectral RRMSE and explicitly reports that
+metric unavailable rather than inventing it. No inferred anatomical metadata,
+target-fitted inference, AutoVMD, neural training or confirmation access.
+
+Static AST/configuration/notebook-schema checks passed locally. Numerical
+contracts and actual pilot completion remain pending until Kaggle artifacts
+are recovered. The fixed-recipe full comparison depends on numerical/parity/
+persistence checks, not on silently qualifying the failed scientific gates.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
