@@ -3,13 +3,15 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import subprocess
+import sys
 import time
 
 from diagnostic_chain import call, manifest_with_retry
 from kaggle_campaign import ROOT, WORK
 
 
-PATTERN = "coverage_|execution_state|artifact_manifest|stage_tests|tests.txt|environment|configuration|resource_summary|parent_identities"
+PATTERN = "coverage_(summary|method_means|condition_means|controlled_gates|calibration_fits|decisions|recipient_means|channel_scores|example_scores|whole|central_shared)|stage_tests|tests.txt|environment|configuration|resource_summary|parent_identities"
 
 
 def monitor(run_id):
@@ -35,7 +37,9 @@ def monitor(run_id):
             time.sleep(45)
             continue
         if any("KernelWorkerStatus." + state in result.stdout for state in ("COMPLETE", "ERROR")):
-            result = call("retrieve", "--run-id", run_id, "--file-pattern", PATTERN)
+            result = subprocess.run([sys.executable, str(ROOT / "tools/retrieve_bounded.py"),
+                "--run-id", run_id, "--pattern", PATTERN], cwd=ROOT, text=True,
+                encoding="utf-8", capture_output=True)
             print(result.stdout, result.stderr, flush=True)
             if result.returncode:
                 raise RuntimeError("Retrieval failed; no dependent launch")

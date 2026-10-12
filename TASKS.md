@@ -55,8 +55,8 @@ statements do not supersede this list.
 ## Immediate approved coverage experiment
 
 - [x] CC01 Author fixed four-arm coverage module, calibration-context cache, contracts and notebook 49.
-- [ ] CC02 Run 50-example Kaggle pilot; verify numerical tests, checksum recovery and frozen-branch parity.
-- [ ] CC03 Run 320-example development comparison only after pilot numerical contracts pass.
+- [x] CC02 Run 50-example Kaggle pilot; verify numerical tests, checksum recovery and frozen-branch parity.
+- [ ] CC03 Run 320-example development comparison after verified pilot: 164 tests and 600 frozen-branch checks passed. Pilot context whole-cap 13.994230 dB vs frozen10.002235; no qualification.
 - [ ] CC04 Report preservation failures, amplitude mismatch, per-condition results and explicit qualification status.
 
 ## Wave 2 — bounded classical challengers

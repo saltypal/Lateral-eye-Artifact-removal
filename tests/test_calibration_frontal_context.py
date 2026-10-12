@@ -123,7 +123,8 @@ def test_calibration_context_is_oof_bounded_cached_and_has_fixed_metadata(tmp_pa
     assert result["metadata"]["context_feature_order"] == list(CONTEXT_KEYS)
     assert len(decomposition_calls) == 4
     assert len(fit_calls) == 4
-    assert not result["predictors"][:, :CHUNK_SAMPLES].any()
+    np.testing.assert_array_equal(result["predictors"][:, :CHUNK_SAMPLES],
+                                  np.zeros((len(CONTEXT_KEYS), CHUNK_SAMPLES)))
     assert result["metadata"]["available"] is True
     for call in fit_calls:
         assert call["training_length"] == 3 * CHUNK_SAMPLES

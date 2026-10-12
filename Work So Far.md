@@ -501,6 +501,39 @@ per-region gates visible. These fixes preserve the approved comparison. Frontal
 CC failure and native preservation remain blockers to qualification. Luna monitors
 status; local recovery checks payload hashes. No AutoVMD or models started.
 
+## 13 October 2026 — coverage pilot evidence recovered and reviewed
+
+`central-coverage-pilot-001` completed 50 examples/five recipients at 9e4f0cc.
+The returned state, exact identity and 18 summary/test/metric payloads were
+checksum-verified. All 164 tests passed (14 warnings), 600 frozen branch parity
+checks passed. Numerical stage runtime78.364s; runner wall323.249s includes
+parent verification/tests but excludes some notebook setup. No test failure was
+observed: a static fixture inconsistency was subsequently strengthened in source,
+without changing the deployed correction algorithm. Do not label this run failed.
+
+Whole-cap channel-first recipient-balanced output SNR: frozen10.002235 dB,
+reference-frozen10.828252, separate-axis gated10.291573,
+frontal-VMD-context13.994230. Central/shared corresponding values:
+2.323554,4.099535,2.909082,11.121655. Pilot scope is five recipients, not the
+32-recipient full result. Context clean controls have exact zero modification,
+alpha/beta error and covariance change; reference-only arms fail clean
+preservation badly. The frozen frontal CC gate still fails and native
+preservation remains unresolved. All four primary arms inherit any parent
+failure labels; channel-labelled failure rows are not unique solver failures.
+
+Kaggle's basic CLI retrieval stalled without producing payloads. Stopped only
+that owned local retrieval process (the Kaggle job was already complete), then
+recovered artifacts with bounded HTTP waits and four download workers. This
+was an infrastructure/retrieval issue, not a numerical failure. Partial and
+complete retrieval diagnostics are preserved outside the immutable output
+folder. All five fitted context models are present in the API output listing;
+fit/waveform payload recovery continues before full submission.
+
+Sol planning also produced `docs/FRONTAL_PRESERVATION_REPAIR_PLAN.md`: next
+frontal mechanistic ablation separates HEOG/VEOG support while retaining one
+shared gain, without adding it to the frozen coverage comparison. This is
+planning, not an implemented or measured improvement.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
