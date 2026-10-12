@@ -301,7 +301,7 @@ python tools/kaggle_campaign.py retrieve --run-id <run-id>
 
 ## Evidence annex: snapshot provenance
 
-Metadata captured `2026-10-11T15:34:07.487756+00:00` at repository HEAD `4eab6868edcc38186dce17536559de3f3fa71a34`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
+Metadata captured `2026-10-12T16:24:01.763979+00:00` at repository HEAD `990e771dd9da1b9390a73fcdb4cc77d4ba7795f7`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
 
 ## Appendix A. All 97 recorded launch specifications
 
@@ -9767,7 +9767,7 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-frontal-replication-20261011/frontal-subspace-window-001/results/vmd-frontal-replication-20261011/frontal-subspace-window-001/frontal_transfer_scores.csv](results/vmd-frontal-replication-20261011/frontal-subspace-window-001/results/vmd-frontal-replication-20261011/frontal-subspace-window-001/frontal_transfer_scores.csv) | 19631787 | `d9f8be305d050b40a16b24c87e4491bca7e3ee1ab6ea2176135d51ac5840fca9` |
 | [results/vmd-frontal-replication-20261011/frontal-subspace-window-001/results/vmd-frontal-replication-20261011/frontal-subspace-window-001/tests.txt](results/vmd-frontal-replication-20261011/frontal-subspace-window-001/results/vmd-frontal-replication-20261011/frontal-subspace-window-001/tests.txt) | 2557 | `f3412029a6cc5eeffea84b2eaddea72ec956f9ae59916f06e5208a3cb68c0497` |
 | [results/vmd-frontal-replication-20261011/frontal-subspace-window-001/watch_events.jsonl](results/vmd-frontal-replication-20261011/frontal-subspace-window-001/watch_events.jsonl) | 2471 | `cf15b3a43e95de02c76184cd8eb07556f51c35aeaf635cfec57ef7a74f8f5998` |
-| [results/vmd-frontal-replication-20261011/orchestration/events.jsonl](results/vmd-frontal-replication-20261011/orchestration/events.jsonl) | 167536 | `88b8b2f34829943bc21b7bf4fc1898d0d79113db0e80efba114e92bb97ce2519` |
+| [results/vmd-frontal-replication-20261011/orchestration/events.jsonl](results/vmd-frontal-replication-20261011/orchestration/events.jsonl) | 190815 | `22bc6b02c5506921d1f876e798ca359cd47ee1bb5f45f2dbf94a9d224a2343ea` |
 
 ## Appendix D. Verbatim record/participant/condition tables
 
@@ -14568,7 +14568,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/brainvision.py](<src/vmd_eog/brainvision.py>) | 1655 | `c106a01d1a7f0dfd5a4237fa267c3cb01ad7db438302a61c0dbdfdeae411b471` |
 | [src/vmd_eog/campaign.py](<src/vmd_eog/campaign.py>) | 1596 | `2e6a073e6a3ac4d831781886a0c4f0a040a367cb70d15af45150d6a41a1c69c3` |
 | [src/vmd_eog/classical_fixture.py](<src/vmd_eog/classical_fixture.py>) | 4755 | `4b660fa880354ae815b1110f2bd3044003ccd2475b42e576a3b8b748e2d8aab3` |
-| [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 6070 | `556bdaa520619aa1565bd456ceadefe7255ebcbf0c338b9ab66f063f524c72fb` |
+| [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 6354 | `dac1704b2142b9fa2fecb160cc462cacbdb8ed50aa5e11e77532360e5663ac65` |
 | [src/vmd_eog/corpus.py](<src/vmd_eog/corpus.py>) | 15469 | `b5064d6944fd1c36d75a5c6f4f82e85212f4b10b7462db1ef3fc922d5441db2b` |
 | [src/vmd_eog/data.py](<src/vmd_eog/data.py>) | 13051 | `49d0b5a8137db4b9a67111b84af94ced4a1661baac5d64dfbd9f7c76bcb39b08` |
 | [src/vmd_eog/experiments.py](<src/vmd_eog/experiments.py>) | 56202 | `1d7dffe87733043d98f51411a395a4ff674f0f1c90af86c999c7e1462628b288` |
@@ -14605,7 +14605,8 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/posterior_context.py](<src/vmd_eog/posterior_context.py>) | 19686 | `0df2b003b1b4580fbca287f4a008ee7dab2017e7444d5d1420cf33bbd82ad06a` |
 | [src/vmd_eog/readiness.py](<src/vmd_eog/readiness.py>) | 4241 | `649dbd69f185f5abc156335de870725554c0b4c96df22cdcc3fdfca7d06e1591` |
 | [src/vmd_eog/reference.py](<src/vmd_eog/reference.py>) | 5691 | `4630406a2cbc7893c02e2a7acd8e5c1a2778de6fd3d56c6ff0307c0caabb605e` |
-| [src/vmd_eog/runner.py](<src/vmd_eog/runner.py>) | 4792 | `837f8af32b8666c4a03fe08d3e4bfee780e43e8c221c219bf2cb5e14abf2bc81` |
+| [src/vmd_eog/regional_integration.py](<src/vmd_eog/regional_integration.py>) | 16689 | `b514cdfd692d160ff96d9a4666dc25f788a6d27a0526d004ff335a25db91b133` |
+| [src/vmd_eog/runner.py](<src/vmd_eog/runner.py>) | 5077 | `d74ccc8afe6f82ec90fc32145277c2bf28d5ad49a15a6d47df045c7e5477ec61` |
 | [src/vmd_eog/signal.py](<src/vmd_eog/signal.py>) | 2710 | `233c86044033895b49dd602117ac7fb04ee84cfa3c6d0500ac466c8e760d7a3c` |
 | [src/vmd_eog/sobi.py](<src/vmd_eog/sobi.py>) | 5696 | `cb8b89ea6de05ce2bdc0fffd6e24a1ae469c7b9746c89ca2e89cf9bb747ead58` |
 | [src/vmd_eog/vmd.py](<src/vmd_eog/vmd.py>) | 4812 | `2705aedce1f71226882ee6df6e9efa127a9717d6aab0fc8676288f3643cb626a` |
@@ -14620,6 +14621,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [configs/frontal_screen.json](<configs/frontal_screen.json>) | 284 | `7e7506778e47b246741697c0aff5527740e82076e51e72fb45be7606f30eb2df` |
 | [configs/guard17_replay.json](<configs/guard17_replay.json>) | 1189 | `99d372ce62c0452be024a0eb9243256f391ea84381585dd90bfdecd29352ecc2` |
 | [configs/posterior_context_queue.json](<configs/posterior_context_queue.json>) | 1260 | `539282ce0f4058375a0a7b4cd0d4e9ee82feafc659af90c1524529e344b41be5` |
+| [configs/regional_integration.json](<configs/regional_integration.json>) | 2592 | `2941e521784acf19b0b96ee92946e4a50946ff23a8da67f33fa641e7b5811d79` |
 | [notebooks/00_Campaign_Control.ipynb](<notebooks/00_Campaign_Control.ipynb>) | 8865 | `124acdf16859f6b62c61d87b88549140fbefb63a766f53c978196173d2c38436` |
 | [notebooks/01_Dataset_Audit.ipynb](<notebooks/01_Dataset_Audit.ipynb>) | 8945 | `7d40f171fafeb9e8639cdb6cff0ceb8fe8ef2ac6a4c679d748663736ccffa231` |
 | [notebooks/01a_Raw_Source_Fixture.ipynb](<notebooks/01a_Raw_Source_Fixture.ipynb>) | 8329 | `fa44971df854d125012e01206b98dd02bd4f3b5e89a430e7e1173c9e7fc17eeb` |
@@ -14673,6 +14675,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [notebooks/44_Native_Monotonic_Axis_Events.ipynb](<notebooks/44_Native_Monotonic_Axis_Events.ipynb>) | 11960 | `3eae130b156821c5d464460bec7ac3e0a408368c49fd8892c7ee87966caaf4ee` |
 | [notebooks/45_Native_Scaled_Axis_Events.ipynb](<notebooks/45_Native_Scaled_Axis_Events.ipynb>) | 12036 | `57cf240df1be58c7528e6ec3c8cf7d4ea102ab682d1f17bc751933df4404179d` |
 | [notebooks/46_Frontal_Subspace_And_Window_Routing.ipynb](<notebooks/46_Frontal_Subspace_And_Window_Routing.ipynb>) | 12255 | `08f49c2a9dd2cf217f9792b34d258ca51316571c0d89e6f50a7edb2efd77430e` |
+| [notebooks/47_Regional_Integration.ipynb](<notebooks/47_Regional_Integration.ipynb>) | 12256 | `93e36591837f4917504d4aa04a0305840b81c3e681c4f9981763835b30689841` |
 | [tests/test_artifacts.py](<tests/test_artifacts.py>) | 777 | `ccd2badb790151ebe841704a952af7efbc980b0031c9a17185175a5238ec2d8b` |
 | [tests/test_autovmd.py](<tests/test_autovmd.py>) | 1271 | `42bcf6e4e7dc1644f0745e52e6be225d3dafed204ef97fddf507e75a8f838a49` |
 | [tests/test_brainvision.py](<tests/test_brainvision.py>) | 1240 | `5b1eb58e28f241c48d10f15290fe20e280812cf22c377847a4fb0135490e2813` |
@@ -14694,11 +14697,12 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_posterior_context.py](<tests/test_posterior_context.py>) | 4292 | `06acbda01884d6d73a6426906f800a3fc98b88f8cb119e4ea0dec7ee298a082f` |
 | [tests/test_readiness.py](<tests/test_readiness.py>) | 1252 | `2485e05b6427365b8d2ad2c73f251671d345ba5d4810a45e2a90896a8b246aa0` |
 | [tests/test_reference_baseline.py](<tests/test_reference_baseline.py>) | 1758 | `7ea05bbd232bc8872a597f8160b2516eed3459e526df30cf2d12cf73f5ec8c25` |
+| [tests/test_regional_integration.py](<tests/test_regional_integration.py>) | 1544 | `d35deeb2ed642f317452bd26b0be662e2ea447b866693bb57d32d621af38eac2` |
 | [tests/test_runner_dispatch.py](<tests/test_runner_dispatch.py>) | 884 | `a82804f0df43cb00e74936ab97fd9c30e6f3096b263435c852a43fcfc14b072f` |
 | [tests/test_sobi.py](<tests/test_sobi.py>) | 2486 | `3f90b70c5e0228615d7eb97ecc4ceca3dc75804513a6c72e4cc0ed09f1934a76` |
 | [tests/test_vmd_diagnosis.py](<tests/test_vmd_diagnosis.py>) | 1644 | `85824e2e028f45c78f6110b8c184cff63e9587d9f13a753bbd18787c9902acfd` |
 | [tools/bandroute_chain.py](<tools/bandroute_chain.py>) | 6369 | `81a1a5600f259f0e0b37d8e9df6f891aa60cf68c8a62ddee1457c09f34b4ffd3` |
-| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 44578 | `d5d46244bfd25ad317cff2c77b4d4896588b98bd0ecd1998e1863052a764b798` |
+| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 45342 | `4111f2451b5391119131a5122cecf6c8888906e819768bee1084f542d953cad8` |
 | [tools/build_work_ledger.py](<tools/build_work_ledger.py>) | 6181 | `6746c506238ba6adf819fae92fd7571a466b68238c83fc3619d2966424e965a2` |
 | [tools/download_vmd_cache.py](<tools/download_vmd_cache.py>) | 7475 | `c3b3d1bbb9fb62cad4fc26b76d75b6bab514c117a8387cf7306465e8c52929e1` |
 | [tools/frontal_queue.py](<tools/frontal_queue.py>) | 11738 | `71a59007d3ec9137b558fee20870164cd7d3e6dc4181ebeeb25260b499d67e62` |

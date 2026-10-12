@@ -1,6 +1,6 @@
 {
-  "snapshot_utc": "2026-10-11T15:34:07.487756+00:00",
-  "git_sha": "4eab6868edcc38186dce17536559de3f3fa71a34",
+  "snapshot_utc": "2026-10-12T16:24:01.763979+00:00",
+  "git_sha": "990e771dd9da1b9390a73fcdb4cc77d4ba7795f7",
   "tables_and_logs": [
     {
       "path": "results/review-fast/frontal-event-hybrid-001/results/vmd-frontal-replication-20261011/frontal-event-hybrid-001/tests.txt",
@@ -5139,8 +5139,8 @@
     },
     {
       "path": "results/vmd-frontal-replication-20261011/orchestration/events.jsonl",
-      "bytes": 167536,
-      "sha256": "88b8b2f34829943bc21b7bf4fc1898d0d79113db0e80efba114e92bb97ce2519"
+      "bytes": 190815,
+      "sha256": "22bc6b02c5506921d1f876e798ca359cd47ee1bb5f45f2dbf94a9d224a2343ea"
     }
   ]
 }

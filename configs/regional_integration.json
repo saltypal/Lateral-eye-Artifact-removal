@@ -1,0 +1,97 @@
+{
+  "branch": "research/vmd-eog-removal-notebooks",
+  "fs": 200,
+  "window": 1024,
+  "hop": 512,
+  "seed": 42,
+  "confirmation_fraction": 0.2,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "source_dataset": "satyapaladugu/lateral-eye-complete-dataset",
+  "required_supplement_sha256": "79a3c4f2e1c1d545b477aa3de05fdc9c1c07c0355b820755392d8a5519e67e65",
+  "preservation": {
+    "clean_change": 0.01,
+    "alpha_db": 0.5,
+    "beta_db": 0.5,
+    "covariance": 0.02,
+    "pearson_deterioration": 0.005
+  },
+  "target_definition": "controlled_recipient_reference; low-ocular LEMON plus donor-calibration ridge ocular field",
+  "reserved_access": "closed until verified freeze",
+  "schema_version": 4,
+  "campaign_id": "vmd-regional-integration-20261012",
+  "scope": "regional_composition_frontal_vmd_only",
+  "autovmd_enabled": false,
+  "model_authorization": "Exploratory regional comparison only; qualification and models remain separate",
+  "fixed_recipes": [
+    {
+      "K": 3,
+      "alpha": 2000
+    },
+    {
+      "K": 4,
+      "alpha": 2000
+    }
+  ],
+  "require_archived_modes": true,
+  "classical_grid": {
+    "tolerance": 1e-06,
+    "max_iterations": 2000,
+    "thresholds": [
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "strengths": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "lag_banks": [
+      [
+        0
+      ],
+      [
+        -10,
+        0,
+        10
+      ],
+      [
+        -20,
+        -10,
+        0,
+        10,
+        20
+      ]
+    ],
+    "ridge_penalties": [
+      0.001,
+      0.01,
+      0.1
+    ]
+  },
+  "imported_parents": {
+    "corpus-002": "93da62cb9cec2984ec9687ee27f308d2dbea6dd57abd62541468daafb89d5e0d",
+    "research-ready-001": "e5941cb68cd3b253bdbb02026f04cd6bbf89d30bfe9ec53792444ef34564137f",
+    "frontal-monotonic-events-001": "1ab061565aca07fb826d48477087c949720dfa300facad90be3ebe2008876d20",
+    "posterior-context-full-001": "a40234f3d4f4b49cbc76a1ff9344627bcc97cd770af7de124a401617f019fa24"
+  },
+  "acceptance": {
+    "controlled_output_snr_db": 15,
+    "stretch_output_snr_db": 20
+  },
+  "paper_implementations": {
+    "liu_zhang_2022": "selector_structure_adaptation; author parity pending missing helpers",
+    "dora_biswal_2020": "deferred until full numerical methods available",
+    "xiong_2024": "fixed_recipe_SVM_SOBI_ApEn_adaptation; GA deferred"
+  },
+  "pending_stages": [
+    "native frontal validation",
+    "regional integration",
+    "EEG-only model comparison",
+    "external evaluation",
+    "export"
+  ]
+}

@@ -110,6 +110,10 @@ DETAILS.update({
 })
 
 
+NEW_STAGES.append(("47_Regional_Integration", "regional-integration", "Compose fixed frontal corrections with inherited posterior recipes; exploratory development only."))
+DETAILS["regional-integration"] = "Four immutable frontal arms (calibrated raw/VMD, ungated/monotonic temporal support) cross inherited posterior direct/ICA/MWF fold recipes and pass-through. No parameter search or neural fitting. Validate parent checksums, exact frontal input/target/channel parity, posterior OOF coverage and reproduced metrics, disjoint masks and one subtraction. Save regional/whole-cap paper metrics, participant-balanced output SNR and separate pooled-energy summaries. Native preservation remains unresolved; completion does not qualify teachers or deployment."
+
+
 def cell(kind, source):
     result = {"cell_type": kind, "metadata": {}, "source": source.splitlines(keepends=True)}
     if kind == "code":
