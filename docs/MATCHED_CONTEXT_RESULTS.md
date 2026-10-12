@@ -84,7 +84,7 @@ submitted as `context-match-full-001`,
 Kaggle `satyapaladugu/vmd-matched-context-full/1`, exact latest published
 source `c285e5398ba5cb31a3cf2163b81c48f2b767bf7e`.
 Only documentation changed after the pilot numerical source; recipe and
-implementation are unchanged. Full320-example/32-recipient results are pending.
+implementation are unchanged. Full320-example/32-recipient results completed and were verified on 13 October 2026 IST; see the full result below.
 No full result is inferred from the five-recipient pilot.
 
 ## Independent interpretation review
@@ -97,3 +97,81 @@ ocular-source replication limit despite32recipients/320mixtures. Valid
 bootstrap draw counts are resampling counts, not additional experiments.
 The saved `favors_candidate` flag describes the point-estimate direction,
 not a significance test. Qualification remains false.
+
+
+## Full matched comparison: completed and verified
+
+Run `context-match-full-001`, Kaggle `satyapaladugu/vmd-matched-context-full/1`,
+source `c285e5398ba5cb31a3cf2163b81c48f2b767bf7e`. Full 320 examples,
+32 recipient sources, five ocular donors, seven arms. All 180 tests passed
+(14 dependency warnings,20.63 seconds),960 frozen-branch parity checks,
+1,920 preserved parent predictions and 1,098,000 archived metric checks passed.
+All 32 new raw context fits were available. No new VMD solver, AutoVMD,
+model fitting or reserved-source access occurred.
+
+Primary means are channel-first, condition/input balanced within recipient,
+then recipient balanced. These are development-exposed controlled results.
+
+| Representation for central transfer | Whole output SNR dB | Central output SNR dB | Whole MSE | Whole temporal RRMSE | Whole Pearson CC |
+|---|---:|---:|---:|---:|---:|
+| Central pass-through/frozen regional | 9.094213 | 1.954134 | 2.969267e-11 | 0.628874 | 0.859318 |
+| VMD frontal artifact context | 13.162704 | 10.903434 | 1.323511e-11 | 0.338343 | 0.934641 |
+| Raw frontal artifact context | 13.183201 | 10.949306 | 1.359897e-11 | 0.339202 | 0.934836 |
+
+Both context arms retain the SAME scored VMD frontal output 17.112814 dB and
+posterior direct-regression output 13.541703 dB. The new raw context arm does
+not remove VMD from the frontal scored correction.
+
+| Difference, raw candidate minus comparator | Whole SNR difference dB | Approximate 95% percentile interval dB | Central SNR difference dB | Approximate 95% percentile interval dB |
+|---|---:|---|---:|---|
+| Frozen regional baseline | 4.088988 | [3.131588,4.957090] | 8.995172 | [6.862256,10.887332] |
+| VMD frontal context | 0.020497 | [-0.089695,0.159625] | 0.045872 | [-0.193234,0.352235] |
+
+Intervals use the predeclared project recipient/donor Poisson multiplier
+approximation,1991/2000 valid draws, seed 42; they are not the prescribed
+paper-native permutation procedure. Five donors restrict ocular-source
+replication. Do not claim a raw or VMD context winner or equivalence. Raw has
+slightly higher mean SNR/CC but slightly worse MSE/RRMSE; the SNR interval
+includes zero. Both improve coverage compared with central pass-through.
+
+### Condition and input-level results
+
+Raw-context whole output SNR (dB), declared mixture input level:
+
+| Condition | -5 dB | 0 dB | +5 dB |
+|---|---:|---:|---:|
+| Blink | 12.718306 | 16.122024 | 19.774689 |
+| Lateral | 4.369782 | 8.616932 | 12.560167 |
+| Mixed | 11.249659 | 14.740758 | 18.496492 |
+
+The lateral condition remains the accuracy bottleneck. Declared input levels
+are pooled construction settings; measured channel-first SNR improvement is
+reported separately in saved tables and is not output SNR minus that label.
+
+### Preservation, failures, cost and recovery
+
+Both context arms have zero controlled clean modification, alpha/beta error
+and covariance error. The inherited frontal CC deterioration 0.007441477
+exceeds 0.005 against `calibration_raw_gain`; neither system qualifies.
+Native frontal preservation failed on the two previously tested development
+recordings. Native central transfer remains untested. Whole SNR 13.183201
+and 13.162704 both miss 15 dB. No teacher/model/freeze/export qualification.
+Inherited failure-labelled observations remain scored:170 whole,78 central,
+39 frontal and 53 posterior per context arm. They are not 32 new fit failures;
+all 32 new fits are available.
+
+Numerical comparison runtime 409.274722 seconds; full runner wall 721.381472
+seconds; peak resident memory 1,027,120 KiB. The matching log reported no
+kernel exception. Critical tables, plots, identity and test outputs were
+checksummed before interpretation. Complete recovery now contains320 waveform NPZ files,320 decision JSON files
+and32 raw-context fit pairs. All730 locally available manifest payloads passed
+checksum verification; the expanded receipt is retained under the run directory.
+
+Independent GPT-6.1 Sol extra-high audit agrees with this interpretation.
+Next: fixed shared-gain separate-axis-support native frontal ablation. A
+HEOG-only detector hit currently admits both HEOG/VEOG field contributions.
+Separating supports tests this mechanism; correlated or cancelling joint-fit
+fields can make separate support worse, so this is not a promised repair.
+Keep the K3/2000 recipe, shared gain, window support policy, calibration and
+matched raw control fixed. Do not select a context architecture from the
+near-zero raw-versus-VMD difference alone.

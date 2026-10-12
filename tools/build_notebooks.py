@@ -132,6 +132,10 @@ def cell(kind, source):
     return result
 
 
+NEW_STAGES.append(("51_Native_Frontal_Separate_Axis_Support", "frontal-native-separate-axis", "Test fixed joint-field correction with separate HEOG/VEOG supports on native development trials."))
+DETAILS["frontal-native-separate-axis"] = "Exploratory preservation repair, not a qualified teacher checkpoint. Attach corpus/2, readiness/1, unchanged frontal fixture/1, controlled monotonic/1, native monotonic/1 and restoration/1 plus raw source. Validate exact controlled/native parent manifest and source identities. Compare identity and matched raw/VMD OR versus separate-axis supports. Same joint calibration coefficients, shared scalar gain, K3/2000, thresholds, lags and current1024-window overlap-add support policy. Independent trial preprocessing; no whole-trial support-policy change. Save every window's two signed fields, references and supports, full trial predictions and paper-native suppression/rest preservation. Reproduce predecessor identity/rawOR/VMDOR trials within declared tolerance. Joint axis fields can cancel; separate support can worsen correction. Gates remain unchanged and qualification false; no neural/AutoVMD/reserved work."
+
+
 def build(path, stage, run_spec=None):
     spec = run_spec or {"stage": stage, "run_id": stage+"-manual", "git_sha": "", "campaign_id": "vmd-eog-20261010", "profile": "pilot"}
     setup = '''import os, sys, json, tempfile, subprocess
@@ -214,6 +218,11 @@ if CONFIGURATION.get('schema_version') == 4:
 elif CONFIGURATION.get('schema_version') == 3:
     print('Modules: frontal_campaign.py -> frontal_methods.py -> frontal_replication.py/frontal_native.py')
     print((CHECKOUT/'docs/FRONTAL_PAPER_AUDIT.md').read_text())
+    if RUN_SPEC['stage'] == 'frontal-native-separate-axis':
+        print((CHECKOUT/'docs/FRONTAL_PRESERVATION_REPAIR_PLAN.md').read_text())
+        # Read pinned source without importing into the host notebook kernel.
+        # Numerical imports and execution belong to the isolated runner environment.
+        print((CHECKOUT/'src/vmd_eog/frontal_event_support.py').read_text())
     print('Scope: verified frontal only; AutoVMD stopped; posterior unchanged')
 else:
     print('Algorithm explanation: docs/SCIENTIFIC_EXPLANATION.md in the pinned checkout')

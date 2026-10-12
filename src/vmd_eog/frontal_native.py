@@ -1,6 +1,6 @@
 """Whole-trial frontal validation using unmodified native EOG references.
 
-No posterior fitting or VMD is performed. Native recordings have no clean target;
+No posterior fitting or posterior VMD is performed. Native recordings have no clean target;
 resting EEG is a preservation reference, never an artifact-free reconstruction
 target. Controlled source-excluded recipes are reused without native retuning.
 """
@@ -84,9 +84,16 @@ def calibration_parent(input_root,event_hybrid=False,event_gain_scaled=False,mon
     return parent
 
 
-def run_native(input_root, output, config, profile, calibration_hybrid=False,event_hybrid=False,event_gain_scaled=False,monotonic_events=False):
+def run_native(input_root, output, config, profile, calibration_hybrid=False,event_hybrid=False,event_gain_scaled=False,monotonic_events=False,axis_support_experiment=False):
     parent, _ = corpus_parent(input_root)
-    experiment = calibration_parent(input_root,event_hybrid=event_hybrid,event_gain_scaled=event_gain_scaled,monotonic_events=monotonic_events) if calibration_hybrid else controlled_parent(input_root)
+    predecessor = None
+    if axis_support_experiment:
+        from .frontal_axis_native import exploratory_parent
+        if profile != "pilot" or not (calibration_hybrid and event_hybrid and monotonic_events) or event_gain_scaled:
+            raise ValueError("Separate-axis experiment requires the fixed unscaled native pilot")
+        experiment, predecessor = exploratory_parent(input_root)
+    else:
+        experiment = calibration_parent(input_root,event_hybrid=event_hybrid,event_gain_scaled=event_gain_scaled,monotonic_events=monotonic_events) if calibration_hybrid else controlled_parent(input_root)
     selections = [] if calibration_hybrid else read_jsonl(experiment / "frontal_fold_selections.jsonl")
     by_fold = {}
     for selection in selections:
@@ -112,7 +119,9 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
         "event_detector": "monotonic_axis_amplitude" if monotonic_events else "logistic_reference" if event_hybrid else None,
         "policy": ("fixed calibration hybrid; no global detector fitting or native retuning; development-exposed sources"
                    if calibration_hybrid else "source-excluded family-wise recipes reused unchanged; no native selection"),
-        "families": (["identity","direct","calibration_raw_gain","K3_calibration_mode_gain"] +
+        "families": (["identity", "calibration_raw_event_gain", "K3_calibration_event_gain",
+                      "calibration_raw_axis_event_gain", "K3_calibration_axis_event_gain"] if axis_support_experiment else
+                     ["identity","direct","calibration_raw_gain","K3_calibration_mode_gain"] +
                      (["calibration_raw_event_gain","K3_calibration_event_gain"] if event_hybrid else []) +
                      (["calibration_raw_scaled_event_gain","K3_calibration_scaled_event_gain"] if event_gain_scaled else [])
                      if calibration_hybrid else sorted({item["family"] for item in selections}))})
@@ -125,6 +134,21 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
     mode_directory.mkdir()
     metrics, spectra, preservation, failures = [], [], [], []
     trial_count, started = 0, time.perf_counter()
+    predecessor_parity_checks = 0
+    axis_window_directory = output / "native_frontal_axis_windows"
+    if axis_support_experiment:
+        axis_window_directory.mkdir()
+        atomic_json(output / "native_frontal_axis_experiment.json", {
+            "experiment": "fixed shared-gain separate-axis support mechanism test",
+            "controlled_comparator_gate_passed": False,
+            "native_predecessor_preservation_passed": False,
+            "qualification": False,
+            "support_interval": "same independently processed 1024-sample overlap-add windows as OR control",
+            "same_joint_coefficients_shared_gain": True,
+            "possible_axis_field_cancellation": True,
+            "recipe": {"K": 3, "alpha": 2000, "threshold": .4, "ridge": .01, "lags": [-10,0,10]},
+            "predecessor_manifest_sha256": sha256_file(predecessor / "artifact_manifest.json"),
+        })
     for record in records:
         fold = record["partition"]["fold"]
         if not calibration_hybrid:
@@ -157,6 +181,9 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
                 methods = tuple(sorted([*methods,"calibration_raw_event_gain","K3_calibration_event_gain"]))
                 if event_gain_scaled:
                     methods = tuple(sorted([*methods,"calibration_raw_scaled_event_gain","K3_calibration_scaled_event_gain"]))
+            if axis_support_experiment:
+                methods = ("identity", "calibration_raw_event_gain", "K3_calibration_event_gain",
+                           "calibration_raw_axis_event_gain", "K3_calibration_axis_event_gain")
         else:
             detector_path = f"detectors/fold-{fold}.joblib"
             verify_parent(experiment, (detector_path,))
@@ -200,8 +227,36 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
                         vectors[f"K{K}_residual"] = np.stack([bundle[int(index)][1] for index in ids])
                     np.savez_compressed(mode_directory / f"{record['record_id']}-trial-{trial_id:04d}.npz", **vectors)
                 artifacts = {}
+                axis_evidence = {"original": window_eeg, "references": window_refs}
+                axis_transfers = {}
+                if axis_support_experiment:
+                    from .frontal_calibration_transfer import calibration_transfer
+                    from .frontal_event_support import gate_artifact, gate_axis_artifact
+                    axis_supports, _ = event_gate.support_axes(window_refs)
+                    union_support, _ = event_gate.support(window_refs)
+                    axis_evidence.update(axis_supports=axis_supports, union_support=union_support)
+                    for representation in ("raw", "vmd"):
+                        transfer = calibration_transfer(window_eeg, window_refs, calibration, names, regions, mask,
+                            bundles=bundles[3] if representation == "vmd" else None,
+                            return_axis_fields=True)
+                        np.testing.assert_allclose(transfer[3].sum(0), transfer[1], rtol=1e-10, atol=1e-12)
+                        axis_transfers[representation] = transfer
+                        axis_evidence[representation + "_axis_fields"] = transfer[3]
+                    np.savez_compressed(axis_window_directory / f"{record['record_id']}-trial-{trial_id:04d}-window-{window_count:04d}.npz",
+                                        **axis_evidence)
                 for family in methods:
-                    if family in ("calibration_raw_gain","K3_calibration_mode_gain",
+                    if axis_support_experiment and family != "identity":
+                        representation = "vmd" if family.startswith("K3_") else "raw"
+                        _, field_artifact, diagnostic, axis_fields = axis_transfers[representation]
+                        if "_axis_event_gain" in family:
+                            _, artifact, support_metadata = gate_axis_artifact(
+                                window_eeg, axis_fields, window_refs, event_gate, diagnostic)
+                            metadata = {key: value for key, value in support_metadata.items() if key != "diagnostics"}
+                            diagnostic = [{**row, **metadata} for row in diagnostic]
+                        else:
+                            _, artifact, diagnostic = gate_artifact(
+                                window_eeg, field_artifact, window_refs, event_gate, diagnostic)
+                    elif family in ("calibration_raw_gain","K3_calibration_mode_gain",
                                   "calibration_raw_event_gain","K3_calibration_event_gain",
                                   "calibration_raw_scaled_event_gain","K3_calibration_scaled_event_gain"):
                         from .frontal_calibration_transfer import calibration_transfer
@@ -229,6 +284,17 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
 
             cleaned = multi_overlap_add(eeg, refs, estimate, methods=methods,
                                         window=config["window"], hop=config["hop"])
+            if axis_support_experiment:
+                previous_file = predecessor / "native_frontal_predictions" / f"{record['record_id']}-trial-{trial_id:04d}.npz"
+                verify_parent(predecessor, (previous_file.relative_to(predecessor).as_posix(),))
+                with np.load(previous_file, allow_pickle=False) as archived:
+                    if not np.array_equal(archived["channel_names"], names) or not np.array_equal(archived["regions"], regions):
+                        raise ValueError("Native predecessor channel metadata differs")
+                    for key, value in (("original", eeg), ("evaluation_references", eval_refs), ("inference_references", refs)):
+                        np.testing.assert_allclose(value, archived[key], rtol=1e-7, atol=1e-12)
+                    for family in ("identity", "calibration_raw_event_gain", "K3_calibration_event_gain"):
+                        np.testing.assert_allclose(cleaned[family], archived[family], rtol=1e-7, atol=1e-12)
+                        predecessor_parity_checks += 1
             outside = np.ones(len(names), dtype=bool)
             outside[ids] = False
             for family, result in cleaned.items():
@@ -309,6 +375,10 @@ def run_native(input_root, output, config, profile, calibration_hybrid=False,eve
         "successful_decisions_saved": True,
         "scientific_accuracy_qualified": False, "teacher_qualified": False,
         "calibration_hybrid":calibration_hybrid,"event_hybrid":event_hybrid,
+        "axis_support_experiment":axis_support_experiment,
+        "monotonic_events":monotonic_events,
+        "predecessor_prediction_parity_checks":predecessor_parity_checks,
+        "global_parameter_search":False, "weights_trained":False,
         "development_exposed_sources":calibration_hybrid,
         "autovmd_executed":False,
         "paper_four_region_replication": False, "regional_integration_authorized": False})

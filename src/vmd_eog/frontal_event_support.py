@@ -169,6 +169,53 @@ class AxisAmplitudeSupport:
             "support_policy":"monotonic per-axis STD or 95th amplitude exceeds all unscored calibration rest windows; HEOG OR VEOG",
             "scoring_condition_access":False,"support_window":self.window,"support_hop":self.hop}
 
+    def support_axes(self,references):
+        """Return independently dilated/tapered HEOG and VEOG support rows."""
+        values = np.asarray(references, dtype=float)
+        if (values.ndim != 2 or values.shape[0] != 2 or
+                not np.isfinite(values).all() or
+                np.asarray(self.center).shape != (2,) or
+                np.asarray(self.thresholds).shape != (2, 2) or
+                not np.isfinite(self.center).all() or not np.isfinite(self.thresholds).all()):
+            raise ValueError("Finite named HEOG/VEOG and fitted two-axis thresholds are required")
+        length = values.shape[-1]
+        if length < self.window:
+            raise ValueError("Event-support scoring segment is too short")
+        starts = sorted(set([*range(0, length-self.window+1, self.hop), length-self.window]))
+        support = np.zeros((2, length), dtype=float)
+        detected_counts = [0, 0]
+        for start in starts:
+            segment = values[:, start:start+self.window] - self.center[:, None]
+            amplitude = np.stack([
+                np.std(segment, axis=1),
+                np.quantile(np.abs(segment), .95, axis=1),
+            ])
+            detected_axes = np.any(amplitude > self.thresholds, axis=0)
+            for axis, detected in enumerate(detected_axes):
+                if detected:
+                    detected_counts[axis] += 1
+                    support[axis, start:start+self.window] = 1.0
+        support = maximum_filter1d(support, size=41, axis=-1, mode="constant")
+        kernel = np.hanning(43)[1:-1]
+        kernel /= kernel.sum()
+        for axis in range(2):
+            support[axis] *= np.convolve(support[axis], kernel, mode="same")
+        names = ("HEOG", "VEOG")
+        metadata = {
+            "axis_names": list(names),
+            "axis_support_means": {names[index]: float(support[index].mean()) for index in range(2)},
+            "axis_support_present": {names[index]: bool(np.any(support[index] > 0)) for index in range(2)},
+            "axis_detected_windows": {names[index]: int(detected_counts[index]) for index in range(2)},
+            "axis_thresholds": np.asarray(self.thresholds, dtype=float).tolist(),
+            "calibration_counts": self.calibration_counts,
+            "support_policy": "independent per-axis STD or 95th amplitude threshold; 41-sample dilation and normalized 43-point Hann taper",
+            "scoring_condition_access": False,
+            "support_window": int(self.window),
+            "support_hop": int(self.hop),
+            "axis_support_independent": True,
+        }
+        return support, metadata
+
 
 def fit_axis_amplitude_support(calibration):
     references = np.asarray(calibration["references"],dtype=float)
@@ -197,3 +244,37 @@ def fit_axis_amplitude_support(calibration):
     if not np.all(thresholds > 0):
         raise ValueError("Resting reference amplitude must be nonzero")
     return AxisAmplitudeSupport(center,thresholds,{"rest":len(features),"ocular_fitting":0})
+
+
+def gate_axis_artifact(original, axis_artifacts, references, gate, diagnostics):
+    """Apply separate reference supports to joint-fit axis fields, then subtract once."""
+    original = np.asarray(original, dtype=float)
+    fields = np.asarray(axis_artifacts, dtype=float)
+    references = np.asarray(references, dtype=float)
+    if (original.ndim != 2 or original.shape[-1] < 2 or
+            not np.isfinite(original).all()):
+        raise ValueError("Original EEG must be finite [channels, samples]")
+    if (fields.shape != (2, original.shape[0], original.shape[-1]) or
+            not np.isfinite(fields).all()):
+        raise ValueError("Axis artifact fields must be finite [2, channels, samples]")
+    if references.shape != (2, original.shape[-1]) or not np.isfinite(references).all():
+        raise ValueError("Finite HEOG/VEOG references must align with EEG samples")
+    if not isinstance(gate, AxisAmplitudeSupport):
+        raise ValueError("A fitted AxisAmplitudeSupport detector is required")
+    axis_support, support_metadata = gate.support_axes(references)
+    if axis_support.shape != (2, original.shape[-1]) or not np.isfinite(axis_support).all():
+        raise ValueError("Separate axis supports have invalid axes or values")
+    corrected_artifact = np.sum(axis_support[:, None, :] * fields, axis=0)
+    cleaned = original - corrected_artifact
+    details = {
+        **support_metadata,
+        "diagnostics": diagnostics,
+        "artifact_combination": "sum separately supported HEOG and VEOG fields; one subtraction",
+        "reference_scaling": False,
+        "whole_window_routing": False,
+        "axis_artifact_energy": {
+            "HEOG": float(np.sum((axis_support[0, None, :] * fields[0]) ** 2)),
+            "VEOG": float(np.sum((axis_support[1, None, :] * fields[1]) ** 2)),
+        },
+    }
+    return cleaned, corrected_artifact, details

@@ -110,3 +110,54 @@ raw controls in addition to the fixed primary comparator.
 Controlled mixtures have unchanged-reference amplitude mismatch. Native EEG
 has no paired reconstruction SNR. No models or reserved evaluation follow
 automatically from this exploratory ablation.
+
+
+## Implementation snapshot: 13 October 2026 IST
+
+The fixed native mechanism test is authored as notebook51 and stage
+`frontal-native-separate-axis`. Numerical validation is pending Kaggle execution.
+No correction/detection parameter search is included.
+
+`calibration_transfer(..., return_axis_fields=True)` exposes two contributions
+from the same joint ridge coefficients, multiplied by the same shared scalar
+gain and restricted to the same triggered usable frontal channels. Its default
+three-value return and numerical path remain unchanged. The opt-in mode is
+restricted to shared gain; this does not repeat independent axis-gain fitting.
+`AxisAmplitudeSupport.support_axes()` thresholds, dilates and tapers each axis
+independently. Existing OR-support code remains unchanged.
+
+The exploratory stage pins the previous controlled monotonic and native pilot
+manifests and their source SHAs. It accepts unqualified evidence for a repair
+experiment and records qualification false. It does not weaken the existing
+qualified-teacher checkpoint or treat the stronger current CC comparator as
+passed. Pilot-only execution requires the same two development recordings.
+
+Five scored arms: identity, raw OR support, raw separate support, VMD OR support
+and VMD separate support. Joint coefficients, shared gain, calibration,
+thresholds, K3/2000 and per1024-window support/overlap-add policy remain fixed.
+Identity and both OR arms must reproduce all predecessor trials within
+rtol1e-7/atol1e-12; channel metadata must match and nonfrontal channels remain
+bitwise unchanged. Trial preprocessing remains independent. Save every
+window's original EEG, references, two raw/VMD axis contributions, separate
+supports and union support, plus full trial predictions and decisions.
+
+Fixtures cover default-path parity, sum reconstruction, reference-axis
+permutation, original units, masks, failed modes, all-one/all-zero supports,
+one-axis exclusion, malformed inputs and source/checksum/qualification scope.
+Cancelling fields are tested explicitly: equal/opposite contributions can
+cancel with both supports present, while one-axis support destroys that
+cancellation. Separate gating is not assumed to lower modification.
+
+Native reports retain unchanged-reference EEG–HEOG/VEOG correlation, resting
+RMSE, spectrum, modification and covariance; native reconstruction SNR is not
+reported. A native benefit still requires a matched controlled CC check before
+qualification or downstream model development.
+
+
+Pre-launch GPT-6.1 Sol extra-high static review found no remaining launch
+blocker after fixing the notebook host-kernel inspection import. Axis fields
+already include the intervention trigger and shared gain; they are signed
+correction contributions, not independently identified pure ocular sources.
+Reduced resting correction alone is insufficient: compare matched suppression
+and preservation per recording. Two development-exposed recordings do not
+establish population safety, and the controlled CC failure remains unresolved.

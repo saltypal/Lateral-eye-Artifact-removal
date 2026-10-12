@@ -121,5 +121,14 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 
 - [x] MC01 Publish one matched raw OOF context arm and notebook 50.
 - [x] MC02 Verify Kaggle tests, 50-example pilot and checksummed recovery. Run context-match-pilot-001/1 launched at c8159e1; 180 tests,150 branch checks,300 parent predictions and171,600 metric checks passed; critical outputs checksum-verified.
-- [ ] MC03 Run unchanged 320-example comparison and source-aware uncertainty. Full context-match-full-001/1 launched at c285e53; pending result. Prior full coverage uncertainty completed on Kaggle.
-- [ ] MC04 Report VMD contribution, failures and preservation before native frontal repair.
+- [x] MC03 Run unchanged320-example comparison and source-aware uncertainty. Full context-match-full-001/1 verified at c285e53:180tests,960branch checks,1,920predictions,1,098,000metric checks;32rawfits. Whole raw13.183201 vsVMD13.162704 dB; approximate interval includeszero.
+- [x] MC04 Report VMD contribution, failures and preservation before native frontal repair. No context winner established; whole15dB and frontalCC gates fail. Native frontal preservation previously failed; nativecentral transfer untested.
+
+
+## Fixed frontal preservation mechanism test
+
+- [x] FP01 Expose jointly fitted axis fields with unchanged shared gain; preserve default parity.
+- [x] FP02 Add separate HEOG/VEOG temporal supports; keep existing OR-support policy unchanged.
+- [ ] FP03 Run Kaggle fixtures including cancelling fields and one-axis isolation.
+- [ ] FP04 Run exploratory native pilot with identity and matched raw/VMD OR/separate support.
+- [ ] FP05 Recover, verify and report preservation/suppression before any bounded tuning.

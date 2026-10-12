@@ -14,18 +14,25 @@ from .reference import lag_matrix, correlations
 
 def calibration_transfer(eeg, references, calibration, names, regions, mask,
                          bundles=None, threshold=.4, lags=(-10,0,10), penalty=.01,
-                         gain_mode="shared"):
+                        gain_mode="shared", return_axis_fields=False):
     """Return correction in original units; clean targets are never accepted.
 
     A shared gain reduces independent per-channel projection of neural content.
     Raw field association decides intervention, equally for both matched arms.
     VMD only changes the signal used to estimate that gain. No scoring reference
     mean is removed from the transferred field; calibration defines its baseline.
+    With ``return_axis_fields=True``, append the separately named HEOG/VEOG
+    contributions after applying the same shared gain and association gate.
+    This option does not estimate independent axis gains.
     """
     original = np.asarray(eeg,dtype=np.float64)
     ids = frontal_indices(original,names,regions,mask)
     artifact = np.zeros_like(original)
+    if return_axis_fields and gain_mode != "shared":
+        raise ValueError("Axis-field output requires the shared gain mode")
     if not len(ids):
+        if return_axis_fields:
+            return original.copy(),artifact,[],np.zeros((2,*original.shape),dtype=np.float64)
         return original.copy(),artifact,[]
     cal_eeg = np.asarray(calibration["eeg"],dtype=np.float64)
     cal_refs = np.asarray(calibration["references"],dtype=np.float64)
@@ -140,6 +147,18 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
         estimated_field = gain*field
     if triggered:
         artifact[ids[usable]] = estimated_field[usable]
+    axis_artifacts = None
+    if return_axis_fields:
+        # lag_matrix rows alternate HEOG/VEOG within each lag block. Splitting
+        # the existing joint coefficients preserves the fit and its one gain.
+        axis_fields = np.stack([
+            coefficients[axis::2].T @ score_design[axis::2]
+            for axis in range(2)
+        ])
+        axis_fields[:,:,~score_valid] = 0
+        axis_artifacts = np.zeros((2,*original.shape),dtype=np.float64)
+        if triggered:
+            axis_artifacts[:,ids[usable]] = gain*axis_fields[:,usable]
     details = [{"channel":str(names[index]),"field_association":association,
         "gain":gain if axis_gains is None else None,"gain_mode":gain_mode,
         "axis_gains":axis_gains.tolist() if axis_gains is not None else None,
@@ -148,4 +167,6 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
         "selected_modes":selected[local] if bundles is not None else None,
         "failure":"scored_passthrough" if int(index) in failed else None,
         "inference_target_access":False} for local,index in enumerate(ids)]
+    if return_axis_fields:
+        return original-artifact,artifact,details,axis_artifacts
     return original-artifact,artifact,details

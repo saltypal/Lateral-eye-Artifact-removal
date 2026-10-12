@@ -779,6 +779,55 @@ Native frontal preservation failed on the tested two development recordings;
 native central transfer remains untested. Synthetic identity cannot override
 those failures. Full comparison remains unchanged; qualification=false.
 
+
+## 2026-10-13 IST: full matched frontal-context comparison verified
+
+`context-match-full-001`, sourcec285e5398ba5cb31a3cf2163b81c48f2b767bf7e,
+Kagglevmd-matched-context-full/1 completed. Full320 examples/32 recipient
+sources/five ocular donors;180 tests passed,960 frozen branch checks,
+1,920 parent predictions and1,098,000 parent metric checks. All32 raw context
+fits available. Whole channel-first recipient-balanced output SNR13.183201 dB
+raw context versus13.162704 VMD context and9.094213 frozen baseline.
+Central10.949306/10.903434/1.954134 dB respectively. Frozen scored frontal
+17.112814 andposterior13.541703 dB unchanged. Raw minusVMD whole0.020497 dB,
+project approximate95% interval[-0.089695,0.159625];1991/2000valid draws.
+No context winner or equivalence established. Raw slightly improvesSNR/CC,
+whileMSE/RRMSE slightlyworsen. Both arms retainVMD scoredfrontal outputs.
+Controlledcleanfourpreservationquantitieszero; frontalCC deterioration
+0.007441477 fails0.005. Whole15dB targetfails. Nativefrontal preservation
+previouslyfailedtwodevelopmentrecordings; nativecentral transferuntested.
+Inherited170wholefailure rowsretained; no newrawfitfailure. NoAutoVMD,
+neuralmodels, reserveddata or qualification. Runtime409.274722seconds,
+runner721.381472seconds, peak1,027,120KiB. Critical26payloadshashverified;
+complete waveform/fit recovery now contains320 NPZ/320 decision JSON files and32
+raw-context fit pairs, with all730 local manifest payloads checksum verified. Fulltables andcondition/input
+values in docs/MATCHED_CONTEXT_RESULTS.md and persistent run outputs.
+IndependentGPT-6.1Sol extra-high audit confirmsinterpretation. Nextfixed
+nativeablation separatesHEOG/VEOG supports while retainingjointfieldfit,
+sharedgain,K3/2000 andcurrentwindowboundaries. Cancellingfields canmake
+separategatingworse; no guaranteedpreservationimprovement. This is an
+exploratoryrepair, notteacherqualification.
+
+
+## 2026-10-13 IST: fixed separate-axis frontal repair authored
+
+Added an opt-in joint-fit axis-field return to calibration transfer. The
+existing three-value return and shared-gain computation remain unchanged.
+Separate HEOG/VEOG supports use the existing monotonic rest-calibrated
+thresholds, 256/128 detector windows, 41-sample dilation and Hann taper.
+Current OR-support code remains unchanged. New native stage compares five
+outputs under the same K3/2000 recipe and 1024/512 overlap-add windows.
+The exact previous controlled/native manifests and Git sources are required;
+failed qualification evidence is admitted solely for an exploratory repair.
+No teacher approval or acceptance gate changes. Every scored window persists
+two signed fields per raw/VMD representation and both support tracks.
+Current identity/raw-OR/VMD-OR whole trials must reproduce the predecessor
+within rtol1e-7 and atol1e-12, with exact nonfrontal pass-through.
+Added default parity, axis permutation, units, masks, failures, cancellation,
+all-one/all-zero support and source/scope fixtures. Numerical tests are
+pending Kaggle; local validation is AST/schema/diff inspection only.
+Notebook51 and docs/FRONTAL_PRESERVATION_REPAIR_PLAN.md document the stage.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

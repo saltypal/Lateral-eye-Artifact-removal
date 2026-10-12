@@ -6,7 +6,7 @@ from .artifacts import verify_parent
 from .contracts import canonical_hash
 
 
-STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration", "frontal-axis-calibration", "frontal-event-calibration", "frontal-native-events", "frontal-event-gain-calibration", "frontal-native-gain-events", "frontal-axis-events", "frontal-native-axis-events", "frontal-native-scaled-axis-events", "frontal-subspace-hybrid")
+STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration", "frontal-axis-calibration", "frontal-event-calibration", "frontal-native-events", "frontal-event-gain-calibration", "frontal-native-gain-events", "frontal-axis-events", "frontal-native-axis-events", "frontal-native-scaled-axis-events", "frontal-subspace-hybrid", "frontal-native-separate-axis")
 FIXED_SETTINGS = ((3, 2000), (4, 2000))
 
 
@@ -54,6 +54,9 @@ def require_checkpoint(stage, input_root, config):
         calibration_parent(input_root,event_hybrid=stage in ("frontal-native-events","frontal-native-gain-events","frontal-native-axis-events","frontal-native-scaled-axis-events"),
             event_gain_scaled=stage in ("frontal-native-gain-events","frontal-native-scaled-axis-events"),
             monotonic_events=stage in ("frontal-native-axis-events","frontal-native-scaled-axis-events"))
+    if stage == "frontal-native-separate-axis":
+        from .frontal_axis_native import exploratory_parent
+        exploratory_parent(input_root)
     if stage == "frontal-evaluation":
         from .frontal_evaluation import selected_parent
         selected_parent(input_root)
@@ -64,6 +67,10 @@ def execute(stage, input_root, output, config, profile, experiment):
     from .frontal_replication import run_fixture, run_comparison
     if stage == "frontal-fixture":
         return run_fixture(output, config)
+    if stage == "frontal-native-separate-axis":
+        from .frontal_native import run_native
+        return run_native(input_root, output, config, profile, calibration_hybrid=True,
+                          event_hybrid=True, monotonic_events=True, axis_support_experiment=True)
     if stage == "frontal-cache-audit":
         from .frontal_cache_audit import run_audit
         return run_audit(input_root, output, config)
