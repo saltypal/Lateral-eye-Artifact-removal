@@ -43,3 +43,38 @@ retuning. An all-unavailable context arm is an unavailable comparison, even
 though its pass-through output may match baseline metrics. Neural research
 and confirmation stay closed under this campaign's explicit scope. AutoVMD
 remains stopped; unknown and masked channels remain unchanged.
+
+## Follow-up after the verified pilot
+
+The pilot's whole-cap context result is 13.994230 dB against its matched
+10.002235 dB frozen regional baseline. Central/shared output SNR is
+11.121655 dB. These development results support testing frontal-context
+transfer, but the existing raw-frontal comparator leaves central channels
+unchanged and therefore cannot establish VMD's contribution to that transfer.
+
+The planner recommends this order:
+
+1. Finish the unchanged 320-example run and verify identities, checksums,
+   numerical contracts, frozen-branch parity and all inherited failures.
+   Report recipient/donor-aware paired uncertainty on Kaggle before making
+   an improvement claim with uncertainty.
+2. Add one matched raw frontal-artifact context arm. Keep the four calibration
+   chunks, leave-one-chunk-out fitting, boundaries, association threshold,
+   shared gain, lag bank, penalty and five signed summaries unchanged.
+   Use raw calibration transfer without VMD bundles to form its held-out
+   predictors and fit a separate central ridge. At scoring, obtain raw
+   context from original frontal EEG minus the archived raw-calibration
+   frontal output. Keep scored frontal and posterior outputs identical
+   across both context arms. No scoring target may enter this process.
+3. Address native frontal preservation with the separately documented
+   shared-gain/separate-axis-support ablation and matched raw control.
+   Central coverage gains do not repair frontal resting modification,
+   covariance or correlation failures.
+
+Keep method-specific failures and fit availability in complete-cohort results.
+Run leakage, masks, parity, zero-rest, boundaries, identity and persistence
+fixtures before the new context comparison. Do not increase calibration
+coverage or introduce a new recipe bank before this attribution comparison
+and the frontal safety checkpoint. If raw context matches VMD context,
+attribute the evidence to coverage and strength context; VMD's added value
+remains unestablished. No planner recommendation changes the active full run.
