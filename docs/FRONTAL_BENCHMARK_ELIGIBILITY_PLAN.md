@@ -35,3 +35,7 @@ can have benchmark_ready=false. If no candidate meets the source contract, stop
 IB02-IB04 rather than inventing a generator, opening reserved sources or reporting
 another SNR. A full public signed map and compatible reference metadata, or a
 verified paired publisher dataset, would permit a new evidence-based protocol.
+
+## Launch checkpoint
+
+frontal-source-eligibility-001/1 submitted at36b21a12f8f2c1d46368ca7aa72b8d1acbdc5c5e. First primary RUNNING21:37:10UTC13October2026 (14OctoberIST). No datasets/parents. Software tests, pinned document and table checks precede the documentary verdict; results pending.

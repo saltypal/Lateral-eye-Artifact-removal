@@ -166,7 +166,7 @@ by this planned ablation.
 
 ## Frontal independent-validity checkpoint — source audit active
 
-- [ ] IB01 Audit an independent paired contamination mechanism and verified frontal source eligibility. Notebook57/eight-source register authored; no current eligible candidate assumed. Software/source identity validation pendingKaggle.
+- [ ] IB01 Audit an independent paired contamination mechanism and verified frontal source eligibility. Notebook57/eight-source register authored; no current eligible candidate assumed. Submittedfrontal-source-eligibility-001/1 at36b21a1; software/source identity validation pendingKaggle.
 - [ ] IB02 Freeze identity/raw/originalVMD-only protocol, source groups, calibration and coupled reference/ocular amplitude contract.
 - [ ] IB03 Run matched Kaggle evidence only after generator/data contracts pass.
 - [ ] IB04 Review accuracy/preservation/uncertainty without promotion beyond measured scope.

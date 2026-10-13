@@ -1280,6 +1280,20 @@ Numericaltests andauditcheckpoint pendingKaggle. No EEGloading,mixturegeneration
 VMD,newgainfieldfit,model,reservedsourceaccess orperformancecomparison.
 Existingreserved/confirmation,anatomy andclassicqualificationconstraintsremain.
 
+
+## IB01 Kaggle documentary audit launched (14 October 2026 IST)
+
+frontal-source-eligibility-001/1 submitted atpublished36b21a12f8f2c1d46368ca7aa72
+b8d1acbdc5c5e. FirstRUNNING2026-10-13T21:37:10.854023+00:00. CPU,no datasets
+orparentwaveformartifacts; no numericalprocessingbesidestherequiredsoftware
+fixture suite onKaggle. Stagechecks8documentarycandidatecontracts,pinnedpublic
+supplementSHAandactualsensitivitytable. No candidate ispresumedeligible.
+
+Primary45secondwatcher andLunareadonlymonitoractive. Contracttests/sourcehash/
+parserfailures mustbe repaired withnewversion; benchmark_readyfalse isvalid
+completedsourceaudit, notfailedruntime. Otherregistry states aredocumentary
+assessments andarenotempiricallyrevalidatedby thisjob. No newSNRclaim.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
