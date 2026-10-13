@@ -136,6 +136,10 @@ NEW_STAGES.append(("51_Native_Frontal_Separate_Axis_Support", "frontal-native-se
 DETAILS["frontal-native-separate-axis"] = "Exploratory preservation repair, not a qualified teacher checkpoint. Attach corpus/2, readiness/1, unchanged frontal fixture/1, controlled monotonic/1, native monotonic/1 and restoration/1 plus raw source. Validate exact controlled/native parent manifest and source identities. Compare identity and matched raw/VMD OR versus separate-axis supports. Same joint calibration coefficients, shared scalar gain, K3/2000, thresholds, lags and current1024-window overlap-add support policy. Independent trial preprocessing; no whole-trial support-policy change. Save every window's two signed fields, references and supports, full trial predictions and paper-native suppression/rest preservation. Reproduce predecessor identity/rawOR/VMDOR trials within declared tolerance. Joint axis fields can cancel; separate support can worsen correction. Gates remain unchanged and qualification false; no neural/AutoVMD/reserved work."
 
 
+NEW_STAGES.append(("52_Native_Frontal_Intervention_Diagnostic", "frontal-native-axis-diagnostic", "Explain saved native resting interventions without fitting or changing predictions."))
+DETAILS["frontal-native-axis-diagnostic"] = "Attach exact separate-axis native pilot/1, readiness/1 and unchanged frontal fixture/1 only. Reconstruct all five archived outputs with saved fields and supports through identical per-trial overlap-add. Require exact original-window/reference alignment and255 full-trial output parity checks. No raw source access, VMD, fitting, search or training. Stratify rest from saved preservation reports only after reconstruction. Report shared gain, association, support, signed field cross energy/cancellation and intervention fractions. These are descriptive mechanism diagnostics; original paper/native preservation and suppression reports remain unchanged. Overlapping padded windows are not independent observations. Save original-overlap lengths and exclude zero-overlap windows from means/ranking; full-window energy fractions are not trial modification. Rank resting examples explicitly by correction fraction, not favorable performance. Preserve qualificationfalse."
+
+
 def build(path, stage, run_spec=None):
     spec = run_spec or {"stage": stage, "run_id": stage+"-manual", "git_sha": "", "campaign_id": "vmd-eog-20261010", "profile": "pilot"}
     setup = '''import os, sys, json, tempfile, subprocess
@@ -223,6 +227,9 @@ elif CONFIGURATION.get('schema_version') == 3:
         # Read pinned source without importing into the host notebook kernel.
         # Numerical imports and execution belong to the isolated runner environment.
         print((CHECKOUT/'src/vmd_eog/frontal_event_support.py').read_text())
+    if RUN_SPEC['stage'] == 'frontal-native-axis-diagnostic':
+        print((CHECKOUT/'docs/NATIVE_SEPARATE_AXIS_RESULTS.md').read_text())
+        print((CHECKOUT/'src/vmd_eog/frontal_axis_diagnostic.py').read_text())
     print('Scope: verified frontal only; AutoVMD stopped; posterior unchanged')
 else:
     print('Algorithm explanation: docs/SCIENTIFIC_EXPLANATION.md in the pinned checkout')

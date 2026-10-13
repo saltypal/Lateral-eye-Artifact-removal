@@ -10,9 +10,17 @@ with extra-high reasoning in
 Its pilot and full run are verified; see
 [CENTRAL_COVERAGE_RESULTS.md](CENTRAL_COVERAGE_RESULTS.md). Whole-cap output
 SNR is 13.162704 dB; frontal CC and native preservation still fail qualification.
-The immediate experiment is now notebook 50's single matched raw-frontal
-context arm: [MATCHED_CONTEXT_PLAN.md](MATCHED_CONTEXT_PLAN.md).
-The bounded native frontal repair follows this attribution comparison.
+Notebook50's full matched context comparison is complete and verified:
+[MATCHED_CONTEXT_RESULTS.md](MATCHED_CONTEXT_RESULTS.md). Whole output SNR is
+13.183201 dB raw context versus13.162704 VMD context; no representation
+advantage is established. The same scored VMD frontal outputs remain in both.
+The active experiment is notebook51's fixed native frontal separate-axis
+support pilot, `frontal-native-separate-axis-001/1`, source `ce6f31d`:
+[FRONTAL_PRESERVATION_REPAIR_PLAN.md](FRONTAL_PRESERVATION_REPAIR_PLAN.md).
+It completed202tests/51trials/153predecessorchecks. Separate support improves
+resting preservation but still fails modification/covariance; suppression
+trade-offs remain. See [NATIVE_SEPARATE_AXIS_RESULTS.md](NATIVE_SEPARATE_AXIS_RESULTS.md).
+Next is saved-output diagnosis, without additional fitting. Qualification remains false.
 Mode: Super Code. Independent read-only audits prepare reviewable contracts;
 the primary owns implementation, Git publication and Kaggle submissions.
 
@@ -20,7 +28,8 @@ the primary owns implementation, Git publication and Kaggle submissions.
 
 Improve blink and lateral suppression with neural preservation. Current evidence:
 [REGIONAL_RESULTS.md](REGIONAL_RESULTS.md). Whole-cap target remains >=15 dB,
-20 dB stretch. Native preservation is unresolved; no qualified winner exists.
+20 dB stretch. Native frontal preservation failed on two tested development
+recordings; native central transfer is untested. No qualified winner exists.
 Freeze frontal VMD K3/alpha2000, no AutoVMD or posterior VMD. Main processing stays
 200 Hz, 0.5–40 Hz, 1024-sample windows and 512-sample hop. Preserve original
 references, units, recipient/donor folds, calibration/scoring and trial boundaries.

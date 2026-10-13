@@ -840,6 +840,48 @@ boundary bug; it was fixed before publication by reading pinned source text
 instead. No numerical test was run locally. Luna monitors status every30–60
 seconds; primary owns retrieval and repair. Launch is not qualification.
 
+
+## 2026-10-13 IST: native separate-axis pilot verified, target still failed
+
+Run frontal-native-separate-axis-001/1 at ce6f31d completed202 tests,
+51 trials/two exposed OSF recordings and153 predecessor prediction checks.
+Eight inherited failure entries remain. Nonfrontal outputs unchanged; no
+AutoVMD/models/confirmation. Manifest63055a6fa7ed3c17b767e6ba64e0f7ad845b5d40af0afe0b78d59da7c83ca049.
+Worst VMD resting modification0.185129660 OR versus0.158564048 separate;
+covariance0.127834427 versus0.108050763. Both fail limits. Alpha/beta pass.
+Separate support slightly worsens p02 blink/lateral correlation suppression;
+p03 outcomes nearly unchanged or improve. Full per-record/method/proxy tables
+in docs/NATIVE_SEPARATE_AXIS_RESULTS.md; native has no reconstruction SNR.
+Runtime264.612103 seconds, runner594.289838 seconds, peak396708 KiB.
+All495 manifest payloads checksum verified, including51 trial predictions,
+306 axis-window bundles and51 mode examples plus spectrum/protocol outputs.
+Luna monitor was interrupted by account usage limit. Primary refreshed live
+COMPLETE status and verified artifacts; do not claim uninterrupted monitoring.
+Do not promote the new arm or expand settings on this failed preservation
+result. Next saved-output Kaggle diagnosis will quantify residual resting
+admissions and cancellation, with no fitting/output change or global selection.
+
+
+## 2026-10-13 IST: saved intervention diagnostic authored
+
+Notebook52/stage frontal-native-axis-diagnostic consumes the exact completed
+native separate-axis parent, readiness and unchanged fixture. No raw-source
+attachment, VMD, fitting, search, recipe selection or prediction change.
+Cached signed fields/supports reconstruct the five full-trial outputs through
+the existing per-trial overlap-add;255 parity checks required. Rest labels are
+used only after reconstruction for descriptive stratification. Exact native
+frontal/masked row identities come from saved mode-example channel metadata.
+Shared gain/association, detector versus nonzero intervention counts, signed
+field cancellation and energy fractions are saved per window and record.
+Sol extra-high review caught a detector-only versus intervention count ambiguity
+and reflected terminal windows with zero scored overlap; both reporting fixes
+were applied before launch. Means/ranking exclude zero-overlap windows; full
+padded-window fractions do not replace trial preservation metrics. Cancellation
+means exclude zero-field windows and explicitly save contributing counts.
+Unpaired rest cannot establish true artifact, field-estimation error or neural
+loss. All primary native reports remain unchanged; qualification stays false.
+Added six focused fixtures; numerical validation remains pending Kaggle.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
