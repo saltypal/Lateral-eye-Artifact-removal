@@ -22,9 +22,12 @@ resting preservation but still fails modification/covariance; suppression
 trade-offs remain. See [NATIVE_SEPARATE_AXIS_RESULTS.md](NATIVE_SEPARATE_AXIS_RESULTS.md).
 Saved-output diagnosis is now verified:208tests/255unchanged-output checks.
 Separate support leaves dominant VEOG resting interventions nearly unchanged.
-Next is the fixed twelve-setting feasibility screen, notebook53:
-[FRONTAL_BOUNDED_FEASIBILITY_PLAN.md](FRONTAL_BOUNDED_FEASIBILITY_PLAN.md).
-No native global recipe is selected; qualification remains false.
+Notebook53 fixed twelve-setting feasibility screen is now verified:
+215tests/255baselinechecks/40conditionrows/51trials/all122payloads.
+Zero active preservation passes; no uniform recipe in this bank passes both
+exposed recordings. See [FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md](FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md).
+Stop promotion of this repair. Next requires a distinct selectivity/boundary
+question; no additional K/alpha search or native recipe selection. Qualification remains false.
 Mode: Super Code. Independent read-only audits prepare reviewable contracts;
 the primary owns implementation, Git publication and Kaggle submissions.
 

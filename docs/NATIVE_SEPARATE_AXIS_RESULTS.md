@@ -172,3 +172,12 @@ Next: the twelve-setting bounded correction feasibility screen in
 [FRONTAL_BOUNDED_FEASIBILITY_PLAN.md](FRONTAL_BOUNDED_FEASIBILITY_PLAN.md).
 It freezes K3/2000 and all calibration/detector parameters, reports all native
 candidates and selects no global recipe on scored rest. Qualification stays false.
+
+
+## Bounded follow-up completed
+
+Notebook53 native-bounded-feasibility-001/1 passed215tests and all parity checks.
+All122payloads recovered. None of48activearms passes preservation. Threshold0.8
+with multiplier0.25 leaves VMDOR worst modification0.015416 above0.01 and loses
+much of blink/lateral suppression. See [FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md](FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md).
+No promotion, new controlled extraction or model work follows this failure.

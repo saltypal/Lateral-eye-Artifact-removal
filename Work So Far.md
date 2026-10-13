@@ -943,6 +943,40 @@ Primary status monitor45seconds, saved watch_events.jsonl, bounded artifact
 retrieval onterminalstatus. Luna usage-limit failure persists; no claim it is
 monitoring. Numerical validation pending atlaunch; sourceSHA fixed for thisjob.
 
+## Bounded correction feasibility completed and rejected (13 October 2026)
+
+native-bounded-feasibility-001/1 at4719e529130f57b08871c66edb73c5dfca1796be.
+215tests passed14warnings14.76s;51trials/48activearms/12settings;
+255baselinewaveformchecks and40conditionmetricrows passed. All122manifest
+payloads checksumverified;51fullpredictionbundles/51decisionbundles saved.
+Manifest2e784392b157558593f4c94327ca1701e452929899b4f68170a44e96c7607f63.
+Runtime207.616s, runner235.729s, peak471808KiB. Primary45smonitor endedafter
+COMPLETE and boundedretrieval; no ongoing Kaggle job from this stage.
+
+ZERO active preservation passes. VMDOR0.8/.25 worstmod0.015416133601643397,
+alpha0.003953344678328445dB,beta0.0018803218972420878dB,cov0.019188667076137467.
+VMDseparate0.8/.25 mod0.015434629847563695,cov0.019245067161632545.
+Both fail unchanged0.01modgate despite passing spectra/covariance. Rawseparate
+sameendpoint mod0.016205397831565202,cov0.02007118517126797 failsboth.
+Identity passespreservation only. All48 recipes remainfullyreported; nonepicked.
+
+The conservative VMDOR endpoint leaves blinkCCp02/p03 .8872958622/.9469556757
+versus originalOR .0514748861/.1056043033; lateral .2732079685/.4183237467
+versus .0246954491/.0452390438. Weakened correction sacrifices suppression while
+still failing preservation. Native ordinary unchanged-reference CC and resting
+RMSE are paper-grounded; diagnostic and engineering gates remain separate.
+No reconstructionSNR fromnative. Rest RMSE concatenated moments differs from
+arithmetic trialmeans; bothtables saved withdistinctaggregation.
+
+Conclusion: no uniform fixedrecipe in thisbank passes both exposedpilotrecords;
+notproof everyfrontal/VMDrepairfails. Stop promotion; do not use native scored
+rest toprunecontrolledbank, relabelrest, relaxthresholds, launchmodels, or claim
+independentvalidation. No newVMD/AutoVMD/weights/fitting/posterior alterations.
+Controlled17.112814frontal,13.162704VMDcontextwhole/13.183201rawcontextwhole
+unchanged. Fulltables andfailureinterpretation in
+ docs/FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md. Sol6.1xhigh nowreviewsnextfocused
+selectivity/boundarymechanism against earliernegativeprojectionvariants.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
