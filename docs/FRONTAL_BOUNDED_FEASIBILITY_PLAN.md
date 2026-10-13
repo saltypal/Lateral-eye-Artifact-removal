@@ -69,3 +69,23 @@ Numerical fixtures cover threshold boundaries, unsupported lower thresholds,
 scalar attenuation, signed cancellation, one-axis support, invalid decision
 metadata, failed fields, nonfrontal pass-through, original-subtraction and OLA.
 All numerical execution is on Kaggle; local work is static authoring only.
+
+
+## Kaggle launch and independent review
+
+`native-bounded-feasibility-001/1`, kernel
+`satyapaladugu/vmd-native-bounded-feasibility/1`, source
+`4719e529130f57b08871c66edb73c5dfca1796be`, submitted13 October2026.
+Exact parents are native separate-axis/1, research-ready/1 and frontal review
+contracts/1; dataset attachments are empty. GPT-6.1 Sol extra-high found no
+remaining static launch blocker after correcting the manual notebook campaign
+and using the authoritative cached source labels for reporting.
+Numerical validation is pending. Primary monitors status every45seconds and
+retains events/outputs. Luna's previous usage-limit failure is not represented
+as a working monitoring agent.
+
+A negative finding must be scoped to no uniform fixed recipe in this declared
+bank passing both exposed pilot records. It is not proof that every frontal
+repair or VMD method is infeasible. If anything passes, later controlled grouped
+selection must evaluate the entire frozen bank; do not prune it using scored
+native rest. Preserve the fixed calibrated-raw CC comparator.

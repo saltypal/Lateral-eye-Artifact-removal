@@ -930,6 +930,19 @@ No passing activecandidate means bounded repair infeasible under these gates;
 a pass would still require grouped controlled testing and expanded native validation.
 No models, posterior alterations or reserved data. Numerical execution pending.
 
+## Bounded native replay launched (13 October 2026)
+
+native-bounded-feasibility-001/1, source4719e529130f57b08871c66edb73c5dfca1796be.
+CPU Kaggle notebook satyapaladugu/vmd-native-bounded-feasibility, exactly three
+versioned parents, no raw source. Sol6.1 extra-high staticreview clear after
+manual notebook campaign/config repair and metadata-label reporting addition.
+Sevennewfixtures;255 baseline waveformchecks and40condition-metric rows required.
+No native global recipe selection. Negativefinding scoped to this fixedbank/two
+exposedrecords; ifanypass controlledselectionmust testfullbank, not nativepruning.
+Primary status monitor45seconds, saved watch_events.jsonl, bounded artifact
+retrieval onterminalstatus. Luna usage-limit failure persists; no claim it is
+monitoring. Numerical validation pending atlaunch; sourceSHA fixed for thisjob.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

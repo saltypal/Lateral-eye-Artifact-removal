@@ -135,5 +135,5 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 
 - [x] FP06 Diagnose remaining resting interventions from saved fields/supports/decisions on Kaggle, without fitting or changing outputs. native-axis-diagnostic-001/1 verified at5165ee3:208tests,255checks,51trials,16retrievedpayloads; dominant VEOG interventions persist.
 - [x] FP07 Author bounded native feasibility replay with twelve declared association/strength settings and matched raw/VMD OR/separate paths; no native recipe selection. Notebook53.
-- [ ] FP08 Run Kaggle fixtures/255baselinechecks and recover all native candidate gates/predictions.
+- [ ] FP08 Run Kaggle fixtures/255baselinechecks/40condition-metricrows and recover all native candidate gates/predictions. native-bounded-feasibility-001/1 launched at4719e52; primary monitoring.
 - [ ] FP09 Decide feasibility before any controlled extraction, promotion or dependent integration; all thresholds unchanged.
