@@ -144,6 +144,10 @@ NEW_STAGES.append(("53_Native_Frontal_Bounded_Feasibility", "frontal-native-boun
 DETAILS["frontal-native-bounded-feasibility"] = "Attach native separate-axis/1, readiness/1 and unchanged frontal fixture/1. Replay association0.4/0.6/0.8 and multiplier0.25/0.5/0.75/1 on cached raw/VMD OR/separate fields. Forty-eight active arms plus identity;255 baseline output checks. No new VMD, fitting or training. Save every trial prediction, decisions and unchanged-gate rest preservation. Rest labels are reporting-only. Verified cached source labels enter reporting only: complete-condition HEOG lateral/VEOG blink/vertical correlations and rest RMSE with40 baseline metric parity rows; no significance/winner claim. This exposed pilot tests feasibility only; no global selection, qualification or confirmation."
 
 
+NEW_STAGES.append(("54_Native_Frontal_Trial_Support", "frontal-native-trial-support", "Isolate original-trial versus per-window EOG support over fixed frontal artifact fields."))
+DETAILS["frontal-native-trial-support"] = "Attach exact native separate-axis/1, corpus/2, readiness/1 and frontal review fixture/1; no raw data. Reconstruct detector only from unscored calibration; validate exact source ledgers, labels, boundaries, every cached threshold and all306local window masks before new predictions. Same fixed.4/1 policy and K3/2000 fields/gains; nine scored outputs. Compute support before padding and align original samples across windows. Require255baseline waveform checks,40condition metric rows and204reflected/zero-padding crop checks. Save complete-condition named-reference CC, rest RMSE/spectra, engineering gates and all tracks/predictions/failures. No new VMD, artifact fitting, recipe selection, training or reserved evaluation. Qualification remains false."
+
+
 def build(path, stage, run_spec=None):
     spec = run_spec or {"stage": stage, "run_id": stage+"-manual", "git_sha": "", "campaign_id": "vmd-eog-20261010", "profile": "pilot"}
     setup = '''import os, sys, json, tempfile, subprocess
@@ -231,6 +235,9 @@ elif CONFIGURATION.get('schema_version') == 3:
         # Read pinned source without importing into the host notebook kernel.
         # Numerical imports and execution belong to the isolated runner environment.
         print((CHECKOUT/'src/vmd_eog/frontal_event_support.py').read_text())
+    if RUN_SPEC['stage'] == 'frontal-native-trial-support':
+        print((CHECKOUT/'docs/FRONTAL_TRIAL_SUPPORT_PLAN.md').read_text())
+        print((CHECKOUT/'src/vmd_eog/frontal_trial_support.py').read_text())
     if RUN_SPEC['stage'] == 'frontal-native-bounded-feasibility':
         print((CHECKOUT/'docs/FRONTAL_BOUNDED_FEASIBILITY_PLAN.md').read_text())
         print((CHECKOUT/'src/vmd_eog/frontal_bounded_feasibility.py').read_text())
@@ -307,6 +314,15 @@ gates = json.loads((OUT/'bounded_native_gates.json').read_text())
 display(pd.DataFrame([{'method':row['method'], **row['worst_record'], 'preservation_pass':row['native_preservation_gates_pass']} for row in gates]))
 display(pd.read_csv(OUT/'bounded_native_rest_records.csv').head(12))
 print('Full exploratory trial correlations and predictions remain in saved outputs.')
+'''
+    if stage == 'frontal-native-trial-support':
+        tables = '''import pandas as pd
+from IPython.display import display
+print((OUT/'trial_support_summary.json').read_text())
+gates = json.loads((OUT/'trial_support_gates.json').read_text())
+display(pd.DataFrame([{'method':row['method'], **row['worst_record'], 'preservation_pass':row['native_preservation_gates_pass']} for row in gates]))
+display(pd.read_csv(OUT/'native_condition_participants.csv').head(18))
+print('Full suppression, rest spectra, support tracks and prediction files remain saved.')
 '''
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':

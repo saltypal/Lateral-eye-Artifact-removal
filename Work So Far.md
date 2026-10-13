@@ -994,6 +994,24 @@ andattenuation, so lossisnotattributed solelytothreshold.
 No claim boundaryeffectcausedloss orwillpassgates. Nextstage NOTimplemented,
 NOTlaunched; currentboundedcampaignendedcomplete andalloutputsrecovered.
 
+## Original-trial support ablation implemented (13 October 2026)
+
+Authored frontal_trial_support.py, nine fixtures and notebook54. No numerical
+execution locally. Original.4/1 recipe,K3/2000,sharedgain,modefields and original
+preprocessing stayfixed. OriginaltrialEOG supportcomputedbeforepadding and
+alignedacrossoverlapwindows. Fournewtrialpaths plusfouroldwindowpaths/identity.
+Unscoredcorpus/2calibration rebuilds gate; ledger equality,cal/scoringsplit,
+per-sampletriallabels/boundaries andall306cachedthreshold/supportparityrequired
+beforeanynewprediction. Originalsupporttrack reflectedtoalignwindows;zero
+outsideoriginalmustproduceidenticalcroppedoutputs204checks. Baseline255waveform
+and40conditionmetricchecks. Failedfieldsremainzero andnonfrontalunchanged.
+Pertrialpredictions,originaltracks,decisions,supportdisagreements,restPSD,
+ordinarynamed-referenceconditionCC andengineeringgates saved. NativeSNRnotclaimed.
+Paper-inspiredparticipantpermutations descriptivewithtwoexposedsubjects;
+no superiority/populationsafetyclaim. Tiny1e-12Hannroundoffallowedwithoutclipping.
+Sol6.1xhighstaticreview correctedfixturelocalnameandexpectedbroadcastshape
+beforelaunch. Alltests andalgorithmvalidation remainpendingKaggle.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

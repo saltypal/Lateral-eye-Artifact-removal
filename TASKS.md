@@ -142,7 +142,7 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 ## Next isolated frontal boundary ablation
 
 - [x] BT01 Declare original-trial support alignment, frozen0.4/1 policy and four versioned parent dependencies. See FRONTAL_TRIAL_SUPPORT_PLAN.md.
-- [ ] BT02 Implement detector reconstruction from exact unscored corpus calibration and require all cached threshold/support parity.
-- [ ] BT03 Implement original-trial support track alignment and nine-arm cached replay; no new VMD or field fit.
-- [ ] BT04 Validate fixtures,255old-waveformchecks/40conditionrows on Kaggle, recover and report all outcomes.
+- [x] BT02 Implement detector reconstruction from exact unscored corpus calibration and require all cached threshold/support parity.
+- [x] BT03 Implement original-trial support track alignment and nine-arm cached replay; no new VMD or field fit.
+- [ ] BT04 Validate fixtures,306detectorwindows/255old-waveformchecks/40conditionrows/204paddingchecks on Kaggle, recover and report all outcomes.
 - [ ] BT05 Assess suppression/preservation without native scored-rest selection or automatic promotion.

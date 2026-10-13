@@ -91,3 +91,16 @@ operator. The current
 native cache lacks all-window modes, and additional extraction/decomposition
 would confound this low-cost boundary experiment. Historical17.9272dB remains
 development-exposed EOG-assisted evidence, not a new achieved result.
+
+
+## Implementation snapshot
+
+The reusable frontal_trial_support.py and notebook54 are authored. Nine new
+numerical fixtures are queued for Kaggle; no numerical test has run locally.
+Source-ledger equality, sample-label/boundary checks and306cached local detector
+checks must finish before ablated predictions. Existing fields/gains/failures
+remain fixed.204reflected/zero-padding crop checks augment255waveform and40
+condition-metric rows. Save relative rest spectra and the existing paper-inspired
+participant permutation procedure; two exposed participants do not justify
+population superiority. Failed VMD fields remain scored pass-through.
+Tiny Hann-convolution roundoff is accepted within1e-12 without clipping tracks.
