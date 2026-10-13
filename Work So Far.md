@@ -894,6 +894,42 @@ Kaggle. Primary polls status every45 seconds and performs bounded retrieval;
 no dependence on the interrupted Luna monitor. No new VMD, fit, search,
 neural training, reserved access or branch promotion.
 
+## Continuation: native cached diagnostic verified and bounded repair authored (13 October 2026)
+
+Native-axis-diagnostic-001/1 completed at5165ee3443297b69ea003c727438663ce62247ba.
+208tests/255reconstructionchecks/51trials;16retrievedpayloads verified, manifest
+6dae496677ee4ffeb1ab1034a5bfd4676d2bc1dccf694a4e6368e80476fe4b36.
+No predictions changed, fitting, VMD, training or confirmation access. Runtime
+12.718s, runner44.121s, peak267984KiB.612 representation/window rows,
+510contributing and102padding-only. The latter remain in reconstruction, excluded
+from descriptive rankings/means. Native axis pilot's all495payloads remain intact.
+
+Separate support reduces resting nonzero interventions to10/45p02 and16/45p03;
+rest association admission remains31/45 and45/45. Full padded-window fractions
+are mechanism diagnostics, not scoring-interval modification. p03trial37/window1
+has association0.811355, shared VMDgain0.767750 and VEOGsupport0.782972, HEOG0;
+OR/separate fractions0.771501/0.770130. Association0.8 alone still admits it.
+The plotted transient is not verified ocular truth; resting labels remain unchanged.
+Rest mean cancellation diagnostics are negative: average reinforcing cross terms.
+All active pilot arms still fail native modification/covariance. Whole controlled
+rawcontext13.183201 versusVMDcontext13.162704; VMDfrontal17.112814; no new SNR.
+
+Authored docs/FRONTAL_BOUNDED_FEASIBILITY_PLAN.md, reusable
+frontal_bounded_feasibility.py, seven numerical fixtures and notebook53. Fixed
+association{.4,.6,.8}×multiplier{.25,.5,.75,1}:12settings, four matched
+representation/support paths,48activearms plusidentity. No AutoVMD search.
+Cached fields already admit at.4, so higher-threshold replay is exact; lower
+thresholds unsupported. Baseline arms require255unchanged-trial checks. All
+fulltrial outputs, decisions, native preservation and dual-reference pertrial
+CC are saved. Sol review located authoritative labels in native_frontal_sources.jsonl.
+Candidate condition-concatenated HEOG/VEOG correlation and rest RMSE now use
+verified source labels after inference, with40 baseline metric parity rows.
+Original parent reports remain unchanged; no guessed labels or significance claim.
+This is an exposed-record feasibility screen, not global recipe selection.
+No passing activecandidate means bounded repair infeasible under these gates;
+a pass would still require grouped controlled testing and expanded native validation.
+No models, posterior alterations or reserved data. Numerical execution pending.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

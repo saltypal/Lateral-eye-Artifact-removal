@@ -125,3 +125,50 @@ frontal fixture/1. No raw dataset attachment. Sol extra-high static review
 found no remaining blocker after intervention-count and padded-overlap fixes.
 Numerical tests and255 reconstruction checks are pending. Primary monitors
 status every45 seconds and retrieves outputs through the bounded downloader.
+
+
+## Verified cached intervention diagnostic — 13 October 2026
+
+Run `native-axis-diagnostic-001/1`, source
+`5165ee3443297b69ea003c727438663ce62247ba`, manifest
+`6dae496677ee4ffeb1ab1034a5bfd4676d2bc1dccf694a4e6368e80476fe4b36`.
+208 Kaggle tests passed (14 warnings);51 trials and255 exact-family output
+parity checks passed. Sixteen retrieved payloads are checksum verified. Diagnostic
+runtime12.718s; runner44.121s; peak267,984KiB. No fitting or prediction change.
+612 representation-window rows were saved;510 overlap original samples and102
+are padding-only. All enter reconstruction; descriptive means exclude the102.
+
+| Record / representation / rest proxy | Contributing windows | Original association-admitted windows | Separate nonzero interventions | Mean OR fraction | Mean separate fraction |
+|---|---:|---:|---:|---:|---:|
+| p02 raw |45|31|10|0.075217|0.068522|
+| p02 VMD |45|31|10|0.061602|0.056295|
+| p03 raw |45|45|16|0.162544|0.133332|
+| p03 VMD |45|45|16|0.133517|0.110656|
+
+These fractions describe full padded-window correction energy norms, not
+record-level modification. Overlapping windows are dependent. Detector activity
+is distinct from a nonzero admitted correction. The original paper metrics and
+engineering gates are unchanged by this diagnostic.
+
+The largest contributing-window resting VMD example is p03 trial37/window1:
+association0.811355, shared gain0.767750, HEOG support0, VEOG support0.782972.
+OR/separate fractions0.771501/0.770130. Removing a quiet HEOG contribution barely
+changes this dominant VEOG intervention. An association threshold0.8 would still
+admit this window. The plotted trace has prominent slow transients, but unpaired
+rest cannot establish genuine ocular contamination, neural content, or label error.
+Do not relabel it to make the preservation gate pass.
+
+For p02 trial34/window2, both supports overlap; the plot shows nearly identical
+OR/separate correction during that interval. Separate support does not solve
+correction where both detectors admit the fields.
+
+Resting mean signed cancellation fractions are negative (-0.028209 p02,
+-0.019581 p03): the mean cross term is reinforcing, not cancelling, under the
+saved convention `-2<HEOG,VEOG>/(E_HEOG+E_VEOG)`. Nonzero-field denominators are
+31 and45 windows respectively. This descriptive mean does not exclude individual
+cancelling windows, establish field purity, or quantify trial-level loss.
+
+Next: the twelve-setting bounded correction feasibility screen in
+[FRONTAL_BOUNDED_FEASIBILITY_PLAN.md](FRONTAL_BOUNDED_FEASIBILITY_PLAN.md).
+It freezes K3/2000 and all calibration/detector parameters, reports all native
+candidates and selects no global recipe on scored rest. Qualification stays false.

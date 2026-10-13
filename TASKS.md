@@ -133,4 +133,7 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 - [x] FP04 Run exploratory native pilot with identity and matched raw/VMD OR/separate support. Verified51trials/2records/153predecessorchecks; preservation still fails.
 - [x] FP05 Recover, verify and report preservation/suppression before any bounded tuning. All495payloads verified; all51trial/306window/51mode bundles saved. See NATIVE_SEPARATE_AXIS_RESULTS.md. No promotion or tuning.
 
-- [ ] FP06 Diagnose remaining resting interventions from saved fields/supports/decisions on Kaggle, without fitting or changing outputs. native-axis-diagnostic-001/1 launched at5165ee3; numerical verification pending.
+- [x] FP06 Diagnose remaining resting interventions from saved fields/supports/decisions on Kaggle, without fitting or changing outputs. native-axis-diagnostic-001/1 verified at5165ee3:208tests,255checks,51trials,16retrievedpayloads; dominant VEOG interventions persist.
+- [x] FP07 Author bounded native feasibility replay with twelve declared association/strength settings and matched raw/VMD OR/separate paths; no native recipe selection. Notebook53.
+- [ ] FP08 Run Kaggle fixtures/255baselinechecks and recover all native candidate gates/predictions.
+- [ ] FP09 Decide feasibility before any controlled extraction, promotion or dependent integration; all thresholds unchanged.

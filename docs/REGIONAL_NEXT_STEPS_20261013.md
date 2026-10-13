@@ -20,7 +20,11 @@ support pilot, `frontal-native-separate-axis-001/1`, source `ce6f31d`:
 It completed202tests/51trials/153predecessorchecks. Separate support improves
 resting preservation but still fails modification/covariance; suppression
 trade-offs remain. See [NATIVE_SEPARATE_AXIS_RESULTS.md](NATIVE_SEPARATE_AXIS_RESULTS.md).
-Next is saved-output diagnosis, without additional fitting. Qualification remains false.
+Saved-output diagnosis is now verified:208tests/255unchanged-output checks.
+Separate support leaves dominant VEOG resting interventions nearly unchanged.
+Next is the fixed twelve-setting feasibility screen, notebook53:
+[FRONTAL_BOUNDED_FEASIBILITY_PLAN.md](FRONTAL_BOUNDED_FEASIBILITY_PLAN.md).
+No native global recipe is selected; qualification remains false.
 Mode: Super Code. Independent read-only audits prepare reviewable contracts;
 the primary owns implementation, Git publication and Kaggle submissions.
 

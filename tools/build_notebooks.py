@@ -140,6 +140,10 @@ NEW_STAGES.append(("52_Native_Frontal_Intervention_Diagnostic", "frontal-native-
 DETAILS["frontal-native-axis-diagnostic"] = "Attach exact separate-axis native pilot/1, readiness/1 and unchanged frontal fixture/1 only. Reconstruct all five archived outputs with saved fields and supports through identical per-trial overlap-add. Require exact original-window/reference alignment and255 full-trial output parity checks. No raw source access, VMD, fitting, search or training. Stratify rest from saved preservation reports only after reconstruction. Report shared gain, association, support, signed field cross energy/cancellation and intervention fractions. These are descriptive mechanism diagnostics; original paper/native preservation and suppression reports remain unchanged. Overlapping padded windows are not independent observations. Save original-overlap lengths and exclude zero-overlap windows from means/ranking; full-window energy fractions are not trial modification. Rank resting examples explicitly by correction fraction, not favorable performance. Preserve qualificationfalse."
 
 
+NEW_STAGES.append(("53_Native_Frontal_Bounded_Feasibility", "frontal-native-bounded-feasibility", "Test twelve fixed correction settings without selecting a global native recipe."))
+DETAILS["frontal-native-bounded-feasibility"] = "Attach native separate-axis/1, readiness/1 and unchanged frontal fixture/1. Replay association0.4/0.6/0.8 and multiplier0.25/0.5/0.75/1 on cached raw/VMD OR/separate fields. Forty-eight active arms plus identity;255 baseline output checks. No new VMD, fitting or training. Save every trial prediction, decisions and unchanged-gate rest preservation. Rest labels are reporting-only. Verified cached source labels enter reporting only: complete-condition HEOG lateral/VEOG blink/vertical correlations and rest RMSE with40 baseline metric parity rows; no significance/winner claim. This exposed pilot tests feasibility only; no global selection, qualification or confirmation."
+
+
 def build(path, stage, run_spec=None):
     spec = run_spec or {"stage": stage, "run_id": stage+"-manual", "git_sha": "", "campaign_id": "vmd-eog-20261010", "profile": "pilot"}
     setup = '''import os, sys, json, tempfile, subprocess
@@ -227,6 +231,9 @@ elif CONFIGURATION.get('schema_version') == 3:
         # Read pinned source without importing into the host notebook kernel.
         # Numerical imports and execution belong to the isolated runner environment.
         print((CHECKOUT/'src/vmd_eog/frontal_event_support.py').read_text())
+    if RUN_SPEC['stage'] == 'frontal-native-bounded-feasibility':
+        print((CHECKOUT/'docs/FRONTAL_BOUNDED_FEASIBILITY_PLAN.md').read_text())
+        print((CHECKOUT/'src/vmd_eog/frontal_bounded_feasibility.py').read_text())
     if RUN_SPEC['stage'] == 'frontal-native-axis-diagnostic':
         print((CHECKOUT/'docs/NATIVE_SEPARATE_AXIS_RESULTS.md').read_text())
         print((CHECKOUT/'src/vmd_eog/frontal_axis_diagnostic.py').read_text())
@@ -291,6 +298,15 @@ for name in ('diagnostic_group_means.csv', 'diagnostic_energy_means.csv', 'diagn
     if path.exists():
         print(name, '(first 20 rows; complete table saved)')
         display(pd.read_csv(path).head(20))
+'''
+    if stage == 'frontal-native-bounded-feasibility':
+        tables = '''import pandas as pd
+from IPython.display import display
+print((OUT/'bounded_native_summary.json').read_text())
+gates = json.loads((OUT/'bounded_native_gates.json').read_text())
+display(pd.DataFrame([{'method':row['method'], **row['worst_record'], 'preservation_pass':row['native_preservation_gates_pass']} for row in gates]))
+display(pd.read_csv(OUT/'bounded_native_rest_records.csv').head(12))
+print('Full exploratory trial correlations and predictions remain in saved outputs.')
 '''
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':
