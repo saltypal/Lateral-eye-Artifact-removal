@@ -1161,6 +1161,38 @@ Reproduce the exact launched run with an unused run ID:
 python tools/kaggle_campaign.py submit --stage frontal-artifact-shape --run-id frontal-shape-reproduction-001 --source-sha 1444b4e226b1e879ad46b2fe638c4d77dc26a753 --profile full --config configs/frontal_replication.json --parent-run frontal-monotonic-events-001 --kernel-slug vmd-frontal-shape-reproduction --kernel-source satyapaladugu/vmd-frontal-monotonic-axis-events/1 --kernel-source satyapaladugu/vmd-eog-corpus/2 --kernel-source satyapaladugu/vmd-band-cache-k3/1 --kernel-source satyapaladugu/vmd-eog-research-ready/1 --kernel-source satyapaladugu/vmd-frontal-review-contracts/1
 ```
 
+
+## Frontal artifact-shape result recovered: hypothesis rejected (13 October 2026)
+
+frontal-shape-full-001/1 at1444b4e completed; all665outputs recovered and all663
+manifest payloads verified, manifest7543c9799eb0911beee1c2c3c5e4c22d1b4fb245c088
+cbbcb7e5b33c7194586f. Full stage236tests passed in23.50s;960baselinewaveformchecks
+and112320metricchecks passed. 320windows/32recipients/fivedonors/4160frontal rows
+perarm;320predictions and320decisionbundles retained. Inherited3failure rows
+remain scored ineachVMDarm. Numerical163.819379s/runner438.324528s/peak344036KiB.
+
+Original VMD17.1128143537dB/CC.9737004035 reproduced. Strongerraw18.1932466607dB/
+CC.9811418802 reproduced. NewDCshape2.5212945093dB/CC.6448721278/RRMSE.7778027312
+failed. New-minus-oldVMD SNR -14.591520dB interval[-16.953028,-12.161186];
+new-minusraw -15.671952dB interval[-17.946138,-13.461239], projectrecipient/donor
+Poisson approximate uncertainty,1991/2000validdraws. NoVMD superiorityclaim.
+
+Cleancontrolchange/spectra/covariance zero forallarms; this doesnotqualify native
+preservation orpreservationduringcontamination. NewCC loss.3362697524>.005;
+originalVMDCC loss.0074414768>.005. Original lateral8.954402/13.129189/16.622938dB
+atnominal-5/0/5;newlateral-.377007/2.024629/4.762523. Donot addregionaldB.
+
+AllpaperMSE/RRMSE/CC/outputSNR/improvement,36conditionrows,alluncertaintyrows,
+provenance, failures, resources andinterpretation documented in
+docs/FRONTAL_ARTIFACT_SHAPE_RESULTS.md. Rejectedprojectionpreserved; originalVMD
+retained. Noautosearch/newdecomposition/newgain/newmodel/reservedsourceaccess.
+Fullnative-shape extraction andteacher/integrationpromotion stopped.
+
+Nextrootcausediagnostic declared: frozenoutputMSEchange decomposition onKaggle
+usingD=A_full-A_shape ande_shape=e_full+D. No fitting orchangedpredictions.
+Plan docs/FRONTAL_SHAPE_DIAGNOSTIC_PLAN.md; module/fixtures authored, numeric
+validation pending. Targets remain evaluationonly. Avoidbiologicalclaims.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

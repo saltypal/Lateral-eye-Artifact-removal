@@ -148,13 +148,18 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 - [x] BT05 Assess suppression/preservation without native scored-rest selection or automatic promotion. Zero trial-support preservation passes; VMDseparate worstmod0.154503/cov0.102743. Mixed small suppression changes; no promotion. See NATIVE_TRIAL_SUPPORT_RESULTS.md.
 
 
-## Fixed frontal artifact-shape hypothesis — Kaggle run active
+## Fixed frontal artifact-shape hypothesis — completed and rejected
 
 - [x] SC01 Audit exact controlled mode/field/window parent interfaces and publication identities. Saved post-gain fields, selected modes and all320archivedK3 windows available; exact parents pinned.
 - [x] SC02 Implement DC-preserving selected-mode artifact-shape helper and numerical fixtures; no gain refit. Verified focused Kaggle run frontal-shape-contracts-001/1:236tests passed at1444b4e; eight manifest payloads recovered and verified.
-- [ ] SC03 Run fixed four-arm controlled comparison with strongest raw comparator and unchanged baseline parity. Submitted frontal-shape-full-001/1 at tested1444b4e; first RUNNING observation15:54:26UTC. Results pending.
-- [ ] SC04 Report paired accuracy/preservation and reject or continue the fixed challenger; no native/teacher promotion from controlled results alone.
+- [x] SC03 Run fixed four-arm controlled comparison with strongest raw comparator and unchanged baseline parity. Completed320windows/960predictionchecks/112320metricchecks; all663payloads verified at1444b4e.
+- [x] SC04 Report paired accuracy/preservation and reject or continue the fixed challenger; no native/teacher promotion from controlled results alone. Newshape2.521295dB versus original17.112814/raw18.193247; rejected. See FRONTAL_ARTIFACT_SHAPE_RESULTS.md.
 
 Contract: FRONTAL_ARTIFACT_SHAPE_PLAN.md. Prior gain-only and component-projection
 negatives remain explicit. No broad parameter search or model work authorized
 by this planned ablation.
+
+## Frozen-output shape failure diagnosis
+
+- [ ] SD01 Validate frozen-parent/prediction/DC/edge/MSE identity and error-decomposition fixtures on Kaggle.
+- [ ] SD02 Recover per-channel and recipient/condition/input error terms; explain failed projection without selecting another recipe. No promotion.

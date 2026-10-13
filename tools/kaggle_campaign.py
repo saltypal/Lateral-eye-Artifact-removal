@@ -70,7 +70,7 @@ def submit(args):
             "profile":args.profile,"parent_run":args.parent_run,
             "source_resolution":"archived reproduction" if args.source_sha else "latest published at launch",
             "kernel_sources":args.kernel_source or [],"dataset_sources":args.dataset_source or []}
-    if args.stage not in ("contracts", "regional-diagnostic", "regional-coverage", "regional-context-match", "frontal-native-axis-diagnostic", "frontal-native-bounded-feasibility", "frontal-native-trial-support", "frontal-artifact-shape") and not spec["dataset_sources"]:
+    if args.stage not in ("contracts", "regional-diagnostic", "regional-coverage", "regional-context-match", "frontal-native-axis-diagnostic", "frontal-native-bounded-feasibility", "frontal-native-trial-support", "frontal-artifact-shape", "frontal-shape-diagnostic") and not spec["dataset_sources"]:
         spec["dataset_sources"] = [OWNER+"/lateral-eye-complete-dataset"]
     prefix = {2: "vmd-band-", 3: "vmd-frontal-"}.get(configuration.get("schema_version"), "vmd-eog-")
     slug = getattr(args,"kernel_slug",None) or prefix+args.stage

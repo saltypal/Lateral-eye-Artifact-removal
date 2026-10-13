@@ -6,7 +6,7 @@ from .artifacts import verify_parent
 from .contracts import canonical_hash
 
 
-STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration", "frontal-axis-calibration", "frontal-event-calibration", "frontal-native-events", "frontal-event-gain-calibration", "frontal-native-gain-events", "frontal-axis-events", "frontal-native-axis-events", "frontal-native-scaled-axis-events", "frontal-subspace-hybrid", "frontal-native-separate-axis", "frontal-native-axis-diagnostic", "frontal-native-bounded-feasibility", "frontal-native-trial-support", "frontal-artifact-shape")
+STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration", "frontal-axis-calibration", "frontal-event-calibration", "frontal-native-events", "frontal-event-gain-calibration", "frontal-native-gain-events", "frontal-axis-events", "frontal-native-axis-events", "frontal-native-scaled-axis-events", "frontal-subspace-hybrid", "frontal-native-separate-axis", "frontal-native-axis-diagnostic", "frontal-native-bounded-feasibility", "frontal-native-trial-support", "frontal-artifact-shape", "frontal-shape-diagnostic")
 FIXED_SETTINGS = ((3, 2000), (4, 2000))
 
 
@@ -60,6 +60,9 @@ def require_checkpoint(stage, input_root, config):
     if stage == "frontal-artifact-shape":
         from .frontal_artifact_shape import shape_parent
         shape_parent(input_root)
+    if stage == "frontal-shape-diagnostic":
+        from .frontal_shape_diagnostic import diagnostic_parent
+        diagnostic_parent(input_root)
     if stage == "frontal-native-separate-axis":
         from .frontal_axis_native import exploratory_parent
         exploratory_parent(input_root)
@@ -75,6 +78,9 @@ def execute(stage, input_root, output, config, profile, experiment):
         return run_fixture(output, config)
     if stage == "frontal-artifact-shape":
         from .frontal_artifact_shape import run
+        return run(input_root, output, config, profile)
+    if stage == "frontal-shape-diagnostic":
+        from .frontal_shape_diagnostic import run
         return run(input_root, output, config, profile)
     if stage == "frontal-native-trial-support":
         from .frontal_trial_support import run

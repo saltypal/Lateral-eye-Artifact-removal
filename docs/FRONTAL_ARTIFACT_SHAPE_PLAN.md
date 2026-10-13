@@ -1,6 +1,6 @@
 # Next fixed controlled ablation: artifact-shape selectivity
 
-13 October 2026. Planned, not implemented or launched. GPT-6.1 Sol extra-high
+13 October 2026. Completed and rejected; original plan and execution checkpoints retained below. GPT-6.1 Sol extra-high
 review recommendation follows the verified failed trial-support preservation
 experiment. No new K/alpha search, posterior VMD, model or reserved evaluation.
 
@@ -121,3 +121,7 @@ Source/notebook syntax is checked locally; no numerical work has run locally.
 ## Kaggle execution checkpoint
 
 236 focused tests passed on Kaggle at source 1444b4e226b1e879ad46b2fe638c4d77dc26a753. All eight manifest payloads recovered and verified. Full controlled run frontal-shape-full-001/1 submitted at that same SHA; observed RUNNING at 15:54:26 UTC on 13 October 2026. Numerical results pending; no promotion.
+
+## Completed decision
+
+Full run completed at1444b4e:236tests,960baseline predictions,112320metricchecks; all663manifestpayloads verified. New2.521295dB loses to original17.112814 and raw18.193247. Reject promotion; see FRONTAL_ARTIFACT_SHAPE_RESULTS.md. A frozen-output error identity diagnostic is declared separately; no native shape extraction.
