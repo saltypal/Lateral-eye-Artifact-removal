@@ -1128,6 +1128,39 @@ invariants(idempotence/orthogonality/unit/modepermutation/DC/edge/mask/failure)
 andfrontal-scopefixture. AST/syntaxcheckedlocally,numericaltestsNOT runlocally.
 Sol6.1xhighstaticreviewrequested. Qualificationfalse,newscientificscorespending.
 
+
+## Artifact-shape contracts verified and controlled comparison launched (13 October 2026)
+
+Focused Kaggle run frontal-shape-contracts-001/1 completed at source
+1444b4e226b1e879ad46b2fe638c4d77dc26a753: 236 tests passed, 14 dependency
+deprecation warnings, 20.40 seconds. All eight manifest-listed payloads were
+retrieved and checksum-verified; the test log digest matches contracts_summary.
+Tests cover DC-preserving artifact projection, invalid lag edges, mode selection,
+rank deficiency, permutation, subtraction, failure pass-through and explicit
+frontal-only uncertainty scope. Passing software fixtures is not evidence of
+better cleaning.
+
+Submitted frontal-shape-full-001/1, kernel satyapaladugu/vmd-frontal-artifact-shape,
+at the same exact tested published SHA. First primary RUNNING observation:
+2026-10-13T15:54:26.031122+00:00. Full profile uses the frozen 320-window controlled
+development cohort; four fixed arms: identity, calibrated raw gain, original
+K3 calibrated mode gain, and DC-preserving selected-mode artifact shape.
+Dependencies: monotonic-axis-events/1, corpus/2, band-cache-k3/1, research-ready/1,
+frontal-review-contracts/1. No new decomposition, AutoVMD, gain fitting, neural
+training or reserved-source access. Paired targets are used for scoring only.
+
+Primary watcher checks status every 45 seconds with bounded API calls and
+checksum-verifying output retrieval; the Luna monitor independently checks
+status read-only. API/log visibility problems are not interpreted as numerical
+failures. Results and qualification remain pending; existing 17.112814 dB VMD
+and 18.193247 dB calibrated raw development baselines remain the last measured
+frontal scores. No superiority, native preservation or production claim.
+
+Reproduce the exact launched run with an unused run ID:
+```powershell
+python tools/kaggle_campaign.py submit --stage frontal-artifact-shape --run-id frontal-shape-reproduction-001 --source-sha 1444b4e226b1e879ad46b2fe638c4d77dc26a753 --profile full --config configs/frontal_replication.json --parent-run frontal-monotonic-events-001 --kernel-slug vmd-frontal-shape-reproduction --kernel-source satyapaladugu/vmd-frontal-monotonic-axis-events/1 --kernel-source satyapaladugu/vmd-eog-corpus/2 --kernel-source satyapaladugu/vmd-band-cache-k3/1 --kernel-source satyapaladugu/vmd-eog-research-ready/1 --kernel-source satyapaladugu/vmd-frontal-review-contracts/1
+```
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

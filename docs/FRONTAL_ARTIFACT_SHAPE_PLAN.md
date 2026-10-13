@@ -117,3 +117,7 @@ and an explicit frontal-only uncertainty-scope fixture are queued for Kaggle.
 The generic uncertainty helper's default remains all original regions; only
 this stage explicitly requests frontal scope. No region rows are fabricated.
 Source/notebook syntax is checked locally; no numerical work has run locally.
+
+## Kaggle execution checkpoint
+
+236 focused tests passed on Kaggle at source 1444b4e226b1e879ad46b2fe638c4d77dc26a753. All eight manifest payloads recovered and verified. Full controlled run frontal-shape-full-001/1 submitted at that same SHA; observed RUNNING at 15:54:26 UTC on 13 October 2026. Numerical results pending; no promotion.
