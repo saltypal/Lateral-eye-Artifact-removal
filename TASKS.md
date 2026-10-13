@@ -196,3 +196,16 @@ This is a development consistency repair, not the independent benchmark. See FRO
 
 See docs/FRONTAL_SNR_IMPROVEMENT_PLAN.md. Rejected 2.521295 dB shape arm is not
 the retained method. No AutoVMD, new numerical run or neural training started by this plan.
+
+## User-authorized posterior and central challengers (14 October 2026)
+
+- [x] NF01 Author six target-free mechanisms, composition contracts, focused tests and notebook58. Static syntax inspected; numerical acceptance pending Kaggle.
+- [x] NF02 Declare exact corpus002 and matched-context-full001 parent manifests; runtime waveform/split validation pending.
+- [ ] NF03 Kaggle contracts and five-recipient/50-example pilot; checksum all recovered outputs.
+- [ ] NF04 Same fixed-recipe320-example comparison after pilot contracts/recovery pass.
+- [ ] NF05 Source-aware review and grouped shortlist evaluation; no scoring-target selection.
+- [ ] NF06 Frozen native OSF blink/lateral/rest preservation validation.
+- [ ] NF07 Author-code eligible SGEYESUB and ERP/BCI validation after calibration contracts.
+
+See docs/NONFRONTAL_CHALLENGERS_PLAN.md. Exploratory regional experiments are
+authorized despite current frontal qualification failures; no teacher/model promotion.

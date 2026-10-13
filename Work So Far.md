@@ -1362,6 +1362,34 @@ promised SNR gain or independent benchmark. AutoVMD remains stopped, frontal-onl
 VMD and classical-first sequencing retained; no new numerical job, training,
 reserved-source access or production qualification resulted from this replan.
 
+## Posterior and central expansion authored (14 October 2026 IST)
+
+User explicitly authorized more posterior/middle-channel research, experiments
+and documentation. Reviewed the other chat's posterior results without modifying
+its untracked file. Historical737candidate search stays archived; no repeatgrid.
+Rechecked full central/shared10.903434dB, posterior13.541703 and frontal17.112814
+development results. These regional dB scores do not sum to whole-system SNR.
+
+Primary literature reviewed: Issa/Juhasz2019 selective waveletICA; Mannan etal2016
+ocular-component regression; Kobler etal2020SGEYESUB and reference implementation;
+GED tutorial. Six fixed adaptations authored: matchedICA rejection, calibration
+componentridge, large-coefficientwaveletICA, selectivewaveletICA and rest-whitened
+reference-fieldrank1/rank2. Fullmontage unscoredICA support is common; outputs
+replace posterior-only,central-only orboth relative to originalEEG with frozen
+frontal output. Three frozen controls plus18compositions; no newVMD orAutoVMD.
+
+Modules nonfrontal_challengers.py/nonfrontal_experiment.py,13parameterized numerical
+fixtures, numbered notebook58 and explicitnewcampaignconfig authored. Static
+Python/notebookcells inspected locally; no numerical test/evaluation executed
+locally. Exactcorpus002/context-match-full001 manifests declared. Numerical pilot
+and recovery pending. Paired targets withheld from estimation; fitting records,
+predictions, progressive metric shards and all failures persist perexample.
+
+This authorization expands exploratory experiments; native/frontalgate failures
+and classical-first modelcheckpoint remain. All methods are labelled adaptations,
+not exactauthorreproductions orqualifiedteachers. Regressionfieldbias and EOG
+amplitudemismatch remain explicit; no newSNRclaimed at authoring.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

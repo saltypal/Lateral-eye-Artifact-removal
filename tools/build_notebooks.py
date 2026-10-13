@@ -366,6 +366,23 @@ display(sources[['id', 'role', 'paired_target', 'frontal_mapping', 'independent_
 display(sources[['id', 'limitations']])
 print((OUT/'published_sensitivity_table.json').read_text())
 '''
+    if stage == 'nonfrontal-challengers':
+        tables = '''import pandas as pd
+from IPython.display import display
+print((OUT/'nonfrontal_summary.json').read_text())
+means = pd.read_csv(OUT/'nonfrontal_method_means.csv')
+display(means[means.scope.isin(['whole','posterior','central_shared'])])
+display(pd.read_csv(OUT/'nonfrontal_condition_means.csv'))
+print((OUT/'nonfrontal_controlled_gates.json').read_text())
+display(pd.read_csv(OUT/'coverage_uncertainty_intervals.csv'))
+'''
+        inspect_modules = '''CONFIGURATION = json.loads((CHECKOUT/RUN_SPEC['config_path']).read_text())
+print((CHECKOUT/'docs/NONFRONTAL_CHALLENGERS_PLAN.md').read_text())
+print('Fixed policy:', CONFIGURATION['challenger_policy'])
+print('Inspectable modules: nonfrontal_challengers.py and nonfrontal_experiment.py')
+print('Frontal outputs frozen; no posterior/central VMD; no AutoVMD or model training.')
+'''
+        DETAILS[stage] = 'Fixed-recipe posterior and central component-correction adaptations. Pin corpus002 and matched-context-full001. Match full-montage calibration support, preserve frontal outputs and score separate region changes plus their composition. No clean target enters fitting or correction. Save all predictions, component fits, per-record progress, paper metrics and failure rows. Pilot precedes full development evaluation; native and independent qualification remain separate.'
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':
         detail = 'Requires verified research readiness. Paired-only EEG TCN-BiGRU, input-derived scaling, signed metadata context, zero correction heads and no runtime EOG/VMD. Classical accuracy gates do not prevent paired learning.'
