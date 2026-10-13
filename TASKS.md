@@ -206,6 +206,7 @@ the retained method. No AutoVMD, new numerical run or neural training started by
 - [ ] NF05 Source-aware review and grouped shortlist evaluation; no scoring-target selection.
 - [ ] NF06 Frozen native OSF blink/lateral/rest preservation validation.
 - [ ] NF07 Author-code eligible SGEYESUB and ERP/BCI validation after calibration contracts.
+- [ ] NF08 Fixed central GEVD-MWF controls, followed by eligible CCA/SOBI/ASR challengers in the documented priority order; retain negative results.
 
 See docs/NONFRONTAL_CHALLENGERS_PLAN.md. Exploratory regional experiments are
 authorized despite current frontal qualification failures; no teacher/model promotion.

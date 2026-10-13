@@ -86,6 +86,39 @@ project settings, not published optimal parameters. New recipes are experimental
 
 ## Reporting and stop rules
 
+## Next mechanisms after the fixed pilot
+
+| Priority | Mechanism and region | What changes / eligibility |
+| --- | --- | --- |
+| 1 | Existing GEVD-MWF on central/shared outputs | Reuse validated posterior.py; fixed rank1 and rank2 controls, same full/raw-frontal support, calibration rest/ocular labels and association gate. This tests central use without repeating the posterior search. |
+| 2 | SGEYESUB on posterior/central outputs | Audit author demo and native OSF calibration labels/reference/channel layout; port only with author parity. Matrix subtraction after fitting is attractive for scalable devices. Do not call our reference-rank method SGEYESUB. |
+| 3 | Reference CCA/iCanClean adaptation | Separate correlated artifact subspace before back-projection; HEOG/VEOG and signed frontal field as separately matched reference options. Phantom evidence is not independent human ocular validation. |
+| 4 | SOBI plus selective source regression | Temporal source statistics provide a different separation from Picard. Existing SOBI code was written for VMD vectors; multichannel calibration needs numerical-rank and trial-boundary repairs before reuse. No posterior VMD. |
+| 5 | ASR/rASR benchmark control | Requires eligible low-ocular calibration, common preprocessing and source-aware cutoff selection. Test reconstruction rather than rejecting samples; score every original interval. Variance selection may remove task-related neural activity and is not ocular-specific. |
+| 6 | Wavelet-enhanced CCA | A published left/right common-component idea is a challenger only. Common bilateral activity can be neural and signed lateral eye activity may not be common; require reference-supported identification instead of assuming first component is ocular. |
+
+Primary references for this extension, checked14October2026:
+
+- iCanClean2023: https://pmc.ncbi.nlm.nih.gov/articles/PMC10574843/ . CCA identifies
+  reference-correlated components, followed by regression/back-projection; the
+  cited experiment is phantomEEG and must be reported in that scope.
+- SOBINMF2015: https://doi.org/10.1541/ieejeiss.135.954 . SOBI/NMF evaluated with
+  motor-imagery EEG; adding nonnegative factorization to signed EEG requires its
+  actual transform/objective, not simply clipping negative electrode values.
+- ASR/rASR2019: https://pmc.ncbi.nlm.nih.gov/articles/PMC6499032/ . Ocular amplitude
+  reduction and preservation trade-offs; not evidence that ASR will beat our SNR.
+- wCCA2011: https://pubmed.ncbi.nlm.nih.gov/22255263/ . Inspect complete settings
+  before any reproduction claim; assumptions need lateral-specific validation.
+- CiSSA-DWT2023: https://pmc.ncbi.nlm.nih.gov/articles/PMC9921497/ . Originally
+  discusses few/single frontal channels; postpone a central/posterior adaptation
+  until it adds a testable hypothesis beyond the running wavelet component arms.
+
+The central/shared label must be unpacked into verified channels in reporting;
+it is a montage-defined collection rather than a biological claim that all its
+electrodes have the same ocular coupling. Preserve mu/alpha and beta activity at
+central electrodes and posterior alpha; ERP/BCI task preservation needs separate
+eligible labelled recordings. Unknown anatomy still passes through.
+
 Primary paired MSE, temporal RRMSE, ordinary Pearson CC; output SNR and improvement
 separate. Also report spectral and covariance preservation, runtime, fit failures
 and pass-through. Gates unchanged: clean modification<=.01, alpha/beta<=.5dB,

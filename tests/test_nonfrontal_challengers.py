@@ -81,3 +81,46 @@ def test_selective_wavelet_only_changes_supported_interval():
 def test_invalid_wavelet_threshold_fails(threshold):
     with pytest.raises(ValueError):
         large_wavelet_contribution(np.ones(1024), threshold)
+
+
+def test_reduced_rank_adapters_boundaries_and_saved_replay(monkeypatch, tmp_path):
+    from vmd_eog import nonfrontal_challengers as module
+    from vmd_eog.nonfrontal_experiment import load_experts, save_experts
+    from vmd_eog.posterior import ICAExpert
+    time = np.arange(1024)
+    refs = np.stack([np.sin(time / 19.), np.cos(time / 31.)])
+    eeg = np.stack([refs[0], refs[0], np.sin(time / 7.), np.cos(time / 11.)])
+    unmixing = np.array([[.5, .5, 0., 0.], [0., 0., 1., 0.]])
+    expert = ICAExpert(np.zeros(4), unmixing, np.linalg.pinv(unmixing),
+                       np.array([0]), np.array([[1., 0.], [0., 0.]]), True)
+    monkeypatch.setattr(module, "fit_ica", lambda *args, **kwargs: expert)
+    policy = {"lags": [-10, 0, 10], "penalty": .01, "association": .4,
+              "gain_cap": 8., "mad_multiplier": 3., "wavelet": "sym4",
+              "wavelet_level": 6, "dilation": 50, "taper": 10}
+    calibration = {"eeg": eeg, "references": refs, "mask": np.ones(4, bool),
+                   "trial_types": np.concatenate([np.ones(512), np.full(512, 2)]),
+                   "boundaries": np.array([512])}
+    fitted = module.fit_experts(calibration, policy)
+    assert fitted.ica.unmixing.shape == (2, 4)
+    assert fitted.component_model.calibration_valid_samples == 984
+    save_experts(tmp_path, fitted)
+    restored = load_experts(tmp_path)
+    regions, mask = np.array([0, 1, 2, 3]), np.ones(4, bool)
+    live, decisions, failures = module.estimate_fields(eeg, refs, regions, mask, fitted, policy)
+    replay, replay_decisions, replay_failures = module.estimate_fields(eeg, refs, regions, mask, restored, policy)
+    for method in module.METHODS:
+        np.testing.assert_array_equal(live[method], replay[method])
+    assert decisions == replay_decisions
+    assert failures == replay_failures
+    # Correct only the selected ocular source contribution. Original brain
+    # sources and the ICA rank residual remain, because reconstruction is a
+    # subtraction from original EEG rather than a truncated inverse ICA.
+    cleaned = module.replace_regions(eeg, eeg, live["ica_rejection"], regions, mask, (1, 2))
+    np.testing.assert_array_equal(cleaned[2:], eeg[2:])
+    np.testing.assert_allclose(cleaned[1], 0., atol=1e-12)
+    assert np.all(live["ica_rejection"][[0, 3]] == 0)
+    # The frozen calibration model may have a nonzero reference baseline;
+    # identically constant scoring fields must still trigger pass-through.
+    zero, _, _ = module.estimate_fields(eeg, np.zeros_like(refs), regions, mask, restored, policy)
+    for field in zero.values():
+        np.testing.assert_array_equal(field, np.zeros_like(eeg))

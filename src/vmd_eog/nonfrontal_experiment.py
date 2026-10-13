@@ -85,9 +85,82 @@ def save_experts(directory, fitted):
         arrays["rank" + str(rank) + "_spectrum"] = spectrum
     np.savez_compressed(directory / "fitted_arrays.npz", **arrays)
     atomic_json(directory / "fit_status.json", {"failures": fitted.failures,
-        "component_count": len(fitted.ica.mean) if fitted.ica is not None else None,
+        "channel_count": len(fitted.ids),
+        "component_count": fitted.ica.unmixing.shape[0] if fitted.ica is not None else None,
         "selected_components": fitted.ica.selected.tolist() if fitted.ica is not None else [],
-        "field_metadata": fitted.field_model.metadata, "scoring_target_access": False})
+        "field_metadata": fitted.field_model.metadata,
+        "component_field_metadata": fitted.component_model.metadata if fitted.component_model is not None else None,
+        "scoring_target_access": False})
+
+
+def load_experts(directory):
+    """Load saved numerical fits without refitting, with explicit model metadata."""
+    from .nonfrontal_challengers import NonfrontalExperts
+    from .nonfrontal_ridge import FrozenRidgeModel
+    from .posterior import ICAExpert
+    arrays = dict(np.load(directory / "fitted_arrays.npz", allow_pickle=False))
+    status = json.loads((directory / "fit_status.json").read_text())
+    def ridge(prefix, metadata):
+        return FrozenRidgeModel(tuple(int(x) for x in arrays["lags"]), metadata["penalty"],
+            arrays[prefix + "reference_mean"], arrays[prefix + "reference_scale"],
+            arrays[prefix + "active_columns"], arrays[prefix + "coefficients"],
+            metadata["calibration_valid_samples"], metadata["calibration_channel_count"],
+            metadata["predictor_count"])
+    # Field coefficients use the archival name field_coefficients.
+    arrays["coefficients"] = arrays["field_coefficients"]
+    field_model = ridge("", status["field_metadata"])
+    expert = component = center = scale = None
+    if "unmixing" in arrays:
+        expert = ICAExpert(arrays["ica_mean"], arrays["unmixing"], arrays["mixing"],
+                           arrays["selected"], arrays["associations"], True)
+        component = ridge("component_", status["component_field_metadata"])
+        center, scale = arrays["rest_center"], arrays["rest_scale"]
+    projections = {}
+    for rank in (1, 2):
+        key = "rank" + str(rank)
+        if key + "_projection" in arrays:
+            projections[rank] = (arrays[key + "_projection"], arrays[key + "_spectrum"], min(rank, len(arrays["ids"])))
+    return NonfrontalExperts(arrays["ids"], field_model, expert, component, center, scale,
+                            projections, status["failures"])
+
+
+def labelled_gates(scores, config):
+    """Comparator identities are explicit; do not mislabel a context loss as direct."""
+    output = {}
+    for scope, group in scores.groupby("scope"):
+        comparisons = {BASELINE: "cc_deterioration_vs_vmd_context", RAW_CONTEXT: "cc_deterioration_vs_raw_context"}
+        if scope == "frontal":
+            comparisons[RAW_FRONTAL] = "cc_deterioration"
+        output[scope] = {}
+        for comparator, column in comparisons.items():
+            reports = controlled_gates(group.assign(cc_deterioration=group[column]), config)
+            for report in reports:
+                report["comparator"] = comparator
+                report["mean_cc_deterioration_vs_comparator"] = report.pop("mean_cc_deterioration_vs_direct")
+            output[scope][comparator] = reports
+    return output
+
+
+def reconcile_baselines(scores, old_scores):
+    """Exact cohort/metadata matching before tolerant saved paper-metric parity."""
+    keys = ["example_id", "scope", "channel", "evaluated_family"]
+    columns = keys + ["recipient", "donor", "condition", "input_snr_db"] + list(PAPER_KEYS)
+    current = scores[scores.evaluated_family.isin(("identity", BASELINE, RAW_CONTEXT))][columns]
+    parent = old_scores[old_scores.example_id.isin(current.example_id.unique()) &
+                        old_scores.evaluated_family.isin(("identity", BASELINE, RAW_CONTEXT))][columns]
+    if current.duplicated(keys).any() or parent.duplicated(keys).any():
+        raise ValueError("Baseline metric keys are not unique")
+    left = current.set_index(keys).sort_index()
+    right = parent.set_index(keys).sort_index()
+    if not left.index.equals(right.index):
+        raise ValueError("Baseline metric cohort differs")
+    for name in ("recipient", "donor", "condition", "input_snr_db"):
+        if not left[name].equals(right[name]):
+            raise ValueError("Baseline metric source metadata differs: " + name)
+    for name in PAPER_KEYS:
+        if not np.allclose(left[name], right[name], rtol=1e-10, atol=1e-18, equal_nan=True):
+            raise ValueError("Baseline paper metric parity failed: " + name)
+    return len(left) * len(PAPER_KEYS)
 
 
 def plot_results(output):
@@ -123,7 +196,7 @@ def run(input_root, output, config, profile):
                            (old_scores.evaluated_family == BASELINE)]
     prior_failures = inherited.groupby("example_id").failure.first().to_dict()
     fitted_by_calibration, records, fit_records, decisions = {}, [], [], []
-    parity_checks = 0
+    parity_checks = fit_replay_checks = 0
     for number, row in enumerate(rows):
         print("NONFRONTAL_START", number + 1, len(rows), row["example_id"], flush=True)
         verify_parent(corpus, (row["array_path"], row["calibration"]))
@@ -149,7 +222,18 @@ def run(input_root, output, config, profile):
             fitted = fit_experts(cal_input, config["challenger_policy"])
             fitted_by_calibration[key] = fitted
             identity = sha256_file(corpus / key)
-            save_experts(output / "nonfrontal_fits" / identity, fitted)
+            fit_directory = output / "nonfrontal_fits" / identity
+            save_experts(fit_directory, fitted)
+            reloaded = load_experts(fit_directory)
+            probe = (original, data["references"], data["regions"], data["mask"])
+            live_fields, live_details, live_failures = estimate_fields(*probe, fitted, config["challenger_policy"])
+            saved_fields, saved_details, saved_failures = estimate_fields(*probe, reloaded, config["challenger_policy"])
+            for method in METHODS:
+                if not np.array_equal(live_fields[method], saved_fields[method]):
+                    raise RuntimeError("Saved-fit replay differs: " + method)
+                fit_replay_checks += 1
+            if live_details != saved_details or live_failures != saved_failures:
+                raise RuntimeError("Saved-fit decisions differ")
             fit_records.append({"calibration": key, "sha256": identity,
                 "runtime_s": time.perf_counter() - fit_started, "failures": fitted.failures,
                 "paired_target_access": False, "reserved_source_access": False})
@@ -186,12 +270,16 @@ def run(input_root, output, config, profile):
                 paper = paired_channels(cleaned[ids], target, raw)
                 comparator_name = RAW_FRONTAL if scope == "frontal" else RAW_CONTEXT
                 comparison = paired_channels(saved[comparator_name][ids], target, raw)
+                vmd_comparison = paired_channels(saved[BASELINE][ids], target, raw)
+                raw_comparison = paired_channels(saved[RAW_CONTEXT][ids], target, raw)
                 engineering = paired(cleaned[ids], target, config["fs"])
                 for local, index in enumerate(ids):
                     example_records.append({**meta, "scope": scope, "channel": str(data["channel_names"][index]),
                         "evaluated_family": arm, "failure": failure, "comparator": comparator_name,
                         **{name: float(value[local]) for name, value in paper.items()},
                         "cc_deterioration": float(comparison["pearson_cc"][local] - paper["pearson_cc"][local]),
+                        "cc_deterioration_vs_vmd_context": float(vmd_comparison["pearson_cc"][local] - paper["pearson_cc"][local]),
+                        "cc_deterioration_vs_raw_context": float(raw_comparison["pearson_cc"][local] - paper["pearson_cc"][local]),
                         "clean_change": float(paper["rrmse_time"][local]),
                         "alpha_db": engineering["alpha_db"], "beta_db": engineering["beta_db"],
                         "covariance_error": engineering["covariance"], "apply_runtime_s": apply_runtime})
@@ -216,7 +304,8 @@ def run(input_root, output, config, profile):
         ["scope", "evaluated_family"]).agg(strict_mean).reset_index().to_csv(output / "nonfrontal_method_means.csv", index=False)
     grouped.groupby(["scope", "evaluated_family", "condition", "input_snr_db"]).agg(strict_mean).reset_index().to_csv(
         output / "nonfrontal_condition_means.csv", index=False)
-    gates = {scope: controlled_gates(group, config) for scope, group in scores.groupby("scope")}
+    baseline_metric_checks = reconcile_baselines(scores, old_scores)
+    gates = labelled_gates(scores, config)
     atomic_json(output / "nonfrontal_controlled_gates.json", gates)
     write_jsonl(output / "nonfrontal_fit_records.jsonl", fit_records)
     write_jsonl(output / "nonfrontal_decisions.jsonl", decisions)
@@ -230,6 +319,7 @@ def run(input_root, output, config, profile):
         "recipients": len({row["recipient"] for row in rows}), "donors": len({row["donor"] for row in rows}),
         "calibrations": len(fitted_by_calibration), "arms": list(estimates),
         "frozen_frontal_parity_checks": parity_checks, "source_split_sha256": config["source_split_sha256"],
+        "saved_fit_replay_checks": fit_replay_checks, "baseline_paper_metric_checks": baseline_metric_checks,
         "new_decompositions": "calibration-only ICA; no VMD solver executed",
         "runtime_s": time.perf_counter() - started, "weights_trained": False,
         "autovmd_executed": False, "scoring_target_fit": False, "reserved_confirmation_opened": False,

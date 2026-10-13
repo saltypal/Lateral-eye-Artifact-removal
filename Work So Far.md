@@ -1390,6 +1390,37 @@ and classical-first modelcheckpoint remain. All methods are labelled adaptations
 not exactauthorreproductions orqualifiedteachers. Regressionfieldbias and EOG
 amplitudemismatch remain explicit; no newSNRclaimed at authoring.
 
+## Nonfrontal pilot submitted and extended literature priorities
+
+nonfrontal-pilot-001 submitted as satyapaladugu/vmd-nonfrontal-challengers-pilot/1
+at exactsourcef681322fdd9155f123d36a8dca15d4474f1ad3f0. Campaign
+vmd-nonfrontal-challengers-20261014; corpus002 and context-match-full001 parents.
+KaggleAPI acceptedversion1 and live statusRUNNING. No completed numerical output
+at this entry. Active-log retrieval returned no matching runidentity, so this is
+an observabilitygap, not evidence of a kernel failure. Luna monitor resumed.
+
+Additional primary literaturechecked: iCanCleanCCA phantomstudy, SOBINMFmotorimagery,
+ASR/rASR preservation tradeoffs, wCCA andCiSSA-DWT. Plan now prioritizes central
+fixedGEVD-MWF controls, author-parityeligibleSGEYESUB, referenceCCA, multichannelSOBI
+andASR controls after firstpilot; no silentalgorithm additions to the runningjob.
+Central/shared channelnames must be reported individually and task-specific
+mu/beta/ERP preservation is not established by controlled reconstruction alone.
+
+## Nonfrontal static review repairs authored
+
+Sol6.1xhigh review found reporting/acceptance gaps, not source-target leakage or
+composition defects. Repaired future-run reporting to save comparator-labelled
+CC gates against both frozen context baselines and strongestrawfrontal; reconcile
+all five primary metrics for three archived control arms by unique keys; count
+ICAcomponents byunmixingrows rather than inputchannels; persist/load full fit
+metadata and require saved/liveartifact anddecisionparity percalibration.
+Added one reduced-rankadapter/trialboundary/source-residual/savedreplay fixture.
+
+nonfrontal-pilot-001 atf681322 remains immutable/running; these changes require a
+newpinnedKaggleversion and numericalvalidation. No thresholds, fixedmechanisms or
+sourcepartitions changed. Uncertaintycurrentlycovers both-regioncompositions;
+single-regionarms remain exploratorydiagnostics pending their own pairedreview.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
