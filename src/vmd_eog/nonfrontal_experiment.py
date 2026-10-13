@@ -26,7 +26,7 @@ COMPOSITIONS = {"posterior": (1,), "central": (2,), "both": (1, 2)}
 
 
 def readiness(input_root, config):
-    if (config.get("scope") != "fixed_nonfrontal_component_challengers"
+    if (config.get("scope") not in ("fixed_nonfrontal_component_challengers", "fixed_nonfrontal_mwf_controls")
             or config.get("autovmd_enabled") is not False
             or config.get("reserved_access") != "closed until verified freeze"):
         raise ValueError("Nonfrontal experiment policy differs")
@@ -183,6 +183,13 @@ def plot_results(output):
 
 def run(input_root, output, config, profile):
     started = time.perf_counter()
+    if config.get("method_family") == "mwf_controls":
+        from .nonfrontal_mwf import METHODS as methods, fit_experts as fit_function
+        from .nonfrontal_mwf import estimate_fields as estimate_function
+        from .nonfrontal_mwf import save_experts as save_function, load_experts as load_function
+    else:
+        methods, fit_function, estimate_function = METHODS, fit_experts, estimate_fields
+        save_function, load_function = save_experts, load_experts
     corpus, parent, all_rows = readiness(input_root, config)
     rows = select_rows(all_rows, profile)
     write_jsonl(output / "nonfrontal_selection_manifest.jsonl", rows)
@@ -219,16 +226,16 @@ def run(input_root, output, config, profile):
             # Producer targets/true fields are never forwarded to fitting.
             cal_input = {name: calibration[name] for name in
                          ("eeg", "references", "mask", "trial_types", "boundaries")}
-            fitted = fit_experts(cal_input, config["challenger_policy"])
+            fitted = fit_function(cal_input, config["challenger_policy"])
             fitted_by_calibration[key] = fitted
             identity = sha256_file(corpus / key)
             fit_directory = output / "nonfrontal_fits" / identity
-            save_experts(fit_directory, fitted)
-            reloaded = load_experts(fit_directory)
+            save_function(fit_directory, fitted)
+            reloaded = load_function(fit_directory)
             probe = (original, data["references"], data["regions"], data["mask"])
-            live_fields, live_details, live_failures = estimate_fields(*probe, fitted, config["challenger_policy"])
-            saved_fields, saved_details, saved_failures = estimate_fields(*probe, reloaded, config["challenger_policy"])
-            for method in METHODS:
+            live_fields, live_details, live_failures = estimate_function(*probe, fitted, config["challenger_policy"])
+            saved_fields, saved_details, saved_failures = estimate_function(*probe, reloaded, config["challenger_policy"])
+            for method in methods:
                 if not np.array_equal(live_fields[method], saved_fields[method]):
                     raise RuntimeError("Saved-fit replay differs: " + method)
                 fit_replay_checks += 1
@@ -238,7 +245,7 @@ def run(input_root, output, config, profile):
                 "runtime_s": time.perf_counter() - fit_started, "failures": fitted.failures,
                 "paired_target_access": False, "reserved_source_access": False})
         apply_started = time.perf_counter()
-        artifacts, detail, failures = estimate_fields(original, data["references"], data["regions"],
+        artifacts, detail, failures = estimate_function(original, data["references"], data["regions"],
             data["mask"], fitted_by_calibration[key], config["challenger_policy"])
         apply_runtime = time.perf_counter() - apply_started
         estimates = {"identity": original, BASELINE: saved[BASELINE], RAW_CONTEXT: saved[RAW_CONTEXT]}
@@ -313,14 +320,14 @@ def run(input_root, output, config, profile):
     uncertainty_scores = scores[scores.scope.isin(("whole", "posterior", "central_shared"))].rename(
         columns={"evaluated_family": "arm"})
     uncertainty_report(uncertainty_scores, output, comparators=(BASELINE, RAW_CONTEXT),
-        candidates=tuple(method + ":both" for method in METHODS), repetitions=500,
+        candidates=tuple(method + ":both" for method in methods), repetitions=500,
         scopes=("whole", "posterior", "central_shared"))
     atomic_json(output / "nonfrontal_summary.json", {"profile": profile, "examples": len(rows),
         "recipients": len({row["recipient"] for row in rows}), "donors": len({row["donor"] for row in rows}),
         "calibrations": len(fitted_by_calibration), "arms": list(estimates),
         "frozen_frontal_parity_checks": parity_checks, "source_split_sha256": config["source_split_sha256"],
         "saved_fit_replay_checks": fit_replay_checks, "baseline_paper_metric_checks": baseline_metric_checks,
-        "new_decompositions": "calibration-only ICA; no VMD solver executed",
+        "new_decompositions": ("calibration-only GEVD-MWF" if config.get("method_family") == "mwf_controls" else "calibration-only ICA") + "; no VMD solver executed",
         "runtime_s": time.perf_counter() - started, "weights_trained": False,
         "autovmd_executed": False, "scoring_target_fit": False, "reserved_confirmation_opened": False,
         "qualification": False, "native_validation_required": True,

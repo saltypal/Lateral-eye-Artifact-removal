@@ -1484,6 +1484,20 @@ all21wholemeans, conditiontable, negativearms, failures/repair andartifactpaths.
 Pilotcontracts/recoverypassed; nextsamefixedrecipesfull320/32 comparison approved
 asexploratorymeasurement, notteacherpromotion orrecipechosenfrompilotoutputs.
 
+## Full nonfrontal comparison submitted; fixed MWF controls authored
+
+nonfrontal-full-001/1 at46171ac7d14715b853e722013edfde2260a86fb6 accepted by
+KaggleandRUNNING; same6fixedmechanisms/21arms on320developmentexamples/32recipients,
+parentpilot002 verified. No pilot-drivenalgorithm orparameterselection. Luna
+monitor resumed; fullscores/recovery pending.
+
+Parallelmiddle/posteriorGEVD-MWF control authored asnotebook59/newcampaign:
+exactlyrank1/rank2, instantaneousfullmontagesupport,strength1 andsame.4association
+gate. UsesexistingvalidatedposteriorMWF solver; no repeat737recipeposteriorgrid.
+Separate module/fitsserialization, same original-input/disjointcomposition and
+metrics engine. Fresh numericalfixture checks saved/livefitparity, outputmasks
+andzeroreference pass-through. Staticinspection only until Kagglepilotexecution.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

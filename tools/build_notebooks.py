@@ -366,7 +366,7 @@ display(sources[['id', 'role', 'paired_target', 'frontal_mapping', 'independent_
 display(sources[['id', 'limitations']])
 print((OUT/'published_sensitivity_table.json').read_text())
 '''
-    if stage == 'nonfrontal-challengers':
+    if stage in ('nonfrontal-challengers', 'nonfrontal-mwf-controls'):
         tables = '''import pandas as pd
 from IPython.display import display
 print((OUT/'nonfrontal_summary.json').read_text())
@@ -383,6 +383,8 @@ print('Inspectable modules: nonfrontal_challengers.py and nonfrontal_experiment.
 print('Frontal outputs frozen; no posterior/central VMD; no AutoVMD or model training.')
 '''
         DETAILS[stage] = 'Fixed-recipe posterior and central component-correction adaptations. Pin corpus002 and matched-context-full001. Match full-montage calibration support, preserve frontal outputs and score separate region changes plus their composition. No clean target enters fitting or correction. Save all predictions, component fits, per-record progress, paper metrics and failure rows. Pilot precedes full development evaluation; native and independent qualification remain separate.'
+        if stage == 'nonfrontal-mwf-controls':
+            DETAILS[stage] = 'Two fixed GEVD-MWF controls, rank1/rank2 with instantaneous full-montage support and strength1. Reuse the validated posterior solver but output only posterior/central rows. Same field-association gate, parents, scoring cohort and frozen frontal VMD output as notebook58. No repeated posterior grid, target fitting or teacher promotion.'
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':
         detail = 'Requires verified research readiness. Paired-only EEG TCN-BiGRU, input-derived scaling, signed metadata context, zero correction heads and no runtime EOG/VMD. Classical accuracy gates do not prevent paired learning.'

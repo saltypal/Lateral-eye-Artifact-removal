@@ -21,7 +21,7 @@ def require_kaggle():
 
 def require_approval(stage, input_root, config):
     if config.get("schema_version") == 4:
-        if stage == "nonfrontal-challengers":
+        if stage in ("nonfrontal-challengers", "nonfrontal-mwf-controls"):
             from .nonfrontal_experiment import readiness
             return readiness(input_root, config)
         if stage == "regional-context-match":

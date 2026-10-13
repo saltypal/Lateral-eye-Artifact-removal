@@ -89,6 +89,16 @@ project settings, not published optimal parameters. New recipes are experimental
 - NF07 Eligible author SGEYESUB, selective wavelet replication and ERP/BCI tests
   follow their source/calibration contracts; no guessed anatomy or head model.
 
+Parallel GEVD-MWF control: numbered notebook59 uses the same corpus/context
+parents and reporting engine with a separate campaign. Exactly two recipes,
+rank1/rank2, instantaneous full-montage support, strength1, same0.4association
+gate. Calibration rest/ocular covariances use the already validated posterior
+solver. No repetition of737candidate search. Saved-fit replay and baseline
+metric parity are mandatory, as in notebook58; all corrections remain relative
+to original input, with frontal outputs frozen. First run is50examples, not a
+new teacher selection. This control is authorized alongside the320example
+six-mechanism run after its pilot contracts/recovery passed.
+
 ## Reporting and stop rules
 
 ## Next mechanisms after the fixed pilot
