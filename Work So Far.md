@@ -1340,6 +1340,28 @@ Thisrepair isnotindependentbenchmarkoraguaranteedSNRgain. See
 docs/FRONTAL_REFERENCE_COUPLING_REPAIR_PLAN.md. Historicalcorpusandresults
 remainfrozen; stopunsupported sourceclaims. AllcurrentKagglejobscompleted.
 
+## Lateral-focused SNR improvement replan (14 October 2026 IST)
+
+User asked to plan higher SNR and clarify the 2 dB result. Rechecked saved
+frontal shape comparison and previous recipe failures. Retained full-field
+K3/2000 VMD is17.112814 dB; strongest matched raw18.193247; rejected shape
+variant2.521295. The rejected arm did not replace the baseline. Native and
+strongest-comparator qualification remain failed; no fresh generalization claim.
+
+New proposed SI01-SI08 plan in docs/FRONTAL_SNR_IMPROVEMENT_PLAN.md prioritizes
+severe lateral residuals (8.954402/13.129189/16.622938 dB at nominal-5/0/+5)
+before another correction recipe. One saved-output diagnosis distinguishes
+trigger misses, full-field mismatch, mode-related gain bias and spatial sharing.
+Target-fitted gains are optimistic evaluator-only diagnostics, never inference
+or validation results. At most one mechanism-supported pilot follows. A possible
+partially pooled spatial-gain challenger is conditional, unimplemented and
+distinct from the already rejected separate HEOG/VEOG-axis gain experiment.
+
+Reference-coupling repair is a separately versioned consistency pilot, not a
+promised SNR gain or independent benchmark. AutoVMD remains stopped, frontal-only
+VMD and classical-first sequencing retained; no new numerical job, training,
+reserved-source access or production qualification resulted from this replan.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

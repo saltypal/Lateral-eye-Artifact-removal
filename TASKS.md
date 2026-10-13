@@ -182,3 +182,17 @@ See FRONTAL_INDEPENDENT_BENCHMARK_CHECKPOINT.md. No new benchmark or recipe has 
 - [ ] RC05 Run identity/raw/original-frontal-VMD matched pilot after contracts pass.
 
 This is a development consistency repair, not the independent benchmark. See FRONTAL_REFERENCE_COUPLING_REPAIR_PLAN.md.
+
+## Lateral-focused SNR improvement plan — proposed, not launched
+
+- [ ] SI01 Freeze original 17.112814 dB VMD and strongest 18.193247 dB raw evidence.
+- [ ] SI02 One saved-output lateral residual diagnosis; target-fitted bounds remain evaluator-only.
+- [ ] SI03 Complete the separately versioned RC coupling pilot without replacing old evidence.
+- [ ] SI04 Implement at most one challenger supported by the residual diagnosis.
+- [ ] SI05 Matched grouped development comparison with strongest raw and no-VMD controls.
+- [ ] SI06 Native suppression/preservation qualification with unchanged engineering gates.
+- [ ] SI07 Integrate qualified frontal and separately fitted posterior corrections once.
+- [ ] SI08 Train matched EEG-only students after the classical-first checkpoint.
+
+See docs/FRONTAL_SNR_IMPROVEMENT_PLAN.md. Rejected 2.521295 dB shape arm is not
+the retained method. No AutoVMD, new numerical run or neural training started by this plan.
