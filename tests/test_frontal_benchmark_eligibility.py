@@ -4,7 +4,7 @@ import zipfile
 
 import pytest
 
-from vmd_eog.frontal_benchmark_eligibility import REQUIREMENTS, assess_candidate, extract_sensitivity_table
+from vmd_eog.frontal_benchmark_eligibility import REQUIREMENTS, assess_candidate, extract_sensitivity_table, load_supplement
 
 
 def candidate():
@@ -70,3 +70,24 @@ def test_missing_short_or_duplicate_source_table_rejected(rows):
     raw = document(rows)
     with pytest.raises(ValueError):
         extract_sensitivity_table(raw, hashlib.sha256(raw).hexdigest())
+
+
+def test_pinned_document_load_needs_no_http_and_preserves_bytes(tmp_path):
+    raw = document([["Fz", "18", "19", "18", "25", "0", "4"]])
+    (tmp_path / "source.docx").write_bytes(raw)
+    spec = {"vendored_path": "source.docx", "sha256": hashlib.sha256(raw).hexdigest(),
+            "archive_url": "https://example.invalid/original", "article_url": "https://example.invalid/article"}
+    actual, identity = load_supplement(spec, tmp_path)
+    assert actual == raw
+    assert identity["live_http_attempted"] is False
+
+
+def test_pinned_document_checksum_failure_is_not_bypassed(tmp_path):
+    (tmp_path / "source.docx").write_bytes(b"changed")
+    with pytest.raises(ValueError, match="checksum"):
+        load_supplement({"vendored_path": "source.docx", "sha256": "0" * 64}, tmp_path)
+
+
+def test_pinned_document_path_cannot_escape_checkout(tmp_path):
+    with pytest.raises(ValueError, match="inside"):
+        load_supplement({"vendored_path": "../source.docx"}, tmp_path)

@@ -39,3 +39,7 @@ verified paired publisher dataset, would permit a new evidence-based protocol.
 ## Launch checkpoint
 
 frontal-source-eligibility-001/1 submitted at36b21a12f8f2c1d46368ca7aa72b8d1acbdc5c5e. First primary RUNNING21:37:10UTC13October2026 (14OctoberIST). No datasets/parents. Software tests, pinned document and table checks precede the documentary verdict; results pending.
+
+## Preserved failure and source-loading repair
+
+frontal-source-eligibility-001/1 at36b21a1 passed263tests in19.20s, then failed reading the EuropePMC HTTP archive with a30second read timeout. All seven failed-run manifest payloads were recovered/verified. The repair vendors the unchanged previously retrieved DOCX with attribution and the SAME0f7ee513 checksum into Git. A new version verifies this source from its pinned checkout without live publisher HTTP. Three fixtures check byte identity, hash rejection and checkout path containment. Eligibility thresholds and source states are unchanged; the failed run is retained.

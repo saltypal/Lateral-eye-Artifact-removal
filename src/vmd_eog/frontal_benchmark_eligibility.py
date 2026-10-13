@@ -4,7 +4,6 @@ import hashlib
 import io
 import json
 import time
-import urllib.request
 import zipfile
 from pathlib import Path
 from xml.etree import ElementTree
@@ -67,28 +66,23 @@ def extract_sensitivity_table(document, expected_sha256):
             "interpretation": "source sensitivity text; no signed individual channel map inferred"}
 
 
-def fetch_supplement(spec):
-    """Download documentary evidence only; retain a pinned inner DOCX identity."""
-    for attempt in range(2):
-        try:
-            request = urllib.request.Request(spec["archive_url"], headers={"User-Agent": "VMD-EOG-Research/0.1"})
-            with urllib.request.urlopen(request, timeout=30) as stream:
-                archive_bytes = stream.read(5_000_001)
-            if len(archive_bytes) > 5_000_000:
-                raise ValueError("Unexpected documentary archive size")
-            with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
-                names = [name for name in archive.namelist() if Path(name).name == spec["filename"]]
-                if len(names) != 1 or archive.getinfo(names[0]).file_size > 2_000_000:
-                    raise ValueError("Missing/ambiguous oversized published supplement")
-                document = archive.read(names[0])
-            return document, {"archive_url": spec["archive_url"], "member": names[0],
-                "archive_sha256": hashlib.sha256(archive_bytes).hexdigest(),
-                "document_sha256": hashlib.sha256(document).hexdigest(),
-                "document_bytes": len(document), "waveforms_loaded": False}
-        except (OSError, zipfile.BadZipFile):
-            if attempt == 1:
-                raise
-            time.sleep(2)
+def load_supplement(spec, root):
+    """Read exact reviewed source bytes from the pinned checkout, without HTTP."""
+    root = Path(root).resolve()
+    path = (root / spec["vendored_path"]).resolve()
+    if not path.is_relative_to(root) or path.suffix.lower() != ".docx":
+        raise ValueError("Documentary source must be a DOCX inside the pinned checkout")
+    if path.stat().st_size > 2_000_000:
+        raise ValueError("Unexpected documentary source size")
+    document = path.read_bytes()
+    digest = hashlib.sha256(document).hexdigest()
+    if digest != spec["sha256"]:
+        raise ValueError("Vendored published supplement checksum differs")
+    return document, {"original_archive_url": spec["archive_url"],
+        "article_url": spec["article_url"], "vendored_path": spec["vendored_path"],
+        "document_sha256": digest, "document_bytes": len(document),
+        "source_resolution": "exact reviewed source packaged in published Git commit",
+        "live_http_attempted": False, "waveforms_loaded": False}
 
 
 def run(output):
@@ -102,7 +96,7 @@ def run(output):
     if not ids or len(set(ids)) != len(ids):
         raise ValueError("Unique nonempty source candidate identities required")
     assessments = [assess_candidate(candidate) for candidate in registry["candidates"]]
-    document, download = fetch_supplement(registry["supplement"])
+    document, download = load_supplement(registry["supplement"], root)
     table = extract_sensitivity_table(document, registry["supplement"]["sha256"])
     if [row[0] for row in table["data_rows"]] != registry["supplement"]["table_row_labels"]:
         raise ValueError("Published source row labels differ")

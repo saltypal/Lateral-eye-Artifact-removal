@@ -14,7 +14,8 @@
       "T3/4",
       "F7/8"
     ],
-    "transfer_interpretation": "Reported sensitivity groups; signed individual channel/EOG conventions are not established"
+    "transfer_interpretation": "Reported sensitivity groups; signed individual channel/EOG conventions are not established",
+    "vendored_path": "data_provenance/literature/ear_eeg_Data_Sheet_1.docx"
   },
   "candidates": [
     {

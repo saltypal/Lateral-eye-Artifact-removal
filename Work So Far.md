@@ -1294,6 +1294,24 @@ parserfailures mustbe repaired withnewversion; benchmark_readyfalse isvalid
 completedsourceaudit, notfailedruntime. Otherregistry states aredocumentary
 assessments andarenotempiricallyrevalidatedby thisjob. No newSNRclaim.
 
+
+## Source audit network failure preserved and repaired
+
+frontal-source-eligibility-001/1 at36b21a1 passed263tests/14warnings in19.20s.
+ThenEuropePMC HTTPchunkedbody readtimedout duringfetch_supplement, afterbounded
+retries. ActualkernelERROR,notstatusAPIerror,notsourcehash/parser/testfailure.
+All7manifestpayloadsrecovered/verified;completion_verifiedfalse. No eligibility
+summaryorbenchmarkresultcreated. Failedlogs/state/testevidence retained.
+
+Repair packagesunchanged reviewedpublicData_Sheet_1.docx (25540bytes,original
+0f7ee5133c6d3b6ac8d39af51ca831c267831410b8793b8e37f615061bcbedc8SHA) under
+data_provenance/literature withYarici/Thornton/Mandic2023CC BYattribution.
+PinnedGitcheckout provides reproducible documentarybytes; strictsamehash,
+containedDOCXpathandfilesizechecksreplace liveHTTPdependency. No fieldmap,
+sourceeligibilitystate,parameter,EEGdataoracceptancecriterionchanged. Three
+newfixtures coveridentity/noHTTP,changedhashrejection,pathescape rejection.
+Repairtestexecution pendingnewKaggleversion; oldnegativeevidence notoverwritten.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
