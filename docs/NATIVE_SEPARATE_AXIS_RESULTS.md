@@ -114,3 +114,14 @@ All cached windows enter output reconstruction, but means/ranked examples
 exclude windows contributing zero original samples. Window energy fractions
 still describe the full padded window and are not overlap-weighted trial
 modification; they cannot be added to or substituted for record preservation.
+
+
+## Diagnostic launch
+
+`native-axis-diagnostic-001`, Kaggle `satyapaladugu/vmd-native-axis-diagnostic/1`,
+published source `5165ee3443297b69ea003c727438663ce62247ba`.
+Three versioned parents: native separate-axis/1, readiness/1 and unchanged
+frontal fixture/1. No raw dataset attachment. Sol extra-high static review
+found no remaining blocker after intervention-count and padded-overlap fixes.
+Numerical tests and255 reconstruction checks are pending. Primary monitors
+status every45 seconds and retrieves outputs through the bounded downloader.

@@ -882,6 +882,18 @@ Unpaired rest cannot establish true artifact, field-estimation error or neural
 loss. All primary native reports remain unchanged; qualification stays false.
 Added six focused fixtures; numerical validation remains pending Kaggle.
 
+
+## 2026-10-13 IST: cached native diagnostic launched
+
+Run native-axis-diagnostic-001, Kaggle vmd-native-axis-diagnostic/1, pinned
+published source5165ee3443297b69ea003c727438663ce62247ba. Parents are native
+separate-axis/1, readiness/1 and frontal fixture/1; no raw dataset attachment.
+Sol extra-high reviewed source/identity/parity/reporting, no remaining static
+launch blocker. All numerical tests and255 reconstruction checks run on
+Kaggle. Primary polls status every45 seconds and performs bounded retrieval;
+no dependence on the interrupted Luna monitor. No new VMD, fit, search,
+neural training, reserved access or branch promotion.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
