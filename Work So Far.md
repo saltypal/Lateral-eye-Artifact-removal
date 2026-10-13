@@ -977,6 +977,23 @@ unchanged. Fulltables andfailureinterpretation in
  docs/FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md. Sol6.1xhigh nowreviewsnextfocused
 selectivity/boundarymechanism against earliernegativeprojectionvariants.
 
+## Next isolated boundary question declared (13 October 2026)
+
+FRONTAL_TRIAL_SUPPORT_PLAN.md declares a planned, unlaunched ablation: original
+trial EOG support aligned across overlap windows versus current per-window
+support. Originalassociation0.4/multiplier1,K3/2000 andcachedsignedfields/gains
+stayfixed. Ninearms(identity+raw/VMD×OR/separate×window/trial). Exactcorpus
+unscoredcalibration reconstructs missingdetectorcenter; allcachedthresholds and
+supportvalues mustreproduce beforetrialpolicychange. Reflectedsupportpadding
+alignsoriginalsample positions; no trialjoins. NumericalKagglefixtures and
+255waveform/40metricparitychecks required. No newVMD orfieldfit. Thefield-shape
+projectionalternative isdeferred because nativecache lacksallwindowmodes.
+Sol6.1xhigh endorsesboundaryisolation; addreflected/zerooutoforiginalsupport
+paddingcrop-parityfixture. Conservativeboundedendpointchangesbothadmission
+andattenuation, so lossisnotattributed solelytothreshold.
+No claim boundaryeffectcausedloss orwillpassgates. Nextstage NOTimplemented,
+NOTlaunched; currentboundedcampaignendedcomplete andalloutputsrecovered.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

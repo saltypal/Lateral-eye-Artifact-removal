@@ -63,8 +63,9 @@ No significance/winner claim is made from two development-exposed participants.
 | p03 vertical |0.685271|0.144703|0.144195|0.625357|0.624641|
 
 The conservative endpoint largely loses blink/lateral suppression while still
-failing preservation. Raising one montage association threshold cannot distinguish
-all legitimate ocular correction from remaining resting interventions here.
+failing preservation. It changes both admission and attenuation; this contrast
+cannot assign the suppression loss to threshold or multiplier alone. The full
+factorial bank remains saved for matched contrasts.
 This does not identify the cause as neural loss: unpaired resting EEG has no
 clean truth, and trial37's transient cannot be relabelled to force a pass.
 

@@ -27,7 +27,9 @@ Notebook53 fixed twelve-setting feasibility screen is now verified:
 Zero active preservation passes; no uniform recipe in this bank passes both
 exposed recordings. See [FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md](FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md).
 Stop promotion of this repair. Next requires a distinct selectivity/boundary
-question; no additional K/alpha search or native recipe selection. Qualification remains false.
+question; no additional K/alpha search or native recipe selection.
+Next contract: [FRONTAL_TRIAL_SUPPORT_PLAN.md](FRONTAL_TRIAL_SUPPORT_PLAN.md),
+planned and unlaunched. Qualification remains false.
 Mode: Super Code. Independent read-only audits prepare reviewable contracts;
 the primary owns implementation, Git publication and Kaggle submissions.
 

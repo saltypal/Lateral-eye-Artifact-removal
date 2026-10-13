@@ -137,3 +137,12 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 - [x] FP07 Author bounded native feasibility replay with twelve declared association/strength settings and matched raw/VMD OR/separate paths; no native recipe selection. Notebook53.
 - [x] FP08 Run Kaggle fixtures/255baselinechecks/40condition-metricrows and recover all native candidate gates/predictions. Verified215tests/51trials/all122payloads at4719e52.
 - [x] FP09 Decide feasibility before any controlled extraction, promotion or dependent integration; all thresholds unchanged. Zero active preservation passes; no uniform recipe in this bank passes both exposed records. Stop promotion; see FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md.
+
+
+## Next isolated frontal boundary ablation
+
+- [x] BT01 Declare original-trial support alignment, frozen0.4/1 policy and four versioned parent dependencies. See FRONTAL_TRIAL_SUPPORT_PLAN.md.
+- [ ] BT02 Implement detector reconstruction from exact unscored corpus calibration and require all cached threshold/support parity.
+- [ ] BT03 Implement original-trial support track alignment and nine-arm cached replay; no new VMD or field fit.
+- [ ] BT04 Validate fixtures,255old-waveformchecks/40conditionrows on Kaggle, recover and report all outcomes.
+- [ ] BT05 Assess suppression/preservation without native scored-rest selection or automatic promotion.
