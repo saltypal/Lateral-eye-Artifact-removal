@@ -144,5 +144,17 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 - [x] BT01 Declare original-trial support alignment, frozen0.4/1 policy and four versioned parent dependencies. See FRONTAL_TRIAL_SUPPORT_PLAN.md.
 - [x] BT02 Implement detector reconstruction from exact unscored corpus calibration and require all cached threshold/support parity.
 - [x] BT03 Implement original-trial support track alignment and nine-arm cached replay; no new VMD or field fit.
-- [ ] BT04 Validate fixtures,306detectorwindows/255old-waveformchecks/40conditionrows/204paddingchecks on Kaggle, recover and report all outcomes. native-trial-support-001/1 launched at0e33d87; numerical validation pending.
-- [ ] BT05 Assess suppression/preservation without native scored-rest selection or automatic promotion.
+- [x] BT04 Validate fixtures,306detectorwindows/255old-waveformchecks/40conditionrows/204paddingchecks on Kaggle, recover and report all outcomes. Verified224tests/51trials/all194payloads at0e33d87; dataset-free224test check also passed.
+- [x] BT05 Assess suppression/preservation without native scored-rest selection or automatic promotion. Zero trial-support preservation passes; VMDseparate worstmod0.154503/cov0.102743. Mixed small suppression changes; no promotion. See NATIVE_TRIAL_SUPPORT_RESULTS.md.
+
+
+## Next distinct frontal artifact-shape hypothesis — unlaunched
+
+- [ ] SC01 Audit exact controlled mode/field/window parent interfaces and publication identities.
+- [ ] SC02 Implement DC-preserving selected-mode artifact-shape helper and numerical fixtures; no gain refit.
+- [ ] SC03 Run fixed four-arm controlled comparison with strongest raw comparator and unchanged baseline parity.
+- [ ] SC04 Report paired accuracy/preservation and reject or continue the fixed challenger; no native/teacher promotion from controlled results alone.
+
+Contract: FRONTAL_ARTIFACT_SHAPE_PLAN.md. Prior gain-only and component-projection
+negatives remain explicit. No broad parameter search or model work authorized
+by this planned ablation.

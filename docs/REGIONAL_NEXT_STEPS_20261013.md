@@ -29,8 +29,12 @@ exposed recordings. See [FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md](FRONTAL_BOUNDED
 Stop promotion of this repair. Next requires a distinct selectivity/boundary
 question; no additional K/alpha search or native recipe selection.
 Next contract: [FRONTAL_TRIAL_SUPPORT_PLAN.md](FRONTAL_TRIAL_SUPPORT_PLAN.md),
-implemented and launched as native-trial-support-001/1 at0e33d87; numerical
-validation pending. Qualification remains false.
+completed and verified as native-trial-support-001/1 at0e33d87:224tests,
+306supportwindows/255waveforms/40metricrows/204paddingchecks,all194payloads.
+Zero trial-support preservation passes; timing change is insufficient. See
+[NATIVE_TRIAL_SUPPORT_RESULTS.md](NATIVE_TRIAL_SUPPORT_RESULTS.md).
+Next contract: [FRONTAL_ARTIFACT_SHAPE_PLAN.md](FRONTAL_ARTIFACT_SHAPE_PLAN.md),
+a fixed four-arm controlled hypothesis, planned and unlaunched. Qualification remains false.
 Mode: Super Code. Independent read-only audits prepare reviewable contracts;
 the primary owns implementation, Git publication and Kaggle submissions.
 

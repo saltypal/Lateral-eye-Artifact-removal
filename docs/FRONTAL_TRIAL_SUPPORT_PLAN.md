@@ -1,6 +1,6 @@
 # Next frontal ablation: original-trial support alignment
 
-13 October 2026. Implemented and launched; numerical validation pending. Mode: Super Code.
+13 October 2026. Completed and verified; preservation qualification failed. Mode: Super Code.
 
 The bounded native replay passed215 tests and all baseline checks but no active
 candidate passed preservation. Do not promote its closest endpoint or enlarge
@@ -115,3 +115,11 @@ static review found no remaining launch blocker. Nine new fixtures plus the
 existing numerical suite run first on Kaggle. Validation is pending at launch;
 no advantage or qualification is claimed. Primary checks status every45seconds,
 retains watch events and performs bounded full-output retrieval on terminal status.
+
+
+## Completed outcome
+
+Main and dataset-free tests each passed224cases. Main306detector/255waveform/
+40metric/204padding checks passed and all194payloads are verified. Four new
+trial-support arms all fail preservation; VMDseparate0.154503 modification /
+0.102743 covariance. Stop promotion; see [NATIVE_TRIAL_SUPPORT_RESULTS.md](NATIVE_TRIAL_SUPPORT_RESULTS.md).

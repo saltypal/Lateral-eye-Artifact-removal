@@ -1024,6 +1024,82 @@ toresume read-only statuschecksifquotaallows; primarymonitorremainsresponsible
 andno claimofLunaavailabilityuntilverified. No models,newVMD,fieldfit orreserved
 access. No newSNR orpreservationbenefitclaimedfromlaunch.
 
+## Original-trial support verified: limited effect, no qualification (13 October 2026)
+
+Mainnative-trial-support-001/1 source0e33d874373ab35d5b4f47400bbf553ab87ef4c8,
+manifestdf7164091861707a8fc07e0531e18cbd4f3994ad8cc36a40226074916e142f70.
+224Kaggletests passed14warnings17.74s.306localdetectorwindowchecks,255baseline
+waveforms,40conditionmetricrows,204reflected/zero-paddingcropchecks allpassed.
+51trials/ninemethods;8inheritedfailed-window/channelentriesretainedpass-through.
+All194manifestpayloadsrecovered/checksummed:51predictions,51originaltracks,
+51decisions,18rest-spectrumarchives,fulltables/gates/configuration/environment.
+Numericalablation69.684522136s,runner312.013069899s,peak370516KiB.
+Primarywatch observedRUNNING13:52:04UTC→COMPLETE14:09:22UTC;platformelapsed
+isnotnumericalruntime. Matchingcompletedlogretrieved. Lunaindependentstatus
+monitoringresumedsuccessfully andconfirmedbothjobsterminal; no watchleftactive.
+
+Parallel dataset-free contractscheck launchedwhenmainlogsnotavailable:
+trial-support-contracts-001/1, sameexactsource0e33d87, campaignvmd-eog-20261010.
+224tests passed14warnings19.69s,runner23.771729852s,peak105536KiB;all8payloads
+verified. Manifestc3b72443f05c7f24d48be73694f9372285eaab36b6827100c8789b9cff6733c2.
+Thisseparatescodecontractvalidationfrommainreal-data/parity;nosignaldataused.
+
+Originaltrial supportslightlyimprovesnativepreservation butnoactivepathpasses:
+VMDOR worstmod0.185129660→0.182014436,cov0.127834427→0.122902588.
+VMDseparate worstmod0.158564048→0.154503102,cov0.108050763→0.102743356.
+RawOR trialmod0.215976140,cov0.131383543;rawseparatetrialmod0.181439818,
+cov0.109662095. Allmodification/covariancechecks failunchanged0.01/0.02;
+alpha/betapass. Identitypassespreservation only. Qualificationfalse.
+
+PaperordinaryCC retainedconditionconcatenation. VMDseparateblinkp02 window
+0.062773296→trial0.061808503;p03 0.105517041→0.107728404(slightlyworse).
+Lateralp02 .035932013→.035915200;p03 .041308423→.041242247.
+Verticalp02 .068313281→.068325405;p03 .144195077→.144239331.
+Nativebeforeblink .913124883/.958670863,lateral .273207969/.422304152.
+Suppression largelyretained,changesmixed—not uniformsuperiority orcleanneuraltruth.
+ConcatenatedrestRMSE VMDseparatep02 1.087684924→.986531378,p03 1.583875987→
+1.563118380(originalunverifiedsourceunits). DistinctengineeringtrialmeanRMSE
+alsosaved;donotmixaggregations. PaperrestrelativePSD andparticipantpermutations
+saved;twodevelopment-exposedparticipantssupportnopopulationsafetyclaim.
+
+Gate rebuiltONLYunscoredcorpuscalibration (manifest93da62cb9cec2984ec9687ee27f
+308d2dbea6dd57abd62541468daafb89d5e0d). p02calNPZhash73f431a364012f7fce15432f
+5b1c8ee689ce0cbab59006abcef01a313aceb426;p03hash8501c3502d8fd9a9752b30d29ec0f
+da7028f209db75295cfcbf4fe9a02b35c77. Restcalwindowcounts88/99, ocularfitting0.
+Exactsourceledgerequality,labels,trialboundaries andchannelmasksverified.
+Detectorcenters/thresholds/fulltracks savedintrial_support_calibration.json.
+No scoringlabelsforinference,newVMD,artifactfieldfit,globalrecipechoice,
+posteriorchange,trainingorreservedaccess. Nonfrontalbitwiseunchanged.
+
+Thetimingmechanismaffectsoutputs butdoesnotfixpreservation. Stop promotion of
+boundary/threshold/strengthrepair asqualifiedsystem. Do notrelabellingnative
+restorcallingresidualmodificationprovenneuralloss:itmaycontainoculartransients.
+Next distinctquestion isartifact-fieldselectivity underfixedK3/2000,strong
+rawcalibrationcomparator andarchivedcontrolledmodes; oldgain-onlyprojection
+scored10.890616 andreferencemodeprojection12.1386,soavoidrebrandingnegatives.
+Native lacksallwindowmodes; controlledevidence mustprecedeanynative shapetrial.
+ControlledSNR17.112814frontal/13.162704wholeVMDcontext vs13.183201rawcontext
+unchanged. Fullresulttables anddiagnosticdecision in docs/NATIVE_TRIAL_SUPPORT_RESULTS.md.
+
+## Next artifact-shape hypothesis declared, not executed (13 October 2026)
+
+Sol6.1xhigh reviewed a fixed four-arm controlled experiment: identity,
+strongerfixedrawcalgain,originalVMDfullfieldgain,sameVMDgain/DC-preserving
+selectedmodeartifact-shapeprojection. Onlagvalidsamplescenterselectedmodes
+andoriginalartifact;projectcenteredartifactintomodespan;restoreORIGINAL
+artifactmean. Invalidlagedgeszero,failed/masked/nonfrontalzero,emptyspanDConly
+flagged. No gainrefit,targetaccess,temporalchange,K/alpha searchorwholemodedrop.
+SelfcontaminatedEEGbasisdoesnotestablishbiologicalseparation. Earliergain-only
+projection10.890616 andcomponentprojection12.1386 remainnegativeprecedents;
+thisoperatorisdifferent butlow-confidence. Strongraw18.193247 comparison,
+full320development identities/archivedvectors,baselineparity,allpaperpaired
+metrics andunchangedpreservation/CCgatesrequired. Regression-generated
+contaminationbias requiresindependentbenchmarkforgeneralVMDclaims.
+Nativeonlyfirstwindowmodesavailable,sofullnativeextractionmustfollowqualified
+controlledevidenceandseparateidentitycontract. No teacher/student promotion.
+Contract docs/FRONTAL_ARTIFACT_SHAPE_PLAN.md;tasksSC01-SC04 NOTimplemented,
+NOTlaunched. CurrenttwoKagglejobscompleted/recovered, no activewatch left.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
