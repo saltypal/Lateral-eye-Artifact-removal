@@ -1250,6 +1250,36 @@ additionalrecipebank ornative-restselection. No benchmark haslaunched; if
 independentconstruction cannotbejustified, recordlimitation withoutfabrication.
 AllcurrentKagglejobscompleted/recovered;noactive monitor orpendingdownload.
 
+
+## Independent benchmark eligibility audit authored (14 October 2026 IST)
+
+IB01 investigated eight source/generator candidates whilekeeping originalK3/
+alpha2000 fullfieldbaseline. LegacyKaggleKladosprovenance88615e862176 exactly
+matched53exports butconfirmed no namedroworder/participantfields; retrieved
+MAT filesdoNOT repair anatomy. AFFiNE pairedblink simulation isnotapproved
+forpublicrelease perpublisheravailabilitystatement. NativeOSF/EyeTrackremain
+unpaired;Magdeburgreservedclosed;EEGdenoiseNetregionalmetadataabsent.
+
+Recovered EarEEGpaper DOI10.3389/fnins.2022.997377 supplementalData_Sheet_1.docx
+fromEuropePMCarchive; SHA2560f7ee5133c6d3b6ac8d39af51ca831c267831410b8793b8e37
+f615061bcbedc8,25540bytes. Documentary TableS3 labelsFz/Cz/Oz/C3/4/T3/4/F7/8
+are grouped sensitivity values; no signedindividualfrontalcoefficients/EOG
+pairpolarity orcompatible LEMONreference proved. No signinference fromdipole
+orientations,mirroredhemispheres ormagnitudeplots. Geometryisnotfullypublic.
+
+Authorednotebook57, reusablefrontal_benchmark_eligibility.py, eightcandidate
+register,strict elevenrequirementstatuscontract and20fixtures. Sourcehash,
+uniqueDOCXtable,groupedlabels andfailclosedreadiness arechecked; allunknown/
+absent/closed statuses retained. Includesamplitudecoupling: existingcorpus
+scoringreference driverswere unscaled relative toinjectedmixturestrength;
+this isdisclosedhistory, not retroactivelychanged. Allstatusesaredocumentary
+assessments,notnewempirical performance orpaper metrics.
+
+Sol6.1xhigh staticreview foundno launchblocker;localAST/register checks passed.
+Numericaltests andauditcheckpoint pendingKaggle. No EEGloading,mixturegeneration,
+VMD,newgainfieldfit,model,reservedsourceaccess orperformancecomparison.
+Existingreserved/confirmation,anatomy andclassicqualificationconstraintsremain.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

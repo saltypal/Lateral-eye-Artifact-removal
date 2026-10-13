@@ -6,7 +6,7 @@ from .artifacts import verify_parent
 from .contracts import canonical_hash
 
 
-STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration", "frontal-axis-calibration", "frontal-event-calibration", "frontal-native-events", "frontal-event-gain-calibration", "frontal-native-gain-events", "frontal-axis-events", "frontal-native-axis-events", "frontal-native-scaled-axis-events", "frontal-subspace-hybrid", "frontal-native-separate-axis", "frontal-native-axis-diagnostic", "frontal-native-bounded-feasibility", "frontal-native-trial-support", "frontal-artifact-shape", "frontal-shape-diagnostic")
+STAGES = ("frontal-fixture", "frontal-comparison", "frontal-native", "frontal-evidence", "frontal-evaluation", "frontal-cache-audit", "frontal-frozen-transfer", "frontal-gain-hybrid", "frontal-hybrid-evidence", "frontal-gain-unit-audit", "frontal-calibration-hybrid", "frontal-native-calibration", "frontal-axis-calibration", "frontal-event-calibration", "frontal-native-events", "frontal-event-gain-calibration", "frontal-native-gain-events", "frontal-axis-events", "frontal-native-axis-events", "frontal-native-scaled-axis-events", "frontal-subspace-hybrid", "frontal-native-separate-axis", "frontal-native-axis-diagnostic", "frontal-native-bounded-feasibility", "frontal-native-trial-support", "frontal-artifact-shape", "frontal-shape-diagnostic", "frontal-benchmark-eligibility")
 FIXED_SETTINGS = ((3, 2000), (4, 2000))
 
 
@@ -30,7 +30,7 @@ def validate_policy(config, stage):
 
 def require_checkpoint(stage, input_root, config):
     validate_policy(config, stage)
-    if stage == "frontal-fixture":
+    if stage in ("frontal-fixture", "frontal-benchmark-eligibility"):
         return
     readiness = list(Path(input_root).rglob("research_ready.json"))
     fixtures = list(Path(input_root).rglob("frontal_fixture_summary.json"))
@@ -74,6 +74,9 @@ def require_checkpoint(stage, input_root, config):
 def execute(stage, input_root, output, config, profile, experiment):
     validate_policy(config, stage)
     from .frontal_replication import run_fixture, run_comparison
+    if stage == "frontal-benchmark-eligibility":
+        from .frontal_benchmark_eligibility import run
+        return run(output)
     if stage == "frontal-fixture":
         return run_fixture(output, config)
     if stage == "frontal-artifact-shape":

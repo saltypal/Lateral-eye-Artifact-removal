@@ -164,9 +164,9 @@ by this planned ablation.
 - [x] SD01 Validate frozen-parent/prediction/DC/edge/MSE identity and error-decomposition fixtures on Kaggle. Completed243tests/640waveforms/8320MSE/4160DCchecks at5d655c7; all15manifestpayloads verified.
 - [x] SD02 Recover per-channel and recipient/condition/input error terms; explain failed projection without selecting another recipe. Dominant discarded-field energy plus positive error interaction explains reconstruction penalty; allninecontaminated strata worse. See FRONTAL_SHAPE_DIAGNOSTIC_RESULTS.md. No promotion.
 
-## Next frontal independent-validity checkpoint — unstarted
+## Frontal independent-validity checkpoint — source audit active
 
-- [ ] IB01 Audit an independent paired contamination mechanism and verified frontal source eligibility.
+- [ ] IB01 Audit an independent paired contamination mechanism and verified frontal source eligibility. Notebook57/eight-source register authored; no current eligible candidate assumed. Software/source identity validation pendingKaggle.
 - [ ] IB02 Freeze identity/raw/originalVMD-only protocol, source groups, calibration and coupled reference/ocular amplitude contract.
 - [ ] IB03 Run matched Kaggle evidence only after generator/data contracts pass.
 - [ ] IB04 Review accuracy/preservation/uncertainty without promotion beyond measured scope.

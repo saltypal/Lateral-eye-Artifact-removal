@@ -152,6 +152,8 @@ NEW_STAGES.append(("55_Frontal_Artifact_Shape", "frontal-artifact-shape", "Test 
 DETAILS["frontal-artifact-shape"] = "Attach exact controlled monotonic/1, corpus/2, historical K3 cache/1, readiness/1 and frontal fixture/1. No raw data, neural checkpoint or new VMD. Same320development examples and archived post-gain fields; verify names, targets(for scoring), mode/residual reconstruction and original selected_modes (.2 lag association) before projection. Four outputs:identity,calibratedraw,originalVMD,DC-preserving shape. Gain/admission/lags fixed; no temporal mask. Require960baseline prediction checks and underlying metric parity. CC deterioration uses strongest calibrated raw. Preserve failed/masked/nonfrontal pass-through. Save ranks, singular values, coefficients, DC, all predictions/paper metrics/gates and source-aware uncertainty. Contaminated EEG basis is not pure ocular space. Qualification remainsfalse; no reserved or model work."
 NEW_STAGES.append(("56_Frontal_Shape_Error_Diagnostic", "frontal-shape-diagnostic", "Diagnose the rejected shape correction using frozen prediction error identities."))
 DETAILS["frontal-shape-diagnostic"] = "Attach shape-full/1, readiness/1 and frontal fixture/1. No raw corpus, cache, new VMD or fitting. Verify exact parent/source/manifest and all320frozen windows. Retain every verified frontal row and failure. Check DC, invalid lag edges, selected-span rank bounds,640saved prediction identities and8320channel-MSE checks. Decompose MSE change into discarded-field energy plus error/field cross term; targets are retrospective evaluation references only. Save per-channel and recipient/condition/input terms; no new correction or selection. No native/teacher/integration qualification follows."
+NEW_STAGES.append(("57_Frontal_Benchmark_Source_Eligibility", "frontal-benchmark-eligibility", "Audit source eligibility before an independent frontal paired benchmark."))
+DETAILS["frontal-benchmark-eligibility"] = "Metadata/provenance only; no raw dataset or kernel parents, EEG loading, VMD, fitting or model. Read the pinned source-contract register and checksum-verified public Ear-EEG supplement. Preserve sensitivity table groups and all unresolved signs/reference/polarity fields. Every benchmark requirement must be verified before readiness. Save source matrix, exact document, blocking reasons and software-test evidence. An audit can COMPLETE with benchmark_ready=false; this is not a cleaning score or promotion. Current sources, legacy unknown anatomy, native unpaired data and reserved access remain correctly distinguished."
 
 
 def build(path, stage, run_spec=None):
@@ -247,6 +249,9 @@ elif CONFIGURATION.get('schema_version') == 3:
     if RUN_SPEC['stage'] == 'frontal-shape-diagnostic':
         print((CHECKOUT/'docs/FRONTAL_SHAPE_DIAGNOSTIC_PLAN.md').read_text())
         print((CHECKOUT/'src/vmd_eog/frontal_shape_diagnostic.py').read_text())
+    if RUN_SPEC['stage'] == 'frontal-benchmark-eligibility':
+        print((CHECKOUT/'docs/FRONTAL_BENCHMARK_ELIGIBILITY_PLAN.md').read_text())
+        print((CHECKOUT/'src/vmd_eog/frontal_benchmark_eligibility.py').read_text())
     if RUN_SPEC['stage'] == 'frontal-native-trial-support':
         print((CHECKOUT/'docs/FRONTAL_TRIAL_SUPPORT_PLAN.md').read_text())
         print((CHECKOUT/'src/vmd_eog/frontal_trial_support.py').read_text())
@@ -351,6 +356,15 @@ from IPython.display import display
 print((OUT/'shape_error_summary.json').read_text())
 display(pd.read_csv(OUT/'shape_error_balanced_terms.csv'))
 display(pd.read_csv(OUT/'shape_error_condition_terms.csv'))
+'''
+    if stage == 'frontal-benchmark-eligibility':
+        tables = '''import pandas as pd
+from IPython.display import display
+print((OUT/'benchmark_eligibility_summary.json').read_text())
+sources = pd.read_csv(OUT/'benchmark_eligibility.csv')
+display(sources[['id', 'role', 'paired_target', 'frontal_mapping', 'independent_generator', 'eligible']])
+display(sources[['id', 'limitations']])
+print((OUT/'published_sensitivity_table.json').read_text())
 '''
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':
