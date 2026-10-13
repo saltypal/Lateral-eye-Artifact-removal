@@ -50,8 +50,10 @@ Failed VMD, masked and nonfrontal rows retain zero artifact and pass through.
 Use no clean target, true artifact, input mixture level or scoring label in
 projection, component selection, calibration or gain estimation.
 
-Subtract the new artifact once from ORIGINAL EEG. Retain neural content outside
-the estimated correction and preserve the reconstruction residual. Do not
+Subtract the new artifact once from ORIGINAL EEG. Retain original input outside
+the estimated correction; do not discard the reconstruction residual. This
+does not imply residual content is mathematically untouched, since VMD
+components need not be orthogonal. Do not
 reconstruct cleaned EEG by dropping whole modes. The selected EEG-derived basis
 is itself contaminated: numerical projection is not proof of pure ocular/neural
 separation. Save rank, singular values, selected modes, DC, valid sample counts,
@@ -91,3 +93,27 @@ controlled evidence. Current real-data and controlled qualification remain false
 | SC04 review | accuracy, preservation, failures and cost | accept/reject fixed challenger | unchanged stronger comparator and gates |
 
 No SC implementation or job has started at plan publication.
+
+
+## Implementation and interface audit
+
+Exact controlled parent frontal-monotonic-events-001/1 at939fadf435440b3cac7436
+f03c3ce6d80dfa52aa, manifest1ab061565aca07fb826d48477087c949720dfa300facad90be
+3ebe2008876d20, contains separate post-gain raw/VMD fields and selected-mode
+metadata for all320windows. Attach corpus/2, K3-cache/1, readiness/1 and frontal
+fixture/1. The K3 cache is historical evidence: only K3/alpha2000 entries are
+read; AutoVMD selection and decomposition are never invoked.
+
+Reusable frontal_artifact_shape.py and notebook55 are authored. DC projection
+uses fixed rcond=eps64*max(valid-sample-count,selected-mode-count), returns rank,
+coefficients/singular values and retained/discarded centered artifact energy.
+The helper accepts no paired target and preserves invalid lag edges as zero.
+Underlying baseline metrics are checked before new CC deterioration is computed
+against calibrated raw. Legacy nonfinite nulls are normalized for parity only;
+new CSV retains infinity/NaN rather than inventing finite clean SNR.
+
+Nine artifact-shape fixture functions (including three invalid-selection cases)
+and an explicit frontal-only uncertainty-scope fixture are queued for Kaggle.
+The generic uncertainty helper's default remains all original regions; only
+this stage explicitly requests frontal scope. No region rows are fabricated.
+Source/notebook syntax is checked locally; no numerical work has run locally.

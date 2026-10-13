@@ -148,6 +148,10 @@ NEW_STAGES.append(("54_Native_Frontal_Trial_Support", "frontal-native-trial-supp
 DETAILS["frontal-native-trial-support"] = "Attach exact native separate-axis/1, corpus/2, readiness/1 and frontal review fixture/1; no raw data. Reconstruct detector only from unscored calibration; validate exact source ledgers, labels, boundaries, every cached threshold and all306local window masks before new predictions. Same fixed.4/1 policy and K3/2000 fields/gains; nine scored outputs. Compute support before padding and align original samples across windows. Require255baseline waveform checks,40condition metric rows and204reflected/zero-padding crop checks. Save complete-condition named-reference CC, rest RMSE/spectra, engineering gates and all tracks/predictions/failures. No new VMD, artifact fitting, recipe selection, training or reserved evaluation. Qualification remains false."
 
 
+NEW_STAGES.append(("55_Frontal_Artifact_Shape", "frontal-artifact-shape", "Test fixed DC-preserving artifact-shape projection with unchanged VMD gain."))
+DETAILS["frontal-artifact-shape"] = "Attach exact controlled monotonic/1, corpus/2, historical K3 cache/1, readiness/1 and frontal fixture/1. No raw data, neural checkpoint or new VMD. Same320development examples and archived post-gain fields; verify names, targets(for scoring), mode/residual reconstruction and original selected_modes (.2 lag association) before projection. Four outputs:identity,calibratedraw,originalVMD,DC-preserving shape. Gain/admission/lags fixed; no temporal mask. Require960baseline prediction checks and underlying metric parity. CC deterioration uses strongest calibrated raw. Preserve failed/masked/nonfrontal pass-through. Save ranks, singular values, coefficients, DC, all predictions/paper metrics/gates and source-aware uncertainty. Contaminated EEG basis is not pure ocular space. Qualification remainsfalse; no reserved or model work."
+
+
 def build(path, stage, run_spec=None):
     spec = run_spec or {"stage": stage, "run_id": stage+"-manual", "git_sha": "", "campaign_id": "vmd-eog-20261010", "profile": "pilot"}
     setup = '''import os, sys, json, tempfile, subprocess
@@ -235,6 +239,9 @@ elif CONFIGURATION.get('schema_version') == 3:
         # Read pinned source without importing into the host notebook kernel.
         # Numerical imports and execution belong to the isolated runner environment.
         print((CHECKOUT/'src/vmd_eog/frontal_event_support.py').read_text())
+    if RUN_SPEC['stage'] == 'frontal-artifact-shape':
+        print((CHECKOUT/'docs/FRONTAL_ARTIFACT_SHAPE_PLAN.md').read_text())
+        print((CHECKOUT/'src/vmd_eog/frontal_artifact_shape.py').read_text())
     if RUN_SPEC['stage'] == 'frontal-native-trial-support':
         print((CHECKOUT/'docs/FRONTAL_TRIAL_SUPPORT_PLAN.md').read_text())
         print((CHECKOUT/'src/vmd_eog/frontal_trial_support.py').read_text())
@@ -323,6 +330,15 @@ gates = json.loads((OUT/'trial_support_gates.json').read_text())
 display(pd.DataFrame([{'method':row['method'], **row['worst_record'], 'preservation_pass':row['native_preservation_gates_pass']} for row in gates]))
 display(pd.read_csv(OUT/'native_condition_participants.csv').head(18))
 print('Full suppression, rest spectra, support tracks and prediction files remain saved.')
+'''
+    if stage == 'frontal-artifact-shape':
+        tables = '''import pandas as pd
+from IPython.display import display
+print((OUT/'shape_summary.json').read_text())
+print((OUT/'shape_controlled_gates.json').read_text())
+display(pd.read_csv(OUT/'shape_method_means.csv'))
+display(pd.read_csv(OUT/'shape_condition_means.csv'))
+display(pd.read_csv(OUT/'coverage_uncertainty_intervals.csv'))
 '''
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':

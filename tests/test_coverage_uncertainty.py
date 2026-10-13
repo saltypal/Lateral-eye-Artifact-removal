@@ -57,6 +57,16 @@ def score_fixture():
     return pd.DataFrame(rows)
 
 
+def test_explicit_frontal_scope_retains_paired_analysis_without_fabricated_regions(tmp_path):
+    scores = score_fixture()
+    frontal = scores[scores.scope == "frontal"].copy()
+    report = uncertainty_report(frontal, tmp_path, scopes=("frontal",), repetitions=20)
+    assert set(report.scope) == {"frontal"}
+    assert report[report.metric == "snr_energy_db"].iloc[0].mean_delta == pytest.approx(2.)
+    with pytest.raises(ValueError, match="scopes"):
+        uncertainty_report(frontal, tmp_path / "bad", scopes=("frontal", "frontal"), repetitions=20)
+
+
 def test_paired_source_bootstrap_has_expected_direction_and_is_reproducible(tmp_path):
     scores = score_fixture()
     first = uncertainty_report(scores, tmp_path / "first", repetitions=80)

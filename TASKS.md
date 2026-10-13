@@ -150,8 +150,8 @@ At checklist creation no new diagnostic, challenger or neural job has launched.
 
 ## Next distinct frontal artifact-shape hypothesis — unlaunched
 
-- [ ] SC01 Audit exact controlled mode/field/window parent interfaces and publication identities.
-- [ ] SC02 Implement DC-preserving selected-mode artifact-shape helper and numerical fixtures; no gain refit.
+- [x] SC01 Audit exact controlled mode/field/window parent interfaces and publication identities. Saved post-gain fields, selected modes and all320archivedK3 windows available; exact parents pinned.
+- [x] SC02 Implement DC-preserving selected-mode artifact-shape helper and numerical fixtures; no gain refit. Authored with numerical validation pending on Kaggle.
 - [ ] SC03 Run fixed four-arm controlled comparison with strongest raw comparator and unchanged baseline parity.
 - [ ] SC04 Report paired accuracy/preservation and reject or continue the fixed challenger; no native/teacher promotion from controlled results alone.
 

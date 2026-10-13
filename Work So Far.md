@@ -1100,6 +1100,34 @@ controlledevidenceandseparateidentitycontract. No teacher/student promotion.
 Contract docs/FRONTAL_ARTIFACT_SHAPE_PLAN.md;tasksSC01-SC04 NOTimplemented,
 NOTlaunched. CurrenttwoKagglejobscompleted/recovered, no activewatch left.
 
+## Fixed artifact-shape implementation authored (13 October 2026)
+
+SC01audit confirmedexactcontrolledmonotonic parent939fadf435440b3cac7436f03c3
+ce6d80dfa52aa/manifest1ab061565aca07fb826d48477087c949720dfa300facad90be3ebe
+2008876d20. transfer_predictions contain separatepost-gainraw/VMD artifacts;
+transfer_decisions storeselectedmodes/gain/association/lags/failures. Archived
+Modes verifiesexactcorpus/waveform/recipe/scope andmode-plus-residual identities.
+Usefrozen320controlledexamples,require_archived_modes=True,onlyK3/alpha2000
+fromhistoricalcache; no new decomposition,AutoVMDsearch,legacyNNload/sourcefetch.
+
+Authoredfrontal_artifact_shape.py/notebook55: identity,strongerrawcalgain,
+originalVMDfullfieldgain,andDC-preservingartifact-shapeprojection. Samegain,
+.4admission,.2modecorrelation,[-10,0,10]lags,.01ridge andmultiplier1;notemporal
+support. Onvalidsamples,centerselectedvectors andoriginalVMDartifact,fitfixed
+leastsquares rcond=eps64*max(validN,selectedK),restoreoriginalartifactDC;zero
+invalidedges. EmptyspanDConlyflagged;failed/masked/nonfrontalzero.Passoriginal
+EEG once throughsubtraction; residual/modes neednotbeorthogonal orbiologicallypure.
+
+Baselineprediction/underlyingmetricparityrequired;newCCdeteriorationvsstrong
+calibratedraw (oldparentCCusedweakdirect,notreused). Legacy nonfinite nulls
+normalizedONLYforparity;newCSVretainsinf/NaN. Allscores,predictions,coefficients,
+ranks,singulars,DC/energy/failures andrecipient/donor-awareapproximateintervals
+saved. Genericuncertaintyhelper nowhas OPTIONALscopeargument;defaultallregions
+unchanged;newcallerfrontalonly/dirtyonly,nofabricatedregions. Addedshape
+invariants(idempotence/orthogonality/unit/modepermutation/DC/edge/mask/failure)
+andfrontal-scopefixture. AST/syntaxcheckedlocally,numericaltestsNOT runlocally.
+Sol6.1xhighstaticreviewrequested. Qualificationfalse,newscientificscorespending.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

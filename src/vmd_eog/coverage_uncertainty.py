@@ -145,7 +145,7 @@ def _bootstrap(units, recipients, donors, base_weights, repetitions, seed):
 
 
 def uncertainty_report(scores, output, config=None, *, comparators=(DEFAULT_COMPARATOR,),
-                       candidates=DEFAULT_CANDIDATES, repetitions=2000, seed=42):
+                       candidates=DEFAULT_CANDIDATES, repetitions=2000, seed=42, scopes=DEFAULT_SCOPES):
     """Write paired source-aware intervals and row-level paired differences.
 
     ``scores`` is the coverage channel score DataFrame. The default comparison
@@ -156,6 +156,9 @@ def uncertainty_report(scores, output, config=None, *, comparators=(DEFAULT_COMP
     """
     del config  # Kept as an integration-friendly call signature; all policy is explicit here.
     _validate_scores(scores)
+    scopes = tuple(scopes)
+    if not scopes or len(set(scopes)) != len(scopes) or not set(scopes).issubset(DEFAULT_SCOPES):
+        raise ValueError("Uncertainty scopes must be a nonempty unique subset of declared scopes")
     if repetitions < 1 or seed != 42:
         raise ValueError("Coverage uncertainty uses deterministic seed 42 and positive repetitions")
     metrics = tuple(metric for metric in PAPER_KEYS if metric in scores.columns)
@@ -169,7 +172,7 @@ def uncertainty_report(scores, output, config=None, *, comparators=(DEFAULT_COMP
         for candidate in candidates:
             if candidate == comparator:
                 raise ValueError("Candidate and comparator must differ")
-            for scope in DEFAULT_SCOPES:
+            for scope in scopes:
                 pair = _strict_pair(scores, comparator, candidate, scope, metrics)
                 all_pairs.append(pair)
                 recipients = sorted(pair.recipient.unique(), key=str)
@@ -223,7 +226,7 @@ def uncertainty_report(scores, output, config=None, *, comparators=(DEFAULT_COMP
         "requested_repetitions": repetitions,
         "comparators": list(comparators),
         "candidates": list(candidates),
-        "scopes": list(DEFAULT_SCOPES),
+        "scopes": list(scopes),
         "metrics": list(metrics),
         "metric_directions": METRIC_DIRECTIONS,
         "unavailable_requested_metrics": ["rrmse_spectrum"] if "rrmse_spectrum" not in scores.columns else [],
