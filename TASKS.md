@@ -164,11 +164,21 @@ by this planned ablation.
 - [x] SD01 Validate frozen-parent/prediction/DC/edge/MSE identity and error-decomposition fixtures on Kaggle. Completed243tests/640waveforms/8320MSE/4160DCchecks at5d655c7; all15manifestpayloads verified.
 - [x] SD02 Recover per-channel and recipient/condition/input error terms; explain failed projection without selecting another recipe. Dominant discarded-field energy plus positive error interaction explains reconstruction penalty; allninecontaminated strata worse. See FRONTAL_SHAPE_DIAGNOSTIC_RESULTS.md. No promotion.
 
-## Frontal independent-validity checkpoint — source audit active
+## Frontal independent-validity checkpoint — audit complete, readiness false
 
-- [ ] IB01 Audit an independent paired contamination mechanism and verified frontal source eligibility. Notebook57/eight-source register authored; no current eligible candidate assumed. frontal-source-eligibility-001/1 passed263tests thenHTTPtimedout; all7failurepayloads verified. SameSHA document source-loading repair authored; newversion pending.
+- [x] IB01 Audit an independent paired contamination mechanism and verified frontal source eligibility. Repaired002/2 at27eeefe passed266tests andexactsource/tablechecks; all15payloads verified. Eight audited sources, no eligible candidate; benchmark_ready=false. Failed001 preserved. IB02-IB04held.
 - [ ] IB02 Freeze identity/raw/originalVMD-only protocol, source groups, calibration and coupled reference/ocular amplitude contract.
 - [ ] IB03 Run matched Kaggle evidence only after generator/data contracts pass.
 - [ ] IB04 Review accuracy/preservation/uncertainty without promotion beyond measured scope.
 
 See FRONTAL_INDEPENDENT_BENCHMARK_CHECKPOINT.md. No new benchmark or recipe has launched.
+
+## Proposed reference-coupling repair — unstarted
+
+- [ ] RC01 Audit recoverable unscored source inputs, reference baselines, units and identities.
+- [ ] RC02 Author separately versioned homogeneous field/reference generator contract; preserve old corpus.
+- [ ] RC03 Run coupling/offset/lag/leakage fixtures on Kaggle.
+- [ ] RC04 Create bounded development-source pilot with complete recovery and new hashes.
+- [ ] RC05 Run identity/raw/original-frontal-VMD matched pilot after contracts pass.
+
+This is a development consistency repair, not the independent benchmark. See FRONTAL_REFERENCE_COUPLING_REPAIR_PLAN.md.

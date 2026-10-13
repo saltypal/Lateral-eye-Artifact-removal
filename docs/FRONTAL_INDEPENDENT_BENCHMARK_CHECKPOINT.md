@@ -36,3 +36,7 @@ and retain the completed negative evidence. The original VMD correlation and
 native preservation failures remain open. This document declares the next
 research checkpoint; no new benchmark, source download or numerical run has
 started, and no model/integration promotion is authorized by it.
+
+## IB01 execution outcome
+
+Notebook57 completed266tests andexactdocument/tablechecks at27eeefe. All15resultpayloads verified. Source audit is complete; no audited candidate satisfies the contract. Independentbenchmark readiness remainsfalse, IB02-IB04 held. See FRONTAL_BENCHMARK_ELIGIBILITY_RESULTS.md. A separate development reference-coupling repair is proposed and must not be relabelled independent validation.

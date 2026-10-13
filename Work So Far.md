@@ -1312,6 +1312,34 @@ sourceeligibilitystate,parameter,EEGdataoracceptancecriterionchanged. Three
 newfixtures coveridentity/noHTTP,changedhashrejection,pathescape rejection.
 Repairtestexecution pendingnewKaggleversion; oldnegativeevidence notoverwritten.
 
+
+## IB01 recovered: audit complete, independent benchmark readiness false
+
+frontal-source-eligibility-002/2 at27eeefe3f64417c9c8c8c4294c4ae148cbddd345
+completed266tests/14warnings in21.41s; all17outputs/all15manifestpayloads
+recovered/verified. Resultmanifest dfe024b9ab0b83558983276c4e648dfcde41ed7bfe9a1d2e9d3509dc4c2f1299.
+Pinned25540byteDOCXmatchedoriginal0f7ee513hash inKagglecheckout; no liveHTTP.
+Tableheader/sixgroupedrowlabels checked withoutsigninference. Stage0.014528s/
+runner26.828647s/peak190996KiB. Completed21:45:20UTC,recovered21:45:28UTC.
+
+Eightdocumentarycandidatesreviewed; eligible_candidatesempty, benchmark_ready
+false,qualificationfalse. Otherregistryassessments aredocumentary,notfresh
+waveformvalidation. NativeOSF/EyeTrackunpaired;Kladosrowanatomy/units/groups
+unresolved;AFFiNEdatarestricted;FEMsensitivitytable incompleteforoursigned
+referenceconventions;Magdeburgreservedclosed;existingcorpusnotindependent.
+IB01auditcheckboxcomplete doesnotmeaneligibilitypassed. IB02-IB04held.
+
+Fullmatrix,reasons,sourcecitations,failure/repairandruntime saved/documented in
+docs/FRONTAL_BENCHMARK_ELIGIBILITY_RESULTS.md. No newSNR,decomposition,model,
+fieldfit,correction/reservedsourceaccess. Original17.112814dBVMD preserved.
+
+Practicalnextcheckpoint declared (RC01-RC05), notimplemented/launched:
+reference-coupled, separatelyversioneddevelopmentcorpus withprovenbaseline/
+lag/unit contracts, sourceprefixrecovery andsharedEEG/EOGdrivemultiplier.
+Thisrepair isnotindependentbenchmarkoraguaranteedSNRgain. See
+docs/FRONTAL_REFERENCE_COUPLING_REPAIR_PLAN.md. Historicalcorpusandresults
+remainfrozen; stopunsupported sourceclaims. AllcurrentKagglejobscompleted.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
