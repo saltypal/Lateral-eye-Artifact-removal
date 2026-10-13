@@ -1455,6 +1455,35 @@ subgroupreportingplanned onKaggle. AddedEMA-ASR2026preprint aslaterexploratory
 candidate; itsblinkattenuationcomeswithincreasedreconstruction/spectraldeviation,
 notdemonstratedpairedSNRorlateralsuperiority. No newerASRmethodlaunched.
 
+## Nonfrontal pilot002 verified: whole-cap improvement on the matched pilot
+
+Kaggleversion2 at472b217 completed50examples/5recipients/5donors/5calibrations/
+21arms.281tests passed/14warnings/22.45s;900frozenfrontal,30savedfit and85800
+baselinepaper-metric checks. All186manifestpayloadsverified aftercompletefull
+retrieval;50predictions/decisions andall5fits retained. Manifest081dfc70e5b5716d
+25e245fa050cc711184f8f944accca51d1d388761bc3f971. No newfitfailure/exclusion.
+
+Wholepilotmeans: archivedVMDcontext13.994230/rawcontext13.938976; ICArejectionboth
+14.007252; componentridgeboth16.494200; waveletboth13.925556; selectivewaveletboth
+13.840651; rank1both13.568034; rank2both16.728031dB. Rank2central16.333011 vs11.121655,
+posterior14.788694 vs13.653156. Largestgain iscentral; central-onlyrank2whole16.376599.
+All18compositions/3controls andMSE/RRMSE/CC/SNR/improvement perchannel/condition
+saved. Frozenfrontalpilot20.176007 isthesameoldmethod onsmallercohort, notimproved
+fromfullcohort17.112814. RegionaldBneveradded. Numericalstage288.771624s,
+runner443.513476s/peak630416KiB. WholePNG inspected; notebookHTMLvisualgap disclosed.
+
+Rank2both pilotwhole/central engineeringgates passagainstbothcontextcomparators,
+syntheticcleanmetricsallzero; strongestfrontalCCgatefails0.005534757>.005 and
+posteriorbelow15dB. Rank2wholepairedchange+2.733801 approximateinterval[.134641,
+4.007387],456of500validdraws; componentridgeinterval includeszero. Small
+development-exposed regression-generatedpilot, notfinalindependentwinner.
+Nativefrontpreservation stillfails, nativecentral/posterior untested; no models,
+AutoVMD,newVMDsolver orreservedaccess. SeeNONFRONTAL_CHALLENGERS_RESULTS.md for
+all21wholemeans, conditiontable, negativearms, failures/repair andartifactpaths.
+
+Pilotcontracts/recoverypassed; nextsamefixedrecipesfull320/32 comparison approved
+asexploratorymeasurement, notteacherpromotion orrecipechosenfrompilotoutputs.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
