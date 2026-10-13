@@ -75,6 +75,15 @@ def test_selective_wavelet_only_changes_supported_interval():
     np.testing.assert_array_equal(artifact[444:], np.zeros(580))
     assert np.any(artifact[400:430] != 0)
     assert 0 < info["support_fraction"] < 1
+    assert info["reconstruction_relative_error"] <= 1e-10
+
+
+def test_wavelet_real_reconstruction_damage_still_rejected(monkeypatch):
+    import pywt
+    original_reconstruct = pywt.waverec
+    monkeypatch.setattr(pywt, "waverec", lambda *args, **kwargs: original_reconstruct(*args, **kwargs) * 1.01)
+    with pytest.raises(RuntimeError, match="reconstruction contract"):
+        large_wavelet_contribution(np.sin(np.arange(1024) / 20.), 1.)
 
 
 @pytest.mark.parametrize("threshold", [0., -1., float("nan")])

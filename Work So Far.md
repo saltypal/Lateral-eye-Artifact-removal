@@ -1421,6 +1421,21 @@ newpinnedKaggleversion and numericalvalidation. No thresholds, fixedmechanisms o
 sourcepartitions changed. Uncertaintycurrentlycovers both-regioncompositions;
 single-regionarms remain exploratorydiagnostics pending their own pairedreview.
 
+## nonfrontal-pilot-001 numerical contract failure retained
+
+KagglestatusERROR; recoveredrunidentity/state/tests/manifest. Passed278tests,
+failed1test (selectivewavelet impulse reconstruction),14warnings,21.28s. Failure
+was the pointwiseallclose rtol1e-10/atol1e-12 at expectedzeros after finiteprecision
+sym4 reconstruction. No example scoring or newSNR completed. Parent identity/
+configuration checks succeeded before tests. Numericalacceptance didnotpass.
+
+Repair retains1e-10 vector-relative reconstruction tolerance and reportsrelative
+L2/maxabsolute transform error; a deliberate1percent damagedinverse fixture must
+stillfail. This changes a software reconstruction criterion's normalization,
+not the SNR/clean/spectral/covariance/CC engineering gates. Precise transformerror
+is measured on Kaggle in the repaired version. Contract002 atd7001c8 predates
+thisrepair and mayfail the sameknowncheck; preserve its results too.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

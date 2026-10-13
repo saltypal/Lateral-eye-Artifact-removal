@@ -91,7 +91,13 @@ def large_wavelet_contribution(values, threshold, *, selective=False,
              for part in coefficients]
     artifact = pywt.waverec(large, basis, mode="symmetric")[:len(values)]
     rebuilt = pywt.waverec(coefficients, basis, mode="symmetric")[:len(values)]
-    if not np.allclose(rebuilt, values, rtol=1e-10, atol=1e-12):
+    # Symlet filter coefficients have finite precision. A pointwise relative
+    # test becomes an absolute-zero test at silent samples; use the declared
+    # 1e-10 relative tolerance on the vector reconstruction instead.
+    reconstruction_error = float(np.linalg.norm(rebuilt - values))
+    scale = float(np.linalg.norm(values))
+    relative_error = reconstruction_error / scale if scale > 0 else reconstruction_error
+    if not np.isfinite(relative_error) or relative_error > 1e-10:
         raise RuntimeError("Wavelet reconstruction contract failed")
     support = np.ones(len(values), dtype=np.float64)
     if selective:
@@ -102,7 +108,9 @@ def large_wavelet_contribution(values, threshold, *, selective=False,
             support = uniform_filter1d(support, 2 * taper + 1, mode="constant", cval=0.)
         artifact *= support
     return artifact, {"level": level, "threshold": float(threshold),
-                      "support_fraction": float(np.mean(support))}
+                      "support_fraction": float(np.mean(support)),
+                      "reconstruction_relative_error": relative_error,
+                      "reconstruction_max_abs_error": float(np.max(np.abs(rebuilt - values)))}
 
 
 def replace_regions(original, frozen, artifact, regions, mask, allowed_regions):
