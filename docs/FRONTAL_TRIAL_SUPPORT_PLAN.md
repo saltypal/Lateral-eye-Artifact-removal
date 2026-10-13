@@ -1,6 +1,6 @@
 # Next frontal ablation: original-trial support alignment
 
-13 October 2026. Planned, not implemented or launched. Mode: Super Code.
+13 October 2026. Implemented and launched; numerical validation pending. Mode: Super Code.
 
 The bounded native replay passed215 tests and all baseline checks but no active
 candidate passed preservation. Do not promote its closest endpoint or enlarge
@@ -104,3 +104,14 @@ condition-metric rows. Save relative rest spectra and the existing paper-inspire
 participant permutation procedure; two exposed participants do not justify
 population superiority. Failed VMD fields remain scored pass-through.
 Tiny Hann-convolution roundoff is accepted within1e-12 without clipping tracks.
+
+
+## Kaggle launch
+
+Run `native-trial-support-001/1`, kernel `satyapaladugu/vmd-native-trial-support/1`,
+source `0e33d874373ab35d5b4f47400bbf553ab87ef4c8`. Submitted13 October2026;
+exact four versioned parents, no raw dataset attachment. GPT-6.1 Sol extra-high
+static review found no remaining launch blocker. Nine new fixtures plus the
+existing numerical suite run first on Kaggle. Validation is pending at launch;
+no advantage or qualification is claimed. Primary checks status every45seconds,
+retains watch events and performs bounded full-output retrieval on terminal status.

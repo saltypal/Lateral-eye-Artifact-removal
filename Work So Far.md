@@ -1012,6 +1012,18 @@ no superiority/populationsafetyclaim. Tiny1e-12Hannroundoffallowedwithoutclippin
 Sol6.1xhighstaticreview correctedfixturelocalnameandexpectedbroadcastshape
 beforelaunch. Alltests andalgorithmvalidation remainpendingKaggle.
 
+## Original-trial support CPU notebook launched (13 October 2026)
+
+native-trial-support-001/1, satyapaladugu/vmd-native-trial-support, exactsource
+0e33d874373ab35d5b4f47400bbf553ab87ef4c8. Fourparentsnative-separate-axis/1,
+corpus/2,readiness/1,frontal-fixture/1; nodatasetattachment. Sol6.1xhighreview
+foundnoremainingstaticblocker. Numericvalidationpending; firstliveAPIstatus
+RUNNING at2026-10-13T13:52:04UTC. Primary45secondwatchsavesstatus andretrieves
+alloutputswithboundeddownloaderonterminalstatus. Lunaexistingmonitorwasasked
+toresume read-only statuschecksifquotaallows; primarymonitorremainsresponsible
+andno claimofLunaavailabilityuntilverified. No models,newVMD,fieldfit orreserved
+access. No newSNR orpreservationbenefitclaimedfromlaunch.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

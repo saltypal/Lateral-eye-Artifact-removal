@@ -29,7 +29,8 @@ exposed recordings. See [FRONTAL_BOUNDED_FEASIBILITY_RESULTS.md](FRONTAL_BOUNDED
 Stop promotion of this repair. Next requires a distinct selectivity/boundary
 question; no additional K/alpha search or native recipe selection.
 Next contract: [FRONTAL_TRIAL_SUPPORT_PLAN.md](FRONTAL_TRIAL_SUPPORT_PLAN.md),
-planned and unlaunched. Qualification remains false.
+implemented and launched as native-trial-support-001/1 at0e33d87; numerical
+validation pending. Qualification remains false.
 Mode: Super Code. Independent read-only audits prepare reviewable contracts;
 the primary owns implementation, Git publication and Kaggle submissions.
 
