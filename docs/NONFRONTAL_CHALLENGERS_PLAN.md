@@ -30,6 +30,11 @@ VMD-context13.162704 dB. Regional dB scores cannot be added.
   https://pubmed.ncbi.nlm.nih.gov/32497788/ ; author implementation
   https://github.com/rkobler/eyeartifactcorrection . Remains a later challenger
   requiring its actual calibration paradigm/contracts and author-code parity.
+  Author source inspection confirms six sample classes: left/right movement1/2,
+  vertical movement3/4, blink5, rest6. The existing four trial-type codes are a
+  different taxonomy; do not substitute them or fabricate directional labels
+  from HEOG signs. Audit the original artifactclasses channel/calibration labels
+  before porting elastic-net classifiers and the staged eye/blink matrices.
 - GED identifies contrasts rather than biological truth. Reference-informed
   low-rank transfer is our project extension, not SGEYESUB or the original MWF:
   https://doi.org/10.1016/j.neuroimage.2021.118809 . Measure preservation separately.
@@ -118,6 +123,19 @@ it is a montage-defined collection rather than a biological claim that all its
 electrodes have the same ocular coupling. Preserve mu/alpha and beta activity at
 central electrodes and posterior alpha; ERP/BCI task preservation needs separate
 eligible labelled recordings. Unknown anatomy still passes through.
+
+Archived metadata inspection confirms the current central/shared bucket is:
+C1-C6, Cz, CP1-CP6, CPz, FC1-FC6, FT7/FT8, T7/T8 and TP7/TP8. Thus its26rows
+include20frontocentral/central/centroparietal rows and6temporal rows. Retain this
+frozen primary bucket for matched comparisons, then report the two verified
+subgroups separately on Kaggle before assigning different subgroup policies.
+Names identify the audited montage; no electrode-coordinate inference is used.
+
+EMA-ASR (28September2026preprint) is a later exploratory ASR variant:
+https://arxiv.org/abs/2609.35223 . Its10subject/24channel study reports improved
+blink attenuation with increased reconstruction/spectral deviation. This is a
+preservation tradeoff, not evidence of15/20dB paired reconstruction or lateral
+superiority. Inspect author code and calibration drift safeguards before a run.
 
 Primary paired MSE, temporal RRMSE, ordinary Pearson CC; output SNR and improvement
 separate. Also report spectral and covariance preservation, runtime, fit failures

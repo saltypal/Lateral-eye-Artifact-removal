@@ -1436,6 +1436,25 @@ not the SNR/clean/spectral/covariance/CC engineering gates. Precise transformerr
 is measured on Kaggle in the repaired version. Contract002 atd7001c8 predates
 thisrepair and mayfail the sameknowncheck; preserve its results too.
 
+## Repaired pilot version2 and failed-run recovery
+
+nonfrontal-pilot-002/2 submitted at472b21744e8f92d12241cd9f1b08fab9221e68fa,
+parentfailedpilot001. Samefixedmethods/data; numerical/reportingrepairs declared.
+LiveKaggleRUNNING, no completedscore at thisentry. Solreview found no further
+runtime/split/target/composition defect inrepair; numericalacceptance stillpending.
+
+Dataset-freecontract002 atd7001c8 failedsameoldwaveletcheck after279passingtests,
+14warnings,21.26s; all7manifestpayloads recovered/verified. Failedpilot001 has
+6of7manifestpayloadsverified; experiment.json missingafterversion2submission,
+butdeclaredemptyexperimentspec andfailedrunidentity/tests remain local. Do not
+claimcompletepayloadrecovery forpilot001. Fullwaveletdiagnosticrepair isversion2.
+
+Staticinspectionofsavedchannelmetadataconfirms central/shared includes26channels:
+20FC/C/CPplusCz/CPz and6FT/T/TPtemporalrows. Primarybucket unchanged; explicit
+subgroupreportingplanned onKaggle. AddedEMA-ASR2026preprint aslaterexploratory
+candidate; itsblinkattenuationcomeswithincreasedreconstruction/spectraldeviation,
+notdemonstratedpairedSNRorlateralsuperiority. No newerASRmethodlaunched.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
