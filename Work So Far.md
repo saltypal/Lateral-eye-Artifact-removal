@@ -1193,6 +1193,25 @@ usingD=A_full-A_shape ande_shape=e_full+D. No fitting orchangedpredictions.
 Plan docs/FRONTAL_SHAPE_DIAGNOSTIC_PLAN.md; module/fixtures authored, numeric
 validation pending. Targets remain evaluationonly. Avoidbiologicalclaims.
 
+
+## Frozen-output shape failure diagnostic launched (13 October 2026)
+
+frontal-shape-error-001/1 submitted atpublished5d655c7929e6b5417caa2c29c134eb8d
+3f37ea96; firstRUNNING16:17:59UTC. Exactparents shape-full/1, readiness/1 and
+frontalreviewfixture/1. Staticreview foundno core/fixtureblocker. FullKaggle
+test suite precedesnumericaldiagnostic; no localnumericrun. Tests/datarecovery
+remainpending. Sevennewfixturecases coverpositive/negativecross terms,zero
+fields,unit scalingand malformed/nonfinite arrays.
+
+Require exactshapeparentmanifest7543c9799eb0911beee1c2c3c5e4c22d1b4fb245c088cbb
+cb7e5b33c7194586f;320unique savedwindows; unchangedfrontal metadata/masks and
+nonfrontalpass-through. Check640original-minusartifactpredictions,lag edges/DC,
+selectedrankbounds,8320archivedMSErows anderror/squared-errorclosure.
+Outputs perchannel,recipient/condition/input andbalancederror terms; targets
+retrospectiveevaluationonly. No parameter fit, recipe selection, changed
+prediction,VMDcache/sourcecorpus/newdecomposition/AutoVMD/model/reservedaccess.
+Primary45secondwatcherandLunareadonlymonitoractive; failureevidencepreserved.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

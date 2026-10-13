@@ -161,5 +161,5 @@ by this planned ablation.
 
 ## Frozen-output shape failure diagnosis
 
-- [ ] SD01 Validate frozen-parent/prediction/DC/edge/MSE identity and error-decomposition fixtures on Kaggle.
+- [ ] SD01 Validate frozen-parent/prediction/DC/edge/MSE identity and error-decomposition fixtures on Kaggle. Submitted frontal-shape-error-001/1 at5d655c7; first RUNNING16:17:59UTC. Results pending.
 - [ ] SD02 Recover per-channel and recipient/condition/input error terms; explain failed projection without selecting another recipe. No promotion.
