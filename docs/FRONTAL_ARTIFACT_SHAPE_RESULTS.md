@@ -158,3 +158,7 @@ neural qualification remain false; no engineering threshold is relaxed.
 
 Local operations were authoring, static inspection, hashes, formatting existing
 CSV/JSON and artifact retrieval. No local numerical processing or tests ran.
+
+## Diagnostic completion
+
+The frozen-output diagnostic subsequently completed and passed243tests/640prediction/8320MSE/4160DCchecks. Discarded-field mean square3.032235725690054e-11 plus positive cross term3.773547732566658e-12 explains the MSE increase3.40959049894672e-11. Allninecontaminated strata worsen. See FRONTAL_SHAPE_DIAGNOSTIC_RESULTS.md; rejection and original baseline remain unchanged.

@@ -1212,6 +1212,44 @@ retrospectiveevaluationonly. No parameter fit, recipe selection, changed
 prediction,VMDcache/sourcecorpus/newdecomposition/AutoVMD/model/reservedaccess.
 Primary45secondwatcherandLunareadonlymonitoractive; failureevidencepreserved.
 
+
+## Shape failure diagnosis verified: useful correction was discarded (13 October 2026)
+
+frontal-shape-error-001/1 at5d655c7929e6b5417caa2c29c134eb8d3f37ea96 completed.
+All17outputs and15manifestpayloads recovered/verified; resultmanifest d0589e2ce9036b0a7b9bc02b595202babb8a8a19aca903d8a5232493e58e4ecf.
+243tests passed in19.95s;640savedpredictionchecks/8320channelMSEchecks/4160DC
+checks andlag/rankbounds passed; all320windows/4160frontalrows/32recipients/
+fivedonors retained withthreeinheritedfailure rows. Numerical18.384023s/runner
+62.067941s/peak258320KiB; completed16:20:21UTC/recovered16:20:28UTC.
+
+Frozenerroridentityverified: e_shape=e_full+(A_full-A_shape). BalancedMSEincrease
+3.40959049894672e-11 = discardedfieldmeansquare3.032235725690054e-11 +
+error/fieldcross3.773547732566658e-12. Both termspositive inallninecontaminated
+strata. Maxchannelclosureerror2.0679515313825692e-25. Dominantpenaltycomesfrom
+omittedcorrection;positiveinteractionaddsadditionalerror. Thiscohort supports
+retainingtheoriginalfullartifact, not restrictingitto thecontaminatedmode span.
+It doesnot provebiologicalneurallossorVMDgeneralinvalidity. No correction,
+parameter,cache,decomposition,sourcepartition,modelorreservedaccesschanged.
+
+Allperchannel/recipient/condition terms preserved anddocumented in
+docs/FRONTAL_SHAPE_DIAGNOSTIC_RESULTS.md. SD01/SD02completed. Shapevariant
+rejected;native-shapeextraction/integration/teacherpromotionstopped. Original
+17.112814dBVMD retained asdevelopmentbaseline; frontal lateral/native
+preservation andwholemontage qualificationremainunresolved.
+
+
+## Shape branch closed; independent frontal validity checkpoint declared
+
+Sol6.1xhigh reviewed completed diagnostic: discarded-field energy andpositive
+cross term explainaggregate controlled penalty; not everychannel orbiological
+claim. Originalfullfield retained, stillunqualified. NextIB01-IB04checkpoint
+declared in docs/FRONTAL_INDEPENDENT_BENCHMARK_CHECKPOINT.md: justify independent
+paired ocular construction withverifiedfrontallabels, matchedidentity/raw/VMD
+only, source/calibrationfreeze andconsistentreference/ocularamplitudes. No
+additionalrecipebank ornative-restselection. No benchmark haslaunched; if
+independentconstruction cannotbejustified, recordlimitation withoutfabrication.
+AllcurrentKagglejobscompleted/recovered;noactive monitor orpendingdownload.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

@@ -34,3 +34,7 @@ rows, aggregate tables, runtime and completion status. No new recipe is selected
 ## Launch checkpoint
 
 frontal-shape-error-001/1 submitted at5d655c7929e6b5417caa2c29c134eb8d3f37ea96. First primary RUNNING16:17:59UTC13October2026. Stage tests precede numerical error analysis; outputs pending.
+
+## Completed checkpoint
+
+243tests/640predictionchecks/8320MSE/4160DCchecks passed; all15manifestpayloads recovered and verified. Error identity closes to2.068e-25 maximum. Discarded-field energy dominates the positive MSE penalty, with positive interaction in allninecontaminated strata. See FRONTAL_SHAPE_DIAGNOSTIC_RESULTS.md. No correction or qualification changed.

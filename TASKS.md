@@ -161,5 +161,14 @@ by this planned ablation.
 
 ## Frozen-output shape failure diagnosis
 
-- [ ] SD01 Validate frozen-parent/prediction/DC/edge/MSE identity and error-decomposition fixtures on Kaggle. Submitted frontal-shape-error-001/1 at5d655c7; first RUNNING16:17:59UTC. Results pending.
-- [ ] SD02 Recover per-channel and recipient/condition/input error terms; explain failed projection without selecting another recipe. No promotion.
+- [x] SD01 Validate frozen-parent/prediction/DC/edge/MSE identity and error-decomposition fixtures on Kaggle. Completed243tests/640waveforms/8320MSE/4160DCchecks at5d655c7; all15manifestpayloads verified.
+- [x] SD02 Recover per-channel and recipient/condition/input error terms; explain failed projection without selecting another recipe. Dominant discarded-field energy plus positive error interaction explains reconstruction penalty; allninecontaminated strata worse. See FRONTAL_SHAPE_DIAGNOSTIC_RESULTS.md. No promotion.
+
+## Next frontal independent-validity checkpoint — unstarted
+
+- [ ] IB01 Audit an independent paired contamination mechanism and verified frontal source eligibility.
+- [ ] IB02 Freeze identity/raw/originalVMD-only protocol, source groups, calibration and coupled reference/ocular amplitude contract.
+- [ ] IB03 Run matched Kaggle evidence only after generator/data contracts pass.
+- [ ] IB04 Review accuracy/preservation/uncertainty without promotion beyond measured scope.
+
+See FRONTAL_INDEPENDENT_BENCHMARK_CHECKPOINT.md. No new benchmark or recipe has launched.
