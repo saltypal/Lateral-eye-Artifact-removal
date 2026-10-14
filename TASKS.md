@@ -256,3 +256,7 @@ acceptance. Complete ridge17.533717mean/14.780705pooled is a development candida
 
 - [x] Diagnose fixed-frontal review v1: 317 tests passed; stored-mode reconstruction precision failure; all 26 failed payloads recovered.
 - [ ] Verify repaired reconstruction fixture and complete frontal review v2 on Kaggle.
+
+- [x] Fixed frontal review v2: 318 Kaggle tests, 20 records/5 arms; all 95 payloads recovered, figure inspected and results assessed.
+- [ ] Next: matched-subspace VMD gain versus current shared gain and raw ridge, same modes/calibration/nonfrontal outputs; no label/oracle branch selection.
+- [ ] Lateral preservation qualification, native OSF and broader grouped evaluation remain incomplete.

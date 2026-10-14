@@ -8,7 +8,7 @@ hybrid. It does not restart AutoVMD or replace the user's regional architecture.
 
 Frontal K3/alpha2000 VMD plus complete calibrated posterior/middle reference
 ridge reaches 17.533717 dB channel-first mean, 14.780705 dB pooled-window mean,
-MSE 3.546698e-12 VÂ², temporal RRMSE .191564 and CC .972400. The severe lateral
+MSE 3.546698e-12 VÃ‚Â², temporal RRMSE .191564 and CC .972400. The severe lateral
 -5 dB stratum remains 13.278714 dB. Reference CCA rank2 is inferior to complete
 ridge, with matched CCA-minus-ridge SNR interval [-2.548602, -.943181] dB and
 CC deterioration .006414969 > .005. Retain its negative evidence.
@@ -121,7 +121,7 @@ qualification. Two-pair pilots are engineering checks, not generalization tests.
 - [x] N02 Exact new hybrid frontend contribution evaluated in repairedversion2:313tests,320examples,549000baseline checks; failedversion1/all651payloads retained.
 - [x] N03 Homogeneous coupling and boundary fixtures passed on Kaggle at c6a8420; pilot integration remains separately gated.
 - [x] N04 Two-pair new corpus saved and fully recovered: coupled-pilot-002/2, 316 tests, 20 records, all 37 payloads verified.
-- [ ] N05 Fixed frontal/matched nonfrontal pilot completed.
+- [x] N05 Fixed frontal/matched nonfrontal pilot completed: review002/2,318tests,all95payloads verified. Lateral preservation fails; teacher remains unqualified.
 - [ ] N06 Native dependencies, trial evaluation and preservation qualification.
 - [ ] N07 One evidence-supported challenger, if needed, compared in grouped development.
 - [ ] N08 Classical review/freeze before students and final independent evaluation.
