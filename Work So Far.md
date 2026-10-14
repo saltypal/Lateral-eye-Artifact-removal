@@ -26,7 +26,7 @@ The objective is simultaneous blink/vertical and lateral-eye suppression with ne
 
 The chronological development path is dataset/signal audit → classical comparisons → AutoVMD/band-routing implementation and short neural pilots → user-stopped AutoVMD → fixed frontal-only VMD adaptations → historical guarded-model replay → calibrated frontal transfer and preservation challengers → separate posterior support comparisons. These stages have distinct configurations and evidence. A successful result from one stage does not retroactively qualify another.
 
-The active direction is fixed **frontal VMD artifact estimation**, an independent **posterior estimator**, and one final artifact subtraction. AutoVMD is stopped; its code/caches/failures remain historical evidence. Exploratory regional integration, regional error/context diagnosis, fixed-gain and regularized CCA comparisons are complete. Complete calibrated middle/posterior reference ridge is now the strongest matched candidate in the latest development comparison. The prior frozen frontend audit found raw frontal stronger; the latest hybrid still has pooled-window whole-cap SNR below15dB. Next checkpoint is bounded reference-coupling/provenance repair, a matched no-VMD frontend control for the new nonfrontal candidate, and native preservation qualification. Eligible SGEYESUB and signed frontal-field communication remain separate pending challengers. Qualification remains unresolved. New teacher/student or production claims must satisfy their separate gates.
+The active direction is fixed **frontal VMD artifact estimation**, an independent **posterior estimator**, and one final artifact subtraction. AutoVMD is stopped; its code/caches/failures remain historical evidence. Exploratory regional integration, regional error/context diagnosis, fixed-gain and regularized CCA comparisons are complete. Complete calibrated middle/posterior reference ridge is now the strongest matched candidate in the latest development comparison. The prior frozen frontend audit found raw frontal stronger; the latest hybrid still has pooled-window whole-cap SNR below15dB. Original source recovery and coupled-field algebra contracts are now verified. The matched no-VMD frontend review is complete: raw control17.777095mean/15.126152pooled versusVMD17.533717/14.780705; SNR-difference interval crosseszero andfrontalCCgatefails. Next checkpoint is the separately versioned coupled corpus, new fixed-frontal pilot and native preservation qualification. Eligible SGEYESUB and signed frontal-field communication remain separate pending challengers. Qualification remains unresolved. New teacher/student or production claims must satisfy their separate gates.
 
 All numerical tests, decompositions, fitting, evaluation, training and plotting run on Kaggle. Local work authors modules/notebooks, inspects saved evidence, performs Git operations and submits/retrieves jobs. Reusable code is in Git, not trapped in notebook cells. Every notebook pins an exact published SHA and versioned parents, checks out fresh code and saves persistent campaign/run artifacts.
 
@@ -2172,13 +2172,99 @@ accepts extra diagnostic scopes while still rejecting a missingmain channel.
 Kaggle tests mustpass before the repaired full notebook version is launched.
 No thresholds, waveforms, recipes, correction weights or splits changed.
 
+## New complete-ridge hybrid: matched frontal contribution review
+
+14 October 2026. Run `new-hybrid-frontend-review-002/2`, published source
+`0b74d48a20ceeaef17af1b2d7eadd3894f1ff87a`, campaign
+`vmd-new-hybrid-review-20261014`.
+[Kaggle](https://www.kaggle.com/code/satyapaladugu/vmd-new-hybrid-frontend-review).
+Immutable completed parents CCAfull001/1 and matched-context-full001/1.
+The same320examples/32recipients/five donors compare nine frozen-output arms.
+No fit, VMD experiment, neuralweights, parameter search or confirmation access.
+313tests passed,14warnings,18.02s. Parent-array checks1,600; baseline paper
+metric checks549,000. Stage657.393049s; runner729.466371s; peak1,424,484KiB.
+
+| Whole-cap arm | Channel-first output SNR,dB | Pooled-window SNR,dB | MSE,V² | TemporalRRMSE | OrdinaryCC |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| VMD frontal + complete nonfrontal ridge | **17.533717** | **14.780705** | 3.546698e-12 | .191564 | .972400 |
+| Raw calibrated frontal + identical complete nonfrontal ridge | **17.777095** | **15.126152** | 3.251705e-12 | .184337 | .974089 |
+| VMD frontal + CCA reference rank2 | 15.833574 | 13.923972 | 4.280153e-12 | .222509 | .965985 |
+| Raw calibrated frontal + identical CCA rank2 | 16.076952 | 14.157095 | 3.985161e-12 | .215282 | .967674 |
+| VMD frontal + previous reference rank2 | 15.155692 | 13.480444 | 4.913399e-12 | .242700 | .960545 |
+| Raw calibrated frontal + identical previous rank2 | 15.399070 | 13.686979 | 4.618407e-12 | .235473 | .962234 |
+| VMD frontal/context control | 13.162704 | 11.268085 | 1.323511e-11 | .338343 | .934641 |
+| Raw frontal-context representation control, VMD output retained | 13.183201 | 11.289971 | 1.359897e-11 | .339202 | .934836 |
+| Identity | 3.175566 | .000000285 | 1.016074e-10 | 1.148284 | .733878 |
+
+Pooled energy is computed over available channels/time within each window and
+then source/condition/input-level balanced. It is not one global concatenated
+energy ratio and is not a newly imposed qualification gate. The identity
+channel-first mean is not nominal global mixture SNR because spatial ocular
+energy is uneven across channels. All figures are output SNR, not improvement.
+
+Posterior/middle output is held identical within each frontend pair. Therefore
+these contrasts isolate frontend contribution rather than altered nonfrontal
+fitting. The complete-ridge raw control crosses15dB in both summaries on this
+legacy development corpus. It is **not a VMD result or fresh qualification**.
+The requested VMD research branch remains17.533717/14.780705.
+
+| Whole-cap condition | Nominal input,dB | VMD frontal + ridge | Raw frontal + same ridge |
+| --- | ---: | ---: | ---: |
+| Blink | -5 | 18.369567 | 18.466502 |
+| Blink | 0 | 19.684750 | 19.727035 |
+| Blink | 5 | 17.914413 | 17.963001 |
+| Lateral | -5 | **13.278714** | **13.752310** |
+| Lateral | 0 | 16.219934 | 16.805857 |
+| Lateral | 5 | 17.940872 | 18.562202 |
+| Mixed | -5 | 17.621888 | 17.739386 |
+| Mixed | 0 | 18.920192 | 19.021829 |
+| Mixed | 5 | 17.853123 | 17.955736 |
+
+VMD-minus-matched-raw whole-cap SNR delta=-.243378dB, supplemental95% interval
+[-.516659,.043339], crossingzero; this does not establish an SNR winner or VMD
+benefit. Whole-cap CC delta=-.001689061, interval[-.002925135,-.000493789].
+Intervals use the declared paired recipient/donor Poisson approximation, not the
+paper-native participant permutation method. Do not equate a higher raw point
+mean with proven SNR superiority.
+
+The VMD hybrid passes the whole-cap controlled gates against the stronger raw
+control, but the **frontal CC deterioration .007441477>.005 fails**. Whole-cap
+averaging cannot overrule that regional failure. Zero synthetic clean changes
+remain idealized controls, not proof of native neural preservation. All stages
+retain qualification=false and native_validation_required=true. Both systems
+still have severe-lateral mean below15dB. No model/teacher promotion follows.
+
+The repaired experiment changes only parity-reporting scope handling. Failed
+version1 retained all320savedexamples,306passedtests and a strict cohort error;
+all651manifest payloads are checksumverified locally, state remainsfailed.
+The focused repair run passed313tests,all8payloads/completion verified before
+version2. Version2 consumes the original completed parents, not the failed run;
+its repair-parent field is lineage only. No gate/array/split/recipe was relaxed.
+
+Version2 manifest:
+`67b36773a42d80ea71e8d3159f5814a4063edbc1a60756f3c9c9e4153cb72d23`.
+All669manifestpayloads, completion/source identity and tables verified locally.
+The run directory contains554,272,516bytes including logs/receipt. The whole-cap
+PNG was inspected: labels/axes are readable, but the legend overlaps upperbars;
+publication figure layout still needs adjustment. CSVtables are authoritative.
+No HTML visual-QA claim.
+
+Next: generate the separately versioned two-pair coupled corpus from the
+verified original sources and tested homogeneous field, then recompute fixed
+frontal-only modes on new input hashes. Keep complete nonfrontal ridge matched
+in both frontal controls and evaluate native preservation before model work.
+If a challenger is needed, test at most one VMD-informed temporal confidence/
+selective reference-field correction justified by lateral and clean-error
+diagnostics; no condition/clean-truth oracle may choose the inference branch.
+
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
 
-Metadata captured `2026-10-14T07:05:10.489813+00:00` at repository HEAD `b7914b8dde84d455e12c1f3aa0433adb9dc1c8ed`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
+Metadata captured `2026-10-14T08:09:59.784377+00:00` at repository HEAD `0b74d48a20ceeaef17af1b2d7eadd3894f1ff87a`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
 
-## Appendix A. All 127 recorded launch specifications
+## Appendix A. All 130 recorded launch specifications
 
 ### audit-001
 
@@ -3101,6 +3187,29 @@ Metadata captured `2026-10-14T07:05:10.489813+00:00` at repository HEAD `b7914b8
   ],
   "kernel": "satyapaladugu/vmd-eog-corpus",
   "kernel_version": 2
+}
+```
+
+### coupled-field-contracts-001
+
+[.kaggle-work/coupled-field-contracts-001/run_spec.json](.kaggle-work/coupled-field-contracts-001/run_spec.json); SHA256 `077a727f45a7c6ba6a5ce66902ff870b20b105ba5dbd49adcd321da63b6e61f6`.
+
+```json
+{
+  "run_id": "coupled-field-contracts-001",
+  "stage": "contracts",
+  "git_sha": "c6a842050226850d9400dc54603a77695098e132",
+  "campaign_id": "vmd-coupling-contracts-20261014",
+  "config_path": "configs/coupled_contracts.json",
+  "experiment": {},
+  "profile": "pilot",
+  "parent_run": null,
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-coupled-field-contracts",
+  "requested_kernel": "satyapaladugu/vmd-coupled-field-contracts",
+  "kernel_version": 1
 }
 ```
 
@@ -4218,6 +4327,29 @@ Metadata captured `2026-10-14T07:05:10.489813+00:00` at repository HEAD `b7914b8
 }
 ```
 
+### frontend-reporting-contracts-001
+
+[.kaggle-work/frontend-reporting-contracts-001/run_spec.json](.kaggle-work/frontend-reporting-contracts-001/run_spec.json); SHA256 `0ee38f143c051a2dbb60d83d823b9c88e6f2df9976a0420e46d945808629aa61`.
+
+```json
+{
+  "run_id": "frontend-reporting-contracts-001",
+  "stage": "contracts",
+  "git_sha": "0b74d48a20ceeaef17af1b2d7eadd3894f1ff87a",
+  "campaign_id": "vmd-coupling-contracts-20261014",
+  "config_path": "configs/coupled_contracts.json",
+  "experiment": {},
+  "profile": "pilot",
+  "parent_run": null,
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-frontend-reporting-contracts",
+  "requested_kernel": "satyapaladugu/vmd-frontend-reporting-contracts",
+  "kernel_version": 1
+}
+```
+
 ### guard17-cache-replay-001
 
 [.kaggle-work/guard17-cache-replay-001/run_spec.json](.kaggle-work/guard17-cache-replay-001/run_spec.json); SHA256 `0f43d62e02be6ba2985eaef62f71328551386c251cacac572f0e7b418f13da49`.
@@ -4826,6 +4958,32 @@ Metadata captured `2026-10-14T07:05:10.489813+00:00` at repository HEAD `b7914b8
   "kernel": "satyapaladugu/vmd-new-hybrid-frontend-review",
   "requested_kernel": "satyapaladugu/vmd-new-hybrid-frontend-review",
   "kernel_version": 1
+}
+```
+
+### new-hybrid-frontend-review-002
+
+[.kaggle-work/new-hybrid-frontend-review-002/run_spec.json](.kaggle-work/new-hybrid-frontend-review-002/run_spec.json); SHA256 `0f9f4fe0ccc46dabaf72d8967a8d9a0027871b97b4814c0478afd2da0f9c046b`.
+
+```json
+{
+  "run_id": "new-hybrid-frontend-review-002",
+  "stage": "nonfrontal-review",
+  "git_sha": "0b74d48a20ceeaef17af1b2d7eadd3894f1ff87a",
+  "campaign_id": "vmd-new-hybrid-review-20261014",
+  "config_path": "configs/new_hybrid_review.json",
+  "experiment": {},
+  "profile": "full",
+  "parent_run": "new-hybrid-frontend-review-001",
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [
+    "satyapaladugu/vmd-nonfrontal-cca-full/1",
+    "satyapaladugu/vmd-matched-context-full/1"
+  ],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-new-hybrid-frontend-review",
+  "requested_kernel": "satyapaladugu/vmd-new-hybrid-frontend-review",
+  "kernel_version": 2
 }
 ```
 
@@ -29727,6 +29885,150 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 }
 ```
 
+### results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/artifact_manifest.json
+
+[Saved payload](results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/artifact_manifest.json); SHA256 `e58891812b97fd30e1c312afe25a4490ae74060ca87cdd4e95c4ee97d6d3960d`.
+
+```json
+{
+  "resource_summary.json": "fed37b4789dedb168e73f954362349edcc756cfc1c53aba29f43b83b28657937",
+  "tests.txt": "a05cd1187a5b2a079c9b42984c264059027049c5dde276a97c40a5a77a774583",
+  "environment.json": "c218e02b6417342f53719f070f5fc6022636ea0b8db7558dd522a4cc90c4c0f8",
+  "run_spec.json": "d4e5508c344c8b7badf51c86ee950e567c0c0f01e4acbfbb623f5a838d9163df",
+  "configuration.json": "c95654861d7a2dcb35cbf819660315ea776657671b60dc85628e6e48e9be8d81",
+  "contracts_summary.json": "3cc528af22bddb7b3d75274aad7b54dc601ef13d516082a2c6241bbf46122680",
+  "parent_identities.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+}
+```
+
+### results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/contracts_summary.json
+
+[Saved payload](results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/contracts_summary.json); SHA256 `3cc528af22bddb7b3d75274aad7b54dc601ef13d516082a2c6241bbf46122680`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "a05cd1187a5b2a079c9b42984c264059027049c5dde276a97c40a5a77a774583"
+}
+```
+
+### results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/execution_state.json
+
+[Saved payload](results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/execution_state.json); SHA256 `0db9df052a305e2ff4f954f50d91d62d591153d8aa4df925512476045c8158b7`.
+
+```json
+{
+  "stage": "contracts",
+  "status": "complete",
+  "artifacts": 8
+}
+```
+
+### results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/resource_summary.json
+
+[Saved payload](results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/resource_summary.json); SHA256 `fed37b4789dedb168e73f954362349edcc756cfc1c53aba29f43b83b28657937`.
+
+```json
+{
+  "wall_time_s": 26.02027181599999,
+  "peak_resident_memory_kib": 105596
+}
+```
+
+### results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/retrieval_receipt.json); SHA256 `1b3e6768b9af0c010e0e8616d2fcc2cd544e289d5a2f9f26efef76ded1343e30`.
+
+```json
+{
+  "run_id": "coupled-field-contracts-001",
+  "git_sha": "c6a842050226850d9400dc54603a77695098e132",
+  "verified_payloads": [
+    "configuration.json",
+    "contracts_summary.json",
+    "environment.json",
+    "experiment.json",
+    "parent_identities.json",
+    "resource_summary.json",
+    "run_spec.json",
+    "tests.txt"
+  ],
+  "manifest_payload_count": 8,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 10,
+  "utc": "2026-10-14T07:17:11.067574+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
+### results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/artifact_manifest.json
+
+[Saved payload](results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/artifact_manifest.json); SHA256 `2baedbb5dbf0375720bbf8336eeb7bb256f484f30496f966ed9cafcb5a4b6582`.
+
+```json
+{
+  "contracts_summary.json": "2ebb6b347a5cdcb3067df3cb623aff6ddab2faaaf34d1f6589331ebdd36806d7",
+  "tests.txt": "7017cf7f363948eafa8137fc80d96edf1cf51fea7626a74d4af48a92415760f6",
+  "configuration.json": "c95654861d7a2dcb35cbf819660315ea776657671b60dc85628e6e48e9be8d81",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "parent_identities.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "run_spec.json": "0df40187e7ac4c225335585095fb46ee6806a4577012a09435ff90ec16920974",
+  "environment.json": "14c5831368e66da7338dd57c29cd91142a39722e326a9456a0f5c5956dd74358",
+  "resource_summary.json": "3198c105f1d12a857bd3a63eea84c84669431ee705ad8f6063b90b2d25c91081"
+}
+```
+
+### results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/contracts_summary.json
+
+[Saved payload](results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/contracts_summary.json); SHA256 `2ebb6b347a5cdcb3067df3cb623aff6ddab2faaaf34d1f6589331ebdd36806d7`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "7017cf7f363948eafa8137fc80d96edf1cf51fea7626a74d4af48a92415760f6"
+}
+```
+
+### results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/resource_summary.json
+
+[Saved payload](results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/resource_summary.json); SHA256 `3198c105f1d12a857bd3a63eea84c84669431ee705ad8f6063b90b2d25c91081`.
+
+```json
+{
+  "wall_time_s": 26.942508715999963,
+  "peak_resident_memory_kib": 105892
+}
+```
+
+### results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/retrieval_receipt.json); SHA256 `e4495e5d776e9a9d6b5063932ab23aa0d886cd2821203122e72cd55cfd714eea`.
+
+```json
+{
+  "run_id": "frontend-reporting-contracts-001",
+  "git_sha": "0b74d48a20ceeaef17af1b2d7eadd3894f1ff87a",
+  "verified_payloads": [
+    "configuration.json",
+    "contracts_summary.json",
+    "environment.json",
+    "experiment.json",
+    "parent_identities.json",
+    "resource_summary.json",
+    "run_spec.json",
+    "tests.txt"
+  ],
+  "manifest_payload_count": 8,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 10,
+  "utc": "2026-10-14T07:27:42.903643+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
 ### results/vmd-eog-20261010/audit-001/results/vmd-eog-20261010/audit-001/artifact_manifest.json
 
 [Saved payload](results/vmd-eog-20261010/audit-001/results/vmd-eog-20261010/audit-001/artifact_manifest.json); SHA256 `6f7b67b57845696cee0376aecd9344aa163c0782787ee448cdd9131d5aafcc59`.
@@ -34760,18 +35062,6 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 {
   "passed": true,
   "tests_sha256": "158af1752eac85514de8ddc03035f09c0bb911d9ae719b2f13c98b1412b90654"
-}
-```
-
-### results/vmd-eog-20261010/frontal-shape-contracts-001/results/vmd-eog-20261010/frontal-shape-contracts-001/execution_state.json
-
-[Saved payload](results/vmd-eog-20261010/frontal-shape-contracts-001/results/vmd-eog-20261010/frontal-shape-contracts-001/execution_state.json); SHA256 `0db9df052a305e2ff4f954f50d91d62d591153d8aa4df925512476045c8158b7`.
-
-```json
-{
-  "stage": "contracts",
-  "status": "complete",
-  "artifacts": 8
 }
 ```
 
@@ -45934,6 +46224,2834 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 }
 ```
 
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/artifact_manifest.json
+
+[Saved payload](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/artifact_manifest.json); SHA256 `398646d1282c06020f2150a90617c09c2a515b37b634ad90e6caaba1c236733f`.
+
+```json
+{
+  "run_spec.json": "a7b847150d0e49445c862b42bb143832b9e0ecf873bc097bfb6cc106e8e4e9de",
+  "review_selection_manifest.jsonl": "c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2",
+  "review_channel_scores.csv.gz": "092a646d144e13fb0d533c191137df3fbe8bd19b86e424c9233a173079b478b0",
+  "parent_identities.json": "62a905f5a9eedac6767bc95cb113994a11a00490e972e3beafba8257ceb735d2",
+  "configuration.json": "c6568a8f8afb839a58b00d46b394d3ed75f4a1a864bd302293fae22612cdef07",
+  "review_example_snr.csv": "9df35758c4a9199ad9300c6f148f323dc233d62473de6d1329ef0adf20697177",
+  "tests.txt": "8ee4d6b9297fda1384f82b87179b1419938a481853b3b78d1fb70aab9a00e62c",
+  "review_progress.json": "706333850d7f455771a4a7eb838b28c35cb52465a045ac3f10adc4917cee37cc",
+  "environment.json": "9108f5ab0f4ef81de647ae144be8eb54a95d4f29b0487b737392cf1eee2ec1e1",
+  "stage_tests_summary.json": "5ac34a558a37ee904d3be74d02016f685d2f2e07caa4b6fcab0aae38d5306219",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "frontend_predictions/sub-032312-000-blink-snr+0.npz": "43b98dc185aabd660eaeabadc1c1fcc97ca2c4b0e3aa0fea548eb8e2a02f1943",
+  "frontend_predictions/sub-032322-000-blink-snr+0.npz": "f7d8a2f1a28fcef84bf505cf81649561b07a9b6c6e46afe1566f5c02f3390d6c",
+  "frontend_predictions/sub-032319-000-mixed-snr+0.npz": "ec4c14a3f8c59ddf0a34405093f52db5b8bd145082c48c15c3b4bfeff3b0bba6",
+  "frontend_predictions/sub-032339-000-blink-snr+5.npz": "8c62b4260ab5c8ad12efeba958d84faaa6b704ecdb8e10914d3cb6cbe509804c",
+  "frontend_predictions/sub-032317-000-clean-clean.npz": "7b57f59f1b57b0f23d3f941c505b61da2b334db1dbca7fadfa98e96aeea6e2d5",
+  "frontend_predictions/sub-032315-000-blink-snr+0.npz": "88f37f4c8d6f58de0c6dddef4ca36bdc6968c4a311d4c0e04fe396b1715ad93f",
+  "frontend_predictions/sub-032321-000-mixed-snr+0.npz": "39260c0059ed2fd628fc53c5c2cabbcd31d3eb9b8b307efb60788459f9b3cfab",
+  "frontend_predictions/sub-032326-000-lateral-snr-5.npz": "c8c3320a64b4beb8122c40a38947e85e78452df925787cf151694d3a28369bfb",
+  "frontend_predictions/sub-032310-000-lateral-snr-5.npz": "2cb8210ac163f82473bd5d05808116f09bc08c6ac3cf37889baf44379343cec8",
+  "frontend_predictions/sub-032313-000-mixed-snr-5.npz": "3844e11dcb97c13126c1fa4bc9d4e11d0e6f6392c95c1b8408460d5ff46b1113",
+  "frontend_predictions/sub-032319-000-mixed-snr+5.npz": "6ea5a1375e0064bd0179377828eb2f196f4ed61a18bc115e18ac26a2201c71b9",
+  "frontend_predictions/sub-032339-000-lateral-snr+0.npz": "c8913852ddeb99cb81d8ea6c55a30d297eb2699bcf5653bb30d6cb45d295829a",
+  "frontend_predictions/sub-032326-000-lateral-snr+5.npz": "87b74b027a90d1a617a46cc0d9d0eea3c701a2e404aca0729353b28e8985c064",
+  "frontend_predictions/sub-032341-000-mixed-snr-5.npz": "6afc06a9c192dd06b4e3992589c94e53f4890d7559b8c41af4da9356acdcdf5c",
+  "frontend_predictions/sub-032316-000-lateral-snr-5.npz": "cec99d45e5ebf0db87df122cc2f61c8b152400bc049791accc1cd4b75b94f957",
+  "frontend_predictions/sub-032308-000-mixed-snr-5.npz": "3fc79c18040c3a41ab17074f1efe06bddca6760edf194a868cd1857514d99cfa",
+  "frontend_predictions/sub-032309-000-lateral-snr-5.npz": "9dd9e9e9a7acd97744cf6ca8d32b9bdda0b00cfc0019d3d6ceebdc7768c9fd9d",
+  "frontend_predictions/sub-032308-000-lateral-snr-5.npz": "57989e433cd82ae8460ca7f5f0711b77654f87c3cdaa72aad621a52901cd2703",
+  "frontend_predictions/sub-032316-000-mixed-snr+0.npz": "aab000828bf0e2c52335a38eb81c37116a44997d634bc99d3adc02046c4ed3d7",
+  "frontend_predictions/sub-032334-000-blink-snr-5.npz": "05f5e4920a5dbfed4a6b498fe7abef21efc13a20cac31cc46c000b3d6764ac3d",
+  "frontend_predictions/sub-032320-000-mixed-snr+5.npz": "f9d12856ed60f6ced2b950cb007f25a52f1746793efea252c9376e258b828841",
+  "frontend_predictions/sub-032312-000-clean-clean.npz": "4bc4b72a2e406a89141e534d31326ca0d2d17da7ec3fbe7bb72cf23d5ebd4af2",
+  "frontend_predictions/sub-032312-000-lateral-snr+0.npz": "ec91091d1476cb6837fc80fa0cd23d5ca6509ac832a18e58bdd4455d3aff69f4",
+  "frontend_predictions/sub-032331-000-blink-snr+0.npz": "13e84e457275db25f04505d4e0351c06d257fbde177fa42bfa0ff7743fe94375",
+  "frontend_predictions/sub-032308-000-lateral-snr+0.npz": "d8374b27eaa273b31feff58dd76aea801a96be80e84dcf6e8724664862e85184",
+  "frontend_predictions/sub-032319-000-blink-snr-5.npz": "c92b9323adfd2af35687a1bbeeb30dfebc5fbcdcbf1731f4b9dd5a9e3a38e776",
+  "frontend_predictions/sub-032330-000-lateral-snr-5.npz": "11052eb5ed41821bc015a3721aa04b6bec8e20499a0d65eaabbbd25dd352b6c0",
+  "frontend_predictions/sub-032315-000-mixed-snr-5.npz": "3cbaf56640b8d914dc05f3e562204e420d25e31bbf7eb5c48d85973edb54e108",
+  "frontend_predictions/sub-032316-000-lateral-snr+5.npz": "3a0bd065d8fc8c3623be55f2391303243112eb2cef707ca3204a04888a3bab1f",
+  "frontend_predictions/sub-032319-000-clean-clean.npz": "2646fc8e33e4e072b2c5cc3038c9580a7b0cf0e0257e1e71f5f14ba7e6d4d056",
+  "frontend_predictions/sub-032324-000-lateral-snr+0.npz": "30f6308bd6457f374293f5e4c05f842fd1ff189f30470d8f7ef59ee3607cc3d9",
+  "frontend_predictions/sub-032310-000-mixed-snr+0.npz": "79f8151f2610fbeb911461e7add11a56f0b2ef58b01635fc9c94611b07d3f0ff",
+  "frontend_predictions/sub-032331-000-lateral-snr+5.npz": "720def34502923490dea70114ebfa291c82d82b33fe80cda601d9a1bcad29088",
+  "frontend_predictions/sub-032317-000-mixed-snr+5.npz": "6936bd50b10060392626f1a9dd480f316a93c4e066c8486bc05a069eb5fab4ee",
+  "frontend_predictions/sub-032318-000-lateral-snr+0.npz": "0ce58881766aca4af952b1093e394f9ce30ba2d2c68261122de2c3012c86ae64",
+  "frontend_predictions/sub-032307-000-blink-snr+5.npz": "a92773d1840e89f2eaab0af4b47e622ac6bc485edbae7ec7619563eb25f31c3c",
+  "frontend_predictions/sub-032321-000-blink-snr+0.npz": "c56472739992435c6e7c198fc317e4e0f7ebff4e0563ad058e2d8babb0405069",
+  "frontend_predictions/sub-032324-000-blink-snr-5.npz": "0e6a98fcb1a63b76930703d134d92da615d11ceed826f46a4931ba46c3d75a7f",
+  "frontend_predictions/sub-032317-000-lateral-snr-5.npz": "b1ebfef7b3072b27d770a9c56bcaea6fd20a70d3b739e692da91fb25f5360a7e",
+  "frontend_predictions/sub-032313-000-blink-snr+5.npz": "34f42240ecc7a7781ef20dbecec645e5b39dc6b39fe06bd2ff7feb46e3a22df1",
+  "frontend_predictions/sub-032306-000-blink-snr-5.npz": "6f1ebd710d92f2926947668f5af74732dda83ad3b667196e2f33911f0a788961",
+  "frontend_predictions/sub-032334-000-lateral-snr+0.npz": "463a71bae8449980e2864330a6d207e44f70a60c86c5fc70bd063f85c760b61a",
+  "frontend_predictions/sub-032308-000-clean-clean.npz": "33d4964737411a6b8cf54fd3411b7533a665085aa89e0fee48410550dc49b98c",
+  "frontend_predictions/sub-032314-000-mixed-snr+5.npz": "bdb70fd49072d45eee80014115b93b714ab31219066f93411a8343719b40e19c",
+  "frontend_predictions/sub-032310-000-lateral-snr+0.npz": "1b1d4dc5efdadc721f0df82ea4b0f6646a1d16dbec152be5244784789d337782",
+  "frontend_predictions/sub-032322-000-mixed-snr-5.npz": "b4c9f9a8c57280b0bf4bfad5b04c16ff6edae8e34f448d483ddecfd404ca332e",
+  "frontend_predictions/sub-032319-000-mixed-snr-5.npz": "033625ae2e032b75dfb8fd666ac013ef01100801e95b5e8719fa0f4738bec21e",
+  "frontend_predictions/sub-032336-000-blink-snr+5.npz": "773a9598ead59dca285d19d0adab85262dea3184f717533799c8270d05788c8b",
+  "frontend_predictions/sub-032323-000-mixed-snr-5.npz": "1f919a896bc05758b5e7b6cc1ccfff1396bb04d9375bab3ea99484b3b2cbd20a",
+  "frontend_predictions/sub-032338-000-clean-clean.npz": "9fd7e5f104190d8580ecf3470b49c953e1ee6ecaba0cc70374b6e74b35045ed0",
+  "frontend_predictions/sub-032325-000-lateral-snr-5.npz": "4f24c492c16ab9d4eb28e42ef797f5548d3224eda5fb7b84eeb55c16a9d009ee",
+  "frontend_predictions/sub-032315-000-mixed-snr+0.npz": "8499a9c18ba45c3473046d9742492974df0929a125223febe4d87b61e47ac75f",
+  "frontend_predictions/sub-032321-000-mixed-snr-5.npz": "e4caba4ece407b9771e5d49fd8be7aaef36b44c6a5aa2838a04682ea40bb3e18",
+  "frontend_predictions/sub-032323-000-lateral-snr-5.npz": "2669735e88246395418cbb593a8238f95b2f8159b8f21e2f195cad667cfdc229",
+  "frontend_predictions/sub-032339-000-mixed-snr+0.npz": "c82f40e3b17aaca9034b66706ef50458bb1129150db7f2d6fd2712f9b2d7f435",
+  "frontend_predictions/sub-032334-000-blink-snr+5.npz": "aa165a25787104ca2ba934ab8fced05bd4dc615b8327a42eb1021906dcfa4516",
+  "frontend_predictions/sub-032307-000-mixed-snr+0.npz": "08061fd489bcc4a90fbc5e1899efec7bd0b656c7a5ee90437b392427e4452326",
+  "frontend_predictions/sub-032309-000-blink-snr-5.npz": "0b0c081881e1f8a8876a360b3ade69d81d37a88c5a19c4dfb6b6dfdb720503a6",
+  "frontend_predictions/sub-032318-000-blink-snr+0.npz": "27231ed012a4fcb5ec3cf34eb8d16ebbe6c735716c10aa2d5065ab0f8559e233",
+  "frontend_predictions/sub-032313-000-lateral-snr+0.npz": "2ddc939f2ef2ff75918e51b714cd09d012a64e8b5901bf56fa318e3ecccce91a",
+  "frontend_predictions/sub-032305-000-mixed-snr+5.npz": "b718eca7670808286ce9d8db76ec868eb1567f7008b856fe2679a7e93149430c",
+  "frontend_predictions/sub-032310-000-lateral-snr+5.npz": "d08f69fd539c3eba8e4a174d8ee97d1a319608ecf7e14eb3dccba32d4594fda6",
+  "frontend_predictions/sub-032334-000-clean-clean.npz": "3f4a69f0ef3d1eff50a5581b4192fc609c05cedac34ed42dfa091107963abfc2",
+  "frontend_predictions/sub-032314-000-mixed-snr+0.npz": "2016863af78012ae8d0823674ac3bf477bcc242c430d5e3bd36ca6bb521130ea",
+  "frontend_predictions/sub-032312-000-blink-snr+5.npz": "7a4124a750c21768851aecdd479216ff4fbcd7d457618da41de4f38c55d93539",
+  "frontend_predictions/sub-032338-000-mixed-snr-5.npz": "395d5c9d24072a85b56914935b44daa7b77726a82a33dd3784e91609641de65e",
+  "frontend_predictions/sub-032319-000-lateral-snr-5.npz": "4d29517ea2f4b8b6ed36d2ce7a5f051825c824730121ea517aa16df762cc8a0a",
+  "frontend_predictions/sub-032339-000-blink-snr+0.npz": "58d6d3de4e0864335ecb7a379b1c74282fd87926d84a9f2f5bf387cae52edda2",
+  "frontend_predictions/sub-032306-000-mixed-snr+5.npz": "adeb6296c8b8febdec11dfd0b22874677554540383a8c7541c9daee190f17de5",
+  "frontend_predictions/sub-032325-000-clean-clean.npz": "47a9331e917fc96d8b5b91ad9bca22f908e7fec85bcf0597820a2d6524462b28",
+  "frontend_predictions/sub-032338-000-blink-snr+0.npz": "2006d3ad397e8d139d45a117d4f7c9770470ffc553c056945e454338bd33252e",
+  "frontend_predictions/sub-032314-000-clean-clean.npz": "e427667aa3bf5baee6d12f7c435fa00d09d1e741248e9e8770b35ed53e1d4af6",
+  "frontend_predictions/sub-032339-000-lateral-snr-5.npz": "b67771939b428720b46f758d6e7e034d4e4803e38497c3d9edf0e7c3a8d64977",
+  "frontend_predictions/sub-032339-000-lateral-snr+5.npz": "9284096fd0a9cc9f5197950bb4e5a0df601ed01a872c23c43b70f00c3ae6abf6",
+  "frontend_predictions/sub-032340-000-blink-snr-5.npz": "92ab787c1057a97d2e76bb9b9e09a36fe195a5a5a4de01b82e9e7f6e4171aae6",
+  "frontend_predictions/sub-032328-000-blink-snr+0.npz": "dda5dfba7b0ab035be66552d0ed39901fd4214e7a09f90bed7a634223ba08edc",
+  "frontend_predictions/sub-032307-000-lateral-snr-5.npz": "e98605d2b41998abcb50ac6edaafb41049c4fd61a3abd52bcdd8ee0541985e7b",
+  "frontend_predictions/sub-032324-000-clean-clean.npz": "b2bb49a5db7101dc12ab41061b250b0af93dd83f28d57779d1dd5b5aa04dbbac",
+  "frontend_predictions/sub-032340-000-mixed-snr-5.npz": "016e85971ea2b669d7bf8a99fe1bb68825b509d7f83f1572c8ae101f21a3f802",
+  "frontend_predictions/sub-032307-000-lateral-snr+0.npz": "59427d094f8440f5b3eace10acf2129759a2e987915249d0ec27be4d3bd31546",
+  "frontend_predictions/sub-032338-000-lateral-snr-5.npz": "594e7ef4fc23197a7ff6b9debdfb921efd45bdfcaf0ba74173f5324db662bfe3",
+  "frontend_predictions/sub-032325-000-lateral-snr+5.npz": "9c4aa97a1c3f9535389962800a0e7d77bb74226fdf0e8da471d303ce86ea1bf1",
+  "frontend_predictions/sub-032320-000-mixed-snr-5.npz": "7bfa8636552cb0307d9b84a70ae6ef53fc55c0e7bc53ce0cb8352a4d142ec4ec",
+  "frontend_predictions/sub-032308-000-blink-snr-5.npz": "1301041be5e8bcedfad889fbad9dc9f95ae42c22555e405864252705d7d337bb",
+  "frontend_predictions/sub-032340-000-lateral-snr+5.npz": "929900c766e2aee119dfd91f4121bbc3499ffb1aa16ded717a0a44d1c7ce3829",
+  "frontend_predictions/sub-032339-000-mixed-snr-5.npz": "dd3a43eddf36088d31fda523a16937cfb6923c36073e199d41f3d87641f9fce0",
+  "frontend_predictions/sub-032327-000-blink-snr+5.npz": "20b25db9ca887d3e2f0d08623244915053a14a71de4a4880a5e4298519ebfdb8",
+  "frontend_predictions/sub-032321-000-blink-snr-5.npz": "b4858d20f106f16d6e31075ae71bf7abdf873263fcc4b182018e63c97166bde9",
+  "frontend_predictions/sub-032315-000-clean-clean.npz": "fa33a7a81663e635a68895754c76ac3cb44d47c40af54c55caa4e35debb7da41",
+  "frontend_predictions/sub-032317-000-mixed-snr+0.npz": "dacf50f6e0c5b916185aa420fc07eefca06f72d10f0ccb6ca6642285f16c52a8",
+  "frontend_predictions/sub-032305-000-blink-snr-5.npz": "200a7dd547036ea5c5ac734dd366b434357f885c7be821c167f81a3ccc793178",
+  "frontend_predictions/sub-032318-000-blink-snr-5.npz": "1a5b5100c386975130d8c816ed2cb5603918dfbda3cf31f2ed0ed4fe46e42567",
+  "frontend_predictions/sub-032327-000-clean-clean.npz": "7fb3dba7742ea6b66b76ef4bf3dc3c8a9605f354cb9d62250418659907327ca5",
+  "frontend_predictions/sub-032336-000-blink-snr-5.npz": "4ca1b13f872d7d1ac73e97274dfa0d2c8ea66f3ef9af1b7fd75950ed3decc7f6",
+  "frontend_predictions/sub-032306-000-mixed-snr+0.npz": "18017284778234a83203cb44b3c44ba1fe6b59d5d13cec4132a930332b5c40fb",
+  "frontend_predictions/sub-032317-000-lateral-snr+0.npz": "47ae6e2f89b6e96e9ceec7d4568847820967170877e39080c2c80d0bbacb6ec1",
+  "frontend_predictions/sub-032309-000-blink-snr+0.npz": "e12fd255a4f36a91ecf6dee510712793e481d734b0a996e06a2b90fce4c7025e",
+  "frontend_predictions/sub-032313-000-mixed-snr+0.npz": "674a03b854df7ffa7242adf536b09cba818a0f4a078b5507b0466769b96d5dba",
+  "frontend_predictions/sub-032316-000-blink-snr+0.npz": "c2df5342f9e633cc8afea6221f77cd84d3b0dee2443e54958ee061b36a95ffbd",
+  "frontend_predictions/sub-032326-000-blink-snr-5.npz": "ba49478d2e135873545dd354c9b2d7346658fe5295cd3647778380f7fa994633",
+  "frontend_predictions/sub-032329-000-mixed-snr+0.npz": "c1283e0c3e64d74427f5006ed3ea052542d89a11aef98722ca0538512d9bcea6",
+  "frontend_predictions/sub-032325-000-mixed-snr+0.npz": "25b57394a957c795d4ab90164b1b37d3da01d45be03f1e35396dc823dbdaf352",
+  "frontend_predictions/sub-032339-000-blink-snr-5.npz": "5cd1d2d110b6cac12a6b640a84b94614f8be647749e720a26997df24645e573b",
+  "frontend_predictions/sub-032336-000-lateral-snr-5.npz": "0cfa0a2e3db2e6d9db59514954d2e4f5264b82291f103128374de7e87a755b63",
+  "frontend_predictions/sub-032321-000-lateral-snr-5.npz": "d932ef94dd83241b12380fc5a371b8ab80b02aab2ec8f85901cc2f512ff7911a",
+  "frontend_predictions/sub-032312-000-mixed-snr+0.npz": "d182b0f8f06bf1a9898ea7f0e04af3dbb5da4e0bacb4808aed2eea7166ef9a24",
+  "frontend_predictions/sub-032326-000-mixed-snr+5.npz": "479080484929d5214f31e55f4997a6e4869eec9fc575bda1c50ca20a6033f182",
+  "frontend_predictions/sub-032316-000-blink-snr-5.npz": "4c4cc03c26cde61311e0add8005598e006aef5fec0e3989d4b37be5f808e3023",
+  "frontend_predictions/sub-032324-000-mixed-snr+0.npz": "b084c9d16414b88790cb55efb7cdb057fa8c832cc6c282a92f9fe239e54343cf",
+  "frontend_predictions/sub-032313-000-mixed-snr+5.npz": "66e7d127af6583501e98ac2568e0e9034be4fd7fdea2a112b2f249019a9b0727",
+  "frontend_predictions/sub-032325-000-mixed-snr-5.npz": "56459ed6dcefd7f64636d3c4b3401e9ccfd8a0b1afee292609f9fb1ee4461006",
+  "frontend_predictions/sub-032327-000-mixed-snr+0.npz": "883918ca749a522a738d062834b299d1d7f2b119ca099e9c12dfffa2934ef650",
+  "frontend_predictions/sub-032325-000-blink-snr+5.npz": "f3a9b18034293c1b0c516a07fab1299ca0694601498b8ff001c66d14b485ae34",
+  "frontend_predictions/sub-032313-000-lateral-snr-5.npz": "319687d0c38cc1b7e93dba74eb48616679941a08cb458731c44bde8a44edd738",
+  "frontend_predictions/sub-032334-000-mixed-snr+5.npz": "9d75bcbd28ce96c4f5c49128c0e3b59383a2cfa7207236be795248a558d52c1f",
+  "frontend_predictions/sub-032307-000-blink-snr-5.npz": "7102e66126cb30133e9da1c304b196d686ac3ea04a5a66e4141565a93bfaf86e",
+  "frontend_predictions/sub-032313-000-blink-snr+0.npz": "fed8669fd8b9266d371984e809bf5f170fdaab99c16a6493a1c67cdc2a200ccd",
+  "frontend_predictions/sub-032309-000-clean-clean.npz": "728abecf4010e573e94020dc54617ac31bd42c733ebfa092f7290aaec6a28dda",
+  "frontend_predictions/sub-032308-000-mixed-snr+5.npz": "1148c65824b0229b647f6709a3e1cc51fd8bf7f70ae630602ea8a0ffc7e24693",
+  "frontend_predictions/sub-032334-000-lateral-snr-5.npz": "9b57124943d768ac449fea08ed2726de28d29862baa25377dcdb20c129e8651f",
+  "frontend_predictions/sub-032341-000-clean-clean.npz": "d191987913a1715fe2799e7d72d9d56d95a60ac8490e39c237ae0a06bd801b30",
+  "frontend_predictions/sub-032324-000-mixed-snr+5.npz": "0c86ed74090ed0eb2974fb6de922f900eb429ea74b977b633329cab701aea1df",
+  "frontend_predictions/sub-032321-000-lateral-snr+5.npz": "4d13e8c1a8153887e8be285a0779a07dba4cad2b269244fe990434b6b9d76e2a",
+  "frontend_predictions/sub-032331-000-mixed-snr-5.npz": "c6980694b74e9ba281dfe6805fcae3fd2c5e46c0d2c4a0f53ddda03ea6db316c",
+  "frontend_predictions/sub-032328-000-lateral-snr-5.npz": "df9e488f14150475a4662501b27cf4a401ae990d9437c689b3a4df114fa32ae7",
+  "frontend_predictions/sub-032331-000-lateral-snr-5.npz": "46c1784672eea6a7dacc74e8e4ada8c758b83de3219ab6fac3e9d4359963171f",
+  "frontend_predictions/sub-032324-000-blink-snr+0.npz": "2501f487e6afa890171c5fa3fdd60421bf583ef42bbb64d8ea34432742f4a163",
+  "frontend_predictions/sub-032317-000-blink-snr+5.npz": "f4163a27f41d9869a224912a7f604118a4bc5948fb04ca0ec8661919e4232a16",
+  "frontend_predictions/sub-032325-000-mixed-snr+5.npz": "b032a6eb2371d624bbb8ef3433f2ee9afce2e533a759a22a85cafad45e08f743",
+  "frontend_predictions/sub-032323-000-clean-clean.npz": "ef667450b39ab46baa30c212f1385fc69bc8695409b8b7351f3e81878590b5ad",
+  "frontend_predictions/sub-032336-000-clean-clean.npz": "7a726bb49f6d12a6f999c4de97b88758fe5e39c2734971e5695c5dbdbdce25eb",
+  "frontend_predictions/sub-032341-000-lateral-snr+0.npz": "632f9658c4bcc25f78f67c07b105d4913cfe4dbc1d62cb3f85caa407a74da89b",
+  "frontend_predictions/sub-032328-000-lateral-snr+5.npz": "ef029f127e018d0b141fedd157da983ffc6891994b832b57443998936d99e939",
+  "frontend_predictions/sub-032313-000-blink-snr-5.npz": "5c6afd3de58b24cf240fd33f3b84dbad7c12220f5e85c7211a3c57288cbb962e",
+  "frontend_predictions/sub-032340-000-blink-snr+0.npz": "128070aec92019a9bdefe149b96a3c95df3fa799c2a250c51e0bef7cee03719f",
+  "frontend_predictions/sub-032329-000-blink-snr+5.npz": "6102fe3880d4a3341aa94589ec500c776e1c01461b24143980bb1a5ee03aa721",
+  "frontend_predictions/sub-032336-000-mixed-snr+5.npz": "5ecc03cb436d2851777e2739c76ba0daebe6d6b28eb7dfff5a3d46633c3ab773",
+  "frontend_predictions/sub-032331-000-lateral-snr+0.npz": "b085db14cdb111b3a2ea146ff120e254c3812142bfebee96de1a97dcfd18c133",
+  "frontend_predictions/sub-032338-000-mixed-snr+5.npz": "9f82817d218279377d0396d2e381f2807a4df9c2016753088f4aafe83a01219e",
+  "frontend_predictions/sub-032314-000-lateral-snr+0.npz": "e5ba0abde224aeabc65c68e20027ed1bf81a96e913bb84a7dbd128e3ad614de4",
+  "frontend_predictions/sub-032339-000-mixed-snr+5.npz": "9f430e7fdee604a3ad3c38f07395bfbb1f5448f16872bdc9f3d902a9d6a418c8",
+  "frontend_predictions/sub-032308-000-blink-snr+0.npz": "844ce1a04cd3a93c5a31371d587cad73a6eadbee4185c7b881cd6aca0a8eff7f",
+  "frontend_predictions/sub-032322-000-clean-clean.npz": "f599dc50f6757ca563168d6c81e10ed2c6908873e7c1e8ca31f63e1b023a2146",
+  "frontend_predictions/sub-032331-000-blink-snr+5.npz": "edad1f41b9f19bf9d3d5c09d6abaf9deb6d1d85d812a0ea6a86718dc1924042e",
+  "frontend_predictions/sub-032326-000-lateral-snr+0.npz": "4eb04842b61f71dc9ce720bb09f8cf540c165322b95dca38b353258f5cc22c94",
+  "frontend_predictions/sub-032341-000-lateral-snr+5.npz": "43e76844946cf7a4c432d8cbd605aab0210b4da0bc0d6ad5903e04001d2668cb",
+  "frontend_predictions/sub-032307-000-blink-snr+0.npz": "45c0ca57a77c8037b1edcdbfc4f36eee3819f37b1e0080411404ba9655039513",
+  "frontend_predictions/sub-032336-000-blink-snr+0.npz": "c9446fdeb0a480a453b7e79a4da02eb7d86e7182daa006a9befb711ea79b556a",
+  "frontend_predictions/sub-032327-000-lateral-snr-5.npz": "e1fd21ad10da222657dec03a3c6667f5f1ee167664a50724fe25a95ca9399cf7",
+  "frontend_predictions/sub-032322-000-lateral-snr+0.npz": "bdf50f1a9068408fea06b25deb967460dd9e6b43d7c08e31e0c0ff694181285f",
+  "frontend_predictions/sub-032320-000-clean-clean.npz": "341a176b519b9d3a570d89cb731f520d87c3e0b87280a788bbf3878686502bb9",
+  "frontend_predictions/sub-032322-000-mixed-snr+0.npz": "5617d4d7d97398862068553ddcdef0a0ccff9a46a3992600e156dd90c44c3926",
+  "frontend_predictions/sub-032310-000-blink-snr+5.npz": "67d39926966e6f1517481f741cf533b1fa43e5fd066a4476bed82fa3a30bfe7d",
+  "frontend_predictions/sub-032319-000-lateral-snr+0.npz": "61db022a93b9508c4f67abf4551cf58d124657a22b9ddf9a1a4929b2b6ad8378",
+  "frontend_predictions/sub-032322-000-mixed-snr+5.npz": "51e07ba803ac95561ddbcf5e73c6d960a771bbf3b31c0de8c4134ce8ddff1339",
+  "frontend_predictions/sub-032309-000-mixed-snr+0.npz": "9dc0e9248f90713b8ee2d56a8a3a64c794208f04724599a9ba7b5e3ea402f8c6",
+  "frontend_predictions/sub-032340-000-lateral-snr+0.npz": "e74697d0537d56fde497f5500b8e0953f6086ebf33d8939359b386612ba2cad4",
+  "frontend_predictions/sub-032307-000-mixed-snr-5.npz": "553158dc088e940c74ed027445de045d2db10b744f12f62a25d5db3d0cab38f8",
+  "frontend_predictions/sub-032324-000-lateral-snr-5.npz": "8f2fc5c98aac8c28d8d218cd07f09c12fae16b2dc682667b3fb3444f53a49d1a",
+  "frontend_predictions/sub-032328-000-mixed-snr+0.npz": "a4bf153e50f42e4bbf79d0ca73872b818b1b2aeafbfbea5f4610e99a0e0a367c",
+  "frontend_predictions/sub-032320-000-blink-snr-5.npz": "b6e26b7e2ab141c58f02c2deb703dff76f44ababf2e25465809a881db653e6e4",
+  "frontend_predictions/sub-032329-000-mixed-snr+5.npz": "f6936d82b3991ae317000fbc216d60efff11bba1c8508669004493076012fc65",
+  "frontend_predictions/sub-032323-000-lateral-snr+0.npz": "050941d20fe5ba03834b4f8ea6cab500c602731459168abaefe31e669a0f483c",
+  "frontend_predictions/sub-032330-000-blink-snr+0.npz": "dcd4b042355281ae1902b6b6228d6fb188b2908f6c5e12c9b5b1f77eefc4bd08",
+  "frontend_predictions/sub-032331-000-clean-clean.npz": "61dff46bbfe0c8e8d34f0c398fb68e745e1b6d3eaba2404e6cd22bbe2d5408eb",
+  "frontend_predictions/sub-032305-000-blink-snr+5.npz": "d963dbb00ef1c81598e57e937449cc217317d524a123ccc96d5ff0ff99de8ff5",
+  "frontend_predictions/sub-032306-000-lateral-snr-5.npz": "92a1aae68c0a319561b60369b5d5ebd27d986cee7c6c87444335b8df30e5780c",
+  "frontend_predictions/sub-032323-000-blink-snr+5.npz": "551d2c98f6d443b971172981d1daab5ebbabb9664a57b3d1037bbcc6e14e7999",
+  "frontend_predictions/sub-032330-000-clean-clean.npz": "e1869ea166b5559cdaec5d7a0615c1d90b364f58f31315bcb609b4161899b17c",
+  "frontend_predictions/sub-032330-000-blink-snr-5.npz": "69681c093d075cc188cecf03b9a971e681ecbc25afe5e32b8b77c9d992598abb",
+  "frontend_predictions/sub-032328-000-mixed-snr+5.npz": "5328dfc92b20abec3d894df9cc587b3c75b724a89b64c03e681a8c727ed11ba7",
+  "frontend_predictions/sub-032316-000-mixed-snr+5.npz": "275046750529f662a1416ddcf184fb389725f8b0de034a05ab496dd8585de7df",
+  "frontend_predictions/sub-032329-000-lateral-snr+0.npz": "644768b4b895483fa032188704e5c77450a958c96ddbd6befbe103de66bfbeac",
+  "frontend_predictions/sub-032327-000-blink-snr+0.npz": "33e9f7af8b6d7b49729f7440c54975cfea4130973c82af44275c8c4d572d363c",
+  "frontend_predictions/sub-032312-000-mixed-snr+5.npz": "09bd712b6a0aa3aa6b7ed11263229eb2f37a8f0ab0809237f287865834b2dc70",
+  "frontend_predictions/sub-032329-000-clean-clean.npz": "446370a1a6da54317c6529855ff117f81c2160d66c7547e44b5d7a890972690e",
+  "frontend_predictions/sub-032310-000-clean-clean.npz": "11d3f09c7250e86aa0cac74a574d1b70716daf9a54b96f68bf8ee65ac69bbcf0",
+  "frontend_predictions/sub-032326-000-mixed-snr+0.npz": "ba450faebaa7eb04a8b9dd75ded65ce28a15c67048b7ad43dd21ddfc430630ca",
+  "frontend_predictions/sub-032310-000-blink-snr+0.npz": "4f376763eff24034198d866c7f7e1adb376e88a7a7a6e75801063fdd4859c1ec",
+  "frontend_predictions/sub-032309-000-lateral-snr+5.npz": "88bccc12ae7eb943b4d098ecd0661e9f01e707514d57db2fed3a3046bff9afbb",
+  "frontend_predictions/sub-032306-000-lateral-snr+5.npz": "49592f960b0e4bdf0ddd8bbfcf6cbd4802675492d6d19edff021077dc62fea61",
+  "frontend_predictions/sub-032307-000-mixed-snr+5.npz": "ca5ecd60b457c5ad47d88e8c793f89f1d0aa11c3d0c3acc540b98dd5db00ac85",
+  "frontend_predictions/sub-032315-000-blink-snr-5.npz": "092f4a6caa28ebdcc3e3b605a860f1cc7a6113b769874e1d5dcf71ee758570d6",
+  "frontend_predictions/sub-032305-000-lateral-snr+5.npz": "b8a2c867d2b501219db201e059b6ec916d4771312bb53e74ceb8d512a6b384ce",
+  "frontend_predictions/sub-032324-000-lateral-snr+5.npz": "a846d2414d534c8b7e028cbd64aafb62d657700d0c9164f3a00aa1d33d08b82d",
+  "frontend_predictions/sub-032330-000-lateral-snr+0.npz": "caf7abd1ecdf86e2f88a2a8d11ec9def5495d791f50fa316ff43277030596f80",
+  "frontend_predictions/sub-032316-000-mixed-snr-5.npz": "28a718593fcbad366a05738f236d14c21dd75e78dc0eeabe0c15917fa1b91380",
+  "frontend_predictions/sub-032319-000-lateral-snr+5.npz": "91c3aeb7fb3566210a8392456eaeb8520fd46db25d8920cf2d3618b14b5ae0df",
+  "frontend_predictions/sub-032324-000-mixed-snr-5.npz": "11153cba3af176999d8a8cfebdea28227ecf8b45f6f73622e7cd15d1adb2dc18",
+  "frontend_predictions/sub-032315-000-lateral-snr+5.npz": "70f334348e00057f4aec652f9b3d715fdda3e8a109190e117f1e2398590334f8",
+  "frontend_predictions/sub-032318-000-mixed-snr+5.npz": "03b0f7bb4d0c5dbd4e6596290e515311ec9d88036ed1ea2c169f3623f1982d53",
+  "frontend_predictions/sub-032326-000-clean-clean.npz": "53fd37efd36020f331b37770f228c9446c7d2226604f5761b1e42810d5d40586",
+  "frontend_predictions/sub-032323-000-blink-snr-5.npz": "d7dc223868701667d460af73c6591c7d5cb6b55ff7c583fd305870c7967fe202",
+  "frontend_predictions/sub-032315-000-lateral-snr-5.npz": "3ee2f7b19f1376ded0cb5e206821420846ee7b3a92a806a9db6c16271ba9df11",
+  "frontend_predictions/sub-032317-000-mixed-snr-5.npz": "fe849be266f36692420e633c356f5342a93eaac083b74204c0cf9ce358b74e6f",
+  "frontend_predictions/sub-032313-000-lateral-snr+5.npz": "9c2484bdfcfbae170fd6e4aa8145704e2cf1e12f9669d7e7ea6a6598149a2f58",
+  "frontend_predictions/sub-032319-000-blink-snr+0.npz": "39b0f7a647b0053a95413a77e170c8f6be9f82573b0a717a1b105dcc9cd71b5b",
+  "frontend_predictions/sub-032340-000-lateral-snr-5.npz": "e8955159e62ae587b12a6b77bb72b5b23adc86634af99a331c5b802e7731a047",
+  "frontend_predictions/sub-032340-000-blink-snr+5.npz": "a251824fa56d06f404a74672d920db0e7529391673f5ff59ca706c49529434dc",
+  "frontend_predictions/sub-032314-000-blink-snr+0.npz": "01e0befbd6ebaa217a3fe3c83da6ba46f15c1651025282c68a67ad03208e9df6",
+  "frontend_predictions/sub-032341-000-mixed-snr+0.npz": "b5b9a8edb5ff2803c39b980f968ce62a1f0046af1593c949c4ecf3b51a7541f8",
+  "frontend_predictions/sub-032331-000-mixed-snr+0.npz": "be7cefb8524b97e42d600d90e04573f9d27dda3d36621ff39819936779e5c194",
+  "frontend_predictions/sub-032324-000-blink-snr+5.npz": "62d44a3db15e233ea275a74ea1d88314e6a8a4df5abdfc0b7dea4ba541a21595",
+  "frontend_predictions/sub-032327-000-mixed-snr-5.npz": "edf8cbe7e17f41db3bc9124df30e843e316ca3d59d167e64bbed89e20d02f8be",
+  "frontend_predictions/sub-032305-000-mixed-snr-5.npz": "aea40117852cc86b78daabec4c0f1f3960b7ed2bbe1f245e75c3a652650105ae",
+  "frontend_predictions/sub-032320-000-mixed-snr+0.npz": "85293735c77d5027468c1bdc78e4f48f5de3c4e83082e2fbeaef6ce6dac4b525",
+  "frontend_predictions/sub-032312-000-lateral-snr-5.npz": "9340b1bd1b9872167e0e6660386fed6715903b4af34db63dff97c16ec9b4029f",
+  "frontend_predictions/sub-032323-000-mixed-snr+5.npz": "5f48be51914aaa3a71fcf13fe771d9c50512f09e4b425a919c56b38096656d03",
+  "frontend_predictions/sub-032340-000-mixed-snr+5.npz": "7e03b7b5a627703e44216272bba51535c1320d6f8e7dc61c931fe2f88d6b615a",
+  "frontend_predictions/sub-032309-000-blink-snr+5.npz": "005b6727c8e2cd35bccef56513569796d412329f246c11bca6d5eb406f6e89ba",
+  "frontend_predictions/sub-032326-000-blink-snr+0.npz": "6ab6ea50d30f8c2d557e3dea354d47b62fb10adfc021ebcb3c7edee001da75a3",
+  "frontend_predictions/sub-032329-000-lateral-snr+5.npz": "d4f6b8d234d0ebdaca2ad89fad36fbca5f978c4216fcfa464f773be87a8b20cb",
+  "frontend_predictions/sub-032328-000-mixed-snr-5.npz": "977e15a2a4e5020608e9ba2d35382c05fab60308a33e28414b808fbf835d006e",
+  "frontend_predictions/sub-032318-000-lateral-snr+5.npz": "5a64361ee3512bd5ec734985451981cf9318ea79fe48421dfca3ba951e5951f7",
+  "frontend_predictions/sub-032315-000-mixed-snr+5.npz": "6e8afa96f78a743f275e990122237b085df682bc2381b9ecc0bba8551c4f67f0",
+  "frontend_predictions/sub-032336-000-mixed-snr+0.npz": "fd7e32a6b8b29d1addfd88fbdc56e0db3292da494597fb43fe21ac6bd28f4f3c",
+  "frontend_predictions/sub-032314-000-blink-snr-5.npz": "dfb46b045eafe2760b54e381e557144c4fc4366ff356957f8608a4a20cb5e03c",
+  "frontend_predictions/sub-032320-000-lateral-snr+0.npz": "e2323a3c446f655462c879bd34a1ffafbd71887457e741f6c194d5fc03d7b119",
+  "frontend_predictions/sub-032318-000-mixed-snr-5.npz": "d7bb838883bdae98e4c1e74fce29348a263a4266f9bb6df91bbb683cc9409313",
+  "frontend_predictions/sub-032338-000-blink-snr+5.npz": "0ed9c5fa40c34e848f37f5bf3d7e33b1a07d21f483b1ac23240dfb72c6b38a4f",
+  "frontend_predictions/sub-032325-000-blink-snr-5.npz": "8d7253da30e55c890c43df8e7a050e1669182e17253ce930a1067636a0841471",
+  "frontend_predictions/sub-032307-000-lateral-snr+5.npz": "e29c9dbb224aa57640b63b7af618cc24c805128ba34cd3ebc0a020e210a66dc5",
+  "frontend_predictions/sub-032317-000-blink-snr+0.npz": "2c68f0eed07d9cc8d468fe16cf7ebb62b75e372c6606aaa9f1cb7d1a7a472c01",
+  "frontend_predictions/sub-032314-000-blink-snr+5.npz": "482d8e4e3f6684e73b6e2985e171273142454388bdd74bb402480fbc7f6d3db4",
+  "frontend_predictions/sub-032308-000-mixed-snr+0.npz": "80188a1cc5acad729131536a70f8b133976f613b386025047ae488aace08e355",
+  "frontend_predictions/sub-032334-000-mixed-snr+0.npz": "6b090cbd6091e7e4f703be65490a9f1600a4bedf0cb5363e6f88aca5b81209f2",
+  "frontend_predictions/sub-032312-000-mixed-snr-5.npz": "4b9174e863cb441194e41139d877643cce8caf43b0baf7801cecec8b7eb60f35",
+  "frontend_predictions/sub-032341-000-blink-snr+0.npz": "b210dac1896a5bcacac7dfe0920e746d8fe5a88512ac041ce308dc5458ca6766",
+  "frontend_predictions/sub-032338-000-mixed-snr+0.npz": "e132333b86b066643a8a7192c5fe6243be72f452f8b0ec6cb567a1dcd1956b00",
+  "frontend_predictions/sub-032329-000-blink-snr-5.npz": "e98675e80aef05cec7578f083cc45f01be2f321b8dbf3e57bc78a3d025e67820",
+  "frontend_predictions/sub-032334-000-mixed-snr-5.npz": "651a855e6ca7c91a41d41b330528cbf1bc807c1314a3a9fbe5a29cfb15bd4c37",
+  "frontend_predictions/sub-032336-000-lateral-snr+0.npz": "65fe3c29cd132a4f6acbcab6218fa9cab8da1e741f908e973155415d1a1d1fcd",
+  "frontend_predictions/sub-032330-000-mixed-snr+0.npz": "44156ab9bac07502f0674847390c88d6fe72b4ae146b986d6db959377c45c4bf",
+  "frontend_predictions/sub-032316-000-clean-clean.npz": "bf8ea1d783218f6b404228f4700a70146fbd109aa06ce266cb11665280eae997",
+  "frontend_predictions/sub-032310-000-mixed-snr+5.npz": "0a804ee7bfe8a1d9c0322cec010e759afa6ae09db7c0c3a814fbe594863fe13f",
+  "frontend_predictions/sub-032330-000-mixed-snr-5.npz": "6d8faac6c7c30442b1cccf70c13b003c9760494304a0c39940c9be5f1ec3ea6b",
+  "frontend_predictions/sub-032312-000-lateral-snr+5.npz": "01af347a7591ae736874a6f8e4c20ca89fa098f180fbf50822fe90db6cf501ba",
+  "frontend_predictions/sub-032306-000-blink-snr+5.npz": "a6a42aa31568922d64a9bb015a1898e6c8c32f406eca6239c2fada74531fe173",
+  "frontend_predictions/sub-032305-000-lateral-snr+0.npz": "abc2a82cd813c9f15e66f60d89097353a9978416260905b1d3391ca4a4b8d41f",
+  "frontend_predictions/sub-032325-000-lateral-snr+0.npz": "cd40e7ca2f6d49e6f4f213b80347a0a662fa34dd80c48a06fe93766587a15dd6",
+  "frontend_predictions/sub-032310-000-mixed-snr-5.npz": "f2f4c792818b225f8eee3fc46a0a14cb40ffe121578cfc257fbbc3be6e4645af",
+  "frontend_predictions/sub-032305-000-lateral-snr-5.npz": "1a45e6259db4f8435c7a43e7e08d18c93027404d981e667874b9471ebd1cc96b",
+  "frontend_predictions/sub-032313-000-clean-clean.npz": "1e5606e82126789e3d355d47b301462ec8cbebf36fcf00e2da7c86cae09a75e6",
+  "frontend_predictions/sub-032322-000-blink-snr+5.npz": "e87e05fd70b8fcfd4c19aec6f3910e61fd1fdfd2ede5b748b4831734ada242a7",
+  "frontend_predictions/sub-032328-000-blink-snr+5.npz": "632ae8710096960e29e48777aafd06b8503438ce1e16602a5b1ad233990c8139",
+  "frontend_predictions/sub-032305-000-clean-clean.npz": "e95bc8c907fe37b070cbab6a426dcd6eb7194bd36e860a239f9953621d1c58fe",
+  "frontend_predictions/sub-032319-000-blink-snr+5.npz": "169372fee238c2ecc5347c043e9f4c78636b290fcf5d07a79e43adf6692dcc3f",
+  "frontend_predictions/sub-032307-000-clean-clean.npz": "9907f789ad3bd86537f5d578d635f3d1fe314ec3eb97c8392cd41ed933201527",
+  "frontend_predictions/sub-032328-000-clean-clean.npz": "448787d3702acd5f2f1197a8622e8759ca8de13ec34505fbc0426ea6bfc3e5be",
+  "frontend_predictions/sub-032341-000-lateral-snr-5.npz": "9b7d09ec4560e499f87bae44f206d2756258ecca692f9287ee3a88c63b3daac5",
+  "frontend_predictions/sub-032320-000-lateral-snr-5.npz": "d36d5a848856de5cbe5107cc77c04e83c18ad09daf04f046d01cb9133de26c87",
+  "frontend_predictions/sub-032320-000-lateral-snr+5.npz": "fc016e735a63c1511ef8c0cc0c4956abbcec9be3ea72bbd2eea689ebe7d25db7",
+  "frontend_predictions/sub-032323-000-mixed-snr+0.npz": "ad13e0db28fe64a4859c66ce11affe4ce26c87dfe7f70c800162c0505cbf9d2d",
+  "frontend_predictions/sub-032339-000-clean-clean.npz": "2f9b3aa64f4afcc9397cc781455573eb80e606109ba9b976baaa32f91558c155",
+  "frontend_predictions/sub-032321-000-clean-clean.npz": "bf1779539448bbd659a0b6823e947f2e117b1ebf1221c2e98e50a0895e356cd0",
+  "frontend_predictions/sub-032306-000-lateral-snr+0.npz": "73212a795669765cb7714a897a467dc8cfd57ad950e1054146403e4bde1d488b",
+  "frontend_predictions/sub-032317-000-blink-snr-5.npz": "d35591da14d12de5aa7253d1ac121abf28426b92ca26eadd5386e507b8a29cdd",
+  "frontend_predictions/sub-032329-000-lateral-snr-5.npz": "23287a8cdc76ac95315f2058e6b6039e80238b3edac42583d3383f5f522d6590",
+  "frontend_predictions/sub-032326-000-blink-snr+5.npz": "d0f9482dbf277651c1f7644cc00c310d922ce56de89a0d27bb24c33b3c3e68ff",
+  "frontend_predictions/sub-032334-000-blink-snr+0.npz": "32b9333fe358c342b8e29bf9d54f35710c8af928e35d35ca13666b68fca0b4e7",
+  "frontend_predictions/sub-032328-000-blink-snr-5.npz": "a909a010cf44ebcc062a2f6c94cb185ace1c24c891029b167b1d95f2cccc130e",
+  "frontend_predictions/sub-032321-000-mixed-snr+5.npz": "9b41276e781480cf822fc67ae3cd9ebbb99fe9215de0eefe5e1e9734cdb3b4b7",
+  "frontend_predictions/sub-032323-000-blink-snr+0.npz": "54f194e37056b28e23cfe9450a74576b5f472244a42d112e241921b417bce2ed",
+  "frontend_predictions/sub-032306-000-mixed-snr-5.npz": "13f2073342c561028684cb771a17a10b657283f66feb6f6655548111c9c8ff20",
+  "frontend_predictions/sub-032321-000-blink-snr+5.npz": "4f95b79ae9c8455ffe63b76da7e53592e3388d1813f2b20763be47c94479900e",
+  "frontend_predictions/sub-032330-000-mixed-snr+5.npz": "061797d342ec51358dce4236536852ed88f619dbf94d634fe984c2f400456b99",
+  "frontend_predictions/sub-032312-000-blink-snr-5.npz": "11148d2212c71c41ae974fd0bb7b755ea201f52043b3ff1a270d0e1858c87292",
+  "frontend_predictions/sub-032314-000-lateral-snr+5.npz": "86f9c1d474b8a9309311f7b7ed00e908acf3db29e6c56d393cf48c6bb69ab90d",
+  "frontend_predictions/sub-032323-000-lateral-snr+5.npz": "b650de22bb790cf85b15f07bc5e0a0f8e5f0a85691431639a0b716a1aea14aa9",
+  "frontend_predictions/sub-032322-000-lateral-snr+5.npz": "9cdae6a66e3115b9023a0584a5f02c0d51edc5182dc4a290d8bef361e8d25a9d",
+  "frontend_predictions/sub-032340-000-clean-clean.npz": "8fac8614d7f1f80adcab2618b51895a7431cc75a8c6db086638e50c6dd7c76d1",
+  "frontend_predictions/sub-032326-000-mixed-snr-5.npz": "265f048a07b5c76c799c1bb23730853bc6c93c3814538f67a3c5e6a0369a4ce0",
+  "frontend_predictions/sub-032321-000-lateral-snr+0.npz": "458b88d94b31cc3af26172f55b3be6b150cc4e4f58ed6f93ed40e8f478b75e03",
+  "frontend_predictions/sub-032327-000-blink-snr-5.npz": "5f37a058bc26b3b8509bf4c77c87f896bfa1d97db01c6d5cbc52239668b5767a",
+  "frontend_predictions/sub-032341-000-mixed-snr+5.npz": "2885c18b69fbd51350bebc4b906aa860dda336ebe9d7b51a17bd5de895fc5fc3",
+  "frontend_predictions/sub-032328-000-lateral-snr+0.npz": "454a762f5db569ad05d2dcd54aaa2be45512e8c24be71115c6a60be6ab4b7894",
+  "frontend_predictions/sub-032338-000-blink-snr-5.npz": "abfef37985cc463d4dea15b84f66ad6c15098c04b1f2f19f30383bc816880f91",
+  "frontend_predictions/sub-032320-000-blink-snr+5.npz": "ea0b8b9702d4a4a77bfc946d0a55fcadaf28a6c473825d7cbec082494bea3ee1",
+  "frontend_predictions/sub-032338-000-lateral-snr+5.npz": "2f3fe5de63945c400bdf5ce0e721b12bddba83e272d3b318687aaa274ac4f16f",
+  "frontend_predictions/sub-032322-000-lateral-snr-5.npz": "9a6af94e15962a64213b515f24b0320037c606e26170d34b5b3839c8627c0548",
+  "frontend_predictions/sub-032305-000-mixed-snr+0.npz": "0ef5d9ccfe19c10e972cc80abd502f5b45ed99644e955d77ba5ed60bef69b079",
+  "frontend_predictions/sub-032308-000-lateral-snr+5.npz": "f5ab1d0eec95e02a88c485891fbea1162de7b4106a1bf39b1e9968ffd9d9e849",
+  "frontend_predictions/sub-032315-000-blink-snr+5.npz": "6f9b94e42c44338a75c8e320083e879e95c3a075fa9f99072c430f4ca0fbc5af",
+  "frontend_predictions/sub-032320-000-blink-snr+0.npz": "253117c0e6bf9e84cf718ad070091a06abbbf672d25834776526307db3556998",
+  "frontend_predictions/sub-032338-000-lateral-snr+0.npz": "2e4731329e114d5298d8d93da1a3e143e53e6d0cb2bb257aaa700830ca060c1e",
+  "frontend_predictions/sub-032330-000-lateral-snr+5.npz": "5beaa282e595f8858c45acc4c6e38d77e554eb28143ccd7f3bd39766ce459241",
+  "frontend_predictions/sub-032309-000-mixed-snr-5.npz": "4063bb55c7663ce3ecf521c08aa16dbb1cb298f4a144ba8b08c62f108aba406f",
+  "frontend_predictions/sub-032308-000-blink-snr+5.npz": "42c5e2cd1f881469aeddd75f0d6f3c5ad3746cceb4aa3345dddd28534bb9157d",
+  "frontend_predictions/sub-032329-000-blink-snr+0.npz": "3abb6cb39caa6f0b465bfc406155ba7ba8050a0c6bdbdd98c3eb9ebf8cd0898e",
+  "frontend_predictions/sub-032322-000-blink-snr-5.npz": "b3bfab511c2a71c9dfc90d96d2ef25c4e6365c7351987cb3fd2c3afe1d55077d",
+  "frontend_predictions/sub-032336-000-lateral-snr+5.npz": "9143f0af56160caa4f7beb4eed7ed65d8fd4a875fc7ab770840f09836140bd0d",
+  "frontend_predictions/sub-032316-000-lateral-snr+0.npz": "a11b683d98c36411258a0e1ca0c80e516236f4bc79682d48c770276014817b03",
+  "frontend_predictions/sub-032325-000-blink-snr+0.npz": "638162dc7c516319aae218bc3194e3b2f0d0b0ebde4976061073a030743f2a65",
+  "frontend_predictions/sub-032336-000-mixed-snr-5.npz": "865ac5f945f4c78da8d18be6aee2b7d98c6fb1e60cf06c3fbe32b832ae44bbbb",
+  "frontend_predictions/sub-032330-000-blink-snr+5.npz": "0e56cef929e7ea59db5172fc5902b4a32b9735729e5b5e7dc8e30a3a616b4180",
+  "frontend_predictions/sub-032306-000-blink-snr+0.npz": "fb082fd14c1b819de29ee5078e9c3d4a4a07a640e9b270220bca222eeacaec67",
+  "frontend_predictions/sub-032305-000-blink-snr+0.npz": "4d29dbd00c04587822f92aea9613c7a9a6903119a345fb14f6bf40458453600e",
+  "frontend_predictions/sub-032306-000-clean-clean.npz": "a9558de52fbe8b4ebd08b7b8ebec5136fa7d899f3cf2e86adf114b3d956e69f4",
+  "frontend_predictions/sub-032327-000-lateral-snr+5.npz": "d0e3485c7a1c87f9a906c80522e30e7f03b665a6ff6f59b75dd587bd321fec5d",
+  "frontend_predictions/sub-032318-000-mixed-snr+0.npz": "bc5f99980281b446e5dde3cfc553d13570d5e53a3d26ee097f2cac3fbe8a4b57",
+  "frontend_predictions/sub-032318-000-clean-clean.npz": "82fbf14ceaa39ad9a1ba253475d3ec534a89d932724cf784b42b9014a25ce0d9",
+  "frontend_predictions/sub-032317-000-lateral-snr+5.npz": "f2cba5987517ceb1e0bf0a5ce0a69e52e8fce3d1329deb1f2d55148214ec5d87",
+  "frontend_predictions/sub-032331-000-blink-snr-5.npz": "efd710737bdf0eceb7f6e0f74aa10c847f76631ec548d861bd7a6e2504ab3f87",
+  "frontend_predictions/sub-032334-000-lateral-snr+5.npz": "89d126559e0bfa53ef2dc5071fe3803cc9976df8b05cfa047dd607d4ea64a00c",
+  "frontend_predictions/sub-032314-000-lateral-snr-5.npz": "3f7d26a1a51d4c663db8939bc8ffc6e500848de1f338472774592da2189dbacf",
+  "frontend_predictions/sub-032318-000-lateral-snr-5.npz": "8d1bd4afbad9cd5438a2c191cf8edcbf79bd2eb071b014c95ee51520ac9b011d",
+  "frontend_predictions/sub-032331-000-mixed-snr+5.npz": "e208e7b27a31c37217033b8eb7e63b03efc5ac6acaa82af7b289d308ca2bfb76",
+  "frontend_predictions/sub-032309-000-mixed-snr+5.npz": "da8c37b783dcbe8a3957f0766f3a2a85c8bc70784d2cf2f97047d4ef9f5e7cce",
+  "frontend_predictions/sub-032327-000-lateral-snr+0.npz": "33c3e7854be7ae102a72aa258e1dc3c4027d4a9ae502531e4510319efe3c3fba",
+  "frontend_predictions/sub-032318-000-blink-snr+5.npz": "40be005eb5375ad8f134cf2e105495f46071243c5a2c7bd64b40fa575b0f2e81",
+  "frontend_predictions/sub-032327-000-mixed-snr+5.npz": "5090a7541920f099b006dd2df610603c02d91cc46e836e87c5d505e91944bd3a",
+  "frontend_predictions/sub-032340-000-mixed-snr+0.npz": "e3597fdc8e4822d78cacb24f8f0c11a93f192e54c3423d5c5b0463c077880262",
+  "frontend_predictions/sub-032309-000-lateral-snr+0.npz": "bda0bb0d7274777e2ac28e3a42bcbdb6bfd8db88b888b36f98b997c97b2a88eb",
+  "frontend_predictions/sub-032310-000-blink-snr-5.npz": "0dfb9c07b42caaf564226e20fa1c21a338ad7525fa8d22070728484f2fa34dc2",
+  "frontend_predictions/sub-032315-000-lateral-snr+0.npz": "6b8415b7756af446aa7770c7813bda7c3fb3e644206e2d2db2767f02e2d0c7aa",
+  "frontend_predictions/sub-032341-000-blink-snr+5.npz": "93b4ffba33da65e010937e98fdc45b3fd2abaf37bc70594648abf36b470e49fc",
+  "frontend_predictions/sub-032341-000-blink-snr-5.npz": "3c84104cbfc08ac605c7c7d53e9e2c56d49a5b964fed11984252ef30a3054a12",
+  "frontend_predictions/sub-032316-000-blink-snr+5.npz": "053ad77ac00ca678d1febf1b38b702eb666d6afb6cda8758f756a07b57d670b3",
+  "frontend_predictions/sub-032329-000-mixed-snr-5.npz": "e3bda309a8c0cf0651209f4041877dc4cb426330e1521312902404c731374285",
+  "frontend_predictions/sub-032314-000-mixed-snr-5.npz": "058b686851b1e4655d20ca501d22246c48a4a6a7ad0a63fdaa620a705c47e8c3",
+  "review_shards/sub-032329-000-blink-snr+0.csv.gz": "da01f60d555ec7878ec1a5eecea5085e108987dd296e7c5ee6d9b23f67f40e08",
+  "review_shards/sub-032331-000-mixed-snr+0.csv.gz": "672509a1e83412e4fdb0f3f3c1f8d913cd04b9597c3ce0dbbe61d74d1717a472",
+  "review_shards/sub-032314-000-blink-snr+0.csv.gz": "7130177be41e7b41b95ce56b5cfc91f9e60a05e083f56f02f696851f38898bb4",
+  "review_shards/sub-032334-000-mixed-snr+0.csv.gz": "ea8875e2b65b3f515ea19199fa4e3a0a1e079dc6d09b20a0426630915af0e301",
+  "review_shards/sub-032326-000-lateral-snr+0.csv.gz": "b2e0db8965a7b8358431c8e9702f301ac100e8597acd9a03713f74d58877ca4c",
+  "review_shards/sub-032317-000-mixed-snr-5.csv.gz": "6a9f46642d739f2d541563ad9d882207b8394a27cc86e141dbd009c67f1cfb30",
+  "review_shards/sub-032313-000-blink-snr-5.csv.gz": "409b409aa761e4bbfc3d8a5f92d3f333d444ffcbcd2b86ed4a168a4cbda559f5",
+  "review_shards/sub-032319-000-blink-snr+0.csv.gz": "04a34580e87dd1cee07a7b8ce77352e66b09d839c23077c9c7fb7bd5b2e6ed19",
+  "review_shards/sub-032331-000-mixed-snr+5.csv.gz": "c86b52b6febd9ab080b8660a47eb554e86782ccbf02d5cc8f9cf259e28945a76",
+  "review_shards/sub-032317-000-blink-snr+5.csv.gz": "9a2a07315f5595ba4f6b6ad70b03a12cfd01e1ece4dc4862b5aa21a608dc1fda",
+  "review_shards/sub-032321-000-blink-snr-5.csv.gz": "4aa5401347f8a1bc6237a33bd0ba32d0a09e7c9f5758fac7cd778b62edf612b8",
+  "review_shards/sub-032317-000-mixed-snr+0.csv.gz": "81229c9ca37e1827b0d760ed93337c7465c6afe2cfe4bf90a0a6c679fb467846",
+  "review_shards/sub-032316-000-mixed-snr+0.csv.gz": "bafe0b80cd0b9206521267dc20c5352f2ec111e6198905969c955eafa8709967",
+  "review_shards/sub-032305-000-mixed-snr+0.csv.gz": "c203104b814696aa3560efcbbb50ae7b131c9bc09b073933f8dfa50eac22d6ee",
+  "review_shards/sub-032312-000-blink-snr+5.csv.gz": "858c94b8e3eb9e191a68883655906dbaa0a9f3e8a71fc6a61c140d7cee66530a",
+  "review_shards/sub-032331-000-clean-clean.csv.gz": "0fca535cee222eb70192b79fc703bc7047f97236ffc8287c60d792fbc19ade37",
+  "review_shards/sub-032310-000-lateral-snr+0.csv.gz": "eebc4436699b5d08b99db78fe0561e0c27e3f8588d79c1ab85afd006a17e1f53",
+  "review_shards/sub-032320-000-clean-clean.csv.gz": "e72dcbe8247d3a7ee7a5491db56fd249276b6df7ad56eb490ce2a3dd6add2810",
+  "review_shards/sub-032307-000-blink-snr-5.csv.gz": "b129971020599b9747058d51fcda67d03bb25e796422ed7ad03c6e47693172af",
+  "review_shards/sub-032319-000-blink-snr-5.csv.gz": "b5770f77e300187522fdb7ee4832d5b6d4e86c12ae77a7f6336021241db3c95e",
+  "review_shards/sub-032330-000-mixed-snr-5.csv.gz": "d7c98203e1f493d2ad0f52387f7b5bb36bd8b78888a0a4e6c0e9c97c37a93cbd",
+  "review_shards/sub-032323-000-lateral-snr-5.csv.gz": "77acc4c1c1a37597d526a0e6dbf0b50d02d09199e7026b1949b22b0ac5dcabed",
+  "review_shards/sub-032336-000-mixed-snr-5.csv.gz": "639b5de758974ddd2766b5a056b03aeb1656752d19514fc1f7cdae3c99e500ed",
+  "review_shards/sub-032324-000-mixed-snr-5.csv.gz": "46d09347b93b9dd0f78dbe5101055d437f24db4179c49674614285d5b042a8e1",
+  "review_shards/sub-032330-000-blink-snr-5.csv.gz": "ed41104abd970b102cc2396828bcdfe0ef33ca20b55901b1b2bdfa0b88f0d2d2",
+  "review_shards/sub-032306-000-lateral-snr-5.csv.gz": "efb5887f45db4a96056d00649af41d7da3091a61df22306b29d96d60fcd86372",
+  "review_shards/sub-032308-000-clean-clean.csv.gz": "816ae775481c3ddcacb66f375cf0a0f5593dc165f640c107be5fdd6c8cdddb8d",
+  "review_shards/sub-032331-000-blink-snr+0.csv.gz": "8d8735dc1df3371f425cdb93c2595dffdb4892d2b51393917246809ec9c644e6",
+  "review_shards/sub-032316-000-blink-snr+0.csv.gz": "c9eb94fa833c06d3264b38e164d8c3b5770bd5961301faa59889c9d711a021f9",
+  "review_shards/sub-032341-000-lateral-snr-5.csv.gz": "ef2d1602874bef8d1481e5bd22288f4bdb064af801386a9c8cb1ec7fe790f6b7",
+  "review_shards/sub-032313-000-clean-clean.csv.gz": "898297a3f9d60ebaef845250a9519d1cb4c5780a6301babc87892f5c34e079e5",
+  "review_shards/sub-032340-000-clean-clean.csv.gz": "39d8415007c061605227eb8a74f1455e30c81b8633f4953933d4ebeb2c82cec6",
+  "review_shards/sub-032306-000-mixed-snr+5.csv.gz": "3fa017ea625f65ea4391fef56e7382f6e4692dc2ea420e43a0dbdb24399227b0",
+  "review_shards/sub-032324-000-clean-clean.csv.gz": "1af57b4e14ff07523b552d73f8354bbb2d0c415ce07a31b32d8712ec1308c9ef",
+  "review_shards/sub-032312-000-lateral-snr-5.csv.gz": "c41162fd00dd4345f3ccf39444a9474befef059beac7cb526525cd9b57d2ebc5",
+  "review_shards/sub-032318-000-lateral-snr-5.csv.gz": "61aa7fd412d06a7a62cef808df44b1c68af1443b7067e0cd4b36b7084cfc26ba",
+  "review_shards/sub-032338-000-lateral-snr+0.csv.gz": "4c40328ed03bfba5078d1827c5c7f46dcd67ea2edb798aa8914fcc8a795aa11f",
+  "review_shards/sub-032314-000-mixed-snr-5.csv.gz": "a47a875cd6408aaa47a4f38a9aec181efb7305c3f3b1f9e3eba8aa07aa362aaa",
+  "review_shards/sub-032314-000-blink-snr-5.csv.gz": "1801e120223193a25eb2171c33561d56a721c77037918397bd069561696a0c27",
+  "review_shards/sub-032323-000-blink-snr+5.csv.gz": "4b8bd03d0f0c095c44f30463144bcf02b579f60152292f4884c23f508ac56c3d",
+  "review_shards/sub-032341-000-lateral-snr+5.csv.gz": "0baad218d4cd3cddadd8dfe91281211a3c6bfa58d194d1042122a2ff6505f3b3",
+  "review_shards/sub-032338-000-lateral-snr+5.csv.gz": "3b0072e36455a429d9701cf35d0969f3b8c0b51cb0e7b417139060011c2d945d",
+  "review_shards/sub-032307-000-clean-clean.csv.gz": "8eaf4ecff61cf6b6f9a91702d031a2295dee96ef6d532b18d651044899970e3c",
+  "review_shards/sub-032321-000-clean-clean.csv.gz": "9e2ef0dd6eefe1208636db9fe784a7b52f23dbd7fa1471ac5ed8187cc4e19cad",
+  "review_shards/sub-032305-000-blink-snr+0.csv.gz": "911838645f28165731f33fe3bc1d727acb55c7cd6295d546fca8314d56bd148c",
+  "review_shards/sub-032326-000-lateral-snr+5.csv.gz": "4be1721f218b9251f81b01019515d870079e00fba0a1629be49f649e5f0801d4",
+  "review_shards/sub-032331-000-lateral-snr+0.csv.gz": "49ac280cca2a3a75ba907e30133824a0fd752566ca31cb3f5ad1a64b0693bb80",
+  "review_shards/sub-032325-000-blink-snr-5.csv.gz": "f7b74cb983802842ec21b224b54a19155e49c5c5ee3536e3d3684e6c49e5eabb",
+  "review_shards/sub-032306-000-lateral-snr+0.csv.gz": "ceb3303f94b5424a0b61883666464a7a667209a9a89f9c670b4d44b33f2cd483",
+  "review_shards/sub-032324-000-mixed-snr+0.csv.gz": "34be4bfaa7715e968ca551925fcef3ef136d9bf7c869366f803a42866acf21e6",
+  "review_shards/sub-032322-000-clean-clean.csv.gz": "b26876cc67dba8247357bd6bd84f82c1c44a273dc4924cca40ff95bf33accb15",
+  "review_shards/sub-032320-000-lateral-snr+5.csv.gz": "2a555d0f1c038f08d4ec685a54d58bd574ffb0399eafa71c0461ac3076ff7488",
+  "review_shards/sub-032316-000-mixed-snr+5.csv.gz": "e1e6ad31916e171c8455377a4679a0fec1707cc48d89c62b138522c29c4babeb",
+  "review_shards/sub-032320-000-mixed-snr-5.csv.gz": "ec2f0fc546ce95967e8f155c2a76ef2fc3ea78b36eb461d13a359610bfee3b10",
+  "review_shards/sub-032310-000-clean-clean.csv.gz": "878cd597714e7f761a16d0b0a1b5f8c9385b3ac70792bd76830fda52a8cf1f25",
+  "review_shards/sub-032309-000-clean-clean.csv.gz": "0b75e2178f4d1dfe754b63020524a26749137a3f15eb1c72a88059a4f28ec68a",
+  "review_shards/sub-032329-000-lateral-snr-5.csv.gz": "65629ae64920766ce6edf4d84ca5debec9011524c500abf4d577fd31a647d58c",
+  "review_shards/sub-032329-000-mixed-snr+0.csv.gz": "3b4c2e62c75a91b071292518497c7e992fc4659cb413f647840593f0326265df",
+  "review_shards/sub-032324-000-lateral-snr-5.csv.gz": "195026737a9beb92ec2eb1e31d4914a16fb609e155c09fdbcf80e78ebfc21b2a",
+  "review_shards/sub-032315-000-mixed-snr+0.csv.gz": "f661822902fefc57fedd5f2ab4b83e0e05820f7b4a2f8f2f8e8db1f7b4f6853a",
+  "review_shards/sub-032310-000-mixed-snr+5.csv.gz": "18c31ffc7d5e8bcf0a8c6ae3c12db887f2fcddf130934fedd8a53f854ee59756",
+  "review_shards/sub-032313-000-lateral-snr+0.csv.gz": "5933f1069750aff16a5e1b27205325a92c40e99cd5be814e6fc1acf6065a301c",
+  "review_shards/sub-032340-000-lateral-snr+0.csv.gz": "3380ea09a0608b4361554f0aba2caa631c18079b301b13a0313f582e14e22b83",
+  "review_shards/sub-032310-000-mixed-snr+0.csv.gz": "b52977b7da0175137d62218149554e7300600cb3142d3c54ea35047d394bb216",
+  "review_shards/sub-032338-000-mixed-snr+0.csv.gz": "416c289cf79b95005d4fc47550200b702ddd4fec1cf9b67c7068ae1a84c5644b",
+  "review_shards/sub-032338-000-lateral-snr-5.csv.gz": "ac4da3c61979e7a5e82cedde7b5994e4a174ebcd4600c9e8ed3aa4ddfc5e0014",
+  "review_shards/sub-032322-000-mixed-snr+0.csv.gz": "db1ee56c81f08ab47444f7bad6c96f8bb2b8c909848f73c98033c0665524f250",
+  "review_shards/sub-032318-000-mixed-snr-5.csv.gz": "c99642d1ad909571141dff95cbf9613dfb79bc4bc863e34f81def6ec0ccbcd18",
+  "review_shards/sub-032326-000-mixed-snr-5.csv.gz": "ffff573d3337310f607c9b154f32352f43acf50396fb3e2ff919ca9ebbed76db",
+  "review_shards/sub-032339-000-mixed-snr+0.csv.gz": "d0d3395c9af932b06a4b0d67529192f2e37c1dd5148223654901a89a1dfab1c0",
+  "review_shards/sub-032310-000-mixed-snr-5.csv.gz": "83f7a65c1a6ec451e04164e9412b6b3e16b126423f0e8ed0659316d8e47d670d",
+  "review_shards/sub-032306-000-blink-snr-5.csv.gz": "1923f745e3cca90ad3bd78fcd4a37612e0c6e53eb9a0f0f16b1b4caec8acce14",
+  "review_shards/sub-032340-000-lateral-snr+5.csv.gz": "b9a8b109052f49053bccd43aed0607c72f76c0ca0c2c5ba0b369f4b5a7efe797",
+  "review_shards/sub-032317-000-clean-clean.csv.gz": "723b25f3c9273ee5204f63f1bde8da62913d032755b43c1b76fb3f30ec2a3d46",
+  "review_shards/sub-032327-000-blink-snr+0.csv.gz": "74d08aff4782c1ae31701169725cb503c5cf12d5871b37ac5751a7b06be7ff50",
+  "review_shards/sub-032341-000-blink-snr+0.csv.gz": "afd78e7de058e39bf2778d000e08379c4f80be34b5758d0e8ac87bd3b39cc362",
+  "review_shards/sub-032340-000-mixed-snr+5.csv.gz": "a78d292cc256ce7b9fe9b3c2af85a68885d5f2a6833eba93c8666d78fde105a8",
+  "review_shards/sub-032320-000-lateral-snr+0.csv.gz": "96da32c2452328c6c4d9ce0ab2027de4ceb0a9c5a2cc7ca532626387137e3f64",
+  "review_shards/sub-032320-000-blink-snr-5.csv.gz": "f7b285e0ec8d4c4dfd3250fae2e335a5016df2626cc4fbaff3c5327e2841e29c",
+  "review_shards/sub-032329-000-blink-snr+5.csv.gz": "f34d1656dd9f48db33eef8094399b6865020a7119299b68ff32539fe92ab5af6",
+  "review_shards/sub-032338-000-clean-clean.csv.gz": "a69a7ce9288ba58af55b19566bf5096b175c5f0372e4f5aef374a789b37d36f3",
+  "review_shards/sub-032339-000-lateral-snr+5.csv.gz": "8918f2e95dfb0e5b45cfdc10f239ef507186ed96422bff32c9ff4e6998c143ac",
+  "review_shards/sub-032305-000-mixed-snr+5.csv.gz": "f6df5b45caf1f5da7ae6a7fc470e3e1c3d29a00569a3b744096dd69e78082c9c",
+  "review_shards/sub-032320-000-blink-snr+0.csv.gz": "be9497fa1dc5d89f92631c2d3c3d49716a7efb80e7d07f8725baab7a75b06ba7",
+  "review_shards/sub-032307-000-mixed-snr+5.csv.gz": "89d500d14f119be81e8bfea20930b352c99965d6cb0822cc8baddac189a67331",
+  "review_shards/sub-032308-000-mixed-snr+0.csv.gz": "277ffd942981451a04ddf5da7d6cc4228d4656bfad8e53bc3b08d069e865551a",
+  "review_shards/sub-032322-000-mixed-snr+5.csv.gz": "ad3501c9e17406ed6e268be3c58ea03b22a6badb3d0683042d1ca01e8b9311c2",
+  "review_shards/sub-032323-000-mixed-snr+5.csv.gz": "9cbf5bc5a1d66b6024fe04f88dcfb0373c4315a48cb94198975f6000cad5da51",
+  "review_shards/sub-032325-000-lateral-snr+0.csv.gz": "f07e6dccd52c1b493f87f667699a2ec1d76c01837ad09ee62eed7235712dd533",
+  "review_shards/sub-032334-000-blink-snr-5.csv.gz": "81d68e56681209b24e16304429390f52a7253e3c7ae389ef53c87c70d5f7c417",
+  "review_shards/sub-032339-000-lateral-snr+0.csv.gz": "3882813f894d18a40fa5306090c0e67d25c18e760a48ed7ff9b725cbe82411e4",
+  "review_shards/sub-032317-000-lateral-snr-5.csv.gz": "1be0e6a2835dfdc89dc1f0e544a287652b5920bca9dfce90529722dfe29afd45",
+  "review_shards/sub-032334-000-clean-clean.csv.gz": "3876c378bf8cce010956622757a2e7ac640cbfa3109811c847cd37b0587eeb30",
+  "review_shards/sub-032326-000-blink-snr-5.csv.gz": "86d40d6a3f905caa51f695b5a1f552957788e34dda90f2c860303493d48464b0",
+  "review_shards/sub-032329-000-mixed-snr-5.csv.gz": "c700a0c932c5e39d12931502b75cfab60c8c1095dee3d9842f04c17d18cbe645",
+  "review_shards/sub-032313-000-lateral-snr-5.csv.gz": "76ccc94aadfc22ef6ea2e7ee8f88d5db8f48ab3db124b54c5715cbf9ddd91e7b",
+  "review_shards/sub-032315-000-mixed-snr+5.csv.gz": "954c2684dd58b8ce53831add97e09be3947eeb3635709f1e67a49f098559aecf",
+  "review_shards/sub-032323-000-blink-snr+0.csv.gz": "501ace4c2e7eebf20332a0f3c88066739e62bf9a644d258d780a6c43e1a48113",
+  "review_shards/sub-032327-000-blink-snr+5.csv.gz": "874f29811fa4c634bc0a18f72b5fd0e73941bdec8b5e225ac900077d7d2d26e4",
+  "review_shards/sub-032321-000-mixed-snr-5.csv.gz": "8458e247ae45b0bf05b609941793d99d0a1a922fb2c31eb1014a6111b5f7d804",
+  "review_shards/sub-032308-000-lateral-snr-5.csv.gz": "64a34639866ca226c593a3ed2ccead2c666abbbd51d2cb9c5bd3b31599c8f078",
+  "review_shards/sub-032328-000-lateral-snr+0.csv.gz": "b8a310600d1e6359df80bcdbb1cb7e38e6e969210d38fb60f611be4f19b692d6",
+  "review_shards/sub-032316-000-blink-snr-5.csv.gz": "5bad93416e82be97a7aa8406d55945d867a4da95f3c5c29ca4c4da29bfcfabca",
+  "review_shards/sub-032336-000-blink-snr+0.csv.gz": "0004c8ce960614e3519bc3792fd79cb1631e536a254e78c47dbd9c773bf748f4",
+  "review_shards/sub-032319-000-clean-clean.csv.gz": "d070f528574bfabc48709ec5c792663a5794a0a47f396670204a58c3f85fd0ff",
+  "review_shards/sub-032316-000-blink-snr+5.csv.gz": "fd714650f8252c800251278d2d2449b050b9783af1e53531212c196f74962fd8",
+  "review_shards/sub-032313-000-blink-snr+5.csv.gz": "d7cabadd8034cbefe30511d2d73da6b6babc46a561db84c0779fef216076bf8f",
+  "review_shards/sub-032312-000-mixed-snr+0.csv.gz": "37efdf00e1532052b335b02aa32f4c60f544bba0ca63fbf7c48f6b244b99863f",
+  "review_shards/sub-032318-000-blink-snr+5.csv.gz": "c95bae77bc44c6e878f0e4e154be6f3bad6d32886845192af57053d81d316f2a",
+  "review_shards/sub-032326-000-clean-clean.csv.gz": "a51b34bd5a8318b076be10f5395ed7c6cfd78789245b04c35dcc928daa5ac789",
+  "review_shards/sub-032318-000-mixed-snr+5.csv.gz": "70d569fd55f69f191aa146ec7ab198cf374b8a444d811ba718fdf789726c90f8",
+  "review_shards/sub-032305-000-clean-clean.csv.gz": "cdac3868ce5adaecd52f49e80b7f1b1076e58d8af1595b32d23dbcbec842d438",
+  "review_shards/sub-032321-000-lateral-snr-5.csv.gz": "31d2b3974eb2b92df5b70c0d125815af5321d18a810d1bdd789e2a86bb9c580c",
+  "review_shards/sub-032339-000-lateral-snr-5.csv.gz": "b6b842b3a87247335ab458faa45e8f87c5b08b4d40f86e342346f9a7e6487a73",
+  "review_shards/sub-032316-000-lateral-snr+0.csv.gz": "512ab9b247bd0135244d056681a4032b95c1a7bc880672226086f472cf5ce86e",
+  "review_shards/sub-032307-000-mixed-snr-5.csv.gz": "3379080ffa5942b926dee4cc265da211a7aaaf835773ee87b180a675fb527150",
+  "review_shards/sub-032327-000-lateral-snr-5.csv.gz": "69d6f329592a7a21c583a5eb5ec81db4b931f6704182fbc7c16bcc15cb873cb2",
+  "review_shards/sub-032306-000-lateral-snr+5.csv.gz": "4a23a205d8c900ced1e1ca15244849dad06435e946d0697b666ce1a74de2f2bc",
+  "review_shards/sub-032310-000-lateral-snr-5.csv.gz": "6fad88cddaa8c283eb4bcb82136e1664484a83c9f97953ed3b8887fd4331ba82",
+  "review_shards/sub-032309-000-mixed-snr+0.csv.gz": "9f9c328c683ac374b3fbf78347672f3e2c2ec801b5d615f34bcf4837b28ff856",
+  "review_shards/sub-032340-000-blink-snr-5.csv.gz": "9145186ee6f3156118d6f186b82bda078d793867dad17c75f42beb8086c73113",
+  "review_shards/sub-032312-000-lateral-snr+0.csv.gz": "a78602728cd445fed6f222cea9c872c9f898c3fae7333e4279c762550443623f",
+  "review_shards/sub-032320-000-blink-snr+5.csv.gz": "8a3f5fb33d0005c5c32a546ad05bf76d619cdda1169e27b12c7efeffb2266a19",
+  "review_shards/sub-032318-000-clean-clean.csv.gz": "bb7b85b705786cb95a39af9c987895162075322a7edc4d67a691cf24a1583a2c",
+  "review_shards/sub-032324-000-mixed-snr+5.csv.gz": "be6b1d4b5a3994e2436918bf13b99469ab9262016fd5a0b84ca2f2fe3371fb71",
+  "review_shards/sub-032328-000-blink-snr+5.csv.gz": "5eaf6e5b0ee5b06c531c1116ca3b6aa388a512c5017800bbec238c3ccc7597f7",
+  "review_shards/sub-032314-000-lateral-snr-5.csv.gz": "6f29184db3c74b1e6952c55875da0746a0b1ff067b290f908a2b65217d8735d6",
+  "review_shards/sub-032334-000-mixed-snr+5.csv.gz": "0f927fd31061b9e9f6fac9a049b50c6ce9765c4d8370680c12e47a169aa8c3c2",
+  "review_shards/sub-032323-000-mixed-snr-5.csv.gz": "8e73666e25440b74287e8b43c3c6b6384fd029fbaaec97eea0e4db0032a92988",
+  "review_shards/sub-032317-000-blink-snr+0.csv.gz": "ff029143bec54387a1523e5f7eb00a3fa7d16a4f90134ddfdfa3902411ce3f5d",
+  "review_shards/sub-032317-000-mixed-snr+5.csv.gz": "3093a156d55f673895d5aacedaa3a0680e0c0f680ee43038405c677f502422d8",
+  "review_shards/sub-032330-000-mixed-snr+5.csv.gz": "1d517960b380dbbfb29092b22e3d9bd53b4d4a6a762834d9342ac7752a1997f4",
+  "review_shards/sub-032336-000-lateral-snr+5.csv.gz": "c64288936f516446d816a3831069c7940661e644fca32a6ecbcb03555b022467",
+  "review_shards/sub-032336-000-mixed-snr+5.csv.gz": "306f93a49d63c6a937cbefeff9eff6ea215185bf063fd177f4776a66c5c0f136",
+  "review_shards/sub-032308-000-lateral-snr+5.csv.gz": "5a1dfb63fbe2950533a951b269d10192b69981129d2ca4e05fe347a581bf15c0",
+  "review_shards/sub-032320-000-mixed-snr+0.csv.gz": "cfc674086f41076c39ed77abcc7ea2ea4c5cb85626bc42a8e60b52cc46aa4430",
+  "review_shards/sub-032324-000-blink-snr+5.csv.gz": "43a53a6fea67a79b4b32df5b0659d451f25ead3e5b57309e640495c3a68e729b",
+  "review_shards/sub-032327-000-blink-snr-5.csv.gz": "a4ec510582220e7defcd9ffa94d5942b478537b5b8390494c4a50b5744752b2d",
+  "review_shards/sub-032318-000-lateral-snr+0.csv.gz": "ca7539b44c4b332917e4725f618dcaa5b3638af9d1474ef3b40f657772a9158e",
+  "review_shards/sub-032307-000-lateral-snr+0.csv.gz": "871377884d5fe39f04abdccfbfd7b791f566cd0b823290d65c484350f9d20688",
+  "review_shards/sub-032328-000-lateral-snr-5.csv.gz": "fb73a6e0f9deec1317c521b307ea8a0dae81ff4aadb5a16db4285cbd4c618cb5",
+  "review_shards/sub-032324-000-blink-snr-5.csv.gz": "c0eba39bdd8ff959ce0ba83850ad9a79647dd1763941fec3d81118a2b5c78b14",
+  "review_shards/sub-032321-000-mixed-snr+0.csv.gz": "9a4c8bda6828c157c77141e2121e8e1cf12058589b4671abcb7ded2e90c74f5f",
+  "review_shards/sub-032321-000-blink-snr+5.csv.gz": "ffdf4110ea872b5be390e7c8e77253bcf385600dd570bf69ded62b1bcdacd838",
+  "review_shards/sub-032318-000-mixed-snr+0.csv.gz": "7187309cac75e4c13b7e5ab294224b4696db3469411dda405ccbed2478b85104",
+  "review_shards/sub-032322-000-mixed-snr-5.csv.gz": "cab436708a7c22b83f6d0788dc76f38fc3a3c153a4cc92b0181da8b4a04c390c",
+  "review_shards/sub-032329-000-lateral-snr+5.csv.gz": "df8ce98676810b3b6a717dbb8cd3657981808a1987c5e9c4bd5c71123fb9a732",
+  "review_shards/sub-032329-000-lateral-snr+0.csv.gz": "5b876b9475204cb1a0a4140705740ba6654ae224ce64f063e30fcfe4045d123d",
+  "review_shards/sub-032325-000-mixed-snr+5.csv.gz": "889774558fef7babb0fc4b0e6e308b85a60b75a433e42704d57bb52fe379c827",
+  "review_shards/sub-032338-000-blink-snr-5.csv.gz": "ccc9927b5c03d6e98ae5b28dd76809e2ed9af65cbd2ebddfbbce11e5b3cc6018",
+  "review_shards/sub-032325-000-blink-snr+5.csv.gz": "71169980a61f4050d3c4cfd9e08b0561ed0bba0f828432ef8de40c4a46ef068d",
+  "review_shards/sub-032308-000-mixed-snr+5.csv.gz": "50ac456672afee3cf87a793bc44ca947a4fefcf7f3cfff2d038bb9465c12371a",
+  "review_shards/sub-032336-000-blink-snr-5.csv.gz": "88bf9d82297507120fd83418893ddfb141e74596fa307a846cfbc5ad066ee251",
+  "review_shards/sub-032323-000-lateral-snr+0.csv.gz": "43c15d27e3e5e8265b5f2bc24164cb8c89f87ba960d8284c40c497e659eb131f",
+  "review_shards/sub-032341-000-clean-clean.csv.gz": "687690bf4f37fc873e7d3b239dc6b015df5a925ce5d5ac061c8ff56918f71367",
+  "review_shards/sub-032309-000-lateral-snr-5.csv.gz": "cf9c33ce36de3618a4fd7dac09de5d0b0e255041c019b5b483fc19cfe15e58a7",
+  "review_shards/sub-032314-000-blink-snr+5.csv.gz": "de6b0879e598bea4e389d3fcfba196e657f6b13d579ace3bebb8274c310cd499",
+  "review_shards/sub-032313-000-mixed-snr+0.csv.gz": "d08c09451f09bba0105568bd6b43713778cae4f8ada89b4baf25093e33dd2850",
+  "review_shards/sub-032313-000-mixed-snr+5.csv.gz": "72c41b2c6f3f94900e86d0d292d779c1a87646feb0820007c9223e70c7a95017",
+  "review_shards/sub-032330-000-lateral-snr+5.csv.gz": "a043b50a8f4294572076dfcdb51cf59fc2e5b9cda36876b710bae0fdb286970b",
+  "review_shards/sub-032320-000-mixed-snr+5.csv.gz": "f34888d2c622316c5dda9b3e91b7e29adf4e4445e1f45e75586b2886bd7debda",
+  "review_shards/sub-032322-000-blink-snr+0.csv.gz": "4b4bcdede1cf722ea1eef1e498f8fa9c29760e301c848e1644e70781a284b5ec",
+  "review_shards/sub-032339-000-blink-snr+5.csv.gz": "d1e7ea4e1bfe17e10a0d520e122f7abab68676607d5eca9b2e0c34dc18a87adf",
+  "review_shards/sub-032315-000-blink-snr+0.csv.gz": "319b07e8fa86e10e6fccdefa045e5fe420f0a13eb0ae80b8cd38ef4cd805ddfb",
+  "review_shards/sub-032321-000-mixed-snr+5.csv.gz": "43c92c29bf192147babd808623f9aecb9ed99624e6d62147cbc8bbbbf2fe96ba",
+  "review_shards/sub-032330-000-lateral-snr+0.csv.gz": "9e2e1389e0756a66411ca20ae9b7b4daf81be86fa487324703b2d7b2c6e88ca1",
+  "review_shards/sub-032330-000-clean-clean.csv.gz": "73bb0dd1502606cd532c341ab9eaafb37d33630c34a2e015503b82096d0bdfc8",
+  "review_shards/sub-032336-000-blink-snr+5.csv.gz": "1719824f023bd1d6b5d8b1cbfe4dd37df6c7365d2e50af58a7dc97795f127e64",
+  "review_shards/sub-032329-000-clean-clean.csv.gz": "384f80a16e43d7a90c4e269937473df75d2565a40af81ae96069cadee57b129b",
+  "review_shards/sub-032314-000-lateral-snr+0.csv.gz": "5d6934681c1c575426b432c060e5092994fddccb824b0b11fb81b22ef19e247e",
+  "review_shards/sub-032309-000-blink-snr-5.csv.gz": "8685126a05eee5e8182c72d5e6c4f3a876e25552c38824bedc2d83361d51a849",
+  "review_shards/sub-032305-000-lateral-snr-5.csv.gz": "a3449735e3d5074940ba490417ecc01ce880248c0f5d23e55693cd4159c57a2e",
+  "review_shards/sub-032334-000-mixed-snr-5.csv.gz": "31db621e42e7491346f33b6c49c99a26a0e97ff42a82789dc08a069aff806c15",
+  "review_shards/sub-032305-000-lateral-snr+5.csv.gz": "9975dfe2fe42de2be50fa3a87d3c27bb8cdad6448323567786b83f99ecee468d",
+  "review_shards/sub-032334-000-lateral-snr+5.csv.gz": "44a93b920eb9a5322b25db9f6a48fb135a73981528bb204a77adaec2ba6cc45f",
+  "review_shards/sub-032327-000-mixed-snr-5.csv.gz": "f64c463e86d81145ee31d79b6392e27ed694e2ada440d387c2ef3aea90bfcf03",
+  "review_shards/sub-032319-000-mixed-snr-5.csv.gz": "9e30ece5b766cb735e38e373d400571d89a45e9fc477e2e3a5c161501a8984ff",
+  "review_shards/sub-032331-000-lateral-snr-5.csv.gz": "5ed9f26ce13a5fd833c770980f54c9e94e871279564b76b0a3108ee1fe8a79cd",
+  "review_shards/sub-032325-000-lateral-snr-5.csv.gz": "b6643fa8bd58943c650d4e5609e1c6ceb65b943e9b8c388fe5553a7b37ad9947",
+  "review_shards/sub-032336-000-clean-clean.csv.gz": "1a8717572458732ce931f51311b62ad901f872bf2a68ce3ac5a9da81e6d1c34a",
+  "review_shards/sub-032328-000-lateral-snr+5.csv.gz": "fd8de827d8b7463b0fdd6a43a38de8546ea84badc9f3dcb3a530cece277ef625",
+  "review_shards/sub-032308-000-blink-snr+5.csv.gz": "976de556ef4a497131745ca530fd294ce4b56799e341790b25bf7af3d0d6a6df",
+  "review_shards/sub-032323-000-blink-snr-5.csv.gz": "cd6858186824c507b0a1a357a5cec61add5c841a9731774ab79622b6eca16324",
+  "review_shards/sub-032314-000-clean-clean.csv.gz": "0e8d13396de77b783282a289cccb05d299cd561d551a9ff8dbd3c9f5ece74582",
+  "review_shards/sub-032334-000-lateral-snr+0.csv.gz": "07304316558d19730114cd1c284439b5fb7268831041a13e31a17137025bd182",
+  "review_shards/sub-032331-000-mixed-snr-5.csv.gz": "c9f7310e26dc12445e074cc08ce6197b321b7e55dff03a46d736fbc751504a64",
+  "review_shards/sub-032328-000-mixed-snr-5.csv.gz": "aab339d590ce09bf62f698fd2ac654d0c6e9d4edbde75571b28fc67b3bddc114",
+  "review_shards/sub-032307-000-blink-snr+0.csv.gz": "44fa8c2ce7fc11660d5a6d3b797227756b4539bd5072c453d3e7c39a8ab98314",
+  "review_shards/sub-032339-000-mixed-snr+5.csv.gz": "2e1be7c15501be06053e7b39f344f24f2dc3bd39ba3c6300f4cf5f6c7b63d159",
+  "review_shards/sub-032309-000-blink-snr+0.csv.gz": "df3e1e216fb881ba81b5fd2552880a4813ee83937b85892c88bcd423e40afe8d",
+  "review_shards/sub-032341-000-mixed-snr-5.csv.gz": "7430eef6898b3828976154ed1c99c3c0b3c0263ac415c1b1b9a0c7aa86570643",
+  "review_shards/sub-032334-000-lateral-snr-5.csv.gz": "7bfe9474426e0155cc1c739c1ff33ba5a414c17c802abedbc858df0d44588f03",
+  "review_shards/sub-032336-000-lateral-snr+0.csv.gz": "51f30646851bffd376908f15ab640d06d5012ca575e7be1d8fd01dea6d4049d7",
+  "review_shards/sub-032340-000-mixed-snr+0.csv.gz": "916b00d1addba399492b545b725251dcb5bfe95f2b696426dd3bcf684094922e",
+  "review_shards/sub-032316-000-mixed-snr-5.csv.gz": "649851bcc7a83b5e00496b791f4758cb3b7cf560fc81d862dfa08f8ecb5525a0",
+  "review_shards/sub-032322-000-blink-snr-5.csv.gz": "44e429f71a6d8ed8fa55c818fb001c043c91afe0344482cc72b3a110da075453",
+  "review_shards/sub-032305-000-blink-snr-5.csv.gz": "6b4497ed584c1bda0f15cc028a7d5f7bd31fda2b181510874c271f7f7177da96",
+  "review_shards/sub-032339-000-blink-snr+0.csv.gz": "862e022eb21c58f81ae387db503b626fc5c2684cafc7a3e3c17af75666703c67",
+  "review_shards/sub-032322-000-blink-snr+5.csv.gz": "51980abd4897924cbcd5b510246bfdd18e361b803543a4b844b543383ac628ca",
+  "review_shards/sub-032325-000-clean-clean.csv.gz": "f284d76d7714bd7fc83004d59efe9b23d93423d89ee60f4c4b717e0d730d950a",
+  "review_shards/sub-032330-000-mixed-snr+0.csv.gz": "a7e0425689298abbb20262486088576eb5c82e1a3fd8d9e6f694896a3e2199b2",
+  "review_shards/sub-032330-000-blink-snr+5.csv.gz": "ee7bb70455eb3e1f20358da2be6968341947bb6f12d11982a9ca4374bbe3a1ef",
+  "review_shards/sub-032319-000-mixed-snr+0.csv.gz": "c576506e1980771f70564134003cf83c53c3d2834fb27233f328652c53a11b68",
+  "review_shards/sub-032341-000-mixed-snr+5.csv.gz": "17953844ef5db23018d5028da7b67331bdcce44f9a2683fd01b8f5cfb6f8a56b",
+  "review_shards/sub-032319-000-lateral-snr+0.csv.gz": "d7164e2cd590ed0324ab3629916b026ec9467b2497162d7be30068115e84a251",
+  "review_shards/sub-032307-000-lateral-snr-5.csv.gz": "6455c35d3d0d1b9e6231864e63b530f51f9ece79e709cdb13450ccb2e508195d",
+  "review_shards/sub-032323-000-mixed-snr+0.csv.gz": "172d2167849bb989fdec990de91698dd0da82d79fbaa09cd7bc34d37c2d1e02e",
+  "review_shards/sub-032340-000-mixed-snr-5.csv.gz": "7984397fe61833802c7d8d653da07e83f6c860889911bb7841f3b9b6ba37937a",
+  "review_shards/sub-032336-000-lateral-snr-5.csv.gz": "3c63b034e2eff8410e7e2206d6450ae5fc9de95cab0de11a185add8f4fa60c62",
+  "review_shards/sub-032317-000-lateral-snr+5.csv.gz": "e158cbc0bbd200de687f3f521c63e7c36a6415f303eac68c30b02f66c80ef347",
+  "review_shards/sub-032315-000-lateral-snr-5.csv.gz": "0963a1ab9d4d5688c1e13fbf83d8ac41a2d163d94b0e893aa7e03e6fac2551da",
+  "review_shards/sub-032334-000-blink-snr+5.csv.gz": "01e0455b4de364a107dacb1b8eac73ca35d984ab3af9bc9b55909dd56cc45b8f",
+  "review_shards/sub-032327-000-lateral-snr+5.csv.gz": "3d4d5679c136287c851e1743033abb1d662dd1d8e11a2555ea74f29dd82ffe10",
+  "review_shards/sub-032315-000-clean-clean.csv.gz": "7b5da01bf97c9f250d508215a74c4cc91ba89f8e9aa13a6e5b2526463e7fc2d4",
+  "review_shards/sub-032324-000-blink-snr+0.csv.gz": "f3744884a1eef27093cde90899d3f501772404585ed183c0473c166702eeffd1",
+  "review_shards/sub-032338-000-blink-snr+5.csv.gz": "dd8642ce775ca18bd87fc0471b1d7b845ebdc3400849c6bf9cf329b94080155e",
+  "review_shards/sub-032340-000-blink-snr+0.csv.gz": "4e31e87815af984794f95e15820aaa7fe7cae43aff77ef6159b1fb0480335ffd",
+  "review_shards/sub-032313-000-lateral-snr+5.csv.gz": "f3ffa22cf3f01efbd58531d7defd568fd9eac7b0ab6e315859f94d5485276c75",
+  "review_shards/sub-032327-000-clean-clean.csv.gz": "3d3bc52ce1778b273512b33ab2bf092d7fdb7a774056d5590db073a39d26b0cb",
+  "review_shards/sub-032331-000-blink-snr-5.csv.gz": "2dc7cca0a88f6a4b9367c4c3195bc053de37e868afe6f24c2b11f169dfd04fd2",
+  "review_shards/sub-032338-000-mixed-snr-5.csv.gz": "d025a6256824be02a9d96e6a5da03c21ba4dd455104a252b42114c0487306153",
+  "review_shards/sub-032315-000-blink-snr-5.csv.gz": "a7aa14fb0a95a01320579c2fa272377ea61578e2bb8f0971212ea1a5b82076a8",
+  "review_shards/sub-032327-000-mixed-snr+5.csv.gz": "0e4657b6d232a332a4a7bc852aba9f39df27b71b9cac4e64508d6726251a2afe",
+  "review_shards/sub-032307-000-blink-snr+5.csv.gz": "0a104d8dc954adaf996a456cf82999d2f5304954b80972851467079992f09ff4",
+  "review_shards/sub-032328-000-mixed-snr+5.csv.gz": "acde9056db184dc5ea04375ba2ab3de906273e5d148079eb6c016199295b7b58",
+  "review_shards/sub-032309-000-lateral-snr+5.csv.gz": "0a39ae3c70082e49d347627dacc04ea2240a5989d6da68d9cd70a71849d93ecd",
+  "review_shards/sub-032319-000-mixed-snr+5.csv.gz": "023d4b1088dd8f35ccaf02ef42367a24bbc0f2f1aaf881c4e5324a4f285dd59f",
+  "review_shards/sub-032325-000-mixed-snr-5.csv.gz": "44394033a24a4225e011f633e35ca64ad2e37f173facb75c8298353edacc2654",
+  "review_shards/sub-032310-000-blink-snr+5.csv.gz": "50bfe39b5f62faae5ad906e8256076e13f05823d6caae0362dcbc1c96db5bf88",
+  "review_shards/sub-032315-000-lateral-snr+5.csv.gz": "9789eea9cb834d1d92ce86f9aef23dfa825c129e6ce2f2e83e2ec8e927f455cf",
+  "review_shards/sub-032330-000-lateral-snr-5.csv.gz": "e66492c306b15613ec436d37529396c03bd4451d2f642bd29e8f5a20c08dd4a3",
+  "review_shards/sub-032316-000-clean-clean.csv.gz": "da2a1289b1a4f8ac7435700bddefd19c84edf528e2d44d5b981d00817bc0ecd1",
+  "review_shards/sub-032321-000-lateral-snr+5.csv.gz": "7ef175710b0b07d8e621ec7a1485dc8664eae65d567444142740479293566907",
+  "review_shards/sub-032310-000-blink-snr+0.csv.gz": "db0f4b229a662e29d3146f529dbbdb2fff405f3801a3e45caacdc21a09e3d991",
+  "review_shards/sub-032328-000-clean-clean.csv.gz": "ab5e4e3a1b8bee9dd9a52bec757391d54caaee204392d87371e08913178f9d1b",
+  "review_shards/sub-032321-000-blink-snr+0.csv.gz": "baa1c8d9588eef19396084b891a84b6de334b33276a54213c0299c13ae699582",
+  "review_shards/sub-032338-000-mixed-snr+5.csv.gz": "cda5909ca5abefc51ad4ecb3ba889bc21f0521fee456a489face0ec4294feda1",
+  "review_shards/sub-032318-000-blink-snr+0.csv.gz": "5758f460992768609b4dc8d695ee42529f28f7c92a50d3993b7f2a7b8fe0da0c",
+  "review_shards/sub-032324-000-lateral-snr+5.csv.gz": "a51f2242be757a1aa665097428e2a9377bb31a39a7404f76a8f59c452d39825c",
+  "review_shards/sub-032322-000-lateral-snr-5.csv.gz": "c797a69170506bbb3c05b4293095bd90ea3f3fb78ac1a54a759903c0b3fbd900",
+  "review_shards/sub-032328-000-blink-snr+0.csv.gz": "a96bec83898117af4636b51fee8d2456b6c58b7267db1d355be8cf7b84619bf3",
+  "review_shards/sub-032318-000-blink-snr-5.csv.gz": "94794332a8a6fc52ec5ddfc7d4a6c748640a2c26cc3ab12e30b643db0f409a46",
+  "review_shards/sub-032306-000-blink-snr+0.csv.gz": "3967063cb57328fb0c208e8505af59077a7148a987c9a9f277f61dd818731fcd",
+  "review_shards/sub-032314-000-mixed-snr+5.csv.gz": "c6b6c79ad526937d2143dcdc1221a2ea1a78a8bccfd822ace790d4cacc2565cc",
+  "review_shards/sub-032319-000-lateral-snr+5.csv.gz": "25fccb49a79709caba5d5bd8e8dc14cd180b79a935c427155e3c8757557ddd37",
+  "review_shards/sub-032323-000-lateral-snr+5.csv.gz": "ee3fe909248fcb7688315e07bd5e00f267e8e4096f22f06aa49c557715d12b2b",
+  "review_shards/sub-032326-000-lateral-snr-5.csv.gz": "4138dbe1b9fb12299b0ac81b01137171cb6052fd6742e49c5ffaab5aba7b504a",
+  "review_shards/sub-032307-000-mixed-snr+0.csv.gz": "3d57e496e93d677762bd9c1df18798d332994282f79fcc517cc6af72d962ad32",
+  "review_shards/sub-032305-000-blink-snr+5.csv.gz": "0b888607f3220f7c71009475276fdb7fa224b78d8b3baac67c8cfa6486d56d0d",
+  "review_shards/sub-032308-000-lateral-snr+0.csv.gz": "ee3b7a116bb2279be4535fd5613fd8bf41d65c633b57566e89d52637da730a62",
+  "review_shards/sub-032306-000-clean-clean.csv.gz": "8b7f8bb2395a303c7e39d26d9ddabde1e423c731996cf253b483a45a48a1f356",
+  "review_shards/sub-032329-000-mixed-snr+5.csv.gz": "c6e9da63fa8e513773b980969a6325e41d9c94d3d2d3b3437459baa59415acfd",
+  "review_shards/sub-032315-000-lateral-snr+0.csv.gz": "54adc0cb5cb61b3ee7f634f226fdf58b5c3db1512c130726da16de68bf4b1f64",
+  "review_shards/sub-032320-000-lateral-snr-5.csv.gz": "b077a7e5734e1cd83b7600badd7033b2795863fb9256732508399c75b23d4f5e",
+  "review_shards/sub-032325-000-lateral-snr+5.csv.gz": "46d5d915c131e929137f4fdecf68740aaebb06942d231e548f40015fe3cf14f3",
+  "review_shards/sub-032308-000-blink-snr-5.csv.gz": "e359e8129846223bb14e1ace9fae8b0662aba8dddbdd8aec18480dda9d74d2dc",
+  "review_shards/sub-032341-000-lateral-snr+0.csv.gz": "5d3069459d9977f01c94f7352019867e079aac8046a83bff97f7fd8801a8e396",
+  "review_shards/sub-032338-000-blink-snr+0.csv.gz": "a856e6e795ba133f969ead364134ed9cc7d1aa9042664d425125c9bd8389d083",
+  "review_shards/sub-032316-000-lateral-snr-5.csv.gz": "c9fefd4dd6580209e9a5cc7d6e2278b04de0a004ce54d5e404ce681072b2a778",
+  "review_shards/sub-032324-000-lateral-snr+0.csv.gz": "7b0e588dd2308b2a0bdb5dea09c26ace1d3cf03248310a5619964891d9d96493",
+  "review_shards/sub-032313-000-blink-snr+0.csv.gz": "61b6ac4f3841fffbb7c569877986bdebb8247a7951508288307e9dd299eb8c74",
+  "review_shards/sub-032312-000-lateral-snr+5.csv.gz": "8ad2d7dbd121665e9868d2d8524f2b150ff1826904fce53f9062504cd2037b44",
+  "review_shards/sub-032339-000-mixed-snr-5.csv.gz": "0cabaf7116beb5893600f1f49c0620c1b2f06c1b8993a2d69bbe916b7748293b",
+  "review_shards/sub-032310-000-lateral-snr+5.csv.gz": "5374057d5fc83db91c6ab1092fe288def688ba67e4d656145bbfbeaadbb0f13c",
+  "review_shards/sub-032312-000-blink-snr-5.csv.gz": "61e12a8590f31282d0eaeb031804754b9d2c1d115fdca455e97e76c1543b7415",
+  "review_shards/sub-032339-000-blink-snr-5.csv.gz": "b68496e6a1be5c402fbf25249433e287f2ac5ba596de41c3a02cc8818c964337",
+  "review_shards/sub-032322-000-lateral-snr+5.csv.gz": "14f5a8d87d8df66615ee8cf9e5543dfefaa12d885d9a41c4ce4738067e2cebac",
+  "review_shards/sub-032325-000-blink-snr+0.csv.gz": "1a53c108534af953613ff81226e3047cd7edfff3de96a3d6c72e562663898a85",
+  "review_shards/sub-032323-000-clean-clean.csv.gz": "ec0ed4facc4df926d676e0cd958a71e4bf174fe87873104d27fcf71a11577985",
+  "review_shards/sub-032331-000-blink-snr+5.csv.gz": "3aa4483509ed76bd55bed082fdf80aa5c6d46fa2ff0f89c3351ccf00e757a2ee",
+  "review_shards/sub-032309-000-mixed-snr-5.csv.gz": "2a5483a03f3121e39ac83a70720488b97d8af5dd85ae1c80ab0df4e36787af1e",
+  "review_shards/sub-032328-000-blink-snr-5.csv.gz": "db6a1fadcac9a8f07c21c8a5c1de21ec7e682bbeabce55ec846a07e477fe4f5d",
+  "review_shards/sub-032309-000-mixed-snr+5.csv.gz": "ccfc73c4ac67163295e55f39431e4c5cb18ec3f5f065faf9aa56aa9a9f87ce70",
+  "review_shards/sub-032309-000-lateral-snr+0.csv.gz": "183ae07306eca44c833e60b223113ddc643ce3b2fe2e16e0ef210f8d543b1bf4",
+  "review_shards/sub-032326-000-mixed-snr+0.csv.gz": "afab329c8b9cbaa2aea72f566c86b4035a3d01eed2bbd9d2ee06afae779dacee",
+  "review_shards/sub-032331-000-lateral-snr+5.csv.gz": "056df569bebd429ef3261d5d6659fbfa4f3614483ff279dc715fa95c714b89f1",
+  "review_shards/sub-032308-000-blink-snr+0.csv.gz": "f007953acb05bd73b1ba754d874102e309b3b6d38ecec2f8919724bcfc45e07c",
+  "review_shards/sub-032306-000-mixed-snr+0.csv.gz": "8591b16acc5d51eff847ab6d91e05d749677b769c752c2f8eba4a52fa4571f46",
+  "review_shards/sub-032317-000-blink-snr-5.csv.gz": "25b95abe5f7a1b55e09c374e4fa64d0c24c384b3081f5f488687284c60803698",
+  "review_shards/sub-032305-000-mixed-snr-5.csv.gz": "3ead197a47fdb95e886e51bfc2a5d4ba0002c520fc5b6b833124693597031663",
+  "review_shards/sub-032330-000-blink-snr+0.csv.gz": "46d28927d6133118e876890c45d37a670500e85c3e132c3162cfe387c74be4f8",
+  "review_shards/sub-032308-000-mixed-snr-5.csv.gz": "ddafda319592e554a65f2589222305eb65ac18886523ed7e4089fdcc01b7beb6",
+  "review_shards/sub-032315-000-blink-snr+5.csv.gz": "288a1a10e7e21dd2102384a22f71054e7b074867b3f1971ffe0f331c2893fa85",
+  "review_shards/sub-032312-000-clean-clean.csv.gz": "603929fbfdd3d6a9cbb01ddd0fa92ec7213d9ba2955a94fb7913689fa5c0fe7f",
+  "review_shards/sub-032312-000-blink-snr+0.csv.gz": "ee7846a410df2536f5345b0806b8aa1dd2d89bf446ddef2f067d1052d1c02dd7",
+  "review_shards/sub-032305-000-lateral-snr+0.csv.gz": "ac35f321ae92ba6525be7b17e92eddd0c8478276bd677704d28168827faaa945",
+  "review_shards/sub-032310-000-blink-snr-5.csv.gz": "9a75d7b4e060c469659c754104398f6391914fc9bbe3e669a31429b8e01d5bc8",
+  "review_shards/sub-032312-000-mixed-snr+5.csv.gz": "a5e4f6bb90c67980158357082d592eb007d12395c61b2a9d9ef51fa392595dd4",
+  "review_shards/sub-032327-000-mixed-snr+0.csv.gz": "00ee3f2ebc10a579799bee5bd0fabd9e393066f3b6aaeedffd892d0b250fa2c3",
+  "review_shards/sub-032321-000-lateral-snr+0.csv.gz": "f7a604fc1560603990fc4112c48c0e35a100b026775a857a09b75aac576ce7d1",
+  "review_shards/sub-032314-000-lateral-snr+5.csv.gz": "afefe6b84d6a4274184071504b11a218ba3a6f08d11d693e3aea09c3b2e5c33d",
+  "review_shards/sub-032341-000-mixed-snr+0.csv.gz": "dbf08f351627d0b1955f10fa72eed736ffbae556ce1f6a27fd1da48dca9e4955",
+  "review_shards/sub-032319-000-blink-snr+5.csv.gz": "8f72c14d419f7986179fed671dcee23f8e89b8f6ea4be531c5d6506a1ffd0146",
+  "review_shards/sub-032339-000-clean-clean.csv.gz": "7e117d765d4dffe6f397806e0bbdb10b69b4dcfa6d88696485a7c515b5c8f78f",
+  "review_shards/sub-032326-000-blink-snr+5.csv.gz": "39ecf54c4efd2f808c915fa990e177ec7a40fd4335f14b45550e81d4fc04985a",
+  "review_shards/sub-032328-000-mixed-snr+0.csv.gz": "43f5a9f9dc8c634d8f90ba7382c89ce749c96b3aae9e2b932515c6fefa861f42",
+  "review_shards/sub-032318-000-lateral-snr+5.csv.gz": "c8a7dacaff7375947847e8e6e216463795e7b5d0308e91e2f385dc080874c2e2",
+  "review_shards/sub-032327-000-lateral-snr+0.csv.gz": "f591bfcd3876cd08547ef3afb71d90b0a8c264a4efebde807a346285c7cc9f6b",
+  "review_shards/sub-032336-000-mixed-snr+0.csv.gz": "049d989cc883f508c84e262fbfe1d38d059d483b068da167938e9b0fb195a25e",
+  "review_shards/sub-032341-000-blink-snr+5.csv.gz": "e3c421b0c6890604421294536e5a87bdd56ece01001b31feab45bf3ff5606582",
+  "review_shards/sub-032319-000-lateral-snr-5.csv.gz": "d5062715de479d0da8de6b52a4691ed0adc8577839fd43a22ddcdc67d5615ce4",
+  "review_shards/sub-032341-000-blink-snr-5.csv.gz": "f9286c7a5ccf4a28dfe83078af1c60af0624e5b916754ed72c2417bef94122d1",
+  "review_shards/sub-032309-000-blink-snr+5.csv.gz": "91e0261f29c808dbca3200dcbfeded0d1a9ecc602915239ffbb3d246c2b2a1a7",
+  "review_shards/sub-032314-000-mixed-snr+0.csv.gz": "26e89d6fe849a4810bf42954c878719e43624ab11e5b440289167ccd9a0502d7",
+  "review_shards/sub-032322-000-lateral-snr+0.csv.gz": "f7443abb2b1f848e35cda49d0dc7fada57162fe8b4f2f21249e07128ebde740d",
+  "review_shards/sub-032307-000-lateral-snr+5.csv.gz": "5d8468c870536b705ba1329a3a311a4d91136bdf88da37c21c509acc8507f72f",
+  "review_shards/sub-032313-000-mixed-snr-5.csv.gz": "a3753a18e51ec942629cccdfc2520c737cf8a958c01f29f335a40dec4a509410",
+  "review_shards/sub-032312-000-mixed-snr-5.csv.gz": "6429e7b9b606d197a6e7e83c5969b051a85e316ab0fb270ee272ed5c5413bcfe",
+  "review_shards/sub-032326-000-mixed-snr+5.csv.gz": "fcfd89c48f05bea5470faa9ea19e39b0c391e17123125e097bfdca5491c7f4fe",
+  "review_shards/sub-032340-000-blink-snr+5.csv.gz": "2b7a26914662c61820f2418c1dd0b8637543bc7c5ece7152a1cbe02e3a3a1919",
+  "review_shards/sub-032315-000-mixed-snr-5.csv.gz": "59cc5fd78125937e91aacbbfcbe4f5fb1ff9cef0482120c0683d6ccf9fa1d0bf",
+  "review_shards/sub-032340-000-lateral-snr-5.csv.gz": "86abd5301e16fd3f2d3042f4fa4f3deb5b52cf7e9dd2d24f5203086b7c8800d9",
+  "review_shards/sub-032306-000-blink-snr+5.csv.gz": "479dd831b0ccc38f6582a8cc5f53524dabd9f6f109d05159819d646799f762cd",
+  "review_shards/sub-032316-000-lateral-snr+5.csv.gz": "04d98148c27bbeb7e76c9999690cfb8af2413eaf43cfec4706ed067f9674323c",
+  "review_shards/sub-032329-000-blink-snr-5.csv.gz": "db3c182124ebc274ee0c6e22acc0002703661da79b17f22e39d41e820fc0097e",
+  "review_shards/sub-032334-000-blink-snr+0.csv.gz": "42078a385e9eca7cb2cee23aebd28cde49c357bf97fbf51daeed7d48d937c1a4",
+  "review_shards/sub-032317-000-lateral-snr+0.csv.gz": "aae8eccc46507a096525e8c021b85614dd8e9ea85b3ba4ea12907804abde1f75",
+  "review_shards/sub-032326-000-blink-snr+0.csv.gz": "74457a182e3271d80bf6dd263e4bab8b495b646bde3c2e71d7aea810f3a38951",
+  "review_shards/sub-032325-000-mixed-snr+0.csv.gz": "5d9ffc6335773441a2425ac5afee2745fb66ce6158ced2556b31a72b21c744e3",
+  "review_shards/sub-032306-000-mixed-snr-5.csv.gz": "965927534717d44ac3eb243059851db3ab6ca82307918ba699145091359d18d5"
+}
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/execution_state.json
+
+[Saved payload](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/execution_state.json); SHA256 `78c160c1caecf214231f44d114fc445b5d42a5dde662c8c9ad847b870465c771`.
+
+```json
+{
+  "stage": "nonfrontal-review",
+  "status": "failed",
+  "error": "Baseline metric cohort differs",
+  "traceback": "Traceback (most recent call last):\n  File \"/tmp/vmd-eog-lpsup6g4/repository/src/vmd_eog/runner.py\", line 92, in main\n    execute(args.stage,args.input,args.output,args.profile,args.config,experiment)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/vmd-eog-lpsup6g4/repository/src/vmd_eog/runner.py\", line 78, in execute\n    dispatch_stage(stage, Path(input_root), output, config, profile, experiment)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/vmd-eog-lpsup6g4/repository/src/vmd_eog/runner.py\", line 28, in dispatch_stage\n    return run(input_root, output, config, profile)\n  File \"/tmp/vmd-eog-lpsup6g4/repository/src/vmd_eog/nonfrontal_review.py\", line 204, in run\n    baseline_checks = reconcile_baselines(frame[frame.scope.isin((\"whole\", \"frontal\", \"posterior\", \"central_shared\"))], source_scores)\n  File \"/tmp/vmd-eog-lpsup6g4/repository/src/vmd_eog/nonfrontal_experiment.py\", line 186, in reconcile_baselines\n    raise ValueError(\"Baseline metric cohort differs\")\nValueError: Baseline metric cohort differs\n"
+}
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/stage_tests_summary.json
+
+[Saved payload](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/stage_tests_summary.json); SHA256 `5ac34a558a37ee904d3be74d02016f685d2f2e07caa4b6fcab0aae38d5306219`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "8ee4d6b9297fda1384f82b87179b1419938a481853b3b78d1fb70aab9a00e62c"
+}
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/retrieval_receipt.json); SHA256 `23db30c6c3fb151468b67e6eccee9cd24363e3fd553f79b7dbc0464c8ce87dc5`.
+
+```json
+{
+  "run_id": "new-hybrid-frontend-review-001",
+  "git_sha": "b7914b8dde84d455e12c1f3aa0433adb9dc1c8ed",
+  "verified_payloads": [
+    "configuration.json",
+    "environment.json",
+    "experiment.json",
+    "parent_identities.json",
+    "review_channel_scores.csv.gz",
+    "review_example_snr.csv",
+    "review_progress.json",
+    "review_selection_manifest.jsonl",
+    "run_spec.json",
+    "stage_tests_summary.json",
+    "tests.txt",
+    "frontend_predictions/sub-032305-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032305-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032305-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032305-000-clean-clean.npz",
+    "frontend_predictions/sub-032305-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032305-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032305-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032305-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032305-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032305-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032306-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032306-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032306-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032306-000-clean-clean.npz",
+    "frontend_predictions/sub-032306-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032306-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032306-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032306-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032306-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032306-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032307-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032307-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032307-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032307-000-clean-clean.npz",
+    "frontend_predictions/sub-032307-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032307-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032307-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032307-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032307-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032307-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032308-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032308-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032308-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032308-000-clean-clean.npz",
+    "frontend_predictions/sub-032308-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032308-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032308-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032308-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032308-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032308-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032309-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032309-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032309-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032309-000-clean-clean.npz",
+    "frontend_predictions/sub-032309-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032309-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032309-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032309-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032309-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032309-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032310-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032310-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032310-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032310-000-clean-clean.npz",
+    "frontend_predictions/sub-032310-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032310-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032310-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032310-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032310-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032310-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032312-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032312-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032312-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032312-000-clean-clean.npz",
+    "frontend_predictions/sub-032312-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032312-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032312-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032312-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032312-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032312-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032313-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032313-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032313-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032313-000-clean-clean.npz",
+    "frontend_predictions/sub-032313-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032313-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032313-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032313-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032313-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032313-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032314-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032314-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032314-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032314-000-clean-clean.npz",
+    "frontend_predictions/sub-032314-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032314-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032314-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032314-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032314-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032314-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032315-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032315-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032315-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032315-000-clean-clean.npz",
+    "frontend_predictions/sub-032315-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032315-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032315-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032315-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032315-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032315-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032316-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032316-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032316-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032316-000-clean-clean.npz",
+    "frontend_predictions/sub-032316-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032316-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032316-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032316-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032316-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032316-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032317-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032317-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032317-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032317-000-clean-clean.npz",
+    "frontend_predictions/sub-032317-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032317-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032317-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032317-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032317-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032317-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032318-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032318-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032318-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032318-000-clean-clean.npz",
+    "frontend_predictions/sub-032318-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032318-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032318-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032318-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032318-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032318-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032319-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032319-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032319-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032319-000-clean-clean.npz",
+    "frontend_predictions/sub-032319-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032319-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032319-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032319-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032319-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032319-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032320-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032320-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032320-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032320-000-clean-clean.npz",
+    "frontend_predictions/sub-032320-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032320-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032320-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032320-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032320-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032320-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032321-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032321-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032321-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032321-000-clean-clean.npz",
+    "frontend_predictions/sub-032321-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032321-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032321-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032321-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032321-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032321-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032322-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032322-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032322-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032322-000-clean-clean.npz",
+    "frontend_predictions/sub-032322-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032322-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032322-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032322-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032322-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032322-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032323-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032323-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032323-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032323-000-clean-clean.npz",
+    "frontend_predictions/sub-032323-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032323-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032323-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032323-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032323-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032323-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032324-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032324-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032324-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032324-000-clean-clean.npz",
+    "frontend_predictions/sub-032324-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032324-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032324-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032324-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032324-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032324-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032325-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032325-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032325-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032325-000-clean-clean.npz",
+    "frontend_predictions/sub-032325-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032325-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032325-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032325-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032325-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032325-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032326-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032326-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032326-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032326-000-clean-clean.npz",
+    "frontend_predictions/sub-032326-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032326-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032326-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032326-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032326-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032326-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032327-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032327-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032327-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032327-000-clean-clean.npz",
+    "frontend_predictions/sub-032327-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032327-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032327-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032327-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032327-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032327-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032328-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032328-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032328-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032328-000-clean-clean.npz",
+    "frontend_predictions/sub-032328-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032328-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032328-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032328-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032328-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032328-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032329-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032329-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032329-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032329-000-clean-clean.npz",
+    "frontend_predictions/sub-032329-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032329-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032329-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032329-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032329-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032329-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032330-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032330-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032330-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032330-000-clean-clean.npz",
+    "frontend_predictions/sub-032330-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032330-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032330-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032330-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032330-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032330-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032331-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032331-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032331-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032331-000-clean-clean.npz",
+    "frontend_predictions/sub-032331-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032331-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032331-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032331-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032331-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032331-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032334-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032334-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032334-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032334-000-clean-clean.npz",
+    "frontend_predictions/sub-032334-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032334-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032334-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032334-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032334-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032334-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032336-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032336-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032336-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032336-000-clean-clean.npz",
+    "frontend_predictions/sub-032336-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032336-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032336-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032336-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032336-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032336-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032338-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032338-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032338-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032338-000-clean-clean.npz",
+    "frontend_predictions/sub-032338-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032338-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032338-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032338-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032338-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032338-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032339-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032339-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032339-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032339-000-clean-clean.npz",
+    "frontend_predictions/sub-032339-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032339-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032339-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032339-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032339-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032339-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032340-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032340-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032340-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032340-000-clean-clean.npz",
+    "frontend_predictions/sub-032340-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032340-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032340-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032340-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032340-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032340-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032341-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032341-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032341-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032341-000-clean-clean.npz",
+    "frontend_predictions/sub-032341-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032341-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032341-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032341-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032341-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032341-000-mixed-snr-5.npz",
+    "review_shards/sub-032305-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032305-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032305-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032305-000-clean-clean.csv.gz",
+    "review_shards/sub-032305-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032305-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032305-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032305-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032305-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032305-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032306-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032306-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032306-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032306-000-clean-clean.csv.gz",
+    "review_shards/sub-032306-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032306-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032306-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032306-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032306-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032306-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032307-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032307-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032307-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032307-000-clean-clean.csv.gz",
+    "review_shards/sub-032307-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032307-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032307-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032307-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032307-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032307-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032308-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032308-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032308-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032308-000-clean-clean.csv.gz",
+    "review_shards/sub-032308-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032308-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032308-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032308-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032308-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032308-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032309-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032309-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032309-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032309-000-clean-clean.csv.gz",
+    "review_shards/sub-032309-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032309-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032309-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032309-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032309-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032309-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032310-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032310-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032310-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032310-000-clean-clean.csv.gz",
+    "review_shards/sub-032310-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032310-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032310-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032310-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032310-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032310-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032312-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032312-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032312-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032312-000-clean-clean.csv.gz",
+    "review_shards/sub-032312-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032312-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032312-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032312-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032312-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032312-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032313-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032313-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032313-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032313-000-clean-clean.csv.gz",
+    "review_shards/sub-032313-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032313-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032313-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032313-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032313-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032313-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032314-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032314-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032314-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032314-000-clean-clean.csv.gz",
+    "review_shards/sub-032314-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032314-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032314-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032314-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032314-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032314-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032315-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032315-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032315-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032315-000-clean-clean.csv.gz",
+    "review_shards/sub-032315-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032315-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032315-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032315-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032315-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032315-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032316-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032316-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032316-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032316-000-clean-clean.csv.gz",
+    "review_shards/sub-032316-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032316-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032316-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032316-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032316-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032316-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032317-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032317-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032317-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032317-000-clean-clean.csv.gz",
+    "review_shards/sub-032317-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032317-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032317-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032317-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032317-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032317-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032318-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032318-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032318-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032318-000-clean-clean.csv.gz",
+    "review_shards/sub-032318-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032318-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032318-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032318-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032318-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032318-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032319-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032319-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032319-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032319-000-clean-clean.csv.gz",
+    "review_shards/sub-032319-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032319-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032319-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032319-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032319-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032319-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032320-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032320-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032320-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032320-000-clean-clean.csv.gz",
+    "review_shards/sub-032320-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032320-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032320-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032320-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032320-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032320-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032321-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032321-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032321-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032321-000-clean-clean.csv.gz",
+    "review_shards/sub-032321-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032321-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032321-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032321-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032321-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032321-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032322-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032322-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032322-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032322-000-clean-clean.csv.gz",
+    "review_shards/sub-032322-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032322-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032322-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032322-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032322-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032322-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032323-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032323-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032323-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032323-000-clean-clean.csv.gz",
+    "review_shards/sub-032323-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032323-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032323-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032323-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032323-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032323-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032324-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032324-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032324-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032324-000-clean-clean.csv.gz",
+    "review_shards/sub-032324-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032324-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032324-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032324-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032324-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032324-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032325-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032325-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032325-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032325-000-clean-clean.csv.gz",
+    "review_shards/sub-032325-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032325-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032325-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032325-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032325-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032325-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032326-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032326-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032326-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032326-000-clean-clean.csv.gz",
+    "review_shards/sub-032326-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032326-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032326-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032326-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032326-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032326-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032327-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032327-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032327-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032327-000-clean-clean.csv.gz",
+    "review_shards/sub-032327-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032327-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032327-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032327-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032327-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032327-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032328-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032328-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032328-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032328-000-clean-clean.csv.gz",
+    "review_shards/sub-032328-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032328-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032328-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032328-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032328-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032328-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032329-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032329-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032329-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032329-000-clean-clean.csv.gz",
+    "review_shards/sub-032329-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032329-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032329-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032329-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032329-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032329-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032330-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032330-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032330-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032330-000-clean-clean.csv.gz",
+    "review_shards/sub-032330-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032330-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032330-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032330-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032330-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032330-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032331-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032331-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032331-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032331-000-clean-clean.csv.gz",
+    "review_shards/sub-032331-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032331-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032331-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032331-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032331-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032331-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032334-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032334-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032334-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032334-000-clean-clean.csv.gz",
+    "review_shards/sub-032334-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032334-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032334-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032334-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032334-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032334-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032336-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032336-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032336-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032336-000-clean-clean.csv.gz",
+    "review_shards/sub-032336-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032336-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032336-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032336-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032336-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032336-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032338-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032338-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032338-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032338-000-clean-clean.csv.gz",
+    "review_shards/sub-032338-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032338-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032338-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032338-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032338-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032338-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032339-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032339-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032339-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032339-000-clean-clean.csv.gz",
+    "review_shards/sub-032339-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032339-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032339-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032339-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032339-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032339-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032340-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032340-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032340-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032340-000-clean-clean.csv.gz",
+    "review_shards/sub-032340-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032340-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032340-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032340-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032340-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032340-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032341-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032341-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032341-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032341-000-clean-clean.csv.gz",
+    "review_shards/sub-032341-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032341-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032341-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032341-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032341-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032341-000-mixed-snr-5.csv.gz"
+  ],
+  "manifest_payload_count": 651,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 653,
+  "utc": "2026-10-14T07:29:56.866760+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": false
+}
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/artifact_manifest.json
+
+[Saved payload](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/artifact_manifest.json); SHA256 `67b36773a42d80ea71e8d3159f5814a4063edbc1a60756f3c9c9e4153cb72d23`.
+
+```json
+{
+  "frontend_snr_aggregation.png": "2524b4b0248fc9414393d57c4b9a19827d3a7aeb32b0cc8acccf98470aa0dfe1",
+  "review_channel_scores.csv.gz": "309132d8e120e7f707b7cfb897704005dbc5eb040ec4a570fc1ff9f301159596",
+  "review_condition_means.csv": "dd9d0dd3ddcd8f676b4c5ecbbae9b9f0506e2c52ebaec9ec2f3ffc0a1977b592",
+  "parent_identities.json": "62a905f5a9eedac6767bc95cb113994a11a00490e972e3beafba8257ceb735d2",
+  "review_example_snr.csv": "9df35758c4a9199ad9300c6f148f323dc233d62473de6d1329ef0adf20697177",
+  "frontend_review_summary.json": "933647cba17bf44e3851a5c89863a2341d57c394f72bc8bc05ed6b7570dd17af",
+  "coverage_paired_differences.csv": "36b44561fe409dc1cdfb5e7e28388843fc125044947e76c2fadcfb6f4ccb0bd6",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "review_selection_manifest.jsonl": "c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2",
+  "coverage_uncertainty_intervals.csv": "e86b6ff06053679563b8df65917953bcbe4158accc12f017eca29d07e67b6982",
+  "review_method_means.csv": "1cdfa43274b7655672076ab76c029b7a8ef5e5748bd4270009efc5a33dc0ead5",
+  "run_spec.json": "e2915f010f664f982d6dad0784643affe91da1b4ff2a293f5ce2c9af6c4372b2",
+  "review_progress.json": "706333850d7f455771a4a7eb838b28c35cb52465a045ac3f10adc4917cee37cc",
+  "tests.txt": "d2f41c3800caf52bba73a0270e621271b98f715a9e8ee4e856a4505bfd3072d6",
+  "configuration.json": "c6568a8f8afb839a58b00d46b394d3ed75f4a1a864bd302293fae22612cdef07",
+  "review_gates.json": "ccf6845587a950775e2da9391b644acdb9f5c31e677826486db6cdaa150dc7c3",
+  "resource_summary.json": "7764a132e9931d80de406b2d94f9b659f47460d75f3d37746ac9a3bddb16fa94",
+  "coverage_uncertainty_channel_strata.csv": "75a2541f4a0a983bb5e7e87f4f935b0191f5bd8f68360b001ee8f7cf18d7caff",
+  "coverage_uncertainty_method.json": "f99940eb0203a77ecd2d4c2a1eb7930dd627fc1d7f980970b239e71757435d1a",
+  "environment.json": "14c5831368e66da7338dd57c29cd91142a39722e326a9456a0f5c5956dd74358",
+  "stage_tests_summary.json": "8df60f54b1d0b8ba395f60c41a5bde326389944a8d3d87e73097cb3c3403e286",
+  "matched_frontend_cca_reference_rank2/coverage_paired_differences.csv": "eeac75dee9157e4140c8766eb384ea27a474dfc9a2b44befb5e3097f16c51f8c",
+  "matched_frontend_cca_reference_rank2/coverage_uncertainty_intervals.csv": "c98d3ab341726f051f336fae45a2e262eea5e2760792f40e4b9506435fd925c2",
+  "matched_frontend_cca_reference_rank2/coverage_uncertainty_channel_strata.csv": "005be64fb381f0722a9ce1f9ad077888e33094e50412dec9c3227c3cc03fa553",
+  "matched_frontend_cca_reference_rank2/coverage_uncertainty_method.json": "db80a3cababb4d0f7178a3f1cfb78a9aadb7f2e3ed94c1cc35256c552c317fd2",
+  "frontend_predictions/sub-032306-000-clean-clean.npz": "a9558de52fbe8b4ebd08b7b8ebec5136fa7d899f3cf2e86adf114b3d956e69f4",
+  "frontend_predictions/sub-032322-000-blink-snr+5.npz": "e87e05fd70b8fcfd4c19aec6f3910e61fd1fdfd2ede5b748b4831734ada242a7",
+  "frontend_predictions/sub-032318-000-blink-snr+0.npz": "27231ed012a4fcb5ec3cf34eb8d16ebbe6c735716c10aa2d5065ab0f8559e233",
+  "frontend_predictions/sub-032339-000-blink-snr+0.npz": "58d6d3de4e0864335ecb7a379b1c74282fd87926d84a9f2f5bf387cae52edda2",
+  "frontend_predictions/sub-032306-000-blink-snr+5.npz": "a6a42aa31568922d64a9bb015a1898e6c8c32f406eca6239c2fada74531fe173",
+  "frontend_predictions/sub-032324-000-lateral-snr+5.npz": "a846d2414d534c8b7e028cbd64aafb62d657700d0c9164f3a00aa1d33d08b82d",
+  "frontend_predictions/sub-032320-000-mixed-snr+0.npz": "85293735c77d5027468c1bdc78e4f48f5de3c4e83082e2fbeaef6ce6dac4b525",
+  "frontend_predictions/sub-032325-000-lateral-snr-5.npz": "4f24c492c16ab9d4eb28e42ef797f5548d3224eda5fb7b84eeb55c16a9d009ee",
+  "frontend_predictions/sub-032318-000-lateral-snr-5.npz": "8d1bd4afbad9cd5438a2c191cf8edcbf79bd2eb071b014c95ee51520ac9b011d",
+  "frontend_predictions/sub-032308-000-mixed-snr-5.npz": "3fc79c18040c3a41ab17074f1efe06bddca6760edf194a868cd1857514d99cfa",
+  "frontend_predictions/sub-032334-000-blink-snr-5.npz": "05f5e4920a5dbfed4a6b498fe7abef21efc13a20cac31cc46c000b3d6764ac3d",
+  "frontend_predictions/sub-032341-000-blink-snr-5.npz": "3c84104cbfc08ac605c7c7d53e9e2c56d49a5b964fed11984252ef30a3054a12",
+  "frontend_predictions/sub-032328-000-mixed-snr-5.npz": "977e15a2a4e5020608e9ba2d35382c05fab60308a33e28414b808fbf835d006e",
+  "frontend_predictions/sub-032316-000-mixed-snr-5.npz": "28a718593fcbad366a05738f236d14c21dd75e78dc0eeabe0c15917fa1b91380",
+  "frontend_predictions/sub-032315-000-lateral-snr-5.npz": "3ee2f7b19f1376ded0cb5e206821420846ee7b3a92a806a9db6c16271ba9df11",
+  "frontend_predictions/sub-032338-000-blink-snr-5.npz": "abfef37985cc463d4dea15b84f66ad6c15098c04b1f2f19f30383bc816880f91",
+  "frontend_predictions/sub-032307-000-clean-clean.npz": "9907f789ad3bd86537f5d578d635f3d1fe314ec3eb97c8392cd41ed933201527",
+  "frontend_predictions/sub-032314-000-mixed-snr+0.npz": "2016863af78012ae8d0823674ac3bf477bcc242c430d5e3bd36ca6bb521130ea",
+  "frontend_predictions/sub-032317-000-mixed-snr-5.npz": "fe849be266f36692420e633c356f5342a93eaac083b74204c0cf9ce358b74e6f",
+  "frontend_predictions/sub-032341-000-mixed-snr-5.npz": "6afc06a9c192dd06b4e3992589c94e53f4890d7559b8c41af4da9356acdcdf5c",
+  "frontend_predictions/sub-032331-000-mixed-snr+5.npz": "e208e7b27a31c37217033b8eb7e63b03efc5ac6acaa82af7b289d308ca2bfb76",
+  "frontend_predictions/sub-032321-000-blink-snr+0.npz": "c56472739992435c6e7c198fc317e4e0f7ebff4e0563ad058e2d8babb0405069",
+  "frontend_predictions/sub-032318-000-lateral-snr+0.npz": "0ce58881766aca4af952b1093e394f9ce30ba2d2c68261122de2c3012c86ae64",
+  "frontend_predictions/sub-032309-000-clean-clean.npz": "728abecf4010e573e94020dc54617ac31bd42c733ebfa092f7290aaec6a28dda",
+  "frontend_predictions/sub-032326-000-mixed-snr-5.npz": "265f048a07b5c76c799c1bb23730853bc6c93c3814538f67a3c5e6a0369a4ce0",
+  "frontend_predictions/sub-032322-000-lateral-snr-5.npz": "9a6af94e15962a64213b515f24b0320037c606e26170d34b5b3839c8627c0548",
+  "frontend_predictions/sub-032321-000-lateral-snr-5.npz": "d932ef94dd83241b12380fc5a371b8ab80b02aab2ec8f85901cc2f512ff7911a",
+  "frontend_predictions/sub-032323-000-lateral-snr-5.npz": "2669735e88246395418cbb593a8238f95b2f8159b8f21e2f195cad667cfdc229",
+  "frontend_predictions/sub-032319-000-lateral-snr+0.npz": "61db022a93b9508c4f67abf4551cf58d124657a22b9ddf9a1a4929b2b6ad8378",
+  "frontend_predictions/sub-032322-000-mixed-snr+5.npz": "51e07ba803ac95561ddbcf5e73c6d960a771bbf3b31c0de8c4134ce8ddff1339",
+  "frontend_predictions/sub-032328-000-clean-clean.npz": "448787d3702acd5f2f1197a8622e8759ca8de13ec34505fbc0426ea6bfc3e5be",
+  "frontend_predictions/sub-032314-000-mixed-snr+5.npz": "bdb70fd49072d45eee80014115b93b714ab31219066f93411a8343719b40e19c",
+  "frontend_predictions/sub-032334-000-lateral-snr+5.npz": "89d126559e0bfa53ef2dc5071fe3803cc9976df8b05cfa047dd607d4ea64a00c",
+  "frontend_predictions/sub-032330-000-lateral-snr+5.npz": "5beaa282e595f8858c45acc4c6e38d77e554eb28143ccd7f3bd39766ce459241",
+  "frontend_predictions/sub-032320-000-blink-snr+5.npz": "ea0b8b9702d4a4a77bfc946d0a55fcadaf28a6c473825d7cbec082494bea3ee1",
+  "frontend_predictions/sub-032317-000-blink-snr+5.npz": "f4163a27f41d9869a224912a7f604118a4bc5948fb04ca0ec8661919e4232a16",
+  "frontend_predictions/sub-032316-000-lateral-snr+0.npz": "a11b683d98c36411258a0e1ca0c80e516236f4bc79682d48c770276014817b03",
+  "frontend_predictions/sub-032328-000-blink-snr+0.npz": "dda5dfba7b0ab035be66552d0ed39901fd4214e7a09f90bed7a634223ba08edc",
+  "frontend_predictions/sub-032320-000-lateral-snr+0.npz": "e2323a3c446f655462c879bd34a1ffafbd71887457e741f6c194d5fc03d7b119",
+  "frontend_predictions/sub-032313-000-mixed-snr+5.npz": "66e7d127af6583501e98ac2568e0e9034be4fd7fdea2a112b2f249019a9b0727",
+  "frontend_predictions/sub-032314-000-lateral-snr-5.npz": "3f7d26a1a51d4c663db8939bc8ffc6e500848de1f338472774592da2189dbacf",
+  "frontend_predictions/sub-032313-000-lateral-snr+5.npz": "9c2484bdfcfbae170fd6e4aa8145704e2cf1e12f9669d7e7ea6a6598149a2f58",
+  "frontend_predictions/sub-032328-000-mixed-snr+0.npz": "a4bf153e50f42e4bbf79d0ca73872b818b1b2aeafbfbea5f4610e99a0e0a367c",
+  "frontend_predictions/sub-032330-000-lateral-snr+0.npz": "caf7abd1ecdf86e2f88a2a8d11ec9def5495d791f50fa316ff43277030596f80",
+  "frontend_predictions/sub-032318-000-clean-clean.npz": "82fbf14ceaa39ad9a1ba253475d3ec534a89d932724cf784b42b9014a25ce0d9",
+  "frontend_predictions/sub-032314-000-lateral-snr+5.npz": "86f9c1d474b8a9309311f7b7ed00e908acf3db29e6c56d393cf48c6bb69ab90d",
+  "frontend_predictions/sub-032313-000-mixed-snr-5.npz": "3844e11dcb97c13126c1fa4bc9d4e11d0e6f6392c95c1b8408460d5ff46b1113",
+  "frontend_predictions/sub-032305-000-blink-snr+0.npz": "4d29dbd00c04587822f92aea9613c7a9a6903119a345fb14f6bf40458453600e",
+  "frontend_predictions/sub-032312-000-lateral-snr+5.npz": "01af347a7591ae736874a6f8e4c20ca89fa098f180fbf50822fe90db6cf501ba",
+  "frontend_predictions/sub-032306-000-lateral-snr+5.npz": "49592f960b0e4bdf0ddd8bbfcf6cbd4802675492d6d19edff021077dc62fea61",
+  "frontend_predictions/sub-032339-000-lateral-snr+0.npz": "c8913852ddeb99cb81d8ea6c55a30d297eb2699bcf5653bb30d6cb45d295829a",
+  "frontend_predictions/sub-032324-000-blink-snr+0.npz": "2501f487e6afa890171c5fa3fdd60421bf583ef42bbb64d8ea34432742f4a163",
+  "frontend_predictions/sub-032329-000-lateral-snr-5.npz": "23287a8cdc76ac95315f2058e6b6039e80238b3edac42583d3383f5f522d6590",
+  "frontend_predictions/sub-032324-000-blink-snr+5.npz": "62d44a3db15e233ea275a74ea1d88314e6a8a4df5abdfc0b7dea4ba541a21595",
+  "frontend_predictions/sub-032327-000-blink-snr+0.npz": "33e9f7af8b6d7b49729f7440c54975cfea4130973c82af44275c8c4d572d363c",
+  "frontend_predictions/sub-032326-000-blink-snr+5.npz": "d0f9482dbf277651c1f7644cc00c310d922ce56de89a0d27bb24c33b3c3e68ff",
+  "frontend_predictions/sub-032317-000-blink-snr+0.npz": "2c68f0eed07d9cc8d468fe16cf7ebb62b75e372c6606aaa9f1cb7d1a7a472c01",
+  "frontend_predictions/sub-032321-000-blink-snr-5.npz": "b4858d20f106f16d6e31075ae71bf7abdf873263fcc4b182018e63c97166bde9",
+  "frontend_predictions/sub-032330-000-lateral-snr-5.npz": "11052eb5ed41821bc015a3721aa04b6bec8e20499a0d65eaabbbd25dd352b6c0",
+  "frontend_predictions/sub-032321-000-clean-clean.npz": "bf1779539448bbd659a0b6823e947f2e117b1ebf1221c2e98e50a0895e356cd0",
+  "frontend_predictions/sub-032325-000-blink-snr+0.npz": "638162dc7c516319aae218bc3194e3b2f0d0b0ebde4976061073a030743f2a65",
+  "frontend_predictions/sub-032338-000-mixed-snr+0.npz": "e132333b86b066643a8a7192c5fe6243be72f452f8b0ec6cb567a1dcd1956b00",
+  "frontend_predictions/sub-032339-000-mixed-snr+5.npz": "9f430e7fdee604a3ad3c38f07395bfbb1f5448f16872bdc9f3d902a9d6a418c8",
+  "frontend_predictions/sub-032329-000-lateral-snr+5.npz": "d4f6b8d234d0ebdaca2ad89fad36fbca5f978c4216fcfa464f773be87a8b20cb",
+  "frontend_predictions/sub-032325-000-lateral-snr+0.npz": "cd40e7ca2f6d49e6f4f213b80347a0a662fa34dd80c48a06fe93766587a15dd6",
+  "frontend_predictions/sub-032341-000-blink-snr+0.npz": "b210dac1896a5bcacac7dfe0920e746d8fe5a88512ac041ce308dc5458ca6766",
+  "frontend_predictions/sub-032314-000-mixed-snr-5.npz": "058b686851b1e4655d20ca501d22246c48a4a6a7ad0a63fdaa620a705c47e8c3",
+  "frontend_predictions/sub-032329-000-lateral-snr+0.npz": "644768b4b895483fa032188704e5c77450a958c96ddbd6befbe103de66bfbeac",
+  "frontend_predictions/sub-032317-000-lateral-snr-5.npz": "b1ebfef7b3072b27d770a9c56bcaea6fd20a70d3b739e692da91fb25f5360a7e",
+  "frontend_predictions/sub-032308-000-mixed-snr+0.npz": "80188a1cc5acad729131536a70f8b133976f613b386025047ae488aace08e355",
+  "frontend_predictions/sub-032340-000-mixed-snr+5.npz": "7e03b7b5a627703e44216272bba51535c1320d6f8e7dc61c931fe2f88d6b615a",
+  "frontend_predictions/sub-032310-000-lateral-snr-5.npz": "2cb8210ac163f82473bd5d05808116f09bc08c6ac3cf37889baf44379343cec8",
+  "frontend_predictions/sub-032331-000-blink-snr-5.npz": "efd710737bdf0eceb7f6e0f74aa10c847f76631ec548d861bd7a6e2504ab3f87",
+  "frontend_predictions/sub-032338-000-clean-clean.npz": "9fd7e5f104190d8580ecf3470b49c953e1ee6ecaba0cc70374b6e74b35045ed0",
+  "frontend_predictions/sub-032308-000-mixed-snr+5.npz": "1148c65824b0229b647f6709a3e1cc51fd8bf7f70ae630602ea8a0ffc7e24693",
+  "frontend_predictions/sub-032340-000-lateral-snr+5.npz": "929900c766e2aee119dfd91f4121bbc3499ffb1aa16ded717a0a44d1c7ce3829",
+  "frontend_predictions/sub-032328-000-lateral-snr+5.npz": "ef029f127e018d0b141fedd157da983ffc6891994b832b57443998936d99e939",
+  "frontend_predictions/sub-032308-000-lateral-snr+5.npz": "f5ab1d0eec95e02a88c485891fbea1162de7b4106a1bf39b1e9968ffd9d9e849",
+  "frontend_predictions/sub-032307-000-lateral-snr+5.npz": "e29c9dbb224aa57640b63b7af618cc24c805128ba34cd3ebc0a020e210a66dc5",
+  "frontend_predictions/sub-032310-000-lateral-snr+5.npz": "d08f69fd539c3eba8e4a174d8ee97d1a319608ecf7e14eb3dccba32d4594fda6",
+  "frontend_predictions/sub-032331-000-clean-clean.npz": "61dff46bbfe0c8e8d34f0c398fb68e745e1b6d3eaba2404e6cd22bbe2d5408eb",
+  "frontend_predictions/sub-032336-000-blink-snr-5.npz": "4ca1b13f872d7d1ac73e97274dfa0d2c8ea66f3ef9af1b7fd75950ed3decc7f6",
+  "frontend_predictions/sub-032339-000-lateral-snr+5.npz": "9284096fd0a9cc9f5197950bb4e5a0df601ed01a872c23c43b70f00c3ae6abf6",
+  "frontend_predictions/sub-032338-000-lateral-snr-5.npz": "594e7ef4fc23197a7ff6b9debdfb921efd45bdfcaf0ba74173f5324db662bfe3",
+  "frontend_predictions/sub-032316-000-mixed-snr+0.npz": "aab000828bf0e2c52335a38eb81c37116a44997d634bc99d3adc02046c4ed3d7",
+  "frontend_predictions/sub-032331-000-lateral-snr+5.npz": "720def34502923490dea70114ebfa291c82d82b33fe80cda601d9a1bcad29088",
+  "frontend_predictions/sub-032325-000-blink-snr-5.npz": "8d7253da30e55c890c43df8e7a050e1669182e17253ce930a1067636a0841471",
+  "frontend_predictions/sub-032329-000-mixed-snr+5.npz": "f6936d82b3991ae317000fbc216d60efff11bba1c8508669004493076012fc65",
+  "frontend_predictions/sub-032341-000-mixed-snr+5.npz": "2885c18b69fbd51350bebc4b906aa860dda336ebe9d7b51a17bd5de895fc5fc3",
+  "frontend_predictions/sub-032314-000-lateral-snr+0.npz": "e5ba0abde224aeabc65c68e20027ed1bf81a96e913bb84a7dbd128e3ad614de4",
+  "frontend_predictions/sub-032312-000-mixed-snr-5.npz": "4b9174e863cb441194e41139d877643cce8caf43b0baf7801cecec8b7eb60f35",
+  "frontend_predictions/sub-032341-000-lateral-snr+5.npz": "43e76844946cf7a4c432d8cbd605aab0210b4da0bc0d6ad5903e04001d2668cb",
+  "frontend_predictions/sub-032315-000-mixed-snr+5.npz": "6e8afa96f78a743f275e990122237b085df682bc2381b9ecc0bba8551c4f67f0",
+  "frontend_predictions/sub-032315-000-mixed-snr-5.npz": "3cbaf56640b8d914dc05f3e562204e420d25e31bbf7eb5c48d85973edb54e108",
+  "frontend_predictions/sub-032323-000-blink-snr-5.npz": "d7dc223868701667d460af73c6591c7d5cb6b55ff7c583fd305870c7967fe202",
+  "frontend_predictions/sub-032315-000-clean-clean.npz": "fa33a7a81663e635a68895754c76ac3cb44d47c40af54c55caa4e35debb7da41",
+  "frontend_predictions/sub-032331-000-mixed-snr+0.npz": "be7cefb8524b97e42d600d90e04573f9d27dda3d36621ff39819936779e5c194",
+  "frontend_predictions/sub-032336-000-lateral-snr+0.npz": "65fe3c29cd132a4f6acbcab6218fa9cab8da1e741f908e973155415d1a1d1fcd",
+  "frontend_predictions/sub-032339-000-blink-snr+5.npz": "8c62b4260ab5c8ad12efeba958d84faaa6b704ecdb8e10914d3cb6cbe509804c",
+  "frontend_predictions/sub-032317-000-clean-clean.npz": "7b57f59f1b57b0f23d3f941c505b61da2b334db1dbca7fadfa98e96aeea6e2d5",
+  "frontend_predictions/sub-032307-000-mixed-snr+0.npz": "08061fd489bcc4a90fbc5e1899efec7bd0b656c7a5ee90437b392427e4452326",
+  "frontend_predictions/sub-032315-000-blink-snr-5.npz": "092f4a6caa28ebdcc3e3b605a860f1cc7a6113b769874e1d5dcf71ee758570d6",
+  "frontend_predictions/sub-032328-000-blink-snr+5.npz": "632ae8710096960e29e48777aafd06b8503438ce1e16602a5b1ad233990c8139",
+  "frontend_predictions/sub-032320-000-blink-snr-5.npz": "b6e26b7e2ab141c58f02c2deb703dff76f44ababf2e25465809a881db653e6e4",
+  "frontend_predictions/sub-032316-000-lateral-snr+5.npz": "3a0bd065d8fc8c3623be55f2391303243112eb2cef707ca3204a04888a3bab1f",
+  "frontend_predictions/sub-032317-000-lateral-snr+0.npz": "47ae6e2f89b6e96e9ceec7d4568847820967170877e39080c2c80d0bbacb6ec1",
+  "frontend_predictions/sub-032305-000-mixed-snr+0.npz": "0ef5d9ccfe19c10e972cc80abd502f5b45ed99644e955d77ba5ed60bef69b079",
+  "frontend_predictions/sub-032309-000-lateral-snr+5.npz": "88bccc12ae7eb943b4d098ecd0661e9f01e707514d57db2fed3a3046bff9afbb",
+  "frontend_predictions/sub-032308-000-lateral-snr-5.npz": "57989e433cd82ae8460ca7f5f0711b77654f87c3cdaa72aad621a52901cd2703",
+  "frontend_predictions/sub-032334-000-clean-clean.npz": "3f4a69f0ef3d1eff50a5581b4192fc609c05cedac34ed42dfa091107963abfc2",
+  "frontend_predictions/sub-032321-000-mixed-snr-5.npz": "e4caba4ece407b9771e5d49fd8be7aaef36b44c6a5aa2838a04682ea40bb3e18",
+  "frontend_predictions/sub-032306-000-mixed-snr-5.npz": "13f2073342c561028684cb771a17a10b657283f66feb6f6655548111c9c8ff20",
+  "frontend_predictions/sub-032336-000-mixed-snr-5.npz": "865ac5f945f4c78da8d18be6aee2b7d98c6fb1e60cf06c3fbe32b832ae44bbbb",
+  "frontend_predictions/sub-032313-000-blink-snr-5.npz": "5c6afd3de58b24cf240fd33f3b84dbad7c12220f5e85c7211a3c57288cbb962e",
+  "frontend_predictions/sub-032305-000-mixed-snr-5.npz": "aea40117852cc86b78daabec4c0f1f3960b7ed2bbe1f245e75c3a652650105ae",
+  "frontend_predictions/sub-032328-000-blink-snr-5.npz": "a909a010cf44ebcc062a2f6c94cb185ace1c24c891029b167b1d95f2cccc130e",
+  "frontend_predictions/sub-032315-000-lateral-snr+5.npz": "70f334348e00057f4aec652f9b3d715fdda3e8a109190e117f1e2398590334f8",
+  "frontend_predictions/sub-032307-000-mixed-snr-5.npz": "553158dc088e940c74ed027445de045d2db10b744f12f62a25d5db3d0cab38f8",
+  "frontend_predictions/sub-032323-000-mixed-snr+5.npz": "5f48be51914aaa3a71fcf13fe771d9c50512f09e4b425a919c56b38096656d03",
+  "frontend_predictions/sub-032305-000-lateral-snr-5.npz": "1a45e6259db4f8435c7a43e7e08d18c93027404d981e667874b9471ebd1cc96b",
+  "frontend_predictions/sub-032316-000-clean-clean.npz": "bf8ea1d783218f6b404228f4700a70146fbd109aa06ce266cb11665280eae997",
+  "frontend_predictions/sub-032325-000-blink-snr+5.npz": "f3a9b18034293c1b0c516a07fab1299ca0694601498b8ff001c66d14b485ae34",
+  "frontend_predictions/sub-032305-000-blink-snr+5.npz": "d963dbb00ef1c81598e57e937449cc217317d524a123ccc96d5ff0ff99de8ff5",
+  "frontend_predictions/sub-032330-000-blink-snr+0.npz": "dcd4b042355281ae1902b6b6228d6fb188b2908f6c5e12c9b5b1f77eefc4bd08",
+  "frontend_predictions/sub-032312-000-blink-snr+0.npz": "43b98dc185aabd660eaeabadc1c1fcc97ca2c4b0e3aa0fea548eb8e2a02f1943",
+  "frontend_predictions/sub-032319-000-blink-snr+0.npz": "39b0f7a647b0053a95413a77e170c8f6be9f82573b0a717a1b105dcc9cd71b5b",
+  "frontend_predictions/sub-032327-000-clean-clean.npz": "7fb3dba7742ea6b66b76ef4bf3dc3c8a9605f354cb9d62250418659907327ca5",
+  "frontend_predictions/sub-032321-000-lateral-snr+5.npz": "4d13e8c1a8153887e8be285a0779a07dba4cad2b269244fe990434b6b9d76e2a",
+  "frontend_predictions/sub-032330-000-mixed-snr+5.npz": "061797d342ec51358dce4236536852ed88f619dbf94d634fe984c2f400456b99",
+  "frontend_predictions/sub-032331-000-blink-snr+5.npz": "edad1f41b9f19bf9d3d5c09d6abaf9deb6d1d85d812a0ea6a86718dc1924042e",
+  "frontend_predictions/sub-032339-000-mixed-snr+0.npz": "c82f40e3b17aaca9034b66706ef50458bb1129150db7f2d6fd2712f9b2d7f435",
+  "frontend_predictions/sub-032305-000-mixed-snr+5.npz": "b718eca7670808286ce9d8db76ec868eb1567f7008b856fe2679a7e93149430c",
+  "frontend_predictions/sub-032330-000-mixed-snr+0.npz": "44156ab9bac07502f0674847390c88d6fe72b4ae146b986d6db959377c45c4bf",
+  "frontend_predictions/sub-032334-000-lateral-snr+0.npz": "463a71bae8449980e2864330a6d207e44f70a60c86c5fc70bd063f85c760b61a",
+  "frontend_predictions/sub-032307-000-blink-snr-5.npz": "7102e66126cb30133e9da1c304b196d686ac3ea04a5a66e4141565a93bfaf86e",
+  "frontend_predictions/sub-032319-000-mixed-snr-5.npz": "033625ae2e032b75dfb8fd666ac013ef01100801e95b5e8719fa0f4738bec21e",
+  "frontend_predictions/sub-032318-000-mixed-snr+0.npz": "bc5f99980281b446e5dde3cfc553d13570d5e53a3d26ee097f2cac3fbe8a4b57",
+  "frontend_predictions/sub-032324-000-lateral-snr+0.npz": "30f6308bd6457f374293f5e4c05f842fd1ff189f30470d8f7ef59ee3607cc3d9",
+  "frontend_predictions/sub-032329-000-mixed-snr-5.npz": "e3bda309a8c0cf0651209f4041877dc4cb426330e1521312902404c731374285",
+  "frontend_predictions/sub-032313-000-lateral-snr-5.npz": "319687d0c38cc1b7e93dba74eb48616679941a08cb458731c44bde8a44edd738",
+  "frontend_predictions/sub-032336-000-clean-clean.npz": "7a726bb49f6d12a6f999c4de97b88758fe5e39c2734971e5695c5dbdbdce25eb",
+  "frontend_predictions/sub-032327-000-lateral-snr-5.npz": "e1fd21ad10da222657dec03a3c6667f5f1ee167664a50724fe25a95ca9399cf7",
+  "frontend_predictions/sub-032316-000-blink-snr+0.npz": "c2df5342f9e633cc8afea6221f77cd84d3b0dee2443e54958ee061b36a95ffbd",
+  "frontend_predictions/sub-032327-000-mixed-snr+0.npz": "883918ca749a522a738d062834b299d1d7f2b119ca099e9c12dfffa2934ef650",
+  "frontend_predictions/sub-032315-000-lateral-snr+0.npz": "6b8415b7756af446aa7770c7813bda7c3fb3e644206e2d2db2767f02e2d0c7aa",
+  "frontend_predictions/sub-032306-000-blink-snr-5.npz": "6f1ebd710d92f2926947668f5af74732dda83ad3b667196e2f33911f0a788961",
+  "frontend_predictions/sub-032327-000-mixed-snr-5.npz": "edf8cbe7e17f41db3bc9124df30e843e316ca3d59d167e64bbed89e20d02f8be",
+  "frontend_predictions/sub-032341-000-mixed-snr+0.npz": "b5b9a8edb5ff2803c39b980f968ce62a1f0046af1593c949c4ecf3b51a7541f8",
+  "frontend_predictions/sub-032314-000-blink-snr+5.npz": "482d8e4e3f6684e73b6e2985e171273142454388bdd74bb402480fbc7f6d3db4",
+  "frontend_predictions/sub-032323-000-blink-snr+5.npz": "551d2c98f6d443b971172981d1daab5ebbabb9664a57b3d1037bbcc6e14e7999",
+  "frontend_predictions/sub-032319-000-blink-snr-5.npz": "c92b9323adfd2af35687a1bbeeb30dfebc5fbcdcbf1731f4b9dd5a9e3a38e776",
+  "frontend_predictions/sub-032312-000-lateral-snr-5.npz": "9340b1bd1b9872167e0e6660386fed6715903b4af34db63dff97c16ec9b4029f",
+  "frontend_predictions/sub-032313-000-blink-snr+5.npz": "34f42240ecc7a7781ef20dbecec645e5b39dc6b39fe06bd2ff7feb46e3a22df1",
+  "frontend_predictions/sub-032315-000-blink-snr+0.npz": "88f37f4c8d6f58de0c6dddef4ca36bdc6968c4a311d4c0e04fe396b1715ad93f",
+  "frontend_predictions/sub-032309-000-mixed-snr-5.npz": "4063bb55c7663ce3ecf521c08aa16dbb1cb298f4a144ba8b08c62f108aba406f",
+  "frontend_predictions/sub-032317-000-lateral-snr+5.npz": "f2cba5987517ceb1e0bf0a5ce0a69e52e8fce3d1329deb1f2d55148214ec5d87",
+  "frontend_predictions/sub-032314-000-blink-snr-5.npz": "dfb46b045eafe2760b54e381e557144c4fc4366ff356957f8608a4a20cb5e03c",
+  "frontend_predictions/sub-032307-000-mixed-snr+5.npz": "ca5ecd60b457c5ad47d88e8c793f89f1d0aa11c3d0c3acc540b98dd5db00ac85",
+  "frontend_predictions/sub-032324-000-blink-snr-5.npz": "0e6a98fcb1a63b76930703d134d92da615d11ceed826f46a4931ba46c3d75a7f",
+  "frontend_predictions/sub-032312-000-lateral-snr+0.npz": "ec91091d1476cb6837fc80fa0cd23d5ca6509ac832a18e58bdd4455d3aff69f4",
+  "frontend_predictions/sub-032331-000-blink-snr+0.npz": "13e84e457275db25f04505d4e0351c06d257fbde177fa42bfa0ff7743fe94375",
+  "frontend_predictions/sub-032324-000-clean-clean.npz": "b2bb49a5db7101dc12ab41061b250b0af93dd83f28d57779d1dd5b5aa04dbbac",
+  "frontend_predictions/sub-032322-000-mixed-snr+0.npz": "5617d4d7d97398862068553ddcdef0a0ccff9a46a3992600e156dd90c44c3926",
+  "frontend_predictions/sub-032327-000-mixed-snr+5.npz": "5090a7541920f099b006dd2df610603c02d91cc46e836e87c5d505e91944bd3a",
+  "frontend_predictions/sub-032319-000-lateral-snr-5.npz": "4d29517ea2f4b8b6ed36d2ce7a5f051825c824730121ea517aa16df762cc8a0a",
+  "frontend_predictions/sub-032320-000-clean-clean.npz": "341a176b519b9d3a570d89cb731f520d87c3e0b87280a788bbf3878686502bb9",
+  "frontend_predictions/sub-032339-000-clean-clean.npz": "2f9b3aa64f4afcc9397cc781455573eb80e606109ba9b976baaa32f91558c155",
+  "frontend_predictions/sub-032310-000-blink-snr-5.npz": "0dfb9c07b42caaf564226e20fa1c21a338ad7525fa8d22070728484f2fa34dc2",
+  "frontend_predictions/sub-032339-000-blink-snr-5.npz": "5cd1d2d110b6cac12a6b640a84b94614f8be647749e720a26997df24645e573b",
+  "frontend_predictions/sub-032323-000-mixed-snr-5.npz": "1f919a896bc05758b5e7b6cc1ccfff1396bb04d9375bab3ea99484b3b2cbd20a",
+  "frontend_predictions/sub-032319-000-clean-clean.npz": "2646fc8e33e4e072b2c5cc3038c9580a7b0cf0e0257e1e71f5f14ba7e6d4d056",
+  "frontend_predictions/sub-032310-000-clean-clean.npz": "11d3f09c7250e86aa0cac74a574d1b70716daf9a54b96f68bf8ee65ac69bbcf0",
+  "frontend_predictions/sub-032307-000-blink-snr+5.npz": "a92773d1840e89f2eaab0af4b47e622ac6bc485edbae7ec7619563eb25f31c3c",
+  "frontend_predictions/sub-032310-000-mixed-snr+5.npz": "0a804ee7bfe8a1d9c0322cec010e759afa6ae09db7c0c3a814fbe594863fe13f",
+  "frontend_predictions/sub-032324-000-mixed-snr-5.npz": "11153cba3af176999d8a8cfebdea28227ecf8b45f6f73622e7cd15d1adb2dc18",
+  "frontend_predictions/sub-032330-000-blink-snr+5.npz": "0e56cef929e7ea59db5172fc5902b4a32b9735729e5b5e7dc8e30a3a616b4180",
+  "frontend_predictions/sub-032319-000-lateral-snr+5.npz": "91c3aeb7fb3566210a8392456eaeb8520fd46db25d8920cf2d3618b14b5ae0df",
+  "frontend_predictions/sub-032338-000-mixed-snr-5.npz": "395d5c9d24072a85b56914935b44daa7b77726a82a33dd3784e91609641de65e",
+  "frontend_predictions/sub-032322-000-blink-snr+0.npz": "f7d8a2f1a28fcef84bf505cf81649561b07a9b6c6e46afe1566f5c02f3390d6c",
+  "frontend_predictions/sub-032324-000-mixed-snr+5.npz": "0c86ed74090ed0eb2974fb6de922f900eb429ea74b977b633329cab701aea1df",
+  "frontend_predictions/sub-032338-000-lateral-snr+0.npz": "2e4731329e114d5298d8d93da1a3e143e53e6d0cb2bb257aaa700830ca060c1e",
+  "frontend_predictions/sub-032320-000-mixed-snr+5.npz": "f9d12856ed60f6ced2b950cb007f25a52f1746793efea252c9376e258b828841",
+  "frontend_predictions/sub-032310-000-mixed-snr+0.npz": "79f8151f2610fbeb911461e7add11a56f0b2ef58b01635fc9c94611b07d3f0ff",
+  "frontend_predictions/sub-032313-000-lateral-snr+0.npz": "2ddc939f2ef2ff75918e51b714cd09d012a64e8b5901bf56fa318e3ecccce91a",
+  "frontend_predictions/sub-032334-000-mixed-snr-5.npz": "651a855e6ca7c91a41d41b330528cbf1bc807c1314a3a9fbe5a29cfb15bd4c37",
+  "frontend_predictions/sub-032329-000-clean-clean.npz": "446370a1a6da54317c6529855ff117f81c2160d66c7547e44b5d7a890972690e",
+  "frontend_predictions/sub-032309-000-blink-snr-5.npz": "0b0c081881e1f8a8876a360b3ade69d81d37a88c5a19c4dfb6b6dfdb720503a6",
+  "frontend_predictions/sub-032327-000-blink-snr+5.npz": "20b25db9ca887d3e2f0d08623244915053a14a71de4a4880a5e4298519ebfdb8",
+  "frontend_predictions/sub-032336-000-blink-snr+5.npz": "773a9598ead59dca285d19d0adab85262dea3184f717533799c8270d05788c8b",
+  "frontend_predictions/sub-032330-000-clean-clean.npz": "e1869ea166b5559cdaec5d7a0615c1d90b364f58f31315bcb609b4161899b17c",
+  "frontend_predictions/sub-032308-000-blink-snr-5.npz": "1301041be5e8bcedfad889fbad9dc9f95ae42c22555e405864252705d7d337bb",
+  "frontend_predictions/sub-032324-000-lateral-snr-5.npz": "8f2fc5c98aac8c28d8d218cd07f09c12fae16b2dc682667b3fb3444f53a49d1a",
+  "frontend_predictions/sub-032309-000-mixed-snr+5.npz": "da8c37b783dcbe8a3957f0766f3a2a85c8bc70784d2cf2f97047d4ef9f5e7cce",
+  "frontend_predictions/sub-032334-000-lateral-snr-5.npz": "9b57124943d768ac449fea08ed2726de28d29862baa25377dcdb20c129e8651f",
+  "frontend_predictions/sub-032325-000-clean-clean.npz": "47a9331e917fc96d8b5b91ad9bca22f908e7fec85bcf0597820a2d6524462b28",
+  "frontend_predictions/sub-032328-000-lateral-snr+0.npz": "454a762f5db569ad05d2dcd54aaa2be45512e8c24be71115c6a60be6ab4b7894",
+  "frontend_predictions/sub-032320-000-blink-snr+0.npz": "253117c0e6bf9e84cf718ad070091a06abbbf672d25834776526307db3556998",
+  "frontend_predictions/sub-032317-000-mixed-snr+5.npz": "6936bd50b10060392626f1a9dd480f316a93c4e066c8486bc05a069eb5fab4ee",
+  "frontend_predictions/sub-032336-000-lateral-snr-5.npz": "0cfa0a2e3db2e6d9db59514954d2e4f5264b82291f103128374de7e87a755b63",
+  "frontend_predictions/sub-032322-000-blink-snr-5.npz": "b3bfab511c2a71c9dfc90d96d2ef25c4e6365c7351987cb3fd2c3afe1d55077d",
+  "frontend_predictions/sub-032310-000-blink-snr+0.npz": "4f376763eff24034198d866c7f7e1adb376e88a7a7a6e75801063fdd4859c1ec",
+  "frontend_predictions/sub-032308-000-blink-snr+0.npz": "844ce1a04cd3a93c5a31371d587cad73a6eadbee4185c7b881cd6aca0a8eff7f",
+  "frontend_predictions/sub-032340-000-blink-snr-5.npz": "92ab787c1057a97d2e76bb9b9e09a36fe195a5a5a4de01b82e9e7f6e4171aae6",
+  "frontend_predictions/sub-032320-000-lateral-snr-5.npz": "d36d5a848856de5cbe5107cc77c04e83c18ad09daf04f046d01cb9133de26c87",
+  "frontend_predictions/sub-032339-000-mixed-snr-5.npz": "dd3a43eddf36088d31fda523a16937cfb6923c36073e199d41f3d87641f9fce0",
+  "frontend_predictions/sub-032338-000-blink-snr+0.npz": "2006d3ad397e8d139d45a117d4f7c9770470ffc553c056945e454338bd33252e",
+  "frontend_predictions/sub-032327-000-blink-snr-5.npz": "5f37a058bc26b3b8509bf4c77c87f896bfa1d97db01c6d5cbc52239668b5767a",
+  "frontend_predictions/sub-032325-000-mixed-snr+5.npz": "b032a6eb2371d624bbb8ef3433f2ee9afce2e533a759a22a85cafad45e08f743",
+  "frontend_predictions/sub-032306-000-mixed-snr+5.npz": "adeb6296c8b8febdec11dfd0b22874677554540383a8c7541c9daee190f17de5",
+  "frontend_predictions/sub-032312-000-mixed-snr+0.npz": "d182b0f8f06bf1a9898ea7f0e04af3dbb5da4e0bacb4808aed2eea7166ef9a24",
+  "frontend_predictions/sub-032315-000-blink-snr+5.npz": "6f9b94e42c44338a75c8e320083e879e95c3a075fa9f99072c430f4ca0fbc5af",
+  "frontend_predictions/sub-032309-000-lateral-snr+0.npz": "bda0bb0d7274777e2ac28e3a42bcbdb6bfd8db88b888b36f98b997c97b2a88eb",
+  "frontend_predictions/sub-032316-000-lateral-snr-5.npz": "cec99d45e5ebf0db87df122cc2f61c8b152400bc049791accc1cd4b75b94f957",
+  "frontend_predictions/sub-032340-000-lateral-snr+0.npz": "e74697d0537d56fde497f5500b8e0953f6086ebf33d8939359b386612ba2cad4",
+  "frontend_predictions/sub-032305-000-lateral-snr+5.npz": "b8a2c867d2b501219db201e059b6ec916d4771312bb53e74ceb8d512a6b384ce",
+  "frontend_predictions/sub-032307-000-lateral-snr-5.npz": "e98605d2b41998abcb50ac6edaafb41049c4fd61a3abd52bcdd8ee0541985e7b",
+  "frontend_predictions/sub-032318-000-mixed-snr-5.npz": "d7bb838883bdae98e4c1e74fce29348a263a4266f9bb6df91bbb683cc9409313",
+  "frontend_predictions/sub-032330-000-mixed-snr-5.npz": "6d8faac6c7c30442b1cccf70c13b003c9760494304a0c39940c9be5f1ec3ea6b",
+  "frontend_predictions/sub-032325-000-mixed-snr-5.npz": "56459ed6dcefd7f64636d3c4b3401e9ccfd8a0b1afee292609f9fb1ee4461006",
+  "frontend_predictions/sub-032316-000-mixed-snr+5.npz": "275046750529f662a1416ddcf184fb389725f8b0de034a05ab496dd8585de7df",
+  "frontend_predictions/sub-032336-000-blink-snr+0.npz": "c9446fdeb0a480a453b7e79a4da02eb7d86e7182daa006a9befb711ea79b556a",
+  "frontend_predictions/sub-032318-000-blink-snr+5.npz": "40be005eb5375ad8f134cf2e105495f46071243c5a2c7bd64b40fa575b0f2e81",
+  "frontend_predictions/sub-032340-000-mixed-snr-5.npz": "016e85971ea2b669d7bf8a99fe1bb68825b509d7f83f1572c8ae101f21a3f802",
+  "frontend_predictions/sub-032320-000-mixed-snr-5.npz": "7bfa8636552cb0307d9b84a70ae6ef53fc55c0e7bc53ce0cb8352a4d142ec4ec",
+  "frontend_predictions/sub-032334-000-blink-snr+5.npz": "aa165a25787104ca2ba934ab8fced05bd4dc615b8327a42eb1021906dcfa4516",
+  "frontend_predictions/sub-032309-000-blink-snr+5.npz": "005b6727c8e2cd35bccef56513569796d412329f246c11bca6d5eb406f6e89ba",
+  "frontend_predictions/sub-032334-000-blink-snr+0.npz": "32b9333fe358c342b8e29bf9d54f35710c8af928e35d35ca13666b68fca0b4e7",
+  "frontend_predictions/sub-032313-000-blink-snr+0.npz": "fed8669fd8b9266d371984e809bf5f170fdaab99c16a6493a1c67cdc2a200ccd",
+  "frontend_predictions/sub-032326-000-mixed-snr+5.npz": "479080484929d5214f31e55f4997a6e4869eec9fc575bda1c50ca20a6033f182",
+  "frontend_predictions/sub-032308-000-clean-clean.npz": "33d4964737411a6b8cf54fd3411b7533a665085aa89e0fee48410550dc49b98c",
+  "frontend_predictions/sub-032309-000-blink-snr+0.npz": "e12fd255a4f36a91ecf6dee510712793e481d734b0a996e06a2b90fce4c7025e",
+  "frontend_predictions/sub-032310-000-blink-snr+5.npz": "67d39926966e6f1517481f741cf533b1fa43e5fd066a4476bed82fa3a30bfe7d",
+  "frontend_predictions/sub-032307-000-lateral-snr+0.npz": "59427d094f8440f5b3eace10acf2129759a2e987915249d0ec27be4d3bd31546",
+  "frontend_predictions/sub-032336-000-mixed-snr+5.npz": "5ecc03cb436d2851777e2739c76ba0daebe6d6b28eb7dfff5a3d46633c3ab773",
+  "frontend_predictions/sub-032323-000-lateral-snr+0.npz": "050941d20fe5ba03834b4f8ea6cab500c602731459168abaefe31e669a0f483c",
+  "frontend_predictions/sub-032318-000-lateral-snr+5.npz": "5a64361ee3512bd5ec734985451981cf9318ea79fe48421dfca3ba951e5951f7",
+  "frontend_predictions/sub-032327-000-lateral-snr+0.npz": "33c3e7854be7ae102a72aa258e1dc3c4027d4a9ae502531e4510319efe3c3fba",
+  "frontend_predictions/sub-032306-000-lateral-snr-5.npz": "92a1aae68c0a319561b60369b5d5ebd27d986cee7c6c87444335b8df30e5780c",
+  "frontend_predictions/sub-032323-000-lateral-snr+5.npz": "b650de22bb790cf85b15f07bc5e0a0f8e5f0a85691431639a0b716a1aea14aa9",
+  "frontend_predictions/sub-032326-000-lateral-snr+0.npz": "4eb04842b61f71dc9ce720bb09f8cf540c165322b95dca38b353258f5cc22c94",
+  "frontend_predictions/sub-032322-000-clean-clean.npz": "f599dc50f6757ca563168d6c81e10ed2c6908873e7c1e8ca31f63e1b023a2146",
+  "frontend_predictions/sub-032329-000-blink-snr-5.npz": "e98675e80aef05cec7578f083cc45f01be2f321b8dbf3e57bc78a3d025e67820",
+  "frontend_predictions/sub-032326-000-lateral-snr+5.npz": "87b74b027a90d1a617a46cc0d9d0eea3c701a2e404aca0729353b28e8985c064",
+  "frontend_predictions/sub-032326-000-blink-snr-5.npz": "ba49478d2e135873545dd354c9b2d7346658fe5295cd3647778380f7fa994633",
+  "frontend_predictions/sub-032327-000-lateral-snr+5.npz": "d0e3485c7a1c87f9a906c80522e30e7f03b665a6ff6f59b75dd587bd321fec5d",
+  "frontend_predictions/sub-032309-000-mixed-snr+0.npz": "9dc0e9248f90713b8ee2d56a8a3a64c794208f04724599a9ba7b5e3ea402f8c6",
+  "frontend_predictions/sub-032328-000-lateral-snr-5.npz": "df9e488f14150475a4662501b27cf4a401ae990d9437c689b3a4df114fa32ae7",
+  "frontend_predictions/sub-032334-000-mixed-snr+5.npz": "9d75bcbd28ce96c4f5c49128c0e3b59383a2cfa7207236be795248a558d52c1f",
+  "frontend_predictions/sub-032314-000-blink-snr+0.npz": "01e0befbd6ebaa217a3fe3c83da6ba46f15c1651025282c68a67ad03208e9df6",
+  "frontend_predictions/sub-032321-000-blink-snr+5.npz": "4f95b79ae9c8455ffe63b76da7e53592e3388d1813f2b20763be47c94479900e",
+  "frontend_predictions/sub-032307-000-blink-snr+0.npz": "45c0ca57a77c8037b1edcdbfc4f36eee3819f37b1e0080411404ba9655039513",
+  "frontend_predictions/sub-032340-000-blink-snr+0.npz": "128070aec92019a9bdefe149b96a3c95df3fa799c2a250c51e0bef7cee03719f",
+  "frontend_predictions/sub-032331-000-lateral-snr-5.npz": "46c1784672eea6a7dacc74e8e4ada8c758b83de3219ab6fac3e9d4359963171f",
+  "frontend_predictions/sub-032320-000-lateral-snr+5.npz": "fc016e735a63c1511ef8c0cc0c4956abbcec9be3ea72bbd2eea689ebe7d25db7",
+  "frontend_predictions/sub-032340-000-clean-clean.npz": "8fac8614d7f1f80adcab2618b51895a7431cc75a8c6db086638e50c6dd7c76d1",
+  "frontend_predictions/sub-032310-000-lateral-snr+0.npz": "1b1d4dc5efdadc721f0df82ea4b0f6646a1d16dbec152be5244784789d337782",
+  "frontend_predictions/sub-032316-000-blink-snr-5.npz": "4c4cc03c26cde61311e0add8005598e006aef5fec0e3989d4b37be5f808e3023",
+  "frontend_predictions/sub-032313-000-clean-clean.npz": "1e5606e82126789e3d355d47b301462ec8cbebf36fcf00e2da7c86cae09a75e6",
+  "frontend_predictions/sub-032329-000-blink-snr+5.npz": "6102fe3880d4a3341aa94589ec500c776e1c01461b24143980bb1a5ee03aa721",
+  "frontend_predictions/sub-032329-000-mixed-snr+0.npz": "c1283e0c3e64d74427f5006ed3ea052542d89a11aef98722ca0538512d9bcea6",
+  "frontend_predictions/sub-032340-000-lateral-snr-5.npz": "e8955159e62ae587b12a6b77bb72b5b23adc86634af99a331c5b802e7731a047",
+  "frontend_predictions/sub-032315-000-mixed-snr+0.npz": "8499a9c18ba45c3473046d9742492974df0929a125223febe4d87b61e47ac75f",
+  "frontend_predictions/sub-032326-000-blink-snr+0.npz": "6ab6ea50d30f8c2d557e3dea354d47b62fb10adfc021ebcb3c7edee001da75a3",
+  "frontend_predictions/sub-032331-000-lateral-snr+0.npz": "b085db14cdb111b3a2ea146ff120e254c3812142bfebee96de1a97dcfd18c133",
+  "frontend_predictions/sub-032319-000-mixed-snr+5.npz": "6ea5a1375e0064bd0179377828eb2f196f4ed61a18bc115e18ac26a2201c71b9",
+  "frontend_predictions/sub-032334-000-mixed-snr+0.npz": "6b090cbd6091e7e4f703be65490a9f1600a4bedf0cb5363e6f88aca5b81209f2",
+  "frontend_predictions/sub-032322-000-lateral-snr+0.npz": "bdf50f1a9068408fea06b25deb967460dd9e6b43d7c08e31e0c0ff694181285f",
+  "frontend_predictions/sub-032338-000-mixed-snr+5.npz": "9f82817d218279377d0396d2e381f2807a4df9c2016753088f4aafe83a01219e",
+  "frontend_predictions/sub-032339-000-lateral-snr-5.npz": "b67771939b428720b46f758d6e7e034d4e4803e38497c3d9edf0e7c3a8d64977",
+  "frontend_predictions/sub-032308-000-lateral-snr+0.npz": "d8374b27eaa273b31feff58dd76aea801a96be80e84dcf6e8724664862e85184",
+  "frontend_predictions/sub-032330-000-blink-snr-5.npz": "69681c093d075cc188cecf03b9a971e681ecbc25afe5e32b8b77c9d992598abb",
+  "frontend_predictions/sub-032341-000-lateral-snr+0.npz": "632f9658c4bcc25f78f67c07b105d4913cfe4dbc1d62cb3f85caa407a74da89b",
+  "frontend_predictions/sub-032319-000-blink-snr+5.npz": "169372fee238c2ecc5347c043e9f4c78636b290fcf5d07a79e43adf6692dcc3f",
+  "frontend_predictions/sub-032323-000-mixed-snr+0.npz": "ad13e0db28fe64a4859c66ce11affe4ce26c87dfe7f70c800162c0505cbf9d2d",
+  "frontend_predictions/sub-032318-000-mixed-snr+5.npz": "03b0f7bb4d0c5dbd4e6596290e515311ec9d88036ed1ea2c169f3623f1982d53",
+  "frontend_predictions/sub-032312-000-blink-snr+5.npz": "7a4124a750c21768851aecdd479216ff4fbcd7d457618da41de4f38c55d93539",
+  "frontend_predictions/sub-032338-000-blink-snr+5.npz": "0ed9c5fa40c34e848f37f5bf3d7e33b1a07d21f483b1ac23240dfb72c6b38a4f",
+  "frontend_predictions/sub-032328-000-mixed-snr+5.npz": "5328dfc92b20abec3d894df9cc587b3c75b724a89b64c03e681a8c727ed11ba7",
+  "frontend_predictions/sub-032306-000-lateral-snr+0.npz": "73212a795669765cb7714a897a467dc8cfd57ad950e1054146403e4bde1d488b",
+  "frontend_predictions/sub-032308-000-blink-snr+5.npz": "42c5e2cd1f881469aeddd75f0d6f3c5ad3746cceb4aa3345dddd28534bb9157d",
+  "frontend_predictions/sub-032310-000-mixed-snr-5.npz": "f2f4c792818b225f8eee3fc46a0a14cb40ffe121578cfc257fbbc3be6e4645af",
+  "frontend_predictions/sub-032336-000-lateral-snr+5.npz": "9143f0af56160caa4f7beb4eed7ed65d8fd4a875fc7ab770840f09836140bd0d",
+  "frontend_predictions/sub-032312-000-mixed-snr+5.npz": "09bd712b6a0aa3aa6b7ed11263229eb2f37a8f0ab0809237f287865834b2dc70",
+  "frontend_predictions/sub-032341-000-clean-clean.npz": "d191987913a1715fe2799e7d72d9d56d95a60ac8490e39c237ae0a06bd801b30",
+  "frontend_predictions/sub-032323-000-clean-clean.npz": "ef667450b39ab46baa30c212f1385fc69bc8695409b8b7351f3e81878590b5ad",
+  "frontend_predictions/sub-032322-000-mixed-snr-5.npz": "b4c9f9a8c57280b0bf4bfad5b04c16ff6edae8e34f448d483ddecfd404ca332e",
+  "frontend_predictions/sub-032323-000-blink-snr+0.npz": "54f194e37056b28e23cfe9450a74576b5f472244a42d112e241921b417bce2ed",
+  "frontend_predictions/sub-032317-000-blink-snr-5.npz": "d35591da14d12de5aa7253d1ac121abf28426b92ca26eadd5386e507b8a29cdd",
+  "frontend_predictions/sub-032338-000-lateral-snr+5.npz": "2f3fe5de63945c400bdf5ce0e721b12bddba83e272d3b318687aaa274ac4f16f",
+  "frontend_predictions/sub-032340-000-blink-snr+5.npz": "a251824fa56d06f404a74672d920db0e7529391673f5ff59ca706c49529434dc",
+  "frontend_predictions/sub-032316-000-blink-snr+5.npz": "053ad77ac00ca678d1febf1b38b702eb666d6afb6cda8758f756a07b57d670b3",
+  "frontend_predictions/sub-032321-000-lateral-snr+0.npz": "458b88d94b31cc3af26172f55b3be6b150cc4e4f58ed6f93ed40e8f478b75e03",
+  "frontend_predictions/sub-032341-000-lateral-snr-5.npz": "9b7d09ec4560e499f87bae44f206d2756258ecca692f9287ee3a88c63b3daac5",
+  "frontend_predictions/sub-032336-000-mixed-snr+0.npz": "fd7e32a6b8b29d1addfd88fbdc56e0db3292da494597fb43fe21ac6bd28f4f3c",
+  "frontend_predictions/sub-032324-000-mixed-snr+0.npz": "b084c9d16414b88790cb55efb7cdb057fa8c832cc6c282a92f9fe239e54343cf",
+  "frontend_predictions/sub-032325-000-lateral-snr+5.npz": "9c4aa97a1c3f9535389962800a0e7d77bb74226fdf0e8da471d303ce86ea1bf1",
+  "frontend_predictions/sub-032313-000-mixed-snr+0.npz": "674a03b854df7ffa7242adf536b09cba818a0f4a078b5507b0466769b96d5dba",
+  "frontend_predictions/sub-032329-000-blink-snr+0.npz": "3abb6cb39caa6f0b465bfc406155ba7ba8050a0c6bdbdd98c3eb9ebf8cd0898e",
+  "frontend_predictions/sub-032314-000-clean-clean.npz": "e427667aa3bf5baee6d12f7c435fa00d09d1e741248e9e8770b35ed53e1d4af6",
+  "frontend_predictions/sub-032321-000-mixed-snr+0.npz": "39260c0059ed2fd628fc53c5c2cabbcd31d3eb9b8b307efb60788459f9b3cfab",
+  "frontend_predictions/sub-032341-000-blink-snr+5.npz": "93b4ffba33da65e010937e98fdc45b3fd2abaf37bc70594648abf36b470e49fc",
+  "frontend_predictions/sub-032331-000-mixed-snr-5.npz": "c6980694b74e9ba281dfe6805fcae3fd2c5e46c0d2c4a0f53ddda03ea6db316c",
+  "frontend_predictions/sub-032306-000-mixed-snr+0.npz": "18017284778234a83203cb44b3c44ba1fe6b59d5d13cec4132a930332b5c40fb",
+  "frontend_predictions/sub-032312-000-blink-snr-5.npz": "11148d2212c71c41ae974fd0bb7b755ea201f52043b3ff1a270d0e1858c87292",
+  "frontend_predictions/sub-032305-000-blink-snr-5.npz": "200a7dd547036ea5c5ac734dd366b434357f885c7be821c167f81a3ccc793178",
+  "frontend_predictions/sub-032305-000-clean-clean.npz": "e95bc8c907fe37b070cbab6a426dcd6eb7194bd36e860a239f9953621d1c58fe",
+  "frontend_predictions/sub-032326-000-mixed-snr+0.npz": "ba450faebaa7eb04a8b9dd75ded65ce28a15c67048b7ad43dd21ddfc430630ca",
+  "frontend_predictions/sub-032318-000-blink-snr-5.npz": "1a5b5100c386975130d8c816ed2cb5603918dfbda3cf31f2ed0ed4fe46e42567",
+  "frontend_predictions/sub-032325-000-mixed-snr+0.npz": "25b57394a957c795d4ab90164b1b37d3da01d45be03f1e35396dc823dbdaf352",
+  "frontend_predictions/sub-032306-000-blink-snr+0.npz": "fb082fd14c1b819de29ee5078e9c3d4a4a07a640e9b270220bca222eeacaec67",
+  "frontend_predictions/sub-032326-000-lateral-snr-5.npz": "c8c3320a64b4beb8122c40a38947e85e78452df925787cf151694d3a28369bfb",
+  "frontend_predictions/sub-032326-000-clean-clean.npz": "53fd37efd36020f331b37770f228c9446c7d2226604f5761b1e42810d5d40586",
+  "frontend_predictions/sub-032312-000-clean-clean.npz": "4bc4b72a2e406a89141e534d31326ca0d2d17da7ec3fbe7bb72cf23d5ebd4af2",
+  "frontend_predictions/sub-032322-000-lateral-snr+5.npz": "9cdae6a66e3115b9023a0584a5f02c0d51edc5182dc4a290d8bef361e8d25a9d",
+  "frontend_predictions/sub-032319-000-mixed-snr+0.npz": "ec4c14a3f8c59ddf0a34405093f52db5b8bd145082c48c15c3b4bfeff3b0bba6",
+  "frontend_predictions/sub-032340-000-mixed-snr+0.npz": "e3597fdc8e4822d78cacb24f8f0c11a93f192e54c3423d5c5b0463c077880262",
+  "frontend_predictions/sub-032305-000-lateral-snr+0.npz": "abc2a82cd813c9f15e66f60d89097353a9978416260905b1d3391ca4a4b8d41f",
+  "frontend_predictions/sub-032321-000-mixed-snr+5.npz": "9b41276e781480cf822fc67ae3cd9ebbb99fe9215de0eefe5e1e9734cdb3b4b7",
+  "frontend_predictions/sub-032309-000-lateral-snr-5.npz": "9dd9e9e9a7acd97744cf6ca8d32b9bdda0b00cfc0019d3d6ceebdc7768c9fd9d",
+  "frontend_predictions/sub-032317-000-mixed-snr+0.npz": "dacf50f6e0c5b916185aa420fc07eefca06f72d10f0ccb6ca6642285f16c52a8",
+  "review_shards/sub-032324-000-clean-clean.csv.gz": "6215b9d60d6434273f04d729c2f9ceb1ce1403a9612262c657826cc8de700e89",
+  "review_shards/sub-032320-000-lateral-snr+5.csv.gz": "50a9a3bed801cde986f9e83215b73c8fa9210e804760757cb915afba5b5a17cd",
+  "review_shards/sub-032315-000-mixed-snr+5.csv.gz": "bf58aaa0ca262570aa8992d08253fccd28ad6a79f30e12e2232469b1f1a2d2c7",
+  "review_shards/sub-032312-000-mixed-snr+5.csv.gz": "9f42314ddd84f5409c486a2100338dd90fe219274a3fabde3319f59b3ca83a36",
+  "review_shards/sub-032306-000-mixed-snr-5.csv.gz": "297b7f06133b2096532ade1f60021ab090646caf3a1e9161be3570b4ed603595",
+  "review_shards/sub-032331-000-mixed-snr+5.csv.gz": "2f5fe89de65dec5453f0d1a5916fc02812a8c5e8be241970eceefae0bf747041",
+  "review_shards/sub-032320-000-blink-snr+0.csv.gz": "f7b5ec7c3711a323f81142ca340b2fa4bbc98f39f74cc851bd1ed493af3f10f8",
+  "review_shards/sub-032321-000-lateral-snr+5.csv.gz": "d82094aac6bc119a840c2cc88cd7dbc178cf5ad6552edb8f098d6a3172b26b09",
+  "review_shards/sub-032324-000-blink-snr-5.csv.gz": "fc57aca1b3dcd4065ecfc5187775646d9dcca48f774181ef6c4243e6af41eeeb",
+  "review_shards/sub-032340-000-mixed-snr+5.csv.gz": "7087ac43ff0602e2ba6f8925031f982e68cf031bb544cd2725b642959fe8f376",
+  "review_shards/sub-032308-000-blink-snr+0.csv.gz": "99acd88c9811bd32418d06840486554dd5efd1d7a9697de38a2c079dacb9ffdd",
+  "review_shards/sub-032315-000-blink-snr+5.csv.gz": "85366d0b27082607bc0fbf35ddb3a035d1a3b19a0fbf346f59a2fdcdf2bc0793",
+  "review_shards/sub-032341-000-mixed-snr+5.csv.gz": "939b4ebbd0f086ffce618e3d208bf9c9929e419aed9f2273bacd0c77d86514eb",
+  "review_shards/sub-032340-000-blink-snr-5.csv.gz": "8691939cdf8c99aed1408083ad44ef7ba8945e76d900f55a95cf38c796bbb2e2",
+  "review_shards/sub-032327-000-mixed-snr+5.csv.gz": "df321fb145a4058f0e292fd0eeaacd3f0b282b53d233615d1b1a77b681ec8212",
+  "review_shards/sub-032327-000-blink-snr-5.csv.gz": "b49c8192e508bcc45e74e442b6643125adb36a4e969dcae3c8009b1367af58b8",
+  "review_shards/sub-032319-000-blink-snr-5.csv.gz": "0d13849a3e9f1b08dd9e6bb73df0a3b93c06ff7272ae176805ce2c34574fc541",
+  "review_shards/sub-032326-000-blink-snr-5.csv.gz": "8746c0ec9315e72332d4b873aa881f903ecbd14463d704608f0577106e12b462",
+  "review_shards/sub-032310-000-lateral-snr-5.csv.gz": "24328ab1a6fe42af17e06dfaf92ff729c10b50541e1dd8537a6e34c37aa75c4e",
+  "review_shards/sub-032334-000-clean-clean.csv.gz": "3ed2dc2c14d9810858795b93e92f028fe9e894c76ed41b53afcacbbe5e6d4f74",
+  "review_shards/sub-032325-000-clean-clean.csv.gz": "3cdeda52440e860906b283321f58346381e216ad87179c8c3e29f3c067e83dde",
+  "review_shards/sub-032336-000-lateral-snr+0.csv.gz": "ddc2f1f8caf4f2a199e2694c6aa7ff303954055adf268a3f45f81a8695d0479c",
+  "review_shards/sub-032336-000-mixed-snr-5.csv.gz": "121a79ba1845c7f771f48860c16f5837da370f13647a8e85cf19c0425a3dacbf",
+  "review_shards/sub-032329-000-lateral-snr-5.csv.gz": "4a6d2c59ef3e2c763724d640a2cf670a12e88e1f282367bd0878ae2abd0c302b",
+  "review_shards/sub-032330-000-lateral-snr+5.csv.gz": "6ad912c78a1ccda7263483e60f6582d2c79e97c833fcbc9ffb9219adf40188b6",
+  "review_shards/sub-032316-000-lateral-snr-5.csv.gz": "afbbc8a763af0c010e8047dd97311a021ba661896ae737b7c76044e95d9ac90d",
+  "review_shards/sub-032341-000-clean-clean.csv.gz": "6dcd85a460a6fa75a487f73ced884a5256cd69ad739d43ba6d5a7e2e410a6da5",
+  "review_shards/sub-032316-000-lateral-snr+5.csv.gz": "acdbe36287a532af504ada40716b6349ce396ef33695905e551dff4f1d661c69",
+  "review_shards/sub-032331-000-lateral-snr+5.csv.gz": "2952e7ebb22100afd5e31283612ceddd001c40ec209056ac8dfb2e2295133d21",
+  "review_shards/sub-032339-000-lateral-snr-5.csv.gz": "964fe2205fe9b3fc7f36a37de63f76f420e0b04c2e5bee2390988d4a36bfeab3",
+  "review_shards/sub-032340-000-mixed-snr+0.csv.gz": "e683eb204f09a4fa3b22a90e511036cc2e4c6ee1b9580a3eb143238f01b80fd9",
+  "review_shards/sub-032313-000-lateral-snr+5.csv.gz": "b1a7153488084db69c0b699015f6cfc613dbfef9b4c058fd28e96abb7eff6ddd",
+  "review_shards/sub-032307-000-mixed-snr+0.csv.gz": "0ca36140625084933688ed03c1a6036156c0b549c56c4552318d4ca7264034be",
+  "review_shards/sub-032331-000-mixed-snr-5.csv.gz": "3ab0011f894831b44df268c7e1b254b7581eeecd32b8321ad1a96fb7dfe83438",
+  "review_shards/sub-032310-000-blink-snr+0.csv.gz": "ee83c0f4ad78adb68b5b7d1ffc937d3e8893b51ee5c9d56d995b3a6e8f95b6c0",
+  "review_shards/sub-032317-000-lateral-snr-5.csv.gz": "124671292fdae172edb273d6c275beb16b748803b8e960240c126a966e746ad5",
+  "review_shards/sub-032341-000-mixed-snr+0.csv.gz": "e05f63b4355c25d2d74d71a09ca06a19580e784515a9113454e4a3094d2d4525",
+  "review_shards/sub-032338-000-blink-snr-5.csv.gz": "8ad25f72b82445f7fa2b31bea2a5934354ca85fe8ac17785efa95206c4f408ca",
+  "review_shards/sub-032313-000-blink-snr+0.csv.gz": "46686086f4b19654d84cdcef61c091ef33bf9ff92000fcadf0e076b88bdfcce6",
+  "review_shards/sub-032329-000-lateral-snr+0.csv.gz": "05a028029026668e55a95680899645d7df57db0c20273835437e4d97de078fdb",
+  "review_shards/sub-032323-000-lateral-snr+0.csv.gz": "455ae2f55894afbb1d92bfe88e3aebde528fa916549fa96c31d67651b7020484",
+  "review_shards/sub-032316-000-mixed-snr+0.csv.gz": "fedc63aa1b73359736729cc6117fecaf473002933e90cca7a20853f0dced06fb",
+  "review_shards/sub-032305-000-blink-snr+5.csv.gz": "b96e5d269b1abd4b73ae943e2f90deb4fc8ea184f2816676945db59aab0c1aa6",
+  "review_shards/sub-032309-000-blink-snr+5.csv.gz": "8439a89b9fe261a1e63c35ded8c7974f5e6e8386f252a5b1717eda9d5ecaff92",
+  "review_shards/sub-032323-000-lateral-snr+5.csv.gz": "00d0a97a33fab300ae917971ca1359a4b1b120353bd7ce346f147a18bc46d880",
+  "review_shards/sub-032325-000-lateral-snr+0.csv.gz": "e545baa3d30b34a8f17a0b63ef9539de33746456946824207546e0c876ee351d",
+  "review_shards/sub-032338-000-blink-snr+5.csv.gz": "9e2917d2e93321130d7d198c1330d0418ed550766150b9cde0f4aefaf07ba722",
+  "review_shards/sub-032308-000-clean-clean.csv.gz": "ee4e5c142b09579c3d92e4dce5d046a2f9c1d80bb2d9bbf2849f8b0d7ca4d64c",
+  "review_shards/sub-032318-000-mixed-snr+0.csv.gz": "a624e3818797c60349ae7740b7615d89d180d582c65a3f6691c7f8dbee540e70",
+  "review_shards/sub-032324-000-blink-snr+5.csv.gz": "0db60e80b417bcec56ce9a31548670e4f504cd7f0d4ed00f9b458f748b2622a8",
+  "review_shards/sub-032340-000-blink-snr+0.csv.gz": "8facdff9ce8ce4697b7497c7fd4a3044a6b9d538ab8c76e7b73556b00fd8e830",
+  "review_shards/sub-032318-000-blink-snr+0.csv.gz": "eab680f0379fe17517b3c8f457f0145060d8208cfebab82e2ca596bf807a8f52",
+  "review_shards/sub-032329-000-mixed-snr+5.csv.gz": "872f6e80d0696cf8d5127b24770100fac4ca4e661ca0713230669913da7b9741",
+  "review_shards/sub-032323-000-lateral-snr-5.csv.gz": "1be69430b051c192ba64742a6a44c506591734ad0c80ae6c86c8beecb1263509",
+  "review_shards/sub-032338-000-blink-snr+0.csv.gz": "008ab596ad1319ee3f851105087cc7f796dc7abe422c9ed1ef120a28a1e2c978",
+  "review_shards/sub-032307-000-blink-snr+5.csv.gz": "645f6f156efe003f2045dd6eb17671d1f35da20ac474c583aee5a27c24eb8577",
+  "review_shards/sub-032322-000-blink-snr+0.csv.gz": "1c60bd5237ac8c85719b71b514e4f9ca7d58dd5b79f5c3bdfb3c06e0e4c90470",
+  "review_shards/sub-032309-000-lateral-snr+5.csv.gz": "673278c07d8c3c257fa7a8b090b980f036cc08acb6388cfeb630c4f091561269",
+  "review_shards/sub-032325-000-blink-snr+5.csv.gz": "a49077cce27ed8cede5d4dd91950f81545f8545e07c278f8b1081158cfe9e21c",
+  "review_shards/sub-032328-000-blink-snr-5.csv.gz": "6683c752982ae91691c36733e7bf5661c1f9b96151ca53c335dd48b37dcb64c5",
+  "review_shards/sub-032341-000-lateral-snr+0.csv.gz": "8a655dcc0763b23da526f8bbaeb505ced2773abe6b1b27596b4e8bda1e194147",
+  "review_shards/sub-032306-000-lateral-snr+0.csv.gz": "b1d1e1b5ecc1c1ce87de359ea06f1d8a9b1cdbaaaa2675b1633421d9ea6dbf02",
+  "review_shards/sub-032338-000-lateral-snr+5.csv.gz": "2872890bcbaf9ba29b5d031f08849aa8e463da94a12468a7a9403ad075e07f8a",
+  "review_shards/sub-032327-000-blink-snr+0.csv.gz": "4eecab9d5f922393d2436cd49e211a417709370e059b792b2ea453f8b9ffe6bd",
+  "review_shards/sub-032318-000-clean-clean.csv.gz": "392251a5dc2eefa8588029ee0f8cb622ada3e50129efd8cf48e0365525d29ed1",
+  "review_shards/sub-032328-000-blink-snr+5.csv.gz": "89f313bc954546473bcbc7517d9954419f68c37647d06e4acfe3df8d34fbbc5a",
+  "review_shards/sub-032328-000-lateral-snr-5.csv.gz": "803a98eda858733430526400a6ceb443149255d39dede45d1acf17d2529a53c0",
+  "review_shards/sub-032322-000-blink-snr+5.csv.gz": "eaf1d2ef4a8a63d7af65bc5b88654b20ddaa409353250a86c23925ab5b1032e5",
+  "review_shards/sub-032314-000-lateral-snr-5.csv.gz": "cff3f48fc90bf342270e1738805fa469ebb42f7366235601b0408569da303457",
+  "review_shards/sub-032336-000-blink-snr-5.csv.gz": "8415adf5ab3ae73028246b3ad7f7bb7293383d49a87089ef85f60d263506b603",
+  "review_shards/sub-032322-000-blink-snr-5.csv.gz": "850cb0bf91d9675a43843bca040f956ebea91b3e0b7fb365262204f45a6150f3",
+  "review_shards/sub-032330-000-blink-snr+5.csv.gz": "02a24a57af3f2feae6135509f55223734522d7153d3252f380aabfd862eaf2e4",
+  "review_shards/sub-032331-000-blink-snr+5.csv.gz": "417c95d132ed30eebf13650e95794aeb979cdec8a24c9154cf118673a72a325a",
+  "review_shards/sub-032315-000-clean-clean.csv.gz": "b369d34cd1fba850706fb94290df9aacc94ba544e54d587130453c9f41f12456",
+  "review_shards/sub-032314-000-mixed-snr+5.csv.gz": "f33aa8d593c343dd1121e57b7d9a81c2259af60ff0e9413593e3fa5cb5e6675d",
+  "review_shards/sub-032326-000-clean-clean.csv.gz": "2bf08d532d88220182ff3055df33417241d4a5ef977adb8f3dc035afcd6548b7",
+  "review_shards/sub-032327-000-lateral-snr+5.csv.gz": "83d661203085e5c5ce71a4e87ed6419bd9c42de8dd91d1c9b91a2736a5287c9d",
+  "review_shards/sub-032321-000-blink-snr-5.csv.gz": "9688aacf1ce97baefdc2e071f8ec607bb5f5a3a744a494f9a1327b3e1260b58c",
+  "review_shards/sub-032341-000-lateral-snr+5.csv.gz": "3efd4b407d3ad7de52833fb75dcdadb10064e49b0fbb11b07fcffb53cbeea88e",
+  "review_shards/sub-032339-000-lateral-snr+5.csv.gz": "0c227a7e5c61bb2ca1f8b605c479fe32dce6216adb687692491d4d759c41c965",
+  "review_shards/sub-032320-000-blink-snr+5.csv.gz": "2c8bbedb7b2651cd29868536bf10eb80276ae25c05b388b8825d937452ba04b4",
+  "review_shards/sub-032307-000-lateral-snr+0.csv.gz": "cd1e66904f7f6832006127c0a83a8c1075a62f3c99aff1d7cdb083bdc6b3cacc",
+  "review_shards/sub-032327-000-clean-clean.csv.gz": "b9f9b293c248f6d7d497273fbc61bbd7ff8882c4c35b39a351449e7677a6aba8",
+  "review_shards/sub-032313-000-mixed-snr-5.csv.gz": "9507e8d02e82b249f2348f2c21592c2324410620b9c69ba525ed3dc834e9f37f",
+  "review_shards/sub-032339-000-clean-clean.csv.gz": "8636208a67ef05c45fca5d76d9f3b6c2754a2b89d67b13731214677008f793e6",
+  "review_shards/sub-032319-000-lateral-snr-5.csv.gz": "fcb720e555fcd06aa3ee771ccaf409cffcb21f35535671cacf3554fc07c7ea6d",
+  "review_shards/sub-032339-000-blink-snr-5.csv.gz": "cddfd0d1aaf8878530a31de0ad432eb4dc36f6a359a76a19690f6d24001f3bee",
+  "review_shards/sub-032306-000-mixed-snr+5.csv.gz": "a00ca16e95abc255cbd7aeb56eb17fcd0abf7fb06f1757a3b86fca7c09864e07",
+  "review_shards/sub-032336-000-blink-snr+5.csv.gz": "febf3a3527e0bdb81fed101889becaf897495fb2b25f942e10929713e10ad6ca",
+  "review_shards/sub-032328-000-mixed-snr+0.csv.gz": "65d1c45fb080f7198d492c181e60919fe63fb2c91fef66c7170b6ecf6d78ad3b",
+  "review_shards/sub-032325-000-lateral-snr-5.csv.gz": "e870012b38128659c246eafaf82c0f7f4d607be9b254bcc9e1f9d000d30b472c",
+  "review_shards/sub-032318-000-lateral-snr+5.csv.gz": "718583514552b0dac10b7bfce1a672b43db0b22721e639ade80bb5173b6cd1cf",
+  "review_shards/sub-032329-000-blink-snr-5.csv.gz": "375c3ed3a1728d455a5a0f7389051b5e501254ce070d9b8cee5657aab27d7cfc",
+  "review_shards/sub-032322-000-mixed-snr-5.csv.gz": "124f5c4f70dc356c99aac1777ab58516fe3ebddaab4279b6ba9a77584fd28de3",
+  "review_shards/sub-032315-000-lateral-snr+0.csv.gz": "fcf17a0401f862cce21763b8be2d6dbf069a01a75f7ebf0268bea3229075d260",
+  "review_shards/sub-032331-000-blink-snr-5.csv.gz": "f10e48a6f8af97c9b9693ff9919739a1e55bb6b721b199d7169f8c868701526e",
+  "review_shards/sub-032315-000-mixed-snr-5.csv.gz": "bdb1d65d724ee81c2db45ff9e9020c2814f84330c85023dda1c1a97e98e7f8af",
+  "review_shards/sub-032330-000-mixed-snr+0.csv.gz": "3f8645950e64722c8b41581bee5b8d221e8f052beccc8c94fd7b46689fddd015",
+  "review_shards/sub-032328-000-blink-snr+0.csv.gz": "ca4352f11e8dbce6b6403ff11969d6252d24335b44dd77333f0bd9d2c790ddfa",
+  "review_shards/sub-032322-000-lateral-snr+5.csv.gz": "f64f35e36466a578bb66ed0809fedad282776d4ae01857315b02dcabd83ddbd1",
+  "review_shards/sub-032326-000-lateral-snr-5.csv.gz": "277b31637afcce8b8f8a6836b12c0ac8dacc571f819ba6ff110f42a92744d4e1",
+  "review_shards/sub-032326-000-mixed-snr+5.csv.gz": "dba092b1bb28053fe96763a9263359d8492743edac4e1ecaa13c0203072b74cb",
+  "review_shards/sub-032309-000-mixed-snr+0.csv.gz": "3a98ae083404f008f5eb0de543d8b750eac601a0ea4985eaacabedc15f1fd216",
+  "review_shards/sub-032309-000-mixed-snr+5.csv.gz": "59a00943187175b00464ef341a877abd79f164693bf8d02af0d759875536229f",
+  "review_shards/sub-032318-000-blink-snr-5.csv.gz": "a78dad73264c8757a02c503178f317b951e9fae94220d64ecd8ffc9344470387",
+  "review_shards/sub-032312-000-lateral-snr+5.csv.gz": "133be216893a869594377e2e1534b40788771a492a8fd8826b844a92c32ae7ac",
+  "review_shards/sub-032310-000-lateral-snr+5.csv.gz": "48faac3d83e01b91b581b10acf99920e2ea7ed603ec8b5ec4203a697bcbf243f",
+  "review_shards/sub-032338-000-clean-clean.csv.gz": "1a85e6718aed83a293e854d11655e50c1e0485f98e2e14ffc84afaa6e46b1b5f",
+  "review_shards/sub-032314-000-clean-clean.csv.gz": "073d35ad634afa3dfe08d7ea2df737c8e65c84e2b1a8e739271142d69232eeb2",
+  "review_shards/sub-032316-000-mixed-snr-5.csv.gz": "fc60ba389cfd06e606288f4535dbd3c4cae8748f6b50fd0042790f1d083189dc",
+  "review_shards/sub-032325-000-mixed-snr-5.csv.gz": "73ca1a0cef7303f00471558d312aa5258f78146e8c1c07ffa440539ceb5b31c9",
+  "review_shards/sub-032320-000-lateral-snr+0.csv.gz": "1881494a31e0dda470b1bf139adbe34a29593d3f6a41042232234cfd0b336f73",
+  "review_shards/sub-032308-000-lateral-snr+0.csv.gz": "ff6a8a5086aa4e5cb8e3284d891c461abec8fe71dd8f89feb65bd135f88b0f98",
+  "review_shards/sub-032313-000-mixed-snr+5.csv.gz": "e58d99a90b5119104ba14e1232b9f72c022fc23765f8b20723c161ee48e5159f",
+  "review_shards/sub-032324-000-blink-snr+0.csv.gz": "b623a41b771712508ad91832e1ad95bb16541aa8eda42cbee3dd92ebced61699",
+  "review_shards/sub-032316-000-clean-clean.csv.gz": "c40cff2e2b169d9cf086ddf56511fe2ef4a1acd47be81531d977edae3cb1ea90",
+  "review_shards/sub-032305-000-mixed-snr+0.csv.gz": "a1d3c632279239df1a9be49f3e6641bb7627447b7808a5125dbfc3aabd15096a",
+  "review_shards/sub-032317-000-blink-snr-5.csv.gz": "aea7e3a88048a8c8373393214d3c41c7302f2421f7ada7685be522f1055ae63f",
+  "review_shards/sub-032322-000-lateral-snr+0.csv.gz": "e94fbeff0e35b3dea1374a2a092c6d30907d178e327ff36f29b0a813d8c5f1bf",
+  "review_shards/sub-032310-000-mixed-snr+0.csv.gz": "93f3c1d75abe565506e373b7e9ddad68499369f8d108c762ea422caf0fa8f6e2",
+  "review_shards/sub-032330-000-mixed-snr+5.csv.gz": "658e95451aab649faa029f9cdf2565f4c5218ca6b8b91f405072ad3496823d26",
+  "review_shards/sub-032307-000-lateral-snr-5.csv.gz": "0e64fdafffaaab24c10afb8692b8a8a5f141a3b559d9ebdcbe7f3d2e3726d536",
+  "review_shards/sub-032327-000-blink-snr+5.csv.gz": "2d8a131970e75692bc6a5fde8be62f468a8218dc6465fb5b9af0dabb36c0361b",
+  "review_shards/sub-032309-000-blink-snr-5.csv.gz": "5ae0390d0f12fb80ac536c90c2108498070a631a42c6343107a4a8499a665cac",
+  "review_shards/sub-032315-000-lateral-snr+5.csv.gz": "f2e2fb7343bc813eb7530ee212dd8ac54e064650e099fc741006d9c066574e6b",
+  "review_shards/sub-032326-000-mixed-snr+0.csv.gz": "559a9b204104a8bbbedfe4e08ae7d550831391dc9219c70917a2fb3b7567c735",
+  "review_shards/sub-032324-000-lateral-snr-5.csv.gz": "e3e5a76b6b10c6ab3feec113236987bbc160668672ef7a58b673d92c71eeb4ef",
+  "review_shards/sub-032324-000-lateral-snr+5.csv.gz": "4e0e7f3515edd14d0a6020a3e091cce4a5b740ca3cbbac5edcdc7efdd0317d34",
+  "review_shards/sub-032334-000-blink-snr-5.csv.gz": "bc95f45abc755a7f3c4506b9bee89d6aec74e8e67b2fd5e0b8beb4891fe34e48",
+  "review_shards/sub-032340-000-blink-snr+5.csv.gz": "d0064c22ec5656229613843e9de7c5e70bdb1c6c8602e3f2cee3914cd1616e36",
+  "review_shards/sub-032330-000-blink-snr-5.csv.gz": "5e9979008ecab6ae950646af29c5dd298e29e77ec0a439f72a625fa324950b00",
+  "review_shards/sub-032338-000-mixed-snr+0.csv.gz": "a176df43e60f6ff231cef95401df5b268ebc27833b314b6c07da44358b757539",
+  "review_shards/sub-032318-000-mixed-snr+5.csv.gz": "80362b31478df4e0e50616abd44e04aeb98954c2120fac2bcdb45445c54947e9",
+  "review_shards/sub-032327-000-mixed-snr+0.csv.gz": "5c09bf742ba9212e35f911702d0de0d88829f17ef7a99ae5ced22ec114084725",
+  "review_shards/sub-032315-000-blink-snr+0.csv.gz": "272e59c8535c8b7782321186b3d4e3d2f1df97840253d8fc0d9de4d9a9a680c4",
+  "review_shards/sub-032339-000-blink-snr+5.csv.gz": "2d49eff593602319075ebf962661d8615daff8a8e22f93963560146656d0dfc7",
+  "review_shards/sub-032326-000-lateral-snr+0.csv.gz": "0491803fa95a4a8d5c68d69c1e8a53d60dc25b635843d6615cac457251bd081b",
+  "review_shards/sub-032317-000-mixed-snr+0.csv.gz": "a215a3d4c1af71183e464297da7a8e92308bbc66404c4686954f88c4790e4696",
+  "review_shards/sub-032336-000-clean-clean.csv.gz": "577db62c706722bf62baee9572779040ca42278aba22b51d8adc51e59ba8e8c5",
+  "review_shards/sub-032313-000-lateral-snr+0.csv.gz": "5c98a34e62b2db413e94cca0fb2d02ceb3365faea7a9aa3ad77701e515e80501",
+  "review_shards/sub-032321-000-mixed-snr+0.csv.gz": "ab386c4b2ff48919d09eb8811a04a6f9fdf0ac3ca8ee4aabd4b661a545d4dcf1",
+  "review_shards/sub-032319-000-clean-clean.csv.gz": "5b2a1b5daa59b6a46284255bbbb1507b148b9822a841c070eb69d10e6456062e",
+  "review_shards/sub-032326-000-blink-snr+5.csv.gz": "061a280d4519494c8ccac31f29c22755e65e3ad5dfbf294d22af798d48771c5b",
+  "review_shards/sub-032329-000-lateral-snr+5.csv.gz": "5c7e94a3fe81570e9f30fa574249b5e750c57ae8b1364d83db6a385b1c627656",
+  "review_shards/sub-032313-000-lateral-snr-5.csv.gz": "1425fad5ce2e3b4ffda0949aaa38b0e9e621d02450b3460934bf67f867d6c304",
+  "review_shards/sub-032339-000-lateral-snr+0.csv.gz": "40e5df4d05ab05a0322c9026fb3027760af0e9370306ed49055409fc41b303b9",
+  "review_shards/sub-032320-000-blink-snr-5.csv.gz": "60b75969ae28f6fc8613f2195ab85000c828e799a196d301023583a3153bbf76",
+  "review_shards/sub-032318-000-lateral-snr-5.csv.gz": "c9e5877f6f745e09411caac7085ec79d33d7b1c84430f8a85915efcd295839b4",
+  "review_shards/sub-032336-000-mixed-snr+5.csv.gz": "ea19dadd6a2a8e23598745539c70e5ee943b2dee5397fb6fa6c5a4ceed51e15d",
+  "review_shards/sub-032308-000-lateral-snr+5.csv.gz": "07e84e5e8f090967107bfccc1eb6155c4f8c59dac0fd96dcb6802103a0823bd2",
+  "review_shards/sub-032309-000-blink-snr+0.csv.gz": "77be38b157c300301c0c20d35cf6c5e04b706e2c0d9732ca57e28017a82c878b",
+  "review_shards/sub-032312-000-lateral-snr+0.csv.gz": "dad0081b351aa642914fb88f04f6c92ad84a8cbebf7edb9b20f35b7200af6674",
+  "review_shards/sub-032341-000-blink-snr+5.csv.gz": "8677821b6cdbcb509c8dea73b517bd53c2955d692daff3680c2eae66d27cc58d",
+  "review_shards/sub-032329-000-blink-snr+5.csv.gz": "d482361217434f254831b267b8df0990234e6d8729dbbc110731f3253ea53ec8",
+  "review_shards/sub-032312-000-blink-snr+0.csv.gz": "23f0e0082c8cc8d608a3be878497cb9646d9fed8bcdba181aa2a4061889d7842",
+  "review_shards/sub-032312-000-mixed-snr+0.csv.gz": "ced8eceb09f366f375ee35b770f9f5e7d75b8dc5562c5f57f083e05e01541d11",
+  "review_shards/sub-032326-000-blink-snr+0.csv.gz": "055a289efea7bad71c1811dc2fb353cda3a190ba412ff2953195c084f4e448ee",
+  "review_shards/sub-032324-000-mixed-snr+5.csv.gz": "7ea63fbcf4090349f3f887f9c7b5a02ab25b6b12af56195da2e8eed328865cbb",
+  "review_shards/sub-032334-000-mixed-snr+5.csv.gz": "25289233bef4795b0af1c0e5f8467bcd51ca9ab4872341d4d07efd4f8588b52a",
+  "review_shards/sub-032339-000-mixed-snr+0.csv.gz": "b19bdf64ef0f365b8efe0b42b5a29ab298c86e01e29d50935d9886044c579622",
+  "review_shards/sub-032339-000-mixed-snr+5.csv.gz": "a7a63346b30960f3ed66c3ab5fa895ee9406ca797b5d79197209960ee5fbfec3",
+  "review_shards/sub-032329-000-blink-snr+0.csv.gz": "be6ff8ebff95c44337914ed65c015ee9a2f13811369f52e001319ca87a246135",
+  "review_shards/sub-032305-000-mixed-snr-5.csv.gz": "f904bf25a2625f4e608d0e69f4a6c44f5d9f907c6f5e9e0704a0e8000abbb705",
+  "review_shards/sub-032328-000-lateral-snr+0.csv.gz": "e87e7db2c1d26a57d05340a71976736f406660413078997f02e343a8f01533fd",
+  "review_shards/sub-032321-000-mixed-snr+5.csv.gz": "eeb516f58df8afdcd9f9f42a88bdc472ed6ee7dc74c671f589beab0be3ccfef1",
+  "review_shards/sub-032308-000-blink-snr-5.csv.gz": "17fa3d5d82d6ed5eb36f3de43a2164e2ff467fe5d581f1167f91a24f1bfced1e",
+  "review_shards/sub-032316-000-blink-snr+0.csv.gz": "3bef97b732a64b4e5d0247e0ea9bcfc26dd96ca32cef61e96a51dd1db66ef28c",
+  "review_shards/sub-032314-000-lateral-snr+0.csv.gz": "b17617cefecf75a885ed8fdcceacdb6ab87e7762cf2283bca4e0f8dc6f85cfb6",
+  "review_shards/sub-032310-000-mixed-snr-5.csv.gz": "fbb52b9aeb111c7e1ef004931b222c9c25e5cb2b55b1372bfa8809db9aa2a12c",
+  "review_shards/sub-032330-000-lateral-snr+0.csv.gz": "e859bc8ffd0adc4c836a397dbc886fb0bf72bf99dcf0a081151bce2dda2364a2",
+  "review_shards/sub-032326-000-mixed-snr-5.csv.gz": "6798005e744100ecdea735562ac44ecbb8f6dfbe4b9ba8e0e8e27350f473a97c",
+  "review_shards/sub-032308-000-mixed-snr+0.csv.gz": "70c6b12487bdc45c56da7056045d8f6bfe7ea036d17577b08aef0c685eb39ecd",
+  "review_shards/sub-032319-000-mixed-snr+0.csv.gz": "15321ec09af3633e55b333cd5716447c619b7822d3e12e0853396dcb214654ac",
+  "review_shards/sub-032336-000-lateral-snr+5.csv.gz": "8efa0c0955f34f74d1cfa45a409eead27d099381434ee1fb61d771f6e75f3487",
+  "review_shards/sub-032338-000-lateral-snr+0.csv.gz": "b02baefbf72a5faf2dd6b3e24e12f113f0a21cc6af51f24dd127b5defc43a331",
+  "review_shards/sub-032338-000-mixed-snr-5.csv.gz": "f50a265518e297833823c4363bed5ca42db2bc5f99302baf53110ab28e7a70e2",
+  "review_shards/sub-032310-000-lateral-snr+0.csv.gz": "b0412768e887320e2d88aea5c483d56a60725ba2bf1ccebe6912930288ded5dc",
+  "review_shards/sub-032314-000-mixed-snr+0.csv.gz": "65e4caf1d5d63c47fdf0a2d146cb9415451a98796dd3c1c0412007d48af31499",
+  "review_shards/sub-032330-000-blink-snr+0.csv.gz": "28e85a22ba093ae3977015c64a50838f7fa8ecfd6e13ed19eccba5ef5176a5a0",
+  "review_shards/sub-032326-000-lateral-snr+5.csv.gz": "29b6fa1aa7dfdb93b98fc432e6d056454391b0f209cc0232d825e331e1a65c7a",
+  "review_shards/sub-032305-000-mixed-snr+5.csv.gz": "218c90112e906edaf3a8e6cff3c5149c52e1d9beabe69490b75ed5204faaa77b",
+  "review_shards/sub-032336-000-blink-snr+0.csv.gz": "0cc644521eab81d411a347c797baaf756e07a77dbee60554523af10be25b0156",
+  "review_shards/sub-032306-000-blink-snr+0.csv.gz": "3209a2a580def2b88e4e1219822b8c1074fa4a5663c80892d044fe35c8f92b3f",
+  "review_shards/sub-032317-000-lateral-snr+0.csv.gz": "b0f2251c4bb97eb1d2c97f4954a231138d56097e353e9c4215f339da1b1fe0a1",
+  "review_shards/sub-032319-000-blink-snr+5.csv.gz": "050cf0126a283b114a3b99510248dff28e7ace01c97a19c1e51e51d17e2d1cf9",
+  "review_shards/sub-032317-000-lateral-snr+5.csv.gz": "2f932e2e5700fe5c7d66a73526d32adbced65544416a9ddacb82bf69144c829d",
+  "review_shards/sub-032325-000-blink-snr+0.csv.gz": "41c7db5c3b7db320a2e6b65e5d16b2f1c4d28c851a4ad98b83fc026abc83f72f",
+  "review_shards/sub-032312-000-blink-snr-5.csv.gz": "5e21ad82da29e530e3d694824af8431f1746f1dcd17d3402f1c550dab6f08cd6",
+  "review_shards/sub-032305-000-blink-snr+0.csv.gz": "a97d09b24a03dbb3e1b67be91bdc5960c45f1d83c8712152e17cd27da57b5e67",
+  "review_shards/sub-032339-000-blink-snr+0.csv.gz": "f434c3fb79326f9aafd2162282a5cf0c2e67fe220c58e9e9065e17bc58636457",
+  "review_shards/sub-032334-000-mixed-snr-5.csv.gz": "5d680799c71ba1e76419f2bd99246d75732b9a042cf5569493fd5ac276b07daa",
+  "review_shards/sub-032321-000-blink-snr+5.csv.gz": "75c05793c5e2b9b6015bb1dea9db66ad0008f12427cc2ff176080c88c6eeb678",
+  "review_shards/sub-032331-000-mixed-snr+0.csv.gz": "f65d8faae831610381b5c36136ef7a2b7cd737fb78a1b743d497ccfadf9fe0c6",
+  "review_shards/sub-032319-000-mixed-snr+5.csv.gz": "09e773e518af4415ce47837218884b4fbe7122e73779696ceba4350f26378dd4",
+  "review_shards/sub-032328-000-lateral-snr+5.csv.gz": "53481407d03a03d703ee16f1f3b4c003662d253996d6cb0e85cfac6db7968d68",
+  "review_shards/sub-032314-000-blink-snr+5.csv.gz": "4d4cb5e2fdee3bcb6e42272ed96e6b1438692560d18fce7f38799b0fe2a5fde7",
+  "review_shards/sub-032315-000-blink-snr-5.csv.gz": "0b743ecd8f555dc6a895528255e89b0a4c908f8d2014b8acd2f55ef1c9ea82c2",
+  "review_shards/sub-032322-000-mixed-snr+0.csv.gz": "628c51e4a4e047bae893ab9d3fb61c4f1008e293d753d4cc33e7387cafa1aee6",
+  "review_shards/sub-032319-000-blink-snr+0.csv.gz": "64a43ddf04ad7e57c130b29a20b71ce9bc936c66616ca6a881dccd20f35dffcf",
+  "review_shards/sub-032340-000-mixed-snr-5.csv.gz": "3e563d03b8612f74725c0b5aa9033a8b66a67e0dde5ccbd31c6b23f95e1ebef1",
+  "review_shards/sub-032320-000-mixed-snr+5.csv.gz": "4db33232c397e3374794f8ce66ebe987b3df7b237cc852bd58d4b1dc2d7ff94a",
+  "review_shards/sub-032306-000-lateral-snr-5.csv.gz": "517ffddab91dc047be43a25894d18a058c8ee15ce08e3576f43b5f1fe1a20dfa",
+  "review_shards/sub-032341-000-lateral-snr-5.csv.gz": "f3e860e6e5c28e1b90ff4a5d62c39ed48340d004f4918b61b6d55ce5ef09876a",
+  "review_shards/sub-032310-000-blink-snr-5.csv.gz": "5aa131dbcec758441b86cfe2b792077e813f492dce7c06ba61111a184b136f48",
+  "review_shards/sub-032339-000-mixed-snr-5.csv.gz": "0d880015328aca99a22cfa385c5117c0f0eb7757ad05b93b52515c5905b73281",
+  "review_shards/sub-032309-000-clean-clean.csv.gz": "a085863dc392f6e72a1731cd125b4e31aae0b31bcd998df60d4be76952e1a5fd",
+  "review_shards/sub-032338-000-lateral-snr-5.csv.gz": "2a9f012cdeb687a5fa7527b9fc0cd00a2b2359d645b34119e20f3f04fcabc8ce",
+  "review_shards/sub-032341-000-mixed-snr-5.csv.gz": "8263cef22fda20c0c595b9863e6239da11ab2549d649c39bd60bcd4f30a6515a",
+  "review_shards/sub-032309-000-lateral-snr-5.csv.gz": "bc6cde1353c2606ac5e46d6e67386876df807cb9f31125e8df2bc1531da94b8d",
+  "review_shards/sub-032336-000-lateral-snr-5.csv.gz": "e86fdb58c397080cb075ee8c453059d7dce127d963937ed4af71196c95c38682",
+  "review_shards/sub-032340-000-lateral-snr+5.csv.gz": "7badbc73a6d779719cbd1630177da8aa3f15b82139011b52a42f683927d4ee15",
+  "review_shards/sub-032340-000-lateral-snr+0.csv.gz": "8dfa30d87de288773f162d537c1e9c8615cfc29f88c1803088e28733936ca5d4",
+  "review_shards/sub-032328-000-mixed-snr-5.csv.gz": "203d1fdb5cc5fa22666c134f0fa152df2f9eb2e75a79ae0645c67bce2db4a578",
+  "review_shards/sub-032316-000-lateral-snr+0.csv.gz": "957b03f29ef2abc6d58a77a426326cc31bb0de29a3ad769d1c92707d1f1e93cb",
+  "review_shards/sub-032334-000-lateral-snr+0.csv.gz": "d41335bc036e1756dd092791ca42324c7fba6ed61474e71d6bdfdbaf6a8eb358",
+  "review_shards/sub-032331-000-clean-clean.csv.gz": "251447b57b6dcf65c47ec92e13ae40069aad1850774acf02c40265297394f880",
+  "review_shards/sub-032305-000-lateral-snr+0.csv.gz": "18af9bc2bf0f30347290607d4c1f2046f0c569897f6a2d7c2bb94687d48d7c92",
+  "review_shards/sub-032319-000-lateral-snr+5.csv.gz": "90f2bdca1d2cd33722325704e137a3551b4beefe1ed3689ee5aea7e10d66843c",
+  "review_shards/sub-032314-000-blink-snr-5.csv.gz": "eeab0d4e91fc64b5234b22adabf6da42a361a5e1fef68d3bdfebe079144c9f8f",
+  "review_shards/sub-032324-000-mixed-snr+0.csv.gz": "101c2bd33d119d1f773accc0921b6d562273dc4fe33099f67058b8d5ca27e559",
+  "review_shards/sub-032318-000-lateral-snr+0.csv.gz": "4422eb325c34efa09845cc616ccade37517c5ffc642306f54f0e2e7e3d64db70",
+  "review_shards/sub-032329-000-mixed-snr-5.csv.gz": "3b8540bec9edd46597c3d3c9d2f538a6abe16b496caa4e61207aab21d1d40109",
+  "review_shards/sub-032341-000-blink-snr-5.csv.gz": "332301014a0a7e8eb50a7790f58e80cec7dcfd04b0f46514a70211cd130fb5de",
+  "review_shards/sub-032305-000-blink-snr-5.csv.gz": "0f0fb03a5004a812a4af11b22263488b8c9e94d42c75307b7dd00a0eea571dc7",
+  "review_shards/sub-032321-000-lateral-snr+0.csv.gz": "7abb68ae21efbd6f8f99c14d5a9c7d7dd6c81fa9812e91363408d015bc588ac6",
+  "review_shards/sub-032308-000-lateral-snr-5.csv.gz": "7b3e1b97eb4217c72d92600709c4873fe8adf57bb791854d7d66a214c83fce9f",
+  "review_shards/sub-032331-000-lateral-snr-5.csv.gz": "01d840be9d89f4a4f611da6fc91d6086049dc540758a980c804b6943e5c610fc",
+  "review_shards/sub-032313-000-blink-snr+5.csv.gz": "44d04680922b3717f7052571871389a9fbdf01dee2343d40da2f9aa56e913897",
+  "review_shards/sub-032325-000-lateral-snr+5.csv.gz": "aa371da78e8bf5839739871a8209531a3b83f4923cca8c0d1c25119a376aef62",
+  "review_shards/sub-032306-000-clean-clean.csv.gz": "e9ef0ae56657026c9feb3f641a1a1b495e7d8ab1cd5ad89c5070e24e37179cf1",
+  "review_shards/sub-032320-000-clean-clean.csv.gz": "532d0f455d02f7c3a2349c3dc364f0df49fa15e6fc925020d772891ae35ea0db",
+  "review_shards/sub-032305-000-clean-clean.csv.gz": "bbd9a700fe3c6193e9fd52cb5355cb8aeea00a4716d69858a4c436aadbc2986e",
+  "review_shards/sub-032318-000-blink-snr+5.csv.gz": "7fadadb95f6258d6dd8091bd951f229a22af2b1d0725e6a034af604a24c6f510",
+  "review_shards/sub-032325-000-mixed-snr+0.csv.gz": "3ffa8c3bc1245faf0946fe14edba014e2605de60c9714b214d5e4a7d14e9906d",
+  "review_shards/sub-032306-000-blink-snr-5.csv.gz": "b8540927bf0747d15fc6393de515e39921aeb34569bfc7204cf62c0bce5d7cef",
+  "review_shards/sub-032330-000-clean-clean.csv.gz": "d7e0f7d6a9fb444c75c2fe20505c5e110b675fbb3a65bedb638a5b7aee84e9db",
+  "review_shards/sub-032323-000-mixed-snr+5.csv.gz": "7a1f80613bb864bbb4d45ae3ba9a066e36dd11f1bf1476fd99843579cf128d79",
+  "review_shards/sub-032328-000-clean-clean.csv.gz": "0f9390fee633849720758275dc408fc6a6dc32c9c390f5ef41cbc8ee1c3a7c4c",
+  "review_shards/sub-032317-000-blink-snr+5.csv.gz": "681ae09d3dae91860fd21900904ace95363b98f26ab8528addf209b985e6f682",
+  "review_shards/sub-032341-000-blink-snr+0.csv.gz": "92ac220e6bac5a59521f68caae8ee2de0167b55a2fa814d86fdf212fdb5bd964",
+  "review_shards/sub-032338-000-mixed-snr+5.csv.gz": "de0ffab4f98750154020ef9231cff72866af15df5b0d0b008a2cfe84af4ab64d",
+  "review_shards/sub-032306-000-mixed-snr+0.csv.gz": "f5900bf59c8f7f800b588c8d9e1a1b8c7a5353f79d99ed950051457f9459dfa2",
+  "review_shards/sub-032330-000-mixed-snr-5.csv.gz": "2982ad51025c0d76505ce92e4bc56e5093f1a36a956633baf8000ac4509ac14d",
+  "review_shards/sub-032331-000-blink-snr+0.csv.gz": "7ed51e5ea85b828c453e9fb0882a7f6b0ed06e70d19e25b08d8c96e5da3d12c4",
+  "review_shards/sub-032312-000-clean-clean.csv.gz": "18c70289482131073e88204d2564c32c6e23e8cabbde389ae951b53413cb17c0",
+  "review_shards/sub-032327-000-lateral-snr-5.csv.gz": "ddd778893ea40620f5e7395f96297fb24aa508fecd968445dbb974706202987c",
+  "review_shards/sub-032327-000-lateral-snr+0.csv.gz": "345c15c68c464b622315500df4e160ac83d96a0393294da722e650bc8fc6d246",
+  "review_shards/sub-032315-000-mixed-snr+0.csv.gz": "ceeed9ae692d9c640d0c31348db9ea019bf2bbef512e7ec3d19396214a38cd6b",
+  "review_shards/sub-032334-000-lateral-snr-5.csv.gz": "047ddfa7375cc9e04e8c90c678fb3a9f4f584594e9e39c8f9f31d85f8736e8c0",
+  "review_shards/sub-032313-000-clean-clean.csv.gz": "d078da7ecb0392916cade5a53f402e564ab67749bfc37969f669100fc709fb14",
+  "review_shards/sub-032314-000-blink-snr+0.csv.gz": "f202561d9507e5b5d479170b6ef405a3c80ed5eaa76617bbbebd68ddc9d9e4e1",
+  "review_shards/sub-032313-000-blink-snr-5.csv.gz": "46a7507abdd84b5e815133516d251dc90031407fce2328348ef4301ddf715450",
+  "review_shards/sub-032323-000-mixed-snr+0.csv.gz": "ea17b0c7bbf8ca0382ab84a9582c5015241ffcf09c868946e6844d316dc08ae6",
+  "review_shards/sub-032310-000-clean-clean.csv.gz": "7b3c10eaef286bfebc6f11bc2425148855d37613d152a0790d6fac63cf67aa23",
+  "review_shards/sub-032323-000-blink-snr+5.csv.gz": "ee2a6005e236a41b2fe71adcc87c3d614042a18ce606bcd07fd152725be0e0ae",
+  "review_shards/sub-032313-000-mixed-snr+0.csv.gz": "7239ff7f9862e54560b224ad6dc2e71b711ff426761517089c63fb6135211b9e",
+  "review_shards/sub-032308-000-blink-snr+5.csv.gz": "8e36fe0b7a3102056a62ae80b189e5533d0569169335b1c86cbf1f17e0f21c9d",
+  "review_shards/sub-032336-000-mixed-snr+0.csv.gz": "7d30572f2c78f90376a393971d1af2f227177543078c1a375788bc4e841eace2",
+  "review_shards/sub-032320-000-lateral-snr-5.csv.gz": "747f5b9285eb034cd99b8d2132ce1fbf90ec0beecdc2cbc9f48ba6cd4b775804",
+  "review_shards/sub-032316-000-blink-snr+5.csv.gz": "6d414269eee6aeb91a9cae0fd6387a812c559da31dd4eb43ef106683f0d0ee20",
+  "review_shards/sub-032308-000-mixed-snr-5.csv.gz": "49ade4fda2e43d74f5286b092b5130354f3af4f2eec4de4211b874d109a553dd",
+  "review_shards/sub-032321-000-blink-snr+0.csv.gz": "ed7226684f02a7695969e51a26e622a9817e17009a524cf6a8f34579a20e405b",
+  "review_shards/sub-032312-000-mixed-snr-5.csv.gz": "6f4582b5a3f4ac6c130fbf2a6682b5d74f5905b8049145175c5a2d3838d8d54c",
+  "review_shards/sub-032325-000-blink-snr-5.csv.gz": "531e17792965c4b2f3f55f2cb5932666a3d65f11aa9d64ee86d2a801086b8284",
+  "review_shards/sub-032323-000-blink-snr-5.csv.gz": "e543a5a0821dec891833e94ddba8106238b8627cc5f001d3f5712fb8055a14a6",
+  "review_shards/sub-032314-000-lateral-snr+5.csv.gz": "aeee379d309d8f8879dece6ceedd2a60b6a59a2c6de8715988ef2d243405209c",
+  "review_shards/sub-032306-000-blink-snr+5.csv.gz": "a2ef441a720a3a561e6d50c28cb007870c8c4949fff603a4f48deac88cceb70f",
+  "review_shards/sub-032317-000-clean-clean.csv.gz": "5b30ff3bc43f6fbe9e7a623c2306801793db2470b8b455b2943978433ee28ebf",
+  "review_shards/sub-032314-000-mixed-snr-5.csv.gz": "5866473bfa405c56b3cf8aed30a95bcded55b83aa0f4be786a6521cd7129c301",
+  "review_shards/sub-032328-000-mixed-snr+5.csv.gz": "425a1b7df06916d388b3cd4a5025ab124aae3f07045a8fa80d6ac100e965a8b9",
+  "review_shards/sub-032320-000-mixed-snr-5.csv.gz": "7d474ad58712d3fa971179c4e87f5c31fdcd7db3ea46f1becaa950e1c71b1454",
+  "review_shards/sub-032305-000-lateral-snr+5.csv.gz": "554ef88418bc4f1413e9d3c60bd465e111d33fb9d70cd6c2a8478d3a3e108af2",
+  "review_shards/sub-032319-000-mixed-snr-5.csv.gz": "2703b75ea31f936ec6f5d08023f92294944bddb9e29425a491b8a1494db005d6",
+  "review_shards/sub-032306-000-lateral-snr+5.csv.gz": "46f4d8d6161ca24312224afc49f01c50253dad57069e25dda3fe7e5f09a8e1d6",
+  "review_shards/sub-032312-000-lateral-snr-5.csv.gz": "a0fba9a942c1d717328f1b6cd4377270b89ab25184997b307b88add8dc35895f",
+  "review_shards/sub-032322-000-lateral-snr-5.csv.gz": "d6316b5191b20bc484a3c51ea53892713af23237cb2d72fa7e43fc8972e80a0c",
+  "review_shards/sub-032324-000-lateral-snr+0.csv.gz": "6dd40f64091cb91e7f7ff541ea803c62677aaee9f842a60e431554322ed80757",
+  "review_shards/sub-032330-000-lateral-snr-5.csv.gz": "807fb9a8b5411e9632424e2cef38e51faf7809dc14fa1a5e86870dcc2a23b7c7",
+  "review_shards/sub-032324-000-mixed-snr-5.csv.gz": "4735e321c6bc9a2ebbfbc8f94eb09877d00c05854898f02c9832045a615ddc8b",
+  "review_shards/sub-032321-000-lateral-snr-5.csv.gz": "fa8f2b9db937ceb556c8fdb60073879bb1cc29068e9a438c488675c92cdc7cca",
+  "review_shards/sub-032331-000-lateral-snr+0.csv.gz": "5f07743cde4d28e8a658d5000094454edca5b0e45893b7cdb78f6e79141e2bbd",
+  "review_shards/sub-032307-000-blink-snr+0.csv.gz": "9ec994318e303aa2e02f48f1a8d8c13b4bc93dc3fc3c92ad6959ad495fcff9b0",
+  "review_shards/sub-032323-000-blink-snr+0.csv.gz": "1f3fe31a946411e0af2a6ad75bc389776ad3c0cd9a2a4ee450586d17a147ed28",
+  "review_shards/sub-032309-000-lateral-snr+0.csv.gz": "54551a67d8b2acdfac247df905a749d251a4463ac415d43a5ea5385bdbf47d89",
+  "review_shards/sub-032310-000-blink-snr+5.csv.gz": "cf1d5d85d49f827f65564e37acd5d06e7998190d80b0aa179610b961c3338f45",
+  "review_shards/sub-032317-000-blink-snr+0.csv.gz": "788c9a3d217618acfd64cd3fde29999d19c43953e110bcd3db0c9261f6654e42",
+  "review_shards/sub-032340-000-lateral-snr-5.csv.gz": "7415a93e10923d1952e4eaca071f23d4015ba6e965032fae13f9b0a1d07d11b0",
+  "review_shards/sub-032305-000-lateral-snr-5.csv.gz": "177373b2a3b9bc8fbd64eeb42f8e9068168075d977c2a56832212c724d391b8c",
+  "review_shards/sub-032319-000-lateral-snr+0.csv.gz": "ea0cf71f7082e2b337bdc0df2dfe911594aacffffcfa8c8750f74817b063d4d7",
+  "review_shards/sub-032334-000-blink-snr+0.csv.gz": "b1e36cacabc042bc098439a29046e1ceae9b47272319ad393b987a1439eb1092",
+  "review_shards/sub-032316-000-blink-snr-5.csv.gz": "0febb9662eb263e15b8806e9af6b9d22cde3df8262f6d037829a547e0212e0ff",
+  "review_shards/sub-032334-000-blink-snr+5.csv.gz": "9cce2dec62689534df52b76923e84f36a216866b53d46bc2c8fdb1f249a4ef29",
+  "review_shards/sub-032340-000-clean-clean.csv.gz": "a84dad58ccc58f89410d6d2baf992cc04653ac5ef774cbc7d48e1a2c5df037a1",
+  "review_shards/sub-032308-000-mixed-snr+5.csv.gz": "72c34b9b6d496afead1a4976e43ef7139da44d25e727361dd1a9a288d6133495",
+  "review_shards/sub-032315-000-lateral-snr-5.csv.gz": "2021f80ab2ed6478f48c451fb420a8f2ce36b889d24cfc36f4a852e17e4765d7",
+  "review_shards/sub-032321-000-clean-clean.csv.gz": "07409cdead4d522dd3a86010f2e34804a39dd264ebe9f0c5ce4c525c4ae0972d",
+  "review_shards/sub-032322-000-clean-clean.csv.gz": "20040450bf8bcb37fbf3e088c6970839e460d66c4a9205fbd85d62289d278686",
+  "review_shards/sub-032307-000-mixed-snr-5.csv.gz": "17106a99eda45ee92e5fb886a9163bf3c5727066350cd3b0afb0eb6fa92f4a61",
+  "review_shards/sub-032329-000-mixed-snr+0.csv.gz": "6d3883c0afd445076b4bb72c398cec441a667ab7476d67237090277e6c22602f",
+  "review_shards/sub-032327-000-mixed-snr-5.csv.gz": "0c6db4685867731aa1c208269ebf515c1c3c59842d7e830692d471b424b4ead9",
+  "review_shards/sub-032309-000-mixed-snr-5.csv.gz": "f925b576921953d0132f093405c2f401976cb8b043bec6ccc5187db6f921b725",
+  "review_shards/sub-032323-000-clean-clean.csv.gz": "a7f0834a6b3f53e694fbc0d3631b4d91c170b606f1819be67ada290bab98e02f",
+  "review_shards/sub-032307-000-blink-snr-5.csv.gz": "c0ca538bd834677d245c8ae6fd5d84875aca27b601ea7b432aa4f8586ac52b2d",
+  "review_shards/sub-032317-000-mixed-snr-5.csv.gz": "10d3bc712294d8700dbbef0cee94cb88bf2a091ee4c89ad5596afc75f5e8a13d",
+  "review_shards/sub-032329-000-clean-clean.csv.gz": "4b85225a317015cf365724528580c778acd3a0bad3d4637b500e3fd23fdf2909",
+  "review_shards/sub-032318-000-mixed-snr-5.csv.gz": "34147970b9c3ab6a3a6de2d832f3369c4c48e26e176d1eb3a71bb12704aa71c3",
+  "review_shards/sub-032321-000-mixed-snr-5.csv.gz": "6a1d9555e9f221bae330cd77886134e8afc52bc48a9e69cce0810941008e35ec",
+  "review_shards/sub-032334-000-mixed-snr+0.csv.gz": "5d0d8f8b15495aceb711df21e623dbc7274a9b86ec13bcc953b86e3ff504c533",
+  "review_shards/sub-032322-000-mixed-snr+5.csv.gz": "217673acbbeb9315f8ab3ec2ab7aff36aa611ef41873f8689d3cbc95309a5a4f",
+  "review_shards/sub-032317-000-mixed-snr+5.csv.gz": "799b0a8f4a9a975964c25c20ae2703ef407ac79138d9a7ba57306b59acd73fc4",
+  "review_shards/sub-032334-000-lateral-snr+5.csv.gz": "69e38157cb5656c3b22295decaaf44e6a9127913d2f10b4d4354b9b47adc39d0",
+  "review_shards/sub-032323-000-mixed-snr-5.csv.gz": "a6e35534f16544a10fa5a28461b345f6a9ae39faeaa71b75b3c6de64ee43cd5e",
+  "review_shards/sub-032307-000-clean-clean.csv.gz": "d397769f8f49ddc1784f1ce996d0d2fbf18772331d1c2e1f74e7e806e7035abe",
+  "review_shards/sub-032316-000-mixed-snr+5.csv.gz": "16ec3d5a04439b0b2ddf38017ad5efc2dbb24fca5ec75414abcaf4b4da0cfa5e",
+  "review_shards/sub-032307-000-lateral-snr+5.csv.gz": "3732d9a0a13c7aef35547cf39a392b1775aae9623a804abbe54893be684744fd",
+  "review_shards/sub-032325-000-mixed-snr+5.csv.gz": "eb3589c40e8bf322dca90d7232cefa56993be5c505d416baa15c50da4bef4247",
+  "review_shards/sub-032320-000-mixed-snr+0.csv.gz": "d7d9103594086a15b17ab6b5e3a577c0f8ad84f445fdad953f741584c8d4c65a",
+  "review_shards/sub-032312-000-blink-snr+5.csv.gz": "41c0dbe5c7e6912ace896a3a7dcc5081a6ecaea437672c7849251399edfc7744",
+  "review_shards/sub-032310-000-mixed-snr+5.csv.gz": "4918545d66c7b6f51b5c08f1bc21188c9a22301f99b7e36f6147fc694f7f9c5b",
+  "review_shards/sub-032307-000-mixed-snr+5.csv.gz": "173843ffb399fcee48423980f1bc83c4255407bb713a5c7fccfe4f63934878ac",
+  "matched_frontend_reference_rank2_control/coverage_paired_differences.csv": "047fb53f97a7e09e827e10ee7a103b5f9cd154202f547fe3148d8120ca930aef",
+  "matched_frontend_reference_rank2_control/coverage_uncertainty_intervals.csv": "696b5de7c1551059577b5e90200eeaa1fe5821d06526f8c75b72bd85ba71ba7b",
+  "matched_frontend_reference_rank2_control/coverage_uncertainty_channel_strata.csv": "e699add856bebca3a7bd6ab4815cef661980f16b24b5f5e02ca0ed2ce1b3035a",
+  "matched_frontend_reference_rank2_control/coverage_uncertainty_method.json": "0b78b5a96880cd5f3903f58f0f4afcf615597f53014db65bfabb2d66acd6d369"
+}
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/execution_state.json
+
+[Saved payload](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/execution_state.json); SHA256 `84624a43eb41e411f111eb52ab3056561663f0e0ba794eaff09b5f6623ae7e5c`.
+
+```json
+{
+  "stage": "nonfrontal-review",
+  "status": "complete",
+  "artifacts": 669
+}
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/frontend_review_summary.json
+
+[Saved payload](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/frontend_review_summary.json); SHA256 `933647cba17bf44e3851a5c89863a2341d57c394f72bc8bc05ed6b7570dd17af`.
+
+```json
+{
+  "examples": 320,
+  "recipients": 32,
+  "donors": 5,
+  "parent_array_checks": 1600,
+  "baseline_paper_metric_checks": 549000,
+  "arms": [
+    "identity",
+    "central_frontal_vmd_context",
+    "central_frontal_raw_context",
+    "ridge_direct:both",
+    "cca_reference_rank2:both",
+    "reference_rank2_control:both",
+    "raw_frontal+ridge_direct",
+    "raw_frontal+cca_reference_rank2",
+    "raw_frontal+reference_rank2_control"
+  ],
+  "new_fits": 0,
+  "weights_trained": false,
+  "autovmd_executed": false,
+  "failure_provenance": "replaced VMD flags historical only; nonfrontal decision faults separate; raw parent whole-pipeline flags conservative, active frontend count unknown",
+  "uncertainty_contrasts": "first recipe matched frontend in root; remaining matched frontends in subfolders; remaining recipes versus common control are whole-pipeline contrasts",
+  "common_comparator": "raw_frontal+ridge_direct",
+  "review_families": [
+    "ridge_direct:both",
+    "cca_reference_rank2:both",
+    "reference_rank2_control:both"
+  ],
+  "reserved_confirmation_opened": false,
+  "qualification": false,
+  "native_validation_required": true,
+  "runtime_s": 657.3930485790002,
+  "channel_first_snr": "per-channel dB, then balanced recipient/condition/input means",
+  "pooled_energy_snr": "sum over available scope channels/time within window, then balanced recipient/condition/input means",
+  "subgroups": {
+    "middle_verified": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "CP1",
+      "CP2",
+      "CP3",
+      "CP4",
+      "CP5",
+      "CP6",
+      "CPz",
+      "Cz",
+      "FC1",
+      "FC2",
+      "FC3",
+      "FC4",
+      "FC5",
+      "FC6"
+    ],
+    "temporal_shared": [
+      "FT7",
+      "FT8",
+      "T7",
+      "T8",
+      "TP7",
+      "TP8"
+    ]
+  }
+}
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/resource_summary.json
+
+[Saved payload](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/resource_summary.json); SHA256 `7764a132e9931d80de406b2d94f9b659f47460d75f3d37746ac9a3bddb16fa94`.
+
+```json
+{
+  "wall_time_s": 729.4663710250001,
+  "peak_resident_memory_kib": 1424484
+}
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/stage_tests_summary.json
+
+[Saved payload](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/stage_tests_summary.json); SHA256 `8df60f54b1d0b8ba395f60c41a5bde326389944a8d3d87e73097cb3c3403e286`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "d2f41c3800caf52bba73a0270e621271b98f715a9e8ee4e856a4505bfd3072d6"
+}
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/retrieval_receipt.json
+
+[Saved payload](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/retrieval_receipt.json); SHA256 `c3b856e80eb4900398959aef3ecb075309629744e4c070b96268365cb7aa15dc`.
+
+```json
+{
+  "run_id": "new-hybrid-frontend-review-002",
+  "git_sha": "0b74d48a20ceeaef17af1b2d7eadd3894f1ff87a",
+  "verified_payloads": [
+    "configuration.json",
+    "coverage_paired_differences.csv",
+    "coverage_uncertainty_channel_strata.csv",
+    "coverage_uncertainty_intervals.csv",
+    "coverage_uncertainty_method.json",
+    "environment.json",
+    "experiment.json",
+    "frontend_review_summary.json",
+    "frontend_snr_aggregation.png",
+    "parent_identities.json",
+    "resource_summary.json",
+    "review_channel_scores.csv.gz",
+    "review_condition_means.csv",
+    "review_example_snr.csv",
+    "review_gates.json",
+    "review_method_means.csv",
+    "review_progress.json",
+    "review_selection_manifest.jsonl",
+    "run_spec.json",
+    "stage_tests_summary.json",
+    "tests.txt",
+    "frontend_predictions/sub-032305-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032305-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032305-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032305-000-clean-clean.npz",
+    "frontend_predictions/sub-032305-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032305-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032305-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032305-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032305-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032305-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032306-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032306-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032306-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032306-000-clean-clean.npz",
+    "frontend_predictions/sub-032306-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032306-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032306-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032306-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032306-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032306-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032307-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032307-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032307-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032307-000-clean-clean.npz",
+    "frontend_predictions/sub-032307-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032307-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032307-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032307-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032307-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032307-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032308-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032308-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032308-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032308-000-clean-clean.npz",
+    "frontend_predictions/sub-032308-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032308-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032308-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032308-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032308-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032308-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032309-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032309-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032309-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032309-000-clean-clean.npz",
+    "frontend_predictions/sub-032309-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032309-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032309-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032309-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032309-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032309-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032310-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032310-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032310-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032310-000-clean-clean.npz",
+    "frontend_predictions/sub-032310-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032310-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032310-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032310-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032310-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032310-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032312-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032312-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032312-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032312-000-clean-clean.npz",
+    "frontend_predictions/sub-032312-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032312-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032312-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032312-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032312-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032312-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032313-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032313-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032313-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032313-000-clean-clean.npz",
+    "frontend_predictions/sub-032313-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032313-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032313-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032313-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032313-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032313-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032314-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032314-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032314-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032314-000-clean-clean.npz",
+    "frontend_predictions/sub-032314-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032314-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032314-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032314-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032314-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032314-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032315-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032315-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032315-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032315-000-clean-clean.npz",
+    "frontend_predictions/sub-032315-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032315-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032315-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032315-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032315-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032315-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032316-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032316-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032316-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032316-000-clean-clean.npz",
+    "frontend_predictions/sub-032316-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032316-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032316-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032316-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032316-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032316-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032317-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032317-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032317-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032317-000-clean-clean.npz",
+    "frontend_predictions/sub-032317-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032317-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032317-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032317-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032317-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032317-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032318-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032318-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032318-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032318-000-clean-clean.npz",
+    "frontend_predictions/sub-032318-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032318-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032318-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032318-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032318-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032318-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032319-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032319-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032319-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032319-000-clean-clean.npz",
+    "frontend_predictions/sub-032319-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032319-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032319-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032319-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032319-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032319-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032320-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032320-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032320-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032320-000-clean-clean.npz",
+    "frontend_predictions/sub-032320-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032320-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032320-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032320-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032320-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032320-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032321-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032321-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032321-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032321-000-clean-clean.npz",
+    "frontend_predictions/sub-032321-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032321-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032321-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032321-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032321-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032321-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032322-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032322-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032322-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032322-000-clean-clean.npz",
+    "frontend_predictions/sub-032322-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032322-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032322-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032322-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032322-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032322-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032323-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032323-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032323-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032323-000-clean-clean.npz",
+    "frontend_predictions/sub-032323-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032323-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032323-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032323-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032323-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032323-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032324-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032324-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032324-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032324-000-clean-clean.npz",
+    "frontend_predictions/sub-032324-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032324-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032324-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032324-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032324-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032324-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032325-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032325-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032325-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032325-000-clean-clean.npz",
+    "frontend_predictions/sub-032325-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032325-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032325-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032325-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032325-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032325-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032326-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032326-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032326-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032326-000-clean-clean.npz",
+    "frontend_predictions/sub-032326-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032326-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032326-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032326-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032326-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032326-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032327-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032327-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032327-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032327-000-clean-clean.npz",
+    "frontend_predictions/sub-032327-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032327-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032327-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032327-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032327-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032327-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032328-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032328-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032328-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032328-000-clean-clean.npz",
+    "frontend_predictions/sub-032328-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032328-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032328-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032328-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032328-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032328-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032329-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032329-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032329-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032329-000-clean-clean.npz",
+    "frontend_predictions/sub-032329-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032329-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032329-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032329-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032329-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032329-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032330-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032330-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032330-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032330-000-clean-clean.npz",
+    "frontend_predictions/sub-032330-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032330-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032330-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032330-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032330-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032330-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032331-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032331-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032331-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032331-000-clean-clean.npz",
+    "frontend_predictions/sub-032331-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032331-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032331-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032331-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032331-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032331-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032334-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032334-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032334-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032334-000-clean-clean.npz",
+    "frontend_predictions/sub-032334-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032334-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032334-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032334-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032334-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032334-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032336-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032336-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032336-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032336-000-clean-clean.npz",
+    "frontend_predictions/sub-032336-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032336-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032336-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032336-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032336-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032336-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032338-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032338-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032338-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032338-000-clean-clean.npz",
+    "frontend_predictions/sub-032338-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032338-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032338-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032338-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032338-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032338-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032339-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032339-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032339-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032339-000-clean-clean.npz",
+    "frontend_predictions/sub-032339-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032339-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032339-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032339-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032339-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032339-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032340-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032340-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032340-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032340-000-clean-clean.npz",
+    "frontend_predictions/sub-032340-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032340-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032340-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032340-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032340-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032340-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032341-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032341-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032341-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032341-000-clean-clean.npz",
+    "frontend_predictions/sub-032341-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032341-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032341-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032341-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032341-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032341-000-mixed-snr-5.npz",
+    "matched_frontend_cca_reference_rank2/coverage_paired_differences.csv",
+    "matched_frontend_cca_reference_rank2/coverage_uncertainty_channel_strata.csv",
+    "matched_frontend_cca_reference_rank2/coverage_uncertainty_intervals.csv",
+    "matched_frontend_cca_reference_rank2/coverage_uncertainty_method.json",
+    "matched_frontend_reference_rank2_control/coverage_paired_differences.csv",
+    "matched_frontend_reference_rank2_control/coverage_uncertainty_channel_strata.csv",
+    "matched_frontend_reference_rank2_control/coverage_uncertainty_intervals.csv",
+    "matched_frontend_reference_rank2_control/coverage_uncertainty_method.json",
+    "review_shards/sub-032305-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032305-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032305-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032305-000-clean-clean.csv.gz",
+    "review_shards/sub-032305-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032305-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032305-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032305-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032305-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032305-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032306-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032306-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032306-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032306-000-clean-clean.csv.gz",
+    "review_shards/sub-032306-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032306-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032306-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032306-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032306-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032306-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032307-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032307-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032307-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032307-000-clean-clean.csv.gz",
+    "review_shards/sub-032307-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032307-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032307-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032307-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032307-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032307-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032308-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032308-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032308-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032308-000-clean-clean.csv.gz",
+    "review_shards/sub-032308-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032308-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032308-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032308-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032308-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032308-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032309-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032309-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032309-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032309-000-clean-clean.csv.gz",
+    "review_shards/sub-032309-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032309-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032309-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032309-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032309-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032309-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032310-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032310-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032310-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032310-000-clean-clean.csv.gz",
+    "review_shards/sub-032310-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032310-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032310-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032310-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032310-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032310-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032312-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032312-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032312-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032312-000-clean-clean.csv.gz",
+    "review_shards/sub-032312-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032312-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032312-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032312-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032312-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032312-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032313-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032313-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032313-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032313-000-clean-clean.csv.gz",
+    "review_shards/sub-032313-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032313-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032313-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032313-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032313-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032313-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032314-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032314-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032314-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032314-000-clean-clean.csv.gz",
+    "review_shards/sub-032314-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032314-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032314-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032314-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032314-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032314-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032315-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032315-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032315-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032315-000-clean-clean.csv.gz",
+    "review_shards/sub-032315-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032315-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032315-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032315-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032315-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032315-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032316-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032316-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032316-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032316-000-clean-clean.csv.gz",
+    "review_shards/sub-032316-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032316-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032316-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032316-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032316-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032316-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032317-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032317-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032317-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032317-000-clean-clean.csv.gz",
+    "review_shards/sub-032317-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032317-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032317-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032317-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032317-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032317-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032318-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032318-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032318-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032318-000-clean-clean.csv.gz",
+    "review_shards/sub-032318-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032318-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032318-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032318-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032318-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032318-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032319-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032319-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032319-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032319-000-clean-clean.csv.gz",
+    "review_shards/sub-032319-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032319-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032319-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032319-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032319-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032319-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032320-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032320-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032320-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032320-000-clean-clean.csv.gz",
+    "review_shards/sub-032320-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032320-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032320-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032320-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032320-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032320-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032321-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032321-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032321-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032321-000-clean-clean.csv.gz",
+    "review_shards/sub-032321-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032321-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032321-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032321-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032321-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032321-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032322-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032322-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032322-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032322-000-clean-clean.csv.gz",
+    "review_shards/sub-032322-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032322-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032322-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032322-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032322-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032322-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032323-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032323-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032323-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032323-000-clean-clean.csv.gz",
+    "review_shards/sub-032323-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032323-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032323-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032323-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032323-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032323-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032324-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032324-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032324-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032324-000-clean-clean.csv.gz",
+    "review_shards/sub-032324-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032324-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032324-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032324-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032324-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032324-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032325-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032325-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032325-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032325-000-clean-clean.csv.gz",
+    "review_shards/sub-032325-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032325-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032325-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032325-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032325-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032325-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032326-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032326-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032326-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032326-000-clean-clean.csv.gz",
+    "review_shards/sub-032326-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032326-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032326-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032326-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032326-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032326-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032327-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032327-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032327-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032327-000-clean-clean.csv.gz",
+    "review_shards/sub-032327-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032327-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032327-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032327-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032327-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032327-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032328-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032328-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032328-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032328-000-clean-clean.csv.gz",
+    "review_shards/sub-032328-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032328-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032328-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032328-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032328-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032328-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032329-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032329-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032329-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032329-000-clean-clean.csv.gz",
+    "review_shards/sub-032329-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032329-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032329-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032329-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032329-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032329-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032330-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032330-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032330-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032330-000-clean-clean.csv.gz",
+    "review_shards/sub-032330-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032330-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032330-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032330-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032330-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032330-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032331-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032331-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032331-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032331-000-clean-clean.csv.gz",
+    "review_shards/sub-032331-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032331-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032331-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032331-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032331-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032331-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032334-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032334-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032334-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032334-000-clean-clean.csv.gz",
+    "review_shards/sub-032334-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032334-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032334-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032334-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032334-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032334-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032336-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032336-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032336-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032336-000-clean-clean.csv.gz",
+    "review_shards/sub-032336-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032336-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032336-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032336-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032336-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032336-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032338-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032338-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032338-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032338-000-clean-clean.csv.gz",
+    "review_shards/sub-032338-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032338-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032338-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032338-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032338-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032338-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032339-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032339-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032339-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032339-000-clean-clean.csv.gz",
+    "review_shards/sub-032339-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032339-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032339-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032339-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032339-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032339-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032340-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032340-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032340-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032340-000-clean-clean.csv.gz",
+    "review_shards/sub-032340-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032340-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032340-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032340-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032340-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032340-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032341-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032341-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032341-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032341-000-clean-clean.csv.gz",
+    "review_shards/sub-032341-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032341-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032341-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032341-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032341-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032341-000-mixed-snr-5.csv.gz"
+  ],
+  "manifest_payload_count": 669,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 671,
+  "utc": "2026-10-14T07:55:33.659817+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
 ### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/artifact_manifest.json
 
 [Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/artifact_manifest.json); SHA256 `c8418eb6acc9977aab73fa7606bfd5326dcdf0f12b056922fdabed1816bc91eb`.
@@ -55923,6 +59041,179 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 }
 ```
 
+### results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/artifact_manifest.json
+
+[Saved payload](results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/artifact_manifest.json); SHA256 `8618b226331fc8d170b87644dae00e031502fc68ca7a7d0d0f3c9bb2a32fad24`.
+
+```json
+{
+  "source_probe_progress.json": "8d4629137442eb80212028bac244c528aba83e3a6c5b5791316464f76eb7ad15",
+  "run_spec.json": "3a07a5d68ebeae19379b6d741048eb5baa145cc7333d410f9550e16113275b3f",
+  "tests.txt": "4626606eaacf1628f13fc95536667ad099e360f4eb5b0f620ec4005b67e673e3",
+  "parent_identities.json": "bc7d4fbdc0f3ac44e6af3fbccf69da88d7467da1a1dad779e1d1f1c006f72eaf",
+  "configuration.json": "8d22d94dff59ba4aabf01c6321679f1c1289cb13cdd06acb694a4d042287577c",
+  "source_probe_selection.jsonl": "2fff618cd3b9a3fce823fc27beeada37459f93ea8f2ab49760905bf15a959c66",
+  "environment.json": "5ce410dfd49c990ac6709f3ae556e0a5692407ef7ab11d3d254d9ba9e8c69986",
+  "resource_summary.json": "d416f5fd01db3b5e58443d21e0049ce77b2e8d6e72c41c7a61eaf1d731e82619",
+  "source_probe_summary.json": "cc0c83df73c82952aa6b5f1c889ec157aeb2f4fc34fd08a64f67491c563a8fe2",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "source_probe_completed.jsonl": "41d929c6b8d259ea537221ea1183f9ecb53aad006acdf5d845487143a5dcca71",
+  "stage_tests_summary.json": "ed78a102acbbacec380bf98c0e8f3779ea0289db70699efeba4a8d700bf1ebc0",
+  "split_manifest.json": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "original_sources/sub-032305/recipient-window-07.npz": "a2a779edc6e1b683baaeed5471dbce02cec7c557d4ebc5aed731a29914861588",
+  "original_sources/sub-032305/recipient_record.json": "7b3f42af11044de63fd859f4665e3b45d3afe8bef34eee22dc1ddc36a73747fb",
+  "original_sources/sub-032305/recipient-window-02.npz": "1eeabf8f44f8a997328daa3ee4d82646c075ad7c210d39779e134d8e83cd5844",
+  "original_sources/sub-032305/recipient-window-05.npz": "63d6542e9fc8952033d8b4e7caba6f2981a71ba539bc84d9aa7289b11cff439c",
+  "original_sources/sub-032305/recipient-window-06.npz": "e50447a9db43b7bc81281556f00102b9530a6964ce10b9627b59f06d9f254fc8",
+  "original_sources/sub-032305/recipient-window-00.npz": "31ce684c21a813f67742df67ee369aa5d12018233d7d8f40bffc8416cf76a6ba",
+  "original_sources/sub-032305/recipient-window-01.npz": "b25051592feabd4654b3baec091bef669898ab113744d3baeee0c78755f3d6d1",
+  "original_sources/sub-032305/donor_record.json": "e8d02dbe3eb571a308f908294bd4ba9ee0b2a14ca762a05b0fe7e055fa57e3e3",
+  "original_sources/sub-032305/recipient-window-09.npz": "08866edd6139adb7f563c66fa91c68a6ba29a2f856af8be680193777f1924161",
+  "original_sources/sub-032305/recipient-window-04.npz": "43c267f1070650b7a367fa346632bef1683abd041313dfb4d1b1bb2a7ebb5f3b",
+  "original_sources/sub-032305/recipient_calibration.npz": "13c8c34f1b5f8ced4f86c7dddebabe6232377d8004aabecee0fb0cb3a9d9423e",
+  "original_sources/sub-032305/recipient-window-10.npz": "ba372b84cccf2e2a2474382c25f26f0a0f84a52030fc3ac768960dc2c29a54ab",
+  "original_sources/sub-032305/recipient-window-11.npz": "490c08965919648ff0bc3f739e33c11ee59cfffd3f82d462bd301d366e1537cd",
+  "original_sources/sub-032305/donor_calibration.npz": "72f996233571650fdc43fbd44502005d2d2d57d0b05e5f0009cea28371409011",
+  "original_sources/sub-032305/recipient-window-08.npz": "b984e33bd8eb548fb9b78f7d054743aa26828a2d49bfca64a15a77f20b2905b7",
+  "original_sources/sub-032305/recipient-window-03.npz": "687d5773edb58d64e3bd5d7ff991c50d65b272ba76edd1c28c103bbcf8cb6605",
+  "original_sources/sub-032306/recipient-window-07.npz": "bde25a5c7913f2f46323e2bd65b244bc344386562b540a117ad3c36ca6ac7c3b",
+  "original_sources/sub-032306/recipient_record.json": "432131076b336eff04b2783e12833a082be6916ba7e22fcbf8211c3df4137d97",
+  "original_sources/sub-032306/recipient-window-02.npz": "acc887fad1baa26df6489539b9b229dac1b76ea2d610cdccb927ee453481462d",
+  "original_sources/sub-032306/recipient-window-05.npz": "449f89b2ec0e3f5456d674dcd5b21a0795852fd218da0d67103cff24b170f474",
+  "original_sources/sub-032306/recipient-window-06.npz": "5a02419c82c0a962c045715c63fcb058055f97feb7bc3e29196333a73aaecb5b",
+  "original_sources/sub-032306/recipient-window-00.npz": "57721e343ab703ad67158f55d1945143a7e5928b22030e3f19b6233b433538fe",
+  "original_sources/sub-032306/recipient-window-01.npz": "241cdd4fd737b568b600e115e0768a6be91098c3276c8ee1c63fd6d79fecc345",
+  "original_sources/sub-032306/donor_record.json": "1ff671a3e17feb5f382b04ce95cb7b3888a5b9f75ed6cd91bbf3702c5d3cf6c6",
+  "original_sources/sub-032306/recipient-window-09.npz": "dae3f1ae1e365c855573b1614f728ad061d21eb938619ab6c84016e18469abdd",
+  "original_sources/sub-032306/recipient-window-04.npz": "05bb10cfbe96c9417ef47e3d08fd91201a3ce3a8848f9a8d8a7e4e03c646c668",
+  "original_sources/sub-032306/recipient_calibration.npz": "87921e058303307262c2843e3aa889f15b78bb9b5a8e55ea1949f2f3be848c9d",
+  "original_sources/sub-032306/recipient-window-10.npz": "a3a8b744383719e4ea8788a9da5ca551fb896db30fb11639ac27b8fe92838e9f",
+  "original_sources/sub-032306/recipient-window-11.npz": "7956ac2f72e9ae6d770928802c60797979fc9dcb208c0a2bbb2ac5d1b8e708cc",
+  "original_sources/sub-032306/donor_calibration.npz": "73f431a364012f7fce15432f5b1c8ee689ce0cbab59006abcef01a313aceb426",
+  "original_sources/sub-032306/recipient-window-08.npz": "2aa77548d982d394a59283957c819e600fc763ab0214a62939d0a6f8711b2688",
+  "original_sources/sub-032306/recipient-window-03.npz": "578d9b07e74069ee2ab2b0f02513ff4e78e64763f5a2d2131db71bbd3deafbdf"
+}
+```
+
+### results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/execution_state.json
+
+[Saved payload](results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/execution_state.json); SHA256 `2e8adb966bdd8d0a47f233d260a0ba0b666199c96f5b9da8d1a98783500fda80`.
+
+```json
+{
+  "stage": "reference-coupling-audit",
+  "status": "complete",
+  "artifacts": 45
+}
+```
+
+### results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/resource_summary.json
+
+[Saved payload](results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/resource_summary.json); SHA256 `d416f5fd01db3b5e58443d21e0049ce77b2e8d6e72c41c7a61eaf1d731e82619`.
+
+```json
+{
+  "wall_time_s": 305.051947683,
+  "peak_resident_memory_kib": 2617212
+}
+```
+
+### results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/source_probe_summary.json
+
+[Saved payload](results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/source_probe_summary.json); SHA256 `cc0c83df73c82952aa6b5f1c889ec157aeb2f4fc34fd08a64f67491c563a8fe2`.
+
+```json
+{
+  "pairs": 2,
+  "source_recovery_passed": true,
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "coupling_repaired": false,
+  "new_mixtures": 0,
+  "new_vmd_decompositions": 0,
+  "weights_trained": false,
+  "reserved_confirmation_opened": false,
+  "qualification": false,
+  "target_definition": "retained low-ocular recipient EEG; native clean status unknown",
+  "donor_units": "original numerical coordinates; unknown physical units stay unknown",
+  "runtime_s": 61.92976096699999
+}
+```
+
+### results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/stage_tests_summary.json
+
+[Saved payload](results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/stage_tests_summary.json); SHA256 `ed78a102acbbacec380bf98c0e8f3779ea0289db70699efeba4a8d700bf1ebc0`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "4626606eaacf1628f13fc95536667ad099e360f4eb5b0f620ec4005b67e673e3"
+}
+```
+
+### results/vmd-regional-validation-20261014/reference-source-audit-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-regional-validation-20261014/reference-source-audit-001/retrieval_receipt.json); SHA256 `19ea1760b07d2842df7e974f479c7a6aace1b38e50a3a7894c1492e2d274c8fc`.
+
+```json
+{
+  "run_id": "reference-source-audit-001",
+  "git_sha": "fdfdd93f85eb23f283a04b33c9e1040a9b75668b",
+  "verified_payloads": [
+    "configuration.json",
+    "environment.json",
+    "experiment.json",
+    "parent_identities.json",
+    "resource_summary.json",
+    "run_spec.json",
+    "source_probe_completed.jsonl",
+    "source_probe_progress.json",
+    "source_probe_selection.jsonl",
+    "source_probe_summary.json",
+    "split_manifest.json",
+    "stage_tests_summary.json",
+    "tests.txt",
+    "original_sources/sub-032305/donor_calibration.npz",
+    "original_sources/sub-032305/donor_record.json",
+    "original_sources/sub-032305/recipient-window-00.npz",
+    "original_sources/sub-032305/recipient-window-01.npz",
+    "original_sources/sub-032305/recipient-window-02.npz",
+    "original_sources/sub-032305/recipient-window-03.npz",
+    "original_sources/sub-032305/recipient-window-04.npz",
+    "original_sources/sub-032305/recipient-window-05.npz",
+    "original_sources/sub-032305/recipient-window-06.npz",
+    "original_sources/sub-032305/recipient-window-07.npz",
+    "original_sources/sub-032305/recipient-window-08.npz",
+    "original_sources/sub-032305/recipient-window-09.npz",
+    "original_sources/sub-032305/recipient-window-10.npz",
+    "original_sources/sub-032305/recipient-window-11.npz",
+    "original_sources/sub-032305/recipient_calibration.npz",
+    "original_sources/sub-032305/recipient_record.json",
+    "original_sources/sub-032306/donor_calibration.npz",
+    "original_sources/sub-032306/donor_record.json",
+    "original_sources/sub-032306/recipient-window-00.npz",
+    "original_sources/sub-032306/recipient-window-01.npz",
+    "original_sources/sub-032306/recipient-window-02.npz",
+    "original_sources/sub-032306/recipient-window-03.npz",
+    "original_sources/sub-032306/recipient-window-04.npz",
+    "original_sources/sub-032306/recipient-window-05.npz",
+    "original_sources/sub-032306/recipient-window-06.npz",
+    "original_sources/sub-032306/recipient-window-07.npz",
+    "original_sources/sub-032306/recipient-window-08.npz",
+    "original_sources/sub-032306/recipient-window-09.npz",
+    "original_sources/sub-032306/recipient-window-10.npz",
+    "original_sources/sub-032306/recipient-window-11.npz",
+    "original_sources/sub-032306/recipient_calibration.npz",
+    "original_sources/sub-032306/recipient_record.json"
+  ],
+  "manifest_payload_count": 45,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 47,
+  "utc": "2026-10-14T07:08:40.697166+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
 ## Appendix C. Exhaustive local metric/source/record/log index
 
 Large per-channel and candidate tables remain lossless in the linked files. This indexes available evidence, including partial failures; it does not assert complete remote retrieval. [Checksummed machine-readable index](docs/work_so_far_evidence_index.json).
@@ -56852,6 +60143,8 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-context-match-20261013/context-match-pilot-001/results/vmd-context-match-20261013/context-match-pilot-001/previous_coverage_uncertainty/coverage_uncertainty_channel_strata.csv](results/vmd-context-match-20261013/context-match-pilot-001/results/vmd-context-match-20261013/context-match-pilot-001/previous_coverage_uncertainty/coverage_uncertainty_channel_strata.csv) | 4900075 | `677b1a3cd0361211db1958e6ca1849ad31e7e993e2f0d22f77a9ca1add9b7456` |
 | [results/vmd-context-match-20261013/context-match-pilot-001/results/vmd-context-match-20261013/context-match-pilot-001/previous_coverage_uncertainty/coverage_uncertainty_intervals.csv](results/vmd-context-match-20261013/context-match-pilot-001/results/vmd-context-match-20261013/context-match-pilot-001/previous_coverage_uncertainty/coverage_uncertainty_intervals.csv) | 5208 | `63f52817ea685a3594573b68bcd44f0c9665de533ea0523a5f20749d0d0505cf` |
 | [results/vmd-context-match-20261013/context-match-pilot-001/results/vmd-context-match-20261013/context-match-pilot-001/tests.txt](results/vmd-context-match-20261013/context-match-pilot-001/results/vmd-context-match-20261013/context-match-pilot-001/tests.txt) | 2637 | `d4e45bac109dc7578f579fd577e11ec599e51701eb41382defbb79af72114a5b` |
+| [results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/tests.txt](results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/results/vmd-coupling-contracts-20261014/coupled-field-contracts-001/tests.txt) | 2591 | `a05cd1187a5b2a079c9b42984c264059027049c5dde276a97c40a5a77a774583` |
+| [results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/tests.txt](results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/results/vmd-coupling-contracts-20261014/frontend-reporting-contracts-001/tests.txt) | 2591 | `7017cf7f363948eafa8137fc80d96edf1cf51fea7626a74d4af48a92415760f6` |
 | [results/vmd-eog-20261010/audit-001/results/vmd-eog-20261010/audit-001/recording_manifest.jsonl](results/vmd-eog-20261010/audit-001/results/vmd-eog-20261010/audit-001/recording_manifest.jsonl) | 59799 | `8d32c9b2f46ca610e22fea4971c501679c0884a1a08d769311a2027f07519f1c` |
 | [results/vmd-eog-20261010/classical-fixture-004/results/vmd-eog-20261010/classical-fixture-004/integration/regional/paper_native_permutation_tests.csv](results/vmd-eog-20261010/classical-fixture-004/results/vmd-eog-20261010/classical-fixture-004/integration/regional/paper_native_permutation_tests.csv) | 1001 | `25b3d44147d14270a73399f0e7dbd395d47e97c09d49f2f0115e13d05f609c51` |
 | [results/vmd-eog-20261010/classical-fixture-004/results/vmd-eog-20261010/classical-fixture-004/integration/regional/paper_paired_permutation_tests.csv](results/vmd-eog-20261010/classical-fixture-004/results/vmd-eog-20261010/classical-fixture-004/integration/regional/paper_paired_permutation_tests.csv) | 26323 | `c1ac3d5f50989bc4d6f7c8e7e85fc55e0b249ec0f0934fc6d1391e56a3b1898b` |
@@ -57988,6 +61281,665 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-frontal-replication-20261011/native-trial-support-001/results/vmd-frontal-replication-20261011/native-trial-support-001/unchanged_parent_reports/native_frontal_preservation_records.csv](results/vmd-frontal-replication-20261011/native-trial-support-001/results/vmd-frontal-replication-20261011/native-trial-support-001/unchanged_parent_reports/native_frontal_preservation_records.csv) | 1234 | `52f0a52dcf9f6807b1322a137dfe1777e1fac6e9759b083ba18d1b5de58b0ab1` |
 | [results/vmd-frontal-replication-20261011/native-trial-support-001/watch_events.jsonl](results/vmd-frontal-replication-20261011/native-trial-support-001/watch_events.jsonl) | 3855 | `91d700ebc266d18a50d5c4aefcadda226bbbadc75c0d3247d19abd39bb2dd844` |
 | [results/vmd-frontal-replication-20261011/orchestration/events.jsonl](results/vmd-frontal-replication-20261011/orchestration/events.jsonl) | 190815 | `22bc6b02c5506921d1f876e798ca359cd47ee1bb5f45f2dbf94a9d224a2343ea` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_channel_scores.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_channel_scores.csv.gz) | 17982538 | `092a646d144e13fb0d533c191137df3fbe8bd19b86e424c9233a173079b478b0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_example_snr.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_example_snr.csv) | 2330544 | `9df35758c4a9199ad9300c6f148f323dc233d62473de6d1329ef0adf20697177` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_selection_manifest.jsonl](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_selection_manifest.jsonl) | 391132 | `c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-blink-snr+0.csv.gz) | 65830 | `911838645f28165731f33fe3bc1d727acb55c7cd6295d546fca8314d56bd148c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-blink-snr+5.csv.gz) | 66117 | `0b888607f3220f7c71009475276fdb7fa224b78d8b3baac67c8cfa6486d56d0d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-blink-snr-5.csv.gz) | 69681 | `6b4497ed584c1bda0f15cc028a7d5f7bd31fda2b181510874c271f7f7177da96` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-clean-clean.csv.gz) | 4886 | `cdac3868ce5adaecd52f49e80b7f1b1076e58d8af1595b32d23dbcbec842d438` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-lateral-snr+0.csv.gz) | 69136 | `ac35f321ae92ba6525be7b17e92eddd0c8478276bd677704d28168827faaa945` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-lateral-snr+5.csv.gz) | 64602 | `9975dfe2fe42de2be50fa3a87d3c27bb8cdad6448323567786b83f99ecee468d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-lateral-snr-5.csv.gz) | 69460 | `a3449735e3d5074940ba490417ecc01ce880248c0f5d23e55693cd4159c57a2e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-mixed-snr+0.csv.gz) | 66351 | `c203104b814696aa3560efcbbb50ae7b131c9bc09b073933f8dfa50eac22d6ee` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-mixed-snr+5.csv.gz) | 65974 | `f6df5b45caf1f5da7ae6a7fc470e3e1c3d29a00569a3b744096dd69e78082c9c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032305-000-mixed-snr-5.csv.gz) | 69413 | `3ead197a47fdb95e886e51bfc2a5d4ba0002c520fc5b6b833124693597031663` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-blink-snr+0.csv.gz) | 58666 | `3967063cb57328fb0c208e8505af59077a7148a987c9a9f277f61dd818731fcd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-blink-snr+5.csv.gz) | 43979 | `479dd831b0ccc38f6582a8cc5f53524dabd9f6f109d05159819d646799f762cd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-blink-snr-5.csv.gz) | 90900 | `1923f745e3cca90ad3bd78fcd4a37612e0c6e53eb9a0f0f16b1b4caec8acce14` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-clean-clean.csv.gz) | 4716 | `8b7f8bb2395a303c7e39d26d9ddabde1e423c731996cf253b483a45a48a1f356` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-lateral-snr+0.csv.gz) | 63333 | `ceb3303f94b5424a0b61883666464a7a667209a9a89f9c670b4d44b33f2cd483` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-lateral-snr+5.csv.gz) | 58938 | `4a23a205d8c900ced1e1ca15244849dad06435e946d0697b666ce1a74de2f2bc` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-lateral-snr-5.csv.gz) | 62997 | `efb5887f45db4a96056d00649af41d7da3091a61df22306b29d96d60fcd86372` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-mixed-snr+0.csv.gz) | 58054 | `8591b16acc5d51eff847ab6d91e05d749677b769c752c2f8eba4a52fa4571f46` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-mixed-snr+5.csv.gz) | 43830 | `3fa017ea625f65ea4391fef56e7382f6e4692dc2ea420e43a0dbdb24399227b0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032306-000-mixed-snr-5.csv.gz) | 62764 | `965927534717d44ac3eb243059851db3ab6ca82307918ba699145091359d18d5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-blink-snr+0.csv.gz) | 58043 | `44fa8c2ce7fc11660d5a6d3b797227756b4539bd5072c453d3e7c39a8ab98314` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-blink-snr+5.csv.gz) | 58368 | `0a104d8dc954adaf996a456cf82999d2f5304954b80972851467079992f09ff4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-blink-snr-5.csv.gz) | 62202 | `b129971020599b9747058d51fcda67d03bb25e796422ed7ad03c6e47693172af` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-clean-clean.csv.gz) | 4716 | `8eaf4ecff61cf6b6f9a91702d031a2295dee96ef6d532b18d651044899970e3c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-lateral-snr+0.csv.gz) | 59059 | `871377884d5fe39f04abdccfbfd7b791f566cd0b823290d65c484350f9d20688` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-lateral-snr+5.csv.gz) | 58521 | `5d8468c870536b705ba1329a3a311a4d91136bdf88da37c21c509acc8507f72f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-lateral-snr-5.csv.gz) | 63246 | `6455c35d3d0d1b9e6231864e63b530f51f9ece79e709cdb13450ccb2e508195d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-mixed-snr+0.csv.gz) | 57489 | `3d57e496e93d677762bd9c1df18798d332994282f79fcc517cc6af72d962ad32` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-mixed-snr+5.csv.gz) | 58216 | `89d500d14f119be81e8bfea20930b352c99965d6cb0822cc8baddac189a67331` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032307-000-mixed-snr-5.csv.gz) | 62360 | `3379080ffa5942b926dee4cc265da211a7aaaf835773ee87b180a675fb527150` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-blink-snr+0.csv.gz) | 65490 | `f007953acb05bd73b1ba754d874102e309b3b6d38ecec2f8919724bcfc45e07c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-blink-snr+5.csv.gz) | 65824 | `976de556ef4a497131745ca530fd294ce4b56799e341790b25bf7af3d0d6a6df` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-blink-snr-5.csv.gz) | 65315 | `e359e8129846223bb14e1ace9fae8b0662aba8dddbdd8aec18480dda9d74d2dc` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-clean-clean.csv.gz) | 4884 | `816ae775481c3ddcacb66f375cf0a0f5593dc165f640c107be5fdd6c8cdddb8d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-lateral-snr+0.csv.gz) | 69276 | `ee3b7a116bb2279be4535fd5613fd8bf41d65c633b57566e89d52637da730a62` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-lateral-snr+5.csv.gz) | 65959 | `5a1dfb63fbe2950533a951b269d10192b69981129d2ca4e05fe347a581bf15c0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-lateral-snr-5.csv.gz) | 69319 | `64a34639866ca226c593a3ed2ccead2c666abbbd51d2cb9c5bd3b31599c8f078` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-mixed-snr+0.csv.gz) | 64796 | `277ffd942981451a04ddf5da7d6cc4228d4656bfad8e53bc3b08d069e865551a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-mixed-snr+5.csv.gz) | 65771 | `50ac456672afee3cf87a793bc44ca947a4fefcf7f3cfff2d038bb9465c12371a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032308-000-mixed-snr-5.csv.gz) | 69293 | `ddafda319592e554a65f2589222305eb65ac18886523ed7e4089fdcc01b7beb6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-blink-snr+0.csv.gz) | 57631 | `df3e1e216fb881ba81b5fd2552880a4813ee83937b85892c88bcd423e40afe8d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-blink-snr+5.csv.gz) | 44116 | `91e0261f29c808dbca3200dcbfeded0d1a9ecc602915239ffbb3d246c2b2a1a7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-blink-snr-5.csv.gz) | 58231 | `8685126a05eee5e8182c72d5e6c4f3a876e25552c38824bedc2d83361d51a849` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-clean-clean.csv.gz) | 4717 | `0b75e2178f4d1dfe754b63020524a26749137a3f15eb1c72a88059a4f28ec68a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-lateral-snr+0.csv.gz) | 56827 | `183ae07306eca44c833e60b223113ddc643ce3b2fe2e16e0ef210f8d543b1bf4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-lateral-snr+5.csv.gz) | 32834 | `0a39ae3c70082e49d347627dacc04ea2240a5989d6da68d9cd70a71849d93ecd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-lateral-snr-5.csv.gz) | 62264 | `cf9c33ce36de3618a4fd7dac09de5d0b0e255041c019b5b483fc19cfe15e58a7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-mixed-snr+0.csv.gz) | 56654 | `9f9c328c683ac374b3fbf78347672f3e2c2ec801b5d615f34bcf4837b28ff856` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-mixed-snr+5.csv.gz) | 43437 | `ccfc73c4ac67163295e55f39431e4c5cb18ec3f5f065faf9aa56aa9a9f87ce70` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032309-000-mixed-snr-5.csv.gz) | 58123 | `2a5483a03f3121e39ac83a70720488b97d8af5dd85ae1c80ab0df4e36787af1e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-blink-snr+0.csv.gz) | 58084 | `db0f4b229a662e29d3146f529dbbdb2fff405f3801a3e45caacdc21a09e3d991` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-blink-snr+5.csv.gz) | 58217 | `50bfe39b5f62faae5ad906e8256076e13f05823d6caae0362dcbc1c96db5bf88` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-blink-snr-5.csv.gz) | 61740 | `9a75d7b4e060c469659c754104398f6391914fc9bbe3e669a31429b8e01d5bc8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-clean-clean.csv.gz) | 4716 | `878cd597714e7f761a16d0b0a1b5f8c9385b3ac70792bd76830fda52a8cf1f25` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-lateral-snr+0.csv.gz) | 63196 | `eebc4436699b5d08b99db78fe0561e0c27e3f8588d79c1ab85afd006a17e1f53` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-lateral-snr+5.csv.gz) | 58707 | `5374057d5fc83db91c6ab1092fe288def688ba67e4d656145bbfbeaadbb0f13c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-lateral-snr-5.csv.gz) | 63266 | `6fad88cddaa8c283eb4bcb82136e1664484a83c9f97953ed3b8887fd4331ba82` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-mixed-snr+0.csv.gz) | 58018 | `b52977b7da0175137d62218149554e7300600cb3142d3c54ea35047d394bb216` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-mixed-snr+5.csv.gz) | 58088 | `18c31ffc7d5e8bcf0a8c6ae3c12db887f2fcddf130934fedd8a53f854ee59756` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032310-000-mixed-snr-5.csv.gz) | 61920 | `83f7a65c1a6ec451e04164e9412b6b3e16b126423f0e8ed0659316d8e47d670d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-blink-snr+0.csv.gz) | 57517 | `ee7846a410df2536f5345b0806b8aa1dd2d89bf446ddef2f067d1052d1c02dd7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-blink-snr+5.csv.gz) | 44233 | `858c94b8e3eb9e191a68883655906dbaa0a9f3e8a71fc6a61c140d7cee66530a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-blink-snr-5.csv.gz) | 58399 | `61e12a8590f31282d0eaeb031804754b9d2c1d115fdca455e97e76c1543b7415` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-clean-clean.csv.gz) | 4716 | `603929fbfdd3d6a9cbb01ddd0fa92ec7213d9ba2955a94fb7913689fa5c0fe7f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-lateral-snr+0.csv.gz) | 58435 | `a78602728cd445fed6f222cea9c872c9f898c3fae7333e4279c762550443623f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-lateral-snr+5.csv.gz) | 58771 | `8ad2d7dbd121665e9868d2d8524f2b150ff1826904fce53f9062504cd2037b44` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-lateral-snr-5.csv.gz) | 63609 | `c41162fd00dd4345f3ccf39444a9474befef059beac7cb526525cd9b57d2ebc5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-mixed-snr+0.csv.gz) | 57304 | `37efdf00e1532052b335b02aa32f4c60f544bba0ca63fbf7c48f6b244b99863f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-mixed-snr+5.csv.gz) | 44136 | `a5e4f6bb90c67980158357082d592eb007d12395c61b2a9d9ef51fa392595dd4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032312-000-mixed-snr-5.csv.gz) | 56873 | `6429e7b9b606d197a6e7e83c5969b051a85e316ab0fb270ee272ed5c5413bcfe` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-blink-snr+0.csv.gz) | 61765 | `61b6ac4f3841fffbb7c569877986bdebb8247a7951508288307e9dd299eb8c74` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-blink-snr+5.csv.gz) | 58643 | `d7cabadd8034cbefe30511d2d73da6b6babc46a561db84c0779fef216076bf8f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-blink-snr-5.csv.gz) | 63062 | `409b409aa761e4bbfc3d8a5f92d3f333d444ffcbcd2b86ed4a168a4cbda559f5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-clean-clean.csv.gz) | 4716 | `898297a3f9d60ebaef845250a9519d1cb4c5780a6301babc87892f5c34e079e5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-lateral-snr+0.csv.gz) | 62120 | `5933f1069750aff16a5e1b27205325a92c40e99cd5be814e6fc1acf6065a301c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-lateral-snr+5.csv.gz) | 58244 | `f3ffa22cf3f01efbd58531d7defd568fd9eac7b0ab6e315859f94d5485276c75` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-lateral-snr-5.csv.gz) | 62149 | `76ccc94aadfc22ef6ea2e7ee8f88d5db8f48ab3db124b54c5715cbf9ddd91e7b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-mixed-snr+0.csv.gz) | 61832 | `d08c09451f09bba0105568bd6b43713778cae4f8ada89b4baf25093e33dd2850` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-mixed-snr+5.csv.gz) | 58370 | `72c41b2c6f3f94900e86d0d292d779c1a87646feb0820007c9223e70c7a95017` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032313-000-mixed-snr-5.csv.gz) | 62175 | `a3753a18e51ec942629cccdfc2520c737cf8a958c01f29f335a40dec4a509410` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-blink-snr+0.csv.gz) | 65475 | `7130177be41e7b41b95ce56b5cfc91f9e60a05e083f56f02f696851f38898bb4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-blink-snr+5.csv.gz) | 65896 | `de6b0879e598bea4e389d3fcfba196e657f6b13d579ace3bebb8274c310cd499` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-blink-snr-5.csv.gz) | 69318 | `1801e120223193a25eb2171c33561d56a721c77037918397bd069561696a0c27` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-clean-clean.csv.gz) | 4884 | `0e8d13396de77b783282a289cccb05d299cd561d551a9ff8dbd3c9f5ece74582` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-lateral-snr+0.csv.gz) | 65374 | `5d6934681c1c575426b432c060e5092994fddccb824b0b11fb81b22ef19e247e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-lateral-snr+5.csv.gz) | 65710 | `afefe6b84d6a4274184071504b11a218ba3a6f08d11d693e3aea09c3b2e5c33d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-lateral-snr-5.csv.gz) | 68939 | `6f29184db3c74b1e6952c55875da0746a0b1ff067b290f908a2b65217d8735d6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-mixed-snr+0.csv.gz) | 64797 | `26e89d6fe849a4810bf42954c878719e43624ab11e5b440289167ccd9a0502d7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-mixed-snr+5.csv.gz) | 65659 | `c6b6c79ad526937d2143dcdc1221a2ea1a78a8bccfd822ace790d4cacc2565cc` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032314-000-mixed-snr-5.csv.gz) | 69485 | `a47a875cd6408aaa47a4f38a9aec181efb7305c3f3b1f9e3eba8aa07aa362aaa` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-blink-snr+0.csv.gz) | 65024 | `319b07e8fa86e10e6fccdefa045e5fe420f0a13eb0ae80b8cd38ef4cd805ddfb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-blink-snr+5.csv.gz) | 65763 | `288a1a10e7e21dd2102384a22f71054e7b074867b3f1971ffe0f331c2893fa85` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-blink-snr-5.csv.gz) | 69497 | `a7aa14fb0a95a01320579c2fa272377ea61578e2bb8f0971212ea1a5b82076a8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-clean-clean.csv.gz) | 4884 | `7b5da01bf97c9f250d508215a74c4cc91ba89f8e9aa13a6e5b2526463e7fc2d4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-lateral-snr+0.csv.gz) | 69134 | `54adc0cb5cb61b3ee7f634f226fdf58b5c3db1512c130726da16de68bf4b1f64` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-lateral-snr+5.csv.gz) | 64684 | `9789eea9cb834d1d92ce86f9aef23dfa825c129e6ce2f2e83e2ec8e927f455cf` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-lateral-snr-5.csv.gz) | 69277 | `0963a1ab9d4d5688c1e13fbf83d8ac41a2d163d94b0e893aa7e03e6fac2551da` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-mixed-snr+0.csv.gz) | 65187 | `f661822902fefc57fedd5f2ab4b83e0e05820f7b4a2f8f2f8e8db1f7b4f6853a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-mixed-snr+5.csv.gz) | 64925 | `954c2684dd58b8ce53831add97e09be3947eeb3635709f1e67a49f098559aecf` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032315-000-mixed-snr-5.csv.gz) | 69388 | `59cc5fd78125937e91aacbbfcbe4f5fb1ff9cef0482120c0683d6ccf9fa1d0bf` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-blink-snr+0.csv.gz) | 65097 | `c9eb94fa833c06d3264b38e164d8c3b5770bd5961301faa59889c9d711a021f9` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-blink-snr+5.csv.gz) | 65878 | `fd714650f8252c800251278d2d2449b050b9783af1e53531212c196f74962fd8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-blink-snr-5.csv.gz) | 69512 | `5bad93416e82be97a7aa8406d55945d867a4da95f3c5c29ca4c4da29bfcfabca` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-clean-clean.csv.gz) | 4884 | `da2a1289b1a4f8ac7435700bddefd19c84edf528e2d44d5b981d00817bc0ecd1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-lateral-snr+0.csv.gz) | 64536 | `512ab9b247bd0135244d056681a4032b95c1a7bc880672226086f472cf5ce86e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-lateral-snr+5.csv.gz) | 65684 | `04d98148c27bbeb7e76c9999690cfb8af2413eaf43cfec4706ed067f9674323c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-lateral-snr-5.csv.gz) | 69258 | `c9fefd4dd6580209e9a5cc7d6e2278b04de0a004ce54d5e404ce681072b2a778` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-mixed-snr+0.csv.gz) | 66106 | `bafe0b80cd0b9206521267dc20c5352f2ec111e6198905969c955eafa8709967` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-mixed-snr+5.csv.gz) | 65963 | `e1e6ad31916e171c8455377a4679a0fec1707cc48d89c62b138522c29c4babeb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032316-000-mixed-snr-5.csv.gz) | 69382 | `649851bcc7a83b5e00496b791f4758cb3b7cf560fc81d862dfa08f8ecb5525a0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-blink-snr+0.csv.gz) | 65908 | `ff029143bec54387a1523e5f7eb00a3fa7d16a4f90134ddfdfa3902411ce3f5d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-blink-snr+5.csv.gz) | 65773 | `9a2a07315f5595ba4f6b6ad70b03a12cfd01e1ece4dc4862b5aa21a608dc1fda` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-blink-snr-5.csv.gz) | 65234 | `25b95abe5f7a1b55e09c374e4fa64d0c24c384b3081f5f488687284c60803698` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-clean-clean.csv.gz) | 4886 | `723b25f3c9273ee5204f63f1bde8da62913d032755b43c1b76fb3f30ec2a3d46` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-lateral-snr+0.csv.gz) | 64862 | `aae8eccc46507a096525e8c021b85614dd8e9ea85b3ba4ea12907804abde1f75` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-lateral-snr+5.csv.gz) | 65800 | `e158cbc0bbd200de687f3f521c63e7c36a6415f303eac68c30b02f66c80ef347` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-lateral-snr-5.csv.gz) | 69689 | `1be0e6a2835dfdc89dc1f0e544a287652b5920bca9dfce90529722dfe29afd45` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-mixed-snr+0.csv.gz) | 65188 | `81229c9ca37e1827b0d760ed93337c7465c6afe2cfe4bf90a0a6c679fb467846` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-mixed-snr+5.csv.gz) | 65657 | `3093a156d55f673895d5aacedaa3a0680e0c0f680ee43038405c677f502422d8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032317-000-mixed-snr-5.csv.gz) | 64983 | `6a9f46642d739f2d541563ad9d882207b8394a27cc86e141dbd009c67f1cfb30` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-blink-snr+0.csv.gz) | 65110 | `5758f460992768609b4dc8d695ee42529f28f7c92a50d3993b7f2a7b8fe0da0c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-blink-snr+5.csv.gz) | 65845 | `c95bae77bc44c6e878f0e4e154be6f3bad6d32886845192af57053d81d316f2a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-blink-snr-5.csv.gz) | 69310 | `94794332a8a6fc52ec5ddfc7d4a6c748640a2c26cc3ab12e30b643db0f409a46` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-clean-clean.csv.gz) | 4884 | `bb7b85b705786cb95a39af9c987895162075322a7edc4d67a691cf24a1583a2c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-lateral-snr+0.csv.gz) | 65462 | `ca7539b44c4b332917e4725f618dcaa5b3638af9d1474ef3b40f657772a9158e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-lateral-snr+5.csv.gz) | 65804 | `c8a7dacaff7375947847e8e6e216463795e7b5d0308e91e2f385dc080874c2e2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-lateral-snr-5.csv.gz) | 69603 | `61aa7fd412d06a7a62cef808df44b1c68af1443b7067e0cd4b36b7084cfc26ba` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-mixed-snr+0.csv.gz) | 64238 | `7187309cac75e4c13b7e5ab294224b4696db3469411dda405ccbed2478b85104` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-mixed-snr+5.csv.gz) | 65045 | `70d569fd55f69f191aa146ec7ab198cf374b8a444d811ba718fdf789726c90f8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032318-000-mixed-snr-5.csv.gz) | 69277 | `c99642d1ad909571141dff95cbf9613dfb79bc4bc863e34f81def6ec0ccbcd18` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-blink-snr+0.csv.gz) | 64473 | `04a34580e87dd1cee07a7b8ce77352e66b09d839c23077c9c7fb7bd5b2e6ed19` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-blink-snr+5.csv.gz) | 48861 | `8f72c14d419f7986179fed671dcee23f8e89b8f6ea4be531c5d6506a1ffd0146` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-blink-snr-5.csv.gz) | 69145 | `b5770f77e300187522fdb7ee4832d5b6d4e86c12ae77a7f6336021241db3c95e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-clean-clean.csv.gz) | 4884 | `d070f528574bfabc48709ec5c792663a5794a0a47f396670204a58c3f85fd0ff` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-lateral-snr+0.csv.gz) | 64936 | `d7164e2cd590ed0324ab3629916b026ec9467b2497162d7be30068115e84a251` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-lateral-snr+5.csv.gz) | 65834 | `25fccb49a79709caba5d5bd8e8dc14cd180b79a935c427155e3c8757557ddd37` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-lateral-snr-5.csv.gz) | 69371 | `d5062715de479d0da8de6b52a4691ed0adc8577839fd43a22ddcdc67d5615ce4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-mixed-snr+0.csv.gz) | 62730 | `c576506e1980771f70564134003cf83c53c3d2834fb27233f328652c53a11b68` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-mixed-snr+5.csv.gz) | 48811 | `023d4b1088dd8f35ccaf02ef42367a24bbc0f2f1aaf881c4e5324a4f285dd59f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032319-000-mixed-snr-5.csv.gz) | 69105 | `9e30ece5b766cb735e38e373d400571d89a45e9fc477e2e3a5c161501a8984ff` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-blink-snr+0.csv.gz) | 58307 | `be9497fa1dc5d89f92631c2d3c3d49716a7efb80e7d07f8725baab7a75b06ba7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-blink-snr+5.csv.gz) | 43967 | `8a3f5fb33d0005c5c32a546ad05bf76d619cdda1169e27b12c7efeffb2266a19` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-blink-snr-5.csv.gz) | 62885 | `f7b285e0ec8d4c4dfd3250fae2e335a5016df2626cc4fbaff3c5327e2841e29c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-clean-clean.csv.gz) | 4716 | `e72dcbe8247d3a7ee7a5491db56fd249276b6df7ad56eb490ce2a3dd6add2810` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-lateral-snr+0.csv.gz) | 62709 | `96da32c2452328c6c4d9ce0ab2027de4ceb0a9c5a2cc7ca532626387137e3f64` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-lateral-snr+5.csv.gz) | 58863 | `2a555d0f1c038f08d4ec685a54d58bd574ffb0399eafa71c0461ac3076ff7488` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-lateral-snr-5.csv.gz) | 63294 | `b077a7e5734e1cd83b7600badd7033b2795863fb9256732508399c75b23d4f5e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-mixed-snr+0.csv.gz) | 57007 | `cfc674086f41076c39ed77abcc7ea2ea4c5cb85626bc42a8e60b52cc46aa4430` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-mixed-snr+5.csv.gz) | 43844 | `f34888d2c622316c5dda9b3e91b7e29adf4e4445e1f45e75586b2886bd7debda` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032320-000-mixed-snr-5.csv.gz) | 61970 | `ec2f0fc546ce95967e8f155c2a76ef2fc3ea78b36eb461d13a359610bfee3b10` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-blink-snr+0.csv.gz) | 64898 | `baa1c8d9588eef19396084b891a84b6de334b33276a54213c0299c13ae699582` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-blink-snr+5.csv.gz) | 65886 | `ffdf4110ea872b5be390e7c8e77253bcf385600dd570bf69ded62b1bcdacd838` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-blink-snr-5.csv.gz) | 69509 | `4aa5401347f8a1bc6237a33bd0ba32d0a09e7c9f5758fac7cd778b62edf612b8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-clean-clean.csv.gz) | 4884 | `9e2ef0dd6eefe1208636db9fe784a7b52f23dbd7fa1471ac5ed8187cc4e19cad` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-lateral-snr+0.csv.gz) | 65657 | `f7a604fc1560603990fc4112c48c0e35a100b026775a857a09b75aac576ce7d1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-lateral-snr+5.csv.gz) | 65077 | `7ef175710b0b07d8e621ec7a1485dc8664eae65d567444142740479293566907` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-lateral-snr-5.csv.gz) | 69259 | `31d2b3974eb2b92df5b70c0d125815af5321d18a810d1bdd789e2a86bb9c580c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-mixed-snr+0.csv.gz) | 64597 | `9a4c8bda6828c157c77141e2121e8e1cf12058589b4671abcb7ded2e90c74f5f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-mixed-snr+5.csv.gz) | 64104 | `43c92c29bf192147babd808623f9aecb9ed99624e6d62147cbc8bbbbf2fe96ba` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032321-000-mixed-snr-5.csv.gz) | 69211 | `8458e247ae45b0bf05b609941793d99d0a1a922fb2c31eb1014a6111b5f7d804` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-blink-snr+0.csv.gz) | 65932 | `4b4bcdede1cf722ea1eef1e498f8fa9c29760e301c848e1644e70781a284b5ec` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-blink-snr+5.csv.gz) | 65939 | `51980abd4897924cbcd5b510246bfdd18e361b803543a4b844b543383ac628ca` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-blink-snr-5.csv.gz) | 69210 | `44e429f71a6d8ed8fa55c818fb001c043c91afe0344482cc72b3a110da075453` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-clean-clean.csv.gz) | 4885 | `b26876cc67dba8247357bd6bd84f82c1c44a273dc4924cca40ff95bf33accb15` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-lateral-snr+0.csv.gz) | 69143 | `f7443abb2b1f848e35cda49d0dc7fada57162fe8b4f2f21249e07128ebde740d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-lateral-snr+5.csv.gz) | 69021 | `14f5a8d87d8df66615ee8cf9e5543dfefaa12d885d9a41c4ce4738067e2cebac` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-lateral-snr-5.csv.gz) | 69496 | `c797a69170506bbb3c05b4293095bd90ea3f3fb78ac1a54a759903c0b3fbd900` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-mixed-snr+0.csv.gz) | 66146 | `db1ee56c81f08ab47444f7bad6c96f8bb2b8c909848f73c98033c0665524f250` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-mixed-snr+5.csv.gz) | 65939 | `ad3501c9e17406ed6e268be3c58ea03b22a6badb3d0683042d1ca01e8b9311c2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032322-000-mixed-snr-5.csv.gz) | 69269 | `cab436708a7c22b83f6d0788dc76f38fc3a3c153a4cc92b0181da8b4a04c390c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-blink-snr+0.csv.gz) | 62770 | `501ace4c2e7eebf20332a0f3c88066739e62bf9a644d258d780a6c43e1a48113` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-blink-snr+5.csv.gz) | 58161 | `4b8bd03d0f0c095c44f30463144bcf02b579f60152292f4884c23f508ac56c3d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-blink-snr-5.csv.gz) | 62981 | `cd6858186824c507b0a1a357a5cec61add5c841a9731774ab79622b6eca16324` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-clean-clean.csv.gz) | 4715 | `ec0ed4facc4df926d676e0cd958a71e4bf174fe87873104d27fcf71a11577985` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-lateral-snr+0.csv.gz) | 63231 | `43c15d27e3e5e8265b5f2bc24164cb8c89f87ba960d8284c40c497e659eb131f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-lateral-snr+5.csv.gz) | 58012 | `ee3fe909248fcb7688315e07bd5e00f267e8e4096f22f06aa49c557715d12b2b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-lateral-snr-5.csv.gz) | 62153 | `77acc4c1c1a37597d526a0e6dbf0b50d02d09199e7026b1949b22b0ac5dcabed` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-mixed-snr+0.csv.gz) | 61920 | `172d2167849bb989fdec990de91698dd0da82d79fbaa09cd7bc34d37c2d1e02e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-mixed-snr+5.csv.gz) | 58558 | `9cbf5bc5a1d66b6024fe04f88dcfb0373c4315a48cb94198975f6000cad5da51` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032323-000-mixed-snr-5.csv.gz) | 62862 | `8e73666e25440b74287e8b43c3c6b6384fd029fbaaec97eea0e4db0032a92988` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-blink-snr+0.csv.gz) | 64829 | `f3744884a1eef27093cde90899d3f501772404585ed183c0473c166702eeffd1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-blink-snr+5.csv.gz) | 48738 | `43a53a6fea67a79b4b32df5b0659d451f25ead3e5b57309e640495c3a68e729b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-blink-snr-5.csv.gz) | 65002 | `c0eba39bdd8ff959ce0ba83850ad9a79647dd1763941fec3d81118a2b5c78b14` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-clean-clean.csv.gz) | 4883 | `1af57b4e14ff07523b552d73f8354bbb2d0c415ce07a31b32d8712ec1308c9ef` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-lateral-snr+0.csv.gz) | 65766 | `7b0e588dd2308b2a0bdb5dea09c26ace1d3cf03248310a5619964891d9d96493` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-lateral-snr+5.csv.gz) | 65198 | `a51f2242be757a1aa665097428e2a9377bb31a39a7404f76a8f59c452d39825c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-lateral-snr-5.csv.gz) | 69353 | `195026737a9beb92ec2eb1e31d4914a16fb609e155c09fdbcf80e78ebfc21b2a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-mixed-snr+0.csv.gz) | 64321 | `34be4bfaa7715e968ca551925fcef3ef136d9bf7c869366f803a42866acf21e6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-mixed-snr+5.csv.gz) | 48454 | `be6b1d4b5a3994e2436918bf13b99469ab9262016fd5a0b84ca2f2fe3371fb71` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032324-000-mixed-snr-5.csv.gz) | 64519 | `46d09347b93b9dd0f78dbe5101055d437f24db4179c49674614285d5b042a8e1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-blink-snr+0.csv.gz) | 65547 | `1a53c108534af953613ff81226e3047cd7edfff3de96a3d6c72e562663898a85` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-blink-snr+5.csv.gz) | 48928 | `71169980a61f4050d3c4cfd9e08b0561ed0bba0f828432ef8de40c4a46ef068d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-blink-snr-5.csv.gz) | 90982 | `f7b74cb983802842ec21b224b54a19155e49c5c5ee3536e3d3684e6c49e5eabb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-clean-clean.csv.gz) | 4886 | `f284d76d7714bd7fc83004d59efe9b23d93423d89ee60f4c4b717e0d730d950a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-lateral-snr+0.csv.gz) | 69162 | `f07e6dccd52c1b493f87f667699a2ec1d76c01837ad09ee62eed7235712dd533` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-lateral-snr+5.csv.gz) | 65072 | `46d5d915c131e929137f4fdecf68740aaebb06942d231e548f40015fe3cf14f3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-lateral-snr-5.csv.gz) | 69392 | `b6643fa8bd58943c650d4e5609e1c6ceb65b943e9b8c388fe5553a7b37ad9947` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-mixed-snr+0.csv.gz) | 64951 | `5d9ffc6335773441a2425ac5afee2745fb66ce6158ced2556b31a72b21c744e3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-mixed-snr+5.csv.gz) | 48764 | `889774558fef7babb0fc4b0e6e308b85a60b75a433e42704d57bb52fe379c827` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032325-000-mixed-snr-5.csv.gz) | 65396 | `44394033a24a4225e011f633e35ca64ad2e37f173facb75c8298353edacc2654` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-blink-snr+0.csv.gz) | 64880 | `74457a182e3271d80bf6dd263e4bab8b495b646bde3c2e71d7aea810f3a38951` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-blink-snr+5.csv.gz) | 48780 | `39ecf54c4efd2f808c915fa990e177ec7a40fd4335f14b45550e81d4fc04985a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-blink-snr-5.csv.gz) | 65790 | `86d40d6a3f905caa51f695b5a1f552957788e34dda90f2c860303493d48464b0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-clean-clean.csv.gz) | 4885 | `a51b34bd5a8318b076be10f5395ed7c6cfd78789245b04c35dcc928daa5ac789` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-lateral-snr+0.csv.gz) | 69205 | `b2e0db8965a7b8358431c8e9702f301ac100e8597acd9a03713f74d58877ca4c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-lateral-snr+5.csv.gz) | 65892 | `4be1721f218b9251f81b01019515d870079e00fba0a1629be49f649e5f0801d4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-lateral-snr-5.csv.gz) | 69431 | `4138dbe1b9fb12299b0ac81b01137171cb6052fd6742e49c5ffaab5aba7b504a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-mixed-snr+0.csv.gz) | 64333 | `afab329c8b9cbaa2aea72f566c86b4035a3d01eed2bbd9d2ee06afae779dacee` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-mixed-snr+5.csv.gz) | 48847 | `fcfd89c48f05bea5470faa9ea19e39b0c391e17123125e097bfdca5491c7f4fe` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032326-000-mixed-snr-5.csv.gz) | 64889 | `ffff573d3337310f607c9b154f32352f43acf50396fb3e2ff919ca9ebbed76db` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-blink-snr+0.csv.gz) | 69650 | `74d08aff4782c1ae31701169725cb503c5cf12d5871b37ac5751a7b06be7ff50` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-blink-snr+5.csv.gz) | 65765 | `874f29811fa4c634bc0a18f72b5fd0e73941bdec8b5e225ac900077d7d2d26e4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-blink-snr-5.csv.gz) | 69520 | `a4ec510582220e7defcd9ffa94d5942b478537b5b8390494c4a50b5744752b2d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-clean-clean.csv.gz) | 4884 | `3d3bc52ce1778b273512b33ab2bf092d7fdb7a774056d5590db073a39d26b0cb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-lateral-snr+0.csv.gz) | 64829 | `f591bfcd3876cd08547ef3afb71d90b0a8c264a4efebde807a346285c7cc9f6b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-lateral-snr+5.csv.gz) | 64844 | `3d4d5679c136287c851e1743033abb1d662dd1d8e11a2555ea74f29dd82ffe10` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-lateral-snr-5.csv.gz) | 69225 | `69d6f329592a7a21c583a5eb5ec81db4b931f6704182fbc7c16bcc15cb873cb2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-mixed-snr+0.csv.gz) | 69491 | `00ee3f2ebc10a579799bee5bd0fabd9e393066f3b6aaeedffd892d0b250fa2c3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-mixed-snr+5.csv.gz) | 64909 | `0e4657b6d232a332a4a7bc852aba9f39df27b71b9cac4e64508d6726251a2afe` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032327-000-mixed-snr-5.csv.gz) | 69701 | `f64c463e86d81145ee31d79b6392e27ed694e2ada440d387c2ef3aea90bfcf03` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-blink-snr+0.csv.gz) | 64849 | `a96bec83898117af4636b51fee8d2456b6c58b7267db1d355be8cf7b84619bf3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-blink-snr+5.csv.gz) | 48869 | `5eaf6e5b0ee5b06c531c1116ca3b6aa388a512c5017800bbec238c3ccc7597f7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-blink-snr-5.csv.gz) | 65037 | `db6a1fadcac9a8f07c21c8a5c1de21ec7e682bbeabce55ec846a07e477fe4f5d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-clean-clean.csv.gz) | 4884 | `ab5e4e3a1b8bee9dd9a52bec757391d54caaee204392d87371e08913178f9d1b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-lateral-snr+0.csv.gz) | 69310 | `b8a310600d1e6359df80bcdbb1cb7e38e6e969210d38fb60f611be4f19b692d6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-lateral-snr+5.csv.gz) | 65415 | `fd8de827d8b7463b0fdd6a43a38de8546ea84badc9f3dcb3a530cece277ef625` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-lateral-snr-5.csv.gz) | 69480 | `fb73a6e0f9deec1317c521b307ea8a0dae81ff4aadb5a16db4285cbd4c618cb5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-mixed-snr+0.csv.gz) | 64798 | `43f5a9f9dc8c634d8f90ba7382c89ce749c96b3aae9e2b932515c6fefa861f42` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-mixed-snr+5.csv.gz) | 49027 | `acde9056db184dc5ea04375ba2ab3de906273e5d148079eb6c016199295b7b58` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032328-000-mixed-snr-5.csv.gz) | 65391 | `aab339d590ce09bf62f698fd2ac654d0c6e9d4edbde75571b28fc67b3bddc114` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-blink-snr+0.csv.gz) | 61876 | `da01f60d555ec7878ec1a5eecea5085e108987dd296e7c5ee6d9b23f67f40e08` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-blink-snr+5.csv.gz) | 44398 | `f34d1656dd9f48db33eef8094399b6865020a7119299b68ff32539fe92ab5af6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-blink-snr-5.csv.gz) | 63248 | `db3c182124ebc274ee0c6e22acc0002703661da79b17f22e39d41e820fc0097e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-clean-clean.csv.gz) | 4716 | `384f80a16e43d7a90c4e269937473df75d2565a40af81ae96069cadee57b129b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-lateral-snr+0.csv.gz) | 62304 | `5b876b9475204cb1a0a4140705740ba6654ae224ce64f063e30fcfe4045d123d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-lateral-snr+5.csv.gz) | 44925 | `df8ce98676810b3b6a717dbb8cd3657981808a1987c5e9c4bd5c71123fb9a732` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-lateral-snr-5.csv.gz) | 62460 | `65629ae64920766ce6edf4d84ca5debec9011524c500abf4d577fd31a647d58c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-mixed-snr+0.csv.gz) | 61773 | `3b4c2e62c75a91b071292518497c7e992fc4659cb413f647840593f0326265df` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-mixed-snr+5.csv.gz) | 43383 | `c6e9da63fa8e513773b980969a6325e41d9c94d3d2d3b3437459baa59415acfd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032329-000-mixed-snr-5.csv.gz) | 63087 | `c700a0c932c5e39d12931502b75cfab60c8c1095dee3d9842f04c17d18cbe645` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-blink-snr+0.csv.gz) | 64685 | `46d28927d6133118e876890c45d37a670500e85c3e132c3162cfe387c74be4f8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-blink-snr+5.csv.gz) | 48901 | `ee7bb70455eb3e1f20358da2be6968341947bb6f12d11982a9ca4374bbe3a1ef` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-blink-snr-5.csv.gz) | 65000 | `ed41104abd970b102cc2396828bcdfe0ef33ca20b55901b1b2bdfa0b88f0d2d2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-clean-clean.csv.gz) | 4884 | `73bb0dd1502606cd532c341ab9eaafb37d33630c34a2e015503b82096d0bdfc8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-lateral-snr+0.csv.gz) | 65853 | `9e2e1389e0756a66411ca20ae9b7b4daf81be86fa487324703b2d7b2c6e88ca1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-lateral-snr+5.csv.gz) | 65778 | `a043b50a8f4294572076dfcdb51cf59fc2e5b9cda36876b710bae0fdb286970b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-lateral-snr-5.csv.gz) | 69411 | `e66492c306b15613ec436d37529396c03bd4451d2f642bd29e8f5a20c08dd4a3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-mixed-snr+0.csv.gz) | 64524 | `a7e0425689298abbb20262486088576eb5c82e1a3fd8d9e6f694896a3e2199b2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-mixed-snr+5.csv.gz) | 48855 | `1d517960b380dbbfb29092b22e3d9bd53b4d4a6a762834d9342ac7752a1997f4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032330-000-mixed-snr-5.csv.gz) | 64945 | `d7c98203e1f493d2ad0f52387f7b5bb36bd8b78888a0a4e6c0e9c97c37a93cbd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-blink-snr+0.csv.gz) | 65211 | `8d8735dc1df3371f425cdb93c2595dffdb4892d2b51393917246809ec9c644e6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-blink-snr+5.csv.gz) | 48881 | `3aa4483509ed76bd55bed082fdf80aa5c6d46fa2ff0f89c3351ccf00e757a2ee` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-blink-snr-5.csv.gz) | 69284 | `2dc7cca0a88f6a4b9367c4c3195bc053de37e868afe6f24c2b11f169dfd04fd2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-clean-clean.csv.gz) | 4884 | `0fca535cee222eb70192b79fc703bc7047f97236ffc8287c60d792fbc19ade37` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-lateral-snr+0.csv.gz) | 68868 | `49ac280cca2a3a75ba907e30133824a0fd752566ca31cb3f5ad1a64b0693bb80` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-lateral-snr+5.csv.gz) | 65118 | `056df569bebd429ef3261d5d6659fbfa4f3614483ff279dc715fa95c714b89f1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-lateral-snr-5.csv.gz) | 69261 | `5ed9f26ce13a5fd833c770980f54c9e94e871279564b76b0a3108ee1fe8a79cd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-mixed-snr+0.csv.gz) | 64815 | `672509a1e83412e4fdb0f3f3c1f8d913cd04b9597c3ce0dbbe61d74d1717a472` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-mixed-snr+5.csv.gz) | 48895 | `c86b52b6febd9ab080b8660a47eb554e86782ccbf02d5cc8f9cf259e28945a76` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032331-000-mixed-snr-5.csv.gz) | 69265 | `c9f7310e26dc12445e074cc08ce6197b321b7e55dff03a46d736fbc751504a64` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-blink-snr+0.csv.gz) | 65777 | `42078a385e9eca7cb2cee23aebd28cde49c357bf97fbf51daeed7d48d937c1a4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-blink-snr+5.csv.gz) | 65299 | `01e0455b4de364a107dacb1b8eac73ca35d984ab3af9bc9b55909dd56cc45b8f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-blink-snr-5.csv.gz) | 69584 | `81d68e56681209b24e16304429390f52a7253e3c7ae389ef53c87c70d5f7c417` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-clean-clean.csv.gz) | 4886 | `3876c378bf8cce010956622757a2e7ac640cbfa3109811c847cd37b0587eeb30` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-lateral-snr+0.csv.gz) | 69462 | `07304316558d19730114cd1c284439b5fb7268831041a13e31a17137025bd182` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-lateral-snr+5.csv.gz) | 65984 | `44a93b920eb9a5322b25db9f6a48fb135a73981528bb204a77adaec2ba6cc45f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-lateral-snr-5.csv.gz) | 69588 | `7bfe9474426e0155cc1c739c1ff33ba5a414c17c802abedbc858df0d44588f03` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-mixed-snr+0.csv.gz) | 65084 | `ea8875e2b65b3f515ea19199fa4e3a0a1e079dc6d09b20a0426630915af0e301` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-mixed-snr+5.csv.gz) | 65745 | `0f927fd31061b9e9f6fac9a049b50c6ce9765c4d8370680c12e47a169aa8c3c2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032334-000-mixed-snr-5.csv.gz) | 69483 | `31db621e42e7491346f33b6c49c99a26a0e97ff42a82789dc08a069aff806c15` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-blink-snr+0.csv.gz) | 57851 | `0004c8ce960614e3519bc3792fd79cb1631e536a254e78c47dbd9c773bf748f4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-blink-snr+5.csv.gz) | 44440 | `1719824f023bd1d6b5d8b1cbfe4dd37df6c7365d2e50af58a7dc97795f127e64` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-blink-snr-5.csv.gz) | 63177 | `88bf9d82297507120fd83418893ddfb141e74596fa307a846cfbc5ad066ee251` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-clean-clean.csv.gz) | 4716 | `1a8717572458732ce931f51311b62ad901f872bf2a68ce3ac5a9da81e6d1c34a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-lateral-snr+0.csv.gz) | 63378 | `51f30646851bffd376908f15ab640d06d5012ca575e7be1d8fd01dea6d4049d7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-lateral-snr+5.csv.gz) | 59090 | `c64288936f516446d816a3831069c7940661e644fca32a6ecbcb03555b022467` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-lateral-snr-5.csv.gz) | 63432 | `3c63b034e2eff8410e7e2206d6450ae5fc9de95cab0de11a185add8f4fa60c62` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-mixed-snr+0.csv.gz) | 56916 | `049d989cc883f508c84e262fbfe1d38d059d483b068da167938e9b0fb195a25e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-mixed-snr+5.csv.gz) | 58348 | `306f93a49d63c6a937cbefeff9eff6ea215185bf063fd177f4776a66c5c0f136` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032336-000-mixed-snr-5.csv.gz) | 62060 | `639b5de758974ddd2766b5a056b03aeb1656752d19514fc1f7cdae3c99e500ed` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-blink-snr+0.csv.gz) | 58365 | `a856e6e795ba133f969ead364134ed9cc7d1aa9042664d425125c9bd8389d083` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-blink-snr+5.csv.gz) | 44325 | `dd8642ce775ca18bd87fc0471b1d7b845ebdc3400849c6bf9cf329b94080155e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-blink-snr-5.csv.gz) | 58549 | `ccc9927b5c03d6e98ae5b28dd76809e2ed9af65cbd2ebddfbbce11e5b3cc6018` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-clean-clean.csv.gz) | 4716 | `a69a7ce9288ba58af55b19566bf5096b175c5f0372e4f5aef374a789b37d36f3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-lateral-snr+0.csv.gz) | 63185 | `4c40328ed03bfba5078d1827c5c7f46dcd67ea2edb798aa8914fcc8a795aa11f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-lateral-snr+5.csv.gz) | 59045 | `3b0072e36455a429d9701cf35d0969f3b8c0b51cb0e7b417139060011c2d945d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-lateral-snr-5.csv.gz) | 62057 | `ac4da3c61979e7a5e82cedde7b5994e4a174ebcd4600c9e8ed3aa4ddfc5e0014` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-mixed-snr+0.csv.gz) | 58320 | `416c289cf79b95005d4fc47550200b702ddd4fec1cf9b67c7068ae1a84c5644b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-mixed-snr+5.csv.gz) | 44041 | `cda5909ca5abefc51ad4ecb3ba889bc21f0521fee456a489face0ec4294feda1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032338-000-mixed-snr-5.csv.gz) | 87314 | `d025a6256824be02a9d96e6a5da03c21ba4dd455104a252b42114c0487306153` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-blink-snr+0.csv.gz) | 62570 | `862e022eb21c58f81ae387db503b626fc5c2684cafc7a3e3c17af75666703c67` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-blink-snr+5.csv.gz) | 58292 | `d1e7ea4e1bfe17e10a0d520e122f7abab68676607d5eca9b2e0c34dc18a87adf` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-blink-snr-5.csv.gz) | 62579 | `b68496e6a1be5c402fbf25249433e287f2ac5ba596de41c3a02cc8818c964337` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-clean-clean.csv.gz) | 4717 | `7e117d765d4dffe6f397806e0bbdb10b69b4dcfa6d88696485a7c515b5c8f78f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-lateral-snr+0.csv.gz) | 62078 | `3882813f894d18a40fa5306090c0e67d25c18e760a48ed7ff9b725cbe82411e4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-lateral-snr+5.csv.gz) | 58144 | `8918f2e95dfb0e5b45cfdc10f239ef507186ed96422bff32c9ff4e6998c143ac` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-lateral-snr-5.csv.gz) | 61485 | `b6b842b3a87247335ab458faa45e8f87c5b08b4d40f86e342346f9a7e6487a73` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-mixed-snr+0.csv.gz) | 62043 | `d0d3395c9af932b06a4b0d67529192f2e37c1dd5148223654901a89a1dfab1c0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-mixed-snr+5.csv.gz) | 57748 | `2e1be7c15501be06053e7b39f344f24f2dc3bd39ba3c6300f4cf5f6c7b63d159` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032339-000-mixed-snr-5.csv.gz) | 62659 | `0cabaf7116beb5893600f1f49c0620c1b2f06c1b8993a2d69bbe916b7748293b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-blink-snr+0.csv.gz) | 57914 | `4e31e87815af984794f95e15820aaa7fe7cae43aff77ef6159b1fb0480335ffd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-blink-snr+5.csv.gz) | 57652 | `2b7a26914662c61820f2418c1dd0b8637543bc7c5ece7152a1cbe02e3a3a1919` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-blink-snr-5.csv.gz) | 63250 | `9145186ee6f3156118d6f186b82bda078d793867dad17c75f42beb8086c73113` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-clean-clean.csv.gz) | 4716 | `39d8415007c061605227eb8a74f1455e30c81b8633f4953933d4ebeb2c82cec6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-lateral-snr+0.csv.gz) | 63359 | `3380ea09a0608b4361554f0aba2caa631c18079b301b13a0313f582e14e22b83` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-lateral-snr+5.csv.gz) | 58799 | `b9a8b109052f49053bccd43aed0607c72f76c0ca0c2c5ba0b369f4b5a7efe797` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-lateral-snr-5.csv.gz) | 63571 | `86abd5301e16fd3f2d3042f4fa4f3deb5b52cf7e9dd2d24f5203086b7c8800d9` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-mixed-snr+0.csv.gz) | 57735 | `916b00d1addba399492b545b725251dcb5bfe95f2b696426dd3bcf684094922e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-mixed-snr+5.csv.gz) | 57614 | `a78d292cc256ce7b9fe9b3c2af85a68885d5f2a6833eba93c8666d78fde105a8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032340-000-mixed-snr-5.csv.gz) | 63322 | `7984397fe61833802c7d8d653da07e83f6c860889911bb7841f3b9b6ba37937a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-blink-snr+0.csv.gz) | 64707 | `afd78e7de058e39bf2778d000e08379c4f80be34b5758d0e8ac87bd3b39cc362` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-blink-snr+5.csv.gz) | 48852 | `e3c421b0c6890604421294536e5a87bdd56ece01001b31feab45bf3ff5606582` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-blink-snr-5.csv.gz) | 64766 | `f9286c7a5ccf4a28dfe83078af1c60af0624e5b916754ed72c2417bef94122d1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-clean-clean.csv.gz) | 4884 | `687690bf4f37fc873e7d3b239dc6b015df5a925ce5d5ac061c8ff56918f71367` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-lateral-snr+0.csv.gz) | 65268 | `5d3069459d9977f01c94f7352019867e079aac8046a83bff97f7fd8801a8e396` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-lateral-snr+5.csv.gz) | 66100 | `0baad218d4cd3cddadd8dfe91281211a3c6bfa58d194d1042122a2ff6505f3b3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-lateral-snr-5.csv.gz) | 69353 | `ef2d1602874bef8d1481e5bd22288f4bdb064af801386a9c8cb1ec7fe790f6b7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-mixed-snr+0.csv.gz) | 62872 | `dbf08f351627d0b1955f10fa72eed736ffbae556ce1f6a27fd1da48dca9e4955` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-mixed-snr+5.csv.gz) | 48863 | `17953844ef5db23018d5028da7b67331bdcce44f9a2683fd01b8f5cfb6f8a56b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/review_shards/sub-032341-000-mixed-snr-5.csv.gz) | 64773 | `7430eef6898b3828976154ed1c99c3c0b3c0263ac415c1b1b9a0c7aa86570643` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/tests.txt](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-001/tests.txt) | 2591 | `8ee4d6b9297fda1384f82b87179b1419938a481853b3b78d1fb70aab9a00e62c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/coverage_paired_differences.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/coverage_paired_differences.csv) | 47420125 | `36b44561fe409dc1cdfb5e7e28388843fc125044947e76c2fadcfb6f4ccb0bd6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/coverage_uncertainty_channel_strata.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/coverage_uncertainty_channel_strata.csv) | 16348853 | `75a2541f4a0a983bb5e7e87f4f935b0191f5bd8f68360b001ee8f7cf18d7caff` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/coverage_uncertainty_intervals.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/coverage_uncertainty_intervals.csv) | 16345 | `e86b6ff06053679563b8df65917953bcbe4158accc12f017eca29d07e67b6982` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_cca_reference_rank2/coverage_paired_differences.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_cca_reference_rank2/coverage_paired_differences.csv) | 15105357 | `eeac75dee9157e4140c8766eb384ea27a474dfc9a2b44befb5e3097f16c51f8c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_cca_reference_rank2/coverage_uncertainty_channel_strata.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_cca_reference_rank2/coverage_uncertainty_channel_strata.csv) | 4752977 | `005be64fb381f0722a9ce1f9ad077888e33094e50412dec9c3227c3cc03fa553` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_cca_reference_rank2/coverage_uncertainty_intervals.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_cca_reference_rank2/coverage_uncertainty_intervals.csv) | 5432 | `c98d3ab341726f051f336fae45a2e262eea5e2760792f40e4b9506435fd925c2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_reference_rank2_control/coverage_paired_differences.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_reference_rank2_control/coverage_paired_differences.csv) | 15364365 | `047fb53f97a7e09e827e10ee7a103b5f9cd154202f547fe3148d8120ca930aef` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_reference_rank2_control/coverage_uncertainty_channel_strata.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_reference_rank2_control/coverage_uncertainty_channel_strata.csv) | 5016497 | `e699add856bebca3a7bd6ab4815cef661980f16b24b5f5e02ca0ed2ce1b3035a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_reference_rank2_control/coverage_uncertainty_intervals.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_reference_rank2_control/coverage_uncertainty_intervals.csv) | 5592 | `696b5de7c1551059577b5e90200eeaa1fe5821d06526f8c75b72bd85ba71ba7b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_channel_scores.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_channel_scores.csv.gz) | 17982538 | `309132d8e120e7f707b7cfb897704005dbc5eb040ec4a570fc1ff9f301159596` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_condition_means.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_condition_means.csv) | 78441 | `dd9d0dd3ddcd8f676b4c5ecbbae9b9f0506e2c52ebaec9ec2f3ffc0a1977b592` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_example_snr.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_example_snr.csv) | 2330544 | `9df35758c4a9199ad9300c6f148f323dc233d62473de6d1329ef0adf20697177` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_method_means.csv](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_method_means.csv) | 9257 | `1cdfa43274b7655672076ab76c029b7a8ef5e5748bd4270009efc5a33dc0ead5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_selection_manifest.jsonl](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_selection_manifest.jsonl) | 391132 | `c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-blink-snr+0.csv.gz) | 65830 | `a97d09b24a03dbb3e1b67be91bdc5960c45f1d83c8712152e17cd27da57b5e67` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-blink-snr+5.csv.gz) | 66117 | `b96e5d269b1abd4b73ae943e2f90deb4fc8ea184f2816676945db59aab0c1aa6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-blink-snr-5.csv.gz) | 69681 | `0f0fb03a5004a812a4af11b22263488b8c9e94d42c75307b7dd00a0eea571dc7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-clean-clean.csv.gz) | 4886 | `bbd9a700fe3c6193e9fd52cb5355cb8aeea00a4716d69858a4c436aadbc2986e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-lateral-snr+0.csv.gz) | 69136 | `18af9bc2bf0f30347290607d4c1f2046f0c569897f6a2d7c2bb94687d48d7c92` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-lateral-snr+5.csv.gz) | 64602 | `554ef88418bc4f1413e9d3c60bd465e111d33fb9d70cd6c2a8478d3a3e108af2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-lateral-snr-5.csv.gz) | 69460 | `177373b2a3b9bc8fbd64eeb42f8e9068168075d977c2a56832212c724d391b8c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-mixed-snr+0.csv.gz) | 66351 | `a1d3c632279239df1a9be49f3e6641bb7627447b7808a5125dbfc3aabd15096a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-mixed-snr+5.csv.gz) | 65974 | `218c90112e906edaf3a8e6cff3c5149c52e1d9beabe69490b75ed5204faaa77b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032305-000-mixed-snr-5.csv.gz) | 69413 | `f904bf25a2625f4e608d0e69f4a6c44f5d9f907c6f5e9e0704a0e8000abbb705` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-blink-snr+0.csv.gz) | 58666 | `3209a2a580def2b88e4e1219822b8c1074fa4a5663c80892d044fe35c8f92b3f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-blink-snr+5.csv.gz) | 43979 | `a2ef441a720a3a561e6d50c28cb007870c8c4949fff603a4f48deac88cceb70f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-blink-snr-5.csv.gz) | 90900 | `b8540927bf0747d15fc6393de515e39921aeb34569bfc7204cf62c0bce5d7cef` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-clean-clean.csv.gz) | 4716 | `e9ef0ae56657026c9feb3f641a1a1b495e7d8ab1cd5ad89c5070e24e37179cf1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-lateral-snr+0.csv.gz) | 63333 | `b1d1e1b5ecc1c1ce87de359ea06f1d8a9b1cdbaaaa2675b1633421d9ea6dbf02` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-lateral-snr+5.csv.gz) | 58938 | `46f4d8d6161ca24312224afc49f01c50253dad57069e25dda3fe7e5f09a8e1d6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-lateral-snr-5.csv.gz) | 62997 | `517ffddab91dc047be43a25894d18a058c8ee15ce08e3576f43b5f1fe1a20dfa` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-mixed-snr+0.csv.gz) | 58054 | `f5900bf59c8f7f800b588c8d9e1a1b8c7a5353f79d99ed950051457f9459dfa2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-mixed-snr+5.csv.gz) | 43830 | `a00ca16e95abc255cbd7aeb56eb17fcd0abf7fb06f1757a3b86fca7c09864e07` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032306-000-mixed-snr-5.csv.gz) | 62764 | `297b7f06133b2096532ade1f60021ab090646caf3a1e9161be3570b4ed603595` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-blink-snr+0.csv.gz) | 58043 | `9ec994318e303aa2e02f48f1a8d8c13b4bc93dc3fc3c92ad6959ad495fcff9b0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-blink-snr+5.csv.gz) | 58368 | `645f6f156efe003f2045dd6eb17671d1f35da20ac474c583aee5a27c24eb8577` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-blink-snr-5.csv.gz) | 62202 | `c0ca538bd834677d245c8ae6fd5d84875aca27b601ea7b432aa4f8586ac52b2d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-clean-clean.csv.gz) | 4716 | `d397769f8f49ddc1784f1ce996d0d2fbf18772331d1c2e1f74e7e806e7035abe` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-lateral-snr+0.csv.gz) | 59059 | `cd1e66904f7f6832006127c0a83a8c1075a62f3c99aff1d7cdb083bdc6b3cacc` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-lateral-snr+5.csv.gz) | 58521 | `3732d9a0a13c7aef35547cf39a392b1775aae9623a804abbe54893be684744fd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-lateral-snr-5.csv.gz) | 63246 | `0e64fdafffaaab24c10afb8692b8a8a5f141a3b559d9ebdcbe7f3d2e3726d536` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-mixed-snr+0.csv.gz) | 57489 | `0ca36140625084933688ed03c1a6036156c0b549c56c4552318d4ca7264034be` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-mixed-snr+5.csv.gz) | 58216 | `173843ffb399fcee48423980f1bc83c4255407bb713a5c7fccfe4f63934878ac` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032307-000-mixed-snr-5.csv.gz) | 62360 | `17106a99eda45ee92e5fb886a9163bf3c5727066350cd3b0afb0eb6fa92f4a61` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-blink-snr+0.csv.gz) | 65490 | `99acd88c9811bd32418d06840486554dd5efd1d7a9697de38a2c079dacb9ffdd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-blink-snr+5.csv.gz) | 65824 | `8e36fe0b7a3102056a62ae80b189e5533d0569169335b1c86cbf1f17e0f21c9d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-blink-snr-5.csv.gz) | 65315 | `17fa3d5d82d6ed5eb36f3de43a2164e2ff467fe5d581f1167f91a24f1bfced1e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-clean-clean.csv.gz) | 4884 | `ee4e5c142b09579c3d92e4dce5d046a2f9c1d80bb2d9bbf2849f8b0d7ca4d64c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-lateral-snr+0.csv.gz) | 69276 | `ff6a8a5086aa4e5cb8e3284d891c461abec8fe71dd8f89feb65bd135f88b0f98` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-lateral-snr+5.csv.gz) | 65959 | `07e84e5e8f090967107bfccc1eb6155c4f8c59dac0fd96dcb6802103a0823bd2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-lateral-snr-5.csv.gz) | 69319 | `7b3e1b97eb4217c72d92600709c4873fe8adf57bb791854d7d66a214c83fce9f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-mixed-snr+0.csv.gz) | 64796 | `70c6b12487bdc45c56da7056045d8f6bfe7ea036d17577b08aef0c685eb39ecd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-mixed-snr+5.csv.gz) | 65771 | `72c34b9b6d496afead1a4976e43ef7139da44d25e727361dd1a9a288d6133495` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032308-000-mixed-snr-5.csv.gz) | 69293 | `49ade4fda2e43d74f5286b092b5130354f3af4f2eec4de4211b874d109a553dd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-blink-snr+0.csv.gz) | 57631 | `77be38b157c300301c0c20d35cf6c5e04b706e2c0d9732ca57e28017a82c878b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-blink-snr+5.csv.gz) | 44116 | `8439a89b9fe261a1e63c35ded8c7974f5e6e8386f252a5b1717eda9d5ecaff92` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-blink-snr-5.csv.gz) | 58231 | `5ae0390d0f12fb80ac536c90c2108498070a631a42c6343107a4a8499a665cac` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-clean-clean.csv.gz) | 4717 | `a085863dc392f6e72a1731cd125b4e31aae0b31bcd998df60d4be76952e1a5fd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-lateral-snr+0.csv.gz) | 56827 | `54551a67d8b2acdfac247df905a749d251a4463ac415d43a5ea5385bdbf47d89` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-lateral-snr+5.csv.gz) | 32834 | `673278c07d8c3c257fa7a8b090b980f036cc08acb6388cfeb630c4f091561269` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-lateral-snr-5.csv.gz) | 62264 | `bc6cde1353c2606ac5e46d6e67386876df807cb9f31125e8df2bc1531da94b8d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-mixed-snr+0.csv.gz) | 56654 | `3a98ae083404f008f5eb0de543d8b750eac601a0ea4985eaacabedc15f1fd216` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-mixed-snr+5.csv.gz) | 43437 | `59a00943187175b00464ef341a877abd79f164693bf8d02af0d759875536229f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032309-000-mixed-snr-5.csv.gz) | 58123 | `f925b576921953d0132f093405c2f401976cb8b043bec6ccc5187db6f921b725` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-blink-snr+0.csv.gz) | 58084 | `ee83c0f4ad78adb68b5b7d1ffc937d3e8893b51ee5c9d56d995b3a6e8f95b6c0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-blink-snr+5.csv.gz) | 58217 | `cf1d5d85d49f827f65564e37acd5d06e7998190d80b0aa179610b961c3338f45` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-blink-snr-5.csv.gz) | 61740 | `5aa131dbcec758441b86cfe2b792077e813f492dce7c06ba61111a184b136f48` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-clean-clean.csv.gz) | 4716 | `7b3c10eaef286bfebc6f11bc2425148855d37613d152a0790d6fac63cf67aa23` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-lateral-snr+0.csv.gz) | 63196 | `b0412768e887320e2d88aea5c483d56a60725ba2bf1ccebe6912930288ded5dc` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-lateral-snr+5.csv.gz) | 58707 | `48faac3d83e01b91b581b10acf99920e2ea7ed603ec8b5ec4203a697bcbf243f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-lateral-snr-5.csv.gz) | 63266 | `24328ab1a6fe42af17e06dfaf92ff729c10b50541e1dd8537a6e34c37aa75c4e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-mixed-snr+0.csv.gz) | 58018 | `93f3c1d75abe565506e373b7e9ddad68499369f8d108c762ea422caf0fa8f6e2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-mixed-snr+5.csv.gz) | 58088 | `4918545d66c7b6f51b5c08f1bc21188c9a22301f99b7e36f6147fc694f7f9c5b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032310-000-mixed-snr-5.csv.gz) | 61920 | `fbb52b9aeb111c7e1ef004931b222c9c25e5cb2b55b1372bfa8809db9aa2a12c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-blink-snr+0.csv.gz) | 57517 | `23f0e0082c8cc8d608a3be878497cb9646d9fed8bcdba181aa2a4061889d7842` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-blink-snr+5.csv.gz) | 44233 | `41c0dbe5c7e6912ace896a3a7dcc5081a6ecaea437672c7849251399edfc7744` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-blink-snr-5.csv.gz) | 58399 | `5e21ad82da29e530e3d694824af8431f1746f1dcd17d3402f1c550dab6f08cd6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-clean-clean.csv.gz) | 4716 | `18c70289482131073e88204d2564c32c6e23e8cabbde389ae951b53413cb17c0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-lateral-snr+0.csv.gz) | 58435 | `dad0081b351aa642914fb88f04f6c92ad84a8cbebf7edb9b20f35b7200af6674` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-lateral-snr+5.csv.gz) | 58771 | `133be216893a869594377e2e1534b40788771a492a8fd8826b844a92c32ae7ac` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-lateral-snr-5.csv.gz) | 63609 | `a0fba9a942c1d717328f1b6cd4377270b89ab25184997b307b88add8dc35895f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-mixed-snr+0.csv.gz) | 57304 | `ced8eceb09f366f375ee35b770f9f5e7d75b8dc5562c5f57f083e05e01541d11` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-mixed-snr+5.csv.gz) | 44136 | `9f42314ddd84f5409c486a2100338dd90fe219274a3fabde3319f59b3ca83a36` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032312-000-mixed-snr-5.csv.gz) | 56873 | `6f4582b5a3f4ac6c130fbf2a6682b5d74f5905b8049145175c5a2d3838d8d54c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-blink-snr+0.csv.gz) | 61765 | `46686086f4b19654d84cdcef61c091ef33bf9ff92000fcadf0e076b88bdfcce6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-blink-snr+5.csv.gz) | 58643 | `44d04680922b3717f7052571871389a9fbdf01dee2343d40da2f9aa56e913897` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-blink-snr-5.csv.gz) | 63062 | `46a7507abdd84b5e815133516d251dc90031407fce2328348ef4301ddf715450` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-clean-clean.csv.gz) | 4716 | `d078da7ecb0392916cade5a53f402e564ab67749bfc37969f669100fc709fb14` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-lateral-snr+0.csv.gz) | 62120 | `5c98a34e62b2db413e94cca0fb2d02ceb3365faea7a9aa3ad77701e515e80501` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-lateral-snr+5.csv.gz) | 58244 | `b1a7153488084db69c0b699015f6cfc613dbfef9b4c058fd28e96abb7eff6ddd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-lateral-snr-5.csv.gz) | 62149 | `1425fad5ce2e3b4ffda0949aaa38b0e9e621d02450b3460934bf67f867d6c304` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-mixed-snr+0.csv.gz) | 61832 | `7239ff7f9862e54560b224ad6dc2e71b711ff426761517089c63fb6135211b9e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-mixed-snr+5.csv.gz) | 58370 | `e58d99a90b5119104ba14e1232b9f72c022fc23765f8b20723c161ee48e5159f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032313-000-mixed-snr-5.csv.gz) | 62175 | `9507e8d02e82b249f2348f2c21592c2324410620b9c69ba525ed3dc834e9f37f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-blink-snr+0.csv.gz) | 65475 | `f202561d9507e5b5d479170b6ef405a3c80ed5eaa76617bbbebd68ddc9d9e4e1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-blink-snr+5.csv.gz) | 65896 | `4d4cb5e2fdee3bcb6e42272ed96e6b1438692560d18fce7f38799b0fe2a5fde7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-blink-snr-5.csv.gz) | 69318 | `eeab0d4e91fc64b5234b22adabf6da42a361a5e1fef68d3bdfebe079144c9f8f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-clean-clean.csv.gz) | 4884 | `073d35ad634afa3dfe08d7ea2df737c8e65c84e2b1a8e739271142d69232eeb2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-lateral-snr+0.csv.gz) | 65374 | `b17617cefecf75a885ed8fdcceacdb6ab87e7762cf2283bca4e0f8dc6f85cfb6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-lateral-snr+5.csv.gz) | 65710 | `aeee379d309d8f8879dece6ceedd2a60b6a59a2c6de8715988ef2d243405209c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-lateral-snr-5.csv.gz) | 68939 | `cff3f48fc90bf342270e1738805fa469ebb42f7366235601b0408569da303457` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-mixed-snr+0.csv.gz) | 64797 | `65e4caf1d5d63c47fdf0a2d146cb9415451a98796dd3c1c0412007d48af31499` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-mixed-snr+5.csv.gz) | 65659 | `f33aa8d593c343dd1121e57b7d9a81c2259af60ff0e9413593e3fa5cb5e6675d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032314-000-mixed-snr-5.csv.gz) | 69485 | `5866473bfa405c56b3cf8aed30a95bcded55b83aa0f4be786a6521cd7129c301` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-blink-snr+0.csv.gz) | 65024 | `272e59c8535c8b7782321186b3d4e3d2f1df97840253d8fc0d9de4d9a9a680c4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-blink-snr+5.csv.gz) | 65763 | `85366d0b27082607bc0fbf35ddb3a035d1a3b19a0fbf346f59a2fdcdf2bc0793` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-blink-snr-5.csv.gz) | 69497 | `0b743ecd8f555dc6a895528255e89b0a4c908f8d2014b8acd2f55ef1c9ea82c2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-clean-clean.csv.gz) | 4884 | `b369d34cd1fba850706fb94290df9aacc94ba544e54d587130453c9f41f12456` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-lateral-snr+0.csv.gz) | 69134 | `fcf17a0401f862cce21763b8be2d6dbf069a01a75f7ebf0268bea3229075d260` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-lateral-snr+5.csv.gz) | 64684 | `f2e2fb7343bc813eb7530ee212dd8ac54e064650e099fc741006d9c066574e6b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-lateral-snr-5.csv.gz) | 69277 | `2021f80ab2ed6478f48c451fb420a8f2ce36b889d24cfc36f4a852e17e4765d7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-mixed-snr+0.csv.gz) | 65187 | `ceeed9ae692d9c640d0c31348db9ea019bf2bbef512e7ec3d19396214a38cd6b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-mixed-snr+5.csv.gz) | 64925 | `bf58aaa0ca262570aa8992d08253fccd28ad6a79f30e12e2232469b1f1a2d2c7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032315-000-mixed-snr-5.csv.gz) | 69388 | `bdb1d65d724ee81c2db45ff9e9020c2814f84330c85023dda1c1a97e98e7f8af` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-blink-snr+0.csv.gz) | 65097 | `3bef97b732a64b4e5d0247e0ea9bcfc26dd96ca32cef61e96a51dd1db66ef28c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-blink-snr+5.csv.gz) | 65878 | `6d414269eee6aeb91a9cae0fd6387a812c559da31dd4eb43ef106683f0d0ee20` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-blink-snr-5.csv.gz) | 69512 | `0febb9662eb263e15b8806e9af6b9d22cde3df8262f6d037829a547e0212e0ff` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-clean-clean.csv.gz) | 4884 | `c40cff2e2b169d9cf086ddf56511fe2ef4a1acd47be81531d977edae3cb1ea90` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-lateral-snr+0.csv.gz) | 64536 | `957b03f29ef2abc6d58a77a426326cc31bb0de29a3ad769d1c92707d1f1e93cb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-lateral-snr+5.csv.gz) | 65684 | `acdbe36287a532af504ada40716b6349ce396ef33695905e551dff4f1d661c69` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-lateral-snr-5.csv.gz) | 69258 | `afbbc8a763af0c010e8047dd97311a021ba661896ae737b7c76044e95d9ac90d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-mixed-snr+0.csv.gz) | 66106 | `fedc63aa1b73359736729cc6117fecaf473002933e90cca7a20853f0dced06fb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-mixed-snr+5.csv.gz) | 65963 | `16ec3d5a04439b0b2ddf38017ad5efc2dbb24fca5ec75414abcaf4b4da0cfa5e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032316-000-mixed-snr-5.csv.gz) | 69382 | `fc60ba389cfd06e606288f4535dbd3c4cae8748f6b50fd0042790f1d083189dc` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-blink-snr+0.csv.gz) | 65908 | `788c9a3d217618acfd64cd3fde29999d19c43953e110bcd3db0c9261f6654e42` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-blink-snr+5.csv.gz) | 65773 | `681ae09d3dae91860fd21900904ace95363b98f26ab8528addf209b985e6f682` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-blink-snr-5.csv.gz) | 65234 | `aea7e3a88048a8c8373393214d3c41c7302f2421f7ada7685be522f1055ae63f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-clean-clean.csv.gz) | 4886 | `5b30ff3bc43f6fbe9e7a623c2306801793db2470b8b455b2943978433ee28ebf` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-lateral-snr+0.csv.gz) | 64862 | `b0f2251c4bb97eb1d2c97f4954a231138d56097e353e9c4215f339da1b1fe0a1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-lateral-snr+5.csv.gz) | 65800 | `2f932e2e5700fe5c7d66a73526d32adbced65544416a9ddacb82bf69144c829d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-lateral-snr-5.csv.gz) | 69689 | `124671292fdae172edb273d6c275beb16b748803b8e960240c126a966e746ad5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-mixed-snr+0.csv.gz) | 65188 | `a215a3d4c1af71183e464297da7a8e92308bbc66404c4686954f88c4790e4696` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-mixed-snr+5.csv.gz) | 65657 | `799b0a8f4a9a975964c25c20ae2703ef407ac79138d9a7ba57306b59acd73fc4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032317-000-mixed-snr-5.csv.gz) | 64983 | `10d3bc712294d8700dbbef0cee94cb88bf2a091ee4c89ad5596afc75f5e8a13d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-blink-snr+0.csv.gz) | 65110 | `eab680f0379fe17517b3c8f457f0145060d8208cfebab82e2ca596bf807a8f52` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-blink-snr+5.csv.gz) | 65845 | `7fadadb95f6258d6dd8091bd951f229a22af2b1d0725e6a034af604a24c6f510` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-blink-snr-5.csv.gz) | 69310 | `a78dad73264c8757a02c503178f317b951e9fae94220d64ecd8ffc9344470387` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-clean-clean.csv.gz) | 4884 | `392251a5dc2eefa8588029ee0f8cb622ada3e50129efd8cf48e0365525d29ed1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-lateral-snr+0.csv.gz) | 65462 | `4422eb325c34efa09845cc616ccade37517c5ffc642306f54f0e2e7e3d64db70` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-lateral-snr+5.csv.gz) | 65804 | `718583514552b0dac10b7bfce1a672b43db0b22721e639ade80bb5173b6cd1cf` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-lateral-snr-5.csv.gz) | 69603 | `c9e5877f6f745e09411caac7085ec79d33d7b1c84430f8a85915efcd295839b4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-mixed-snr+0.csv.gz) | 64238 | `a624e3818797c60349ae7740b7615d89d180d582c65a3f6691c7f8dbee540e70` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-mixed-snr+5.csv.gz) | 65045 | `80362b31478df4e0e50616abd44e04aeb98954c2120fac2bcdb45445c54947e9` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032318-000-mixed-snr-5.csv.gz) | 69277 | `34147970b9c3ab6a3a6de2d832f3369c4c48e26e176d1eb3a71bb12704aa71c3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-blink-snr+0.csv.gz) | 64473 | `64a43ddf04ad7e57c130b29a20b71ce9bc936c66616ca6a881dccd20f35dffcf` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-blink-snr+5.csv.gz) | 48861 | `050cf0126a283b114a3b99510248dff28e7ace01c97a19c1e51e51d17e2d1cf9` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-blink-snr-5.csv.gz) | 69145 | `0d13849a3e9f1b08dd9e6bb73df0a3b93c06ff7272ae176805ce2c34574fc541` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-clean-clean.csv.gz) | 4884 | `5b2a1b5daa59b6a46284255bbbb1507b148b9822a841c070eb69d10e6456062e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-lateral-snr+0.csv.gz) | 64936 | `ea0cf71f7082e2b337bdc0df2dfe911594aacffffcfa8c8750f74817b063d4d7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-lateral-snr+5.csv.gz) | 65834 | `90f2bdca1d2cd33722325704e137a3551b4beefe1ed3689ee5aea7e10d66843c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-lateral-snr-5.csv.gz) | 69371 | `fcb720e555fcd06aa3ee771ccaf409cffcb21f35535671cacf3554fc07c7ea6d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-mixed-snr+0.csv.gz) | 62730 | `15321ec09af3633e55b333cd5716447c619b7822d3e12e0853396dcb214654ac` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-mixed-snr+5.csv.gz) | 48811 | `09e773e518af4415ce47837218884b4fbe7122e73779696ceba4350f26378dd4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032319-000-mixed-snr-5.csv.gz) | 69105 | `2703b75ea31f936ec6f5d08023f92294944bddb9e29425a491b8a1494db005d6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-blink-snr+0.csv.gz) | 58307 | `f7b5ec7c3711a323f81142ca340b2fa4bbc98f39f74cc851bd1ed493af3f10f8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-blink-snr+5.csv.gz) | 43967 | `2c8bbedb7b2651cd29868536bf10eb80276ae25c05b388b8825d937452ba04b4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-blink-snr-5.csv.gz) | 62885 | `60b75969ae28f6fc8613f2195ab85000c828e799a196d301023583a3153bbf76` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-clean-clean.csv.gz) | 4716 | `532d0f455d02f7c3a2349c3dc364f0df49fa15e6fc925020d772891ae35ea0db` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-lateral-snr+0.csv.gz) | 62709 | `1881494a31e0dda470b1bf139adbe34a29593d3f6a41042232234cfd0b336f73` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-lateral-snr+5.csv.gz) | 58863 | `50a9a3bed801cde986f9e83215b73c8fa9210e804760757cb915afba5b5a17cd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-lateral-snr-5.csv.gz) | 63294 | `747f5b9285eb034cd99b8d2132ce1fbf90ec0beecdc2cbc9f48ba6cd4b775804` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-mixed-snr+0.csv.gz) | 57007 | `d7d9103594086a15b17ab6b5e3a577c0f8ad84f445fdad953f741584c8d4c65a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-mixed-snr+5.csv.gz) | 43844 | `4db33232c397e3374794f8ce66ebe987b3df7b237cc852bd58d4b1dc2d7ff94a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032320-000-mixed-snr-5.csv.gz) | 61970 | `7d474ad58712d3fa971179c4e87f5c31fdcd7db3ea46f1becaa950e1c71b1454` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-blink-snr+0.csv.gz) | 64898 | `ed7226684f02a7695969e51a26e622a9817e17009a524cf6a8f34579a20e405b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-blink-snr+5.csv.gz) | 65886 | `75c05793c5e2b9b6015bb1dea9db66ad0008f12427cc2ff176080c88c6eeb678` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-blink-snr-5.csv.gz) | 69509 | `9688aacf1ce97baefdc2e071f8ec607bb5f5a3a744a494f9a1327b3e1260b58c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-clean-clean.csv.gz) | 4884 | `07409cdead4d522dd3a86010f2e34804a39dd264ebe9f0c5ce4c525c4ae0972d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-lateral-snr+0.csv.gz) | 65657 | `7abb68ae21efbd6f8f99c14d5a9c7d7dd6c81fa9812e91363408d015bc588ac6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-lateral-snr+5.csv.gz) | 65077 | `d82094aac6bc119a840c2cc88cd7dbc178cf5ad6552edb8f098d6a3172b26b09` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-lateral-snr-5.csv.gz) | 69259 | `fa8f2b9db937ceb556c8fdb60073879bb1cc29068e9a438c488675c92cdc7cca` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-mixed-snr+0.csv.gz) | 64597 | `ab386c4b2ff48919d09eb8811a04a6f9fdf0ac3ca8ee4aabd4b661a545d4dcf1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-mixed-snr+5.csv.gz) | 64104 | `eeb516f58df8afdcd9f9f42a88bdc472ed6ee7dc74c671f589beab0be3ccfef1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032321-000-mixed-snr-5.csv.gz) | 69211 | `6a1d9555e9f221bae330cd77886134e8afc52bc48a9e69cce0810941008e35ec` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-blink-snr+0.csv.gz) | 65932 | `1c60bd5237ac8c85719b71b514e4f9ca7d58dd5b79f5c3bdfb3c06e0e4c90470` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-blink-snr+5.csv.gz) | 65939 | `eaf1d2ef4a8a63d7af65bc5b88654b20ddaa409353250a86c23925ab5b1032e5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-blink-snr-5.csv.gz) | 69210 | `850cb0bf91d9675a43843bca040f956ebea91b3e0b7fb365262204f45a6150f3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-clean-clean.csv.gz) | 4885 | `20040450bf8bcb37fbf3e088c6970839e460d66c4a9205fbd85d62289d278686` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-lateral-snr+0.csv.gz) | 69143 | `e94fbeff0e35b3dea1374a2a092c6d30907d178e327ff36f29b0a813d8c5f1bf` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-lateral-snr+5.csv.gz) | 69021 | `f64f35e36466a578bb66ed0809fedad282776d4ae01857315b02dcabd83ddbd1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-lateral-snr-5.csv.gz) | 69496 | `d6316b5191b20bc484a3c51ea53892713af23237cb2d72fa7e43fc8972e80a0c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-mixed-snr+0.csv.gz) | 66146 | `628c51e4a4e047bae893ab9d3fb61c4f1008e293d753d4cc33e7387cafa1aee6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-mixed-snr+5.csv.gz) | 65939 | `217673acbbeb9315f8ab3ec2ab7aff36aa611ef41873f8689d3cbc95309a5a4f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032322-000-mixed-snr-5.csv.gz) | 69269 | `124f5c4f70dc356c99aac1777ab58516fe3ebddaab4279b6ba9a77584fd28de3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-blink-snr+0.csv.gz) | 62770 | `1f3fe31a946411e0af2a6ad75bc389776ad3c0cd9a2a4ee450586d17a147ed28` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-blink-snr+5.csv.gz) | 58161 | `ee2a6005e236a41b2fe71adcc87c3d614042a18ce606bcd07fd152725be0e0ae` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-blink-snr-5.csv.gz) | 62981 | `e543a5a0821dec891833e94ddba8106238b8627cc5f001d3f5712fb8055a14a6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-clean-clean.csv.gz) | 4715 | `a7f0834a6b3f53e694fbc0d3631b4d91c170b606f1819be67ada290bab98e02f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-lateral-snr+0.csv.gz) | 63231 | `455ae2f55894afbb1d92bfe88e3aebde528fa916549fa96c31d67651b7020484` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-lateral-snr+5.csv.gz) | 58012 | `00d0a97a33fab300ae917971ca1359a4b1b120353bd7ce346f147a18bc46d880` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-lateral-snr-5.csv.gz) | 62153 | `1be69430b051c192ba64742a6a44c506591734ad0c80ae6c86c8beecb1263509` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-mixed-snr+0.csv.gz) | 61920 | `ea17b0c7bbf8ca0382ab84a9582c5015241ffcf09c868946e6844d316dc08ae6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-mixed-snr+5.csv.gz) | 58558 | `7a1f80613bb864bbb4d45ae3ba9a066e36dd11f1bf1476fd99843579cf128d79` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032323-000-mixed-snr-5.csv.gz) | 62862 | `a6e35534f16544a10fa5a28461b345f6a9ae39faeaa71b75b3c6de64ee43cd5e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-blink-snr+0.csv.gz) | 64829 | `b623a41b771712508ad91832e1ad95bb16541aa8eda42cbee3dd92ebced61699` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-blink-snr+5.csv.gz) | 48738 | `0db60e80b417bcec56ce9a31548670e4f504cd7f0d4ed00f9b458f748b2622a8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-blink-snr-5.csv.gz) | 65002 | `fc57aca1b3dcd4065ecfc5187775646d9dcca48f774181ef6c4243e6af41eeeb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-clean-clean.csv.gz) | 4883 | `6215b9d60d6434273f04d729c2f9ceb1ce1403a9612262c657826cc8de700e89` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-lateral-snr+0.csv.gz) | 65766 | `6dd40f64091cb91e7f7ff541ea803c62677aaee9f842a60e431554322ed80757` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-lateral-snr+5.csv.gz) | 65198 | `4e0e7f3515edd14d0a6020a3e091cce4a5b740ca3cbbac5edcdc7efdd0317d34` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-lateral-snr-5.csv.gz) | 69353 | `e3e5a76b6b10c6ab3feec113236987bbc160668672ef7a58b673d92c71eeb4ef` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-mixed-snr+0.csv.gz) | 64321 | `101c2bd33d119d1f773accc0921b6d562273dc4fe33099f67058b8d5ca27e559` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-mixed-snr+5.csv.gz) | 48454 | `7ea63fbcf4090349f3f887f9c7b5a02ab25b6b12af56195da2e8eed328865cbb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032324-000-mixed-snr-5.csv.gz) | 64519 | `4735e321c6bc9a2ebbfbc8f94eb09877d00c05854898f02c9832045a615ddc8b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-blink-snr+0.csv.gz) | 65547 | `41c7db5c3b7db320a2e6b65e5d16b2f1c4d28c851a4ad98b83fc026abc83f72f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-blink-snr+5.csv.gz) | 48928 | `a49077cce27ed8cede5d4dd91950f81545f8545e07c278f8b1081158cfe9e21c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-blink-snr-5.csv.gz) | 90982 | `531e17792965c4b2f3f55f2cb5932666a3d65f11aa9d64ee86d2a801086b8284` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-clean-clean.csv.gz) | 4886 | `3cdeda52440e860906b283321f58346381e216ad87179c8c3e29f3c067e83dde` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-lateral-snr+0.csv.gz) | 69162 | `e545baa3d30b34a8f17a0b63ef9539de33746456946824207546e0c876ee351d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-lateral-snr+5.csv.gz) | 65072 | `aa371da78e8bf5839739871a8209531a3b83f4923cca8c0d1c25119a376aef62` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-lateral-snr-5.csv.gz) | 69392 | `e870012b38128659c246eafaf82c0f7f4d607be9b254bcc9e1f9d000d30b472c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-mixed-snr+0.csv.gz) | 64951 | `3ffa8c3bc1245faf0946fe14edba014e2605de60c9714b214d5e4a7d14e9906d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-mixed-snr+5.csv.gz) | 48764 | `eb3589c40e8bf322dca90d7232cefa56993be5c505d416baa15c50da4bef4247` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032325-000-mixed-snr-5.csv.gz) | 65396 | `73ca1a0cef7303f00471558d312aa5258f78146e8c1c07ffa440539ceb5b31c9` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-blink-snr+0.csv.gz) | 64880 | `055a289efea7bad71c1811dc2fb353cda3a190ba412ff2953195c084f4e448ee` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-blink-snr+5.csv.gz) | 48780 | `061a280d4519494c8ccac31f29c22755e65e3ad5dfbf294d22af798d48771c5b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-blink-snr-5.csv.gz) | 65790 | `8746c0ec9315e72332d4b873aa881f903ecbd14463d704608f0577106e12b462` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-clean-clean.csv.gz) | 4885 | `2bf08d532d88220182ff3055df33417241d4a5ef977adb8f3dc035afcd6548b7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-lateral-snr+0.csv.gz) | 69205 | `0491803fa95a4a8d5c68d69c1e8a53d60dc25b635843d6615cac457251bd081b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-lateral-snr+5.csv.gz) | 65892 | `29b6fa1aa7dfdb93b98fc432e6d056454391b0f209cc0232d825e331e1a65c7a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-lateral-snr-5.csv.gz) | 69431 | `277b31637afcce8b8f8a6836b12c0ac8dacc571f819ba6ff110f42a92744d4e1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-mixed-snr+0.csv.gz) | 64333 | `559a9b204104a8bbbedfe4e08ae7d550831391dc9219c70917a2fb3b7567c735` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-mixed-snr+5.csv.gz) | 48847 | `dba092b1bb28053fe96763a9263359d8492743edac4e1ecaa13c0203072b74cb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032326-000-mixed-snr-5.csv.gz) | 64889 | `6798005e744100ecdea735562ac44ecbb8f6dfbe4b9ba8e0e8e27350f473a97c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-blink-snr+0.csv.gz) | 69650 | `4eecab9d5f922393d2436cd49e211a417709370e059b792b2ea453f8b9ffe6bd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-blink-snr+5.csv.gz) | 65765 | `2d8a131970e75692bc6a5fde8be62f468a8218dc6465fb5b9af0dabb36c0361b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-blink-snr-5.csv.gz) | 69520 | `b49c8192e508bcc45e74e442b6643125adb36a4e969dcae3c8009b1367af58b8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-clean-clean.csv.gz) | 4884 | `b9f9b293c248f6d7d497273fbc61bbd7ff8882c4c35b39a351449e7677a6aba8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-lateral-snr+0.csv.gz) | 64829 | `345c15c68c464b622315500df4e160ac83d96a0393294da722e650bc8fc6d246` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-lateral-snr+5.csv.gz) | 64844 | `83d661203085e5c5ce71a4e87ed6419bd9c42de8dd91d1c9b91a2736a5287c9d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-lateral-snr-5.csv.gz) | 69225 | `ddd778893ea40620f5e7395f96297fb24aa508fecd968445dbb974706202987c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-mixed-snr+0.csv.gz) | 69491 | `5c09bf742ba9212e35f911702d0de0d88829f17ef7a99ae5ced22ec114084725` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-mixed-snr+5.csv.gz) | 64909 | `df321fb145a4058f0e292fd0eeaacd3f0b282b53d233615d1b1a77b681ec8212` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032327-000-mixed-snr-5.csv.gz) | 69701 | `0c6db4685867731aa1c208269ebf515c1c3c59842d7e830692d471b424b4ead9` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-blink-snr+0.csv.gz) | 64849 | `ca4352f11e8dbce6b6403ff11969d6252d24335b44dd77333f0bd9d2c790ddfa` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-blink-snr+5.csv.gz) | 48869 | `89f313bc954546473bcbc7517d9954419f68c37647d06e4acfe3df8d34fbbc5a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-blink-snr-5.csv.gz) | 65037 | `6683c752982ae91691c36733e7bf5661c1f9b96151ca53c335dd48b37dcb64c5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-clean-clean.csv.gz) | 4884 | `0f9390fee633849720758275dc408fc6a6dc32c9c390f5ef41cbc8ee1c3a7c4c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-lateral-snr+0.csv.gz) | 69310 | `e87e7db2c1d26a57d05340a71976736f406660413078997f02e343a8f01533fd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-lateral-snr+5.csv.gz) | 65415 | `53481407d03a03d703ee16f1f3b4c003662d253996d6cb0e85cfac6db7968d68` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-lateral-snr-5.csv.gz) | 69480 | `803a98eda858733430526400a6ceb443149255d39dede45d1acf17d2529a53c0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-mixed-snr+0.csv.gz) | 64798 | `65d1c45fb080f7198d492c181e60919fe63fb2c91fef66c7170b6ecf6d78ad3b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-mixed-snr+5.csv.gz) | 49027 | `425a1b7df06916d388b3cd4a5025ab124aae3f07045a8fa80d6ac100e965a8b9` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032328-000-mixed-snr-5.csv.gz) | 65391 | `203d1fdb5cc5fa22666c134f0fa152df2f9eb2e75a79ae0645c67bce2db4a578` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-blink-snr+0.csv.gz) | 61876 | `be6ff8ebff95c44337914ed65c015ee9a2f13811369f52e001319ca87a246135` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-blink-snr+5.csv.gz) | 44398 | `d482361217434f254831b267b8df0990234e6d8729dbbc110731f3253ea53ec8` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-blink-snr-5.csv.gz) | 63248 | `375c3ed3a1728d455a5a0f7389051b5e501254ce070d9b8cee5657aab27d7cfc` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-clean-clean.csv.gz) | 4716 | `4b85225a317015cf365724528580c778acd3a0bad3d4637b500e3fd23fdf2909` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-lateral-snr+0.csv.gz) | 62304 | `05a028029026668e55a95680899645d7df57db0c20273835437e4d97de078fdb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-lateral-snr+5.csv.gz) | 44925 | `5c7e94a3fe81570e9f30fa574249b5e750c57ae8b1364d83db6a385b1c627656` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-lateral-snr-5.csv.gz) | 62460 | `4a6d2c59ef3e2c763724d640a2cf670a12e88e1f282367bd0878ae2abd0c302b` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-mixed-snr+0.csv.gz) | 61773 | `6d3883c0afd445076b4bb72c398cec441a667ab7476d67237090277e6c22602f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-mixed-snr+5.csv.gz) | 43383 | `872f6e80d0696cf8d5127b24770100fac4ca4e661ca0713230669913da7b9741` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032329-000-mixed-snr-5.csv.gz) | 63087 | `3b8540bec9edd46597c3d3c9d2f538a6abe16b496caa4e61207aab21d1d40109` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-blink-snr+0.csv.gz) | 64685 | `28e85a22ba093ae3977015c64a50838f7fa8ecfd6e13ed19eccba5ef5176a5a0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-blink-snr+5.csv.gz) | 48901 | `02a24a57af3f2feae6135509f55223734522d7153d3252f380aabfd862eaf2e4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-blink-snr-5.csv.gz) | 65000 | `5e9979008ecab6ae950646af29c5dd298e29e77ec0a439f72a625fa324950b00` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-clean-clean.csv.gz) | 4884 | `d7e0f7d6a9fb444c75c2fe20505c5e110b675fbb3a65bedb638a5b7aee84e9db` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-lateral-snr+0.csv.gz) | 65853 | `e859bc8ffd0adc4c836a397dbc886fb0bf72bf99dcf0a081151bce2dda2364a2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-lateral-snr+5.csv.gz) | 65778 | `6ad912c78a1ccda7263483e60f6582d2c79e97c833fcbc9ffb9219adf40188b6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-lateral-snr-5.csv.gz) | 69411 | `807fb9a8b5411e9632424e2cef38e51faf7809dc14fa1a5e86870dcc2a23b7c7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-mixed-snr+0.csv.gz) | 64524 | `3f8645950e64722c8b41581bee5b8d221e8f052beccc8c94fd7b46689fddd015` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-mixed-snr+5.csv.gz) | 48855 | `658e95451aab649faa029f9cdf2565f4c5218ca6b8b91f405072ad3496823d26` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032330-000-mixed-snr-5.csv.gz) | 64945 | `2982ad51025c0d76505ce92e4bc56e5093f1a36a956633baf8000ac4509ac14d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-blink-snr+0.csv.gz) | 65211 | `7ed51e5ea85b828c453e9fb0882a7f6b0ed06e70d19e25b08d8c96e5da3d12c4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-blink-snr+5.csv.gz) | 48881 | `417c95d132ed30eebf13650e95794aeb979cdec8a24c9154cf118673a72a325a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-blink-snr-5.csv.gz) | 69284 | `f10e48a6f8af97c9b9693ff9919739a1e55bb6b721b199d7169f8c868701526e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-clean-clean.csv.gz) | 4884 | `251447b57b6dcf65c47ec92e13ae40069aad1850774acf02c40265297394f880` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-lateral-snr+0.csv.gz) | 68868 | `5f07743cde4d28e8a658d5000094454edca5b0e45893b7cdb78f6e79141e2bbd` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-lateral-snr+5.csv.gz) | 65118 | `2952e7ebb22100afd5e31283612ceddd001c40ec209056ac8dfb2e2295133d21` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-lateral-snr-5.csv.gz) | 69261 | `01d840be9d89f4a4f611da6fc91d6086049dc540758a980c804b6943e5c610fc` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-mixed-snr+0.csv.gz) | 64815 | `f65d8faae831610381b5c36136ef7a2b7cd737fb78a1b743d497ccfadf9fe0c6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-mixed-snr+5.csv.gz) | 48895 | `2f5fe89de65dec5453f0d1a5916fc02812a8c5e8be241970eceefae0bf747041` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032331-000-mixed-snr-5.csv.gz) | 69265 | `3ab0011f894831b44df268c7e1b254b7581eeecd32b8321ad1a96fb7dfe83438` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-blink-snr+0.csv.gz) | 65777 | `b1e36cacabc042bc098439a29046e1ceae9b47272319ad393b987a1439eb1092` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-blink-snr+5.csv.gz) | 65299 | `9cce2dec62689534df52b76923e84f36a216866b53d46bc2c8fdb1f249a4ef29` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-blink-snr-5.csv.gz) | 69584 | `bc95f45abc755a7f3c4506b9bee89d6aec74e8e67b2fd5e0b8beb4891fe34e48` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-clean-clean.csv.gz) | 4886 | `3ed2dc2c14d9810858795b93e92f028fe9e894c76ed41b53afcacbbe5e6d4f74` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-lateral-snr+0.csv.gz) | 69462 | `d41335bc036e1756dd092791ca42324c7fba6ed61474e71d6bdfdbaf6a8eb358` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-lateral-snr+5.csv.gz) | 65984 | `69e38157cb5656c3b22295decaaf44e6a9127913d2f10b4d4354b9b47adc39d0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-lateral-snr-5.csv.gz) | 69588 | `047ddfa7375cc9e04e8c90c678fb3a9f4f584594e9e39c8f9f31d85f8736e8c0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-mixed-snr+0.csv.gz) | 65084 | `5d0d8f8b15495aceb711df21e623dbc7274a9b86ec13bcc953b86e3ff504c533` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-mixed-snr+5.csv.gz) | 65745 | `25289233bef4795b0af1c0e5f8467bcd51ca9ab4872341d4d07efd4f8588b52a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032334-000-mixed-snr-5.csv.gz) | 69483 | `5d680799c71ba1e76419f2bd99246d75732b9a042cf5569493fd5ac276b07daa` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-blink-snr+0.csv.gz) | 57851 | `0cc644521eab81d411a347c797baaf756e07a77dbee60554523af10be25b0156` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-blink-snr+5.csv.gz) | 44440 | `febf3a3527e0bdb81fed101889becaf897495fb2b25f942e10929713e10ad6ca` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-blink-snr-5.csv.gz) | 63177 | `8415adf5ab3ae73028246b3ad7f7bb7293383d49a87089ef85f60d263506b603` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-clean-clean.csv.gz) | 4716 | `577db62c706722bf62baee9572779040ca42278aba22b51d8adc51e59ba8e8c5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-lateral-snr+0.csv.gz) | 63378 | `ddc2f1f8caf4f2a199e2694c6aa7ff303954055adf268a3f45f81a8695d0479c` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-lateral-snr+5.csv.gz) | 59090 | `8efa0c0955f34f74d1cfa45a409eead27d099381434ee1fb61d771f6e75f3487` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-lateral-snr-5.csv.gz) | 63432 | `e86fdb58c397080cb075ee8c453059d7dce127d963937ed4af71196c95c38682` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-mixed-snr+0.csv.gz) | 56916 | `7d30572f2c78f90376a393971d1af2f227177543078c1a375788bc4e841eace2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-mixed-snr+5.csv.gz) | 58348 | `ea19dadd6a2a8e23598745539c70e5ee943b2dee5397fb6fa6c5a4ceed51e15d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032336-000-mixed-snr-5.csv.gz) | 62060 | `121a79ba1845c7f771f48860c16f5837da370f13647a8e85cf19c0425a3dacbf` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-blink-snr+0.csv.gz) | 58365 | `008ab596ad1319ee3f851105087cc7f796dc7abe422c9ed1ef120a28a1e2c978` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-blink-snr+5.csv.gz) | 44325 | `9e2917d2e93321130d7d198c1330d0418ed550766150b9cde0f4aefaf07ba722` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-blink-snr-5.csv.gz) | 58549 | `8ad25f72b82445f7fa2b31bea2a5934354ca85fe8ac17785efa95206c4f408ca` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-clean-clean.csv.gz) | 4716 | `1a85e6718aed83a293e854d11655e50c1e0485f98e2e14ffc84afaa6e46b1b5f` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-lateral-snr+0.csv.gz) | 63185 | `b02baefbf72a5faf2dd6b3e24e12f113f0a21cc6af51f24dd127b5defc43a331` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-lateral-snr+5.csv.gz) | 59045 | `2872890bcbaf9ba29b5d031f08849aa8e463da94a12468a7a9403ad075e07f8a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-lateral-snr-5.csv.gz) | 62057 | `2a9f012cdeb687a5fa7527b9fc0cd00a2b2359d645b34119e20f3f04fcabc8ce` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-mixed-snr+0.csv.gz) | 58320 | `a176df43e60f6ff231cef95401df5b268ebc27833b314b6c07da44358b757539` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-mixed-snr+5.csv.gz) | 44041 | `de0ffab4f98750154020ef9231cff72866af15df5b0d0b008a2cfe84af4ab64d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032338-000-mixed-snr-5.csv.gz) | 87314 | `f50a265518e297833823c4363bed5ca42db2bc5f99302baf53110ab28e7a70e2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-blink-snr+0.csv.gz) | 62570 | `f434c3fb79326f9aafd2162282a5cf0c2e67fe220c58e9e9065e17bc58636457` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-blink-snr+5.csv.gz) | 58292 | `2d49eff593602319075ebf962661d8615daff8a8e22f93963560146656d0dfc7` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-blink-snr-5.csv.gz) | 62579 | `cddfd0d1aaf8878530a31de0ad432eb4dc36f6a359a76a19690f6d24001f3bee` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-clean-clean.csv.gz) | 4717 | `8636208a67ef05c45fca5d76d9f3b6c2754a2b89d67b13731214677008f793e6` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-lateral-snr+0.csv.gz) | 62078 | `40e5df4d05ab05a0322c9026fb3027760af0e9370306ed49055409fc41b303b9` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-lateral-snr+5.csv.gz) | 58144 | `0c227a7e5c61bb2ca1f8b605c479fe32dce6216adb687692491d4d759c41c965` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-lateral-snr-5.csv.gz) | 61485 | `964fe2205fe9b3fc7f36a37de63f76f420e0b04c2e5bee2390988d4a36bfeab3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-mixed-snr+0.csv.gz) | 62043 | `b19bdf64ef0f365b8efe0b42b5a29ab298c86e01e29d50935d9886044c579622` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-mixed-snr+5.csv.gz) | 57748 | `a7a63346b30960f3ed66c3ab5fa895ee9406ca797b5d79197209960ee5fbfec3` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032339-000-mixed-snr-5.csv.gz) | 62659 | `0d880015328aca99a22cfa385c5117c0f0eb7757ad05b93b52515c5905b73281` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-blink-snr+0.csv.gz) | 57914 | `8facdff9ce8ce4697b7497c7fd4a3044a6b9d538ab8c76e7b73556b00fd8e830` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-blink-snr+5.csv.gz) | 57652 | `d0064c22ec5656229613843e9de7c5e70bdb1c6c8602e3f2cee3914cd1616e36` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-blink-snr-5.csv.gz) | 63250 | `8691939cdf8c99aed1408083ad44ef7ba8945e76d900f55a95cf38c796bbb2e2` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-clean-clean.csv.gz) | 4716 | `a84dad58ccc58f89410d6d2baf992cc04653ac5ef774cbc7d48e1a2c5df037a1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-lateral-snr+0.csv.gz) | 63359 | `8dfa30d87de288773f162d537c1e9c8615cfc29f88c1803088e28733936ca5d4` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-lateral-snr+5.csv.gz) | 58799 | `7badbc73a6d779719cbd1630177da8aa3f15b82139011b52a42f683927d4ee15` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-lateral-snr-5.csv.gz) | 63571 | `7415a93e10923d1952e4eaca071f23d4015ba6e965032fae13f9b0a1d07d11b0` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-mixed-snr+0.csv.gz) | 57735 | `e683eb204f09a4fa3b22a90e511036cc2e4c6ee1b9580a3eb143238f01b80fd9` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-mixed-snr+5.csv.gz) | 57614 | `7087ac43ff0602e2ba6f8925031f982e68cf031bb544cd2725b642959fe8f376` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032340-000-mixed-snr-5.csv.gz) | 63322 | `3e563d03b8612f74725c0b5aa9033a8b66a67e0dde5ccbd31c6b23f95e1ebef1` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-blink-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-blink-snr+0.csv.gz) | 64707 | `92ac220e6bac5a59521f68caae8ee2de0167b55a2fa814d86fdf212fdb5bd964` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-blink-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-blink-snr+5.csv.gz) | 48852 | `8677821b6cdbcb509c8dea73b517bd53c2955d692daff3680c2eae66d27cc58d` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-blink-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-blink-snr-5.csv.gz) | 64766 | `332301014a0a7e8eb50a7790f58e80cec7dcfd04b0f46514a70211cd130fb5de` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-clean-clean.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-clean-clean.csv.gz) | 4884 | `6dcd85a460a6fa75a487f73ced884a5256cd69ad739d43ba6d5a7e2e410a6da5` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-lateral-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-lateral-snr+0.csv.gz) | 65268 | `8a655dcc0763b23da526f8bbaeb505ced2773abe6b1b27596b4e8bda1e194147` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-lateral-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-lateral-snr+5.csv.gz) | 66100 | `3efd4b407d3ad7de52833fb75dcdadb10064e49b0fbb11b07fcffb53cbeea88e` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-lateral-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-lateral-snr-5.csv.gz) | 69353 | `f3e860e6e5c28e1b90ff4a5d62c39ed48340d004f4918b61b6d55ce5ef09876a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-mixed-snr+0.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-mixed-snr+0.csv.gz) | 62872 | `e05f63b4355c25d2d74d71a09ca06a19580e784515a9113454e4a3094d2d4525` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-mixed-snr+5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-mixed-snr+5.csv.gz) | 48863 | `939b4ebbd0f086ffce618e3d208bf9c9929e419aed9f2273bacd0c77d86514eb` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-mixed-snr-5.csv.gz](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_shards/sub-032341-000-mixed-snr-5.csv.gz) | 64773 | `8263cef22fda20c0c595b9863e6239da11ab2549d649c39bd60bcd4f30a6515a` |
+| [results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/tests.txt](results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/tests.txt) | 2591 | `d2f41c3800caf52bba73a0270e621271b98f715a9e8ee4e856a4505bfd3072d6` |
 | [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_coverage_audit.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_coverage_audit.csv) | 771208 | `395b52caef9040446ed90c31fb6fa85abd2c00874d64c3ad3e5de92b3bdd510e` |
 | [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_pooled_example_scores.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_pooled_example_scores.csv) | 4790871 | `31366dd6e431058b5e6ac8674be3a5314bb502a8b839763efe37b49aa824eba0` |
 | [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_pooled_method_means.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_pooled_method_means.csv) | 6991 | `7adb5fdd8beaabeb7e5116508e560e62453a6357f5724d643ba26f85102ae6eb` |
@@ -59607,6 +63559,9 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_selection_manifest.jsonl](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/regional_selection_manifest.jsonl) | 24406 | `b1c5a9d47aa0d0d55504e9a57b156dd36fe9fcc963134dce115cba707847ab27` |
 | [results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/tests.txt](results/vmd-regional-integration-20261012/regional-pilot-001/results/vmd-regional-integration-20261012/regional-pilot-001/tests.txt) | 2557 | `a6b35bc8d1cd7347e7517caddddfbe0cbd85cba5d5e8f60af3e24136dff669bc` |
 | [results/vmd-regional-integration-20261012/regional-pilot-001/watch_events.jsonl](results/vmd-regional-integration-20261012/regional-pilot-001/watch_events.jsonl) | 532 | `f1899284bd76ee0ce751c86290b56a22fb2d7d0f22df41f030c5781e6b7906e7` |
+| [results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/source_probe_completed.jsonl](results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/source_probe_completed.jsonl) | 1382 | `41d929c6b8d259ea537221ea1183f9ecb53aad006acdf5d845487143a5dcca71` |
+| [results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/source_probe_selection.jsonl](results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/source_probe_selection.jsonl) | 4323 | `2fff618cd3b9a3fce823fc27beeada37459f93ea8f2ab49760905bf15a959c66` |
+| [results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/tests.txt](results/vmd-regional-validation-20261014/reference-source-audit-001/results/vmd-regional-validation-20261014/reference-source-audit-001/tests.txt) | 2591 | `4626606eaacf1628f13fc95536667ad099e360f4eb5b0f620ec4005b67e673e3` |
 
 ## Appendix D. Verbatim record/participant/condition tables
 
@@ -66702,6 +70657,681 @@ study01_p03_prep,raw_trial_or,1.3417516846060713,0.21597614013333455,0.405164694
 study01_p03_prep,raw_trial_separate,1.141996543430456,0.1814398178420985,0.24926601284516192,0.09311543259462456,0.10966209468170211
 study01_p03_prep,vmd_trial_or,1.1411075296197946,0.18201443588541816,0.36179216806662196,0.14512701696236843,0.12290258783160679
 study01_p03_prep,vmd_trial_separate,0.983233999484048,0.15450310175797857,0.22115403274951922,0.0823552038025125,0.10274335572337519
+
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,ridge_direct:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.9499240011834773e-13,9.021945677641365e-14,6.213726172223074e-13,498,498,False
+whole,ridge_direct:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007227056803968834,0.0021873403542381517,0.012141678872015841,498,498,False
+whole,ridge_direct:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0016890608687639306,-0.002925134669906432,-0.0004937889510440007,498,498,False
+whole,ridge_direct:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.24337842259686449,-0.516659013718717,0.043339157145407474,498,498,False
+whole,ridge_direct:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.2433784225968645,-0.516659013718717,0.043339157145407474,498,498,False
+frontal,ridge_direct:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.2976505361146253e-12,3.9954954670467177e-13,2.7645006460449237e-12,498,498,False
+frontal,ridge_direct:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03186944815682968,0.009591648491324812,0.05300961225825535,498,498,False
+frontal,ridge_direct:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00744147678203266,-0.012689505874520644,-0.0021597315036702546,498,498,False
+frontal,ridge_direct:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327374,498,498,False
+frontal,ridge_direct:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327368,498,498,False
+posterior,ridge_direct:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,ridge_direct:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,ridge_direct:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,ridge_direct:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,ridge_direct:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,ridge_direct:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,ridge_direct:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,ridge_direct:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,ridge_direct:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,ridge_direct:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+whole,cca_reference_rank2:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.0284481727467389e-12,4.4525403576488664e-13,1.7966554773512374e-12,498,498,False
+whole,cca_reference_rank2:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03817268470404653,0.02008610075488798,0.0587023467007864,498,498,False
+whole,cca_reference_rank2:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.008104029741291397,-0.013297989735472946,-0.0037271537772688933,498,498,False
+whole,cca_reference_rank2:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.9435218635100875,-2.994065440564534,-1.0769754695986717,498,498,False
+whole,cca_reference_rank2:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.9435218635100875,-2.994065440564534,-1.076975469598672,498,498,False
+frontal,cca_reference_rank2:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.2976505361146253e-12,3.9954954670467177e-13,2.7645006460449237e-12,498,498,False
+frontal,cca_reference_rank2:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03186944815682968,0.009591648491324812,0.05300961225825535,498,498,False
+frontal,cca_reference_rank2:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00744147678203266,-0.012689505874520644,-0.0021597315036702546,498,498,False
+frontal,cca_reference_rank2:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327374,498,498,False
+frontal,cca_reference_rank2:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327368,498,498,False
+posterior,cca_reference_rank2:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.995096686654149e-13,1.307813077682936e-13,1.3662082356376825e-12,498,498,False
+posterior,cca_reference_rank2:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.01846403419400517,0.004807824276890672,0.03593284484500592,498,498,False
+posterior,cca_reference_rank2:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.003578393378607949,-0.007628229024168393,2.0656575011191216e-05,498,498,False
+posterior,cca_reference_rank2:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9181833601774921,-1.7391198896006126,-0.3385455527667808,498,498,False
+posterior,cca_reference_rank2:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9181833601774921,-1.7391198896006124,-0.3385455527667808,498,498,False
+central_shared,cca_reference_rank2:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1245306592882348e-12,3.374975880980561e-13,2.122362771696324e-12,498,498,False
+central_shared,cca_reference_rank2:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.055283230995007,0.028679519398937377,0.08725612804235792,498,498,False
+central_shared,cca_reference_rank2:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.011649815393043125,-0.020293949232226802,-0.004862001017366412,498,498,False
+central_shared,cca_reference_rank2:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.097895699610837,-4.568197015342031,-1.6927198583942729,498,498,False
+central_shared,cca_reference_rank2:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.0978956996108367,-4.568197015342031,-1.6927198583942729,498,498,False
+whole,reference_rank2_control:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.661693998922925e-12,8.349309950448809e-13,2.689637527490399e-12,498,498,False
+whole,reference_rank2_control:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.058362938856785965,0.034998266168934145,0.08134072972912484,498,498,False
+whole,reference_rank2_control:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.013543880864925993,-0.019355403971013777,-0.007018643775720488,498,498,False
+whole,reference_rank2_control:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.6214036529680564,-3.67997279724562,-1.6487427077620633,498,498,False
+whole,reference_rank2_control:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.6214036529680564,-3.67997279724562,-1.6487427077620633,498,498,False
+frontal,reference_rank2_control:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.2976505361146253e-12,3.9954954670467177e-13,2.7645006460449237e-12,498,498,False
+frontal,reference_rank2_control:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03186944815682968,0.009591648491324812,0.05300961225825535,498,498,False
+frontal,reference_rank2_control:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00744147678203266,-0.012689505874520644,-0.0021597315036702546,498,498,False
+frontal,reference_rank2_control:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327374,498,498,False
+frontal,reference_rank2_control:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327368,498,498,False
+posterior,reference_rank2_control:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1849629961971106e-12,4.238155308580582e-13,2.149993931268456e-12,498,498,False
+posterior,reference_rank2_control:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.028038540963903163,0.014019352458871858,0.04515880120657606,498,498,False
+posterior,reference_rank2_control:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.006193824225950082,-0.010603356114667695,-0.0024270400172729852,498,498,False
+posterior,reference_rank2_control:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.254518739789198,-2.0607863714108667,-0.6613711718239144,498,498,False
+posterior,reference_rank2_control:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.254518739789198,-2.0607863714108667,-0.6613711718239144,498,498,False
+central_shared,reference_rank2_control:both,raw_frontal+ridge_direct,mse,lower_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.1789769922846255e-12,1.0432618178676428e-12,3.5969406171149672e-12,498,498,False
+central_shared,reference_rank2_control:both,raw_frontal+ridge_direct,rrmse_time,lower_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0930731247622867,0.05529705943395011,0.13319488529850054,498,498,False
+central_shared,reference_rank2_control:both,raw_frontal+ridge_direct,pearson_cc,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.021804129288657877,-0.03186770344390944,-0.011181713979155886,498,498,False
+central_shared,reference_rank2_control:both,raw_frontal+ridge_direct,snr_energy_db,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.357357282784937,-6.138737330779145,-2.7411687446356656,498,498,False
+central_shared,reference_rank2_control:both,raw_frontal+ridge_direct,snr_improvement_db,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.357357282784937,-6.138737330779144,-2.7411687446356656,498,498,False
+
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_cca_reference_rank2/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,mse,lower_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.9499240011834773e-13,9.021945677641365e-14,6.213726172223074e-13,498,498,False
+whole,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,rrmse_time,lower_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007227056803968834,0.0021873403542381517,0.012141678872015841,498,498,False
+whole,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,pearson_cc,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0016890608687639306,-0.002925134669906432,-0.0004937889510440007,498,498,False
+whole,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,snr_energy_db,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.24337842259686449,-0.516659013718717,0.043339157145407474,498,498,False
+whole,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.2433784225968645,-0.516659013718717,0.043339157145407474,498,498,False
+frontal,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,mse,lower_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.2976505361146253e-12,3.9954954670467177e-13,2.7645006460449237e-12,498,498,False
+frontal,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,rrmse_time,lower_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03186944815682968,0.009591648491324812,0.05300961225825535,498,498,False
+frontal,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,pearson_cc,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00744147678203266,-0.012689505874520644,-0.0021597315036702546,498,498,False
+frontal,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,snr_energy_db,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327374,498,498,False
+frontal,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327368,498,498,False
+posterior,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,mse,lower_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,rrmse_time,lower_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,pearson_cc,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,snr_energy_db,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,mse,lower_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,rrmse_time,lower_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,pearson_cc,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,snr_energy_db,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,cca_reference_rank2:both,raw_frontal+cca_reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/matched_frontend_reference_rank2_control/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,reference_rank2_control:both,raw_frontal+reference_rank2_control,mse,lower_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.9499240011834773e-13,9.021945677641365e-14,6.213726172223074e-13,498,498,False
+whole,reference_rank2_control:both,raw_frontal+reference_rank2_control,rrmse_time,lower_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007227056803968834,0.0021873403542381517,0.012141678872015841,498,498,False
+whole,reference_rank2_control:both,raw_frontal+reference_rank2_control,pearson_cc,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0016890608687639306,-0.002925134669906432,-0.0004937889510440007,498,498,False
+whole,reference_rank2_control:both,raw_frontal+reference_rank2_control,snr_energy_db,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.24337842259686449,-0.516659013718717,0.043339157145407474,498,498,False
+whole,reference_rank2_control:both,raw_frontal+reference_rank2_control,snr_improvement_db,higher_is_better,available,,32,5,170,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.2433784225968645,-0.516659013718717,0.043339157145407474,498,498,False
+frontal,reference_rank2_control:both,raw_frontal+reference_rank2_control,mse,lower_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.2976505361146253e-12,3.9954954670467177e-13,2.7645006460449237e-12,498,498,False
+frontal,reference_rank2_control:both,raw_frontal+reference_rank2_control,rrmse_time,lower_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03186944815682968,0.009591648491324812,0.05300961225825535,498,498,False
+frontal,reference_rank2_control:both,raw_frontal+reference_rank2_control,pearson_cc,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00744147678203266,-0.012689505874520644,-0.0021597315036702546,498,498,False
+frontal,reference_rank2_control:both,raw_frontal+reference_rank2_control,snr_energy_db,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327374,498,498,False
+frontal,reference_rank2_control:both,raw_frontal+reference_rank2_control,snr_improvement_db,higher_is_better,available,,32,5,39,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327368,498,498,False
+posterior,reference_rank2_control:both,raw_frontal+reference_rank2_control,mse,lower_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,reference_rank2_control:both,raw_frontal+reference_rank2_control,rrmse_time,lower_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,reference_rank2_control:both,raw_frontal+reference_rank2_control,pearson_cc,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,reference_rank2_control:both,raw_frontal+reference_rank2_control,snr_energy_db,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,reference_rank2_control:both,raw_frontal+reference_rank2_control,snr_improvement_db,higher_is_better,available,,32,5,53,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,reference_rank2_control:both,raw_frontal+reference_rank2_control,mse,lower_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,reference_rank2_control:both,raw_frontal+reference_rank2_control,rrmse_time,lower_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,reference_rank2_control:both,raw_frontal+reference_rank2_control,pearson_cc,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,reference_rank2_control:both,raw_frontal+reference_rank2_control,snr_energy_db,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,reference_rank2_control:both,raw_frontal+reference_rank2_control,snr_improvement_db,higher_is_better,available,,32,5,78,0,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_condition_means.csv
+
+```csv
+scope,evaluated_family,condition,input_snr_db,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration
+central_shared,cca_reference_rank2:both,blink,-5.0,8.186861406170242e-13,0.14340086991459117,0.9861959653719832,18.338506399578755,21.014265834444426,0.003842678788503158
+central_shared,cca_reference_rank2:both,blink,0.0,4.814055900364187e-13,0.10628004359199275,0.991357677952555,21.422615942580325,19.098375512502397,0.0013166892828670967
+central_shared,cca_reference_rank2:both,blink,5.0,3.667131077184183e-12,0.3119212831289629,0.9377188123302516,15.308118229443046,7.983877756308814,0.00015721320176249285
+central_shared,cca_reference_rank2:both,lateral,-5.0,1.1657454793633415e-11,0.4655273904106282,0.9000795816465472,7.929812309745302,11.492829081821034,0.06055989634377069
+central_shared,cca_reference_rank2:both,lateral,0.0,3.5585920184619693e-12,0.26496049074705574,0.9606160887874682,12.824005583680613,11.38702249081274,0.023778005338634986
+central_shared,cca_reference_rank2:both,lateral,5.0,3.1152224628164038e-12,0.1927370294915332,0.9755607632406491,16.754134765923432,10.317151629999252,0.008263095023689167
+central_shared,cca_reference_rank2:both,mixed,-5.0,1.084841857958484e-12,0.16358906429227232,0.9832469368810128,16.91100815700874,19.809828605027306,0.005229864429662577
+central_shared,cca_reference_rank2:both,mixed,0.0,5.823395164795304e-13,0.11697641388148426,0.990152091408544,20.276225902622976,18.175046485697937,0.0015011607614369236
+central_shared,cca_reference_rank2:both,mixed,5.0,3.5647796801938314e-12,0.2986821291595082,0.9411314865701313,15.7229480408622,8.62176858088086,0.00019973536706104013
+central_shared,central_frontal_raw_context,blink,-5.0,8.7113270022848e-12,0.3901028570573999,0.9219112525027495,10.259144819418312,12.934904254283987,0.0681273916577369
+central_shared,central_frontal_raw_context,blink,0.0,2.784607498816179e-12,0.22348088206668437,0.9682724150337797,15.047605771042537,12.723365340964609,0.024401952201642506
+central_shared,central_frontal_raw_context,blink,5.0,9.191681689742103e-13,0.13197247507830961,0.9876918144698738,19.532543117227455,12.208302644093218,-0.04981578893785964
+central_shared,central_frontal_raw_context,lateral,-5.0,1.2304647275940395e-10,1.3778853934560389,0.6585744028184813,0.00516136367422898,3.5681781357499593,0.30206507517183656
+central_shared,central_frontal_raw_context,lateral,0.0,3.884539130155558e-11,0.7731982876574748,0.8022681902639754,5.051728759192768,3.6147456663248954,0.18212590386212762
+central_shared,central_frontal_raw_context,lateral,5.0,1.2124940046676404e-11,0.4354877647221337,0.903054837062174,10.028546977905311,3.5915638419811344,0.08076902120216414
+central_shared,central_frontal_raw_context,mixed,-5.0,1.2761502687128586e-11,0.48744633111412916,0.891276196683582,8.064359917864328,10.963180365882895,0.09720060462709341
+central_shared,central_frontal_raw_context,mixed,0.0,4.0612972582806225e-12,0.2771760235117668,0.9551748769718892,12.943418741226571,10.842239324301534,0.03647837519809177
+central_shared,central_frontal_raw_context,mixed,5.0,1.324915361839858e-12,0.16116714017939393,0.9828086354272356,17.611248333720397,10.510068873739058,-0.04147741349004335
+central_shared,central_frontal_vmd_context,blink,-5.0,1.0312375548320551e-11,0.4083574541075213,0.9158527995972728,9.940204469137406,12.615963904003081,0.07418584456321356
+central_shared,central_frontal_vmd_context,blink,0.0,2.9212648018883483e-12,0.2266987944640323,0.9674942138296767,14.934144773161641,12.609904343083713,0.02518015340574528
+central_shared,central_frontal_vmd_context,blink,5.0,9.364213525897776e-13,0.13112457604542302,0.9877390443484659,19.634388041568066,12.310147568433834,-0.049863018816451866
+central_shared,central_frontal_vmd_context,lateral,-5.0,1.1791686254077602e-10,1.365594206062247,0.6568241927345383,-0.03242235111718711,3.5305944209585434,0.3038152852557796
+central_shared,central_frontal_vmd_context,lateral,0.0,3.561041884961458e-11,0.7494661451918165,0.8069638894061817,5.197155390768863,3.7601722979009886,0.1774302047199215
+central_shared,central_frontal_vmd_context,lateral,5.0,1.0732079757899935e-11,0.41278590140123983,0.9095806116298268,10.396344636462834,3.9593615005386544,0.0742432466345114
+central_shared,central_frontal_vmd_context,mixed,-5.0,1.363630431666875e-11,0.5059957730275868,0.8854522132065983,7.655153369163665,10.553973817182232,0.10302458810407725
+central_shared,central_frontal_vmd_context,mixed,0.0,4.224102672724472e-12,0.2813637376276265,0.9541631565807493,12.78475330471781,10.683573887792775,0.0374900955892316
+central_shared,central_frontal_vmd_context,mixed,5.0,1.3380383951000604e-12,0.16075541883236877,0.9829354363422104,17.621187584179644,10.520008124198302,-0.04160421440501808
+central_shared,identity,blink,-5.0,9.055057040775391e-11,1.703976078656812,0.5968215529967646,-2.6757594348656752,0.0,0.3932170911637217
+central_shared,identity,blink,0.0,2.86346055999757e-11,0.9582161809881862,0.7611262318042633,2.3242404300779285,0.0,0.2315481354311587
+central_shared,identity,blink,5.0,9.055057088126805e-12,0.5388445535648259,0.8814349439259775,7.324240473134234,0.0,0.05644108160603662
+central_shared,identity,lateral,-5.0,1.8526853440925106e-10,1.8888049208349842,0.5420851870576309,-3.5630167720757306,0.0,0.41855429093268703
+central_shared,identity,lateral,0.0,5.858705684476455e-11,1.0621530783994655,0.7150439220286704,1.4369830928678733,0.0,0.2693501720974327
+central_shared,identity,lateral,5.0,1.8526853544379874e-11,0.5972925658198422,0.854175593857474,6.436983135924179,0.0,0.12964826440686428
+central_shared,identity,mixed,-5.0,9.349894235513793e-11,1.724456096512982,0.5888345217734154,-2.898820448018567,0.0,0.39964227953725995
+central_shared,identity,mixed,0.0,2.956696270587159e-11,0.969732941521019,0.7566462034098469,2.1011794169250364,0.0,0.235007048760134
+central_shared,identity,mixed,5.0,9.349894288461347e-12,0.5453209039445652,0.8795804663252401,7.101179459981342,0.0,0.061750755611952236
+central_shared,raw_frontal+cca_reference_rank2,blink,-5.0,8.186861406170242e-13,0.14340086991459117,0.9861959653719832,18.338506399578755,21.014265834444426,0.003842678788503158
+central_shared,raw_frontal+cca_reference_rank2,blink,0.0,4.814055900364187e-13,0.10628004359199275,0.991357677952555,21.422615942580325,19.098375512502397,0.0013166892828670967
+central_shared,raw_frontal+cca_reference_rank2,blink,5.0,3.667131077184183e-12,0.3119212831289629,0.9377188123302516,15.308118229443046,7.983877756308814,0.00015721320176249285
+central_shared,raw_frontal+cca_reference_rank2,lateral,-5.0,1.1657454793633415e-11,0.4655273904106282,0.9000795816465472,7.929812309745302,11.492829081821034,0.06055989634377069
+central_shared,raw_frontal+cca_reference_rank2,lateral,0.0,3.5585920184619693e-12,0.26496049074705574,0.9606160887874682,12.824005583680613,11.38702249081274,0.023778005338634986
+central_shared,raw_frontal+cca_reference_rank2,lateral,5.0,3.1152224628164038e-12,0.1927370294915332,0.9755607632406491,16.754134765923432,10.317151629999252,0.008263095023689167
+central_shared,raw_frontal+cca_reference_rank2,mixed,-5.0,1.084841857958484e-12,0.16358906429227232,0.9832469368810128,16.91100815700874,19.809828605027306,0.005229864429662577
+central_shared,raw_frontal+cca_reference_rank2,mixed,0.0,5.823395164795304e-13,0.11697641388148426,0.990152091408544,20.276225902622976,18.175046485697937,0.0015011607614369236
+central_shared,raw_frontal+cca_reference_rank2,mixed,5.0,3.5647796801938314e-12,0.2986821291595082,0.9411314865701313,15.7229480408622,8.62176858088086,0.00019973536706104013
+central_shared,raw_frontal+reference_rank2_control,blink,-5.0,1.1799869272285528e-12,0.17728278489259025,0.978461671074663,16.827442595546366,19.503202030412037,0.011576973085823488
+central_shared,raw_frontal+reference_rank2_control,blink,0.0,5.934155398021161e-13,0.12273631832809703,0.9885717503971003,20.25053864855813,17.926298218480202,0.004102616838321781
+central_shared,raw_frontal+reference_rank2_control,blink,5.0,3.690992402758184e-12,0.31664002577638706,0.9370993862966122,14.840418304975374,7.51617783184114,0.0007766392354019141
+central_shared,raw_frontal+reference_rank2_control,lateral,-5.0,1.740435249200128e-11,0.5851868085542671,0.8604086630598577,6.232025610789458,9.795042382865189,0.1002308149304601
+central_shared,raw_frontal+reference_rank2_control,lateral,0.0,5.549756214643043e-12,0.3330133406651646,0.9405428464339395,11.11575285129216,9.678769758424288,0.043851247692163656
+central_shared,raw_frontal+reference_rank2_control,lateral,5.0,3.665092964229396e-12,0.22604725821805874,0.9684513179296314,15.274112361485667,8.837129225561489,0.015372540334706898
+central_shared,raw_frontal+reference_rank2_control,mixed,-5.0,1.6021877713478348e-12,0.20276333623871048,0.9739227694821362,15.38146210602789,18.280282554046458,0.014554031828539291
+central_shared,raw_frontal+reference_rank2_control,mixed,0.0,7.410509593635872e-13,0.1363385240284542,0.9867681302941,19.03977541833998,16.93859600141494,0.0048851218758808965
+central_shared,raw_frontal+reference_rank2_control,mixed,5.0,3.593634862974781e-12,0.3041753618218166,0.9404440441605695,15.190693185863456,8.089513725882112,0.0008871777766228641
+central_shared,raw_frontal+ridge_direct,blink,-5.0,5.934144674886882e-13,0.11466689019011976,0.9900386441604864,20.741428201146828,23.417187636012503,0.0
+central_shared,raw_frontal+ridge_direct,blink,0.0,4.108193903794496e-13,0.09230337124058476,0.9926743672354221,23.314091221280073,20.98985079120214,0.0
+central_shared,raw_frontal+ridge_direct,blink,5.0,3.661440811040272e-12,0.3101836818183905,0.9378760255320141,15.618857879325558,8.294617406191323,0.0
+central_shared,raw_frontal+ridge_direct,lateral,-5.0,5.064411712614999e-12,0.25096452192687296,0.9606394779903179,14.171897461813643,17.734914233889373,0.0
+central_shared,raw_frontal+ridge_direct,lateral,0.0,1.473093549306325e-12,0.1472825588482955,0.9843940941261031,18.837451318977088,17.40046822610921,0.0
+central_shared,raw_frontal+ridge_direct,lateral,5.0,2.4591799567527103e-12,0.1302220993775961,0.9838238582643382,22.094184444814683,15.657201308890503,0.0
+central_shared,raw_frontal+ridge_direct,mixed,-5.0,7.235484173560994e-13,0.12595045612291011,0.9884768013106754,19.734814747229372,22.63363519524794,0.0
+central_shared,raw_frontal+ridge_direct,mixed,0.0,4.708120752394388e-13,0.09937556127312769,0.991653252169981,22.509004526860373,20.407825109935338,0.0
+central_shared,raw_frontal+ridge_direct,mixed,5.0,3.5529568236091633e-12,0.2955764948650683,0.9413312219371923,16.346706826495314,9.24552736651397,0.0
+central_shared,reference_rank2_control:both,blink,-5.0,1.1799869272285528e-12,0.17728278489259025,0.978461671074663,16.827442595546366,19.503202030412037,0.011576973085823488
+central_shared,reference_rank2_control:both,blink,0.0,5.934155398021161e-13,0.12273631832809703,0.9885717503971003,20.25053864855813,17.926298218480202,0.004102616838321781
+central_shared,reference_rank2_control:both,blink,5.0,3.690992402758184e-12,0.31664002577638706,0.9370993862966122,14.840418304975374,7.51617783184114,0.0007766392354019141
+central_shared,reference_rank2_control:both,lateral,-5.0,1.740435249200128e-11,0.5851868085542671,0.8604086630598577,6.232025610789458,9.795042382865189,0.1002308149304601
+central_shared,reference_rank2_control:both,lateral,0.0,5.549756214643043e-12,0.3330133406651646,0.9405428464339395,11.11575285129216,9.678769758424288,0.043851247692163656
+central_shared,reference_rank2_control:both,lateral,5.0,3.665092964229396e-12,0.22604725821805874,0.9684513179296314,15.274112361485667,8.837129225561489,0.015372540334706898
+central_shared,reference_rank2_control:both,mixed,-5.0,1.6021877713478348e-12,0.20276333623871048,0.9739227694821362,15.38146210602789,18.280282554046458,0.014554031828539291
+central_shared,reference_rank2_control:both,mixed,0.0,7.410509593635872e-13,0.1363385240284542,0.9867681302941,19.03977541833998,16.93859600141494,0.0048851218758808965
+central_shared,reference_rank2_control:both,mixed,5.0,3.593634862974781e-12,0.3041753618218166,0.9404440441605695,15.190693185863456,8.089513725882112,0.0008871777766228641
+central_shared,ridge_direct:both,blink,-5.0,5.934144674886882e-13,0.11466689019011976,0.9900386441604864,20.741428201146828,23.417187636012503,0.0
+central_shared,ridge_direct:both,blink,0.0,4.108193903794496e-13,0.09230337124058476,0.9926743672354221,23.314091221280073,20.98985079120214,0.0
+central_shared,ridge_direct:both,blink,5.0,3.661440811040272e-12,0.3101836818183905,0.9378760255320141,15.618857879325558,8.294617406191323,0.0
+central_shared,ridge_direct:both,lateral,-5.0,5.064411712614999e-12,0.25096452192687296,0.9606394779903179,14.171897461813643,17.734914233889373,0.0
+central_shared,ridge_direct:both,lateral,0.0,1.473093549306325e-12,0.1472825588482955,0.9843940941261031,18.837451318977088,17.40046822610921,0.0
+central_shared,ridge_direct:both,lateral,5.0,2.4591799567527103e-12,0.1302220993775961,0.9838238582643382,22.094184444814683,15.657201308890503,0.0
+central_shared,ridge_direct:both,mixed,-5.0,7.235484173560994e-13,0.12595045612291011,0.9884768013106754,19.734814747229372,22.63363519524794,0.0
+central_shared,ridge_direct:both,mixed,0.0,4.708120752394388e-13,0.09937556127312769,0.991653252169981,22.509004526860373,20.407825109935338,0.0
+central_shared,ridge_direct:both,mixed,5.0,3.5529568236091633e-12,0.2955764948650683,0.9413312219371923,16.346706826495314,9.24552736651397,0.0
+frontal,cca_reference_rank2:both,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.006258394370925189
+frontal,cca_reference_rank2:both,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0017197266870093045
+frontal,cca_reference_rank2:both,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0009934208585503329
+frontal,cca_reference_rank2:both,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.02409121982978059
+frontal,cca_reference_rank2:both,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.015596921703714729
+frontal,cca_reference_rank2:both,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.00965631451201366
+frontal,cca_reference_rank2:both,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.004499517567770406
+frontal,cca_reference_rank2:both,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0026664110185225277
+frontal,cca_reference_rank2:both,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0014913644900072013
+frontal,central_frontal_raw_context,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.006258394370925189
+frontal,central_frontal_raw_context,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0017197266870093045
+frontal,central_frontal_raw_context,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0009934208585503329
+frontal,central_frontal_raw_context,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.02409121982978059
+frontal,central_frontal_raw_context,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.015596921703714729
+frontal,central_frontal_raw_context,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.00965631451201366
+frontal,central_frontal_raw_context,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.004499517567770406
+frontal,central_frontal_raw_context,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0026664110185225277
+frontal,central_frontal_raw_context,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0014913644900072013
+frontal,central_frontal_vmd_context,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.006258394370925189
+frontal,central_frontal_vmd_context,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0017197266870093045
+frontal,central_frontal_vmd_context,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0009934208585503329
+frontal,central_frontal_vmd_context,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.02409121982978059
+frontal,central_frontal_vmd_context,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.015596921703714729
+frontal,central_frontal_vmd_context,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.00965631451201366
+frontal,central_frontal_vmd_context,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.004499517567770406
+frontal,central_frontal_vmd_context,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0026664110185225277
+frontal,central_frontal_vmd_context,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0014913644900072013
+frontal,identity,blink,-5.0,7.403422266942269e-10,4.1239474930779165,0.2546059565948502,-11.666787907817575,0.0,0.7292888215546334
+frontal,identity,blink,0.0,2.3411677654089895e-10,2.3190661337910843,0.4180029554759048,-6.6667880428739705,0.0,0.5725088582117509
+frontal,identity,blink,5.0,7.403422318546091e-11,1.3041067151689552,0.6190039671535059,-1.666787999817665,0.0,0.37362791347189195
+frontal,identity,lateral,-5.0,4.706787708651855e-10,2.834047685308765,0.3669296614005887,-8.113828549301228,0.0,0.5712870063529476
+frontal,identity,lateral,0.0,1.4884170130108913e-10,1.5937021557405027,0.5579549515555366,-3.1138286843576246,0.0,0.4183201647075321
+frontal,identity,lateral,5.0,4.706787749827606e-11,0.896204577214837,0.748554916904236,1.8861713586986808,0.0,0.23650909221837754
+frontal,identity,mixed,-5.0,7.324623675368554e-10,4.099289636053002,0.252768909904321,-11.638926680931508,0.0,0.729385598126042
+frontal,identity,mixed,0.0,2.3162494620031827e-10,2.30520000159495,0.41751898359997885,-6.638926815987905,0.0,0.5720535607687335
+frontal,identity,mixed,5.0,7.324623725547525e-11,1.2963092160178702,0.6200305157917552,-1.6389267729315997,0.0,0.3719250883915216
+frontal,raw_frontal+cca_reference_rank2,blink,-5.0,1.5165448711732449e-12,0.16030936318089545,0.9838947781494837,17.278728536706595,28.945516444524166,0.0
+frontal,raw_frontal+cca_reference_rank2,blink,0.0,8.712711552256905e-13,0.11762450451501613,0.9905118136876558,20.262943569655526,26.929731612529494,0.0
+frontal,raw_frontal+cca_reference_rank2,blink,5.0,6.67217239655074e-13,0.09860103888332569,0.992631880625398,22.340021043914213,24.006809043731874,0.0
+frontal,raw_frontal+cca_reference_rank2,lateral,-5.0,1.3497105770242564e-11,0.3361457048925418,0.9382166677535364,11.028577099439076,19.142405648740304,0.0
+frontal,raw_frontal+cca_reference_rank2,lateral,0.0,3.72457080231086e-12,0.19405080191041418,0.9762751162630687,15.704484530409491,18.818313214767116,0.0
+frontal,raw_frontal+cca_reference_rank2,lateral,5.0,3.1338663932474082e-12,0.13539972546274343,0.9850640091226137,19.374809284279173,17.48863792558049,0.0
+frontal,raw_frontal+cca_reference_rank2,mixed,-5.0,1.8195618026074843e-12,0.1713570810122932,0.982154508030363,16.518510443353534,28.157437124285046,0.0
+frontal,raw_frontal+cca_reference_rank2,mixed,0.0,1.0176708333536567e-12,0.12502601593857904,0.9895725443687122,19.562233792767564,26.201160608755472,0.0
+frontal,raw_frontal+cca_reference_rank2,mixed,5.0,7.640854999489628e-13,0.10428666886746647,0.9919556041832768,21.668911645326535,23.307838418258136,0.0
+frontal,raw_frontal+reference_rank2_control,blink,-5.0,1.5165448711732449e-12,0.16030936318089545,0.9838947781494837,17.278728536706595,28.945516444524166,0.0
+frontal,raw_frontal+reference_rank2_control,blink,0.0,8.712711552256905e-13,0.11762450451501613,0.9905118136876558,20.262943569655526,26.929731612529494,0.0
+frontal,raw_frontal+reference_rank2_control,blink,5.0,6.67217239655074e-13,0.09860103888332569,0.992631880625398,22.340021043914213,24.006809043731874,0.0
+frontal,raw_frontal+reference_rank2_control,lateral,-5.0,1.3497105770242564e-11,0.3361457048925418,0.9382166677535364,11.028577099439076,19.142405648740304,0.0
+frontal,raw_frontal+reference_rank2_control,lateral,0.0,3.72457080231086e-12,0.19405080191041418,0.9762751162630687,15.704484530409491,18.818313214767116,0.0
+frontal,raw_frontal+reference_rank2_control,lateral,5.0,3.1338663932474082e-12,0.13539972546274343,0.9850640091226137,19.374809284279173,17.48863792558049,0.0
+frontal,raw_frontal+reference_rank2_control,mixed,-5.0,1.8195618026074843e-12,0.1713570810122932,0.982154508030363,16.518510443353534,28.157437124285046,0.0
+frontal,raw_frontal+reference_rank2_control,mixed,0.0,1.0176708333536567e-12,0.12502601593857904,0.9895725443687122,19.562233792767564,26.201160608755472,0.0
+frontal,raw_frontal+reference_rank2_control,mixed,5.0,7.640854999489628e-13,0.10428666886746647,0.9919556041832768,21.668911645326535,23.307838418258136,0.0
+frontal,raw_frontal+ridge_direct,blink,-5.0,1.5165448711732449e-12,0.16030936318089545,0.9838947781494837,17.278728536706595,28.945516444524166,0.0
+frontal,raw_frontal+ridge_direct,blink,0.0,8.712711552256905e-13,0.11762450451501613,0.9905118136876558,20.262943569655526,26.929731612529494,0.0
+frontal,raw_frontal+ridge_direct,blink,5.0,6.67217239655074e-13,0.09860103888332569,0.992631880625398,22.340021043914213,24.006809043731874,0.0
+frontal,raw_frontal+ridge_direct,lateral,-5.0,1.3497105770242564e-11,0.3361457048925418,0.9382166677535364,11.028577099439076,19.142405648740304,0.0
+frontal,raw_frontal+ridge_direct,lateral,0.0,3.72457080231086e-12,0.19405080191041418,0.9762751162630687,15.704484530409491,18.818313214767116,0.0
+frontal,raw_frontal+ridge_direct,lateral,5.0,3.1338663932474082e-12,0.13539972546274343,0.9850640091226137,19.374809284279173,17.48863792558049,0.0
+frontal,raw_frontal+ridge_direct,mixed,-5.0,1.8195618026074843e-12,0.1713570810122932,0.982154508030363,16.518510443353534,28.157437124285046,0.0
+frontal,raw_frontal+ridge_direct,mixed,0.0,1.0176708333536567e-12,0.12502601593857904,0.9895725443687122,19.562233792767564,26.201160608755472,0.0
+frontal,raw_frontal+ridge_direct,mixed,5.0,7.640854999489628e-13,0.10428666886746647,0.9919556041832768,21.668911645326535,23.307838418258136,0.0
+frontal,reference_rank2_control:both,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.006258394370925189
+frontal,reference_rank2_control:both,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0017197266870093045
+frontal,reference_rank2_control:both,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0009934208585503329
+frontal,reference_rank2_control:both,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.02409121982978059
+frontal,reference_rank2_control:both,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.015596921703714729
+frontal,reference_rank2_control:both,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.00965631451201366
+frontal,reference_rank2_control:both,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.004499517567770406
+frontal,reference_rank2_control:both,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0026664110185225277
+frontal,reference_rank2_control:both,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0014913644900072013
+frontal,ridge_direct:both,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.006258394370925189
+frontal,ridge_direct:both,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0017197266870093045
+frontal,ridge_direct:both,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0009934208585503329
+frontal,ridge_direct:both,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.02409121982978059
+frontal,ridge_direct:both,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.015596921703714729
+frontal,ridge_direct:both,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.00965631451201366
+frontal,ridge_direct:both,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.004499517567770406
+frontal,ridge_direct:both,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0026664110185225277
+frontal,ridge_direct:both,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0014913644900072013
+middle_verified,cca_reference_rank2:both,blink,-5.0,7.824888166041307e-13,0.15679674106177888,0.9838621455906923,17.465765278586908,21.465033279561105,0.004491390345708512
+middle_verified,cca_reference_rank2:both,blink,0.0,4.774680518485555e-13,0.11779750480353073,0.9896699474644988,20.426436231339885,19.42570436737048,0.0015541410404628525
+middle_verified,cca_reference_rank2:both,blink,5.0,3.7039745884845564e-12,0.3577712499364194,0.9251533986961669,14.03664070258797,8.035908795562262,0.00019815856052070107
+middle_verified,cca_reference_rank2:both,lateral,-5.0,9.64411835324321e-12,0.4820647394148834,0.8945736867212434,7.659627391944391,11.385102381622666,0.06463156463563921
+middle_verified,cca_reference_rank2:both,lateral,0.0,2.948957179249329e-12,0.2744273528939568,0.9579207081197147,12.558573143680547,11.28404826841522,0.025639216906626645
+middle_verified,cca_reference_rank2:both,lateral,5.0,2.416952516987397e-12,0.20261632597987836,0.9736031540737369,16.488149153846997,10.21362423552536,0.008990232274679901
+middle_verified,cca_reference_rank2:both,mixed,-5.0,9.785190088760517e-13,0.17616226713771943,0.9808111852997812,16.23319066925651,20.346442902386123,0.005823999526653685
+middle_verified,cca_reference_rank2:both,mixed,0.0,5.503349703668331e-13,0.12782974852030093,0.9883943765419393,19.491054820581482,18.604307188767493,0.0016412788953993514
+middle_verified,cca_reference_rank2:both,mixed,5.0,3.5374330180125266e-12,0.34004125858727824,0.9296712545072274,14.663719693452439,8.776972018582146,0.00022610057914128988
+middle_verified,central_frontal_raw_context,blink,-5.0,6.045485442447288e-12,0.40461433988323525,0.9181918655451454,9.915336859977494,13.914604860951696,0.07016167039125545
+middle_verified,central_frontal_raw_context,blink,0.0,1.9471364199175455e-12,0.23242155203374573,0.9663756206677451,14.679186389744967,13.678454525775564,0.024848467837216483
+middle_verified,central_frontal_raw_context,blink,5.0,6.572666801130586e-13,0.13809123707248835,0.986709537095059,19.116519851506098,13.115787944480392,-0.0613579798383715
+middle_verified,central_frontal_raw_context,lateral,-5.0,8.647059679151171e-11,1.39444566252865,0.6612400063635019,-0.0727073670899119,3.652767622588362,0.2979652449933806
+middle_verified,central_frontal_raw_context,lateral,0.0,2.8092073660734526e-11,0.7840566529740877,0.8036469495005572,4.956327368118565,3.6818024928532354,0.17991297552578422
+middle_verified,central_frontal_raw_context,lateral,5.0,8.927427499155132e-12,0.4424811448193952,0.902621040940352,9.91697411909795,3.6424492007763165,0.07997234540806472
+middle_verified,central_frontal_raw_context,mixed,-5.0,8.942129497016592e-12,0.5029404800099979,0.887955147541379,7.7939800924055955,11.90723232553521,0.09868003728505578
+middle_verified,central_frontal_raw_context,mixed,0.0,2.864933659751344e-12,0.28641359483444145,0.9531961947792167,12.657292908019393,11.770545276205405,0.03683946065812201
+middle_verified,central_frontal_raw_context,mixed,5.0,9.5264322142042e-13,0.1672461776632983,0.9816848010754261,17.289808859599816,11.403061184729523,-0.051787445989057435
+middle_verified,central_frontal_vmd_context,blink,-5.0,7.371696106343295e-12,0.4234510004077015,0.9119162562680698,9.606958574100075,13.606226575074277,0.07643727966833105
+middle_verified,central_frontal_vmd_context,blink,0.0,2.037734986714086e-12,0.23537626841270737,0.9657074905489346,14.566582320833453,13.565850456864052,0.025516597956027
+middle_verified,central_frontal_vmd_context,blink,5.0,6.671624624065577e-13,0.1368718430325339,0.9868286066238905,19.23923301457222,13.238501107546515,-0.061477049367202885
+middle_verified,central_frontal_vmd_context,lateral,-5.0,8.537723772442602e-11,1.3827453147079298,0.6589596370933813,-0.11446934402220013,3.6110056456560744,0.3002456142635011
+middle_verified,central_frontal_vmd_context,lateral,0.0,2.6231258870081952e-11,0.7611929186953752,0.8075333681019452,5.0852978075109405,3.8107729322456096,0.17602655692439612
+middle_verified,central_frontal_vmd_context,lateral,5.0,8.011712907443225e-12,0.4197544869802443,0.9086983396766626,10.277398733447686,4.002873815126052,0.07389504667175413
+middle_verified,central_frontal_vmd_context,mixed,-5.0,9.514352392086515e-12,0.5205129054208093,0.882383694637439,7.41630075197201,11.529552985101624,0.10425149018899578
+middle_verified,central_frontal_vmd_context,mixed,0.0,2.9673219267844526e-12,0.2900485052961075,0.9523677471201717,12.513119379383317,11.626371747569328,0.03766790831716703
+middle_verified,central_frontal_vmd_context,mixed,5.0,9.588511046500806e-13,0.16642069273134227,0.9819074331179165,17.321891543995612,11.43514386912532,-0.0520100780315478
+middle_verified,identity,blink,-5.0,9.167273592303381e-11,1.939218428025133,0.5475766235835521,-3.999268000974202,0.0,0.44077691235284877
+middle_verified,identity,blink,0.0,2.8989465490145862e-11,1.0905026776767341,0.7232190272623187,1.0007318639694018,0.0,0.26800506124264295
+middle_verified,identity,blink,5.0,9.167273642954889e-12,0.6132347169124162,0.8591294507445809,6.000731907025707,0.0,0.06622210651210667
+middle_verified,identity,lateral,-5.0,1.4173804683246298e-10,1.935908010540931,0.5371623472755072,-3.7254749896782737,0.0,0.42204290408137535
+middle_verified,identity,lateral,0.0,4.482150750940096e-11,1.088641092864763,0.7102751107282785,1.2745248752653298,0.0,0.2732848142980629
+middle_verified,identity,lateral,5.0,1.4173804751712201e-11,0.6121878707555217,0.8500452257371287,6.274524918321635,0.0,0.13254816061128794
+middle_verified,identity,mixed,-5.0,9.323496457665658e-11,1.9506131182549318,0.5425009047742341,-4.113252233129614,0.0,0.4441342800522008
+middle_verified,identity,mixed,0.0,2.948348558308442e-11,1.0969103829562608,0.7200808086031227,0.886747631813989,0.0,0.2699548468342159
+middle_verified,identity,mixed,5.0,9.323496511011115e-12,0.6168380343945715,0.8577997924282292,5.8867476748702945,0.0,0.07209756265813946
+middle_verified,raw_frontal+cca_reference_rank2,blink,-5.0,7.824888166041307e-13,0.15679674106177888,0.9838621455906923,17.465765278586908,21.465033279561105,0.004491390345708512
+middle_verified,raw_frontal+cca_reference_rank2,blink,0.0,4.774680518485555e-13,0.11779750480353073,0.9896699474644988,20.426436231339885,19.42570436737048,0.0015541410404628525
+middle_verified,raw_frontal+cca_reference_rank2,blink,5.0,3.7039745884845564e-12,0.3577712499364194,0.9251533986961669,14.03664070258797,8.035908795562262,0.00019815856052070107
+middle_verified,raw_frontal+cca_reference_rank2,lateral,-5.0,9.64411835324321e-12,0.4820647394148834,0.8945736867212434,7.659627391944391,11.385102381622666,0.06463156463563921
+middle_verified,raw_frontal+cca_reference_rank2,lateral,0.0,2.948957179249329e-12,0.2744273528939568,0.9579207081197147,12.558573143680547,11.28404826841522,0.025639216906626645
+middle_verified,raw_frontal+cca_reference_rank2,lateral,5.0,2.416952516987397e-12,0.20261632597987836,0.9736031540737369,16.488149153846997,10.21362423552536,0.008990232274679901
+middle_verified,raw_frontal+cca_reference_rank2,mixed,-5.0,9.785190088760517e-13,0.17616226713771943,0.9808111852997812,16.23319066925651,20.346442902386123,0.005823999526653685
+middle_verified,raw_frontal+cca_reference_rank2,mixed,0.0,5.503349703668331e-13,0.12782974852030093,0.9883943765419393,19.491054820581482,18.604307188767493,0.0016412788953993514
+middle_verified,raw_frontal+cca_reference_rank2,mixed,5.0,3.5374330180125266e-12,0.34004125858727824,0.9296712545072274,14.663719693452439,8.776972018582146,0.00022610057914128988
+middle_verified,raw_frontal+reference_rank2_control,blink,-5.0,1.1718610223478938e-12,0.19670089318188216,0.9743501966079396,15.843988226545992,19.843256227520193,0.014003339328461293
+middle_verified,raw_frontal+reference_rank2_control,blink,0.0,5.986217318627994e-13,0.13710587651945616,0.9862170401711609,19.19104223428191,18.19031037031251,0.005007048333800709
+middle_verified,raw_frontal+reference_rank2_control,blink,5.0,3.729989675148061e-12,0.3633094439453083,0.9243776958158216,13.559415660686053,7.558683753660346,0.0009738614408659509
+middle_verified,raw_frontal+reference_rank2_control,lateral,-5.0,1.4444105595255441e-11,0.6087991201778172,0.8530076152813788,5.936290540553829,9.661765530232103,0.10619763607550378
+middle_verified,raw_frontal+reference_rank2_control,lateral,0.0,4.5965667351704944e-12,0.34633292736524923,0.9364616936751271,10.819772594157165,9.545247718891833,0.047098231351214326
+middle_verified,raw_frontal+reference_rank2_control,lateral,5.0,2.8796488158016796e-12,0.23740966129129354,0.9659586590584477,14.981840175978201,8.707315257656568,0.016634727289969013
+middle_verified,raw_frontal+reference_rank2_control,mixed,-5.0,1.4853202730657808e-12,0.2211004391106261,0.9696253375557445,14.621977434328938,18.735229667458555,0.0170098472706904
+middle_verified,raw_frontal+reference_rank2_control,mixed,0.0,7.051514920167928e-13,0.1499309896349597,0.9842967604699246,18.19962094097427,17.31287330916028,0.005738894967413981
+middle_verified,raw_frontal+reference_rank2_control,mixed,5.0,3.565024463505814e-12,0.3462693516037284,0.9288329715824322,14.123140758774788,8.236393083904495,0.0010643835039365148
+middle_verified,raw_frontal+ridge_direct,blink,-5.0,5.618527701223466e-13,0.12485413579616064,0.9883535359364009,20.014629991121225,24.013897992095423,0.0
+middle_verified,raw_frontal+ridge_direct,blink,0.0,4.072553732566612e-13,0.10234795326812918,0.9912240885049616,22.416175930335264,21.415444066365865,0.0
+middle_verified,raw_frontal+ridge_direct,blink,5.0,3.696177269590889e-12,0.3557902610721654,0.9253515572566876,14.350910717478122,8.350178810452414,0.0
+middle_verified,raw_frontal+ridge_direct,lateral,-5.0,3.3472646593893476e-12,0.2546383768605086,0.9592052513568825,14.121911283501255,17.847386273179527,0.0
+middle_verified,raw_frontal+ridge_direct,lateral,0.0,9.655491345913266e-13,0.14981655913861747,0.9835599250263415,18.805337338213477,17.530812462948145,0.0
+middle_verified,raw_frontal+ridge_direct,lateral,5.0,1.8137162930484573e-12,0.13644493264844196,0.9825933863484168,22.026245486179114,15.75172056785748,0.0
+middle_verified,raw_frontal+ridge_direct,mixed,-5.0,6.339741303021312e-13,0.13583039991147056,0.986635184826435,19.14930520414439,23.262557437274005,0.0
+middle_verified,raw_frontal+ridge_direct,mixed,0.0,4.4332688355978504e-13,0.10937461787989539,0.9900356554373386,21.747179234430053,20.86043160261606,0.0
+middle_verified,raw_frontal+ridge_direct,mixed,5.0,3.5254025427717615e-12,0.33690082997559356,0.9298973550863686,15.242656752988331,9.355909078118037,0.0
+middle_verified,reference_rank2_control:both,blink,-5.0,1.1718610223478938e-12,0.19670089318188216,0.9743501966079396,15.843988226545992,19.843256227520193,0.014003339328461293
+middle_verified,reference_rank2_control:both,blink,0.0,5.986217318627994e-13,0.13710587651945616,0.9862170401711609,19.19104223428191,18.19031037031251,0.005007048333800709
+middle_verified,reference_rank2_control:both,blink,5.0,3.729989675148061e-12,0.3633094439453083,0.9243776958158216,13.559415660686053,7.558683753660346,0.0009738614408659509
+middle_verified,reference_rank2_control:both,lateral,-5.0,1.4444105595255441e-11,0.6087991201778172,0.8530076152813788,5.936290540553829,9.661765530232103,0.10619763607550378
+middle_verified,reference_rank2_control:both,lateral,0.0,4.5965667351704944e-12,0.34633292736524923,0.9364616936751271,10.819772594157165,9.545247718891833,0.047098231351214326
+middle_verified,reference_rank2_control:both,lateral,5.0,2.8796488158016796e-12,0.23740966129129354,0.9659586590584477,14.981840175978201,8.707315257656568,0.016634727289969013
+middle_verified,reference_rank2_control:both,mixed,-5.0,1.4853202730657808e-12,0.2211004391106261,0.9696253375557445,14.621977434328938,18.735229667458555,0.0170098472706904
+middle_verified,reference_rank2_control:both,mixed,0.0,7.051514920167928e-13,0.1499309896349597,0.9842967604699246,18.19962094097427,17.31287330916028,0.005738894967413981
+middle_verified,reference_rank2_control:both,mixed,5.0,3.565024463505814e-12,0.3462693516037284,0.9288329715824322,14.123140758774788,8.236393083904495,0.0010643835039365148
+middle_verified,ridge_direct:both,blink,-5.0,5.618527701223466e-13,0.12485413579616064,0.9883535359364009,20.014629991121225,24.013897992095423,0.0
+middle_verified,ridge_direct:both,blink,0.0,4.072553732566612e-13,0.10234795326812918,0.9912240885049616,22.416175930335264,21.415444066365865,0.0
+middle_verified,ridge_direct:both,blink,5.0,3.696177269590889e-12,0.3557902610721654,0.9253515572566876,14.350910717478122,8.350178810452414,0.0
+middle_verified,ridge_direct:both,lateral,-5.0,3.3472646593893476e-12,0.2546383768605086,0.9592052513568825,14.121911283501255,17.847386273179527,0.0
+middle_verified,ridge_direct:both,lateral,0.0,9.655491345913266e-13,0.14981655913861747,0.9835599250263415,18.805337338213477,17.530812462948145,0.0
+middle_verified,ridge_direct:both,lateral,5.0,1.8137162930484573e-12,0.13644493264844196,0.9825933863484168,22.026245486179114,15.75172056785748,0.0
+middle_verified,ridge_direct:both,mixed,-5.0,6.339741303021312e-13,0.13583039991147056,0.986635184826435,19.14930520414439,23.262557437274005,0.0
+middle_verified,ridge_direct:both,mixed,0.0,4.4332688355978504e-13,0.10937461787989539,0.9900356554373386,21.747179234430053,20.86043160261606,0.0
+middle_verified,ridge_direct:both,mixed,5.0,3.5254025427717615e-12,0.33690082997559356,0.9298973550863686,15.242656752988331,9.355909078118037,0.0
+posterior,cca_reference_rank2:both,blink,-5.0,5.695930989748703e-12,0.23261944890762046,0.9615621612006584,14.95005541391691,6.7787239039445915,0.0027392683427127354
+posterior,cca_reference_rank2:both,blink,0.0,3.8948777171489505e-12,0.22694853064493345,0.9701348980376747,14.095231944629363,0.9239005697134428,0.0004503394966809505
+posterior,cca_reference_rank2:both,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,cca_reference_rank2:both,lateral,-5.0,1.03637262659077e-11,0.32424040636239876,0.9422342566185848,11.254407312311448,8.750533439021172,0.02098092629107201
+posterior,cca_reference_rank2:both,lateral,0.0,1.1111680066096162e-11,0.28721414918271004,0.9484819010317207,12.94200109714257,5.438127358908689,0.0041039611036930105
+posterior,cca_reference_rank2:both,lateral,5.0,7.273648616542165e-12,0.2736489885226321,0.9579995662010556,12.760758775667377,0.25688499437718876,0.00023658552492881684
+posterior,cca_reference_rank2:both,mixed,-5.0,5.981995282297317e-12,0.23715151232253529,0.9604626049875813,14.583665265044651,7.013033366340524,0.0031979752307355015
+posterior,cca_reference_rank2:both,mixed,0.0,4.215778638269628e-12,0.238505231113937,0.9679671466575208,13.560221443979202,0.9895896803314728,0.0004964844176485138
+posterior,cca_reference_rank2:both,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,central_frontal_raw_context,blink,-5.0,5.3508915829791035e-12,0.24254480986496413,0.9661796212096143,13.253278476476218,5.081946966503899,-0.0018781916662431897
+posterior,central_frontal_raw_context,blink,0.0,3.652272142122162e-12,0.20344442289370696,0.9760818977702728,14.808287085067047,1.6369557101511263,-0.005496660235917116
+posterior,central_frontal_raw_context,blink,5.0,1.5472913112027568e-12,0.13439632653955924,0.9893389326022559,18.415490749447386,0.2441593314751629,-0.0010316313218839005
+posterior,central_frontal_raw_context,lateral,-5.0,2.2850309694547185e-11,0.4852817370330735,0.8937795104902229,7.32837334701995,4.824499473729672,0.069435672419434
+posterior,central_frontal_raw_context,lateral,0.0,1.1504723659448555e-11,0.3339733460674183,0.9415942592569913,10.4782487663873,2.974375028153419,0.010991602878422557
+posterior,central_frontal_raw_context,lateral,5.0,6.32233408033367e-12,0.2500549134271595,0.9642653373322998,13.24845992342835,0.7445861421381611,-0.006029185606315376
+posterior,central_frontal_raw_context,mixed,-5.0,6.30113647127874e-12,0.2674909221277167,0.9601441469666683,12.386580112196505,4.815948213492379,0.003516433251648566
+posterior,central_frontal_raw_context,mixed,0.0,4.0694212695240496e-12,0.21697153225347734,0.9735351882465382,14.159600100357768,1.5889683367100387,-0.00507155717136887
+posterior,central_frontal_raw_context,mixed,5.0,1.6883189539383493e-12,0.1421687182766142,0.9883872710920965,17.79700454629996,0.2263727395959262,-0.0010822202130230433
+posterior,central_frontal_vmd_context,blink,-5.0,5.3508915829791035e-12,0.24254480986496413,0.9661796212096143,13.253278476476218,5.081946966503899,-0.0018781916662431897
+posterior,central_frontal_vmd_context,blink,0.0,3.652272142122162e-12,0.20344442289370696,0.9760818977702728,14.808287085067047,1.6369557101511263,-0.005496660235917116
+posterior,central_frontal_vmd_context,blink,5.0,1.5472913112027568e-12,0.13439632653955924,0.9893389326022559,18.415490749447386,0.2441593314751629,-0.0010316313218839005
+posterior,central_frontal_vmd_context,lateral,-5.0,2.2850309694547185e-11,0.4852817370330735,0.8937795104902229,7.32837334701995,4.824499473729672,0.069435672419434
+posterior,central_frontal_vmd_context,lateral,0.0,1.1504723659448555e-11,0.3339733460674183,0.9415942592569913,10.4782487663873,2.974375028153419,0.010991602878422557
+posterior,central_frontal_vmd_context,lateral,5.0,6.32233408033367e-12,0.2500549134271595,0.9642653373322998,13.24845992342835,0.7445861421381611,-0.006029185606315376
+posterior,central_frontal_vmd_context,mixed,-5.0,6.30113647127874e-12,0.2674909221277167,0.9601441469666683,12.386580112196505,4.815948213492379,0.003516433251648566
+posterior,central_frontal_vmd_context,mixed,0.0,4.0694212695240496e-12,0.21697153225347734,0.9735351882465382,14.159600100357768,1.5889683367100387,-0.00507155717136887
+posterior,central_frontal_vmd_context,mixed,5.0,1.6883189539383493e-12,0.1421687182766142,0.9883872710920965,17.79700454629996,0.2263727395959262,-0.0010822202130230433
+posterior,identity,blink,-5.0,1.7255059257460965e-11,0.4430909936923725,0.9108608886606898,8.171331509972317,0.0,0.053440540882681256
+posterior,identity,blink,0.0,5.456529057760393e-12,0.2491683807556408,0.9661606140242498,13.171331374915919,0.0,0.004424623510105874
+posterior,identity,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,identity,lateral,-5.0,7.458580117034407e-11,0.8875569670866447,0.75796139275581,2.503873873290278,0.0,0.20525379015384687
+posterior,identity,lateral,0.0,2.358610212146117e-11,0.4991099690164714,0.8874394216964088,7.503873738233882,0.0,0.06514644043900501
+posterior,identity,lateral,5.0,7.458580121496565e-12,0.2806701597203878,0.9564696159695605,12.503873781290189,0.0,0.0017665357564239077
+posterior,identity,mixed,-5.0,1.8685462518560905e-11,0.4677663592738666,0.9039098803943856,7.570631898704125,0.0,0.05975069982393125
+posterior,identity,mixed,0.0,5.908862299888986e-12,0.2630443587350042,0.9634133821623307,12.570631763647729,0.0,0.005050248912838576
+posterior,identity,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,raw_frontal+cca_reference_rank2,blink,-5.0,5.695930989748703e-12,0.23261944890762046,0.9615621612006584,14.95005541391691,6.7787239039445915,0.0027392683427127354
+posterior,raw_frontal+cca_reference_rank2,blink,0.0,3.8948777171489505e-12,0.22694853064493345,0.9701348980376747,14.095231944629363,0.9239005697134428,0.0004503394966809505
+posterior,raw_frontal+cca_reference_rank2,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,raw_frontal+cca_reference_rank2,lateral,-5.0,1.03637262659077e-11,0.32424040636239876,0.9422342566185848,11.254407312311448,8.750533439021172,0.02098092629107201
+posterior,raw_frontal+cca_reference_rank2,lateral,0.0,1.1111680066096162e-11,0.28721414918271004,0.9484819010317207,12.94200109714257,5.438127358908689,0.0041039611036930105
+posterior,raw_frontal+cca_reference_rank2,lateral,5.0,7.273648616542165e-12,0.2736489885226321,0.9579995662010556,12.760758775667377,0.25688499437718876,0.00023658552492881684
+posterior,raw_frontal+cca_reference_rank2,mixed,-5.0,5.981995282297317e-12,0.23715151232253529,0.9604626049875813,14.583665265044651,7.013033366340524,0.0031979752307355015
+posterior,raw_frontal+cca_reference_rank2,mixed,0.0,4.215778638269628e-12,0.238505231113937,0.9679671466575208,13.560221443979202,0.9895896803314728,0.0004964844176485138
+posterior,raw_frontal+cca_reference_rank2,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,raw_frontal+reference_rank2_control,blink,-5.0,5.81889764813007e-12,0.23785396651417418,0.960729466152102,14.611607825168097,6.4402763151957805,0.003571963391269021
+posterior,raw_frontal+reference_rank2_control,blink,0.0,3.907684262354115e-12,0.22751943406194658,0.9700574839737595,14.058109650622008,0.8867782757060872,0.0005277535605961381
+posterior,raw_frontal+reference_rank2_control,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,raw_frontal+reference_rank2_control,lateral,-5.0,1.371648675499009e-11,0.3742125803955232,0.9263131249554208,10.017882763985462,7.514008890695184,0.03690205795423599
+posterior,raw_frontal+reference_rank2_control,lateral,0.0,1.1750115143837083e-11,0.30804595534743107,0.943434705265354,12.067127578298477,4.563253840064595,0.00915115687005974
+posterior,raw_frontal+reference_rank2_control,lateral,5.0,7.279888448573566e-12,0.27397844825170403,0.9579397633975626,12.74528015969651,0.24140637840632206,0.00029638832842191664
+posterior,raw_frontal+reference_rank2_control,mixed,-5.0,6.192276590670523e-12,0.24537994168686317,0.9590173261592855,14.11862892185486,6.547997023150735,0.004643254059031257
+posterior,raw_frontal+reference_rank2_control,mixed,0.0,4.241368675240436e-12,0.2395085017282068,0.9678117872052326,13.500685936560751,0.9300541729130227,0.0006518438699366753
+posterior,raw_frontal+reference_rank2_control,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,raw_frontal+ridge_direct,blink,-5.0,5.333659688591337e-12,0.21631348967020567,0.9643014295433711,16.074479858332296,7.903148348359979,0.0
+posterior,raw_frontal+ridge_direct,blink,0.0,3.821143379100334e-12,0.22510827418198853,0.9705852375343555,14.18633192495519,1.0150005500392698,0.0
+posterior,raw_frontal+ridge_direct,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,raw_frontal+ridge_direct,lateral,-5.0,5.514221030895743e-12,0.22738525318372071,0.9632151829096569,15.106459529614824,12.602585656324546,0.0
+posterior,raw_frontal+ridge_direct,lateral,0.0,1.0591916245022955e-11,0.25831727855841957,0.9525858621354137,14.732175461295405,7.228301723061524,0.0
+posterior,raw_frontal+ridge_direct,lateral,5.0,7.250934122535712e-12,0.27170883294898796,0.9582361517259845,12.915242482176044,0.4113687008858558,0.0
+posterior,raw_frontal+ridge_direct,mixed,-5.0,5.5863545959977086e-12,0.21871723540312235,0.9636605802183167,15.757589462170113,8.186957563465986,0.0
+posterior,raw_frontal+ridge_direct,mixed,0.0,4.143821495878101e-12,0.2366015953642757,0.9684636310751693,13.637712775745076,1.0670810120973462,0.0
+posterior,raw_frontal+ridge_direct,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,reference_rank2_control:both,blink,-5.0,5.81889764813007e-12,0.23785396651417418,0.960729466152102,14.611607825168097,6.4402763151957805,0.003571963391269021
+posterior,reference_rank2_control:both,blink,0.0,3.907684262354115e-12,0.22751943406194658,0.9700574839737595,14.058109650622008,0.8867782757060872,0.0005277535605961381
+posterior,reference_rank2_control:both,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,reference_rank2_control:both,lateral,-5.0,1.371648675499009e-11,0.3742125803955232,0.9263131249554208,10.017882763985462,7.514008890695184,0.03690205795423599
+posterior,reference_rank2_control:both,lateral,0.0,1.1750115143837083e-11,0.30804595534743107,0.943434705265354,12.067127578298477,4.563253840064595,0.00915115687005974
+posterior,reference_rank2_control:both,lateral,5.0,7.279888448573566e-12,0.27397844825170403,0.9579397633975626,12.74528015969651,0.24140637840632206,0.00029638832842191664
+posterior,reference_rank2_control:both,mixed,-5.0,6.192276590670523e-12,0.24537994168686317,0.9590173261592855,14.11862892185486,6.547997023150735,0.004643254059031257
+posterior,reference_rank2_control:both,mixed,0.0,4.241368675240436e-12,0.2395085017282068,0.9678117872052326,13.500685936560751,0.9300541729130227,0.0006518438699366753
+posterior,reference_rank2_control:both,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,ridge_direct:both,blink,-5.0,5.333659688591337e-12,0.21631348967020567,0.9643014295433711,16.074479858332296,7.903148348359979,0.0
+posterior,ridge_direct:both,blink,0.0,3.821143379100334e-12,0.22510827418198853,0.9705852375343555,14.18633192495519,1.0150005500392698,0.0
+posterior,ridge_direct:both,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,ridge_direct:both,lateral,-5.0,5.514221030895743e-12,0.22738525318372071,0.9632151829096569,15.106459529614824,12.602585656324546,0.0
+posterior,ridge_direct:both,lateral,0.0,1.0591916245022955e-11,0.25831727855841957,0.9525858621354137,14.732175461295405,7.228301723061524,0.0
+posterior,ridge_direct:both,lateral,5.0,7.250934122535712e-12,0.27170883294898796,0.9582361517259845,12.915242482176044,0.4113687008858558,0.0
+posterior,ridge_direct:both,mixed,-5.0,5.5863545959977086e-12,0.21871723540312235,0.9636605802183167,15.757589462170113,8.186957563465986,0.0
+posterior,ridge_direct:both,mixed,0.0,4.143821495878101e-12,0.2366015953642757,0.9684636310751693,13.637712775745076,1.0670810120973462,0.0
+posterior,ridge_direct:both,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+temporal_shared,cca_reference_rank2:both,blink,-5.0,9.393438873266686e-13,0.0987479660906321,0.9939753646429528,21.247643469551583,19.5117076840555,0.0016803069311519762
+temporal_shared,cca_reference_rank2:both,blink,0.0,4.94530717329296e-13,0.06788850622019947,0.996983446246076,24.743214980048464,18.00727932960878,0.0005251834242145781
+temporal_shared,cca_reference_rank2:both,blink,5.0,3.5443193728496002e-12,0.15908806043744117,0.9796035244438674,19.54637665229331,7.8104409587973205,2.0728672568465573e-05
+temporal_shared,cca_reference_rank2:both,lateral,-5.0,1.8368576261600756e-11,0.4104028937297778,0.9184325647308934,8.83042870241501,11.85191808248226,0.04698766870420898
+temporal_shared,cca_reference_rank2:both,lateral,0.0,5.590708149170771e-12,0.2334042835907189,0.9696006910133126,13.708780383680836,11.730269898804483,0.01757396677866279
+temporal_shared,cca_reference_rank2:both,lateral,5.0,5.4427889489130914e-12,0.15980604119704936,0.9820861271303565,17.64075347284488,10.662242944912226,0.005839304187053387
+temporal_shared,cca_reference_rank2:both,mixed,-5.0,1.4392513548999248e-12,0.12167838814078193,0.9913661088184518,19.17039978284951,18.02111428049792,0.003249414106358887
+temporal_shared,cca_reference_rank2:both,mixed,0.0,6.890213368551883e-13,0.08079863175209541,0.9960111409638934,22.893462842761277,16.74417747546608,0.0010341003148954975
+temporal_shared,cca_reference_rank2:both,mixed,5.0,3.655935220798184e-12,0.16081836440027497,0.9793322601131444,19.25370919889474,8.10442378854324,0.0001118513267935409
+temporal_shared,central_frontal_raw_context,blink,-5.0,1.759746553507651e-11,0.3417312476379486,0.9343092090280962,11.405171350887702,9.66923556539162,0.06134646254600845
+temporal_shared,central_frontal_raw_context,blink,0.0,5.576177761811622e-12,0.1936786488431466,0.9745950629205614,16.27567037536778,9.539734724928095,0.022913566749729258
+temporal_shared,central_frontal_raw_context,blink,5.0,1.792173131844716e-12,0.11157660176438061,0.9909660723859226,20.919287336298623,9.183351642802634,-0.011341819269486728
+temporal_shared,central_frontal_raw_context,lateral,-5.0,2.4496605931904487e-10,1.3226844965473357,0.6496890576684127,0.2647237995546992,3.2862131796219507,0.31573117576668974
+temporal_shared,central_frontal_raw_context,lateral,0.0,7.468978343762573e-11,0.7370037366020987,0.7976723261420363,5.3697333961067795,3.3912229112304275,0.18950233164993893
+temporal_shared,central_frontal_raw_context,lateral,5.0,2.2783315205080642e-11,0.4121764977312617,0.9045008241349144,10.400456507263184,3.421945979330528,0.08342460718249552
+temporal_shared,central_frontal_raw_context,mixed,-5.0,2.5492746654168565e-11,0.43579916812790004,0.9023463604909251,8.965626002726768,7.816340500375178,0.09226916243388553
+temporal_shared,central_frontal_raw_context,mixed,0.0,8.049175920044884e-12,0.24638411910285118,0.9617704842807979,13.897171518583828,7.747886151288634,0.035274756997990965
+temporal_shared,central_frontal_raw_context,mixed,5.0,2.565822496571319e-12,0.14090368189971275,0.9865547499332677,18.682713247455677,7.533427837104177,-0.007110638493329767
+temporal_shared,central_frontal_vmd_context,blink,-5.0,2.0114640354911405e-11,0.3580456331069205,0.9289746106946162,11.051024119261845,9.315088333765765,0.06668106087948854
+temporal_shared,central_frontal_vmd_context,blink,0.0,5.866364185802555e-12,0.197773881301782,0.9734499580988177,16.15935294758894,9.423417297149253,0.024058671571472873
+temporal_shared,central_frontal_vmd_context,blink,5.0,1.8339509865338438e-12,0.11196701942172008,0.9907738367637177,20.95157146488755,9.215635771391561,-0.011149583647281807
+temporal_shared,central_frontal_vmd_context,lateral,-5.0,2.2638227859527612e-10,1.3084238439099716,0.6497060448717279,0.24106762523285624,3.262557005300108,0.31571418856337446
+temporal_shared,central_frontal_vmd_context,lateral,0.0,6.687428544805668e-11,0.710376900179954,0.8050656270869694,5.570014001628604,3.591503516752253,0.182109030705006
+temporal_shared,central_frontal_vmd_context,lateral,5.0,1.9799969259422307e-11,0.38955728280455804,0.9125215181403742,10.792830979846654,3.8143204519139964,0.07540391317703556
+temporal_shared,central_frontal_vmd_context,mixed,-5.0,2.7376144065276206e-11,0.4576053317168454,0.8956806084371285,8.451328759802523,7.302043257450933,0.09893491448768213
+temporal_shared,central_frontal_vmd_context,mixed,0.0,8.413371825857872e-12,0.2524145120660233,0.9601478547826754,13.690199722499461,7.540914355204266,0.03689738649611351
+temporal_shared,central_frontal_vmd_context,mixed,5.0,2.601996029933327e-12,0.14187117250245707,0.9863621137565237,18.618841051459754,7.469555641108253,-0.006918002316585673
+temporal_shared,identity,blink,-5.0,8.681001869015422e-11,0.9198349140957427,0.7609713177074731,1.7359357854960804,0.0,0.23468435386663167
+temporal_shared,identity,blink,0.0,2.745173929940849e-11,0.5172611920263599,0.8874835802774128,6.735935650439684,0.0,0.11002504939287788
+temporal_shared,identity,blink,5.0,8.681001905366524e-12,0.29087734240619145,0.9557865878639662,11.735935693495989,0.0,0.023837665252469758
+temporal_shared,identity,lateral,-5.0,3.303701596652113e-10,1.7317946218151623,0.5584946529980429,-3.0214893800672518,0.0,0.4069255804370594
+temporal_shared,identity,lateral,0.0,1.0447222129597653e-10,0.9738596968484741,0.7309399596966433,1.978510484876352,0.0,0.25623469809533217
+temporal_shared,identity,lateral,5.0,3.303701618660546e-11,0.5476415493675771,0.8679434875919578,6.978510527932658,0.0,0.11998194372545211
+temporal_shared,identity,mixed,-5.0,9.43788682834091e-11,0.9705993573731495,0.7432799117706868,1.1492855023515907,0.0,0.25133561115412384
+temporal_shared,identity,mixed,0.0,2.98452197818288e-11,0.5458081367368801,0.8785308527655946,6.149285367295194,0.0,0.11851438851319437
+temporal_shared,identity,mixed,5.0,9.437886879962112e-12,0.30693046911121113,0.95218271264861,11.1492854103515,0.0,0.027261398791328127
+temporal_shared,raw_frontal+cca_reference_rank2,blink,-5.0,9.393438873266686e-13,0.0987479660906321,0.9939753646429528,21.247643469551583,19.5117076840555,0.0016803069311519762
+temporal_shared,raw_frontal+cca_reference_rank2,blink,0.0,4.94530717329296e-13,0.06788850622019947,0.996983446246076,24.743214980048464,18.00727932960878,0.0005251834242145781
+temporal_shared,raw_frontal+cca_reference_rank2,blink,5.0,3.5443193728496002e-12,0.15908806043744117,0.9796035244438674,19.54637665229331,7.8104409587973205,2.0728672568465573e-05
+temporal_shared,raw_frontal+cca_reference_rank2,lateral,-5.0,1.8368576261600756e-11,0.4104028937297778,0.9184325647308934,8.83042870241501,11.85191808248226,0.04698766870420898
+temporal_shared,raw_frontal+cca_reference_rank2,lateral,0.0,5.590708149170771e-12,0.2334042835907189,0.9696006910133126,13.708780383680836,11.730269898804483,0.01757396677866279
+temporal_shared,raw_frontal+cca_reference_rank2,lateral,5.0,5.4427889489130914e-12,0.15980604119704936,0.9820861271303565,17.64075347284488,10.662242944912226,0.005839304187053387
+temporal_shared,raw_frontal+cca_reference_rank2,mixed,-5.0,1.4392513548999248e-12,0.12167838814078193,0.9913661088184518,19.17039978284951,18.02111428049792,0.003249414106358887
+temporal_shared,raw_frontal+cca_reference_rank2,mixed,0.0,6.890213368551883e-13,0.08079863175209541,0.9960111409638934,22.893462842761277,16.74417747546608,0.0010341003148954975
+temporal_shared,raw_frontal+cca_reference_rank2,mixed,5.0,3.655935220798184e-12,0.16081836440027497,0.9793322601131444,19.25370919889474,8.10442378854324,0.0001118513267935409
+temporal_shared,raw_frontal+reference_rank2_control,blink,-5.0,1.2070732768307493e-12,0.11255575726161723,0.9921665859637405,20.105623825547607,18.36968804005153,0.0034890856103641467
+temporal_shared,raw_frontal+reference_rank2_control,blink,0.0,5.760615662665051e-13,0.07483779102356664,0.9964207844835653,23.78219336281221,17.046257712372523,0.0010878451867253514
+temporal_shared,raw_frontal+reference_rank2_control,blink,5.0,3.5610014947919254e-12,0.1610752985466496,0.9795050212325808,19.11042711927311,7.374491425777119,0.0001192318838551248
+temporal_shared,raw_frontal+reference_rank2_control,lateral,-5.0,2.727184214782075e-11,0.5064791031424335,0.8850788223214545,7.217809178241556,10.239298558308807,0.08034141111364781
+temporal_shared,raw_frontal+reference_rank2_control,lateral,0.0,8.727054479551537e-12,0.288614718331549,0.9541466889633139,12.10235370840882,10.123843223532468,0.03302796882866144
+temporal_shared,raw_frontal+reference_rank2_control,lateral,5.0,6.283240125655114e-12,0.1881725813072761,0.9767601808335766,16.248352979843887,9.269842451911227,0.011165250483833183
+temporal_shared,raw_frontal+reference_rank2_control,mixed,-5.0,1.991746098954682e-12,0.14163965999899178,0.9882475425701083,17.91307767835773,16.763792176006135,0.006367980354702268
+temporal_shared,raw_frontal+reference_rank2_control,mixed,0.0,8.607158505195684e-13,0.09103030534010252,0.9950060297080183,21.840290342892327,15.691004975597131,0.0020392115707706182
+temporal_shared,raw_frontal+reference_rank2_control,mixed,5.0,3.689002861204672e-12,0.16386206254877733,0.9791476194210273,18.749201276159,7.599915865807498,0.0002964920189106948
+temporal_shared,raw_frontal+ridge_direct,blink,-5.0,6.986201253764932e-13,0.08070940483665011,0.9956556715741047,23.164088901232184,21.428153115736105,0.0
+temporal_shared,raw_frontal+ridge_direct,blink,0.0,4.226994474554112e-13,0.058821431148770024,0.9975086296702907,26.30714219109609,19.571206540656405,0.0
+temporal_shared,raw_frontal+ridge_direct,blink,5.0,3.5456526158715492e-12,0.1581617509724742,0.9796242531164359,19.845348418817004,8.109412725321015,0.0
+temporal_shared,raw_frontal+ridge_direct,lateral,-5.0,1.0788235223367169e-11,0.2387183388147541,0.9654202334351023,14.33851805618827,17.360007436255522,0.0
+temporal_shared,raw_frontal+ridge_direct,lateral,0.0,3.164908265022986e-12,0.1388358912138888,0.9871746577919753,18.944497921522455,16.965987436646103,0.0
+temporal_shared,raw_frontal+ridge_direct,lateral,5.0,4.6107255024335536e-12,0.10947932180810992,0.9879254313174097,22.32064764026657,15.342137112333912,0.0
+temporal_shared,raw_frontal+ridge_direct,mixed,-5.0,1.02212937420266e-12,0.09301731016104185,0.9946155229248106,21.686513224179308,20.53722772182772,0.0
+temporal_shared,raw_frontal+ridge_direct,mixed,0.0,5.624293808382844e-13,0.06604537258390203,0.9970452412787889,25.048422168294785,18.899136800999592,0.0
+temporal_shared,raw_frontal+ridge_direct,mixed,5.0,3.644804426400501e-12,0.15782871116331756,0.9794441114399379,20.026873738185245,8.877588327833744,0.0
+temporal_shared,reference_rank2_control:both,blink,-5.0,1.2070732768307493e-12,0.11255575726161723,0.9921665859637405,20.105623825547607,18.36968804005153,0.0034890856103641467
+temporal_shared,reference_rank2_control:both,blink,0.0,5.760615662665051e-13,0.07483779102356664,0.9964207844835653,23.78219336281221,17.046257712372523,0.0010878451867253514
+temporal_shared,reference_rank2_control:both,blink,5.0,3.5610014947919254e-12,0.1610752985466496,0.9795050212325808,19.11042711927311,7.374491425777119,0.0001192318838551248
+temporal_shared,reference_rank2_control:both,lateral,-5.0,2.727184214782075e-11,0.5064791031424335,0.8850788223214545,7.217809178241556,10.239298558308807,0.08034141111364781
+temporal_shared,reference_rank2_control:both,lateral,0.0,8.727054479551537e-12,0.288614718331549,0.9541466889633139,12.10235370840882,10.123843223532468,0.03302796882866144
+temporal_shared,reference_rank2_control:both,lateral,5.0,6.283240125655114e-12,0.1881725813072761,0.9767601808335766,16.248352979843887,9.269842451911227,0.011165250483833183
+temporal_shared,reference_rank2_control:both,mixed,-5.0,1.991746098954682e-12,0.14163965999899178,0.9882475425701083,17.91307767835773,16.763792176006135,0.006367980354702268
+temporal_shared,reference_rank2_control:both,mixed,0.0,8.607158505195684e-13,0.09103030534010252,0.9950060297080183,21.840290342892327,15.691004975597131,0.0020392115707706182
+temporal_shared,reference_rank2_control:both,mixed,5.0,3.689002861204672e-12,0.16386206254877733,0.9791476194210273,18.749201276159,7.599915865807498,0.0002964920189106948
+temporal_shared,ridge_direct:both,blink,-5.0,6.986201253764932e-13,0.08070940483665011,0.9956556715741047,23.164088901232184,21.428153115736105,0.0
+temporal_shared,ridge_direct:both,blink,0.0,4.226994474554112e-13,0.058821431148770024,0.9975086296702907,26.30714219109609,19.571206540656405,0.0
+temporal_shared,ridge_direct:both,blink,5.0,3.5456526158715492e-12,0.1581617509724742,0.9796242531164359,19.845348418817004,8.109412725321015,0.0
+temporal_shared,ridge_direct:both,lateral,-5.0,1.0788235223367169e-11,0.2387183388147541,0.9654202334351023,14.33851805618827,17.360007436255522,0.0
+temporal_shared,ridge_direct:both,lateral,0.0,3.164908265022986e-12,0.1388358912138888,0.9871746577919753,18.944497921522455,16.965987436646103,0.0
+temporal_shared,ridge_direct:both,lateral,5.0,4.6107255024335536e-12,0.10947932180810992,0.9879254313174097,22.32064764026657,15.342137112333912,0.0
+temporal_shared,ridge_direct:both,mixed,-5.0,1.02212937420266e-12,0.09301731016104185,0.9946155229248106,21.686513224179308,20.53722772182772,0.0
+temporal_shared,ridge_direct:both,mixed,0.0,5.624293808382844e-13,0.06604537258390203,0.9970452412787889,25.048422168294785,18.899136800999592,0.0
+temporal_shared,ridge_direct:both,mixed,5.0,3.644804426400501e-12,0.15782871116331756,0.9794441114399379,20.026873738185245,8.877588327833744,0.0
+whole,cca_reference_rank2:both,blink,-5.0,3.268701658241575e-12,0.18261965939867358,0.9763776603249301,16.916620205556203,18.177362024217672,0.004027841641058077
+whole,cca_reference_rank2:both,blink,0.0,1.692932512227956e-12,0.148841484687297,0.9840550108207353,18.792333828439368,15.053075782157237,0.001123725967151384
+whole,cca_reference_rank2:both,blink,5.0,2.3889678152421975e-12,0.21019113937512618,0.9660456724042326,17.77364525008646,9.034387160748022,0.0002888982392573467
+whole,cca_reference_rank2:both,lateral,-5.0,1.2504465256561122e-11,0.40978237271803863,0.916658666516387,9.212596992734447,11.878208187977467,0.039653335857421534
+whole,cca_reference_rank2:both,lateral,0.0,6.563082312862148e-12,0.27103705451645504,0.9566854389442179,12.921278563944272,10.586889894243686,0.0156011473479113
+whole,cca_reference_rank2:both,lateral,5.0,4.731890345706203e-12,0.21685838171724034,0.9699078895506912,15.474982845263243,8.140594132506351,0.00598094345349048
+whole,cca_reference_rank2:both,mixed,-5.0,3.060381746100154e-12,0.19459815416072068,0.9747000478152946,15.960561619576008,17.50751011964474,0.004408984730330539
+whole,cca_reference_rank2:both,mixed,0.0,1.8926434186448952e-12,0.1601609592773608,0.9823864119696619,17.880395138799884,14.427343773925015,0.001430721571596723
+whole,cca_reference_rank2:both,mixed,5.0,2.4183156997782123e-12,0.20849608239102857,0.9670472696656858,17.56974719409935,9.116695786168176,0.00042066886340519106
+whole,central_frontal_raw_context,blink,-5.0,6.748902989334355e-12,0.29781838805365457,0.9486193446971068,12.718306129870879,13.97904794853235,0.03178615726888143
+whole,central_frontal_raw_context,blink,0.0,2.6603294013277673e-12,0.19474014714716636,0.9754059080853406,16.122024002517733,12.382765956235605,0.009772828702546118
+whole,central_frontal_raw_context,blink,5.0,1.0822046684494116e-12,0.12633517355868262,0.989112257183272,19.77468855037383,11.035430461035396,-0.022777686539782144
+whole,central_frontal_raw_context,lateral,-5.0,6.732802143269438e-11,0.8756830157118772,0.7914996634470974,4.369781631652605,7.035392826895622,0.16481233892671127
+whole,central_frontal_raw_context,lateral,0.0,2.2771846645088493e-11,0.5167252836871099,0.8826128721273313,8.616931590476286,6.2825429207757,0.08967371416479795
+whole,central_frontal_raw_context,lateral,5.0,8.543626902834829e-12,0.31984542056771637,0.938948235893138,12.560166834173291,5.2257781214164005,0.03694059711104365
+whole,central_frontal_raw_context,mixed,-5.0,8.485381474220644e-12,0.3514307636922832,0.9327830829705862,11.249659393927743,12.796607893996477,0.046325949575039035
+whole,central_frontal_raw_context,mixed,0.0,3.4258520435695185e-12,0.22617633274388904,0.9682254194999529,14.74075796641601,11.287706601541139,0.015591714041305814
+whole,central_frontal_raw_context,mixed,5.0,1.3446076609945714e-12,0.1440654550973341,0.9863212359351882,18.496492344068418,10.043440936137241,-0.018853297406097203
+whole,central_frontal_vmd_context,blink,-5.0,7.472509764425969e-12,0.30603350655736605,0.9458946198948804,12.575095017921539,13.835836836583011,0.03451088207110781
+whole,central_frontal_vmd_context,blink,0.0,2.7230563364059844e-12,0.19620842628109383,0.9750492806220421,16.070493494410016,12.331235448127883,0.010129456165844649
+whole,central_frontal_vmd_context,blink,5.0,1.0900369169423798e-12,0.12594011206232916,0.9891342771951416,19.82175656657848,11.082498477240044,-0.022799706551651644
+whole,central_frontal_vmd_context,lateral,-5.0,6.491243884286319e-11,0.8697656420053376,0.7907332731259915,4.353715536771632,7.01932673201465,0.16557872924781708
+whole,central_frontal_vmd_context,lateral,0.0,2.1277227607814933e-11,0.5058077505459555,0.8847660889908915,8.683517601283125,6.349128931582538,0.0875204973012377
+whole,central_frontal_vmd_context,lateral,5.0,7.904909647965577e-12,0.3095055712961219,0.9419199302923698,12.726614426250006,5.392225713493117,0.033968902711812056
+whole,central_frontal_vmd_context,mixed,-5.0,8.88517492776125e-12,0.35989174594501083,0.9301260008201225,11.06268608775848,12.609634587827212,0.04898303172550275
+whole,central_frontal_vmd_context,mixed,0.0,3.5001715075463636e-12,0.2280731898035079,0.9677662117658743,14.668753551325228,11.215702186450354,0.016050921775384384
+whole,central_frontal_vmd_context,mixed,5.0,1.3504604615279367e-12,0.14386382646335855,0.9863813526556096,18.501700072134703,10.048648664203528,-0.018913414126518643
+whole,identity,blink,-5.0,2.1523536880478355e-10,1.852456772806029,0.6191432389048042,-1.2607418186614718,0.0,0.3612622630611841
+whole,identity,blink,0.0,6.806340223002671e-11,1.0417130126436924,0.7485309459747176,3.739258046282132,0.0,0.23664779081316914
+whole,identity,blink,5.0,2.1523537024564744e-11,0.5857982724571003,0.8559062755523226,8.739258089338438,0.0,0.1104282950911672
+whole,identity,lateral,-5.0,2.1523536880478355e-10,1.7848325008070447,0.5709428248450331,-2.665611195243018,0.0,0.38536917752877553
+whole,identity,lateral,0.0,6.80634022300267e-11,1.003685089271221,0.734228651613424,2.334388669700586,0.0,0.2380579346787052
+whole,identity,lateral,5.0,2.1523537024564744e-11,0.5644135997645876,0.8627774249978108,7.3343887127568905,0.0,0.1131114080063708
+whole,identity,mixed,-5.0,2.152353688047835e-10,1.8640035919807916,0.6128832896658915,-1.5469485000687326,0.0,0.3662257428797338
+whole,identity,mixed,0.0,6.80634022300267e-11,1.0482062663263894,0.7455096536614748,3.4530513648748706,0.0,0.2383074798797838
+whole,identity,mixed,5.0,2.1523537024564744e-11,0.589449697339514,0.8549790399180435,8.453051407931177,0.0,0.11248889861104752
+whole,raw_frontal+cca_reference_rank2,blink,-5.0,2.5474243915172828e-12,0.17580915134644615,0.977789050241037,17.013554986787057,18.27429680544853,0.0026164517249512194
+whole,raw_frontal+cca_reference_rank2,blink,0.0,1.661979371276534e-12,0.14715744290540972,0.9844353792535558,18.834619109445697,15.095361063163567,0.0007433575343308465
+whole,raw_frontal+cca_reference_rank2,blink,5.0,2.368289746587946e-12,0.2089894358694202,0.9662642433840172,17.822233583760706,9.08297549442227,7.032725947265818e-05
+whole,raw_frontal+cca_reference_rank2,lateral,-5.0,1.1716229741079926e-11,0.3911768057429269,0.9221703716824167,9.686193571298803,12.351804766541822,0.03414163069139203
+whole,raw_frontal+cca_reference_rank2,lateral,0.0,6.053351775282025e-12,0.2561588557596653,0.9602386775083861,13.507201616023593,11.172812946323006,0.012047908783743089
+whole,raw_frontal+cca_reference_rank2,lateral,5.0,4.459472916176678e-12,0.20539299210908882,0.9720904415435394,16.096313095541504,8.761924382784613,0.003798391460642349
+whole,raw_frontal+cca_reference_rank2,mixed,-5.0,2.827740734780243e-12,0.18886541406126195,0.9757188440206558,16.07805934503769,17.625007845106424,0.003390188524969453
+whole,raw_frontal+cca_reference_rank2,mixed,0.0,1.8443155263558074e-12,0.15738899002971826,0.9829805272586849,17.98203254856974,14.52898118369487,0.0008366062825736998
+whole,raw_frontal+cca_reference_rank2,mixed,5.0,2.3876449612428896e-12,0.20660268918228397,0.9673780809384191,17.67235958540622,9.219308177475046,8.985759067184885e-05
+whole,raw_frontal+reference_rank2_control,blink,-5.0,2.7496965792736863e-12,0.19278282761659613,0.9740342457040245,16.221851694344203,17.482593513005675,0.006371256261963769
+whole,raw_frontal+reference_rank2_control,blink,0.0,1.7164046367565889e-12,0.15476728834546966,0.9831556145383682,18.292431088987122,14.55317304270499,0.002023122249518584
+whole,raw_frontal+reference_rank2_control,blink,5.0,2.3790784978313945e-12,0.2111241342804885,0.9659844543604432,17.61069859248213,8.871440503143692,0.00035011628304658165
+whole,raw_frontal+reference_rank2_control,lateral,-5.0,1.5397173630185045e-11,0.4614856609271897,0.8990544873863144,8.52382883886063,11.18944003410365,0.05725751498749427
+whole,raw_frontal+reference_rank2_control,lateral,0.0,7.159208908179233e-12,0.29369640281896514,0.9495129763117415,12.455735261107467,10.121346591406883,0.022773609980387806
+whole,raw_frontal+reference_rank2_control,lateral,5.0,4.710366892255295e-12,0.22061163290801572,0.9688532106821939,15.417789745747964,8.083401032991073,0.007035622321987829
+whole,raw_frontal+reference_rank2_control,mixed,-5.0,3.1289798797960164e-12,0.20922601667987978,0.9710411293066747,15.236324677387122,16.783273177455854,0.008067903238950427
+whole,raw_frontal+reference_rank2_control,mixed,0.0,1.9240656085074833e-12,0.16646797871909685,0.9814030965420129,17.40230885196287,13.949257487088001,0.002414036999245686
+whole,raw_frontal+reference_rank2_control,mixed,5.0,2.400686967100265e-12,0.20909212208517475,0.9670677408862274,17.43066258586978,8.977611177938606,0.00040019764286362445
+whole,raw_frontal+ridge_direct,blink,-5.0,2.329468674303303e-12,0.1575436425948461,0.9804055019659883,18.466501887940687,19.72724370660216,0.0
+whole,raw_frontal+ridge_direct,blink,0.0,1.6061241767617344e-12,0.14020265581556918,0.9851787367878867,19.727035443901798,15.987777397619668,0.0
+whole,raw_frontal+ridge_direct,blink,5.0,2.365736258226278e-12,0.2082046863140431,0.9663345706434898,17.963001120345766,9.223743031007327,0.0
+whole,raw_frontal+ridge_direct,lateral,-5.0,7.171483724779121e-12,0.2629644621819821,0.9563120023738085,13.752310309978638,16.417921505221656,0.0
+whole,raw_frontal+ridge_direct,lateral,0.0,4.9459874182832096e-12,0.1937006516841105,0.9722865862921293,16.805856864921097,14.471468195220512,0.0
+whole,raw_frontal+ridge_direct,lateral,5.0,4.156769220483163e-12,0.1765482082663924,0.9758888330041817,18.562201910183088,11.227813197426197,0.0
+whole,raw_frontal+ridge_direct,mixed,-5.0,2.536877491704288e-12,0.1658716174074384,0.9791090325456253,17.73938564594604,19.286334146014774,0.0
+whole,raw_frontal+ridge_direct,mixed,0.0,1.7705815032910338e-12,0.14879949942805137,0.9838171335412587,19.02182936617229,15.568778001297419,0.0
+whole,raw_frontal+ridge_direct,mixed,5.0,2.3823187428116817e-12,0.20519570221308894,0.967467938529091,17.95573586070062,9.502684452769442,0.0
+whole,reference_rank2_control:both,blink,-5.0,3.4709738459979785e-12,0.19959333566882353,0.9726228557879176,16.12491691311335,17.385658731774818,0.007782646178070627
+whole,reference_rank2_control:both,blink,0.0,1.747357777708011e-12,0.15645133012735693,0.9827752461055477,18.250145807980793,14.510887761698658,0.002403490682339122
+whole,reference_rank2_control:both,blink,5.0,2.3997565664856457e-12,0.21232583778619452,0.9657658833806586,17.562110258807884,8.822852169469444,0.0005686872628312701
+whole,reference_rank2_control:both,lateral,-5.0,1.6185409145666238e-11,0.48009122790230147,0.8935427822202848,8.050232260296276,10.715843455539297,0.06276922015352378
+whole,reference_rank2_control:both,lateral,0.0,7.668939445759356e-12,0.30857460157575484,0.9459597377475731,11.869812209028147,9.535423539327562,0.02632684854455601
+whole,reference_rank2_control:both,lateral,5.0,4.982784321784821e-12,0.23207702251616724,0.9666706586893458,14.796459495469703,7.462070782712812,0.009218174314835959
+whole,reference_rank2_control:both,mixed,-5.0,3.3616208911159272e-12,0.2149587567793385,0.9700223331013138,15.118826951925437,16.66577545199417,0.00908669944431151
+whole,reference_rank2_control:both,mixed,0.0,1.9723935007965715e-12,0.16923994796673936,0.9808089812529899,17.300671442193018,13.847620077318146,0.003008152288268709
+whole,reference_rank2_control:both,mixed,5.0,2.4313577056355873e-12,0.2109855152939193,0.9667369296134941,17.328050194562913,8.874998786631735,0.0007310089155969665
+whole,ridge_direct:both,blink,-5.0,3.050745941027595e-12,0.1643541506470735,0.9789941120498813,18.36956710670983,19.630308925371303,0.0014113899161068586
+whole,ridge_direct:both,blink,0.0,1.6370773177131566e-12,0.14188669759745645,0.9847983683550663,19.684750162895465,15.945492116613337,0.0003803684328205376
+whole,ridge_direct:both,blink,5.0,2.3864143268805287e-12,0.20940638981974907,0.9661159996637052,17.914412786671516,9.175154697333078,0.00021857097978468848
+whole,ridge_direct:both,lateral,-5.0,7.959719240260315e-12,0.28157002915709384,0.9508002972077791,13.278713731414284,15.9443249266573,0.005511705166029503
+whole,ridge_direct:both,lateral,0.0,5.455717955863332e-12,0.20857885044090024,0.9687333477279609,16.219933812841774,13.88554514314119,0.0035532385641682098
+whole,ridge_direct:both,lateral,5.0,4.429186650012687e-12,0.18801359787454394,0.9737062810113336,17.94087165990483,10.606482947147938,0.0021825519928481306
+whole,ridge_direct:both,mixed,-5.0,2.7695185030241994e-12,0.17160435750689712,0.9780902363402643,17.62188792048436,19.16883642055309,0.0010187962053610847
+whole,ridge_direct:both,mixed,0.0,1.8189093955801216e-12,0.15157146867569388,0.9832230182522356,18.920191956402434,15.467140591527563,0.0005941152890230232
+whole,ridge_direct:both,mixed,5.0,2.4129894813470044e-12,0.20708909542183349,0.9671371272563576,17.85312346939375,9.400072061462573,0.0003308112727333422
+
+```
+
+### results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/results/vmd-new-hybrid-review-20261014/new-hybrid-frontend-review-002/review_method_means.csv
+
+```csv
+scope,evaluated_family,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration,pooled_energy_snr_db
+central_shared,cca_reference_rank2:both,3.1700503485979176e-12,0.22934163495755877,0.9628954893543491,16.165263925716154,14.211129553054974,0.011649815393043125,16.352900053200553
+central_shared,central_frontal_raw_context,2.2731069120551133e-11,0.4731019060937035,0.8967814023593045,10.949306422363545,8.995172049702365,0.07776390238808778,10.154835711420333
+central_shared,central_frontal_vmd_context,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.07821135389455669,10.069310921021064
+central_shared,identity,5.811538636041364e-11,1.1098663689158537,0.7306387359088092,1.9541343726611802,0.0,0.24390656883858303,1.7230380471289644
+central_shared,raw_frontal+cca_reference_rank2,3.1700503485979176e-12,0.22934163495755877,0.9628954893543491,16.165263925716154,14.211129553054974,0.011649815393043125,16.352900053200553
+central_shared,raw_frontal+reference_rank2_control,4.224496681594309e-12,0.2671315287248385,0.9527411754587344,14.905802342542053,12.951667969880873,0.021804129288657877,15.124574424424274
+central_shared,raw_frontal+ridge_direct,2.0455196893096827e-12,0.17405840396255173,0.9745453047473923,19.263159625326992,17.309025252665812,0.0,19.193922318139904
+central_shared,reference_rank2_control:both,4.224496681594309e-12,0.2671315287248385,0.9527411754587344,14.905802342542053,12.951667969880873,0.021804129288657877,15.124574424424274
+central_shared,ridge_direct:both,2.0455196893096827e-12,0.17405840396255173,0.9745453047473923,19.263159625326992,17.309025252665812,0.0,19.193922318139904
+frontal,cca_reference_rank2:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266,16.62826215949223
+frontal,central_frontal_raw_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266,16.62826215949223
+frontal,central_frontal_vmd_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266,16.62826215949223
+frontal,identity,3.0582390300864297e-10,2.307985957107543,0.47281897982007526,-5.473181121702266,0.0,0.5083229004226034,-5.387673982307646
+frontal,raw_frontal+cca_reference_rank2,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0,17.939047170828083
+frontal,raw_frontal+reference_rank2_control,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0,17.939047170828083
+frontal,raw_frontal+ridge_direct,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0,17.939047170828083
+frontal,reference_rank2_control:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266,16.62826215949223
+frontal,ridge_direct:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266,16.62826215949223
+middle_verified,cca_reference_rank2:both,2.782249611519177e-12,0.24838968759286068,0.9581844285572223,15.447017453919681,14.39301593753254,0.012577342529425793,15.613187157532387
+middle_verified,central_frontal_raw_context,1.609996587467418e-11,0.48363453797992667,0.8957356848342647,10.694746564597775,9.640745048210633,0.07502608625238338,10.138939147336087
+middle_verified,central_frontal_vmd_context,1.590414760899291e-11,0.48181932618719453,0.8951447303542679,10.656923642421457,9.602922126034317,0.07561704073238018,10.060706620320929
+middle_verified,identity,5.140053120227365e-11,1.2160060369312515,0.7053099212374392,1.054001516387141,0.0,0.265451849849209,0.8617410657651863
+middle_verified,raw_frontal+cca_reference_rank2,2.782249611519177e-12,0.24838968759286068,0.9581844285572223,15.447017453919681,14.39301593753254,0.012577342529425793,15.613187157532387
+middle_verified,raw_frontal+reference_rank2_control,3.686254422686084e-12,0.28966207809225786,0.9470142189131086,14.141898729586796,13.087897213199653,0.02374755217353955,14.341411185075662
+middle_verified,raw_frontal+ridge_direct,1.7105021174036341e-12,0.189555340727887,0.9707617710866481,18.65270577093236,17.59870425454522,0.0,18.614822243368103
+middle_verified,reference_rank2_control:both,3.686254422686084e-12,0.28966207809225786,0.9470142189131086,14.141898729586796,13.087897213199653,0.02374755217353955,14.341411185075662
+middle_verified,ridge_direct:both,1.7105021174036341e-12,0.189555340727887,0.9707617710866481,18.65270577093236,17.59870425454522,0.0,18.614822243368103
+posterior,cca_reference_rank2:both,5.792409974627345e-12,0.2342629618236356,0.9649394318771378,14.432033830818643,3.350088145848564,0.003578393378607949,13.602651200849547
+posterior,central_frontal_raw_context,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.007039362481639293,12.68323339055742
+posterior,central_frontal_vmd_context,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.007039362481639293,12.68323339055742
+posterior,identity,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.04387031994209253,10.097879805690477
+posterior,raw_frontal+cca_reference_rank2,5.792409974627345e-12,0.2342629618236356,0.9649394318771378,14.432033830818643,3.350088145848564,0.003578393378607949,13.602651200849547
+posterior,raw_frontal+reference_rank2_control,6.277863302159039e-12,0.24383746859353359,0.9623240010297958,14.095698451206937,3.013752766236858,0.006193824225950082,13.27906956281004
+posterior,raw_frontal+ridge_direct,5.092900305961929e-12,0.21579892762963043,0.9685178252557459,15.350217190996135,4.268271506026056,0.0,14.58446819738789
+posterior,reference_rank2_control:both,6.277863302159039e-12,0.24383746859353359,0.9623240010297958,14.095698451206937,3.013752766236858,0.006193824225950082,13.27906956281004
+posterior,ridge_direct:both,5.092900305961929e-12,0.21579892762963043,0.9685178252557459,15.350217190996135,4.268271506026056,0.0,14.58446819738789
+temporal_shared,cca_reference_rank2:both,4.4627194721937206e-12,0.165848126173219,0.9785990253447719,18.5594188317044,13.604841604796423,0.008558058271767567,17.726674483186624
+temporal_shared,central_frontal_raw_context,4.4834746606807647e-11,0.4379931331396262,0.9002671274427705,11.797839281582782,6.843262054674804,0.0868899561737691,10.281303762358693
+temporal_shared,central_frontal_vmd_context,4.214033341678559e-11,0.43644839744558134,0.9002980191813945,11.725136741356465,6.770559514448488,0.08685906443514507,10.167252650697375
+temporal_shared,identity,8.049823688754696e-11,0.7560674755311942,0.8150681181467097,4.954577226907977,0.0,0.17208896546982994,3.4584888328733374
+temporal_shared,raw_frontal+cca_reference_rank2,4.4627194721937206e-12,0.165848126173219,0.9785990253447719,18.5594188317044,13.604841604796423,0.008558058271767567,17.726674483186624
+temporal_shared,raw_frontal+reference_rank2_control,6.018637544621723e-12,0.19202969750010707,0.9718310306108207,17.45214771905958,12.497570492151606,0.01532605300571896,16.61070558087139
+temporal_shared,raw_frontal+ridge_direct,3.1622449289965115e-12,0.12240194807810095,0.9871570836165396,21.298005806642433,16.343428579734457,0.0,20.412815675457047
+temporal_shared,reference_rank2_control:both,6.018637544621723e-12,0.19202969750010707,0.9718310306108207,17.45214771905958,12.497570492151606,0.01532605300571896,16.61070558087139
+temporal_shared,ridge_direct:both,3.1622449289965115e-12,0.12240194807810095,0.9871570836165396,21.298005806642433,16.343428579734457,0.0,20.412815675457047
+whole,cca_reference_rank2:both,4.2801534183738286e-12,0.22250947647132677,0.9659848964457596,15.833573515388805,12.658007429065375,0.008104029741291397,13.923972254127111
+whole,central_frontal_raw_context,1.3598974802057107e-11,0.339202220028857,0.9348364466487793,13.18320093816409,10.00763485184066,0.03925247953827177,11.289970644739368
+whole,central_frontal_vmd_context,1.3235109557028176e-11,0.3383433078844535,0.9346412261514359,13.162703594937025,9.987137508613593,0.039447700035615124,11.268085202217994
+whole,identity,1.0160743601979166e-10,1.1482843114884855,0.7338779272370579,3.17556608632343,0.0,0.240210998949993,2.8472650157040924e-07
+whole,raw_frontal+cca_reference_rank2,3.985161018255482e-12,0.21528241966735792,0.9676739573145237,16.07695193798567,12.901385851662237,0.006414968872527466,14.157094848928748
+whole,raw_frontal+reference_rank2_control,4.618406844431668e-12,0.23547267382009734,0.962234106190889,15.3990701485277,12.22350406220427,0.011854819996162062,13.686978905353499
+whole,raw_frontal+ridge_direct,3.25170524562709e-12,0.18433679176728024,0.974088926187051,17.777095378898892,14.601529292575462,0.0,15.126151896430805
+whole,reference_rank2_control:both,4.9133992445500155e-12,0.2426997306240662,0.960545045322125,15.155691725930836,11.980125639607405,0.013543880864925995,13.480443502175145
+whole,ridge_direct:both,3.5466976457454378e-12,0.19156384857124906,0.972399865318287,17.533716956302026,14.358150869978598,0.001689060868763931,14.78070484779947
 
 ```
 
@@ -74392,7 +79022,7 @@ artifact separation.
 
 ### Snapshot: REPAIRS.md
 
-[Original](docs/REPAIRS.md); captured SHA256 `9d965ba603b5e79098cd19d829997c002b967787ae1b5f5e49b43aea54c519c8`.
+[Original](docs/REPAIRS.md); captured SHA256 `c993680bb664f750fa656c9db32e1538e5b304d57b530a165208b274cf6c58e2`.
 
 # Failed-run evidence and repairs
 
@@ -74426,6 +79056,22 @@ the saved run specification alongside filtered outputs and checks run ID,
 source SHA, stage and campaign. Missing/ambiguous identity is distinguished
 from an actual identity mismatch. The first retrieval and its outputs remain
 preserved; the explicit identity-inclusive retry verifies the same saved run.
+
+# 14 October 2026: new hybrid frozen review main/subgroup scope mismatch
+
+Run new-hybrid-frontend-review-001/1 at b7914b8 saved all320examples, then failed
+with ValueError:Baseline metric cohort differs in nonfrontal_review.py:204.
+The CCA parent includes actual middle/temporal diagnostic scopes. The caller
+filtered current rows to fourmain scopes but supplied allparent scopes to the
+strict parity function. The archived earlier parent lacked those diagnostic rows.
+
+Repair: filter both current andparent on the same declared whole/frontal/
+posterior/central_shared scopes. Exactmain row coverage, source metadata and
+paper-metric parity stay unchanged. Newfixture accepts only extra diagnostic
+scopes and still rejects a missingprimary channel. Recipes, arrays, splits,
+weights and preservation thresholds are unchanged. Failed logs/state/partial
+artifacts remain evidence. Focused Kaggle contracts must pass before repaired
+version2; no completed metric table or qualification is inferred from run1.
 
 
 
@@ -75911,7 +80557,7 @@ reserved confirmation promotion follows from these development results.
 
 ### Snapshot: NONFRONTAL_CHALLENGERS_RESULTS.md
 
-[Original](docs/NONFRONTAL_CHALLENGERS_RESULTS.md); captured SHA256 `a668d88a16816610ba140188d00abbfd75925606b03c743b31b07bf7eafb9aec`.
+[Original](docs/NONFRONTAL_CHALLENGERS_RESULTS.md); captured SHA256 `b30b426897c4a811f985a1b078c4f61d9d7bc022146ed5083a065fb36e9c092a`.
 
 # Posterior and central component correction: pilots and full development results
 
@@ -76639,6 +81285,91 @@ they cannot be guessed from HEOG signs. No claim that coupling repair guarantees
 an SNR gain. No AutoVMD search, neural weights, new dataset or reserved source
 was used in this completed comparison.
 
+## New complete-ridge hybrid: matched frontal contribution review
+
+14 October 2026. Run `new-hybrid-frontend-review-002/2`, published source
+`0b74d48a20ceeaef17af1b2d7eadd3894f1ff87a`, campaign
+`vmd-new-hybrid-review-20261014`.
+[Kaggle](https://www.kaggle.com/code/satyapaladugu/vmd-new-hybrid-frontend-review).
+Immutable completed parents CCAfull001/1 and matched-context-full001/1.
+The same320examples/32recipients/five donors compare nine frozen-output arms.
+No fit, VMD experiment, neuralweights, parameter search or confirmation access.
+313tests passed,14warnings,18.02s. Parent-array checks1,600; baseline paper
+metric checks549,000. Stage657.393049s; runner729.466371s; peak1,424,484KiB.
+
+| Whole-cap arm | Channel-first output SNR,dB | Pooled-window SNR,dB | MSE,V² | TemporalRRMSE | OrdinaryCC |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| VMD frontal + complete nonfrontal ridge | **17.533717** | **14.780705** | 3.546698e-12 | .191564 | .972400 |
+| Raw calibrated frontal + identical complete nonfrontal ridge | **17.777095** | **15.126152** | 3.251705e-12 | .184337 | .974089 |
+| VMD frontal + CCA reference rank2 | 15.833574 | 13.923972 | 4.280153e-12 | .222509 | .965985 |
+| Raw calibrated frontal + identical CCA rank2 | 16.076952 | 14.157095 | 3.985161e-12 | .215282 | .967674 |
+| VMD frontal + previous reference rank2 | 15.155692 | 13.480444 | 4.913399e-12 | .242700 | .960545 |
+| Raw calibrated frontal + identical previous rank2 | 15.399070 | 13.686979 | 4.618407e-12 | .235473 | .962234 |
+| VMD frontal/context control | 13.162704 | 11.268085 | 1.323511e-11 | .338343 | .934641 |
+| Raw frontal-context representation control, VMD output retained | 13.183201 | 11.289971 | 1.359897e-11 | .339202 | .934836 |
+| Identity | 3.175566 | .000000285 | 1.016074e-10 | 1.148284 | .733878 |
+
+Pooled energy is computed over available channels/time within each window and
+then source/condition/input-level balanced. It is not one global concatenated
+energy ratio and is not a newly imposed qualification gate. The identity
+channel-first mean is not nominal global mixture SNR because spatial ocular
+energy is uneven across channels. All figures are output SNR, not improvement.
+
+Posterior/middle output is held identical within each frontend pair. Therefore
+these contrasts isolate frontend contribution rather than altered nonfrontal
+fitting. The complete-ridge raw control crosses15dB in both summaries on this
+legacy development corpus. It is **not a VMD result or fresh qualification**.
+The requested VMD research branch remains17.533717/14.780705.
+
+| Whole-cap condition | Nominal input,dB | VMD frontal + ridge | Raw frontal + same ridge |
+| --- | ---: | ---: | ---: |
+| Blink | -5 | 18.369567 | 18.466502 |
+| Blink | 0 | 19.684750 | 19.727035 |
+| Blink | 5 | 17.914413 | 17.963001 |
+| Lateral | -5 | **13.278714** | **13.752310** |
+| Lateral | 0 | 16.219934 | 16.805857 |
+| Lateral | 5 | 17.940872 | 18.562202 |
+| Mixed | -5 | 17.621888 | 17.739386 |
+| Mixed | 0 | 18.920192 | 19.021829 |
+| Mixed | 5 | 17.853123 | 17.955736 |
+
+VMD-minus-matched-raw whole-cap SNR delta=-.243378dB, supplemental95% interval
+[-.516659,.043339], crossingzero; this does not establish an SNR winner or VMD
+benefit. Whole-cap CC delta=-.001689061, interval[-.002925135,-.000493789].
+Intervals use the declared paired recipient/donor Poisson approximation, not the
+paper-native participant permutation method. Do not equate a higher raw point
+mean with proven SNR superiority.
+
+The VMD hybrid passes the whole-cap controlled gates against the stronger raw
+control, but the **frontal CC deterioration .007441477>.005 fails**. Whole-cap
+averaging cannot overrule that regional failure. Zero synthetic clean changes
+remain idealized controls, not proof of native neural preservation. All stages
+retain qualification=false and native_validation_required=true. Both systems
+still have severe-lateral mean below15dB. No model/teacher promotion follows.
+
+The repaired experiment changes only parity-reporting scope handling. Failed
+version1 retained all320savedexamples,306passedtests and a strict cohort error;
+all651manifest payloads are checksumverified locally, state remainsfailed.
+The focused repair run passed313tests,all8payloads/completion verified before
+version2. Version2 consumes the original completed parents, not the failed run;
+its repair-parent field is lineage only. No gate/array/split/recipe was relaxed.
+
+Version2 manifest:
+`67b36773a42d80ea71e8d3159f5814a4063edbc1a60756f3c9c9e4153cb72d23`.
+All669manifestpayloads, completion/source identity and tables verified locally.
+The run directory contains554,272,516bytes including logs/receipt. The whole-cap
+PNG was inspected: labels/axes are readable, but the legend overlaps upperbars;
+publication figure layout still needs adjustment. CSVtables are authoritative.
+No HTML visual-QA claim.
+
+Next: generate the separately versioned two-pair coupled corpus from the
+verified original sources and tested homogeneous field, then recompute fixed
+frontal-only modes on new input hashes. Keep complete nonfrontal ridge matched
+in both frontal controls and evaluate native preservation before model work.
+If a challenger is needed, test at most one VMD-informed temporal confidence/
+selective reference-field correction justified by lateral and clean-error
+diagnostics; no condition/clean-truth oracle may choose the inference branch.
+
 
 ---
 
@@ -76888,7 +81619,7 @@ uncertainty, recovery identities and qualification limitations.
 
 ### Snapshot: NEXT_REGIONAL_VALIDATION_PLAN.md
 
-[Original](docs/NEXT_REGIONAL_VALIDATION_PLAN.md); captured SHA256 `3828e1d89c1b8323f0c08308e6f0f46bc2a0dce2dfeec192e2576e7c45714616`.
+[Original](docs/NEXT_REGIONAL_VALIDATION_PLAN.md); captured SHA256 `16781e537219a6b18d598f9513dcb5fbbadc76bea7a88ba1b23d52f54390c04e`.
 
 # Next regional validation stage: provenance, frontal contribution and native EEG
 
@@ -77009,8 +81740,8 @@ strongest matched direct comparator. Fresh controlled mean>=15dB,20stretch.
 Neither self-comparator CC nor synthetic zero-driver preservation proves native
 qualification. Two-pair pilots are engineering checks, not generalization tests.
 
-- [ ] N01 Original source/calibration recovery verified on Kaggle.
-- [ ] N02 Exact new hybrid frontend contribution evaluated.
+- [x] N01 Original source/calibration recovery verified on Kaggle:305tests, two distinct donor/fold pairs, all45payloads recovered.
+- [x] N02 Exact new hybrid frontend contribution evaluated in repairedversion2:313tests,320examples,549000baseline checks; failedversion1/all651payloads retained.
 - [ ] N03 Homogeneous coupling and boundary fixtures pass.
 - [ ] N04 Two-pair new corpus saved and fully recovered.
 - [ ] N05 Fixed frontal/matched nonfrontal pilot completed.
@@ -77030,6 +81761,62 @@ run before source processing; optional expected checksum checks in the shared
 LEMON loader must reject changed archive/header bytes before numerical loading.
 This first run saves verified original prefixes/calibration for N03, without
 creating new mixtures, VMD decompositions, trained models or reserved access.
+
+## Verified execution update and next concrete interface
+
+N01 completed atfdfdd93. Coupled-field algebra passed312Kaggle tests atc6a8420;
+reporting repair passed313 at0b74d48 before N02version2. All source and focused
+contract artifacts are recovered. N02 now compares VMD17.533717mean/14.780705
+pooled against raw-frontal17.777095/15.126152 with identical nonfrontal output.
+VMD-minus-raw SNR interval[-.516659,.043339] crosseszero; frontalCC deterioration
+.007441477>.005 still fails. Native qualification and fresh confirmation stayclosed.
+This evidence does not justify a VMD superiority claim or automatic model work.
+
+The next producer module should expose:
+
+```text
+build_coupled_pilot(verified_source_probe_parent, verified_original_corpus_parent,
+                    configuration, output_directory) -> twenty paired records
+```
+
+Use the exact source-probe manifest
+8618b226331fc8d170b87644dae00e031502fc68ca7a7d0d0f3c9bb2a32fad24
+and originalcorpus manifest93da62cb9cec2984ec9687ee27f308d2dbea6dd57abd62541468daafb89d5e0d.
+Persist the same source-only two-pair selection. Select the previously identified
+recipient scoring start from its recovered window manifest, not a new best-score
+window. Resolve original annotated blink/lateral donor windows through the donor
+record's window index and corpus native-array identities; verify every consumed
+array hash. Mixed uses the declared signed reference combination. No guessed
+direction labels or scoring targets may select a correction branch.
+
+Intersect verified unique channel names. For each calibration, choose an eligible
+complete donor-trial prefix no longer than the recovered recipient prefix. Fit
+the homogeneous field on that exact original unscored donor subset; record its
+baseline/scales/coefficients, valid samples, units and source hash. Construct the
+mixed calibration with one multiplier on its field and reference excursions.
+Recipient background calibration stays producer-only truth, not a denoiser input.
+
+Each pair generates one idealized clean control and blink/lateral/mixed at -5,
+0,+5dB: ten records per pair. Arrays are EEG[C,1024], references[2,1024], paired
+reference[C,1024], trueartifact[C,1024] and verified metadata/masks. New calibration
+arrays retain their trial boundaries and labels. Nominal SNR uses whole available
+montage energy; save measured regional input SNR separately. Denoisers receive
+only EEG, references and allowed calibration/metadata; labels, trueartifact,
+target and generation multiplier stay producer/evaluator-only.
+
+Kaggle acceptance before N05: exact reconstruction, same-multiplier field replay,
+finite arrays, source/recipient/donor separation, whole-trial boundaries, no target
+fit, and full artifact recovery. Save calibration/scoring field means, valid-lag
+coverage and spectral summaries to expose baseline/intercept/edge changes. Do not
+demean the paired target or adjust waveform offsets using scoring truth. A field
+mean or boundary issue must be diagnosed before comparing denoisers, rather than
+being hidden through a changed metric or extra target processing.
+
+Both the low-ocular-reference limitation and regression-generated-field bias
+remain. This pilot checks construction and solver contracts; it cannot qualify
+fresh generalization, remove native-source uncertainty or prove neural retention.
+Once it passes, recompute only fixed frontal K3/alpha2000 modes on its new EEG
+hashes and compare matched full-ridge nonfrontal versus pass-through outputs.
 
 
 ---
@@ -77850,6 +82637,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/classical_fixture.py](<src/vmd_eog/classical_fixture.py>) | 4755 | `4b660fa880354ae815b1110f2bd3044003ccd2475b42e576a3b8b748e2d8aab3` |
 | [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 7485 | `ce5a7a54d53b3f705be00a8e8505f9c6db8fc7fb36b15a85365f1db5ac816924` |
 | [src/vmd_eog/corpus.py](<src/vmd_eog/corpus.py>) | 15853 | `0159c3396f585b8050567bbae649dac5c407490961f2adb0cc28321c70e6d51f` |
+| [src/vmd_eog/coupled_field.py](<src/vmd_eog/coupled_field.py>) | 5000 | `af95c1134d2e5f2dea6b7336059999b703a462a57ebca2570e6695506950f59a` |
 | [src/vmd_eog/coverage_uncertainty.py](<src/vmd_eog/coverage_uncertainty.py>) | 13987 | `8755dbb1063e0eb158cf5146486b8bf7a2eaac5c2565552055d4d41257f268a0` |
 | [src/vmd_eog/data.py](<src/vmd_eog/data.py>) | 13051 | `49d0b5a8137db4b9a67111b84af94ced4a1661baac5d64dfbd9f7c76bcb39b08` |
 | [src/vmd_eog/experiments.py](<src/vmd_eog/experiments.py>) | 56202 | `1d7dffe87733043d98f51411a395a4ff674f0f1c90af86c999c7e1462628b288` |
@@ -77888,7 +82676,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/nonfrontal_experiment.py](<src/vmd_eog/nonfrontal_experiment.py>) | 26880 | `1f3f9b93269079d73d331df9cd6a02d118fe0cf96a584d7c42ed1a1879c9d915` |
 | [src/vmd_eog/nonfrontal_gain_diagnostic.py](<src/vmd_eog/nonfrontal_gain_diagnostic.py>) | 15666 | `5d4729e3722ce69cdbe64f0977940e6e2b3ae23e6cee1280dbccc62421c97230` |
 | [src/vmd_eog/nonfrontal_mwf.py](<src/vmd_eog/nonfrontal_mwf.py>) | 4822 | `c57db8430d0e3645195b8efa3c3e7583657c17e50170e5928fce0700e7b48afa` |
-| [src/vmd_eog/nonfrontal_review.py](<src/vmd_eog/nonfrontal_review.py>) | 16975 | `73fe643331fa4465528282078fc8d90f41529d4db8b53eab706477e13d02a0c4` |
+| [src/vmd_eog/nonfrontal_review.py](<src/vmd_eog/nonfrontal_review.py>) | 17215 | `86992bdc17a813891f3b08c581a05bc19b86100e5da708c6d3e09c692cd40989` |
 | [src/vmd_eog/nonfrontal_ridge.py](<src/vmd_eog/nonfrontal_ridge.py>) | 9910 | `3d3056ece92a10701ba5e89d73b90ef648b7b792175c0ef0a07f5b9a87049989` |
 | [src/vmd_eog/osf_reader.py](<src/vmd_eog/osf_reader.py>) | 5620 | `1cfcf13f9b892d7579ef6db6f7cd3398f8da71ef15010c105927094d5e6327c9` |
 | [src/vmd_eog/paper_evaluation.py](<src/vmd_eog/paper_evaluation.py>) | 5863 | `fb57345d4c8471b52912826bca47085993411b5787cadc159780919449698779` |
@@ -77918,6 +82706,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [configs/campaign.json](<configs/campaign.json>) | 1042 | `4a1feae3841cebe5701c00bf55f549ea46c96c5200bba3d67e42e3f1855b23f0` |
 | [configs/central_coverage.json](<configs/central_coverage.json>) | 3389 | `96ded48676285ae9e95cb1bdfcd37b7650453a8ceb792183e256464ad81d558a` |
 | [configs/context_match.json](<configs/context_match.json>) | 3955 | `69ceb22dedeaddee5b21bac78d792fb8b3e4e249d838d4f0af21ffa311cba0f1` |
+| [configs/coupled_contracts.json](<configs/coupled_contracts.json>) | 1356 | `9e04d2a30ea3342c9dc29e46bb917fbdd6f585c81ccbcb21ae1b26f3ee17a0fa` |
 | [configs/frontal_benchmark_sources.json](<configs/frontal_benchmark_sources.json>) | 8384 | `8ad9902c689721f06a72feaf82b0a9341ed61b3a01e5c94bf9117d3e4b1b2db7` |
 | [configs/frontal_replication.json](<configs/frontal_replication.json>) | 2522 | `0b56857678a5c6390342eb42db3f4f71269475d20d779683823a270e38808c41` |
 | [configs/frontal_screen.json](<configs/frontal_screen.json>) | 284 | `7e7506778e47b246741697c0aff5527740e82076e51e72fb45be7606f30eb2df` |
@@ -78002,13 +82791,15 @@ Current file identities below make the architecture inspectable; each launched e
 | [notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb](<notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb>) | 9704 | `a39eaa7190e2e11aeee30332e114cfa0a20e9f7128c2cc7d3955791abd8584d7` |
 | [notebooks/62_Nonfrontal_CCA_Adaptation.ipynb](<notebooks/62_Nonfrontal_CCA_Adaptation.ipynb>) | 9949 | `df0b250cccedc6d586bcf1083c485bd4969ec591ffce575e34b62f60ee9af2ba` |
 | [notebooks/63_Original_Reference_Source_Audit.ipynb](<notebooks/63_Original_Reference_Source_Audit.ipynb>) | 9240 | `3a575d852c4dc7f4f1152f57de84310f62c49cb25e6d75899b8377620b23d429` |
-| [notebooks/64_New_Hybrid_Frontend_Review.ipynb](<notebooks/64_New_Hybrid_Frontend_Review.ipynb>) | 9525 | `9e0429203265118708b538784885557f65461529b74b46f6297691795eb21753` |
+| [notebooks/64_New_Hybrid_Frontend_Review.ipynb](<notebooks/64_New_Hybrid_Frontend_Review.ipynb>) | 9532 | `6be73a2a8fcbfad05e23bfae9a440afbc4043b825f46d314d757fcb397df6180` |
+| [notebooks/65_Coupled_Field_Contracts.ipynb](<notebooks/65_Coupled_Field_Contracts.ipynb>) | 15412 | `bf261002d00fcf589500c91acca761e91bb20bec42ec37142abf0ff372bacb47` |
 | [tests/test_artifacts.py](<tests/test_artifacts.py>) | 777 | `ccd2badb790151ebe841704a952af7efbc980b0031c9a17185175a5238ec2d8b` |
 | [tests/test_autovmd.py](<tests/test_autovmd.py>) | 1271 | `42bcf6e4e7dc1644f0745e52e6be225d3dafed204ef97fddf507e75a8f838a49` |
 | [tests/test_brainvision.py](<tests/test_brainvision.py>) | 1240 | `5b1eb58e28f241c48d10f15290fe20e280812cf22c377847a4fb0135490e2813` |
 | [tests/test_calibration_frontal_context.py](<tests/test_calibration_frontal_context.py>) | 17475 | `0c82942fff6e7da81987f7a4c8fdd1a60107ee8d0edbc80d80d2d6e3167794a8` |
 | [tests/test_contracts.py](<tests/test_contracts.py>) | 3745 | `a3f65cedb944e1d6653fc2f71cac1db863d0d56c84cd0a0996efb0f706db065f` |
 | [tests/test_corpus.py](<tests/test_corpus.py>) | 3084 | `528ee43c7bb03714b14442804c6f18ba34d50559068ebd39cec2c5cf654f72af` |
+| [tests/test_coupled_field.py](<tests/test_coupled_field.py>) | 3378 | `272a5a6365910059de79d6a42c43494cbab37ebb6a721b67bf7d94f3d6867794` |
 | [tests/test_coverage_uncertainty.py](<tests/test_coverage_uncertainty.py>) | 7778 | `18fb9599a1d6800f2157646fa96369db4987b6e0dc646085a0ad6761653a4054` |
 | [tests/test_data.py](<tests/test_data.py>) | 751 | `abf299beb976e7d81b38f16224af25de59972bcb420745c3c324650204958174` |
 | [tests/test_feature_units.py](<tests/test_feature_units.py>) | 1527 | `7487b3b80aaa96bf07938016f9696afb17002a303f592bcd0989713091c4ad45` |
@@ -78029,7 +82820,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_nonfrontal_challengers.py](<tests/test_nonfrontal_challengers.py>) | 6462 | `2c2968771320de4c28a27a1d57654318855a63c811561fc384ecb134dbb8a91c` |
 | [tests/test_nonfrontal_gain_diagnostic.py](<tests/test_nonfrontal_gain_diagnostic.py>) | 1680 | `97eb21178431c4a6d12c2025af3512ee7cb3ad0c24d59e4b863eee371a3f0556` |
 | [tests/test_nonfrontal_mwf.py](<tests/test_nonfrontal_mwf.py>) | 2232 | `af8347c0680f4a4e91f3cc033c51fed37b82f2ae58eb7c240683e644cef82774` |
-| [tests/test_nonfrontal_review.py](<tests/test_nonfrontal_review.py>) | 2663 | `1723b3b59accffc0177960817a35e65b46864334565fe542e3bd4418dc2e9102` |
+| [tests/test_nonfrontal_review.py](<tests/test_nonfrontal_review.py>) | 3470 | `e34e21395beebec4b47c1e5b8636c2f27b19c0ae9688dae4f32217246b728d17` |
 | [tests/test_nonfrontal_ridge.py](<tests/test_nonfrontal_ridge.py>) | 5458 | `c5ddad31d4336e2f8f5b74777e479ec6b7b7d714f1be6f2737895ed3fd0a4a58` |
 | [tests/test_ocular_metric.py](<tests/test_ocular_metric.py>) | 952 | `17de7f20f85bcca26d6188c848058e3fa8347ec591f9e23b88aefc8ab0c5ceab` |
 | [tests/test_paper_figures.py](<tests/test_paper_figures.py>) | 2421 | `e246e3084dfa77bd5b901fe8b64f4947a4d2bcfd91d3352d1d71900a960c14c9` |

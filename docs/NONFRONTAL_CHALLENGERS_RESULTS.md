@@ -723,3 +723,88 @@ SGEYESUB challenger still requires the six calibrated movement/rest labels;
 they cannot be guessed from HEOG signs. No claim that coupling repair guarantees
 an SNR gain. No AutoVMD search, neural weights, new dataset or reserved source
 was used in this completed comparison.
+
+## New complete-ridge hybrid: matched frontal contribution review
+
+14 October 2026. Run `new-hybrid-frontend-review-002/2`, published source
+`0b74d48a20ceeaef17af1b2d7eadd3894f1ff87a`, campaign
+`vmd-new-hybrid-review-20261014`.
+[Kaggle](https://www.kaggle.com/code/satyapaladugu/vmd-new-hybrid-frontend-review).
+Immutable completed parents CCAfull001/1 and matched-context-full001/1.
+The same320examples/32recipients/five donors compare nine frozen-output arms.
+No fit, VMD experiment, neuralweights, parameter search or confirmation access.
+313tests passed,14warnings,18.02s. Parent-array checks1,600; baseline paper
+metric checks549,000. Stage657.393049s; runner729.466371s; peak1,424,484KiB.
+
+| Whole-cap arm | Channel-first output SNR,dB | Pooled-window SNR,dB | MSE,V² | TemporalRRMSE | OrdinaryCC |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| VMD frontal + complete nonfrontal ridge | **17.533717** | **14.780705** | 3.546698e-12 | .191564 | .972400 |
+| Raw calibrated frontal + identical complete nonfrontal ridge | **17.777095** | **15.126152** | 3.251705e-12 | .184337 | .974089 |
+| VMD frontal + CCA reference rank2 | 15.833574 | 13.923972 | 4.280153e-12 | .222509 | .965985 |
+| Raw calibrated frontal + identical CCA rank2 | 16.076952 | 14.157095 | 3.985161e-12 | .215282 | .967674 |
+| VMD frontal + previous reference rank2 | 15.155692 | 13.480444 | 4.913399e-12 | .242700 | .960545 |
+| Raw calibrated frontal + identical previous rank2 | 15.399070 | 13.686979 | 4.618407e-12 | .235473 | .962234 |
+| VMD frontal/context control | 13.162704 | 11.268085 | 1.323511e-11 | .338343 | .934641 |
+| Raw frontal-context representation control, VMD output retained | 13.183201 | 11.289971 | 1.359897e-11 | .339202 | .934836 |
+| Identity | 3.175566 | .000000285 | 1.016074e-10 | 1.148284 | .733878 |
+
+Pooled energy is computed over available channels/time within each window and
+then source/condition/input-level balanced. It is not one global concatenated
+energy ratio and is not a newly imposed qualification gate. The identity
+channel-first mean is not nominal global mixture SNR because spatial ocular
+energy is uneven across channels. All figures are output SNR, not improvement.
+
+Posterior/middle output is held identical within each frontend pair. Therefore
+these contrasts isolate frontend contribution rather than altered nonfrontal
+fitting. The complete-ridge raw control crosses15dB in both summaries on this
+legacy development corpus. It is **not a VMD result or fresh qualification**.
+The requested VMD research branch remains17.533717/14.780705.
+
+| Whole-cap condition | Nominal input,dB | VMD frontal + ridge | Raw frontal + same ridge |
+| --- | ---: | ---: | ---: |
+| Blink | -5 | 18.369567 | 18.466502 |
+| Blink | 0 | 19.684750 | 19.727035 |
+| Blink | 5 | 17.914413 | 17.963001 |
+| Lateral | -5 | **13.278714** | **13.752310** |
+| Lateral | 0 | 16.219934 | 16.805857 |
+| Lateral | 5 | 17.940872 | 18.562202 |
+| Mixed | -5 | 17.621888 | 17.739386 |
+| Mixed | 0 | 18.920192 | 19.021829 |
+| Mixed | 5 | 17.853123 | 17.955736 |
+
+VMD-minus-matched-raw whole-cap SNR delta=-.243378dB, supplemental95% interval
+[-.516659,.043339], crossingzero; this does not establish an SNR winner or VMD
+benefit. Whole-cap CC delta=-.001689061, interval[-.002925135,-.000493789].
+Intervals use the declared paired recipient/donor Poisson approximation, not the
+paper-native participant permutation method. Do not equate a higher raw point
+mean with proven SNR superiority.
+
+The VMD hybrid passes the whole-cap controlled gates against the stronger raw
+control, but the **frontal CC deterioration .007441477>.005 fails**. Whole-cap
+averaging cannot overrule that regional failure. Zero synthetic clean changes
+remain idealized controls, not proof of native neural preservation. All stages
+retain qualification=false and native_validation_required=true. Both systems
+still have severe-lateral mean below15dB. No model/teacher promotion follows.
+
+The repaired experiment changes only parity-reporting scope handling. Failed
+version1 retained all320savedexamples,306passedtests and a strict cohort error;
+all651manifest payloads are checksumverified locally, state remainsfailed.
+The focused repair run passed313tests,all8payloads/completion verified before
+version2. Version2 consumes the original completed parents, not the failed run;
+its repair-parent field is lineage only. No gate/array/split/recipe was relaxed.
+
+Version2 manifest:
+`67b36773a42d80ea71e8d3159f5814a4063edbc1a60756f3c9c9e4153cb72d23`.
+All669manifestpayloads, completion/source identity and tables verified locally.
+The run directory contains554,272,516bytes including logs/receipt. The whole-cap
+PNG was inspected: labels/axes are readable, but the legend overlaps upperbars;
+publication figure layout still needs adjustment. CSVtables are authoritative.
+No HTML visual-QA claim.
+
+Next: generate the separately versioned two-pair coupled corpus from the
+verified original sources and tested homogeneous field, then recompute fixed
+frontal-only modes on new input hashes. Keep complete nonfrontal ridge matched
+in both frontal controls and evaluate native preservation before model work.
+If a challenger is needed, test at most one VMD-informed temporal confidence/
+selective reference-field correction justified by lateral and clean-error
+diagnostics; no condition/clean-truth oracle may choose the inference branch.

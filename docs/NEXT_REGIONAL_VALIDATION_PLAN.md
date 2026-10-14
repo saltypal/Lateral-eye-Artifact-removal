@@ -117,8 +117,8 @@ strongest matched direct comparator. Fresh controlled mean>=15dB,20stretch.
 Neither self-comparator CC nor synthetic zero-driver preservation proves native
 qualification. Two-pair pilots are engineering checks, not generalization tests.
 
-- [ ] N01 Original source/calibration recovery verified on Kaggle.
-- [ ] N02 Exact new hybrid frontend contribution evaluated.
+- [x] N01 Original source/calibration recovery verified on Kaggle:305tests, two distinct donor/fold pairs, all45payloads recovered.
+- [x] N02 Exact new hybrid frontend contribution evaluated in repairedversion2:313tests,320examples,549000baseline checks; failedversion1/all651payloads retained.
 - [ ] N03 Homogeneous coupling and boundary fixtures pass.
 - [ ] N04 Two-pair new corpus saved and fully recovered.
 - [ ] N05 Fixed frontal/matched nonfrontal pilot completed.
@@ -138,3 +138,59 @@ run before source processing; optional expected checksum checks in the shared
 LEMON loader must reject changed archive/header bytes before numerical loading.
 This first run saves verified original prefixes/calibration for N03, without
 creating new mixtures, VMD decompositions, trained models or reserved access.
+
+## Verified execution update and next concrete interface
+
+N01 completed atfdfdd93. Coupled-field algebra passed312Kaggle tests atc6a8420;
+reporting repair passed313 at0b74d48 before N02version2. All source and focused
+contract artifacts are recovered. N02 now compares VMD17.533717mean/14.780705
+pooled against raw-frontal17.777095/15.126152 with identical nonfrontal output.
+VMD-minus-raw SNR interval[-.516659,.043339] crosseszero; frontalCC deterioration
+.007441477>.005 still fails. Native qualification and fresh confirmation stayclosed.
+This evidence does not justify a VMD superiority claim or automatic model work.
+
+The next producer module should expose:
+
+```text
+build_coupled_pilot(verified_source_probe_parent, verified_original_corpus_parent,
+                    configuration, output_directory) -> twenty paired records
+```
+
+Use the exact source-probe manifest
+8618b226331fc8d170b87644dae00e031502fc68ca7a7d0d0f3c9bb2a32fad24
+and originalcorpus manifest93da62cb9cec2984ec9687ee27f308d2dbea6dd57abd62541468daafb89d5e0d.
+Persist the same source-only two-pair selection. Select the previously identified
+recipient scoring start from its recovered window manifest, not a new best-score
+window. Resolve original annotated blink/lateral donor windows through the donor
+record's window index and corpus native-array identities; verify every consumed
+array hash. Mixed uses the declared signed reference combination. No guessed
+direction labels or scoring targets may select a correction branch.
+
+Intersect verified unique channel names. For each calibration, choose an eligible
+complete donor-trial prefix no longer than the recovered recipient prefix. Fit
+the homogeneous field on that exact original unscored donor subset; record its
+baseline/scales/coefficients, valid samples, units and source hash. Construct the
+mixed calibration with one multiplier on its field and reference excursions.
+Recipient background calibration stays producer-only truth, not a denoiser input.
+
+Each pair generates one idealized clean control and blink/lateral/mixed at -5,
+0,+5dB: ten records per pair. Arrays are EEG[C,1024], references[2,1024], paired
+reference[C,1024], trueartifact[C,1024] and verified metadata/masks. New calibration
+arrays retain their trial boundaries and labels. Nominal SNR uses whole available
+montage energy; save measured regional input SNR separately. Denoisers receive
+only EEG, references and allowed calibration/metadata; labels, trueartifact,
+target and generation multiplier stay producer/evaluator-only.
+
+Kaggle acceptance before N05: exact reconstruction, same-multiplier field replay,
+finite arrays, source/recipient/donor separation, whole-trial boundaries, no target
+fit, and full artifact recovery. Save calibration/scoring field means, valid-lag
+coverage and spectral summaries to expose baseline/intercept/edge changes. Do not
+demean the paired target or adjust waveform offsets using scoring truth. A field
+mean or boundary issue must be diagnosed before comparing denoisers, rather than
+being hidden through a changed metric or extra target processing.
+
+Both the low-ocular-reference limitation and regression-generated-field bias
+remain. This pilot checks construction and solver contracts; it cannot qualify
+fresh generalization, remove native-source uncertainty or prove neural retention.
+Once it passes, recompute only fixed frontal K3/alpha2000 modes on its new EEG
+hashes and compare matched full-ridge nonfrontal versus pass-through outputs.
