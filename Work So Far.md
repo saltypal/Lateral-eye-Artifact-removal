@@ -2118,13 +2118,24 @@ faults; active rawfrontend failure count cannot be separated from archived flags
 No new fit, VMD solver, threshold/rank search, neuralweights or confirmation.
 Numerical fixture/evaluation pending on Kaggle; static syntax checks passed.
 
+### Matched new-hybrid frontend review submitted
+
+new-hybrid-frontend-review-001/1 launched on Kaggle CPU at exact published source
+b7914b8dde84d455e12c1f3aa0433adb9dc1c8ed, campaignvmd-new-hybrid-review-20261014.
+Parents CCAfull001/1 andmatched-context-full001/1. Notebook64 pins this SHA and
+immutable parents. Ninefrozen-output arms over the same320development examples;
+newfits0, noVMDsolve or neuralweights. Tests precede numerical evaluation. Current
+APIstatusRUNNING for both this review andsource-audit001; version-identifiable
+logs/test/evaluation results are not yet available. No success or gain claimed.
+The next dependent generator stage remains gated on recoveredoriginalsources.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
 
-Metadata captured `2026-10-14T06:30:40.496372+00:00` at repository HEAD `b0c861373a8bc66c4538b78269a3b9b988ce3171`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
+Metadata captured `2026-10-14T07:05:10.489813+00:00` at repository HEAD `b7914b8dde84d455e12c1f3aa0433adb9dc1c8ed`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
 
-## Appendix A. All 125 recorded launch specifications
+## Appendix A. All 127 recorded launch specifications
 
 ### audit-001
 
@@ -4749,6 +4760,32 @@ Metadata captured `2026-10-14T06:30:40.496372+00:00` at repository HEAD `b0c8613
 }
 ```
 
+### new-hybrid-frontend-review-001
+
+[.kaggle-work/new-hybrid-frontend-review-001/run_spec.json](.kaggle-work/new-hybrid-frontend-review-001/run_spec.json); SHA256 `c7af6449d37d4de42fd21487f8d06d0965b87742f2462ee6422248a655c2d939`.
+
+```json
+{
+  "run_id": "new-hybrid-frontend-review-001",
+  "stage": "nonfrontal-review",
+  "git_sha": "b7914b8dde84d455e12c1f3aa0433adb9dc1c8ed",
+  "campaign_id": "vmd-new-hybrid-review-20261014",
+  "config_path": "configs/new_hybrid_review.json",
+  "experiment": {},
+  "profile": "full",
+  "parent_run": "nonfrontal-cca-full-001",
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [
+    "satyapaladugu/vmd-nonfrontal-cca-full/1",
+    "satyapaladugu/vmd-matched-context-full/1"
+  ],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-new-hybrid-frontend-review",
+  "requested_kernel": "satyapaladugu/vmd-new-hybrid-frontend-review",
+  "kernel_version": 1
+}
+```
+
 ### nonfrontal-cca-contracts-001
 
 [.kaggle-work/nonfrontal-cca-contracts-001/run_spec.json](.kaggle-work/nonfrontal-cca-contracts-001/run_spec.json); SHA256 `ad0966167a90ff315671d92b4d94f9f262786250a62aaba840584e4d6c1ceaf9`.
@@ -5224,6 +5261,32 @@ Metadata captured `2026-10-14T06:30:40.496372+00:00` at repository HEAD `b0c8613
   ],
   "kernel": "satyapaladugu/vmd-band-posterior-context",
   "requested_kernel": "satyapaladugu/vmd-band-posterior-context",
+  "kernel_version": 1
+}
+```
+
+### reference-source-audit-001
+
+[.kaggle-work/reference-source-audit-001/run_spec.json](.kaggle-work/reference-source-audit-001/run_spec.json); SHA256 `335f8df3d082a5a6f82f92660e475a078c526640e4999db2c7f39b000f1a0625`.
+
+```json
+{
+  "run_id": "reference-source-audit-001",
+  "stage": "reference-coupling-audit",
+  "git_sha": "fdfdd93f85eb23f283a04b33c9e1040a9b75668b",
+  "campaign_id": "vmd-regional-validation-20261014",
+  "config_path": "configs/reference_coupling_audit.json",
+  "experiment": {},
+  "profile": "pilot",
+  "parent_run": "nonfrontal-cca-full-001",
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [
+    "satyapaladugu/vmd-eog-corpus/2",
+    "satyapaladugu/vmd-nonfrontal-cca-full/1"
+  ],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-reference-source-audit",
+  "requested_kernel": "satyapaladugu/vmd-reference-source-audit",
   "kernel_version": 1
 }
 ```
@@ -76780,6 +76843,230 @@ uncertainty, recovery identities and qualification limitations.
 
 ---
 
+### Snapshot: NEXT_REGIONAL_VALIDATION_PLAN.md
+
+[Original](docs/NEXT_REGIONAL_VALIDATION_PLAN.md); captured SHA256 `3828e1d89c1b8323f0c08308e6f0f46bc2a0dce2dfeec192e2576e7c45714616`.
+
+# Next regional validation stage: provenance, frontal contribution and native EEG
+
+14 October 2026. Active mode: Super Code for research design, with notebook-driven
+implementation. This plan starts from the completed 17.533717 dB development
+hybrid. It does not restart AutoVMD or replace the user's regional architecture.
+
+## Starting evidence and unanswered questions
+
+Frontal K3/alpha2000 VMD plus complete calibrated posterior/middle reference
+ridge reaches 17.533717 dB channel-first mean, 14.780705 dB pooled-window mean,
+MSE 3.546698e-12 V², temporal RRMSE .191564 and CC .972400. The severe lateral
+-5 dB stratum remains 13.278714 dB. Reference CCA rank2 is inferior to complete
+ridge, with matched CCA-minus-ridge SNR interval [-2.548602, -.943181] dB and
+CC deterioration .006414969 > .005. Retain its negative evidence.
+
+These are development-exposed, EOG-assisted, regression-generated results.
+Earlier raw-frontal regression is stronger than fixed VMD on frontal channels;
+the exact new full-ridge system still lacks that matched frontend comparison.
+Earlier native resting modification/covariance gates fail. The old synthetic
+producer scales injected ocular fields but leaves supplied EOG arrays unscaled.
+An affine, lag-centered field cannot be repaired merely by multiplying raw EOG.
+
+The three questions are: do we have trustworthy source/calibration inputs; what
+does frontal VMD add while nonfrontal output is identical; does the retained
+hybrid suppress both ocular types while meeting native preservation limits?
+
+## Frozen constraints and information access
+
+200 Hz, 0.5-40 Hz, 1024 samples, hop512; filter segments/trials independently.
+Fixed frontal K3/alpha2000, RMS normalization, tolerance1e-6, cap2000. VMD only
+verified frontal channels. No broad K/alpha or CCA-rank search. Nonfrontal ridge
+retains lags[-10,0,10], penalty.01, association.4 and observed-input gain cap8.
+Unknown/masked anatomy passes through. Estimate fields relative to original EEG;
+disjoint regions and one subtraction. Keep target/true-artifact/generation scale
+outside all denoising and calibration-fitting APIs. Reserved sources stay closed.
+
+All numerical work, tests, fitting and figures run on Kaggle. Local work authors
+modules/configuration/notebooks, checks syntax, performs Git and recovers artifacts.
+Notebook launches pin published SHAs and immutable parent versions. Every failure
+keeps its run, logs and diagnosis; repair means a new version/run, not overwritten
+evidence. No neural implementation/training or deployment claim at these stages.
+
+## Ordered work and acceptance
+
+| ID / owner | Input and purpose | Output | Acceptance and dependency |
+| --- | --- | --- | --- |
+| N01 / primary | corpus002 and CCAfull001 metadata; recover original unscored sources | two deterministic recipient/donor pairs, verified LEMON prefixes and donor calibration | same frozen split/folds, exact archive/header/parent hashes, trial separation; source units explicit; no algebraic unmixing |
+| N02 / primary | immutable saved CCAfull/context outputs; hold nonfrontal output fixed | VMD versus raw-frontal matched tables for complete ridge and rank2 controls | new fits0; exact waveform/mask/target/source identity; report channel-first and pooled SNR, all conditions and source-aware uncertainty |
+| N03 / primary | N01 source bundles and documented driver baseline | new homogeneous coupled generator plus Kaggle fixtures | F(aR)=aF(R), zero drive, signed scaling, lag joins, units, leakage and reconstruction tests pass; old generator remains unchanged |
+| N04 / primary | N03, same two development pairs | separately versioned 20-example clean/blink/lateral/mixed corpus at -5/0/+5 | source hashes, recipient/donor separation, target construction and generated driver units recorded; clean controls explicitly idealized |
+| N05 / primary | N04; new input hashes require new frontal modes | matched identity/raw-frontal/VMD-frontal pilot with common complete-ridge nonfrontal arm and pass-through ablation | all failures scored, full reconstruction residual retained, paper metrics, preservation, condition/region diagnostics, solver cost; no qualification from two pairs |
+| N06 / primary | intact native OSF sources and frozen eligible calibration/scoring | two-record whole-trial native feasibility followed by eligible development cohort | required .set/.fdt verified first; original HEOG/VEOG unchanged for scoring; suppression, resting RMSE/PSD/covariance, failure counts; no native reconstruction SNR |
+| N07 / primary | N02-N06 diagnosis | at most one targeted correction challenger | predeclared grouped development selection, stronger direct comparator, distinct mechanism, no clean-target component/gain selection |
+| N08 / primary | qualified classical review and explicit gate evidence | freeze then matched EEG-only students, independent evaluation, export | classical-first checkpoint passes before models; separate controlled/native/teacher/export gates; reserved data opened only after freeze |
+
+N01 and N02 are independent: a source-recovery notebook and a saved-output CPU
+review can run separately. N03 depends on N01; N04 on N03; N05 on N04. Native
+source/dependency auditing can run alongside N01/N02, but method evaluation waits
+for frozen eligible calibration contracts. No broad posterior search is repeated.
+
+N01 selects two recipients lexicographically from the already-scored development
+cohort, requiring different donor identities/folds, with first chronological
+recipient window and exact donor record from their archived recipe. Selection
+must not use SNR, method predictions or failures. Use immutable original LEMON
+archive/header hashes. Save source prefix arrays; original raw archives can be
+temporary, with source URL/hash and repaired-header evidence retained. OSF cache
+physical units absent from source metadata remain unknown: use explicit original
+numeric driver units, not an invented volts conversion or physical sensor claim.
+This audit recovers prerequisites; it does not repair coupling or qualify accuracy.
+
+## Coupled generator definition
+
+Fit the donor field using only its original unscored calibration, with a declared
+per-reference baseline and signed lag operator. Define reference excursions R
+relative to that frozen baseline and F(R)=B D^-1 L(R), with valid lag samples
+masked independently at trial boundaries. The operator must have no affine
+intercept. Generated calibration/scoring each use a single multiplier a:
+injected field=aF(R), generated reference excursion=aR. Clean injection uses
+zero driver and zero field; its easy identity result cannot establish real false
+positive behavior. The recipient reference EEG remains low-ocular, not proven
+artifact-free. Regression-derived generation bias remains after coupling repair.
+
+Do not reuse old VMD caches on changed inputs. Do not reconstruct unavailable
+recipient calibration from contaminated arrays. Keep source generation evidence
+separate from estimator input. A consistent generator might leave gain-adjusted
+outputs unchanged; an SNR increase is not an acceptance condition for this repair.
+
+## Decision rules and bounded improvement path
+
+N02 can establish contribution on the legacy corpus, not fresh generalization.
+If fixed frontal VMD loses, preserve it as the requested research branch while
+reporting the stronger raw control. Do not silently relabel regression gain as
+VMD benefit. On N05/6 diagnose gate misses, retained-field direction errors,
+amplitude errors, timing errors and clean false positives separately.
+
+Only after that diagnosis choose one challenger: separate signed HEOG/VEOG
+time-dependent reference projection for missed lateral intervals, or calibrated
+signed frontal-artifact transfer where raw EOG coverage is inadequate. Existing
+full-ridge output stays the matched control. No new decomposition parameter
+search. Eligible author SGEYESUB needs six explicit movement/rest labels; four
+OSF trial codes or HEOG sign are not substitute labels. Generic ASR/ICA/SOBI
+queues are deferred unless evidence identifies a distinct unresolved mechanism.
+
+## Evaluation and completion checklist
+
+Paper primary: MSE, temporal RRMSE, ordinary Pearson CC; output SNR and improvement
+separate. Additional spectral RRMSE only under its declared paper implementation.
+Native suppression: original unchanged-reference HEOG for lateral, VEOG for
+blink/vertical, resting RMSE and spectra following the prescribed protocol. Use
+participant-level paper inference when eligible; label approximate recipient/
+donor intervals as supplemental. Keep failed/low-scoring rows and both pooling
+conventions visible. Region dB values cannot be added.
+
+Unchanged engineering limits: worst-source clean modification<=1%, alpha/beta
+error<=.5dB, relative covariance<=.02, CC deterioration<=.005 against declared
+strongest matched direct comparator. Fresh controlled mean>=15dB,20stretch.
+Neither self-comparator CC nor synthetic zero-driver preservation proves native
+qualification. Two-pair pilots are engineering checks, not generalization tests.
+
+- [ ] N01 Original source/calibration recovery verified on Kaggle.
+- [ ] N02 Exact new hybrid frontend contribution evaluated.
+- [ ] N03 Homogeneous coupling and boundary fixtures pass.
+- [ ] N04 Two-pair new corpus saved and fully recovered.
+- [ ] N05 Fixed frontal/matched nonfrontal pilot completed.
+- [ ] N06 Native dependencies, trial evaluation and preservation qualification.
+- [ ] N07 One evidence-supported challenger, if needed, compared in grouped development.
+- [ ] N08 Classical review/freeze before students and final independent evaluation.
+
+Deliverables for each stage: notebook, reusable module/configuration, exact source
+SHA, checksummed parents and source/split/calibration identities, saved fits/
+predictions, paper metrics/gates/failures, runtime/memory, figures and complete
+recovery receipt. Append every stage and repair to Work So Far.md and TASKS.md.
+
+## First execution
+
+Implement and launch N01 as a bounded Kaggle CPU source-coupling audit. Its tests
+run before source processing; optional expected checksum checks in the shared
+LEMON loader must reject changed archive/header bytes before numerical loading.
+This first run saves verified original prefixes/calibration for N03, without
+creating new mixtures, VMD decompositions, trained models or reserved access.
+
+
+---
+
+### Snapshot: FRONTAL_REFERENCE_COUPLING_REPAIR_PLAN.md
+
+[Original](docs/FRONTAL_REFERENCE_COUPLING_REPAIR_PLAN.md); captured SHA256 `c4b5b855f9d299b83f54897f38d545e23437efac82f1dc4673ff304dda61118a`.
+
+# Bounded development-corpus reference-coupling repair
+
+14 October 2026 IST. Proposed next engineering checkpoint, not implemented or
+launched. The independent benchmark remains unavailable under the audited source
+contracts. This repair does not turn the existing regression-generated corpus
+into an independent or biologically clean benchmark.
+
+## Problem and preserved evidence
+
+In corpus.py the calibration EEG receives a scaled donor field while its EOG
+references retain their source amplitude. Scoring EEG receives another mixture
+multiplier while its EOG references remain unscaled. The existing gain estimates
+partly compensate, but EOG amplitude-based support and calibration-to-scoring
+interpretation do not represent consistently coupled generated sensor signals.
+This was previously disclosed; the source audit confirms it rather than discovering
+a new performance failure. Preserve all original arrays, hashes, splits, metrics
+and the17.112814dB frontal VMD baseline.
+
+## Scope and constraints
+
+Create a separate, explicitly named development-corpus version and pilot protocol.
+Reuse verified recipient/donor identities and only their already eligible
+development partitions. Keep all confirmation and external reserved sources
+closed. Preserve sampling/filtering/window/trial contracts and separate calibration
+from scoring before construction. The inference APIs still receive no paired
+target, true artifact, generation multiplier or future samples.
+
+The producer must define a reference baseline and a homogeneous signed forward
+operator F on the reference excursions: F(aR)=aF(R). Apply the same source multiplier
+to the generated reference excursion and injected field, independently for
+calibration and scoring. Do not just multiply raw references while leaving an
+affine offset or inconsistent lag-specific baseline in the field generator.
+Record baseline, coefficients, units, finite-lag masks, source multiplier and
+operator identity as generation evidence. Such values are producer/evaluator
+information and remain inaccessible to correction functions.
+
+Reacquire or reuse checksum-verified unscored recipient prefixes and original
+donor calibration where necessary. Do not reconstruct an unavailable recipient
+prefix from a mixed calibration array by an unverified algebraic assumption.
+Unknown physical source units remain explicitly unknown; generated driver-unit
+conventions must be documented. Do not introduce invented neural leakage, field
+signs, head geometry or learned propagation parameters.
+
+Retain identity, calibrated raw and original full-field frontal K3/alpha2000 VMD.
+No additional method or K/alpha bank. New EEG inputs require their own exact
+waveform/source/cache identities; historical mode bundles cannot be reused merely
+because channel names match. Posterior and unknown/masked rows remain pass-through.
+
+## Modular tasks and gates
+
+| Part | Input | Output | Acceptance |
+| --- | --- | --- | --- |
+| RC01 provenance audit | donor/recipient/calibration manifests and producer code | recoverable unscored source and baseline contract | exact source, reference, units, split and boundary identities; no guessed reconstruction |
+| RC02 generator contract | verified sources and declared homogeneous operator | versioned coupled EEG/reference records | consistent multipliers, finite boundaries and target-only producer access |
+| RC03 Kaggle fixtures | small controlled examples | numerical linearity, zero-drive, scaling, lag/baseline and leakage checks | all tests pass; no local numerical work |
+| RC04 bounded source pilot | two deterministic eligible development recipient/donor pairs | saved calibration and clean/blink/lateral/mixed records | new hashes, complete recovery, reserved sources closed |
+| RC05 matched frontal pilot | verified new records and three frozen methods | paper metrics, preservation, runtime and failure tables | equal information access; frontal-only VMD; no superiority/promotion assumed |
+
+Clean zero-driver controls are idealized and cannot establish native false-positive
+behavior. Real EOG donor waveforms may contain nonocular activity. Paired references
+remain retained recipient EEG. Regression-derived field bias and prior native
+preservation failures remain unresolved. Coupling repair may leave a gain-adjusted
+method's output unchanged; an SNR increase is not guaranteed.
+
+Keep the old and repaired corpus comparisons distinct. Any further source or
+generator change needs its own identity/protocol. IB02-IB04 independent-benchmark
+work and model promotion stay closed until their separate scientific requirements
+are met.
+
+
+---
+
 ### Snapshot: FRONTAL_SNR_IMPROVEMENT_PLAN.md
 
 [Original](docs/FRONTAL_SNR_IMPROVEMENT_PLAN.md); captured SHA256 `44ca27d388f480a0792042c0520fcd1e444a3490948f0017f75cd801c64d7ed8`.
@@ -77518,8 +77805,8 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/calibration_frontal_context.py](<src/vmd_eog/calibration_frontal_context.py>) | 26402 | `a661a66114dda376ab31b5fff0f4128f51223d786e680d22246aa564825f5c2b` |
 | [src/vmd_eog/campaign.py](<src/vmd_eog/campaign.py>) | 1596 | `2e6a073e6a3ac4d831781886a0c4f0a040a367cb70d15af45150d6a41a1c69c3` |
 | [src/vmd_eog/classical_fixture.py](<src/vmd_eog/classical_fixture.py>) | 4755 | `4b660fa880354ae815b1110f2bd3044003ccd2475b42e576a3b8b748e2d8aab3` |
-| [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 7300 | `d297ff0b1586ae34635b7aa9856981efe91cf14bdbd0bc0498a02eeac6052f13` |
-| [src/vmd_eog/corpus.py](<src/vmd_eog/corpus.py>) | 15469 | `b5064d6944fd1c36d75a5c6f4f82e85212f4b10b7462db1ef3fc922d5441db2b` |
+| [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 7485 | `ce5a7a54d53b3f705be00a8e8505f9c6db8fc7fb36b15a85365f1db5ac816924` |
+| [src/vmd_eog/corpus.py](<src/vmd_eog/corpus.py>) | 15853 | `0159c3396f585b8050567bbae649dac5c407490961f2adb0cc28321c70e6d51f` |
 | [src/vmd_eog/coverage_uncertainty.py](<src/vmd_eog/coverage_uncertainty.py>) | 13987 | `8755dbb1063e0eb158cf5146486b8bf7a2eaac5c2565552055d4d41257f268a0` |
 | [src/vmd_eog/data.py](<src/vmd_eog/data.py>) | 13051 | `49d0b5a8137db4b9a67111b84af94ced4a1661baac5d64dfbd9f7c76bcb39b08` |
 | [src/vmd_eog/experiments.py](<src/vmd_eog/experiments.py>) | 56202 | `1d7dffe87733043d98f51411a395a4ff674f0f1c90af86c999c7e1462628b288` |
@@ -77558,7 +77845,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/nonfrontal_experiment.py](<src/vmd_eog/nonfrontal_experiment.py>) | 26880 | `1f3f9b93269079d73d331df9cd6a02d118fe0cf96a584d7c42ed1a1879c9d915` |
 | [src/vmd_eog/nonfrontal_gain_diagnostic.py](<src/vmd_eog/nonfrontal_gain_diagnostic.py>) | 15666 | `5d4729e3722ce69cdbe64f0977940e6e2b3ae23e6cee1280dbccc62421c97230` |
 | [src/vmd_eog/nonfrontal_mwf.py](<src/vmd_eog/nonfrontal_mwf.py>) | 4822 | `c57db8430d0e3645195b8efa3c3e7583657c17e50170e5928fce0700e7b48afa` |
-| [src/vmd_eog/nonfrontal_review.py](<src/vmd_eog/nonfrontal_review.py>) | 16209 | `5499677ba2d89caee5ee84e9cba48378f04827678d467ac8368a2bc9cb464a99` |
+| [src/vmd_eog/nonfrontal_review.py](<src/vmd_eog/nonfrontal_review.py>) | 16975 | `73fe643331fa4465528282078fc8d90f41529d4db8b53eab706477e13d02a0c4` |
 | [src/vmd_eog/nonfrontal_ridge.py](<src/vmd_eog/nonfrontal_ridge.py>) | 9910 | `3d3056ece92a10701ba5e89d73b90ef648b7b792175c0ef0a07f5b9a87049989` |
 | [src/vmd_eog/osf_reader.py](<src/vmd_eog/osf_reader.py>) | 5620 | `1cfcf13f9b892d7579ef6db6f7cd3398f8da71ef15010c105927094d5e6327c9` |
 | [src/vmd_eog/paper_evaluation.py](<src/vmd_eog/paper_evaluation.py>) | 5863 | `fb57345d4c8471b52912826bca47085993411b5787cadc159780919449698779` |
@@ -77570,11 +77857,12 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/posterior_context.py](<src/vmd_eog/posterior_context.py>) | 19686 | `0df2b003b1b4580fbca287f4a008ee7dab2017e7444d5d1420cf33bbd82ad06a` |
 | [src/vmd_eog/readiness.py](<src/vmd_eog/readiness.py>) | 4241 | `649dbd69f185f5abc156335de870725554c0b4c96df22cdcc3fdfca7d06e1591` |
 | [src/vmd_eog/reference.py](<src/vmd_eog/reference.py>) | 5691 | `4630406a2cbc7893c02e2a7acd8e5c1a2778de6fd3d56c6ff0307c0caabb605e` |
+| [src/vmd_eog/reference_coupling_audit.py](<src/vmd_eog/reference_coupling_audit.py>) | 12006 | `31fbd8f8e1f614dba79eeda245d42516d9f39786b338380b233d273d3f7e8c3a` |
 | [src/vmd_eog/regional_context_match.py](<src/vmd_eog/regional_context_match.py>) | 18776 | `9aedefdaf4f994bfb761aff9fbe26966e2764e935457732d39ea2adfa721e157` |
 | [src/vmd_eog/regional_coverage.py](<src/vmd_eog/regional_coverage.py>) | 19817 | `269c86d2494cced2d1b6404a97953f461f2664574c73bd47ce20f28b23b278bd` |
 | [src/vmd_eog/regional_diagnostic.py](<src/vmd_eog/regional_diagnostic.py>) | 16581 | `d1f7dd35a8501732e6619ad166e9fe8857539901aad69cc2fb9c02a60bbce5d2` |
 | [src/vmd_eog/regional_integration.py](<src/vmd_eog/regional_integration.py>) | 16689 | `b514cdfd692d160ff96d9a4666dc25f788a6d27a0526d004ff335a25db91b133` |
-| [src/vmd_eog/runner.py](<src/vmd_eog/runner.py>) | 6053 | `7bf1f040b6f60229d312ae99e9fa944b5cb416268d1026280424c053e82d123f` |
+| [src/vmd_eog/runner.py](<src/vmd_eog/runner.py>) | 6215 | `87c62bcb221dd476ec26bb5a0a08b22daeab2039cbb4f826d3f1bc170834aa1f` |
 | [src/vmd_eog/signal.py](<src/vmd_eog/signal.py>) | 2710 | `233c86044033895b49dd602117ac7fb04ee84cfa3c6d0500ac466c8e760d7a3c` |
 | [src/vmd_eog/sobi.py](<src/vmd_eog/sobi.py>) | 5696 | `cb8b89ea6de05ce2bdc0fffd6e24a1ae469c7b9746c89ca2e89cf9bb747ead58` |
 | [src/vmd_eog/vmd.py](<src/vmd_eog/vmd.py>) | 4812 | `2705aedce1f71226882ee6df6e9efa127a9717d6aab0fc8676288f3643cb626a` |
@@ -77591,12 +77879,14 @@ Current file identities below make the architecture inspectable; each launched e
 | [configs/frontal_replication.json](<configs/frontal_replication.json>) | 2522 | `0b56857678a5c6390342eb42db3f4f71269475d20d779683823a270e38808c41` |
 | [configs/frontal_screen.json](<configs/frontal_screen.json>) | 284 | `7e7506778e47b246741697c0aff5527740e82076e51e72fb45be7606f30eb2df` |
 | [configs/guard17_replay.json](<configs/guard17_replay.json>) | 1189 | `99d372ce62c0452be024a0eb9243256f391ea84381585dd90bfdecd29352ecc2` |
+| [configs/new_hybrid_review.json](<configs/new_hybrid_review.json>) | 2623 | `cb0f3d7a0e1049b65b77979a7d3d4367c82c837b50d48daee2c44848596450eb` |
 | [configs/nonfrontal_cca.json](<configs/nonfrontal_cca.json>) | 3051 | `6f01386c2622098c5b301bee585260cccc1b7cf7e8da2e07bb9ec0ef18dfcb82` |
 | [configs/nonfrontal_challengers.json](<configs/nonfrontal_challengers.json>) | 2959 | `dcda98685260c5cfa0412c099f3d704a2e5b41e6dcb46e2f05bb8e7d8542033e` |
 | [configs/nonfrontal_gain_diagnostic.json](<configs/nonfrontal_gain_diagnostic.json>) | 3205 | `1244100ec99fbc7b36c3e6dfbe4aa4e9320e67fc7107ab0ddbf95a66fdd69a4c` |
 | [configs/nonfrontal_mwf.json](<configs/nonfrontal_mwf.json>) | 2978 | `fb92cd25c3e51e822275b4e6ded9df272edfacbae63ac844caaa03c811b6e390` |
 | [configs/nonfrontal_review.json](<configs/nonfrontal_review.json>) | 3464 | `320e29d7ed6802b2611b55521959b8bf6f4bffb13dec4fcd069659e94d26ca46` |
 | [configs/posterior_context_queue.json](<configs/posterior_context_queue.json>) | 1260 | `539282ce0f4058375a0a7b4cd0d4e9ee82feafc659af90c1524529e344b41be5` |
+| [configs/reference_coupling_audit.json](<configs/reference_coupling_audit.json>) | 2191 | `0b9a5299404c732db1490d41d092860bfac9c40285ffff4828624084cd9c880f` |
 | [configs/regional_diagnostic.json](<configs/regional_diagnostic.json>) | 3032 | `6400d9761ec89e6282c80c76c4cddde095b10020c8604137a23af870fa8c31a2` |
 | [configs/regional_integration.json](<configs/regional_integration.json>) | 2592 | `2941e521784acf19b0b96ee92946e4a50946ff23a8da67f33fa641e7b5811d79` |
 | [notebooks/00_Campaign_Control.ipynb](<notebooks/00_Campaign_Control.ipynb>) | 8865 | `124acdf16859f6b62c61d87b88549140fbefb63a766f53c978196173d2c38436` |
@@ -77668,6 +77958,8 @@ Current file identities below make the architecture inspectable; each launched e
 | [notebooks/60_Frozen_Frontend_SNR_Review.ipynb](<notebooks/60_Frozen_Frontend_SNR_Review.ipynb>) | 9387 | `ee30d9202f06de8d27106dace46fbbb899d15ca20122fa365e2667fcf2445bc2` |
 | [notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb](<notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb>) | 9704 | `a39eaa7190e2e11aeee30332e114cfa0a20e9f7128c2cc7d3955791abd8584d7` |
 | [notebooks/62_Nonfrontal_CCA_Adaptation.ipynb](<notebooks/62_Nonfrontal_CCA_Adaptation.ipynb>) | 9949 | `df0b250cccedc6d586bcf1083c485bd4969ec591ffce575e34b62f60ee9af2ba` |
+| [notebooks/63_Original_Reference_Source_Audit.ipynb](<notebooks/63_Original_Reference_Source_Audit.ipynb>) | 9240 | `3a575d852c4dc7f4f1152f57de84310f62c49cb25e6d75899b8377620b23d429` |
+| [notebooks/64_New_Hybrid_Frontend_Review.ipynb](<notebooks/64_New_Hybrid_Frontend_Review.ipynb>) | 9525 | `9e0429203265118708b538784885557f65461529b74b46f6297691795eb21753` |
 | [tests/test_artifacts.py](<tests/test_artifacts.py>) | 777 | `ccd2badb790151ebe841704a952af7efbc980b0031c9a17185175a5238ec2d8b` |
 | [tests/test_autovmd.py](<tests/test_autovmd.py>) | 1271 | `42bcf6e4e7dc1644f0745e52e6be225d3dafed204ef97fddf507e75a8f838a49` |
 | [tests/test_brainvision.py](<tests/test_brainvision.py>) | 1240 | `5b1eb58e28f241c48d10f15290fe20e280812cf22c377847a4fb0135490e2813` |
@@ -77694,7 +77986,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_nonfrontal_challengers.py](<tests/test_nonfrontal_challengers.py>) | 6462 | `2c2968771320de4c28a27a1d57654318855a63c811561fc384ecb134dbb8a91c` |
 | [tests/test_nonfrontal_gain_diagnostic.py](<tests/test_nonfrontal_gain_diagnostic.py>) | 1680 | `97eb21178431c4a6d12c2025af3512ee7cb3ad0c24d59e4b863eee371a3f0556` |
 | [tests/test_nonfrontal_mwf.py](<tests/test_nonfrontal_mwf.py>) | 2232 | `af8347c0680f4a4e91f3cc033c51fed37b82f2ae58eb7c240683e644cef82774` |
-| [tests/test_nonfrontal_review.py](<tests/test_nonfrontal_review.py>) | 2146 | `5cbfac2dd162f7597938a1bc95b08a05c697ebd72323d63793c55568bca9f486` |
+| [tests/test_nonfrontal_review.py](<tests/test_nonfrontal_review.py>) | 2663 | `1723b3b59accffc0177960817a35e65b46864334565fe542e3bd4418dc2e9102` |
 | [tests/test_nonfrontal_ridge.py](<tests/test_nonfrontal_ridge.py>) | 5458 | `c5ddad31d4336e2f8f5b74777e479ec6b7b7d714f1be6f2737895ed3fd0a4a58` |
 | [tests/test_ocular_metric.py](<tests/test_ocular_metric.py>) | 952 | `17de7f20f85bcca26d6188c848058e3fa8347ec591f9e23b88aefc8ab0c5ceab` |
 | [tests/test_paper_figures.py](<tests/test_paper_figures.py>) | 2421 | `e246e3084dfa77bd5b901fe8b64f4947a4d2bcfd91d3352d1d71900a960c14c9` |
@@ -77705,6 +77997,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_posterior_context.py](<tests/test_posterior_context.py>) | 4292 | `06acbda01884d6d73a6426906f800a3fc98b88f8cb119e4ea0dec7ee298a082f` |
 | [tests/test_readiness.py](<tests/test_readiness.py>) | 1252 | `2485e05b6427365b8d2ad2c73f251671d345ba5d4810a45e2a90896a8b246aa0` |
 | [tests/test_reference_baseline.py](<tests/test_reference_baseline.py>) | 1758 | `7ea05bbd232bc8872a597f8160b2516eed3459e526df30cf2d12cf73f5ec8c25` |
+| [tests/test_reference_coupling_audit.py](<tests/test_reference_coupling_audit.py>) | 4262 | `07895fd35da348f01436a3f91408cc69980e0f092c4bdc1f52f88c23c8be29bb` |
 | [tests/test_regional_context_match.py](<tests/test_regional_context_match.py>) | 4349 | `8dd59ef33476198e218e8a197f5a3cbe079386c1cea537ebd730409ff51a98cb` |
 | [tests/test_regional_coverage.py](<tests/test_regional_coverage.py>) | 4045 | `a36542139ced36b244f22e4d2d8facf71cd316686380a87c6e67bdf9758d6ff9` |
 | [tests/test_regional_diagnostic.py](<tests/test_regional_diagnostic.py>) | 3427 | `67854e04a964c1b82787e0ca646baf1cc7faf9d5b21040d1fc01667ca5c5a890` |
@@ -77714,14 +78007,14 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_sobi.py](<tests/test_sobi.py>) | 2486 | `3f90b70c5e0228615d7eb97ecc4ceca3dc75804513a6c72e4cc0ed09f1934a76` |
 | [tests/test_vmd_diagnosis.py](<tests/test_vmd_diagnosis.py>) | 1644 | `85824e2e028f45c78f6110b8c184cff63e9587d9f13a753bbd18787c9902acfd` |
 | [tools/bandroute_chain.py](<tools/bandroute_chain.py>) | 6369 | `81a1a5600f259f0e0b37d8e9df6f891aa60cf68c8a62ddee1457c09f34b4ffd3` |
-| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 66765 | `cccf15cf1a03a8aa03e391d0286d82b27b209fd1fb0e32bf046297fceac6591f` |
-| [tools/build_work_ledger.py](<tools/build_work_ledger.py>) | 6791 | `fec306b7421e8e3b13c97426a3b46140d5f03b7362af965cdce4c00c5fedb3ef` |
+| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 68052 | `c6991e3307ee324dde0f923cd07078b9ed33213e5e1db547385cc83ac01fd4f6` |
+| [tools/build_work_ledger.py](<tools/build_work_ledger.py>) | 6894 | `4c641b6b6f30ab353750ccfecb44b832b236eaea83aadab54a51967128d8eb20` |
 | [tools/coverage_chain.py](<tools/coverage_chain.py>) | 4686 | `199e7c0b22c9c586b722437ad6855c9df77f310c7333c1077ddf87a37bae7435` |
 | [tools/diagnostic_chain.py](<tools/diagnostic_chain.py>) | 6851 | `913b0243e23da65adfd787dedace965699bf23162488a7bab6198c73f491eeb6` |
 | [tools/download_vmd_cache.py](<tools/download_vmd_cache.py>) | 7475 | `c3b3d1bbb9fb62cad4fc26b76d75b6bab514c117a8387cf7306465e8c52929e1` |
 | [tools/frontal_queue.py](<tools/frontal_queue.py>) | 11738 | `71a59007d3ec9137b558fee20870164cd7d3e6dc4181ebeeb25260b499d67e62` |
 | [tools/guard17_replay.py](<tools/guard17_replay.py>) | 4518 | `d5c056a1159b50997ae2859f70f9d8d8b1525d16cdc93c63c5ee4d888cec5dcb` |
-| [tools/kaggle_campaign.py](<tools/kaggle_campaign.py>) | 8289 | `dad79294d26e3679800e684a4afc01dc80c55ef14d05003de7d07f2ebe51e3c1` |
+| [tools/kaggle_campaign.py](<tools/kaggle_campaign.py>) | 8317 | `8416e0c8e061135b6c52a8b70ad7441a5adfa15120546043e31c95f9ac872c84` |
 | [tools/kaggle_log.py](<tools/kaggle_log.py>) | 1485 | `05d7b5b4acb3da503b9e34f13165f973d34bf21aa449af1e6683fb97764094e0` |
 | [tools/phase_a_chain.py](<tools/phase_a_chain.py>) | 5442 | `ba46e9386fd5c45b1f6904f36a8e9514508ccd99ddf817b2c8357aa6627bde16` |
 | [tools/regional_chain.py](<tools/regional_chain.py>) | 3447 | `87567309f60fe17f740de68041587a1eb1ac6f541065ddb8441a495503b36f41` |

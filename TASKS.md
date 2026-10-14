@@ -238,8 +238,8 @@ See docs/NEXT_REGIONAL_VALIDATION_PLAN.md for inputs, outputs, dependencies and
 acceptance. Complete ridge17.533717mean/14.780705pooled is a development candidate.
 
 - [x] N00 Freeze evidence and write the dependency-ordered plan; no AutoVMD restart.
-- [ ] N01 Recover two original recipient prefixes and checksum-verified donor calibrations on Kaggle; source-only selection, distinct donors/folds, no mixed-array unmixing. Module/config/tests authored; numerical execution pending.
-- [ ] N02 Saved-output matched frontend contribution for the new direct-ridge hybrid; independent of source recovery, no new fitting.
+- [ ] N01 Recover two original recipient prefixes and checksum-verified donor calibrations on Kaggle; source-only selection, distinct donors/folds, no mixed-array unmixing. Audit001/1 submitted atfdfdd93; API RUNNING, numerical/source completion pending.
+- [ ] N02 Saved-output matched frontend contribution for the new direct-ridge hybrid; independent of source recovery, no new fitting. Review001/1 submitted atb7914b8; API RUNNING, tests/metrics pending.
 - [ ] N03 Homogeneous coupled-generator implementation and Kaggle boundary/scaling/leakage fixtures.
 - [ ] N04 Separately versioned two-pair20-example coupled corpus, complete recovery.
 - [ ] N05 New fixed-frontal modes and matched regional pilot; old mode hashes are not reusable.

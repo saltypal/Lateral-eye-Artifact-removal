@@ -1,6 +1,6 @@
 {
-  "snapshot_utc": "2026-10-14T06:30:40.496372+00:00",
-  "git_sha": "b0c861373a8bc66c4538b78269a3b9b988ce3171",
+  "snapshot_utc": "2026-10-14T07:05:10.489813+00:00",
+  "git_sha": "b7914b8dde84d455e12c1f3aa0433adb9dc1c8ed",
   "tables_and_logs": [
     {
       "path": "results/review-fast/frontal-event-hybrid-001/results/vmd-frontal-replication-20261011/frontal-event-hybrid-001/tests.txt",
