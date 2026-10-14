@@ -1,7 +1,16 @@
 import numpy as np
 import pytest
 
-from vmd_eog.nonfrontal_review import composed_failure_provenance, inherited_failure, pooled_snr, swap_frontend
+from vmd_eog.nonfrontal_review import composed_failure_provenance, inherited_failure, pooled_snr, swap_frontend, review_recipes
+
+
+def test_frozen_review_declares_the_strongest_new_frontend_control():
+    old, comparator = review_recipes({})
+    assert comparator == "raw_frontal+reference_rank2"
+    current = ("ridge_direct:both", "cca_reference_rank2:both", "reference_rank2_control:both")
+    assert review_recipes({"review_families": list(current)}) == (current, "raw_frontal+ridge_direct")
+    with pytest.raises(ValueError, match="recipes differ"):
+        review_recipes({"review_families": ["cca_reference_rank1:both"]})
 
 
 def test_frontend_swap_composes_once_and_preserves_other_regions():

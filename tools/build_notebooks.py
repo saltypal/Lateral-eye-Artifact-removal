@@ -410,7 +410,7 @@ print('Frozen predictions only; no fitting or parameter selection.')
 print('Channel-first and pooled-energy SNR are separate aggregations.')
 print('Module: nonfrontal_review.py; two disjoint fields, one subtraction.')
 '''
-        DETAILS[stage] = 'Attach exact completed nonfrontal-full001/1 and matched-context-full001/1. Verify source/split identities and every consumed prediction. Hold nonfrontal outputs fixed and replace only frontal rows with archived calibrated raw regression; retain the matched VMD output. Report all seven arms, verified middle versus temporal subgroups, paper metrics, preservation, source-aware supplemental uncertainty and both channel-first and pooled-energy SNR. No new fit, neural model, AutoVMD, reserved data or native qualification.'
+        DETAILS[stage] = 'Attach the exact completed nonfrontal parent and matched-context-full001/1 specified by configuration. Verify source/split identities and every consumed prediction. Hold nonfrontal outputs fixed and replace only frontal rows with archived calibrated raw regression; retain the matched VMD output. Recipes are limited to the archived rank2/ICA review or the new complete-ridge/CCA-rank2/reference-rank2 comparison. Report verified middle versus temporal subgroups, paper metrics, preservation, matched frontend supplemental uncertainty and both channel-first and pooled-window SNR. No new fit, neural model, AutoVMD, reserved data or native qualification.'
     if stage == 'nonfrontal-gain-diagnostic':
         tables = '''import pandas as pd
 from IPython.display import display

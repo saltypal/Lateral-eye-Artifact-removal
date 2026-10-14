@@ -1,0 +1,72 @@
+{
+  "branch": "research/vmd-eog-removal-notebooks",
+  "fs": 200,
+  "window": 1024,
+  "hop": 512,
+  "seed": 42,
+  "confirmation_fraction": 0.2,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "source_dataset": "satyapaladugu/lateral-eye-complete-dataset",
+  "required_supplement_sha256": "79a3c4f2e1c1d545b477aa3de05fdc9c1c07c0355b820755392d8a5519e67e65",
+  "preservation": {
+    "clean_change": 0.01,
+    "alpha_db": 0.5,
+    "beta_db": 0.5,
+    "covariance": 0.02,
+    "pearson_deterioration": 0.005
+  },
+  "target_definition": "controlled_recipient_reference; low-ocular LEMON plus donor-calibration ridge ocular field",
+  "reserved_access": "closed until verified freeze",
+  "schema_version": 4,
+  "campaign_id": "vmd-new-hybrid-review-20261014",
+  "scope": "frozen_frontend_and_snr_review",
+  "autovmd_enabled": false,
+  "model_authorization": "Bounded classical coverage only; no models or confirmation",
+  "fixed_recipes": [
+    {
+      "K": 3,
+      "alpha": 2000
+    }
+  ],
+  "imported_parents": {
+    "nonfrontal-cca-full-001": "c8418eb6acc9977aab73fa7606bfd5326dcdf0f12b056922fdabed1816bc91eb",
+    "context-match-full-001": "42f9a02ab6b653f25564de56f9162190ced7848e7b165165698e5645d2ba2a50"
+  },
+  "acceptance": {
+    "controlled_output_snr_db": 15,
+    "stretch_output_snr_db": 20
+  },
+  "pending_stages": [
+    "matched new hybrid frontend review",
+    "coupled source repair",
+    "native preservation qualification"
+  ],
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "context_parent": {
+    "run_id": "context-match-full-001",
+    "git_sha": "c285e5398ba5cb31a3cf2163b81c48f2b767bf7e",
+    "campaign_id": "vmd-context-match-20261013",
+    "manifest_sha256": "42f9a02ab6b653f25564de56f9162190ced7848e7b165165698e5645d2ba2a50"
+  },
+  "review_parents": {
+    "context": {
+      "run_id": "context-match-full-001",
+      "git_sha": "c285e5398ba5cb31a3cf2163b81c48f2b767bf7e",
+      "campaign_id": "vmd-context-match-20261013",
+      "manifest_sha256": "42f9a02ab6b653f25564de56f9162190ced7848e7b165165698e5645d2ba2a50"
+    },
+    "full": {
+      "run_id": "nonfrontal-cca-full-001",
+      "git_sha": "b0c861373a8bc66c4538b78269a3b9b988ce3171",
+      "campaign_id": "vmd-nonfrontal-cca-20261014",
+      "manifest_sha256": "c8418eb6acc9977aab73fa7606bfd5326dcdf0f12b056922fdabed1816bc91eb"
+    }
+  },
+  "review_families": [
+    "ridge_direct:both",
+    "cca_reference_rank2:both",
+    "reference_rank2_control:both"
+  ],
+  "source_decompositions": "immutable saved predictions only; no VMD solve"
+}

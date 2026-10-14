@@ -2097,6 +2097,27 @@ source/partition identity, deterministic selection and checksum failures before
 signal loading. Numerical tests and source downloads are pending on Kaggle.
 This stage creates no mixture, VMD solve, fitted artifact model or neural weights.
 
+### Original-source audit submitted; independent frontend review authored
+
+reference-source-audit-001/1 launched on Kaggle CPU at exact published source
+fdfdd93f85eb23f283a04b33c9e1040a9b75668b, campaignvmd-regional-validation-20261014.
+Immutableparents corpus002/2 andCCAfull001/1. Notebook63 pins this source. Current
+API statusRUNNING; version-specific logs were unavailable at early checks, which
+is an observation limitation rather than a demonstrated kernel failure. Source
+recovery/tests/coupling repair are not yet asserted complete.
+
+N02 uses the existing frozen frontend review with a strictly declared new recipe
+set: complete-ridge, referenceCCA rank2 andprevious rank2, each retaining its
+nonfrontal output exactly while swapping frontal output between savedVMD and
+calibratedraw. Three archived identity/context controls remain, ninearms total.
+The common strongest comparator is rawfrontal+complete ridge; each other recipe
+also gets a separate matchedfrontend contrast. Legacy rank2/ICA review defaults
+remain valid. Paper/pooled metrics and actual middle/temporal preservation use
+identical rows. Historical replaced-branch flags remain distinct from nonfrontal
+faults; active rawfrontend failure count cannot be separated from archived flags.
+No new fit, VMD solver, threshold/rank search, neuralweights or confirmation.
+Numerical fixture/evaluation pending on Kaggle; static syntax checks passed.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

@@ -21,6 +21,15 @@ MIDDLE = {"Cz", "CPz"} | {prefix + str(index) for prefix in ("FC", "C", "CP") fo
 TEMPORAL = {"FT7", "FT8", "T7", "T8", "TP7", "TP8"}
 
 
+def review_recipes(config):
+    """Allow only the archived review or the declared complete-ridge comparison."""
+    families = tuple(config.get("review_families", FAMILIES))
+    current = ("ridge_direct:both", "cca_reference_rank2:both", "reference_rank2_control:both")
+    if families not in (FAMILIES, current):
+        raise ValueError("Frozen frontend review recipes differ")
+    return families, "raw_frontal+" + families[0].split(":")[0]
+
+
 def swap_frontend(original, candidate, raw_frontal, regions, mask):
     """Two disjoint artifact estimates, one subtraction from original EEG."""
     original, candidate, raw_frontal = map(lambda value: np.asarray(value, dtype=np.float64),
@@ -76,6 +85,7 @@ def composed_failure_provenance(historical, method_failure, raw_parent_failure):
 
 
 def readiness(input_root, config):
+    review_recipes(config)
     if (config.get("scope") != "frozen_frontend_and_snr_review"
             or config.get("autovmd_enabled") is not False
             or config.get("reserved_access") != "closed until verified freeze"):
@@ -112,6 +122,7 @@ def run(input_root, output, config, profile):
     if profile != "full":
         raise ValueError("Frozen review audits the complete cohort only")
     full, context, rows = readiness(input_root, config)
+    families, control = review_recipes(config)
     source_scores = pd.read_csv(full / "nonfrontal_channel_scores.csv.gz")
     context_scores = pd.read_csv(context / "coverage_channel_scores.csv.gz")
     scores, pooled, checks = [], [], 0
@@ -137,9 +148,9 @@ def run(input_root, output, config, profile):
                 raise ValueError("Frontend parents differ: " + key)
             checks += 1
         estimates = {name: saved[name] for name in ("identity", "central_frontal_vmd_context",
-            "central_frontal_raw_context", *FAMILIES)}
+            "central_frontal_raw_context", *families)}
         new = {}
-        for family in FAMILIES:
+        for family in families:
             arm = "raw_frontal+" + family.split(":")[0]
             new[arm] = swap_frontend(saved["original"], saved[family], old[FRONTAL_RAW],
                                      saved["regions"], saved["mask"])
@@ -160,7 +171,7 @@ def run(input_root, output, config, profile):
                            "nonfrontal_method_failure": decision["failures"].get(arm.split(":")[0]),
                            "raw_frontend_parent_flags": None,
                            "active_raw_frontend_failure_status": "not applicable"} for arm, value in failures.items()}
-        for family in FAMILIES:
+        for family in families:
             arm = "raw_frontal+" + family.split(":")[0]
             provenance[arm] = composed_failure_provenance(failures[family],
                 decision["failures"].get(family.split(":")[0]), raw_failure)
@@ -169,7 +180,7 @@ def run(input_root, output, config, profile):
             for scope, ids in scopes.items():
                 target, original = saved["target"][ids], saved["original"][ids]
                 paper = paired_channels(cleaned[ids], target, original)
-                comparator = paired_channels(estimates[CONTROL][ids], target, original)
+                comparator = paired_channels(estimates[control][ids], target, original)
                 engineering = paired(cleaned[ids], target, config["fs"])
                 pooled.append({**meta, "scope": scope, "evaluated_family": arm,
                     "pooled_energy_snr_db": pooled_snr(cleaned[ids], target),
@@ -206,20 +217,23 @@ def run(input_root, output, config, profile):
     gates = {scope: controlled_gates(group, config) for scope, group in frame.groupby("scope")}
     for reports in gates.values():
         for report in reports:
-            report["comparator"] = CONTROL
+            report["comparator"] = control
             report["conservative_failure_flag_rows"] = report.pop("failure_rows_scored")
             report["failure_flag_interpretation"] = "conservative inherited flags; not active branch failure counts"
             report["mean_cc_deterioration_vs_comparator"] = report.pop("mean_cc_deterioration_vs_direct")
     atomic_json(output / "review_gates.json", gates)
     from .coverage_uncertainty import uncertainty_report
     uncertainty_report(frame[frame.scope.isin(("whole", "frontal", "posterior", "central_shared"))].rename(
-        columns={"evaluated_family": "arm"}), output, comparators=(CONTROL,),
-        candidates=FAMILIES, seed=42, repetitions=500)
-    matched_ica = output / "matched_ica_frontend_uncertainty"
-    matched_ica.mkdir()
-    uncertainty_report(frame[frame.scope.isin(("whole", "frontal", "posterior", "central_shared"))].rename(
-        columns={"evaluated_family": "arm"}), matched_ica,
-        comparators=("raw_frontal+ica_component_ridge",), candidates=(FAMILIES[1],), seed=42, repetitions=500)
+        columns={"evaluated_family": "arm"}), output, comparators=(control,),
+        candidates=families, seed=42, repetitions=500)
+    for family in families[1:]:
+        name = family.split(":")[0]
+        folder = "matched_ica_frontend_uncertainty" if name == "ica_component_ridge" else "matched_frontend_" + name
+        matched = output / folder
+        matched.mkdir()
+        uncertainty_report(frame[frame.scope.isin(("whole", "frontal", "posterior", "central_shared"))].rename(
+            columns={"evaluated_family": "arm"}), matched,
+            comparators=("raw_frontal+" + name,), candidates=(family,), seed=42, repetitions=500)
     import matplotlib.pyplot as plt
     table = means.merge(pools, on=["scope", "evaluated_family"], validate="one_to_one")
     selected = table[table.scope == "whole"]
@@ -238,7 +252,8 @@ def run(input_root, output, config, profile):
         "parent_array_checks": checks, "baseline_paper_metric_checks": baseline_checks, "arms": list(estimates),
         "new_fits": 0, "weights_trained": False, "autovmd_executed": False,
         "failure_provenance": "replaced VMD flags historical only; nonfrontal decision faults separate; raw parent whole-pipeline flags conservative, active frontend count unknown",
-        "uncertainty_contrasts": "rank2 frontend matched in root; ICA frontend matched in subfolder; ICA versus common rank2 control is whole-pipeline contrast",
+        "uncertainty_contrasts": "first recipe matched frontend in root; remaining matched frontends in subfolders; remaining recipes versus common control are whole-pipeline contrasts",
+        "common_comparator": control, "review_families": list(families),
         "reserved_confirmation_opened": False, "qualification": False,
         "native_validation_required": True, "runtime_s": time.perf_counter() - started,
         "channel_first_snr": "per-channel dB, then balanced recipient/condition/input means",
