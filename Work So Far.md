@@ -15,7 +15,7 @@ The most important findings are:
 - Earlier regional development comparison (central/shared pass-through): frontal VMD + posterior direct regression **9.094213 dB** whole cap; frontal VMD + full ICA posterior output **9.089350 dB**; matched raw frontal + direct posterior **9.337592 dB**. The 15 dB target and native preservation qualification remain unmet. No independently qualified EEG-only deployment model, final external validation or complete 10–50-channel export qualification exists yet.
 
 - Latest fixed nonfrontal320-example comparison: **15.155692 dB** whole-cap channel-first mean with unchanged frontal VMD plus reference-field rank2 middle/posterior correction, versus13.162704dB matched context control. Middle/shared14.905802dB; posterior14.095698dB. All1050manifest payloads recovered and verified. This is development-exposed EOG-assisted evidence; severe lateral−5 remains8.050232dB and weak blink/mixed cases worsen. Completed frontend audit reports pooled whole-cap13.480444dB, below15; raw-frontal control15.399070mean/13.686979pooled. No fresh qualification.
-- Latest numerical contracts: **290tests passed** on Kaggle at6dedb47; all8payloadsverified. Updated failure lineage distinguishes historical replaced-branch flags from nonfrontal faults. No new model trained or reserved source opened.
+- Latest numerical validation: **292tests passed** in the full fixedgain/blend run at248a507; earlier dataset-free290tests at6dedb47 have all8payloadsverified. Updated failure lineage distinguishes historical replaced-branch flags from nonfrontal faults. No new model trained or reserved source opened. Fullblend0.75 reaches15.370676channelmean/13.826832pooled, but its gaininterval crosseszero and severe lateral worsens; retain as exploratory candidate.
 
 ## 1. Objective, workflow and changes in direction
 
@@ -1754,13 +1754,90 @@ participant-balanced bound summaries to make gain-versus-shape headroom clear.
 Primary scores use unchanged paper equations; clean and CC gates are unchanged.
 Core output recovery verified; full123payload recovery tracked independently.
 
+
+
+### Gain pilot fully recovered; full comparison launched
+
+All123manifest payloads for gain-pilot001/1 verified at01:31:05UTC14October2026.
+Full320example comparison nonfrontal-gain-full001/1 submitted to
+https://www.kaggle.com/code/satyapaladugu/vmd-nonfrontal-fixed-gain-full
+at248a5070131d8049eddc01eede8ebee8465a77bb. Parent full001/1 remains fixed;
+no data/recipe change from the pilot. Added evaluator-only participant-balanced
+bound tables at this source do not alter inference. Ten fixedarms, no fitted
+weights, no frontal change, no new VMD or neural/reserved work. Completion is
+pending. Primary agent monitors during the active chat; no unattended heartbeat
+or agent availability is promised.
+
+
+
+## Full fixed gain/blend comparison — complete14October2026
+
+nonfrontal-gain-full001/1 completed320examples/32recipients/5ocular donors at
+248a5070131d8049eddc01eede8ebee8465a77bb.292tests passed(14warnings,18.12s),
+549000archived paper-metric checks. Stage493.397756s,runner557.734671s,
+peak1332200KiB. No fitting,target-guided fixedprediction,VMDsolve,models or
+reserved access. Manifesta95e33513549efc97379831b05c5a6ccaef4807f1105e546bce4d3b99b7a672e.
+Core14payloads and completion verified; full665payload recovery separately pending.
+WholePNGvisuallyinspected/readable; notebookHTMLvisualQA not performed.
+
+| Fixed joint nonfrontal correction | Whole mean channel SNR dB | Pooled-window SNR dB | CC |
+| --- | ---: | ---: | ---: |
+| Original rank2 | 15.155692 | 13.480444 | .960545 |
+| Strength0.25 | 9.540135 | 7.214790 | .879123 |
+| Strength0.50 | 11.196361 | 9.569044 | .913169 |
+| Strength0.75 | 13.629778 | 12.301465 | .945571 |
+| Old/rank2blend0.25 | 14.014078 | 12.417302 | .947241 |
+| Old/rank2blend0.50 | 14.753609 | 13.316326 | .957174 |
+| Old/rank2blend0.75 | **15.370676** | **13.826832** | **.962884** |
+
+The strongest blend has point gain+.214985dB versus rank2, supplemental95%interval
+[−.059848,+.502170],498/500validdraws. CCgain+.002339 interval[−.000182,+.005434].
+Neither interval supports a robust superiority claim. It passes whole controlled
+engineering gates against rank2, but native/fresh qualification remainsfalse.
+Frontal remains17.112814dB/CC.973700, with its known.007441CCloss against strongest
+raw frontal. A matched raw-frontal+sameblend ablation was not run; old raw+rank2
+cannot substitute for that matched comparator. No VMDbenefit or deployment claim.
+
+Middleblend0.75mean14.588935/pooled14.575971 versus14.141899/14.341411; posterior
+14.371630/13.671148 versus14.095698/13.279070. Both subgroupmean15gates fail.
+Weakblink+5 rises17.562110→18.492344 and weakmixed+5 rises17.328050→18.194064dB.
+Severelateral−5 falls8.050232→7.758159dB,CC.893543→.888087. Lateral0 falls
+11.869812→11.702260; lateral+5 rises14.796459→14.819895. The wholeaverage hides
+this tradeoff. Retain originalrank2 as reference and blend as a candidate, not an
+approved final replacement. No broader strength grid follows these failed arms.
+
+### What the evaluator-only bounds establish
+
+Optimistic target-fitted middle scalar correction changes pooledmean14.341411→
+16.144333, and oracleblend bound16.629263. These use clean scoring targets and
+are explicitly nondeployable. Their numeric values are not achieved inference
+accuracy, newmodel results or evidence of generalization. Averaging oracleweights
+and applying that average is invalid; the per-window oracle is optimistic.
+
+For severe lateral−5 in true middle channels,current pooled5.444037dB rises only
+to5.570377 with optimistic scalar and6.152358 with optimistic old/rank2blend.
+Posterior severe lateral pooled9.012374→9.380995 scalar,9.288298blend. Thus scalar
+strength cannot rescue these fields in the hardest condition. Residual energy
+accounting closes; centered/time-varying error dominates mean-bias energy in the
+saved tables. This supports prioritizing artifact-field/coverage diagnosis rather
+than another DCcorrection or broadgainsearch. It does not identify the biological
+source of every error, prove an optimal newmethod, or eliminate reference-coupling
+and regression-generated-mixture bias.
+
+Next priorities: separately versioned field/reference coupling contracts first;
+then distinct lowrank referenceCCA with matched ridge/degeneracy controls and
+eligible authorSGEYESUB parity. Gate-missed and unavailable-field cases remain
+included. Confidence-dependent gains require observableinputs and grouped source
+selection, never condition labels or oracle coefficients. Native suppression/
+resting preservation and independent datasets remain mandatory before models.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
 
-Metadata captured `2026-10-14T01:29:54.452865+00:00` at repository HEAD `c049d8dca726adb032f9ee45b32353d9164dd272`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
+Metadata captured `2026-10-14T01:46:26.534646+00:00` at repository HEAD `248a5070131d8049eddc01eede8ebee8465a77bb`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
 
-## Appendix A. All 121 recorded launch specifications
+## Appendix A. All 122 recorded launch specifications
 
 ### audit-001
 
@@ -4476,6 +4553,31 @@ Metadata captured `2026-10-14T01:29:54.452865+00:00` at repository HEAD `c049d8d
   "dataset_sources": [],
   "kernel": "satyapaladugu/vmd-nonfrontal-challengers-full",
   "requested_kernel": "satyapaladugu/vmd-nonfrontal-challengers-full",
+  "kernel_version": 1
+}
+```
+
+### nonfrontal-gain-full-001
+
+[.kaggle-work/nonfrontal-gain-full-001/run_spec.json](.kaggle-work/nonfrontal-gain-full-001/run_spec.json); SHA256 `8f4b59af3cd65af2839c085cdc101505d3c86aaa76b234d21f167b07bb5ca5c7`.
+
+```json
+{
+  "run_id": "nonfrontal-gain-full-001",
+  "stage": "nonfrontal-gain-diagnostic",
+  "git_sha": "248a5070131d8049eddc01eede8ebee8465a77bb",
+  "campaign_id": "vmd-nonfrontal-gain-20261014",
+  "config_path": "configs/nonfrontal_gain_diagnostic.json",
+  "experiment": {},
+  "profile": "full",
+  "parent_run": "nonfrontal-gain-pilot-001",
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [
+    "satyapaladugu/vmd-nonfrontal-challengers-full/1"
+  ],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-nonfrontal-fixed-gain-full",
+  "requested_kernel": "satyapaladugu/vmd-nonfrontal-fixed-gain-full",
   "kernel_version": 1
 }
 ```
@@ -48080,6 +48182,783 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 }
 ```
 
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/artifact_manifest.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/artifact_manifest.json); SHA256 `a95e33513549efc97379831b05c5a6ccaef4807f1105e546bce4d3b99b7a672e`.
+
+```json
+{
+  "gain_summary.json": "ff802c4d51e2918663951d42ac66262b199de3759436625aa4429ee81d430096",
+  "evaluator_only_bound_means.csv": "4671c354e7a3a06917f4b452d82114bb666e01adcbdc05388d9acc952732d16c",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "parent_identities.json": "2fbf762f02fdddcd392b75889d6a9cb56c98681f599d057f16e321f39f2d89b8",
+  "gain_progress.json": "706333850d7f455771a4a7eb838b28c35cb52465a045ac3f10adc4917cee37cc",
+  "gain_snr_aggregation.png": "c6000e4bbf0f73cdf9ebff610543d321e331945abb0b92ad55ec54ff4a7952ec",
+  "evaluator_only_gain_bounds.csv": "49f30e986312f9e4488c6006c6cc96d760a62864522aa9f9e3adf6bef911b3f7",
+  "coverage_uncertainty_channel_strata.csv": "6b9f6903e4ed67e4da85e12fa7c635e957a6f4214994745080c500291761e173",
+  "gain_selection_manifest.jsonl": "c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2",
+  "gain_condition_means.csv": "681d14910f7314c109c959d3a90fd33d44369e285625c21c98b80034df562567",
+  "gain_channel_scores.csv.gz": "70e3f6d8a87a1915a4e25279df1445f3bd8a6e0e79a5c05016b2d915872c2b08",
+  "coverage_paired_differences.csv": "7b1dfee38914fe738a142cc8a687fbdbc0d9be1f9d249ce848e8d5039331583f",
+  "resource_summary.json": "712599e4c8c045048e1db71285e6733e681271c7f721ee9d5fbc20c4c82e861a",
+  "gain_gates.json": "c19cd8bfbe2853bf7b2c5d8f20ad5b9c358aded8d2a1fa00a489cf9a097d73bb",
+  "gain_example_snr.csv": "2a477c66acd817d73481ce8a7ff45d4cf86aba363adf4c0aa58799ef25090657",
+  "evaluator_only_bound_condition_means.csv": "d255bd8af07c51b81f3cad82222253608c749babc9ddfd5266ec1e005db7c728",
+  "environment.json": "84e1ffdddc0e28cff3b492fef18c2fb7063902f53136781278adafd139f49e47",
+  "coverage_uncertainty_intervals.csv": "421bf54b6100e5b825ff780521a0d87d4acf2f27b8a9de9b89b9246f08b6c1a4",
+  "stage_tests_summary.json": "005dace0742dffa226173547d4246c26ebb031ce4803e7e5b952cd709ab59c7a",
+  "gain_decisions.jsonl": "eeed7c1940cebf3dee8b2d540a1f6c9267b7c3350895c40d7d1983750f512f6d",
+  "gain_method_means.csv": "2130b8fea08edbb5a4fcc4c684077453c583fbf3362b46447ef08fb1a1a4eb75",
+  "configuration.json": "5afcc25e6e4cd7d00b802f17c68ffcedcfde305006da148a80c077217a8fdedd",
+  "tests.txt": "66f50794067768fc60e8fc67d52970c3e652f529e89d6b7439d365f51c4362d5",
+  "coverage_uncertainty_method.json": "0379461275a946fa1b350b0adf663a2a19a85e1134c8251764da11763aa66ef5",
+  "run_spec.json": "e403f619995ceda846353d39f18c28252a331e11f18b46d763e3c56951a28065",
+  "gain_shards/sub-032327-000-blink-snr+5.csv.gz": "c1a2c021ba4ec28b835b1d510aac4d90fa09c8f5326f317fc26652f567835fff",
+  "gain_shards/sub-032320-000-mixed-snr+0.csv.gz": "d720e7687c38f7466dbdd00d05c1c8116a7a7409b5333f43f9c9836335532185",
+  "gain_shards/sub-032316-000-clean-clean.csv.gz": "c75d475fec8184cd1e084a147bf5bc30306e43d26264300e0e049b3ba8ada279",
+  "gain_shards/sub-032325-000-lateral-snr-5.csv.gz": "e1db9a05d4e7967002229438da1750fa0ee932adbfd1fca8ef0b113ffd7593f6",
+  "gain_shards/sub-032339-000-lateral-snr+0.csv.gz": "ed0343d322bde7fafdcc858f175418b3d161332f60ff26360855ffde551c926c",
+  "gain_shards/sub-032328-000-blink-snr+5.csv.gz": "7707f072c54eaf7482e907f2823770e5b4a60eba61725fe3e6f9e42fab7b740c",
+  "gain_shards/sub-032329-000-mixed-snr+5.csv.gz": "58807078f654c3a0bcf582723e80dd5366233ce05779e6091b56cd68f588a6bb",
+  "gain_shards/sub-032310-000-mixed-snr+0.csv.gz": "0368ae87be2b5372f1efef4d236acce34ef6f0f368f4117c703701cfabf03a73",
+  "gain_shards/sub-032331-000-mixed-snr+0.csv.gz": "61d985b3a28446693437d260f20390bda1f34f20371ba7bf5a1e1978c876c471",
+  "gain_shards/sub-032338-000-mixed-snr+0.csv.gz": "f8f1fc9f0c5eff80e14fe358e9fc4fec83cc0ef787c4102ba29128c632202738",
+  "gain_shards/sub-032330-000-blink-snr+5.csv.gz": "b7c4185b38a9ad2ccbfa705d3ca6282ca7a61e0b4f0a45a42f4fa285bbcf33cf",
+  "gain_shards/sub-032313-000-lateral-snr+5.csv.gz": "6acf85dedac9744100e26292d9fabf2076102db1f8d54bd9203dce251a85ae3f",
+  "gain_shards/sub-032305-000-blink-snr+0.csv.gz": "3e8a842df4126f9fc2227645081fb27feeddda3bd11eae56ebbf0544d0968a79",
+  "gain_shards/sub-032325-000-mixed-snr+5.csv.gz": "6c5bb955f202cdcd4141d8da4b82e5e2694b3ef3c101fea85d44666c49ce0a92",
+  "gain_shards/sub-032340-000-lateral-snr+5.csv.gz": "1ae9b7e0938c225a4a4f5618cfc21198de741ba44a6f7c37f7e90eb2a2882cdf",
+  "gain_shards/sub-032328-000-clean-clean.csv.gz": "f9fa69a214c475965b0d385f5c2140d75410d51214d1511a9429d1f06cebed98",
+  "gain_shards/sub-032330-000-blink-snr-5.csv.gz": "b6ae6ed9103647c3f54759d48a20d92732662284840fa052131cce573eecdde2",
+  "gain_shards/sub-032316-000-blink-snr+0.csv.gz": "f2613ab3a4523c04ec33f2d36544545ce7cb3668b4fa91703d16cec2cb8c6ee6",
+  "gain_shards/sub-032307-000-blink-snr-5.csv.gz": "704f26e82d0939427370a9e5591b224988efce5cd57bfd2c71ccbf145aef94b1",
+  "gain_shards/sub-032329-000-lateral-snr-5.csv.gz": "6e35c6e01b2af676fb748e58805015574766cff0184b0cc2becddea44161d15c",
+  "gain_shards/sub-032323-000-blink-snr+5.csv.gz": "5628c438b9f1d55bba4b33180b8f98a745110fd178b758c7e4ebd72ae628b36c",
+  "gain_shards/sub-032323-000-clean-clean.csv.gz": "da7d88c275bbd53e7daaa4e96367d3bb665c479150400963c98bb5efc2f7d05c",
+  "gain_shards/sub-032317-000-lateral-snr+0.csv.gz": "ef93e0de9525b1d0346fbfbdb311f6014701eea4ea2d916553f4d944ea6784ff",
+  "gain_shards/sub-032314-000-lateral-snr+0.csv.gz": "ef3f917d599f353a153d5a190847a91d833a15ea0e5df94b0530bad86223e20e",
+  "gain_shards/sub-032326-000-mixed-snr-5.csv.gz": "a519a9bf0615e8f0826b40d0bd0673c2f69cae6a888b413d8e6379def24106c3",
+  "gain_shards/sub-032305-000-mixed-snr+5.csv.gz": "5d45d3d70535104a158bc40f80b16addb6693804f14593f7a230ecbaaf5ca78a",
+  "gain_shards/sub-032307-000-lateral-snr-5.csv.gz": "55675c7e34ad8f4d21be4991ccc2ceab0a2d7f83e223f060fc8911b7f66d98ad",
+  "gain_shards/sub-032325-000-lateral-snr+5.csv.gz": "dcad56cf27b27d7ca08c6987f56215ccc2b980993a43ecac74a0754baeffbd80",
+  "gain_shards/sub-032322-000-blink-snr+0.csv.gz": "e0ed04372769722f0f0448e2a46b4f95cb1207db0cfb214e9419a2f5c66fe7e4",
+  "gain_shards/sub-032331-000-blink-snr+5.csv.gz": "eb4c98f92cf49f74caddc5a4bfedc3311ac6061e40e1910da137727f84437b5f",
+  "gain_shards/sub-032330-000-blink-snr+0.csv.gz": "8ebaeb087140f6c112c1d715d6bab04a940c2fe703e34e0e10973999f37f1ef6",
+  "gain_shards/sub-032316-000-mixed-snr-5.csv.gz": "2df9b63bc2ec668be582c13650a11ed9ff8603d620f658e804a6e92f5a4cca28",
+  "gain_shards/sub-032317-000-lateral-snr+5.csv.gz": "16d67b95c09170a528d99aea514ca16c992b6a8e16ca4ff3515f22b39a806a22",
+  "gain_shards/sub-032305-000-mixed-snr-5.csv.gz": "27d3508dafae4184016a91770f44afe1e9dcc73666cce9fa32a1cb16efa4a0a3",
+  "gain_shards/sub-032305-000-blink-snr-5.csv.gz": "c57acf8b7bb14935c5a3eed90ca17ae46909886996267b2c033270e697d0f254",
+  "gain_shards/sub-032308-000-mixed-snr+5.csv.gz": "31017a844da943367e717049d6efaff40fb1589679f89b4f0ab4cc7d2a2dc3dd",
+  "gain_shards/sub-032321-000-mixed-snr+5.csv.gz": "ac9bb7333689049ef154386682d449730116e1f28c12ac08d47a5ae4c8c77212",
+  "gain_shards/sub-032331-000-mixed-snr+5.csv.gz": "70f2db123f6b5b4fc12dc3144556e724b05fb1cb61f4f50e173d3a02d46918cd",
+  "gain_shards/sub-032329-000-blink-snr+0.csv.gz": "e5bccce8c7bf51ce34219887c2c65ff0d43d779f4b33b95e956c694fe724318a",
+  "gain_shards/sub-032307-000-blink-snr+5.csv.gz": "d33865f13f0006d41acccaabd6fe66add357deee700924c22586264e42aeaaca",
+  "gain_shards/sub-032309-000-mixed-snr+5.csv.gz": "8baf8d20d2b627f48577c8feecc5612f6b64910d0329a14cf32dafd15ca15d77",
+  "gain_shards/sub-032336-000-lateral-snr-5.csv.gz": "3096b24eaafbbe88ef4d8ce6dc15228cfbc8abf087235160443f1092fa241855",
+  "gain_shards/sub-032328-000-lateral-snr+0.csv.gz": "fdc5a02d832b0c3a8b7bbfc6f4eb1989046331132b8f8607ce46ffddbe104127",
+  "gain_shards/sub-032316-000-lateral-snr+0.csv.gz": "67d59c66260b7123feaa4b638f96d5733e33e4ac3387099e3d5b6a8b9e9829ad",
+  "gain_shards/sub-032338-000-clean-clean.csv.gz": "9f580ad232a821034cfd49a3e7f3e68a815d10dd1d28ae5848dd3556a11208da",
+  "gain_shards/sub-032312-000-lateral-snr+0.csv.gz": "02962ec3bcb20116bdbeacc5728da5a123fc7f4208585195a29bcda839fc3147",
+  "gain_shards/sub-032334-000-mixed-snr+5.csv.gz": "9d09d04c06f1993cd0511697a9b312cc12a5c050239ce0d6f2afc085f55ff9f6",
+  "gain_shards/sub-032336-000-blink-snr+0.csv.gz": "150df4f2dd57dc118d1faf4236c79aec8417f39e7052ab4a61ba7c5fc30f9eb2",
+  "gain_shards/sub-032315-000-mixed-snr-5.csv.gz": "2e23413c9bc7d190639061cab2d3df221a2d0ad8102d080b5e68a5537905b645",
+  "gain_shards/sub-032305-000-lateral-snr+0.csv.gz": "ffb9ac7860811318d2c7eab379cf807424b38082b8f0d00c53e400119f3242fd",
+  "gain_shards/sub-032317-000-clean-clean.csv.gz": "c79d6fbb6f216d9e5f0e97b19ff49a0478381f5ed85ac23bee15b2b84c88f465",
+  "gain_shards/sub-032312-000-blink-snr+5.csv.gz": "ce56d5409f0f0a94b19e2d30d34fc8b48ea6dc33f746c2d803f980d0018a77f3",
+  "gain_shards/sub-032331-000-mixed-snr-5.csv.gz": "23700ab4de808cd266fe803fe35a21af6669942ef5b1a832a016cd0075fd3fab",
+  "gain_shards/sub-032312-000-mixed-snr-5.csv.gz": "32d5a43e044e67772cd226d7211462aecadc975d0be86550838a5dca48a65e28",
+  "gain_shards/sub-032309-000-blink-snr-5.csv.gz": "409b55d42f9e4dd619fb5e70f11ba5674856cddf840838229b27f51cce754fdf",
+  "gain_shards/sub-032317-000-mixed-snr+5.csv.gz": "bcb0e58fc900e64ff761bdc14ba1513897a6f8dc7631672965380863d07eab21",
+  "gain_shards/sub-032320-000-blink-snr+0.csv.gz": "f7b672caf985b32e1e51e2d8b7c525e5600535533cb06bfd854e672d099a6947",
+  "gain_shards/sub-032339-000-clean-clean.csv.gz": "fe1d50719a96c779aca5de076924915fd6ddb9b61f5453b84a0446910346bc58",
+  "gain_shards/sub-032338-000-blink-snr-5.csv.gz": "cd4a287481cdba24da95c674fdfaae79cba002d39c9931ea383c3ce562464453",
+  "gain_shards/sub-032338-000-blink-snr+0.csv.gz": "461d8e2763a230f909bd30154d971d3736c9b63f2ae58c3771648a926558c037",
+  "gain_shards/sub-032323-000-blink-snr+0.csv.gz": "3db8c8ee4814e6d0177d91aa48d2bd88ac3d46cd14d983f9355a290633df4c0b",
+  "gain_shards/sub-032310-000-lateral-snr+0.csv.gz": "b516559e86c2d70b87f3bf2a540533b4bdc90d1b2bf530ccda5c0607bd447ae5",
+  "gain_shards/sub-032318-000-lateral-snr-5.csv.gz": "cedfab171c26019cedd8a3656b6d8d84a5b0f6b9e9bf82935faf25cda152715d",
+  "gain_shards/sub-032336-000-mixed-snr+5.csv.gz": "37bc60529316abd20d3f4f1ce041f05d5345d05febd2655cd57fd03488e21bcf",
+  "gain_shards/sub-032328-000-blink-snr-5.csv.gz": "2c3d1cb74ba16ab24ca0205a0a41b53116b16e14e9ee7495c5a0b64f8425a922",
+  "gain_shards/sub-032313-000-lateral-snr+0.csv.gz": "f1a4a170ab501c39ab4beb519bec33702d36eb8a7aa8d947f27c628d34ff480a",
+  "gain_shards/sub-032325-000-blink-snr+0.csv.gz": "5b47711f3855c64e20445345b34bd48f77d596fa5ebc13c452fb9cc511618584",
+  "gain_shards/sub-032317-000-blink-snr+0.csv.gz": "7db1752727560abf0eed9434aace8f54d7115845861a4368314cff86689064d5",
+  "gain_shards/sub-032318-000-blink-snr-5.csv.gz": "98a453a90d79e2cec9b09838a1267bd6270bb5f334de01225bfafb92c9409297",
+  "gain_shards/sub-032310-000-blink-snr-5.csv.gz": "c3d9bc57283e37508bfd471bf59ebeb98ce2683b1c4cfac35e2cf6359a574ca8",
+  "gain_shards/sub-032315-000-lateral-snr-5.csv.gz": "6d9481734ab79ecbab32e364f6da1a782810f4c3b0cfc524d8f5dc75c2a746c7",
+  "gain_shards/sub-032327-000-blink-snr+0.csv.gz": "49f1da6b84c8ea28ee3f7f6a26645e9c4913271afeaa9f7d0eaa1bdfcf8f45dc",
+  "gain_shards/sub-032331-000-blink-snr-5.csv.gz": "db28b05515e69ba0709002819f6059d8a95add9ebc37cf817399f1e31b536f59",
+  "gain_shards/sub-032330-000-clean-clean.csv.gz": "04d3dd64c99908341ac3fad09ebcd40363383c684d27223ae2585b9e7feb1c6d",
+  "gain_shards/sub-032325-000-blink-snr+5.csv.gz": "86b71c166f8820818999b862dd8b4f69258daffabdda25aef524f44bcd428dcc",
+  "gain_shards/sub-032322-000-blink-snr-5.csv.gz": "624c7a400179e435e63f9d3d6c3c290a1335c39ad392bef557c72fa29e1d4178",
+  "gain_shards/sub-032312-000-blink-snr+0.csv.gz": "7ff5b37d6654ddbf05f2e5fec212d940c9e73bd5654c9fcbeec5d87e1973ea8a",
+  "gain_shards/sub-032326-000-lateral-snr+0.csv.gz": "95df4b0a2f0adaf0e3d31a7b202db747f884e2812ff6c96f3e6bf0122cc46cd0",
+  "gain_shards/sub-032309-000-clean-clean.csv.gz": "9e88ea0958902e4376f98508f2942fdd63f0fd222ad09e284e3deaa79e937650",
+  "gain_shards/sub-032310-000-blink-snr+0.csv.gz": "576703726121fe4b0fe33528151d7b184394f2c4754fc8e8db1ccc90f50b111a",
+  "gain_shards/sub-032340-000-blink-snr-5.csv.gz": "acc3e9dbbea993b4193c96bbec7218ddca503f7f2594e9b7f602e705f1bee854",
+  "gain_shards/sub-032334-000-lateral-snr+0.csv.gz": "b1ae11f2fee733f24ed2312200d09201845fd699c16f73824744849f209bc583",
+  "gain_shards/sub-032326-000-mixed-snr+0.csv.gz": "5dee0a608470f83368496b2402063b95d48a063f46ca0cf1dfbd666b2328305b",
+  "gain_shards/sub-032331-000-clean-clean.csv.gz": "48b859f7c0550575f68e1f3f655d4fa158da1d7a890f7f2b59352db2cc78e75e",
+  "gain_shards/sub-032317-000-lateral-snr-5.csv.gz": "afa294ba3c19d416636601d312b1cca7729ef2baf75a5dcb7acaba61fc143b12",
+  "gain_shards/sub-032324-000-mixed-snr-5.csv.gz": "f99b2fcc349bbf910dbd4a8a4550bfbe9720e266bc3b1d4ad54eb581c05fc80b",
+  "gain_shards/sub-032341-000-lateral-snr-5.csv.gz": "5e708d75d0276618133d06cc9cce7de4d4b63a4ed5f7a8dda576448e7dc2337f",
+  "gain_shards/sub-032330-000-lateral-snr+5.csv.gz": "8ec40dd00cb192efe04a7e3134f1944064a149cfb6ea4b9668b146da1e654738",
+  "gain_shards/sub-032327-000-mixed-snr+5.csv.gz": "3b815cf7d4a04b7b28b98243c1725c74b5e6f2e48e49fb4ea943ac99894a10d4",
+  "gain_shards/sub-032318-000-blink-snr+0.csv.gz": "dffbc929ea5684102229291aa9e0450508d3cdd527466376b62639a1de0c75b3",
+  "gain_shards/sub-032308-000-mixed-snr-5.csv.gz": "8ef4abd723d1da193329b941b42c5935bb9a376f8198fb81de7d9f525efd03e7",
+  "gain_shards/sub-032319-000-blink-snr+5.csv.gz": "35f10c9c618516994e93d87327947f426607f0397ba3ac0e9fece197d1c2c97c",
+  "gain_shards/sub-032341-000-blink-snr-5.csv.gz": "496f653f4de0d3fdd85c15f589599e59ac31dd59a39e4ecf32c6f13dd2cb5d55",
+  "gain_shards/sub-032328-000-mixed-snr+5.csv.gz": "f07c62020c3b2fd4c6dfc428b4b01f7bc825998795cea7187288647e7882afa2",
+  "gain_shards/sub-032327-000-mixed-snr-5.csv.gz": "bb1f2f605f502568bd67a509f78412b1574a6698df30f0d2d555cbe33a5c25e3",
+  "gain_shards/sub-032330-000-mixed-snr-5.csv.gz": "532af300ffce56122cb358040994e95c59952bd9e4528c9b68ef4efa7fa7952f",
+  "gain_shards/sub-032306-000-blink-snr+0.csv.gz": "4e21dd3bf362856ea40e5f666128eed0e6b33c073828cd5048372dacc5e37d04",
+  "gain_shards/sub-032338-000-mixed-snr-5.csv.gz": "8569fdf999390e442c37f847ddbfaa577ce5e320069812930132275594ff4493",
+  "gain_shards/sub-032338-000-lateral-snr-5.csv.gz": "8e01e10b0eb4d75579b39feae9117396811ea1c8182de217333504922266d9d8",
+  "gain_shards/sub-032328-000-mixed-snr+0.csv.gz": "8aa27448864c060770f0ec62f4b724f5a4eb5a1a391b2541d4e708a52d8bfed4",
+  "gain_shards/sub-032339-000-blink-snr-5.csv.gz": "68c7f5b639dd2cb8129b07034ce33fdbd16d121bb231748cc98ef9e4f36cbbd8",
+  "gain_shards/sub-032318-000-lateral-snr+5.csv.gz": "530aa29e6b917b21e438d573e6fd38b14316087e25d9c2b90384f0c5dd06b347",
+  "gain_shards/sub-032338-000-blink-snr+5.csv.gz": "46c291ec26b85e1d741d02dd84b4dd3772bbce2718816b5ee70fe94fda582b72",
+  "gain_shards/sub-032312-000-mixed-snr+0.csv.gz": "23a0aa3ecd4e74207c08617175f068315180a017c1fea1210c2e06cac75b2991",
+  "gain_shards/sub-032326-000-lateral-snr+5.csv.gz": "d962de55211caa011eff4d3a15457f0c7157552a1a3a9c735166213929a8d48f",
+  "gain_shards/sub-032321-000-blink-snr-5.csv.gz": "b0f3f57737e37f96f0f106bdb237ff1ad855e36a855e9ca50f8d34511ed55085",
+  "gain_shards/sub-032318-000-clean-clean.csv.gz": "22f3ae1f628a75c9c5608b36c79fce7613b2cc22f4f086b00fd4b6b04a8a057b",
+  "gain_shards/sub-032324-000-blink-snr+5.csv.gz": "2e2e5f2f47f0fe014c840be96dee13358f3fd893fc12939de8aead75f3316250",
+  "gain_shards/sub-032312-000-lateral-snr-5.csv.gz": "396ae2bd3aaf8888a5e146c8cfa4f105fa7605b38d52c39642c6ff931968d9f0",
+  "gain_shards/sub-032339-000-mixed-snr+5.csv.gz": "dbe9ec7e4137132175bc202988865438a643a56bb7b042e9cb86062d08922ee2",
+  "gain_shards/sub-032306-000-blink-snr-5.csv.gz": "b8cc8a42138f3ddb756aa550d9152734aa2065c058d5656f7a852cafa2445354",
+  "gain_shards/sub-032305-000-mixed-snr+0.csv.gz": "04a8ff9019f791dcccf50f451f96378517a156f9755dbfb25abe56c91d3788e2",
+  "gain_shards/sub-032327-000-clean-clean.csv.gz": "20f0d83e9e46bb42930798532608e135091aef2a5d92cc8348058ea4bd9272c1",
+  "gain_shards/sub-032334-000-blink-snr+5.csv.gz": "30c41ca1031ff31d489ca89751b1fea89fab3dade52330393cd4733919bf67bd",
+  "gain_shards/sub-032306-000-lateral-snr+0.csv.gz": "de0959a4a103eca99616a958d4b74e3f5529e9f6c490c273ed69420dee21d268",
+  "gain_shards/sub-032313-000-blink-snr+5.csv.gz": "bb20c530bc85498af2176fb57810b6c82d237a289e3b48fe97bf2bc9d8de5f23",
+  "gain_shards/sub-032339-000-blink-snr+0.csv.gz": "cd3e2ea6ac876fc9d961d91d09960b921fbb2fe1cc896f11eeb0466f96228e76",
+  "gain_shards/sub-032315-000-blink-snr+5.csv.gz": "75657614a2055836b6dce19ccee09b0eaf7bfcbc2e1d02f90d103ae35322dd02",
+  "gain_shards/sub-032323-000-mixed-snr+5.csv.gz": "1836d9c9ddc2bfb3f46e7fe70e50ae1e0f837cdcbe4e3e6f5318071efb4b7d22",
+  "gain_shards/sub-032320-000-blink-snr-5.csv.gz": "28ebdf09db7dcfc5962d15dacc0e00ef88c26bee45bd5fe093c38ee003c15b81",
+  "gain_shards/sub-032320-000-blink-snr+5.csv.gz": "23c42cd1d7e93f0f812ff84924372c2734baa6ce2e616046c265703097b8fcb9",
+  "gain_shards/sub-032339-000-mixed-snr+0.csv.gz": "bd99b31fb6f81111723045f702cdfda321e6e33b278d6676ec81286b48134b06",
+  "gain_shards/sub-032305-000-lateral-snr+5.csv.gz": "0e5a0004bfdf1a3a02e87e98d6cd8e2a2c958290472d1ea9da359fce01f6cd63",
+  "gain_shards/sub-032315-000-lateral-snr+5.csv.gz": "be77641128efb643e0082bb20ad549051c0ca7c7aa6dc120c4f1b909c8b12f7f",
+  "gain_shards/sub-032310-000-blink-snr+5.csv.gz": "e2f8bfbd26354ffe751fb444ff1f438d1132e86f648af2407229d7353e5221c0",
+  "gain_shards/sub-032340-000-mixed-snr+0.csv.gz": "61371514ef2a6fd270d186eb50bc8ce41f351ba0c6353dd6ddc8c6022c793aab",
+  "gain_shards/sub-032320-000-lateral-snr+5.csv.gz": "ce979f969024fc6bbb9013d1e3e8bfeb0df9e9ab11836438614979084ef0e6e0",
+  "gain_shards/sub-032328-000-blink-snr+0.csv.gz": "6a36d5fbd63755d09c2a8ee58900a8959984a8d6702b6e9a04d5d1e328116397",
+  "gain_shards/sub-032308-000-lateral-snr+0.csv.gz": "26e697819fe087d421af562054a879213a45e60640c778e78c6f031fc2fb14f8",
+  "gain_shards/sub-032341-000-blink-snr+5.csv.gz": "0b496dc3f35628a0c8b835140eaf7bd06799b111ea11b8b3769bab90541a6b83",
+  "gain_shards/sub-032329-000-blink-snr+5.csv.gz": "35b01e46a6558e792fac5088ef7c03b9256319a24b890606bff3a56743c71ea4",
+  "gain_shards/sub-032326-000-mixed-snr+5.csv.gz": "d99df7938e8421f91e98fa5808086c4b61c1af3c870a2756a1a88e76d7699c8a",
+  "gain_shards/sub-032310-000-clean-clean.csv.gz": "3665a2dbfeac64b0631f6451b49ba9d4000b23a9deee6e86356bd0df78152886",
+  "gain_shards/sub-032314-000-mixed-snr+5.csv.gz": "0ba6196fc18a1100e5a5158580eae4bd1e89983467a292158c6319c2a2952bf9",
+  "gain_shards/sub-032329-000-mixed-snr-5.csv.gz": "7cd72eaea31cb305fd0ae4913b9c86af8e4b0fb63fe2ab7e2c04e75529202a89",
+  "gain_shards/sub-032338-000-lateral-snr+0.csv.gz": "7a6164bde08ae9c6cf29518f19295b9742aa644d3366f0f9507383d0a3b67586",
+  "gain_shards/sub-032308-000-lateral-snr-5.csv.gz": "6cebc2a330456704b5a8817312a0f2d5e78b6836811e32416b0f987c72e07565",
+  "gain_shards/sub-032315-000-lateral-snr+0.csv.gz": "562fdf407041171895e31cb0eb19a7f790de8f3ed88e04b6e76264d860362de9",
+  "gain_shards/sub-032329-000-blink-snr-5.csv.gz": "01b7e20420133e817ebb339551141f1a0434fc1dade9561f8971592dab796f2f",
+  "gain_shards/sub-032319-000-lateral-snr+5.csv.gz": "f72e16621b939c19f61e2254d82711362086ce0dc55e7fc3915de034a87bdf41",
+  "gain_shards/sub-032341-000-blink-snr+0.csv.gz": "2135e59ed2751aa98834ab77d9b2c4d256299cc970dd191404f4b3d6a6abdb08",
+  "gain_shards/sub-032308-000-mixed-snr+0.csv.gz": "987ac38b6cb17be28bfbc31f002a8eed75be983138cc85e43d06a81b1f38275c",
+  "gain_shards/sub-032321-000-mixed-snr+0.csv.gz": "c49fdfb25102365585e36b7ee76d73f07022c0798affe0909079e38af3529b74",
+  "gain_shards/sub-032334-000-lateral-snr-5.csv.gz": "0736143ffeda322831f82b0ae46a6624c0c1b7e654094d9b0c7757eed49945fa",
+  "gain_shards/sub-032313-000-mixed-snr+0.csv.gz": "82ba4c89b8fa3a85066538e397c7b02f8f3a82c17f3cb51ed59265bfe8c74d71",
+  "gain_shards/sub-032321-000-blink-snr+5.csv.gz": "81f1578b2c5743845c93afb62d8e4fc613f6fc362665f328b0c5aa2e7e1bb713",
+  "gain_shards/sub-032309-000-blink-snr+0.csv.gz": "43882c030423fa297817a6bb9832661bb047580f108c81ab1fb7af87fe36a087",
+  "gain_shards/sub-032316-000-mixed-snr+0.csv.gz": "eb646ee88274bab6aa9eb07fd890f6e9ba1fca96f453a63ca2a60099bc0f866f",
+  "gain_shards/sub-032339-000-mixed-snr-5.csv.gz": "51573a074a6c7af3844c7f7669c19eda73c9474d0569b84d114735425aaed900",
+  "gain_shards/sub-032308-000-blink-snr-5.csv.gz": "48fafe55020b3fdb7f3edd138dd65e508c320e5f99bf5906ea3f5c83457badfe",
+  "gain_shards/sub-032321-000-lateral-snr+5.csv.gz": "5fea7aafca0ba6267351c1859067e9a1c9e44ca46b554bb99b88df519346ce62",
+  "gain_shards/sub-032329-000-clean-clean.csv.gz": "0913f0d583e03e5194996de98295e1f574d3f2273efc4c190fc5834d84dfebc6",
+  "gain_shards/sub-032336-000-lateral-snr+0.csv.gz": "9b9a4d01f648968729c55b3446963c60da6a44769d334c22ac2c404c97c72b3c",
+  "gain_shards/sub-032322-000-blink-snr+5.csv.gz": "4d17060ee084f031e3269a75605c081d2cca8cb632c2b45729024d3fc63c46fe",
+  "gain_shards/sub-032327-000-mixed-snr+0.csv.gz": "cd1d0363775a0e97826fdd9b06b39a4c1a5458369194dd43ec0ab2874cf51bee",
+  "gain_shards/sub-032340-000-blink-snr+0.csv.gz": "c937bfd5547ac01f18624a101d09ba00ca0f2708ccf89317f7ccb275e25d5858",
+  "gain_shards/sub-032329-000-lateral-snr+5.csv.gz": "bd409f3006f255497324655a36ba55d19d67f1364e2e2a1972db2b78e97704f3",
+  "gain_shards/sub-032319-000-blink-snr-5.csv.gz": "5deb47fc5d9666646cd14e5a64270b07af26f576ea58a8caa4b1f173fd8a3700",
+  "gain_shards/sub-032323-000-mixed-snr+0.csv.gz": "ab2bcc594ab9b39f17bd3bf941267ed0d99683648fcaa3bb2f71c822edcdef9b",
+  "gain_shards/sub-032328-000-lateral-snr+5.csv.gz": "301201a92dd52d2f59c022d6c25812e3f7d5e06babd4567c15b305e88fc64da9",
+  "gain_shards/sub-032306-000-mixed-snr+0.csv.gz": "16f898af64b191b564edb3b8807babef17e259111ea33d683b2ab341b1108539",
+  "gain_shards/sub-032321-000-lateral-snr+0.csv.gz": "f11b972fdd4be9af3aff3a74d36de18b44a637293ad7c3c4e808146ce3830d1b",
+  "gain_shards/sub-032320-000-mixed-snr-5.csv.gz": "006f0285e6159b25cc1bce82ca5368753a3e9eb5ce0ebe25fb45cc29199ad773",
+  "gain_shards/sub-032321-000-mixed-snr-5.csv.gz": "400168739a88d360982f6bcc0a2b72fd4a79645daf5641c736672446206eea8c",
+  "gain_shards/sub-032336-000-mixed-snr-5.csv.gz": "e8053681935e9f591c9bd779c7e2157b0e41a9274bb8fc2aa8902aa110224c6f",
+  "gain_shards/sub-032339-000-blink-snr+5.csv.gz": "da4069d601c43f03d9230563147dcc09b0fac9c4bbf7f27c237337525d3df47a",
+  "gain_shards/sub-032307-000-mixed-snr-5.csv.gz": "ce2262233779d9253ec78a26560906cfb4b9a9963aaff029d49d4af1371503c5",
+  "gain_shards/sub-032324-000-lateral-snr-5.csv.gz": "126f56ece883d11db672ff1b937b60a469a4784daa9fa0ada3b8d3b34278d169",
+  "gain_shards/sub-032312-000-lateral-snr+5.csv.gz": "f401a8f6c45a4ac29f7d65448d023e58c172cfadb28cdd6aef4e78a6c5f2cb85",
+  "gain_shards/sub-032313-000-lateral-snr-5.csv.gz": "15329ec05ba7f0e5ec99d8c02843418df46973a4e3ad566bbe1d5f26a0b3aeca",
+  "gain_shards/sub-032308-000-blink-snr+0.csv.gz": "652a3a7a5cda7e32f02b455bbbb90d8c6642e1fa8b8b39122057072762d15bb7",
+  "gain_shards/sub-032316-000-lateral-snr+5.csv.gz": "1e20fc424049a9c361bd86d3bb6a90626271dad9be345e44e94c1981bd5be293",
+  "gain_shards/sub-032315-000-blink-snr+0.csv.gz": "6e48532b82c24a1aa7361709344f149f6d5d010f818d4987e4be3a09e534b0f6",
+  "gain_shards/sub-032331-000-lateral-snr-5.csv.gz": "944b53c36d3c6093b5619e7274a15c83cbf612d432a8235442cc63e3bc66f2d2",
+  "gain_shards/sub-032316-000-lateral-snr-5.csv.gz": "4bce78f4ca6d252a5b1855b6f0fa10b09b3780d7f2e143e14bb29633aec1352d",
+  "gain_shards/sub-032307-000-clean-clean.csv.gz": "9e1aad2f028693df204a044758732acffdf2c0a2fe1f123bd5d36c0ed171adba",
+  "gain_shards/sub-032326-000-blink-snr+0.csv.gz": "4f39fab3833276f30e014fa639a3dac4e68af1608850da332505b033292d5afb",
+  "gain_shards/sub-032320-000-clean-clean.csv.gz": "cec6029bdd83df0257ac508cd9dd89b38c907b7ed84a168225c9850bc4edc516",
+  "gain_shards/sub-032338-000-mixed-snr+5.csv.gz": "d34c9481e1e7bf18db8660cd090716ae8cebcea766c8c2a150168de4846224fe",
+  "gain_shards/sub-032336-000-mixed-snr+0.csv.gz": "9227852081b872cc91e1fc787825ad40a169879752f9c5698953431caec62249",
+  "gain_shards/sub-032309-000-lateral-snr-5.csv.gz": "47473e859830e0abf15ec91f08de47793d2355c93606a015144ff3193971a589",
+  "gain_shards/sub-032330-000-lateral-snr-5.csv.gz": "88cb63372f6b4d9c68a38a04cb13bb3a1ca6107a1cb4cc120133318bcab19aa3",
+  "gain_shards/sub-032341-000-mixed-snr+5.csv.gz": "1c69ec2ae978e14c7e4e448a687c57c380f51cdfa555af4fc91389082f9e9a46",
+  "gain_shards/sub-032306-000-clean-clean.csv.gz": "1c0e33a7b30b984a68ba0d538d57389a33b0fe90f92fd3a4d34de0165db3e677",
+  "gain_shards/sub-032340-000-lateral-snr-5.csv.gz": "be5e46314e3a5485fe7e8bbdb76940b72a5e80a395a24107c67b9714f7f7ee7a",
+  "gain_shards/sub-032316-000-blink-snr-5.csv.gz": "aeaafefcf97b3950812275dadceacd3e9ee468418ca149e138c25bf07d512efb",
+  "gain_shards/sub-032336-000-clean-clean.csv.gz": "863109e94760fd2576341d9fabf98d7dfb52078a73668ecbbc1cef530bb5f3d6",
+  "gain_shards/sub-032321-000-lateral-snr-5.csv.gz": "85396962584fb0ce911203cb2fb77793b136f0434979fa39b184211c1d9ff371",
+  "gain_shards/sub-032341-000-lateral-snr+5.csv.gz": "d1d8c6f270ba2e284b7ee03d1016c0c5511758eeb05f42f80ec77e59d8906d13",
+  "gain_shards/sub-032315-000-mixed-snr+0.csv.gz": "ddd5fee34109c5b36f4d8f7a45a54c48e7eaffbf5d7e8fb974e1a351641ac746",
+  "gain_shards/sub-032312-000-blink-snr-5.csv.gz": "9ead91d7598d1628ca8abcb6a5530d2c440e82ca7f323e5e447b7d7f4b7f90c0",
+  "gain_shards/sub-032317-000-blink-snr-5.csv.gz": "22f5b47ae7b5699b3c93246b32b94c1c39ab035fa07e419f8d13d1d50c817e51",
+  "gain_shards/sub-032327-000-lateral-snr+5.csv.gz": "d34f490c781555fd79c26de83ed5ba33769e89b707d0c18ec36d3fd00259249a",
+  "gain_shards/sub-032318-000-mixed-snr-5.csv.gz": "58e001850f85c36c551156f83e4b5e605b7f15ced7a851debcf9094958fe7d17",
+  "gain_shards/sub-032322-000-clean-clean.csv.gz": "e49ce0b5ae19577fe7bfc047b9a032d11abec2fc308b9d858644b42ce33286d0",
+  "gain_shards/sub-032326-000-blink-snr+5.csv.gz": "d8f19609d2e81138b90ec39fd2fab834c59a361a338ebc99b3a5d82a76e22611",
+  "gain_shards/sub-032319-000-lateral-snr-5.csv.gz": "594a104118d7e07f5fbb398be3130042bd74d8ff7c4ce21a4981047d5a6ef3dc",
+  "gain_shards/sub-032323-000-blink-snr-5.csv.gz": "75d5a2eed57992d332bb98596167d4e3b288eba073fd4d3e405f75638e9cdcb4",
+  "gain_shards/sub-032306-000-mixed-snr-5.csv.gz": "e5c6ab659d5f2b680083eb84ea0121c09207bfa976c6aa4794cf9aa671d3a0d1",
+  "gain_shards/sub-032324-000-blink-snr+0.csv.gz": "6bcbd794e2fd1c61472d6a543fbd019b1ebff5b0549ba711e84557b04e0b6818",
+  "gain_shards/sub-032307-000-blink-snr+0.csv.gz": "def1a7423757d7e7dd696aee9952a745d169b9a9603d88c647217651aa353a2f",
+  "gain_shards/sub-032320-000-mixed-snr+5.csv.gz": "a19cbe5c367a2c8970550edb0e4627117e1705a6c4cd8d76e1df8516e84614d6",
+  "gain_shards/sub-032307-000-mixed-snr+5.csv.gz": "befb1829a24bb1b9922761f039fa4aa2674195ab383979a1a15ec8e5aa1bff22",
+  "gain_shards/sub-032340-000-mixed-snr+5.csv.gz": "6a9d2c2863d8f276814f0dbfab8c6892d8022bb3e1a26392065920c667f32085",
+  "gain_shards/sub-032336-000-lateral-snr+5.csv.gz": "314e2036a4aba28533f22a4a6644792e29f8e77ab19e9abdae6c7e4ab43c0168",
+  "gain_shards/sub-032316-000-mixed-snr+5.csv.gz": "014d4fd046bec2701de4840bd087cef75e8b1d891cea99f79d3e2cd40dc138e0",
+  "gain_shards/sub-032320-000-lateral-snr+0.csv.gz": "4848910aaea6af75ecabb21ab2c0380b22066c7128c7f9a851d6743b1ae3d43f",
+  "gain_shards/sub-032306-000-lateral-snr+5.csv.gz": "7e325f1b13136f3a78c4001aa14e7f541acf2705369b8f3348837fcd5d842cbb",
+  "gain_shards/sub-032322-000-lateral-snr+0.csv.gz": "a3c13bb28cd0c204008fb5e08063f8276f017efa935d0d423a76cc266e1c03d6",
+  "gain_shards/sub-032319-000-blink-snr+0.csv.gz": "3a0149e9edb7198729c881bf9a84438c0529488fc56b623bbb5719a61ab72552",
+  "gain_shards/sub-032307-000-lateral-snr+5.csv.gz": "7188fcc16e63f90c4dcd2125314222e45ba6f2dc4fce7f3ffb21d3f6db53d7f2",
+  "gain_shards/sub-032325-000-mixed-snr-5.csv.gz": "2b2cb25282d3f40d69107473b18797775c2486876f7d67dade8fda61da82db7d",
+  "gain_shards/sub-032322-000-mixed-snr-5.csv.gz": "d0e3d3c51839b0770e27d9bd0272fabf97121249abeda7072a614182b0e932cc",
+  "gain_shards/sub-032341-000-clean-clean.csv.gz": "44729f770dd5c02782fbd7de19176c9690dac71ee1151d365372278c7091886a",
+  "gain_shards/sub-032325-000-clean-clean.csv.gz": "f796564de4a088b1471dd512bd8203f9b0f39c19e16e2ad3def158f9d50ed1d4",
+  "gain_shards/sub-032328-000-lateral-snr-5.csv.gz": "95508a49ca7dbf97a4bf6bd1a96ddf4c853cf197e02c86a105a37832247a0741",
+  "gain_shards/sub-032324-000-mixed-snr+0.csv.gz": "e30f8e01f2ee9d81a9f39a894d6376c61d0b758481312665d6b623017979d52e",
+  "gain_shards/sub-032325-000-blink-snr-5.csv.gz": "0124cb6feaf178a154361cb4d749a6d46b89e75d308cbfa300c8800dfb512c25",
+  "gain_shards/sub-032309-000-blink-snr+5.csv.gz": "590433fd373d9482fe21e35238a5335ebc17962926572e13dc1cadc3626e41a5",
+  "gain_shards/sub-032319-000-clean-clean.csv.gz": "8e5b6d7b9dde0b700c1fe79c9a8a7ff4c9fd28b25e0184d1c2505d521b3b359e",
+  "gain_shards/sub-032321-000-clean-clean.csv.gz": "5cd7fbe7016d2324242e91469b0ca9ee38a3ce447e5112e7a2d32b8c59a3206b",
+  "gain_shards/sub-032310-000-mixed-snr+5.csv.gz": "1b01bc27498750c0406e15803a48213eb59b6e6282ca9a629fc292cc6423e1b9",
+  "gain_shards/sub-032331-000-blink-snr+0.csv.gz": "07283f6080a46901d1ebfcb0cabe7a52ecfcc619b0f6598f1bb83c2822c7f82c",
+  "gain_shards/sub-032305-000-clean-clean.csv.gz": "0dda607fd301fc85e59b6bccfb894d2b5fd662e33069eabafbecd9d00cdb43dd",
+  "gain_shards/sub-032334-000-mixed-snr-5.csv.gz": "c3e67227d58bf7fad2a34d06384260cf2215e55b8ab04d541bdf5bfc7c8deec4",
+  "gain_shards/sub-032314-000-blink-snr+0.csv.gz": "6ff12127ce62acc3e302549b5381454275c17c7d6951ffbfa78d000d5634c0e5",
+  "gain_shards/sub-032306-000-lateral-snr-5.csv.gz": "e15ab37be23fa122b1e6c8d5539b345b37defb24367af40ef5a9768b83411cc4",
+  "gain_shards/sub-032325-000-mixed-snr+0.csv.gz": "a1031b76ead3834d24a46cd9cf0d14b6260db54aebb64e48888d704755d79ff9",
+  "gain_shards/sub-032324-000-blink-snr-5.csv.gz": "f8ad5b53d7fda9131a75c484b10607f52c46eb3f4111e1a921f9c57887689573",
+  "gain_shards/sub-032321-000-blink-snr+0.csv.gz": "a5b1e6dc2496fdf155982687408cba505b6ff3be74cd59f652d1bcaa088ada5a",
+  "gain_shards/sub-032334-000-blink-snr-5.csv.gz": "ea3573a4934bbb395b81ed1a2a61ec948a91a9dec7829f6d3c51a749b749aaf2",
+  "gain_shards/sub-032334-000-clean-clean.csv.gz": "0bf94a2e0a9083fc2e2a39fa01112ce5ed9c056ab63c148e81c6996719e75d30",
+  "gain_shards/sub-032313-000-blink-snr+0.csv.gz": "52c9cf29dba79ab8272c9a2d6f6a2116a3be84536288f59950ff140600dd906a",
+  "gain_shards/sub-032317-000-mixed-snr+0.csv.gz": "8d22cac47b16f361f24562be7e74094c2a33b93d370aa7a48c5f14a189b468c8",
+  "gain_shards/sub-032309-000-mixed-snr-5.csv.gz": "90a075cb84f5e40c08e75bc7f5ccd479d250db133a95b1b51fe03f7840240359",
+  "gain_shards/sub-032328-000-mixed-snr-5.csv.gz": "8ad8ef896752e0b8cf676aa327db725ce4735b5e45dea2da5f82105bf8d9c352",
+  "gain_shards/sub-032305-000-lateral-snr-5.csv.gz": "ffb1d375750f8ac1536a4652f1ccf4115881da39314adc53a56dec32aac66076",
+  "gain_shards/sub-032340-000-blink-snr+5.csv.gz": "c1e6aa63166758d54b7a9544a5767d5d75486092ce28a7f442d222d794aac28c",
+  "gain_shards/sub-032313-000-mixed-snr-5.csv.gz": "99e96112a82e6baa6e0f5bcea7df937b156766d3a3738b9b0bb8ae636fd9e3c8",
+  "gain_shards/sub-032307-000-lateral-snr+0.csv.gz": "22711630cb7bb1ccb4fdeab3feb5e0098ca662c8f2415ffdd5ee0cc0b353cc22",
+  "gain_shards/sub-032327-000-blink-snr-5.csv.gz": "13baf804080610567290640044822dae9a5068a3d68139b56b08addaed6f827b",
+  "gain_shards/sub-032315-000-clean-clean.csv.gz": "91d13fac189b3686bd66e505d7300c5a86433ed313962f50006771b9d3a3da74",
+  "gain_shards/sub-032330-000-mixed-snr+0.csv.gz": "941700e8c95f31b7c7db0fae6ef75d37cf8b29ebf4d91d7d49d2c7bbcbc2d386",
+  "gain_shards/sub-032319-000-mixed-snr+5.csv.gz": "e98d34ae0e78d17741d4751b49237d58230a636791307c4976a9bc2b9aa0e876",
+  "gain_shards/sub-032323-000-mixed-snr-5.csv.gz": "5b19a2f3a0f6cfa2e18db282706539cd68ca429694e7c16ee79cb90a83b18957",
+  "gain_shards/sub-032318-000-lateral-snr+0.csv.gz": "5582ef036cdcfa2069ecb64acad2f5f3f642b0c41e3cb86f944e19e3658beebd",
+  "gain_shards/sub-032312-000-mixed-snr+5.csv.gz": "de6e25acb1a2e26468c6eb84a63626c42ceed8f64957db8c2ca9db83dca18411",
+  "gain_shards/sub-032329-000-mixed-snr+0.csv.gz": "6975863d6d3e279d3f4a2273da130cf12faec94f152d56d04288cd09eca78fc7",
+  "gain_shards/sub-032313-000-mixed-snr+5.csv.gz": "6fae5a9b9574445f8f06ea180e4394dc0110e032d5351c3e4c91d1a98bfc4524",
+  "gain_shards/sub-032322-000-lateral-snr+5.csv.gz": "1c024aafcef4c2fe0957d42b5ff15e3014f486e609ecf66de6e67632afa17a20",
+  "gain_shards/sub-032331-000-lateral-snr+5.csv.gz": "0d3d11b179d57f9a597e49d2ec8910fa972ff7313bde2778390e6fb029619d2a",
+  "gain_shards/sub-032324-000-lateral-snr+5.csv.gz": "9374e620496e87689044fa1d3614fc823806c8b99ab50d2cdc21041ed4661849",
+  "gain_shards/sub-032315-000-blink-snr-5.csv.gz": "cb22ca087e167e0bdba0cc75035c78665bb3df52838432eedee98dfd0eb922d9",
+  "gain_shards/sub-032330-000-lateral-snr+0.csv.gz": "2eb4bc2be618034b130338cf844c6df04b4576962283ef3f570628cc42b1438c",
+  "gain_shards/sub-032341-000-mixed-snr-5.csv.gz": "3458295df062e38f5edf018410686ab2539d7d746a665c2dc20e71eb28ac99d6",
+  "gain_shards/sub-032313-000-clean-clean.csv.gz": "b9678a325ae287aadb3e0abe41538efe7813e3bec8932dff9984d653f6bae251",
+  "gain_shards/sub-032329-000-lateral-snr+0.csv.gz": "ef44a42151b744dd01b269cd8fc799c4d6d350274e68f34638d489df44274f3f",
+  "gain_shards/sub-032317-000-blink-snr+5.csv.gz": "45fe5002938610bb0387f3ba3f9c025b57bf75e99c33f3623dc56c7b76788dbd",
+  "gain_shards/sub-032336-000-blink-snr-5.csv.gz": "c34dda514aeac436c6d038adb6fb4976e9a4ccc3782cefdac656ed9f755e0cc7",
+  "gain_shards/sub-032310-000-lateral-snr+5.csv.gz": "0acde0fed1123ce84b09bb59b1b41bb85c37b44828d11d4f9cdad91d4d0629d2",
+  "gain_shards/sub-032322-000-mixed-snr+5.csv.gz": "14f4eb6eac976dc8f515f9b72d02a2a277401c6847238f82ad349f7469bee843",
+  "gain_shards/sub-032318-000-mixed-snr+0.csv.gz": "37ac05da3e13ca400d8fd9d4a9cda456cbecd0b2928a253e2468127f1c928753",
+  "gain_shards/sub-032312-000-clean-clean.csv.gz": "47b068138d88143f19957a2b9e64411102718bb78b8992520b544452bf420722",
+  "gain_shards/sub-032305-000-blink-snr+5.csv.gz": "72365802c6a6fcb44ef1ad18a13476623dd77e3e04f38b85b80dc48343787f69",
+  "gain_shards/sub-032324-000-mixed-snr+5.csv.gz": "d0b39ebca216f71482a6ccc16d5b16aab995c03917f4a6646c80ca51d32868f0",
+  "gain_shards/sub-032314-000-lateral-snr+5.csv.gz": "6b3c476f27876657564531e4c4b1568f41a84c217368d1a940cfcdd5c8b1e481",
+  "gain_shards/sub-032306-000-mixed-snr+5.csv.gz": "f8de3809c600859fd029d21283da1849d08909ba4bd2a85c2a9933b3116b4015",
+  "gain_shards/sub-032327-000-lateral-snr-5.csv.gz": "9cab6933f794fe58aa97845517f9407d96afd2462f34434eca144095aeec6977",
+  "gain_shards/sub-032308-000-lateral-snr+5.csv.gz": "db1cea4fa2906cfd0f47244c19c23ba0d8e212736b205cd380136819c71c6016",
+  "gain_shards/sub-032334-000-mixed-snr+0.csv.gz": "0edb6fb1c5383775ba4b7368844c5650c205bff8309f6ce20f2aff40ac03d24d",
+  "gain_shards/sub-032310-000-lateral-snr-5.csv.gz": "f90cea411658099b2e4cbb49c760e98f159b7bbd06dd251fccb88f743ae6ae4f",
+  "gain_shards/sub-032323-000-lateral-snr-5.csv.gz": "46e29b66d728d1173c2e29661e255a1edbacc220eaea0400b3bc7a1a820b870b",
+  "gain_shards/sub-032314-000-blink-snr-5.csv.gz": "dbf0e01f46a43e4055dcce9e1967b13e57ba5bc77fd436e5e1c90fdafbe2e055",
+  "gain_shards/sub-032309-000-mixed-snr+0.csv.gz": "a53de4acebc0ff836f325fe192864f38be1fae02af4898caf90be923a99ad691",
+  "gain_shards/sub-032339-000-lateral-snr+5.csv.gz": "1cf9e62c67fe48b872ac9d7f1ed39b36eafae5901851fbe32b36fb866e4d9938",
+  "gain_shards/sub-032309-000-lateral-snr+0.csv.gz": "9957ab1b8357d3287a89064081f202dabfd6e1a4764948d24d32384ba5a3ecc7",
+  "gain_shards/sub-032315-000-mixed-snr+5.csv.gz": "1874f50605bcff5065f25b88d315bfc611329d0060ef15e97a3cd54a43b7551f",
+  "gain_shards/sub-032330-000-mixed-snr+5.csv.gz": "c41ead2a8814ada200357ebaaf815fc33ef5b5490fddac596c6d4a6eb4363284",
+  "gain_shards/sub-032326-000-blink-snr-5.csv.gz": "9e20b58ac44800c891d65f8a8d6b9a81421f09c3c39bd2a85eb7d2713a67f2e1",
+  "gain_shards/sub-032314-000-blink-snr+5.csv.gz": "63ed133e9299c734b67337293b2ca9b6c54ccc893104347b6c98de99626dd81d",
+  "gain_shards/sub-032331-000-lateral-snr+0.csv.gz": "55171641dd2aa8982411ed09c1e9beec60c29af69be3c07f7e21c2240a195a10",
+  "gain_shards/sub-032320-000-lateral-snr-5.csv.gz": "f299180a71ea08a6e1c899781484b029afe0e7fee07b155dbe5332cf288a8d58",
+  "gain_shards/sub-032318-000-blink-snr+5.csv.gz": "660f1b4e27bbfdf0c0f88922d7025717fce5b057d271f393f27806a5b4b50abd",
+  "gain_shards/sub-032326-000-clean-clean.csv.gz": "958c17d93a67b77d05d78080ca6f8383449af95f1ded14231e60ed8e8f8bca2d",
+  "gain_shards/sub-032306-000-blink-snr+5.csv.gz": "fdf1423b81d4442e0b8a0c3ab4c2d8f3c1e3ce1889f1d25c2bc354d06606c0a3",
+  "gain_shards/sub-032334-000-blink-snr+0.csv.gz": "e9cd9bf92b7791e9cf482ae8e029940080fcb555456e69fd6a4ee728e128aae0",
+  "gain_shards/sub-032316-000-blink-snr+5.csv.gz": "6aa8144e05e11b67c93e67d9c74b64e1aee636a97d9f82d649f7539007d9c72d",
+  "gain_shards/sub-032314-000-mixed-snr+0.csv.gz": "a3172ee62046353c16078d76439e3483a45a78d1c2ee8cb647de69e9c490794f",
+  "gain_shards/sub-032319-000-mixed-snr-5.csv.gz": "7b0dfa5edbae6104eab9503d5ee83ee54fdbab1810b3512f8a94b3b19c85b446",
+  "gain_shards/sub-032319-000-mixed-snr+0.csv.gz": "4b957579635534b82aeec038115f0f980f99668470aac7d5cc2270fcfcef9a6b",
+  "gain_shards/sub-032326-000-lateral-snr-5.csv.gz": "d9c3c64219c4d8aa733f0800aae5926cddf4c456a0f115bf2b134053527870bd",
+  "gain_shards/sub-032308-000-blink-snr+5.csv.gz": "eae315d5ae3845557cc701581838ff34d46f616925e1685e68c1af00318deb6c",
+  "gain_shards/sub-032325-000-lateral-snr+0.csv.gz": "0c219c5c481681acc0f1e69efc657fbe120693ef9a52302fc2e21548ad2b78d3",
+  "gain_shards/sub-032307-000-mixed-snr+0.csv.gz": "046900e9fafd079d09f31d4d14d34b1da7250860e477a4af558522a61ff36891",
+  "gain_shards/sub-032314-000-lateral-snr-5.csv.gz": "55c7da15465ece593509fe4e13c86a4f1661d8c4e432d6ece3cfffa4b5b3126f",
+  "gain_shards/sub-032314-000-clean-clean.csv.gz": "aa009a6784ebb96756418fba58cfb24885ec300b02b28b7465e01245099e8e9e",
+  "gain_shards/sub-032317-000-mixed-snr-5.csv.gz": "c3d42a7da52e3cb8a3c56f87e5fd295e3221a95758f717f335eb1f5be72d3691",
+  "gain_shards/sub-032339-000-lateral-snr-5.csv.gz": "57906aeaf24294fd83aa0a2c4bac4f791e53de7c504602c61764cb08382e330c",
+  "gain_shards/sub-032341-000-lateral-snr+0.csv.gz": "5f223bf3f8843cbe4c02d4d322fca69f6b9e1f458203a537132b5f533a45c739",
+  "gain_shards/sub-032327-000-lateral-snr+0.csv.gz": "c6d011454d4457a93d7f9d76095570c81e0f5f3dc2641ace25f4b0639c4f4c2c",
+  "gain_shards/sub-032322-000-lateral-snr-5.csv.gz": "44eb77907730049200157109ec6ca8c0c876aea80413937fd7ccb18677569068",
+  "gain_shards/sub-032323-000-lateral-snr+5.csv.gz": "938fb7f61551dcdff47c689f4d9a01fc4d04bb3e1e6e2b6dbd842ef7ce43da70",
+  "gain_shards/sub-032324-000-lateral-snr+0.csv.gz": "9e72bd8d67e53ea5de211d1f41cc84fa490dec03a6136012062d862e842a597a",
+  "gain_shards/sub-032309-000-lateral-snr+5.csv.gz": "28a2bb8b261bb5bf7a66ef92a0b2ffe5b1162ef312868894ce0cd19ddf1965c7",
+  "gain_shards/sub-032340-000-mixed-snr-5.csv.gz": "e474f9ae5ed2d41010c4a3d5b59d94b0c64de8cf82cb344e97ae44424e49b3c9",
+  "gain_shards/sub-032334-000-lateral-snr+5.csv.gz": "9f41b4155c0b43a719c3aef4035a6c8e6a367b70e18fba9a8d3134f9d5630e97",
+  "gain_shards/sub-032336-000-blink-snr+5.csv.gz": "969ea4099830e1954011234dc63fb58ec11478435757eb43796430d49d09c226",
+  "gain_shards/sub-032313-000-blink-snr-5.csv.gz": "c4f3f6b712f18b8f2e01614d6c8b44de1927661d7ad0db271adb340a414780e6",
+  "gain_shards/sub-032314-000-mixed-snr-5.csv.gz": "adcddc7e5a3e6ec3850f2d7129cf4be4acee1378ac5a85fe0dd9ff69a0fa81f7",
+  "gain_shards/sub-032310-000-mixed-snr-5.csv.gz": "adb782863efff12ad1f0dd93195b0278bf61caf5a760812bad8a147996d71b6e",
+  "gain_shards/sub-032324-000-clean-clean.csv.gz": "7a9a36f21ea7e51bdf2318f059cafee91544a8822adc103511f44749d7d15b48",
+  "gain_shards/sub-032319-000-lateral-snr+0.csv.gz": "52edfb7ccc56746c7223d7549430924d4ea1d08769c275b06ddafdfe516a3906",
+  "gain_shards/sub-032340-000-clean-clean.csv.gz": "395c5b20879152c4b8c6c5d818305490369a8565698e644020f06e5e914d77d8",
+  "gain_shards/sub-032323-000-lateral-snr+0.csv.gz": "ace6ef593d1b677b300cfd33ddcfc028e54c9c1e2b5b3841f252f53e8f6da46f",
+  "gain_shards/sub-032340-000-lateral-snr+0.csv.gz": "e65df525976b6c28b295f9347b66756d1a11648e39b8f4896f0feef3294e3ad1",
+  "gain_shards/sub-032318-000-mixed-snr+5.csv.gz": "1d0a0fef7b330de88b3e2ee79cdb13bfbc816f68a0c3d3691f51c589f3139eea",
+  "gain_shards/sub-032341-000-mixed-snr+0.csv.gz": "3f33f943f71e2a39d3c1e586d931ddba651522e41efcff8c7029f485955a9f3b",
+  "gain_shards/sub-032308-000-clean-clean.csv.gz": "867aa11eda281e0cd7e2a4d0fd416352460cbce803534563913b4ca259a52c4e",
+  "gain_shards/sub-032322-000-mixed-snr+0.csv.gz": "3f8fb06c3b8b378639a014678492a5e9f333f72473cf1abc4eb941a3e0c70e7b",
+  "gain_shards/sub-032338-000-lateral-snr+5.csv.gz": "99183eab8e995f25b6174a1534e48f834ed9403734cebb206c6b08443e4102db",
+  "gain_predictions/sub-032328-000-lateral-snr-5.npz": "cecb0d1b524f960e797753d3fce609be52c43a770e600ae6e740c958be5b0175",
+  "gain_predictions/sub-032317-000-mixed-snr+5.npz": "62e211728f82964bf1e890891c1d91cd64a2031367ffec54f383cda5eea56b03",
+  "gain_predictions/sub-032340-000-blink-snr+5.npz": "9cab0a73b4f0878b5f9691a57e8fe118159cfec6e46518787f5cf9a6690d7bde",
+  "gain_predictions/sub-032339-000-lateral-snr+5.npz": "eccc5b326548b154198cc692077b15d2a997d832e94aa08ef5ba23c107cadd7f",
+  "gain_predictions/sub-032309-000-lateral-snr-5.npz": "d95189a634fc8cc537724a509867b0d418a2c4bcb1c78478e71eaaf8a5de8b5a",
+  "gain_predictions/sub-032317-000-lateral-snr+5.npz": "4817512153d68b979397654625e607b69c4728e01c9b795d79b207357d332cc5",
+  "gain_predictions/sub-032340-000-mixed-snr-5.npz": "8485dce34f5479752e609737e4d238eacc8cc4b2267b021f9d0e47f32420e374",
+  "gain_predictions/sub-032334-000-lateral-snr+5.npz": "544f0afddd9e337e325ae8c555c8c250f1b927f65a0ed4b372fa376efa748006",
+  "gain_predictions/sub-032323-000-blink-snr+5.npz": "699f3f279d325fcb38b3ed0964b9d4fc5e53de19df6077f277e2a51f90c99ab6",
+  "gain_predictions/sub-032338-000-clean-clean.npz": "66b4591c8b676ecaacf33bb473d6d52deec1aef2f833744d2cc0bf28fb0aa96d",
+  "gain_predictions/sub-032323-000-lateral-snr+5.npz": "c4520cf7706aed164b0298622ea8d1cc2a3acb97e486c81731a461beb5c7370e",
+  "gain_predictions/sub-032320-000-mixed-snr+5.npz": "806d240c21b51db43cd162e299e6731905bcc1552bfb1ae4e6fcdad7b62b246d",
+  "gain_predictions/sub-032322-000-clean-clean.npz": "9bfe791e3736a1c776fcb0808c777442033e29415913b52c96d9b4afdeda714a",
+  "gain_predictions/sub-032341-000-lateral-snr-5.npz": "c87ed6f1d77a922e02ccb1d6b8413efe5d9260631e92f6e63f005d1f9505eb14",
+  "gain_predictions/sub-032317-000-clean-clean.npz": "a1245f3d2cf6e78ed0d77d879d076184cd70889aef5debdd01bcfc1a02a214a6",
+  "gain_predictions/sub-032330-000-lateral-snr+5.npz": "78250abc5519f2ebcd1809e1b73cd85db93e9865183ceed97f9c68e7017d4bea",
+  "gain_predictions/sub-032314-000-blink-snr+5.npz": "a8e36e1b92187b3d08617de5bb2fa3f5eba75611ec2a7f84e63d43470ba279a5",
+  "gain_predictions/sub-032327-000-clean-clean.npz": "7c786b73f7155e0aa9a45dc5dfbb2bc40ae1b444d9f955cf65d4c1e07af6c5da",
+  "gain_predictions/sub-032334-000-blink-snr+0.npz": "8fe8b2fc146057e6a8224b601857d8015674f3fddbf852c80e1660cbcd3c3e61",
+  "gain_predictions/sub-032326-000-blink-snr-5.npz": "3b9e6d06f4a117756c4df0a01a7cd73d9e975515a5fd53057dfec18916664cea",
+  "gain_predictions/sub-032307-000-mixed-snr-5.npz": "241164ab32fc296abb0a493788e6babe65fff3479d58079c93748cc836cbb320",
+  "gain_predictions/sub-032319-000-mixed-snr-5.npz": "289a644a0dc526fe9b212d78b91cebe4f0c86f7a3cd46a2c4daf4205f775ef87",
+  "gain_predictions/sub-032319-000-lateral-snr+0.npz": "8aa75c1fba33774c060eacfcf2d96add85a24abaa8dce9eceef4dc8e6da1784c",
+  "gain_predictions/sub-032317-000-blink-snr-5.npz": "31d79d568a545b83ba4ef6422cdf7621999d83355511094ef90995b6b48f3699",
+  "gain_predictions/sub-032327-000-blink-snr+5.npz": "138a229a0405035c39fb9ef4be46d24a7c5f0e07f5db99fd1b2adf5ad6b13be9",
+  "gain_predictions/sub-032310-000-mixed-snr+0.npz": "92320a6187b32c5fa2eab285859c38046bf9ff6b889d7df3b3e6002135766939",
+  "gain_predictions/sub-032321-000-blink-snr+0.npz": "6e639b0b3ab8a88d09b04ff55e471045ce43714720154ec5e6c0b8cc038e9f11",
+  "gain_predictions/sub-032318-000-blink-snr+5.npz": "69751bd1a3f2f41552a2046772fe72ef095925d2ccf760ffd1a494eb7fbf906b",
+  "gain_predictions/sub-032316-000-lateral-snr+0.npz": "d8ce659adffbfdbbc3b49321eb0098a07ea62087799d3b474a4ff68cc02aa50a",
+  "gain_predictions/sub-032307-000-blink-snr+5.npz": "ddd2c6d0b79aec7b2ba7c7dc4442b5d782b102366e839701ad40ff0720795d56",
+  "gain_predictions/sub-032318-000-mixed-snr+5.npz": "9ac31ea0eb4faa9fe77f960d567953b0dcfa612a293975c703a06709ffe1fb8e",
+  "gain_predictions/sub-032320-000-mixed-snr-5.npz": "ac667b9d501fbcfd69c364643352d06ea6f285c208bf6e2531ff316bf41f3ef4",
+  "gain_predictions/sub-032316-000-mixed-snr+5.npz": "fcba796648468d87bce4200067a5f30900b208b124746e2adc758c452cff8f26",
+  "gain_predictions/sub-032316-000-mixed-snr+0.npz": "132fec2f31400aade5be6ac32210c46d6985cb4d03502ece7ac424b61e00f958",
+  "gain_predictions/sub-032313-000-lateral-snr+0.npz": "653a0eafa6ef4382a7fc6c31f942bdefec8939529c5274d2e54fd43c3429979e",
+  "gain_predictions/sub-032322-000-mixed-snr+0.npz": "c00558f08b962bb0968313810be3c0d65b993cb56e5552f8acea41a04d2df62d",
+  "gain_predictions/sub-032340-000-blink-snr+0.npz": "decea0d1d0695561340b8d79c9259066b804bcb0f113bce78aefe951fd4a55e4",
+  "gain_predictions/sub-032316-000-clean-clean.npz": "9c76fd3d7e765e208aac4cd31cfbb5c75cf0a350a0aed5a6e063def13dd760ac",
+  "gain_predictions/sub-032322-000-mixed-snr+5.npz": "c182a41535973158c20c134528d782bf111b1e4aed5ce589b9b2b3bb96c5805b",
+  "gain_predictions/sub-032327-000-lateral-snr-5.npz": "2619156902d7affed67ebe6a9e7dacc4c24a2d565e402a3369b33b3039628ba7",
+  "gain_predictions/sub-032305-000-mixed-snr+5.npz": "a640b0291e84085202cdbca1d3185ccf4ecc8f0d2961eb2d6794b75b3f1c9bc4",
+  "gain_predictions/sub-032310-000-lateral-snr+0.npz": "d4a7dab435e4a6e5b19478079361923851422afcd23e92c5f7c7fa854c07f495",
+  "gain_predictions/sub-032321-000-lateral-snr+0.npz": "9e1e244ed09881b6561e21458d79632fa4996954e96eea6767d2f1b2539e4513",
+  "gain_predictions/sub-032334-000-mixed-snr-5.npz": "2998e63ca792cf97fbc91f859cc28197c4eb10227188fcffaf14c99b3bd8aff0",
+  "gain_predictions/sub-032325-000-blink-snr-5.npz": "d29af4643346fa6bf44f07d8be7403593de71e72f036ab3c1c86bd4e5d16d620",
+  "gain_predictions/sub-032325-000-blink-snr+0.npz": "190a5edf13665fe73b210e5f4c0910168411fc993d32c37b85c021d69a2dd996",
+  "gain_predictions/sub-032326-000-blink-snr+5.npz": "d461425e50ab6a7b7054084997c830dbace3bd400acd1666b32c5c48858d55fa",
+  "gain_predictions/sub-032306-000-mixed-snr-5.npz": "2c37754d356a5722f3d1f4b2d25634f958e889002a2b43ba61a0a573ef49b068",
+  "gain_predictions/sub-032336-000-lateral-snr+0.npz": "e74719083bba9bf908812b96e0d5fa3b8be6d40d7b75518c90eb2cfc5dc9be3e",
+  "gain_predictions/sub-032324-000-blink-snr-5.npz": "8aab515271d8ef97007d9aa5e0820a944fc40016805ef63b93581727ad9895b1",
+  "gain_predictions/sub-032328-000-lateral-snr+5.npz": "e8a6204ed24257682ccf56b934daccf60224c47bb32a657f0d5de7e30dd948ae",
+  "gain_predictions/sub-032312-000-clean-clean.npz": "a156a891b2d79bf08a4c262ff127507fce3c0abd04496a9287c7abce6d22b73e",
+  "gain_predictions/sub-032328-000-lateral-snr+0.npz": "0de07a08ffdce91570fdec28607339d59aea49e3c72e3b5e6faa32aa0f113a5d",
+  "gain_predictions/sub-032326-000-mixed-snr+0.npz": "f13402d4429ca63e408529995fdc9807f329e5daffd5ef90dbecf13cb629c558",
+  "gain_predictions/sub-032310-000-blink-snr+5.npz": "2cd1ffd7cbedbb1e7f031b5021e25390236a9f6232a44b965608ed9055317736",
+  "gain_predictions/sub-032318-000-lateral-snr+0.npz": "8b49a20a94285b0ad756fa2ec123e53980b7f430d2098d6f0b4b20cce2b84c8a",
+  "gain_predictions/sub-032327-000-blink-snr+0.npz": "2bab5777b692bc334cf24459d23dc8e027abf6b5ed3d40d5cb5f06249bb2024b",
+  "gain_predictions/sub-032322-000-blink-snr-5.npz": "367d31e84f04162f62d1ff9218f9a22251866ed2b3b1e9b441682f07cc7d95ce",
+  "gain_predictions/sub-032325-000-lateral-snr+0.npz": "ec65a7a7cbe49fa5c5db5f1dd2f08830b0d129a3cad6fc80c65b4d1845caaaa5",
+  "gain_predictions/sub-032313-000-blink-snr+5.npz": "b6600e0fa7383faa6e45fbe64740be1ae999847b953619c3d33d9da377c77511",
+  "gain_predictions/sub-032322-000-blink-snr+0.npz": "70ff660a5a825f2af7b18f858147a9915048c87ebbb5d965fb7234f4a0e4f698",
+  "gain_predictions/sub-032325-000-clean-clean.npz": "9048f559415ee7e83141f493f5e912737930ba0fd7ea23e22f5f0b71916429c3",
+  "gain_predictions/sub-032313-000-blink-snr-5.npz": "13cbf74c5bc53a5ca9f1514dd789508a99a89d4f8431951e373f6a64a36c2e4f",
+  "gain_predictions/sub-032325-000-mixed-snr+5.npz": "24130a673955c3f24609eb09735f42b635eab948337649c602c3a463102f8a52",
+  "gain_predictions/sub-032320-000-blink-snr+5.npz": "8bb62f619d858ec0716336c258e4267c035846877c23f97f8718899920440373",
+  "gain_predictions/sub-032330-000-lateral-snr+0.npz": "40d6ebeb41fbb2125ad531d996d99ce3c2eb63b8fce54497300f3e9825e02441",
+  "gain_predictions/sub-032331-000-mixed-snr+5.npz": "392996ced5e0699b74ccbe5ac66c258af94db8323ca340d8e62235dfc9951446",
+  "gain_predictions/sub-032315-000-mixed-snr+0.npz": "8bc0b92e2d6f6468d12cfe386ddfd9ec5e595fb313cf9b8277daa27fad332983",
+  "gain_predictions/sub-032314-000-blink-snr+0.npz": "857ba8c1ce82f6f0f44b1837cb52b679129d1dccecd6156361d0e34ace73bdf6",
+  "gain_predictions/sub-032321-000-lateral-snr+5.npz": "a7fd251c27e7b5ab87f0d601be56e02ca6bfd9fe979c70aba155cfc739442d77",
+  "gain_predictions/sub-032312-000-lateral-snr-5.npz": "c447964b72ff2db1f74acaf2694ca272db35b1806b4c9b9b8aa88f74d8023481",
+  "gain_predictions/sub-032330-000-mixed-snr-5.npz": "324c77bee6a887fc58e91cd40b1cdc684882eaacc4904772ab341f064f9d8472",
+  "gain_predictions/sub-032336-000-clean-clean.npz": "aeaec0fcffd6d259833b98f736e62c006ae8ddcb046daeb2342999d5acfdd5ce",
+  "gain_predictions/sub-032305-000-blink-snr+0.npz": "b4701c2933890fc5d6e06ef0a0e54c9ebc8d49e2d6dd47a7b3e4f4e29306cc41",
+  "gain_predictions/sub-032340-000-mixed-snr+5.npz": "0e9850cc2fd291e81cae1b14fa547d97574a37c31ccf21b768de106efd81c554",
+  "gain_predictions/sub-032329-000-mixed-snr-5.npz": "46f26f4e00a4bc696ecb90ec4c0b44b7341441f648b3e7eba0b8c4cca48638e2",
+  "gain_predictions/sub-032305-000-blink-snr+5.npz": "64e062ebda71ce83ae4d1b22e636166ad33304592f9421abf5ecdd369eb27628",
+  "gain_predictions/sub-032308-000-lateral-snr+5.npz": "3d1d1f251bc7787b967ad7906d76295f9952008d2c900f5c5e9df875e83918c8",
+  "gain_predictions/sub-032315-000-mixed-snr-5.npz": "a21f1645686793d804025e6b22cb67343e8e93b86bd31fe72313019b6017af0d",
+  "gain_predictions/sub-032340-000-blink-snr-5.npz": "ea4e1b8610360f9dc8bce3a48bd4c468c7351851902d36d3bdcdb15600cc70eb",
+  "gain_predictions/sub-032320-000-mixed-snr+0.npz": "8d6efe7e3ac671d2bdfd0c242e760d5e3a9e4b8b15d3521df2c089232e7d7af2",
+  "gain_predictions/sub-032326-000-lateral-snr+0.npz": "7125b72a72e727f53175eda7c8e71e4618bdd4d78459c755b9fb1cfe59930e12",
+  "gain_predictions/sub-032309-000-blink-snr+0.npz": "a080cb89a13579411c0dcd4c74c29d96b40097b6fd67bd70593d85c564f5c124",
+  "gain_predictions/sub-032313-000-blink-snr+0.npz": "1cf596c70c618f6c2a7d9282de40178cb6ea60399bafc1e2222c57077b348781",
+  "gain_predictions/sub-032340-000-clean-clean.npz": "6d0ec79885e2ec856bf7f231db1e5a4fa0c3d7da8a6d263bf09da8528485d35c",
+  "gain_predictions/sub-032330-000-lateral-snr-5.npz": "c5fe108fd38eadeae3c8d2b32bcbb6b30fce85db0c03348c103d0cbbd19d4dc3",
+  "gain_predictions/sub-032331-000-clean-clean.npz": "46b4c6383e4a5ff7a0ba09c57e7ffc7679061ef833d094466e25b8680548ca04",
+  "gain_predictions/sub-032307-000-clean-clean.npz": "c99169b46b603ed7c70366f1c9819c7f5b4f5323487d67673a8dbe3534f8d3cc",
+  "gain_predictions/sub-032321-000-blink-snr-5.npz": "25d20992bdb58850a7c526fb6b1a2119a62e8f3d88521150124fe213ee1aaa61",
+  "gain_predictions/sub-032331-000-lateral-snr+0.npz": "dcf3b930ca1f8f06c6960f230b47b8b67433c20f3672ed0c8bb1a98e8a96813d",
+  "gain_predictions/sub-032336-000-mixed-snr+0.npz": "1d51edc0563476a46e139c081056897bcc8427dc591ad6a03559285e0630f2c2",
+  "gain_predictions/sub-032328-000-clean-clean.npz": "899a5ebdedcc9a6f1d7227c337b4f2e44c8c7ef6929bf38ff915aafbe3fcee23",
+  "gain_predictions/sub-032339-000-mixed-snr+5.npz": "cbbc26d51b225bf84951588f74834ff09625cba8a95a067f079f9283e5f1d19f",
+  "gain_predictions/sub-032305-000-lateral-snr+5.npz": "92171207cf6198c6bb894ef7459149a0030bb2f4351f39ef2b7f0c9331d984b8",
+  "gain_predictions/sub-032339-000-lateral-snr-5.npz": "3b5498b78079a5a5173177cce946d41691b1dd9414fa0312d1b71811b553fc83",
+  "gain_predictions/sub-032336-000-mixed-snr-5.npz": "655670591d6dd37572a7dcb5b8f4f023086e2a45765939be015edb2cf2cfb82b",
+  "gain_predictions/sub-032339-000-mixed-snr-5.npz": "1857b2e9c028f1f6221161eac64b0e530d8f9302b9ad235cabc181fb02f0ddef",
+  "gain_predictions/sub-032306-000-blink-snr+5.npz": "b3ec7c8d6025df47419c7e6d6abf984047859259af13c72f93c13249da4a996f",
+  "gain_predictions/sub-032308-000-lateral-snr+0.npz": "89a129449b41b6d14db0b7f7e0dc49df7d5c6a9ba9faa8adb7af06cb4dc4a5e9",
+  "gain_predictions/sub-032334-000-clean-clean.npz": "9b202af1640152f6dd2014a73419ff68246aaa301135c09a2e5218b544b733b7",
+  "gain_predictions/sub-032323-000-mixed-snr+0.npz": "5c1472b298b119876fe8b530a675a9eac1a8ecd5d174596d8fb18706fd570f90",
+  "gain_predictions/sub-032338-000-mixed-snr-5.npz": "566a9aab5aeebd2f1b2c1b3f6ed527a612425326047c49f04d3c7e47a3f99b12",
+  "gain_predictions/sub-032331-000-mixed-snr-5.npz": "5d3758d7fb549e3dbbfa141a4263391ebee5e7079a597a783ccf15176a59e397",
+  "gain_predictions/sub-032326-000-lateral-snr-5.npz": "f978b5f9fecbe0074b48f81df841e6e2ee840c3acda7fcd7ea19ca38ba5987d1",
+  "gain_predictions/sub-032334-000-mixed-snr+5.npz": "54697f4e115c6d5b43c6ffa33014f4029e9adcb0d6eaa822d06258f584fe2289",
+  "gain_predictions/sub-032330-000-blink-snr+5.npz": "f188493beb44afb6f1ae653b2acc410bf79990b7ec84fc5eac77dd482ab75090",
+  "gain_predictions/sub-032321-000-lateral-snr-5.npz": "f7d51c48a590f79b4f087dac44ee997835a1fffcc1662621e7f2032ccca2e46a",
+  "gain_predictions/sub-032329-000-blink-snr-5.npz": "a71769d311d0d950226a8b716dfb13a59a73b58fdf66cd34120769f45ee53881",
+  "gain_predictions/sub-032307-000-blink-snr-5.npz": "f9aaade11be4007643091950ce9de5cd7ac3fb518909ee72844f42683b074f4e",
+  "gain_predictions/sub-032316-000-lateral-snr-5.npz": "68b008a63d50625e170fee6bd0cd3c256713635dcc0158b6d93197995b0f3aee",
+  "gain_predictions/sub-032324-000-clean-clean.npz": "9b7fc1309eed166042d2dce2ffd9cfac17ca20b32f19436426e41e472df527bd",
+  "gain_predictions/sub-032324-000-mixed-snr-5.npz": "978a77e74b5660dd1942639489bba42e9f2730bd540e027ee6135c03019daa0f",
+  "gain_predictions/sub-032313-000-mixed-snr+5.npz": "9024fafd5e23afc5ad43988cf087407f1b002780783d72e14a4f01b1c9a005bc",
+  "gain_predictions/sub-032309-000-lateral-snr+0.npz": "169b6655e1693199ac0bd3809e994c3500c80698706c13b722a78d42d80dde81",
+  "gain_predictions/sub-032331-000-lateral-snr+5.npz": "3d8c8915a1907073d715c379181cbb42dbe78f0b322e09df383b36a95d02f3c2",
+  "gain_predictions/sub-032339-000-blink-snr+0.npz": "563f9c7a8c652869c56c1c3ab3ed89b8f92a4f0a4fdb7d0c293709b88cfe2cee",
+  "gain_predictions/sub-032340-000-lateral-snr+0.npz": "f01995464fe0cfecb9c4a07afa86ac4298201f34853531cab691265af22035fb",
+  "gain_predictions/sub-032325-000-blink-snr+5.npz": "07b2220ab14e483a5dda1420ec7c4eaad275c24c000bf9a0693cf1f536a99b0b",
+  "gain_predictions/sub-032331-000-blink-snr-5.npz": "ab4a05fe376d02b706fc3bb6ae84b73a8ad2433103566399a44510961835775a",
+  "gain_predictions/sub-032312-000-mixed-snr-5.npz": "cd312559e6d54e24c7ab7d1dbcb4b0ae0568af0ce200806a844796ced254b21a",
+  "gain_predictions/sub-032309-000-blink-snr-5.npz": "c445ed32d91fc0ea93fe94a702e1d5c3af0eccbf4f9f5b51938f03f30d1c9762",
+  "gain_predictions/sub-032309-000-clean-clean.npz": "8f5afeb19caaa27eb3f18b2301a96ffdf3b30e40a572f99f6e36cb4c15aa1d4a",
+  "gain_predictions/sub-032325-000-mixed-snr+0.npz": "3d0722cc90a3024dffee966657db68d0dc2e86c24b7c28f673a276ccde1d0a6a",
+  "gain_predictions/sub-032312-000-blink-snr-5.npz": "c8d7cc7622f9e468ebfd3f25453fd97469d96bc194a57bd2317418ea8bc81c97",
+  "gain_predictions/sub-032341-000-lateral-snr+5.npz": "ef823163e28c508811a7e45dc202356148a4543b49acc875337f43570ca68fcd",
+  "gain_predictions/sub-032340-000-lateral-snr-5.npz": "810d5633d53d7789b4a0d07df0df780de9252822ddec4f9d9234b55bb9f5ea8c",
+  "gain_predictions/sub-032309-000-mixed-snr-5.npz": "f65efb13a7f534380fb862a9a8fbe4cf3b819a33b739794c06d1cacb53726939",
+  "gain_predictions/sub-032316-000-blink-snr+0.npz": "564f493f79f016f5a4355777281c7f0f706ed1d414c49d149aaf11f50527a58e",
+  "gain_predictions/sub-032315-000-blink-snr+0.npz": "3e8b4591ef40a2aee1701677ecace5b7e3bdb94eb87e880888dc4e37350207f8",
+  "gain_predictions/sub-032336-000-blink-snr+5.npz": "21735cfdcbbfb28086c5c6c9493729aa93b9efcfc44e2842627e66c9c831338b",
+  "gain_predictions/sub-032314-000-lateral-snr+0.npz": "d7803ff31b08f23094b7720e6c3380cfddeebfc3a664a81e6666149df9b5bf97",
+  "gain_predictions/sub-032307-000-mixed-snr+0.npz": "7708d92447a2d64ecc6b6c92678dd1616e318b1e441a857145e397815f655a15",
+  "gain_predictions/sub-032328-000-blink-snr+0.npz": "5a03f78815937cb792d685ff114802412b8152f3cc6705402470e825e9e86a44",
+  "gain_predictions/sub-032309-000-lateral-snr+5.npz": "cbad214b62799c5bfd1f67b505136ae5180155a777c024f4cdbf36372e945c60",
+  "gain_predictions/sub-032319-000-lateral-snr+5.npz": "7a3fd928f6d2283de1907e710a94967e9a58f5fe70b1f02baaf5ca3c27d273d3",
+  "gain_predictions/sub-032321-000-mixed-snr-5.npz": "54cf21bf3d4996b2b7083b6cd15e2094fc4e64f2fc2c3952c0f0dad291bdbf5f",
+  "gain_predictions/sub-032327-000-lateral-snr+0.npz": "708fa192779ff69d0fa9fa0a62ec6191a8993c08bbe122d032c0a7571b502d09",
+  "gain_predictions/sub-032338-000-mixed-snr+5.npz": "b8d8151fc03d66ba143fd142e71cdf4e0ee4aced7cb1a9165d5c628d6eb65889",
+  "gain_predictions/sub-032314-000-lateral-snr+5.npz": "6c2612f733b08b4458093201529c5500b1fd0fbd46862f81d1824c7eaf857fa3",
+  "gain_predictions/sub-032341-000-mixed-snr+0.npz": "881223124637f05a0614607e05e70135b5e7c26bc825a0ae32d1c94f7b8b1751",
+  "gain_predictions/sub-032318-000-blink-snr-5.npz": "a5d28dd54d55f4e8b0050cfb289cd7514f95e0e821cbd231f3ee6c98123e4b54",
+  "gain_predictions/sub-032307-000-lateral-snr+5.npz": "2fd5be7512581c48a201cd23776c29df37a2ab9d3c56c8c2f390815407ab2b70",
+  "gain_predictions/sub-032321-000-clean-clean.npz": "dff565e771f0f8b37783a1b5fb4cca6dd3135d7491f2206f8e0e9a1f67af1f37",
+  "gain_predictions/sub-032336-000-lateral-snr+5.npz": "23649a5d78b08c361cda11036acf4c8db2b1f20cbbb893017c25bca0cd5a9534",
+  "gain_predictions/sub-032309-000-mixed-snr+5.npz": "bd8dc3bac4b56962e5db38be67477b3323621a409c0d82f8e1d09fa5dde5a94a",
+  "gain_predictions/sub-032321-000-blink-snr+5.npz": "1d6177b358f7112e972723d3424a50a661c8c23e320fa6f5cc077cd0b4e5a02b",
+  "gain_predictions/sub-032336-000-mixed-snr+5.npz": "b6658ec089e9a01231eae38aac275b65498f6c9f91371cb8c4aa7e644952d129",
+  "gain_predictions/sub-032313-000-mixed-snr+0.npz": "224c69da5af52ce2938d0bd769dc60b8d0e0a78216ef5cca3b11ff55558a82ae",
+  "gain_predictions/sub-032318-000-mixed-snr-5.npz": "d84f6ddde77affc177c8014f5229e65f219f84964773c347ae04ad8d03e75c09",
+  "gain_predictions/sub-032306-000-blink-snr-5.npz": "d931b04ecdd7f6982662c049ec907ceb87f0d53235be24b1b39da74449eb7324",
+  "gain_predictions/sub-032339-000-lateral-snr+0.npz": "e886a3abd3a905b6a4acf915d89fc754d11ceb797b971dcbe887fa6389528aed",
+  "gain_predictions/sub-032336-000-blink-snr-5.npz": "16b2e52b6f84bf487d0f61d62527ce471ac6b033dffa7ba6fb835c7da70718a6",
+  "gain_predictions/sub-032328-000-mixed-snr+5.npz": "234b932d55b5a4462293402d7c2a65a4a935dc66769c4c52696c2c7b40eba163",
+  "gain_predictions/sub-032308-000-blink-snr+5.npz": "8f08a6566c3f08efd17a5ea0ac487a7f365bc77da288717fd69cfdee3051e62e",
+  "gain_predictions/sub-032339-000-mixed-snr+0.npz": "3a693c48d2c8f0074869c6577a5ded6067a40d789c6e52b1ed5fa6fccb3c0a5d",
+  "gain_predictions/sub-032327-000-blink-snr-5.npz": "048d5ed91b29d454362d29583dbac9652f612a0ca9f365fdd0c83b32549ab6cd",
+  "gain_predictions/sub-032326-000-mixed-snr+5.npz": "be71ba9142611bb163b5cfd29b6ceb9fcd39fe164273420d3760b0ea255dc6cf",
+  "gain_predictions/sub-032308-000-lateral-snr-5.npz": "e34387ad41a7f1c3e70f97b1fa2a8ecf3404362ceb678f1ae958c8957344fb56",
+  "gain_predictions/sub-032307-000-blink-snr+0.npz": "285a7d4525ed70bfcc4ec93a5441bc7bc1b83f97f64e423ed406ee54465a7215",
+  "gain_predictions/sub-032312-000-mixed-snr+5.npz": "c4c07ad13ffd50946077aad838308d4a9948b2df593803e9778ba37feaeea6ad",
+  "gain_predictions/sub-032310-000-blink-snr-5.npz": "0611eed08b140c567bd9971d0ebaf3cf3d7525345d745c6a7af57845e61a3659",
+  "gain_predictions/sub-032309-000-mixed-snr+0.npz": "1aff142de54060d33e52640cee26727d7836f539f7558d8828b792991e0d8908",
+  "gain_predictions/sub-032315-000-lateral-snr+0.npz": "12c8e9deeab81994123168622ee76304118cb00848fec6f6e4117127e556eade",
+  "gain_predictions/sub-032306-000-clean-clean.npz": "9990c32cf7e6438a197c5e07cac063ff68deafceddf21040d534c5a9b97a30f3",
+  "gain_predictions/sub-032334-000-blink-snr-5.npz": "9698207fa2ce58db7bb2cea8303ab17b536960b2e73f3be55750389ce9d33822",
+  "gain_predictions/sub-032334-000-blink-snr+5.npz": "54371eba7b44c328451d5e200c8abcbdedcf8083af78dccbaa9fa9a094bcd2bb",
+  "gain_predictions/sub-032305-000-mixed-snr-5.npz": "0a4b491c329bb69bea4ffe0a6e748c7f4a6597bd4ce096c01c40fdf95276b005",
+  "gain_predictions/sub-032313-000-mixed-snr-5.npz": "7d80925aaef0a5fef79e4db3282384a977a1efbcf629b7d989338c8a49ff404b",
+  "gain_predictions/sub-032314-000-mixed-snr+0.npz": "291062b5e3ae7332779c28cc6ba8c4fbe64c6c2c07bd8e9c233d5b918692e6d1",
+  "gain_predictions/sub-032328-000-blink-snr+5.npz": "f12e55363ce6ae4ec2cd9c0cb6bbf8b8a8aef5280d60f9973ef93d0b34a5a315",
+  "gain_predictions/sub-032329-000-blink-snr+5.npz": "1b4f0243a9f227eb9cfc55be4983cb3e5b3ce8f01b12bb2ca96b798e980090da",
+  "gain_predictions/sub-032317-000-mixed-snr-5.npz": "c3f437afe47d70f5577d719bce5632c47be5376c9e806158d29ec042ad390d09",
+  "gain_predictions/sub-032325-000-lateral-snr-5.npz": "9c0d86ddffdd56e95883ed4c1db2488896554b1eda045d8d930e3b9a2b8b47e2",
+  "gain_predictions/sub-032331-000-lateral-snr-5.npz": "ec501bc4a2d52557bf83d6b94c167d33c0bd63a518e6c5ecff7bbe1243c3ff1a",
+  "gain_predictions/sub-032319-000-mixed-snr+0.npz": "e8b27b806f76e01683bc13440ebf515add9bdd95bf48f911c11d722bd46ea010",
+  "gain_predictions/sub-032306-000-blink-snr+0.npz": "314ed8ffb97206ba1344c9748c8da732aa7fd000c3203c49c79357537b494439",
+  "gain_predictions/sub-032318-000-clean-clean.npz": "2cd249ad255854052ed8d1556669a5fdd6ce17a3ad7a5f706b008a35b55a5ab8",
+  "gain_predictions/sub-032329-000-blink-snr+0.npz": "fabd0cfc9d173184c8c78ce915ac81f09810e1d6cbc83d142b9a85598107a087",
+  "gain_predictions/sub-032320-000-clean-clean.npz": "eaeb84c860d1000f84f71d8c18302ccb7d9e40996ce7cbdca7261e4a6010dc01",
+  "gain_predictions/sub-032315-000-blink-snr-5.npz": "4bb260321953fc99bf25960d146c923c6ba8f2fbd48854a2ca87133e48a5f88c",
+  "gain_predictions/sub-032315-000-blink-snr+5.npz": "0c293eebff0c0a246bb260485e7ece0abcc2ec3a16472b5ab28031366a90d7a7",
+  "gain_predictions/sub-032323-000-mixed-snr+5.npz": "99c5653472108e041d2d76dea6d85cac31a9d889f161caaf5875248685c6c2a7",
+  "gain_predictions/sub-032336-000-blink-snr+0.npz": "73b322e9dc1e7a24c8e54331c43d83f610210eb6ef5762822f2bfbcc294fe69e",
+  "gain_predictions/sub-032324-000-mixed-snr+5.npz": "3f61cf7dc0e3153fe179cbee68678cf9825e039a5286411ce020948c4a5454f4",
+  "gain_predictions/sub-032312-000-blink-snr+5.npz": "a640c3c56d62aac6fcebcb5954b59d5dc8ba60da9a0830354ceea710a57104ab",
+  "gain_predictions/sub-032320-000-lateral-snr+5.npz": "4b360b0792e6723025d65b3618f0c70779ac6fef9dff7cd3fe9b1a55a94fa6b6",
+  "gain_predictions/sub-032307-000-lateral-snr-5.npz": "8f0f032b072cc50ae140882d3a577f8a1f41d311c4e380d2f47ca35eeb1c7c50",
+  "gain_predictions/sub-032334-000-lateral-snr+0.npz": "cf7494f29f2ed8e465f23a63eed312255b4fde5208c251561be1d7e38b34c4b3",
+  "gain_predictions/sub-032316-000-lateral-snr+5.npz": "0f193749c6174ed4a9d215f00f4a8530d3775bf7362b63d9623101e3ea154935",
+  "gain_predictions/sub-032305-000-lateral-snr-5.npz": "f17b7f3f2369a8ce302769ac4f45977a0d754cbaf3efa09244944db7eb40c6dc",
+  "gain_predictions/sub-032331-000-blink-snr+5.npz": "8c47b0606f8c78a146024a9c05c70b22e50adea073bcf27215a29964e6775eda",
+  "gain_predictions/sub-032312-000-mixed-snr+0.npz": "53b0c6ee5e541d3703c18fed1c3d46fe48bfb4c4001fccdb7c466ae7b80cd975",
+  "gain_predictions/sub-032322-000-mixed-snr-5.npz": "dc078e4ec44689e5cfe37695e959c927a382866199fd3ff1cb2f9f7cd1a00cc4",
+  "gain_predictions/sub-032338-000-lateral-snr+0.npz": "5b56e6e53c9b952a9e699ad99d74ea203ccf6980c8243b13189eab2f510c02c8",
+  "gain_predictions/sub-032322-000-lateral-snr+5.npz": "13613111251a5109f1b1754914cf809db3c3ddda72b9b550aa3859fa91c82ebd",
+  "gain_predictions/sub-032341-000-mixed-snr-5.npz": "f804a2fe20a0579b29f931e907c83d9e80290eac9fb396c2b81206a7e327dc55",
+  "gain_predictions/sub-032338-000-blink-snr-5.npz": "dd5413b4c5cb12744a8b888d59589e752b29f9d2d01ca7b5c7f3bebdb980a32a",
+  "gain_predictions/sub-032339-000-blink-snr+5.npz": "1018050d8921ef7d8d771295d64c1d6ebcc177dbfe16a8917194b58e1d556010",
+  "gain_predictions/sub-032306-000-lateral-snr-5.npz": "d19ad818ba18d3e7896910e37a5183f2dcf519712ecb732fa1c534690b7ccbc8",
+  "gain_predictions/sub-032305-000-mixed-snr+0.npz": "44547545727d0c5fbabcdb81c440c3b243f12090f1c3bccdc07be385d2969721",
+  "gain_predictions/sub-032324-000-blink-snr+5.npz": "a1f930e5ec0971ad7108ec8dd765400380fe981d8c8d55ff92a5eec6b3803c20",
+  "gain_predictions/sub-032305-000-blink-snr-5.npz": "000d3375630907f44e159fa5ef3dce20a81cdeb2de60db50d4aca3ea13da6947",
+  "gain_predictions/sub-032341-000-lateral-snr+0.npz": "aebe32f32167accb1464b5e6332827858fc6b082758414f1ac5ded37eb706f50",
+  "gain_predictions/sub-032324-000-lateral-snr+5.npz": "2009968c1b980d653d217d7392c8036c9dc594ed412418e5853d131866bd35fd",
+  "gain_predictions/sub-032318-000-lateral-snr-5.npz": "887bd7431174e3d7fb7cf3c4f542e410547b613af655f5fc47942887b8d82543",
+  "gain_predictions/sub-032340-000-mixed-snr+0.npz": "a2003701807a1c00e2535deed43ff3f0fb23ae627baca24cdf2947ee329ac650",
+  "gain_predictions/sub-032341-000-blink-snr+0.npz": "d1fe1dc851e4dae3958444ce7ae9970cabff7691b5bc09ef2f6ad965ba475256",
+  "gain_predictions/sub-032320-000-blink-snr+0.npz": "44638cdee2149f486331dd44194503ad143a59e219d28b3d3cf2444a75024c3e",
+  "gain_predictions/sub-032308-000-blink-snr-5.npz": "83e15c8fcffa2a7dca5efdb90ed1fbdde12ac045ad3bcecd5bb1da19e56a92fc",
+  "gain_predictions/sub-032329-000-lateral-snr+5.npz": "63510912792971a31d6e58093b396c42e764e04b22cb840464cc19b8ad89c2cd",
+  "gain_predictions/sub-032308-000-mixed-snr-5.npz": "b26942f928a5ed0d73e4e728318617e908f15eeb09982e3e935cde52a160f65d",
+  "gain_predictions/sub-032329-000-lateral-snr-5.npz": "860f4bd25fb7f42479058b73b7cbf99b93a0a5516bdbec9fe45f0c9864dcc2a4",
+  "gain_predictions/sub-032319-000-blink-snr+0.npz": "e4f0d345ab4267a799881382f619b121202cf42db2b6828918200199b2ef248b",
+  "gain_predictions/sub-032329-000-mixed-snr+5.npz": "0d5a824915b2ea02c4dacf2258fae2967c9b58991fc0d438fd2e027358367599",
+  "gain_predictions/sub-032328-000-mixed-snr-5.npz": "64eafca0dbd039bed563947155cac1889b271b87d3deacb01298f04fe65b095e",
+  "gain_predictions/sub-032319-000-lateral-snr-5.npz": "cafce4fca984be2deb86ed150f366b9468fb170baf2d65f88ab374fb5e11bb74",
+  "gain_predictions/sub-032338-000-mixed-snr+0.npz": "5997ba02f21b6eb6610b85278463b73ebaf33e95b49a17ca849d9c957ff22861",
+  "gain_predictions/sub-032320-000-blink-snr-5.npz": "f523dd1e0f0506b3448e92551ff9d7ac0947a8aff77b058650e77cdcf8f7ead6",
+  "gain_predictions/sub-032341-000-blink-snr+5.npz": "eb9499e7023fede4e362e83fd860d86d645cc118d5d703ea6e3674aace2f302d",
+  "gain_predictions/sub-032323-000-lateral-snr+0.npz": "8a76646a3a382a9941ff5d9b21f399b853a6fdc32c007449db11de7b63efe037",
+  "gain_predictions/sub-032325-000-mixed-snr-5.npz": "30f73994b9846bb0cf37831d311edcc8b8f21805995b04ec27a0826e5e7cdd7f",
+  "gain_predictions/sub-032306-000-mixed-snr+0.npz": "28ac2718b90e3d0d1d8d21f761b0796b88a28ffb9853ab6fadcb869f7e2d5552",
+  "gain_predictions/sub-032323-000-blink-snr-5.npz": "6f1440d4786320d889949983ccc7050cc6d1f5a365c51823a41694e1ddcf4443",
+  "gain_predictions/sub-032313-000-clean-clean.npz": "0df759a0787237eaed4e17604be0b7a18adb01f5537d08acf53e2710e3a19d4a",
+  "gain_predictions/sub-032326-000-blink-snr+0.npz": "3c255fc4728ba7867c1564f046d6e47b61c8e1fb5ad1c3cc9c4e2fd1951acc8c",
+  "gain_predictions/sub-032308-000-blink-snr+0.npz": "d8ada7430ae43f05eeedc3a07cdf118121c1a103eb6d951e533275380165dea5",
+  "gain_predictions/sub-032315-000-lateral-snr+5.npz": "c65a7c49a0dec1e279a1860de33414985d4f447f6c25064706721465d96087a1",
+  "gain_predictions/sub-032318-000-blink-snr+0.npz": "6946d52481886c73622dcf3274ffa649ed2997d23d1b2a94e985b5f94cc71112",
+  "gain_predictions/sub-032310-000-clean-clean.npz": "8f550c0c0bc6d54490c40aaa519d5545fc3ca6426c7111bf74d6fea58f6275a9",
+  "gain_predictions/sub-032331-000-mixed-snr+0.npz": "9d2907acf9181e31a4cace609fa1a911cc84f07d72770e5d57acd2cea433d02a",
+  "gain_predictions/sub-032310-000-blink-snr+0.npz": "ab5765019f9fb82b59cf4839e11edc860058e89e6b406554b775f15eac698079",
+  "gain_predictions/sub-032310-000-mixed-snr-5.npz": "3877b159cf713f4252b52ecd4e874efdffee22f2cd3c6d26e6adc1b31beef49b",
+  "gain_predictions/sub-032330-000-clean-clean.npz": "feac10f8b12da01d5ce0e8a431b8505f2f69c4bb783578917ce3dbb4ff1090c3",
+  "gain_predictions/sub-032317-000-blink-snr+0.npz": "f1f2a38167b44010f9ebb6b7f12da847c0742709c402a020de2a93a7192a22cc",
+  "gain_predictions/sub-032327-000-mixed-snr+0.npz": "c49779a9387b2e8440b25d200c80e1a55ef7a686062f0155bda314cf554b14a3",
+  "gain_predictions/sub-032325-000-lateral-snr+5.npz": "e04d71f76225163ac093ae4e81b253ea7eb1a3208b8294695f798a1bfe3ea43e",
+  "gain_predictions/sub-032308-000-mixed-snr+0.npz": "092c5a6ef83314b9f9a8abd66daa0c2941f6c8ac8c58b74603416ade567c4512",
+  "gain_predictions/sub-032316-000-mixed-snr-5.npz": "65e5f759f5e076b37ea9e5120d7759043a6787e1c6ea4d5579ed7e0b92b346ef",
+  "gain_predictions/sub-032317-000-lateral-snr+0.npz": "263793470891988b199d282816317e48954ae5b3f1adf7c1af9f7668130a0ccb",
+  "gain_predictions/sub-032322-000-blink-snr+5.npz": "d0cc597e0bab2ffae1b1bfbc2c7924aa8ee3b7cbbfef0d9da97dfa5ab03d3de1",
+  "gain_predictions/sub-032322-000-lateral-snr+0.npz": "24506055a2f801653ef76bdf05c7c7610b3ee8e067a2943bc3e9c239afa0fbf3",
+  "gain_predictions/sub-032339-000-clean-clean.npz": "a6d50039ca969dcb17987d02448432ec019c56d822b1ab61c470d13d3b244abe",
+  "gain_predictions/sub-032316-000-blink-snr+5.npz": "fded11a7ca5f24421b32b7ffb368acd922f91ffb90dd293067a7b30876a04797",
+  "gain_predictions/sub-032306-000-lateral-snr+0.npz": "171097adb70b0f62a3ed9d3b390b2d6275b505c94b6b94a64b329b4a8d56ef4c",
+  "gain_predictions/sub-032319-000-mixed-snr+5.npz": "70d29c4e455b337ec249ec03f0e8f3c35bda4953aca6e784fa7bad7231e0c35c",
+  "gain_predictions/sub-032324-000-lateral-snr+0.npz": "4a7ed7ed85320ef8a3512b625edb692bd9f0f290dfa47687e9a6fbe70f438938",
+  "gain_predictions/sub-032312-000-lateral-snr+5.npz": "f340289797d6756e172fc8f6d23cb19daa455278a5653c6649b82c43ec559fb0",
+  "gain_predictions/sub-032315-000-clean-clean.npz": "a490f099f1d095368b4917dead011fb5f72a171ea26faa214483c33217ec80cd",
+  "gain_predictions/sub-032334-000-mixed-snr+0.npz": "1725c50ae46fde5bbfe46e20010287664e2b0e30a612012caf63c1fcb973cee6",
+  "gain_predictions/sub-032316-000-blink-snr-5.npz": "6a7dbab3ebd3f9a03cc14be776d993fb71071039bbcce881a7f09baff4214910",
+  "gain_predictions/sub-032323-000-mixed-snr-5.npz": "cbceeabfc3a6010b5824fb1d60763d9d3ba432edbfac5ee55db3a549e3a74d8f",
+  "gain_predictions/sub-032315-000-lateral-snr-5.npz": "44beb9333a288c41d83c2df3ab37b7a9dadd01a8474401938f1659818a5860fc",
+  "gain_predictions/sub-032319-000-blink-snr+5.npz": "85c9d59ac250be37d726b5f93a97835ad6cc84d850b0968a62f667b6897d55dd",
+  "gain_predictions/sub-032310-000-mixed-snr+5.npz": "4ef53c2ea096f5245f3a0ec0e94fd5068bd8c04d5db82d22b6befd1945de0f98",
+  "gain_predictions/sub-032321-000-mixed-snr+0.npz": "01388485487cdc1e94b7cf87d729e4479802a621f6ffae68d1a364cc84a15599",
+  "gain_predictions/sub-032308-000-mixed-snr+5.npz": "a798110930a678ba77b2fbde4e09ef353d670dcef73dc853977ae5ca000dd9fe",
+  "gain_predictions/sub-032305-000-lateral-snr+0.npz": "bc5b50ba2c8fa65901f012c322b9075fac3c0c37a789c66f281f6020f2deb606",
+  "gain_predictions/sub-032326-000-mixed-snr-5.npz": "8ab0161e38f73ee0e5b690dbf786256b992b2863859566c724be35a27770467f",
+  "gain_predictions/sub-032341-000-mixed-snr+5.npz": "ba0b8c70d0661f98a5103e8b277a84b73701439966c424c75440f1b70474629d",
+  "gain_predictions/sub-032338-000-lateral-snr+5.npz": "31062c5e5e54d76e859b67d7a031a3950816713a1fa5a22301a497d3147dca71",
+  "gain_predictions/sub-032317-000-blink-snr+5.npz": "ec67818a51782a13be91c8c2448ae56ab18fbcf6a8763e3172de23bf937f6ccf",
+  "gain_predictions/sub-032326-000-lateral-snr+5.npz": "06242e0e7ed48ed03878283d27ab383d2303db769ef062c4ff9b315cec4c1dce",
+  "gain_predictions/sub-032307-000-mixed-snr+5.npz": "7c2b8e151f69955851b76f27acffe6e73d3f6e3c53cebe0f12682f974e19727d",
+  "gain_predictions/sub-032327-000-lateral-snr+5.npz": "b0b8909a99daf7513d7004e93dd87d6b885bf65c1a4bb010590dbf70252a3f53",
+  "gain_predictions/sub-032318-000-lateral-snr+5.npz": "a5c012265ca166bf1ff429ef9c9ccebe485092e988050044d4e64eea6e45cadf",
+  "gain_predictions/sub-032322-000-lateral-snr-5.npz": "cfde5a59c7e3d52f3c6d1be4e4a7dd076333cb22857c1929c5e5280eb024f99f",
+  "gain_predictions/sub-032340-000-lateral-snr+5.npz": "fd3d87ee276155e9203028a1515d641b2a84dcc62855627524d3908210cc937e",
+  "gain_predictions/sub-032312-000-lateral-snr+0.npz": "a23f6334182486df8bcc909598ae067bc0a1bc00d9460b57550406ff512205a7",
+  "gain_predictions/sub-032317-000-lateral-snr-5.npz": "f638116a69119f9bed6b36a404cbc4e4d65d9304e49bb0f12465c2751ea1a599",
+  "gain_predictions/sub-032334-000-lateral-snr-5.npz": "81bf309c22a96e0c47b05b907b0572f63b9140bc1a9266c7a51d9dcd865d7014",
+  "gain_predictions/sub-032330-000-blink-snr+0.npz": "348078e92f8790591c86ae22e5fe9a85eba3cc6135ab28886d2cfb0cc5c86a92",
+  "gain_predictions/sub-032339-000-blink-snr-5.npz": "f8a48fdef58dbddcbb6c7450b18a7c82ffe03848bdd9e36cdf9f255d98d4ad59",
+  "gain_predictions/sub-032338-000-blink-snr+0.npz": "bff20bda787b3ecc09ac6179f6978aba5f0bf5b0f2b53117604c175c254190fb",
+  "gain_predictions/sub-032328-000-mixed-snr+0.npz": "7d7a2701f2539b4181dbedfd862671ee741ea5fdf5cf45ccc2a38b1629e8602b",
+  "gain_predictions/sub-032324-000-mixed-snr+0.npz": "3dea9e8994e602690065c8d74cb1d52a6b028b79be71ee432d9f716721c8af7d",
+  "gain_predictions/sub-032329-000-mixed-snr+0.npz": "6f2bc371d66b823d7ef05ad614253fb27a184a8bd17979a5dee069fd4761bef8",
+  "gain_predictions/sub-032327-000-mixed-snr+5.npz": "fc70520830cb4492382da7287556a1cb88effac61de74f5eeb6033c80ac41efb",
+  "gain_predictions/sub-032309-000-blink-snr+5.npz": "491ad9d8ddccf82f8aebbae0aef3b0da1ccc4c4ba5b808d9a423a0dc095dbfdc",
+  "gain_predictions/sub-032341-000-clean-clean.npz": "7cab1b3ed9570138966358fe63e1d7413a1baf353150b91f9abf939e555fba4a",
+  "gain_predictions/sub-032307-000-lateral-snr+0.npz": "ed6f1ac74f2712df883481fca260addfeadd72bd3535966090fe9edfe222569f",
+  "gain_predictions/sub-032328-000-blink-snr-5.npz": "6b1a8d2bdd19b7fec28ba8c8589c7aa4ef278711693b7ac962e28beeebea9eab",
+  "gain_predictions/sub-032324-000-lateral-snr-5.npz": "6a6cfc478ac4544db64366114cb484a15ed2fe3fa8561915005552959d239fa8",
+  "gain_predictions/sub-032330-000-mixed-snr+0.npz": "2067882341215c004ba4283f6c4a3aac6c4e2cbc4df811a47f7a7c5da24f338a",
+  "gain_predictions/sub-032324-000-blink-snr+0.npz": "462b99adc8deb83a43767013c02fd82a742992856cdd4d9df72204c9595f984c",
+  "gain_predictions/sub-032323-000-lateral-snr-5.npz": "9653c74c62d0dd495c8a2ce571e43deb14f2242e37baac36429b9e95b81c0baf",
+  "gain_predictions/sub-032329-000-lateral-snr+0.npz": "45280db76923bcf0ecb5e3c09647c46f8e03e5a8cb5346d5ccb79348063cd501",
+  "gain_predictions/sub-032312-000-blink-snr+0.npz": "fa93dfadd27f7122067183b8ecade8eca054f2d0b46ad4fa34332d32a87547c4",
+  "gain_predictions/sub-032314-000-mixed-snr-5.npz": "5b7d897e2fc5ec655b9877976c7387a25475c15f41c2e6f710d4b78242c34e03",
+  "gain_predictions/sub-032327-000-mixed-snr-5.npz": "918d4b36bdc04cbba45304a9be9dec16afadaab716cb241dcbfcac31737906ed",
+  "gain_predictions/sub-032315-000-mixed-snr+5.npz": "5ffc1c6efac377eb9c3805ee376832c0dd3d214814857466e5e8ef45779fef97",
+  "gain_predictions/sub-032306-000-mixed-snr+5.npz": "8310807e1f95d982b34c8674514e053c714e4b9925476bf016c12992941706ca",
+  "gain_predictions/sub-032326-000-clean-clean.npz": "bdf1f89a447523edef54e3fce315cae258dfed2331093ae34c9bb773699d8e11",
+  "gain_predictions/sub-032330-000-mixed-snr+5.npz": "48a552d933f555f14e8fd8518c64ebd295c9659629f4a373a1ef84223c5eebe9",
+  "gain_predictions/sub-032321-000-mixed-snr+5.npz": "e5627671d4c48f6a370cd82d070294bd6d642e3bfe4118b542c8320f6410da87",
+  "gain_predictions/sub-032318-000-mixed-snr+0.npz": "d1a83b0c7f2fdab351e1be915e8879e046c3467577fc7bc43a487b7a2a0cb9df",
+  "gain_predictions/sub-032317-000-mixed-snr+0.npz": "f73608b180c33868d623e4b6d9110beb35f46f0b45b8aa2c0e8c98a215fcd806",
+  "gain_predictions/sub-032323-000-clean-clean.npz": "abdf1fbadf52ad5a109394d1330c53016387f6b5f4ae445e888c8acd495a1797",
+  "gain_predictions/sub-032341-000-blink-snr-5.npz": "df9eff4fb219d4796eb47354b144ce0e55b296c43c6e7db1d2f8e8b7949a4642",
+  "gain_predictions/sub-032331-000-blink-snr+0.npz": "3bbb2dc627ab72f79e33c59f32c1129e621bc5a303f3652545035fcc7737ce4b",
+  "gain_predictions/sub-032305-000-clean-clean.npz": "52e2c781a0917b6bc063dc8c74956e78e73cdc4909ad2c305cd1420f9fd44bb0",
+  "gain_predictions/sub-032336-000-lateral-snr-5.npz": "7ef9aaa83aa1b0041f9a668aae220075829ade71894f08f2c361210c64c2c0ea",
+  "gain_predictions/sub-032329-000-clean-clean.npz": "b47b0b66dea50182f5a59569e5fda79b18467e93af74994c68598020a00e6464",
+  "gain_predictions/sub-032319-000-blink-snr-5.npz": "5b03bf1ac6d9a65649deaa6760f4fb067489f0bb6bd31d093a97c9ccda8edbfe",
+  "gain_predictions/sub-032314-000-blink-snr-5.npz": "948f5ccf4b4de200388cec4561507d2560283fcb526a68aa02765c0f2406ff25",
+  "gain_predictions/sub-032306-000-lateral-snr+5.npz": "09094597d799c1fd9f5435204fd77ef3dff414cba7bf1ad76a12c7779f35b20f",
+  "gain_predictions/sub-032314-000-mixed-snr+5.npz": "e67605150e0b95f2ffb652c21320f71e2227c47cc3dd08a0e201cfb9c824b601",
+  "gain_predictions/sub-032320-000-lateral-snr-5.npz": "d2fd5f38a0dee24556f05369a21316b7507be3df73c8b2e8c0468ecc5ca1caf0",
+  "gain_predictions/sub-032308-000-clean-clean.npz": "36873c5df1732f2f0f5c9ede6f54c0f9fc79e77dc65847940e920983b13deb13",
+  "gain_predictions/sub-032330-000-blink-snr-5.npz": "163465123ee47432929a0399864ba14d480aef8248371845271f363b4b300f57",
+  "gain_predictions/sub-032319-000-clean-clean.npz": "dc96d4c33f2be3bd181000b0cc049348916e35b172fd7c49bc7cf621404c18a6",
+  "gain_predictions/sub-032338-000-lateral-snr-5.npz": "38c1e0a14277c2dcf9ff5f25ebae22f60f78aed5112c96f8f0d3b5e3c83d7b61",
+  "gain_predictions/sub-032323-000-blink-snr+0.npz": "8a7663a6afb3cb84b3b80966a4da10c89deeaf3ed3ecc7ef420808e32a5eafb7",
+  "gain_predictions/sub-032314-000-clean-clean.npz": "25fa9a7f2334511b81c9c2418f32eeb8220b33f3fbb126ae8eb7ffc9f112aaa7",
+  "gain_predictions/sub-032310-000-lateral-snr-5.npz": "014925d1cd46ed5f87f3a838391cd8feab623f96aedd149e78414cd4b729859c",
+  "gain_predictions/sub-032314-000-lateral-snr-5.npz": "f240c13e44eb0062c99de124dab20627c68210c3e00deb663752a52f433b5cfc",
+  "gain_predictions/sub-032313-000-lateral-snr+5.npz": "bafb002b2525e64eb06316aaf174d31c38400499ee873265e0d5628c9b48d0bd",
+  "gain_predictions/sub-032320-000-lateral-snr+0.npz": "fd3adc06ff2bfa2b9be6abcfb9913e40e67aee1d1c0b7d5a666db94fc8bff44d",
+  "gain_predictions/sub-032338-000-blink-snr+5.npz": "ce97ce90060d5b072c36419991286d2cfd62404214aa7e7bee5c26bbbde5ee9c",
+  "gain_predictions/sub-032310-000-lateral-snr+5.npz": "e216e806ac8fc0b8ae2b7d61a789e935f15ee4df8e8cd46a843a172da1ca8df0",
+  "gain_predictions/sub-032313-000-lateral-snr-5.npz": "6b8f225081b96d3b5198d38d7e8b3cc8d1432a1d85db98b50886f19192b4030b"
+}
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/execution_state.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/execution_state.json); SHA256 `dd1715675f48c41e85f921faf8bfe723e91b681e52119ac3fb7f3e6be8cad093`.
+
+```json
+{
+  "stage": "nonfrontal-gain-diagnostic",
+  "status": "complete",
+  "artifacts": 665
+}
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_summary.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_summary.json); SHA256 `ff802c4d51e2918663951d42ac66262b199de3759436625aa4429ee81d430096`.
+
+```json
+{
+  "profile": "full",
+  "examples": 320,
+  "recipients": 32,
+  "arms": [
+    "identity",
+    "central_frontal_vmd_context",
+    "central_frontal_raw_context",
+    "reference_rank2:both",
+    "strength_rank2:0.25",
+    "blend_old_rank2:0.25",
+    "strength_rank2:0.5",
+    "blend_old_rank2:0.5",
+    "strength_rank2:0.75",
+    "blend_old_rank2:0.75"
+  ],
+  "baseline_paper_metric_checks": 549000,
+  "weights_fitted": false,
+  "fixed_arm_target_access": false,
+  "oracle_target_access": "evaluation-only; cannot select per-window output",
+  "global_selection_performed": false,
+  "reserved_confirmation_opened": false,
+  "autovmd_executed": false,
+  "qualification": false,
+  "new_calibration_fits": 0,
+  "failure_flags": "conservative historical parent flags, not new active-failure counts",
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "runtime_s": 493.397755567
+}
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/resource_summary.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/resource_summary.json); SHA256 `712599e4c8c045048e1db71285e6733e681271c7f721ee9d5fbc20c4c82e861a`.
+
+```json
+{
+  "wall_time_s": 557.734670716,
+  "peak_resident_memory_kib": 1332200
+}
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/stage_tests_summary.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/stage_tests_summary.json); SHA256 `005dace0742dffa226173547d4246c26ebb031ce4803e7e5b952cd709ab59c7a`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "66f50794067768fc60e8fc67d52970c3e652f529e89d6b7439d365f51c4362d5"
+}
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/retrieval_receipt.json); SHA256 `3875baff19017a7bcd8b8400c34251916a080cc7ef99e26956aa5cb1a2c4e325`.
+
+```json
+{
+  "run_id": "nonfrontal-gain-full-001",
+  "git_sha": "248a5070131d8049eddc01eede8ebee8465a77bb",
+  "verified_payloads": [
+    "configuration.json",
+    "coverage_uncertainty_intervals.csv",
+    "evaluator_only_bound_condition_means.csv",
+    "evaluator_only_bound_means.csv",
+    "gain_condition_means.csv",
+    "gain_gates.json",
+    "gain_method_means.csv",
+    "gain_snr_aggregation.png",
+    "gain_summary.json",
+    "parent_identities.json",
+    "resource_summary.json",
+    "run_spec.json",
+    "stage_tests_summary.json",
+    "tests.txt"
+  ],
+  "manifest_payload_count": 665,
+  "all_manifest_payloads_verified": false,
+  "downloaded_outputs": 16,
+  "utc": "2026-10-14T01:43:02.064823+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
 ### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/artifact_manifest.json
 
 [Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/artifact_manifest.json); SHA256 `c08e56896be2dfc69c9e1eb361f5a1c9f5906b8be28fe36b8611c85d269282eb`.
@@ -48284,7 +49163,7 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 
 ### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/retrieval_receipt.json
 
-[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/retrieval_receipt.json); SHA256 `f86383f78f38d6138d8ea652c223686f1716ff8accb9e1e3e752c4f9de654202`.
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/retrieval_receipt.json); SHA256 `7bc18d890bd64bbe71f3e97f2796ecfab607b0e9bda433d272f08ba5cf524fb2`.
 
 ```json
 {
@@ -48292,23 +49171,133 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
   "git_sha": "c049d8dca726adb032f9ee45b32353d9164dd272",
   "verified_payloads": [
     "configuration.json",
+    "coverage_paired_differences.csv",
+    "coverage_uncertainty_channel_strata.csv",
     "coverage_uncertainty_intervals.csv",
+    "coverage_uncertainty_method.json",
+    "environment.json",
     "evaluator_only_gain_bounds.csv",
+    "experiment.json",
+    "gain_channel_scores.csv.gz",
     "gain_condition_means.csv",
+    "gain_decisions.jsonl",
+    "gain_example_snr.csv",
     "gain_gates.json",
     "gain_method_means.csv",
+    "gain_progress.json",
+    "gain_selection_manifest.jsonl",
     "gain_snr_aggregation.png",
     "gain_summary.json",
     "parent_identities.json",
     "resource_summary.json",
     "run_spec.json",
     "stage_tests_summary.json",
-    "tests.txt"
+    "tests.txt",
+    "gain_predictions/sub-032305-000-blink-snr+0.npz",
+    "gain_predictions/sub-032305-000-blink-snr+5.npz",
+    "gain_predictions/sub-032305-000-blink-snr-5.npz",
+    "gain_predictions/sub-032305-000-clean-clean.npz",
+    "gain_predictions/sub-032305-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032305-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032305-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032305-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032305-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032305-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032306-000-blink-snr+0.npz",
+    "gain_predictions/sub-032306-000-blink-snr+5.npz",
+    "gain_predictions/sub-032306-000-blink-snr-5.npz",
+    "gain_predictions/sub-032306-000-clean-clean.npz",
+    "gain_predictions/sub-032306-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032306-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032306-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032306-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032306-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032306-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032307-000-blink-snr+0.npz",
+    "gain_predictions/sub-032307-000-blink-snr+5.npz",
+    "gain_predictions/sub-032307-000-blink-snr-5.npz",
+    "gain_predictions/sub-032307-000-clean-clean.npz",
+    "gain_predictions/sub-032307-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032307-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032307-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032307-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032307-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032307-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032308-000-blink-snr+0.npz",
+    "gain_predictions/sub-032308-000-blink-snr+5.npz",
+    "gain_predictions/sub-032308-000-blink-snr-5.npz",
+    "gain_predictions/sub-032308-000-clean-clean.npz",
+    "gain_predictions/sub-032308-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032308-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032308-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032308-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032308-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032308-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032309-000-blink-snr+0.npz",
+    "gain_predictions/sub-032309-000-blink-snr+5.npz",
+    "gain_predictions/sub-032309-000-blink-snr-5.npz",
+    "gain_predictions/sub-032309-000-clean-clean.npz",
+    "gain_predictions/sub-032309-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032309-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032309-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032309-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032309-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032309-000-mixed-snr-5.npz",
+    "gain_shards/sub-032305-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032305-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032305-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032305-000-clean-clean.csv.gz",
+    "gain_shards/sub-032305-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032305-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032305-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032305-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032305-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032305-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032306-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032306-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032306-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032306-000-clean-clean.csv.gz",
+    "gain_shards/sub-032306-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032306-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032306-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032306-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032306-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032306-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032307-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032307-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032307-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032307-000-clean-clean.csv.gz",
+    "gain_shards/sub-032307-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032307-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032307-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032307-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032307-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032307-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032308-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032308-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032308-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032308-000-clean-clean.csv.gz",
+    "gain_shards/sub-032308-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032308-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032308-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032308-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032308-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032308-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032309-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032309-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032309-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032309-000-clean-clean.csv.gz",
+    "gain_shards/sub-032309-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032309-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032309-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032309-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032309-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032309-000-mixed-snr-5.csv.gz"
   ],
   "manifest_payload_count": 123,
-  "all_manifest_payloads_verified": false,
-  "downloaded_outputs": 15,
-  "utc": "2026-10-14T01:27:50.637241+00:00",
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 125,
+  "utc": "2026-10-14T01:31:05.066456+00:00",
   "retrieval_method": "bounded HTTP; four download workers",
   "completion_verified": true
 }
@@ -53484,6 +54473,339 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz) | 146637 | `9c769292865be373bba221c7c6394979c1de7614689fca807ee22aaaf4dd80d8` |
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/nonfrontal_selection_manifest.jsonl](results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/nonfrontal_selection_manifest.jsonl) | 61174 | `d3c7959a49e6e0a21fe42c6737cdc03bfaed366f14fe42ad9290aec8583758fc` |
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/tests.txt](results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/tests.txt) | 2511 | `37d694ab7b74270b4ca8ebfdf8ecfba1824d330f6272afa2e559cc7a5442ad0c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/coverage_paired_differences.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/coverage_paired_differences.csv) | 83493693 | `7b1dfee38914fe738a142cc8a687fbdbc0d9be1f9d249ce848e8d5039331583f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/coverage_uncertainty_channel_strata.csv) | 28298961 | `6b9f6903e4ed67e4da85e12fa7c635e957a6f4214994745080c500291761e173` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/coverage_uncertainty_intervals.csv) | 24588 | `421bf54b6100e5b825ff780521a0d87d4acf2f27b8a9de9b89b9246f08b6c1a4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_bound_condition_means.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_bound_condition_means.csv) | 6844 | `d255bd8af07c51b81f3cad82222253608c749babc9ddfd5266ec1e005db7c728` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_bound_means.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_bound_means.csv) | 865 | `4671c354e7a3a06917f4b452d82114bb666e01adcbdc05388d9acc952732d16c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_gain_bounds.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_gain_bounds.csv) | 325284 | `49f30e986312f9e4488c6006c6cc96d760a62864522aa9f9e3adf6bef911b3f7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_channel_scores.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_channel_scores.csv.gz) | 13828675 | `70e3f6d8a87a1915a4e25279df1445f3bd8a6e0e79a5c05016b2d915872c2b08` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_condition_means.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_condition_means.csv) | 84463 | `681d14910f7314c109c959d3a90fd33d44369e285625c21c98b80034df562567` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_decisions.jsonl](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_decisions.jsonl) | 169069 | `eeed7c1940cebf3dee8b2d540a1f6c9267b7c3350895c40d7d1983750f512f6d` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_example_snr.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_example_snr.csv) | 2167017 | `2a477c66acd817d73481ce8a7ff45d4cf86aba363adf4c0aa58799ef25090657` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_method_means.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_method_means.csv) | 9948 | `2130b8fea08edbb5a4fcc4c684077453c583fbf3362b46447ef08fb1a1a4eb75` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_selection_manifest.jsonl](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_selection_manifest.jsonl) | 391132 | `c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-blink-snr+0.csv.gz) | 49151 | `3e8a842df4126f9fc2227645081fb27feeddda3bd11eae56ebbf0544d0968a79` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-blink-snr+5.csv.gz) | 47252 | `72365802c6a6fcb44ef1ad18a13476623dd77e3e04f38b85b80dc48343787f69` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-blink-snr-5.csv.gz) | 54851 | `c57acf8b7bb14935c5a3eed90ca17ae46909886996267b2c033270e697d0f254` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-clean-clean.csv.gz) | 4804 | `0dda607fd301fc85e59b6bccfb894d2b5fd662e33069eabafbecd9d00cdb43dd` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-lateral-snr+0.csv.gz) | 54658 | `ffb9ac7860811318d2c7eab379cf807424b38082b8f0d00c53e400119f3242fd` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-lateral-snr+5.csv.gz) | 47046 | `0e5a0004bfdf1a3a02e87e98d6cd8e2a2c958290472d1ea9da359fce01f6cd63` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-lateral-snr-5.csv.gz) | 56034 | `ffb1d375750f8ac1536a4652f1ccf4115881da39314adc53a56dec32aac66076` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-mixed-snr+0.csv.gz) | 49065 | `04a8ff9019f791dcccf50f451f96378517a156f9755dbfb25abe56c91d3788e2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-mixed-snr+5.csv.gz) | 47194 | `5d45d3d70535104a158bc40f80b16addb6693804f14593f7a230ecbaaf5ca78a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-mixed-snr-5.csv.gz) | 54788 | `27d3508dafae4184016a91770f44afe1e9dcc73666cce9fa32a1cb16efa4a0a3` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-blink-snr+0.csv.gz) | 43744 | `4e21dd3bf362856ea40e5f666128eed0e6b33c073828cd5048372dacc5e37d04` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-blink-snr+5.csv.gz) | 34937 | `fdf1423b81d4442e0b8a0c3ab4c2d8f3c1e3ce1889f1d25c2bc354d06606c0a3` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-blink-snr-5.csv.gz) | 75385 | `b8cc8a42138f3ddb756aa550d9152734aa2065c058d5656f7a852cafa2445354` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-clean-clean.csv.gz) | 4633 | `1c0e33a7b30b984a68ba0d538d57389a33b0fe90f92fd3a4d34de0165db3e677` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-lateral-snr+0.csv.gz) | 53193 | `de0959a4a103eca99616a958d4b74e3f5529e9f6c490c273ed69420dee21d268` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-lateral-snr+5.csv.gz) | 45044 | `7e325f1b13136f3a78c4001aa14e7f541acf2705369b8f3348837fcd5d842cbb` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-lateral-snr-5.csv.gz) | 53624 | `e15ab37be23fa122b1e6c8d5539b345b37defb24367af40ef5a9768b83411cc4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-mixed-snr+0.csv.gz) | 43606 | `16f898af64b191b564edb3b8807babef17e259111ea33d683b2ab341b1108539` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-mixed-snr+5.csv.gz) | 34968 | `f8de3809c600859fd029d21283da1849d08909ba4bd2a85c2a9933b3116b4015` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-mixed-snr-5.csv.gz) | 51567 | `e5c6ab659d5f2b680083eb84ea0121c09207bfa976c6aa4794cf9aa671d3a0d1` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-blink-snr+0.csv.gz) | 43081 | `def1a7423757d7e7dd696aee9952a745d169b9a9603d88c647217651aa353a2f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-blink-snr+5.csv.gz) | 41715 | `d33865f13f0006d41acccaabd6fe66add357deee700924c22586264e42aeaaca` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-blink-snr-5.csv.gz) | 52207 | `704f26e82d0939427370a9e5591b224988efce5cd57bfd2c71ccbf145aef94b1` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-clean-clean.csv.gz) | 4633 | `9e1aad2f028693df204a044758732acffdf2c0a2fe1f123bd5d36c0ed171adba` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-lateral-snr+0.csv.gz) | 44138 | `22711630cb7bb1ccb4fdeab3feb5e0098ca662c8f2415ffdd5ee0cc0b353cc22` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-lateral-snr+5.csv.gz) | 42600 | `7188fcc16e63f90c4dcd2125314222e45ba6f2dc4fce7f3ffb21d3f6db53d7f2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-lateral-snr-5.csv.gz) | 52453 | `55675c7e34ad8f4d21be4991ccc2ceab0a2d7f83e223f060fc8911b7f66d98ad` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-mixed-snr+0.csv.gz) | 42864 | `046900e9fafd079d09f31d4d14d34b1da7250860e477a4af558522a61ff36891` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-mixed-snr+5.csv.gz) | 41615 | `befb1829a24bb1b9922761f039fa4aa2674195ab383979a1a15ec8e5aa1bff22` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-mixed-snr-5.csv.gz) | 52107 | `ce2262233779d9253ec78a26560906cfb4b9a9963aaff029d49d4af1371503c5` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-blink-snr+0.csv.gz) | 48357 | `652a3a7a5cda7e32f02b455bbbb90d8c6642e1fa8b8b39122057072762d15bb7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-blink-snr+5.csv.gz) | 46956 | `eae315d5ae3845557cc701581838ff34d46f616925e1685e68c1af00318deb6c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-blink-snr-5.csv.gz) | 50632 | `48fafe55020b3fdb7f3edd138dd65e508c320e5f99bf5906ea3f5c83457badfe` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-clean-clean.csv.gz) | 4798 | `867aa11eda281e0cd7e2a4d0fd416352460cbce803534563913b4ca259a52c4e` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-lateral-snr+0.csv.gz) | 55123 | `26e697819fe087d421af562054a879213a45e60640c778e78c6f031fc2fb14f8` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-lateral-snr+5.csv.gz) | 48524 | `db1cea4fa2906cfd0f47244c19c23ba0d8e212736b205cd380136819c71c6016` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-lateral-snr-5.csv.gz) | 55701 | `6cebc2a330456704b5a8817312a0f2d5e78b6836811e32416b0f987c72e07565` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-mixed-snr+0.csv.gz) | 48482 | `987ac38b6cb17be28bfbc31f002a8eed75be983138cc85e43d06a81b1f38275c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-mixed-snr+5.csv.gz) | 47083 | `31017a844da943367e717049d6efaff40fb1589679f89b4f0ab4cc7d2a2dc3dd` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-mixed-snr-5.csv.gz) | 54854 | `8ef4abd723d1da193329b941b42c5935bb9a376f8198fb81de7d9f525efd03e7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-blink-snr+0.csv.gz) | 41481 | `43882c030423fa297817a6bb9832661bb047580f108c81ab1fb7af87fe36a087` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-blink-snr+5.csv.gz) | 34762 | `590433fd373d9482fe21e35238a5335ebc17962926572e13dc1cadc3626e41a5` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-blink-snr-5.csv.gz) | 44214 | `409b55d42f9e4dd619fb5e70f11ba5674856cddf840838229b27f51cce754fdf` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-clean-clean.csv.gz) | 4634 | `9e88ea0958902e4376f98508f2942fdd63f0fd222ad09e284e3deaa79e937650` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-lateral-snr+0.csv.gz) | 43331 | `9957ab1b8357d3287a89064081f202dabfd6e1a4764948d24d32384ba5a3ecc7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-lateral-snr+5.csv.gz) | 13788 | `28a2bb8b261bb5bf7a66ef92a0b2ffe5b1162ef312868894ce0cd19ddf1965c7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-lateral-snr-5.csv.gz) | 53623 | `47473e859830e0abf15ec91f08de47793d2355c93606a015144ff3193971a589` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-mixed-snr+0.csv.gz) | 41546 | `a53de4acebc0ff836f325fe192864f38be1fae02af4898caf90be923a99ad691` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-mixed-snr+5.csv.gz) | 34665 | `8baf8d20d2b627f48577c8feecc5612f6b64910d0329a14cf32dafd15ca15d77` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-mixed-snr-5.csv.gz) | 44094 | `90a075cb84f5e40c08e75bc7f5ccd479d250db133a95b1b51fe03f7840240359` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-blink-snr+0.csv.gz) | 42900 | `576703726121fe4b0fe33528151d7b184394f2c4754fc8e8db1ccc90f50b111a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-blink-snr+5.csv.gz) | 41610 | `e2f8bfbd26354ffe751fb444ff1f438d1132e86f648af2407229d7353e5221c0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-blink-snr-5.csv.gz) | 51668 | `c3d9bc57283e37508bfd471bf59ebeb98ce2683b1c4cfac35e2cf6359a574ca8` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-clean-clean.csv.gz) | 4633 | `3665a2dbfeac64b0631f6451b49ba9d4000b23a9deee6e86356bd0df78152886` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-lateral-snr+0.csv.gz) | 51830 | `b516559e86c2d70b87f3bf2a540533b4bdc90d1b2bf530ccda5c0607bd447ae5` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-lateral-snr+5.csv.gz) | 42928 | `0acde0fed1123ce84b09bb59b1b41bb85c37b44828d11d4f9cdad91d4d0629d2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-lateral-snr-5.csv.gz) | 52964 | `f90cea411658099b2e4cbb49c760e98f159b7bbd06dd251fccb88f743ae6ae4f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-mixed-snr+0.csv.gz) | 42131 | `0368ae87be2b5372f1efef4d236acce34ef6f0f368f4117c703701cfabf03a73` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-mixed-snr+5.csv.gz) | 41422 | `1b01bc27498750c0406e15803a48213eb59b6e6282ca9a629fc292cc6423e1b9` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-mixed-snr-5.csv.gz) | 51731 | `adb782863efff12ad1f0dd93195b0278bf61caf5a760812bad8a147996d71b6e` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-blink-snr+0.csv.gz) | 41615 | `7ff5b37d6654ddbf05f2e5fec212d940c9e73bd5654c9fcbeec5d87e1973ea8a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-blink-snr+5.csv.gz) | 34965 | `ce56d5409f0f0a94b19e2d30d34fc8b48ea6dc33f746c2d803f980d0018a77f3` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-blink-snr-5.csv.gz) | 42908 | `9ead91d7598d1628ca8abcb6a5530d2c440e82ca7f323e5e447b7d7f4b7f90c0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-clean-clean.csv.gz) | 4632 | `47b068138d88143f19957a2b9e64411102718bb78b8992520b544452bf420722` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-lateral-snr+0.csv.gz) | 45080 | `02962ec3bcb20116bdbeacc5728da5a123fc7f4208585195a29bcda839fc3147` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-lateral-snr+5.csv.gz) | 42962 | `f401a8f6c45a4ac29f7d65448d023e58c172cfadb28cdd6aef4e78a6c5f2cb85` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-lateral-snr-5.csv.gz) | 53280 | `396ae2bd3aaf8888a5e146c8cfa4f105fa7605b38d52c39642c6ff931968d9f0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-mixed-snr+0.csv.gz) | 41687 | `23a0aa3ecd4e74207c08617175f068315180a017c1fea1210c2e06cac75b2991` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-mixed-snr+5.csv.gz) | 35012 | `de6e25acb1a2e26468c6eb84a63626c42ceed8f64957db8c2ca9db83dca18411` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-mixed-snr-5.csv.gz) | 42717 | `32d5a43e044e67772cd226d7211462aecadc975d0be86550838a5dca48a65e28` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-blink-snr+0.csv.gz) | 51020 | `52c9cf29dba79ab8272c9a2d6f6a2116a3be84536288f59950ff140600dd906a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-blink-snr+5.csv.gz) | 43232 | `bb20c530bc85498af2176fb57810b6c82d237a289e3b48fe97bf2bc9d8de5f23` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-blink-snr-5.csv.gz) | 53096 | `c4f3f6b712f18b8f2e01614d6c8b44de1927661d7ad0db271adb340a414780e6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-clean-clean.csv.gz) | 4632 | `b9678a325ae287aadb3e0abe41538efe7813e3bec8932dff9984d653f6bae251` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-lateral-snr+0.csv.gz) | 53415 | `f1a4a170ab501c39ab4beb519bec33702d36eb8a7aa8d947f27c628d34ff480a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-lateral-snr+5.csv.gz) | 44140 | `6acf85dedac9744100e26292d9fabf2076102db1f8d54bd9203dce251a85ae3f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-lateral-snr-5.csv.gz) | 53854 | `15329ec05ba7f0e5ec99d8c02843418df46973a4e3ad566bbe1d5f26a0b3aeca` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-mixed-snr+0.csv.gz) | 50501 | `82ba4c89b8fa3a85066538e397c7b02f8f3a82c17f3cb51ed59265bfe8c74d71` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-mixed-snr+5.csv.gz) | 43313 | `6fae5a9b9574445f8f06ea180e4394dc0110e032d5351c3e4c91d1a98bfc4524` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-mixed-snr-5.csv.gz) | 53052 | `99e96112a82e6baa6e0f5bcea7df937b156766d3a3738b9b0bb8ae636fd9e3c8` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-blink-snr+0.csv.gz) | 47104 | `6ff12127ce62acc3e302549b5381454275c17c7d6951ffbfa78d000d5634c0e5` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-blink-snr+5.csv.gz) | 47036 | `63ed133e9299c734b67337293b2ca9b6c54ccc893104347b6c98de99626dd81d` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-blink-snr-5.csv.gz) | 54372 | `dbf0e01f46a43e4055dcce9e1967b13e57ba5bc77fd436e5e1c90fdafbe2e055` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-clean-clean.csv.gz) | 4798 | `aa009a6784ebb96756418fba58cfb24885ec300b02b28b7465e01245099e8e9e` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-lateral-snr+0.csv.gz) | 47642 | `ef3f917d599f353a153d5a190847a91d833a15ea0e5df94b0530bad86223e20e` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-lateral-snr+5.csv.gz) | 46990 | `6b3c476f27876657564531e4c4b1568f41a84c217368d1a940cfcdd5c8b1e481` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-lateral-snr-5.csv.gz) | 54527 | `55c7da15465ece593509fe4e13c86a4f1661d8c4e432d6ece3cfffa4b5b3126f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-mixed-snr+0.csv.gz) | 48206 | `a3172ee62046353c16078d76439e3483a45a78d1c2ee8cb647de69e9c490794f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-mixed-snr+5.csv.gz) | 46992 | `0ba6196fc18a1100e5a5158580eae4bd1e89983467a292158c6319c2a2952bf9` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-mixed-snr-5.csv.gz) | 55002 | `adcddc7e5a3e6ec3850f2d7129cf4be4acee1378ac5a85fe0dd9ff69a0fa81f7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-blink-snr+0.csv.gz) | 48493 | `6e48532b82c24a1aa7361709344f149f6d5d010f818d4987e4be3a09e534b0f6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-blink-snr+5.csv.gz) | 47135 | `75657614a2055836b6dce19ccee09b0eaf7bfcbc2e1d02f90d103ae35322dd02` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-blink-snr-5.csv.gz) | 54567 | `cb22ca087e167e0bdba0cc75035c78665bb3df52838432eedee98dfd0eb922d9` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-clean-clean.csv.gz) | 4798 | `91d13fac189b3686bd66e505d7300c5a86433ed313962f50006771b9d3a3da74` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-lateral-snr+0.csv.gz) | 54378 | `562fdf407041171895e31cb0eb19a7f790de8f3ed88e04b6e76264d860362de9` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-lateral-snr+5.csv.gz) | 46957 | `be77641128efb643e0082bb20ad549051c0ca7c7aa6dc120c4f1b909c8b12f7f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-lateral-snr-5.csv.gz) | 55345 | `6d9481734ab79ecbab32e364f6da1a782810f4c3b0cfc524d8f5dc75c2a746c7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-mixed-snr+0.csv.gz) | 48621 | `ddd5fee34109c5b36f4d8f7a45a54c48e7eaffbf5d7e8fb974e1a351641ac746` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-mixed-snr+5.csv.gz) | 47127 | `1874f50605bcff5065f25b88d315bfc611329d0060ef15e97a3cd54a43b7551f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-mixed-snr-5.csv.gz) | 54555 | `2e23413c9bc7d190639061cab2d3df221a2d0ad8102d080b5e68a5537905b645` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-blink-snr+0.csv.gz) | 49006 | `f2613ab3a4523c04ec33f2d36544545ce7cb3668b4fa91703d16cec2cb8c6ee6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-blink-snr+5.csv.gz) | 47698 | `6aa8144e05e11b67c93e67d9c74b64e1aee636a97d9f82d649f7539007d9c72d` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-blink-snr-5.csv.gz) | 54470 | `aeaafefcf97b3950812275dadceacd3e9ee468418ca149e138c25bf07d512efb` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-clean-clean.csv.gz) | 4798 | `c75d475fec8184cd1e084a147bf5bc30306e43d26264300e0e049b3ba8ada279` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-lateral-snr+0.csv.gz) | 47134 | `67d59c66260b7123feaa4b638f96d5733e33e4ac3387099e3d5b6a8b9e9829ad` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-lateral-snr+5.csv.gz) | 47036 | `1e20fc424049a9c361bd86d3bb6a90626271dad9be345e44e94c1981bd5be293` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-lateral-snr-5.csv.gz) | 54288 | `4bce78f4ca6d252a5b1855b6f0fa10b09b3780d7f2e143e14bb29633aec1352d` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-mixed-snr+0.csv.gz) | 48995 | `eb646ee88274bab6aa9eb07fd890f6e9ba1fca96f453a63ca2a60099bc0f866f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-mixed-snr+5.csv.gz) | 47666 | `014d4fd046bec2701de4840bd087cef75e8b1d891cea99f79d3e2cd40dc138e0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-mixed-snr-5.csv.gz) | 54370 | `2df9b63bc2ec668be582c13650a11ed9ff8603d620f658e804a6e92f5a4cca28` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-blink-snr+0.csv.gz) | 47189 | `7db1752727560abf0eed9434aace8f54d7115845861a4368314cff86689064d5` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-blink-snr+5.csv.gz) | 47081 | `45fe5002938610bb0387f3ba3f9c025b57bf75e99c33f3623dc56c7b76788dbd` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-blink-snr-5.csv.gz) | 49146 | `22f5b47ae7b5699b3c93246b32b94c1c39ab035fa07e419f8d13d1d50c817e51` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-clean-clean.csv.gz) | 4804 | `c79d6fbb6f216d9e5f0e97b19ff49a0478381f5ed85ac23bee15b2b84c88f465` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-lateral-snr+0.csv.gz) | 49300 | `ef93e0de9525b1d0346fbfbdb311f6014701eea4ea2d916553f4d944ea6784ff` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-lateral-snr+5.csv.gz) | 47192 | `16d67b95c09170a528d99aea514ca16c992b6a8e16ca4ff3515f22b39a806a22` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-lateral-snr-5.csv.gz) | 56906 | `afa294ba3c19d416636601d312b1cca7729ef2baf75a5dcb7acaba61fc143b12` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-mixed-snr+0.csv.gz) | 47079 | `8d22cac47b16f361f24562be7e74094c2a33b93d370aa7a48c5f14a189b468c8` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-mixed-snr+5.csv.gz) | 46985 | `bcb0e58fc900e64ff761bdc14ba1513897a6f8dc7631672965380863d07eab21` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-mixed-snr-5.csv.gz) | 49104 | `c3d42a7da52e3cb8a3c56f87e5fd295e3221a95758f717f335eb1f5be72d3691` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-blink-snr+0.csv.gz) | 48017 | `dffbc929ea5684102229291aa9e0450508d3cdd527466376b62639a1de0c75b3` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-blink-snr+5.csv.gz) | 47112 | `660f1b4e27bbfdf0c0f88922d7025717fce5b057d271f393f27806a5b4b50abd` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-blink-snr-5.csv.gz) | 54650 | `98a453a90d79e2cec9b09838a1267bd6270bb5f334de01225bfafb92c9409297` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-clean-clean.csv.gz) | 4798 | `22f3ae1f628a75c9c5608b36c79fce7613b2cc22f4f086b00fd4b6b04a8a057b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-lateral-snr+0.csv.gz) | 49728 | `5582ef036cdcfa2069ecb64acad2f5f3f642b0c41e3cb86f944e19e3658beebd` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-lateral-snr+5.csv.gz) | 47544 | `530aa29e6b917b21e438d573e6fd38b14316087e25d9c2b90384f0c5dd06b347` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-lateral-snr-5.csv.gz) | 55339 | `cedfab171c26019cedd8a3656b6d8d84a5b0f6b9e9bf82935faf25cda152715d` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-mixed-snr+0.csv.gz) | 47171 | `37ac05da3e13ca400d8fd9d4a9cda456cbecd0b2928a253e2468127f1c928753` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-mixed-snr+5.csv.gz) | 47086 | `1d0a0fef7b330de88b3e2ee79cdb13bfbc816f68a0c3d3691f51c589f3139eea` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-mixed-snr-5.csv.gz) | 54439 | `58e001850f85c36c551156f83e4b5e605b7f15ced7a851debcf9094958fe7d17` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-blink-snr+0.csv.gz) | 47023 | `3a0149e9edb7198729c881bf9a84438c0529488fc56b623bbb5719a61ab72552` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-blink-snr+5.csv.gz) | 36435 | `35f10c9c618516994e93d87327947f426607f0397ba3ac0e9fece197d1c2c97c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-blink-snr-5.csv.gz) | 54374 | `5deb47fc5d9666646cd14e5a64270b07af26f576ea58a8caa4b1f173fd8a3700` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-clean-clean.csv.gz) | 4798 | `8e5b6d7b9dde0b700c1fe79c9a8a7ff4c9fd28b25e0184d1c2505d521b3b359e` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-lateral-snr+0.csv.gz) | 49652 | `52edfb7ccc56746c7223d7549430924d4ea1d08769c275b06ddafdfe516a3906` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-lateral-snr+5.csv.gz) | 47129 | `f72e16621b939c19f61e2254d82711362086ce0dc55e7fc3915de034a87bdf41` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-lateral-snr-5.csv.gz) | 55221 | `594a104118d7e07f5fbb398be3130042bd74d8ff7c4ce21a4981047d5a6ef3dc` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-mixed-snr+0.csv.gz) | 46944 | `4b957579635534b82aeec038115f0f980f99668470aac7d5cc2270fcfcef9a6b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-mixed-snr+5.csv.gz) | 36609 | `e98d34ae0e78d17741d4751b49237d58230a636791307c4976a9bc2b9aa0e876` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-mixed-snr-5.csv.gz) | 54210 | `7b0dfa5edbae6104eab9503d5ee83ee54fdbab1810b3512f8a94b3b19c85b446` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-blink-snr+0.csv.gz) | 42164 | `f7b672caf985b32e1e51e2d8b7c525e5600535533cb06bfd854e672d099a6947` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-blink-snr+5.csv.gz) | 34949 | `23c42cd1d7e93f0f812ff84924372c2734baa6ce2e616046c265703097b8fcb9` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-blink-snr-5.csv.gz) | 51294 | `28ebdf09db7dcfc5962d15dacc0e00ef88c26bee45bd5fe093c38ee003c15b81` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-clean-clean.csv.gz) | 4632 | `cec6029bdd83df0257ac508cd9dd89b38c907b7ed84a168225c9850bc4edc516` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-lateral-snr+0.csv.gz) | 52993 | `4848910aaea6af75ecabb21ab2c0380b22066c7128c7f9a851d6743b1ae3d43f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-lateral-snr+5.csv.gz) | 44468 | `ce979f969024fc6bbb9013d1e3e8bfeb0df9e9ab11836438614979084ef0e6e0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-lateral-snr-5.csv.gz) | 53749 | `f299180a71ea08a6e1c899781484b029afe0e7fee07b155dbe5332cf288a8d58` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-mixed-snr+0.csv.gz) | 42045 | `d720e7687c38f7466dbdd00d05c1c8116a7a7409b5333f43f9c9836335532185` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-mixed-snr+5.csv.gz) | 34867 | `a19cbe5c367a2c8970550edb0e4627117e1705a6c4cd8d76e1df8516e84614d6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-mixed-snr-5.csv.gz) | 50836 | `006f0285e6159b25cc1bce82ca5368753a3e9eb5ce0ebe25fb45cc29199ad773` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-blink-snr+0.csv.gz) | 48455 | `a5b1e6dc2496fdf155982687408cba505b6ff3be74cd59f652d1bcaa088ada5a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-blink-snr+5.csv.gz) | 47049 | `81f1578b2c5743845c93afb62d8e4fc613f6fc362665f328b0c5aa2e7e1bb713` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-blink-snr-5.csv.gz) | 54921 | `b0f3f57737e37f96f0f106bdb237ff1ad855e36a855e9ca50f8d34511ed55085` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-clean-clean.csv.gz) | 4797 | `5cd7fbe7016d2324242e91469b0ca9ee38a3ce447e5112e7a2d32b8c59a3206b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-lateral-snr+0.csv.gz) | 48554 | `f11b972fdd4be9af3aff3a74d36de18b44a637293ad7c3c4e808146ce3830d1b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-lateral-snr+5.csv.gz) | 47124 | `5fea7aafca0ba6267351c1859067e9a1c9e44ca46b554bb99b88df519346ce62` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-lateral-snr-5.csv.gz) | 55322 | `85396962584fb0ce911203cb2fb77793b136f0434979fa39b184211c1d9ff371` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-mixed-snr+0.csv.gz) | 48434 | `c49fdfb25102365585e36b7ee76d73f07022c0798affe0909079e38af3529b74` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-mixed-snr+5.csv.gz) | 46994 | `ac9bb7333689049ef154386682d449730116e1f28c12ac08d47a5ae4c8c77212` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-mixed-snr-5.csv.gz) | 54908 | `400168739a88d360982f6bcc0a2b72fd4a79645daf5641c736672446206eea8c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-blink-snr+0.csv.gz) | 47277 | `e0ed04372769722f0f0448e2a46b4f95cb1207db0cfb214e9419a2f5c66fe7e4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-blink-snr+5.csv.gz) | 47169 | `4d17060ee084f031e3269a75605c081d2cca8cb632c2b45729024d3fc63c46fe` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-blink-snr-5.csv.gz) | 54693 | `624c7a400179e435e63f9d3d6c3c290a1335c39ad392bef557c72fa29e1d4178` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-clean-clean.csv.gz) | 4803 | `e49ce0b5ae19577fe7bfc047b9a032d11abec2fc308b9d858644b42ce33286d0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-lateral-snr+0.csv.gz) | 55924 | `a3c13bb28cd0c204008fb5e08063f8276f017efa935d0d423a76cc266e1c03d6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-lateral-snr+5.csv.gz) | 54087 | `1c024aafcef4c2fe0957d42b5ff15e3014f486e609ecf66de6e67632afa17a20` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-lateral-snr-5.csv.gz) | 56897 | `44eb77907730049200157109ec6ca8c0c876aea80413937fd7ccb18677569068` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-mixed-snr+0.csv.gz) | 47322 | `3f8fb06c3b8b378639a014678492a5e9f333f72473cf1abc4eb941a3e0c70e7b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-mixed-snr+5.csv.gz) | 47090 | `14f4eb6eac976dc8f515f9b72d02a2a277401c6847238f82ad349f7469bee843` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-mixed-snr-5.csv.gz) | 54774 | `d0e3d3c51839b0770e27d9bd0272fabf97121249abeda7072a614182b0e932cc` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-blink-snr+0.csv.gz) | 51556 | `3db8c8ee4814e6d0177d91aa48d2bd88ac3d46cd14d983f9355a290633df4c0b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-blink-snr+5.csv.gz) | 43317 | `5628c438b9f1d55bba4b33180b8f98a745110fd178b758c7e4ebd72ae628b36c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-blink-snr-5.csv.gz) | 52378 | `75d5a2eed57992d332bb98596167d4e3b288eba073fd4d3e405f75638e9cdcb4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-clean-clean.csv.gz) | 4633 | `da7d88c275bbd53e7daaa4e96367d3bb665c479150400963c98bb5efc2f7d05c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-lateral-snr+0.csv.gz) | 52584 | `ace6ef593d1b677b300cfd33ddcfc028e54c9c1e2b5b3841f252f53e8f6da46f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-lateral-snr+5.csv.gz) | 42418 | `938fb7f61551dcdff47c689f4d9a01fc4d04bb3e1e6e2b6dbd842ef7ce43da70` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-lateral-snr-5.csv.gz) | 53265 | `46e29b66d728d1173c2e29661e255a1edbacc220eaea0400b3bc7a1a820b870b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-mixed-snr+0.csv.gz) | 50668 | `ab2bcc594ab9b39f17bd3bf941267ed0d99683648fcaa3bb2f71c822edcdef9b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-mixed-snr+5.csv.gz) | 43130 | `1836d9c9ddc2bfb3f46e7fe70e50ae1e0f837cdcbe4e3e6f5318071efb4b7d22` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-mixed-snr-5.csv.gz) | 51661 | `5b19a2f3a0f6cfa2e18db282706539cd68ca429694e7c16ee79cb90a83b18957` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-blink-snr+0.csv.gz) | 47273 | `6bcbd794e2fd1c61472d6a543fbd019b1ebff5b0549ba711e84557b04e0b6818` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-blink-snr+5.csv.gz) | 37334 | `2e2e5f2f47f0fe014c840be96dee13358f3fd893fc12939de8aead75f3316250` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-blink-snr-5.csv.gz) | 48662 | `f8ad5b53d7fda9131a75c484b10607f52c46eb3f4111e1a921f9c57887689573` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-clean-clean.csv.gz) | 4797 | `7a9a36f21ea7e51bdf2318f059cafee91544a8822adc103511f44749d7d15b48` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-lateral-snr+0.csv.gz) | 49467 | `9e72bd8d67e53ea5de211d1f41cc84fa490dec03a6136012062d862e842a597a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-lateral-snr+5.csv.gz) | 47177 | `9374e620496e87689044fa1d3614fc823806c8b99ab50d2cdc21041ed4661849` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-lateral-snr-5.csv.gz) | 55326 | `126f56ece883d11db672ff1b937b60a469a4784daa9fa0ada3b8d3b34278d169` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-mixed-snr+0.csv.gz) | 47024 | `e30f8e01f2ee9d81a9f39a894d6376c61d0b758481312665d6b623017979d52e` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-mixed-snr+5.csv.gz) | 36288 | `d0b39ebca216f71482a6ccc16d5b16aab995c03917f4a6646c80ca51d32868f0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-mixed-snr-5.csv.gz) | 47818 | `f99b2fcc349bbf910dbd4a8a4550bfbe9720e266bc3b1d4ad54eb581c05fc80b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-blink-snr+0.csv.gz) | 47784 | `5b47711f3855c64e20445345b34bd48f77d596fa5ebc13c452fb9cc511618584` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-blink-snr+5.csv.gz) | 36532 | `86b71c166f8820818999b862dd8b4f69258daffabdda25aef524f44bcd428dcc` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-blink-snr-5.csv.gz) | 74492 | `0124cb6feaf178a154361cb4d749a6d46b89e75d308cbfa300c8800dfb512c25` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-clean-clean.csv.gz) | 4804 | `f796564de4a088b1471dd512bd8203f9b0f39c19e16e2ad3def158f9d50ed1d4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-lateral-snr+0.csv.gz) | 55711 | `0c219c5c481681acc0f1e69efc657fbe120693ef9a52302fc2e21548ad2b78d3` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-lateral-snr+5.csv.gz) | 47576 | `dcad56cf27b27d7ca08c6987f56215ccc2b980993a43ecac74a0754baeffbd80` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-lateral-snr-5.csv.gz) | 56636 | `e1db9a05d4e7967002229438da1750fa0ee932adbfd1fca8ef0b113ffd7593f6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-mixed-snr+0.csv.gz) | 47885 | `a1031b76ead3834d24a46cd9cf0d14b6260db54aebb64e48888d704755d79ff9` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-mixed-snr+5.csv.gz) | 36535 | `6c5bb955f202cdcd4141d8da4b82e5e2694b3ef3c101fea85d44666c49ce0a92` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-mixed-snr-5.csv.gz) | 49564 | `2b2cb25282d3f40d69107473b18797775c2486876f7d67dade8fda61da82db7d` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-blink-snr+0.csv.gz) | 47136 | `4f39fab3833276f30e014fa639a3dac4e68af1608850da332505b033292d5afb` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-blink-snr+5.csv.gz) | 36413 | `d8f19609d2e81138b90ec39fd2fab834c59a361a338ebc99b3a5d82a76e22611` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-blink-snr-5.csv.gz) | 48003 | `9e20b58ac44800c891d65f8a8d6b9a81421f09c3c39bd2a85eb7d2713a67f2e1` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-clean-clean.csv.gz) | 4803 | `958c17d93a67b77d05d78080ca6f8383449af95f1ded14231e60ed8e8f8bca2d` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-lateral-snr+0.csv.gz) | 54794 | `95df4b0a2f0adaf0e3d31a7b202db747f884e2812ff6c96f3e6bf0122cc46cd0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-lateral-snr+5.csv.gz) | 47345 | `d962de55211caa011eff4d3a15457f0c7157552a1a3a9c735166213929a8d48f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-lateral-snr-5.csv.gz) | 56353 | `d9c3c64219c4d8aa733f0800aae5926cddf4c456a0f115bf2b134053527870bd` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-mixed-snr+0.csv.gz) | 47230 | `5dee0a608470f83368496b2402063b95d48a063f46ca0cf1dfbd666b2328305b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-mixed-snr+5.csv.gz) | 36525 | `d99df7938e8421f91e98fa5808086c4b61c1af3c870a2756a1a88e76d7699c8a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-mixed-snr-5.csv.gz) | 48083 | `a519a9bf0615e8f0826b40d0bd0673c2f69cae6a888b413d8e6379def24106c3` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-blink-snr+0.csv.gz) | 54925 | `49f1da6b84c8ea28ee3f7f6a26645e9c4913271afeaa9f7d0eaa1bdfcf8f45dc` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-blink-snr+5.csv.gz) | 47920 | `c1a2c021ba4ec28b835b1d510aac4d90fa09c8f5326f317fc26652f567835fff` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-blink-snr-5.csv.gz) | 55610 | `13baf804080610567290640044822dae9a5068a3d68139b56b08addaed6f827b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-clean-clean.csv.gz) | 4798 | `20f0d83e9e46bb42930798532608e135091aef2a5d92cc8348058ea4bd9272c1` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-lateral-snr+0.csv.gz) | 48999 | `c6d011454d4457a93d7f9d76095570c81e0f5f3dc2641ace25f4b0639c4f4c2c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-lateral-snr+5.csv.gz) | 47014 | `d34f490c781555fd79c26de83ed5ba33769e89b707d0c18ec36d3fd00259249a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-lateral-snr-5.csv.gz) | 55344 | `9cab6933f794fe58aa97845517f9407d96afd2462f34434eca144095aeec6977` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-mixed-snr+0.csv.gz) | 54837 | `cd1d0363775a0e97826fdd9b06b39a4c1a5458369194dd43ec0ab2874cf51bee` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-mixed-snr+5.csv.gz) | 48049 | `3b815cf7d4a04b7b28b98243c1725c74b5e6f2e48e49fb4ea943ac99894a10d4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-mixed-snr-5.csv.gz) | 55599 | `bb1f2f605f502568bd67a509f78412b1574a6698df30f0d2d555cbe33a5c25e3` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-blink-snr+0.csv.gz) | 47459 | `6a36d5fbd63755d09c2a8ee58900a8959984a8d6702b6e9a04d5d1e328116397` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-blink-snr+5.csv.gz) | 36211 | `7707f072c54eaf7482e907f2823770e5b4a60eba61725fe3e6f9e42fab7b740c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-blink-snr-5.csv.gz) | 48856 | `2c3d1cb74ba16ab24ca0205a0a41b53116b16e14e9ee7495c5a0b64f8425a922` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-clean-clean.csv.gz) | 4798 | `f9fa69a214c475965b0d385f5c2140d75410d51214d1511a9429d1f06cebed98` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-lateral-snr+0.csv.gz) | 54289 | `fdc5a02d832b0c3a8b7bbfc6f4eb1989046331132b8f8607ce46ffddbe104127` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-lateral-snr+5.csv.gz) | 47509 | `301201a92dd52d2f59c022d6c25812e3f7d5e06babd4567c15b305e88fc64da9` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-lateral-snr-5.csv.gz) | 55607 | `95508a49ca7dbf97a4bf6bd1a96ddf4c853cf197e02c86a105a37832247a0741` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-mixed-snr+0.csv.gz) | 47542 | `8aa27448864c060770f0ec62f4b724f5a4eb5a1a391b2541d4e708a52d8bfed4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-mixed-snr+5.csv.gz) | 37845 | `f07c62020c3b2fd4c6dfc428b4b01f7bc825998795cea7187288647e7882afa2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-mixed-snr-5.csv.gz) | 48969 | `8ad8ef896752e0b8cf676aa327db725ce4735b5e45dea2da5f82105bf8d9c352` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-blink-snr+0.csv.gz) | 51105 | `e5bccce8c7bf51ce34219887c2c65ff0d43d779f4b33b95e956c694fe724318a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-blink-snr+5.csv.gz) | 35060 | `35b01e46a6558e792fac5088ef7c03b9256319a24b890606bff3a56743c71ea4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-blink-snr-5.csv.gz) | 52912 | `01b7e20420133e817ebb339551141f1a0434fc1dade9561f8971592dab796f2f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-clean-clean.csv.gz) | 4633 | `0913f0d583e03e5194996de98295e1f574d3f2273efc4c190fc5834d84dfebc6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-lateral-snr+0.csv.gz) | 53358 | `ef44a42151b744dd01b269cd8fc799c4d6d350274e68f34638d489df44274f3f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-lateral-snr+5.csv.gz) | 39550 | `bd409f3006f255497324655a36ba55d19d67f1364e2e2a1972db2b78e97704f3` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-lateral-snr-5.csv.gz) | 54199 | `6e35c6e01b2af676fb748e58805015574766cff0184b0cc2becddea44161d15c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-mixed-snr+0.csv.gz) | 51005 | `6975863d6d3e279d3f4a2273da130cf12faec94f152d56d04288cd09eca78fc7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-mixed-snr+5.csv.gz) | 35029 | `58807078f654c3a0bcf582723e80dd5366233ce05779e6091b56cd68f588a6bb` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-mixed-snr-5.csv.gz) | 52867 | `7cd72eaea31cb305fd0ae4913b9c86af8e4b0fb63fe2ab7e2c04e75529202a89` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-blink-snr+0.csv.gz) | 47398 | `8ebaeb087140f6c112c1d715d6bab04a940c2fe703e34e0e10973999f37f1ef6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-blink-snr+5.csv.gz) | 36115 | `b7c4185b38a9ad2ccbfa705d3ca6282ca7a61e0b4f0a45a42f4fa285bbcf33cf` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-blink-snr-5.csv.gz) | 49078 | `b6ae6ed9103647c3f54759d48a20d92732662284840fa052131cce573eecdde2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-clean-clean.csv.gz) | 4798 | `04d3dd64c99908341ac3fad09ebcd40363383c684d27223ae2585b9e7feb1c6d` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-lateral-snr+0.csv.gz) | 48913 | `2eb4bc2be618034b130338cf844c6df04b4576962283ef3f570628cc42b1438c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-lateral-snr+5.csv.gz) | 47018 | `8ec40dd00cb192efe04a7e3134f1944064a149cfb6ea4b9668b146da1e654738` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-lateral-snr-5.csv.gz) | 55340 | `88cb63372f6b4d9c68a38a04cb13bb3a1ca6107a1cb4cc120133318bcab19aa3` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-mixed-snr+0.csv.gz) | 47409 | `941700e8c95f31b7c7db0fae6ef75d37cf8b29ebf4d91d7d49d2c7bbcbc2d386` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-mixed-snr+5.csv.gz) | 36167 | `c41ead2a8814ada200357ebaaf815fc33ef5b5490fddac596c6d4a6eb4363284` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-mixed-snr-5.csv.gz) | 49116 | `532af300ffce56122cb358040994e95c59952bd9e4528c9b68ef4efa7fa7952f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-blink-snr+0.csv.gz) | 47709 | `07283f6080a46901d1ebfcb0cabe7a52ecfcc619b0f6598f1bb83c2822c7f82c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-blink-snr+5.csv.gz) | 36158 | `eb4c98f92cf49f74caddc5a4bfedc3311ac6061e40e1910da137727f84437b5f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-blink-snr-5.csv.gz) | 54051 | `db28b05515e69ba0709002819f6059d8a95add9ebc37cf817399f1e31b536f59` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-clean-clean.csv.gz) | 4798 | `48b859f7c0550575f68e1f3f655d4fa158da1d7a890f7f2b59352db2cc78e75e` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-lateral-snr+0.csv.gz) | 54239 | `55171641dd2aa8982411ed09c1e9beec60c29af69be3c07f7e21c2240a195a10` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-lateral-snr+5.csv.gz) | 48306 | `0d3d11b179d57f9a597e49d2ec8910fa972ff7313bde2778390e6fb029619d2a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-lateral-snr-5.csv.gz) | 55585 | `944b53c36d3c6093b5619e7274a15c83cbf612d432a8235442cc63e3bc66f2d2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-mixed-snr+0.csv.gz) | 48015 | `61d985b3a28446693437d260f20390bda1f34f20371ba7bf5a1e1978c876c471` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-mixed-snr+5.csv.gz) | 38334 | `70f2db123f6b5b4fc12dc3144556e724b05fb1cb61f4f50e173d3a02d46918cd` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-mixed-snr-5.csv.gz) | 54097 | `23700ab4de808cd266fe803fe35a21af6669942ef5b1a832a016cd0075fd3fab` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-blink-snr+0.csv.gz) | 48727 | `e9cd9bf92b7791e9cf482ae8e029940080fcb555456e69fd6a4ee728e128aae0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-blink-snr+5.csv.gz) | 47720 | `30c41ca1031ff31d489ca89751b1fea89fab3dade52330393cd4733919bf67bd` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-blink-snr-5.csv.gz) | 54830 | `ea3573a4934bbb395b81ed1a2a61ec948a91a9dec7829f6d3c51a749b749aaf2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-clean-clean.csv.gz) | 4803 | `0bf94a2e0a9083fc2e2a39fa01112ce5ed9c056ab63c148e81c6996719e75d30` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-lateral-snr+0.csv.gz) | 55537 | `b1ae11f2fee733f24ed2312200d09201845fd699c16f73824744849f209bc583` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-lateral-snr+5.csv.gz) | 48642 | `9f41b4155c0b43a719c3aef4035a6c8e6a367b70e18fba9a8d3134f9d5630e97` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-lateral-snr-5.csv.gz) | 56823 | `0736143ffeda322831f82b0ae46a6624c0c1b7e654094d9b0c7757eed49945fa` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-mixed-snr+0.csv.gz) | 48836 | `0edb6fb1c5383775ba4b7368844c5650c205bff8309f6ce20f2aff40ac03d24d` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-mixed-snr+5.csv.gz) | 47755 | `9d09d04c06f1993cd0511697a9b312cc12a5c050239ce0d6f2afc085f55ff9f6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-mixed-snr-5.csv.gz) | 54794 | `c3e67227d58bf7fad2a34d06384260cf2215e55b8ab04d541bdf5bfc7c8deec4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-blink-snr+0.csv.gz) | 42849 | `150df4f2dd57dc118d1faf4236c79aec8417f39e7052ab4a61ba7c5fc30f9eb2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-blink-snr+5.csv.gz) | 35525 | `969ea4099830e1954011234dc63fb58ec11478435757eb43796430d49d09c226` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-blink-snr-5.csv.gz) | 52400 | `c34dda514aeac436c6d038adb6fb4976e9a4ccc3782cefdac656ed9f755e0cc7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-clean-clean.csv.gz) | 4632 | `863109e94760fd2576341d9fabf98d7dfb52078a73668ecbbc1cef530bb5f3d6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-lateral-snr+0.csv.gz) | 53268 | `9b9a4d01f648968729c55b3446963c60da6a44769d334c22ac2c404c97c72b3c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-lateral-snr+5.csv.gz) | 44662 | `314e2036a4aba28533f22a4a6644792e29f8e77ab19e9abdae6c7e4ab43c0168` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-lateral-snr-5.csv.gz) | 53735 | `3096b24eaafbbe88ef4d8ce6dc15228cfbc8abf087235160443f1092fa241855` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-mixed-snr+0.csv.gz) | 42106 | `9227852081b872cc91e1fc787825ad40a169879752f9c5698953431caec62249` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-mixed-snr+5.csv.gz) | 42612 | `37bc60529316abd20d3f4f1ce041f05d5345d05febd2655cd57fd03488e21bcf` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-mixed-snr-5.csv.gz) | 51782 | `e8053681935e9f591c9bd779c7e2157b0e41a9274bb8fc2aa8902aa110224c6f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-blink-snr+0.csv.gz) | 42002 | `461d8e2763a230f909bd30154d971d3736c9b63f2ae58c3771648a926558c037` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-blink-snr+5.csv.gz) | 34943 | `46c291ec26b85e1d741d02dd84b4dd3772bbce2718816b5ee70fe94fda582b72` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-blink-snr-5.csv.gz) | 42718 | `cd4a287481cdba24da95c674fdfaae79cba002d39c9931ea383c3ce562464453` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-clean-clean.csv.gz) | 4633 | `9f580ad232a821034cfd49a3e7f3e68a815d10dd1d28ae5848dd3556a11208da` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-lateral-snr+0.csv.gz) | 52546 | `7a6164bde08ae9c6cf29518f19295b9742aa644d3366f0f9507383d0a3b67586` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-lateral-snr+5.csv.gz) | 43689 | `99183eab8e995f25b6174a1534e48f834ed9403734cebb206c6b08443e4102db` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-lateral-snr-5.csv.gz) | 53439 | `8e01e10b0eb4d75579b39feae9117396811ea1c8182de217333504922266d9d8` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-mixed-snr+0.csv.gz) | 41570 | `f8f1fc9f0c5eff80e14fe358e9fc4fec83cc0ef787c4102ba29128c632202738` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-mixed-snr+5.csv.gz) | 34734 | `d34c9481e1e7bf18db8660cd090716ae8cebcea766c8c2a150168de4846224fe` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-mixed-snr-5.csv.gz) | 71719 | `8569fdf999390e442c37f847ddbfaa577ce5e320069812930132275594ff4493` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-blink-snr+0.csv.gz) | 50370 | `cd3e2ea6ac876fc9d961d91d09960b921fbb2fe1cc896f11eeb0466f96228e76` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-blink-snr+5.csv.gz) | 42149 | `da4069d601c43f03d9230563147dcc09b0fac9c4bbf7f27c237337525d3df47a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-blink-snr-5.csv.gz) | 52434 | `68c7f5b639dd2cb8129b07034ce33fdbd16d121bb231748cc98ef9e4f36cbbd8` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-clean-clean.csv.gz) | 4633 | `fe1d50719a96c779aca5de076924915fd6ddb9b61f5453b84a0446910346bc58` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-lateral-snr+0.csv.gz) | 53188 | `ed0343d322bde7fafdcc858f175418b3d161332f60ff26360855ffde551c926c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-lateral-snr+5.csv.gz) | 43042 | `1cf9e62c67fe48b872ac9d7f1ed39b36eafae5901851fbe32b36fb866e4d9938` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-lateral-snr-5.csv.gz) | 53637 | `57906aeaf24294fd83aa0a2c4bac4f791e53de7c504602c61764cb08382e330c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-mixed-snr+0.csv.gz) | 50394 | `bd99b31fb6f81111723045f702cdfda321e6e33b278d6676ec81286b48134b06` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-mixed-snr+5.csv.gz) | 42333 | `dbe9ec7e4137132175bc202988865438a643a56bb7b042e9cb86062d08922ee2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-mixed-snr-5.csv.gz) | 52413 | `51573a074a6c7af3844c7f7669c19eda73c9474d0569b84d114735425aaed900` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-blink-snr+0.csv.gz) | 42224 | `c937bfd5547ac01f18624a101d09ba00ca0f2708ccf89317f7ccb275e25d5858` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-blink-snr+5.csv.gz) | 41912 | `c1e6aa63166758d54b7a9544a5767d5d75486092ce28a7f442d222d794aac28c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-blink-snr-5.csv.gz) | 52684 | `acc3e9dbbea993b4193c96bbec7218ddca503f7f2594e9b7f602e705f1bee854` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-clean-clean.csv.gz) | 4633 | `395c5b20879152c4b8c6c5d818305490369a8565698e644020f06e5e914d77d8` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-lateral-snr+0.csv.gz) | 52454 | `e65df525976b6c28b295f9347b66756d1a11648e39b8f4896f0feef3294e3ad1` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-lateral-snr+5.csv.gz) | 43532 | `1ae9b7e0938c225a4a4f5618cfc21198de741ba44a6f7c37f7e90eb2a2882cdf` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-lateral-snr-5.csv.gz) | 53285 | `be5e46314e3a5485fe7e8bbdb76940b72a5e80a395a24107c67b9714f7f7ee7a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-mixed-snr+0.csv.gz) | 41699 | `61371514ef2a6fd270d186eb50bc8ce41f351ba0c6353dd6ddc8c6022c793aab` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-mixed-snr+5.csv.gz) | 41904 | `6a9d2c2863d8f276814f0dbfab8c6892d8022bb3e1a26392065920c667f32085` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-mixed-snr-5.csv.gz) | 52521 | `e474f9ae5ed2d41010c4a3d5b59d94b0c64de8cf82cb344e97ae44424e49b3c9` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-blink-snr+0.csv.gz) | 46949 | `2135e59ed2751aa98834ab77d9b2c4d256299cc970dd191404f4b3d6a6abdb08` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-blink-snr+5.csv.gz) | 37631 | `0b496dc3f35628a0c8b835140eaf7bd06799b111ea11b8b3769bab90541a6b83` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-blink-snr-5.csv.gz) | 48428 | `496f653f4de0d3fdd85c15f589599e59ac31dd59a39e4ecf32c6f13dd2cb5d55` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-clean-clean.csv.gz) | 4798 | `44729f770dd5c02782fbd7de19176c9690dac71ee1151d365372278c7091886a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-lateral-snr+0.csv.gz) | 50475 | `5f223bf3f8843cbe4c02d4d322fca69f6b9e1f458203a537132b5f533a45c739` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-lateral-snr+5.csv.gz) | 48669 | `d1d8c6f270ba2e284b7ee03d1016c0c5511758eeb05f42f80ec77e59d8906d13` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-lateral-snr-5.csv.gz) | 55717 | `5e708d75d0276618133d06cc9cce7de4d4b63a4ed5f7a8dda576448e7dc2337f` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-mixed-snr+0.csv.gz) | 47093 | `3f33f943f71e2a39d3c1e586d931ddba651522e41efcff8c7029f485955a9f3b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-mixed-snr+5.csv.gz) | 36862 | `1c69ec2ae978e14c7e4e448a687c57c380f51cdfa555af4fc91389082f9e9a46` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-mixed-snr-5.csv.gz) | 48523 | `3458295df062e38f5edf018410686ab2539d7d746a665c2dc20e71eb28ac99d6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/tests.txt](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/tests.txt) | 2591 | `66f50794067768fc60e8fc67d52970c3e652f529e89d6b7439d365f51c4362d5` |
 | [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_paired_differences.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_paired_differences.csv) | 13005384 | `4269a03f92e32a8fd458ea6f6e6e368fa76863b8169a08a609a3af10f95462c1` |
 | [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_channel_strata.csv) | 4367016 | `e2031ce74a58fe1384f454e12f1bd42e5336d6f9c82e6a54b6b5de081c437038` |
 | [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_intervals.csv) | 24397 | `a68ac5908977677aed2bb33ee4f0eeeb3e3debacfda882ac066cd6086ccd3cc4` |
@@ -61636,6 +62958,771 @@ whole,wavelet_ica:posterior,7.566701355586298e-12,0.29311040494677587,0.94547455
 
 ```
 
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,strength_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.560778563302967e-11,1.0140253394822201e-11,2.6742104884428425e-11,498,498,False
+whole,strength_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.29541108055404475,0.2501595220930744,0.373936350066736,498,498,False
+whole,strength_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.08142245718774543,-0.09183011958172871,-0.07168612781632829,498,498,False
+whole,strength_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.615557189979231,-6.774556251926891,-4.457964033985256,498,498,False
+whole,strength_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.615557189979231,-6.774556251926891,-4.457964033985256,498,498,False
+posterior,strength_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.958831387806353e-12,2.6815361310284088e-12,1.3920805576344417e-11,498,498,False
+posterior,strength_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0821031877039048,0.04284080400126784,0.1351162654675804,498,498,False
+posterior,strength_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.02295331216827149,-0.03772266237336399,-0.01208350970755719,498,498,False
+posterior,strength_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.169708416937635,-3.8245612853277144,-0.9595237396996511,498,498,False
+posterior,strength_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.169708416937635,-3.824561285327715,-0.9595237396996511,498,498,False
+central_shared,strength_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.0143249309479707e-11,2.0165933987045232e-11,4.9822142433468075e-11,498,498,False
+central_shared,strength_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5923218801629437,0.5150594516638168,0.7313346555963696,498,498,False
+central_shared,strength_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.16311965617229862,-0.17979756163993482,-0.14815897525649419,498,498,False
+central_shared,strength_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-10.842728722426745,-12.772241318826586,-8.971024917771615,498,498,False
+central_shared,strength_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-10.842728722426745,-12.772241318826586,-8.971024917771615,498,498,False
+whole,blend_old_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.048769131164969e-12,1.1643112176420364e-12,8.909700185120515e-12,498,498,False
+whole,blend_old_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.048077765781286017,0.007390890196595961,0.08955360372746782,498,498,False
+whole,blend_old_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.01330403964375245,-0.025743549610141546,-0.000915362960847519,498,498,False
+whole,blend_old_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.141613791751503,-2.1823609170975886,-0.14132751599930854,498,498,False
+whole,blend_old_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.141613791751503,-2.1823609170975886,-0.14132751599930854,498,498,False
+posterior,blend_old_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.904039990600265e-14,-1.180744204996854e-12,1.8558815933829554e-12,498,498,True
+posterior,blend_old_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0040161024433337895,-0.02688931648960725,0.026921574760285324,498,498,True
+posterior,blend_old_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.00239355804886382,-0.005313938730172797,0.008244247977004753,498,498,True
+posterior,blend_old_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.12763749118063786,-1.2900536842965078,0.826843699527014,498,498,False
+posterior,blend_old_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.12763749118063786,-1.2900536842965078,0.826843699527014,498,498,False
+central_shared,blend_old_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,8.93797186551758e-12,3.2579086596002483e-12,1.8701885074968574e-11,498,498,False
+central_shared,blend_old_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.10870989798275721,0.02667161654741216,0.19386989158115908,498,498,False
+central_shared,blend_old_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.030952108239557356,-0.055836436166340715,-0.006264268353405601,498,498,False
+central_shared,blend_old_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.4270632617924126,-3.9472223899869516,-0.5130694676122585,498,498,False
+central_shared,blend_old_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.4270632617924126,-3.9472223899869516,-0.5130694676122585,498,498,False
+whole,strength_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.786211545448659e-12,4.351649765526416e-12,1.1852711333997231e-11,498,498,False
+whole,strength_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.16958770488052308,0.137780712836447,0.2196993714933868,498,498,False
+whole,strength_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.04737639561695306,-0.05463886753108321,-0.04008049561685011,498,498,False
+whole,strength_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.959330827460263,-4.968098797864448,-2.9513095632469986,498,498,False
+whole,strength_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.959330827460263,-4.968098797864448,-2.9513095632469986,498,498,False
+posterior,strength_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.3879041268986286e-12,8.708775141340292e-13,5.571208299343282e-12,498,498,False
+posterior,strength_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.036271195939670695,0.011369184880122953,0.06717371939919355,498,498,False
+posterior,strength_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.009952029699943125,-0.01791716660998613,-0.0038605197708388634,498,498,False
+posterior,strength_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0720218823391936,-2.175807082291271,-0.05806191140969933,498,498,False
+posterior,strength_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0720218823391936,-2.175807082291271,-0.058061911409699345,498,498,False
+central_shared,strength_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.3245554239896606e-11,8.737046682563777e-12,2.1721663141304628e-11,498,498,False
+central_shared,strength_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.3474894292998556,0.2916564445545067,0.4376267800814479,498,498,False
+central_shared,strength_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.09726478432072752,-0.1100870969557691,-0.08446576590840216,498,498,False
+central_shared,strength_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.961558724047962,-9.73501785249151,-6.3369770058901596,498,498,False
+central_shared,strength_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.961558724047962,-9.73501785249151,-6.33697700589016,498,498,False
+whole,blend_old_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.237503685314212e-12,-9.819613784467461e-14,3.252730483469908e-12,498,498,False
+whole,blend_old_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.012166829332589437,-0.012908098213339126,0.03579766493178251,498,498,False
+whole,blend_old_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.003370979719584429,-0.011078847076195346,0.004867163510473276,498,498,False
+whole,blend_old_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.40208226741962877,-1.031211464375715,0.31190676709897536,498,498,False
+whole,blend_old_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.4020822674196288,-1.031211464375715,0.31190676709897536,498,498,False
+posterior,blend_old_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.823832802048487e-13,-1.1723441981024802e-12,4.1127875492551807e-13,498,498,True
+posterior,blend_old_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.010602263494810357,-0.024929177777925873,0.006552234513677395,498,498,True
+posterior,blend_old_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0036544500829529016,-0.00042504089014422163,0.007351145958194788,498,498,True
+posterior,blend_old_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.14963225771028515,-0.5431930096645884,0.7421878183411567,498,498,True
+posterior,blend_old_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.14963225771028515,-0.5431930096645884,0.7421878183411567,498,498,True
+central_shared,blend_old_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.0502181483993426e-12,4.796021545837263e-13,7.1143543513809635e-12,498,498,False
+central_shared,blend_old_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03425349695703371,-0.016095979889095856,0.08211382450946729,498,498,False
+central_shared,blend_old_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00997935511984269,-0.025541502855104408,0.00601578727114164,498,498,False
+central_shared,blend_old_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9911380569991419,-2.108259899615351,0.25161522073118503,498,498,False
+central_shared,blend_old_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9911380569991419,-2.108259899615351,0.25161522073118503,498,498,False
+whole,strength_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.5836163344387683e-12,9.516324227152727e-13,2.778940340904013e-12,498,498,False
+whole,strength_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.05480629640044643,0.037204544371511945,0.07731626139661578,498,498,False
+whole,strength_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.014973644870786564,-0.01935137126391071,-0.011013096583528092,498,498,False
+whole,strength_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.5259140217314027,-2.3112247189093518,-0.7035684057823733,498,498,False
+whole,strength_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.5259140217314027,-2.3112247189093518,-0.7035684057823733,498,498,False
+posterior,strength_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.016269976298442e-13,-1.5912241890430116e-13,1.1317839245898982e-12,498,498,False
+posterior,strength_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0022425629022629046,-0.009611194993505623,0.014211233229753293,498,498,False
+posterior,strength_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0011790424793463282,-0.0040145935415348225,0.0019126858160838742,498,498,False
+posterior,strength_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.07717091492260711,-0.49184576745888714,0.5683215401693575,498,498,True
+posterior,strength_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.07717091492260711,-0.49184576745888714,0.5683215401693575,498,498,True
+central_shared,strength_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.1978044700700392e-12,2.02629344905321e-12,5.1629603352325306e-12,498,498,False
+central_shared,strength_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.11875607314791407,0.0851554739195065,0.16302281060489704,498,498,False
+central_shared,strength_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.03208665845035416,-0.04064899576377333,-0.024658282767790977,498,498,False
+central_shared,strength_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.404883720288619,-4.852301120773307,-2.004969451482235,498,498,False
+central_shared,strength_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.404883720288619,-4.8523011207733076,-2.004969451482235,498,498,False
+whole,blend_old_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.1208602507411095e-13,-5.546867351984188e-13,3.699231950103759e-13,498,498,True
+whole,blend_old_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0084391076285996,-0.017969861832118225,-0.0004085221557542566,498,498,True
+whole,blend_old_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.002339247931721617,-0.00018181646316531614,0.005433961888615169,498,498,True
+whole,blend_old_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.2149845589436798,-0.059847771877508144,0.5021703724728392,498,498,True
+whole,blend_old_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.2149845589436798,-0.05984777187750817,0.5021703724728392,498,498,True
+posterior,blend_old_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.560364802361811e-13,-7.837992690422478e-13,-1.7142271918966815e-13,498,498,True
+posterior,blend_old_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.009821839264752691,-0.01581346833136275,-0.002787425142464901,498,498,True
+posterior,blend_old_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.002826899804987713,0.0011227679535899585,0.00455866387181548,498,498,True
+posterior,blend_old_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.27593168400859636,-0.03950972356455275,0.5248705738248646,498,498,True
+posterior,blend_old_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.2759316840085963,-0.03950972356455275,0.5248705738248646,498,498,True
+central_shared,blend_old_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,7.089419322681629e-14,-6.967806012695868e-13,9.943724726170849e-13,498,498,False
+central_shared,blend_old_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.011664729180122752,-0.029352130582042023,0.004424861490524149,498,498,True
+central_shared,blend_old_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0031651005788342285,-0.0019937520701131498,0.008946990592383533,498,498,True
+central_shared,blend_old_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.2787167078714519,-0.2816422146536995,0.8009334923542608,498,498,True
+central_shared,blend_old_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.2787167078714519,-0.28164221465369943,0.8009334923542609,498,498,True
+
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_bound_condition_means.csv
+
+```csv
+scope,condition,input_snr_db,oracle_scalar,oracle_blend,current_pooled_snr_db,oracle_scalar_pooled_snr_db,oracle_blend_pooled_snr_db,residual_energy,mean_bias_energy,centered_error_energy
+central_shared,blink,-5.0,0.986935599225677,0.827113857770351,17.31595847617715,18.690424406149745,18.24942974174551,3.1415971950532984e-08,5.95407341004395e-12,3.141001787712294e-08
+central_shared,blink,0.0,0.98109484191629,0.7725257663532774,20.77285451295254,23.690424271093345,21.986158072115163,1.579909533169154e-08,2.373175702586879e-12,1.5796722155988952e-08
+central_shared,blink,5.0,0.4520683091384006,0.3770576460753139,15.354138167534593,18.94910953345753,22.395993880630307,9.826898173103388e-08,6.517049063141397e-12,9.826246468197074e-08
+central_shared,lateral,-5.0,1.0128238093658561,0.8374424013543426,5.847790895738379,5.990451652547469,6.537150724274133,4.633734807470421e-07,1.5345738552748745e-09,4.6183890689176726e-07
+central_shared,lateral,0.0,1.0176799691117686,0.8259175922820645,10.70518435826471,10.990451517491072,11.435171221304095,1.4775670945865634e-07,5.12622136093841e-10,1.4724408732256252e-07
+central_shared,lateral,5.0,0.9539011162173293,0.7573513059842698,14.805146169385555,15.287368997211633,15.679455884972686,9.75794350796434e-08,8.9199978930667e-10,9.668743529033676e-08
+central_shared,mixed,-5.0,0.9895867037316324,0.8780058001355373,15.911948690910855,16.961437639846558,16.55358718652095,4.265664722436476e-08,7.484161785382614e-11,4.258180560651093e-08
+central_shared,mixed,0.0,0.9867064984980505,0.8274345044125718,19.643397194969104,21.96143750479016,20.548644868916167,1.9729740742096145e-08,3.056053443795534e-11,1.969918020765819e-08
+central_shared,mixed,5.0,0.48740843315038784,0.45470814734612863,15.764751353885583,18.576397168444768,21.019932256744525,9.567693459184057e-08,6.491540226782861e-11,9.561201918957274e-08
+middle_verified,blink,-5.0,0.9871772354472859,0.8026057548708874,16.39532743462077,17.9584176149719,17.505708888240484,2.3999713737684863e-08,3.99094929892e-12,2.3995722788385944e-08
+middle_verified,blink,0.0,0.9813135064173487,0.7414406347185969,19.753144654735483,22.9584174799155,21.19898117470394,1.225977306855013e-08,1.5654995200850233e-12,1.2258207569030046e-08
+middle_verified,blink,5.0,0.4520289916170065,0.33867893322534964,14.076169718900514,17.938393135226896,21.881559799397753,7.639018854703228e-08,4.428879100167676e-12,7.63857596679321e-08
+middle_verified,lateral,-5.0,1.018538461755993,0.8265746375184203,5.444036900095464,5.5703768471399,6.152358148837038,2.9581528259083147e-07,9.131249369929113e-10,2.949021576538385e-07
+middle_verified,lateral,0.0,1.0233328383066436,0.8149340377771325,10.320009646832077,10.570376712083503,11.071215340544976,9.413768673629172e-08,3.010767876933125e-10,9.38366099485984e-08
+middle_verified,lateral,5.0,0.9592014807087696,0.7304235796810606,14.422155332424314,14.866577243268967,15.37575174530565,5.897520774761839e-08,5.252263778220356e-10,5.844998136979637e-08
+middle_verified,mixed,-5.0,0.9905712386420389,0.85845380890994,15.180028338856253,16.361511359215932,15.959564400133658,3.0419359192387183e-08,4.113228907249419e-11,3.0378226903314695e-08
+middle_verified,mixed,0.0,0.9876559496260706,0.8019751369441429,18.808234784311246,21.361511224159536,19.902859211013308,1.4441502556503917e-08,1.696408972710823e-11,1.4424538466776809e-08
+middle_verified,mixed,5.0,0.48781706435918637,0.41891011413634377,14.673593854904835,17.713417990077435,20.615372578607907,7.301170101259907e-08,3.771823680390222e-11,7.297398277579516e-08
+posterior,blink,-5.0,0.5570759427635488,0.45748870942459596,14.14123569517805,15.74079276586378,16.044023289046788,1.1000336865993832e-07,7.803703877518742e-12,1.0999556495606081e-07
+posterior,blink,0.0,0.10527608459172513,0.11461324466549086,13.28539668161032,14.509191590454542,14.8771246774668,7.328059857117828e-08,3.70352278346481e-12,7.327689504839482e-08
+posterior,blink,5.0,0.0,0.06593831513523055,17.349555189265445,17.349555189265445,17.708854589698696,3.172070611552734e-08,1.2733362056306925e-12,3.1719432779321716e-08
+posterior,lateral,-5.0,1.0289284247473593,0.8311061905286301,9.01237397623606,9.380995222137475,9.28829834401897,2.6049637047290304e-07,9.668263036533827e-10,2.595295441692497e-07
+posterior,lateral,0.0,0.568862429363254,0.484331095195095,10.773232452448177,11.439953612403503,11.967889331916528,2.2393753984149695e-07,1.7941659074483798e-09,2.2214337393404857e-07
+posterior,lateral,5.0,0.02597876971286159,0.0595486153033263,11.231153774343184,11.260057439887966,12.054289918624516,1.3504296586366053e-07,1.4977068920353513e-09,1.3354525897162517e-07
+posterior,mixed,-5.0,0.5881456704412363,0.49214715615262733,13.841127752832257,15.120379476505311,15.394931791897108,1.1680565942862795e-07,1.1837694492303218e-10,1.166872824837049e-07
+posterior,mixed,0.0,0.10789776395834068,0.11516819543409272,12.93406544608428,13.927413976668085,14.422331984720335,7.95283305861728e-08,6.808107430450563e-11,7.946024951186828e-08
+posterior,mixed,5.0,0.0,0.06612598836853276,16.94348509729258,16.94348509729258,17.259721867867746,3.436062919378973e-08,3.322038052905569e-11,3.432740881326067e-08
+temporal_shared,blink,-5.0,0.9872748946505341,0.878316617530468,19.283880934779067,20.444510079532034,19.970309733101544,7.416258212848123e-09,1.9631241111239505e-12,7.414295088736999e-09
+temporal_shared,blink,0.0,0.981482584906378,0.8397776755222008,22.97381628911206,25.44450994447564,23.84090327541668,3.5393222631414073e-09,8.076761825018557e-13,3.5385145869589052e-09
+temporal_shared,blink,5.0,0.45343228872466945,0.4449289528151502,18.114061132052562,21.19173737242218,23.886353777373536,2.187879318400159e-08,2.0881699629737212e-12,2.1876705014038618e-08
+temporal_shared,lateral,-5.0,1.0060689052676492,0.8373830182100653,6.357121496320023,6.609569100798362,7.13291181682998,1.6755819815621066e-07,6.214489182819632e-10,1.669367492379287e-07
+temporal_shared,lateral,0.0,1.010988551855574,0.823905985660804,11.178880214034125,11.609568965741966,11.995933631272242,5.361902272236464e-08,2.1154534840052844e-10,5.340747737396411e-08
+temporal_shared,lateral,5.0,0.9477967720381133,0.7673213116349447,15.255908791438967,15.895719445147458,16.17089755030898,3.8604227332025026e-08,3.667734114846344e-10,3.823745392054039e-08
+temporal_shared,mixed,-5.0,0.9878139096533876,0.9108819960330348,17.185398484575813,18.047505809712515,17.67357518767064,1.2237288031977566e-08,3.370932878133195e-11,1.2203578703196233e-08
+temporal_shared,mixed,0.0,0.9850090977885189,0.875639839768319,21.18102407078815,23.047505674656115,21.85795671235943,5.288238185592228e-09,1.3596444710847103e-11,5.274641740881382e-09
+temporal_shared,mixed,5.0,0.487325042648598,0.5223951459458455,17.966258814741735,20.277395700052118,22.175879054092242,2.26652335792415e-08,2.7197165463926394e-11,2.2638036413777576e-08
+
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_bound_means.csv
+
+```csv
+scope,oracle_scalar,oracle_blend,current_pooled_snr_db,oracle_scalar_pooled_snr_db,oracle_blend_pooled_snr_db,residual_energy,mean_bias_energy,centered_error_energy
+central_shared,0.8742450311505992,0.7286174468570952,15.124574424424274,16.788611410114697,17.156169315247062,1.1247299965076686e-07,3.47150848156752e-10,1.121258488026101e-07
+middle_verified,0.876404085208927,0.7037774041979861,14.341411185075662,16.144333289562173,16.62926347630941,7.5494490576611e-08,2.0502533844788185e-10,7.528946523816311e-08
+posterior,0.33135167617536954,0.29849639002306905,13.27906956281004,13.963536041164298,14.335273977250832,1.1835290763703279e-07,4.990175628622578e-10,1.1785389007417054e-07
+temporal_shared,0.8719102275037136,0.7667278381245368,16.61070558087139,18.063113565837597,18.3005245264917,3.6978509074155864e-08,1.4212550970887012e-10,3.683638356444699e-08
+
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_condition_means.csv
+
+```csv
+scope,evaluated_family,condition,input_snr_db,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration
+central_shared,blend_old_rank2:0.25,blink,-5.0,5.982882842128407e-12,0.3174934833807359,0.9428843405311313,11.981882931449721,14.657642366315397,0.03557733054353155
+central_shared,blend_old_rank2:0.25,blink,0.0,1.7169210551893338e-12,0.17882630063251811,0.9787519269116416,16.81997268258563,14.495732252507702,0.009819823485458849
+central_shared,blend_old_rank2:0.25,blink,5.0,8.122189730102598e-13,0.13746677523207093,0.9861952285402766,19.44391740069205,12.119676927557817,-0.04909584224366452
+central_shared,blend_old_rank2:0.25,lateral,-5.0,7.03827484062609e-11,1.0670316652619936,0.7200705241129808,1.8775153870700407,5.440532159145771,0.14033813894687702
+central_shared,blend_old_rank2:0.25,lateral,0.0,2.128085979133769e-11,0.5880505170690296,0.8551882247944526,7.061397887936196,5.624414795068322,0.08535462163948684
+central_shared,blend_old_rank2:0.25,lateral,5.0,6.935093878079237e-12,0.33436794720279267,0.9353207501357381,12.039268437204026,5.602285301279847,0.0331305677938932
+central_shared,blend_old_rank2:0.25,mixed,-5.0,7.857739117042848e-12,0.3882939849232846,0.9230811694704548,9.85978511748116,12.758605565499725,0.05084160001168127
+central_shared,blend_old_rank2:0.25,mixed,0.0,2.4563143440732486e-12,0.21826621647404573,0.9706027312064562,14.872866262686296,12.77168684576126,0.01616539908764385
+central_shared,blend_old_rank2:0.25,mixed,5.0,1.0374385168850622e-12,0.1527759501918898,0.9840067092694613,18.352045619641643,11.250866159660301,-0.04356266510889188
+central_shared,blend_old_rank2:0.5,blink,-5.0,3.017653836549026e-12,0.23877449761850184,0.9648677651898246,14.175095037752346,16.850854472618025,0.013593905884838269
+central_shared,blend_old_rank2:0.5,blink,0.0,9.274982626086236e-13,0.13957944483724224,0.986636695199604,18.75453194374135,16.43029151366342,0.0019350551974964343
+central_shared,blend_old_rank2:0.5,blink,5.0,1.229913354845155e-12,0.181226877578701,0.9755548073445923,18.201511941399733,10.877271468265498,-0.03845542104798019
+central_shared,blend_old_rank2:0.5,lateral,-5.0,3.778595868662674e-11,0.8054429615314115,0.7872378944218779,3.902632648496528,7.465649420572257,0.07317076863797993
+central_shared,blend_old_rank2:0.5,lateral,0.0,1.1494229666083467e-11,0.44747235699513865,0.9015629617024543,9.013116157004536,7.576133064136663,0.038979884731485094
+central_shared,blend_old_rank2:0.5,lateral,5.0,4.4916007858605805e-12,0.268188854871668,0.9564546790190549,13.745142259436463,7.308159123512285,0.011996638910576351
+central_shared,blend_old_rank2:0.5,mixed,-5.0,3.925864626280726e-12,0.2839303985103443,0.9543722037491327,12.389224181507018,15.288044629525585,0.019550565733003386
+central_shared,blend_old_rank2:0.5,mixed,0.0,1.2865429489626933e-12,0.16502595254861846,0.9824714117628521,17.133213568125228,15.03203415120019,0.004296718531248011
+central_shared,blend_old_rank2:0.5,mixed,5.0,1.3131713021258498e-12,0.1828238866452237,0.9756979646606325,17.917510832423,10.81633137244166,-0.03525392050006306
+central_shared,blend_old_rank2:0.75,blink,-5.0,1.4166885315824081e-12,0.18211601828869278,0.9782214966967828,16.407632214610302,19.083391649475978,0.00024017437788010916
+central_shared,blend_old_rank2:0.75,blink,0.0,5.529964241462179e-13,0.11568043489115462,0.990205360906319,20.52980643267494,18.20556600259701,-0.001633610509218709
+central_shared,blend_old_rank2:0.75,blink,5.0,2.1895044980944627e-12,0.2429495787900509,0.9582620130817359,16.804918923196087,9.480678450061854,-0.021162626785123585
+central_shared,blend_old_rank2:0.75,lateral,-5.0,2.0126493381873527e-11,0.6140473389224282,0.8487900302804086,5.77479823574695,9.33781500782268,0.011618632779449148
+central_shared,blend_old_rank2:0.75,lateral,0.0,6.2505284738519185e-12,0.3458289807112774,0.9366053334935235,10.769717090895627,9.332733998027754,0.003937512940415921
+central_shared,blend_old_rank2:0.75,lateral,5.0,3.401600481243967e-12,0.2240545339797541,0.9690028509109521,15.192325775887374,8.755342639963194,-0.0005515329813206608
+central_shared,blend_old_rank2:0.75,mixed,-5.0,1.840680844382389e-12,0.20836445956817745,0.9735038882650081,14.982181030603229,17.881001478621794,0.00041888121712803654
+central_shared,blend_old_rank2:0.75,mixed,0.0,7.147884873928062e-13,0.13103542535388102,0.9882878600316176,19.17520459209295,17.074025175167915,-0.0015197297375175156
+central_shared,blend_old_rank2:0.75,mixed,5.0,2.1652367508224226e-12,0.23512442539702477,0.9602776506717702,17.024087158014087,9.922907698032745,-0.0198336065112008
+central_shared,central_frontal_raw_context,blink,-5.0,8.7113270022848e-12,0.3901028570573999,0.9219112525027495,10.259144819418312,12.934904254283987,0.05655041857191342
+central_shared,central_frontal_raw_context,blink,0.0,2.784607498816179e-12,0.22348088206668437,0.9682724150337797,15.047605771042537,12.723365340964609,0.020299335363320726
+central_shared,central_frontal_raw_context,blink,5.0,9.191681689742103e-13,0.13197247507830961,0.9876918144698738,19.532543117227455,12.208302644093218,-0.05059242817326154
+central_shared,central_frontal_raw_context,lateral,-5.0,1.2304647275940395e-10,1.3778853934560389,0.6585744028184813,0.00516136367422898,3.5681781357499593,0.20183426024137646
+central_shared,central_frontal_raw_context,lateral,0.0,3.884539130155558e-11,0.7731982876574748,0.8022681902639754,5.051728759192768,3.6147456663248954,0.13827465616996396
+central_shared,central_frontal_raw_context,lateral,5.0,1.2124940046676404e-11,0.4354877647221337,0.903054837062174,10.028546977905311,3.5915638419811344,0.06539648086745724
+central_shared,central_frontal_raw_context,mixed,-5.0,1.2761502687128586e-11,0.48744633111412916,0.891276196683582,8.064359917864328,10.963180365882895,0.08264657279855411
+central_shared,central_frontal_raw_context,mixed,0.0,4.0612972582806225e-12,0.2771760235117668,0.9551748769718892,12.943418741226571,10.842239324301534,0.03159325332221087
+central_shared,central_frontal_raw_context,mixed,5.0,1.324915361839858e-12,0.16116714017939393,0.9828086354272356,17.611248333720397,10.510068873739058,-0.04236459126666621
+central_shared,central_frontal_vmd_context,blink,-5.0,1.0312375548320551e-11,0.4083574541075213,0.9158527995972728,9.940204469137406,12.615963904003081,0.06260887147739007
+central_shared,central_frontal_vmd_context,blink,0.0,2.9212648018883483e-12,0.2266987944640323,0.9674942138296767,14.934144773161641,12.609904343083713,0.021077536567423498
+central_shared,central_frontal_vmd_context,blink,5.0,9.364213525897776e-13,0.13112457604542302,0.9877390443484659,19.634388041568066,12.310147568433834,-0.050639658051853775
+central_shared,central_frontal_vmd_context,lateral,-5.0,1.1791686254077602e-10,1.365594206062247,0.6568241927345383,-0.03242235111718711,3.5305944209585434,0.20358447032531946
+central_shared,central_frontal_vmd_context,lateral,0.0,3.561041884961458e-11,0.7494661451918165,0.8069638894061817,5.197155390768863,3.7601722979009886,0.13357895702775782
+central_shared,central_frontal_vmd_context,lateral,5.0,1.0732079757899935e-11,0.41278590140123983,0.9095806116298268,10.396344636462834,3.9593615005386544,0.05887070629980448
+central_shared,central_frontal_vmd_context,mixed,-5.0,1.363630431666875e-11,0.5059957730275868,0.8854522132065983,7.655153369163665,10.553973817182232,0.08847055627553796
+central_shared,central_frontal_vmd_context,mixed,0.0,4.224102672724472e-12,0.2813637376276265,0.9541631565807493,12.78475330471781,10.683573887792775,0.03260497371335071
+central_shared,central_frontal_vmd_context,mixed,5.0,1.3380383951000604e-12,0.16075541883236877,0.9829354363422104,17.621187584179644,10.520008124198302,-0.04249139218164095
+central_shared,identity,blink,-5.0,9.055057040775391e-11,1.703976078656812,0.5968215529967646,-2.6757594348656752,0.0,0.3816401180778982
+central_shared,identity,blink,0.0,2.86346055999757e-11,0.9582161809881862,0.7611262318042633,2.3242404300779285,0.0,0.2274455185928369
+central_shared,identity,blink,5.0,9.055057088126805e-12,0.5388445535648259,0.8814349439259775,7.324240473134234,0.0,0.0556644423706347
+central_shared,identity,lateral,-5.0,1.8526853440925106e-10,1.8888049208349842,0.5420851870576309,-3.5630167720757306,0.0,0.3183234760022269
+central_shared,identity,lateral,0.0,5.858705684476455e-11,1.0621530783994655,0.7150439220286704,1.4369830928678733,0.0,0.22549892440526906
+central_shared,identity,lateral,5.0,1.8526853544379874e-11,0.5972925658198422,0.854175593857474,6.436983135924179,0.0,0.11427572407215739
+central_shared,identity,mixed,-5.0,9.349894235513793e-11,1.724456096512982,0.5888345217734154,-2.898820448018567,0.0,0.38508824770872063
+central_shared,identity,mixed,0.0,2.956696270587159e-11,0.969732941521019,0.7566462034098469,2.1011794169250364,0.0,0.23012192688425312
+central_shared,identity,mixed,5.0,9.349894288461347e-12,0.5453209039445652,0.8795804663252401,7.101179459981342,0.0,0.06086357783532936
+central_shared,reference_rank2:both,blink,-5.0,1.1799869272285528e-12,0.17728278489259025,0.978461671074663,16.827442595546366,19.503202030412037,0.0
+central_shared,reference_rank2:both,blink,0.0,5.934155398021161e-13,0.12273631832809703,0.9885717503971003,20.25053864855813,17.926298218480202,0.0
+central_shared,reference_rank2:both,blink,5.0,3.690992402758184e-12,0.31664002577638706,0.9370993862966122,14.840418304975374,7.51617783184114,0.0
+central_shared,reference_rank2:both,lateral,-5.0,1.740435249200128e-11,0.5851868085542671,0.8604086630598577,6.232025610789458,9.795042382865189,0.0
+central_shared,reference_rank2:both,lateral,0.0,5.549756214643043e-12,0.3330133406651646,0.9405428464339395,11.11575285129216,9.678769758424288,0.0
+central_shared,reference_rank2:both,lateral,5.0,3.665092964229396e-12,0.22604725821805874,0.9684513179296314,15.274112361485667,8.837129225561489,0.0
+central_shared,reference_rank2:both,mixed,-5.0,1.6021877713478348e-12,0.20276333623871048,0.9739227694821362,15.38146210602789,18.280282554046458,0.0
+central_shared,reference_rank2:both,mixed,0.0,7.410509593635872e-13,0.1363385240284542,0.9867681302941,19.03977541833998,16.93859600141494,0.0
+central_shared,reference_rank2:both,mixed,5.0,3.593634862974781e-12,0.3041753618218166,0.9404440441605695,15.190693185863456,8.089513725882112,0.0
+central_shared,strength_rank2:0.25,blink,-5.0,5.051084981038705e-11,1.2776272150232209,0.6822570795622962,-0.18562068315783486,2.49013875170784,0.29620459151236667
+central_shared,strength_rank2:0.25,blink,0.0,1.578510694761381e-11,0.7158065510192468,0.8282546330846657,4.8533128916078585,2.529072461529929,0.1603171173124346
+central_shared,strength_rank2:0.25,blink,5.0,6.226798856387695e-12,0.4576910130513321,0.90485447667018,8.899048651452116,1.5748081783178813,0.032244909626432186
+central_shared,strength_rank2:0.25,lateral,-5.0,1.135284661379818e-10,1.4852622480167574,0.6143636598663854,-1.5941177538101434,1.968899018265587,0.24604500319347233
+central_shared,strength_rank2:0.25,lateral,0.0,3.5783040788267996e-11,0.8356051124456632,0.7788835162008023,3.4038148891977524,1.9668317963298791,0.1616593302331371
+central_shared,strength_rank2:0.25,lateral,5.0,1.2141572881685235e-11,0.4802093113692067,0.8934225719388875,8.282983672101668,1.8460005361774885,0.07502874599074372
+central_shared,strength_rank2:0.25,mixed,-5.0,5.249665334923319e-11,1.29607570960404,0.6753734221523944,-0.42718318334167926,2.471637264676888,0.2985493473297418
+central_shared,strength_rank2:0.25,mixed,0.0,1.645162416320145e-11,0.7266319831933711,0.8246769754299137,4.606624887611497,2.5054454706864604,0.16209115486418632
+central_shared,strength_rank2:0.25,mixed,5.0,6.3856009849078946e-12,0.46017153626720075,0.9045073386723964,8.72879920937654,1.627619749395197,0.03593670548817299
+central_shared,strength_rank2:0.5,blink,-5.0,2.226917903117721e-11,0.8541574054046729,0.7881822397190537,3.2948173421113465,5.970576776977022,0.1902794313556092
+central_shared,strength_rank2:0.5,blink,0.0,6.828409053464249e-12,0.475132392790012,0.8996134008044518,8.426383647292965,6.102143217215037,0.08895834959264845
+central_shared,strength_rank2:0.5,blink,5.0,4.390035331579888e-12,0.37739677041465997,0.9258339363726193,11.291136249740537,3.9668957766063038,0.011265449923992938
+central_shared,strength_rank2:0.5,lateral,-5.0,6.163774639468375e-11,1.1020022779794325,0.7027528011096051,0.8209252141503628,4.383941986226094,0.1576558619502526
+central_shared,strength_rank2:0.5,lateral,0.0,1.9342151997748882e-11,0.6203765849740176,0.8472517319273221,5.820130627148265,4.383147534280392,0.09329111450661735
+central_shared,strength_rank2:0.5,lateral,5.0,7.53618589742861e-12,0.36907418291772803,0.9296348896604877,10.561313426035065,4.124330290110886,0.038816428269143555
+central_shared,strength_rank2:0.5,mixed,-5.0,2.3513097916633267e-11,0.8715150675506087,0.7824606118998687,3.0038906476902225,5.90271109570879,0.19146215758226753
+central_shared,strength_rank2:0.5,mixed,0.0,7.275526024560072e-12,0.48581739294488635,0.8967500515393165,8.119615388355966,6.018435971430929,0.0900180787547836
+central_shared,strength_rank2:0.5,mixed,5.0,4.438126646142316e-12,0.37611654724622867,0.9268078572093369,11.159980023922087,4.058800563940745,0.013636186951232553
+central_shared,strength_rank2:0.75,blink,-5.0,5.825558070124376e-12,0.44152498173462074,0.9092187405351437,9.023711649099933,11.699471083965609,0.06924293053951908
+central_shared,strength_rank2:0.75,blink,0.0,1.764511917527018e-12,0.24184316486764385,0.9637096543382219,14.489079973357699,12.16483954327977,0.0248620960588785
+central_shared,strength_rank2:0.75,blink,5.0,3.544766513703384e-12,0.30348578782759067,0.9390489941441418,15.978468599496516,8.654228126362284,-0.0019496078475294762
+central_shared,strength_rank2:0.75,lateral,-5.0,2.9596375179356914e-11,0.7669927898880554,0.8005629165025953,3.7954440735497372,7.358460845625467,0.05984574655726244
+central_shared,strength_rank2:0.75,lateral,0.0,9.264390473207234e-12,0.4322736868020266,0.9096879290815871,8.812376624028285,7.3753935311604115,0.03085491735235229
+central_shared,strength_rank2:0.75,lateral,5.0,4.710692591609996e-12,0.27245727298147104,0.9571442318183103,13.416412413637948,6.979429277713769,0.011307086111321064
+central_shared,strength_rank2:0.75,mixed,-5.0,6.548276057338148e-12,0.46088482809873565,0.9041010013045647,8.51639297450749,11.415213422526058,0.06982176817757142
+central_shared,strength_rank2:0.75,mixed,0.0,2.0386682899474506e-12,0.25427825580334046,0.9612063855818087,13.903307052597453,11.802127635672417,0.025561744712291383
+central_shared,strength_rank2:0.75,mixed,5.0,3.5074712721646124e-12,0.2992476488512884,0.9412107997690486,15.573074240005848,8.471894780024506,-0.000766755608479222
+frontal,blend_old_rank2:0.25,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.0
+frontal,blend_old_rank2:0.25,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0
+frontal,blend_old_rank2:0.25,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0
+frontal,blend_old_rank2:0.25,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.0
+frontal,blend_old_rank2:0.25,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.0
+frontal,blend_old_rank2:0.25,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.0
+frontal,blend_old_rank2:0.25,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.0
+frontal,blend_old_rank2:0.25,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0
+frontal,blend_old_rank2:0.25,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0
+frontal,blend_old_rank2:0.5,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.0
+frontal,blend_old_rank2:0.5,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0
+frontal,blend_old_rank2:0.5,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0
+frontal,blend_old_rank2:0.5,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.0
+frontal,blend_old_rank2:0.5,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.0
+frontal,blend_old_rank2:0.5,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.0
+frontal,blend_old_rank2:0.5,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.0
+frontal,blend_old_rank2:0.5,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0
+frontal,blend_old_rank2:0.5,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0
+frontal,blend_old_rank2:0.75,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.0
+frontal,blend_old_rank2:0.75,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0
+frontal,blend_old_rank2:0.75,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0
+frontal,blend_old_rank2:0.75,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.0
+frontal,blend_old_rank2:0.75,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.0
+frontal,blend_old_rank2:0.75,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.0
+frontal,blend_old_rank2:0.75,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.0
+frontal,blend_old_rank2:0.75,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0
+frontal,blend_old_rank2:0.75,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0
+frontal,central_frontal_raw_context,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.0
+frontal,central_frontal_raw_context,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0
+frontal,central_frontal_raw_context,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0
+frontal,central_frontal_raw_context,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.0
+frontal,central_frontal_raw_context,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.0
+frontal,central_frontal_raw_context,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.0
+frontal,central_frontal_raw_context,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.0
+frontal,central_frontal_raw_context,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0
+frontal,central_frontal_raw_context,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0
+frontal,central_frontal_vmd_context,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.0
+frontal,central_frontal_vmd_context,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0
+frontal,central_frontal_vmd_context,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0
+frontal,central_frontal_vmd_context,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.0
+frontal,central_frontal_vmd_context,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.0
+frontal,central_frontal_vmd_context,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.0
+frontal,central_frontal_vmd_context,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.0
+frontal,central_frontal_vmd_context,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0
+frontal,central_frontal_vmd_context,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0
+frontal,identity,blink,-5.0,7.403422266942269e-10,4.1239474930779165,0.2546059565948502,-11.666787907817575,0.0,0.7230304271837082
+frontal,identity,blink,0.0,2.3411677654089895e-10,2.3190661337910843,0.4180029554759048,-6.6667880428739705,0.0,0.5707891315247418
+frontal,identity,blink,5.0,7.403422318546091e-11,1.3041067151689552,0.6190039671535059,-1.666787999817665,0.0,0.37263449261334164
+frontal,identity,lateral,-5.0,4.706787708651855e-10,2.834047685308765,0.3669296614005887,-8.113828549301228,0.0,0.5471957865231671
+frontal,identity,lateral,0.0,1.4884170130108913e-10,1.5937021557405027,0.5579549515555366,-3.1138286843576246,0.0,0.40272324300381734
+frontal,identity,lateral,5.0,4.706787749827606e-11,0.896204577214837,0.748554916904236,1.8861713586986808,0.0,0.2268527777063639
+frontal,identity,mixed,-5.0,7.324623675368554e-10,4.099289636053002,0.252768909904321,-11.638926680931508,0.0,0.7248860805582714
+frontal,identity,mixed,0.0,2.3162494620031827e-10,2.30520000159495,0.41751898359997885,-6.638926815987905,0.0,0.5693871497502109
+frontal,identity,mixed,5.0,7.324623725547525e-11,1.2963092160178702,0.6200305157917552,-1.6389267729315997,0.0,0.3704337239015144
+frontal,reference_rank2:both,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.0
+frontal,reference_rank2:both,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0
+frontal,reference_rank2:both,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0
+frontal,reference_rank2:both,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.0
+frontal,reference_rank2:both,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.0
+frontal,reference_rank2:both,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.0
+frontal,reference_rank2:both,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.0
+frontal,reference_rank2:both,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0
+frontal,reference_rank2:both,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0
+frontal,strength_rank2:0.25,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.0
+frontal,strength_rank2:0.25,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0
+frontal,strength_rank2:0.25,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0
+frontal,strength_rank2:0.25,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.0
+frontal,strength_rank2:0.25,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.0
+frontal,strength_rank2:0.25,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.0
+frontal,strength_rank2:0.25,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.0
+frontal,strength_rank2:0.25,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0
+frontal,strength_rank2:0.25,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0
+frontal,strength_rank2:0.5,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.0
+frontal,strength_rank2:0.5,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0
+frontal,strength_rank2:0.5,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0
+frontal,strength_rank2:0.5,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.0
+frontal,strength_rank2:0.5,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.0
+frontal,strength_rank2:0.5,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.0
+frontal,strength_rank2:0.5,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.0
+frontal,strength_rank2:0.5,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0
+frontal,strength_rank2:0.5,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0
+frontal,strength_rank2:0.75,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.0
+frontal,strength_rank2:0.75,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0
+frontal,strength_rank2:0.75,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0
+frontal,strength_rank2:0.75,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.0
+frontal,strength_rank2:0.75,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.0
+frontal,strength_rank2:0.75,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.0
+frontal,strength_rank2:0.75,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.0
+frontal,strength_rank2:0.75,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0
+frontal,strength_rank2:0.75,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0
+middle_verified,blend_old_rank2:0.25,blink,-5.0,4.3060494373427455e-12,0.3302478228607273,0.939777088852295,11.586230228077355,15.58549822905156,0.0345731077556445
+middle_verified,blend_old_rank2:0.25,blink,0.0,1.2171439100903248e-12,0.1866447663848968,0.9773210558652229,16.374404488525762,15.373672624556361,0.008895984305938017
+middle_verified,blend_old_rank2:0.25,blink,5.0,6.772981612317728e-13,0.1492874766204041,0.9839683375699732,18.823619143622082,12.822887236596372,-0.059590641754151484
+middle_verified,blend_old_rank2:0.25,lateral,-5.0,5.151434790406194e-11,1.0822995770737844,0.7212815992236358,1.7626962753942719,5.488171265072545,0.13172601605774292
+middle_verified,blend_old_rank2:0.25,lateral,0.0,1.5810926005481936e-11,0.5982250582383652,0.8548718629367479,6.920554165309974,5.646029290044645,0.08158983073837915
+middle_verified,blend_old_rank2:0.25,lateral,5.0,5.285279401319214e-12,0.34198258148966476,0.9338386294211469,11.88783070771671,5.613305789395075,0.03212002963730083
+middle_verified,blend_old_rank2:0.25,mixed,-5.0,5.513500649331081e-12,0.3997477739808366,0.9205313811582452,9.612811254000938,13.726063487130553,0.04909395639749925
+middle_verified,blend_old_rank2:0.25,mixed,0.0,1.7421945326657118e-12,0.22552949344052434,0.9691389160305484,14.578250699667336,13.691503067853347,0.015157844439376386
+middle_verified,blend_old_rank2:0.25,mixed,5.0,8.3532456459997e-13,0.16346119712359705,0.9818676721829753,17.865989919885568,11.979242245015273,-0.05303470060054316
+middle_verified,blend_old_rank2:0.5,blink,-5.0,2.250861367009996e-12,0.2508798855582255,0.962156214716221,13.668966094040133,17.668234095014334,0.012193981891718452
+middle_verified,blend_old_rank2:0.5,blink,0.0,7.037613420738566e-13,0.14774695814506444,0.9852745024193112,18.185261911718698,17.1845300477493,0.0009425377518496547
+middle_verified,blend_old_rank2:0.5,blink,5.0,1.191147929630428e-12,0.20447852348800907,0.9704445447732031,17.250282077188395,11.249550170162687,-0.046066848957381404
+middle_verified,blend_old_rank2:0.5,lateral,-5.0,2.8404529275745482e-11,0.820581409237022,0.7865049469243233,3.743938488142806,7.46941347782108,0.0665026683570554
+middle_verified,blend_old_rank2:0.5,lateral,0.0,8.731699694796687e-12,0.45700603245643,0.8999742997154818,8.840909611710703,7.566384736445372,0.03648739395964535
+middle_verified,blend_old_rank2:0.5,lateral,5.0,3.5211242173376195e-12,0.2765198981514367,0.9545992485091503,13.56576214028799,7.291237221966355,0.011359410549297445
+middle_verified,blend_old_rank2:0.5,mixed,-5.0,2.841711381909149e-12,0.29413940045622733,0.9519451084673982,12.0837341957442,16.196986428873814,0.017680229088346187
+middle_verified,blend_old_rank2:0.5,mixed,0.0,9.567903288315218e-13,0.17231718815190153,0.9810718185331015,16.744326530332316,15.857578898518323,0.0032249419368230274
+middle_verified,blend_old_rank2:0.5,mixed,5.0,1.2285112777258886e-12,0.20372524755642396,0.970980391664547,17.1347542087332,11.248006533862906,-0.04214742008211492
+middle_verified,blend_old_rank2:0.75,blink,-5.0,1.2061318953450453e-12,0.19599837422921793,0.9752504216557886,15.718697795256944,19.717965796231148,-0.000900225047848909
+middle_verified,blend_old_rank2:0.75,blink,0.0,4.975872826646816e-13,0.12589563862233957,0.9885662455441391,19.761064574688753,18.760332710719354,-0.002349205372978106
+middle_verified,blend_old_rank2:0.75,blink,5.0,2.208711767602524e-12,0.2781513906243224,0.9494266705970004,15.616864784047088,9.616132877021382,-0.025048974781178786
+middle_verified,blend_old_rank2:0.75,lateral,-5.0,1.604778183947665e-11,0.6319075298860495,0.8445784263340632,5.554089989165878,9.279564978844153,0.008429188947315522
+middle_verified,blend_old_rank2:0.75,lateral,0.0,4.9935799380262074e-12,0.35629385292077487,0.9337034069419718,10.547146000512544,9.272621125247216,0.0027582867331552956
+middle_verified,blend_old_rank2:0.75,lateral,5.0,2.7192473554984414e-12,0.23343074949056852,0.966956488202295,14.972236875144183,8.697711956822548,-0.000997829143847238
+middle_verified,blend_old_rank2:0.75,mixed,-5.0,1.498984589820715e-12,0.22055787053677497,0.9705797666593202,14.50989640029799,18.623148633427604,-0.00095442910357569
+middle_verified,blend_old_rank2:0.75,mixed,0.0,6.111093152818819e-13,0.14048120262729152,0.9865976007988763,18.586449971417785,17.699702339603796,-0.0023008403289516426
+middle_verified,blend_old_rank2:0.75,mixed,5.0,2.1384112440278366e-12,0.26686670679246915,0.9521935288503658,16.033964682614677,10.147217007744384,-0.02336055726793366
+middle_verified,central_frontal_raw_context,blink,-5.0,6.045485442447288e-12,0.40461433988323525,0.9181918655451454,9.915336859977494,13.914604860951696,0.05615833106279415
+middle_verified,central_frontal_raw_context,blink,0.0,1.9471364199175455e-12,0.23242155203374573,0.9663756206677451,14.679186389744967,13.678454525775564,0.019841419503415773
+middle_verified,central_frontal_raw_context,blink,5.0,6.572666801130586e-13,0.13809123707248835,0.986709537095059,19.116519851506098,13.115787944480392,-0.06233184127923745
+middle_verified,central_frontal_raw_context,lateral,-5.0,8.647059679151171e-11,1.39444566252865,0.6612400063635019,-0.0727073670899119,3.652767622588362,0.1917676089178768
+middle_verified,central_frontal_raw_context,lateral,0.0,2.8092073660734526e-11,0.7840566529740877,0.8036469495005572,4.956327368118565,3.6818024928532354,0.1328147441745699
+middle_verified,central_frontal_raw_context,lateral,5.0,8.927427499155132e-12,0.4424811448193952,0.902621040940352,9.91697411909795,3.6424492007763165,0.06333761811809571
+middle_verified,central_frontal_raw_context,mixed,-5.0,8.942129497016592e-12,0.5029404800099979,0.887955147541379,7.7939800924055955,11.90723232553521,0.08167019001436537
+middle_verified,central_frontal_raw_context,mixed,0.0,2.864933659751344e-12,0.28641359483444145,0.9531961947792167,12.657292908019393,11.770545276205405,0.031100565690708033
+middle_verified,central_frontal_raw_context,mixed,5.0,9.5264322142042e-13,0.1672461776632983,0.9816848010754261,17.289808859599816,11.403061184729523,-0.05285182949299394
+middle_verified,central_frontal_vmd_context,blink,-5.0,7.371696106343295e-12,0.4234510004077015,0.9119162562680698,9.606958574100075,13.606226575074277,0.062433940339869765
+middle_verified,central_frontal_vmd_context,blink,0.0,2.037734986714086e-12,0.23537626841270737,0.9657074905489346,14.566582320833453,13.565850456864052,0.020509549622226293
+middle_verified,central_frontal_vmd_context,blink,5.0,6.671624624065577e-13,0.1368718430325339,0.9868286066238905,19.23923301457222,13.238501107546515,-0.06245091080806883
+middle_verified,central_frontal_vmd_context,lateral,-5.0,8.537723772442602e-11,1.3827453147079298,0.6589596370933813,-0.11446934402220013,3.6110056456560744,0.19404797818799732
+middle_verified,central_frontal_vmd_context,lateral,0.0,2.6231258870081952e-11,0.7611929186953752,0.8075333681019452,5.0852978075109405,3.8107729322456096,0.1289283255731818
+middle_verified,central_frontal_vmd_context,lateral,5.0,8.011712907443225e-12,0.4197544869802443,0.9086983396766626,10.277398733447686,4.002873815126052,0.05726031938178513
+middle_verified,central_frontal_vmd_context,mixed,-5.0,9.514352392086515e-12,0.5205129054208093,0.882383694637439,7.41630075197201,11.529552985101624,0.08724164291830537
+middle_verified,central_frontal_vmd_context,mixed,0.0,2.9673219267844526e-12,0.2900485052961075,0.9523677471201717,12.513119379383317,11.626371747569328,0.03192901334975305
+middle_verified,central_frontal_vmd_context,mixed,5.0,9.588511046500806e-13,0.16642069273134227,0.9819074331179165,17.321891543995612,11.43514386912532,-0.05307446153548431
+middle_verified,identity,blink,-5.0,9.167273592303381e-11,1.939218428025133,0.5475766235835521,-3.999268000974202,0.0,0.42677357302438745
+middle_verified,identity,blink,0.0,2.8989465490145862e-11,1.0905026776767341,0.7232190272623187,1.0007318639694018,0.0,0.2629980129088423
+middle_verified,identity,blink,5.0,9.167273642954889e-12,0.6132347169124162,0.8591294507445809,6.000731907025707,0.0,0.06524824507124072
+middle_verified,identity,lateral,-5.0,1.4173804683246298e-10,1.935908010540931,0.5371623472755072,-3.7254749896782737,0.0,0.31584526800587154
+middle_verified,identity,lateral,0.0,4.482150750940096e-11,1.088641092864763,0.7102751107282785,1.2745248752653298,0.0,0.22618658294684857
+middle_verified,identity,lateral,5.0,1.4173804751712201e-11,0.6121878707555217,0.8500452257371287,6.274524918321635,0.0,0.11591343332131893
+middle_verified,identity,mixed,-5.0,9.323496457665658e-11,1.9506131182549318,0.5425009047742341,-4.113252233129614,0.0,0.4271244327815104
+middle_verified,identity,mixed,0.0,2.948348558308442e-11,1.0969103829562608,0.7200808086031227,0.886747631813989,0.0,0.2642159518668019
+middle_verified,identity,mixed,5.0,9.323496511011115e-12,0.6168380343945715,0.8577997924282292,5.8867476748702945,0.0,0.07103317915420296
+middle_verified,reference_rank2:both,blink,-5.0,1.1718610223478938e-12,0.19670089318188216,0.9743501966079396,15.843988226545992,19.843256227520193,0.0
+middle_verified,reference_rank2:both,blink,0.0,5.986217318627994e-13,0.13710587651945616,0.9862170401711609,19.19104223428191,18.19031037031251,0.0
+middle_verified,reference_rank2:both,blink,5.0,3.729989675148061e-12,0.3633094439453083,0.9243776958158216,13.559415660686053,7.558683753660346,0.0
+middle_verified,reference_rank2:both,lateral,-5.0,1.4444105595255441e-11,0.6087991201778172,0.8530076152813788,5.936290540553829,9.661765530232103,0.0
+middle_verified,reference_rank2:both,lateral,0.0,4.5965667351704944e-12,0.34633292736524923,0.9364616936751271,10.819772594157165,9.545247718891833,0.0
+middle_verified,reference_rank2:both,lateral,5.0,2.8796488158016796e-12,0.23740966129129354,0.9659586590584477,14.981840175978201,8.707315257656568,0.0
+middle_verified,reference_rank2:both,mixed,-5.0,1.4853202730657808e-12,0.2211004391106261,0.9696253375557445,14.621977434328938,18.735229667458555,0.0
+middle_verified,reference_rank2:both,mixed,0.0,7.051514920167928e-13,0.1499309896349597,0.9842967604699246,18.19962094097427,17.31287330916028,0.0
+middle_verified,reference_rank2:both,mixed,5.0,3.565024463505814e-12,0.3462693516037284,0.9288329715824322,14.123140758774788,8.236393083904495,0.0
+middle_verified,strength_rank2:0.25,blink,-5.0,5.108789762326442e-11,1.453661967078045,0.6376635795478462,-1.5006290933311073,2.4986389076430946,0.3366866170600934
+middle_verified,strength_rank2:0.25,blink,0.0,1.5966888254491713e-11,0.8145247269732314,0.7982659122539584,3.5383136509141995,2.5375817869447976,0.18795112791720248
+middle_verified,strength_rank2:0.25,blink,5.0,6.2944875609142184e-12,0.521828758488081,0.886224392721265,7.581783992312576,1.5810520852868688,0.038153303094556716
+middle_verified,strength_rank2:0.25,lateral,-5.0,8.75901774033221e-11,1.5264833225780865,0.6083363931004309,-1.7859563227557853,1.9395186669224886,0.24467122218094783
+middle_verified,strength_rank2:0.25,lateral,0.0,2.7605976983550764e-11,0.8589150963019399,0.7734891255788736,3.211331819870727,1.9368069446053973,0.16297256809625355
+middle_verified,strength_rank2:0.25,lateral,5.0,9.345637296007714e-12,0.49439762213299715,0.8893362770872537,8.095314585896062,1.8207896675744282,0.07662238197119389
+middle_verified,strength_rank2:0.25,mixed,-5.0,5.230574050109786e-11,1.4658072677451832,0.6328101971875828,-1.6349299258988599,2.4783223072307545,0.3368151403681617
+middle_verified,strength_rank2:0.25,mixed,0.0,1.6393032677141326e-11,0.8218938380545198,0.7954760522246032,3.398806639308453,2.5120590074944635,0.18882070824532146
+middle_verified,strength_rank2:0.25,mixed,5.0,6.357598711006579e-12,0.5214968957112622,0.8864563963157128,7.51904874492155,1.632301070051256,0.04237657526671923
+middle_verified,strength_rank2:0.5,blink,-5.0,2.2476139039893635e-11,0.9712158445944881,0.7534525555664331,1.9984856164798699,5.997753617454071,0.22089764104150658
+middle_verified,strength_rank2:0.5,blink,0.0,6.8942218828931545e-12,0.540419192333444,0.880249805030707,7.130808174587637,6.130076310618236,0.10596723514045382
+middle_verified,strength_rank2:0.5,blink,5.0,4.430678205599523e-12,0.4313492925226552,0.9109545262349705,9.991544378870358,3.990812471844652,0.013423169580851022
+middle_verified,strength_rank2:0.5,lateral,-5.0,4.832523072074054e-11,1.1376970248353078,0.6953464144455291,0.5825878769332216,4.308062866611495,0.1576612008358496
+middle_verified,strength_rank2:0.5,lateral,0.0,1.516331001256229e-11,0.6406810786495464,0.8415021074063018,5.5805942951110215,4.306069419845691,0.0949595862688253
+middle_verified,strength_rank2:0.5,lateral,5.0,5.853888821454464e-12,0.3826316516700987,0.9258726671686375,10.330761150530655,4.05623623220902,0.04008599188981021
+middle_verified,strength_rank2:0.5,mixed,-5.0,2.3371058425313158e-11,0.9849470762399163,0.7487754065642083,1.8142900233311128,5.927542256460727,0.22084993099153627
+middle_verified,strength_rank2:0.5,mixed,0.0,7.2331593599823545e-12,0.5492375826934628,0.8776514345660069,6.930468933146036,6.043721301332047,0.10664532590391779
+middle_verified,strength_rank2:0.5,mixed,5.0,4.409220769754183e-12,0.42728303224014114,0.9125927090328898,9.966670144701274,4.079922469830979,0.016240262549542337
+middle_verified,strength_rank2:0.75,blink,-5.0,5.837460172921459e-12,0.5005534131247149,0.8917636039532195,7.79006329413035,11.789331295104551,0.0825865926547201
+middle_verified,strength_rank2:0.75,blink,0.0,1.7714663753501832e-12,0.27433135165707645,0.9560350042877499,13.266598923919606,12.265867059950203,0.030182035883410955
+middle_verified,strength_rank2:0.75,blink,5.0,3.575845577010804e-12,0.3478154687319641,0.9267739285019464,14.819695091322552,8.818963184296846,-0.0023962326861248417
+middle_verified,strength_rank2:0.75,lateral,-5.0,2.3943206784718316e-11,0.7971634593633159,0.7921526705863333,3.5034001484092476,7.228875138087522,0.060854944695045474
+middle_verified,strength_rank2:0.75,lateral,0.0,7.493506596435533e-12,0.449524158146016,0.9043353388359956,8.516965161347638,7.242440286082308,0.03212635483913139
+middle_verified,strength_rank2:0.75,lateral,5.0,3.698559328052453e-12,0.2853247334194509,0.9539919679903293,13.125776422067718,6.851251503746083,0.011966691068118356
+middle_verified,strength_rank2:0.75,mixed,-5.0,6.430918349302463e-12,0.5185978092875829,0.8867185305569318,7.404769893971399,11.518022127101014,0.08290680699881273
+middle_verified,strength_rank2:0.75,mixed,0.0,2.0038656316075098e-12,0.2862351116356342,0.9533772847717558,12.808778523552188,11.922030891738197,0.030919475698168938
+middle_verified,strength_rank2:0.75,mixed,5.0,3.478362687253928e-12,0.3405964070024937,0.9297564349545762,14.538443054851701,8.651695379981405,-0.0009234633721440411
+posterior,blend_old_rank2:0.25,blink,-5.0,4.524221595039829e-12,0.22403208268784336,0.9695251069614589,14.090635442463846,5.919303932491529,-0.008795640809356776
+posterior,blend_old_rank2:0.25,blink,0.0,3.2639536353510148e-12,0.1998567856914436,0.9766794882861896,14.983047035212145,1.8117156602962223,-0.006622004312430119
+posterior,blend_old_rank2:0.25,blink,5.0,1.538884053188765e-12,0.13301590968159036,0.9894448616410985,18.57617936829034,0.40484795031811444,-0.001137560360726477
+posterior,blend_old_rank2:0.25,lateral,-5.0,1.879064827058133e-11,0.43765566455762384,0.9087813472162869,8.22775929918543,5.7238854258951495,0.01753177773913396
+posterior,blend_old_rank2:0.25,lateral,0.0,1.0676601210935539e-11,0.3139580791882083,0.9466510337491102,11.05224853542784,3.5483747971939588,-0.003216328483756217
+posterior,blend_old_rank2:0.25,lateral,5.0,6.372964108042375e-12,0.2516979101748626,0.9638283996743733,13.225223866460134,0.7213500851699453,-0.00588863627681077
+posterior,blend_old_rank2:0.25,mixed,-5.0,5.28828222968239e-12,0.2438947508583731,0.9648386860496894,13.333910384730455,5.763278486026331,-0.005821359890403843
+posterior,blend_old_rank2:0.25,mixed,0.0,3.6488934265448246e-12,0.21306238929782265,0.9742486095015533,14.322820022777247,1.7521882591295173,-0.006436822296320768
+posterior,blend_old_rank2:0.25,mixed,5.0,1.6849575909112686e-12,0.1412187232140305,0.9884604986281766,17.90072468568925,0.3300928789852177,-0.0011554477491033774
+posterior,blend_old_rank2:0.5,blink,-5.0,4.326665943251898e-12,0.2155499716312457,0.9696816599771683,14.731505035229045,6.560173525256728,-0.008952193825066165
+posterior,blend_old_rank2:0.5,blink,0.0,3.177082819799291e-12,0.20277623530227287,0.9758019634980999,14.970623922173404,1.7992925472574828,-0.005744479524340441
+posterior,blend_old_rank2:0.5,blink,5.0,1.5657840709243286e-12,0.1344005971891455,0.9892750944024685,18.44596729897129,0.27463588099906505,-0.0009677931220965259
+posterior,blend_old_rank2:0.5,lateral,-5.0,1.5915123972666532e-11,0.40033329238676985,0.9198266551875316,9.073064923372762,6.569191050082484,0.006486469767889192
+posterior,blend_old_rank2:0.5,lateral,0.0,1.0441458975495956e-11,0.30158555182592856,0.9486775776921083,11.599492147958541,4.0956184097246595,-0.0052428724267541945
+posterior,blend_old_rank2:0.5,lateral,5.0,6.549433178651926e-12,0.2569404673044898,0.9625180156902342,13.09601236164136,0.5921385803511745,-0.004578252292671692
+posterior,blend_old_rank2:0.5,mixed,-5.0,4.932520835715569e-12,0.22955715543078503,0.9662888146863899,14.153658678585142,6.583026779881016,-0.0072714885271044135
+posterior,blend_old_rank2:0.5,mixed,0.0,3.5373753798378132e-12,0.2154138614199955,0.9734653831703395,14.337029195286059,1.7663974316383297,-0.005653595965106827
+posterior,blend_old_rank2:0.5,mixed,5.0,1.7138750212444089e-12,0.14255971339787638,0.9882708957103984,17.800622817037386,0.2299910103333539,-0.0009658448313250511
+posterior,blend_old_rank2:0.75,blink,-5.0,4.7582246276153126e-12,0.21886766841466807,0.9666955928832973,15.102611625342306,6.931280115369989,-0.00596612673119532
+posterior,blend_old_rank2:0.75,blink,0.0,3.391659695466991e-12,0.21181259021335141,0.9735451847556681,14.768132436949458,1.5968010620335384,-0.0034877007819086
+posterior,blend_old_rank2:0.75,blink,5.0,1.6279913644094473e-12,0.13714807415724553,0.9888780478190116,18.27938420408116,0.10805278610893565,-0.0005707465386395846
+posterior,blend_old_rank2:0.75,lateral,-5.0,1.4223736800802784e-11,0.3776808591369315,0.9258009338331732,9.750943920966584,7.247070047676306,0.000512191122247655
+posterior,blend_old_rank2:0.75,lateral,0.0,1.0799296953129803e-11,0.29889584711023576,0.9474370249918032,12.031963967602326,4.528090229368443,-0.00400231972644908
+posterior,blend_old_rank2:0.75,lateral,5.0,6.851741292162323e-12,0.26454549881388245,0.9605021895618826,12.940676625138352,0.4368028438481642,-0.0025624261643201907
+posterior,blend_old_rank2:0.75,mixed,-5.0,5.2338522893782805e-12,0.22813315918232813,0.9643572842419579,14.636300780741262,7.065668882037137,-0.0053399580826723955
+posterior,blend_old_rank2:0.75,mixed,0.0,3.734867129403017e-12,0.22396088226865668,0.9712737087455239,14.167981965156562,1.5973502015088328,-0.003461921540291221
+posterior,blend_old_rank2:0.75,mixed,5.0,1.7750712449377705e-12,0.1450960846617286,0.987868140680734,17.66667569096178,0.09604388425774804,-0.0005630898016606842
+posterior,central_frontal_raw_context,blink,-5.0,5.3508915829791035e-12,0.24254480986496413,0.9661796212096143,13.253278476476218,5.081946966503899,-0.005450155057512212
+posterior,central_frontal_raw_context,blink,0.0,3.652272142122162e-12,0.20344442289370696,0.9760818977702728,14.808287085067047,1.6369557101511263,-0.006024413796513254
+posterior,central_frontal_raw_context,blink,5.0,1.5472913112027568e-12,0.13439632653955924,0.9893389326022559,18.415490749447386,0.2441593314751629,-0.0010316313218839005
+posterior,central_frontal_raw_context,lateral,-5.0,2.2850309694547185e-11,0.4852817370330735,0.8937795104902229,7.32837334701995,4.824499473729672,0.032533614465198014
+posterior,central_frontal_raw_context,lateral,0.0,1.1504723659448555e-11,0.3339733460674183,0.9415942592569913,10.4782487663873,2.974375028153419,0.0018404460083628206
+posterior,central_frontal_raw_context,lateral,5.0,6.32233408033367e-12,0.2500549134271595,0.9642653373322998,13.24845992342835,0.7445861421381611,-0.006325573934737292
+posterior,central_frontal_raw_context,mixed,-5.0,6.30113647127874e-12,0.2674909221277167,0.9601441469666683,12.386580112196505,4.815948213492379,-0.001126820807382691
+posterior,central_frontal_raw_context,mixed,0.0,4.0694212695240496e-12,0.21697153225347734,0.9735351882465382,14.159600100357768,1.5889683367100387,-0.005723401041305545
+posterior,central_frontal_raw_context,mixed,5.0,1.6883189539383493e-12,0.1421687182766142,0.9883872710920965,17.79700454629996,0.2263727395959262,-0.0010822202130230433
+posterior,central_frontal_vmd_context,blink,-5.0,5.3508915829791035e-12,0.24254480986496413,0.9661796212096143,13.253278476476218,5.081946966503899,-0.005450155057512212
+posterior,central_frontal_vmd_context,blink,0.0,3.652272142122162e-12,0.20344442289370696,0.9760818977702728,14.808287085067047,1.6369557101511263,-0.006024413796513254
+posterior,central_frontal_vmd_context,blink,5.0,1.5472913112027568e-12,0.13439632653955924,0.9893389326022559,18.415490749447386,0.2441593314751629,-0.0010316313218839005
+posterior,central_frontal_vmd_context,lateral,-5.0,2.2850309694547185e-11,0.4852817370330735,0.8937795104902229,7.32837334701995,4.824499473729672,0.032533614465198014
+posterior,central_frontal_vmd_context,lateral,0.0,1.1504723659448555e-11,0.3339733460674183,0.9415942592569913,10.4782487663873,2.974375028153419,0.0018404460083628206
+posterior,central_frontal_vmd_context,lateral,5.0,6.32233408033367e-12,0.2500549134271595,0.9642653373322998,13.24845992342835,0.7445861421381611,-0.006325573934737292
+posterior,central_frontal_vmd_context,mixed,-5.0,6.30113647127874e-12,0.2674909221277167,0.9601441469666683,12.386580112196505,4.815948213492379,-0.001126820807382691
+posterior,central_frontal_vmd_context,mixed,0.0,4.0694212695240496e-12,0.21697153225347734,0.9735351882465382,14.159600100357768,1.5889683367100387,-0.005723401041305545
+posterior,central_frontal_vmd_context,mixed,5.0,1.6883189539383493e-12,0.1421687182766142,0.9883872710920965,17.79700454629996,0.2263727395959262,-0.0010822202130230433
+posterior,identity,blink,-5.0,1.7255059257460965e-11,0.4430909936923725,0.9108608886606898,8.171331509972317,0.0,0.049868577491412235
+posterior,identity,blink,0.0,5.456529057760393e-12,0.2491683807556408,0.9661606140242498,13.171331374915919,0.0,0.003896869949509736
+posterior,identity,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,identity,lateral,-5.0,7.458580117034407e-11,0.8875569670866447,0.75796139275581,2.503873873290278,0.0,0.16835173219961086
+posterior,identity,lateral,0.0,2.358610212146117e-11,0.4991099690164714,0.8874394216964088,7.503873738233882,0.0,0.05599528356894528
+posterior,identity,lateral,5.0,7.458580121496565e-12,0.2806701597203878,0.9564696159695605,12.503873781290189,0.0,0.0014701474280019913
+posterior,identity,mixed,-5.0,1.8685462518560905e-11,0.4677663592738666,0.9039098803943856,7.570631898704125,0.0,0.05510744576489999
+posterior,identity,mixed,0.0,5.908862299888986e-12,0.2630443587350042,0.9634133821623307,12.570631763647729,0.0,0.0043984050429019
+posterior,identity,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,reference_rank2:both,blink,-5.0,5.81889764813007e-12,0.23785396651417418,0.960729466152102,14.611607825168097,6.4402763151957805,0.0
+posterior,reference_rank2:both,blink,0.0,3.907684262354115e-12,0.22751943406194658,0.9700574839737595,14.058109650622008,0.8867782757060872,0.0
+posterior,reference_rank2:both,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,reference_rank2:both,lateral,-5.0,1.371648675499009e-11,0.3742125803955232,0.9263131249554208,10.017882763985462,7.514008890695184,0.0
+posterior,reference_rank2:both,lateral,0.0,1.1750115143837083e-11,0.30804595534743107,0.943434705265354,12.067127578298477,4.563253840064595,0.0
+posterior,reference_rank2:both,lateral,5.0,7.279888448573566e-12,0.27397844825170403,0.9579397633975626,12.74528015969651,0.24140637840632206,0.0
+posterior,reference_rank2:both,mixed,-5.0,6.192276590670523e-12,0.24537994168686317,0.9590173261592855,14.11862892185486,6.547997023150735,0.0
+posterior,reference_rank2:both,mixed,0.0,4.241368675240436e-12,0.2395085017282068,0.9678117872052326,13.500685936560751,0.9300541729130227,0.0
+posterior,reference_rank2:both,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,strength_rank2:0.25,blink,-5.0,1.1069437651699233e-11,0.3612678969060206,0.9340638337863256,9.921147733872887,1.7498162239005692,0.02666563236577634
+posterior,strength_rank2:0.25,blink,0.0,4.330258859355421e-12,0.23326374968790517,0.9695127261367065,13.732360661700735,0.5610292867848148,0.0005447578370529156
+posterior,strength_rank2:0.25,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,strength_rank2:0.25,lateral,-5.0,4.8652927089506265e-11,0.7166274308620249,0.8121655910184883,4.220409297062825,1.716535423772547,0.1141475339369325
+posterior,strength_rank2:0.25,lateral,0.0,1.824804483827453e-11,0.42946945385304114,0.9096933394252712,8.669306806141744,1.1654330679078617,0.03374136584008279
+posterior,strength_rank2:0.25,lateral,5.0,7.363344869445864e-12,0.2778052780203276,0.9572156804493506,12.580786313285437,0.07691253199525071,0.00072408294821188
+posterior,strength_rank2:0.25,mixed,-5.0,1.2116552528060236e-11,0.3800023662687242,0.9291730622582077,9.357140249116526,1.7865083504124006,0.029844263901077746
+posterior,strength_rank2:0.25,mixed,0.0,4.755634177711512e-12,0.2469913417229488,0.9668996145199235,13.110796022567296,0.5401642589195669,0.0009121726853092255
+posterior,strength_rank2:0.25,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,strength_rank2:0.5,blink,-5.0,7.10153684822351e-12,0.28435564179983414,0.9527976873633937,12.28198957536372,4.110658065391401,0.007931778788708311
+posterior,strength_rank2:0.5,blink,0.0,3.696694660652717e-12,0.21944759248563497,0.9716496746871226,14.522252021386688,1.3509206464707662,-0.0015921907133631878
+posterior,strength_rank2:0.5,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,strength_rank2:0.5,lateral,-5.0,2.986374999333467e-11,0.5577322116987662,0.865859674215468,6.289457034604418,3.7855831613141397,0.06045345073995285
+posterior,strength_rank2:0.5,lateral,0.0,1.4496027914274966e-11,0.36494537461628274,0.9288806148108156,10.134933625614373,2.6310598873804905,0.014554090454538371
+posterior,strength_rank2:0.5,lateral,5.0,7.301817839941798e-12,0.2752608974871534,0.9577513349264222,12.675298769029032,0.1714249877388446,0.0001884284711402812
+posterior,strength_rank2:0.5,mixed,-5.0,7.844718209911618e-12,0.2981309388726049,0.9496476898086423,11.711868686737542,4.1412367880334156,0.009369636350643178
+posterior,strength_rank2:0.5,mixed,0.0,4.093309199544262e-12,0.2330669344826089,0.9691487139973642,13.855326182397654,1.284694418749926,-0.0013369267921316565
+posterior,strength_rank2:0.5,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,strength_rank2:0.75,blink,-5.0,5.3513568470337894e-12,0.22806554387220582,0.9630391445812103,15.035231551504701,6.863900041532383,-0.0023096784291082545
+posterior,strength_rank2:0.75,blink,0.0,3.5558364616522815e-12,0.21574020732435614,0.9719683837380297,14.904253741687585,1.7329223667716642,-0.0019108997642703243
+posterior,strength_rank2:0.75,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,strength_rank2:0.75,lateral,-5.0,1.821826988182928e-11,0.42656803413692146,0.9095214738631922,8.698820943900166,6.194947070609887,0.016791651092228674
+posterior,strength_rank2:0.75,lateral,0.0,1.2330051349462486e-11,0.31614335548183803,0.9414912910300086,11.744221054933616,4.240347316699734,0.0019434142353453162
+posterior,strength_rank2:0.75,lateral,5.0,7.273999032984365e-12,0.2736232959718492,0.9580086649885617,12.764174464514696,0.2603006832245082,-6.8901590999178e-05
+posterior,strength_rank2:0.75,mixed,-5.0,5.869959564115047e-12,0.23783241329971663,0.9610778276488708,14.427000066070153,6.856368167366027,-0.0020605014895853147
+posterior,strength_rank2:0.75,mixed,0.0,3.9218873653872364e-12,0.2287090440193278,0.9695854889447266,14.240159247878715,1.6695274842309864,-0.00177370173949396
+posterior,strength_rank2:0.75,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+temporal_shared,blend_old_rank2:0.25,blink,-5.0,1.1572327524747277e-11,0.2749790184474311,0.9532418461272522,13.300725276024275,11.564789490528195,0.038924739836488406
+temporal_shared,blend_old_rank2:0.25,blink,0.0,3.3828448721860307e-12,0.15276474812458918,0.9835214970663704,18.305199996118517,11.569264345678832,0.012899287417194948
+temporal_shared,blend_old_rank2:0.25,blink,5.0,1.2619550122718835e-12,0.09806443727096052,0.9936181984412887,21.511578257591953,9.775642564095964,-0.014113177208707963
+temporal_shared,blend_old_rank2:0.25,lateral,-5.0,1.3327741674692412e-10,1.0161386258893574,0.7160336070774638,2.260245759322604,5.2817351393898555,0.16904521524399074
+temporal_shared,blend_old_rank2:0.25,lateral,0.0,3.9513972410856855e-11,0.5541353798379112,0.8562427643201348,7.530876963356935,5.552366478480583,0.09790392464317912
+temporal_shared,blend_old_rank2:0.25,lateral,5.0,1.2434475467279315e-11,0.30898583291321896,0.9402611525177089,12.544060868828412,5.565550340895754,0.03649902831586778
+temporal_shared,blend_old_rank2:0.25,mixed,-5.0,1.567186734274873e-11,0.3501146880647778,0.931580463844487,10.683031329081892,9.533745826730303,0.056667078725621337
+temporal_shared,blend_old_rank2:0.25,mixed,0.0,4.836713715431705e-12,0.19405529325245036,0.9754821151261497,15.854918139416164,9.70563277212097,0.01952391458186873
+temporal_shared,blend_old_rank2:0.25,mixed,5.0,1.711151691168704e-12,0.11715846041953223,0.9911368328910815,19.972231285495234,8.822945875143734,-0.011989213470054293
+temporal_shared,blend_old_rank2:0.5,blink,-5.0,5.573628735012461e-12,0.1984232044860895,0.9739062667685028,15.862191516793063,14.126255731296983,0.018260319195237646
+temporal_shared,blend_old_rank2:0.5,blink,0.0,1.673287997724514e-12,0.11235440047783485,0.9911773378005796,20.652098717150178,13.916163066710494,0.0052434466829857
+temporal_shared,blend_old_rank2:0.5,blink,5.0,1.3591314388942437e-12,0.10372139121434085,0.9925890159158902,21.372278155437527,9.636342461941538,-0.013083994683309473
+temporal_shared,blend_old_rank2:0.5,lateral,-5.0,6.905739005623091e-11,0.7549814691793758,0.7896810527470595,4.431613183008933,7.453102563076185,0.09539776957439502
+temporal_shared,blend_old_rank2:0.5,lateral,0.0,2.0702662903706066e-11,0.4156934387908341,0.9068585016590297,9.58713797465065,7.608627489774297,0.04728818730428426
+temporal_shared,blend_old_rank2:0.5,lateral,5.0,7.726522680937117e-12,0.24041871060577222,0.962639447385404,14.343075989931375,7.3645654619987155,0.014120733448172714
+temporal_shared,blend_old_rank2:0.5,mixed,-5.0,7.539708774185984e-12,0.2499003920240674,0.9624625213549143,13.407524134049748,12.258238631698159,0.025785021215194052
+temporal_shared,blend_old_rank2:0.5,mixed,0.0,2.385718349399932e-12,0.14072183387100817,0.9871367225286871,18.429503694101598,12.280218326806407,0.007869307179331288
+temporal_shared,blend_old_rank2:0.5,mixed,5.0,1.5953713834590534e-12,0.11315268360788949,0.9914232079809175,20.526699578055677,9.377414167704178,-0.012275588559890202
+temporal_shared,blend_old_rank2:0.75,blink,-5.0,2.118543985706951e-12,0.13584149848694227,0.9881250801667637,18.704080279121506,16.968144493625424,0.004041505796976836
+temporal_shared,blend_old_rank2:0.75,blink,0.0,7.376935624180054e-13,0.08162975578720473,0.9956690787802527,23.09227929262888,16.3563436421892,0.0007517057033126143
+temporal_shared,blend_old_rank2:0.75,blink,5.0,2.125480266400924e-12,0.12561020600914588,0.9877131546975203,20.765099387026076,9.029163693530087,-0.008208133464939565
+temporal_shared,blend_old_rank2:0.75,lateral,-5.0,3.372219852319645e-11,0.5545133690436909,0.8628287101015599,6.510492391017188,9.531981771084439,0.022250112219894567
+temporal_shared,blend_old_rank2:0.75,lateral,0.0,1.0440356926604291e-11,0.31094607334628577,0.9462784219986959,11.5116207255059,9.533110240629547,0.007868266964618007
+temporal_shared,blend_old_rank2:0.75,lateral,5.0,5.676110900395718e-12,0.19280048227703928,0.9758240599398087,15.925955445031338,8.947444917098682,0.0009361208937679288
+temporal_shared,blend_old_rank2:0.75,mixed,-5.0,2.9796683595879686e-12,0.16771975633951894,0.9832509602839679,16.556463131620692,15.4071776292691,0.004996582286140458
+temporal_shared,blend_old_rank2:0.75,mixed,0.0,1.060385727762553e-12,0.0995495011091792,0.9939220574740888,21.1377199943435,14.988434627048306,0.0010839722339295755
+temporal_shared,blend_old_rank2:0.75,mixed,5.0,2.2546551068043756e-12,0.12931682074554351,0.9872247234097853,20.324495409345438,9.175209998993939,-0.008077103988757942
+temporal_shared,central_frontal_raw_context,blink,-5.0,1.759746553507651e-11,0.3417312476379486,0.9343092090280962,11.405171350887702,9.66923556539162,0.0578573769356443
+temporal_shared,central_frontal_raw_context,blink,0.0,5.576177761811622e-12,0.1936786488431466,0.9745950629205614,16.27567037536778,9.539734724928095,0.021825721563003907
+temporal_shared,central_frontal_raw_context,blink,5.0,1.792173131844716e-12,0.11157660176438061,0.9909660723859226,20.919287336298623,9.183351642802634,-0.011461051153341853
+temporal_shared,central_frontal_raw_context,lateral,-5.0,2.4496605931904487e-10,1.3226844965473357,0.6496890576684127,0.2647237995546992,3.2862131796219507,0.2353897646530419
+temporal_shared,central_frontal_raw_context,lateral,0.0,7.468978343762573e-11,0.7370037366020987,0.7976723261420363,5.3697333961067795,3.3912229112304275,0.15647436282127752
+temporal_shared,central_frontal_raw_context,lateral,5.0,2.2783315205080642e-11,0.4121764977312617,0.9045008241349144,10.400456507263184,3.421945979330528,0.07225935669866233
+temporal_shared,central_frontal_raw_context,mixed,-5.0,2.5492746654168565e-11,0.43579916812790004,0.9023463604909251,8.965626002726768,7.816340500375178,0.08590118207918324
+temporal_shared,central_frontal_raw_context,mixed,0.0,8.049175920044884e-12,0.24638411910285118,0.9617704842807979,13.897171518583828,7.747886151288634,0.03323554542722035
+temporal_shared,central_frontal_raw_context,mixed,5.0,2.565822496571319e-12,0.14090368189971275,0.9865547499332677,18.682713247455677,7.533427837104177,-0.007407130512240461
+temporal_shared,central_frontal_vmd_context,blink,-5.0,2.0114640354911405e-11,0.3580456331069205,0.9289746106946162,11.051024119261845,9.315088333765765,0.0631919752691244
+temporal_shared,central_frontal_vmd_context,blink,0.0,5.866364185802555e-12,0.197773881301782,0.9734499580988177,16.15935294758894,9.423417297149253,0.022970826384747522
+temporal_shared,central_frontal_vmd_context,blink,5.0,1.8339509865338438e-12,0.11196701942172008,0.9907738367637177,20.95157146488755,9.215635771391561,-0.011268815531136933
+temporal_shared,central_frontal_vmd_context,lateral,-5.0,2.2638227859527612e-10,1.3084238439099716,0.6497060448717279,0.24106762523285624,3.262557005300108,0.23537277744972662
+temporal_shared,central_frontal_vmd_context,lateral,0.0,6.687428544805668e-11,0.710376900179954,0.8050656270869694,5.570014001628604,3.591503516752253,0.14908106187634454
+temporal_shared,central_frontal_vmd_context,lateral,5.0,1.9799969259422307e-11,0.38955728280455804,0.9125215181403742,10.792830979846654,3.8143204519139964,0.06423866269320237
+temporal_shared,central_frontal_vmd_context,mixed,-5.0,2.7376144065276206e-11,0.4576053317168454,0.8956806084371285,8.451328759802523,7.302043257450933,0.09256693413297987
+temporal_shared,central_frontal_vmd_context,mixed,0.0,8.413371825857872e-12,0.2524145120660233,0.9601478547826754,13.690199722499461,7.540914355204266,0.03485817492534289
+temporal_shared,central_frontal_vmd_context,mixed,5.0,2.601996029933327e-12,0.14187117250245707,0.9863621137565237,18.618841051459754,7.469555641108253,-0.0072144943354963695
+temporal_shared,identity,blink,-5.0,8.681001869015422e-11,0.9198349140957427,0.7609713177074731,1.7359357854960804,0.0,0.2311952682562675
+temporal_shared,identity,blink,0.0,2.745173929940849e-11,0.5172611920263599,0.8874835802774128,6.735935650439684,0.0,0.10893720420615252
+temporal_shared,identity,blink,5.0,8.681001905366524e-12,0.29087734240619145,0.9557865878639662,11.735935693495989,0.0,0.023718433368614632
+temporal_shared,identity,lateral,-5.0,3.303701596652113e-10,1.7317946218151623,0.5584946529980429,-3.0214893800672518,0.0,0.3265841693234116
+temporal_shared,identity,lateral,0.0,1.0447222129597653e-10,0.9738596968484741,0.7309399596966433,1.978510484876352,0.0,0.22320672926667073
+temporal_shared,identity,lateral,5.0,3.303701618660546e-11,0.5476415493675771,0.8679434875919578,6.978510527932658,0.0,0.10881669324161894
+temporal_shared,identity,mixed,-5.0,9.43788682834091e-11,0.9705993573731495,0.7432799117706868,1.1492855023515907,0.0,0.24496763079942155
+temporal_shared,identity,mixed,0.0,2.98452197818288e-11,0.5458081367368801,0.8785308527655946,6.149285367295194,0.0,0.11647517694242375
+temporal_shared,identity,mixed,5.0,9.437886879962112e-12,0.30693046911121113,0.95218271264861,11.1492854103515,0.0,0.02696490677241743
+temporal_shared,reference_rank2:both,blink,-5.0,1.2070732768307493e-12,0.11255575726161723,0.9921665859637405,20.105623825547607,18.36968804005153,0.0
+temporal_shared,reference_rank2:both,blink,0.0,5.760615662665051e-13,0.07483779102356664,0.9964207844835653,23.78219336281221,17.046257712372523,0.0
+temporal_shared,reference_rank2:both,blink,5.0,3.5610014947919254e-12,0.1610752985466496,0.9795050212325808,19.11042711927311,7.374491425777119,0.0
+temporal_shared,reference_rank2:both,lateral,-5.0,2.727184214782075e-11,0.5064791031424335,0.8850788223214545,7.217809178241556,10.239298558308807,0.0
+temporal_shared,reference_rank2:both,lateral,0.0,8.727054479551537e-12,0.288614718331549,0.9541466889633139,12.10235370840882,10.123843223532468,0.0
+temporal_shared,reference_rank2:both,lateral,5.0,6.283240125655114e-12,0.1881725813072761,0.9767601808335766,16.248352979843887,9.269842451911227,0.0
+temporal_shared,reference_rank2:both,mixed,-5.0,1.991746098954682e-12,0.14163965999899178,0.9882475425701083,17.91307767835773,16.763792176006135,0.0
+temporal_shared,reference_rank2:both,mixed,0.0,8.607158505195684e-13,0.09103030534010252,0.9950060297080183,21.840290342892327,15.691004975597131,0.0
+temporal_shared,reference_rank2:both,mixed,5.0,3.689002861204672e-12,0.16386206254877733,0.9791476194210273,18.749201276159,7.599915865807498,0.0
+temporal_shared,strength_rank2:0.25,blink,-5.0,4.858735710079583e-11,0.6908447081738083,0.830902079610463,4.197740684086407,2.461804898590326,0.1612645063532775
+temporal_shared,strength_rank2:0.25,blink,0.0,1.5179169258020792e-11,0.38674596450596543,0.9282170358536905,9.236643693920055,2.50070804348037,0.06820374862987491
+temporal_shared,strength_rank2:0.25,blink,5.0,6.001169841299285e-12,0.24389852826216923,0.9669547564998969,13.289930848583914,1.5539951550879245,0.01255026473268375
+temporal_shared,strength_rank2:0.25,lateral,-5.0,1.9998942858684748e-10,1.3478586661456604,0.6344545490862339,-0.9546558573246704,2.066833522742581,0.25062427323522063
+temporal_shared,strength_rank2:0.25,lateral,0.0,6.30399201373254e-11,0.7579051662580741,0.7968648182738982,4.045425120287838,2.0669146354114862,0.15728187068941565
+temporal_shared,strength_rank2:0.25,lateral,5.0,2.146135816727698e-11,0.4329149421565718,0.9070435547776667,8.908547292787015,1.9300367648543575,0.06971662605590986
+temporal_shared,strength_rank2:0.25,mixed,-5.0,5.31330295096843e-11,0.7303038491335626,0.8172508387017663,3.598639291848923,2.4493537894973323,0.1709967038683421
+temporal_shared,strength_rank2:0.25,mixed,0.0,1.66469291167352e-11,0.40909246698954205,0.9220133861142825,8.63268571528831,2.4834003479931175,0.07299264359373583
+temporal_shared,strength_rank2:0.25,mixed,5.0,6.4789418979122815e-12,0.2557536714536629,0.9646771465280084,12.761300757559834,1.6120153472083336,0.014470472893018853
+temporal_shared,strength_rank2:0.5,blink,-5.0,2.157931233545579e-11,0.46396260810528855,0.9039478535611226,7.61592309421627,5.87998730872019,0.08821873240261788
+temporal_shared,strength_rank2:0.5,blink,0.0,6.609032955367897e-12,0.2575097276452382,0.9641587200502681,12.744968556310724,6.00903290587104,0.032262064433297155
+temporal_shared,strength_rank2:0.5,blink,5.0,4.254559084847772e-12,0.197555030054676,0.9754319701647814,15.623109152641131,3.887173459145143,0.004073051067799319
+temporal_shared,strength_rank2:0.5,lateral,-5.0,1.0601279864116114e-10,0.9830197884598488,0.7274407566565253,1.615383004874167,4.6368723849414195,0.15763806566492924
+temporal_shared,strength_rank2:0.5,lateral,0.0,3.3271625281704196e-11,0.5526949393889218,0.8664171469973898,6.618585067272414,4.640074582396062,0.0877295419659242
+temporal_shared,strength_rank2:0.5,lateral,5.0,1.3143842817342427e-11,0.32388262040982574,0.9421756312999887,11.329821011049763,4.351310483117104,0.034584549533588006
+temporal_shared,strength_rank2:0.5,mixed,-5.0,2.39865628877003e-11,0.49340837191958303,0.8947446296854031,6.96922606222059,5.819940559869,0.09350291288470515
+temporal_shared,strength_rank2:0.5,mixed,0.0,7.41674823981913e-12,0.27441676044963126,0.9604121081170154,12.083436905722394,5.9341515384272,0.03459392159100291
+temporal_shared,strength_rank2:0.5,mixed,5.0,4.534479567436096e-12,0.20556159726652046,0.9741916844641607,15.137679621324796,3.9883942109732984,0.004955934956866596
+temporal_shared,strength_rank2:0.75,blink,-5.0,5.7858843941340964e-12,0.24476354376764045,0.9674025291415582,13.135872832331877,11.399937046835793,0.02476405682218232
+temporal_shared,strength_rank2:0.75,blink,0.0,1.7413303914498008e-12,0.13354920890286856,0.9892918211731283,18.56401680481801,11.82808115437832,0.007128963310436984
+temporal_shared,strength_rank2:0.75,blink,5.0,3.441169636011986e-12,0.15572018481301242,0.9799658796181258,19.841046960076394,8.105111266580405,-0.00046085838554492376
+temporal_shared,strength_rank2:0.75,lateral,-5.0,4.844026982815222e-11,0.6664238916371871,0.8285970695568022,4.768923824018035,7.790413204085288,0.05648175276465234
+temporal_shared,strength_rank2:0.75,lateral,0.0,1.5167336729112904e-11,0.37477211565539525,0.927529896566892,9.79708149963044,7.818571014754089,0.026616792396421944
+temporal_shared,strength_rank2:0.75,lateral,5.0,8.084470136801807e-12,0.2295657381882049,0.9676517779115799,14.38519905220538,7.406688524272723,0.009108402921996755
+temporal_shared,strength_rank2:0.75,mixed,-5.0,6.9394684174570935e-12,0.2685082241359117,0.9620425704633413,12.221803242961123,11.072517740609534,0.02620497210676703
+temporal_shared,strength_rank2:0.75,mixed,0.0,2.154677151080585e-12,0.14775540302902787,0.9873033882819855,17.551735482748335,11.40245011545314,0.007702641426032864
+temporal_shared,strength_rank2:0.75,mixed,5.0,3.6044998885335595e-12,0.1614184550139375,0.9793920158172904,19.021844857186345,7.872559446834846,-0.0002443963962631586
+whole,blend_old_rank2:0.25,blink,-5.0,5.237562265825638e-12,0.2588413944772138,0.9592476961349963,13.76758270370155,15.02832452236302,0.01337515965292135
+whole,blend_old_rank2:0.25,blink,0.0,2.0532830720739185e-12,0.17328642307643785,0.9803739523043007,16.98145602061289,13.242197974330757,0.0024012938012469252
+whole,blend_old_rank2:0.25,blink,5.0,1.0288584407538268e-12,0.12830971170900116,0.9884866478248653,19.789853552192824,11.050595462854385,-0.02272076444420673
+whole,blend_old_rank2:0.25,lateral,-5.0,4.1964776954104596e-11,0.7191086286236008,0.8242182999115395,5.5059971577107945,8.171608352953813,0.06932448230874527
+whole,blend_old_rank2:0.25,lateral,0.0,1.4487551894989032e-11,0.42621597618318086,0.9082485257223992,9.710714660157656,7.376325990457071,0.037711212025174
+whole,blend_old_rank2:0.25,lateral,5.0,6.189073499548911e-12,0.2743547028436967,0.9534739529048857,13.469193628838337,6.134804916081448,0.013196705784460203
+whole,blend_old_rank2:0.25,mixed,-5.0,5.924660581193127e-12,0.29887043836433563,0.9487292210248189,12.363965833262652,13.910914333331386,0.021293112076494806
+whole,blend_old_rank2:0.25,mixed,0.0,2.5634431053818237e-12,0.1981570071754452,0.9754761628512356,15.666428934157498,12.213377569282628,0.0053328184017542475
+whole,blend_old_rank2:0.25,mixed,5.0,1.2103055675639852e-12,0.13985318519525794,0.9869145924263121,18.87150891697979,10.418457509048611,-0.020177662812818024
+whole,blend_old_rank2:0.5,blink,-5.0,3.825657113220863e-12,0.22036879853771596,0.9692963528697858,14.96567231352985,16.22641413219132,0.0033265029181318655
+whole,blend_old_rank2:0.5,blink,0.0,1.667408890846901e-12,0.15635248522386702,0.9836975496278612,17.85451313788892,14.11525509160679,-0.0009223035223135987
+whole,blend_old_rank2:0.5,blink,5.0,1.2267522236148532e-12,0.14869981628101878,0.9835960441574965,19.181568334868825,10.442310245530388,-0.017830160776837897
+whole,blend_old_rank2:0.5,lateral,-5.0,2.6194384708318907e-11,0.5884818726281669,0.8582324300882505,6.693601686510096,9.359212881753114,0.03531035213203437
+whole,blend_old_rank2:0.5,lateral,0.0,9.956278630371136e-12,0.35849027224374164,0.929933404454911,10.769379180264679,8.434990510564093,0.016026333292662242
+whole,blend_old_rank2:0.5,lateral,5.0,5.130107229046563e-12,0.24589229808669683,0.962660298380635,14.20815580446261,6.873767091705719,0.004010360308710732
+whole,blend_old_rank2:0.5,mixed,-5.0,4.017230126229531e-12,0.24684876015017204,0.9634294113781054,13.77225652816226,15.31920502823099,0.006592921723208411
+whole,blend_old_rank2:0.5,mixed,0.0,1.996570636868679e-12,0.1747051919402381,0.9806354485046312,16.695344971971345,13.242293607096471,0.00017353274835868045
+whole,blend_old_rank2:0.5,mixed,5.0,1.34373681026061e-12,0.15395954451828345,0.9830856509611889,18.641993168942278,10.1889417610111,-0.01634872134769495
+whole,blend_old_rank2:0.75,blink,-5.0,3.236794306611643e-12,0.1956764568711606,0.9744221579658943,16.096731068509396,17.35747288717087,-0.001799302177976663
+whole,blend_old_rank2:0.75,blink,0.0,1.5654337927249319e-12,0.1483070124771329,0.9846183486643587,18.598529041785106,14.859270995502971,-0.001843102558811112
+whole,blend_old_rank2:0.75,blink,5.0,1.6837182655254594e-12,0.17774171048502135,0.9755927521907963,18.492344325493278,9.75308623615484,-0.00982686881013768
+whole,blend_old_rank2:0.75,lateral,-5.0,1.7601262105506122e-11,0.4943638541853693,0.888086868571133,7.758159083627673,10.423770278870691,0.00545591364915201
+whole,blend_old_rank2:0.75,lateral,0.0,7.683407813961244e-12,0.3115005508102941,0.9454441126414141,11.7022601754709,9.367871505770315,0.0005156251061590407
+whole,blend_old_rank2:0.75,lateral,5.0,4.728010836458533e-12,0.22821161019774533,0.9677252672977537,14.819894828387618,7.485506115630726,-0.0010546086084078404
+whole,blend_old_rank2:0.75,mixed,-5.0,3.1628835628704654e-12,0.21200699562399156,0.9715303898755371,15.103867892739448,16.65081639280818,-0.0015080567742233016
+whole,blend_old_rank2:0.75,mixed,0.0,1.7995541020069279e-12,0.16193586894941892,0.9825951173639154,17.570236327893024,14.117184963018152,-0.001786136110925343
+whole,blend_old_rank2:0.75,mixed,5.0,1.7507541896178108e-12,0.1786015473590653,0.9759436247138177,18.194063819964196,9.741012412033017,-0.009206695100323667
+whole,central_frontal_raw_context,blink,-5.0,6.748902989334355e-12,0.29781838805365457,0.9486193446971068,12.718306129870879,13.97904794853235,0.02400351109081081
+whole,central_frontal_raw_context,blink,0.0,2.6603294013277673e-12,0.19474014714716636,0.9754059080853406,16.122024002517733,12.382765956235605,0.007369338020206995
+whole,central_frontal_raw_context,blink,5.0,1.0822046684494116e-12,0.12633517355868262,0.989112257183272,19.77468855037383,11.035430461035396,-0.023346373802613413
+whole,central_frontal_raw_context,lateral,-5.0,6.732802143269438e-11,0.8756830157118772,0.7914996634470974,4.369781631652605,7.035392826895622,0.10204311877318747
+whole,central_frontal_raw_context,lateral,0.0,2.2771846645088493e-11,0.5167252836871099,0.8826128721273313,8.616931590476286,6.2825429207757,0.06334686562024194
+whole,central_frontal_raw_context,lateral,5.0,8.543626902834829e-12,0.31984542056771637,0.938948235893138,12.560166834173291,5.2257781214164005,0.027722422796207694
+whole,central_frontal_raw_context,mixed,-5.0,8.485381474220644e-12,0.3514307636922832,0.9327830829705862,11.249659393927743,12.796607893996477,0.03723925013072753
+whole,central_frontal_raw_context,mixed,0.0,3.4258520435695185e-12,0.22617633274388904,0.9682254194999529,14.74075796641601,11.287706601541139,0.012583561753037105
+whole,central_frontal_raw_context,mixed,5.0,1.3446076609945714e-12,0.1440654550973341,0.9863212359351882,18.496492344068418,10.043440936137241,-0.01958430632169417
+whole,central_frontal_vmd_context,blink,-5.0,7.472509764425969e-12,0.30603350655736605,0.9458946198948804,12.575095017921539,13.835836836583011,0.026728235893037182
+whole,central_frontal_vmd_context,blink,0.0,2.7230563364059844e-12,0.19620842628109383,0.9750492806220421,16.070493494410016,12.331235448127883,0.007725965483505529
+whole,central_frontal_vmd_context,blink,5.0,1.0900369169423798e-12,0.12594011206232916,0.9891342771951416,19.82175656657848,11.082498477240044,-0.023368393814482916
+whole,central_frontal_vmd_context,lateral,-5.0,6.491243884286319e-11,0.8697656420053376,0.7907332731259915,4.353715536771632,7.01932673201465,0.10280950909429332
+whole,central_frontal_vmd_context,lateral,0.0,2.1277227607814933e-11,0.5058077505459555,0.8847660889908915,8.683517601283125,6.349128931582538,0.06119364875668169
+whole,central_frontal_vmd_context,lateral,5.0,7.904909647965577e-12,0.3095055712961219,0.9419199302923698,12.726614426250006,5.392225713493117,0.0247507283969761
+whole,central_frontal_vmd_context,mixed,-5.0,8.88517492776125e-12,0.35989174594501083,0.9301260008201225,11.06268608775848,12.609634587827212,0.039896332281191244
+whole,central_frontal_vmd_context,mixed,0.0,3.5001715075463636e-12,0.2280731898035079,0.9677662117658743,14.668753551325228,11.215702186450354,0.013042769487115673
+whole,central_frontal_vmd_context,mixed,5.0,1.3504604615279367e-12,0.14386382646335855,0.9863813526556096,18.501700072134703,10.048648664203528,-0.01964442304211561
+whole,identity,blink,-5.0,2.1523536880478355e-10,1.852456772806029,0.6191432389048042,-1.2607418186614718,0.0,0.35347961688311347
+whole,identity,blink,0.0,6.806340223002671e-11,1.0417130126436924,0.7485309459747176,3.739258046282132,0.0,0.23424430013083003
+whole,identity,blink,5.0,2.1523537024564744e-11,0.5857982724571003,0.8559062755523226,8.739258089338438,0.0,0.10985960782833593
+whole,identity,lateral,-5.0,2.1523536880478355e-10,1.7848325008070447,0.5709428248450331,-2.665611195243018,0.0,0.32259995737525177
+whole,identity,lateral,0.0,6.80634022300267e-11,1.003685089271221,0.734228651613424,2.334388669700586,0.0,0.2117310861341492
+whole,identity,lateral,5.0,2.1523537024564744e-11,0.5644135997645876,0.8627774249978108,7.3343887127568905,0.0,0.10389323369153484
+whole,identity,mixed,-5.0,2.152353688047835e-10,1.8640035919807916,0.6128832896658915,-1.5469485000687326,0.0,0.35713904343542224
+whole,identity,mixed,0.0,6.80634022300267e-11,1.0482062663263894,0.7455096536614748,3.4530513648748706,0.0,0.23529932759151506
+whole,identity,mixed,5.0,2.1523537024564744e-11,0.589449697339514,0.8549790399180435,8.453051407931177,0.0,0.11175788969545056
+whole,reference_rank2:both,blink,-5.0,3.4709738459979785e-12,0.19959333566882353,0.9726228557879176,16.12491691311335,17.385658731774818,0.0
+whole,reference_rank2:both,blink,0.0,1.747357777708011e-12,0.15645133012735693,0.9827752461055477,18.250145807980793,14.510887761698658,0.0
+whole,reference_rank2:both,blink,5.0,2.3997565664856457e-12,0.21232583778619452,0.9657658833806586,17.562110258807884,8.822852169469444,0.0
+whole,reference_rank2:both,lateral,-5.0,1.6185409145666238e-11,0.48009122790230147,0.8935427822202848,8.050232260296276,10.715843455539297,0.0
+whole,reference_rank2:both,lateral,0.0,7.668939445759356e-12,0.30857460157575484,0.9459597377475731,11.869812209028147,9.535423539327562,0.0
+whole,reference_rank2:both,lateral,5.0,4.982784321784821e-12,0.23207702251616724,0.9666706586893458,14.796459495469703,7.462070782712812,0.0
+whole,reference_rank2:both,mixed,-5.0,3.3616208911159272e-12,0.2149587567793385,0.9700223331013138,15.118826951925437,16.66577545199417,0.0
+whole,reference_rank2:both,mixed,0.0,1.9723935007965715e-12,0.16923994796673936,0.9808089812529899,17.300671442193018,13.847620077318146,0.0
+whole,reference_rank2:both,mixed,5.0,2.4313577056355873e-12,0.2109855152939193,0.9667369296134941,17.328050194562913,8.874998786631735,0.0
+whole,strength_rank2:0.25,blink,-5.0,2.7557486156610683e-11,0.738947172679098,0.8295997226639545,6.913283274311371,8.174025092972844,0.14302313312396303
+whole,strength_rank2:0.25,blink,0.0,8.786613586190442e-12,0.42802901666414206,0.9097460254496295,11.14714474866403,7.407886702381896,0.0730292206559182
+whole,strength_rank2:0.25,blink,5.0,3.5516223492345198e-12,0.2762808944227936,0.951152213347144,14.86731644001705,6.128058350678613,0.014613670033514591
+whole,strength_rank2:0.25,lateral,-5.0,7.108659367331613e-11,0.9983848455890347,0.7453316379497181,2.653431859184577,5.3190430544275955,0.1482111442705667
+whole,strength_rank2:0.25,lateral,0.0,2.348357258575458e-11,0.5756892134462421,0.8617462915122115,7.2892247574225975,4.954836087722013,0.08421344623536166
+whole,strength_rank2:0.25,lateral,5.0,8.867172787667348e-12,0.3489822228289132,0.9323388449842136,11.553436998120514,4.2190482853636215,0.034331813705132254
+whole,strength_rank2:0.25,mixed,-5.0,2.8378885542039693e-11,0.7547384011970473,0.824910898642534,6.429285608251755,7.976234108320487,0.14511143445877983
+whole,strength_rank2:0.25,mixed,0.0,9.277538433424524e-12,0.4400993403673356,0.9068572197092928,10.616918831249961,7.163867466375091,0.07395176154369709
+whole,strength_rank2:0.25,mixed,5.0,3.701178783979285e-12,0.2818461934083919,0.9504204389507185,14.391168306342571,5.938116898411394,0.016316490662775456
+whole,strength_rank2:0.5,blink,-5.0,1.3461554993662831e-11,0.522052475351287,0.8836657863332771,9.243325280395123,10.504067099056595,0.0889570694546406
+whole,strength_rank2:0.5,blink,0.0,4.515347892590755e-12,0.31428366952929376,0.9428396945114065,13.016657494120768,9.277399447838636,0.03993555159414119
+whole,strength_rank2:0.5,blink,5.0,2.716379063634062e-12,0.2398509217322891,0.9606642116444348,15.953893037614874,7.214634948276437,0.005101671736223803
+whole,strength_rank2:0.5,lateral,-5.0,4.148070549716509e-11,0.7736837919825408,0.8025568293993843,4.406348228362615,7.071959423605634,0.0909859528209005
+whole,strength_rank2:0.5,lateral,0.0,1.4814526138510047e-11,0.45745680881103556,0.8988929614372574,8.848037228209897,6.5136485585093125,0.04706677631031583
+whole,strength_rank2:0.5,lateral,5.0,6.7502488345926584e-12,0.29758859710435004,0.9489768688896576,12.622089886517582,5.287701173760691,0.017693789799688088
+whole,strength_rank2:0.5,mixed,-5.0,1.3846265162206837e-11,0.5357605169708062,0.8800629049689175,8.735007246426274,10.281955746495004,0.0899594281323963
+whole,strength_rank2:0.5,mixed,0.0,4.896735348129366e-12,0.32624730625984577,0.9403131359168326,12.445237366085014,8.992186001210143,0.0404958453361573
+whole,strength_rank2:0.5,mixed,5.0,2.8147341794964307e-12,0.2436628317998554,0.9605454542453801,15.496652318503003,7.043600910571826,0.006191475368113937
+whole,strength_rank2:0.75,blink,-5.0,5.43271755679193e-12,0.3166536349434944,0.9418931365753689,12.716756526869663,13.977498345531135,0.030729719212548745
+whole,strength_rank2:0.75,blink,0.0,2.168929289763277e-12,0.20706333996191495,0.9720594273155269,15.887109175115626,12.147851128833496,0.010715818790020804
+whole,strength_rank2:0.75,blink,5.0,2.3324238027177706e-12,0.20632154391833263,0.9666530003652738,18.083409132950962,9.344151043612523,-0.0008871169846152967
+whole,strength_rank2:0.75,lateral,-5.0,2.3180310654615126e-11,0.5796609838231394,0.8609195132568597,6.52034331288614,9.185954508129157,0.03262326896342517
+whole,strength_rank2:0.75,lateral,0.0,9.54298175851164e-12,0.35644933222027464,0.9312857818280078,10.71445906841834,8.380070398717756,0.014673955919565386
+whole,strength_rank2:0.75,lateral,5.0,5.455452679298481e-12,0.25306492464538033,0.9615650567528562,13.954663668306196,6.620274955549306,0.0051056019364895825
+whole,strength_rank2:0.75,mixed,-5.0,5.507176945232247e-12,0.3299776948350134,0.9389484280687024,12.098417399853496,13.64536589992223,0.031073905032611305
+whole,strength_rank2:0.75,mixed,0.0,2.461687037253382e-12,0.21961173342123597,0.9697351973753775,15.190343005625305,11.737291640750435,0.01107378387761243
+whole,strength_rank2:0.75,mixed,5.0,2.391460486715198e-12,0.20875105545182798,0.9670830625240731,17.502498047769166,9.049446639837988,-0.00034613291057902817
+
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_method_means.csv
+
+```csv
+scope,evaluated_family,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration,pooled_energy_snr_db
+central_shared,blend_old_rank2:0.25,1.3162468547111887e-11,0.3758414267075957,0.9217890672191771,12.47873908074964,10.52460470808846,0.03095210823955736,11.858447133943436
+central_shared,blend_old_rank2:0.5,7.274714829993651e-12,0.3013850256818722,0.9427618203388917,13.914664285542912,11.96052991288173,0.009979355119842692,13.55996657904111
+central_shared,blend_old_rank2:0.75,4.295390874821124e-12,0.2554667995447157,0.9559062760375686,15.184519050413503,13.230384677752324,-0.0031651005788342285,15.126359949320127
+central_shared,central_frontal_raw_context,2.2731069120551133e-11,0.4731019060937035,0.8967814023593045,10.949306422363545,8.995172049702365,0.05595977309942989,10.154835711420333
+central_shared,central_frontal_vmd_context,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.05640722460589881,10.069310921021064
+central_shared,identity,5.811538636041364e-11,1.1098663689158537,0.7306387359088092,1.9541343726611802,0.0,0.22210243954992515,1.7230380471289644
+central_shared,reference_rank2:both,4.224496681594309e-12,0.2671315287248385,0.9527411754587344,14.905802342542053,12.951667969880873,0.0,15.124574424424274
+central_shared,strength_rank2:0.25,3.436774599107401e-11,0.8594534088877821,0.7896215192864358,4.063073620115308,2.108939247454128,0.16311965617229862,3.9132593461891387
+central_shared,strength_rank2:0.5,1.7470050921490914e-11,0.6146209580246941,0.855476391138007,6.944243618494091,4.990109245832911,0.09726478432072753,6.935317519714682
+central_shared,strength_rank2:0.75,7.422301151664348e-12,0.3858876018727525,0.9206545170083802,11.500918622253433,9.546784249592253,0.03208665845035416,11.715623198256317
+frontal,blend_old_rank2:0.25,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.0,16.62826215949223
+frontal,blend_old_rank2:0.5,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.0,16.62826215949223
+frontal,blend_old_rank2:0.75,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.0,16.62826215949223
+frontal,central_frontal_raw_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.0,16.62826215949223
+frontal,central_frontal_vmd_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.0,16.62826215949223
+frontal,identity,3.0582390300864297e-10,2.307985957107543,0.47281897982007526,-5.473181121702266,0.0,0.5008814236405708,-5.387673982307646
+frontal,reference_rank2:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.0,16.62826215949223
+frontal,strength_rank2:0.25,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.0,16.62826215949223
+frontal,strength_rank2:0.5,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.0,16.62826215949223
+frontal,strength_rank2:0.75,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.0,16.62826215949223
+middle_verified,blend_old_rank2:0.25,9.655784951791635e-12,0.3863806385792,0.9202885048045323,12.1569318758,11.10293035941286,0.026725714108576267,11.74099116061328
+middle_verified,blend_old_rank2:0.5,5.53668186834007e-12,0.31415494924452675,0.9403278973025264,13.468659473099827,12.414657956712686,0.006686321610582132,13.248300269212898
+middle_verified,blend_old_rank2:0.75,3.54683835863822e-12,0.27217592396997875,0.9519836172870911,14.588934563682871,13.53493304729573,-0.004969398373982579,14.575970683691732
+middle_verified,central_frontal_raw_context,1.609996587467418e-11,0.48363453797992667,0.8957356848342647,10.694746564597775,9.640745048210633,0.05127853407884382,10.138939147336087
+middle_verified,central_frontal_vmd_context,1.590414760899291e-11,0.48181932618719453,0.8951447303542679,10.656923642421457,9.602922126034317,0.05186948855884062,10.060706620320929
+middle_verified,identity,5.140053120227365e-11,1.2160060369312515,0.7053099212374392,1.054001516387141,0.0,0.24170429767566942,0.8617410657651863
+middle_verified,reference_rank2:both,3.686254422686084e-12,0.28966207809225786,0.9470142189131086,14.141898729586796,13.087897213199653,0.0,14.341411185075662
+middle_verified,strength_rank2:0.25,3.032749300119963e-11,0.9421121661181495,0.7675620362241696,3.1581204545819794,2.104118938194839,0.17945218268893892,3.042047836070185
+middle_verified,strength_rank2:0.5,1.535076747091037e-11,0.6739401973087845,0.8384886251128537,6.036245621521243,4.982244105134102,0.10852559380025477,6.048932993632534
+middle_verified,strength_rank2:0.75,6.4703546114058505e-12,0.4222379902631388,0.9105449738265375,10.6416100570636,9.58760854067646,0.036469245086571005,10.852889886356376
+posterior,blend_old_rank2:0.25,6.198822902253037e-12,0.23982136615019983,0.9647175590786596,13.9680609600263,2.8861152750562207,-0.00239355804886382,13.20088912631806
+posterior,blend_old_rank2:0.5,5.795480021954191e-12,0.23323520509872325,0.9659784511127487,14.245330708917221,3.1633850239471437,-0.003654450082952902,13.591078073988498
+posterior,blend_old_rank2:0.75,5.8218268219228585e-12,0.2340156293287809,0.9651509008347834,14.371630135215533,3.289684450245455,-0.0028268998049877135,13.671148307093409
+posterior,central_frontal_raw_context,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0008455382556892118,12.68323339055742
+posterior,central_frontal_vmd_context,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0008455382556892118,12.68323339055742
+posterior,identity,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.03767649571614244,10.097879805690477
+posterior,reference_rank2:both,6.277863302159039e-12,0.24383746859353359,0.9623240010297958,14.095698451206937,3.013752766236858,0.0,13.27906956281004
+posterior,strength_rank2:0.25,1.2236694689965392e-11,0.3259406562974384,0.9393706888615243,11.9259900342693,0.8440443492992233,0.022953312168271487,10.999570105596014
+posterior,strength_rank2:0.5,8.66576742905767e-12,0.28010866453320427,0.9523719713298526,13.023676568867742,1.941730883897665,0.009952029699943125,12.179730604452637
+posterior,strength_rank2:0.75,6.679490299788884e-12,0.2460800314957965,0.9611449585504495,14.172869366129543,3.090923681159466,0.0011790424793463282,13.402821668771352
+temporal_shared,blend_old_rank2:0.25,2.4851413864846073e-11,0.34071072046891426,0.9267909419346597,13.55142976391511,8.596852537007134,0.04504008867616098,12.110715929384128
+temporal_shared,blend_old_rank2:0.5,1.3068158035505587e-11,0.25881861380635696,0.9508748971267761,15.401346993686527,10.446769766778552,0.020956133484044556,14.110162245371237
+temporal_shared,blend_old_rank2:0.75,6.790565928764138e-12,0.19976971812717229,0.968981805205827,17.169800672848947,12.215223445940968,0.0028492254049936085,16.12179007806896
+temporal_shared,central_frontal_raw_context,4.4834746606807647e-11,0.4379931331396262,0.9002671274427705,11.797839281582782,6.843262054674804,0.07156390316805014,10.281303762358693
+temporal_shared,central_frontal_vmd_context,4.214033341678559e-11,0.43644839744558134,0.9002980191813945,11.725136741356465,6.770559514448488,0.0715330114294261,10.167252650697375
+temporal_shared,identity,8.049823688754696e-11,0.7560674755311942,0.8150681181467097,4.954577226907977,0.0,0.15676291246411095,3.4584888328733374
+temporal_shared,reference_rank2:both,6.018637544621723e-12,0.19202969750010707,0.9718310306108207,17.45214771905958,12.497570492151606,0.0,16.61070558087139
+temporal_shared,strength_rank2:0.25,4.7835255957321954e-11,0.5839242181198907,0.8631531294939896,7.079584171893069,2.125006944985092,0.10867790111683101,5.658932585194408
+temporal_shared,strength_rank2:0.5,2.4534329090092748e-11,0.4168901604110593,0.9121022778885173,9.970903608403583,5.016326381495606,0.05972875272230338,8.692864099889412
+temporal_shared,strength_rank2:0.75,1.059545628585934e-11,0.2647196405714651,0.9543529942811892,14.365280506219548,9.410703279311573,0.017478036329631352,13.367004939270613
+whole,blend_old_rank2:0.25,8.962168375714984e-12,0.2907774964053522,0.9472410056783727,14.014077934179333,10.838511847855903,0.01330403964375245,12.417301790675202
+whole,blend_old_rank2:0.5,6.150902929864227e-12,0.25486655995665564,0.9571740656025407,14.753609458511207,11.578043372187777,0.003370979719584429,13.316325919055448
+whole,blend_old_rank2:0.75,4.801313219475904e-12,0.2342606229954666,0.9628842932538466,15.370676284874513,12.195110198551085,-0.002339247931721617,13.826831518330094
+whole,central_frontal_raw_context,1.3598974802057107e-11,0.339202220028857,0.9348364466487793,13.18320093816409,10.00763485184066,0.025708598673345778,11.289970644739368
+whole,central_frontal_vmd_context,1.3235109557028176e-11,0.3383433078844535,0.9346412261514359,13.162703594937025,9.987137508613593,0.025903819170689135,11.268085202217994
+whole,identity,1.0160743601979166e-10,1.1482843114884855,0.7338779272370579,3.17556608632343,0.0,0.226667118085067,2.8472650157040924e-07
+whole,reference_rank2:both,4.9133992445500155e-12,0.2426997306240662,0.960545045322125,15.155691725930836,11.980125639607405,0.0,13.480443502175145
+whole,strength_rank2:0.25,2.052118487757969e-11,0.538110811178111,0.8791225881343796,9.540134535951603,6.364568449628173,0.08142245718774543,7.214789659388633
+whole,strength_rank2:0.5,1.1699610789998673e-11,0.41228743550458924,0.9131686497051721,11.196360898470573,8.020794812147141,0.04737639561695306,9.569044102843822
+whole,strength_rank2:0.75,6.497015578988783e-12,0.2975060270245126,0.9455714004513385,13.629777704199432,10.454211617876002,0.014973644870786566,12.301465254453003
+
+```
+
 ### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_intervals.csv
 
 ```csv
@@ -68296,7 +70383,7 @@ Deadline remains16:27 UTC. Recover evidence before spending the final90 minutes 
 
 ### Snapshot: NONFRONTAL_CHALLENGERS_PLAN.md
 
-[Original](docs/NONFRONTAL_CHALLENGERS_PLAN.md); captured SHA256 `6693b9d2e2b48de9bee0d7f822bbb3ba00bed4bbdfecf4766ead414b076d6aab`.
+[Original](docs/NONFRONTAL_CHALLENGERS_PLAN.md); captured SHA256 `eaf733d66fba685d6caa37cb633065fc593225cbfd6bcf9f3a99e4f088170ef3`.
 
 # Posterior and central correction challengers
 
@@ -68554,11 +70641,55 @@ pass, source-aware uncertainty and native qualification separately. Runtime and
 memory at10–50channels remain measured deliverables, not assumed scalability.
 
 
+### CCA design sanity check before NF12
+
+Original iCanClean identifies EEG/reference-correlated latent components, selects
+them by squared canonical correlation, estimates sensor projections and subtracts.
+Its paper distinguishes sources formed from EEG, references or both; its threshold
+is R-squared, not R. Primary methods sections2/3.6.1:
+https://pmc.ncbi.nlm.nih.gov/articles/PMC10574843/ . Human ocular use here remains
+an adaptation; the cited benchmark uses a phantom and a source-recovery DataQuality
+Score, not our reconstruction-SNR benchmark. Do not import its best-setting score.
+
+A full-rank reference-side CCA plus unrestricted linear back-regression can reduce
+to ordinary multivariate regression. With only two instantaneous EOG channels,
+retaining both canonical directions may add no substantive method. Prove that
+parity on Kaggle as a degeneracy fixture before claiming novelty. The distinct
+bounded challenger would use the existing2EOGx3lag bank(sixfeatures), regularized
+calibration-only whitening and rank1/2 truncation, followed by reference-supported
+projection. Compare it with matched lagged ridge and currentrest-whitenedrank2.
+EEG-side source subtraction is a separate preservation-risk control because
+reference-correlated components can retain neural content. Label each source
+choice explicitly; do not mix them under one unqualified CCA result.
+
+If correlation admission is numerically matched to|CC|0.4, its squared threshold
+is0.16, not0.4; this matching is our adaptation, not a verified published optimum.
+No automatic posteriorVMD, waveform filtering as pseudo-clean truth, target-guided
+component count, or assumption that a slow component is ocular is permitted.
+
+
+### Decision update after full fixed gain experiment
+
+Fullgain320comparison completed. Blend0.75point15.370676mean/13.826832pooled
+improves the aggregate only+.214985dB with intervalcrossingzero and worsens severe
+lateral8.050232→7.758159. Keep candidate evidence without replacing rank2.
+Uniformattenuation is inferior. No newstrengthbank or adaptiveoracle selection.
+
+Severe middle lateral pooled5.444037→5.570377 even with clean-target-fitted scalar
+establishes little gain-only headroom for that saved field. Before NF12: validate
+field/reference coupling(RC01-RC05) and inspect failed/gate-missed coverage using
+saved decisions. Then select one distinctfield-estimation challenger: reference
+CCA with regression-degeneracy/rank controls, or authorSGEYESUB if calibration
+labels/parity permit. Keep confidence/gain work for conditions with demonstrated
+headroom; do not claim it solves severe lateral. Allbound outputs are diagnostics,
+not validation scores, learnedmodels or inference weights.
+
+
 ---
 
 ### Snapshot: NONFRONTAL_CHALLENGERS_RESULTS.md
 
-[Original](docs/NONFRONTAL_CHALLENGERS_RESULTS.md); captured SHA256 `b9eb51d3bf272555fa5ef867e52aee08d2a9f060fa7f4164d9b863acd7913bd9`.
+[Original](docs/NONFRONTAL_CHALLENGERS_RESULTS.md); captured SHA256 `ff4534e10fd16bc07c65a5648e988a7423502683160fe31a8c0dc38cee3825a3`.
 
 # Posterior and central component correction: pilots and full development results
 
@@ -68971,11 +71102,93 @@ Primary scores use unchanged paper equations; clean and CC gates are unchanged.
 Core output recovery verified; full123payload recovery tracked independently.
 
 
+### Gain pilot fully recovered; full comparison launched
+
+All123manifest payloads for gain-pilot001/1 verified at01:31:05UTC14October2026.
+Full320example comparison nonfrontal-gain-full001/1 submitted to
+https://www.kaggle.com/code/satyapaladugu/vmd-nonfrontal-fixed-gain-full
+at248a5070131d8049eddc01eede8ebee8465a77bb. Parent full001/1 remains fixed;
+no data/recipe change from the pilot. Added evaluator-only participant-balanced
+bound tables at this source do not alter inference. Ten fixedarms, no fitted
+weights, no frontal change, no new VMD or neural/reserved work. Completion is
+pending. Primary agent monitors during the active chat; no unattended heartbeat
+or agent availability is promised.
+
+
+Pilot condition audit:blend0.75 weak blink+5 improves19.272949→19.972946dB,
+weak mixed+5 improves18.491068→19.159358dB, while severe lateral−5 worsens
+9.376985→8.879075dB. These are matchedpilot-only results. They motivate testing
+observable contamination-dependent correction rather than one fixed strength,
+but no such rule is yet implemented or qualified. Full fixedcomparison pending.
+
+
+## Full fixed gain/blend comparison — complete14October2026
+
+nonfrontal-gain-full001/1 completed320examples/32recipients/5ocular donors at
+248a5070131d8049eddc01eede8ebee8465a77bb.292tests passed(14warnings,18.12s),
+549000archived paper-metric checks. Stage493.397756s,runner557.734671s,
+peak1332200KiB. No fitting,target-guided fixedprediction,VMDsolve,models or
+reserved access. Manifesta95e33513549efc97379831b05c5a6ccaef4807f1105e546bce4d3b99b7a672e.
+Core14payloads and completion verified; full665payload recovery separately pending.
+WholePNGvisuallyinspected/readable; notebookHTMLvisualQA not performed.
+
+| Fixed joint nonfrontal correction | Whole mean channel SNR dB | Pooled-window SNR dB | CC |
+| --- | ---: | ---: | ---: |
+| Original rank2 | 15.155692 | 13.480444 | .960545 |
+| Strength0.25 | 9.540135 | 7.214790 | .879123 |
+| Strength0.50 | 11.196361 | 9.569044 | .913169 |
+| Strength0.75 | 13.629778 | 12.301465 | .945571 |
+| Old/rank2blend0.25 | 14.014078 | 12.417302 | .947241 |
+| Old/rank2blend0.50 | 14.753609 | 13.316326 | .957174 |
+| Old/rank2blend0.75 | **15.370676** | **13.826832** | **.962884** |
+
+The strongest blend has point gain+.214985dB versus rank2, supplemental95%interval
+[−.059848,+.502170],498/500validdraws. CCgain+.002339 interval[−.000182,+.005434].
+Neither interval supports a robust superiority claim. It passes whole controlled
+engineering gates against rank2, but native/fresh qualification remainsfalse.
+Frontal remains17.112814dB/CC.973700, with its known.007441CCloss against strongest
+raw frontal. A matched raw-frontal+sameblend ablation was not run; old raw+rank2
+cannot substitute for that matched comparator. No VMDbenefit or deployment claim.
+
+Middleblend0.75mean14.588935/pooled14.575971 versus14.141899/14.341411; posterior
+14.371630/13.671148 versus14.095698/13.279070. Both subgroupmean15gates fail.
+Weakblink+5 rises17.562110→18.492344 and weakmixed+5 rises17.328050→18.194064dB.
+Severelateral−5 falls8.050232→7.758159dB,CC.893543→.888087. Lateral0 falls
+11.869812→11.702260; lateral+5 rises14.796459→14.819895. The wholeaverage hides
+this tradeoff. Retain originalrank2 as reference and blend as a candidate, not an
+approved final replacement. No broader strength grid follows these failed arms.
+
+### What the evaluator-only bounds establish
+
+Optimistic target-fitted middle scalar correction changes pooledmean14.341411→
+16.144333, and oracleblend bound16.629263. These use clean scoring targets and
+are explicitly nondeployable. Their numeric values are not achieved inference
+accuracy, newmodel results or evidence of generalization. Averaging oracleweights
+and applying that average is invalid; the per-window oracle is optimistic.
+
+For severe lateral−5 in true middle channels,current pooled5.444037dB rises only
+to5.570377 with optimistic scalar and6.152358 with optimistic old/rank2blend.
+Posterior severe lateral pooled9.012374→9.380995 scalar,9.288298blend. Thus scalar
+strength cannot rescue these fields in the hardest condition. Residual energy
+accounting closes; centered/time-varying error dominates mean-bias energy in the
+saved tables. This supports prioritizing artifact-field/coverage diagnosis rather
+than another DCcorrection or broadgainsearch. It does not identify the biological
+source of every error, prove an optimal newmethod, or eliminate reference-coupling
+and regression-generated-mixture bias.
+
+Next priorities: separately versioned field/reference coupling contracts first;
+then distinct lowrank referenceCCA with matched ridge/degeneracy controls and
+eligible authorSGEYESUB parity. Gate-missed and unavailable-field cases remain
+included. Confidence-dependent gains require observableinputs and grouped source
+selection, never condition labels or oracle coefficients. Native suppression/
+resting preservation and independent datasets remain mandatory before models.
+
+
 ---
 
 ### Snapshot: NONFRONTAL_GAIN_DIAGNOSIS_PLAN.md
 
-[Original](docs/NONFRONTAL_GAIN_DIAGNOSIS_PLAN.md); captured SHA256 `230f5dd0efe455f41a459ba2a23104000919d41ede286c76fd5b9e126755e1f9`.
+[Original](docs/NONFRONTAL_GAIN_DIAGNOSIS_PLAN.md); captured SHA256 `8127978d92202cd7b11794c7d607526ba652a7ca59680368629276589978ed8f`.
 
 # Fixed nonfrontal strength and blend diagnosis
 
@@ -69031,6 +71244,41 @@ Grouped recipient/donor-excluded tuning and native qualification are later stage
 A successful weaker-artifact correction must not degrade severe lateral cases.
 If these fixed variants fail, retain rank2 and move to distinct reference CCA or
 eligible SGEYESUB; do not keep expanding a blind strength grid. No models yet.
+
+
+## Reproduce the full fixed experiment
+
+From the VMD_EOG_Removal project root in PowerShell, after Kaggle authentication:
+
+```powershell
+python tools/kaggle_campaign.py submit --stage nonfrontal-gain-diagnostic --run-id nonfrontal-gain-reproduction-001 --profile full --config configs/nonfrontal_gain_diagnostic.json --source-sha 248a5070131d8049eddc01eede8ebee8465a77bb --kernel-slug vmd-nonfrontal-gain-reproduction --kernel-source satyapaladugu/vmd-nonfrontal-challengers-full/1
+```
+
+Use a new run ID if that reproduction already exists. This local command submits
+an exact-source Kaggle notebook; numerical work runs remotely. It does not train
+a neural model. Check and recover its immutable outputs with:
+
+```powershell
+python tools/kaggle_campaign.py status --run-id nonfrontal-gain-reproduction-001
+python tools/retrieve_bounded.py --run-id nonfrontal-gain-reproduction-001
+```
+
+The numbered61notebook also pins the submitted full run source/spec. The pilot
+notebook remains preserved under .kaggle-work and the archived source commit.
+A notebook's pinned algorithm SHA can precede the later documentation commit;
+that distinction preserves reproduction rather than changing a live run.
+
+
+## Completed result and next decision
+
+Full320comparison completed at248a507. Blend0.75whole15.370676mean/13.826832
+pooled versus rank2original15.155692/13.480444dB. Gainuncertainty crosseszero;
+severelateral−5worsens8.050232→7.758159. Fixedattenuation variants are inferior.
+Retain allarmoutputs; no newstrengthgrid or approvedreplacement. True middle
+severelateral pooled5.444037→5.570377 even with target-fittedscalar; fieldshape
+and gatecoverage need investigation. Validate source/reference coupling before
+newconfidence rules; then test a distinctreferenceCCA or eligibleSGEYESUB.
+Alloraclefigures remain nondeployable; no models/native/fresh qualification.
 
 
 ---
@@ -69919,7 +72167,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [notebooks/58_Posterior_Central_Challengers.ipynb](<notebooks/58_Posterior_Central_Challengers.ipynb>) | 9223 | `d7d5c553a96006f16bbe128bbc5f0129a1cd5618bdb1e058fff56b5bfb76af68` |
 | [notebooks/59_Central_Posterior_GEVD_MWF.ipynb](<notebooks/59_Central_Posterior_GEVD_MWF.ipynb>) | 9069 | `aea0ece312b7b73f952b67eb011fb03c7100748f09349038e9f46cd633175d90` |
 | [notebooks/60_Frozen_Frontend_SNR_Review.ipynb](<notebooks/60_Frozen_Frontend_SNR_Review.ipynb>) | 9387 | `ee30d9202f06de8d27106dace46fbbb899d15ca20122fa365e2667fcf2445bc2` |
-| [notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb](<notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb>) | 9701 | `206c2f85e126495ec77f4bf9db8bdec328d0a05f549c0ce82ab9c87498e80087` |
+| [notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb](<notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb>) | 9704 | `a39eaa7190e2e11aeee30332e114cfa0a20e9f7128c2cc7d3955791abd8584d7` |
 | [tests/test_artifacts.py](<tests/test_artifacts.py>) | 777 | `ccd2badb790151ebe841704a952af7efbc980b0031c9a17185175a5238ec2d8b` |
 | [tests/test_autovmd.py](<tests/test_autovmd.py>) | 1271 | `42bcf6e4e7dc1644f0745e52e6be225d3dafed204ef97fddf507e75a8f838a49` |
 | [tests/test_brainvision.py](<tests/test_brainvision.py>) | 1240 | `5b1eb58e28f241c48d10f15290fe20e280812cf22c377847a4fb0135490e2813` |

@@ -1,6 +1,6 @@
 {
-  "snapshot_utc": "2026-10-14T01:29:54.452865+00:00",
-  "git_sha": "c049d8dca726adb032f9ee45b32353d9164dd272",
+  "snapshot_utc": "2026-10-14T01:46:26.534646+00:00",
+  "git_sha": "248a5070131d8049eddc01eede8ebee8465a77bb",
   "tables_and_logs": [
     {
       "path": "results/review-fast/frontal-event-hybrid-001/results/vmd-frontal-replication-20261011/frontal-event-hybrid-001/tests.txt",
@@ -12246,6 +12246,1671 @@
       "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/tests.txt",
       "bytes": 2511,
       "sha256": "37d694ab7b74270b4ca8ebfdf8ecfba1824d330f6272afa2e559cc7a5442ad0c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/coverage_paired_differences.csv",
+      "bytes": 83493693,
+      "sha256": "7b1dfee38914fe738a142cc8a687fbdbc0d9be1f9d249ce848e8d5039331583f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/coverage_uncertainty_channel_strata.csv",
+      "bytes": 28298961,
+      "sha256": "6b9f6903e4ed67e4da85e12fa7c635e957a6f4214994745080c500291761e173"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/coverage_uncertainty_intervals.csv",
+      "bytes": 24588,
+      "sha256": "421bf54b6100e5b825ff780521a0d87d4acf2f27b8a9de9b89b9246f08b6c1a4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_bound_condition_means.csv",
+      "bytes": 6844,
+      "sha256": "d255bd8af07c51b81f3cad82222253608c749babc9ddfd5266ec1e005db7c728"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_bound_means.csv",
+      "bytes": 865,
+      "sha256": "4671c354e7a3a06917f4b452d82114bb666e01adcbdc05388d9acc952732d16c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/evaluator_only_gain_bounds.csv",
+      "bytes": 325284,
+      "sha256": "49f30e986312f9e4488c6006c6cc96d760a62864522aa9f9e3adf6bef911b3f7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_channel_scores.csv.gz",
+      "bytes": 13828675,
+      "sha256": "70e3f6d8a87a1915a4e25279df1445f3bd8a6e0e79a5c05016b2d915872c2b08"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_condition_means.csv",
+      "bytes": 84463,
+      "sha256": "681d14910f7314c109c959d3a90fd33d44369e285625c21c98b80034df562567"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_decisions.jsonl",
+      "bytes": 169069,
+      "sha256": "eeed7c1940cebf3dee8b2d540a1f6c9267b7c3350895c40d7d1983750f512f6d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_example_snr.csv",
+      "bytes": 2167017,
+      "sha256": "2a477c66acd817d73481ce8a7ff45d4cf86aba363adf4c0aa58799ef25090657"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_method_means.csv",
+      "bytes": 9948,
+      "sha256": "2130b8fea08edbb5a4fcc4c684077453c583fbf3362b46447ef08fb1a1a4eb75"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_selection_manifest.jsonl",
+      "bytes": 391132,
+      "sha256": "c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-blink-snr+0.csv.gz",
+      "bytes": 49151,
+      "sha256": "3e8a842df4126f9fc2227645081fb27feeddda3bd11eae56ebbf0544d0968a79"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-blink-snr+5.csv.gz",
+      "bytes": 47252,
+      "sha256": "72365802c6a6fcb44ef1ad18a13476623dd77e3e04f38b85b80dc48343787f69"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-blink-snr-5.csv.gz",
+      "bytes": 54851,
+      "sha256": "c57acf8b7bb14935c5a3eed90ca17ae46909886996267b2c033270e697d0f254"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-clean-clean.csv.gz",
+      "bytes": 4804,
+      "sha256": "0dda607fd301fc85e59b6bccfb894d2b5fd662e33069eabafbecd9d00cdb43dd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-lateral-snr+0.csv.gz",
+      "bytes": 54658,
+      "sha256": "ffb9ac7860811318d2c7eab379cf807424b38082b8f0d00c53e400119f3242fd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-lateral-snr+5.csv.gz",
+      "bytes": 47046,
+      "sha256": "0e5a0004bfdf1a3a02e87e98d6cd8e2a2c958290472d1ea9da359fce01f6cd63"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-lateral-snr-5.csv.gz",
+      "bytes": 56034,
+      "sha256": "ffb1d375750f8ac1536a4652f1ccf4115881da39314adc53a56dec32aac66076"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-mixed-snr+0.csv.gz",
+      "bytes": 49065,
+      "sha256": "04a8ff9019f791dcccf50f451f96378517a156f9755dbfb25abe56c91d3788e2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-mixed-snr+5.csv.gz",
+      "bytes": 47194,
+      "sha256": "5d45d3d70535104a158bc40f80b16addb6693804f14593f7a230ecbaaf5ca78a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032305-000-mixed-snr-5.csv.gz",
+      "bytes": 54788,
+      "sha256": "27d3508dafae4184016a91770f44afe1e9dcc73666cce9fa32a1cb16efa4a0a3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-blink-snr+0.csv.gz",
+      "bytes": 43744,
+      "sha256": "4e21dd3bf362856ea40e5f666128eed0e6b33c073828cd5048372dacc5e37d04"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-blink-snr+5.csv.gz",
+      "bytes": 34937,
+      "sha256": "fdf1423b81d4442e0b8a0c3ab4c2d8f3c1e3ce1889f1d25c2bc354d06606c0a3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-blink-snr-5.csv.gz",
+      "bytes": 75385,
+      "sha256": "b8cc8a42138f3ddb756aa550d9152734aa2065c058d5656f7a852cafa2445354"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-clean-clean.csv.gz",
+      "bytes": 4633,
+      "sha256": "1c0e33a7b30b984a68ba0d538d57389a33b0fe90f92fd3a4d34de0165db3e677"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-lateral-snr+0.csv.gz",
+      "bytes": 53193,
+      "sha256": "de0959a4a103eca99616a958d4b74e3f5529e9f6c490c273ed69420dee21d268"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-lateral-snr+5.csv.gz",
+      "bytes": 45044,
+      "sha256": "7e325f1b13136f3a78c4001aa14e7f541acf2705369b8f3348837fcd5d842cbb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-lateral-snr-5.csv.gz",
+      "bytes": 53624,
+      "sha256": "e15ab37be23fa122b1e6c8d5539b345b37defb24367af40ef5a9768b83411cc4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-mixed-snr+0.csv.gz",
+      "bytes": 43606,
+      "sha256": "16f898af64b191b564edb3b8807babef17e259111ea33d683b2ab341b1108539"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-mixed-snr+5.csv.gz",
+      "bytes": 34968,
+      "sha256": "f8de3809c600859fd029d21283da1849d08909ba4bd2a85c2a9933b3116b4015"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032306-000-mixed-snr-5.csv.gz",
+      "bytes": 51567,
+      "sha256": "e5c6ab659d5f2b680083eb84ea0121c09207bfa976c6aa4794cf9aa671d3a0d1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-blink-snr+0.csv.gz",
+      "bytes": 43081,
+      "sha256": "def1a7423757d7e7dd696aee9952a745d169b9a9603d88c647217651aa353a2f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-blink-snr+5.csv.gz",
+      "bytes": 41715,
+      "sha256": "d33865f13f0006d41acccaabd6fe66add357deee700924c22586264e42aeaaca"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-blink-snr-5.csv.gz",
+      "bytes": 52207,
+      "sha256": "704f26e82d0939427370a9e5591b224988efce5cd57bfd2c71ccbf145aef94b1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-clean-clean.csv.gz",
+      "bytes": 4633,
+      "sha256": "9e1aad2f028693df204a044758732acffdf2c0a2fe1f123bd5d36c0ed171adba"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-lateral-snr+0.csv.gz",
+      "bytes": 44138,
+      "sha256": "22711630cb7bb1ccb4fdeab3feb5e0098ca662c8f2415ffdd5ee0cc0b353cc22"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-lateral-snr+5.csv.gz",
+      "bytes": 42600,
+      "sha256": "7188fcc16e63f90c4dcd2125314222e45ba6f2dc4fce7f3ffb21d3f6db53d7f2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-lateral-snr-5.csv.gz",
+      "bytes": 52453,
+      "sha256": "55675c7e34ad8f4d21be4991ccc2ceab0a2d7f83e223f060fc8911b7f66d98ad"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-mixed-snr+0.csv.gz",
+      "bytes": 42864,
+      "sha256": "046900e9fafd079d09f31d4d14d34b1da7250860e477a4af558522a61ff36891"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-mixed-snr+5.csv.gz",
+      "bytes": 41615,
+      "sha256": "befb1829a24bb1b9922761f039fa4aa2674195ab383979a1a15ec8e5aa1bff22"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032307-000-mixed-snr-5.csv.gz",
+      "bytes": 52107,
+      "sha256": "ce2262233779d9253ec78a26560906cfb4b9a9963aaff029d49d4af1371503c5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-blink-snr+0.csv.gz",
+      "bytes": 48357,
+      "sha256": "652a3a7a5cda7e32f02b455bbbb90d8c6642e1fa8b8b39122057072762d15bb7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-blink-snr+5.csv.gz",
+      "bytes": 46956,
+      "sha256": "eae315d5ae3845557cc701581838ff34d46f616925e1685e68c1af00318deb6c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-blink-snr-5.csv.gz",
+      "bytes": 50632,
+      "sha256": "48fafe55020b3fdb7f3edd138dd65e508c320e5f99bf5906ea3f5c83457badfe"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "867aa11eda281e0cd7e2a4d0fd416352460cbce803534563913b4ca259a52c4e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-lateral-snr+0.csv.gz",
+      "bytes": 55123,
+      "sha256": "26e697819fe087d421af562054a879213a45e60640c778e78c6f031fc2fb14f8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-lateral-snr+5.csv.gz",
+      "bytes": 48524,
+      "sha256": "db1cea4fa2906cfd0f47244c19c23ba0d8e212736b205cd380136819c71c6016"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-lateral-snr-5.csv.gz",
+      "bytes": 55701,
+      "sha256": "6cebc2a330456704b5a8817312a0f2d5e78b6836811e32416b0f987c72e07565"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-mixed-snr+0.csv.gz",
+      "bytes": 48482,
+      "sha256": "987ac38b6cb17be28bfbc31f002a8eed75be983138cc85e43d06a81b1f38275c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-mixed-snr+5.csv.gz",
+      "bytes": 47083,
+      "sha256": "31017a844da943367e717049d6efaff40fb1589679f89b4f0ab4cc7d2a2dc3dd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032308-000-mixed-snr-5.csv.gz",
+      "bytes": 54854,
+      "sha256": "8ef4abd723d1da193329b941b42c5935bb9a376f8198fb81de7d9f525efd03e7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-blink-snr+0.csv.gz",
+      "bytes": 41481,
+      "sha256": "43882c030423fa297817a6bb9832661bb047580f108c81ab1fb7af87fe36a087"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-blink-snr+5.csv.gz",
+      "bytes": 34762,
+      "sha256": "590433fd373d9482fe21e35238a5335ebc17962926572e13dc1cadc3626e41a5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-blink-snr-5.csv.gz",
+      "bytes": 44214,
+      "sha256": "409b55d42f9e4dd619fb5e70f11ba5674856cddf840838229b27f51cce754fdf"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-clean-clean.csv.gz",
+      "bytes": 4634,
+      "sha256": "9e88ea0958902e4376f98508f2942fdd63f0fd222ad09e284e3deaa79e937650"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-lateral-snr+0.csv.gz",
+      "bytes": 43331,
+      "sha256": "9957ab1b8357d3287a89064081f202dabfd6e1a4764948d24d32384ba5a3ecc7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-lateral-snr+5.csv.gz",
+      "bytes": 13788,
+      "sha256": "28a2bb8b261bb5bf7a66ef92a0b2ffe5b1162ef312868894ce0cd19ddf1965c7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-lateral-snr-5.csv.gz",
+      "bytes": 53623,
+      "sha256": "47473e859830e0abf15ec91f08de47793d2355c93606a015144ff3193971a589"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-mixed-snr+0.csv.gz",
+      "bytes": 41546,
+      "sha256": "a53de4acebc0ff836f325fe192864f38be1fae02af4898caf90be923a99ad691"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-mixed-snr+5.csv.gz",
+      "bytes": 34665,
+      "sha256": "8baf8d20d2b627f48577c8feecc5612f6b64910d0329a14cf32dafd15ca15d77"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032309-000-mixed-snr-5.csv.gz",
+      "bytes": 44094,
+      "sha256": "90a075cb84f5e40c08e75bc7f5ccd479d250db133a95b1b51fe03f7840240359"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-blink-snr+0.csv.gz",
+      "bytes": 42900,
+      "sha256": "576703726121fe4b0fe33528151d7b184394f2c4754fc8e8db1ccc90f50b111a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-blink-snr+5.csv.gz",
+      "bytes": 41610,
+      "sha256": "e2f8bfbd26354ffe751fb444ff1f438d1132e86f648af2407229d7353e5221c0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-blink-snr-5.csv.gz",
+      "bytes": 51668,
+      "sha256": "c3d9bc57283e37508bfd471bf59ebeb98ce2683b1c4cfac35e2cf6359a574ca8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-clean-clean.csv.gz",
+      "bytes": 4633,
+      "sha256": "3665a2dbfeac64b0631f6451b49ba9d4000b23a9deee6e86356bd0df78152886"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-lateral-snr+0.csv.gz",
+      "bytes": 51830,
+      "sha256": "b516559e86c2d70b87f3bf2a540533b4bdc90d1b2bf530ccda5c0607bd447ae5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-lateral-snr+5.csv.gz",
+      "bytes": 42928,
+      "sha256": "0acde0fed1123ce84b09bb59b1b41bb85c37b44828d11d4f9cdad91d4d0629d2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-lateral-snr-5.csv.gz",
+      "bytes": 52964,
+      "sha256": "f90cea411658099b2e4cbb49c760e98f159b7bbd06dd251fccb88f743ae6ae4f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-mixed-snr+0.csv.gz",
+      "bytes": 42131,
+      "sha256": "0368ae87be2b5372f1efef4d236acce34ef6f0f368f4117c703701cfabf03a73"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-mixed-snr+5.csv.gz",
+      "bytes": 41422,
+      "sha256": "1b01bc27498750c0406e15803a48213eb59b6e6282ca9a629fc292cc6423e1b9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032310-000-mixed-snr-5.csv.gz",
+      "bytes": 51731,
+      "sha256": "adb782863efff12ad1f0dd93195b0278bf61caf5a760812bad8a147996d71b6e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-blink-snr+0.csv.gz",
+      "bytes": 41615,
+      "sha256": "7ff5b37d6654ddbf05f2e5fec212d940c9e73bd5654c9fcbeec5d87e1973ea8a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-blink-snr+5.csv.gz",
+      "bytes": 34965,
+      "sha256": "ce56d5409f0f0a94b19e2d30d34fc8b48ea6dc33f746c2d803f980d0018a77f3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-blink-snr-5.csv.gz",
+      "bytes": 42908,
+      "sha256": "9ead91d7598d1628ca8abcb6a5530d2c440e82ca7f323e5e447b7d7f4b7f90c0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-clean-clean.csv.gz",
+      "bytes": 4632,
+      "sha256": "47b068138d88143f19957a2b9e64411102718bb78b8992520b544452bf420722"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-lateral-snr+0.csv.gz",
+      "bytes": 45080,
+      "sha256": "02962ec3bcb20116bdbeacc5728da5a123fc7f4208585195a29bcda839fc3147"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-lateral-snr+5.csv.gz",
+      "bytes": 42962,
+      "sha256": "f401a8f6c45a4ac29f7d65448d023e58c172cfadb28cdd6aef4e78a6c5f2cb85"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-lateral-snr-5.csv.gz",
+      "bytes": 53280,
+      "sha256": "396ae2bd3aaf8888a5e146c8cfa4f105fa7605b38d52c39642c6ff931968d9f0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-mixed-snr+0.csv.gz",
+      "bytes": 41687,
+      "sha256": "23a0aa3ecd4e74207c08617175f068315180a017c1fea1210c2e06cac75b2991"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-mixed-snr+5.csv.gz",
+      "bytes": 35012,
+      "sha256": "de6e25acb1a2e26468c6eb84a63626c42ceed8f64957db8c2ca9db83dca18411"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032312-000-mixed-snr-5.csv.gz",
+      "bytes": 42717,
+      "sha256": "32d5a43e044e67772cd226d7211462aecadc975d0be86550838a5dca48a65e28"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-blink-snr+0.csv.gz",
+      "bytes": 51020,
+      "sha256": "52c9cf29dba79ab8272c9a2d6f6a2116a3be84536288f59950ff140600dd906a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-blink-snr+5.csv.gz",
+      "bytes": 43232,
+      "sha256": "bb20c530bc85498af2176fb57810b6c82d237a289e3b48fe97bf2bc9d8de5f23"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-blink-snr-5.csv.gz",
+      "bytes": 53096,
+      "sha256": "c4f3f6b712f18b8f2e01614d6c8b44de1927661d7ad0db271adb340a414780e6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-clean-clean.csv.gz",
+      "bytes": 4632,
+      "sha256": "b9678a325ae287aadb3e0abe41538efe7813e3bec8932dff9984d653f6bae251"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-lateral-snr+0.csv.gz",
+      "bytes": 53415,
+      "sha256": "f1a4a170ab501c39ab4beb519bec33702d36eb8a7aa8d947f27c628d34ff480a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-lateral-snr+5.csv.gz",
+      "bytes": 44140,
+      "sha256": "6acf85dedac9744100e26292d9fabf2076102db1f8d54bd9203dce251a85ae3f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-lateral-snr-5.csv.gz",
+      "bytes": 53854,
+      "sha256": "15329ec05ba7f0e5ec99d8c02843418df46973a4e3ad566bbe1d5f26a0b3aeca"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-mixed-snr+0.csv.gz",
+      "bytes": 50501,
+      "sha256": "82ba4c89b8fa3a85066538e397c7b02f8f3a82c17f3cb51ed59265bfe8c74d71"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-mixed-snr+5.csv.gz",
+      "bytes": 43313,
+      "sha256": "6fae5a9b9574445f8f06ea180e4394dc0110e032d5351c3e4c91d1a98bfc4524"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032313-000-mixed-snr-5.csv.gz",
+      "bytes": 53052,
+      "sha256": "99e96112a82e6baa6e0f5bcea7df937b156766d3a3738b9b0bb8ae636fd9e3c8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-blink-snr+0.csv.gz",
+      "bytes": 47104,
+      "sha256": "6ff12127ce62acc3e302549b5381454275c17c7d6951ffbfa78d000d5634c0e5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-blink-snr+5.csv.gz",
+      "bytes": 47036,
+      "sha256": "63ed133e9299c734b67337293b2ca9b6c54ccc893104347b6c98de99626dd81d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-blink-snr-5.csv.gz",
+      "bytes": 54372,
+      "sha256": "dbf0e01f46a43e4055dcce9e1967b13e57ba5bc77fd436e5e1c90fdafbe2e055"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "aa009a6784ebb96756418fba58cfb24885ec300b02b28b7465e01245099e8e9e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-lateral-snr+0.csv.gz",
+      "bytes": 47642,
+      "sha256": "ef3f917d599f353a153d5a190847a91d833a15ea0e5df94b0530bad86223e20e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-lateral-snr+5.csv.gz",
+      "bytes": 46990,
+      "sha256": "6b3c476f27876657564531e4c4b1568f41a84c217368d1a940cfcdd5c8b1e481"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-lateral-snr-5.csv.gz",
+      "bytes": 54527,
+      "sha256": "55c7da15465ece593509fe4e13c86a4f1661d8c4e432d6ece3cfffa4b5b3126f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-mixed-snr+0.csv.gz",
+      "bytes": 48206,
+      "sha256": "a3172ee62046353c16078d76439e3483a45a78d1c2ee8cb647de69e9c490794f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-mixed-snr+5.csv.gz",
+      "bytes": 46992,
+      "sha256": "0ba6196fc18a1100e5a5158580eae4bd1e89983467a292158c6319c2a2952bf9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032314-000-mixed-snr-5.csv.gz",
+      "bytes": 55002,
+      "sha256": "adcddc7e5a3e6ec3850f2d7129cf4be4acee1378ac5a85fe0dd9ff69a0fa81f7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-blink-snr+0.csv.gz",
+      "bytes": 48493,
+      "sha256": "6e48532b82c24a1aa7361709344f149f6d5d010f818d4987e4be3a09e534b0f6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-blink-snr+5.csv.gz",
+      "bytes": 47135,
+      "sha256": "75657614a2055836b6dce19ccee09b0eaf7bfcbc2e1d02f90d103ae35322dd02"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-blink-snr-5.csv.gz",
+      "bytes": 54567,
+      "sha256": "cb22ca087e167e0bdba0cc75035c78665bb3df52838432eedee98dfd0eb922d9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "91d13fac189b3686bd66e505d7300c5a86433ed313962f50006771b9d3a3da74"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-lateral-snr+0.csv.gz",
+      "bytes": 54378,
+      "sha256": "562fdf407041171895e31cb0eb19a7f790de8f3ed88e04b6e76264d860362de9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-lateral-snr+5.csv.gz",
+      "bytes": 46957,
+      "sha256": "be77641128efb643e0082bb20ad549051c0ca7c7aa6dc120c4f1b909c8b12f7f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-lateral-snr-5.csv.gz",
+      "bytes": 55345,
+      "sha256": "6d9481734ab79ecbab32e364f6da1a782810f4c3b0cfc524d8f5dc75c2a746c7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-mixed-snr+0.csv.gz",
+      "bytes": 48621,
+      "sha256": "ddd5fee34109c5b36f4d8f7a45a54c48e7eaffbf5d7e8fb974e1a351641ac746"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-mixed-snr+5.csv.gz",
+      "bytes": 47127,
+      "sha256": "1874f50605bcff5065f25b88d315bfc611329d0060ef15e97a3cd54a43b7551f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032315-000-mixed-snr-5.csv.gz",
+      "bytes": 54555,
+      "sha256": "2e23413c9bc7d190639061cab2d3df221a2d0ad8102d080b5e68a5537905b645"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-blink-snr+0.csv.gz",
+      "bytes": 49006,
+      "sha256": "f2613ab3a4523c04ec33f2d36544545ce7cb3668b4fa91703d16cec2cb8c6ee6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-blink-snr+5.csv.gz",
+      "bytes": 47698,
+      "sha256": "6aa8144e05e11b67c93e67d9c74b64e1aee636a97d9f82d649f7539007d9c72d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-blink-snr-5.csv.gz",
+      "bytes": 54470,
+      "sha256": "aeaafefcf97b3950812275dadceacd3e9ee468418ca149e138c25bf07d512efb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "c75d475fec8184cd1e084a147bf5bc30306e43d26264300e0e049b3ba8ada279"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-lateral-snr+0.csv.gz",
+      "bytes": 47134,
+      "sha256": "67d59c66260b7123feaa4b638f96d5733e33e4ac3387099e3d5b6a8b9e9829ad"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-lateral-snr+5.csv.gz",
+      "bytes": 47036,
+      "sha256": "1e20fc424049a9c361bd86d3bb6a90626271dad9be345e44e94c1981bd5be293"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-lateral-snr-5.csv.gz",
+      "bytes": 54288,
+      "sha256": "4bce78f4ca6d252a5b1855b6f0fa10b09b3780d7f2e143e14bb29633aec1352d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-mixed-snr+0.csv.gz",
+      "bytes": 48995,
+      "sha256": "eb646ee88274bab6aa9eb07fd890f6e9ba1fca96f453a63ca2a60099bc0f866f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-mixed-snr+5.csv.gz",
+      "bytes": 47666,
+      "sha256": "014d4fd046bec2701de4840bd087cef75e8b1d891cea99f79d3e2cd40dc138e0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032316-000-mixed-snr-5.csv.gz",
+      "bytes": 54370,
+      "sha256": "2df9b63bc2ec668be582c13650a11ed9ff8603d620f658e804a6e92f5a4cca28"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-blink-snr+0.csv.gz",
+      "bytes": 47189,
+      "sha256": "7db1752727560abf0eed9434aace8f54d7115845861a4368314cff86689064d5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-blink-snr+5.csv.gz",
+      "bytes": 47081,
+      "sha256": "45fe5002938610bb0387f3ba3f9c025b57bf75e99c33f3623dc56c7b76788dbd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-blink-snr-5.csv.gz",
+      "bytes": 49146,
+      "sha256": "22f5b47ae7b5699b3c93246b32b94c1c39ab035fa07e419f8d13d1d50c817e51"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-clean-clean.csv.gz",
+      "bytes": 4804,
+      "sha256": "c79d6fbb6f216d9e5f0e97b19ff49a0478381f5ed85ac23bee15b2b84c88f465"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-lateral-snr+0.csv.gz",
+      "bytes": 49300,
+      "sha256": "ef93e0de9525b1d0346fbfbdb311f6014701eea4ea2d916553f4d944ea6784ff"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-lateral-snr+5.csv.gz",
+      "bytes": 47192,
+      "sha256": "16d67b95c09170a528d99aea514ca16c992b6a8e16ca4ff3515f22b39a806a22"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-lateral-snr-5.csv.gz",
+      "bytes": 56906,
+      "sha256": "afa294ba3c19d416636601d312b1cca7729ef2baf75a5dcb7acaba61fc143b12"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-mixed-snr+0.csv.gz",
+      "bytes": 47079,
+      "sha256": "8d22cac47b16f361f24562be7e74094c2a33b93d370aa7a48c5f14a189b468c8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-mixed-snr+5.csv.gz",
+      "bytes": 46985,
+      "sha256": "bcb0e58fc900e64ff761bdc14ba1513897a6f8dc7631672965380863d07eab21"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032317-000-mixed-snr-5.csv.gz",
+      "bytes": 49104,
+      "sha256": "c3d42a7da52e3cb8a3c56f87e5fd295e3221a95758f717f335eb1f5be72d3691"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-blink-snr+0.csv.gz",
+      "bytes": 48017,
+      "sha256": "dffbc929ea5684102229291aa9e0450508d3cdd527466376b62639a1de0c75b3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-blink-snr+5.csv.gz",
+      "bytes": 47112,
+      "sha256": "660f1b4e27bbfdf0c0f88922d7025717fce5b057d271f393f27806a5b4b50abd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-blink-snr-5.csv.gz",
+      "bytes": 54650,
+      "sha256": "98a453a90d79e2cec9b09838a1267bd6270bb5f334de01225bfafb92c9409297"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "22f3ae1f628a75c9c5608b36c79fce7613b2cc22f4f086b00fd4b6b04a8a057b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-lateral-snr+0.csv.gz",
+      "bytes": 49728,
+      "sha256": "5582ef036cdcfa2069ecb64acad2f5f3f642b0c41e3cb86f944e19e3658beebd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-lateral-snr+5.csv.gz",
+      "bytes": 47544,
+      "sha256": "530aa29e6b917b21e438d573e6fd38b14316087e25d9c2b90384f0c5dd06b347"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-lateral-snr-5.csv.gz",
+      "bytes": 55339,
+      "sha256": "cedfab171c26019cedd8a3656b6d8d84a5b0f6b9e9bf82935faf25cda152715d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-mixed-snr+0.csv.gz",
+      "bytes": 47171,
+      "sha256": "37ac05da3e13ca400d8fd9d4a9cda456cbecd0b2928a253e2468127f1c928753"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-mixed-snr+5.csv.gz",
+      "bytes": 47086,
+      "sha256": "1d0a0fef7b330de88b3e2ee79cdb13bfbc816f68a0c3d3691f51c589f3139eea"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032318-000-mixed-snr-5.csv.gz",
+      "bytes": 54439,
+      "sha256": "58e001850f85c36c551156f83e4b5e605b7f15ced7a851debcf9094958fe7d17"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-blink-snr+0.csv.gz",
+      "bytes": 47023,
+      "sha256": "3a0149e9edb7198729c881bf9a84438c0529488fc56b623bbb5719a61ab72552"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-blink-snr+5.csv.gz",
+      "bytes": 36435,
+      "sha256": "35f10c9c618516994e93d87327947f426607f0397ba3ac0e9fece197d1c2c97c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-blink-snr-5.csv.gz",
+      "bytes": 54374,
+      "sha256": "5deb47fc5d9666646cd14e5a64270b07af26f576ea58a8caa4b1f173fd8a3700"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "8e5b6d7b9dde0b700c1fe79c9a8a7ff4c9fd28b25e0184d1c2505d521b3b359e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-lateral-snr+0.csv.gz",
+      "bytes": 49652,
+      "sha256": "52edfb7ccc56746c7223d7549430924d4ea1d08769c275b06ddafdfe516a3906"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-lateral-snr+5.csv.gz",
+      "bytes": 47129,
+      "sha256": "f72e16621b939c19f61e2254d82711362086ce0dc55e7fc3915de034a87bdf41"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-lateral-snr-5.csv.gz",
+      "bytes": 55221,
+      "sha256": "594a104118d7e07f5fbb398be3130042bd74d8ff7c4ce21a4981047d5a6ef3dc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-mixed-snr+0.csv.gz",
+      "bytes": 46944,
+      "sha256": "4b957579635534b82aeec038115f0f980f99668470aac7d5cc2270fcfcef9a6b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-mixed-snr+5.csv.gz",
+      "bytes": 36609,
+      "sha256": "e98d34ae0e78d17741d4751b49237d58230a636791307c4976a9bc2b9aa0e876"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032319-000-mixed-snr-5.csv.gz",
+      "bytes": 54210,
+      "sha256": "7b0dfa5edbae6104eab9503d5ee83ee54fdbab1810b3512f8a94b3b19c85b446"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-blink-snr+0.csv.gz",
+      "bytes": 42164,
+      "sha256": "f7b672caf985b32e1e51e2d8b7c525e5600535533cb06bfd854e672d099a6947"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-blink-snr+5.csv.gz",
+      "bytes": 34949,
+      "sha256": "23c42cd1d7e93f0f812ff84924372c2734baa6ce2e616046c265703097b8fcb9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-blink-snr-5.csv.gz",
+      "bytes": 51294,
+      "sha256": "28ebdf09db7dcfc5962d15dacc0e00ef88c26bee45bd5fe093c38ee003c15b81"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-clean-clean.csv.gz",
+      "bytes": 4632,
+      "sha256": "cec6029bdd83df0257ac508cd9dd89b38c907b7ed84a168225c9850bc4edc516"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-lateral-snr+0.csv.gz",
+      "bytes": 52993,
+      "sha256": "4848910aaea6af75ecabb21ab2c0380b22066c7128c7f9a851d6743b1ae3d43f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-lateral-snr+5.csv.gz",
+      "bytes": 44468,
+      "sha256": "ce979f969024fc6bbb9013d1e3e8bfeb0df9e9ab11836438614979084ef0e6e0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-lateral-snr-5.csv.gz",
+      "bytes": 53749,
+      "sha256": "f299180a71ea08a6e1c899781484b029afe0e7fee07b155dbe5332cf288a8d58"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-mixed-snr+0.csv.gz",
+      "bytes": 42045,
+      "sha256": "d720e7687c38f7466dbdd00d05c1c8116a7a7409b5333f43f9c9836335532185"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-mixed-snr+5.csv.gz",
+      "bytes": 34867,
+      "sha256": "a19cbe5c367a2c8970550edb0e4627117e1705a6c4cd8d76e1df8516e84614d6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032320-000-mixed-snr-5.csv.gz",
+      "bytes": 50836,
+      "sha256": "006f0285e6159b25cc1bce82ca5368753a3e9eb5ce0ebe25fb45cc29199ad773"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-blink-snr+0.csv.gz",
+      "bytes": 48455,
+      "sha256": "a5b1e6dc2496fdf155982687408cba505b6ff3be74cd59f652d1bcaa088ada5a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-blink-snr+5.csv.gz",
+      "bytes": 47049,
+      "sha256": "81f1578b2c5743845c93afb62d8e4fc613f6fc362665f328b0c5aa2e7e1bb713"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-blink-snr-5.csv.gz",
+      "bytes": 54921,
+      "sha256": "b0f3f57737e37f96f0f106bdb237ff1ad855e36a855e9ca50f8d34511ed55085"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-clean-clean.csv.gz",
+      "bytes": 4797,
+      "sha256": "5cd7fbe7016d2324242e91469b0ca9ee38a3ce447e5112e7a2d32b8c59a3206b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-lateral-snr+0.csv.gz",
+      "bytes": 48554,
+      "sha256": "f11b972fdd4be9af3aff3a74d36de18b44a637293ad7c3c4e808146ce3830d1b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-lateral-snr+5.csv.gz",
+      "bytes": 47124,
+      "sha256": "5fea7aafca0ba6267351c1859067e9a1c9e44ca46b554bb99b88df519346ce62"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-lateral-snr-5.csv.gz",
+      "bytes": 55322,
+      "sha256": "85396962584fb0ce911203cb2fb77793b136f0434979fa39b184211c1d9ff371"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-mixed-snr+0.csv.gz",
+      "bytes": 48434,
+      "sha256": "c49fdfb25102365585e36b7ee76d73f07022c0798affe0909079e38af3529b74"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-mixed-snr+5.csv.gz",
+      "bytes": 46994,
+      "sha256": "ac9bb7333689049ef154386682d449730116e1f28c12ac08d47a5ae4c8c77212"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032321-000-mixed-snr-5.csv.gz",
+      "bytes": 54908,
+      "sha256": "400168739a88d360982f6bcc0a2b72fd4a79645daf5641c736672446206eea8c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-blink-snr+0.csv.gz",
+      "bytes": 47277,
+      "sha256": "e0ed04372769722f0f0448e2a46b4f95cb1207db0cfb214e9419a2f5c66fe7e4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-blink-snr+5.csv.gz",
+      "bytes": 47169,
+      "sha256": "4d17060ee084f031e3269a75605c081d2cca8cb632c2b45729024d3fc63c46fe"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-blink-snr-5.csv.gz",
+      "bytes": 54693,
+      "sha256": "624c7a400179e435e63f9d3d6c3c290a1335c39ad392bef557c72fa29e1d4178"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-clean-clean.csv.gz",
+      "bytes": 4803,
+      "sha256": "e49ce0b5ae19577fe7bfc047b9a032d11abec2fc308b9d858644b42ce33286d0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-lateral-snr+0.csv.gz",
+      "bytes": 55924,
+      "sha256": "a3c13bb28cd0c204008fb5e08063f8276f017efa935d0d423a76cc266e1c03d6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-lateral-snr+5.csv.gz",
+      "bytes": 54087,
+      "sha256": "1c024aafcef4c2fe0957d42b5ff15e3014f486e609ecf66de6e67632afa17a20"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-lateral-snr-5.csv.gz",
+      "bytes": 56897,
+      "sha256": "44eb77907730049200157109ec6ca8c0c876aea80413937fd7ccb18677569068"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-mixed-snr+0.csv.gz",
+      "bytes": 47322,
+      "sha256": "3f8fb06c3b8b378639a014678492a5e9f333f72473cf1abc4eb941a3e0c70e7b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-mixed-snr+5.csv.gz",
+      "bytes": 47090,
+      "sha256": "14f4eb6eac976dc8f515f9b72d02a2a277401c6847238f82ad349f7469bee843"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032322-000-mixed-snr-5.csv.gz",
+      "bytes": 54774,
+      "sha256": "d0e3d3c51839b0770e27d9bd0272fabf97121249abeda7072a614182b0e932cc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-blink-snr+0.csv.gz",
+      "bytes": 51556,
+      "sha256": "3db8c8ee4814e6d0177d91aa48d2bd88ac3d46cd14d983f9355a290633df4c0b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-blink-snr+5.csv.gz",
+      "bytes": 43317,
+      "sha256": "5628c438b9f1d55bba4b33180b8f98a745110fd178b758c7e4ebd72ae628b36c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-blink-snr-5.csv.gz",
+      "bytes": 52378,
+      "sha256": "75d5a2eed57992d332bb98596167d4e3b288eba073fd4d3e405f75638e9cdcb4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-clean-clean.csv.gz",
+      "bytes": 4633,
+      "sha256": "da7d88c275bbd53e7daaa4e96367d3bb665c479150400963c98bb5efc2f7d05c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-lateral-snr+0.csv.gz",
+      "bytes": 52584,
+      "sha256": "ace6ef593d1b677b300cfd33ddcfc028e54c9c1e2b5b3841f252f53e8f6da46f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-lateral-snr+5.csv.gz",
+      "bytes": 42418,
+      "sha256": "938fb7f61551dcdff47c689f4d9a01fc4d04bb3e1e6e2b6dbd842ef7ce43da70"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-lateral-snr-5.csv.gz",
+      "bytes": 53265,
+      "sha256": "46e29b66d728d1173c2e29661e255a1edbacc220eaea0400b3bc7a1a820b870b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-mixed-snr+0.csv.gz",
+      "bytes": 50668,
+      "sha256": "ab2bcc594ab9b39f17bd3bf941267ed0d99683648fcaa3bb2f71c822edcdef9b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-mixed-snr+5.csv.gz",
+      "bytes": 43130,
+      "sha256": "1836d9c9ddc2bfb3f46e7fe70e50ae1e0f837cdcbe4e3e6f5318071efb4b7d22"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032323-000-mixed-snr-5.csv.gz",
+      "bytes": 51661,
+      "sha256": "5b19a2f3a0f6cfa2e18db282706539cd68ca429694e7c16ee79cb90a83b18957"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-blink-snr+0.csv.gz",
+      "bytes": 47273,
+      "sha256": "6bcbd794e2fd1c61472d6a543fbd019b1ebff5b0549ba711e84557b04e0b6818"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-blink-snr+5.csv.gz",
+      "bytes": 37334,
+      "sha256": "2e2e5f2f47f0fe014c840be96dee13358f3fd893fc12939de8aead75f3316250"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-blink-snr-5.csv.gz",
+      "bytes": 48662,
+      "sha256": "f8ad5b53d7fda9131a75c484b10607f52c46eb3f4111e1a921f9c57887689573"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-clean-clean.csv.gz",
+      "bytes": 4797,
+      "sha256": "7a9a36f21ea7e51bdf2318f059cafee91544a8822adc103511f44749d7d15b48"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-lateral-snr+0.csv.gz",
+      "bytes": 49467,
+      "sha256": "9e72bd8d67e53ea5de211d1f41cc84fa490dec03a6136012062d862e842a597a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-lateral-snr+5.csv.gz",
+      "bytes": 47177,
+      "sha256": "9374e620496e87689044fa1d3614fc823806c8b99ab50d2cdc21041ed4661849"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-lateral-snr-5.csv.gz",
+      "bytes": 55326,
+      "sha256": "126f56ece883d11db672ff1b937b60a469a4784daa9fa0ada3b8d3b34278d169"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-mixed-snr+0.csv.gz",
+      "bytes": 47024,
+      "sha256": "e30f8e01f2ee9d81a9f39a894d6376c61d0b758481312665d6b623017979d52e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-mixed-snr+5.csv.gz",
+      "bytes": 36288,
+      "sha256": "d0b39ebca216f71482a6ccc16d5b16aab995c03917f4a6646c80ca51d32868f0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032324-000-mixed-snr-5.csv.gz",
+      "bytes": 47818,
+      "sha256": "f99b2fcc349bbf910dbd4a8a4550bfbe9720e266bc3b1d4ad54eb581c05fc80b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-blink-snr+0.csv.gz",
+      "bytes": 47784,
+      "sha256": "5b47711f3855c64e20445345b34bd48f77d596fa5ebc13c452fb9cc511618584"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-blink-snr+5.csv.gz",
+      "bytes": 36532,
+      "sha256": "86b71c166f8820818999b862dd8b4f69258daffabdda25aef524f44bcd428dcc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-blink-snr-5.csv.gz",
+      "bytes": 74492,
+      "sha256": "0124cb6feaf178a154361cb4d749a6d46b89e75d308cbfa300c8800dfb512c25"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-clean-clean.csv.gz",
+      "bytes": 4804,
+      "sha256": "f796564de4a088b1471dd512bd8203f9b0f39c19e16e2ad3def158f9d50ed1d4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-lateral-snr+0.csv.gz",
+      "bytes": 55711,
+      "sha256": "0c219c5c481681acc0f1e69efc657fbe120693ef9a52302fc2e21548ad2b78d3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-lateral-snr+5.csv.gz",
+      "bytes": 47576,
+      "sha256": "dcad56cf27b27d7ca08c6987f56215ccc2b980993a43ecac74a0754baeffbd80"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-lateral-snr-5.csv.gz",
+      "bytes": 56636,
+      "sha256": "e1db9a05d4e7967002229438da1750fa0ee932adbfd1fca8ef0b113ffd7593f6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-mixed-snr+0.csv.gz",
+      "bytes": 47885,
+      "sha256": "a1031b76ead3834d24a46cd9cf0d14b6260db54aebb64e48888d704755d79ff9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-mixed-snr+5.csv.gz",
+      "bytes": 36535,
+      "sha256": "6c5bb955f202cdcd4141d8da4b82e5e2694b3ef3c101fea85d44666c49ce0a92"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032325-000-mixed-snr-5.csv.gz",
+      "bytes": 49564,
+      "sha256": "2b2cb25282d3f40d69107473b18797775c2486876f7d67dade8fda61da82db7d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-blink-snr+0.csv.gz",
+      "bytes": 47136,
+      "sha256": "4f39fab3833276f30e014fa639a3dac4e68af1608850da332505b033292d5afb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-blink-snr+5.csv.gz",
+      "bytes": 36413,
+      "sha256": "d8f19609d2e81138b90ec39fd2fab834c59a361a338ebc99b3a5d82a76e22611"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-blink-snr-5.csv.gz",
+      "bytes": 48003,
+      "sha256": "9e20b58ac44800c891d65f8a8d6b9a81421f09c3c39bd2a85eb7d2713a67f2e1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-clean-clean.csv.gz",
+      "bytes": 4803,
+      "sha256": "958c17d93a67b77d05d78080ca6f8383449af95f1ded14231e60ed8e8f8bca2d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-lateral-snr+0.csv.gz",
+      "bytes": 54794,
+      "sha256": "95df4b0a2f0adaf0e3d31a7b202db747f884e2812ff6c96f3e6bf0122cc46cd0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-lateral-snr+5.csv.gz",
+      "bytes": 47345,
+      "sha256": "d962de55211caa011eff4d3a15457f0c7157552a1a3a9c735166213929a8d48f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-lateral-snr-5.csv.gz",
+      "bytes": 56353,
+      "sha256": "d9c3c64219c4d8aa733f0800aae5926cddf4c456a0f115bf2b134053527870bd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-mixed-snr+0.csv.gz",
+      "bytes": 47230,
+      "sha256": "5dee0a608470f83368496b2402063b95d48a063f46ca0cf1dfbd666b2328305b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-mixed-snr+5.csv.gz",
+      "bytes": 36525,
+      "sha256": "d99df7938e8421f91e98fa5808086c4b61c1af3c870a2756a1a88e76d7699c8a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032326-000-mixed-snr-5.csv.gz",
+      "bytes": 48083,
+      "sha256": "a519a9bf0615e8f0826b40d0bd0673c2f69cae6a888b413d8e6379def24106c3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-blink-snr+0.csv.gz",
+      "bytes": 54925,
+      "sha256": "49f1da6b84c8ea28ee3f7f6a26645e9c4913271afeaa9f7d0eaa1bdfcf8f45dc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-blink-snr+5.csv.gz",
+      "bytes": 47920,
+      "sha256": "c1a2c021ba4ec28b835b1d510aac4d90fa09c8f5326f317fc26652f567835fff"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-blink-snr-5.csv.gz",
+      "bytes": 55610,
+      "sha256": "13baf804080610567290640044822dae9a5068a3d68139b56b08addaed6f827b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "20f0d83e9e46bb42930798532608e135091aef2a5d92cc8348058ea4bd9272c1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-lateral-snr+0.csv.gz",
+      "bytes": 48999,
+      "sha256": "c6d011454d4457a93d7f9d76095570c81e0f5f3dc2641ace25f4b0639c4f4c2c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-lateral-snr+5.csv.gz",
+      "bytes": 47014,
+      "sha256": "d34f490c781555fd79c26de83ed5ba33769e89b707d0c18ec36d3fd00259249a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-lateral-snr-5.csv.gz",
+      "bytes": 55344,
+      "sha256": "9cab6933f794fe58aa97845517f9407d96afd2462f34434eca144095aeec6977"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-mixed-snr+0.csv.gz",
+      "bytes": 54837,
+      "sha256": "cd1d0363775a0e97826fdd9b06b39a4c1a5458369194dd43ec0ab2874cf51bee"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-mixed-snr+5.csv.gz",
+      "bytes": 48049,
+      "sha256": "3b815cf7d4a04b7b28b98243c1725c74b5e6f2e48e49fb4ea943ac99894a10d4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032327-000-mixed-snr-5.csv.gz",
+      "bytes": 55599,
+      "sha256": "bb1f2f605f502568bd67a509f78412b1574a6698df30f0d2d555cbe33a5c25e3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-blink-snr+0.csv.gz",
+      "bytes": 47459,
+      "sha256": "6a36d5fbd63755d09c2a8ee58900a8959984a8d6702b6e9a04d5d1e328116397"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-blink-snr+5.csv.gz",
+      "bytes": 36211,
+      "sha256": "7707f072c54eaf7482e907f2823770e5b4a60eba61725fe3e6f9e42fab7b740c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-blink-snr-5.csv.gz",
+      "bytes": 48856,
+      "sha256": "2c3d1cb74ba16ab24ca0205a0a41b53116b16e14e9ee7495c5a0b64f8425a922"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "f9fa69a214c475965b0d385f5c2140d75410d51214d1511a9429d1f06cebed98"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-lateral-snr+0.csv.gz",
+      "bytes": 54289,
+      "sha256": "fdc5a02d832b0c3a8b7bbfc6f4eb1989046331132b8f8607ce46ffddbe104127"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-lateral-snr+5.csv.gz",
+      "bytes": 47509,
+      "sha256": "301201a92dd52d2f59c022d6c25812e3f7d5e06babd4567c15b305e88fc64da9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-lateral-snr-5.csv.gz",
+      "bytes": 55607,
+      "sha256": "95508a49ca7dbf97a4bf6bd1a96ddf4c853cf197e02c86a105a37832247a0741"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-mixed-snr+0.csv.gz",
+      "bytes": 47542,
+      "sha256": "8aa27448864c060770f0ec62f4b724f5a4eb5a1a391b2541d4e708a52d8bfed4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-mixed-snr+5.csv.gz",
+      "bytes": 37845,
+      "sha256": "f07c62020c3b2fd4c6dfc428b4b01f7bc825998795cea7187288647e7882afa2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032328-000-mixed-snr-5.csv.gz",
+      "bytes": 48969,
+      "sha256": "8ad8ef896752e0b8cf676aa327db725ce4735b5e45dea2da5f82105bf8d9c352"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-blink-snr+0.csv.gz",
+      "bytes": 51105,
+      "sha256": "e5bccce8c7bf51ce34219887c2c65ff0d43d779f4b33b95e956c694fe724318a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-blink-snr+5.csv.gz",
+      "bytes": 35060,
+      "sha256": "35b01e46a6558e792fac5088ef7c03b9256319a24b890606bff3a56743c71ea4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-blink-snr-5.csv.gz",
+      "bytes": 52912,
+      "sha256": "01b7e20420133e817ebb339551141f1a0434fc1dade9561f8971592dab796f2f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-clean-clean.csv.gz",
+      "bytes": 4633,
+      "sha256": "0913f0d583e03e5194996de98295e1f574d3f2273efc4c190fc5834d84dfebc6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-lateral-snr+0.csv.gz",
+      "bytes": 53358,
+      "sha256": "ef44a42151b744dd01b269cd8fc799c4d6d350274e68f34638d489df44274f3f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-lateral-snr+5.csv.gz",
+      "bytes": 39550,
+      "sha256": "bd409f3006f255497324655a36ba55d19d67f1364e2e2a1972db2b78e97704f3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-lateral-snr-5.csv.gz",
+      "bytes": 54199,
+      "sha256": "6e35c6e01b2af676fb748e58805015574766cff0184b0cc2becddea44161d15c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-mixed-snr+0.csv.gz",
+      "bytes": 51005,
+      "sha256": "6975863d6d3e279d3f4a2273da130cf12faec94f152d56d04288cd09eca78fc7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-mixed-snr+5.csv.gz",
+      "bytes": 35029,
+      "sha256": "58807078f654c3a0bcf582723e80dd5366233ce05779e6091b56cd68f588a6bb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032329-000-mixed-snr-5.csv.gz",
+      "bytes": 52867,
+      "sha256": "7cd72eaea31cb305fd0ae4913b9c86af8e4b0fb63fe2ab7e2c04e75529202a89"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-blink-snr+0.csv.gz",
+      "bytes": 47398,
+      "sha256": "8ebaeb087140f6c112c1d715d6bab04a940c2fe703e34e0e10973999f37f1ef6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-blink-snr+5.csv.gz",
+      "bytes": 36115,
+      "sha256": "b7c4185b38a9ad2ccbfa705d3ca6282ca7a61e0b4f0a45a42f4fa285bbcf33cf"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-blink-snr-5.csv.gz",
+      "bytes": 49078,
+      "sha256": "b6ae6ed9103647c3f54759d48a20d92732662284840fa052131cce573eecdde2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "04d3dd64c99908341ac3fad09ebcd40363383c684d27223ae2585b9e7feb1c6d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-lateral-snr+0.csv.gz",
+      "bytes": 48913,
+      "sha256": "2eb4bc2be618034b130338cf844c6df04b4576962283ef3f570628cc42b1438c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-lateral-snr+5.csv.gz",
+      "bytes": 47018,
+      "sha256": "8ec40dd00cb192efe04a7e3134f1944064a149cfb6ea4b9668b146da1e654738"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-lateral-snr-5.csv.gz",
+      "bytes": 55340,
+      "sha256": "88cb63372f6b4d9c68a38a04cb13bb3a1ca6107a1cb4cc120133318bcab19aa3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-mixed-snr+0.csv.gz",
+      "bytes": 47409,
+      "sha256": "941700e8c95f31b7c7db0fae6ef75d37cf8b29ebf4d91d7d49d2c7bbcbc2d386"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-mixed-snr+5.csv.gz",
+      "bytes": 36167,
+      "sha256": "c41ead2a8814ada200357ebaaf815fc33ef5b5490fddac596c6d4a6eb4363284"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032330-000-mixed-snr-5.csv.gz",
+      "bytes": 49116,
+      "sha256": "532af300ffce56122cb358040994e95c59952bd9e4528c9b68ef4efa7fa7952f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-blink-snr+0.csv.gz",
+      "bytes": 47709,
+      "sha256": "07283f6080a46901d1ebfcb0cabe7a52ecfcc619b0f6598f1bb83c2822c7f82c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-blink-snr+5.csv.gz",
+      "bytes": 36158,
+      "sha256": "eb4c98f92cf49f74caddc5a4bfedc3311ac6061e40e1910da137727f84437b5f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-blink-snr-5.csv.gz",
+      "bytes": 54051,
+      "sha256": "db28b05515e69ba0709002819f6059d8a95add9ebc37cf817399f1e31b536f59"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "48b859f7c0550575f68e1f3f655d4fa158da1d7a890f7f2b59352db2cc78e75e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-lateral-snr+0.csv.gz",
+      "bytes": 54239,
+      "sha256": "55171641dd2aa8982411ed09c1e9beec60c29af69be3c07f7e21c2240a195a10"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-lateral-snr+5.csv.gz",
+      "bytes": 48306,
+      "sha256": "0d3d11b179d57f9a597e49d2ec8910fa972ff7313bde2778390e6fb029619d2a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-lateral-snr-5.csv.gz",
+      "bytes": 55585,
+      "sha256": "944b53c36d3c6093b5619e7274a15c83cbf612d432a8235442cc63e3bc66f2d2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-mixed-snr+0.csv.gz",
+      "bytes": 48015,
+      "sha256": "61d985b3a28446693437d260f20390bda1f34f20371ba7bf5a1e1978c876c471"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-mixed-snr+5.csv.gz",
+      "bytes": 38334,
+      "sha256": "70f2db123f6b5b4fc12dc3144556e724b05fb1cb61f4f50e173d3a02d46918cd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032331-000-mixed-snr-5.csv.gz",
+      "bytes": 54097,
+      "sha256": "23700ab4de808cd266fe803fe35a21af6669942ef5b1a832a016cd0075fd3fab"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-blink-snr+0.csv.gz",
+      "bytes": 48727,
+      "sha256": "e9cd9bf92b7791e9cf482ae8e029940080fcb555456e69fd6a4ee728e128aae0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-blink-snr+5.csv.gz",
+      "bytes": 47720,
+      "sha256": "30c41ca1031ff31d489ca89751b1fea89fab3dade52330393cd4733919bf67bd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-blink-snr-5.csv.gz",
+      "bytes": 54830,
+      "sha256": "ea3573a4934bbb395b81ed1a2a61ec948a91a9dec7829f6d3c51a749b749aaf2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-clean-clean.csv.gz",
+      "bytes": 4803,
+      "sha256": "0bf94a2e0a9083fc2e2a39fa01112ce5ed9c056ab63c148e81c6996719e75d30"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-lateral-snr+0.csv.gz",
+      "bytes": 55537,
+      "sha256": "b1ae11f2fee733f24ed2312200d09201845fd699c16f73824744849f209bc583"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-lateral-snr+5.csv.gz",
+      "bytes": 48642,
+      "sha256": "9f41b4155c0b43a719c3aef4035a6c8e6a367b70e18fba9a8d3134f9d5630e97"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-lateral-snr-5.csv.gz",
+      "bytes": 56823,
+      "sha256": "0736143ffeda322831f82b0ae46a6624c0c1b7e654094d9b0c7757eed49945fa"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-mixed-snr+0.csv.gz",
+      "bytes": 48836,
+      "sha256": "0edb6fb1c5383775ba4b7368844c5650c205bff8309f6ce20f2aff40ac03d24d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-mixed-snr+5.csv.gz",
+      "bytes": 47755,
+      "sha256": "9d09d04c06f1993cd0511697a9b312cc12a5c050239ce0d6f2afc085f55ff9f6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032334-000-mixed-snr-5.csv.gz",
+      "bytes": 54794,
+      "sha256": "c3e67227d58bf7fad2a34d06384260cf2215e55b8ab04d541bdf5bfc7c8deec4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-blink-snr+0.csv.gz",
+      "bytes": 42849,
+      "sha256": "150df4f2dd57dc118d1faf4236c79aec8417f39e7052ab4a61ba7c5fc30f9eb2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-blink-snr+5.csv.gz",
+      "bytes": 35525,
+      "sha256": "969ea4099830e1954011234dc63fb58ec11478435757eb43796430d49d09c226"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-blink-snr-5.csv.gz",
+      "bytes": 52400,
+      "sha256": "c34dda514aeac436c6d038adb6fb4976e9a4ccc3782cefdac656ed9f755e0cc7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-clean-clean.csv.gz",
+      "bytes": 4632,
+      "sha256": "863109e94760fd2576341d9fabf98d7dfb52078a73668ecbbc1cef530bb5f3d6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-lateral-snr+0.csv.gz",
+      "bytes": 53268,
+      "sha256": "9b9a4d01f648968729c55b3446963c60da6a44769d334c22ac2c404c97c72b3c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-lateral-snr+5.csv.gz",
+      "bytes": 44662,
+      "sha256": "314e2036a4aba28533f22a4a6644792e29f8e77ab19e9abdae6c7e4ab43c0168"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-lateral-snr-5.csv.gz",
+      "bytes": 53735,
+      "sha256": "3096b24eaafbbe88ef4d8ce6dc15228cfbc8abf087235160443f1092fa241855"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-mixed-snr+0.csv.gz",
+      "bytes": 42106,
+      "sha256": "9227852081b872cc91e1fc787825ad40a169879752f9c5698953431caec62249"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-mixed-snr+5.csv.gz",
+      "bytes": 42612,
+      "sha256": "37bc60529316abd20d3f4f1ce041f05d5345d05febd2655cd57fd03488e21bcf"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032336-000-mixed-snr-5.csv.gz",
+      "bytes": 51782,
+      "sha256": "e8053681935e9f591c9bd779c7e2157b0e41a9274bb8fc2aa8902aa110224c6f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-blink-snr+0.csv.gz",
+      "bytes": 42002,
+      "sha256": "461d8e2763a230f909bd30154d971d3736c9b63f2ae58c3771648a926558c037"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-blink-snr+5.csv.gz",
+      "bytes": 34943,
+      "sha256": "46c291ec26b85e1d741d02dd84b4dd3772bbce2718816b5ee70fe94fda582b72"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-blink-snr-5.csv.gz",
+      "bytes": 42718,
+      "sha256": "cd4a287481cdba24da95c674fdfaae79cba002d39c9931ea383c3ce562464453"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-clean-clean.csv.gz",
+      "bytes": 4633,
+      "sha256": "9f580ad232a821034cfd49a3e7f3e68a815d10dd1d28ae5848dd3556a11208da"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-lateral-snr+0.csv.gz",
+      "bytes": 52546,
+      "sha256": "7a6164bde08ae9c6cf29518f19295b9742aa644d3366f0f9507383d0a3b67586"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-lateral-snr+5.csv.gz",
+      "bytes": 43689,
+      "sha256": "99183eab8e995f25b6174a1534e48f834ed9403734cebb206c6b08443e4102db"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-lateral-snr-5.csv.gz",
+      "bytes": 53439,
+      "sha256": "8e01e10b0eb4d75579b39feae9117396811ea1c8182de217333504922266d9d8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-mixed-snr+0.csv.gz",
+      "bytes": 41570,
+      "sha256": "f8f1fc9f0c5eff80e14fe358e9fc4fec83cc0ef787c4102ba29128c632202738"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-mixed-snr+5.csv.gz",
+      "bytes": 34734,
+      "sha256": "d34c9481e1e7bf18db8660cd090716ae8cebcea766c8c2a150168de4846224fe"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032338-000-mixed-snr-5.csv.gz",
+      "bytes": 71719,
+      "sha256": "8569fdf999390e442c37f847ddbfaa577ce5e320069812930132275594ff4493"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-blink-snr+0.csv.gz",
+      "bytes": 50370,
+      "sha256": "cd3e2ea6ac876fc9d961d91d09960b921fbb2fe1cc896f11eeb0466f96228e76"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-blink-snr+5.csv.gz",
+      "bytes": 42149,
+      "sha256": "da4069d601c43f03d9230563147dcc09b0fac9c4bbf7f27c237337525d3df47a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-blink-snr-5.csv.gz",
+      "bytes": 52434,
+      "sha256": "68c7f5b639dd2cb8129b07034ce33fdbd16d121bb231748cc98ef9e4f36cbbd8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-clean-clean.csv.gz",
+      "bytes": 4633,
+      "sha256": "fe1d50719a96c779aca5de076924915fd6ddb9b61f5453b84a0446910346bc58"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-lateral-snr+0.csv.gz",
+      "bytes": 53188,
+      "sha256": "ed0343d322bde7fafdcc858f175418b3d161332f60ff26360855ffde551c926c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-lateral-snr+5.csv.gz",
+      "bytes": 43042,
+      "sha256": "1cf9e62c67fe48b872ac9d7f1ed39b36eafae5901851fbe32b36fb866e4d9938"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-lateral-snr-5.csv.gz",
+      "bytes": 53637,
+      "sha256": "57906aeaf24294fd83aa0a2c4bac4f791e53de7c504602c61764cb08382e330c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-mixed-snr+0.csv.gz",
+      "bytes": 50394,
+      "sha256": "bd99b31fb6f81111723045f702cdfda321e6e33b278d6676ec81286b48134b06"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-mixed-snr+5.csv.gz",
+      "bytes": 42333,
+      "sha256": "dbe9ec7e4137132175bc202988865438a643a56bb7b042e9cb86062d08922ee2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032339-000-mixed-snr-5.csv.gz",
+      "bytes": 52413,
+      "sha256": "51573a074a6c7af3844c7f7669c19eda73c9474d0569b84d114735425aaed900"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-blink-snr+0.csv.gz",
+      "bytes": 42224,
+      "sha256": "c937bfd5547ac01f18624a101d09ba00ca0f2708ccf89317f7ccb275e25d5858"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-blink-snr+5.csv.gz",
+      "bytes": 41912,
+      "sha256": "c1e6aa63166758d54b7a9544a5767d5d75486092ce28a7f442d222d794aac28c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-blink-snr-5.csv.gz",
+      "bytes": 52684,
+      "sha256": "acc3e9dbbea993b4193c96bbec7218ddca503f7f2594e9b7f602e705f1bee854"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-clean-clean.csv.gz",
+      "bytes": 4633,
+      "sha256": "395c5b20879152c4b8c6c5d818305490369a8565698e644020f06e5e914d77d8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-lateral-snr+0.csv.gz",
+      "bytes": 52454,
+      "sha256": "e65df525976b6c28b295f9347b66756d1a11648e39b8f4896f0feef3294e3ad1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-lateral-snr+5.csv.gz",
+      "bytes": 43532,
+      "sha256": "1ae9b7e0938c225a4a4f5618cfc21198de741ba44a6f7c37f7e90eb2a2882cdf"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-lateral-snr-5.csv.gz",
+      "bytes": 53285,
+      "sha256": "be5e46314e3a5485fe7e8bbdb76940b72a5e80a395a24107c67b9714f7f7ee7a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-mixed-snr+0.csv.gz",
+      "bytes": 41699,
+      "sha256": "61371514ef2a6fd270d186eb50bc8ce41f351ba0c6353dd6ddc8c6022c793aab"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-mixed-snr+5.csv.gz",
+      "bytes": 41904,
+      "sha256": "6a9d2c2863d8f276814f0dbfab8c6892d8022bb3e1a26392065920c667f32085"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032340-000-mixed-snr-5.csv.gz",
+      "bytes": 52521,
+      "sha256": "e474f9ae5ed2d41010c4a3d5b59d94b0c64de8cf82cb344e97ae44424e49b3c9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-blink-snr+0.csv.gz",
+      "bytes": 46949,
+      "sha256": "2135e59ed2751aa98834ab77d9b2c4d256299cc970dd191404f4b3d6a6abdb08"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-blink-snr+5.csv.gz",
+      "bytes": 37631,
+      "sha256": "0b496dc3f35628a0c8b835140eaf7bd06799b111ea11b8b3769bab90541a6b83"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-blink-snr-5.csv.gz",
+      "bytes": 48428,
+      "sha256": "496f653f4de0d3fdd85c15f589599e59ac31dd59a39e4ecf32c6f13dd2cb5d55"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "44729f770dd5c02782fbd7de19176c9690dac71ee1151d365372278c7091886a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-lateral-snr+0.csv.gz",
+      "bytes": 50475,
+      "sha256": "5f223bf3f8843cbe4c02d4d322fca69f6b9e1f458203a537132b5f533a45c739"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-lateral-snr+5.csv.gz",
+      "bytes": 48669,
+      "sha256": "d1d8c6f270ba2e284b7ee03d1016c0c5511758eeb05f42f80ec77e59d8906d13"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-lateral-snr-5.csv.gz",
+      "bytes": 55717,
+      "sha256": "5e708d75d0276618133d06cc9cce7de4d4b63a4ed5f7a8dda576448e7dc2337f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-mixed-snr+0.csv.gz",
+      "bytes": 47093,
+      "sha256": "3f33f943f71e2a39d3c1e586d931ddba651522e41efcff8c7029f485955a9f3b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-mixed-snr+5.csv.gz",
+      "bytes": 36862,
+      "sha256": "1c69ec2ae978e14c7e4e448a687c57c380f51cdfa555af4fc91389082f9e9a46"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/gain_shards/sub-032341-000-mixed-snr-5.csv.gz",
+      "bytes": 48523,
+      "sha256": "3458295df062e38f5edf018410686ab2539d7d746a665c2dc20e71eb28ac99d6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/tests.txt",
+      "bytes": 2591,
+      "sha256": "66f50794067768fc60e8fc67d52970c3e652f529e89d6b7439d365f51c4362d5"
     },
     {
       "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_paired_differences.csv",

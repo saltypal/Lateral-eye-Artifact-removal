@@ -252,3 +252,47 @@ Each new numerical arm gets a Git module, pinned Kaggle notebook,50example pilot
 recoverable fits/predictions/progress, matched320comparison only after contracts
 pass, source-aware uncertainty and native qualification separately. Runtime and
 memory at10–50channels remain measured deliverables, not assumed scalability.
+
+
+### CCA design sanity check before NF12
+
+Original iCanClean identifies EEG/reference-correlated latent components, selects
+them by squared canonical correlation, estimates sensor projections and subtracts.
+Its paper distinguishes sources formed from EEG, references or both; its threshold
+is R-squared, not R. Primary methods sections2/3.6.1:
+https://pmc.ncbi.nlm.nih.gov/articles/PMC10574843/ . Human ocular use here remains
+an adaptation; the cited benchmark uses a phantom and a source-recovery DataQuality
+Score, not our reconstruction-SNR benchmark. Do not import its best-setting score.
+
+A full-rank reference-side CCA plus unrestricted linear back-regression can reduce
+to ordinary multivariate regression. With only two instantaneous EOG channels,
+retaining both canonical directions may add no substantive method. Prove that
+parity on Kaggle as a degeneracy fixture before claiming novelty. The distinct
+bounded challenger would use the existing2EOGx3lag bank(sixfeatures), regularized
+calibration-only whitening and rank1/2 truncation, followed by reference-supported
+projection. Compare it with matched lagged ridge and currentrest-whitenedrank2.
+EEG-side source subtraction is a separate preservation-risk control because
+reference-correlated components can retain neural content. Label each source
+choice explicitly; do not mix them under one unqualified CCA result.
+
+If correlation admission is numerically matched to|CC|0.4, its squared threshold
+is0.16, not0.4; this matching is our adaptation, not a verified published optimum.
+No automatic posteriorVMD, waveform filtering as pseudo-clean truth, target-guided
+component count, or assumption that a slow component is ocular is permitted.
+
+
+### Decision update after full fixed gain experiment
+
+Fullgain320comparison completed. Blend0.75point15.370676mean/13.826832pooled
+improves the aggregate only+.214985dB with intervalcrossingzero and worsens severe
+lateral8.050232→7.758159. Keep candidate evidence without replacing rank2.
+Uniformattenuation is inferior. No newstrengthbank or adaptiveoracle selection.
+
+Severe middle lateral pooled5.444037→5.570377 even with clean-target-fitted scalar
+establishes little gain-only headroom for that saved field. Before NF12: validate
+field/reference coupling(RC01-RC05) and inspect failed/gate-missed coverage using
+saved decisions. Then select one distinctfield-estimation challenger: reference
+CCA with regression-degeneracy/rank controls, or authorSGEYESUB if calibration
+labels/parity permit. Keep confidence/gain work for conditions with demonstrated
+headroom; do not claim it solves severe lateral. Allbound outputs are diagnostics,
+not validation scores, learnedmodels or inference weights.

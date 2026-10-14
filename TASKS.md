@@ -221,3 +221,7 @@ authorized despite current frontal qualification failures; no teacher/model prom
 - [x] NF14 Frozen reviewv1 historical/conservative flag limitation documented; revised provenance fixtures passed within290Kaggle contracts004 tests. Numericalreviewv1 scores remain valid; no active-failure count inferred.
 
 - [x] NF11a Fixedstrength/blend50examplepilot completed292tests; unchangedrank2 retained. Bestblendgain+.037918dB with CIcrossingzero. Fullmatchedcheck and gain/shapebounds follow; no selectedinferencerule.
+
+- [x] NF11b Full320fixedstrength/blendcomparison completed292tests/549000baselinechecks. Blend0.75point15.370676mean/13.826832pooled; gainCIcrosseszero and severelateralworsens. No final replacement or widergrid.
+- [x] NF11c Evaluator-onlybounds/mean-varianceaccounting saved onKaggle; severe middle lateral scalarheadroom only5.444→5.570pooled. Prioritize field/coverage and coupling, not scalarstrength alone.
+- [ ] NF11d Fullgain665payload recovery verification; core14payloads/completion alreadyverified.

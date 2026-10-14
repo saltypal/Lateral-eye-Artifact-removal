@@ -52,3 +52,38 @@ Grouped recipient/donor-excluded tuning and native qualification are later stage
 A successful weaker-artifact correction must not degrade severe lateral cases.
 If these fixed variants fail, retain rank2 and move to distinct reference CCA or
 eligible SGEYESUB; do not keep expanding a blind strength grid. No models yet.
+
+
+## Reproduce the full fixed experiment
+
+From the VMD_EOG_Removal project root in PowerShell, after Kaggle authentication:
+
+```powershell
+python tools/kaggle_campaign.py submit --stage nonfrontal-gain-diagnostic --run-id nonfrontal-gain-reproduction-001 --profile full --config configs/nonfrontal_gain_diagnostic.json --source-sha 248a5070131d8049eddc01eede8ebee8465a77bb --kernel-slug vmd-nonfrontal-gain-reproduction --kernel-source satyapaladugu/vmd-nonfrontal-challengers-full/1
+```
+
+Use a new run ID if that reproduction already exists. This local command submits
+an exact-source Kaggle notebook; numerical work runs remotely. It does not train
+a neural model. Check and recover its immutable outputs with:
+
+```powershell
+python tools/kaggle_campaign.py status --run-id nonfrontal-gain-reproduction-001
+python tools/retrieve_bounded.py --run-id nonfrontal-gain-reproduction-001
+```
+
+The numbered61notebook also pins the submitted full run source/spec. The pilot
+notebook remains preserved under .kaggle-work and the archived source commit.
+A notebook's pinned algorithm SHA can precede the later documentation commit;
+that distinction preserves reproduction rather than changing a live run.
+
+
+## Completed result and next decision
+
+Full320comparison completed at248a507. Blend0.75whole15.370676mean/13.826832
+pooled versus rank2original15.155692/13.480444dB. Gainuncertainty crosseszero;
+severelateral−5worsens8.050232→7.758159. Fixedattenuation variants are inferior.
+Retain allarmoutputs; no newstrengthgrid or approvedreplacement. True middle
+severelateral pooled5.444037→5.570377 even with target-fittedscalar; fieldshape
+and gatecoverage need investigation. Validate source/reference coupling before
+newconfidence rules; then test a distinctreferenceCCA or eligibleSGEYESUB.
+Alloraclefigures remain nondeployable; no models/native/fresh qualification.

@@ -407,3 +407,85 @@ any prediction or constitute achievable generalization. Full comparison adds
 participant-balanced bound summaries to make gain-versus-shape headroom clear.
 Primary scores use unchanged paper equations; clean and CC gates are unchanged.
 Core output recovery verified; full123payload recovery tracked independently.
+
+
+### Gain pilot fully recovered; full comparison launched
+
+All123manifest payloads for gain-pilot001/1 verified at01:31:05UTC14October2026.
+Full320example comparison nonfrontal-gain-full001/1 submitted to
+https://www.kaggle.com/code/satyapaladugu/vmd-nonfrontal-fixed-gain-full
+at248a5070131d8049eddc01eede8ebee8465a77bb. Parent full001/1 remains fixed;
+no data/recipe change from the pilot. Added evaluator-only participant-balanced
+bound tables at this source do not alter inference. Ten fixedarms, no fitted
+weights, no frontal change, no new VMD or neural/reserved work. Completion is
+pending. Primary agent monitors during the active chat; no unattended heartbeat
+or agent availability is promised.
+
+
+Pilot condition audit:blend0.75 weak blink+5 improves19.272949→19.972946dB,
+weak mixed+5 improves18.491068→19.159358dB, while severe lateral−5 worsens
+9.376985→8.879075dB. These are matchedpilot-only results. They motivate testing
+observable contamination-dependent correction rather than one fixed strength,
+but no such rule is yet implemented or qualified. Full fixedcomparison pending.
+
+
+## Full fixed gain/blend comparison — complete14October2026
+
+nonfrontal-gain-full001/1 completed320examples/32recipients/5ocular donors at
+248a5070131d8049eddc01eede8ebee8465a77bb.292tests passed(14warnings,18.12s),
+549000archived paper-metric checks. Stage493.397756s,runner557.734671s,
+peak1332200KiB. No fitting,target-guided fixedprediction,VMDsolve,models or
+reserved access. Manifesta95e33513549efc97379831b05c5a6ccaef4807f1105e546bce4d3b99b7a672e.
+Core14payloads and completion verified; full665payload recovery separately pending.
+WholePNGvisuallyinspected/readable; notebookHTMLvisualQA not performed.
+
+| Fixed joint nonfrontal correction | Whole mean channel SNR dB | Pooled-window SNR dB | CC |
+| --- | ---: | ---: | ---: |
+| Original rank2 | 15.155692 | 13.480444 | .960545 |
+| Strength0.25 | 9.540135 | 7.214790 | .879123 |
+| Strength0.50 | 11.196361 | 9.569044 | .913169 |
+| Strength0.75 | 13.629778 | 12.301465 | .945571 |
+| Old/rank2blend0.25 | 14.014078 | 12.417302 | .947241 |
+| Old/rank2blend0.50 | 14.753609 | 13.316326 | .957174 |
+| Old/rank2blend0.75 | **15.370676** | **13.826832** | **.962884** |
+
+The strongest blend has point gain+.214985dB versus rank2, supplemental95%interval
+[−.059848,+.502170],498/500validdraws. CCgain+.002339 interval[−.000182,+.005434].
+Neither interval supports a robust superiority claim. It passes whole controlled
+engineering gates against rank2, but native/fresh qualification remainsfalse.
+Frontal remains17.112814dB/CC.973700, with its known.007441CCloss against strongest
+raw frontal. A matched raw-frontal+sameblend ablation was not run; old raw+rank2
+cannot substitute for that matched comparator. No VMDbenefit or deployment claim.
+
+Middleblend0.75mean14.588935/pooled14.575971 versus14.141899/14.341411; posterior
+14.371630/13.671148 versus14.095698/13.279070. Both subgroupmean15gates fail.
+Weakblink+5 rises17.562110→18.492344 and weakmixed+5 rises17.328050→18.194064dB.
+Severelateral−5 falls8.050232→7.758159dB,CC.893543→.888087. Lateral0 falls
+11.869812→11.702260; lateral+5 rises14.796459→14.819895. The wholeaverage hides
+this tradeoff. Retain originalrank2 as reference and blend as a candidate, not an
+approved final replacement. No broader strength grid follows these failed arms.
+
+### What the evaluator-only bounds establish
+
+Optimistic target-fitted middle scalar correction changes pooledmean14.341411→
+16.144333, and oracleblend bound16.629263. These use clean scoring targets and
+are explicitly nondeployable. Their numeric values are not achieved inference
+accuracy, newmodel results or evidence of generalization. Averaging oracleweights
+and applying that average is invalid; the per-window oracle is optimistic.
+
+For severe lateral−5 in true middle channels,current pooled5.444037dB rises only
+to5.570377 with optimistic scalar and6.152358 with optimistic old/rank2blend.
+Posterior severe lateral pooled9.012374→9.380995 scalar,9.288298blend. Thus scalar
+strength cannot rescue these fields in the hardest condition. Residual energy
+accounting closes; centered/time-varying error dominates mean-bias energy in the
+saved tables. This supports prioritizing artifact-field/coverage diagnosis rather
+than another DCcorrection or broadgainsearch. It does not identify the biological
+source of every error, prove an optimal newmethod, or eliminate reference-coupling
+and regression-generated-mixture bias.
+
+Next priorities: separately versioned field/reference coupling contracts first;
+then distinct lowrank referenceCCA with matched ridge/degeneracy controls and
+eligible authorSGEYESUB parity. Gate-missed and unavailable-field cases remain
+included. Confidence-dependent gains require observableinputs and grouped source
+selection, never condition labels or oracle coefficients. Native suppression/
+resting preservation and independent datasets remain mandatory before models.
