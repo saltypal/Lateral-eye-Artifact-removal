@@ -84,6 +84,22 @@ def checked_arrays(parent, relative):
         return dict(archive)
 
 
+def validate_generated_pair(generated, model, level, boundaries=None):
+    """Validate in the producer's float64 coordinates, including float32 inputs."""
+    target = np.asarray(generated["paired_reference"], dtype=np.float64)
+    artifact = np.asarray(generated["true_artifact"], dtype=np.float64)
+    np.testing.assert_allclose(generated["eeg"], target + artifact, rtol=1e-12, atol=1e-18)
+    np.testing.assert_allclose(model.forward(generated["references"], boundaries), artifact,
+                               rtol=1e-10, atol=1e-18)
+    if not all(np.isfinite(value).all() for key, value in generated.items()
+               if key != "generation_amplitude"):
+        raise ValueError("Nonfinite generated pilot array")
+    if level is not None:
+        measured = 10 * np.log10(np.sum(target ** 2) / np.sum(artifact ** 2))
+        if abs(float(measured) - level) > 1e-9:
+            raise ValueError(f"Measured controlled input SNR differs: {measured} vs {level}")
+
+
 def run(input_root, output, config, profile):
     if profile != "pilot":
         raise ValueError("Coupled producer is a bounded pilot only")
@@ -117,8 +133,7 @@ def run(input_root, output, config, profile):
         model = fit_donor_field(cal["eeg"][dids, :duration], cal["references"][:, :duration], cuts)
         cal_driver = model.excursions(cal["references"][:, :duration])
         mixed_cal = generated_pair(background["eeg"][rids, :duration], cal_driver, model, 0., cuts)
-        np.testing.assert_allclose(model.forward(mixed_cal["references"], cuts),
-                                   mixed_cal["true_artifact"], rtol=1e-10, atol=1e-18)
+        validate_generated_pair(mixed_cal, model, 0., cuts)
         pair_id = participant + "-" + donor["record_id"]
         caldir = output / "calibration" / pair_id
         caldir.mkdir(parents=True)
@@ -150,21 +165,13 @@ def run(input_root, output, config, profile):
                                          "sha256": sha256_file(corpus / relative)}
         drivers["mixed"] = (drivers["blink"] + drivers["lateral"]) / np.sqrt(2.)
         drivers["clean"] = np.zeros((2, 1024))
-        target = target_full[rids]
+        target = np.asarray(target_full[rids], dtype=np.float64)
         if target.shape != (len(rids), 1024):
             raise ValueError("Recipient scoring shape differs")
         for condition in ("clean", "blink", "lateral", "mixed"):
             for level in ([None] if condition == "clean" else [-5., 0., 5.]):
                 generated = generated_pair(target, drivers[condition], model, level)
-                np.testing.assert_allclose(generated["eeg"], target + generated["true_artifact"], rtol=1e-12, atol=1e-18)
-                np.testing.assert_allclose(model.forward(generated["references"]), generated["true_artifact"], rtol=1e-10, atol=1e-18)
-                if not all(np.isfinite(value).all() for key, value in generated.items()
-                           if key != "generation_amplitude"):
-                    raise ValueError("Nonfinite generated pilot array")
-                if level is not None:
-                    measured = 10 * np.log10(np.sum(target ** 2) / np.sum(generated["true_artifact"] ** 2))
-                    if abs(float(measured) - level) > 1e-9:
-                        raise ValueError("Measured controlled input SNR differs")
+                validate_generated_pair(generated, model, level)
                 suffix = "clean" if level is None else f"snr{int(level):+d}"
                 example_id = pair_id + "-" + condition + "-" + suffix
                 # Producer parameters and truth are not inputs to correction APIs.
