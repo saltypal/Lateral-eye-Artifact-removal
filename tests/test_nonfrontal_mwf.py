@@ -1,7 +1,20 @@
 """MWF serialization and regional output contracts, run on Kaggle only."""
 import numpy as np
+import pytest
 
 from vmd_eog.nonfrontal_mwf import METHODS, estimate_fields, fit_experts, load_experts, save_experts
+
+
+@pytest.mark.parametrize("scope,family", [
+    ("fixed_nonfrontal_mwf_controls", None),
+    ("fixed_nonfrontal_mwf_controls", "mwf_control"),
+    ("fixed_nonfrontal_component_challengers", "mwf_controls"),
+    ("invented_scope", "mwf_controls"),
+])
+def test_mislabeled_method_family_cannot_launch(scope, family):
+    from vmd_eog.nonfrontal_experiment import validate_family
+    with pytest.raises(ValueError, match="scope/method-family"):
+        validate_family({"scope": scope, "method_family": family})
 
 
 def test_mwf_saved_replay_and_zero_reference_pass_through(tmp_path):

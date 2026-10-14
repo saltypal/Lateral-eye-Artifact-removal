@@ -63,6 +63,16 @@ change and both changed. Frozen frontal output and the untouched other branch
 remain exact. Baselines: identity, archived VMD-context hybrid and archived
 raw-context hybrid (same frontal VMD output). No scoring-target recipe selection.
 
+Information-access distinction: scoring ICA/wavelet arms use original full-montage
+EEG, including raw frontal support. Reference-rank arms use full-montage calibration
+to learn the field but scoring HEOG/VEOG plus each output region's EEG determine
+correction; they do not consume the corrected frontal waveform or its estimated
+ocular field. Combining these outputs with frozen frontal VMD is a regional
+hybrid, not evidence of explicit VMD-to-posterior communication. After the fixed
+comparison, NF09 separately tests no-context versus signed frontal summaries and
+the estimated frontal ocular field, using calibration-only transfer fitting and
+source-quality flags. Match raw and VMD-derived context; do not assume VMD helps.
+
 Fixed settings: ICA association0.4; calibration ridge lags[-10,0,10], penalty0.01;
 gain0..8; wavelet sym4, maximum level6 subject to valid length; rest-MAD multiplier3;
 source event dilation50samples and taper10samples at200Hz. These are declared

@@ -25,7 +25,17 @@ RAW_FRONTAL = "raw_frontal_comparator"
 COMPOSITIONS = {"posterior": (1,), "central": (2,), "both": (1, 2)}
 
 
+def validate_family(config):
+    scope, family = config.get("scope"), config.get("method_family")
+    valid = ((scope == "fixed_nonfrontal_component_challengers" and family in (None, "component_challengers"))
+             or (scope == "fixed_nonfrontal_mwf_controls" and family == "mwf_controls"))
+    if not valid:
+        raise ValueError("Nonfrontal scope/method-family pairing differs")
+    return family
+
+
 def readiness(input_root, config):
+    validate_family(config)
     if (config.get("scope") not in ("fixed_nonfrontal_component_challengers", "fixed_nonfrontal_mwf_controls")
             or config.get("autovmd_enabled") is not False
             or config.get("reserved_access") != "closed until verified freeze"):
@@ -183,7 +193,7 @@ def plot_results(output):
 
 def run(input_root, output, config, profile):
     started = time.perf_counter()
-    if config.get("method_family") == "mwf_controls":
+    if validate_family(config) == "mwf_controls":
         from .nonfrontal_mwf import METHODS as methods, fit_experts as fit_function
         from .nonfrontal_mwf import estimate_fields as estimate_function
         from .nonfrontal_mwf import save_experts as save_function, load_experts as load_function

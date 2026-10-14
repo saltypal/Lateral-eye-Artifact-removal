@@ -1498,6 +1498,21 @@ Separate module/fitsserialization, same original-input/disjointcomposition and
 metrics engine. Fresh numericalfixture checks saved/livefitparity, outputmasks
 andzeroreference pass-through. Staticinspection only until Kagglepilotexecution.
 
+## Fixed MWF pilot submitted; mechanism-family guard authored
+
+nonfrontal-mwf-pilot-001/1 at6c1a4bf4eefc05df2609246aaaaf2f46093416c4 accepted
+andRUNNING inparallelwithnonfrontal-full-001. Same50examplepilotcohort,9arms
+(3controls plus2ranks*3compositions),exactcorpus/contextparents. Solstaticreview
+found no serialization/output/target blocker in submittedcorrectconfiguration.
+Tightenedfuture-readiness contract to reject mismatched scope/method_family;
+fournegativefixtures authored, numericalvalidationpendingnextKagglesource.
+
+Clarifiedinformationaccess: ICA/waveletscoring usesfullrawEEG includingfrontal
+support; rankreference scoring usesrefs andoutput-regionEEG, notestimatedVMDfield.
+CombiningfrozenfrontalVMDwithnewnonfrontaloutputs isaregionalhybrid. Explicit
+signedfrontalestimatedfield/no-context/matchedrawcontext ablation isNF09pending,
+notclaimedalreadytestedbytherank2pilot. No newteacher ormodelpromotion.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
