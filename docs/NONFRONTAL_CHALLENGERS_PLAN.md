@@ -296,3 +296,22 @@ CCA with regression-degeneracy/rank controls, or authorSGEYESUB if calibration
 labels/parity permit. Keep confidence/gain work for conditions with demonstrated
 headroom; do not claim it solves severe lateral. Allbound outputs are diagnostics,
 not validation scores, learnedmodels or inference weights.
+
+### Decision after the completed CCA comparison
+
+The current next-approach request authorized a matched legacy-corpus engineering
+comparison while RC repair remained pending; this did not waive qualification.
+Full320 CCA/direct comparison completed at b0c8613 with 299 passing Kaggle tests.
+Complete calibrated nonfrontal reference ridge with unchanged frontal VMD reaches
+17.533717 dB channel-first mean / 14.780705 dB pooled-window mean. Reference
+CCA rank2 reaches 15.833574 / 13.923972 and fails the stronger direct-control CC
+gate. Its matched SNR difference interval versus direct is [-2.548602, -.943181]
+dB. Severe lateral -5 input remains 13.278714 dB even for the direct hybrid.
+
+Retain direct ridge as the stronger development candidate; preserve negative
+CCA evidence and stop that fixed recipe without a broader rank/threshold bank.
+Prioritize RC01-RC05 provenance/coupling repair, the matched raw-frontal versus
+VMD frontend control for this new nonfrontal candidate, and native preservation.
+Signed frontal-field communication remains pending; this CCA stage used EOG
+references, not a completed context-reference ablation. No teacher/student or
+reserved confirmation promotion follows from these development results.

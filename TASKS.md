@@ -216,7 +216,7 @@ authorized despite current frontal qualification failures; no teacher/model prom
 - [x] NF10 Completed320-example frozen frontend/aggregation review: exact same nonfrontal output with VMD versus archived raw frontal; channel-first versus pooled SNR; verified middle versus temporal subgroups. No new fitting.
 
 - [ ] NF11 One conservative gain/shrinkage challenger after saved-decision diagnosis; observable inputs only, grouped recipient/donor selection.
-- [ ] NF12 Fixed reference-CCA pilot after rank/reconstruction/trial fixtures; matched EOG versus signed frontal-context references.
+- [x] NF12 Fixed EOG-reference CCA pilot/full comparison and reconstruction/trial fixtures completed. Signed frontal-context CCA ablation remains pending under NF09; no claim it was tested here.
 - [ ] NF13 Multichannel SOBI selective-source control only if it adds a distinct hypothesis; no nonfrontal VMD.
 - [x] NF14 Frozen reviewv1 historical/conservative flag limitation documented; revised provenance fixtures passed within290Kaggle contracts004 tests. Numericalreviewv1 scores remain valid; no active-failure count inferred.
 
@@ -226,7 +226,8 @@ authorized despite current frontal qualification failures; no teacher/model prom
 - [x] NF11c Evaluator-onlybounds/mean-varianceaccounting saved onKaggle; severe middle lateral scalarheadroom only5.444→5.570pooled. Prioritize field/coverage and coupling, not scalarstrength alone.
 - [x] NF11d Fullgain665payload recovery andcompletionverified; interruptedtransportattempts resumed fromverifiedfiles.
 
-- [ ] NF12a CCA contracts/source-balanced50examplepilot:module/config/notebook62authored; matchedlegacycouplinglimitationdisclosed. AllnumericalworkKaggle; noautoVMD/models.
-
 - [x] NF12a CCA source-balanced50pilot297tests/21arms/all188payloadsverified; direct19.601765 versusCCAref2 17.549658 andoldrank2 16.728031dB. v1subgroupcopybugpreserved; revised299contracttests/all8payloadsverified beforefull.
-- [ ] NF12b Corrected320examplefullCCA/direct/rank2comparison,ownsubgrouppreservation,pooledSNR,strongestdirectCCgates andmatcheduncertainty.
+- [x] NF12b Corrected320examplefullCCA/direct/rank2comparison completed299tests; own subgroup preservation, pooledSNR, strongest-direct CC gates and matched uncertainty saved. Direct17.533717mean/14.780705pooled versusCCAref2 15.833574/13.923972; CCA-minus-direct CI[-2.548602,-.943181]dB and CC loss.006414969 fails. No CCA replacement/model promotion.
+- [x] NF12c All1,058 fullCCA manifest payloads, completion and source identity verified locally; complete predictions, fits, metrics and logs recovered (run directory3,575,310,609bytes).
+- [ ] RC01-RC05 Bounded reference-coupling/source-provenance repair and new fixed-frontal pilot; see docs/FRONTAL_REFERENCE_COUPLING_REPAIR_PLAN.md. Do not reuse old VMD caches on different input hashes.
+- [ ] NF15 Match the new complete-ridge nonfrontal candidate with raw-frontal versus fixed-VMD output, then validate native preservation. Keep reserved confirmation sources closed until final freeze.

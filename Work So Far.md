@@ -14,8 +14,11 @@ The most important findings are:
 - Posterior best-candidate development table: direct EOG regression **13.542 dB**, full-montage-supported ICA **13.523 dB**. These are partial-gate search results, not a qualified held-out winner.
 - Earlier regional development comparison (central/shared pass-through): frontal VMD + posterior direct regression **9.094213 dB** whole cap; frontal VMD + full ICA posterior output **9.089350 dB**; matched raw frontal + direct posterior **9.337592 dB**. The 15 dB target and native preservation qualification remain unmet. No independently qualified EEG-only deployment model, final external validation or complete 10–50-channel export qualification exists yet.
 
-- Latest fixed nonfrontal320-example comparison: **15.155692 dB** whole-cap channel-first mean with unchanged frontal VMD plus reference-field rank2 middle/posterior correction, versus13.162704dB matched context control. Middle/shared14.905802dB; posterior14.095698dB. All1050manifest payloads recovered and verified. This is development-exposed EOG-assisted evidence; severe lateral−5 remains8.050232dB and weak blink/mixed cases worsen. Completed frontend audit reports pooled whole-cap13.480444dB, below15; raw-frontal control15.399070mean/13.686979pooled. No fresh qualification.
-- Latest numerical validation: **292tests passed** in the full fixedgain/blend run at248a507; earlier dataset-free290tests at6dedb47 have all8payloadsverified. Updated failure lineage distinguishes historical replaced-branch flags from nonfrontal faults. No new model trained or reserved source opened. Fullblend0.75 reaches15.370676channelmean/13.826832pooled, but its gaininterval crosseszero and severe lateral worsens; retain as exploratory candidate.
+- Earlier fixed nonfrontal320-example comparison: **15.155692 dB** whole-cap channel-first mean with unchanged frontal VMD plus reference-field rank2 middle/posterior correction, versus13.162704dB matched context control. Middle/shared14.905802dB; posterior14.095698dB. All1050manifest payloads recovered and verified. This is development-exposed EOG-assisted evidence; severe lateral−5 remains8.050232dB and weak blink/mixed cases worsen. Completed frontend audit reports pooled whole-cap13.480444dB, below15; raw-frontal control15.399070mean/13.686979pooled. No fresh qualification.
+- Earlier fixedgain validation: **292 tests passed** at248a507; earlier dataset-free290tests at6dedb47 have all8payloadsverified. Updated failure lineage distinguishes historical replaced-branch flags from nonfrontal faults. No new model trained or reserved source opened. Fullblend0.75 reaches15.370676channelmean/13.826832pooled, but its gaininterval crosseszero and severe lateral worsens; retain as exploratory candidate.
+
+- Completed CCA/direct full development comparison (320 examples/32 recipients/five donors): frontal VMD plus complete calibrated middle/posterior reference ridge **17.533717 dB mean / 14.780705 dB pooled-window SNR**; reference CCA rank2 **15.833574 / 13.923972**; previous rank2 **15.155692 / 13.480444**. **299 Kaggle tests passed** atb0c8613; fixed frontal parity, replay and baseline metrics verified. CCA loses to direct ridge with a matched SNR interval entirely below zero and fails its CC-preservation gate. Severe lateral -5 input remains13.278714 dB even for direct ridge. Retain the direct hybrid as a development candidate, not a fresh or native-qualified result.
+- Earlier CCA50-example pilot: referenceCCA rank2 **17.549658 dB**, oldrank2 **16.728031 dB**, directlagridge **19.601765 dB**. All188payloadsverified. Pilot subgroup-preservation copybug preserved and repaired before the full comparison; primary per-channel scores remain valid. Full-run values above supersede pilot extrapolation.
 
 ## 1. Objective, workflow and changes in direction
 
@@ -23,7 +26,7 @@ The objective is simultaneous blink/vertical and lateral-eye suppression with ne
 
 The chronological development path is dataset/signal audit → classical comparisons → AutoVMD/band-routing implementation and short neural pilots → user-stopped AutoVMD → fixed frontal-only VMD adaptations → historical guarded-model replay → calibrated frontal transfer and preservation challengers → separate posterior support comparisons. These stages have distinct configurations and evidence. A successful result from one stage does not retroactively qualify another.
 
-The active direction is fixed **frontal VMD artifact estimation**, an independent **posterior estimator**, and one final artifact subtraction. AutoVMD is stopped; its code/caches/failures remain historical evidence. Exploratory regional integration, regional error/context diagnosis and the fixed21-arm posterior/middle comparison are complete. The frozen frontend/aggregation audit is complete. It confirms raw frontal is stronger and pooled whole-cap SNR remains below15dB. Next proposed work is conservative gain, eligible reference-CCA/SGEYESUB, explicit signed frontal-field communication and native preservation qualification. Qualification remains unresolved. New teacher/student or production claims must satisfy their separate gates.
+The active direction is fixed **frontal VMD artifact estimation**, an independent **posterior estimator**, and one final artifact subtraction. AutoVMD is stopped; its code/caches/failures remain historical evidence. Exploratory regional integration, regional error/context diagnosis, fixed-gain and regularized CCA comparisons are complete. Complete calibrated middle/posterior reference ridge is now the strongest matched candidate in the latest development comparison. The prior frozen frontend audit found raw frontal stronger; the latest hybrid still has pooled-window whole-cap SNR below15dB. Next checkpoint is bounded reference-coupling/provenance repair, a matched no-VMD frontend control for the new nonfrontal candidate, and native preservation qualification. Eligible SGEYESUB and signed frontal-field communication remain separate pending challengers. Qualification remains unresolved. New teacher/student or production claims must satisfy their separate gates.
 
 All numerical tests, decompositions, fitting, evaluation, training and plotting run on Kaggle. Local work authors modules/notebooks, inspects saved evidence, performs Git operations and submits/retrieves jobs. Reusable code is in Git, not trapped in notebook cells. Every notebook pins an exact published SHA and versioned parents, checks out fresh code and saves persistent campaign/run artifacts.
 
@@ -1946,13 +1949,141 @@ comparator fixture passed; earlier CCAreconstruction,lag/scaling/permutation/
 serialization fixtures pass. Fullcomparison mayproceed with unchangedrecipes.
 This is a reporting/numerical checkpoint, not native/fresh qualification.
 
+
+
+### Full CCA/direct comparison launched after corrected contracts
+
+nonfrontal-cca-full001/1 submitted atlatestpublished
+b0c861373a8bc66c4538b78269a3b9b988ce3171 to vmd-nonfrontal-cca-full.
+Full320examples/32recipients/21fixedarms; samecorpus002/2 andmatched-context-full001/1.
+Numericalcontractsuite precedes scoring. Correctsubgroupspectral/covariancemetrics,
+pooledSNR,actualcanonicalranks,strongestdirectridgeCCgate andmatchedCCA/direct/
+reference-rank2uncertainty. No algorithmparameter/source split changes frompilot.
+Lunamonitor follows status during activecampaign; primaryagent handlesdiagnosis.
+The19.601765direct and17.549658CCApilotmeans are not extrapolated as fullresults.
+Fullcompletion/recoverypending; native/coupledsourcevalidation unresolved.
+
+
+### Full corrected CCA/direct comparison completed — 14 October 2026
+
+Run `nonfrontal-cca-full-001/1`, campaign `vmd-nonfrontal-cca-20261014`,
+published source `b0c861373a8bc66c4538b78269a3b9b988ce3171`.
+[Kaggle notebook](https://www.kaggle.com/code/satyapaladugu/vmd-nonfrontal-cca-full).
+Immutable parents: `satyapaladugu/vmd-eog-corpus/2` and
+`satyapaladugu/vmd-matched-context-full/1`. The same 320 examples cover
+32 recipients, five donors and 32 calibration bundles. All 21 arms completed.
+Kaggle tests: **299 passed**, 14 warnings, 20.68 seconds. Verified checks:
+5,760 frozen-frontal parity comparisons, 192 saved-fit replays and 549,000
+baseline paper-metric comparisons. Stage runtime 986.118150 seconds; total
+runner runtime 1,193.665894 seconds; peak memory 2,451,336 KiB.
+
+The table reports output SNR, not SNR improvement. Channel-first means and
+within-window channel-pooled energy SNR are separately balanced over source/
+condition/input-level groups; the latter is not a new acceptance gate and is
+not a single concatenated global-energy calculation.
+
+| Frozen frontal VMD + nonfrontal method | Mean output SNR, dB | Pooled-window SNR, dB | MSE, V² | Temporal RRMSE | Ordinary Pearson CC |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Complete calibrated lagged reference ridge | **17.533717** | **14.780705** | 3.546698e-12 | .191564 | .972400 |
+| Reference-side CCA rank 2 | 15.833574 | 13.923972 | 4.280153e-12 | .222509 | .965985 |
+| Previous rest-whitened reference rank 2 | 15.155692 | 13.480444 | 4.913399e-12 | .242700 | .960545 |
+| EEG-side CCA rank 2 | 13.597170 | 12.168657 | 6.092703e-12 | .272894 | .952032 |
+| Reference-side CCA rank 1 | 12.981316 | 10.798309 | 1.511775e-11 | .354372 | .928033 |
+| EEG-side CCA rank 1 | 12.519167 | 10.576723 | 1.604671e-11 | .369297 | .922790 |
+
+All these joint arms retain identical K3/alpha2000 frontal output. The
+17.533717 dB result is an **EOG-assisted regional hybrid on development-exposed
+regression-generated mixtures**, not VMD alone, EEG-only deployment, a fresh
+confirmation score or evidence of superiority over published methods.
+The simpler complete reference field is the strongest of these six fixed
+nonfrontal recipes. Removing directions through CCA did not improve it.
+
+| Verified output region | Direct ridge mean / pooled, dB | CCA reference rank 2 mean / pooled, dB | Previous rank 2 mean / pooled, dB |
+| --- | ---: | ---: | ---: |
+| Frontal, unchanged | 17.112814 / 16.628262 | 17.112814 / 16.628262 | 17.112814 / 16.628262 |
+| Middle, 20 channels | **18.652706 / 18.614822** | 15.447017 / 15.613187 | 14.141899 / 14.341411 |
+| Temporal/shared, six channels | **21.298006 / 20.412816** | 18.559419 / 17.726674 | 17.452148 / 16.610706 |
+| Central/shared, all 26 channels | **19.263160 / 19.193922** | 16.165264 / 16.352900 | 14.905802 / 15.124574 |
+| Posterior | **15.350217 / 14.584468** | 14.432034 / 13.602651 | 14.095698 / 13.279070 |
+
+Middle and temporal rows are now scored on their own channel sets before
+spectral/covariance calculation. They are not duplicated central/shared
+preservation rows. Their larger dB scores cannot be added to frontal/posterior
+scores to obtain a cap score.
+
+| Condition | Input SNR, dB | Direct joint ridge output, dB | CCA reference rank 2 output, dB | Previous rank 2 output, dB |
+| --- | ---: | ---: | ---: | ---: |
+| Blink | -5 | 18.369567 | 16.916620 | 16.124917 |
+| Blink | 0 | 19.684750 | 18.792334 | 18.250146 |
+| Blink | 5 | 17.914413 | 17.773645 | 17.562110 |
+| Lateral | -5 | **13.278714** | 9.212597 | 8.050232 |
+| Lateral | 0 | **16.219934** | 12.921279 | 11.869812 |
+| Lateral | 5 | **17.940872** | 15.474983 | 14.796459 |
+| Mixed | -5 | 17.621888 | 15.960562 | 15.118827 |
+| Mixed | 0 | 18.920192 | 17.880395 | 17.300671 |
+| Mixed | 5 | 17.853123 | 17.569747 | 17.328050 |
+
+The largest remaining problem is severe lateral movement: even the stronger
+hybrid is below 15 dB in that stratum. Weak blink/mixed cases must remain visible;
+their improvement does not establish native false-positive preservation.
+
+Matched supplemental uncertainty was computed on Kaggle using 500 paired
+recipient/donor Poisson multiplier draws, 498 valid. This is a project
+approximation, not the paper's native participant permutation procedure:
+CCA reference-rank2 minus previous rank2 whole-cap SNR = +0.677882 dB,
+95% interval [.315406, 1.059387]; CCA reference-rank2 minus complete ridge =
+**-1.700143 dB**, interval **[-2.548602, -.943181]**. Its CC difference versus
+complete ridge = -.006414969, interval [-.011541962, -.002287459].
+
+The CCA rank2 arm fails the strongest new direct-comparator whole-cap CC gate:
+deterioration **.006414969 > .005**; the verified middle deterioration is
+**.012577343 > .005**. Posterior CCA mean 14.432034 also misses the 15 dB gate.
+Passes against weaker context controls must not replace these comparisons.
+Complete ridge passes the controlled clean-preservation checks against the
+old context controls; zero reported clean modification/alpha/beta/covariance
+error concerns idealized synthetic clean inputs only. A self-comparator row
+for ridge has zero CC loss by construction and is not independent qualification.
+
+The unchanged frontal output still loses .007441477 CC against its archived
+stronger calibrated raw-frontal control, exceeding .005. This experiment does
+not provide the new complete-ridge nonfrontal system paired with a raw-frontal
+output; that matched frontend ablation remains to be evaluated. Previous native
+frontal resting-preservation failures also remain unresolved. Qualification,
+teacher promotion, neural training and reserved confirmation access remain false.
+
+Gate tables retain 170 whole-cap failure-flagged channel rows (39 frontal,
+53 posterior and 78 central/shared). These include inherited historical flags;
+they are not 170 new CCA solver failures or 170 failed records. All eligible
+rows remain scored. The summary distinguishes fixed output parity from active
+algorithm faults. Coverage/true-artifact/generation-multiplier tables are
+evaluator-only after predictions and never select components or gain.
+
+Core outputs, tests, plots, parent/source identities, gate tables and matched
+uncertainty were checksum verified. Manifest SHA256:
+`c8418eb6acc9977aab73fa7606bfd5326dcdf0f12b056922fdabed1816bc91eb`.
+Bulk recovery completed: all **1,058 manifest payloads**, completion and source
+identity are verified locally in the retrieval receipt. The saved run directory
+contains 3,575,310,609 bytes including logs/receipt. The whole-cap PNG was visually
+inspected and is readable. HTML visual QA was not performed.
+
+Decision: retain complete calibrated nonfrontal reference ridge as the stronger
+development candidate, preserve the negative CCA/rank-one/EEG-side results, and
+stop this fixed CCA recipe rather than launch a blind rank/threshold search.
+Next checkpoint is RC01-RC05 reference-coupling/provenance repair followed by
+matched fixed frontal controls and native qualification. An eligible author-code
+SGEYESUB challenger still requires the six calibrated movement/rest labels;
+they cannot be guessed from HEOG signs. No claim that coupling repair guarantees
+an SNR gain. No AutoVMD search, neural weights, new dataset or reserved source
+was used in this completed comparison.
+
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
 
-Metadata captured `2026-10-14T01:46:26.534646+00:00` at repository HEAD `248a5070131d8049eddc01eede8ebee8465a77bb`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
+Metadata captured `2026-10-14T06:30:40.496372+00:00` at repository HEAD `b0c861373a8bc66c4538b78269a3b9b988ce3171`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
 
-## Appendix A. All 122 recorded launch specifications
+## Appendix A. All 125 recorded launch specifications
 
 ### audit-001
 
@@ -4573,6 +4704,81 @@ Metadata captured `2026-10-14T01:46:26.534646+00:00` at repository HEAD `248a507
   ],
   "kernel": "satyapaladugu/vmd-band-neural-fixture",
   "requested_kernel": "satyapaladugu/vmd-band-neural-fixture",
+  "kernel_version": 1
+}
+```
+
+### nonfrontal-cca-contracts-001
+
+[.kaggle-work/nonfrontal-cca-contracts-001/run_spec.json](.kaggle-work/nonfrontal-cca-contracts-001/run_spec.json); SHA256 `ad0966167a90ff315671d92b4d94f9f262786250a62aaba840584e4d6c1ceaf9`.
+
+```json
+{
+  "run_id": "nonfrontal-cca-contracts-001",
+  "stage": "contracts",
+  "git_sha": "a9d882c3fc7956c9edfa2f0adceaf7f73367792d",
+  "campaign_id": "vmd-eog-20261010",
+  "config_path": "configs/campaign.json",
+  "experiment": {},
+  "profile": "pilot",
+  "parent_run": null,
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-nonfrontal-cca-contracts",
+  "requested_kernel": "satyapaladugu/vmd-nonfrontal-cca-contracts",
+  "kernel_version": 1
+}
+```
+
+### nonfrontal-cca-full-001
+
+[.kaggle-work/nonfrontal-cca-full-001/run_spec.json](.kaggle-work/nonfrontal-cca-full-001/run_spec.json); SHA256 `b3abba7d09a0010f42a1ba933e1a3582a9630cb832fcc0b83a508ed9b6527612`.
+
+```json
+{
+  "run_id": "nonfrontal-cca-full-001",
+  "stage": "nonfrontal-cca",
+  "git_sha": "b0c861373a8bc66c4538b78269a3b9b988ce3171",
+  "campaign_id": "vmd-nonfrontal-cca-20261014",
+  "config_path": "configs/nonfrontal_cca.json",
+  "experiment": {},
+  "profile": "full",
+  "parent_run": "nonfrontal-cca-pilot-001",
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [
+    "satyapaladugu/vmd-eog-corpus/2",
+    "satyapaladugu/vmd-matched-context-full/1"
+  ],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-nonfrontal-cca-full",
+  "requested_kernel": "satyapaladugu/vmd-nonfrontal-cca-full",
+  "kernel_version": 1
+}
+```
+
+### nonfrontal-cca-pilot-001
+
+[.kaggle-work/nonfrontal-cca-pilot-001/run_spec.json](.kaggle-work/nonfrontal-cca-pilot-001/run_spec.json); SHA256 `4e60bd5ed3e0249b50c5d2ec8d2e77b2c3504f6e9cc9b1ed3cd52ccb56bf927b`.
+
+```json
+{
+  "run_id": "nonfrontal-cca-pilot-001",
+  "stage": "nonfrontal-cca",
+  "git_sha": "1a2283151a9c840522ea4df25a239519fefcda81",
+  "campaign_id": "vmd-nonfrontal-cca-20261014",
+  "config_path": "configs/nonfrontal_cca.json",
+  "experiment": {},
+  "profile": "pilot",
+  "parent_run": "nonfrontal-full-001",
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [
+    "satyapaladugu/vmd-eog-corpus/2",
+    "satyapaladugu/vmd-matched-context-full/1"
+  ],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-nonfrontal-cca-pilot",
+  "requested_kernel": "satyapaladugu/vmd-nonfrontal-cca-pilot",
   "kernel_version": 1
 }
 ```
@@ -34658,6 +34864,72 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 }
 ```
 
+### results/vmd-eog-20261010/nonfrontal-cca-contracts-001/results/vmd-eog-20261010/nonfrontal-cca-contracts-001/artifact_manifest.json
+
+[Saved payload](results/vmd-eog-20261010/nonfrontal-cca-contracts-001/results/vmd-eog-20261010/nonfrontal-cca-contracts-001/artifact_manifest.json); SHA256 `b08f90a2673bc3d32acebcfcf11d4cf646c37c112e2f49afb718960403348aeb`.
+
+```json
+{
+  "tests.txt": "d4208b8646a3771df92238224db89e03c26ed6c9a12ae214ce74cf56bf40337b",
+  "environment.json": "391ada36d8ce94582a656756caf8dddaac61b04bb6ba050e44cace6d930beebf",
+  "contracts_summary.json": "f6ca4ee5dbc2a14296ccbf2fb7214b2af74a1ceee3ca6c2b12fc3e86ad7f8265",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "parent_identities.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "configuration.json": "87c5c61ded39dc03fb0e6b4467b43063769dc06c4bfea0f84ce8ea4809782fe9",
+  "run_spec.json": "70835f959926c0273cd4a66bf0eba6cf3e6e91da069836de3dc909b192507f5e",
+  "resource_summary.json": "db4cfde564d6d2becdb55c49d4929e7b265032492550ee77b3e634c1fc2f6877"
+}
+```
+
+### results/vmd-eog-20261010/nonfrontal-cca-contracts-001/results/vmd-eog-20261010/nonfrontal-cca-contracts-001/contracts_summary.json
+
+[Saved payload](results/vmd-eog-20261010/nonfrontal-cca-contracts-001/results/vmd-eog-20261010/nonfrontal-cca-contracts-001/contracts_summary.json); SHA256 `f6ca4ee5dbc2a14296ccbf2fb7214b2af74a1ceee3ca6c2b12fc3e86ad7f8265`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "d4208b8646a3771df92238224db89e03c26ed6c9a12ae214ce74cf56bf40337b"
+}
+```
+
+### results/vmd-eog-20261010/nonfrontal-cca-contracts-001/results/vmd-eog-20261010/nonfrontal-cca-contracts-001/resource_summary.json
+
+[Saved payload](results/vmd-eog-20261010/nonfrontal-cca-contracts-001/results/vmd-eog-20261010/nonfrontal-cca-contracts-001/resource_summary.json); SHA256 `db4cfde564d6d2becdb55c49d4929e7b265032492550ee77b3e634c1fc2f6877`.
+
+```json
+{
+  "wall_time_s": 21.360176597999953,
+  "peak_resident_memory_kib": 106072
+}
+```
+
+### results/vmd-eog-20261010/nonfrontal-cca-contracts-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-eog-20261010/nonfrontal-cca-contracts-001/retrieval_receipt.json); SHA256 `032bedcbc5de0b02a48e7a1dff5560c292567d51a9b5ed1c652ad94efe145aa0`.
+
+```json
+{
+  "run_id": "nonfrontal-cca-contracts-001",
+  "git_sha": "a9d882c3fc7956c9edfa2f0adceaf7f73367792d",
+  "verified_payloads": [
+    "configuration.json",
+    "contracts_summary.json",
+    "environment.json",
+    "experiment.json",
+    "parent_identities.json",
+    "resource_summary.json",
+    "run_spec.json",
+    "tests.txt"
+  ],
+  "manifest_payload_count": 8,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 10,
+  "utc": "2026-10-14T04:32:39.724471+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
 ### results/vmd-eog-20261010/nonfrontal-contracts-002/failure_recovery_audit.json
 
 [Saved payload](results/vmd-eog-20261010/nonfrontal-contracts-002/failure_recovery_audit.json); SHA256 `47bff759c0a16ae9dcf9f492d03463434a6f6237c31d9e79d9c7427336581298`.
@@ -45515,6 +45787,2726 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 }
 ```
 
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/artifact_manifest.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/artifact_manifest.json); SHA256 `c8418eb6acc9977aab73fa7606bfd5326dcdf0f12b056922fdabed1816bc91eb`.
+
+```json
+{
+  "nonfrontal_central_shared.png": "e5797f456c088690ea3e69ddb34d5895f93ef09f5cf37fdc711e4810052ef4fb",
+  "cca_coupling_audit.json": "5eef667486e722c5d74bfe7b0ed23b34e8e172112383a363f507884c4e868700",
+  "coverage_uncertainty_intervals.csv": "abb5b58b13b642ac3585f7feaf2b6294e34573aaec899ac1c0ad63c9cd07094f",
+  "nonfrontal_method_means.csv": "f90eac960f342fe154dd351437728adacfd65e34944bc482cd3dd3f95161f2f8",
+  "nonfrontal_summary.json": "220236e89a3a070eb03393c943a5ca18f64f29e39c18dff68ba946b893b5842f",
+  "EVALUATION_PROTOCOL.md": "29e1d638e1d301e49151a72ffdc973635f2054fde9ce27df71c7f92d1c45886f",
+  "resource_summary.json": "d13267b4d632f696a2e663aa85eb120d6ad40cd1614dddc73bef043bfef9af20",
+  "nonfrontal_decisions.jsonl": "d924c8b3c8fe52edcfda3ae3446ccf76ed04cde2c846491f8ed0436d1d5f2fcd",
+  "tests.txt": "a9c755d0233fb61170a2c29b5785de6c7c4759f4ad9fc46049c282aa40045777",
+  "cca_pooled_method_means.csv": "7adb5fdd8beaabeb7e5116508e560e62453a6357f5724d643ba26f85102ae6eb",
+  "nonfrontal_selection_manifest.jsonl": "c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2",
+  "nonfrontal_condition_means.csv": "a4b5279300ae1d8bf43a78c347bbd8da52fdd723683f066d8ad0e256cc7ffeb0",
+  "nonfrontal_channel_scores.csv.gz": "31f74d9210bbdefb33451804d901b0189b4e6e8fdba2601295a3eee9e511d9b3",
+  "environment.json": "ee44d853654b047d9168669eb09bdf66f8b2441d9b420be00999b63828f8ec41",
+  "parent_identities.json": "118c0945f03a80492f7435e8ed2455c2ff9032973adf7823ebb8c1bb040c537c",
+  "cca_pooled_example_scores.csv": "31366dd6e431058b5e6ac8674be3a5314bb502a8b839763efe37b49aa824eba0",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "run_spec.json": "d37f511999f75101017860d62c029606e424a5bf4dd1493536f3d9a9cec8ed2a",
+  "stage_tests_summary.json": "36ee2b5eb27ce16c81c3a16ee5e31f0c561f3bbb81d0237b9903522f0dd50480",
+  "coverage_uncertainty_channel_strata.csv": "05bbffdf29ff0df4585fbf633028859401586d4101ec5f25cec35f788ba6c23b",
+  "configuration.json": "7097655ca13721c675f8ff88000c90e89e0a79dc359349a7b9d1d4e1ea514b60",
+  "cca_coverage_audit.csv": "395b52caef9040446ed90c31fb6fa85abd2c00874d64c3ad3e5de92b3bdd510e",
+  "nonfrontal_controlled_gates.json": "a8ffa9e87a66775a80d6bb0372f1e26e8c1ce3159c0a47c4e14ee31bf2d8a542",
+  "nonfrontal_progress.json": "4369a6f655a62bd3ffd7fa2adcb1069c8eb30fc092e45c8af421996339192cdc",
+  "paper_evaluation_protocol.json": "4129a8eb51c68992a19b0f5649f35b722bbd80f7c80ed4dd5b6b329c8b9d64a2",
+  "nonfrontal_posterior.png": "afe159a018e0f661b409439d6b7339afda87715b8bc9647ca59be8a483569f04",
+  "nonfrontal_fit_records.jsonl": "0e1f14f23cdc512927919a3fed94baaaefc97b689f2af039c02f7e49161b514d",
+  "nonfrontal_whole.png": "5f91c0d85b057213d789704c00f81924bfc9ff1c95bde45f141e6be50da80cb3",
+  "coverage_uncertainty_method.json": "d4292bba598292bda6fcb3ee6da12ec5f006ab42cbff636eb9e07589dd21ee86",
+  "coverage_paired_differences.csv": "d5a913f51fa84ee138265088edf3c0f5469da2e85c9879ca6396786a7deaee19",
+  "nonfrontal_metric_shards/sub-032313-000-mixed-snr-5.csv.gz": "dbf0de6795fea06c515019e33bbbf4ab33d95a7700652c1a54512ea650c35574",
+  "nonfrontal_metric_shards/sub-032329-000-blink-snr-5.csv.gz": "a5bffde4652e2f900333bea0232dea9415782a6b767ad14430920a2d8b3e2724",
+  "nonfrontal_metric_shards/sub-032312-000-mixed-snr+5.csv.gz": "e3012864085eccf59a797f6805a7c5261fa6a1b06136a0c93936ab8412635883",
+  "nonfrontal_metric_shards/sub-032312-000-lateral-snr+0.csv.gz": "40bb54af676f27b49d57b57a55c863c1b7b4ef28d65286b1498949181005adbc",
+  "nonfrontal_metric_shards/sub-032312-000-lateral-snr+5.csv.gz": "48b19869a34f4c3d4a15b83505984707314193b46816a8e798b80d658d852d4b",
+  "nonfrontal_metric_shards/sub-032331-000-mixed-snr+0.csv.gz": "c54a3b7c54896b9ef5864cd29c35516018c3c8d0986a5bb7bcffd6ed2ad8f07b",
+  "nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz": "f8b436caa910c49777f8473551cb0f785b57032586922a0b7a673a3310ca1a1a",
+  "nonfrontal_metric_shards/sub-032322-000-lateral-snr-5.csv.gz": "1516bd5489e35d6d06a180c9f06ebc621c5066603d93f3e96629de4498cba9aa",
+  "nonfrontal_metric_shards/sub-032339-000-blink-snr-5.csv.gz": "af1a58182bc63e587094e6452441ff918f5564eab8287dddb8887a1821f29f39",
+  "nonfrontal_metric_shards/sub-032324-000-blink-snr-5.csv.gz": "5dfebb52c4c9ae02c33b12fad4d43d5edd7c9dc20cb7270030c0a90e51d16ae5",
+  "nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz": "9e55dc498ac34a6d4729b57f609920f67f58e6d346b25830bd7f760cd6b00368",
+  "nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz": "2b07c65190cebefce5ed0be526a8f0256f9543d65232e3e32b0f861ca2f5a076",
+  "nonfrontal_metric_shards/sub-032341-000-clean-clean.csv.gz": "8ed13c7b84d71cde06886adb360cf2abe0a24a1459c06e37d4218a8a672ab8a5",
+  "nonfrontal_metric_shards/sub-032315-000-lateral-snr+5.csv.gz": "785fae495d5e16f9db940fff5edcdff0a0945b9c56def9370079cc136b6b9870",
+  "nonfrontal_metric_shards/sub-032317-000-blink-snr-5.csv.gz": "fe778e3515e92afa1cc1a9ce00e8a06cb12b92a4d9d358f9bf2879dbdb979004",
+  "nonfrontal_metric_shards/sub-032338-000-lateral-snr-5.csv.gz": "e84e87f4d425dd4971f0e8a4e0da52449303555dafe54b5137cac03c85e5c17d",
+  "nonfrontal_metric_shards/sub-032336-000-mixed-snr-5.csv.gz": "9c04c62ea5d2a431b46b49d20ae10ba31deb604c2056b21aecb09d08dff73ee2",
+  "nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz": "14746223dceb742be6d02c70eb8950f9ab0b4e1b1f7cf8b65a6aebb9ac0c8f63",
+  "nonfrontal_metric_shards/sub-032321-000-mixed-snr-5.csv.gz": "ff8a02c09446992456bb82c6457f26bf60b716026c7f8f9873f6262633059fee",
+  "nonfrontal_metric_shards/sub-032322-000-blink-snr-5.csv.gz": "68333cca7eb5fc35dd4bf394d5acae338e29001264eca3fcbd7b551ebf71c65c",
+  "nonfrontal_metric_shards/sub-032329-000-lateral-snr+0.csv.gz": "8fb56bf89e5842ffec9e74edfb24a4d429ea6ed5a483d447e8436460610a78ea",
+  "nonfrontal_metric_shards/sub-032316-000-mixed-snr-5.csv.gz": "2c69446a05e472b4e9027d148763733aae221b56c4aab31f07bef1a21fb9fa9b",
+  "nonfrontal_metric_shards/sub-032336-000-mixed-snr+0.csv.gz": "395678cf78edd9835ad568253c1b288ac34f8894ea1ac5ec078aaebca23b6d26",
+  "nonfrontal_metric_shards/sub-032313-000-lateral-snr+5.csv.gz": "8be0aa5873350d857aaac3b91a57d6b92f580eb01611c83be21f30e6d7ad5daf",
+  "nonfrontal_metric_shards/sub-032315-000-lateral-snr-5.csv.gz": "c2e3cee17258b96e852af588ff8480e3fcd4e10ca47137980e47c1da8a125059",
+  "nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz": "30b6affda3d5caf1e275efe010ad89b54627c7693a978feedda3ebd8cdbd6532",
+  "nonfrontal_metric_shards/sub-032340-000-mixed-snr+5.csv.gz": "f21b398aa3d5fa5622fdc83399e4a0a17c869211cf996b66ec81a5939a850459",
+  "nonfrontal_metric_shards/sub-032312-000-blink-snr+0.csv.gz": "2d9a2cbdce580d848a9215dba63e3b060266396a709de5a537d439814c1f5bce",
+  "nonfrontal_metric_shards/sub-032310-000-blink-snr+5.csv.gz": "1e85c8ddc7f321bdb9cb23d259f2d8dc0bb00667f43d9e207a2675cb903b1705",
+  "nonfrontal_metric_shards/sub-032330-000-lateral-snr+5.csv.gz": "6f71c20715cc9391f0ae55dc2c4ab661edf7166ee2b810efe9bfb8faac960359",
+  "nonfrontal_metric_shards/sub-032324-000-lateral-snr+0.csv.gz": "c42a4ab9b37fbd81311add09bff61ba72d9b1b12c80f3824034255e69c3fc557",
+  "nonfrontal_metric_shards/sub-032328-000-lateral-snr-5.csv.gz": "59b968b58b787b9840a4594732cc3ce5fe34b140698017b67d2b6b1322c5a754",
+  "nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz": "a4003599de2671db0b8c1db010f9ed128ae5e3ea05625aa2fb9b5b37b80e004f",
+  "nonfrontal_metric_shards/sub-032338-000-mixed-snr+5.csv.gz": "20bd370f890b8798c405e2da847e76b0d0e6d4d2676e3903a02ab09d46dd7676",
+  "nonfrontal_metric_shards/sub-032341-000-blink-snr+0.csv.gz": "51897b10bc08685f4d01bc579cb9a422fe690862a58afffc117174f648762cae",
+  "nonfrontal_metric_shards/sub-032331-000-clean-clean.csv.gz": "800fe8619a0b920d5a0bf030c48954104bb26c7d265bf8592271130fb45e9d70",
+  "nonfrontal_metric_shards/sub-032317-000-mixed-snr+0.csv.gz": "bc892518a1e37ba5a4e1eff89be905c69aab66745bfd53c826ee9225f80082ae",
+  "nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz": "dffae02f7a12f3bd583d02a805e7b51a2b0773123906c10552d60c01692958c6",
+  "nonfrontal_metric_shards/sub-032327-000-lateral-snr-5.csv.gz": "1362d17dc7204682adc2ad63660628dee1a2b34ae854c9e47d605f5d6b3c833d",
+  "nonfrontal_metric_shards/sub-032320-000-blink-snr-5.csv.gz": "a2219ff01ad2fc95ad42fefe98b7b341103bb5e5178683263ee9d45ad6da0010",
+  "nonfrontal_metric_shards/sub-032318-000-lateral-snr+0.csv.gz": "c807440b72a5fbbe3fbe21561a23799f03af1a7acd542121e16f6c1218606c7b",
+  "nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz": "cd5052f36cf358673f2e99c655c9c717e718dc6f41403ae635d5ce3a0b416bc3",
+  "nonfrontal_metric_shards/sub-032336-000-blink-snr-5.csv.gz": "f69d874736b28f9aba12e9ea3a7df54a159f4296419675cfeb6c5735943d1da6",
+  "nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz": "6d1b42d7b36b87475b034c32b3160edc875031ecf0b76a883bb465b51feb2fd1",
+  "nonfrontal_metric_shards/sub-032329-000-lateral-snr-5.csv.gz": "2ad51e9cd4e283aa6714bd175c0e015b8a9ce89ee476e6a346a2d40cb273aace",
+  "nonfrontal_metric_shards/sub-032328-000-blink-snr-5.csv.gz": "0bb24a420552aa574c7669db68fd00e0f5ee22b04786a932b59c79e9ac05b3a8",
+  "nonfrontal_metric_shards/sub-032328-000-clean-clean.csv.gz": "8cfa910ad9ff9379bbc34b933cbbb39f7176d44d5e551e26ee5d9aed3c03d344",
+  "nonfrontal_metric_shards/sub-032341-000-mixed-snr+0.csv.gz": "0b3360c9e80ccbe2f80861d48d8de4970da9b9e0b1ce5e803dc9019e0b225977",
+  "nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz": "664c543471c109eeda9ea6b9cb17de841b01800041582d5cbf0bd17aee142d5c",
+  "nonfrontal_metric_shards/sub-032313-000-mixed-snr+0.csv.gz": "ad18daf243e6afe20972cc4feb94a2150376f41c2928820f2d2884f0f73c3e94",
+  "nonfrontal_metric_shards/sub-032322-000-clean-clean.csv.gz": "83a2deb0e3b48c16e348400be14a2533a6a320bd465a925f5a71b57b69be5db0",
+  "nonfrontal_metric_shards/sub-032313-000-lateral-snr-5.csv.gz": "0de5901e98d20314294447085ff637d95baabd93822ca30d0bd534ff4d6e38db",
+  "nonfrontal_metric_shards/sub-032319-000-blink-snr-5.csv.gz": "538778fce684ac44ac5f485399fbca4e0a9dea51732942b0252e31749ff14b6f",
+  "nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz": "427838e4aa01bccc80a7ff2c79ae0135c88e02d46cd0fecb97d237a43ad5ee6d",
+  "nonfrontal_metric_shards/sub-032316-000-clean-clean.csv.gz": "6c23390256047bd3ce7e9dc324ceafb8b5519bc5118f7d4782b3cc34761a4a78",
+  "nonfrontal_metric_shards/sub-032317-000-lateral-snr+0.csv.gz": "52a8ed4bcc3d0bfbca335b88ba88d882bb696c4f725da1c9c8b2e5d68580f88f",
+  "nonfrontal_metric_shards/sub-032322-000-mixed-snr+5.csv.gz": "9b4f26fc700f1a4a30c21080436f7346acdc9ef74e981eaf954dac138b8e34cd",
+  "nonfrontal_metric_shards/sub-032329-000-mixed-snr-5.csv.gz": "eabdb3d49eca4569c352149adc9aa21e477edde9a472d15268b6f52f13400155",
+  "nonfrontal_metric_shards/sub-032323-000-lateral-snr+5.csv.gz": "80bf9f897bfc39ea068f0720d68fc1b039226865ee8d21ab3873d24fa4a56658",
+  "nonfrontal_metric_shards/sub-032338-000-mixed-snr-5.csv.gz": "6ca64e537cfdec95ff02924e575d2bc134fc767c02a88beabb45e12ab2900bed",
+  "nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz": "d3371189f765beb52a21f423c7d4c5c4e93475fcfb0f27a2a20d97ea7e40421e",
+  "nonfrontal_metric_shards/sub-032315-000-mixed-snr+5.csv.gz": "e8ac641bcd1108a2156b0beac2d72534459cc1fa219b70dad8fa67fe5758d680",
+  "nonfrontal_metric_shards/sub-032336-000-mixed-snr+5.csv.gz": "e338e72114da1d5c454e6d62fe1b3c5513ced28c3d18f649fcf55e41b8e769f7",
+  "nonfrontal_metric_shards/sub-032329-000-lateral-snr+5.csv.gz": "91c45b92095f51cbd4c2095fcc2e46574dea60fee8a2374671f8e41e82adbef4",
+  "nonfrontal_metric_shards/sub-032313-000-blink-snr+0.csv.gz": "efb2ff45b65a892731b39b4b25409eb38d176ba2dfa09122c299f5af07c4f6cc",
+  "nonfrontal_metric_shards/sub-032334-000-mixed-snr+5.csv.gz": "bee9f2a7c670bf318b80db7e1a5aa0abd5fc6f9e9c06c6440396e64bf3ebf540",
+  "nonfrontal_metric_shards/sub-032319-000-blink-snr+0.csv.gz": "907bbb2da3d8b4d8a668842edd4506130b27eb2c9985892d47936ad7176ee4a3",
+  "nonfrontal_metric_shards/sub-032338-000-clean-clean.csv.gz": "c1ba3d285febcaef66637eed8d23531e63626773656afdf89c2bd7ab577e9da3",
+  "nonfrontal_metric_shards/sub-032322-000-mixed-snr-5.csv.gz": "ae518967a12061088c2dc326dc5cd4dbb57c9f5198579315a6443845a1c75dc5",
+  "nonfrontal_metric_shards/sub-032327-000-blink-snr+0.csv.gz": "97674cf1ab6109a8541d15191a3692badbe778fb7b937ce1a7e7195d301eebc6",
+  "nonfrontal_metric_shards/sub-032316-000-blink-snr-5.csv.gz": "2f3b2fe28e1db76df4bdde76e6720a30461056691b146f97b103614d54431e27",
+  "nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz": "d937aead95bd7b6746fbf6a089d60ef37a2aae06dd127b30bf64a7120a3ed276",
+  "nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz": "5fc8cb40730103e16ad3fabeba267cb48a73f12b5d03722f8ffb4c403af809ed",
+  "nonfrontal_metric_shards/sub-032316-000-blink-snr+0.csv.gz": "ce0e4faff77df80fbf3d1ea2376b1e98efd4d29fd67c648e6d836b6714b4042c",
+  "nonfrontal_metric_shards/sub-032320-000-lateral-snr+0.csv.gz": "de952861ac4201094dbe50d2d60b00ae04a571c82ce01368af0a9169c6341872",
+  "nonfrontal_metric_shards/sub-032331-000-lateral-snr+5.csv.gz": "d5d1d77ef31c7356898ade6baae1ff00a375684530c655ec0e13f653f138c9ea",
+  "nonfrontal_metric_shards/sub-032322-000-mixed-snr+0.csv.gz": "8d7c3a25e35569a2bf91684ad219655a5925c21e0cfae9f8bb3926acd07cb123",
+  "nonfrontal_metric_shards/sub-032310-000-blink-snr-5.csv.gz": "66a30d41ae17c29bc9aa6134c4e22bfc045e43c14cce4700edca7d0ad187fe6c",
+  "nonfrontal_metric_shards/sub-032329-000-mixed-snr+0.csv.gz": "176ab28828e7015f0da55c0949b6a9de1e2d9a5051002fb1c20209ee6a00cfde",
+  "nonfrontal_metric_shards/sub-032328-000-mixed-snr-5.csv.gz": "413e97960b919ab9837c720f213fac83810b9344b48a84dde61ebde471116db9",
+  "nonfrontal_metric_shards/sub-032324-000-mixed-snr-5.csv.gz": "4c191559cbc86ec9c436e338f4ae54a6e6c5e89f6e3013db57e63cbaff047a21",
+  "nonfrontal_metric_shards/sub-032310-000-mixed-snr+5.csv.gz": "4b50f5dfa257eefe098ca4349ade5329b1c8ad813f7c6c0de3a1063bdb8ef09d",
+  "nonfrontal_metric_shards/sub-032310-000-mixed-snr-5.csv.gz": "2626497b6831675a3e8f33bae671ed2813641f94cff7b72bbf2d95d083d28f18",
+  "nonfrontal_metric_shards/sub-032323-000-blink-snr-5.csv.gz": "13e94bc49ff8d28c394ec88b8eeb369f2640a227853c3c23d66b6a5474d1a354",
+  "nonfrontal_metric_shards/sub-032316-000-mixed-snr+0.csv.gz": "b0851ab6d7b3f33ab4bd745b43aa1e263c4da8c8103fd34acb90ece6600fa70c",
+  "nonfrontal_metric_shards/sub-032316-000-lateral-snr+0.csv.gz": "ebb1e18ec0ae3d68d8943b073f193c6a25ca5a7a59d1fcfbebdc78afd78719f3",
+  "nonfrontal_metric_shards/sub-032330-000-lateral-snr+0.csv.gz": "d91a6370150df9e9d051d88e8ecab57700da69c4430d4d85df8c3604d86041da",
+  "nonfrontal_metric_shards/sub-032324-000-blink-snr+5.csv.gz": "ccbc793318b4783c46a7031c818bce63a43847eacf62a855d87635184cd57a57",
+  "nonfrontal_metric_shards/sub-032310-000-clean-clean.csv.gz": "c7add2cf05f47b0098f01428d81b3d4ece108b11169af97e41ca4cd345007b31",
+  "nonfrontal_metric_shards/sub-032326-000-mixed-snr-5.csv.gz": "d42c2c97e730b43795dd6865751833d1c77eb05fb8677e7f6ea052d00255b3cf",
+  "nonfrontal_metric_shards/sub-032339-000-clean-clean.csv.gz": "a7079a1f9b4febc259f236a79ef9723420c225432a99ab8a4b94127c4d786295",
+  "nonfrontal_metric_shards/sub-032312-000-blink-snr-5.csv.gz": "45921aee0fff8cb8b7e8cc075d888f8c58e794f6cc9cc41374fa4115db82fbd0",
+  "nonfrontal_metric_shards/sub-032336-000-blink-snr+0.csv.gz": "98363c1f400f0ce962c2919b14e745e53c55d86a5d112a47b5de132dc78ef377",
+  "nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz": "0643e4e6b30ad11f291f49c10008f6d1aded9d780d97e259b36fc8256f742f95",
+  "nonfrontal_metric_shards/sub-032340-000-clean-clean.csv.gz": "a5d585aa4b2630e791ea53434f9773ffe330f38dbca839cf8f5676a297455c6a",
+  "nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz": "5409d69abc58ac4ac6b9c2e47cb1097e0e30f5a47a200f9579f1a2d9c2697a77",
+  "nonfrontal_metric_shards/sub-032325-000-lateral-snr+0.csv.gz": "ff2e6a20cfd3342597e2f39a31498d84afa7fe2b282a9e046aef82cf90c816e2",
+  "nonfrontal_metric_shards/sub-032328-000-mixed-snr+0.csv.gz": "104ac611e37fa47cfa1b976f766dcbe19890b24cb3d5655038ea9b81160fda17",
+  "nonfrontal_metric_shards/sub-032338-000-blink-snr+5.csv.gz": "812b6c5fc3a43eccb3f5c856263ad9e741423b9a348547321c4f3030fa141676",
+  "nonfrontal_metric_shards/sub-032327-000-mixed-snr-5.csv.gz": "f2ce318bd269920d5daa7d5850454e46028a281a6db936d5c178fb4d20b05d8d",
+  "nonfrontal_metric_shards/sub-032327-000-blink-snr+5.csv.gz": "220fc2108d3fcc8bfac14be637a6b2b473a0e9369f82063a2e193e0cea827fa4",
+  "nonfrontal_metric_shards/sub-032319-000-lateral-snr+5.csv.gz": "bc54657a46f5c6687ffa181251b1850cd86d3e2f5b67f8cc5abeb519a02f1210",
+  "nonfrontal_metric_shards/sub-032334-000-blink-snr+0.csv.gz": "b70862d177ede800e23f933fda1046ce8341efc19557dd8b28c00057f206d995",
+  "nonfrontal_metric_shards/sub-032340-000-mixed-snr+0.csv.gz": "3e39916d31486bda3e2677093525efaabf2987d043359beccf10551bff64e267",
+  "nonfrontal_metric_shards/sub-032312-000-mixed-snr-5.csv.gz": "273bf054030f88877bdeb74eaec573dfe67c460e7b86f323627dee66a71043c3",
+  "nonfrontal_metric_shards/sub-032331-000-lateral-snr+0.csv.gz": "798357640350c2c4ae1a57fc4301446397344d238d370743ba3e2e07056b4597",
+  "nonfrontal_metric_shards/sub-032320-000-mixed-snr-5.csv.gz": "bcc25dce225434abb70aa9a2fa13adae7e4f05785bc0097adc5121933247613c",
+  "nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz": "edbfdc30147a16b4aa77c3b0d17bfe73630a1719861e4a7f74c4c1098e41a81a",
+  "nonfrontal_metric_shards/sub-032323-000-blink-snr+0.csv.gz": "e796c65a3699eb6c927ca87a212f4c04b9dc182d44f522a2596905aa01dd263d",
+  "nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz": "6b6550bc8ca099ec8890292f8a4734ea7961ba0e99dc7091bcaa43a850ceea9e",
+  "nonfrontal_metric_shards/sub-032340-000-blink-snr+0.csv.gz": "f87ea24cd8f007ead9c078c11a72d05e924a6f3b0b177c16eb93aae7252fdd2a",
+  "nonfrontal_metric_shards/sub-032321-000-blink-snr+5.csv.gz": "d01bf1b82fd20e3d7255fb1858acdf0f3118e6590be45fee2a1419ff688e905f",
+  "nonfrontal_metric_shards/sub-032309-000-mixed-snr+5.csv.gz": "da8ce8cdfaceec28e4c3a263d2f2fc4c7f18851d0482b06f77a6d1d15b1b2f1a",
+  "nonfrontal_metric_shards/sub-032321-000-lateral-snr+5.csv.gz": "fe32202bf62cf3cbefce91476639f31caba5ece2baa355810c7b6d9e621bc181",
+  "nonfrontal_metric_shards/sub-032312-000-mixed-snr+0.csv.gz": "edc12d998e17d63644823e96d172cc4995c8bed582a39fcf1a2bb09f15f6ed38",
+  "nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz": "12741a016074be808397b33790a61446b17d59099bf0304347cdc3cfc2c671a1",
+  "nonfrontal_metric_shards/sub-032327-000-lateral-snr+0.csv.gz": "fe1ffb832ba05474fd01715e2f78829731184158850fe3058aa8e08c5aa851ca",
+  "nonfrontal_metric_shards/sub-032327-000-blink-snr-5.csv.gz": "859523d7bc5aa408b21353fbeed6eb8f0b447db7f4c666a864cd745446b8c74f",
+  "nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz": "4c3712f1bc9bfb7312bbcfc44cbde3bdab20de2864cff90aba54c34f104a4fb9",
+  "nonfrontal_metric_shards/sub-032331-000-blink-snr-5.csv.gz": "178ae0dc35c04e6c8daf2629a81e9e3e2570f2d5cf99a1748ed212d0b2bfa3dd",
+  "nonfrontal_metric_shards/sub-032320-000-blink-snr+0.csv.gz": "b3c9e93be9d835639e5efde87f6c1bee784e39f432c1db0d0dcaa9271d876319",
+  "nonfrontal_metric_shards/sub-032336-000-lateral-snr-5.csv.gz": "b9bc01a482da5bde225a7c63864110b120a9f26ea59cac89d9b45d972f17cdfa",
+  "nonfrontal_metric_shards/sub-032339-000-lateral-snr+5.csv.gz": "391d428b41abe68902059c04ff8fe8b608439ccf0054de8feb620d587ca7231c",
+  "nonfrontal_metric_shards/sub-032328-000-lateral-snr+0.csv.gz": "0f96a9d5df1e2a2fade198725f2b3ea3241c1bf95fccb4f8b6164d5b7feaf3e8",
+  "nonfrontal_metric_shards/sub-032321-000-blink-snr+0.csv.gz": "0afb5155c0cd732fb7b13e86ee8f968190324e9287f62143bd082743f322b86f",
+  "nonfrontal_metric_shards/sub-032312-000-lateral-snr-5.csv.gz": "520a5491c0c43440880c9ade5004f39aa045ac4badafb9c17a9d57e958072c5f",
+  "nonfrontal_metric_shards/sub-032313-000-lateral-snr+0.csv.gz": "e7092d376fde45983bb3c716204b12afaa9920b574c0117ea9d3e1b8ce048fb2",
+  "nonfrontal_metric_shards/sub-032336-000-clean-clean.csv.gz": "d47152fc322334aaad08b1900e5f0ef5595379be23cc65e17c5cd4ab46afa49b",
+  "nonfrontal_metric_shards/sub-032317-000-lateral-snr-5.csv.gz": "458411924bcd626a364d413b086d61cad8d5a70b895676c9a5f5c34a4d27487c",
+  "nonfrontal_metric_shards/sub-032323-000-blink-snr+5.csv.gz": "dfa237df69860295c53cc4da252a2f6e492c43c7ce021e6c88baed3d7dd58a6b",
+  "nonfrontal_metric_shards/sub-032320-000-mixed-snr+5.csv.gz": "ee7cedeedd70f1cf07bc032102d6f1016844ae82a6acea9de713b97c0fcf4380",
+  "nonfrontal_metric_shards/sub-032340-000-blink-snr+5.csv.gz": "06b398ff72c4a672f056137d9b563a83472e233e6c3b19e54311b15d0c283ed8",
+  "nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz": "1862f47b7ff9599f5eeb5e399389e547884db16afff89a5034d4cd9b90a7c4e7",
+  "nonfrontal_metric_shards/sub-032321-000-blink-snr-5.csv.gz": "ef239da5c168dad2e10413e5033df76f10b9f3094a8c110c8e907411f7d19877",
+  "nonfrontal_metric_shards/sub-032318-000-clean-clean.csv.gz": "c60e6ab1f14b58a4a6a406e3bdc563f4774fba5b88046b628f1bb787dfb82ebf",
+  "nonfrontal_metric_shards/sub-032325-000-lateral-snr+5.csv.gz": "7611bf561a853aba29ae36c947dac202a7346c399d1daca94ff09f726c9118c5",
+  "nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz": "9265f0be7f27c778023407e6b18e5e306c427243e9bbea3a4a1ba13b9f0615bd",
+  "nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz": "0e3f81b13a39282418645a02ff0679336933e38eb9f8fec9d5f922b17fe5822e",
+  "nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz": "e98e1c4fda8d312f45f28d3d1d14efa1a14d95399ff06187813097927bb70112",
+  "nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz": "6cfacd55e3636a23eb55b67a226b41f7d9ebb261858ad8e8c16d722a1be2452f",
+  "nonfrontal_metric_shards/sub-032329-000-blink-snr+0.csv.gz": "90d3c3e3358b7321c9832ace56bcb04b52a043cc2b603622cc284eb46f689223",
+  "nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz": "7f6f23093c4b114a5543ea23995429972b8d7822c455ef69c30ba941ee988131",
+  "nonfrontal_metric_shards/sub-032310-000-mixed-snr+0.csv.gz": "92d7715937f132eb904dd0dd8c777a0d4fc137e0e17abde0aacd8fadbd32e99e",
+  "nonfrontal_metric_shards/sub-032323-000-lateral-snr+0.csv.gz": "17bed883aca96c0e4c28db4a5ad330b79e556f4eb62e06b6d119c6e7dd39ab8e",
+  "nonfrontal_metric_shards/sub-032318-000-blink-snr-5.csv.gz": "76b389b6125afeca564014112b085e3416f1e2bac1f4d3f20e08185ddd1ce40c",
+  "nonfrontal_metric_shards/sub-032319-000-lateral-snr+0.csv.gz": "f0b45d4cb8f3d933bbd6b9881b7bcaa042af63dd50b0aa17cd6cccdfe448cff5",
+  "nonfrontal_metric_shards/sub-032318-000-mixed-snr-5.csv.gz": "56cabbc4f7f4230c7f5c1cb54fbed0d91dd97322b36fa47054eaaaa4a81451dd",
+  "nonfrontal_metric_shards/sub-032340-000-lateral-snr-5.csv.gz": "d61dd83e2206d032fe9d82dd89d2de076dd428b5ba6b27150a708bc556a93e7e",
+  "nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz": "a210bf9cfbeecd86f7d823c6785e0d076c2e4438f128735cc509e1310d89d96c",
+  "nonfrontal_metric_shards/sub-032324-000-lateral-snr+5.csv.gz": "faf74b23ab0e78f01b6db2d695507256479b003edcce29d0247b4798ebc11b79",
+  "nonfrontal_metric_shards/sub-032338-000-blink-snr+0.csv.gz": "a3945e240f427fd6fe12fbb834fbf00ec034563934f38b53c57d1824abd1c851",
+  "nonfrontal_metric_shards/sub-032329-000-blink-snr+5.csv.gz": "6da085609d9466ee718bfa12a40e25826d09ba535f9ebbcbae43558169b09cce",
+  "nonfrontal_metric_shards/sub-032322-000-blink-snr+5.csv.gz": "72ea4214aac7381eabd0f8cce4c56958e49d7270eab37d4e0fd11bb151c82334",
+  "nonfrontal_metric_shards/sub-032330-000-blink-snr+0.csv.gz": "4b11320553687b64ff964d87bbae0e2e71148518cb1226bab5473b5312d9fa76",
+  "nonfrontal_metric_shards/sub-032328-000-lateral-snr+5.csv.gz": "6a132daa08f2dc3ebc2663e3d018eb991c310a3a07ef2b09bbcd10f49c80c7e6",
+  "nonfrontal_metric_shards/sub-032310-000-lateral-snr+5.csv.gz": "3f75d5b367733f480a812834da9eabceeae5e40a7a0316f6e0976a76adef888c",
+  "nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz": "50ee327bf367bd345f4ef3be9a22f4326d6ef960eadd2eeadb1301c4a926b818",
+  "nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz": "7d05a53d06b82b0f8b109c9364afddebe1d3b01442da772fcceb56d9e8874df8",
+  "nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz": "712f0298c0ce060bcb02f12b91e6e76d5f5186fa6d66f62a5a527186189198ff",
+  "nonfrontal_metric_shards/sub-032330-000-clean-clean.csv.gz": "4ad748c5d74ac54eba107d372a3fe387a5a8e95c0dc86556b58d2699efba2a44",
+  "nonfrontal_metric_shards/sub-032339-000-blink-snr+5.csv.gz": "be6fdbb69e6ae0051dd652a58fd6661038786d1e13e9bd7e9e5ef676eb956342",
+  "nonfrontal_metric_shards/sub-032312-000-clean-clean.csv.gz": "e5cfbd73a2b7b39b9eeebc669f716a03c7fb00a4f93ea3f270980769d2bc51be",
+  "nonfrontal_metric_shards/sub-032318-000-lateral-snr-5.csv.gz": "47ae948832c031ded9ca6ae532486223f6770c91537e15efda091bcc936deae4",
+  "nonfrontal_metric_shards/sub-032330-000-mixed-snr+5.csv.gz": "2f9c9f6d23bccfdc83c8ecf65ff1b70636e4f056ba457708dc95a24f635c6e77",
+  "nonfrontal_metric_shards/sub-032334-000-lateral-snr-5.csv.gz": "082115f91599a8cdff357ea2fcfc289dc78dea5aba5acb0fbc3b3153ea97eac8",
+  "nonfrontal_metric_shards/sub-032321-000-lateral-snr-5.csv.gz": "e97f170ac4cf4964c1c2dc0fd01c8c6b04295a5893b50b894251258b1cd00bc9",
+  "nonfrontal_metric_shards/sub-032340-000-lateral-snr+5.csv.gz": "2c30b90f221ff6daba1376a9c0565491eb2d6b0eacb07d27d3c8d4bd61599f8b",
+  "nonfrontal_metric_shards/sub-032341-000-lateral-snr-5.csv.gz": "ee0345c2f711ba320e868897ef3001148bcfff1481e07f4f3640ef7ecd98c4d2",
+  "nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz": "77bff4c4fbde216b2604bf5bef556ea436f597cd30b4bc45c092a7e590552ad8",
+  "nonfrontal_metric_shards/sub-032328-000-mixed-snr+5.csv.gz": "a38909243730d4a07686287b9a5f79a237daac107a40b8262d5468510227591c",
+  "nonfrontal_metric_shards/sub-032334-000-lateral-snr+0.csv.gz": "152ec5ef6a904119ececa4fd4ce81754d6ae98aa5888165fa1f4402352f8118a",
+  "nonfrontal_metric_shards/sub-032339-000-lateral-snr+0.csv.gz": "6bcd8349a5377bcb9265f54acd8a3e0bc2a173de7e8ca51a61e679b6db7dc570",
+  "nonfrontal_metric_shards/sub-032310-000-blink-snr+0.csv.gz": "f2e5347c02cde99c3826a479fcfb09b39f7da4485c8ede8f5751f937de6cfef4",
+  "nonfrontal_metric_shards/sub-032327-000-clean-clean.csv.gz": "b83b4a1485b9339060a9f09cd609383d5084be1ac899dd28cbc0d7796401ee41",
+  "nonfrontal_metric_shards/sub-032334-000-lateral-snr+5.csv.gz": "192dd9421e0e4fca7314e1db54a15d0c63cfe199fdcec507d476136e2edcf878",
+  "nonfrontal_metric_shards/sub-032316-000-lateral-snr-5.csv.gz": "d68c41f20518dee709636907132a064cd0dab68e4d78394f013f6a4b51db0dce",
+  "nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz": "5f2a336ba9ce728ee62038e408ce87af363e2e975151730b4de24ea507296fff",
+  "nonfrontal_metric_shards/sub-032326-000-mixed-snr+0.csv.gz": "897b8bd091197d0f35fed2bca953797a3d574838ac0588fff57f9ecc7499e04c",
+  "nonfrontal_metric_shards/sub-032339-000-lateral-snr-5.csv.gz": "ed345b13bde95c6fa44133ca329da876370858c8fb4ffb80d85da034ba4e851d",
+  "nonfrontal_metric_shards/sub-032315-000-blink-snr+5.csv.gz": "14e74f258d8938b045b4a922ebcc46ca46c05e85b523e886ee4c8b6e92938465",
+  "nonfrontal_metric_shards/sub-032318-000-lateral-snr+5.csv.gz": "98b597d971803d917131489180f53df60cb93cfa34e062943a65f617824036cf",
+  "nonfrontal_metric_shards/sub-032326-000-blink-snr+0.csv.gz": "5aa49c1d5d5efa108a871e0f586f1a44fd08e78ef15978793b46c836403a500e",
+  "nonfrontal_metric_shards/sub-032341-000-mixed-snr-5.csv.gz": "696422095975041d32bf2c3d2c3272d06a710d0856f4a544cf8e67ef7c1f2d6f",
+  "nonfrontal_metric_shards/sub-032323-000-mixed-snr+0.csv.gz": "411b199eae3a8b322b06e6b7151fe32622dda209a53434929fb11c1a548390de",
+  "nonfrontal_metric_shards/sub-032325-000-clean-clean.csv.gz": "dd51563a695ff1c17e6338dec4ca7e74f87f3d5d37b2df199c7c95ef36cb2c7f",
+  "nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz": "36967388f9e95f426d53421eb0e2e2db32a340218d192bba7c5a3f4603c6cab2",
+  "nonfrontal_metric_shards/sub-032326-000-blink-snr-5.csv.gz": "693109137b8784c56d757e443f3fba81b3dd9187e749230423aee372c4ad67d5",
+  "nonfrontal_metric_shards/sub-032340-000-mixed-snr-5.csv.gz": "2080590be2b5475846834b93f2abc07af27f953e7d50d93a27a8d9278aeb5e84",
+  "nonfrontal_metric_shards/sub-032321-000-mixed-snr+5.csv.gz": "7de2b9703913da3a3b365ed11478223ab496feccf7495e43deb4e7dea66e8fa1",
+  "nonfrontal_metric_shards/sub-032321-000-clean-clean.csv.gz": "936d30d7dc74dc1a42a39ba0f9b44eb39f25753a1c487e29e4d0ebc5d70ae7b2",
+  "nonfrontal_metric_shards/sub-032341-000-blink-snr+5.csv.gz": "7dcdafa56434f8ae07e2465a7d849b419d072fc141a3bde0d093ed9e640d4c43",
+  "nonfrontal_metric_shards/sub-032339-000-mixed-snr+0.csv.gz": "b2902595ea8c916b442816e248f8db2f700c2aa5b27ce67e85e9bd15a3e47817",
+  "nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz": "019ee08d08eb7b5161f34059441ab689eb5ff712e59b2d2665cf3e8538d7d5de",
+  "nonfrontal_metric_shards/sub-032331-000-blink-snr+0.csv.gz": "c894c71d934bb20939a462aeab5ef909a67ac2778e455a8e615eb6003fd3718e",
+  "nonfrontal_metric_shards/sub-032315-000-clean-clean.csv.gz": "d296b6063de3102d6f1d35d4bbff6010fbff441561819e51fdf10ed24feb7da7",
+  "nonfrontal_metric_shards/sub-032338-000-blink-snr-5.csv.gz": "481b84f4b9018af20dcc996e40e1d162b7229992eb8006a717b086ad36b9d64b",
+  "nonfrontal_metric_shards/sub-032318-000-blink-snr+5.csv.gz": "b48f0e859f80bfc003149c2002e49389f6efedd9844da718329174079e0dd6fe",
+  "nonfrontal_metric_shards/sub-032317-000-clean-clean.csv.gz": "afae12cc87131697e9eef78737b91c8f02ab099bc2e1a7452c097a1ee60ef9cb",
+  "nonfrontal_metric_shards/sub-032326-000-lateral-snr+5.csv.gz": "fed56b6e217a11c08faff0fed987fef4d45b87b175b733d758ceb1a33f80b66b",
+  "nonfrontal_metric_shards/sub-032309-000-lateral-snr-5.csv.gz": "2c10673bdc8a76a65905aacc3a56eec5525fa9a94b32a1ae8d76d83b28a6ceb0",
+  "nonfrontal_metric_shards/sub-032325-000-mixed-snr-5.csv.gz": "bc0cc5ec45382d373dce7d761017ab0c8cef604517930ddb3e3c3e15dad923a3",
+  "nonfrontal_metric_shards/sub-032336-000-blink-snr+5.csv.gz": "24d023df097bad01c122f5bbf387c5527fc8a0e8d80054e326ac0372706e3567",
+  "nonfrontal_metric_shards/sub-032323-000-mixed-snr+5.csv.gz": "3eb6edde84aaafb149c88d612609ff90c5fcf56a4d9aab36c0068236609d498b",
+  "nonfrontal_metric_shards/sub-032336-000-lateral-snr+5.csv.gz": "059d32576e5f7b1bf64f1c21d91ff0ce03b0e744b5091e9eda27956c7ebe9ef2",
+  "nonfrontal_metric_shards/sub-032309-000-blink-snr-5.csv.gz": "59184ea7b912c5ee1f45c98d50e00d9aff7875e5a831c23e1e730e3119a54bbf",
+  "nonfrontal_metric_shards/sub-032309-000-mixed-snr-5.csv.gz": "bee9fe47df3197e8cf9e6dce87b2cb68e883189be8bc35a6eb2ccf0951cd75f8",
+  "nonfrontal_metric_shards/sub-032325-000-mixed-snr+0.csv.gz": "a1132b3e88ac767acab78a0e66fb90318f6ef29cc6ca5a23d544b7d54e391d6e",
+  "nonfrontal_metric_shards/sub-032315-000-lateral-snr+0.csv.gz": "61cb1d3669f05eb1762f655b0d62dcc59547894b26b37eb01b54204ce71ae353",
+  "nonfrontal_metric_shards/sub-032320-000-lateral-snr-5.csv.gz": "a7cbbd2071173f18da2c1c1dfa6121082a48236e8cb337a1f3d6516fc9a2bdd5",
+  "nonfrontal_metric_shards/sub-032315-000-blink-snr+0.csv.gz": "81f2b05e0177456de4754bdf566ba5d7434bea324e0cf0a6360b5122c18f1b14",
+  "nonfrontal_metric_shards/sub-032313-000-clean-clean.csv.gz": "321d274e1cf3cd7a3497b440ffbaa51b59eb5d35db7ab13fc5c392f6a7bbaad0",
+  "nonfrontal_metric_shards/sub-032320-000-mixed-snr+0.csv.gz": "6c11ca9fb501db2aa7e32f7065c1c95474c23b32914211316c9903dbafc73d00",
+  "nonfrontal_metric_shards/sub-032328-000-blink-snr+5.csv.gz": "fc1292812b896086d13fba64b26765b41127d8f21bbed5faa96b2d07018609fb",
+  "nonfrontal_metric_shards/sub-032317-000-blink-snr+5.csv.gz": "167145cc38d0c215b6acc933e9335a7206da1a6027932bfd4af4470ebd0f2237",
+  "nonfrontal_metric_shards/sub-032331-000-lateral-snr-5.csv.gz": "9f410df20e849557f2401de191ba705217582c5703c6f34b11643aac7c9472f5",
+  "nonfrontal_metric_shards/sub-032325-000-blink-snr-5.csv.gz": "e83dcde6aa01ac6333eb0f61ad1e591120040fd3d6eda4c2d6bdce47fd234733",
+  "nonfrontal_metric_shards/sub-032340-000-lateral-snr+0.csv.gz": "aaefdf223de9eefeb2c8bc12ce4bb7c63bd5f5bbb6df0f1277fc299ddd928b13",
+  "nonfrontal_metric_shards/sub-032319-000-lateral-snr-5.csv.gz": "43d0a278c3465e41e686d86f630942718f0aa0f9d53e7d6b103dafc8b0e0229e",
+  "nonfrontal_metric_shards/sub-032309-000-lateral-snr+0.csv.gz": "7e1d66893b6298f032feec74e807f7a9ea904bee2c7a27e145e3d1384404fc21",
+  "nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz": "3fbf836380ba24e31aa7173874a6771caaf3bac2502be5a672b980b0b3a7e4c1",
+  "nonfrontal_metric_shards/sub-032325-000-blink-snr+0.csv.gz": "c02795be873e571241ae57f12f32c41503ba83763b8b68dfd532da05bd5f0731",
+  "nonfrontal_metric_shards/sub-032340-000-blink-snr-5.csv.gz": "01a945d2f413cc1ac8d78a21bc5faed2b3cee09adf30a4b07fa8e38ac801e8b1",
+  "nonfrontal_metric_shards/sub-032338-000-lateral-snr+5.csv.gz": "7357029a9464614db905c249d979781170272ecbe5ea47752f1281c6fb36c41e",
+  "nonfrontal_metric_shards/sub-032319-000-clean-clean.csv.gz": "ae9c90225de7788989312024b2e514a11db6c6bcb2113aaabfceced04f633762",
+  "nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz": "183472ea8b2e1051cea2e308537c33095469cf65565b809d38fe22c0e3fc2291",
+  "nonfrontal_metric_shards/sub-032334-000-clean-clean.csv.gz": "f0522bd3bfffdd20bcbcdfdff9be8898448a4a1720c8e1da215a3fd81ab8a992",
+  "nonfrontal_metric_shards/sub-032310-000-lateral-snr-5.csv.gz": "5740a1d7d8ed5db8705bb3a00a31506b2cd53f935cf562c8ed3306f0ddcac78c",
+  "nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz": "90b77f48143046b5c0c25de81005db88ecd6e9bcc49424d649706d7fc8bdba7f",
+  "nonfrontal_metric_shards/sub-032317-000-mixed-snr+5.csv.gz": "ab9ca4fffc41789d8a13dc72a6927cf40b15b4e85e4c2f470b577e3b5a1b3a60",
+  "nonfrontal_metric_shards/sub-032341-000-lateral-snr+5.csv.gz": "e755bb63d3f82963ca14af5e9d569545ea90e20ea68308b5d4fda136697bdba4",
+  "nonfrontal_metric_shards/sub-032324-000-mixed-snr+5.csv.gz": "998893671d0e9c8dc1e4d341f7cf7668b88d3077a885b25657b75452b8c23fdb",
+  "nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz": "dded1040f37c3148b25af4ec15c1b25e0dd2169426fc6cdfee9595e1e767dfb9",
+  "nonfrontal_metric_shards/sub-032341-000-lateral-snr+0.csv.gz": "59bd7ecebb45178d6538333e6aebbde2cec11731c7dc45e46c7387398342b68d",
+  "nonfrontal_metric_shards/sub-032313-000-blink-snr-5.csv.gz": "ca01f834e8da63443a20b364ca8742937a176f615b5f4f09467438cc09886ce1",
+  "nonfrontal_metric_shards/sub-032322-000-lateral-snr+5.csv.gz": "f6a955caed28d4c9c02ee1b807e1206058e77bfb4c36b3e16eb46fc6e3f4743c",
+  "nonfrontal_metric_shards/sub-032325-000-mixed-snr+5.csv.gz": "8d52fe0677b4feb532f0c5e3e6f19799e88ef39da5af984715569fe44f9fdcf7",
+  "nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz": "79f266037056847a60a974cf34c6d6a7f1b4c6d25b55b4188e6450f415b81816",
+  "nonfrontal_metric_shards/sub-032326-000-lateral-snr+0.csv.gz": "c005301dd5cc1da2c6c1a67f80ee4098833ae9f45b82796052329b3e1b093bd0",
+  "nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz": "412d7d7e191f961164d18fc9200c24949e0a209a7c14756be56e3216f6106ddc",
+  "nonfrontal_metric_shards/sub-032325-000-lateral-snr-5.csv.gz": "47d62cc8a79a9a49ef028236efd8055d50b6a17db98b3e1cbb800507e6269285",
+  "nonfrontal_metric_shards/sub-032327-000-lateral-snr+5.csv.gz": "3eaf061f46314695fe442627eaa028f092eae0e28f8f5ea42f8b7152844727f6",
+  "nonfrontal_metric_shards/sub-032323-000-mixed-snr-5.csv.gz": "dd92a932f005b1e2cc0b301de79ed2c69aa4231f3797d48fabe55bd3a2c9be16",
+  "nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz": "3e4734f34b645c0d88f1f1df0f8106e064afcadc962f3ec9f8776cda29083dae",
+  "nonfrontal_metric_shards/sub-032338-000-mixed-snr+0.csv.gz": "12c9dfdb59e640bb607ce3dabef6e16f936ea9dd4f2fbf7e26576e728c4165b3",
+  "nonfrontal_metric_shards/sub-032322-000-lateral-snr+0.csv.gz": "23d7f9760cfbe5fc575bfc9a59599dd3ef247ea2bc6564e6057f5eeabd4e210d",
+  "nonfrontal_metric_shards/sub-032327-000-mixed-snr+0.csv.gz": "33353763311ffa0ce8beb7e13aa7a1089edc10f7f75d09f3e48307b1ee35565d",
+  "nonfrontal_metric_shards/sub-032318-000-blink-snr+0.csv.gz": "294b9ee728d9655d59f0e163a196281f2f4bb9379d6b491eeef3b93467180d77",
+  "nonfrontal_metric_shards/sub-032326-000-mixed-snr+5.csv.gz": "e08b5af0fbbdd3e056b4206b5ad64919e73c10d4fd514697d01c633e6116bb76",
+  "nonfrontal_metric_shards/sub-032330-000-lateral-snr-5.csv.gz": "8273252fc33c9d85dc0c94eb5ee390eae840aa8ac110326555905af71d9289dd",
+  "nonfrontal_metric_shards/sub-032313-000-blink-snr+5.csv.gz": "4533653babe47ee97cf5af4488b4d76aee47cc1dab3703afc678e86f54ff4091",
+  "nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz": "a2972ac302622e88d4c70064545e3ed63fe92c1336b0231f33421ac6ca6b5fee",
+  "nonfrontal_metric_shards/sub-032331-000-mixed-snr-5.csv.gz": "f681334c74ac3e1d95b66000672a9296b599ca7fa5a825e3dad8ef7e790c4eea",
+  "nonfrontal_metric_shards/sub-032309-000-blink-snr+5.csv.gz": "28c8cba9fc88e78a2aedba4ac98d87faaffcf2d833a77e9525e98ad40509a00d",
+  "nonfrontal_metric_shards/sub-032317-000-mixed-snr-5.csv.gz": "25f5afe246d65a52ba1f6f3f8bf507fba1ead433e1ddf1ae2a5ac5f210a8fc58",
+  "nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz": "a6f1daf9fc54b797a4f0cfd9f43bc7ae9d94ab9d8ff3814c0e490c37d8372cfb",
+  "nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz": "2fb264ea99167ab8ecf3793d245d53462cfd9f04436265e6b3f6eb4c7efcf9f4",
+  "nonfrontal_metric_shards/sub-032323-000-lateral-snr-5.csv.gz": "da4f8baa03ae381ae2c33d7b45896b03d838785ee180c34997fa4aea91978ff7",
+  "nonfrontal_metric_shards/sub-032334-000-blink-snr-5.csv.gz": "f64eb2dd38933e69ca440921584ab8ef057a79c49284f4576d5ec01e755aeb6e",
+  "nonfrontal_metric_shards/sub-032309-000-clean-clean.csv.gz": "df82b397ca221827e0a1c8b9b65fa513060e6f47f9410529eee5d507afbb5d38",
+  "nonfrontal_metric_shards/sub-032324-000-mixed-snr+0.csv.gz": "c12a2c3974c7c4c71cc358c7e0133047556a4236138ae9e9fda17bca37d4fd59",
+  "nonfrontal_metric_shards/sub-032329-000-clean-clean.csv.gz": "d71983c9718eb3e155350c9deeb296720a67dfdd894d4e042cf12dfdb6bb9e77",
+  "nonfrontal_metric_shards/sub-032322-000-blink-snr+0.csv.gz": "a35e319cf2815577418bac0403ba698fb8a0d9fda4dc33abf3323794ea8ce638",
+  "nonfrontal_metric_shards/sub-032341-000-blink-snr-5.csv.gz": "52f06594416830411c124cd000c43635892e0a5fc97ff1c884aa1d9a1678bcac",
+  "nonfrontal_metric_shards/sub-032323-000-clean-clean.csv.gz": "9726240dbb2e931238cff7c479e43ff981538b36c98ce722da64d6e08fa75c10",
+  "nonfrontal_metric_shards/sub-032310-000-lateral-snr+0.csv.gz": "6c2772bfd577f5dd25f0616f1e0a41fc01b5b763d19c1c2d2fde604a6a17d556",
+  "nonfrontal_metric_shards/sub-032309-000-mixed-snr+0.csv.gz": "720efb6a92e8f577f09e9a01aa60baef868021ae8f2d7a7b409769054fa9c6fc",
+  "nonfrontal_metric_shards/sub-032319-000-mixed-snr+0.csv.gz": "20b75c99d01b551eea969cf8327bab92543a87d9a0c1940c74688caf0d572418",
+  "nonfrontal_metric_shards/sub-032326-000-lateral-snr-5.csv.gz": "44cd25b9b714114dafccbc2e9919b6c1757e43e2ca52ef5786a8b46813ade713",
+  "nonfrontal_metric_shards/sub-032324-000-blink-snr+0.csv.gz": "231056c95205ac0032cfafb83ed10896e03f16144f58e6bd4863c7d164063255",
+  "nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz": "3b7098cbb17d431e975bc175d4b987f3c536e9b8b21d8463d8ab633a2ebc4279",
+  "nonfrontal_metric_shards/sub-032328-000-blink-snr+0.csv.gz": "24d7ec100c949175e2d8f54e5cb1a8a0972b1d9e35dba485a961f05f4533ef3a",
+  "nonfrontal_metric_shards/sub-032315-000-mixed-snr-5.csv.gz": "5015683b16737dec607004a12cb4b103f7e1fabc351ea8abc21a88902372d78c",
+  "nonfrontal_metric_shards/sub-032317-000-lateral-snr+5.csv.gz": "508a1f7ef3f1fa274ac3b8174815b5f89a8de4a6f4e6a1caa29cc08bd4efd924",
+  "nonfrontal_metric_shards/sub-032318-000-mixed-snr+0.csv.gz": "eaa1ab99c2e78b05761785616b73e542e8b0780733c0c53df2ea19f88f37a8c5",
+  "nonfrontal_metric_shards/sub-032326-000-clean-clean.csv.gz": "b2348371ca410b05d4b4496c1c7e874170a6775e475be684b65bc9ed00679e6e",
+  "nonfrontal_metric_shards/sub-032329-000-mixed-snr+5.csv.gz": "dc2bf4c6865e6c0e0dccc14f8f2bcf383b550fac91de7c84952a4648bf421ffd",
+  "nonfrontal_metric_shards/sub-032336-000-lateral-snr+0.csv.gz": "18029848186faa009ae566602f6777d2b9674c5c0605833d502837a410ce2201",
+  "nonfrontal_metric_shards/sub-032315-000-blink-snr-5.csv.gz": "9b508f9c1f82c4b29801a7e7b5eba1e8fbaeb08efd5db0e493f685c04733c5b6",
+  "nonfrontal_metric_shards/sub-032330-000-mixed-snr+0.csv.gz": "cabf72322a9a9ade1888f550d2a1ab662d74bc319a45ce9e51a86137a5c7d2dd",
+  "nonfrontal_metric_shards/sub-032319-000-mixed-snr-5.csv.gz": "3b8c4493302bdffe588c2644b493a4efccc4ce46ba6d3eb41a0fff1af8087860",
+  "nonfrontal_metric_shards/sub-032325-000-blink-snr+5.csv.gz": "2ee6e94fff5a9f6a01dfd3dcac58688c74490df024e4ff7bfd6a25fc0271f4aa",
+  "nonfrontal_metric_shards/sub-032324-000-clean-clean.csv.gz": "57bcc16765d6466bcc2b11645475ad76104e148de20c9c3d113fd6d0fa765b38",
+  "nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz": "f5c0a9ce9aa3263af56d3a49249d791171755e936660caaedba733c5b73a2b01",
+  "nonfrontal_metric_shards/sub-032320-000-blink-snr+5.csv.gz": "bbbcc6395bb022a3a464220214f848ee33a273e12f3c292f3e6249f64ec7cf81",
+  "nonfrontal_metric_shards/sub-032317-000-blink-snr+0.csv.gz": "0ece75c056cf2e743ca73c85941b62031bb57026de2c22aa830cc97d41a56262",
+  "nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz": "ddaa1e218a88c21b1c75b35f2309da7f258250b35beb67def44ee2851b4cbc6b",
+  "nonfrontal_metric_shards/sub-032315-000-mixed-snr+0.csv.gz": "e36f0763bf86c104340895427fb9d24d85e9d35f8d765c7c1df151a4cb84b09f",
+  "nonfrontal_metric_shards/sub-032309-000-lateral-snr+5.csv.gz": "30893a3a3c2fd1f0c94e8df20234bece32962f3d06b6d158efaa7f1407333630",
+  "nonfrontal_metric_shards/sub-032341-000-mixed-snr+5.csv.gz": "746380ecc1f4f7a214c4b8baf61de1d8eadacf204f7cabd52c81bda69a2b463d",
+  "nonfrontal_metric_shards/sub-032331-000-mixed-snr+5.csv.gz": "658938c0be596db3638dd3954705c3346b7b398aa8905eab1a494269eea0d091",
+  "nonfrontal_metric_shards/sub-032319-000-blink-snr+5.csv.gz": "8f1eb299a7bc71c3be142e9f0a8f062d7cd85de2491f2f68060dbe6869fd8f2b",
+  "nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz": "bfb9d04fc6765988e65b13b81f783ea979f653de204c6e695c9ff5cbc078701c",
+  "nonfrontal_metric_shards/sub-032309-000-blink-snr+0.csv.gz": "26d8bccada6e90e899270c2e22d6bde2cede651e57f48428aae112d576fccca8",
+  "nonfrontal_metric_shards/sub-032321-000-lateral-snr+0.csv.gz": "7e1f3a32fb3a7102af88bb5a775c2876d5a97fe4784d746e8a471edcb3803f52",
+  "nonfrontal_metric_shards/sub-032319-000-mixed-snr+5.csv.gz": "282e1610781d8378dcddc9849578500e402b14b469ffd8347cc95eeebbaedacc",
+  "nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz": "0130d7516c4904fb81ce0da8cfaedfa239cbb45224e52cab66532f312f8c4e02",
+  "nonfrontal_metric_shards/sub-032316-000-blink-snr+5.csv.gz": "533a25675bd6e7117b0868ea556a87d9530fe8041119452a0bff8d6654185d17",
+  "nonfrontal_metric_shards/sub-032339-000-mixed-snr-5.csv.gz": "8301c9101b30531f6a12ab7f06623819becb2a4cab31a825b3b06412031a1be4",
+  "nonfrontal_metric_shards/sub-032330-000-blink-snr-5.csv.gz": "3df4f8543d25b884ba3a88220b89c92be46c8d9e8b30c09adeeb84fcf3f173b0",
+  "nonfrontal_metric_shards/sub-032330-000-blink-snr+5.csv.gz": "8a1fc6eff5d9f63e4e361ca1a1518a938a538345df4171305f1f8319a9223810",
+  "nonfrontal_metric_shards/sub-032326-000-blink-snr+5.csv.gz": "f79adda16f7b2253ccbe2eda47368bd122260c8f991bd36a82a3c62e9c5bf0bb",
+  "nonfrontal_metric_shards/sub-032320-000-clean-clean.csv.gz": "5961e8784c16e6d0e510128a2b69268515af77561aedbe36a299e129ae561d57",
+  "nonfrontal_metric_shards/sub-032339-000-blink-snr+0.csv.gz": "811e8a8ff028a2781475073d3e157314a4ccdfb3e52fe1fe5983eb34c2ad44d9",
+  "nonfrontal_metric_shards/sub-032318-000-mixed-snr+5.csv.gz": "0160b8e75fe47e259ea3ca650c123c91c6b2516c58cdab524c5b41f85aaf0430",
+  "nonfrontal_metric_shards/sub-032324-000-lateral-snr-5.csv.gz": "9e3b29f2dc44f283571135b9a7af420aac0f2fb936ac2566d6311f90224116f1",
+  "nonfrontal_metric_shards/sub-032339-000-mixed-snr+5.csv.gz": "25c4647477b07e1b40f15bf471a35b095ca875f611ff590115acdd6c3bf0137d",
+  "nonfrontal_metric_shards/sub-032320-000-lateral-snr+5.csv.gz": "7ab5a26a3bd4a12b982fabe2a7126477cc82feba7f99e919b9439889ef869a89",
+  "nonfrontal_metric_shards/sub-032334-000-mixed-snr+0.csv.gz": "4b7ccc0ae661945f0338a741712fd7dd2f45bbf5aa74eafba01e49ce9979a1e7",
+  "nonfrontal_metric_shards/sub-032327-000-mixed-snr+5.csv.gz": "98a6e092daff621b262eac9762edc300455a017a79025d5aa98468ddcf3ab52e",
+  "nonfrontal_metric_shards/sub-032334-000-mixed-snr-5.csv.gz": "3c3dda1418c63a064f99091da122f7065bb102f34c3d6b007feddeb4adf5052c",
+  "nonfrontal_metric_shards/sub-032321-000-mixed-snr+0.csv.gz": "e5f6d6a9ba985be2c0919964319ffc230191557272ea89f5f1dcae5f99255219",
+  "nonfrontal_metric_shards/sub-032331-000-blink-snr+5.csv.gz": "1d7184550283d85e5f8799799ee518b4866eba89714be04605e4ad25d4362b93",
+  "nonfrontal_metric_shards/sub-032312-000-blink-snr+5.csv.gz": "ffeec8205488aa3f9d32428696d68cc31b818c1299313b66476739dea2f70a32",
+  "nonfrontal_metric_shards/sub-032330-000-mixed-snr-5.csv.gz": "8ed9f162f4d3a88dfe172f555e03bfa023878bdee5cc4befdbdc44638051b11b",
+  "nonfrontal_metric_shards/sub-032338-000-lateral-snr+0.csv.gz": "edf1f48a3714ef4e90e281479c43e8cd814a72f815fa5bca1a865c780b322b04",
+  "nonfrontal_metric_shards/sub-032316-000-lateral-snr+5.csv.gz": "1839bb8f76aafa5ff32c8faaef90d56cdcd7eeb0a93d0fb7da77fa4006c9c0c7",
+  "nonfrontal_metric_shards/sub-032316-000-mixed-snr+5.csv.gz": "02751b7a3793999c507ad40f3735270422659e8bac18810c09ad4cf629ade713",
+  "nonfrontal_metric_shards/sub-032334-000-blink-snr+5.csv.gz": "72d98c1edffab9eec96c524d6b0c307299fc650ee64c009839a13d763b3e2856",
+  "nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz": "3e68b5b200b33169467f24f68c284ce384fbc1316ca03f4c806f35276fa17103",
+  "nonfrontal_metric_shards/sub-032313-000-mixed-snr+5.csv.gz": "e626d1f31a7494935f97edd906831526f034c3cfe8bab313a7f4e443a39ef5d6",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr+0.json": "784af3a3ba0e709f55eeb72661a0ccf38763c68608784d4c5ceccf3863f123af",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr-5.json": "c40de5ad09b770023ab772f3eaa1146ec53b491086db7f6c1a59d003dc615542",
+  "nonfrontal_predictions/sub-032306-000-clean-clean.json": "f734fe600852de32f489b59900a5890daee417902c858d810bb1d4d1565b5877",
+  "nonfrontal_predictions/sub-032326-000-clean-clean.json": "c97f3bde9ecfe1274dc3df2ffcce0d5a4f395a6f99ff046e1ef1666a4dfbf378",
+  "nonfrontal_predictions/sub-032322-000-blink-snr+5.npz": "cb78da05be636bb659ea6d30c13a658ec9d3db1e5f32a553e6577b25d599f1d9",
+  "nonfrontal_predictions/sub-032341-000-blink-snr+0.json": "a9004ac4ed55eac5c82b07291968931fb8cff5f7a5aa652a274b4804340d1829",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+5.npz": "23be66f6a8a16e1c85ec2e24e047079abcc6f80005d6c1fe4a2f1b12d2fc8380",
+  "nonfrontal_predictions/sub-032312-000-clean-clean.npz": "0737866ca3c63a3c3fbc6323996386df95e65595c283719dbccf5bbebf308ab5",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr-5.json": "14bf1c3c41295f763f758a6d9c7b44971208c24ecbd24c04e5189eded52942d8",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr-5.npz": "2827f24c38fa3ede21acf8b6cb539b631ad9e22d3ba14298107d6bbd84b0d29c",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr+0.json": "b5b89558b8849fecc690c0f38d4cdf929f2babfe3f7ae5b4de3885491418539e",
+  "nonfrontal_predictions/sub-032326-000-blink-snr+0.json": "0d906fa38fac0cef043f38f791c8cc055410bf2ee42b6897c5534e03e2c86e33",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr+0.npz": "f49178899a7c9c75fa7b1ef0cdeb97412162c27bf000971bb851e2472e1330e3",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+5.npz": "1b4a7af139a47b584ce17c17eef711a079082fdcbba47d9aed7656a15f8d93c7",
+  "nonfrontal_predictions/sub-032336-000-blink-snr+0.json": "9b0ef4150ae88ee3cf92541bf5efbe49f976097f51bdc3886d9e55665f91b74c",
+  "nonfrontal_predictions/sub-032321-000-blink-snr+5.json": "acb695c43385fd1247beb36d3b82f1cb1e2a4aaa8c9e39b6970358168857546c",
+  "nonfrontal_predictions/sub-032339-000-blink-snr+5.npz": "284934851568a0d74f24e3bafc06b7dba79377677413b6efb93f3eacd825ebb7",
+  "nonfrontal_predictions/sub-032341-000-blink-snr+0.npz": "7d32d095da21b666a1f071d770a939aebf92399f7a7372a39edadfbf9cec9796",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr+0.json": "62338d17d5bfd3317615d79e3e40b58d19787e49eb0e83b3c827262f3463b832",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr+0.npz": "ec0a13af885ed9812b1086f9a24d1cdf0467f1e61a070dcbb870394fd3cdb6c8",
+  "nonfrontal_predictions/sub-032323-000-blink-snr+5.npz": "bd7b7711f8ca19cd4430891a8942b4b9041e13c09353dcc8f33de37bfd01227c",
+  "nonfrontal_predictions/sub-032336-000-blink-snr-5.npz": "e26c11a713e3351741bbe73896190f36c7202385e9f3f599cad944ae87f25018",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr-5.json": "e249d0a54e22703dd430d1aa8bd4fcc0df8144765b646bce5c4a820508a2f3d7",
+  "nonfrontal_predictions/sub-032325-000-blink-snr+0.json": "f1277f08bf7729d3b2bf61c4eaebbf1b0aa064e3f9d1199daed859a93e8f22bc",
+  "nonfrontal_predictions/sub-032306-000-blink-snr-5.npz": "0c497b7b145f9189858660e4d9669b282fed69e5d28662de2b7496b83f3297ec",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr+5.json": "6cc50ebb83cdeb0ed7b35639699d1dcd3eaf050c8540efe017b2db221cd3a51e",
+  "nonfrontal_predictions/sub-032313-000-blink-snr+0.npz": "f5158a572c234584d803af389358f7675bfc3b7e0e1b6be5026cd52ec12b992c",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr+0.npz": "e012b31f0b65e39ea3439a23a38bcfcca0cd18ef5abd24e5c1992a8f2a481bd9",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr-5.json": "894b0ebac4b3e705e408737c65141d3e25921d8eb973c8b84b23be63234b1286",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr+0.json": "8d9831bbecde67666626c80153b98b45670ffc2eaf25d728c02507f98bccc707",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+5.json": "1ce7712800918c98f699bd58c1ff114bf81d4fdee7647f42e7ace13b6418487d",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr+5.json": "1ceecb5c61edab9be04f272aee9953bb17e9ca64e42dc720fe10563ad9a912df",
+  "nonfrontal_predictions/sub-032323-000-blink-snr+0.json": "83a307c65051d17e666eee71ec13499f170ac07702cf6b30fefc1431c2bad969",
+  "nonfrontal_predictions/sub-032305-000-clean-clean.json": "6b4b2094ed10decab5385054dd8bb452aca054593056434ad99d61961d776e52",
+  "nonfrontal_predictions/sub-032315-000-clean-clean.npz": "75566325bd117177b806bef8df50acda38021e9ccdab8c5ddf724be661282ef7",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr+5.json": "7fcad7fe1dcb5a70cac966aad17579b468a18c7f7a71f007612175c589ffb146",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr-5.npz": "b6bb0b19b56f0be0fd337d4dd31d7e79e878e39b1347b4f3a0c72ebe667a189a",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr-5.json": "9c680d07bea86ea1a39a4c8a539242a84b9ad94d702b371f96c7e378ba1b7bf9",
+  "nonfrontal_predictions/sub-032319-000-clean-clean.npz": "f12a94a3fa3188f16f51f7d9a13008e73139f5a8ad2c88cdc18581bf0f2d6d3b",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+5.json": "c28f84d9a0cb889eb21906fcc407ef2c807f5d6e624c7c275be06ba94de57822",
+  "nonfrontal_predictions/sub-032316-000-clean-clean.npz": "125e4b5420fc83f7f6eff03582bd01b1e83d596e1029675ebef0967c97d83f95",
+  "nonfrontal_predictions/sub-032326-000-blink-snr+5.npz": "2603e4a642d0281db7afcf80a276a0c1efdae534073b30b8afe5f99e5ad9dd38",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr+0.json": "15ca7746983e860e2ea49f69a67393e873754b598b8e170bbb8c94bd69ef9a20",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr+5.json": "f95291b1adef4d7a6a2bbc7c6842f38eafd0313e34935e2156e8e36e2086f71e",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr+0.npz": "a6f5cd171602185314b31c8b8b331a9928e65b2df9db3e6216c47a174a89258e",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+0.json": "6c30ceeb2eb2e8fcd29b60d548a8d285fbe95b8a019be2ba77e2b0f0cb083140",
+  "nonfrontal_predictions/sub-032338-000-clean-clean.json": "8bcb32cfaa769b3b4a71dd05059b28d9f48661b00f1e3646688f1f6c01149cb1",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr+5.json": "81f30f5919e63db64fd0db09a2f811586bf0fc3ebe1683530846c84d93a3bc0e",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr+0.json": "c3ec56346195068f0c6a5f8308c914a01db39a0fbb38362e85de6a0344735d26",
+  "nonfrontal_predictions/sub-032315-000-blink-snr+5.npz": "ed27ab18d2bcc7cbc5c7268947c93f0a0555b06b4d1e4c610dec92481d58a38a",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr+5.json": "28465b3c7a69f1dac407d827a34d53f37e3eb5b664ff182fcdc7ac63b34d3f76",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr+0.npz": "528a0e1987bfac64bdaed2186c8d1f72da84b31b48b2392845e8f7a48e53b1f5",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr-5.npz": "5741491c12906f5daf9208f5aea9840266ee1eba0a0e8a0bc323e8c1557ccca1",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr-5.npz": "2e2372991faf892e3d7c51c4db6cb63f8d70f3c67597ab6fff215f9f0ad47f75",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr+0.json": "8d07571d41ca9013b32be41ff817432259f219bdc4637f1ea79ebcf8a469c5fc",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr+0.json": "5cbc6cd53381fc548e0683b00438cfe7bb9ecf5d978085d1f6839af4a0794d33",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr-5.npz": "74eed14431c06216ac77f784b6a164b57c5f3abde0a49ce88ee0e58a4608187f",
+  "nonfrontal_predictions/sub-032334-000-blink-snr+5.npz": "fe827561d3512e24c0d9ddba8f0b7fa6a2b7a095a278b90d7256994a388f7e7d",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr+0.json": "80aa9f45103bf77647ad86b839ef768b1d63bc9e8246f8cdc1a41e1b465c09d4",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr+5.npz": "1faa46a5efc4dc7fb3a0adb2883c413aa00ebd12d3e47f5a77413b90d8ed26ee",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr+0.npz": "d6ffff55db55fbeaae19e95c704e16ac69d62034aaf1c556783b82a0b12ee5f3",
+  "nonfrontal_predictions/sub-032330-000-clean-clean.json": "b4681fbfc8a71377c446259924b004bf472e08c5be5e7515c8d8c7eb1b1f37d3",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr+0.npz": "1e823d4aee2c3933ed5700e9b65e7019c366d5cda964e11d902ab34c2a2c39c7",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr+0.npz": "8c70238381ba72e864d6bd71827ec896966c4d4837b6022df587111cd7528c6f",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+5.npz": "05f881b2fe2474b03c2a07d3ddc5c8b53625daa63a0f28c68d7ad66d36b6f774",
+  "nonfrontal_predictions/sub-032312-000-blink-snr+0.json": "4879a44b9dcde0931e7d7228b1600f27bc8ca91ab588e03ed822867334e05ba5",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr-5.json": "bf8d978504a07292c2539faad126260fa8cda550d7c6e3dbb0d0155d0a23ce08",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr-5.npz": "6cb8015c2eae5977c1b59fd480affee2fa4f3c71e62c6ff941dcf2bcec803081",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr+0.npz": "0fa41c8dc784bacf7e487d533090fd2034b46c1b546d39c4a0a5bdce873eef1b",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr+5.json": "9975e6cbed25bcac64b4342df783bbfe0502ebd712be0ceb184e5eff2e430b91",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr+5.npz": "56b033ab1b997b9670254705d2744ff692aca23b145c1c0f51980d4a38d43aae",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr+5.npz": "754d3608760f3a1143e8e72cff2e7cf03a3c8c11f0f6d1f0a566a2fb0235b674",
+  "nonfrontal_predictions/sub-032319-000-blink-snr+0.json": "2d55ebd4854af4d339cfa4920cb6e141adcc92c9f56535476f5a1b740156b577",
+  "nonfrontal_predictions/sub-032321-000-blink-snr+0.npz": "5f47bccc8cb929778a70de9b95ed9ff2d97e99f521ee1ebcd0469a779e8de49a",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr+0.json": "9a1ce162e1cb91893be9cbe7baf7fa3b67aa38a2a9e765452b036090b5d3e259",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr+5.json": "7f849d326d34db94414fa9c6636415b22597d6be0c765c75ba7ea61ca068794d",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr+0.npz": "71a45ffcf0566b627a2d898e5d8034db06e9fb624eb8367ee8bfe7291e33c3ac",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr-5.npz": "489f782a15bb5cd5261f2e5f07e43e65a75b88096edfea886334aee275597f04",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr+0.npz": "d86750e76ec33431c18fc085749179beafac3695db024ba8e7b364fc29b71aa0",
+  "nonfrontal_predictions/sub-032314-000-blink-snr-5.json": "0ecf208f35f10b3d9ad393269c91b67db1c5e8286ff3fcb84542a634e859723d",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+0.npz": "2e9b3ccab67d7dd3d5815d5e946b96f7f9f96c1f17463a94f27e0ec6efb385ec",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr+0.json": "7793b1cf2904ba20f55607383aee4cb2337f6c40265bb3ad99fd0eba351ccd49",
+  "nonfrontal_predictions/sub-032329-000-blink-snr+5.json": "9bbffff9ad9d4deb657ec4a28266f8203851536ed31e4066de39084d8ca938b6",
+  "nonfrontal_predictions/sub-032316-000-blink-snr-5.json": "11cb531c75fd5f0cd3e81de74471f0bd0e609e4c2d9681d036c105900598d8ff",
+  "nonfrontal_predictions/sub-032308-000-blink-snr-5.json": "8b0a5e9c923b6a7dca1506573baaa07ef1991ff0ad7ac588c6c21d98b50b5129",
+  "nonfrontal_predictions/sub-032309-000-blink-snr+5.npz": "fa03c86a57a80d03c47821c7e4a23a13854acaf2f56dc5ad53b867c04fde4d3b",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr+0.npz": "853b40313c79d10cc08cf46060a30cf6aadcf5c1f2ed510313e423957e93cfdc",
+  "nonfrontal_predictions/sub-032307-000-blink-snr-5.json": "f7c3174355bf57240741145a6cf12319d88b8550b67e0fb416439906c2a45ed8",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+0.npz": "2b6eb29b16c161f23c68a58fe908a7e708c371c4557974ce5c3a941472e77b5f",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr+0.npz": "9237c4833a694647f66fe70e51033b2674b62eb7f8b4229ec56614cd45496e5b",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr-5.npz": "47fc1c992ac135d34fa3a7090b122a708971f8cad76cc8713647a1e44c19dc8b",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr+5.json": "2fcda1aac20ece08cd4680337e5e9abd02c6e91a777d614862576cebeb85c310",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr+5.json": "c75f9f45b156c6f3f949e85e5e3073a84ffad8d08bbc83011e65735357aceb74",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr-5.npz": "7e3dd850f1d1a5bfd49315dab93691d44b7b0dd8f7ff0d1a1001467e05826073",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr+0.json": "f9f4c6aba86bde77addc788dd850b6398547c7a40ff67d4a5eabaf31253d03ce",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr+0.npz": "fcd57836b9f44fce10c758c19a2fb95dcc13eb5b62125663eb2bddc9e40623d1",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr-5.json": "ff312b2ab58d0b17df69f31f9560b2257cb4ba2a2d4219792c654e8593bf4b56",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+5.json": "b22547652fc64622b23a005a2790679efc43eb544fafab7a67a42f12c8028458",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr+0.npz": "fab7825b8ba2019553638dde53ed3af5af47888f984a5769ebce432261f149fc",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr+5.json": "62bc97e30a268e279820d8a243b1395db65da0d871224d172250969cd5799689",
+  "nonfrontal_predictions/sub-032313-000-blink-snr-5.json": "2e5543e0dd198fb70544f3232e73d53730353e2a09261ae02145949355b05874",
+  "nonfrontal_predictions/sub-032320-000-clean-clean.npz": "80008de31beb72d09e369f3f2dbec11cec393e9d3f8a8341892d102a6755f7ac",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr+5.npz": "2958b8ddca58c490a26e4b9ee508e72b2179d0986cd4f0a7c4709bbf8bd989e2",
+  "nonfrontal_predictions/sub-032323-000-blink-snr-5.npz": "70f704b5030054ca68de197a0cc9921309ddc56103614d38840c165c9d51dd74",
+  "nonfrontal_predictions/sub-032324-000-blink-snr-5.json": "44c06df67fe91c2fee33487e2903865fea68467c6e6edec9b5727994aff1625a",
+  "nonfrontal_predictions/sub-032341-000-blink-snr+5.json": "eb63f40fdbf499825ebda24aab80f5c13db0b97edc9ffd2e5fdb9d82ce48f8b6",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr+5.npz": "af07a8d5477d2eafa4916cf695b8d820d0236a1897c82bcb8e805e3fba446a70",
+  "nonfrontal_predictions/sub-032309-000-blink-snr+0.npz": "9f312195c4243f97dd0230989aa1fcde985600d732b408f1712f11ff2f9db226",
+  "nonfrontal_predictions/sub-032322-000-blink-snr+5.json": "abd55c35bc747bf4d10430d9b5be055d6e762fd0c0f7734ca239f9fbe77b25c8",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr-5.json": "ce59ad7ab815393ac8c43786153c8cd7295f3ec05a807f86e8a70b1ca6630809",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr-5.npz": "802a83a4e7558f342d5d02e2a398594d8e73903f8515a070c999bb270d388bc6",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr-5.npz": "e4e4c4abc8004e0db52c82b23ba39f8f8ddb239beea41c0acbc2388c0188edff",
+  "nonfrontal_predictions/sub-032341-000-blink-snr-5.npz": "6db99894c5064913c44fb9357d484eab2e9c232a00846279849d00353038a96b",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr+0.json": "d08516b0590293d6d3b42511f59f6871927ce8e7f98e219dbb6720638dca208d",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr-5.json": "d1d050f3f87697228db56116dc82133f50d7e8f3335df75cac3f663116206146",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr+5.json": "cfa1e8aa7076e8c9f941403083a830074fa0c2b859554c7daf3750f951a56b75",
+  "nonfrontal_predictions/sub-032324-000-blink-snr+5.json": "bb32e70054f9dfaee5effe95d677d433bc949fbfa373ff79337618b4b2d26b2f",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr-5.npz": "87b0441f9a101d7cf846dc7b92c635c96d1f498c3533bf34e8016b635eae3251",
+  "nonfrontal_predictions/sub-032310-000-clean-clean.json": "1fdf55c31e25ab3cba1067142dd78b538e95c4de7cf696b792b3522670a7c67f",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr+5.json": "82b3dfa0d582772678cea95e342e453c05747693355878c7a17583b857b7a174",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+0.json": "00879b93e1b703b625c6f5b4c9d30efd7280c6d450c36fb3931e1127a2b96eec",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr-5.npz": "6a0d164e072e46cd0f64d215b02b9718b567011efcb4c8a10685a85fa33c3ca5",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+0.json": "9b80bb24cfc254d5003a3293f9bc1f888c0b6ac6413a9be76d2b51d46798a274",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr+5.npz": "de7f53ad748f98f2444965d8884a51ce0863b41b1e5e90847e76d9825baec3b3",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+5.npz": "85c13c1e3e40758416a20627979e11ddce3b1107ba7a5eed3c6337933632f5bc",
+  "nonfrontal_predictions/sub-032320-000-blink-snr+0.npz": "6cb07e9e9d25599672f5da9d2125186627a5998bdc97a65694171305df64097f",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr+0.json": "6d164f6c3dfb4a97d838f0d5a985676fdbf4dc837e8dd7337ac5cc9dd11bc12a",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr+5.json": "e1f31fd77caff98988b845addc22e6093539555085ec047f66cba177133ab2bb",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr+0.json": "f4d3929d37f422c2ae91be33e193c7c34511efa3c49726416fdc69d1a710d0cf",
+  "nonfrontal_predictions/sub-032308-000-clean-clean.json": "38be1fa12064e13cd3c0d23e99e2a2cab0333281c248c5298120a903ca015412",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+0.npz": "749efe60e4d2bdb0a92482281c7fac55b273a98baab16c0344cbfde31c3f08e6",
+  "nonfrontal_predictions/sub-032334-000-blink-snr-5.npz": "19ab2c73dece05bb5d9725bcd880cbde5ae6a953d843dd1746d8f1fd6af95fb4",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr-5.json": "872a8d29f188c33445c64f87c04f0bbeb6bb495ad2647473c4d20cdf1c73bcd8",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+0.npz": "78cfd8a60d2e05ffba014e3f4944254773684a07a8cd0d7dc603429e816ae3b8",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+0.json": "79358b7db58b2097d1ed3bddc80b12bc8401fb59bcb2b7d828a26397255d2839",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr-5.json": "a85215460576c6a21c8b9d5d4361dd8916c3f1a6a8d844b45537d87fb378d39a",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr+5.npz": "c4e702351b7d4aafcf0c43bbe512ff02f866f57e5eef8f06c3a1b538b5e7f6a0",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr-5.npz": "d2aa33799a489d347925ff7d33e3c859cb65840942a52809c4fa1896e36a82e2",
+  "nonfrontal_predictions/sub-032322-000-blink-snr-5.json": "0584504d733cdf09a0d0424a1ea5911a27f553a16fa6397c5f98fca0e243662a",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr-5.json": "9546f3d85dd27f40691c06fabef4c31cf9c7a0822bdd034eb43eede373fd13a9",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr+5.npz": "a4ede92fcf0257ba7ad21f8047111df86c5e2cab98c49820075a7cc998c56494",
+  "nonfrontal_predictions/sub-032310-000-blink-snr-5.json": "bbfaa78318443f206532db26969995fc050fedb3aa9f574ccf07c497f8486d22",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+0.json": "0586be1232ceb9c8858f3c05cbdee3b0fffb78d693c87363606c4a68cdb5c222",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr+5.json": "02578eaa8c3829a57c288fcad4a30ae01684735ab92c118660985b1df28d7235",
+  "nonfrontal_predictions/sub-032318-000-blink-snr-5.json": "790ac20318b2d1347a024b80e6fa7f4249f081ba5deddbbdacf19db6b40e0344",
+  "nonfrontal_predictions/sub-032317-000-clean-clean.npz": "b2b86cf7b25d0851becfb7b512bf840a9f96b84aa04051b8c95a2628d028f3fa",
+  "nonfrontal_predictions/sub-032323-000-clean-clean.npz": "99a4e7fb4e855eaba2eb3cdb7ae8afc5c86f2a1f11b586644dae087fbb339fb1",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr+0.json": "78b4663523ce2864b0027684adbc02390e1df115dd4fd6378f9fb99cf00999fc",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr-5.json": "60185592e44c59e7a4f67eca91b7ea8a356a46644e9c87cc44e36762bad67d3b",
+  "nonfrontal_predictions/sub-032316-000-blink-snr+0.npz": "d09b50a8a2b8d5830c50653f94404599f6d40426db728c19ddc37b426626e66e",
+  "nonfrontal_predictions/sub-032330-000-blink-snr+5.npz": "12d56af2e0b222ffd4d432235e4e86440648bf68ec2012095335bc9478af2f37",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr+0.json": "f81afa91130fe6fba980d2f5e58e36d673c5035afd6491bc51fb428900d37f97",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr+5.npz": "523a58fc276348dc0820614ece27f9b99d1298d388ff0ac9328464bc136beee8",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr+0.json": "0f2838a0ff876ab3ca2298c1f3b8a8131788ca4caf3233c870a099846f3b12f3",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+5.npz": "9ca050b3a8c9fd69d7424ea9ff0086897dab4dfe34f41ae89316e33d0b6770ac",
+  "nonfrontal_predictions/sub-032339-000-blink-snr-5.json": "6735dbdbf06d17b7ae6bc40e38809eac962c4fb14f302cdf128f7ab2b3a804a9",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr-5.npz": "b550135fa4f40d104cb439ce31f2d13747c00f87c5b5c3fadba2bbfab0687967",
+  "nonfrontal_predictions/sub-032305-000-blink-snr-5.npz": "8b337c36a37311df54f7734e742519c6a88d1be0bc5e096b25215c24ba33292f",
+  "nonfrontal_predictions/sub-032322-000-blink-snr-5.npz": "450b05c821fd8e8d256829b57ec378ddf1b824d9f8b0366f3135401066feedce",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr+5.npz": "d45b89a04cfc4632c3f5fe4a1d307a3ae33e9be212e7e235de6bd119a544588c",
+  "nonfrontal_predictions/sub-032329-000-blink-snr+0.npz": "6e9a75878ce761f78f32f1d6c987d4a75a4d1ee7b9c2cb27be1bc8b34258552b",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+5.json": "567ae6aa9e203342f9c6d9f6e7ddb078862524e32ca3e6b9d93a77ee667e9d1f",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr-5.json": "a956b30363c1fd8ba256e2b2fe61e6b8c91c642d1405ef4fbca69656867b66c4",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr-5.json": "96dc52edf8d9b61dc0f341be34a3fe94c307ba75248ab6016b959acd25210192",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr+5.npz": "cc11e70c0130d2298e5bab04f02659a43c36714af733adf257b3f66d77600ef0",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr+0.json": "b318169a3e43795b70c892de37fe51b000d10c37fdea097daafbd00e5254b44c",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr-5.json": "9d45c6cded6a62ca255af0ca988906bffd341341e1a21a0d29526fb19e76f600",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+0.json": "fd28684c9475f36b337bef201123bf11a43162c891a6f1b45d950d9adfa8129b",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr+5.json": "4f0f8d2757ea2f36a09b080d80c4afbdc6e5720e1520a4a0f35b1eef9e0c18a5",
+  "nonfrontal_predictions/sub-032314-000-clean-clean.json": "63e76f1dda02c0e7c5597e638eed686e7d947a0c568f38098d7149ebc9d50041",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr-5.json": "3468777fdab04f3c3b29fe9a9298fde46bdc7653d9bb7ce4d26d590ca632c758",
+  "nonfrontal_predictions/sub-032317-000-blink-snr+0.npz": "29f5f3f067b6ab024be72e535ffbdd75b3df03b453a98875653828163addeb2e",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+0.npz": "da9bb8728c0d34082c33792041a4d64680a4d06b1cfd8ffd100e6c8f08589c74",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr-5.npz": "7907e162f0fb4e6cdbd489d2ce4cef823db7ba3dea1968510fa8c717f2b91f1a",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+5.json": "08b3b5f2841d22746b339c707fbbf0aa0bd76d0b7d36759d06decefa4baaa99f",
+  "nonfrontal_predictions/sub-032315-000-blink-snr+0.npz": "1a9dac712c7d97eda3d042e791093dc8754d8af90e9e47608387a84c4d210689",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr+5.npz": "d93ee1f9cb02a629baa05e49de6cdefae35b4717a37adba16396c543f67fe7f4",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr+5.json": "29ed9bf4250939571a0d7435f90b3183166a8ea41cadd6583f724331ebfc694d",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr+0.npz": "5fbbba8e9018b5c841509648961cb44979fb38420e18abca6a096c7771238ed5",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr+5.npz": "67bf92fa68a09477ce2f32d75e90e5889627922ed0d410d073a1dec52c4c7182",
+  "nonfrontal_predictions/sub-032340-000-blink-snr+5.json": "e4e78cdf7cc2bcbdd11a72b6b12eba0d60d3f72c02484d08a4c804c113d248ed",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+0.json": "9f9e7e260d4034828efd05c50cdca931fd4947d4263bf0dd01209e5a40236c11",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr-5.npz": "4e62c06408e57a9be96fee289f2678b720a9e987c4ceb2e5c70d778daeb98327",
+  "nonfrontal_predictions/sub-032319-000-blink-snr+5.json": "4f4303b76e3ed34583cdd8cd355008f01feea7e57b82c3616950193a92fa5908",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr-5.json": "7621968a354399ef45a2e6d2e8651e0c11f2f3b9d72befbd688fd13a9a09b068",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr+0.npz": "ec19435c364fd8e64ef1255553cde338505ef6ed40171bf48712272e5c378a17",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr-5.json": "25c3819fb4cf20a5a49c03a983e6b4f22674da04436c3d4273edcf8c4d17c7b8",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+0.json": "750c7bd26ca0fffe74986c55870945cbfed810aa3fd789ede0296f3e83cfcdfb",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr-5.json": "4e6d6644491ef0f1a251a34b7f530e82d0a28a5624c8601599d59194ce0b8182",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr+0.npz": "cc8fa3565bf2b6fcc4b6d18a2d7289aeb79b224259fd41596f20eaa29611796e",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr+5.npz": "1b5b63e4cf49459fd42138639e47663a90c78dc52fab386716e335ac47d83f65",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr+0.json": "7a57ff2c3d8b02e41a862f568abc7283808f5f95f318fc22c959ebeade1a91ad",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr+0.npz": "72bbd0fd4567b80113f411fb310976330f952ecb004ec1a8e12201731f96c8d5",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr+5.npz": "4d3615a116d48e10ce35e19a84dc6c9dfbf4282e6b90cdcdf678ec9ecd569ab1",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr-5.npz": "7d20e2ba37d4e8073722fc564c7b373b615ff5401c13f6ca8df9b061b6489fea",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr-5.npz": "247af6b7df7d672b8e59edb2036efc32120bf0b226dabf9740847c68fd36bec2",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+5.npz": "6444453de5f6e55bbf437cc0c14fe9509caf3410608b90ee2294bb6511da0d6a",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr+5.json": "6d0901ce4185a901c899ccb5517d3dc689cc96f8ee9a9d3f13ca4359764648d6",
+  "nonfrontal_predictions/sub-032336-000-blink-snr+5.json": "9fd0cefba75ddc0c7d7d994782678adeced74b0701360fce6ee718543f2682ea",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr+0.npz": "620cc71c76be38cc869aa81a31b01370b4988c2ef2cc413991a99d121c98673f",
+  "nonfrontal_predictions/sub-032331-000-blink-snr+0.npz": "78ba9181fda289416c2517cd2591490282acecfdaf6b8d71ca3130fe199a4ebb",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr+0.npz": "b7df7b4b4df2125c38a4809d3f4f2908d3330c3b999561000e2177bcff8939b1",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+5.json": "c373bdfaf555f1c61657cd022a17575251829e553a31b08782017e4221a33fe4",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr+0.json": "fc78eca5a4ec7a00a39c5085a26b653975c0428051cc703dc95317cc2a1b5e14",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr+0.json": "376db7c4e6a2891a17874e8421439d148bf9689b5242671867cdacc67a8b8c4f",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr+0.json": "2354f178f466840cb49245f984dba4ae44a9f76e054a32d2312cf5b179c15e49",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+5.npz": "372b308728173c552c3aea175211f6c771270212283f8c112e8ffc8370a6823c",
+  "nonfrontal_predictions/sub-032331-000-blink-snr+0.json": "9950d4318e25f1c7018f54020ea15bbc24aa280659978b889517d60398338ec1",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+5.npz": "2726ab7f7a4236b86e81252a21cdc7d4ba6cc7525baee487d0aedcca5fa0f6be",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr-5.json": "38e1b52938327dd89c0c9343674a264a9e374c075c90a77b71d5d141f59c8ca2",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr-5.json": "5599d7eb47ffae984b718c2655d1053ac3a1b1f5934fd1e960c5970d43773ac8",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr-5.json": "3595608ba692dc1e4800c99dafad3f821d185fb5885ad6fff43883e259c3ac24",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+5.npz": "72eae37cc8eea4a248389ac97b021c55808db629860f030ae2eb80a42c6085aa",
+  "nonfrontal_predictions/sub-032320-000-blink-snr-5.json": "94baf15227ceb6d10bd4589107a612c9feab44b5a0bf76948dc3f906e3050d14",
+  "nonfrontal_predictions/sub-032319-000-blink-snr-5.npz": "8b8181dc6d16016f134b1614e7d606d0fdcfb22022f47d13ecfaa3acb6ff6a4a",
+  "nonfrontal_predictions/sub-032324-000-blink-snr+0.npz": "715c1c66919a4fb28464942217abaf1423f49c7df6070b4e806f35ce324013aa",
+  "nonfrontal_predictions/sub-032309-000-blink-snr+5.json": "d34a5524a3240200b38783c12e359c02e7224535694cc29c4823a150b9e5d026",
+  "nonfrontal_predictions/sub-032326-000-blink-snr-5.npz": "2384c61d860e3520b9aca50d09484774b766fcca4fb5c4b785a9fbc947c5feb3",
+  "nonfrontal_predictions/sub-032338-000-blink-snr+5.npz": "ae6b33aa2442fd498afa4cfe62a58b4658874b5e95f1782621bed802ffaaaeae",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr+5.npz": "c62253fc7662964ecfdcd9649548718e67d3edbff5c89998ee2f88f55116f3b0",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr+0.json": "3ca0b9cfe928c32f3aaf7c29b267db7fe99462652acda9aee8fabc2caba7eb7d",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr+5.npz": "cf39b3646f7abdaacf5e0497432e85bfbbf79f8f0e873f7ad7ef79f7fe7ad2d8",
+  "nonfrontal_predictions/sub-032339-000-blink-snr+5.json": "d8e069a2088908710ae186f00f1557bd90d79e4673e79538e1258c146d6c9e04",
+  "nonfrontal_predictions/sub-032336-000-clean-clean.json": "c0714bc62a4f6a87e4d4ce1299d5684b6f63cbf479b8f226c0824138e0e35ceb",
+  "nonfrontal_predictions/sub-032330-000-blink-snr+0.npz": "cd499b0afb401fb465bc5fd8838fc7ff50beed3955503baaf5713f1b10e8ead9",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr+5.json": "69d0b3019878b1556518e3c6932d6e3b39fb644d34e0116dddb39579f09d38dc",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr-5.json": "1f99c6650c4034748f4a48beb77a27552aec364a41f55f25bc962181ad3d6360",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+5.json": "a6ead90b25d215871c6dc267f29d9af5636e927de8b653e18ea9fd9213b24c62",
+  "nonfrontal_predictions/sub-032334-000-clean-clean.npz": "725a5b0d44fb7e4d214c1ef4646541bfff76e2de3ed5647658b33f81e8e15124",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr-5.json": "a347f12d9dabd32f4650ca6a2a24df2a29ad55d67673c165559dec8eca44e60e",
+  "nonfrontal_predictions/sub-032318-000-blink-snr+0.npz": "f368fa698e767ff97b92f2fa885d497afbabe940fe3812e0e3b2924d15a1b4fb",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr+5.json": "58265e56160faebaaa24357a246bf5544de4fdede7f09c04d47be10834465629",
+  "nonfrontal_predictions/sub-032328-000-blink-snr+5.json": "bae4d7e10155216fc02602fbe188b25473e1001452fb9a7769d72568a78f998e",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+0.json": "c139a33620cb1fe883ce4ca9907e06e169ff282fd218923a8c2c5c42a2585f2d",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr-5.json": "532fe055a4d6132a8fb70395000a67d2809aae502fd0f836d2d6283f114633db",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr+5.npz": "c3b1c3a55cccce93ca416043295817ef56361d296bcd0d77692d3c55c4f794b3",
+  "nonfrontal_predictions/sub-032323-000-clean-clean.json": "276b33793154f15919442f69bc6c3fa0bfab63feacdb450026c2c9408484cd89",
+  "nonfrontal_predictions/sub-032326-000-blink-snr-5.json": "3a65e04f4fb7a51fff1ec835e6e189e0e49ed24c5fbf889fbae478bac4822117",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr-5.json": "24e355a1ff08d140d18fd2340d2b53cfdd2a8a6a750b5e071f6db1d71a122030",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr-5.npz": "edea408b3671d9d39876b5b1a3324875f5a9d9fd4c1fc1eaf02ee26ace4b9b35",
+  "nonfrontal_predictions/sub-032322-000-clean-clean.npz": "d5fee63ee508587e1c109e79b3ac02800eb20a871912b3808e9db81290905d38",
+  "nonfrontal_predictions/sub-032321-000-blink-snr-5.json": "6079beefde7dc3f0f1970bc6e21c1ce23e1c43a7b95a59a08302250057736368",
+  "nonfrontal_predictions/sub-032338-000-blink-snr+5.json": "f9a7bae66395f17393caa1b0fcd8f8abfaa96f853fb421a5ad273f2bac1b4e12",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr+0.json": "4d8e3c9a41bbdf79e585f60e400820314ef619baf00b920a952470eb19c760bc",
+  "nonfrontal_predictions/sub-032318-000-clean-clean.npz": "d9f17599a8d01c1b1d31ccf5dfef21408924e9acb5656f251878e88beff8bba5",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr-5.npz": "450af1e0b61b83242be493d555badc0fa2a2b5d45a223f0d3083a2e591c5cacb",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr+5.json": "51d7d1f19214b05b66de94384840e61680a31101f2c4cbcbdfeed753837744b4",
+  "nonfrontal_predictions/sub-032316-000-clean-clean.json": "dbccb19c4591103da37e11644d6e4f8f13a9cc67ffc69e51b3cebc55a5ba89ac",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr-5.json": "a4cce3a393c07fd8519e55a855548441f068dfe54efc7eebc1d09a61e75b3b2d",
+  "nonfrontal_predictions/sub-032329-000-blink-snr-5.json": "750db295a089e69904edb806d28a29c6b011f969715e439b5eef8afe093619f6",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr-5.npz": "a899bd642c4ff5edf5089e85dbff1f6c448fb2d9a4983f4537e14b3da3387a3a",
+  "nonfrontal_predictions/sub-032336-000-blink-snr-5.json": "edc080c6073987307b1dcf3069bc12dc7c8d10f3eeedb37b2383ce4d4b466b7a",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr+0.npz": "6abf166834e90b7cf126eeb961365050c5f88c1dc4cc1a28db6452bf6240e5e2",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr-5.json": "72993ae83bfcc7b19a347a0d4a74a8a4d02c0f3e9ac40f9497c458c46a265652",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr+5.json": "ad2ef67bb99b439c53d5a48550af7be8d21a05603742430df000f8c9fc03996a",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+0.npz": "8414949042c14156aaea550d5e8d03bde62d5a83c8431cb05255bda9bd6a711e",
+  "nonfrontal_predictions/sub-032310-000-blink-snr+0.json": "6dfcbfe4825f6f5f15fc5e3ca59554fb02867707bcef7bbb151951b3b7ae2354",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr+0.json": "fc9a69143f0fba0787563aea89e64b93b07f73dce75f0824dcbc63f66a1f6083",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr+0.npz": "e7419f991fc1f7ac77ce957b11fbe6dfd8287224092bb399c2cf0d0ba2e13739",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr+0.npz": "6737457ba3d70b8243633ca655f2f484a23162fb7a11bb91e3e4c6e789c4ae4a",
+  "nonfrontal_predictions/sub-032330-000-clean-clean.npz": "3e17e891df4bd09059ea63e4e08af5d0fff4e692a3129a5b045b2528a4587d77",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr+5.json": "a13832bea13390661493cbd3920c2dda4e650c4d7c2470f344bfb561767d4dfb",
+  "nonfrontal_predictions/sub-032340-000-clean-clean.json": "e64c409b694d2a669e3ac640250e6e0587f3bb139f43f64c28b8a026dc5d0567",
+  "nonfrontal_predictions/sub-032321-000-blink-snr+0.json": "ddcd66cf0183d7dcb8f2d3c29ef9b4810c9d489454ec3a73387119ba9efce49b",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr+0.json": "b862cd9c1eb553f11b6f195355102b79a07ab158e43a929ecfafec134a7f48b2",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr+0.json": "4f5f04b719b858f525be4c2ebc45609a4a122312d623a1506ebff95d501d0b90",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr-5.npz": "2843c45a4e9c6e028d394b6f08be110cfdb5f6e1585ddcaa9410145c755cc5f6",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr-5.json": "92564533531ebbdca0da7ee97da54c3d348f4530fbb3b663911bb7d428b5d5cb",
+  "nonfrontal_predictions/sub-032318-000-blink-snr+0.json": "8d06f6f1026ae0ad474c43a9b70b78151837b02e18acdf12f279993a8ecda438",
+  "nonfrontal_predictions/sub-032329-000-blink-snr+0.json": "c0217341584a2f47041a1bb10c06ffd95067a0139ddef3f06df881d02c55ea5e",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr-5.npz": "5ccccdfbdaaa7a7a167c6759daf2e1ce839820eb2754e1a9b703be47d9e7c0ba",
+  "nonfrontal_predictions/sub-032327-000-blink-snr+0.npz": "5a9de4377e4b353d453000ed48cb5517af2c44d1f16b450cda59497b0cbc0eaa",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr+0.npz": "1a389c558c43de3ef7c4ee91b8bb4abcf44e0d248bf98db39cbca361a618e7e7",
+  "nonfrontal_predictions/sub-032317-000-blink-snr+5.json": "967304aa222eeb1f6d11f914659d8cdc07a3ab7b2a02a5d23f1688dd64b5fe1c",
+  "nonfrontal_predictions/sub-032309-000-blink-snr-5.json": "9c2513602d76134a61be16b06ba3cff73b0eddfb42bf62b6bd4fb8ae3df05cf5",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr+5.json": "3dbe9f00eae7d557b9ed237ad2f1ed707f43f3fee85aaae8a5b0ae94f8820375",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr-5.json": "c107ba7ecda14e144ab9a44c188f18e23a901d31368aaf8089ce98269c0f67d7",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr+0.json": "a2b7af2965035713282e68b75e5206c6ea54369cda0c45fb616c818535faccec",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr+0.npz": "df41fc965cbbba0d17a2e6122b6786c36b2180361c89807e5dffc6c3ae1111ef",
+  "nonfrontal_predictions/sub-032334-000-blink-snr+0.npz": "f2f86f12b228e8c1305b5096ec7d4aaabd10aaca051c582dfc3ca685ad1c52da",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr-5.npz": "b048080634dae8d1c9ba8884c25b2db6559e44fff2f3f4727bec2ab5e8d8c7b8",
+  "nonfrontal_predictions/sub-032340-000-blink-snr-5.json": "b490ea0a30dd57ae9644c50302a846c3edab0dbc6ab504fbad11c3d413d4eca6",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr+0.npz": "fec306483c2ae1de05ec2edc0e7f84257baec387d79ad1c3b212618a0368c5d3",
+  "nonfrontal_predictions/sub-032321-000-clean-clean.json": "b10af6ea6bfa56a7e5fa254ffd993993e995f9d02c66909985667c024ab2903b",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr-5.npz": "a942da0aff7ea8e2eefa4f0edc65e6cbe1dbc37f95142ad3e2425cb06f2d3de8",
+  "nonfrontal_predictions/sub-032325-000-blink-snr+5.npz": "9a79024d4393f5e973670ed494d5aa73f924d2eaebcb2fdce586c714e9608e65",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr-5.npz": "02787777e70f584da47cce0c88d55a4c93a5143bbdea7fb1c35d713282c430d3",
+  "nonfrontal_predictions/sub-032339-000-clean-clean.npz": "e11b665258ae162c19f4627c22c8ff19a5e12ae417cc7ee3bcadfda679665715",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr+5.npz": "5d0ca8980818306a7cdc5978768edebd19b5f217a5c3c5f2577a65404f27e875",
+  "nonfrontal_predictions/sub-032316-000-blink-snr+5.json": "27ec1efd05dd7849f548777e5c5d018f35c705fb4d715161ba36c5c3c4650319",
+  "nonfrontal_predictions/sub-032330-000-blink-snr+5.json": "05e42d9b3bab0171cf81bc3df7e3bc14d210f3a404b9fe84dd862a6c9b2f9cf1",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr-5.npz": "34948668fdc192a11333539207a3f7af5b3510be2612b9925f8001f40e324535",
+  "nonfrontal_predictions/sub-032308-000-clean-clean.npz": "bc8b1b7c4f5dca75dae9e3cbfc531e0221460977d30c1cbdea41b4fbd2c06fa9",
+  "nonfrontal_predictions/sub-032328-000-blink-snr-5.json": "a54745c6a3cc39c85fcea78c5e42d214d950665a0fac67c4d7497c60838af77b",
+  "nonfrontal_predictions/sub-032340-000-blink-snr+0.npz": "ff6fbc09adf374524a3deba49c9e10559986a096cfdf85c710872dfbc54f3172",
+  "nonfrontal_predictions/sub-032308-000-blink-snr-5.npz": "44b9be809e55699a1ac05d62e267d3ac3100d9f37b91ef162626683b1eda9257",
+  "nonfrontal_predictions/sub-032317-000-blink-snr-5.npz": "943c4daef9979fe31b55e671da9396d769fb58b6c733f41f26695a98d993716d",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr-5.json": "852869f7c6d175bfcafbd1e44f4baaa01134ecb0d195c2f2d02a09ac0883f3fa",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr+5.json": "74f9727b61e11c6209b9eaed9d8e8d5a449e3874fdbedc1533c79bee40096041",
+  "nonfrontal_predictions/sub-032315-000-blink-snr+0.json": "f209621b7124155ddc211f382e83268582b9d4ef227373e2c64e4e422852f9f0",
+  "nonfrontal_predictions/sub-032318-000-blink-snr+5.json": "663156fac39ff774afc745ef3776a8ea0df975cc42cbe9e4230462c28121d71d",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr-5.npz": "8358360e6995ed2e87397c52de75e5e21f61f4dc5a2e3d78bfe1c4f440e6f4e2",
+  "nonfrontal_predictions/sub-032330-000-blink-snr-5.npz": "d38c80e25e203447ef5f00ecd84f8ee3e75fd46999e8422cb598f8a49b4d6a03",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr+0.npz": "9c56c32d8932bd83e11dae86a1209ee93d68f7dbbaafa6464005070fb214385d",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr-5.npz": "98ae03c99b347349738fdb44641a41f8b420da51f5671f634ec029548bfce318",
+  "nonfrontal_predictions/sub-032325-000-clean-clean.json": "bc483770fb3b4ee5d69b2c3c4e74a269572bf2cafd286658a3c880b611d09306",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr+0.json": "e84bc7a42a691b575e35b9c3ca6cbf47db0fd3659e93c95ce67983d6b860de09",
+  "nonfrontal_predictions/sub-032341-000-clean-clean.json": "7039b8c2ace1e5dc1fca987e3947c6df3021e1474f86b2ebfe65fdcfb943cf3b",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr+0.json": "d2ef90464370cf5f54c8bc1348a9733902db1f6ad9ac4b8b5ad5262d028587d1",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr+5.json": "c96d0bf4c0b54e063d4df66a05dfc98696e07c1f7fdaf49019e914f8431f5d8e",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr+5.json": "1eb75d95dea6e1572389124a4408d54bccb77bdb064a92650f5cfb1a32096073",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr+0.json": "a27a54e2556c21fbde71c84c8900a5deb8aa6a613544759d00073f1cadf99496",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr-5.npz": "c3524136f9c1af440afc3351e28b507db84557aca686623cec7c4adcc2e7b3cd",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr+5.json": "f4cbefff14f726f484c0d1333b31f729b0ded411ff7ea67ba27e150b3dc62f73",
+  "nonfrontal_predictions/sub-032328-000-clean-clean.json": "5910a20cedd4710fb312370088a0084747d7565dbc8e963b934e4592b7f0f989",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr+5.json": "b4a5803c16bc0d50c71997d913451522d60e1ce8521a7daffbda351307be1779",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr-5.npz": "1ea982fb0b6da27481902978b654840bddbd47d9dd45d04f1cd96916ea4216f1",
+  "nonfrontal_predictions/sub-032327-000-blink-snr+5.json": "537e9cc2bb72f75c822f757754cd9e51ff3485457aee2223fa88bce3697fbca3",
+  "nonfrontal_predictions/sub-032329-000-clean-clean.json": "2fbcec295f326ad2ce75cb776f3f219edbf2ad196219a912a56d32f8ae1fd0fb",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+5.json": "1450d80f3c5b898f4417d979764db0dcf54e0cf935974cd77e5afd814c3a8319",
+  "nonfrontal_predictions/sub-032312-000-blink-snr+5.npz": "54c72cf65860a8bdb8417977940625b44b3dedeca402dfd3602ad29523f2f0a1",
+  "nonfrontal_predictions/sub-032315-000-blink-snr-5.json": "367b17c8de7251ec786b62410d3fb09637a3d480b17c0b82cf2c8c02892944fa",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr+0.json": "496c43128e9b67a2d88a4fd41c71db683511ca22d88a475bee02104d5f17ac3b",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr-5.json": "9b21c864cc2bbf5fccc13cd97e8f15e0d2af83aea980763959a683428352c29b",
+  "nonfrontal_predictions/sub-032320-000-clean-clean.json": "f85d853411e627d5a33784ccd40a036a4e2225195aeccc354ff05e3c7afcb9ec",
+  "nonfrontal_predictions/sub-032315-000-blink-snr+5.json": "97be1baf486ce78902259d96a2995196f2586ae3790b16602b3ea8b0b0e7a73a",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr+5.npz": "558dd2d090c2f5a0f13f16f4fd0d8aed3dd9116ca2c635cb9c1d490407b69252",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr+5.npz": "b02f3a61007c55184f263dc745b0c4c1fed772d0ea4da8909241e21f87563fa4",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+5.npz": "fc2662a61f7089a1a82ee91f7b77ad2ae8192fc1c8e3139edf4f4673cc4c280e",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr-5.json": "6f5e41a33dd1b6e7709f76f963025f5f7e5b3718bcdfa4e855ad05e9a153f852",
+  "nonfrontal_predictions/sub-032334-000-blink-snr+5.json": "14dfd4a721193f33b36c56775e8bf6fb58f9263323ab9eb26b4b1a63c4d50bed",
+  "nonfrontal_predictions/sub-032324-000-clean-clean.npz": "a3690a92c843c54582444213febb9b06d9aff4abd0c0ad05405bd48e5f9a0b61",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr-5.json": "7a5cc9cf04c352294e2ef26c2e56d81d7dac7f8859c3c397d326ebeee86a0ac2",
+  "nonfrontal_predictions/sub-032318-000-blink-snr-5.npz": "77102d60b54f62c8c98e0b669d0b18a1a2e3dbee62b95743b4e24215ff09e92d",
+  "nonfrontal_predictions/sub-032336-000-clean-clean.npz": "8e5d785c0830a4b59737ba1b17400c374cc07314df4f3b9f3c7b10df5f30d921",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr+5.npz": "28ea66ba4878f81cb33bef6b99caf595c856b94196bdf99e387afb3e82a47129",
+  "nonfrontal_predictions/sub-032312-000-clean-clean.json": "ab6fa900a89e1abdadd66f20fc8cd3ab51bcf763b622d589e0cf450242153df7",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr+0.npz": "425da8a83da4aeee79ea12fd3f4488f5de0e0cf69e5f5299dc22d3bc444acfd7",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr+0.json": "5e8c9a4346fe21cda5e5dcc72f4735a3120bb465eda4c1d96e46e00425fe58c2",
+  "nonfrontal_predictions/sub-032318-000-blink-snr+5.npz": "cbfe82fbb7b9d9a4e77a0414b54e0074bb41088e32a81e7ace2e58cf210b7b7f",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr-5.npz": "800a79562faf09de9ee793979d2b7d465f91d3730235aa6fdea6fc237f6de8c8",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr+5.json": "62c411dfaed4584c78c6e208ed5fc69e992c364846dfc298cf44596f7c286237",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr+5.json": "a60b0f70942e23ab15816144e89de32704975fef996117fb0a076a870bb163bd",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr+5.json": "3d5fb40a43292024c4f9e5f092fe4aed374251c00278d84d2cd16832c2d7a35e",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+5.json": "db67143cc5795e68b407f901c885fa1335c0a15042732e8edd858f2c5fae69bc",
+  "nonfrontal_predictions/sub-032312-000-blink-snr+0.npz": "c2a67ec89f7d7d62d8f67790142f4044ca63aeed7fd54397dcde4cfc68883355",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr+0.npz": "e917d914416fa16ec8df171c3dd6a3ac3bd510318476cbd93c848cdae47b358c",
+  "nonfrontal_predictions/sub-032327-000-blink-snr-5.json": "2de5f51fbe268eaddc5afa1dc90c43493f5f18ff6f57bc5a940c978c951c2ad3",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr-5.npz": "62b1e71d6b96ec146578ecf0493cc7812d5d62e0de81248eb5467dc3ee25afb7",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr+5.npz": "9c9d11e613b505c704359e400af94b9c3b52909c490cc5a8b63fe303958b2555",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr-5.npz": "1080cf3e7fbf21164b757df9934560bd9e775b5ea512197ede45a665ef52fc5e",
+  "nonfrontal_predictions/sub-032328-000-blink-snr+0.json": "7ee6477d054caa0be61b996f3cc575e1132fd281846f50e739cbe6a19f07adf1",
+  "nonfrontal_predictions/sub-032327-000-blink-snr-5.npz": "9bf3e56a66844bf7d62644457a6dab3839fb14572b584a40e9077bf7210da2f4",
+  "nonfrontal_predictions/sub-032324-000-clean-clean.json": "7926a428f06cd955a8b69336f2d3fe73ab03e0d9b8d93a52f7f165185bc39bba",
+  "nonfrontal_predictions/sub-032312-000-blink-snr-5.npz": "3229211fd867a4913ee38355f28647cb898b8bcf8ebe12b0a19a7967fd485a98",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr+0.npz": "a3c29ace810a521607fd3ed01a00ced84255194f5105d7a2cef5a171504efa45",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr-5.npz": "9e8fd79c9d90b23029cf23273416dbbd53be6dfe8a627f4623a4a9e84a2e1aee",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr+5.npz": "b40bb8932ec6acb066c6406d98f475b2d3a8147f57cf52a71c1844d145f8a6f7",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr-5.json": "e0ee94bb6631ed8f270a4af359409282b8e933c8f9d4c6df81b7172bd48816d2",
+  "nonfrontal_predictions/sub-032331-000-blink-snr+5.json": "a3dfe3fab890548c56c890edde01da4e225c9c14f4e2ed482c58f2fc5a6fe58e",
+  "nonfrontal_predictions/sub-032325-000-blink-snr+0.npz": "21f03317723fc3756f0628374769849f9f0004a485a62a1c90acca6e8b95ddca",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr+5.json": "ab80609c17339adae50089d8503f0ccd15ef314055ad503af1dcc1be96a1850a",
+  "nonfrontal_predictions/sub-032341-000-blink-snr+5.npz": "1bc6ee12482480cc2d13806be23a3521e3ad2cb0e9f6f966fb57188402ce9265",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr+5.npz": "33fc4a692761572d8b700b3c6d6649a594bcbb6301b9b887ea702972e13952eb",
+  "nonfrontal_predictions/sub-032310-000-blink-snr+0.npz": "ba2e7193d04f8b8b26bbd8a5ed1900279da2418dba6691bf65acafdf3128681a",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr+5.npz": "238a8155ca320d5db8037d273aa4ad83d06c056de27a1cd75ba592f1e03c124c",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr-5.npz": "5351868bb8097053bad224828c653d52a4b3451b57a21a820714ca3cddcf5f5a",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+5.npz": "e3b2cfba201a3693bd7de64afdea368f27dfa3e1ea35959dd544c5359746e619",
+  "nonfrontal_predictions/sub-032325-000-blink-snr+5.json": "100ad5aa430901c5fcab9bf2bacc1411931e7bd122ff97907c26f57a8b641b05",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr-5.npz": "9bdb55a6ad44d6edf00078bd6ee98210c074bfb6d35ed1eb5042a5c6d43f7ec5",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr-5.json": "28c069d51b34822efd4bd61debf232cea2c81376fb4ab5bfd22071f85ea21e09",
+  "nonfrontal_predictions/sub-032305-000-blink-snr-5.json": "c9bf8f693660b8129c7675f061290ff16507d8c8564b694101b177c21392bac8",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr+5.npz": "fdf516c2406680dcaa64cfe9e254225076f4751c2a3afa739189994a1a6b754c",
+  "nonfrontal_predictions/sub-032317-000-clean-clean.json": "f50a9114b0e51b4869b9af222764e0ec1b866dc5203e86af2179f680e1c2ae59",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr+5.npz": "e33d665004a31a1189b689ea1ea3aba9e893f1fec0e1954cad57294d0f569044",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr-5.npz": "3bba17cde7b8d4e4e2317e2a23cc7cf525ded8dbd4ca99f6a9754a9786dbd886",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr+5.npz": "50ca35f72ea8783b46b77bd0661284c055aa582232ad335be6c18c96d5615f90",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr+5.npz": "0162fac4e9a5b0a70ed0085095b8f86e83369b25a7cc11b5147cafcfd5d30370",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr+5.npz": "66a1981d28f953b66ac1deb10aa5ecd9a8bc23ae48b853efef94ac8bf1a94f5e",
+  "nonfrontal_predictions/sub-032340-000-blink-snr+5.npz": "e50ef90bdd798a8cb48bce4332b342ed1ad2af0be1d22bea3ba7295d5f91c05c",
+  "nonfrontal_predictions/sub-032309-000-blink-snr-5.npz": "cc7c295b274094f1f66b232ee7aac582fd286f2af997e0f4c6fbd8f2744f140d",
+  "nonfrontal_predictions/sub-032319-000-blink-snr+0.npz": "50942a3d662b6eb2a309e8242b2ff1cc43648e82d4ef06a6333d36b1df4c40ec",
+  "nonfrontal_predictions/sub-032322-000-blink-snr+0.npz": "396c5a3887ab1bb580d59c9597a575663bc7c6cbdd92e71f5022e7d009950c42",
+  "nonfrontal_predictions/sub-032313-000-clean-clean.json": "38ac8bf1c52cd072f3d924888ebb9a0d3622e83f26cb51247f1adc80f3b55be6",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr+5.json": "f8cc45602ea4f72ba89b78a46419a6d0a9fa928d4a6e6b626869aeeac4f39e70",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr-5.npz": "f6253c3d5ce2da7be46381925bf7b98c4351289ea8f8ae5cab20666b802877ce",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr-5.json": "8f4e0e9cb341ffa8d84177212c029b71140249c2fdd8441b9dfa3988adbaa9db",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr+5.npz": "6d21f5c5e1558d42c041351ebbba03decdd4a21dc9b8c41805d491dbde954f56",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+5.json": "834bf1ab23b061acee8dd3190adbddd07d15d6145596c2305e6c6d36cc79c874",
+  "nonfrontal_predictions/sub-032324-000-blink-snr+0.json": "989391dea4e75a28b2c123485d3b71aaee78b15177ef40e31649fe87c22ba77b",
+  "nonfrontal_predictions/sub-032312-000-blink-snr-5.json": "6215069f1b4650ec5c2c0e32d46c45ac752f99d1a6c3ff31ce7b06aa2329aeaa",
+  "nonfrontal_predictions/sub-032329-000-blink-snr+5.npz": "d73a29cb31237051edfe98a6d90dce7a4e4af5fc20e9b426769e2109de51c756",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr+5.npz": "c50659ee6a985fff41ceb0e7a6383eaff29c586480e6f2943569291ddbbe023e",
+  "nonfrontal_predictions/sub-032340-000-clean-clean.npz": "e4578b7c5988eed509f35960797c878b81f1213a9ec6b229f203bbe7920edbe9",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr+5.npz": "0964693e52b2d8b4f3aa6808c83c4b670c9e4a6c5eed04d4a807a52ed2950e0f",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr-5.json": "6acf970558bb45f10d463e17909625afc86c96c95d8ffca5839a58280620164d",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr+0.npz": "4948c53f70ec6baba6c50f13b947fb5a4f11d1021ed80042da85d6eb39486523",
+  "nonfrontal_predictions/sub-032309-000-clean-clean.npz": "904972eb2d485ff26b029bd5b53fe9487791e18f979a3ebc78c2f7a315d85741",
+  "nonfrontal_predictions/sub-032307-000-blink-snr-5.npz": "9b522104ee77798e581883da52b90a26ab662e1a6c4ad3b465ba68485ec64851",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr+0.json": "16b1e078c320517c92298e15254a1fcbb424ed25206db04a6595001a8a875aa4",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr+5.npz": "741fca9453871d8930aaf8a8e418d532302a3e9557d42c7953e9b5f63c4b3de5",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr+5.json": "13a4606c26c8ece40df2ba5b71e974d440fe271e013b1a5169fce8a78dedb702",
+  "nonfrontal_predictions/sub-032312-000-blink-snr+5.json": "c72fcf4cc01efa5ff57e4b4a7f0aa19520fcbfa16b2a7513f9faff3c0f4b6860",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr+5.npz": "150c2a0edd6067109377b086d07a258a6f88ce71921016e4f002d178e71c05be",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+0.npz": "18e243076952991c59f96db49fd4bb71606e6aa3fb6ef33832a6dc3eb94bd2e7",
+  "nonfrontal_predictions/sub-032334-000-blink-snr-5.json": "02732aab02ef90e43f57459bdf093efa251dd9890be646290649e70888931c8f",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+0.npz": "7454fb1e4b84c1cf27a9eaeb3329d46f300c004091c791711338d72341659867",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr-5.npz": "9fbff614e44b7e303a725a3a53ccd5931469c86894834ea684213192bfc6733b",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr+5.json": "22b5d79a231a9bbbc9d7965d92d4df8e914d15fdd8a940439c38887721f81c85",
+  "nonfrontal_predictions/sub-032322-000-clean-clean.json": "99cbb5c71e591fdea07a32467aa9a8d09e63001a24fb5b6748cf864830b778a6",
+  "nonfrontal_predictions/sub-032322-000-blink-snr+0.json": "3c3688696290b1fbde7ce6727f7be8a41d7695725becb621a55dee75a931cce6",
+  "nonfrontal_predictions/sub-032313-000-clean-clean.npz": "e5bf5885048f3676f2b7b66c6dd9bcc830ab69c713ccb34a6c578909ba3aff9a",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr+5.json": "fd4dd432d6007aa1111b7b0b4487ca322cd2040ff1e5e5894db7bbc533f3cee7",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr-5.npz": "e05bcf5c0a75f990331e489ca0a196866fec03dc23f7a82dd04a077e2bfa56cd",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr+0.npz": "4c53bb1be550b1419763b5a9c65fe2f1d577166da73b689494b400e1d9f5398d",
+  "nonfrontal_predictions/sub-032318-000-clean-clean.json": "6d241ee805acdbcac6c8de674d25be346ee4ec65147fff772f68f07927cd574a",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr-5.npz": "0c14da500b748d3e6bc1131bd6d9a0baf29fceb0ef8da3e1f813c04eec6034f7",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+0.npz": "97e5bad09b0e853659bbc71d7cc4a80bee6d8e7c5696fb8fbf9730a3c031620c",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr-5.json": "31be5b3d7732c3a459d19282aef01ca73efc94ad3a31eec0670b3e45daceaf7a",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr+0.json": "a3abdd3d4651577337d8a5b5b258b80b1d4df469888176ffe8a6888497e40b52",
+  "nonfrontal_predictions/sub-032326-000-blink-snr+5.json": "5ed7311ab445fac6dce684d6ebe3f9fe1408147a33d1423bfb31e7ea74142cce",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr-5.json": "6d718392a7d59998f74e4b9e0b3a276f1909ef1edec7a3cc92ce74b450c57769",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr-5.npz": "a49d55053f4679fbf34a65e0a95004fb783bac7f025585365f99da84092949d5",
+  "nonfrontal_predictions/sub-032323-000-blink-snr+0.npz": "92d2941534080ff2db520d3039e0c528be0dbe88d625d8c42c1cb6d8fc24058c",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr-5.npz": "6929c809e4e9d27f07950aa8a85f04b9f621495ee2bdcc4cc3310b1a64b5a675",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr+0.json": "a328bb02f41474303f89d49f335e10c2201a36a96c35f471eab82c5e53de9a54",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr+0.json": "60b6c1d9305be81eba901bef6056256615432bc56c46cd8495b59602f9a69e98",
+  "nonfrontal_predictions/sub-032323-000-blink-snr+5.json": "76e035876cedd4b09fb0097f2c7e32e3d3932afe43cbf8cf19cb1616df2dd79e",
+  "nonfrontal_predictions/sub-032325-000-blink-snr-5.json": "3bc0ea5a037c1fb960356c8864c49a458bed3a58dba9f3489cc7695a6f3e1635",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr-5.json": "bbebf3a7dc80dd7285c1c07f974815cd507836d34887111e1d41241158b6b45f",
+  "nonfrontal_predictions/sub-032321-000-blink-snr-5.npz": "d7000e3e189e1b9c66bc3870c76a18757ae38e83f089d3681c35c881c44f2af2",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+5.json": "b5c609942e27c6153ebc0bef7a4a44ad5f2d3de020b83d9bf7edd5e25ed4709e",
+  "nonfrontal_predictions/sub-032327-000-clean-clean.json": "a5baca005ea314defbe0798304530bd388c5b99342c37575e7ac333032e58662",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr-5.json": "cc7736a3f394f124a853bd6efb7e058b0e74ce50723d53ce30fc9f8ea4e72a36",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr-5.json": "356f39dbf29fefff2d4be7bb4368597bd08245cd54ae5717fb8ebb8b0b90e523",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr+0.npz": "defae7ae2f10685e8632f7a3e83dcff0203e9852f7c92fc17743f1c731fa0be0",
+  "nonfrontal_predictions/sub-032314-000-clean-clean.npz": "17279f8b576a9a91f3de12e007b4f5ae0dfc269dcbbcd33cd98d6adcf39e3553",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr+5.json": "fa076b9a0ed7f66d6e194604a1c6e86e0c83269060973f885f125fb17aee838c",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr+5.npz": "c4f058d4685934109c8b990c282a1399e4c87b058dade67ee024dbe0a9edf7e0",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr-5.json": "e22374b0622d6715c9d9801f447d17511ee13e9c922a461b147fc3b2f93a55a5",
+  "nonfrontal_predictions/sub-032325-000-blink-snr-5.npz": "6028414237a0f7dc0b61fa156b4f5f24b2084904b4bfc02a94b6875815be5c45",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr+0.json": "b3285432c1af6802597b798d7dee5512159c3db23baa7c0db49f3557de5eb784",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr+0.json": "d84311a3534fc592bfd92226135c23ca9f2dd6224160913f94b45a56dd550bd2",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr+0.npz": "37e22ef889c77420f7f681e91eba90fdf39db3ffe652d22c893f509c18f5d1d0",
+  "nonfrontal_predictions/sub-032327-000-blink-snr+0.json": "5a0a8b86b955e7ea41630f4c9b139331c531533d1e0711f1446ee0713c9a1e4b",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr+5.npz": "16964988ca13ca5f7e360beca83abb83d493158293bd8996c7580c4e1f368fd5",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr+0.npz": "3c491b4ae8620340e8225bc67a91bea0c2935814ca4e014c951a74df90ce1f00",
+  "nonfrontal_predictions/sub-032336-000-blink-snr+0.npz": "ea092bbc8d3cc434bb198376ff87eb9019f41c03dad34da6df1af5071c5a8d5a",
+  "nonfrontal_predictions/sub-032339-000-blink-snr+0.json": "dd807e47530c7e9bb37e2e32b8b95d732bd85700beb8d6314b53c3ca7fd5ab8d",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+5.json": "b69eb85b28ed188d53c38af39c5e1e1c5a584b0dd2a18ba4b9d38acf2a8e37ac",
+  "nonfrontal_predictions/sub-032338-000-blink-snr-5.json": "4a3ef67792758e2f96f4f9edb618ae86ccc90abbf056e859bf308b408e3ac5fc",
+  "nonfrontal_predictions/sub-032334-000-clean-clean.json": "3c722f7e27f0014f697b286abc3b7d270996d8f12c154039956afcb4b761e370",
+  "nonfrontal_predictions/sub-032313-000-blink-snr+5.npz": "9696a3372ad724f6d1c63019c463c70fe475c599b9ac6e95f0793a90c90ee3e6",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr+5.json": "1d62ca856141e071552a9741ac1af3d7363562a6a4c8ca1938d5a28a3a16c1c9",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr-5.npz": "7fd54988a9a52f2e86bf4624a204d6dc25d5fb2a307cdd08973b79775d9b0cec",
+  "nonfrontal_predictions/sub-032320-000-blink-snr-5.npz": "94140b93e4119b7bbd6fee364e3134235647be9a6ac0d752b927d5c2fab6f421",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr-5.npz": "6fbfa7d9204cd6fbd4a41a58d06c7be72431a81491e5b2fae61db8bd62495524",
+  "nonfrontal_predictions/sub-032338-000-blink-snr-5.npz": "6045dfc050de8bdb7215534d49107e5b7cfbc3fcbddf7820937fd77ab148c985",
+  "nonfrontal_predictions/sub-032331-000-blink-snr+5.npz": "c001d3d8050a35d294ce8a4e3ff1c3820d5a3445716f53efef87cda63dabedcc",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr+5.npz": "261bf5af4b71528ed79f7e4b0a0ad9a6d0f402046d598908f30849586f00de77",
+  "nonfrontal_predictions/sub-032306-000-blink-snr-5.json": "04cb6737119c546c71ccfbecd3011b09b2af4d35ec7244128595def9fb1755a3",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr+5.json": "61cd5367d96183fecd367880b35a369d655634b624611a4c1dd21c73d94ef236",
+  "nonfrontal_predictions/sub-032317-000-blink-snr+5.npz": "c5a6915c27e7552d229657557512e911c706d3e274d681aaa963f6c5c744873e",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr+0.npz": "3240a81250a07dda519a23df4ce1802207331c4394cdfeb2f362e8bfca0e8926",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr+0.json": "4db4e5e59ad5d0f359f53cef001f28d414f705e78a07692046a4694108f4bb30",
+  "nonfrontal_predictions/sub-032339-000-blink-snr-5.npz": "a08c5ef5bf7e1fc863df6f2ca09019c4b0917cc4cb6a9d3ae359f7d21c2f44df",
+  "nonfrontal_predictions/sub-032306-000-clean-clean.npz": "f1c2a161c755c1b12c3f0455993c728fe9bab3e74a12aeb75568f2248088c4a9",
+  "nonfrontal_predictions/sub-032319-000-blink-snr+5.npz": "021947d03374df9bd2abd0d65df15ffa09547e7df92739261cc08f91948d5891",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+5.npz": "170162339362d89fff659082dbbd844c7c890265a3b902192c31b66efc37532a",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr+5.json": "1a328e7e50a3e7f8841e2d6a0ee71d062b5e22bfdbc9bd8b1c772d47090b5467",
+  "nonfrontal_predictions/sub-032314-000-blink-snr-5.npz": "a93ba85c11c82b0c496780cae6ad1b9785dccdf6b3600bf39d8941977033a452",
+  "nonfrontal_predictions/sub-032320-000-blink-snr+5.npz": "d97be295b81eb17b9ecd768b719dd2ba8aa2d862d56facc5bd256907f5c8539a",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+0.npz": "afe748494c54c72b2f1a8bd6c8f8f95026d4f1405eb30240fe73d9cd68083fb1",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr+5.json": "18bf4222a392e79c71589808eec87ffb88fc2b2b860e67defb510ea5de741ecb",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr-5.npz": "7b9cdbfd8a26c6ffe20ef71c5d0fed55192835680279a92309cb8706b7555e9e",
+  "nonfrontal_predictions/sub-032331-000-blink-snr-5.json": "cf0c1731efca409f08bd2ac6b3751d3012a15f28887a3f21adb649d272e5a783",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+5.npz": "9673df9d15fb505f313044bc622e06a443602e623f609a1b58fe4bc40a111485",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr+0.npz": "dfe43b9ea588d83b95fc93fe992cc052e32b6356d71de578d781004ddaa4d303",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr-5.npz": "349d38fd4222db2d6d68b4a15d8667a0d40274678e379a19ca696f6c7244cbbf",
+  "nonfrontal_predictions/sub-032326-000-clean-clean.npz": "2710d56f5552d3419427d9b40b2d46a4c348d901a593e574877215576e1706b4",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr-5.npz": "c87384bdb856260ba422b43c070c76c7dbd516659fb35b73a45c9f597f09eaee",
+  "nonfrontal_predictions/sub-032329-000-clean-clean.npz": "27fe1037f125a658c74d465662d5751717ca44e197f5ec6f04b1a223bc716356",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr-5.json": "672ae3f588d21bb14f73b1bc3ea4241ce07d73230eae7f3c063dcf27dd9990a4",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr+5.npz": "216f44ac28d70e6c3f6f14dc84a9ac2d043cfe7b824698c22fb26a71163dffaa",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr+5.npz": "bd4cdeda0dee8ccd57e32b8d459b697ab426fc756ecef381a0ac638cc6e54037",
+  "nonfrontal_predictions/sub-032331-000-clean-clean.npz": "adbb4832f09dc6d555bcf811d788e2dfda2176faaac23037d517be4f16581e96",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr-5.npz": "9277588cb791bae7d9dee06fbe2979bb67a3f596ef0c27a65ac88f442ff874b0",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr-5.npz": "9ec1811e21d6255cf4ee93d3a5d02d94956be4a17867d1dfc8c4dd079ddc3ecc",
+  "nonfrontal_predictions/sub-032340-000-blink-snr-5.npz": "59f5149c31803b2301814c4f6b45c6b84f0c3bb80c24d80864707b5647067ce8",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr+0.npz": "896e67d7a11fc09ac905d3b03db24fca01509ff412dc37e34d40c23ae27a7465",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr-5.json": "5216f8ab14fab557e700fb71179a26ba0269655c364aec1a6ce9a550854dca4d",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr+5.npz": "e44e40a67bec893a34bc419159c2e2f59149f4449d8e566a56aef5d178f39b81",
+  "nonfrontal_predictions/sub-032315-000-blink-snr-5.npz": "ed2e81e398ce8c6423f9727d553de7eee880d199ea6a94b6896aab62c65ccc45",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr-5.npz": "c91cbafb911c12e6c5abffe1ed0f343a969b63f4dd431993a378e5cccebe1001",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr-5.npz": "4f9ae82bfa0286ba681cf22d91343d9093f4ab073020ffb2a6a09a15d9f7d90e",
+  "nonfrontal_predictions/sub-032339-000-blink-snr+0.npz": "6653549f9c72deb7bebe8fabca6d0f3eb724139a4122309d9c8969db1261d973",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr+0.npz": "115875a15668e3168d9a8e19b369b7bbc8178d94879731199da0859a3d983e73",
+  "nonfrontal_predictions/sub-032340-000-blink-snr+0.json": "8cc24df0211b83ab9e731feec63a9a99b470769244460984b08617b817ba47c2",
+  "nonfrontal_predictions/sub-032329-000-blink-snr-5.npz": "81e87d0ec7626452519a6f85fd549045397c7aaf2491fec41b717753dd3f516a",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr-5.json": "95382da97cd549c8b7468208c0095c24e855fe41f20bfc8c3fbdf261c566f585",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr+5.npz": "9222a013eb0ea858fe1cf5ec290ef10a860ddbea019e67869092aa4cf9b7a1b8",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+0.json": "99ccc670b10a903d0132e6e3e25cc56b48d099357da100e4b952a4da41c651ae",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+0.json": "1c984276b8ecf7e35a48eacc08652f228f89596e90875a6cb07658d5a61f1de5",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr+5.npz": "eb7a57c508231b0e6e2382c43808c1501d1c9f2233c256c8b6a23a9df9c8de67",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+0.json": "016f6908fb80ebd86ac47e276925a229e7898990f1f85e87ab12b49890801e35",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+0.npz": "1bf61bd696a5326895de424fabb1b3daf15a1e7573e63d19aece7e119cbbf947",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr-5.json": "0c2f2ee33e27edfcb827862b12fa7bc0ebaae114cca461170ed726aa272fa535",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr+0.npz": "171976e0ea36ffc2eed1996e64ddc05b3749a063ecfc86d307b131b01631dfaf",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr+0.json": "625dfbd2f4cd75ddd835b1b6b404b2074882970809c29c6634aa7d9eed38aeba",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr-5.json": "6ede8e4f50653e6429ed13ffc2330c6d76fbb81a19dc51f0b794a7d071a074ba",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+0.json": "ccbabcc6fe497d3b70c4e732df542bd91cfb4657df13f98edb2a1401c9e6ae65",
+  "nonfrontal_predictions/sub-032336-000-blink-snr+5.npz": "08c089b66ead14f6fd40ef324e4ccaadf06978d9570842da6eced688e9dc9917",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+5.json": "49958746a01ddd3f13f4f0fd8926a6334fe031722a23c72b28cf459c00dda4e8",
+  "nonfrontal_predictions/sub-032305-000-clean-clean.npz": "72ebc793164c33095004eaca12877c44a8a77f5e9ec67a74ada9b004c5df0483",
+  "nonfrontal_predictions/sub-032339-000-clean-clean.json": "1704464d251677240a3b48a769d63c5a12794294882ef0dd3c0df1a589385d90",
+  "nonfrontal_predictions/sub-032330-000-blink-snr-5.json": "ef8255892fb66945f923a897e2dc272270815fb42548b30d1e92b77201e2e41c",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr-5.json": "fd4b4e19c97a8f4d6eb9e9290f7ec7dccd47305c7ff0bac2205708da87d29f13",
+  "nonfrontal_predictions/sub-032330-000-blink-snr+0.json": "581ae37993760c9687b50661b9ff54f49b0e6dde3915fbe98b6fa07448032443",
+  "nonfrontal_predictions/sub-032327-000-clean-clean.npz": "e2b740bcdfc6b6d84cb1e7a8e236cbc45ebeff942fd0228374e53e162240ae6c",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr+5.json": "d01ead1ea055a8bed724b110698db8e41734e8a9387ec2415bb2ee973d797ca9",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr+0.json": "fed48c83d24cb799d7173b94eeaa3043b9a5cf1bd7822d3a6b5cce9bf6d2c977",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr+0.npz": "50669c8d929f411303da515f51858f83e22f045bee2098d76538eaa208146f84",
+  "nonfrontal_predictions/sub-032321-000-clean-clean.npz": "9ddcdb2eebe927e881753f7c67b52c410ad7625734936c9b4a030f9a3fd6367a",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr-5.npz": "82f9a269c9be8ffc370ae2fb462e5164f79018265d31d9b796fb7fa9281dc0dd",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr-5.json": "20967d26251a49a2a5b733a21342e826c0cd10fae43443968361bcfa02960cfe",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr-5.npz": "ac70a81f6028adcae42afea41d87b69b0210d05fc9c9ce017bf07f61dcd4a8b6",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr+5.json": "dfa99676d21bbaa23c5e28bbde42de1d7f9e362c790c148225aa6c20ffc0bbe0",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr+5.npz": "68dcd2c741c37b2ab17e57ce6147e4a47e26e4b1b6a08ca71dc822b515ea7876",
+  "nonfrontal_predictions/sub-032328-000-blink-snr-5.npz": "a5275ebeba854264cc33f72ef7ea3e58cfed4b8a4af7774e6fd17df43fbc3e70",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr+0.npz": "56d29cf1f2e30ca5b0bd9980d92212ac70c73e95ce5ac25e431433d2237f863b",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr+0.json": "06c05de848d45515a9fb7b92968b5752f87e7aee49888c7865a28e2d436fa799",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr+0.json": "7f70cd4014bd5945e4ff7311634520ac35154a59586c5bc3060fc30a10c81715",
+  "nonfrontal_predictions/sub-032307-000-clean-clean.json": "bacb13b1f4cdb3db5e5b5d44157878ac8744c185c2c94c44ab476a27784acace",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr-5.json": "a50fd3a574d1535703fcddc3cfef41422c7e34bb056e261a2445440a6fbac66c",
+  "nonfrontal_predictions/sub-032310-000-clean-clean.npz": "1860b5814862f1be60f6eb28023a36bcc55d4e5527a437b13c07494871a242b9",
+  "nonfrontal_predictions/sub-032321-000-blink-snr+5.npz": "bc6e045247589e682c756919bf2d2916a031bf86d9ba45156be930c695978417",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr-5.npz": "a1eaafe1a72215334e55c1adebf044f48cb06b16c0ec5cfc400b657be693b69b",
+  "nonfrontal_predictions/sub-032320-000-blink-snr+5.json": "cf269213bc47faa4eb2b217777dfd464b2f712c1c5cb3658b82871cb09cbaf6a",
+  "nonfrontal_predictions/sub-032325-000-clean-clean.npz": "3e0ca219851d9609fed71c525e4087151bb9e9cdf69f52e6b9d7efacdbc2d1d2",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr+5.json": "5aa886449f96a01896f442fcc5ceafb4b2e01c2313b8fed512fa3f4bbc8b685f",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+0.json": "86d83dcf2258c58f3c044814dcbe5662a7811d93dd04182a39ef2317d8403f7f",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr+0.json": "710d75932e3f3392aba6b44ecfaf51d9967dec9f9a681f4bf0ffba4e2223b78b",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr-5.npz": "c48e46837af3436ada5b8bfac8fcc043d4f3bea798e86a2632568ebc9269b6a0",
+  "nonfrontal_predictions/sub-032317-000-blink-snr+0.json": "88b88451ce6d8e048264c5806c451d0eb4938015ee05f0185def96735f1bc295",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr+0.npz": "3316da21e682689ee9a8219c9ac8d3f87afede6da936240025c97638080ed379",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr+0.npz": "116d270ee159518b1d528fcf6974d5e45f9ba403c0236f1a4b82cf816116e95b",
+  "nonfrontal_predictions/sub-032313-000-blink-snr+5.json": "9f1b1c1abee106fa1aef8b257f4e5614f5270b70f9d992037fc341aef7e2af75",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr+0.json": "17701cc76ace24809d00557853e9b5bb5bd9d59c724985415885b680e21315c5",
+  "nonfrontal_predictions/sub-032328-000-blink-snr+5.npz": "41c32ed32042974c866be4775f0f170de270e8d280d0f56a29d0170b7586c4c9",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr-5.json": "2cd4122eb74d1d5b4dda4e795acbb94388014fe340850f791b8a67cdbb8cfc6b",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr+0.npz": "fdc0dff1abc44245e26216b86eb34decc66c43c6769ba95c29e2d9269c951ded",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+5.npz": "f264e24988484c91db4cb2904d6a6653808c40e419c9208f00fd932d8e603c0b",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr+5.json": "5cad9391c0d5bdfe76ed9462640f480024ec46760b902f3dd0632fe0ef705753",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr-5.json": "465acc035f6f168f6c9f2e812621db0b8a838a539a9a51d83470bc26d5d38ada",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr+5.json": "0c43e99e21fdf18af1dc155cacb6996b81f722e9b3482e8337cac64226ed5c77",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr-5.npz": "9caadb7105245f43b50ac5f78203015973cc494ad1619c08cf93a0ac98dc6e00",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr+5.npz": "4e07d32b3f6935d3c0974892fefb320b4bd19a2987811b034a3beb89247c57e5",
+  "nonfrontal_predictions/sub-032338-000-blink-snr+0.json": "eeff5ca36bcd536ff0e62fc0dd265857065854eb29993b67f07ad76f0e68bd2b",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr+5.json": "2325b82d1191ad2dd8b6c0e8bf46a9576a74c0ce790c1659dc4ee85567717cdf",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr+0.json": "18bf545a1c658454bcde2913ee1cb9bed8770f5f2a060e1ff7ac611b51db566c",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr+5.npz": "726f353d8faa5dbb082f4135d8afba0d4cd3b79a4f657ada11000c9370278acc",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr+0.json": "c4e21201ade4819141dfb8a2d2a848ff06386be1e1101c1469c69c88d4629f86",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr+0.npz": "62934c921fe565787c73cb229df45f81db3de5318dfdfc7bad895b27f4ed3914",
+  "nonfrontal_predictions/sub-032341-000-clean-clean.npz": "fb6538ffe5084b4dc41070404dc38d9c5fe7bccc5b10c8787264e266f6728b78",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr+0.npz": "2266ebd465d5b50bd5c3318ba2dbddb6f37f5fc25386a3aa0fc0792c66de7fec",
+  "nonfrontal_predictions/sub-032319-000-blink-snr-5.json": "a98859b5cacf93e20ff39e8e39b43838a675421bba294778542361384c9213f7",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr-5.json": "787769754bcf61ae32bd14969c24f5628373d58a272c33d0b304afd7f24791fc",
+  "nonfrontal_predictions/sub-032310-000-blink-snr-5.npz": "4589b5aed4f7a6070fd0ea7cf9b7f1b0676f40e1b4c7b7eccbd32c5455eec44f",
+  "nonfrontal_predictions/sub-032328-000-blink-snr+0.npz": "4a052b52e979de3a13a5489613f797c85e5a5aefd8efde1057c014fee0001dff",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr+0.json": "4a0e15fe78f4969644d83d6b18bfc6a24595bae042cabb54ad468072d16749ce",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr-5.npz": "d012ddd470144acd0b2f53aabc47341665fd8ab807c6b367f012765d19dc29f8",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr+0.npz": "118a8f4e2b4ed063097171d3dd8c84062026dc2bef595156442a69158aa3c28e",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr+0.json": "34738191c111704da1b635b811515f96a4f5d7b199dfb4bec0334ce97d48ed1a",
+  "nonfrontal_predictions/sub-032317-000-blink-snr-5.json": "2e77f5a06a612378e0d4826b34f874e990dc3929a61cfafe39fbabc2e3643d8d",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr+5.npz": "87c0717500d32aacb31c0fa90f8650f15d216089c7e8ed3363118df07f760907",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr+5.npz": "740cecfa3fd6080e5d350b1d683f34519dca500a4ccadf7e0223effb06714436",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr-5.json": "0ea2f54eadd8dc82ed9563d55eab6a200affe359f63b6f6030652a19f14efecd",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr+5.npz": "a7ed10ca75234e6c92d08bc7333cbe6f4d96a55355245abbaf54824e850d908f",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr+0.npz": "8a484072e44f679891974350089242bfd9bf854d70e5b5fe06fefce197e769e8",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr+5.npz": "2d4f34ed949ae5c538ce9a517b4407873757339e963d0cbf86d9a08d75c5c134",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr-5.npz": "381a2094778976ed6596a13597065ae707f46137d087299dd453b36410758f2d",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr-5.json": "e578ca481cdf4f4366d7548fe28c784cf33108c2107092bcf6bdcd9eceefe27a",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr+5.json": "06fd5cf9762872a2c134363199b1ca516e93f161c71d4fd8d2caa2ea41fa5bf0",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+0.json": "bf15524dd450b2d68cb823ec8a4f53bd56d0b53781812407c301785508723c21",
+  "nonfrontal_predictions/sub-032307-000-clean-clean.npz": "5fe85c69cae4a68b2af01826b7f75b454d665833b00741ed72b6de4d4bdb6a10",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr+5.npz": "0983b401aebeb8cec0e62926adec986fb73efe6113b51032a14e6bc9c808ed17",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr+0.json": "00da63d14ca7d5f7015700145c19965cd9678c1ca5f1c567c75838efe9b29e71",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr+0.json": "ea22875e01af9215c2537c8e156aa72a411e04955f516fe7f1f3453388848aaf",
+  "nonfrontal_predictions/sub-032310-000-blink-snr+5.npz": "77d533c4ea7c064003095c63190a778943ce0f15c7f2299cefbc3999dea20285",
+  "nonfrontal_predictions/sub-032310-000-blink-snr+5.json": "5bcf2a79a70c41922e0f35144fefda2ff21b477e56af799995f47e683749512f",
+  "nonfrontal_predictions/sub-032316-000-blink-snr+5.npz": "eae242d656ec172224b3fb218eb0c918e53abd1198b62e06c3e95d7ab805dfee",
+  "nonfrontal_predictions/sub-032309-000-clean-clean.json": "d386ef97947527ff505e1f334612473cba1b0580132fe80fcc20d4d22b1ff7f8",
+  "nonfrontal_predictions/sub-032323-000-blink-snr-5.json": "160ccb2fe81aee809941d8deb6bdb48cdb649910a79a69fc3afb07a2bb2da40e",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr-5.json": "bb2e5b64caa8439c7a83b88f8f9f902549a1bde7fce0b7c85ac6110ec19eb081",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr+5.npz": "144f95189bd4605179fab392bf9db2aadc616739c251575e41e8186b87abad82",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+0.npz": "a783ce6558b4efabe8d3ffe39ddbe409beb5afdaf80a54fdc4402772882146f7",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+0.npz": "ab44527120f64fb5ec2e418020c4e0d4a4ef829b8fcd6426518b3776b24040ec",
+  "nonfrontal_predictions/sub-032327-000-blink-snr+5.npz": "99a129435eaf2972070bb351dd37886043db81a07de91798e912c965d22d21ff",
+  "nonfrontal_predictions/sub-032334-000-blink-snr+0.json": "e413aa23bdb7527874d8f4e315714e23d789bec2979008c48aa0328192397667",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr-5.npz": "424adee51b18ba7628816e3aec1c165cc6ebe2cc54d755e8b7283744f6a2b0b3",
+  "nonfrontal_predictions/sub-032313-000-blink-snr+0.json": "2a877b130a3b39751527a4c18e0cc5767e820e63f781488a077a3a7a19f4c8c4",
+  "nonfrontal_predictions/sub-032313-000-blink-snr-5.npz": "e2abfd9a73a5e573f64482a35284e2a75c96ba9de610ffd911a7490acafe0933",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr+5.json": "08de5a024c42edb6a5e86af3bb3c9f88b901c626f8a180369fb68d164f037b5f",
+  "nonfrontal_predictions/sub-032315-000-clean-clean.json": "85ff0743ff0c7c755e56b1074418ff3bc07511b393dfd18241977dbca9861808",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr+0.npz": "29259bb8f47ca34d2c8018fef7d00422609bc2c6bb995f709115a0ce425fbc65",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr+5.json": "bbd572d2cc31863548d146dc2eb0bccfba224ee2a881ead385006554496b2452",
+  "nonfrontal_predictions/sub-032326-000-blink-snr+0.npz": "8a4b6cfe4ffa8d6640f90eb31f1075fc9d34c27d2ab413ccbadbf4d486c07fc5",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+5.npz": "62bd3500725976e99e0a5d369cc7472f6ed3895e999375f08467e77e396d60e5",
+  "nonfrontal_predictions/sub-032324-000-blink-snr+5.npz": "0e90ffc1415bde402139dbdd0e5f95d354b759f2f0ad42d791b026aae4c03667",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr+0.npz": "c79ce28f245c841d0c0fbd48c5982a40dfe77f474efead021eea2ba53b5d3546",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr+0.json": "517451ff217b5e5696ce8e82715e9181d764739be054e2d8e5610e19782e9f25",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr-5.npz": "fe4e4dfbc67264e2841a51281596882657b17947cc76edcce53b7481e6fffec1",
+  "nonfrontal_predictions/sub-032319-000-clean-clean.json": "08e0b3936dbd54bb622053cb86e9423bd9d1a185f409a1953b239e075145c8b7",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr+5.json": "f10ac76611ae679382a8f8e8f83f7f4605eae89e4a6fc82b9581164805bfd04f",
+  "nonfrontal_predictions/sub-032324-000-blink-snr-5.npz": "7423b3ea11650da1fd3b4b9b3d8874427a8b97e7f566465cf2cb047e1e4f6239",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr-5.json": "9cad790a6c7563110ce7330cac750001fd94db033ad506b6ec0cdabc809b2090",
+  "nonfrontal_predictions/sub-032320-000-blink-snr+0.json": "e0e7c71315e81b238f90f36e1ea4e7b99c18c37c07c7b5d3a8eb2e0b7430dcc0",
+  "nonfrontal_predictions/sub-032316-000-blink-snr+0.json": "ba9e5c73d9c2c3e2df49849013797258917be5cd96586e3307f59c0fe5673f05",
+  "nonfrontal_predictions/sub-032316-000-blink-snr-5.npz": "2e8ce59f8c6ab4ea83abd896e7b61f89a406ab629ee721e6e046d513e7229d47",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+0.npz": "53bdf3196f448cba49fbb228f8a2300213bb8118f137fdf724fec83310c26bc0",
+  "nonfrontal_predictions/sub-032341-000-blink-snr-5.json": "e032c259af1cfed118e9005808c9debef55a108df47a571231db2ca7edb858fd",
+  "nonfrontal_predictions/sub-032338-000-clean-clean.npz": "552dbfe7a94c4e65130ce8beb5b03e46641dcd31d1f09e59e2042ee1a29ff2f0",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr-5.json": "24ed0a1863cdd305d1f1ef8127c962da58927b9b23fe0f366d4a2d60615540a6",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr-5.json": "b05c0590f7dac885f6aba30559001305d37f6db54fe99700f98c31cbc05875f5",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+0.npz": "e24416d7a2c510ae6e5d8782a804a453ca1e5573931fcf0cb6b44e33f75ca8d0",
+  "nonfrontal_predictions/sub-032331-000-blink-snr-5.npz": "15e476f9ba62f6ed89539d8646dbbd1b9e0f2b06cf15113ad99573914b6cd1cb",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr+5.npz": "4b52de6741a7e71fbdfa1cdf548df6e584ed093eb82fc7a80f1eaa5f7287e3e5",
+  "nonfrontal_predictions/sub-032309-000-blink-snr+0.json": "07306325195bca58dca80df6a25464fbd8a69a60a77b6677dbfb57b1b08fe871",
+  "nonfrontal_predictions/sub-032331-000-clean-clean.json": "e66190db037c05cfc23e5cf037c27ee24839664a538e687516c165301bb85bdd",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr+5.json": "02357ac4c0b7b4f33396fea8b8d33607f17076cc4028926218f8350a02de55e8",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr+0.npz": "c5055257e3e43173ac75770034e87871ef1561cf8dc7e946be051b2cfa3e73a4",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr+0.npz": "71c082b46ba2198ea8ad688a3bce283332e2e1a073c8c3d21a6222e5cf9ad4d3",
+  "nonfrontal_predictions/sub-032338-000-blink-snr+0.npz": "12444c5699b9d21f3baf5e918f8e5cc1b832a6ceebe68dcd58a1d75614634831",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr+5.json": "eb3b07ffe1830fd0e3af0be53aa81d274d635dab80256bb64e659c7285b40fa7",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr-5.json": "51e255daf230f0654815768cdff52d9430a546db542894d672080ddae2ef4bda",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+5.json": "d8287689d4c79ccc958d81fa5bb87d875961bf236f26df01afeb1f0b4594c667",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+5.json": "dd2afc80ad3e2b5688affb1864af9fb258bfc7736cbbc34fe60ed99ffed974c5",
+  "nonfrontal_predictions/sub-032328-000-clean-clean.npz": "70a8261c28fa65e50a776191bc28157f34f59f3ecb94ebb12b04250870da858d",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr-5.json": "3b16ce181739620b1ceb079a8e2f30bd333263cbb92e18323e8e65a992250b33",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr-5.npz": "a20501456ae32919845012caa66920d9d8e5b91669c1160e0a8d83c6382fe16e",
+  "matched_cca_controls/coverage_uncertainty_intervals.csv": "a2d3e91b2b7cf83bdeaec8c351ca8a2c9d9683e978726547684f25c416133981",
+  "matched_cca_controls/coverage_uncertainty_channel_strata.csv": "221f036501f2c7187467f627b262a4d02cfea30fbcd0e9d912ef6f1f184eb2df",
+  "matched_cca_controls/coverage_uncertainty_method.json": "7ee352592bd642f9ee8c30585d25341a9d7a2adb8adbc8c0123cacc8852ab935",
+  "matched_cca_controls/coverage_paired_differences.csv": "4fcbd6a022df08fc8f8959aa22a389760e47853703040954eafd773bb99d4bb5",
+  "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fitted_arrays.npz": "4add3ee85d1e06c86005121451a6c223b5926a8bfdb42fb69bb29caad0db79cc",
+  "nonfrontal_fits/3c790c7240313ddde1cf77abb4bf4d9f8985a3aa8c821b4d89fa805080fb5e79/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/3c790c7240313ddde1cf77abb4bf4d9f8985a3aa8c821b4d89fa805080fb5e79/fitted_arrays.npz": "0f903414b3d8e28f73446818bcb99c64416a0ba1b6c44b4762b690f859ff0858",
+  "nonfrontal_fits/7c3d0685d115b99553e7a5397bbf4517b6f57db11742f4914090fd52d86e1125/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/7c3d0685d115b99553e7a5397bbf4517b6f57db11742f4914090fd52d86e1125/fitted_arrays.npz": "d7b286c5c369519eff4859aea4093008633e95b2d60f2af295a1f2dabc238dd9",
+  "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fitted_arrays.npz": "c8bd246dc6d09416345d68c4bc94b23b4fcc1645d8720d8c063b26aa7a3fac2f",
+  "nonfrontal_fits/387f2c1585fce6fdb4e814419548c49fe5957d5befb4143b2e57c1716f99c628/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/387f2c1585fce6fdb4e814419548c49fe5957d5befb4143b2e57c1716f99c628/fitted_arrays.npz": "81240081c3ff42bd6c8a0919d5ebb650a1f493fd6c99359d180ba9e4f9d26e55",
+  "nonfrontal_fits/fda2987a2232d8b2b510575561b4c03d512e39501986703d3005ef5972047cb6/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/fda2987a2232d8b2b510575561b4c03d512e39501986703d3005ef5972047cb6/fitted_arrays.npz": "72e1eb0974f2ff51644c51e3f0fd6b65d070e5bf11f7f4509a2e361d917995e9",
+  "nonfrontal_fits/5865ca35dce5c5a24a9638d94f34fc7c0091d36b1ddae507e6f6c36bc3602c6e/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/5865ca35dce5c5a24a9638d94f34fc7c0091d36b1ddae507e6f6c36bc3602c6e/fitted_arrays.npz": "627e47bd4051e548d5a9aeb976326b2be1813f57e3828189a59b9d7a5ee517f4",
+  "nonfrontal_fits/4c8dcc138431a9350d3ee43123277212d282e8caee581e651f204a09812f213a/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/4c8dcc138431a9350d3ee43123277212d282e8caee581e651f204a09812f213a/fitted_arrays.npz": "7b86088929db3e14e47d37de03cf324dde1b83f02eb7807dc3841cb5df10bb17",
+  "nonfrontal_fits/76a5d46d193ef41cf644092b1a845889ea9ad918cd7a8492fc8a4a01acddc3a1/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/76a5d46d193ef41cf644092b1a845889ea9ad918cd7a8492fc8a4a01acddc3a1/fitted_arrays.npz": "369badfb35411a098d46e18b84fe061854f5fa4b3b7ea985b9e912888cfcbc94",
+  "nonfrontal_fits/36aa4ee06f6f86685573f4a0f3c8cb725069d8339bc6e422b1c5229b6d282275/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/36aa4ee06f6f86685573f4a0f3c8cb725069d8339bc6e422b1c5229b6d282275/fitted_arrays.npz": "ba1bb7fa3d001f2eedc31993b8f3c12e17cd6d8d0b1cdbc04bb1f5b3a87b57bb",
+  "nonfrontal_fits/56b2accdf6cb1ae132431c0a25b006aa0546aaa74093a6a287c2e4ccb9ca8d7e/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/56b2accdf6cb1ae132431c0a25b006aa0546aaa74093a6a287c2e4ccb9ca8d7e/fitted_arrays.npz": "8b656f88bc726b42673ced9f0a2a69311ff890d55ddaa1a0252f25ced8f2ff3b",
+  "nonfrontal_fits/0b42e44a7de4ce4da14ae018f78cbedeefc4c7d34ee3db13c6da2531ae8ec3cb/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/0b42e44a7de4ce4da14ae018f78cbedeefc4c7d34ee3db13c6da2531ae8ec3cb/fitted_arrays.npz": "e252e7ed3f308f45ba62640f5ac57d3404cc04f3def2fb185e1cac9fc9f5d8bf",
+  "nonfrontal_fits/f6fc00b5018aff9aa6aa485c085b0f2312bc0fe21ca5c6e66d0ec36cec806ad6/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/f6fc00b5018aff9aa6aa485c085b0f2312bc0fe21ca5c6e66d0ec36cec806ad6/fitted_arrays.npz": "b953a5a700a92ab7e2232f0d1233bdec3a46e44b43841a83a037ecf31f5b2da6",
+  "nonfrontal_fits/7b49504aba668e9c65eb8785ce769c3f10a1daf462dcedc2982f7a9a3222c2b9/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/7b49504aba668e9c65eb8785ce769c3f10a1daf462dcedc2982f7a9a3222c2b9/fitted_arrays.npz": "442fa584910bd52e152ee677dfe734bf2f19427fed42d3e34077a8e8596e2240",
+  "nonfrontal_fits/c51ca53e20a2f43c9a5d3e57e31cd06d4b300a4f376b8e2712f0da88915d27dc/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/c51ca53e20a2f43c9a5d3e57e31cd06d4b300a4f376b8e2712f0da88915d27dc/fitted_arrays.npz": "bda180288dc2ebcdc4dff28cdbab93815fed99e9d3dd5fcedf48e59d5f0c3219",
+  "nonfrontal_fits/0d3ff45297bcaf05aac80dee91f8ece16ae91b2d5e87506cf0fb6a2bb313ac51/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/0d3ff45297bcaf05aac80dee91f8ece16ae91b2d5e87506cf0fb6a2bb313ac51/fitted_arrays.npz": "8fd85d258857fa3e9201c908d5db7e8215b56a01f580c7335f46a9bc8e4b0ef5",
+  "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fitted_arrays.npz": "22a1744d7f9ad4956b09f9e3f47b5d355ddbd269bba4b3a8bc27905ef8aa7330",
+  "nonfrontal_fits/f671f7ae57f5eee95b42caeb87df03ede2f5d1d88865a3a278f550d4ba21e22e/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/f671f7ae57f5eee95b42caeb87df03ede2f5d1d88865a3a278f550d4ba21e22e/fitted_arrays.npz": "bb547f96a07902b90e642686798f60dc1849ce7357bfae51639550446cb3b38b",
+  "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fitted_arrays.npz": "de0b52c716d0e6b9ec6b554a904f85395c9093b5795af0b89c7635cf7cdda8cc",
+  "nonfrontal_fits/685dc0baba7506a785e40fcde256594693b6908621262014c5f79829ada600be/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/685dc0baba7506a785e40fcde256594693b6908621262014c5f79829ada600be/fitted_arrays.npz": "8e58badf7da1d2016c6e8428c319da32c3fb29c58364819e601bf122446c7054",
+  "nonfrontal_fits/4d5219de2630092646d226a7cb75b707cf042f6235f3b5d308ea3815487ff741/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/4d5219de2630092646d226a7cb75b707cf042f6235f3b5d308ea3815487ff741/fitted_arrays.npz": "89fe67f46914ba2c236fa9e531d91cc7413bc503ac82c24f232decfe22052af5",
+  "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fitted_arrays.npz": "23e3bf1d98f6d99c93a8436e9aa3275c57aa206c77d4bd30103d8dbfe5e33139",
+  "nonfrontal_fits/8f92594b68511732a6e27aab5f6790ad1d15480240a2c81434ecae3700273f9a/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/8f92594b68511732a6e27aab5f6790ad1d15480240a2c81434ecae3700273f9a/fitted_arrays.npz": "ec4485f0bbf517361f1153c604caf3e1edcc8cc4720d89bc1184f2270c04529a",
+  "nonfrontal_fits/e439d5a92b3aa75bee0c61ed0fd6fe5613ac155803bafe29604a507667c9e5cd/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/e439d5a92b3aa75bee0c61ed0fd6fe5613ac155803bafe29604a507667c9e5cd/fitted_arrays.npz": "6dc3535cc26dd5a762da17342bb36efd78e0ac2e7d3eaa6c9eab7417696d8c76",
+  "nonfrontal_fits/d4d39247e5f60068e4424173fc5f0ae337818ee55d2ad51e8b4cd5b5074dba8d/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/d4d39247e5f60068e4424173fc5f0ae337818ee55d2ad51e8b4cd5b5074dba8d/fitted_arrays.npz": "eb8f7711eb6a1e8f0086c628f1c0f61226605a2a24a6a8cefddefa6e22143e21",
+  "nonfrontal_fits/219711a1d49955e77db5c1bed668856061efafb72430cb6678f062c3d0c3d2f8/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/219711a1d49955e77db5c1bed668856061efafb72430cb6678f062c3d0c3d2f8/fitted_arrays.npz": "aa3d302821b9752d16e320ffd44fc1ea856147ef1dc1478898b41fd70144c52f",
+  "nonfrontal_fits/57d7832b089af8e6844da844449f596eccd317583f192b2bf8d762cd427e25e0/fit_status.json": "cece56d678941114bc3151c0a276849d6a9ca35086d89df88225ffb82306e604",
+  "nonfrontal_fits/57d7832b089af8e6844da844449f596eccd317583f192b2bf8d762cd427e25e0/fitted_arrays.npz": "fa2af9e49277b704ad7e55e0932122d88ea0ef43610a7786831acc8d59aa841f",
+  "nonfrontal_fits/023b3bd6ec23dd235ca97d576b07c7d945f29017afb7321d9ae831b9ff83b277/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/023b3bd6ec23dd235ca97d576b07c7d945f29017afb7321d9ae831b9ff83b277/fitted_arrays.npz": "83c055fc0cb3e63877c064e520d65865cf2c3abd0673770a2671c288e9ec24bd",
+  "nonfrontal_fits/ad07f91c9ee5f380da5862ba923335d370639545f8252db6952b88dcb3ee3c83/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/ad07f91c9ee5f380da5862ba923335d370639545f8252db6952b88dcb3ee3c83/fitted_arrays.npz": "a5430039764cc0809b1d3f752e690ac52699260c6ea1e3e148daeb4ec97cc329",
+  "nonfrontal_fits/1e2d0217a89ac79871d441f22e3f376cdfb9d062bf2f3d3ef79aaa84c919ee65/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/1e2d0217a89ac79871d441f22e3f376cdfb9d062bf2f3d3ef79aaa84c919ee65/fitted_arrays.npz": "cd355ce82bf5402756ce251aa6f914f30e5a1c4cd57ea9e026f4c3284f0c0fd0",
+  "nonfrontal_fits/4db5d694444a81b24b04657bff20e2feccdd85127e79dc7d7beda4ff424610d4/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/4db5d694444a81b24b04657bff20e2feccdd85127e79dc7d7beda4ff424610d4/fitted_arrays.npz": "9852177bbc90e417ad8d2be84144ff71444a7f5d33d0f174d62b0f440dc5e208",
+  "nonfrontal_fits/7344f4936681c7c788b96ba8d5121770e8d250740bf409d2a55b505e4e4b3e19/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/7344f4936681c7c788b96ba8d5121770e8d250740bf409d2a55b505e4e4b3e19/fitted_arrays.npz": "785fca234f2e6012a8eeaf45cdaecd210cee88655369da063e1b22b190d64d19"
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/execution_state.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/execution_state.json); SHA256 `bba819d81face2a270aac78e950a701e1419d6a99b4d2f45aa281addb8714558`.
+
+```json
+{
+  "stage": "nonfrontal-cca",
+  "status": "complete",
+  "artifacts": 1058
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_summary.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_summary.json); SHA256 `220236e89a3a070eb03393c943a5ca18f64f29e39c18dff68ba946b893b5842f`.
+
+```json
+{
+  "profile": "full",
+  "examples": 320,
+  "recipients": 32,
+  "donors": 5,
+  "calibrations": 32,
+  "arms": [
+    "identity",
+    "central_frontal_vmd_context",
+    "central_frontal_raw_context",
+    "ridge_direct:posterior",
+    "ridge_direct:central",
+    "ridge_direct:both",
+    "reference_rank2_control:posterior",
+    "reference_rank2_control:central",
+    "reference_rank2_control:both",
+    "cca_reference_rank1:posterior",
+    "cca_reference_rank1:central",
+    "cca_reference_rank1:both",
+    "cca_reference_rank2:posterior",
+    "cca_reference_rank2:central",
+    "cca_reference_rank2:both",
+    "cca_eeg_rank1:posterior",
+    "cca_eeg_rank1:central",
+    "cca_eeg_rank1:both",
+    "cca_eeg_rank2:posterior",
+    "cca_eeg_rank2:central",
+    "cca_eeg_rank2:both"
+  ],
+  "frozen_frontal_parity_checks": 5760,
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "saved_fit_replay_checks": 192,
+  "baseline_paper_metric_checks": 549000,
+  "new_decompositions": "calibration-only regularized CCA; no VMD solver executed",
+  "runtime_s": 986.118150143,
+  "weights_trained": false,
+  "autovmd_executed": false,
+  "scoring_target_fit": false,
+  "reserved_confirmation_opened": false,
+  "qualification": false,
+  "native_validation_required": true,
+  "reference_amplitude_mismatch": true,
+  "field_generator_bias": "regression-derived controlled field",
+  "uncertainty": "supplemental recipient/donor Poisson approximation, 500 draws; not paper-native permutation"
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/resource_summary.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/resource_summary.json); SHA256 `d13267b4d632f696a2e663aa85eb120d6ad40cd1614dddc73bef043bfef9af20`.
+
+```json
+{
+  "wall_time_s": 1193.6658937930001,
+  "peak_resident_memory_kib": 2451336
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/stage_tests_summary.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/stage_tests_summary.json); SHA256 `36ee2b5eb27ce16c81c3a16ee5e31f0c561f3bbb81d0237b9903522f0dd50480`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "a9c755d0233fb61170a2c29b5785de6c7c4759f4ad9fc46049c282aa40045777"
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/retrieval_receipt.json); SHA256 `ca17b7f50bac16e039226bd78913b6acb2a2f374d110fdf7ef491b124d535deb`.
+
+```json
+{
+  "run_id": "nonfrontal-cca-full-001",
+  "git_sha": "b0c861373a8bc66c4538b78269a3b9b988ce3171",
+  "verified_payloads": [
+    "cca_coupling_audit.json",
+    "cca_coverage_audit.csv",
+    "cca_pooled_example_scores.csv",
+    "cca_pooled_method_means.csv",
+    "configuration.json",
+    "coverage_paired_differences.csv",
+    "coverage_uncertainty_channel_strata.csv",
+    "coverage_uncertainty_intervals.csv",
+    "coverage_uncertainty_method.json",
+    "environment.json",
+    "EVALUATION_PROTOCOL.md",
+    "experiment.json",
+    "nonfrontal_central_shared.png",
+    "nonfrontal_channel_scores.csv.gz",
+    "nonfrontal_condition_means.csv",
+    "nonfrontal_controlled_gates.json",
+    "nonfrontal_decisions.jsonl",
+    "nonfrontal_fit_records.jsonl",
+    "nonfrontal_method_means.csv",
+    "nonfrontal_posterior.png",
+    "nonfrontal_progress.json",
+    "nonfrontal_selection_manifest.jsonl",
+    "nonfrontal_summary.json",
+    "nonfrontal_whole.png",
+    "paper_evaluation_protocol.json",
+    "parent_identities.json",
+    "resource_summary.json",
+    "run_spec.json",
+    "stage_tests_summary.json",
+    "tests.txt",
+    "matched_cca_controls/coverage_paired_differences.csv",
+    "matched_cca_controls/coverage_uncertainty_channel_strata.csv",
+    "matched_cca_controls/coverage_uncertainty_intervals.csv",
+    "matched_cca_controls/coverage_uncertainty_method.json",
+    "nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-mixed-snr-5.csv.gz",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032305-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032305-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032305-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032305-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032306-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032306-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032306-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032306-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032307-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032307-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032307-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032307-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032308-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032308-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032308-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032308-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032309-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032309-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032309-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032309-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032309-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032309-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032309-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032309-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032310-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032310-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032310-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032310-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032310-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032310-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032310-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032310-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032312-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032312-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032312-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032312-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032312-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032312-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032312-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032312-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032313-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032313-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032313-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032313-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032313-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032313-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032313-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032313-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032314-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032314-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032314-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032314-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032315-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032315-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032315-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032315-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032315-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032315-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032315-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032315-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032316-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032316-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032316-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032316-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032316-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032316-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032316-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032316-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032317-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032317-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032317-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032317-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032317-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032317-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032317-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032317-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032318-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032318-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032318-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032318-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032318-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032318-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032318-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032318-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032319-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032319-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032319-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032319-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032319-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032319-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032319-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032319-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032320-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032320-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032320-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032320-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032320-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032320-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032320-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032320-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032321-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032321-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032321-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032321-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032321-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032321-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032321-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032321-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032322-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032322-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032322-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032322-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032322-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032322-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032322-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032322-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032323-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032323-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032323-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032323-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032323-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032323-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032323-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032323-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032324-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032324-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032324-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032324-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032324-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032324-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032324-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032324-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032325-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032325-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032325-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032325-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032325-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032325-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032325-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032325-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032326-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032326-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032326-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032326-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032326-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032326-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032326-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032326-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032327-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032327-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032327-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032327-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032327-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032327-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032327-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032327-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032328-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032328-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032328-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032328-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032328-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032328-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032328-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032328-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032329-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032329-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032329-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032329-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032329-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032329-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032329-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032329-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032330-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032330-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032330-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032330-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032330-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032330-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032330-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032330-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032331-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032331-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032331-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032331-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032331-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032331-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032331-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032331-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032334-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032334-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032334-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032334-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032334-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032334-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032334-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032334-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032336-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032336-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032336-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032336-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032336-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032336-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032336-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032336-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032338-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032338-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032338-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032338-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032338-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032338-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032338-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032338-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032339-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032339-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032339-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032339-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032339-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032339-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032339-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032339-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032340-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032340-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032340-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032340-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032340-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032340-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032340-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032340-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032341-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032341-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032341-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032341-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032341-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032341-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032341-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032341-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr-5.npz",
+    "nonfrontal_fits/023b3bd6ec23dd235ca97d576b07c7d945f29017afb7321d9ae831b9ff83b277/fitted_arrays.npz",
+    "nonfrontal_fits/023b3bd6ec23dd235ca97d576b07c7d945f29017afb7321d9ae831b9ff83b277/fit_status.json",
+    "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fitted_arrays.npz",
+    "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fit_status.json",
+    "nonfrontal_fits/0b42e44a7de4ce4da14ae018f78cbedeefc4c7d34ee3db13c6da2531ae8ec3cb/fitted_arrays.npz",
+    "nonfrontal_fits/0b42e44a7de4ce4da14ae018f78cbedeefc4c7d34ee3db13c6da2531ae8ec3cb/fit_status.json",
+    "nonfrontal_fits/0d3ff45297bcaf05aac80dee91f8ece16ae91b2d5e87506cf0fb6a2bb313ac51/fitted_arrays.npz",
+    "nonfrontal_fits/0d3ff45297bcaf05aac80dee91f8ece16ae91b2d5e87506cf0fb6a2bb313ac51/fit_status.json",
+    "nonfrontal_fits/1e2d0217a89ac79871d441f22e3f376cdfb9d062bf2f3d3ef79aaa84c919ee65/fitted_arrays.npz",
+    "nonfrontal_fits/1e2d0217a89ac79871d441f22e3f376cdfb9d062bf2f3d3ef79aaa84c919ee65/fit_status.json",
+    "nonfrontal_fits/219711a1d49955e77db5c1bed668856061efafb72430cb6678f062c3d0c3d2f8/fitted_arrays.npz",
+    "nonfrontal_fits/219711a1d49955e77db5c1bed668856061efafb72430cb6678f062c3d0c3d2f8/fit_status.json",
+    "nonfrontal_fits/36aa4ee06f6f86685573f4a0f3c8cb725069d8339bc6e422b1c5229b6d282275/fitted_arrays.npz",
+    "nonfrontal_fits/36aa4ee06f6f86685573f4a0f3c8cb725069d8339bc6e422b1c5229b6d282275/fit_status.json",
+    "nonfrontal_fits/387f2c1585fce6fdb4e814419548c49fe5957d5befb4143b2e57c1716f99c628/fitted_arrays.npz",
+    "nonfrontal_fits/387f2c1585fce6fdb4e814419548c49fe5957d5befb4143b2e57c1716f99c628/fit_status.json",
+    "nonfrontal_fits/3c790c7240313ddde1cf77abb4bf4d9f8985a3aa8c821b4d89fa805080fb5e79/fitted_arrays.npz",
+    "nonfrontal_fits/3c790c7240313ddde1cf77abb4bf4d9f8985a3aa8c821b4d89fa805080fb5e79/fit_status.json",
+    "nonfrontal_fits/4c8dcc138431a9350d3ee43123277212d282e8caee581e651f204a09812f213a/fitted_arrays.npz",
+    "nonfrontal_fits/4c8dcc138431a9350d3ee43123277212d282e8caee581e651f204a09812f213a/fit_status.json",
+    "nonfrontal_fits/4d5219de2630092646d226a7cb75b707cf042f6235f3b5d308ea3815487ff741/fitted_arrays.npz",
+    "nonfrontal_fits/4d5219de2630092646d226a7cb75b707cf042f6235f3b5d308ea3815487ff741/fit_status.json",
+    "nonfrontal_fits/4db5d694444a81b24b04657bff20e2feccdd85127e79dc7d7beda4ff424610d4/fitted_arrays.npz",
+    "nonfrontal_fits/4db5d694444a81b24b04657bff20e2feccdd85127e79dc7d7beda4ff424610d4/fit_status.json",
+    "nonfrontal_fits/56b2accdf6cb1ae132431c0a25b006aa0546aaa74093a6a287c2e4ccb9ca8d7e/fitted_arrays.npz",
+    "nonfrontal_fits/56b2accdf6cb1ae132431c0a25b006aa0546aaa74093a6a287c2e4ccb9ca8d7e/fit_status.json",
+    "nonfrontal_fits/57d7832b089af8e6844da844449f596eccd317583f192b2bf8d762cd427e25e0/fitted_arrays.npz",
+    "nonfrontal_fits/57d7832b089af8e6844da844449f596eccd317583f192b2bf8d762cd427e25e0/fit_status.json",
+    "nonfrontal_fits/5865ca35dce5c5a24a9638d94f34fc7c0091d36b1ddae507e6f6c36bc3602c6e/fitted_arrays.npz",
+    "nonfrontal_fits/5865ca35dce5c5a24a9638d94f34fc7c0091d36b1ddae507e6f6c36bc3602c6e/fit_status.json",
+    "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fitted_arrays.npz",
+    "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fit_status.json",
+    "nonfrontal_fits/685dc0baba7506a785e40fcde256594693b6908621262014c5f79829ada600be/fitted_arrays.npz",
+    "nonfrontal_fits/685dc0baba7506a785e40fcde256594693b6908621262014c5f79829ada600be/fit_status.json",
+    "nonfrontal_fits/7344f4936681c7c788b96ba8d5121770e8d250740bf409d2a55b505e4e4b3e19/fitted_arrays.npz",
+    "nonfrontal_fits/7344f4936681c7c788b96ba8d5121770e8d250740bf409d2a55b505e4e4b3e19/fit_status.json",
+    "nonfrontal_fits/76a5d46d193ef41cf644092b1a845889ea9ad918cd7a8492fc8a4a01acddc3a1/fitted_arrays.npz",
+    "nonfrontal_fits/76a5d46d193ef41cf644092b1a845889ea9ad918cd7a8492fc8a4a01acddc3a1/fit_status.json",
+    "nonfrontal_fits/7b49504aba668e9c65eb8785ce769c3f10a1daf462dcedc2982f7a9a3222c2b9/fitted_arrays.npz",
+    "nonfrontal_fits/7b49504aba668e9c65eb8785ce769c3f10a1daf462dcedc2982f7a9a3222c2b9/fit_status.json",
+    "nonfrontal_fits/7c3d0685d115b99553e7a5397bbf4517b6f57db11742f4914090fd52d86e1125/fitted_arrays.npz",
+    "nonfrontal_fits/7c3d0685d115b99553e7a5397bbf4517b6f57db11742f4914090fd52d86e1125/fit_status.json",
+    "nonfrontal_fits/8f92594b68511732a6e27aab5f6790ad1d15480240a2c81434ecae3700273f9a/fitted_arrays.npz",
+    "nonfrontal_fits/8f92594b68511732a6e27aab5f6790ad1d15480240a2c81434ecae3700273f9a/fit_status.json",
+    "nonfrontal_fits/ad07f91c9ee5f380da5862ba923335d370639545f8252db6952b88dcb3ee3c83/fitted_arrays.npz",
+    "nonfrontal_fits/ad07f91c9ee5f380da5862ba923335d370639545f8252db6952b88dcb3ee3c83/fit_status.json",
+    "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fitted_arrays.npz",
+    "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fit_status.json",
+    "nonfrontal_fits/c51ca53e20a2f43c9a5d3e57e31cd06d4b300a4f376b8e2712f0da88915d27dc/fitted_arrays.npz",
+    "nonfrontal_fits/c51ca53e20a2f43c9a5d3e57e31cd06d4b300a4f376b8e2712f0da88915d27dc/fit_status.json",
+    "nonfrontal_fits/d4d39247e5f60068e4424173fc5f0ae337818ee55d2ad51e8b4cd5b5074dba8d/fitted_arrays.npz",
+    "nonfrontal_fits/d4d39247e5f60068e4424173fc5f0ae337818ee55d2ad51e8b4cd5b5074dba8d/fit_status.json",
+    "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fitted_arrays.npz",
+    "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fit_status.json",
+    "nonfrontal_fits/e439d5a92b3aa75bee0c61ed0fd6fe5613ac155803bafe29604a507667c9e5cd/fitted_arrays.npz",
+    "nonfrontal_fits/e439d5a92b3aa75bee0c61ed0fd6fe5613ac155803bafe29604a507667c9e5cd/fit_status.json",
+    "nonfrontal_fits/f671f7ae57f5eee95b42caeb87df03ede2f5d1d88865a3a278f550d4ba21e22e/fitted_arrays.npz",
+    "nonfrontal_fits/f671f7ae57f5eee95b42caeb87df03ede2f5d1d88865a3a278f550d4ba21e22e/fit_status.json",
+    "nonfrontal_fits/f6fc00b5018aff9aa6aa485c085b0f2312bc0fe21ca5c6e66d0ec36cec806ad6/fitted_arrays.npz",
+    "nonfrontal_fits/f6fc00b5018aff9aa6aa485c085b0f2312bc0fe21ca5c6e66d0ec36cec806ad6/fit_status.json",
+    "nonfrontal_fits/fda2987a2232d8b2b510575561b4c03d512e39501986703d3005ef5972047cb6/fitted_arrays.npz",
+    "nonfrontal_fits/fda2987a2232d8b2b510575561b4c03d512e39501986703d3005ef5972047cb6/fit_status.json",
+    "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fitted_arrays.npz",
+    "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fit_status.json"
+  ],
+  "manifest_payload_count": 1058,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 1060,
+  "utc": "2026-10-14T06:30:13.547204+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/artifact_manifest.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/artifact_manifest.json); SHA256 `56e6e9349cc605382a4c249ba0b7f6feee617e28143fe02ad82032d674aa7952`.
+
+```json
+{
+  "resource_summary.json": "64d0c6840124578b65b25e4784f6f4ab7d1c1e3f78e0ea89454133f44acabb1a",
+  "nonfrontal_selection_manifest.jsonl": "d3c7959a49e6e0a21fe42c6737cdc03bfaed366f14fe42ad9290aec8583758fc",
+  "coverage_uncertainty_method.json": "d4292bba598292bda6fcb3ee6da12ec5f006ab42cbff636eb9e07589dd21ee86",
+  "configuration.json": "7097655ca13721c675f8ff88000c90e89e0a79dc359349a7b9d1d4e1ea514b60",
+  "parent_identities.json": "118c0945f03a80492f7435e8ed2455c2ff9032973adf7823ebb8c1bb040c537c",
+  "nonfrontal_condition_means.csv": "4601fb061b15ceba7c0018efeda8ec91c8c536a2f55b16bb1cb786bd24679be1",
+  "coverage_uncertainty_channel_strata.csv": "62548dc2438e9ab399666a3d8a399a838077d9dd0a2b60501098d153b56d379a",
+  "environment.json": "f930813331b046bb274a1e1ab223e2ded666d511898ab22b086b2edb501c8b28",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "nonfrontal_summary.json": "94d1cc65a5a8fe8c421d51b69d05b461c45cfc6c52522e7d8267f53b8f327ff9",
+  "nonfrontal_method_means.csv": "70ce2894d267205b2dde65711a0d28add2686d40a138fbb31cb17a955d855a02",
+  "coverage_uncertainty_intervals.csv": "02f64a59e640bf19e6d231f17bffd8f7c920ff930714f105a5223584d840c438",
+  "nonfrontal_posterior.png": "4d8dd22ed17c2e67eeeb9872ae322feff714bf7afeda846114bb3589d2f60593",
+  "nonfrontal_whole.png": "1e7f5acc6ce2cce3da04ecef05e0e3bf19a2c655ee1007fb77ec7df81cbc9c84",
+  "coverage_paired_differences.csv": "37ef3816a53ceb095d7615edf0fe6cc7e0de65664febf32fec24b473e571c20d",
+  "nonfrontal_fit_records.jsonl": "e56b2873da9a83c3f1bd2f2a999707ef063595141457f9f519112c01f1d9d044",
+  "EVALUATION_PROTOCOL.md": "29e1d638e1d301e49151a72ffdc973635f2054fde9ce27df71c7f92d1c45886f",
+  "paper_evaluation_protocol.json": "4129a8eb51c68992a19b0f5649f35b722bbd80f7c80ed4dd5b6b329c8b9d64a2",
+  "cca_coverage_audit.csv": "ae23a0d63cc99c778228a075ca43ec9af586bc8dec64d4b8afa6e3c25b57f22b",
+  "stage_tests_summary.json": "4d8c8551f8238ecf619c1ba5d2cfa0910a0d8849e511533446dea99273484eb1",
+  "tests.txt": "858f86c2bd52be1a19cb518be4b5408f06b154a018de6357e46b00248e29fb54",
+  "cca_coupling_audit.json": "5eef667486e722c5d74bfe7b0ed23b34e8e172112383a363f507884c4e868700",
+  "nonfrontal_channel_scores.csv.gz": "acbb60b1257c8138aa193697e59361c9dcd1f26fefff39b2f71559ecd6d58baf",
+  "nonfrontal_progress.json": "089d2697686c61bae6717d78b385d9f5e6271418b360cb47e1d2226e51e1917f",
+  "nonfrontal_central_shared.png": "9fe0d65b267d37b3dbc4f8deb2fc263b7614502acec454759eca016a234364c9",
+  "nonfrontal_controlled_gates.json": "79a711eaf03a985152c6ecb20fdf7035320208c5586911ad782a79a5e7070512",
+  "run_spec.json": "3741d480a07ad24b68901cf18005c766bbc78f8253ab6034efc8e1704807aaa5",
+  "nonfrontal_decisions.jsonl": "f918819a5d457cd93532ff60183d1bf7cc11ab5960b9a1746833dae83b15c52f",
+  "nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz": "e1ffc6a843529960b5a45be9d4ac319bafe8d0f607d64c3ac9055fb2636477ed",
+  "nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz": "3fb1fba0d20caec39ec40dc555c3f2115fd4a1e818c02f7ec6305d7a04f8461e",
+  "nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz": "239ce27f6db0d67e95310183aab3bffdd74bd60cdead90278db35b5be66fa882",
+  "nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz": "cf2fada045ca626983852bc02481a068534a5a5aca085e99f6ad83da94d8de27",
+  "nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz": "8627c7129764ae2f5f7e320b42233de86d2a3999e3fb40c2782d548cdcd9fe8f",
+  "nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz": "f3306d151a0a9bdb32f1f38af5608e8e04356cf7a2157e72e88e523843980e77",
+  "nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz": "4c0ee34d90c5926a9494a71ea828e5d541bf6328d0a294ee3544b1dd7d000c60",
+  "nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz": "e7cd7832f3f2ef32d46ed9e6dba3362d295ca42e635784cc23b3f7f2341f05be",
+  "nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz": "0e66c546de80107d034ec0f5619cfa65a92a821d146ecf787ddcba0ad8ec2fe5",
+  "nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz": "a9b8116f800862e536a89a81f9dc1ab81e0041531fabece3e14c5981e92492a5",
+  "nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz": "d87f1ef68a42290f810e63df76dbe9512292bb4ac0b284805fd8858243c81554",
+  "nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz": "1397cfde1c98e0384b13497b94920654f66b77cd7b311333608f6ed9297d5729",
+  "nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz": "75658f3742bffe06bf78685aa1e66800278224e371e39a3f0c5b4bf9bab484da",
+  "nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz": "bd37445609e46cfcd3648a4fdf8d53da5f7580b86a1a137f4f2fe7d54ed0925d",
+  "nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz": "0b8fbf3202d88e821e355639d719da137db35ca1c0bd9c74188dd1788abb8c1e",
+  "nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz": "888b0f29318002d147b5f28865705db761692865cb217a9dbf27a51044783800",
+  "nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz": "a437c8f219195b2b0dc5a3517a015bfb9893cb9b355691ec1287872fe84a8011",
+  "nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz": "67303e0dca4272b0663c1041faffebba8de37dc81a13d2f2ac8ad9668e3ada05",
+  "nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz": "4aa36130bbe0c6ee092f8f53a280dd69cd6fb2357a413b28f5026c1f39f00edc",
+  "nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz": "47c7cd66b8ce30406f506a7917de71be64697cc4a7cd474d464c4c75bd370b71",
+  "nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz": "836b82dcb918559bbb4997702d16255a4369e5d3c5d9cbb8f748fe21c1196df4",
+  "nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz": "366510b7d4f70cfdc0e50a2fefeeced0796982b6314a5e3d22e98b9922420e78",
+  "nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz": "f591e92260ae9b2b2bbf372f8e86c84c6d86958880132a998113f22140e0565d",
+  "nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz": "a45a95fb0711068654eef604df16f228abad084580e9f1647f7f789b947bfc8f",
+  "nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz": "0395ae9052ada640a20748e8e20f8789d3df15520f566d56bf7d97b1b6c1666c",
+  "nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz": "93878873b730f0d70cc39a08c12e569e27ad1725d54fe6d89f7efb01c2a3c765",
+  "nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz": "005785a975db3a30e74861374bf18fb692078c99dabccbf2ed59d531033fae8b",
+  "nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz": "f0a1f64aef8e75f6d43f2f65395473e8fe3c14c108e591d6ea5f58dffba8ba26",
+  "nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz": "ad472195334b3c6f1e2995c686ce8e4cc5f3de8678e7ed7ff85db7b677adbf36",
+  "nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz": "ec3458b1ac74e13f114011fceefc41bf0144dc5182561d584b5cdd8c2b91e667",
+  "nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz": "0d213df7a71d350de434da411487b4beeb60aeb384632e6a43413be4d9c61c4f",
+  "nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz": "992653705661df36a407b7194aad9597ffb76c2c35cebb50877a6a18961a2d3b",
+  "nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz": "f2b828c63b5ddcb535951a431d8f2f4c7118cc87d93b8af4199d6ce75eb6babc",
+  "nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz": "308f807adc91332dde456e102b47302a40ee2cdd10e419e20aabb3bdf27d071b",
+  "nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz": "c8b754ab899b2b282f13145c0d0809047145943db88fecd8360da98c487f1cab",
+  "nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz": "3e80f60f568404819dec7129b97f48f5142c6c1e182a8c5bd0ccbb4630e5f73d",
+  "nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz": "9850de38c29d1ca3fe98ef01ce7654c0834567381b0e1fda154b9aa58431c854",
+  "nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz": "812586b9f8da2e5811e82afd5ebb8e3f9a052605548d3a944f3b72858a3db95a",
+  "nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz": "657b977b5cf785b267ae060c8b59f7dbded5198e56879b661e088240692f67ab",
+  "nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz": "0cb8db64997092fbf198a91533198d0b9258da4f531cbdaa181e5ee2eaacc53d",
+  "nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz": "582a380c564ec88ed40c9f2b48f798bfc717ed000b90b63759707ef9a660ca5c",
+  "nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz": "d1edb05ea1cd2e326876b51b43d99d127c3c77971ff71e10d636aedc91c75aff",
+  "nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz": "f98ab356f60a49fb45f3be75d8027e69c1f168acbb81f39b8adf4318affecbdc",
+  "nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz": "ab25c58ed5ce3e8f907f110bfff3cc05bd15086abec447fe3112c0afa524578f",
+  "nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz": "dfe6e19427ab74bd5c9d1a8ea2e8493768f2dddf918a181f5b4035cfb4db52b8",
+  "nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz": "13ea01da9a3888fd78d8beb85bde04757ae3868cfc8060080b7b9c8e08a4aa39",
+  "nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz": "f6383dcc57f705ebdebe709a31397efc7c2344dc65a24fe20db1b3f820a7b33a",
+  "nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz": "f3bf3cb4d9a2d1fe8d63c7c25399c1eaf6e937bde4f62cb3c15a464ce7b73bfa",
+  "nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz": "9ad89a6c6fe905e737465dbab217eed6e8f54d9c255a427eb2a2558e767d14ad",
+  "nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz": "ed37510346e341d21991626e150d2a3295356204a9e1d7de6087b897560db934",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr-5.npz": "0c14da500b748d3e6bc1131bd6d9a0baf29fceb0ef8da3e1f813c04eec6034f7",
+  "nonfrontal_predictions/sub-032308-000-blink-snr-5.json": "5c7f48acdb0d31bb2e5a59d0dda39e070a6c4b7da3a7fdc304759a3a7f83fbf4",
+  "nonfrontal_predictions/sub-032308-000-clean-clean.json": "1526d29c24551111bea95e06a6d33f74d9b4c90d41f03cd752f1c9fa42bae8a7",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+5.json": "251d1204296b460b88121d12aab84353264fb6c0d78fa63133340f42545213aa",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+0.npz": "da9bb8728c0d34082c33792041a4d64680a4d06b1cfd8ffd100e6c8f08589c74",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+5.npz": "72eae37cc8eea4a248389ac97b021c55808db629860f030ae2eb80a42c6085aa",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+0.json": "84ec29c0f328ab9613733385b9ff479f5a38347dd4afef0284d42255d789868c",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+0.npz": "97e5bad09b0e853659bbc71d7cc4a80bee6d8e7c5696fb8fbf9730a3c031620c",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+0.json": "fb0c03f2d4e970ff72b936acbf7aa62512bb77a0785ded9beae9f423a9942e36",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+0.npz": "18e243076952991c59f96db49fd4bb71606e6aa3fb6ef33832a6dc3eb94bd2e7",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr-5.npz": "9caadb7105245f43b50ac5f78203015973cc494ad1619c08cf93a0ac98dc6e00",
+  "nonfrontal_predictions/sub-032305-000-clean-clean.json": "b046f71996c9f942648c9909b09eb21d979686042361568f70d32bb4998543bf",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr-5.npz": "2827f24c38fa3ede21acf8b6cb539b631ad9e22d3ba14298107d6bbd84b0d29c",
+  "nonfrontal_predictions/sub-032314-000-clean-clean.npz": "17279f8b576a9a91f3de12e007b4f5ae0dfc269dcbbcd33cd98d6adcf39e3553",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+0.npz": "afe748494c54c72b2f1a8bd6c8f8f95026d4f1405eb30240fe73d9cd68083fb1",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr-5.npz": "f6253c3d5ce2da7be46381925bf7b98c4351289ea8f8ae5cab20666b802877ce",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr-5.json": "efdbe207166fdae34caef9b2f6ad7c2610faa56ea8fbf83b4b2ab876697fcee7",
+  "nonfrontal_predictions/sub-032305-000-blink-snr-5.npz": "8b337c36a37311df54f7734e742519c6a88d1be0bc5e096b25215c24ba33292f",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+5.npz": "9ca050b3a8c9fd69d7424ea9ff0086897dab4dfe34f41ae89316e33d0b6770ac",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+0.npz": "2e9b3ccab67d7dd3d5815d5e946b96f7f9f96c1f17463a94f27e0ec6efb385ec",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+5.npz": "2726ab7f7a4236b86e81252a21cdc7d4ba6cc7525baee487d0aedcca5fa0f6be",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+5.npz": "6444453de5f6e55bbf437cc0c14fe9509caf3410608b90ee2294bb6511da0d6a",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr-5.npz": "74eed14431c06216ac77f784b6a164b57c5f3abde0a49ce88ee0e58a4608187f",
+  "nonfrontal_predictions/sub-032308-000-clean-clean.npz": "bc8b1b7c4f5dca75dae9e3cbfc531e0221460977d30c1cbdea41b4fbd2c06fa9",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+0.npz": "78cfd8a60d2e05ffba014e3f4944254773684a07a8cd0d7dc603429e816ae3b8",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+0.npz": "e24416d7a2c510ae6e5d8782a804a453ca1e5573931fcf0cb6b44e33f75ca8d0",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+5.npz": "170162339362d89fff659082dbbd844c7c890265a3b902192c31b66efc37532a",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+0.json": "0362d7e52bf7b1d4d84e2e2e5a6ce00eb8034fde8e8479a6e1bfacae68f7e9a3",
+  "nonfrontal_predictions/sub-032314-000-clean-clean.json": "51340c73fed4322ab88a9de8f3c0cad948275042f08a153a3978556a4345ba65",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr-5.json": "8f5b894ede86670aca05a7248c6d2230bfc10263bcad169d3e83f64a122387d3",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr-5.json": "343c3792c2cb5daf25fea53e7ebcff158d09efdf4234f86a48d49c1dbabf7b40",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+0.json": "8f5a72da4913b5f980a56af02c8a9584d0ebf6e583fba7baa6dfd0ca27a84b9b",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+5.json": "faf765284405d3352cb77f302a8ae976fee8b07a686d2c1ff0fa72c61c9c4b84",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+5.npz": "e3b2cfba201a3693bd7de64afdea368f27dfa3e1ea35959dd544c5359746e619",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+0.json": "fea57d294e738a922d9cda5a871b0164b4cb4c4828ae18041350941992ad67d8",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+0.json": "c1e99fc8d44dd009f282a8e4a554125dff9639f51d5af971d9504810548a1375",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr-5.json": "24836bc60db299f985743a34fea79d1d9b6bdaa95039fca492bfbea3cc387946",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+5.json": "29350d9d66df311059db0237497d3dd90943d30baf4667f977ff941b40cfbfe8",
+  "nonfrontal_predictions/sub-032307-000-clean-clean.npz": "5fe85c69cae4a68b2af01826b7f75b454d665833b00741ed72b6de4d4bdb6a10",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+5.json": "ece04b63134ca6f0c6bf4d07f3f3c4fc507d8707761252009d3ceb8b1abdf9a4",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+5.npz": "85c13c1e3e40758416a20627979e11ddce3b1107ba7a5eed3c6337933632f5bc",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+5.npz": "1b4a7af139a47b584ce17c17eef711a079082fdcbba47d9aed7656a15f8d93c7",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+0.npz": "749efe60e4d2bdb0a92482281c7fac55b273a98baab16c0344cbfde31c3f08e6",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+5.json": "688b5bd3f46ded9ea4d8ccd69f1581d45067df5262068b370edfeabe29dc717b",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+0.json": "a93a6a406b6b4fa967aa563f438873d0c137ccff1e34d49518aa341193f99f93",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+0.json": "26257c08f88a1e4731e0014f67164733e83d525ea12cb01a0f7a2b5abc1a9ef6",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+0.json": "7492e68c06d1a60dd938bea778a7f433393ab46c332fe13131663efd6d2b1a2f",
+  "nonfrontal_predictions/sub-032307-000-clean-clean.json": "dc4237c659b9028353fb5c29372f7d03484b55b5eb18a12a9a8621a74965ca0e",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr-5.json": "85bffb04ce6b9db476a362d395028aeccf07306088a6ce4754e7b3535d69ff8c",
+  "nonfrontal_predictions/sub-032306-000-blink-snr-5.json": "a52a3e58a999ea21eed00c761e6c25088cbc3c408ea41eae93f1f8e052207598",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+5.json": "da1b12ea533ba4fff3994bb3c2252f2be6d914797c3e0b319ceac7232e1efc6f",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+5.npz": "62bd3500725976e99e0a5d369cc7472f6ed3895e999375f08467e77e396d60e5",
+  "nonfrontal_predictions/sub-032306-000-clean-clean.json": "6f77fb47948f3d1ece1beceef0a4ba2c73a7a8d394808ee8201dffd5ca58b126",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr-5.json": "7fec02d8a6d389de8e68a0848eec9cbc7a5d02cf37e768fce863d28aca1267d8",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+5.npz": "23be66f6a8a16e1c85ec2e24e047079abcc6f80005d6c1fe4a2f1b12d2fc8380",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+5.json": "1d328bf09292a71a8218f159abda43b45ff341efc50d08c0fb850f560eaa64f8",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+0.json": "aedefb4a413f828890345f473794b8ca20a0846f11dbae62020e2c3482c9d704",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr-5.json": "24c100a1442461d3398d0e54e35487f75d09de148a525e2998ea406649b7bed9",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+0.json": "37773619b7beb0124b41a9f505fc8591dc7be61d7f62f09559892ba85064d7b1",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+5.json": "33d86f50e9372540d29f7edd97f304bda4366a8149c25e4cb00c2db9449ece58",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+0.npz": "7454fb1e4b84c1cf27a9eaeb3329d46f300c004091c791711338d72341659867",
+  "nonfrontal_predictions/sub-032307-000-blink-snr-5.npz": "9b522104ee77798e581883da52b90a26ab662e1a6c4ad3b465ba68485ec64851",
+  "nonfrontal_predictions/sub-032314-000-blink-snr-5.npz": "a93ba85c11c82b0c496780cae6ad1b9785dccdf6b3600bf39d8941977033a452",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr-5.npz": "b048080634dae8d1c9ba8884c25b2db6559e44fff2f3f4727bec2ab5e8d8c7b8",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+0.json": "7200c116ba31e265ecb2e0e923cfd2094bc3a5471386f6d0c0145ed2af382892",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+0.npz": "a783ce6558b4efabe8d3ffe39ddbe409beb5afdaf80a54fdc4402772882146f7",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+5.json": "15726ae0e5b7375a2cf1134b3ef9806f51709c8348ba0ea7a2439f91e4c55e4a",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+5.json": "58c8cdaaaae2a751033fa6609c0a7d91af1f3f4f49974e05cf8811001db4e442",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr-5.npz": "b6bb0b19b56f0be0fd337d4dd31d7e79e878e39b1347b4f3a0c72ebe667a189a",
+  "nonfrontal_predictions/sub-032314-000-blink-snr-5.json": "39a74c6838c9af56068151fa108d873fc06aa302cf77cf6b2b7019fd17bc8bcc",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr-5.json": "45e509692c545bf7395c3f82b7513c866501805288e20aa2df4609a64129c4d4",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+5.npz": "fc2662a61f7089a1a82ee91f7b77ad2ae8192fc1c8e3139edf4f4673cc4c280e",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+0.json": "ba9fe8f613ccc232910513012ffd64613cd2a6830aae008b951b778b1c969294",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr-5.npz": "82f9a269c9be8ffc370ae2fb462e5164f79018265d31d9b796fb7fa9281dc0dd",
+  "nonfrontal_predictions/sub-032307-000-blink-snr-5.json": "0f5aefab41483f91e9bd6034b76ee46926d6179240a444d7760cc841d9e27795",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+5.json": "417ee33dc4f9e236b23804eec18fc220841e779a3aadf4023595bf430b1598a1",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr-5.npz": "7b9cdbfd8a26c6ffe20ef71c5d0fed55192835680279a92309cb8706b7555e9e",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+0.json": "e8e841f04ef1f31ba17aa49bb6c2011348493c95068c6604fd2f9fa2d3503afa",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+5.npz": "9673df9d15fb505f313044bc622e06a443602e623f609a1b58fe4bc40a111485",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr-5.json": "91172c2df34c61672bfdd14ba73d8c8cae14e36a8088a882cd21b03faf15fda9",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+0.json": "eb1645d9810b2a5b2381551ba96633aeccd9ec2ed11ac87afb9a584810257b2a",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+5.npz": "05f881b2fe2474b03c2a07d3ddc5c8b53625daa63a0f28c68d7ad66d36b6f774",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr-5.npz": "8358360e6995ed2e87397c52de75e5e21f61f4dc5a2e3d78bfe1c4f440e6f4e2",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+5.json": "7c9906116b47c0cc03b06d5b8cb19aab4eab4f512045c6b7918fbcd275af153b",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+0.npz": "53bdf3196f448cba49fbb228f8a2300213bb8118f137fdf724fec83310c26bc0",
+  "nonfrontal_predictions/sub-032306-000-clean-clean.npz": "f1c2a161c755c1b12c3f0455993c728fe9bab3e74a12aeb75568f2248088c4a9",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+0.npz": "2b6eb29b16c161f23c68a58fe908a7e708c371c4557974ce5c3a941472e77b5f",
+  "nonfrontal_predictions/sub-032305-000-clean-clean.npz": "72ebc793164c33095004eaca12877c44a8a77f5e9ec67a74ada9b004c5df0483",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr-5.json": "78e9c6201113717bc47a5253d82af422a7fa1553b5b85b1d8a0ff33dea3e4498",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+0.npz": "8414949042c14156aaea550d5e8d03bde62d5a83c8431cb05255bda9bd6a711e",
+  "nonfrontal_predictions/sub-032306-000-blink-snr-5.npz": "0c497b7b145f9189858660e4d9669b282fed69e5d28662de2b7496b83f3297ec",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+0.npz": "1bf61bd696a5326895de424fabb1b3daf15a1e7573e63d19aece7e119cbbf947",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+5.json": "0e4c34c2258885fc849e3bd25afdde71799354737ae0211afd2f4bdeefee1c1f",
+  "nonfrontal_predictions/sub-032305-000-blink-snr-5.json": "a1cb481ebde2b1790c0c38961ceb2b1d99e8e811ffdcc2a901be1b5695ffc288",
+  "nonfrontal_predictions/sub-032308-000-blink-snr-5.npz": "44b9be809e55699a1ac05d62e267d3ac3100d9f37b91ef162626683b1eda9257",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+5.npz": "f264e24988484c91db4cb2904d6a6653808c40e419c9208f00fd932d8e603c0b",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+0.npz": "ab44527120f64fb5ec2e418020c4e0d4a4ef829b8fcd6426518b3776b24040ec",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+5.npz": "372b308728173c552c3aea175211f6c771270212283f8c112e8ffc8370a6823c",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+5.json": "d01847772c9226e3f367c5905901fb081b4ad2686440b64ee61a7288b96e101e",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+5.json": "9973b209029a4c458c0741ba66143d786416bfefa79bade51500e6b2eba738c3",
+  "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fitted_arrays.npz": "22a1744d7f9ad4956b09f9e3f47b5d355ddbd269bba4b3a8bc27905ef8aa7330",
+  "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fitted_arrays.npz": "c8bd246dc6d09416345d68c4bc94b23b4fcc1645d8720d8c063b26aa7a3fac2f",
+  "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fitted_arrays.npz": "de0b52c716d0e6b9ec6b554a904f85395c9093b5795af0b89c7635cf7cdda8cc",
+  "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fit_status.json": "7cc0aad8f706d99c98a1b1d14f727341294f67394b0d731beb372a51c15fcb16",
+  "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fitted_arrays.npz": "4add3ee85d1e06c86005121451a6c223b5926a8bfdb42fb69bb29caad0db79cc",
+  "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fit_status.json": "0c99fb0fa3f28644cd00055e2dc27a182550df9aa0896eecd7fdb6f295734c29",
+  "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fitted_arrays.npz": "23e3bf1d98f6d99c93a8436e9aa3275c57aa206c77d4bd30103d8dbfe5e33139"
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/execution_state.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/execution_state.json); SHA256 `de2ebb6d73cb504a6c1db33d38596f34c8be38ccc0d3452eaff7c0aee026fcaf`.
+
+```json
+{
+  "stage": "nonfrontal-cca",
+  "status": "complete",
+  "artifacts": 188
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_summary.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_summary.json); SHA256 `94d1cc65a5a8fe8c421d51b69d05b461c45cfc6c52522e7d8267f53b8f327ff9`.
+
+```json
+{
+  "profile": "pilot",
+  "examples": 50,
+  "recipients": 5,
+  "donors": 5,
+  "calibrations": 5,
+  "arms": [
+    "identity",
+    "central_frontal_vmd_context",
+    "central_frontal_raw_context",
+    "ridge_direct:posterior",
+    "ridge_direct:central",
+    "ridge_direct:both",
+    "reference_rank2_control:posterior",
+    "reference_rank2_control:central",
+    "reference_rank2_control:both",
+    "cca_reference_rank1:posterior",
+    "cca_reference_rank1:central",
+    "cca_reference_rank1:both",
+    "cca_reference_rank2:posterior",
+    "cca_reference_rank2:central",
+    "cca_reference_rank2:both",
+    "cca_eeg_rank1:posterior",
+    "cca_eeg_rank1:central",
+    "cca_eeg_rank1:both",
+    "cca_eeg_rank2:posterior",
+    "cca_eeg_rank2:central",
+    "cca_eeg_rank2:both"
+  ],
+  "frozen_frontal_parity_checks": 900,
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "saved_fit_replay_checks": 30,
+  "baseline_paper_metric_checks": 85800,
+  "new_decompositions": "calibration-only regularized CCA; no VMD solver executed",
+  "runtime_s": 87.03324366200002,
+  "weights_trained": false,
+  "autovmd_executed": false,
+  "scoring_target_fit": false,
+  "reserved_confirmation_opened": false,
+  "qualification": false,
+  "native_validation_required": true,
+  "reference_amplitude_mismatch": true,
+  "field_generator_bias": "regression-derived controlled field",
+  "uncertainty": "supplemental recipient/donor Poisson approximation, 500 draws; not paper-native permutation"
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/resource_summary.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/resource_summary.json); SHA256 `64d0c6840124578b65b25e4784f6f4ab7d1c1e3f78e0ea89454133f44acabb1a`.
+
+```json
+{
+  "wall_time_s": 219.86246895699998,
+  "peak_resident_memory_kib": 657744
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/stage_tests_summary.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/stage_tests_summary.json); SHA256 `4d8c8551f8238ecf619c1ba5d2cfa0910a0d8849e511533446dea99273484eb1`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "858f86c2bd52be1a19cb518be4b5408f06b154a018de6357e46b00248e29fb54"
+}
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/retrieval_receipt.json); SHA256 `965c2f9082ab2afcf539eb54e86145aee08283c865f2b2bde46233da534bcaab`.
+
+```json
+{
+  "run_id": "nonfrontal-cca-pilot-001",
+  "git_sha": "1a2283151a9c840522ea4df25a239519fefcda81",
+  "verified_payloads": [
+    "cca_coupling_audit.json",
+    "cca_coverage_audit.csv",
+    "configuration.json",
+    "coverage_paired_differences.csv",
+    "coverage_uncertainty_channel_strata.csv",
+    "coverage_uncertainty_intervals.csv",
+    "coverage_uncertainty_method.json",
+    "environment.json",
+    "EVALUATION_PROTOCOL.md",
+    "experiment.json",
+    "nonfrontal_central_shared.png",
+    "nonfrontal_channel_scores.csv.gz",
+    "nonfrontal_condition_means.csv",
+    "nonfrontal_controlled_gates.json",
+    "nonfrontal_decisions.jsonl",
+    "nonfrontal_fit_records.jsonl",
+    "nonfrontal_method_means.csv",
+    "nonfrontal_posterior.png",
+    "nonfrontal_progress.json",
+    "nonfrontal_selection_manifest.jsonl",
+    "nonfrontal_summary.json",
+    "nonfrontal_whole.png",
+    "paper_evaluation_protocol.json",
+    "parent_identities.json",
+    "resource_summary.json",
+    "run_spec.json",
+    "stage_tests_summary.json",
+    "tests.txt",
+    "nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032305-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032305-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032305-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032305-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032306-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032306-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032306-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032306-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032307-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032307-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032307-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032307-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032308-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032308-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032308-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032308-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032314-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032314-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032314-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032314-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr-5.npz",
+    "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fitted_arrays.npz",
+    "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fit_status.json",
+    "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fitted_arrays.npz",
+    "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fit_status.json",
+    "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fitted_arrays.npz",
+    "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fit_status.json",
+    "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fitted_arrays.npz",
+    "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fit_status.json",
+    "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fitted_arrays.npz",
+    "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fit_status.json"
+  ],
+  "manifest_payload_count": 188,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 190,
+  "utc": "2026-10-14T04:30:10.749856+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
 ### results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/artifact_manifest.json
 
 [Saved payload](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/artifact_manifest.json); SHA256 `5c0776e2f99374cb5c1fd13aa1076eae4aada28d6551a20ee293a5d6474ef0b2`.
@@ -49043,7 +52035,7 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 
 ### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/retrieval_receipt.json
 
-[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/retrieval_receipt.json); SHA256 `3875baff19017a7bcd8b8400c34251916a080cc7ef99e26956aa5cb1a2c4e325`.
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-full-001/retrieval_receipt.json); SHA256 `cae73597c67eb264e5799b14cf93608b3ab0a71012b490f4af451050f981c905`.
 
 ```json
 {
@@ -49051,24 +52043,675 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
   "git_sha": "248a5070131d8049eddc01eede8ebee8465a77bb",
   "verified_payloads": [
     "configuration.json",
+    "coverage_paired_differences.csv",
+    "coverage_uncertainty_channel_strata.csv",
     "coverage_uncertainty_intervals.csv",
+    "coverage_uncertainty_method.json",
+    "environment.json",
     "evaluator_only_bound_condition_means.csv",
     "evaluator_only_bound_means.csv",
+    "evaluator_only_gain_bounds.csv",
+    "experiment.json",
+    "gain_channel_scores.csv.gz",
     "gain_condition_means.csv",
+    "gain_decisions.jsonl",
+    "gain_example_snr.csv",
     "gain_gates.json",
     "gain_method_means.csv",
+    "gain_progress.json",
+    "gain_selection_manifest.jsonl",
     "gain_snr_aggregation.png",
     "gain_summary.json",
     "parent_identities.json",
     "resource_summary.json",
     "run_spec.json",
     "stage_tests_summary.json",
-    "tests.txt"
+    "tests.txt",
+    "gain_predictions/sub-032305-000-blink-snr+0.npz",
+    "gain_predictions/sub-032305-000-blink-snr+5.npz",
+    "gain_predictions/sub-032305-000-blink-snr-5.npz",
+    "gain_predictions/sub-032305-000-clean-clean.npz",
+    "gain_predictions/sub-032305-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032305-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032305-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032305-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032305-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032305-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032306-000-blink-snr+0.npz",
+    "gain_predictions/sub-032306-000-blink-snr+5.npz",
+    "gain_predictions/sub-032306-000-blink-snr-5.npz",
+    "gain_predictions/sub-032306-000-clean-clean.npz",
+    "gain_predictions/sub-032306-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032306-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032306-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032306-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032306-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032306-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032307-000-blink-snr+0.npz",
+    "gain_predictions/sub-032307-000-blink-snr+5.npz",
+    "gain_predictions/sub-032307-000-blink-snr-5.npz",
+    "gain_predictions/sub-032307-000-clean-clean.npz",
+    "gain_predictions/sub-032307-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032307-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032307-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032307-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032307-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032307-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032308-000-blink-snr+0.npz",
+    "gain_predictions/sub-032308-000-blink-snr+5.npz",
+    "gain_predictions/sub-032308-000-blink-snr-5.npz",
+    "gain_predictions/sub-032308-000-clean-clean.npz",
+    "gain_predictions/sub-032308-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032308-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032308-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032308-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032308-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032308-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032309-000-blink-snr+0.npz",
+    "gain_predictions/sub-032309-000-blink-snr+5.npz",
+    "gain_predictions/sub-032309-000-blink-snr-5.npz",
+    "gain_predictions/sub-032309-000-clean-clean.npz",
+    "gain_predictions/sub-032309-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032309-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032309-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032309-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032309-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032309-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032310-000-blink-snr+0.npz",
+    "gain_predictions/sub-032310-000-blink-snr+5.npz",
+    "gain_predictions/sub-032310-000-blink-snr-5.npz",
+    "gain_predictions/sub-032310-000-clean-clean.npz",
+    "gain_predictions/sub-032310-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032310-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032310-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032310-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032310-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032310-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032312-000-blink-snr+0.npz",
+    "gain_predictions/sub-032312-000-blink-snr+5.npz",
+    "gain_predictions/sub-032312-000-blink-snr-5.npz",
+    "gain_predictions/sub-032312-000-clean-clean.npz",
+    "gain_predictions/sub-032312-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032312-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032312-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032312-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032312-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032312-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032313-000-blink-snr+0.npz",
+    "gain_predictions/sub-032313-000-blink-snr+5.npz",
+    "gain_predictions/sub-032313-000-blink-snr-5.npz",
+    "gain_predictions/sub-032313-000-clean-clean.npz",
+    "gain_predictions/sub-032313-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032313-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032313-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032313-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032313-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032313-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032314-000-blink-snr+0.npz",
+    "gain_predictions/sub-032314-000-blink-snr+5.npz",
+    "gain_predictions/sub-032314-000-blink-snr-5.npz",
+    "gain_predictions/sub-032314-000-clean-clean.npz",
+    "gain_predictions/sub-032314-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032314-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032314-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032314-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032314-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032314-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032315-000-blink-snr+0.npz",
+    "gain_predictions/sub-032315-000-blink-snr+5.npz",
+    "gain_predictions/sub-032315-000-blink-snr-5.npz",
+    "gain_predictions/sub-032315-000-clean-clean.npz",
+    "gain_predictions/sub-032315-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032315-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032315-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032315-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032315-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032315-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032316-000-blink-snr+0.npz",
+    "gain_predictions/sub-032316-000-blink-snr+5.npz",
+    "gain_predictions/sub-032316-000-blink-snr-5.npz",
+    "gain_predictions/sub-032316-000-clean-clean.npz",
+    "gain_predictions/sub-032316-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032316-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032316-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032316-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032316-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032316-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032317-000-blink-snr+0.npz",
+    "gain_predictions/sub-032317-000-blink-snr+5.npz",
+    "gain_predictions/sub-032317-000-blink-snr-5.npz",
+    "gain_predictions/sub-032317-000-clean-clean.npz",
+    "gain_predictions/sub-032317-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032317-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032317-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032317-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032317-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032317-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032318-000-blink-snr+0.npz",
+    "gain_predictions/sub-032318-000-blink-snr+5.npz",
+    "gain_predictions/sub-032318-000-blink-snr-5.npz",
+    "gain_predictions/sub-032318-000-clean-clean.npz",
+    "gain_predictions/sub-032318-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032318-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032318-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032318-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032318-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032318-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032319-000-blink-snr+0.npz",
+    "gain_predictions/sub-032319-000-blink-snr+5.npz",
+    "gain_predictions/sub-032319-000-blink-snr-5.npz",
+    "gain_predictions/sub-032319-000-clean-clean.npz",
+    "gain_predictions/sub-032319-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032319-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032319-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032319-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032319-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032319-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032320-000-blink-snr+0.npz",
+    "gain_predictions/sub-032320-000-blink-snr+5.npz",
+    "gain_predictions/sub-032320-000-blink-snr-5.npz",
+    "gain_predictions/sub-032320-000-clean-clean.npz",
+    "gain_predictions/sub-032320-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032320-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032320-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032320-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032320-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032320-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032321-000-blink-snr+0.npz",
+    "gain_predictions/sub-032321-000-blink-snr+5.npz",
+    "gain_predictions/sub-032321-000-blink-snr-5.npz",
+    "gain_predictions/sub-032321-000-clean-clean.npz",
+    "gain_predictions/sub-032321-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032321-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032321-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032321-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032321-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032321-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032322-000-blink-snr+0.npz",
+    "gain_predictions/sub-032322-000-blink-snr+5.npz",
+    "gain_predictions/sub-032322-000-blink-snr-5.npz",
+    "gain_predictions/sub-032322-000-clean-clean.npz",
+    "gain_predictions/sub-032322-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032322-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032322-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032322-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032322-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032322-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032323-000-blink-snr+0.npz",
+    "gain_predictions/sub-032323-000-blink-snr+5.npz",
+    "gain_predictions/sub-032323-000-blink-snr-5.npz",
+    "gain_predictions/sub-032323-000-clean-clean.npz",
+    "gain_predictions/sub-032323-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032323-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032323-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032323-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032323-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032323-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032324-000-blink-snr+0.npz",
+    "gain_predictions/sub-032324-000-blink-snr+5.npz",
+    "gain_predictions/sub-032324-000-blink-snr-5.npz",
+    "gain_predictions/sub-032324-000-clean-clean.npz",
+    "gain_predictions/sub-032324-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032324-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032324-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032324-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032324-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032324-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032325-000-blink-snr+0.npz",
+    "gain_predictions/sub-032325-000-blink-snr+5.npz",
+    "gain_predictions/sub-032325-000-blink-snr-5.npz",
+    "gain_predictions/sub-032325-000-clean-clean.npz",
+    "gain_predictions/sub-032325-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032325-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032325-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032325-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032325-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032325-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032326-000-blink-snr+0.npz",
+    "gain_predictions/sub-032326-000-blink-snr+5.npz",
+    "gain_predictions/sub-032326-000-blink-snr-5.npz",
+    "gain_predictions/sub-032326-000-clean-clean.npz",
+    "gain_predictions/sub-032326-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032326-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032326-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032326-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032326-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032326-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032327-000-blink-snr+0.npz",
+    "gain_predictions/sub-032327-000-blink-snr+5.npz",
+    "gain_predictions/sub-032327-000-blink-snr-5.npz",
+    "gain_predictions/sub-032327-000-clean-clean.npz",
+    "gain_predictions/sub-032327-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032327-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032327-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032327-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032327-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032327-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032328-000-blink-snr+0.npz",
+    "gain_predictions/sub-032328-000-blink-snr+5.npz",
+    "gain_predictions/sub-032328-000-blink-snr-5.npz",
+    "gain_predictions/sub-032328-000-clean-clean.npz",
+    "gain_predictions/sub-032328-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032328-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032328-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032328-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032328-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032328-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032329-000-blink-snr+0.npz",
+    "gain_predictions/sub-032329-000-blink-snr+5.npz",
+    "gain_predictions/sub-032329-000-blink-snr-5.npz",
+    "gain_predictions/sub-032329-000-clean-clean.npz",
+    "gain_predictions/sub-032329-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032329-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032329-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032329-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032329-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032329-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032330-000-blink-snr+0.npz",
+    "gain_predictions/sub-032330-000-blink-snr+5.npz",
+    "gain_predictions/sub-032330-000-blink-snr-5.npz",
+    "gain_predictions/sub-032330-000-clean-clean.npz",
+    "gain_predictions/sub-032330-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032330-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032330-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032330-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032330-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032330-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032331-000-blink-snr+0.npz",
+    "gain_predictions/sub-032331-000-blink-snr+5.npz",
+    "gain_predictions/sub-032331-000-blink-snr-5.npz",
+    "gain_predictions/sub-032331-000-clean-clean.npz",
+    "gain_predictions/sub-032331-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032331-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032331-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032331-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032331-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032331-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032334-000-blink-snr+0.npz",
+    "gain_predictions/sub-032334-000-blink-snr+5.npz",
+    "gain_predictions/sub-032334-000-blink-snr-5.npz",
+    "gain_predictions/sub-032334-000-clean-clean.npz",
+    "gain_predictions/sub-032334-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032334-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032334-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032334-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032334-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032334-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032336-000-blink-snr+0.npz",
+    "gain_predictions/sub-032336-000-blink-snr+5.npz",
+    "gain_predictions/sub-032336-000-blink-snr-5.npz",
+    "gain_predictions/sub-032336-000-clean-clean.npz",
+    "gain_predictions/sub-032336-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032336-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032336-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032336-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032336-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032336-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032338-000-blink-snr+0.npz",
+    "gain_predictions/sub-032338-000-blink-snr+5.npz",
+    "gain_predictions/sub-032338-000-blink-snr-5.npz",
+    "gain_predictions/sub-032338-000-clean-clean.npz",
+    "gain_predictions/sub-032338-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032338-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032338-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032338-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032338-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032338-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032339-000-blink-snr+0.npz",
+    "gain_predictions/sub-032339-000-blink-snr+5.npz",
+    "gain_predictions/sub-032339-000-blink-snr-5.npz",
+    "gain_predictions/sub-032339-000-clean-clean.npz",
+    "gain_predictions/sub-032339-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032339-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032339-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032339-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032339-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032339-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032340-000-blink-snr+0.npz",
+    "gain_predictions/sub-032340-000-blink-snr+5.npz",
+    "gain_predictions/sub-032340-000-blink-snr-5.npz",
+    "gain_predictions/sub-032340-000-clean-clean.npz",
+    "gain_predictions/sub-032340-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032340-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032340-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032340-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032340-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032340-000-mixed-snr-5.npz",
+    "gain_predictions/sub-032341-000-blink-snr+0.npz",
+    "gain_predictions/sub-032341-000-blink-snr+5.npz",
+    "gain_predictions/sub-032341-000-blink-snr-5.npz",
+    "gain_predictions/sub-032341-000-clean-clean.npz",
+    "gain_predictions/sub-032341-000-lateral-snr+0.npz",
+    "gain_predictions/sub-032341-000-lateral-snr+5.npz",
+    "gain_predictions/sub-032341-000-lateral-snr-5.npz",
+    "gain_predictions/sub-032341-000-mixed-snr+0.npz",
+    "gain_predictions/sub-032341-000-mixed-snr+5.npz",
+    "gain_predictions/sub-032341-000-mixed-snr-5.npz",
+    "gain_shards/sub-032305-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032305-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032305-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032305-000-clean-clean.csv.gz",
+    "gain_shards/sub-032305-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032305-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032305-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032305-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032305-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032305-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032306-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032306-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032306-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032306-000-clean-clean.csv.gz",
+    "gain_shards/sub-032306-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032306-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032306-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032306-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032306-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032306-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032307-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032307-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032307-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032307-000-clean-clean.csv.gz",
+    "gain_shards/sub-032307-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032307-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032307-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032307-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032307-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032307-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032308-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032308-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032308-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032308-000-clean-clean.csv.gz",
+    "gain_shards/sub-032308-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032308-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032308-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032308-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032308-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032308-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032309-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032309-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032309-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032309-000-clean-clean.csv.gz",
+    "gain_shards/sub-032309-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032309-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032309-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032309-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032309-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032309-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032310-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032310-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032310-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032310-000-clean-clean.csv.gz",
+    "gain_shards/sub-032310-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032310-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032310-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032310-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032310-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032310-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032312-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032312-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032312-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032312-000-clean-clean.csv.gz",
+    "gain_shards/sub-032312-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032312-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032312-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032312-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032312-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032312-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032313-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032313-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032313-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032313-000-clean-clean.csv.gz",
+    "gain_shards/sub-032313-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032313-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032313-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032313-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032313-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032313-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032314-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032314-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032314-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032314-000-clean-clean.csv.gz",
+    "gain_shards/sub-032314-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032314-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032314-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032314-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032314-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032314-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032315-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032315-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032315-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032315-000-clean-clean.csv.gz",
+    "gain_shards/sub-032315-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032315-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032315-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032315-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032315-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032315-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032316-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032316-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032316-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032316-000-clean-clean.csv.gz",
+    "gain_shards/sub-032316-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032316-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032316-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032316-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032316-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032316-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032317-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032317-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032317-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032317-000-clean-clean.csv.gz",
+    "gain_shards/sub-032317-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032317-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032317-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032317-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032317-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032317-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032318-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032318-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032318-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032318-000-clean-clean.csv.gz",
+    "gain_shards/sub-032318-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032318-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032318-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032318-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032318-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032318-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032319-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032319-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032319-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032319-000-clean-clean.csv.gz",
+    "gain_shards/sub-032319-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032319-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032319-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032319-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032319-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032319-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032320-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032320-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032320-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032320-000-clean-clean.csv.gz",
+    "gain_shards/sub-032320-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032320-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032320-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032320-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032320-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032320-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032321-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032321-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032321-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032321-000-clean-clean.csv.gz",
+    "gain_shards/sub-032321-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032321-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032321-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032321-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032321-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032321-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032322-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032322-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032322-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032322-000-clean-clean.csv.gz",
+    "gain_shards/sub-032322-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032322-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032322-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032322-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032322-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032322-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032323-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032323-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032323-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032323-000-clean-clean.csv.gz",
+    "gain_shards/sub-032323-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032323-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032323-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032323-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032323-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032323-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032324-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032324-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032324-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032324-000-clean-clean.csv.gz",
+    "gain_shards/sub-032324-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032324-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032324-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032324-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032324-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032324-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032325-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032325-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032325-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032325-000-clean-clean.csv.gz",
+    "gain_shards/sub-032325-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032325-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032325-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032325-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032325-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032325-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032326-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032326-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032326-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032326-000-clean-clean.csv.gz",
+    "gain_shards/sub-032326-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032326-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032326-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032326-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032326-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032326-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032327-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032327-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032327-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032327-000-clean-clean.csv.gz",
+    "gain_shards/sub-032327-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032327-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032327-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032327-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032327-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032327-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032328-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032328-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032328-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032328-000-clean-clean.csv.gz",
+    "gain_shards/sub-032328-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032328-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032328-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032328-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032328-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032328-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032329-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032329-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032329-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032329-000-clean-clean.csv.gz",
+    "gain_shards/sub-032329-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032329-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032329-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032329-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032329-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032329-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032330-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032330-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032330-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032330-000-clean-clean.csv.gz",
+    "gain_shards/sub-032330-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032330-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032330-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032330-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032330-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032330-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032331-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032331-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032331-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032331-000-clean-clean.csv.gz",
+    "gain_shards/sub-032331-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032331-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032331-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032331-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032331-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032331-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032334-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032334-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032334-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032334-000-clean-clean.csv.gz",
+    "gain_shards/sub-032334-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032334-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032334-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032334-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032334-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032334-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032336-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032336-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032336-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032336-000-clean-clean.csv.gz",
+    "gain_shards/sub-032336-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032336-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032336-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032336-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032336-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032336-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032338-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032338-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032338-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032338-000-clean-clean.csv.gz",
+    "gain_shards/sub-032338-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032338-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032338-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032338-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032338-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032338-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032339-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032339-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032339-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032339-000-clean-clean.csv.gz",
+    "gain_shards/sub-032339-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032339-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032339-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032339-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032339-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032339-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032340-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032340-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032340-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032340-000-clean-clean.csv.gz",
+    "gain_shards/sub-032340-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032340-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032340-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032340-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032340-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032340-000-mixed-snr-5.csv.gz",
+    "gain_shards/sub-032341-000-blink-snr+0.csv.gz",
+    "gain_shards/sub-032341-000-blink-snr+5.csv.gz",
+    "gain_shards/sub-032341-000-blink-snr-5.csv.gz",
+    "gain_shards/sub-032341-000-clean-clean.csv.gz",
+    "gain_shards/sub-032341-000-lateral-snr+0.csv.gz",
+    "gain_shards/sub-032341-000-lateral-snr+5.csv.gz",
+    "gain_shards/sub-032341-000-lateral-snr-5.csv.gz",
+    "gain_shards/sub-032341-000-mixed-snr+0.csv.gz",
+    "gain_shards/sub-032341-000-mixed-snr+5.csv.gz",
+    "gain_shards/sub-032341-000-mixed-snr-5.csv.gz"
   ],
   "manifest_payload_count": 665,
-  "all_manifest_payloads_verified": false,
-  "downloaded_outputs": 16,
-  "utc": "2026-10-14T01:43:02.064823+00:00",
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 667,
+  "utc": "2026-10-14T04:13:24.360628+00:00",
   "retrieval_method": "bounded HTTP; four download workers",
   "completion_verified": true
 }
@@ -53128,6 +56771,7 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-eog-20261010/native-protocol-pilot-001/results/vmd-eog-20261010/native-protocol-pilot-001/native_failures.jsonl](results/vmd-eog-20261010/native-protocol-pilot-001/results/vmd-eog-20261010/native-protocol-pilot-001/native_failures.jsonl) | 27188 | `2eb2a82f47b89ac2c5c6a250cfec971507913c08a630efdda254b21ba83903d7` |
 | [results/vmd-eog-20261010/native-protocol-pilot-001/results/vmd-eog-20261010/native-protocol-pilot-001/native_source_ledger.jsonl](results/vmd-eog-20261010/native-protocol-pilot-001/results/vmd-eog-20261010/native-protocol-pilot-001/native_source_ledger.jsonl) | 8894 | `1ce121805deda2d92c6f74ab77d79ec5ed3e01f2ca333225e270a059bc680bd8` |
 | [results/vmd-eog-20261010/native-protocol-pilot-001/results/vmd-eog-20261010/native-protocol-pilot-001/tests.txt](results/vmd-eog-20261010/native-protocol-pilot-001/results/vmd-eog-20261010/native-protocol-pilot-001/tests.txt) | 99 | `98d0a727d601430bc33dd80e8bcfa176bd181fdc66699a158b81bf428e033f1f` |
+| [results/vmd-eog-20261010/nonfrontal-cca-contracts-001/results/vmd-eog-20261010/nonfrontal-cca-contracts-001/tests.txt](results/vmd-eog-20261010/nonfrontal-cca-contracts-001/results/vmd-eog-20261010/nonfrontal-cca-contracts-001/tests.txt) | 2591 | `d4208b8646a3771df92238224db89e03c26ed6c9a12ae214ce74cf56bf40337b` |
 | [results/vmd-eog-20261010/nonfrontal-contracts-002/results/vmd-eog-20261010/nonfrontal-contracts-002/tests.txt](results/vmd-eog-20261010/nonfrontal-contracts-002/results/vmd-eog-20261010/nonfrontal-contracts-002/tests.txt) | 5004 | `0c018a43f7fe7c2a1e552d7af21af16ad3b635d894b65970c5ad4e1e0f00542a` |
 | [results/vmd-eog-20261010/nonfrontal-contracts-003/results/vmd-eog-20261010/nonfrontal-contracts-003/tests.txt](results/vmd-eog-20261010/nonfrontal-contracts-003/results/vmd-eog-20261010/nonfrontal-contracts-003/tests.txt) | 2511 | `9b0173aa57b55eab0a9f803f5c8c59302e76db5176c802096a9da4a0c6000e9d` |
 | [results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/tests.txt](results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/tests.txt) | 2591 | `842d4763947d0c60ace9c0bc37dc60059bf917538393e5e64a3c7dc04f5c9879` |
@@ -54197,6 +57841,403 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-frontal-replication-20261011/native-trial-support-001/results/vmd-frontal-replication-20261011/native-trial-support-001/unchanged_parent_reports/native_frontal_preservation_records.csv](results/vmd-frontal-replication-20261011/native-trial-support-001/results/vmd-frontal-replication-20261011/native-trial-support-001/unchanged_parent_reports/native_frontal_preservation_records.csv) | 1234 | `52f0a52dcf9f6807b1322a137dfe1777e1fac6e9759b083ba18d1b5de58b0ab1` |
 | [results/vmd-frontal-replication-20261011/native-trial-support-001/watch_events.jsonl](results/vmd-frontal-replication-20261011/native-trial-support-001/watch_events.jsonl) | 3855 | `91d700ebc266d18a50d5c4aefcadda226bbbadc75c0d3247d19abd39bb2dd844` |
 | [results/vmd-frontal-replication-20261011/orchestration/events.jsonl](results/vmd-frontal-replication-20261011/orchestration/events.jsonl) | 190815 | `22bc6b02c5506921d1f876e798ca359cd47ee1bb5f45f2dbf94a9d224a2343ea` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_coverage_audit.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_coverage_audit.csv) | 771208 | `395b52caef9040446ed90c31fb6fa85abd2c00874d64c3ad3e5de92b3bdd510e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_pooled_example_scores.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_pooled_example_scores.csv) | 4790871 | `31366dd6e431058b5e6ac8674be3a5314bb502a8b839763efe37b49aa824eba0` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_pooled_method_means.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_pooled_method_means.csv) | 6991 | `7adb5fdd8beaabeb7e5116508e560e62453a6357f5724d643ba26f85102ae6eb` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/coverage_paired_differences.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/coverage_paired_differences.csv) | 171040389 | `d5a913f51fa84ee138265088edf3c0f5469da2e85c9879ca6396786a7deaee19` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/coverage_uncertainty_channel_strata.csv) | 60808851 | `05bbffdf29ff0df4585fbf633028859401586d4101ec5f25cec35f788ba6c23b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/coverage_uncertainty_intervals.csv) | 50468 | `abb5b58b13b642ac3585f7feaf2b6294e34573aaec899ac1c0ad63c9cd07094f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/matched_cca_controls/coverage_paired_differences.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/matched_cca_controls/coverage_paired_differences.csv) | 111434435 | `4fcbd6a022df08fc8f8959aa22a389760e47853703040954eafd773bb99d4bb5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/matched_cca_controls/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/matched_cca_controls/coverage_uncertainty_channel_strata.csv) | 38040041 | `221f036501f2c7187467f627b262a4d02cfea30fbcd0e9d912ef6f1f184eb2df` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/matched_cca_controls/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/matched_cca_controls/coverage_uncertainty_intervals.csv) | 33188 | `a2d3e91b2b7cf83bdeaec8c351ca8a2c9d9683e978726547684f25c416133981` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_channel_scores.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_channel_scores.csv.gz) | 48299127 | `31f74d9210bbdefb33451804d901b0189b4e6e8fdba2601295a3eee9e511d9b3` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_condition_means.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_condition_means.csv) | 186106 | `a4b5279300ae1d8bf43a78c347bbd8da52fdd723683f066d8ad0e256cc7ffeb0` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_decisions.jsonl](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_decisions.jsonl) | 1567361 | `d924c8b3c8fe52edcfda3ae3446ccf76ed04cde2c846491f8ed0436d1d5f2fcd` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_fit_records.jsonl](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_fit_records.jsonl) | 8528 | `0e1f14f23cdc512927919a3fed94baaaefc97b689f2af039c02f7e49161b514d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_method_means.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_method_means.csv) | 19379 | `f90eac960f342fe154dd351437728adacfd65e34944bc482cd3dd3f95161f2f8` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz) | 166891 | `2b07c65190cebefce5ed0be526a8f0256f9543d65232e3e32b0f861ca2f5a076` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz) | 164882 | `6cfacd55e3636a23eb55b67a226b41f7d9ebb261858ad8e8c16d722a1be2452f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz) | 183274 | `712f0298c0ce060bcb02f12b91e6e76d5f5186fa6d66f62a5a527186189198ff` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz) | 10000 | `019ee08d08eb7b5161f34059441ab689eb5ff712e59b2d2665cf3e8538d7d5de` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz) | 178574 | `2fb264ea99167ab8ecf3793d245d53462cfd9f04436265e6b3f6eb4c7efcf9f4` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz) | 163767 | `f5c0a9ce9aa3263af56d3a49249d791171755e936660caaedba733c5b73a2b01` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz) | 177634 | `dded1040f37c3148b25af4ec15c1b25e0dd2169426fc6cdfee9595e1e767dfb9` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz) | 166791 | `90b77f48143046b5c0c25de81005db88ecd6e9bcc49424d649706d7fc8bdba7f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz) | 164789 | `a210bf9cfbeecd86f7d823c6785e0d076c2e4438f128735cc509e1310d89d96c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz) | 182008 | `dffae02f7a12f3bd583d02a805e7b51a2b0773123906c10552d60c01692958c6` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz) | 162451 | `36967388f9e95f426d53421eb0e2e2db32a340218d192bba7c5a3f4603c6cab2` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz) | 150578 | `6d1b42d7b36b87475b034c32b3160edc875031ecf0b76a883bb465b51feb2fd1` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz) | 214935 | `bfb9d04fc6765988e65b13b81f783ea979f653de204c6e695c9ff5cbc078701c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz) | 9618 | `edbfdc30147a16b4aa77c3b0d17bfe73630a1719861e4a7f74c4c1098e41a81a` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz) | 171558 | `0e3f81b13a39282418645a02ff0679336933e38eb9f8fec9d5f922b17fe5822e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz) | 163141 | `427838e4aa01bccc80a7ff2c79ae0135c88e02d46cd0fecb97d237a43ad5ee6d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz) | 171812 | `d937aead95bd7b6746fbf6a089d60ef37a2aae06dd127b30bf64a7120a3ed276` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz) | 161812 | `5fc8cb40730103e16ad3fabeba267cb48a73f12b5d03722f8ffb4c403af809ed` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz) | 150441 | `3fbf836380ba24e31aa7173874a6771caaf3bac2502be5a672b980b0b3a7e4c1` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz) | 171333 | `ddaa1e218a88c21b1c75b35f2309da7f258250b35beb67def44ee2851b4cbc6b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz) | 161344 | `3e4734f34b645c0d88f1f1df0f8106e064afcadc962f3ec9f8776cda29083dae` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz) | 160291 | `412d7d7e191f961164d18fc9200c24949e0a209a7c14756be56e3216f6106ddc` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz) | 172189 | `cd5052f36cf358673f2e99c655c9c717e718dc6f41403ae635d5ce3a0b416bc3` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz) | 9607 | `a4003599de2671db0b8c1db010f9ed128ae5e3ea05625aa2fb9b5b37b80e004f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz) | 162087 | `183472ea8b2e1051cea2e308537c33095469cf65565b809d38fe22c0e3fc2291` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz) | 160306 | `d3371189f765beb52a21f423c7d4c5c4e93475fcfb0f27a2a20d97ea7e40421e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz) | 171699 | `4c3712f1bc9bfb7312bbcfc44cbde3bdab20de2864cff90aba54c34f104a4fb9` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz) | 161320 | `9265f0be7f27c778023407e6b18e5e306c427243e9bbea3a4a1ba13b9f0615bd` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz) | 160263 | `77bff4c4fbde216b2604bf5bef556ea436f597cd30b4bc45c092a7e590552ad8` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz) | 171763 | `f8b436caa910c49777f8473551cb0f785b57032586922a0b7a673a3310ca1a1a` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz) | 165403 | `6b6550bc8ca099ec8890292f8a4734ea7961ba0e99dc7091bcaa43a850ceea9e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz) | 163796 | `5409d69abc58ac4ac6b9c2e47cb1097e0e30f5a47a200f9579f1a2d9c2697a77` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz) | 168904 | `79f266037056847a60a974cf34c6d6a7f1b4c6d25b55b4188e6450f415b81816` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz) | 10010 | `30b6affda3d5caf1e275efe010ad89b54627c7693a978feedda3ebd8cdbd6532` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz) | 181523 | `12741a016074be808397b33790a61446b17d59099bf0304347cdc3cfc2c671a1` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz) | 165741 | `1862f47b7ff9599f5eeb5e399389e547884db16afff89a5034d4cd9b90a7c4e7` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz) | 182650 | `0130d7516c4904fb81ce0da8cfaedfa239cbb45224e52cab66532f312f8c4e02` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz) | 165794 | `0643e4e6b30ad11f291f49c10008f6d1aded9d780d97e259b36fc8256f742f95` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz) | 163841 | `a6f1daf9fc54b797a4f0cfd9f43bc7ae9d94ab9d8ff3814c0e490c37d8372cfb` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz) | 178477 | `3b7098cbb17d431e975bc175d4b987f3c536e9b8b21d8463d8ab633a2ebc4279` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr+0.csv.gz) | 160280 | `26d8bccada6e90e899270c2e22d6bde2cede651e57f48428aae112d576fccca8` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr+5.csv.gz) | 149791 | `28c8cba9fc88e78a2aedba4ac98d87faaffcf2d833a77e9525e98ad40509a00d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr-5.csv.gz) | 162755 | `59184ea7b912c5ee1f45c98d50e00d9aff7875e5a831c23e1e730e3119a54bbf` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-clean-clean.csv.gz) | 9606 | `df82b397ca221827e0a1c8b9b65fa513060e6f47f9410529eee5d507afbb5d38` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr+0.csv.gz) | 160680 | `7e1d66893b6298f032feec74e807f7a9ea904bee2c7a27e145e3d1384404fc21` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr+5.csv.gz) | 96542 | `30893a3a3c2fd1f0c94e8df20234bece32962f3d06b6d158efaa7f1407333630` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr-5.csv.gz) | 172087 | `2c10673bdc8a76a65905aacc3a56eec5525fa9a94b32a1ae8d76d83b28a6ceb0` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr+0.csv.gz) | 159897 | `720efb6a92e8f577f09e9a01aa60baef868021ae8f2d7a7b409769054fa9c6fc` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr+5.csv.gz) | 148991 | `da8ce8cdfaceec28e4c3a263d2f2fc4c7f18851d0482b06f77a6d1d15b1b2f1a` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr-5.csv.gz) | 162346 | `bee9fe47df3197e8cf9e6dce87b2cb68e883189be8bc35a6eb2ccf0951cd75f8` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr+0.csv.gz) | 160981 | `f2e5347c02cde99c3826a479fcfb09b39f7da4485c8ede8f5751f937de6cfef4` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr+5.csv.gz) | 160020 | `1e85c8ddc7f321bdb9cb23d259f2d8dc0bb00667f43d9e207a2675cb903b1705` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr-5.csv.gz) | 170823 | `66a30d41ae17c29bc9aa6134c4e22bfc045e43c14cce4700edca7d0ad187fe6c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-clean-clean.csv.gz) | 9604 | `c7add2cf05f47b0098f01428d81b3d4ece108b11169af97e41ca4cd345007b31` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr+0.csv.gz) | 170529 | `6c2772bfd577f5dd25f0616f1e0a41fc01b5b763d19c1c2d2fde604a6a17d556` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr+5.csv.gz) | 160183 | `3f75d5b367733f480a812834da9eabceeae5e40a7a0316f6e0976a76adef888c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr-5.csv.gz) | 171555 | `5740a1d7d8ed5db8705bb3a00a31506b2cd53f935cf562c8ed3306f0ddcac78c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr+0.csv.gz) | 160732 | `92d7715937f132eb904dd0dd8c777a0d4fc137e0e17abde0aacd8fadbd32e99e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr+5.csv.gz) | 159634 | `4b50f5dfa257eefe098ca4349ade5329b1c8ad813f7c6c0de3a1063bdb8ef09d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr-5.csv.gz) | 170843 | `2626497b6831675a3e8f33bae671ed2813641f94cff7b72bbf2d95d083d28f18` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr+0.csv.gz) | 160979 | `2d9a2cbdce580d848a9215dba63e3b060266396a709de5a537d439814c1f5bce` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr+5.csv.gz) | 150474 | `ffeec8205488aa3f9d32428696d68cc31b818c1299313b66476739dea2f70a32` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr-5.csv.gz) | 161178 | `45921aee0fff8cb8b7e8cc075d888f8c58e794f6cc9cc41374fa4115db82fbd0` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-clean-clean.csv.gz) | 9605 | `e5cfbd73a2b7b39b9eeebc669f716a03c7fb00a4f93ea3f270980769d2bc51be` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr+0.csv.gz) | 163276 | `40bb54af676f27b49d57b57a55c863c1b7b4ef28d65286b1498949181005adbc` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr+5.csv.gz) | 160312 | `48b19869a34f4c3d4a15b83505984707314193b46816a8e798b80d658d852d4b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr-5.csv.gz) | 171801 | `520a5491c0c43440880c9ade5004f39aa045ac4badafb9c17a9d57e958072c5f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr+0.csv.gz) | 160624 | `edc12d998e17d63644823e96d172cc4995c8bed582a39fcf1a2bb09f15f6ed38` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr+5.csv.gz) | 150589 | `e3012864085eccf59a797f6805a7c5261fa6a1b06136a0c93936ab8412635883` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr-5.csv.gz) | 161060 | `273bf054030f88877bdeb74eaec573dfe67c460e7b86f323627dee66a71043c3` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr+0.csv.gz) | 170846 | `efb2ff45b65a892731b39b4b25409eb38d176ba2dfa09122c299f5af07c4f6cc` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr+5.csv.gz) | 161151 | `4533653babe47ee97cf5af4488b4d76aee47cc1dab3703afc678e86f54ff4091` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr-5.csv.gz) | 172755 | `ca01f834e8da63443a20b364ca8742937a176f615b5f4f09467438cc09886ce1` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-clean-clean.csv.gz) | 9605 | `321d274e1cf3cd7a3497b440ffbaa51b59eb5d35db7ab13fc5c392f6a7bbaad0` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr+0.csv.gz) | 172050 | `e7092d376fde45983bb3c716204b12afaa9920b574c0117ea9d3e1b8ce048fb2` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr+5.csv.gz) | 161352 | `8be0aa5873350d857aaac3b91a57d6b92f580eb01611c83be21f30e6d7ad5daf` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr-5.csv.gz) | 171947 | `0de5901e98d20314294447085ff637d95baabd93822ca30d0bd534ff4d6e38db` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr+0.csv.gz) | 170654 | `ad18daf243e6afe20972cc4feb94a2150376f41c2928820f2d2884f0f73c3e94` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr+5.csv.gz) | 161400 | `e626d1f31a7494935f97edd906831526f034c3cfe8bab313a7f4e443a39ef5d6` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr-5.csv.gz) | 172291 | `dbf0de6795fea06c515019e33bbbf4ab33d95a7700652c1a54512ea650c35574` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz) | 164263 | `5f2a336ba9ce728ee62038e408ce87af363e2e975151730b4de24ea507296fff` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz) | 164031 | `3e68b5b200b33169467f24f68c284ce384fbc1316ca03f4c806f35276fa17103` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz) | 182428 | `9e55dc498ac34a6d4729b57f609920f67f58e6d346b25830bd7f760cd6b00368` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz) | 9996 | `7f6f23093c4b114a5543ea23995429972b8d7822c455ef69c30ba941ee988131` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz) | 163920 | `664c543471c109eeda9ea6b9cb17de841b01800041582d5cbf0bd17aee142d5c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz) | 163472 | `14746223dceb742be6d02c70eb8950f9ab0b4e1b1f7cf8b65a6aebb9ac0c8f63` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz) | 178615 | `50ee327bf367bd345f4ef3be9a22f4326d6ef960eadd2eeadb1301c4a926b818` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz) | 165033 | `e98e1c4fda8d312f45f28d3d1d14efa1a14d95399ff06187813097927bb70112` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz) | 163573 | `7d05a53d06b82b0f8b109c9364afddebe1d3b01442da772fcceb56d9e8874df8` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz) | 181412 | `a2972ac302622e88d4c70064545e3ed63fe92c1336b0231f33421ac6ca6b5fee` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr+0.csv.gz) | 166158 | `81f2b05e0177456de4754bdf566ba5d7434bea324e0cf0a6360b5122c18f1b14` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr+5.csv.gz) | 164506 | `14e74f258d8938b045b4a922ebcc46ca46c05e85b523e886ee4c8b6e92938465` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr-5.csv.gz) | 180745 | `9b508f9c1f82c4b29801a7e7b5eba1e8fbaeb08efd5db0e493f685c04733c5b6` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-clean-clean.csv.gz) | 9994 | `d296b6063de3102d6f1d35d4bbff6010fbff441561819e51fdf10ed24feb7da7` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr+0.csv.gz) | 179556 | `61cb1d3669f05eb1762f655b0d62dcc59547894b26b37eb01b54204ce71ae353` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr+5.csv.gz) | 163303 | `785fae495d5e16f9db940fff5edcdff0a0945b9c56def9370079cc136b6b9870` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr-5.csv.gz) | 177588 | `c2e3cee17258b96e852af588ff8480e3fcd4e10ca47137980e47c1da8a125059` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr+0.csv.gz) | 166562 | `e36f0763bf86c104340895427fb9d24d85e9d35f8d765c7c1df151a4cb84b09f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr+5.csv.gz) | 164319 | `e8ac641bcd1108a2156b0beac2d72534459cc1fa219b70dad8fa67fe5758d680` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr-5.csv.gz) | 181282 | `5015683b16737dec607004a12cb4b103f7e1fabc351ea8abc21a88902372d78c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr+0.csv.gz) | 166427 | `ce0e4faff77df80fbf3d1ea2376b1e98efd4d29fd67c648e6d836b6714b4042c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr+5.csv.gz) | 164917 | `533a25675bd6e7117b0868ea556a87d9530fe8041119452a0bff8d6654185d17` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr-5.csv.gz) | 181547 | `2f3b2fe28e1db76df4bdde76e6720a30461056691b146f97b103614d54431e27` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-clean-clean.csv.gz) | 9994 | `6c23390256047bd3ce7e9dc324ceafb8b5519bc5118f7d4782b3cc34761a4a78` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr+0.csv.gz) | 163940 | `ebb1e18ec0ae3d68d8943b073f193c6a25ca5a7a59d1fcfbebdc78afd78719f3` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr+5.csv.gz) | 163738 | `1839bb8f76aafa5ff32c8faaef90d56cdcd7eeb0a93d0fb7da77fa4006c9c0c7` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr-5.csv.gz) | 176878 | `d68c41f20518dee709636907132a064cd0dab68e4d78394f013f6a4b51db0dce` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr+0.csv.gz) | 166685 | `b0851ab6d7b3f33ab4bd745b43aa1e263c4da8c8103fd34acb90ece6600fa70c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr+5.csv.gz) | 164644 | `02751b7a3793999c507ad40f3735270422659e8bac18810c09ad4cf629ade713` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr-5.csv.gz) | 179265 | `2c69446a05e472b4e9027d148763733aae221b56c4aab31f07bef1a21fb9fa9b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr+0.csv.gz) | 164677 | `0ece75c056cf2e743ca73c85941b62031bb57026de2c22aa830cc97d41a56262` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr+5.csv.gz) | 163788 | `167145cc38d0c215b6acc933e9335a7206da1a6027932bfd4af4470ebd0f2237` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr-5.csv.gz) | 167098 | `fe778e3515e92afa1cc1a9ce00e8a06cb12b92a4d9d358f9bf2879dbdb979004` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-clean-clean.csv.gz) | 10000 | `afae12cc87131697e9eef78737b91c8f02ab099bc2e1a7452c097a1ee60ef9cb` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr+0.csv.gz) | 165656 | `52a8ed4bcc3d0bfbca335b88ba88d882bb696c4f725da1c9c8b2e5d68580f88f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr+5.csv.gz) | 163417 | `508a1f7ef3f1fa274ac3b8174815b5f89a8de4a6f4e6a1caa29cc08bd4efd924` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr-5.csv.gz) | 178727 | `458411924bcd626a364d413b086d61cad8d5a70b895676c9a5f5c34a4d27487c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr+0.csv.gz) | 163747 | `bc892518a1e37ba5a4e1eff89be905c69aab66745bfd53c826ee9225f80082ae` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr+5.csv.gz) | 163168 | `ab9ca4fffc41789d8a13dc72a6927cf40b15b4e85e4c2f470b577e3b5a1b3a60` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr-5.csv.gz) | 166513 | `25f5afe246d65a52ba1f6f3f8bf507fba1ead433e1ddf1ae2a5ac5f210a8fc58` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr+0.csv.gz) | 165506 | `294b9ee728d9655d59f0e163a196281f2f4bb9379d6b491eeef3b93467180d77` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr+5.csv.gz) | 164144 | `b48f0e859f80bfc003149c2002e49389f6efedd9844da718329174079e0dd6fe` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr-5.csv.gz) | 182622 | `76b389b6125afeca564014112b085e3416f1e2bac1f4d3f20e08185ddd1ce40c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-clean-clean.csv.gz) | 9995 | `c60e6ab1f14b58a4a6a406e3bdc563f4774fba5b88046b628f1bb787dfb82ebf` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr+0.csv.gz) | 167427 | `c807440b72a5fbbe3fbe21561a23799f03af1a7acd542121e16f6c1218606c7b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr+5.csv.gz) | 164333 | `98b597d971803d917131489180f53df60cb93cfa34e062943a65f617824036cf` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr-5.csv.gz) | 180386 | `47ae948832c031ded9ca6ae532486223f6770c91537e15efda091bcc936deae4` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr+0.csv.gz) | 164648 | `eaa1ab99c2e78b05761785616b73e542e8b0780733c0c53df2ea19f88f37a8c5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr+5.csv.gz) | 164399 | `0160b8e75fe47e259ea3ca650c123c91c6b2516c58cdab524c5b41f85aaf0430` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr-5.csv.gz) | 179625 | `56cabbc4f7f4230c7f5c1cb54fbed0d91dd97322b36fa47054eaaaa4a81451dd` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr+0.csv.gz) | 164114 | `907bbb2da3d8b4d8a668842edd4506130b27eb2c9985892d47936ad7176ee4a3` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr+5.csv.gz) | 154165 | `8f1eb299a7bc71c3be142e9f0a8f062d7cd85de2491f2f68060dbe6869fd8f2b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr-5.csv.gz) | 179514 | `538778fce684ac44ac5f485399fbca4e0a9dea51732942b0252e31749ff14b6f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-clean-clean.csv.gz) | 9994 | `ae9c90225de7788989312024b2e514a11db6c6bcb2113aaabfceced04f633762` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr+0.csv.gz) | 167401 | `f0b45d4cb8f3d933bbd6b9881b7bcaa042af63dd50b0aa17cd6cccdfe448cff5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr+5.csv.gz) | 164250 | `bc54657a46f5c6687ffa181251b1850cd86d3e2f5b67f8cc5abeb519a02f1210` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr-5.csv.gz) | 179880 | `43d0a278c3465e41e686d86f630942718f0aa0f9d53e7d6b103dafc8b0e0229e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr+0.csv.gz) | 164147 | `20b75c99d01b551eea969cf8327bab92543a87d9a0c1940c74688caf0d572418` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr+5.csv.gz) | 154429 | `282e1610781d8378dcddc9849578500e402b14b469ffd8347cc95eeebbaedacc` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr-5.csv.gz) | 178021 | `3b8c4493302bdffe588c2644b493a4efccc4ce46ba6d3eb41a0fff1af8087860` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr+0.csv.gz) | 161089 | `b3c9e93be9d835639e5efde87f6c1bee784e39f432c1db0d0dcaa9271d876319` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr+5.csv.gz) | 150962 | `bbbcc6395bb022a3a464220214f848ee33a273e12f3c292f3e6249f64ec7cf81` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr-5.csv.gz) | 171382 | `a2219ff01ad2fc95ad42fefe98b7b341103bb5e5178683263ee9d45ad6da0010` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-clean-clean.csv.gz) | 9604 | `5961e8784c16e6d0e510128a2b69268515af77561aedbe36a299e129ae561d57` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr+0.csv.gz) | 171621 | `de952861ac4201094dbe50d2d60b00ae04a571c82ce01368af0a9169c6341872` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr+5.csv.gz) | 162317 | `7ab5a26a3bd4a12b982fabe2a7126477cc82feba7f99e919b9439889ef869a89` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr-5.csv.gz) | 172308 | `a7cbbd2071173f18da2c1c1dfa6121082a48236e8cb337a1f3d6516fc9a2bdd5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr+0.csv.gz) | 160831 | `6c11ca9fb501db2aa7e32f7065c1c95474c23b32914211316c9903dbafc73d00` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr+5.csv.gz) | 150282 | `ee7cedeedd70f1cf07bc032102d6f1016844ae82a6acea9de713b97c0fcf4380` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr-5.csv.gz) | 170810 | `bcc25dce225434abb70aa9a2fa13adae7e4f05785bc0097adc5121933247613c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr+0.csv.gz) | 165877 | `0afb5155c0cd732fb7b13e86ee8f968190324e9287f62143bd082743f322b86f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr+5.csv.gz) | 164242 | `d01bf1b82fd20e3d7255fb1858acdf0f3118e6590be45fee2a1419ff688e905f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr-5.csv.gz) | 179643 | `ef239da5c168dad2e10413e5033df76f10b9f3094a8c110c8e907411f7d19877` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-clean-clean.csv.gz) | 9993 | `936d30d7dc74dc1a42a39ba0f9b44eb39f25753a1c487e29e4d0ebc5d70ae7b2` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr+0.csv.gz) | 165439 | `7e1f3a32fb3a7102af88bb5a775c2876d5a97fe4784d746e8a471edcb3803f52` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr+5.csv.gz) | 163391 | `fe32202bf62cf3cbefce91476639f31caba5ece2baa355810c7b6d9e621bc181` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr-5.csv.gz) | 179273 | `e97f170ac4cf4964c1c2dc0fd01c8c6b04295a5893b50b894251258b1cd00bc9` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr+0.csv.gz) | 165078 | `e5f6d6a9ba985be2c0919964319ffc230191557272ea89f5f1dcae5f99255219` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr+5.csv.gz) | 163208 | `7de2b9703913da3a3b365ed11478223ab496feccf7495e43deb4e7dea66e8fa1` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr-5.csv.gz) | 179940 | `ff8a02c09446992456bb82c6457f26bf60b716026c7f8f9873f6262633059fee` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr+0.csv.gz) | 164620 | `a35e319cf2815577418bac0403ba698fb8a0d9fda4dc33abf3323794ea8ce638` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr+5.csv.gz) | 163906 | `72ea4214aac7381eabd0f8cce4c56958e49d7270eab37d4e0fd11bb151c82334` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr-5.csv.gz) | 185246 | `68333cca7eb5fc35dd4bf394d5acae338e29001264eca3fcbd7b551ebf71c65c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-clean-clean.csv.gz) | 9998 | `83a2deb0e3b48c16e348400be14a2533a6a320bd465a925f5a71b57b69be5db0` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr+0.csv.gz) | 178386 | `23d7f9760cfbe5fc575bfc9a59599dd3ef247ea2bc6564e6057f5eeabd4e210d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr+5.csv.gz) | 179878 | `f6a955caed28d4c9c02ee1b807e1206058e77bfb4c36b3e16eb46fc6e3f4743c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr-5.csv.gz) | 178441 | `1516bd5489e35d6d06a180c9f06ebc621c5066603d93f3e96629de4498cba9aa` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr+0.csv.gz) | 164837 | `8d7c3a25e35569a2bf91684ad219655a5925c21e0cfae9f8bb3926acd07cb123` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr+5.csv.gz) | 163729 | `9b4f26fc700f1a4a30c21080436f7346acdc9ef74e981eaf954dac138b8e34cd` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr-5.csv.gz) | 183527 | `ae518967a12061088c2dc326dc5cd4dbb57c9f5198579315a6443845a1c75dc5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr+0.csv.gz) | 171008 | `e796c65a3699eb6c927ca87a212f4c04b9dc182d44f522a2596905aa01dd263d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr+5.csv.gz) | 161536 | `dfa237df69860295c53cc4da252a2f6e492c43c7ce021e6c88baed3d7dd58a6b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr-5.csv.gz) | 171560 | `13e94bc49ff8d28c394ec88b8eeb369f2640a227853c3c23d66b6a5474d1a354` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-clean-clean.csv.gz) | 9605 | `9726240dbb2e931238cff7c479e43ff981538b36c98ce722da64d6e08fa75c10` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr+0.csv.gz) | 171189 | `17bed883aca96c0e4c28db4a5ad330b79e556f4eb62e06b6d119c6e7dd39ab8e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr+5.csv.gz) | 160462 | `80bf9f897bfc39ea068f0720d68fc1b039226865ee8d21ab3873d24fa4a56658` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr-5.csv.gz) | 171744 | `da4f8baa03ae381ae2c33d7b45896b03d838785ee180c34997fa4aea91978ff7` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr+0.csv.gz) | 170807 | `411b199eae3a8b322b06e6b7151fe32622dda209a53434929fb11c1a548390de` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr+5.csv.gz) | 161526 | `3eb6edde84aaafb149c88d612609ff90c5fcf56a4d9aab36c0068236609d498b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr-5.csv.gz) | 171847 | `dd92a932f005b1e2cc0b301de79ed2c69aa4231f3797d48fabe55bd3a2c9be16` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr+0.csv.gz) | 164139 | `231056c95205ac0032cfafb83ed10896e03f16144f58e6bd4863c7d164063255` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr+5.csv.gz) | 153528 | `ccbc793318b4783c46a7031c818bce63a43847eacf62a855d87635184cd57a57` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr-5.csv.gz) | 165839 | `5dfebb52c4c9ae02c33b12fad4d43d5edd7c9dc20cb7270030c0a90e51d16ae5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-clean-clean.csv.gz) | 9994 | `57bcc16765d6466bcc2b11645475ad76104e148de20c9c3d113fd6d0fa765b38` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr+0.csv.gz) | 166816 | `c42a4ab9b37fbd81311add09bff61ba72d9b1b12c80f3824034255e69c3fc557` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr+5.csv.gz) | 163961 | `faf74b23ab0e78f01b6db2d695507256479b003edcce29d0247b4798ebc11b79` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr-5.csv.gz) | 179985 | `9e3b29f2dc44f283571135b9a7af420aac0f2fb936ac2566d6311f90224116f1` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr+0.csv.gz) | 163793 | `c12a2c3974c7c4c71cc358c7e0133047556a4236138ae9e9fda17bca37d4fd59` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr+5.csv.gz) | 153014 | `998893671d0e9c8dc1e4d341f7cf7668b88d3077a885b25657b75452b8c23fdb` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr-5.csv.gz) | 164961 | `4c191559cbc86ec9c436e338f4ae54a6e6c5e89f6e3013db57e63cbaff047a21` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr+0.csv.gz) | 165093 | `c02795be873e571241ae57f12f32c41503ba83763b8b68dfd532da05bd5f0731` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr+5.csv.gz) | 153256 | `2ee6e94fff5a9f6a01dfd3dcac58688c74490df024e4ff7bfd6a25fc0271f4aa` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr-5.csv.gz) | 216018 | `e83dcde6aa01ac6333eb0f61ad1e591120040fd3d6eda4c2d6bdce47fd234733` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-clean-clean.csv.gz) | 9999 | `dd51563a695ff1c17e6338dec4ca7e74f87f3d5d37b2df199c7c95ef36cb2c7f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr+0.csv.gz) | 179705 | `ff2e6a20cfd3342597e2f39a31498d84afa7fe2b282a9e046aef82cf90c816e2` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr+5.csv.gz) | 163693 | `7611bf561a853aba29ae36c947dac202a7346c399d1daca94ff09f726c9118c5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr-5.csv.gz) | 179290 | `47d62cc8a79a9a49ef028236efd8055d50b6a17db98b3e1cbb800507e6269285` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr+0.csv.gz) | 165037 | `a1132b3e88ac767acab78a0e66fb90318f6ef29cc6ca5a23d544b7d54e391d6e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr+5.csv.gz) | 153142 | `8d52fe0677b4feb532f0c5e3e6f19799e88ef39da5af984715569fe44f9fdcf7` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr-5.csv.gz) | 168096 | `bc0cc5ec45382d373dce7d761017ab0c8cef604517930ddb3e3c3e15dad923a3` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr+0.csv.gz) | 164209 | `5aa49c1d5d5efa108a871e0f586f1a44fd08e78ef15978793b46c836403a500e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr+5.csv.gz) | 153928 | `f79adda16f7b2253ccbe2eda47368bd122260c8f991bd36a82a3c62e9c5bf0bb` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr-5.csv.gz) | 165822 | `693109137b8784c56d757e443f3fba81b3dd9187e749230423aee372c4ad67d5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-clean-clean.csv.gz) | 9998 | `b2348371ca410b05d4b4496c1c7e874170a6775e475be684b65bc9ed00679e6e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr+0.csv.gz) | 179795 | `c005301dd5cc1da2c6c1a67f80ee4098833ae9f45b82796052329b3e1b093bd0` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr+5.csv.gz) | 164363 | `fed56b6e217a11c08faff0fed987fef4d45b87b175b733d758ceb1a33f80b66b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr-5.csv.gz) | 179263 | `44cd25b9b714114dafccbc2e9919b6c1757e43e2ca52ef5786a8b46813ade713` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr+0.csv.gz) | 164010 | `897b8bd091197d0f35fed2bca953797a3d574838ac0588fff57f9ecc7499e04c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr+5.csv.gz) | 153879 | `e08b5af0fbbdd3e056b4206b5ad64919e73c10d4fd514697d01c633e6116bb76` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr-5.csv.gz) | 165608 | `d42c2c97e730b43795dd6865751833d1c77eb05fb8677e7f6ea052d00255b3cf` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr+0.csv.gz) | 179794 | `97674cf1ab6109a8541d15191a3692badbe778fb7b937ce1a7e7195d301eebc6` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr+5.csv.gz) | 165065 | `220fc2108d3fcc8bfac14be637a6b2b473a0e9369f82063a2e193e0cea827fa4` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr-5.csv.gz) | 179540 | `859523d7bc5aa408b21353fbeed6eb8f0b447db7f4c666a864cd745446b8c74f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-clean-clean.csv.gz) | 10010 | `b83b4a1485b9339060a9f09cd609383d5084be1ac899dd28cbc0d7796401ee41` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr+0.csv.gz) | 165915 | `fe1ffb832ba05474fd01715e2f78829731184158850fe3058aa8e08c5aa851ca` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr+5.csv.gz) | 163520 | `3eaf061f46314695fe442627eaa028f092eae0e28f8f5ea42f8b7152844727f6` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr-5.csv.gz) | 178103 | `1362d17dc7204682adc2ad63660628dee1a2b34ae854c9e47d605f5d6b3c833d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr+0.csv.gz) | 179210 | `33353763311ffa0ce8beb7e13aa7a1089edc10f7f75d09f3e48307b1ee35565d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr+5.csv.gz) | 165241 | `98a6e092daff621b262eac9762edc300455a017a79025d5aa98468ddcf3ab52e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr-5.csv.gz) | 178740 | `f2ce318bd269920d5daa7d5850454e46028a281a6db936d5c178fb4d20b05d8d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr+0.csv.gz) | 164736 | `24d7ec100c949175e2d8f54e5cb1a8a0972b1d9e35dba485a961f05f4533ef3a` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr+5.csv.gz) | 153586 | `fc1292812b896086d13fba64b26765b41127d8f21bbed5faa96b2d07018609fb` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr-5.csv.gz) | 166464 | `0bb24a420552aa574c7669db68fd00e0f5ee22b04786a932b59c79e9ac05b3a8` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-clean-clean.csv.gz) | 9994 | `8cfa910ad9ff9379bbc34b933cbbb39f7176d44d5e551e26ee5d9aed3c03d344` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr+0.csv.gz) | 178932 | `0f96a9d5df1e2a2fade198725f2b3ea3241c1bf95fccb4f8b6164d5b7feaf3e8` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr+5.csv.gz) | 164597 | `6a132daa08f2dc3ebc2663e3d018eb991c310a3a07ef2b09bbcd10f49c80c7e6` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr-5.csv.gz) | 178806 | `59b968b58b787b9840a4594732cc3ce5fe34b140698017b67d2b6b1322c5a754` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr+0.csv.gz) | 164269 | `104ac611e37fa47cfa1b976f766dcbe19890b24cb3d5655038ea9b81160fda17` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr+5.csv.gz) | 154181 | `a38909243730d4a07686287b9a5f79a237daac107a40b8262d5468510227591c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr-5.csv.gz) | 166609 | `413e97960b919ab9837c720f213fac83810b9344b48a84dde61ebde471116db9` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr+0.csv.gz) | 171539 | `90d3c3e3358b7321c9832ace56bcb04b52a043cc2b603622cc284eb46f689223` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr+5.csv.gz) | 150701 | `6da085609d9466ee718bfa12a40e25826d09ba535f9ebbcbae43558169b09cce` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr-5.csv.gz) | 172260 | `a5bffde4652e2f900333bea0232dea9415782a6b767ad14430920a2d8b3e2724` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-clean-clean.csv.gz) | 9621 | `d71983c9718eb3e155350c9deeb296720a67dfdd894d4e042cf12dfdb6bb9e77` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr+0.csv.gz) | 171934 | `8fb56bf89e5842ffec9e74edfb24a4d429ea6ed5a483d447e8436460610a78ea` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr+5.csv.gz) | 153835 | `91c45b92095f51cbd4c2095fcc2e46574dea60fee8a2374671f8e41e82adbef4` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr-5.csv.gz) | 172884 | `2ad51e9cd4e283aa6714bd175c0e015b8a9ce89ee476e6a346a2d40cb273aace` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr+0.csv.gz) | 171558 | `176ab28828e7015f0da55c0949b6a9de1e2d9a5051002fb1c20209ee6a00cfde` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr+5.csv.gz) | 150389 | `dc2bf4c6865e6c0e0dccc14f8f2bcf383b550fac91de7c84952a4648bf421ffd` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr-5.csv.gz) | 172456 | `eabdb3d49eca4569c352149adc9aa21e477edde9a472d15268b6f52f13400155` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr+0.csv.gz) | 163951 | `4b11320553687b64ff964d87bbae0e2e71148518cb1226bab5473b5312d9fa76` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr+5.csv.gz) | 153521 | `8a1fc6eff5d9f63e4e361ca1a1518a938a538345df4171305f1f8319a9223810` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr-5.csv.gz) | 165892 | `3df4f8543d25b884ba3a88220b89c92be46c8d9e8b30c09adeeb84fcf3f173b0` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-clean-clean.csv.gz) | 9996 | `4ad748c5d74ac54eba107d372a3fe387a5a8e95c0dc86556b58d2699efba2a44` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr+0.csv.gz) | 166697 | `d91a6370150df9e9d051d88e8ecab57700da69c4430d4d85df8c3604d86041da` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr+5.csv.gz) | 164126 | `6f71c20715cc9391f0ae55dc2c4ab661edf7166ee2b810efe9bfb8faac960359` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr-5.csv.gz) | 180337 | `8273252fc33c9d85dc0c94eb5ee390eae840aa8ac110326555905af71d9289dd` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr+0.csv.gz) | 164129 | `cabf72322a9a9ade1888f550d2a1ab662d74bc319a45ce9e51a86137a5c7d2dd` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr+5.csv.gz) | 152921 | `2f9c9f6d23bccfdc83c8ecf65ff1b70636e4f056ba457708dc95a24f635c6e77` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr-5.csv.gz) | 165639 | `8ed9f162f4d3a88dfe172f555e03bfa023878bdee5cc4befdbdc44638051b11b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr+0.csv.gz) | 164574 | `c894c71d934bb20939a462aeab5ef909a67ac2778e455a8e615eb6003fd3718e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr+5.csv.gz) | 153642 | `1d7184550283d85e5f8799799ee518b4866eba89714be04605e4ad25d4362b93` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr-5.csv.gz) | 181042 | `178ae0dc35c04e6c8daf2629a81e9e3e2570f2d5cf99a1748ed212d0b2bfa3dd` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-clean-clean.csv.gz) | 9995 | `800fe8619a0b920d5a0bf030c48954104bb26c7d265bf8592271130fb45e9d70` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr+0.csv.gz) | 177249 | `798357640350c2c4ae1a57fc4301446397344d238d370743ba3e2e07056b4597` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr+5.csv.gz) | 165159 | `d5d1d77ef31c7356898ade6baae1ff00a375684530c655ec0e13f653f138c9ea` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr-5.csv.gz) | 176485 | `9f410df20e849557f2401de191ba705217582c5703c6f34b11643aac7c9472f5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr+0.csv.gz) | 165615 | `c54a3b7c54896b9ef5864cd29c35516018c3c8d0986a5bb7bcffd6ed2ad8f07b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr+5.csv.gz) | 153735 | `658938c0be596db3638dd3954705c3346b7b398aa8905eab1a494269eea0d091` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr-5.csv.gz) | 180884 | `f681334c74ac3e1d95b66000672a9296b599ca7fa5a825e3dad8ef7e790c4eea` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr+0.csv.gz) | 167136 | `b70862d177ede800e23f933fda1046ce8341efc19557dd8b28c00057f206d995` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr+5.csv.gz) | 164882 | `72d98c1edffab9eec96c524d6b0c307299fc650ee64c009839a13d763b3e2856` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr-5.csv.gz) | 179917 | `f64eb2dd38933e69ca440921584ab8ef057a79c49284f4576d5ec01e755aeb6e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-clean-clean.csv.gz) | 9999 | `f0522bd3bfffdd20bcbcdfdff9be8898448a4a1720c8e1da215a3fd81ab8a992` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr+0.csv.gz) | 180033 | `152ec5ef6a904119ececa4fd4ce81754d6ae98aa5888165fa1f4402352f8118a` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr+5.csv.gz) | 166564 | `192dd9421e0e4fca7314e1db54a15d0c63cfe199fdcec507d476136e2edcf878` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr-5.csv.gz) | 180694 | `082115f91599a8cdff357ea2fcfc289dc78dea5aba5acb0fbc3b3153ea97eac8` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr+0.csv.gz) | 167507 | `4b7ccc0ae661945f0338a741712fd7dd2f45bbf5aa74eafba01e49ce9979a1e7` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr+5.csv.gz) | 165065 | `bee9f2a7c670bf318b80db7e1a5aa0abd5fc6f9e9c06c6440396e64bf3ebf540` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr-5.csv.gz) | 180237 | `3c3dda1418c63a064f99091da122f7065bb102f34c3d6b007feddeb4adf5052c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr+0.csv.gz) | 160688 | `98363c1f400f0ce962c2919b14e745e53c55d86a5d112a47b5de132dc78ef377` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr+5.csv.gz) | 150360 | `24d023df097bad01c122f5bbf387c5527fc8a0e8d80054e326ac0372706e3567` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr-5.csv.gz) | 170872 | `f69d874736b28f9aba12e9ea3a7df54a159f4296419675cfeb6c5735943d1da6` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-clean-clean.csv.gz) | 9605 | `d47152fc322334aaad08b1900e5f0ef5595379be23cc65e17c5cd4ab46afa49b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr+0.csv.gz) | 171267 | `18029848186faa009ae566602f6777d2b9674c5c0605833d502837a410ce2201` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr+5.csv.gz) | 162880 | `059d32576e5f7b1bf64f1c21d91ff0ce03b0e744b5091e9eda27956c7ebe9ef2` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr-5.csv.gz) | 171740 | `b9bc01a482da5bde225a7c63864110b120a9f26ea59cac89d9b45d972f17cdfa` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr+0.csv.gz) | 160506 | `395678cf78edd9835ad568253c1b288ac34f8894ea1ac5ec078aaebca23b6d26` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr+5.csv.gz) | 160276 | `e338e72114da1d5c454e6d62fe1b3c5513ced28c3d18f649fcf55e41b8e769f7` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr-5.csv.gz) | 170873 | `9c04c62ea5d2a431b46b49d20ae10ba31deb604c2056b21aecb09d08dff73ee2` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr+0.csv.gz) | 160275 | `a3945e240f427fd6fe12fbb834fbf00ec034563934f38b53c57d1824abd1c851` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr+5.csv.gz) | 150870 | `812b6c5fc3a43eccb3f5c856263ad9e741423b9a348547321c4f3030fa141676` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr-5.csv.gz) | 161344 | `481b84f4b9018af20dcc996e40e1d162b7229992eb8006a717b086ad36b9d64b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-clean-clean.csv.gz) | 9606 | `c1ba3d285febcaef66637eed8d23531e63626773656afdf89c2bd7ab577e9da3` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr+0.csv.gz) | 171156 | `edf1f48a3714ef4e90e281479c43e8cd814a72f815fa5bca1a865c780b322b04` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr+5.csv.gz) | 161439 | `7357029a9464614db905c249d979781170272ecbe5ea47752f1281c6fb36c41e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr-5.csv.gz) | 171972 | `e84e87f4d425dd4971f0e8a4e0da52449303555dafe54b5137cac03c85e5c17d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr+0.csv.gz) | 159938 | `12c9dfdb59e640bb607ce3dabef6e16f936ea9dd4f2fbf7e26576e728c4165b3` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr+5.csv.gz) | 149441 | `20bd370f890b8798c405e2da847e76b0d0e6d4d2676e3903a02ab09d46dd7676` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr-5.csv.gz) | 204931 | `6ca64e537cfdec95ff02924e575d2bc134fc767c02a88beabb45e12ab2900bed` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr+0.csv.gz) | 170734 | `811e8a8ff028a2781475073d3e157314a4ccdfb3e52fe1fe5983eb34c2ad44d9` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr+5.csv.gz) | 160465 | `be6fdbb69e6ae0051dd652a58fd6661038786d1e13e9bd7e9e5ef676eb956342` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr-5.csv.gz) | 172159 | `af1a58182bc63e587094e6452441ff918f5564eab8287dddb8887a1821f29f39` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-clean-clean.csv.gz) | 9604 | `a7079a1f9b4febc259f236a79ef9723420c225432a99ab8a4b94127c4d786295` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr+0.csv.gz) | 171880 | `6bcd8349a5377bcb9265f54acd8a3e0bc2a173de7e8ca51a61e679b6db7dc570` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr+5.csv.gz) | 160570 | `391d428b41abe68902059c04ff8fe8b608439ccf0054de8feb620d587ca7231c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr-5.csv.gz) | 168637 | `ed345b13bde95c6fa44133ca329da876370858c8fb4ffb80d85da034ba4e851d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr+0.csv.gz) | 170592 | `b2902595ea8c916b442816e248f8db2f700c2aa5b27ce67e85e9bd15a3e47817` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr+5.csv.gz) | 160361 | `25c4647477b07e1b40f15bf471a35b095ca875f611ff590115acdd6c3bf0137d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr-5.csv.gz) | 172178 | `8301c9101b30531f6a12ab7f06623819becb2a4cab31a825b3b06412031a1be4` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr+0.csv.gz) | 161074 | `f87ea24cd8f007ead9c078c11a72d05e924a6f3b0b177c16eb93aae7252fdd2a` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr+5.csv.gz) | 160146 | `06b398ff72c4a672f056137d9b563a83472e233e6c3b19e54311b15d0c283ed8` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr-5.csv.gz) | 171581 | `01a945d2f413cc1ac8d78a21bc5faed2b3cee09adf30a4b07fa8e38ac801e8b1` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-clean-clean.csv.gz) | 9620 | `a5d585aa4b2630e791ea53434f9773ffe330f38dbca839cf8f5676a297455c6a` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr+0.csv.gz) | 171361 | `aaefdf223de9eefeb2c8bc12ce4bb7c63bd5f5bbb6df0f1277fc299ddd928b13` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr+5.csv.gz) | 161375 | `2c30b90f221ff6daba1376a9c0565491eb2d6b0eacb07d27d3c8d4bd61599f8b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr-5.csv.gz) | 172298 | `d61dd83e2206d032fe9d82dd89d2de076dd428b5ba6b27150a708bc556a93e7e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr+0.csv.gz) | 159710 | `3e39916d31486bda3e2677093525efaabf2987d043359beccf10551bff64e267` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr+5.csv.gz) | 159978 | `f21b398aa3d5fa5622fdc83399e4a0a17c869211cf996b66ec81a5939a850459` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr-5.csv.gz) | 171420 | `2080590be2b5475846834b93f2abc07af27f953e7d50d93a27a8d9278aeb5e84` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr+0.csv.gz) | 163985 | `51897b10bc08685f4d01bc579cb9a422fe690862a58afffc117174f648762cae` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr+5.csv.gz) | 153908 | `7dcdafa56434f8ae07e2465a7d849b419d072fc141a3bde0d093ed9e640d4c43` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr-5.csv.gz) | 165691 | `52f06594416830411c124cd000c43635892e0a5fc97ff1c884aa1d9a1678bcac` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-clean-clean.csv.gz) | 9994 | `8ed13c7b84d71cde06886adb360cf2abe0a24a1459c06e37d4218a8a672ab8a5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr+0.csv.gz) | 167740 | `59bd7ecebb45178d6538333e6aebbde2cec11731c7dc45e46c7387398342b68d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr+5.csv.gz) | 165239 | `e755bb63d3f82963ca14af5e9d569545ea90e20ea68308b5d4fda136697bdba4` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr-5.csv.gz) | 179481 | `ee0345c2f711ba320e868897ef3001148bcfff1481e07f4f3640ef7ecd98c4d2` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr+0.csv.gz) | 164031 | `0b3360c9e80ccbe2f80861d48d8de4970da9b9e0b1ce5e803dc9019e0b225977` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr+5.csv.gz) | 154886 | `746380ecc1f4f7a214c4b8baf61de1d8eadacf204f7cabd52c81bda69a2b463d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr-5.csv.gz) | 166210 | `696422095975041d32bf2c3d2c3272d06a710d0856f4a544cf8e67ef7c1f2d6f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_selection_manifest.jsonl](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_selection_manifest.jsonl) | 391132 | `c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/tests.txt](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/tests.txt) | 2591 | `a9c755d0233fb61170a2c29b5785de6c7c4759f4ad9fc46049c282aa40045777` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/cca_coverage_audit.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/cca_coverage_audit.csv) | 121013 | `ae23a0d63cc99c778228a075ca43ec9af586bc8dec64d4b8afa6e3c25b57f22b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/coverage_paired_differences.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/coverage_paired_differences.csv) | 27047181 | `37ef3816a53ceb095d7615edf0fe6cc7e0de65664febf32fec24b473e571c20d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/coverage_uncertainty_channel_strata.csv) | 9554819 | `62548dc2438e9ab399666a3d8a399a838077d9dd0a2b60501098d153b56d379a` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/coverage_uncertainty_intervals.csv) | 50092 | `02f64a59e640bf19e6d231f17bffd8f7c920ff930714f105a5223584d840c438` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_channel_scores.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_channel_scores.csv.gz) | 7374463 | `acbb60b1257c8138aa193697e59361c9dcd1f26fefff39b2f71559ecd6d58baf` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_condition_means.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_condition_means.csv) | 185835 | `4601fb061b15ceba7c0018efeda8ec91c8c536a2f55b16bb1cb786bd24679be1` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_decisions.jsonl](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_decisions.jsonl) | 215106 | `f918819a5d457cd93532ff60183d1bf7cc11ab5960b9a1746833dae83b15c52f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_fit_records.jsonl](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_fit_records.jsonl) | 1335 | `e56b2873da9a83c3f1bd2f2a999707ef063595141457f9f519112c01f1d9d044` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_method_means.csv](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_method_means.csv) | 19420 | `70ce2894d267205b2dde65711a0d28add2686d40a138fbb31cb17a955d855a02` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz) | 131908 | `836b82dcb918559bbb4997702d16255a4369e5d3c5d9cbb8f748fe21c1196df4` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz) | 127974 | `8627c7129764ae2f5f7e320b42233de86d2a3999e3fb40c2782d548cdcd9fe8f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz) | 147275 | `93878873b730f0d70cc39a08c12e569e27ad1725d54fe6d89f7efb01c2a3c765` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz) | 8325 | `4c0ee34d90c5926a9494a71ea828e5d541bf6328d0a294ee3544b1dd7d000c60` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz) | 146677 | `ec3458b1ac74e13f114011fceefc41bf0144dc5182561d584b5cdd8c2b91e667` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz) | 126893 | `0cb8db64997092fbf198a91533198d0b9258da4f531cbdaa181e5ee2eaacc53d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz) | 147915 | `13ea01da9a3888fd78d8beb85bde04757ae3868cfc8060080b7b9c8e08a4aa39` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz) | 131763 | `a45a95fb0711068654eef604df16f228abad084580e9f1647f7f789b947bfc8f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz) | 127681 | `ed37510346e341d21991626e150d2a3295356204a9e1d7de6087b897560db934` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz) | 147076 | `bd37445609e46cfcd3648a4fdf8d53da5f7580b86a1a137f4f2fe7d54ed0925d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz) | 130531 | `3fb1fba0d20caec39ec40dc555c3f2115fd4a1e818c02f7ec6305d7a04f8461e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz) | 121377 | `f6383dcc57f705ebdebe709a31397efc7c2344dc65a24fe20db1b3f820a7b33a` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz) | 194214 | `1397cfde1c98e0384b13497b94920654f66b77cd7b311333608f6ed9297d5729` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz) | 7912 | `239ce27f6db0d67e95310183aab3bffdd74bd60cdead90278db35b5be66fa882` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz) | 143037 | `e7cd7832f3f2ef32d46ed9e6dba3362d295ca42e635784cc23b3f7f2341f05be` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz) | 130937 | `f2b828c63b5ddcb535951a431d8f2f4c7118cc87d93b8af4199d6ce75eb6babc` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz) | 143738 | `366510b7d4f70cfdc0e50a2fefeeced0796982b6314a5e3d22e98b9922420e78` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz) | 129961 | `ad472195334b3c6f1e2995c686ce8e4cc5f3de8678e7ed7ff85db7b677adbf36` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz) | 121347 | `992653705661df36a407b7194aad9597ffb76c2c35cebb50877a6a18961a2d3b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz) | 142525 | `75658f3742bffe06bf78685aa1e66800278224e371e39a3f0c5b4bf9bab484da` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz) | 128540 | `9ad89a6c6fe905e737465dbab217eed6e8f54d9c255a427eb2a2558e767d14ad` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz) | 126331 | `dfe6e19427ab74bd5c9d1a8ea2e8493768f2dddf918a181f5b4035cfb4db52b8` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz) | 143320 | `a9b8116f800862e536a89a81f9dc1ab81e0041531fabece3e14c5981e92492a5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz) | 7911 | `a437c8f219195b2b0dc5a3517a015bfb9893cb9b355691ec1287872fe84a8011` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz) | 129423 | `0b8fbf3202d88e821e355639d719da137db35ca1c0bd9c74188dd1788abb8c1e` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz) | 126360 | `9850de38c29d1ca3fe98ef01ce7654c0834567381b0e1fda154b9aa58431c854` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz) | 142999 | `f591e92260ae9b2b2bbf372f8e86c84c6d86958880132a998113f22140e0565d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz) | 128641 | `3e80f60f568404819dec7129b97f48f5142c6c1e182a8c5bd0ccbb4630e5f73d` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz) | 126181 | `005785a975db3a30e74861374bf18fb692078c99dabccbf2ed59d531033fae8b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz) | 142968 | `c8b754ab899b2b282f13145c0d0809047145943db88fecd8360da98c487f1cab` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz) | 129828 | `657b977b5cf785b267ae060c8b59f7dbded5198e56879b661e088240692f67ab` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz) | 126742 | `888b0f29318002d147b5f28865705db761692865cb217a9dbf27a51044783800` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz) | 134849 | `f3306d151a0a9bdb32f1f38af5608e8e04356cf7a2157e72e88e523843980e77` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz) | 8321 | `ab25c58ed5ce3e8f907f110bfff3cc05bd15086abec447fe3112c0afa524578f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz) | 146654 | `f0a1f64aef8e75f6d43f2f65395473e8fe3c14c108e591d6ea5f58dffba8ba26` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz) | 130207 | `47c7cd66b8ce30406f506a7917de71be64697cc4a7cd474d464c4c75bd370b71` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz) | 147367 | `0e66c546de80107d034ec0f5619cfa65a92a821d146ecf787ddcba0ad8ec2fe5` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz) | 130126 | `f3bf3cb4d9a2d1fe8d63c7c25399c1eaf6e937bde4f62cb3c15a464ce7b73bfa` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz) | 126853 | `582a380c564ec88ed40c9f2b48f798bfc717ed000b90b63759707ef9a660ca5c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz) | 146817 | `cf2fada045ca626983852bc02481a068534a5a5aca085e99f6ad83da94d8de27` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz) | 127236 | `e1ffc6a843529960b5a45be9d4ac319bafe8d0f607d64c3ac9055fb2636477ed` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz) | 126930 | `308f807adc91332dde456e102b47302a40ee2cdd10e419e20aabb3bdf27d071b` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz) | 146426 | `67303e0dca4272b0663c1041faffebba8de37dc81a13d2f2ac8ad9668e3ada05` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz) | 8323 | `d87f1ef68a42290f810e63df76dbe9512292bb4ac0b284805fd8858243c81554` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz) | 128255 | `812586b9f8da2e5811e82afd5ebb8e3f9a052605548d3a944f3b72858a3db95a` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz) | 126731 | `0d213df7a71d350de434da411487b4beeb60aeb384632e6a43413be4d9c61c4f` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz) | 146093 | `d1edb05ea1cd2e326876b51b43d99d127c3c77971ff71e10d636aedc91c75aff` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz) | 129591 | `4aa36130bbe0c6ee092f8f53a280dd69cd6fb2357a413b28f5026c1f39f00edc` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz) | 126538 | `0395ae9052ada640a20748e8e20f8789d3df15520f566d56bf7d97b1b6c1666c` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz) | 146861 | `f98ab356f60a49fb45f3be75d8027e69c1f168acbb81f39b8adf4318affecbdc` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_selection_manifest.jsonl](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_selection_manifest.jsonl) | 61174 | `d3c7959a49e6e0a21fe42c6737cdc03bfaed366f14fe42ad9290aec8583758fc` |
+| [results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/tests.txt](results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/tests.txt) | 2591 | `858f86c2bd52be1a19cb518be4b5408f06b154a018de6357e46b00248e29fb54` |
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_paired_differences.csv](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_paired_differences.csv) | 170650203 | `c746ab50c9e0c621a094f160dcd6df2b1c7e1863404db162f40b39eb43f9a89c` |
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_channel_strata.csv) | 60532737 | `5a4cb080eb5e4b9d61d9d924fc23727cd98aca565c41abd284fb537c75b65409` |
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_intervals.csv) | 50473 | `5c760614cd5d360fa13888ef4461fda30f3b41efdbdf58e5525cd8d82df36556` |
@@ -62517,6 +66558,906 @@ study01_p03_prep,vmd_trial_separate,0.983233999484048,0.15450310175797857,0.2211
 
 ```
 
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/cca_pooled_method_means.csv
+
+```csv
+scope,evaluated_family,pooled_energy_snr_db
+central_shared,cca_eeg_rank1:both,9.228527208181818
+central_shared,cca_eeg_rank1:central,9.228527208181818
+central_shared,cca_eeg_rank1:posterior,10.069310921021064
+central_shared,cca_eeg_rank2:both,11.174974457325442
+central_shared,cca_eeg_rank2:central,11.174974457325442
+central_shared,cca_eeg_rank2:posterior,10.069310921021064
+central_shared,cca_reference_rank1:both,9.989016203833984
+central_shared,cca_reference_rank1:central,9.989016203833984
+central_shared,cca_reference_rank1:posterior,10.069310921021064
+central_shared,cca_reference_rank2:both,16.352900053200553
+central_shared,cca_reference_rank2:central,16.352900053200553
+central_shared,cca_reference_rank2:posterior,10.069310921021064
+central_shared,central_frontal_raw_context,10.154835711420333
+central_shared,central_frontal_vmd_context,10.069310921021064
+central_shared,identity,1.7230380471289644
+central_shared,reference_rank2_control:both,15.124574424424274
+central_shared,reference_rank2_control:central,15.124574424424274
+central_shared,reference_rank2_control:posterior,10.069310921021064
+central_shared,ridge_direct:both,19.193922318139904
+central_shared,ridge_direct:central,19.193922318139904
+central_shared,ridge_direct:posterior,10.069310921021064
+frontal,cca_eeg_rank1:both,16.62826215949223
+frontal,cca_eeg_rank1:central,16.62826215949223
+frontal,cca_eeg_rank1:posterior,16.62826215949223
+frontal,cca_eeg_rank2:both,16.62826215949223
+frontal,cca_eeg_rank2:central,16.62826215949223
+frontal,cca_eeg_rank2:posterior,16.62826215949223
+frontal,cca_reference_rank1:both,16.62826215949223
+frontal,cca_reference_rank1:central,16.62826215949223
+frontal,cca_reference_rank1:posterior,16.62826215949223
+frontal,cca_reference_rank2:both,16.62826215949223
+frontal,cca_reference_rank2:central,16.62826215949223
+frontal,cca_reference_rank2:posterior,16.62826215949223
+frontal,central_frontal_raw_context,16.62826215949223
+frontal,central_frontal_vmd_context,16.62826215949223
+frontal,identity,-5.387673982307646
+frontal,reference_rank2_control:both,16.62826215949223
+frontal,reference_rank2_control:central,16.62826215949223
+frontal,reference_rank2_control:posterior,16.62826215949223
+frontal,ridge_direct:both,16.62826215949223
+frontal,ridge_direct:central,16.62826215949223
+frontal,ridge_direct:posterior,16.62826215949223
+middle_verified,cca_eeg_rank1:both,9.051074666414385
+middle_verified,cca_eeg_rank1:central,9.051074666414385
+middle_verified,cca_eeg_rank1:posterior,10.060706620320929
+middle_verified,cca_eeg_rank2:both,10.927183496493104
+middle_verified,cca_eeg_rank2:central,10.927183496493104
+middle_verified,cca_eeg_rank2:posterior,10.060706620320929
+middle_verified,cca_reference_rank1:both,9.946251747688963
+middle_verified,cca_reference_rank1:central,9.946251747688963
+middle_verified,cca_reference_rank1:posterior,10.060706620320929
+middle_verified,cca_reference_rank2:both,15.613187157532387
+middle_verified,cca_reference_rank2:central,15.613187157532387
+middle_verified,cca_reference_rank2:posterior,10.060706620320929
+middle_verified,central_frontal_raw_context,10.138939147336087
+middle_verified,central_frontal_vmd_context,10.060706620320929
+middle_verified,identity,0.8617410657651863
+middle_verified,reference_rank2_control:both,14.341411185075662
+middle_verified,reference_rank2_control:central,14.341411185075662
+middle_verified,reference_rank2_control:posterior,10.060706620320929
+middle_verified,ridge_direct:both,18.614822243368103
+middle_verified,ridge_direct:central,18.614822243368103
+middle_verified,ridge_direct:posterior,10.060706620320929
+posterior,cca_eeg_rank1:both,12.099462562092324
+posterior,cca_eeg_rank1:central,12.68323339055742
+posterior,cca_eeg_rank1:posterior,12.099462562092324
+posterior,cca_eeg_rank2:both,13.34013932720941
+posterior,cca_eeg_rank2:central,12.68323339055742
+posterior,cca_eeg_rank2:posterior,13.34013932720941
+posterior,cca_reference_rank1:both,12.073346846737984
+posterior,cca_reference_rank1:central,12.68323339055742
+posterior,cca_reference_rank1:posterior,12.073346846737984
+posterior,cca_reference_rank2:both,13.602651200849547
+posterior,cca_reference_rank2:central,12.68323339055742
+posterior,cca_reference_rank2:posterior,13.602651200849547
+posterior,central_frontal_raw_context,12.68323339055742
+posterior,central_frontal_vmd_context,12.68323339055742
+posterior,identity,10.097879805690477
+posterior,reference_rank2_control:both,13.27906956281004
+posterior,reference_rank2_control:central,12.68323339055742
+posterior,reference_rank2_control:posterior,13.27906956281004
+posterior,ridge_direct:both,14.58446819738789
+posterior,ridge_direct:central,12.68323339055742
+posterior,ridge_direct:posterior,14.58446819738789
+temporal_shared,cca_eeg_rank1:both,9.504247771297365
+temporal_shared,cca_eeg_rank1:central,9.504247771297365
+temporal_shared,cca_eeg_rank1:posterior,10.167252650697375
+temporal_shared,cca_eeg_rank2:both,11.502462467235292
+temporal_shared,cca_eeg_rank2:central,11.502462467235292
+temporal_shared,cca_eeg_rank2:posterior,10.167252650697375
+temporal_shared,cca_reference_rank1:both,10.064020265489262
+temporal_shared,cca_reference_rank1:central,10.064020265489262
+temporal_shared,cca_reference_rank1:posterior,10.167252650697375
+temporal_shared,cca_reference_rank2:both,17.726674483186624
+temporal_shared,cca_reference_rank2:central,17.726674483186624
+temporal_shared,cca_reference_rank2:posterior,10.167252650697375
+temporal_shared,central_frontal_raw_context,10.281303762358693
+temporal_shared,central_frontal_vmd_context,10.167252650697375
+temporal_shared,identity,3.4584888328733374
+temporal_shared,reference_rank2_control:both,16.61070558087139
+temporal_shared,reference_rank2_control:central,16.61070558087139
+temporal_shared,reference_rank2_control:posterior,10.167252650697375
+temporal_shared,ridge_direct:both,20.412815675457047
+temporal_shared,ridge_direct:central,20.412815675457047
+temporal_shared,ridge_direct:posterior,10.167252650697375
+whole,cca_eeg_rank1:both,10.576722644376433
+whole,cca_eeg_rank1:central,10.713337711356166
+whole,cca_eeg_rank1:posterior,10.992299974488553
+whole,cca_eeg_rank2:both,12.168656678068654
+whole,cca_eeg_rank2:central,12.067134028635278
+whole,cca_eeg_rank2:posterior,11.22499665717368
+whole,cca_reference_rank1:both,10.798309233609174
+whole,cca_reference_rank1:central,10.98292447153706
+whole,cca_reference_rank1:posterior,11.011511075375019
+whole,cca_reference_rank2:both,13.923972254127111
+whole,cca_reference_rank2:central,13.673270994906968
+whole,cca_reference_rank2:posterior,11.244073359018351
+whole,central_frontal_raw_context,11.289970644739368
+whole,central_frontal_vmd_context,11.268085202217994
+whole,identity,2.8472650157040924e-07
+whole,reference_rank2_control:both,13.480443502175145
+whole,reference_rank2_control:central,13.358091096965941
+whole,reference_rank2_control:posterior,11.204423638841906
+whole,ridge_direct:both,14.78070484779947
+whole,ridge_direct:central,14.035075901489595
+whole,ridge_direct:posterior,11.31648726850746
+
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,ridge_direct:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-9.688411911282737e-12,-1.911934166391617e-11,-4.482216813499844e-12,498,498,True
+whole,ridge_direct:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.1467794593132044,-0.20239547567187635,-0.08269630372153615,498,498,True
+whole,ridge_direct:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.037758639166851196,0.021322509038518258,0.0524073305682723,498,498,True
+whole,ridge_direct:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.371013361365003,2.5968457412161934,5.670048163764331,498,498,True
+whole,ridge_direct:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.371013361365003,2.5968457412161934,5.670048163764331,498,498,True
+posterior,ridge_direct:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.9389551568574675e-12,-5.815969655954689e-12,-2.9068533119447836e-13,498,498,True
+posterior,ridge_direct:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.037126264424112876,-0.07353689025271477,-0.002766275884264553,498,498,True
+posterior,ridge_direct:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007039362481639293,-0.0016193945453290093,0.015951296650827763,498,498,True
+posterior,ridge_direct:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.8085146235871914,0.42476924190868914,3.26847938897218,498,498,True
+posterior,ridge_direct:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.8085146235871914,0.4247692419086891,3.26847938897218,498,498,True
+central_shared,ridge_direct:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.9913132336866148e-11,-3.9071401452279174e-11,-9.236560834862164e-12,498,498,True
+central_shared,ridge_direct:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.2972907078996551,-0.41800742318917306,-0.17510343811819692,498,498,True
+central_shared,ridge_direct:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.07821135389455668,0.04592868837124144,0.1106193056813586,498,498,True
+central_shared,ridge_direct:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,8.359725267766686,5.2863323624794125,10.597907807159297,498,498,True
+central_shared,ridge_direct:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,8.359725267766686,5.2863323624794125,10.597907807159297,498,498,True
+whole,reference_rank2_control:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.32171031247816e-12,-1.7950305825192353e-11,-3.324402471228206e-12,498,498,True
+whole,reference_rank2_control:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0956435772603873,-0.15600073933075653,-0.03980640248743665,498,498,True
+whole,reference_rank2_control:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.02590381917068913,0.009870613848366848,0.04263215921835881,498,498,True
+whole,reference_rank2_control:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.9929881309938116,0.6790363279450927,3.333934721477259,498,498,True
+whole,reference_rank2_control:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.9929881309938116,0.6790363279450927,3.333934721477259,498,498,True
+posterior,reference_rank2_control:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.539921606603571e-13,-4.288138836529453e-12,8.366221582569159e-13,498,498,True
+posterior,reference_rank2_control:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00908772346020972,-0.052701163529484646,0.022465755904565496,498,498,True
+posterior,reference_rank2_control:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0008455382556892112,-0.007493255815572267,0.012707522730795374,498,498,True
+posterior,reference_rank2_control:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5539958837979936,-0.6256025288772751,2.078600583290465,498,498,True
+posterior,reference_rank2_control:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5539958837979936,-0.6256025288772751,2.078600583290465,498,498,True
+central_shared,reference_rank2_control:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.7734155344581524e-11,-3.709019692389598e-11,-7.360801129929433e-12,498,498,True
+central_shared,reference_rank2_control:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.20421758313736843,-0.3262033208198327,-0.09235715992968624,498,498,True
+central_shared,reference_rank2_control:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0564072246058988,0.024454425871051115,0.0888377281878763,498,498,True
+central_shared,reference_rank2_control:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.002367984981748,1.6309697566844783,6.082529981596732,498,498,True
+central_shared,reference_rank2_control:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.002367984981747,1.630969756684478,6.082529981596732,498,498,True
+whole,cca_reference_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.882640915597934e-12,-2.6125487422792297e-12,6.274749955536572e-12,498,498,False
+whole,cca_reference_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.016028873450282047,-0.03523550281844507,0.0690113428279618,498,498,False
+whole,cca_reference_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.006608049661030874,-0.02191944208418344,0.007220075115878599,498,498,False
+whole,cca_reference_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.18138777766803937,-1.3801174210824674,0.6562610726612237,498,498,False
+whole,cca_reference_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.18138777766803937,-1.3801174210824674,0.6562610726612237,498,498,False
+posterior,cca_reference_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.416639681133659e-12,1.5927855889983353e-12,7.028281620389021e-12,498,498,False
+posterior,cca_reference_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.033527021719915596,0.015414450106201016,0.05607078088058096,498,498,False
+posterior,cca_reference_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.01175604160914901,-0.017157467223266942,-0.007286075665860872,498,498,False
+posterior,cca_reference_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.46503286118028886,-1.1778809196025208,0.31810826263901903,498,498,False
+posterior,cca_reference_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.46503286118028886,-1.1778809196025208,0.318108262639019,498,498,False
+central_shared,cca_reference_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.7343449724816869e-12,-7.899721107323785e-12,1.029693913805742e-11,498,498,False
+central_shared,cca_reference_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.011242911955782035,-0.10078519058351117,0.12182181149544521,498,498,False
+central_shared,cca_reference_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.006206274777149589,-0.039038708850908245,0.023159051729386006,498,498,False
+central_shared,cca_reference_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.06229761756960701,-2.4961168615855978,1.8236662419363234,498,498,False
+central_shared,cca_reference_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.06229761756960706,-2.4961168615855978,1.8236662419363234,498,498,False
+whole,cca_reference_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.954956138654346e-12,-1.8750359054841096e-11,-3.932378805698853e-12,498,498,True
+whole,cca_reference_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.11583383141312673,-0.17726887310457187,-0.06183525300341936,498,498,True
+whole,cca_reference_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.031343670294323736,0.016725194998907986,0.047611655828613486,498,498,True
+whole,cca_reference_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.6708699204517807,1.4268889793917252,3.973385836968256,498,498,True
+whole,cca_reference_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.6708699204517807,1.4268889793917252,3.973385836968256,498,498,True
+posterior,cca_reference_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.2394454881920527e-12,-5.088241482045881e-12,3.9195381622571457e-13,498,498,True
+posterior,cca_reference_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.018662230230107713,-0.06563903571529066,0.01236247829215716,498,498,True
+posterior,cca_reference_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0034609691030313442,-0.004567105306375475,0.01563172917756841,498,498,True
+posterior,cca_reference_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.8903312634096994,-0.34097705356622454,2.493595292373901,498,498,True
+posterior,cca_reference_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.8903312634096994,-0.34097705356622454,2.493595292373901,498,498,True
+central_shared,cca_reference_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.8788601677577917e-11,-3.847960947504234e-11,-8.380420861956036e-12,498,498,True
+central_shared,cca_reference_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.24200747690464813,-0.3639953191725846,-0.13744727512138216,498,498,True
+central_shared,cca_reference_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.06656153850151356,0.03619353322431502,0.0989317450316688,498,498,True
+central_shared,cca_reference_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.261829568155849,3.00675312442942,7.201660539318773,498,498,True
+central_shared,cca_reference_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.261829568155849,3.00675312442942,7.201660539318773,498,498,True
+whole,cca_eeg_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.8116003950508028e-12,-1.9674310997702353e-12,7.695247014997262e-12,498,498,False
+whole,cca_eeg_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.030953413019617057,-0.026442558759871154,0.07911542339796851,498,498,False
+whole,cca_eeg_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.011850839554289389,-0.02519398907188514,0.0033745731978968817,498,498,False
+whole,cca_eeg_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.643536706686075,-1.6056838636817146,0.22621122597600735,498,498,False
+whole,cca_eeg_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.643536706686075,-1.6056838636817146,0.22621122597600726,498,498,False
+posterior,cca_eeg_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.536002242257883e-12,2.3509854887093575e-12,8.848734685156336e-12,498,498,False
+posterior,cca_eeg_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.04330621186982915,0.02373722150923278,0.06682355975191477,498,498,False
+posterior,cca_eeg_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.015943251476644084,-0.023039578172853653,-0.010367775671051823,498,498,False
+posterior,cca_eeg_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.38600713546826504,-1.1326194557212783,0.37226767738719235,498,498,False
+posterior,cca_eeg_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.38600713546826504,-1.1326194557212783,0.3722676773871924,498,498,False
+central_shared,cca_eeg_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.9953271938962875e-12,-7.142868572786158e-12,1.197728469872808e-11,498,498,False
+central_shared,cca_eeg_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.037339331303867726,-0.083811295955982,0.1474419781230564,498,498,False
+central_shared,cca_eeg_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.014833450956565668,-0.04488907807563455,0.01661504141452835,498,498,False
+central_shared,cca_eeg_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.1375547113531526,-3.132977285396065,0.6504197587288744,498,498,False
+central_shared,cca_eeg_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.1375547113531526,-3.132977285396065,0.6504197587288741,498,498,False
+whole,cca_eeg_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.142406653766871e-12,-1.6326644896777032e-11,-2.3951112955321235e-12,498,498,True
+whole,cca_eeg_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.06544958131068997,-0.12878619592849203,-0.005652453965170993,498,498,True
+whole,cca_eeg_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.017390837452397737,-0.002371263951418337,0.035087062302924646,498,498,True
+whole,cca_eeg_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.4344666277960307,-0.5974997712483624,1.3966847766349206,498,498,True
+whole,cca_eeg_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.4344666277960307,-0.5974997712483624,1.3966847766349206,498,498,True
+posterior,cca_eeg_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.9901846854139746e-13,-3.087656835822872e-12,2.468616801488225e-12,498,498,True
+posterior,cca_eeg_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.009279854200413325,-0.046269455167876616,0.024686182443488334,498,498,True
+posterior,cca_eeg_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0004503806855492043,-0.008095359830001873,0.010075202876068844,498,498,True
+posterior,cca_eeg_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5968607303595146,-0.4075008094449615,1.7614912040940227,498,498,True
+posterior,cca_eeg_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5968607303595146,-0.40750080944496136,1.7614912040940227,498,498,True
+central_shared,cca_eeg_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.5474335995260043e-11,-3.351034418258662e-11,-6.100793814972955e-12,498,498,True
+central_shared,cca_eeg_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.1378951052087237,-0.2738122262353258,-0.021544451274138687,498,498,True
+central_shared,cca_eeg_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03798517596616399,-0.0005566667367708204,0.07555347219895993,498,498,True
+central_shared,cca_eeg_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5544419111593668,-1.5443317035240631,2.327533459454378,498,498,True
+central_shared,cca_eeg_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5544419111593668,-1.5443317035240631,2.327533459454378,498,498,True
+whole,ridge_direct:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0052277156311669e-11,-2.2105193640082002e-11,-4.30117875453711e-12,498,498,True
+whole,ridge_direct:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.14763837145760797,-0.21273844391997437,-0.08317141994631483,498,498,True
+whole,ridge_direct:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03756341866950784,0.020726909024272183,0.054109279823936984,498,498,True
+whole,ridge_direct:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.350516018137938,2.5242534856622947,5.698733486104073,498,498,True
+whole,ridge_direct:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.350516018137937,2.5242534856622947,5.698733486104073,498,498,True
+posterior,ridge_direct:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.9389551568574675e-12,-5.815969655954689e-12,-2.9068533119447836e-13,498,498,True
+posterior,ridge_direct:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.037126264424112876,-0.07353689025271477,-0.002766275884264553,498,498,True
+posterior,ridge_direct:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007039362481639293,-0.0016193945453290093,0.015951296650827763,498,498,True
+posterior,ridge_direct:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.8085146235871914,0.42476924190868914,3.26847938897218,498,498,True
+posterior,ridge_direct:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.8085146235871914,0.4247692419086891,3.26847938897218,498,498,True
+central_shared,ridge_direct:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.068554943124145e-11,-4.570085120909353e-11,-8.562790180309926e-12,498,498,True
+central_shared,ridge_direct:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.2990435021311517,-0.4340940767319395,-0.1734288434583629,498,498,True
+central_shared,ridge_direct:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.07776390238808775,0.04537565115833896,0.11272875840186156,498,498,True
+central_shared,ridge_direct:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,8.313853202963445,5.16925168721886,10.49764401270928,498,498,True
+central_shared,ridge_direct:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,8.313853202963445,5.16925168721886,10.49764401270928,498,498,True
+whole,reference_rank2_control:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.685575557507092e-12,-2.1113679518825235e-11,-2.6905486103552936e-12,498,498,True
+whole,reference_rank2_control:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.09650248940479084,-0.16629282358076222,-0.03960449610040709,498,498,True
+whole,reference_rank2_control:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.025708598673345774,0.00930919207821503,0.044205488323861925,498,498,True
+whole,reference_rank2_control:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.9724907877667455,0.6756734007579581,3.3595269748937815,498,498,True
+whole,reference_rank2_control:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.9724907877667455,0.6756734007579582,3.3595269748937815,498,498,True
+posterior,reference_rank2_control:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.539921606603571e-13,-4.288138836529453e-12,8.366221582569159e-13,498,498,True
+posterior,reference_rank2_control:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00908772346020972,-0.052701163529484646,0.022465755904565496,498,498,True
+posterior,reference_rank2_control:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0008455382556892112,-0.007493255815572267,0.012707522730795374,498,498,True
+posterior,reference_rank2_control:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5539958837979936,-0.6256025288772751,2.078600583290465,498,498,True
+posterior,reference_rank2_control:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5539958837979936,-0.6256025288772751,2.078600583290465,498,498,True
+central_shared,reference_rank2_control:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.8506572438956825e-11,-4.3500437217956946e-11,-6.210247186656543e-12,498,498,True
+central_shared,reference_rank2_control:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.205970377368865,-0.3417814102224798,-0.08741878537047468,498,498,True
+central_shared,reference_rank2_control:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.055959773099429885,0.02304629959143698,0.09200586999083629,498,498,True
+central_shared,reference_rank2_control:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.956495920178507,1.6348378040745841,6.147159909176948,498,498,True
+central_shared,reference_rank2_control:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.956495920178507,1.634837804074584,6.147159909176948,498,498,True
+whole,cca_reference_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.518775670569002e-12,-3.600829138349973e-12,6.218756731840561e-12,498,498,False
+whole,cca_reference_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.015169961305878483,-0.04110480042152208,0.07243225558878735,498,498,False
+whole,cca_reference_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.006803270158374235,-0.02281358415486148,0.008676709279967438,498,498,False
+whole,cca_reference_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.20188512089510557,-1.4409198346007568,0.64187947170183,498,498,False
+whole,cca_reference_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.20188512089510557,-1.4409198346007568,0.64187947170183,498,498,False
+posterior,cca_reference_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.416639681133659e-12,1.5927855889983353e-12,7.028281620389021e-12,498,498,False
+posterior,cca_reference_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.033527021719915596,0.015414450106201016,0.05607078088058096,498,498,False
+posterior,cca_reference_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.01175604160914901,-0.017157467223266942,-0.007286075665860872,498,498,False
+posterior,cca_reference_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.46503286118028886,-1.1778809196025208,0.31810826263901903,498,498,False
+posterior,cca_reference_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.46503286118028886,-1.1778809196025208,0.318108262639019,498,498,False
+central_shared,cca_reference_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,9.619278781063868e-13,-1.0443095735766485e-11,1.0316302483846508e-11,498,498,False
+central_shared,cca_reference_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.009490117724285463,-0.11387506564595785,0.13071033875593596,498,498,False
+central_shared,cca_reference_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.006653726283618504,-0.04024029269731558,0.026430861675465895,498,498,False
+central_shared,cca_reference_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.10816968237284755,-2.5422221926929054,1.7765464670057443,498,498,False
+central_shared,cca_reference_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.10816968237284756,-2.5422221926929054,1.7765464670057443,498,498,False
+whole,cca_reference_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-9.318821383683277e-12,-2.168199105248982e-11,-3.4894929675074954e-12,498,498,True
+whole,cca_reference_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.11669274355753027,-0.19141934766657132,-0.05921244796264418,498,498,True
+whole,cca_reference_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.031148449796980372,0.015391934534844253,0.04924085929267697,498,498,True
+whole,cca_reference_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.650372577224714,1.388728359926346,4.0068583140264185,498,498,True
+whole,cca_reference_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.650372577224714,1.388728359926346,4.0068583140264185,498,498,True
+posterior,cca_reference_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.2394454881920527e-12,-5.088241482045881e-12,3.9195381622571457e-13,498,498,True
+posterior,cca_reference_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.018662230230107713,-0.06563903571529066,0.01236247829215716,498,498,True
+posterior,cca_reference_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0034609691030313442,-0.004567105306375475,0.01563172917756841,498,498,True
+posterior,cca_reference_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.8903312634096994,-0.34097705356622454,2.493595292373901,498,498,True
+posterior,cca_reference_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.8903312634096994,-0.34097705356622454,2.493595292373901,498,498,True
+central_shared,cca_reference_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.9561018771953215e-11,-4.4712749599591797e-11,-7.613238496966566e-12,498,498,True
+central_shared,cca_reference_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.2437602711361447,-0.3833410570665034,-0.12688640947308266,498,498,True
+central_shared,cca_reference_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.06611408699504465,0.03403806622639624,0.10160817156524457,498,498,True
+central_shared,cca_reference_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.215957503352609,2.9844523148266764,7.348547653145881,498,498,True
+central_shared,cca_reference_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.215957503352609,2.9844523148266764,7.348547653145881,498,498,True
+whole,cca_eeg_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.447735150021871e-12,-3.0052901415040943e-12,7.759379627472805e-12,498,498,False
+whole,cca_eeg_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.030094500875213495,-0.03258418852111052,0.08225898651284907,498,498,False
+whole,cca_eeg_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.012046060051632747,-0.02626192053663788,0.0049243564259947945,498,498,False
+whole,cca_eeg_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6640340499131412,-1.6349261371763921,0.2779146656793855,498,498,False
+whole,cca_eeg_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6640340499131412,-1.6349261371763921,0.2779146656793855,498,498,False
+posterior,cca_eeg_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.536002242257883e-12,2.3509854887093575e-12,8.848734685156336e-12,498,498,False
+posterior,cca_eeg_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.04330621186982915,0.02373722150923278,0.06682355975191477,498,498,False
+posterior,cca_eeg_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.015943251476644084,-0.023039578172853653,-0.010367775671051823,498,498,False
+posterior,cca_eeg_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.38600713546826504,-1.1326194557212783,0.37226767738719235,498,498,False
+posterior,cca_eeg_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.38600713546826504,-1.1326194557212783,0.3722676773871924,498,498,False
+central_shared,cca_eeg_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.2229100995209876e-12,-9.779412609947741e-12,1.290899919696879e-11,498,498,False
+central_shared,cca_eeg_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03558653707237115,-0.09698525647709873,0.14465874969975176,498,498,False
+central_shared,cca_eeg_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.015280902463034584,-0.047239588846598235,0.020707654277754627,498,498,False
+central_shared,cca_eeg_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.183426776156393,-3.3100335582651788,0.7018198160296303,498,498,False
+central_shared,cca_eeg_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.183426776156393,-3.3100335582651783,0.70181981602963,498,498,False
+whole,cca_eeg_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.506271898795804e-12,-1.8832381642513706e-11,-2.1052659880147354e-12,498,498,True
+whole,cca_eeg_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.06630849345509354,-0.13727795303421844,-0.0040557129183512305,498,498,True
+whole,cca_eeg_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.017195616955054376,-0.002590797186073512,0.03593608770798569,498,498,True
+whole,cca_eeg_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.4139692845689644,-0.6364358556503954,1.4647557380510088,498,498,True
+whole,cca_eeg_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.4139692845689644,-0.6364358556503954,1.4647557380510088,498,498,True
+posterior,cca_eeg_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.9901846854139746e-13,-3.087656835822872e-12,2.468616801488225e-12,498,498,True
+posterior,cca_eeg_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.009279854200413325,-0.046269455167876616,0.024686182443488334,498,498,True
+posterior,cca_eeg_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0004503806855492043,-0.008095359830001873,0.010075202876068844,498,498,True
+posterior,cca_eeg_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5968607303595146,-0.4075008094449615,1.7614912040940227,498,498,True
+posterior,cca_eeg_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5968607303595146,-0.40750080944496136,1.7614912040940227,498,498,True
+central_shared,cca_eeg_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.6246753089635345e-11,-3.92438899143954e-11,-5.158983248691401e-12,498,498,True
+central_shared,cca_eeg_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.13964789944022027,-0.28583846875115865,-0.014877929535599264,498,498,True
+central_shared,cca_eeg_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03753772445969507,-0.0010906863556412242,0.07848426402208063,498,498,True
+central_shared,cca_eeg_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5085698463561262,-1.5493453215441453,2.368410403436429,498,498,True
+central_shared,cca_eeg_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5085698463561263,-1.5493453215441453,2.368410403436429,498,498,True
+
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/matched_cca_controls/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,cca_reference_rank1:both,ridge_direct:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.157105282688067e-11,7.528836897050325e-12,2.1541900273884834e-11,498,498,False
+whole,cca_reference_rank1:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.16280833276348644,0.1414446231008666,0.19260378090222458,498,498,False
+whole,cca_reference_rank1:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.04436668882788207,-0.05005320116874888,-0.0401892044158072,498,498,False
+whole,cca_reference_rank1:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.5524011390330426,-5.268488783369539,-3.6576411045082575,498,498,False
+whole,cca_reference_rank1:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.5524011390330426,-5.268488783369539,-3.6576411045082575,498,498,False
+posterior,cca_reference_rank1:both,ridge_direct:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.355594837991126e-12,2.258863371697474e-12,1.2085068969527077e-11,498,498,False
+posterior,cca_reference_rank1:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.07065328614402847,0.04631128674992958,0.10105038360311698,498,498,False
+posterior,cca_reference_rank1:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.018795404090788306,-0.027256775128128248,-0.01198008924812315,498,498,False
+posterior,cca_reference_rank1:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.27354748476748,-3.2187967959846464,-1.3387498184591207,498,498,False
+posterior,cca_reference_rank1:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.27354748476748,-3.2187967959846464,-1.3387498184591207,498,498,False
+central_shared,cca_reference_rank1:both,ridge_direct:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.1647477309347837e-11,1.4383486005413051e-11,3.8507350901662314e-11,498,498,False
+central_shared,cca_reference_rank1:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.30853361985543715,0.2739743555969646,0.3533480309184508,498,498,False
+central_shared,cca_reference_rank1:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.08441762867170627,-0.09142362084261602,-0.07785841758685001,498,498,False
+central_shared,cca_reference_rank1:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.422022885336293,-9.630583500429188,-6.96257367939307,498,498,False
+central_shared,cca_reference_rank1:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.422022885336293,-9.630583500429188,-6.96257367939307,498,498,False
+whole,cca_reference_rank2:both,ridge_direct:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,7.334557726283912e-13,2.1813005865291162e-13,1.3702239940360248e-12,498,498,False
+whole,cca_reference_rank2:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.030945627900077693,0.015654928493859663,0.051459163735825195,498,498,False
+whole,cca_reference_rank2:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.006414968872527466,-0.011541961509007314,-0.002287458585512754,498,498,False
+whole,cca_reference_rank2:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.700143440913223,-2.5486021014539784,-0.9431811986001905,498,498,False
+whole,cca_reference_rank2:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.700143440913223,-2.5486021014539784,-0.9431811986001905,498,498,False
+posterior,cca_reference_rank2:both,ridge_direct:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.995096686654149e-13,1.307813077682936e-13,1.3662082356376825e-12,498,498,False
+posterior,cca_reference_rank2:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.01846403419400517,0.004807824276890672,0.03593284484500592,498,498,False
+posterior,cca_reference_rank2:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.003578393378607949,-0.007628229024168393,2.0656575011191216e-05,498,498,False
+posterior,cca_reference_rank2:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9181833601774921,-1.7391198896006126,-0.3385455527667808,498,498,False
+posterior,cca_reference_rank2:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9181833601774921,-1.7391198896006124,-0.3385455527667808,498,498,False
+central_shared,cca_reference_rank2:both,ridge_direct:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1245306592882348e-12,3.374975880980561e-13,2.122362771696324e-12,498,498,False
+central_shared,cca_reference_rank2:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.055283230995007,0.028679519398937377,0.08725612804235792,498,498,False
+central_shared,cca_reference_rank2:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.011649815393043125,-0.020293949232226802,-0.004862001017366412,498,498,False
+central_shared,cca_reference_rank2:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.097895699610837,-4.568197015342031,-1.6927198583942729,498,498,False
+central_shared,cca_reference_rank2:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.0978956996108367,-4.568197015342031,-1.6927198583942729,498,498,False
+whole,cca_eeg_rank1:both,ridge_direct:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.250001230633354e-11,8.070104335361414e-12,2.2468911061690273e-11,498,498,False
+whole,cca_eeg_rank1:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.17773287233282148,0.14878352808863216,0.2089584942622651,498,498,False
+whole,cca_eeg_rank1:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.04960947872114058,-0.056490200726313104,-0.04369934288040339,498,498,False
+whole,cca_eeg_rank1:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.014550068051078,-6.080632601084055,-3.9030305821707376,498,498,False
+whole,cca_eeg_rank1:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.014550068051078,-6.080632601084055,-3.903030582170738,498,498,False
+posterior,cca_eeg_rank1:both,ridge_direct:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.474957399115351e-12,2.956196722900462e-12,1.3707227885691575e-11,498,498,False
+posterior,cca_eeg_rank1:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.08043247629394203,0.044855609115067745,0.12277130706629125,498,498,False
+posterior,cca_eeg_rank1:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.022982613958283375,-0.03546913622064985,-0.01348733039355522,498,498,False
+posterior,cca_eeg_rank1:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.1945217590554567,-3.4493006092638154,-0.9205624756625744,498,498,False
+posterior,cca_eeg_rank1:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.1945217590554567,-3.4493006092638154,-0.9205624756625743,498,498,False
+central_shared,cca_eeg_rank1:both,ridge_direct:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.2908459530762437e-11,1.538113476067442e-11,3.975737430129037e-11,498,498,False
+central_shared,cca_eeg_rank1:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.33463003920352286,0.29357815517624924,0.3816844697564357,498,498,False
+central_shared,cca_eeg_rank1:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.09304480485112235,-0.10238346826766964,-0.08513012595069344,498,498,False
+central_shared,cca_eeg_rank1:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-9.497279979119838,-11.198739441291025,-7.734191705547072,498,498,False
+central_shared,cca_eeg_rank1:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-9.497279979119838,-11.198739441291025,-7.734191705547072,498,498,False
+whole,cca_eeg_rank2:both,ridge_direct:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.546005257515865e-12,1.0704647228462307e-12,5.359862070272041e-12,498,498,False
+whole,cca_eeg_rank2:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.08132987800251446,0.0601259011693321,0.10853266088796366,498,498,False
+whole,cca_eeg_rank2:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.02036780171445346,-0.03037718345598969,-0.012857523207971105,498,498,False
+whole,cca_eeg_rank2:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.936546733568973,-5.149695144319638,-2.8690141275837826,498,498,False
+whole,cca_eeg_rank2:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.936546733568973,-5.149695144319638,-2.869014127583783,498,498,False
+posterior,cca_eeg_rank2:both,ridge_direct:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.6399366883160701e-12,1.8842674444866225e-13,4.42334439327345e-12,498,498,False
+posterior,cca_eeg_rank2:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.027846410223699554,0.009352640924339855,0.05125472839325152,498,498,False
+posterior,cca_eeg_rank2:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.006588981796090089,-0.013193013346374861,-0.0019215679998189229,498,498,False
+posterior,cca_eeg_rank2:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.2116538932276768,-2.2605358909716258,-0.3309759943230498,498,498,False
+posterior,cca_eeg_rank2:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.2116538932276768,-2.260535890971626,-0.3309759943230498,498,498,False
+central_shared,cca_eeg_rank2:both,ridge_direct:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.438796341606107e-12,2.128371111981612e-12,8.8216074116574e-12,498,498,False
+central_shared,cca_eeg_rank2:both,ridge_direct:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.15939560269093145,0.12299594263370033,0.2050912882987452,498,498,False
+central_shared,cca_eeg_rank2:both,ridge_direct:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0402261779283927,-0.05839412504846922,-0.02614871534685922,498,498,False
+central_shared,cca_eeg_rank2:both,ridge_direct:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.80528335660732,-9.904077617570419,-6.033398934831602,498,498,False
+central_shared,cca_eeg_rank2:both,ridge_direct:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.80528335660732,-9.904077617570419,-6.033398934831602,498,498,False
+whole,cca_reference_rank1:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.0204351228076095e-11,6.221014086669896e-12,2.013408119784413e-11,498,498,False
+whole,cca_reference_rank1:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.11167245071066934,0.0870957700257368,0.15255827865967606,498,498,False
+whole,cca_reference_rank1:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.03251186883172001,-0.041369775491190044,-0.026019195037766268,498,498,False
+whole,cca_reference_rank1:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.174375908661851,-2.9880659181043354,-1.5145371521162996,498,498,False
+whole,cca_reference_rank1:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.174375908661851,-2.9880659181043354,-1.5145371521162996,498,498,False
+posterior,cca_reference_rank1:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.170631841794016e-12,1.6560415687603825e-12,1.1204313680603395e-11,498,498,False
+posterior,cca_reference_rank1:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.04261474518012531,0.02246806613796082,0.0775162132199977,498,498,False
+posterior,cca_reference_rank1:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.012601579864838224,-0.023084962928749637,-0.0068631325284015336,498,498,False
+posterior,cca_reference_rank1:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0190287449782827,-1.9077499782140332,-0.37931837186696454,498,498,False
+posterior,cca_reference_rank1:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0190287449782827,-1.9077499782140332,-0.37931837186696454,498,498,False
+central_shared,cca_reference_rank1:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.9468500317063213e-11,1.225274082663497e-11,3.613937708032487e-11,498,498,False
+central_shared,cca_reference_rank1:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.21546049509315046,0.16980090743668205,0.2793045154908454,498,498,False
+central_shared,cca_reference_rank1:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.06261349938304839,-0.075496745992569,-0.049982962527530574,498,498,False
+central_shared,cca_reference_rank1:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.064665602551355,-5.450117818686074,-2.896872866781816,498,498,False
+central_shared,cca_reference_rank1:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.064665602551355,-5.450117818686074,-2.896872866781816,498,498,False
+whole,cca_reference_rank2:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-6.332458261761862e-13,-1.1001117186527471e-12,-3.097180108330168e-13,498,498,True
+whole,cca_reference_rank2:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.020190254152739437,-0.0302716421087351,-0.010270385820369043,498,498,True
+whole,cca_reference_rank2:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.005439851123634596,0.0027091782293399967,0.008463091879585877,498,498,True
+whole,cca_reference_rank2:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.6778817894579691,0.3154055713828795,1.0593869976045813,498,498,True
+whole,cca_reference_rank2:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.6778817894579691,0.31540557138287945,1.059386997604581,498,498,True
+posterior,cca_reference_rank2:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.854533275316955e-13,-9.17419289993535e-13,-1.8675427787424077e-13,498,498,True
+posterior,cca_reference_rank2:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.009574506769897994,-0.016334178126789275,-0.004332195588016078,498,498,True
+posterior,cca_reference_rank2:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0026154308473421333,0.0011120858580014087,0.005019271384571489,498,498,True
+posterior,cca_reference_rank2:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.3363353796117057,0.1421239164976744,0.5670928071876778,498,498,True
+posterior,cca_reference_rank2:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.33633537961170573,0.1421239164976744,0.5670928071876778,498,498,True
+central_shared,cca_reference_rank2:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0544463329963906e-12,-1.8117391015465618e-12,-5.309174462388149e-13,498,498,True
+central_shared,cca_reference_rank2:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0377898937672797,-0.059870351840416634,-0.018988933356662043,498,498,True
+central_shared,cca_reference_rank2:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.01015431389561475,0.004973444727528223,0.015974886117621784,498,498,True
+central_shared,cca_reference_rank2:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.2594615831741014,0.5606842456377245,2.082864604853409,498,498,True
+central_shared,cca_reference_rank2:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.2594615831741014,0.5606842456377245,2.082864604853409,498,498,True
+whole,cca_eeg_rank1:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1133310707528962e-11,6.981150211131439e-12,2.1140801236992232e-11,498,498,False
+whole,cca_eeg_rank1:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.12659699028000435,0.0995639546032197,0.16312880119768558,498,498,False
+whole,cca_eeg_rank1:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.03775465872497852,-0.04702427812048442,-0.031174865259831132,498,498,False
+whole,cca_eeg_rank1:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.636524837679887,-3.4944196876450873,-1.8270667963784422,498,498,False
+whole,cca_eeg_rank1:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.636524837679887,-3.4944196876450873,-1.8270667963784422,498,498,False
+posterior,cca_eeg_rank1:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.28999440291824e-12,2.2861122567364235e-12,1.2214473808535602e-11,498,498,False
+posterior,cca_eeg_rank1:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.052393935330038874,0.017091733906107524,0.08971926380907719,498,498,False
+posterior,cca_eeg_rank1:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.016788789732333297,-0.02788010642491764,-0.007449167179347257,498,498,False
+posterior,cca_eeg_rank1:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9400030192662586,-1.8458335613703865,-0.0010013329340915773,498,498,False
+posterior,cca_eeg_rank1:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9400030192662586,-1.8458335613703865,-0.001001332934091585,498,498,False
+central_shared,cca_eeg_rank1:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.0729482538477813e-11,1.3352695311304764e-11,3.766460179458452e-11,498,498,False
+central_shared,cca_eeg_rank1:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.24155691444123617,0.198464274476635,0.29846184139625254,498,498,False
+central_shared,cca_eeg_rank1:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.07124067556246447,-0.08354477518340817,-0.06073126878254819,498,498,False
+central_shared,cca_eeg_rank1:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.1399226963349,-6.582509350027444,-3.729558170334522,498,498,False
+central_shared,cca_eeg_rank1:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.1399226963349,-6.582509350027444,-3.729558170334522,498,498,False
+whole,cca_eeg_rank2:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1793036587112875e-12,-6.626245605860217e-14,3.4295356040189566e-12,498,498,False
+whole,cca_eeg_rank2:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03019399594969732,0.0037178565835227955,0.054608233337269975,498,498,False
+whole,cca_eeg_rank2:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.008512981718291398,-0.01725949633088245,-0.0009026125311435151,498,498,False
+whole,cca_eeg_rank2:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.5585215031977813,-2.4736984008935208,-0.5906699761208193,498,498,False
+whole,cca_eeg_rank2:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.5585215031977813,-2.4736984008935208,-0.5906699761208193,498,498,False
+posterior,cca_eeg_rank2:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.549736921189595e-13,-6.36407822231871e-13,2.6007696752948994e-12,498,498,False
+posterior,cca_eeg_rank2:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00019213074020360868,-0.01613777930295405,0.019021392360486885,498,498,True
+posterior,cca_eeg_rank2:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0003951575701400069,-0.005424856376681965,0.003464547245844981,498,498,False
+posterior,cca_eeg_rank2:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.04286484656152097,-0.7076964583374782,0.7154318796867375,498,498,True
+posterior,cca_eeg_rank2:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.04286484656152097,-0.7076964583374782,0.7154318796867375,498,498,True
+central_shared,cca_eeg_rank2:both,reference_rank2_control:both,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.2598193493214805e-12,1.2442070728121366e-13,6.115758051681559e-12,498,498,False
+central_shared,cca_eeg_rank2:both,reference_rank2_control:both,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.06632247792864474,0.012607049037127015,0.11318819696220968,498,498,False
+central_shared,cca_eeg_rank2:both,reference_rank2_control:both,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.018422048639734817,-0.03560466645252365,-0.002705046735509569,498,498,False
+central_shared,cca_eeg_rank2:both,reference_rank2_control:both,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.447926073822381,-5.151195728729866,-1.399021711395837,498,498,False
+central_shared,cca_eeg_rank2:both,reference_rank2_control:both,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.447926073822381,-5.151195728729866,-1.3990217113958372,498,498,False
+
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-full-001/nonfrontal_method_means.csv
+
+```csv
+scope,evaluated_family,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration
+central_shared,cca_eeg_rank1:both,2.4953979220072124e-11,0.5086884431660746,0.8815004998962699,9.765879646207154,7.811745273545972,0.015280902463034584
+central_shared,cca_eeg_rank1:central,2.4953979220072124e-11,0.5086884431660746,0.8815004998962699,9.765879646207154,7.811745273545972,0.015280902463034584
+central_shared,cca_eeg_rank1:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,cca_eeg_rank2:both,6.484316030915789e-12,0.3334540066534832,0.9343191268189996,11.457876268719673,9.503741896058491,-0.03753772445969507
+central_shared,cca_eeg_rank2:central,6.484316030915789e-12,0.3334540066534832,0.9343191268189996,11.457876268719673,9.503741896058491,-0.03753772445969507
+central_shared,cca_eeg_rank2:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,cca_reference_rank1:both,2.369299699865752e-11,0.48259202381798894,0.890127676075686,10.841136739990699,8.887002367329519,0.006653726283618503
+central_shared,cca_reference_rank1:central,2.369299699865752e-11,0.48259202381798894,0.890127676075686,10.841136739990699,8.887002367329519,0.006653726283618503
+central_shared,cca_reference_rank1:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,cca_reference_rank2:both,3.1700503485979176e-12,0.22934163495755877,0.9628954893543491,16.165263925716154,14.211129553054974,-0.06611408699504465
+central_shared,cca_reference_rank2:central,3.1700503485979176e-12,0.22934163495755877,0.9628954893543491,16.165263925716154,14.211129553054974,-0.06611408699504465
+central_shared,cca_reference_rank2:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,central_frontal_raw_context,2.2731069120551133e-11,0.4731019060937035,0.8967814023593045,10.949306422363545,8.995172049702365,0.0
+central_shared,central_frontal_vmd_context,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,identity,5.811538636041364e-11,1.1098663689158537,0.7306387359088092,1.9541343726611802,0.0,0.16614266645049525
+central_shared,reference_rank2_control:both,4.224496681594309e-12,0.2671315287248385,0.9527411754587344,14.905802342542053,12.951667969880873,-0.05595977309942989
+central_shared,reference_rank2_control:central,4.224496681594309e-12,0.2671315287248385,0.9527411754587344,14.905802342542053,12.951667969880873,-0.05595977309942989
+central_shared,reference_rank2_control:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,ridge_direct:both,2.0455196893096827e-12,0.17405840396255173,0.9745453047473923,19.263159625326992,17.309025252665812,-0.07776390238808778
+central_shared,ridge_direct:central,2.0455196893096827e-12,0.17405840396255173,0.9745453047473923,19.263159625326992,17.309025252665812,-0.07776390238808778
+central_shared,ridge_direct:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+frontal,cca_eeg_rank1:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_eeg_rank1:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_eeg_rank1:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_eeg_rank2:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_eeg_rank2:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_eeg_rank2:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_reference_rank1:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_reference_rank1:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_reference_rank1:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_reference_rank2:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_reference_rank2:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,cca_reference_rank2:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,central_frontal_raw_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,central_frontal_vmd_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,identity,3.0582390300864297e-10,2.307985957107543,0.47281897982007526,-5.473181121702266,0.0,0.5083229004226034
+frontal,reference_rank2_control:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,reference_rank2_control:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,reference_rank2_control:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,ridge_direct:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,ridge_direct:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,ridge_direct:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+middle_verified,cca_eeg_rank1:both,1.7439508343787236e-11,0.5106911009826659,0.88077672803594,9.574733143974132,8.52073162758699,0.014958956798324681
+middle_verified,cca_eeg_rank1:central,1.7439508343787236e-11,0.5106911009826659,0.88077672803594,9.574733143974132,8.52073162758699,0.014958956798324681
+middle_verified,cca_eeg_rank1:posterior,1.590414760899291e-11,0.48181932618719453,0.8951447303542679,10.656923642421457,9.602922126034317,0.0005909544799967983
+middle_verified,cca_eeg_rank2:both,5.223878057425289e-12,0.3472903706931882,0.929602892856886,11.144407518108618,10.090406001721478,-0.033867208022621303
+middle_verified,cca_eeg_rank2:central,5.223878057425289e-12,0.3472903706931882,0.929602892856886,11.144407518108618,10.090406001721478,-0.033867208022621303
+middle_verified,cca_eeg_rank2:posterior,1.590414760899291e-11,0.48181932618719453,0.8951447303542679,10.656923642421457,9.602922126034317,0.0005909544799967983
+middle_verified,cca_reference_rank1:both,1.6181847681270288e-11,0.479411410497197,0.8918448732468645,10.775727484383474,9.721725967996335,0.0038908115874001802
+middle_verified,cca_reference_rank1:central,1.6181847681270288e-11,0.479411410497197,0.8918448732468645,10.775727484383474,9.721725967996335,0.0038908115874001802
+middle_verified,cca_reference_rank1:posterior,1.590414760899291e-11,0.48181932618719453,0.8951447303542679,10.656923642421457,9.602922126034317,0.0005909544799967983
+middle_verified,cca_reference_rank2:both,2.782249611519177e-12,0.24838968759286068,0.9581844285572223,15.447017453919681,14.39301593753254,-0.06244874372295758
+middle_verified,cca_reference_rank2:central,2.782249611519177e-12,0.24838968759286068,0.9581844285572223,15.447017453919681,14.39301593753254,-0.06244874372295758
+middle_verified,cca_reference_rank2:posterior,1.590414760899291e-11,0.48181932618719453,0.8951447303542679,10.656923642421457,9.602922126034317,0.0005909544799967983
+middle_verified,central_frontal_raw_context,1.609996587467418e-11,0.48363453797992667,0.8957356848342647,10.694746564597775,9.640745048210633,0.0
+middle_verified,central_frontal_vmd_context,1.590414760899291e-11,0.48181932618719453,0.8951447303542679,10.656923642421457,9.602922126034317,0.0005909544799967983
+middle_verified,identity,5.140053120227365e-11,1.2160060369312515,0.7053099212374392,1.054001516387141,0.0,0.1904257635968256
+middle_verified,reference_rank2_control:both,3.686254422686084e-12,0.28966207809225786,0.9470142189131086,14.141898729586796,13.087897213199653,-0.05127853407884382
+middle_verified,reference_rank2_control:central,3.686254422686084e-12,0.28966207809225786,0.9470142189131086,14.141898729586796,13.087897213199653,-0.05127853407884382
+middle_verified,reference_rank2_control:posterior,1.590414760899291e-11,0.48181932618719453,0.8951447303542679,10.656923642421457,9.602922126034317,0.0005909544799967983
+middle_verified,ridge_direct:both,1.7105021174036341e-12,0.189555340727887,0.9707617710866481,18.65270577093236,17.59870425454522,-0.07502608625238338
+middle_verified,ridge_direct:central,1.7105021174036341e-12,0.189555340727887,0.9707617710866481,18.65270577093236,17.59870425454522,-0.07502608625238338
+middle_verified,ridge_direct:posterior,1.590414760899291e-11,0.48181932618719453,0.8951447303542679,10.656923642421457,9.602922126034317,0.0005909544799967983
+posterior,cca_eeg_rank1:both,1.1567857705077281e-11,0.2962314039235725,0.9455352112974625,13.155695431940678,2.0737497469706,0.015943251476644084
+posterior,cca_eeg_rank1:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,cca_eeg_rank1:posterior,1.1567857705077281e-11,0.2962314039235725,0.9455352112974625,13.155695431940678,2.0737497469706,0.015943251476644084
+posterior,cca_eeg_rank2:both,6.732836994277999e-12,0.24364533785332998,0.9619288434596558,14.138563297768457,3.0566176127983797,-0.0004503806855492043
+posterior,cca_eeg_rank2:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,cca_eeg_rank2:posterior,6.732836994277999e-12,0.24364533785332998,0.9619288434596558,14.138563297768457,3.0566176127983797,-0.0004503806855492043
+posterior,cca_reference_rank1:both,1.0448495143953057e-11,0.2864522137736589,0.9497224211649576,13.076669706228653,1.994724021258576,0.011756041609149013
+posterior,cca_reference_rank1:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,cca_reference_rank1:posterior,1.0448495143953057e-11,0.2864522137736589,0.9497224211649576,13.076669706228653,1.994724021258576,0.011756041609149013
+posterior,cca_reference_rank2:both,5.792409974627345e-12,0.2342629618236356,0.9649394318771378,14.432033830818643,3.350088145848564,-0.003460969103031345
+posterior,cca_reference_rank2:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,cca_reference_rank2:posterior,5.792409974627345e-12,0.2342629618236356,0.9649394318771378,14.432033830818643,3.350088145848564,-0.003460969103031345
+posterior,central_frontal_raw_context,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,central_frontal_vmd_context,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,identity,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+posterior,reference_rank2_control:both,6.277863302159039e-12,0.24383746859353359,0.9623240010297958,14.095698451206937,3.013752766236858,-0.0008455382556892118
+posterior,reference_rank2_control:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,reference_rank2_control:posterior,6.277863302159039e-12,0.24383746859353359,0.9623240010297958,14.095698451206937,3.013752766236858,-0.0008455382556892118
+posterior,ridge_direct:both,5.092900305961929e-12,0.21579892762963043,0.9685178252557459,15.350217190996135,4.268271506026056,-0.007039362481639293
+posterior,ridge_direct:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,ridge_direct:posterior,5.092900305961929e-12,0.21579892762963043,0.9685178252557459,15.350217190996135,4.268271506026056,-0.007039362481639293
+temporal_shared,cca_eeg_rank1:both,5.000221547435508e-11,0.5020129171107706,0.8839130727640363,10.403034653650552,5.448457426742575,0.01635405467873425
+temporal_shared,cca_eeg_rank1:central,5.000221547435508e-11,0.5020129171107706,0.8839130727640363,10.403034653650552,5.448457426742575,0.01635405467873425
+temporal_shared,cca_eeg_rank1:posterior,4.214033341678559e-11,0.43644839744558134,0.9002980191813945,11.725136741356465,6.770559514448488,-3.0891738624034724e-05
+temporal_shared,cca_eeg_rank2:both,1.0685775942550793e-11,0.2873327931878,0.9500399066927114,12.50277210408985,7.548194877181874,-0.049772779249940974
+temporal_shared,cca_eeg_rank2:central,1.0685775942550793e-11,0.2873327931878,0.9500399066927114,12.50277210408985,7.548194877181874,-0.049772779249940974
+temporal_shared,cca_eeg_rank2:posterior,4.214033341678559e-11,0.43644839744558134,0.9002980191813945,11.725136741356465,6.770559514448488,-3.0891738624034724e-05
+temporal_shared,cca_reference_rank1:both,4.87301613899483e-11,0.49319406822062883,0.884403685505091,11.059167592014777,6.1045903651068,0.015863441937679582
+temporal_shared,cca_reference_rank1:central,4.87301613899483e-11,0.49319406822062883,0.884403685505091,11.059167592014777,6.1045903651068,0.015863441937679582
+temporal_shared,cca_reference_rank1:posterior,4.214033341678559e-11,0.43644839744558134,0.9002980191813945,11.725136741356465,6.770559514448488,-3.0891738624034724e-05
+temporal_shared,cca_reference_rank2:both,4.4627194721937206e-12,0.165848126173219,0.9785990253447719,18.5594188317044,13.604841604796423,-0.07833189790200154
+temporal_shared,cca_reference_rank2:central,4.4627194721937206e-12,0.165848126173219,0.9785990253447719,18.5594188317044,13.604841604796423,-0.07833189790200154
+temporal_shared,cca_reference_rank2:posterior,4.214033341678559e-11,0.43644839744558134,0.9002980191813945,11.725136741356465,6.770559514448488,-3.0891738624034724e-05
+temporal_shared,central_frontal_raw_context,4.4834746606807647e-11,0.4379931331396262,0.9002671274427705,11.797839281582782,6.843262054674804,0.0
+temporal_shared,central_frontal_vmd_context,4.214033341678559e-11,0.43644839744558134,0.9002980191813945,11.725136741356465,6.770559514448488,-3.0891738624034724e-05
+temporal_shared,identity,8.049823688754696e-11,0.7560674755311942,0.8150681181467097,4.954577226907977,0.0,0.08519900929606081
+temporal_shared,reference_rank2_control:both,6.018637544621723e-12,0.19202969750010707,0.9718310306108207,17.45214771905958,12.497570492151606,-0.07156390316805014
+temporal_shared,reference_rank2_control:central,6.018637544621723e-12,0.19202969750010707,0.9718310306108207,17.45214771905958,12.497570492151606,-0.07156390316805014
+temporal_shared,reference_rank2_control:posterior,4.214033341678559e-11,0.43644839744558134,0.9002980191813945,11.725136741356465,6.770559514448488,-3.0891738624034724e-05
+temporal_shared,ridge_direct:both,3.1622449289965115e-12,0.12240194807810095,0.9871570836165396,21.298005806642433,16.343428579734457,-0.0868899561737691
+temporal_shared,ridge_direct:central,3.1622449289965115e-12,0.12240194807810095,0.9871570836165396,21.298005806642433,16.343428579734457,-0.0868899561737691
+temporal_shared,ridge_direct:posterior,4.214033341678559e-11,0.43644839744558134,0.9002980191813945,11.725136741356465,6.770559514448488,-3.0891738624034724e-05
+whole,cca_eeg_rank1:both,1.6046709952078977e-11,0.36929672090407056,0.9227903865971465,12.519166888250949,9.343600801927519,0.01204606005163275
+whole,cca_eeg_rank1:central,1.4605157256207922e-11,0.35545464006071315,0.9278795045158572,12.646271940707793,9.470705854384363,0.006956942132922046
+whole,cca_eeg_rank1:posterior,1.4676662252899234e-11,0.3521853887278109,0.9295521082327252,13.035598542480178,9.860032456156748,0.005284338416054064
+whole,cca_eeg_rank2:both,6.092702903261303e-12,0.27289372657376354,0.9520320636038336,13.597170222733055,10.421604136409623,-0.017195616955054376
+whole,cca_eeg_rank2:central,6.170281494815549e-12,0.2755548843492324,0.9519541517628726,13.416845204408402,10.241279118084972,-0.017117705114093325
+whole,cca_eeg_rank2:posterior,1.315753096547393e-11,0.33568215010898456,0.9347191379923969,13.343028613261675,10.167462526938245,0.00011730865638230755
+whole,cca_reference_rank1:both,1.511775047262611e-11,0.3543721813347355,0.9280331764904051,12.981315817268985,9.805749730945553,0.006803270158374235
+whole,cca_reference_rank1:central,1.4034431152749674e-11,0.3436397285655873,0.9317873342517038,13.133164377413857,9.957598291090427,0.0030491123970754503
+whole,cca_reference_rank1:posterior,1.431842887690461e-11,0.3490757606536018,0.9308870683901371,13.01085503479215,9.835288948468719,0.003949378258642145
+whole,cca_reference_rank2:both,4.2801534183738286e-12,0.22250947647132677,0.9659848964457596,15.833573515388805,12.658007429065375,-0.031148449796980376
+whole,cca_reference_rank2:central,4.65900217503875e-12,0.22815629856391734,0.9649462735156806,15.56214361985802,12.386577533534588,-0.03010982686690142
+whole,cca_reference_rank2:posterior,1.2856260800363255e-11,0.3326964857918629,0.9356798490815148,13.434133490467808,10.25856740414438,-0.0008434024327355897
+whole,central_frontal_raw_context,1.3598974802057107e-11,0.339202220028857,0.9348364466487793,13.18320093816409,10.00763485184066,0.0
+whole,central_frontal_vmd_context,1.3235109557028176e-11,0.3383433078844535,0.9346412261514359,13.162703594937025,9.987137508613593,0.0001952204973433599
+whole,identity,1.0160743601979166e-10,1.1482843114884855,0.7338779272370579,3.17556608632343,0.0,0.20095851941172121
+whole,reference_rank2_control:both,4.9133992445500155e-12,0.2426997306240662,0.960545045322125,15.155691725930836,11.980125639607405,-0.025708598673345778
+whole,reference_rank2_control:central,5.13707504899712e-12,0.2453083703832401,0.9603417130184776,14.989945552694493,11.814379466371062,-0.025505266369698333
+whole,reference_rank2_control:posterior,1.301143375258107e-11,0.3357346681252795,0.9348445584550833,13.328449768173366,10.152883681849938,-8.111806304081463e-06
+whole,ridge_direct:both,3.5466976457454378e-12,0.19156384857124906,0.972399865318287,17.533716956302026,14.358150869978598,-0.03756341866950784
+whole,ridge_direct:central,4.152362456859565e-12,0.20316065750513324,0.9702023625545312,16.967204137305835,13.791638050982401,-0.035365915905751916
+whole,ridge_direct:posterior,1.262944474591405e-11,0.3267464989505693,0.9368387289151918,13.729216413933218,10.55365032760979,-0.002002282266412558
+
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,ridge_direct:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.462181597572633e-12,-9.516920516246928e-12,-1.0374312744070505e-12,456,456,True
+whole,ridge_direct:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.15015885423578385,-0.22490775700036492,-0.0878385028288343,456,456,True
+whole,ridge_direct:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.038194861604147284,0.017386138599626767,0.06727338733259121,456,456,True
+whole,ridge_direct:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.607535610738607,4.954568548439851,6.236783686072256,456,456,True
+whole,ridge_direct:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.607535610738607,4.954568548439851,6.236783686072256,456,456,True
+posterior,ridge_direct:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.1655933843389347e-12,-5.6567487893837534e-12,3.663211235571133e-13,456,456,True
+posterior,ridge_direct:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.05565408963391263,-0.10271021814269608,0.015066126982390519,456,456,True
+posterior,ridge_direct:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.013196141532036106,-0.00487462450534973,0.026431302033808182,456,456,True
+posterior,ridge_direct:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.444361840057919,-0.1845831034469743,4.498232959496214,456,456,True
+posterior,ridge_direct:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.444361840057919,-0.18458310344697443,4.498232959496214,456,456,True
+central_shared,ridge_direct:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.04669069124074e-11,-1.9098672126699875e-11,-2.581965971661311e-12,456,456,True
+central_shared,ridge_direct:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.2911987322137816,-0.4285662315387828,-0.1811582671172231,456,456,True
+central_shared,ridge_direct:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.07472830303606084,0.040262350200051235,0.1307562202556898,456,456,True
+central_shared,ridge_direct:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,10.63431516405328,9.386907686084745,11.378836432286592,456,456,True
+central_shared,ridge_direct:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,10.63431516405328,9.386907686084745,11.378836432286592,456,456,True
+whole,reference_rank2_control:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.1340198995324145e-12,-8.354186368224697e-12,8.20613302533646e-14,456,456,True
+whole,reference_rank2_control:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.09323290982495099,-0.1608046946034694,0.008912053276647128,456,456,True
+whole,reference_rank2_control:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.025433744327993578,-0.005118191963082043,0.05220980159741661,456,456,True
+whole,reference_rank2_control:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.7338012983663615,0.1346408063698599,4.007387255427873,456,456,True
+whole,reference_rank2_control:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.7338012983663615,0.1346408063698599,4.007387255427873,456,456,True
+posterior,reference_rank2_control:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-9.532398913426359e-13,-2.345366458265828e-12,1.1643262576378501e-12,456,456,True
+posterior,reference_rank2_control:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0262407256108295,-0.08806677835700552,0.04294182768776588,456,456,True
+posterior,reference_rank2_control:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0065326568115514575,-0.011448319309003004,0.02023173035300353,456,456,True
+posterior,reference_rank2_control:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1355377008312264,-1.2806827977232085,3.6637272505060348,456,456,True
+posterior,reference_rank2_control:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1355377008312264,-1.2806827977232085,3.6637272505060348,456,456,True
+central_shared,reference_rank2_control:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.391685014939114e-12,-1.7430152357130708e-11,-6.677939130932309e-13,456,456,True
+central_shared,reference_rank2_control:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.1861827064789289,-0.3258893635467705,-0.011499832154693006,456,456,True
+central_shared,reference_rank2_control:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.05121855609362919,-0.0030514256533731325,0.10629327796286463,456,456,True
+central_shared,reference_rank2_control:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.211356188523882,1.2362361510074165,8.20677807468597,456,456,True
+central_shared,reference_rank2_control:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.211356188523882,1.2362361510074165,8.20677807468597,456,456,True
+whole,cca_reference_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.4920806691661235e-12,-3.750505177533415e-12,1.1785583455776044e-11,456,456,False
+whole,cca_reference_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.018563404009086727,-0.07843873706613627,0.08327793525537995,456,456,False
+whole,cca_reference_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.006948126156653288,-0.027206443989400024,0.02602809011152095,456,456,False
+whole,cca_reference_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.3515279066503404,-0.7953276014155549,1.5879606716980839,456,456,True
+whole,cca_reference_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.35152790665034017,-0.7953276014155549,1.5879606716980839,456,456,True
+posterior,cca_reference_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.506112611218044e-12,2.414716297963325e-13,2.882370338803643e-12,456,456,False
+posterior,cca_reference_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.01960763480071988,-0.002213066836465857,0.0739418301253849,456,456,False
+posterior,cca_reference_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.007041438289374325,-0.01840282213568834,-0.0020187483022912948,456,456,False
+posterior,cca_reference_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.17423454722705928,-2.1077999543501367,0.9392525645660394,456,456,False
+posterior,cca_reference_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.17423454722705928,-2.1077999543501367,0.9392525645660393,456,456,False
+central_shared,cca_reference_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.644145225895529e-12,-9.122237424234732e-12,2.4944544193675748e-11,456,456,False
+central_shared,cca_reference_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.027062054494929877,-0.18033458136387215,0.1556302092620824,456,456,False
+central_shared,cca_reference_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.010389747611971955,-0.05767552914278716,0.06154281189804333,456,456,False
+central_shared,cca_reference_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.8996902327513963,-1.278030587185629,3.3867938269745217,456,456,True
+central_shared,cca_reference_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.8996902327513961,-1.278030587185629,3.3867938269745217,456,456,True
+whole,cca_reference_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.561460003468732e-12,-8.7242960840815e-12,-4.3520305612337215e-13,456,456,True
+whole,cca_reference_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.11308460287785166,-0.17384886776043806,-0.046147570261909014,456,456,True
+whole,cca_reference_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03065127289345652,0.009596123386529667,0.05593229391853206,456,456,True
+whole,cca_reference_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.5554286523723286,2.3410127781091883,4.589851961987133,456,456,True
+whole,cca_reference_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.5554286523723286,2.3410127781091883,4.589851961987133,456,456,True
+posterior,cca_reference_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.2285493840260802e-12,-3.0293710768888123e-12,9.461055369899427e-13,456,456,True
+posterior,cca_reference_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.031669034523978276,-0.08811728437418705,0.03387619970691687,456,456,True
+posterior,cca_reference_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007973813255183376,-0.00934277761961038,0.020031952281234725,456,456,True
+posterior,cca_reference_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.357728370958701,-0.8894363440208272,3.7595746927639655,456,456,True
+posterior,cca_reference_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.357728370958701,-0.8894363440208272,3.759574692763966,456,456,True
+central_shared,cca_reference_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-9.141621646493127e-12,-1.7998479348961076e-11,-1.662222402229404e-12,456,456,True
+central_shared,cca_reference_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.22627237995395239,-0.34768147775902203,-0.09778356218492221,456,456,True
+central_shared,cca_reference_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.06175394455504983,0.020893206609150037,0.1124208379767127,456,456,True
+central_shared,cca_reference_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.870687212312699,4.747120663150474,9.395932955485643,456,456,True
+central_shared,cca_reference_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.870687212312699,4.747120663150474,9.395932955485643,456,456,True
+whole,cca_eeg_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.334263165493852e-12,-2.2100424303702406e-12,1.2586490354791727e-11,456,456,False
+whole,cca_eeg_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03607271745598489,-0.03981866686090775,0.08705239070467986,456,456,False
+whole,cca_eeg_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.012706316107574223,-0.03034835528048554,0.010049097724136175,456,456,False
+whole,cca_eeg_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.27806378302270546,-1.208405557122033,0.6965269998049214,456,456,False
+whole,cca_eeg_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.27806378302270546,-1.208405557122033,0.6965269998049214,456,456,False
+posterior,cca_eeg_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.536624705526664e-12,1.0976510693239095e-12,3.857470347372113e-12,456,456,False
+posterior,cca_eeg_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.033656682341538104,-0.0019711466466441983,0.08565901662920775,456,456,False
+posterior,cca_eeg_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.013159372145392574,-0.021654669543526177,-0.0030831335054429454,456,456,False
+posterior,cca_eeg_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.1503445323586337,-2.181159282980457,0.5618331492251488,456,456,False
+posterior,cca_eeg_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.15034453235863365,-2.181159282980457,0.5618331492251488,456,456,False
+central_shared,cca_eeg_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,7.77454371510945e-12,-7.374692572907076e-12,2.6461898264963833e-11,456,456,False
+central_shared,cca_eeg_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.055857921034292844,-0.11558649003559651,0.18897416332177858,456,456,False
+central_shared,cca_eeg_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0187938012453683,-0.06544711806402867,0.037254033336623714,456,456,False
+central_shared,cca_eeg_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.5063028881129039,-3.1062443133982987,1.3261082115492913,456,456,False
+central_shared,cca_eeg_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.5063028881129039,-3.1062443133982987,1.3261082115492913,456,456,False
+whole,cca_eeg_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.941461184840074e-12,-7.855522549772565e-12,-1.7084465496888287e-13,456,456,True
+whole,cca_eeg_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.07070427070626316,-0.11321228944949423,-0.016248756827636643,456,456,True
+whole,cca_eeg_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.021521550863732173,0.00407356316037637,0.03949777609660908,456,456,True
+whole,cca_eeg_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1692350856224003,0.26446933033746894,2.240208574816022,456,456,True
+whole,cca_eeg_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1692350856224003,0.26446933033746894,2.240208574816022,456,456,True
+posterior,cca_eeg_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.3072234123428105e-12,-3.2398684568002723e-12,7.284874940179613e-13,456,456,True
+posterior,cca_eeg_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.030644425560211453,-0.07335494625425926,0.024268387330311468,456,456,True
+posterior,cca_eeg_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.008200786457344164,-0.007299185619677154,0.018171708901902218,456,456,True
+posterior,cca_eeg_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.196759480119113,-0.4564596709642222,2.6536547963678356,456,456,True
+posterior,cca_eeg_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.196759480119113,-0.4564596709642222,2.6536547963678356,456,456,True
+central_shared,cca_eeg_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.717785205192195e-12,-1.616601313655749e-11,-9.134712451744798e-13,456,456,True
+central_shared,cca_eeg_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.13362542076678025,-0.2271352736721781,-0.011346084211083393,456,456,True
+central_shared,cca_eeg_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.04145525845700392,0.002354694535606193,0.07689416897382545,456,456,True
+central_shared,cca_eeg_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.726439952669144,-0.4416323917864097,4.075263004310359,456,456,True
+central_shared,cca_eeg_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.726439952669144,-0.4416323917864097,4.07526300431036,456,456,True
+whole,ridge_direct:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.376187748473919e-12,-8.888770322208562e-12,-1.0539610354463865e-12,456,456,True
+whole,ridge_direct:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.15117067766127726,-0.21757075509453655,-0.08737384650244193,456,456,True
+whole,ridge_direct:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0383927632656243,0.017157102038826488,0.06512723938318118,456,456,True
+whole,ridge_direct:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.662789012241005,4.972461870211858,6.29586597635218,456,456,True
+whole,ridge_direct:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.662789012241005,4.972461870211858,6.29586597635218,456,456,True
+posterior,ridge_direct:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.1655933843389347e-12,-5.6567487893837534e-12,3.663211235571133e-13,456,456,True
+posterior,ridge_direct:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.05565408963391263,-0.10271021814269608,0.015066126982390519,456,456,True
+posterior,ridge_direct:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.013196141532036106,-0.00487462450534973,0.026431302033808182,456,456,True
+posterior,ridge_direct:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.444361840057919,-0.1845831034469743,4.498232959496214,456,456,True
+posterior,ridge_direct:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.444361840057919,-0.18458310344697443,4.498232959496214,456,456,True
+central_shared,ridge_direct:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0271495162297706e-11,-1.7697414001537368e-11,-2.61884005397983e-12,456,456,True
+central_shared,ridge_direct:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.29325234288372215,-0.4121990734411657,-0.18033527435330038,456,456,True
+central_shared,ridge_direct:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.07511641471803629,0.04003082140952648,0.12596865944546742,456,456,True
+central_shared,ridge_direct:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,10.753498534124997,9.42682355772999,11.528385680183257,456,456,True
+central_shared,ridge_direct:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,10.753498534124997,9.42682355772999,11.528385680183257,456,456,True
+whole,reference_rank2_control:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.048026050433701e-12,-7.856377896351313e-12,6.553156921402876e-14,456,456,True
+whole,reference_rank2_control:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.09424473325044438,-0.15346769269764102,0.00937670960303952,456,456,True
+whole,reference_rank2_control:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.025631645989470566,-0.005347228523882326,0.050063653648006586,456,456,True
+whole,reference_rank2_control:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.789054699868761,0.14067898409300877,4.202777839233491,456,456,True
+whole,reference_rank2_control:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.789054699868761,0.14067898409300875,4.202777839233491,456,456,True
+posterior,reference_rank2_control:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-9.532398913426359e-13,-2.345366458265828e-12,1.1643262576378501e-12,456,456,True
+posterior,reference_rank2_control:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0262407256108295,-0.08806677835700552,0.04294182768776588,456,456,True
+posterior,reference_rank2_control:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0065326568115514575,-0.011448319309003004,0.02023173035300353,456,456,True
+posterior,reference_rank2_control:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1355377008312264,-1.2806827977232085,3.6637272505060348,456,456,True
+posterior,reference_rank2_control:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1355377008312264,-1.2806827977232085,3.6637272505060348,456,456,True
+central_shared,reference_rank2_control:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.196273264829417e-12,-1.6385755947327343e-11,-7.046679954117494e-13,456,456,True
+central_shared,reference_rank2_control:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.18823631714886943,-0.30952220544915343,-0.0104632911188946,456,456,True
+central_shared,reference_rank2_control:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.051606667775604645,-0.0035623533659276093,0.10150571715264223,456,456,True
+central_shared,reference_rank2_control:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.330539558595601,1.2497059320821333,8.356327322582635,456,456,True
+central_shared,reference_rank2_control:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.330539558595601,1.249705932082133,8.356327322582635,456,456,True
+whole,cca_reference_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.578074518264838e-12,-3.1223549834950503e-12,1.1836587906087343e-11,456,456,False
+whole,cca_reference_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.017551580583593296,-0.07110173516030793,0.08374259158177233,456,456,False
+whole,cca_reference_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0067502244951762914,-0.027435480550200304,0.02388194216211091,456,456,False
+whole,cca_reference_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.40678130815273933,-0.7892894236924061,1.575472016528711,456,456,True
+whole,cca_reference_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.4067813081527395,-0.7892894236924061,1.5754720165287113,456,456,True
+posterior,cca_reference_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.506112611218044e-12,2.414716297963325e-13,2.882370338803643e-12,456,456,False
+posterior,cca_reference_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.01960763480071988,-0.002213066836465857,0.0739418301253849,456,456,False
+posterior,cca_reference_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.007041438289374325,-0.01840282213568834,-0.0020187483022912948,456,456,False
+posterior,cca_reference_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.17423454722705928,-2.1077999543501367,0.9392525645660394,456,456,False
+posterior,cca_reference_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.17423454722705928,-2.1077999543501367,0.9392525645660393,456,456,False
+central_shared,cca_reference_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.839556976005226e-12,-7.720979299072223e-12,2.5058323352062483e-11,456,456,False
+central_shared,cca_reference_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.025008443824989336,-0.16396742326625502,0.15645320202600513,456,456,False
+central_shared,cca_reference_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.010001635929996523,-0.05790705793331191,0.05675525108782093,456,456,False
+central_shared,cca_reference_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.018873602823114,-1.2381147155403829,3.3589345192889986,456,456,True
+central_shared,cca_reference_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.0188736028231145,-1.2381147155403829,3.3589345192889986,456,456,True
+whole,cca_reference_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.475466154370017e-12,-8.096145890043136e-12,-4.51732817162708e-13,456,456,True
+whole,cca_reference_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.11409642630334509,-0.1665118658546097,-0.04568291393551663,456,456,True
+whole,cca_reference_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03084917455493351,0.009367086825729384,0.05378614596912201,456,456,True
+whole,cca_reference_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.6106820538747275,2.347050955832337,4.659285541367728,456,456,True
+whole,cca_reference_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.6106820538747275,2.347050955832337,4.659285541367728,456,456,True
+posterior,cca_reference_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.2285493840260802e-12,-3.0293710768888123e-12,9.461055369899427e-13,456,456,True
+posterior,cca_reference_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.031669034523978276,-0.08811728437418705,0.03387619970691687,456,456,True
+posterior,cca_reference_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007973813255183376,-0.00934277761961038,0.020031952281234725,456,456,True
+posterior,cca_reference_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.357728370958701,-0.8894363440208272,3.7595746927639655,456,456,True
+posterior,cca_reference_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.357728370958701,-0.8894363440208272,3.759574692763966,456,456,True
+central_shared,cca_reference_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.946209896383427e-12,-1.6745994473300912e-11,-1.6990964845479221e-12,456,456,True
+central_shared,cca_reference_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.22832599062389283,-0.3313143196614049,-0.0969605694209995,456,456,True
+central_shared,cca_reference_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.06214205623702526,0.02066167781862529,0.10763327716649035,456,456,True
+central_shared,cca_reference_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.989870582384416,4.787036534795719,9.545482203382308,456,456,True
+central_shared,cca_reference_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.989870582384416,4.7870365347957184,9.545482203382308,456,456,True
+whole,cca_eeg_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.420257014592566e-12,-1.581892236331875e-12,1.2637494805103027e-11,456,456,False
+whole,cca_eeg_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.035060894030491445,-0.0324816649550794,0.08751704703107224,456,456,False
+whole,cca_eeg_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.012508414446097226,-0.03045214404865181,0.00790294977472614,456,456,False
+whole,cca_eeg_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.22281038152030624,-1.1905122353500264,0.6840383446355488,456,456,False
+whole,cca_eeg_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.2228103815203062,-1.1905122353500264,0.6840383446355488,456,456,False
+posterior,cca_eeg_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.536624705526664e-12,1.0976510693239095e-12,3.857470347372113e-12,456,456,False
+posterior,cca_eeg_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.033656682341538104,-0.0019711466466441983,0.08565901662920775,456,456,False
+posterior,cca_eeg_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.013159372145392574,-0.021654669543526177,-0.0030831335054429454,456,456,False
+posterior,cca_eeg_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.1503445323586337,-2.181159282980457,0.5618331492251488,456,456,False
+posterior,cca_eeg_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.15034453235863365,-2.181159282980457,0.5618331492251488,456,456,False
+central_shared,cca_eeg_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,7.969955465219149e-12,-5.97343444774457e-12,2.657567742335057e-11,456,456,False
+central_shared,cca_eeg_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.05380431036435231,-0.0992193319379794,0.18979715608570133,456,456,False
+central_shared,cca_eeg_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.018405689563392873,-0.06567864685455342,0.032466472526401335,456,456,False
+central_shared,cca_eeg_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.387119518041186,-3.0663284417530523,1.2982489038637681,456,456,False
+central_shared,cca_eeg_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.38711951804118605,-3.0663284417530523,1.2982489038637681,456,456,False
+whole,cca_eeg_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.855467335741358e-12,-7.355067684870521e-12,-1.873744160082187e-13,456,456,True
+whole,cca_eeg_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.07171609413175659,-0.11420810314211664,-0.015879829036912672,456,456,True
+whole,cca_eeg_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.021719452525209165,0.003844526599576087,0.03735162814719904,456,456,True
+whole,cca_eeg_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.224488487124799,0.2823626521094758,2.309642154196617,456,456,True
+whole,cca_eeg_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.224488487124799,0.28236265210947575,2.309642154196617,456,456,True
+posterior,cca_eeg_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.3072234123428105e-12,-3.2398684568002723e-12,7.284874940179613e-13,456,456,True
+posterior,cca_eeg_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.030644425560211453,-0.07335494625425926,0.024268387330311468,456,456,True
+posterior,cca_eeg_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.008200786457344164,-0.007299185619677154,0.018171708901902218,456,456,True
+posterior,cca_eeg_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.196759480119113,-0.4564596709642222,2.6536547963678356,456,456,True
+posterior,cca_eeg_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.196759480119113,-0.4564596709642222,2.6536547963678356,456,456,True
+central_shared,cca_eeg_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.5223734550825e-12,-1.509586236122273e-11,-9.503453274929982e-13,456,456,True
+central_shared,cca_eeg_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.13567903143672078,-0.2292801031639802,-0.010523091447160694,456,456,True
+central_shared,cca_eeg_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.041843370138979354,0.002123165745081442,0.07210660816360306,456,456,True
+central_shared,cca_eeg_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.8456233227408618,-0.4017165201411638,4.224812252207026,456,456,True
+central_shared,cca_eeg_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,5,5,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.8456233227408618,-0.4017165201411638,4.224812252207026,456,456,True
+
+```
+
+### results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/results/vmd-nonfrontal-cca-20261014/nonfrontal-cca-pilot-001/nonfrontal_method_means.csv
+
+```csv
+scope,evaluated_family,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration
+central_shared,cca_eeg_rank1:both,1.880498498864839e-11,0.4588867553884398,0.895027688871374,10.61535171036122,8.291798065220444,0.018405689563392873
+central_shared,cca_eeg_rank1:central,1.880498498864839e-11,0.4588867553884398,0.895027688871374,10.61535171036122,8.291798065220444,0.018405689563392873
+central_shared,cca_eeg_rank1:posterior,1.1030441273538937e-11,0.4030288343541469,0.9138214901167423,11.121654598474123,8.798100953333348,-0.0003881116819754312
+central_shared,cca_eeg_rank2:both,3.3126560683467427e-12,0.26940341358736675,0.955276748573746,12.848094551143268,10.524540906002493,-0.041843370138979354
+central_shared,cca_eeg_rank2:central,3.3126560683467427e-12,0.26940341358736675,0.955276748573746,12.848094551143268,10.524540906002493,-0.041843370138979354
+central_shared,cca_eeg_rank2:posterior,1.1030441273538937e-11,0.4030288343541469,0.9138214901167423,11.121654598474123,8.798100953333348,-0.0003881116819754312
+central_shared,cca_reference_rank1:both,1.7674586499434467e-11,0.43009088884907676,0.9034317425047703,12.021344831225521,9.697791186084745,0.010001635929996519
+central_shared,cca_reference_rank1:central,1.7674586499434467e-11,0.43009088884907676,0.9034317425047703,12.021344831225521,9.697791186084745,0.010001635929996519
+central_shared,cca_reference_rank1:posterior,1.1030441273538937e-11,0.4030288343541469,0.9138214901167423,11.121654598474123,8.798100953333348,-0.0003881116819754312
+central_shared,cca_reference_rank2:both,1.8888196270458117e-12,0.17675645440019455,0.975575434671792,17.992341810786822,15.668788165646045,-0.062142056237025255
+central_shared,cca_reference_rank2:central,1.8888196270458117e-12,0.17675645440019455,0.975575434671792,17.992341810786822,15.668788165646045,-0.062142056237025255
+central_shared,cca_reference_rank2:posterior,1.1030441273538937e-11,0.4030288343541469,0.9138214901167423,11.121654598474123,8.798100953333348,-0.0003881116819754312
+central_shared,central_frontal_raw_context,1.0835029523429241e-11,0.4050824450240874,0.9134333784347668,11.002471228402404,8.67891758326163,0.0
+central_shared,central_frontal_vmd_context,1.1030441273538937e-11,0.4030288343541469,0.9138214901167423,11.121654598474123,8.798100953333348,-0.0003881116819754312
+central_shared,identity,4.557285036020923e-11,1.033886888535692,0.7463851045015979,2.323553645140776,0.0,0.16704827393316896
+central_shared,reference_rank2_control:both,2.638756258599825e-12,0.216846127875218,0.9650400462103714,16.333010786998006,14.00945714185723,-0.051606667775604645
+central_shared,reference_rank2_control:central,2.638756258599825e-12,0.216846127875218,0.9650400462103714,16.333010786998006,14.00945714185723,-0.051606667775604645
+central_shared,reference_rank2_control:posterior,1.1030441273538937e-11,0.4030288343541469,0.9138214901167423,11.121654598474123,8.798100953333348,-0.0003881116819754312
+central_shared,ridge_direct:both,5.635343611315385e-13,0.1118301021403653,0.9885497931528032,21.755969762527403,19.43241611738663,-0.07511641471803628
+central_shared,ridge_direct:central,5.635343611315385e-13,0.1118301021403653,0.9885497931528032,21.755969762527403,19.43241611738663,-0.07511641471803628
+central_shared,ridge_direct:posterior,1.1030441273538937e-11,0.4030288343541469,0.9138214901167423,11.121654598474123,8.798100953333348,-0.0003881116819754312
+frontal,cca_eeg_rank1:both,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_eeg_rank1:central,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_eeg_rank1:posterior,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_eeg_rank2:both,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_eeg_rank2:central,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_eeg_rank2:posterior,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_reference_rank1:both,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_reference_rank1:central,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_reference_rank1:posterior,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_reference_rank2:both,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_reference_rank2:central,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,cca_reference_rank2:posterior,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,central_frontal_raw_context,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,central_frontal_vmd_context,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,identity,2.467276189524478e-10,2.1478078000718197,0.5068698886333948,-5.0547199271126155,0.0,0.48230226644634405
+frontal,reference_rank2_control:both,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,reference_rank2_control:central,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,reference_rank2_control:posterior,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,ridge_direct:both,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,ridge_direct:central,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+frontal,ridge_direct:posterior,1.9558266991499664e-12,0.1440019429082771,0.9836373978645157,20.1760074215669,25.230727348679515,0.005534757215223347
+middle_verified,cca_eeg_rank1:both,1.2719094547725856e-11,0.45216772066689004,0.8963227124453483,10.49693966882398,9.055515755833417,0.016417378487270127
+middle_verified,cca_eeg_rank1:central,1.2719094547725856e-11,0.45216772066689004,0.8963227124453483,10.49693966882398,9.055515755833417,0.016417378487270127
+middle_verified,cca_eeg_rank1:posterior,7.419742915986072e-12,0.4042340093586546,0.9133439782309221,10.964341779434065,9.522917866443503,-0.0006038872983034907
+middle_verified,cca_eeg_rank2:both,2.717383948776146e-12,0.27858092555788216,0.9520249763922146,12.538966582313535,11.097542669322971,-0.03928488545959609
+middle_verified,cca_eeg_rank2:central,2.717383948776146e-12,0.27858092555788216,0.9520249763922146,12.538966582313535,11.097542669322971,-0.03928488545959609
+middle_verified,cca_eeg_rank2:posterior,7.419742915986072e-12,0.4042340093586546,0.9133439782309221,10.964341779434065,9.522917866443503,-0.0006038872983034907
+middle_verified,cca_reference_rank1:both,1.1660708975524634e-11,0.4185132662280079,0.9068233926740653,12.040552129045807,10.599128216055243,0.005916698258553095
+middle_verified,cca_reference_rank1:central,1.1660708975524634e-11,0.4185132662280079,0.9068233926740653,12.040552129045807,10.599128216055243,0.005916698258553095
+middle_verified,cca_reference_rank1:posterior,7.419742915986072e-12,0.4042340093586546,0.9133439782309221,10.964341779434065,9.522917866443503,-0.0006038872983034907
+middle_verified,cca_reference_rank2:both,1.6832647337460847e-12,0.189326339105536,0.9728739692481781,17.223765674636674,15.782341761646109,-0.06013387831555948
+middle_verified,cca_reference_rank2:central,1.6832647337460847e-12,0.189326339105536,0.9728739692481781,17.223765674636674,15.782341761646109,-0.06013387831555948
+middle_verified,cca_reference_rank2:posterior,7.419742915986072e-12,0.4042340093586546,0.9133439782309221,10.964341779434065,9.522917866443503,-0.0006038872983034907
+middle_verified,central_frontal_raw_context,7.281795149114226e-12,0.4073577892996285,0.9127400909326185,10.823260952691319,9.381837039700757,0.0
+middle_verified,central_frontal_vmd_context,7.419742915986072e-12,0.4042340093586546,0.9133439782309221,10.964341779434065,9.522917866443503,-0.0006038872983034907
+middle_verified,identity,4.093629306562003e-11,1.1262646253528605,0.7216853435279309,1.441423912990563,0.0,0.19105474740468778
+middle_verified,reference_rank2_control:both,2.3563663277327372e-12,0.2345174535757574,0.9606653745116406,15.503620967370605,14.062197054380041,-0.04792528357902203
+middle_verified,reference_rank2_control:central,2.3563663277327372e-12,0.2345174535757574,0.9606653745116406,15.503620967370605,14.062197054380041,-0.04792528357902203
+middle_verified,reference_rank2_control:posterior,7.419742915986072e-12,0.4042340093586546,0.9133439782309221,10.964341779434065,9.522917866443503,-0.0006038872983034907
+middle_verified,ridge_direct:both,4.865418254340316e-13,0.12057099377093008,0.9868737562966474,21.089607155286426,19.648183242295865,-0.07413366536402899
+middle_verified,ridge_direct:central,4.865418254340316e-13,0.12057099377093008,0.9868737562966474,21.089607155286426,19.648183242295865,-0.07413366536402899
+middle_verified,ridge_direct:posterior,7.419742915986072e-12,0.4042340093586546,0.9133439782309221,10.964341779434065,9.522917866443503,-0.0006038872983034907
+posterior,cca_eeg_rank1:both,8.321160352605126e-12,0.2790544814510604,0.9502137562495727,13.502811433999378,2.315505671904652,0.01315937214539257
+posterior,cca_eeg_rank1:central,5.784535647078461e-12,0.24539779910952228,0.9633731283949653,13.65315596635801,2.465850204263286,0.0
+posterior,cca_eeg_rank1:posterior,8.321160352605126e-12,0.2790544814510604,0.9502137562495727,13.502811433999378,2.315505671904652,0.01315937214539257
+posterior,cca_eeg_rank2:both,4.4773122347356506e-12,0.2147533735493108,0.9715739148523095,14.849915446477127,3.6626096843823985,-0.008200786457344162
+posterior,cca_eeg_rank2:central,5.784535647078461e-12,0.24539779910952228,0.9633731283949653,13.65315596635801,2.465850204263286,0.0
+posterior,cca_eeg_rank2:posterior,4.4773122347356506e-12,0.2147533735493108,0.9715739148523095,14.849915446477127,3.6626096843823985,-0.008200786457344162
+posterior,cca_reference_rank1:both,7.290648258296506e-12,0.2650054339102422,0.9563316901055912,13.478921419130952,2.291615657036226,0.0070414382893743245
+posterior,cca_reference_rank1:central,5.784535647078461e-12,0.24539779910952228,0.9633731283949653,13.65315596635801,2.465850204263286,0.0
+posterior,cca_reference_rank1:posterior,7.290648258296506e-12,0.2650054339102422,0.9563316901055912,13.478921419130952,2.291615657036226,0.0070414382893743245
+posterior,cca_reference_rank2:both,4.5559862630523815e-12,0.213728764585544,0.9713469416501488,15.010884337316714,3.823578575221987,-0.007973813255183374
+posterior,cca_reference_rank2:central,5.784535647078461e-12,0.24539779910952228,0.9633731283949653,13.65315596635801,2.465850204263286,0.0
+posterior,cca_reference_rank2:posterior,4.5559862630523815e-12,0.213728764585544,0.9713469416501488,15.010884337316714,3.823578575221987,-0.007973813255183374
+posterior,central_frontal_raw_context,5.784535647078461e-12,0.24539779910952228,0.9633731283949653,13.65315596635801,2.465850204263286,0.0
+posterior,central_frontal_vmd_context,5.784535647078461e-12,0.24539779910952228,0.9633731283949653,13.65315596635801,2.465850204263286,0.0
+posterior,identity,1.2713144802432021e-11,0.36727250582672755,0.9259299545207871,11.187305762094725,0.0,0.037443173874178316
+posterior,reference_rank2_control:both,4.831295755735826e-12,0.2191570734986928,0.9699057852065168,14.78869366718924,3.601387905094512,-0.006532656811551456
+posterior,reference_rank2_control:central,5.784535647078461e-12,0.24539779910952228,0.9633731283949653,13.65315596635801,2.465850204263286,0.0
+posterior,reference_rank2_control:posterior,4.831295755735826e-12,0.2191570734986928,0.9699057852065168,14.78869366718924,3.601387905094512,-0.006532656811551456
+posterior,ridge_direct:both,3.618942262739527e-12,0.18974370947560965,0.9765692699270015,16.09751780641593,4.910212044321204,-0.013196141532036104
+posterior,ridge_direct:central,5.784535647078461e-12,0.24539779910952228,0.9633731283949653,13.65315596635801,2.465850204263286,0.0
+posterior,ridge_direct:posterior,3.618942262739527e-12,0.18974370947560965,0.9765692699270015,16.09751780641593,4.910212044321204,-0.013196141532036104
+temporal_shared,cca_eeg_rank1:both,3.909128645839016e-11,0.48128353779360566,0.8907109436247925,11.010058515485355,5.746072429843869,0.025033393150468698
+temporal_shared,cca_eeg_rank1:central,3.909128645839016e-11,0.48128353779360566,0.8907109436247925,11.010058515485355,5.746072429843869,0.025033393150468698
+temporal_shared,cca_eeg_rank1:posterior,2.3066102465381826e-11,0.3990115843391214,0.9154131964028098,11.646030661940985,6.382044576299498,0.00033114037245143444
+temporal_shared,cca_eeg_rank2:both,5.2968964669153966e-12,0.23881170701898177,0.9661159891788514,13.878521113909045,8.614535028267557,-0.05037165240359022
+temporal_shared,cca_eeg_rank2:central,5.2968964669153966e-12,0.23881170701898177,0.9661159891788514,13.878521113909045,8.614535028267557,-0.05037165240359022
+temporal_shared,cca_eeg_rank2:posterior,2.3066102465381826e-11,0.3990115843391214,0.9154131964028098,11.646030661940985,6.382044576299498,0.00033114037245143444
+temporal_shared,cca_reference_rank1:both,3.772084491246724e-11,0.4686829642526396,0.8921262419404533,11.957320505157897,6.693334419516413,0.02361809483480794
+temporal_shared,cca_reference_rank1:central,3.772084491246724e-11,0.4686829642526396,0.8921262419404533,11.957320505157897,6.693334419516413,0.02361809483480794
+temporal_shared,cca_reference_rank1:posterior,2.3066102465381826e-11,0.3990115843391214,0.9154131964028098,11.646030661940985,6.382044576299498,0.00033114037245143444
+temporal_shared,cca_reference_rank2:both,2.5740026047115707e-12,0.13485683871572313,0.9845803194171724,20.55426226462065,15.290276178979166,-0.06883598264191117
+temporal_shared,cca_reference_rank2:central,2.5740026047115707e-12,0.13485683871572313,0.9845803194171724,20.55426226462065,15.290276178979166,-0.06883598264191117
+temporal_shared,cca_reference_rank2:posterior,2.3066102465381826e-11,0.3990115843391214,0.9154131964028098,11.646030661940985,6.382044576299498,0.00033114037245143444
+temporal_shared,central_frontal_raw_context,2.2679144104479283e-11,0.39749796410561744,0.9157443367752613,11.599838814106025,6.335852728464539,0.0
+temporal_shared,central_frontal_vmd_context,2.3066102465381826e-11,0.3990115843391214,0.9154131964028098,11.646030661940985,6.382044576299498,0.00033114037245143444
+temporal_shared,identity,6.10280413421732e-11,0.7259610991451304,0.8287176410804884,5.263986085641486,0.0,0.08702669569477288
+temporal_shared,reference_rank2_control:both,3.5800560281567843e-12,0.15794170887342002,0.9796222852061411,19.097643519089342,13.83365743344786,-0.06387794843088002
+temporal_shared,reference_rank2_control:central,3.5800560281567843e-12,0.15794170887342002,0.9796222852061411,19.097643519089342,13.83365743344786,-0.06387794843088002
+temporal_shared,reference_rank2_control:posterior,2.3066102465381826e-11,0.3990115843391214,0.9154131964028098,11.646030661940985,6.382044576299498,0.00033114037245143444
+temporal_shared,ridge_direct:both,8.201761467898946e-13,0.08269379670514934,0.9941365826733218,23.977178453330655,18.713192367689167,-0.07839224589806053
+temporal_shared,ridge_direct:central,8.201761467898946e-13,0.08269379670514934,0.9941365826733218,23.977178453330655,18.713192367689167,-0.07839224589806053
+temporal_shared,ridge_direct:posterior,2.3066102465381826e-11,0.3990115843391214,0.9154131964028098,11.646030661940985,6.382044576299498,0.00033114037245143444
+whole,cca_eeg_rank1:both,1.1657163133785136e-11,0.3301951069444675,0.9326955810096731,13.716165824147101,10.23976318378487,0.012508414446097224
+whole,cca_eeg_rank1:central,1.0841903202205926e-11,0.31940006996248843,0.9369067194413564,13.768087242938142,10.29168460257591,0.008297276014414
+whole,cca_eeg_rank1:posterior,8.13815989987049e-12,0.3049174264704618,0.9411907586855639,13.94230818837877,10.465905548016536,0.004013236770206226
+whole,cca_eeg_rank2:both,3.3814387834512085e-12,0.2234181187822195,0.9669234479809793,15.163464692792209,11.687062052429976,-0.02171945252520916
+whole,cca_eeg_rank2:central,3.799260902310513e-12,0.2329817678825678,0.9643490526272945,14.789675995892997,11.313273355530766,-0.01914505717152427
+whole,cca_eeg_rank2:posterior,6.905077849431978e-12,0.28455874038813433,0.9479762924709322,14.368018304069016,10.891615663706784,-0.002772297015161889
+whole,cca_reference_rank1:both,1.0814980637457404e-11,0.3126857934975694,0.938453770960594,14.34575751382015,10.869354873457914,0.006750224495176292
+whole,cca_reference_rank1:central,1.033010801256356e-11,0.3063441916618943,0.940716973752966,14.405939599163366,10.929536958801135,0.00448702170280426
+whole,cca_reference_rank1:posterior,7.807772593185127e-12,0.3004639913241578,0.9431386943248752,13.934047521826589,10.457644881464356,0.0020653011308950356
+whole,cca_reference_rank2:both,2.761439964822551e-12,0.18103778661063102,0.9760531700107038,17.549658259542134,14.073255619179903,-0.030849174554933516
+whole,cca_reference_rank2:central,3.1540165129705437e-12,0.19090261430150784,0.9735560988268672,17.126540914965695,13.650138274603458,-0.02835210337109696
+whole,cca_reference_rank2:posterior,6.9303234201432905e-12,0.28425756179760586,0.9478989683010838,14.417346951746254,10.94094431138402,-0.0026949728453135556
+whole,central_frontal_raw_context,7.236906119192569e-12,0.2951342129139761,0.9452039954557702,13.938976205667407,10.462573565305176,0.0
+whole,central_frontal_vmd_context,7.322899968291282e-12,0.2941223894884827,0.9454018971172473,13.994229607169808,10.517826966807576,-0.00019790166147699742
+whole,identity,8.068774525199485e-11,1.0741845683907356,0.7491801917790514,3.4764026403622323,0.0,0.19602380367671887
+whole,reference_rank2_control:both,3.1888800687588674e-12,0.2008894796635317,0.9708356414452407,16.72803090553617,13.251628265173938,-0.02563164598947057
+whole,reference_rank2_control:central,3.4918560615932685e-12,0.20899212495114808,0.9688080793161399,16.37659944451145,12.900196804149214,-0.023604083860369707
+whole,reference_rank2_control:posterior,7.019923975456881e-12,0.2860197442008663,0.9474294592463479,14.345661068194527,10.869258427832296,-0.0022254637905778623
+whole,ridge_direct:both,1.8607183707186493e-12,0.14396353525269887,0.9835967587213945,19.601765217908415,16.12536257754618,-0.03839276326562428
+whole,ridge_direct:central,2.557548768224278e-12,0.16153796905693554,0.9794139914164738,18.83042586407431,15.354023223712076,-0.03420999596070361
+whole,ridge_direct:posterior,6.626069570785653e-12,0.27654795568424595,0.9495846644221677,14.765568961003913,11.28916632064168,-0.004380668966397679
+
+```
+
 ### results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_intervals.csv
 
 ```csv
@@ -70498,7 +75439,7 @@ Deadline remains16:27 UTC. Recover evidence before spending the final90 minutes 
 
 ### Snapshot: NONFRONTAL_CHALLENGERS_PLAN.md
 
-[Original](docs/NONFRONTAL_CHALLENGERS_PLAN.md); captured SHA256 `eaf733d66fba685d6caa37cb633065fc593225cbfd6bcf9f3a99e4f088170ef3`.
+[Original](docs/NONFRONTAL_CHALLENGERS_PLAN.md); captured SHA256 `58fc08b8a1c6c6436451aac3ee70cdd9ad4220c010392d8dc8b642d705ad9126`.
 
 # Posterior and central correction challengers
 
@@ -70799,12 +75740,31 @@ labels/parity permit. Keep confidence/gain work for conditions with demonstrated
 headroom; do not claim it solves severe lateral. Allbound outputs are diagnostics,
 not validation scores, learnedmodels or inference weights.
 
+### Decision after the completed CCA comparison
+
+The current next-approach request authorized a matched legacy-corpus engineering
+comparison while RC repair remained pending; this did not waive qualification.
+Full320 CCA/direct comparison completed at b0c8613 with 299 passing Kaggle tests.
+Complete calibrated nonfrontal reference ridge with unchanged frontal VMD reaches
+17.533717 dB channel-first mean / 14.780705 dB pooled-window mean. Reference
+CCA rank2 reaches 15.833574 / 13.923972 and fails the stronger direct-control CC
+gate. Its matched SNR difference interval versus direct is [-2.548602, -.943181]
+dB. Severe lateral -5 input remains 13.278714 dB even for the direct hybrid.
+
+Retain direct ridge as the stronger development candidate; preserve negative
+CCA evidence and stop that fixed recipe without a broader rank/threshold bank.
+Prioritize RC01-RC05 provenance/coupling repair, the matched raw-frontal versus
+VMD frontend control for this new nonfrontal candidate, and native preservation.
+Signed frontal-field communication remains pending; this CCA stage used EOG
+references, not a completed context-reference ablation. No teacher/student or
+reserved confirmation promotion follows from these development results.
+
 
 ---
 
 ### Snapshot: NONFRONTAL_CHALLENGERS_RESULTS.md
 
-[Original](docs/NONFRONTAL_CHALLENGERS_RESULTS.md); captured SHA256 `ff4534e10fd16bc07c65a5648e988a7423502683160fe31a8c0dc38cee3825a3`.
+[Original](docs/NONFRONTAL_CHALLENGERS_RESULTS.md); captured SHA256 `a668d88a16816610ba140188d00abbfd75925606b03c743b31b07bf7eafb9aec`.
 
 # Posterior and central component correction: pilots and full development results
 
@@ -71299,6 +76259,240 @@ selection, never condition labels or oracle coefficients. Native suppression/
 resting preservation and independent datasets remain mandatory before models.
 
 
+## Next approach authored: posterior/middle CCA adaptation
+
+Currentuser requested nextapproach. Authored src/vmd_eog/nonfrontal_cca.py,
+calibration-onlyregularized canonicaldirectionfit,reference1/2 andEEG1/2arms,
+matchedjointdirectridge andoldrank2controls. Reuses21armregioncomposition/reporting
+engine. Addedfullreference/ridgeidentity,permutation,units,boundaries,constantrefs,
+mask andsavedreplay fixtures. StaticAST/notebookinspection passed locally;
+numericalvalidation notyetperformed. Confignonfrontal_cca,numberednotebook62.
+
+Auditconfirms oldsynthetic EEGfield/referenceamplitudemismatch. RC01-RC05 remain
+pending; the current nextapproach runs only a matchedlegacyengineeringpilot with
+explicitcoupling/coverageaudit. This is an executiondecision under the user's
+newdirection, not a claim that repair/nativequalificationpassed. No thresholds
+relaxed or reserved/modelwork opened. No authorMATLABparity/iCanCleanreplication
+claim. FrontalK3/2000outputs unchanged; allnewfit/outputonlynonfrontal.
+
+Previousgain-full001 resumedrecovery succeeded:all665manifestpayloads andcompletion
+verified locally, after interruptedSSL/chunkeddownloads. Failedretrievalattempts
+are transportfaults, not numericalkernelfailures. Immutablegainrun preserved.
+
+
+### CCA pilot submitted
+
+nonfrontal-cca-pilot001/1 submitted toKaggle vmd-nonfrontal-cca-pilot at exact
+publishedSHA1a2283151a9c840522ea4df25a239519fefcda81. Pilot50source-balanced
+examples/21arms; sixfixedmethods with posterior/central/both outputs. Attachonly
+corpus002/2 andmatched-context-full001/1. Notebook62copiedfromactualsubmission
+withcorrectSHA/config/parents. Tests precede scoring; completionpending. Existing
+Lunamonitor askedtofollowthisrun; primaryagentretainsdiagnosis/fixresponsibility.
+NoCCAaccuracy,SNRimprovement,authorparity,repaircompletion orqualifiedteacher
+claim beforeverifiedoutputs. Legacyreferenceamplitudemismatch remains explicit.
+
+
+### CCA subgroup preservation correction authored before claims
+
+Staticreview found firstsource1a22831 derives middle/temporal rows by copying
+central score rows. Perchannelpaper metrics retain correctchannelrows, but alpha/
+beta/covariance engineeringvalues inherit fullcentral group rather than subgroup.
+These are not valid subgroup-preservation estimates if clean correction occurs.
+A fix resolves exactsubgroupchannelrows beforepaired/spectral/covariance scoring,
+with explicit unknown-anatomy fixture. Sourcefix is authored/notyetKagglevalidated.
+Version1 continues for preservedfailure/evidence; retrieve beforeversion2push.
+No subgroupgate,VMDbenefit,teacher ormodelqualification claimed fromversion1.
+Matchedprimarywhole/frontal/posterior/centralpaper metrics are unaffected by this
+reportingfix. Fullcorpus/algorithm/thresholds remainunchanged.
+
+
+### First CCA pilot complete, primary metric evidence
+
+nonfrontal-cca-pilot001/1 at1a2283151a9c840522ea4df25a239519fefcda81 completed
+50examples/5recipients/5donors/5calibrations/21arms.297tests passed,14warnings,
+13.41s;900frozen-frontalchecks,30savedfitreplay,85800baselinepapermetricchecks.
+Stage87.033244s. Core14payloads/completion verified; full188payload recovery
+pending separately. No source/datachange,scoringtargetfit,newVMD,models orreserved.
+
+| Joint nonfrontal method | Whole mean channel output SNR dB | CC |
+| --- | ---: | ---: |
+| Direct calibrated lagridge | **19.601765** | .983597 |
+| ReferenceCCA rank2 | **17.549658** | .976053 |
+| Previousreference-rank2control | 16.728031 | .970836 |
+| EEGCCA rank2 | 15.163465 | .966923 |
+| ReferenceCCA rank1 | 14.345758 | .938454 |
+| EEGCCA rank1 | 13.716166 | .932696 |
+
+The17.55CCAresult improves the matchedoldrank2pointmean, but direct19.60 is
+stronger and cannot be omitted. CCA does not beat the simplerfullfieldcontrol.
+This is the same source-balancedpilot as componentpilot002, distinct from the
+sortedrecipientgainpilot. Do not compare pilotfrontal20.176007 with full17.112814
+as if a method changed. Direct centralshared21.755970 andposterior16.097518;
+CCAref2central17.992342/post15.010884. These are channelmeans, not yet pooledSNR.
+Pilotv1 lacks pooledtables; correctedfullsource adds them without replacingmetrics.
+
+Middle/temporalspectral-covariance gates fromv1 remainunqualified because of the
+reported subgroupcopybug. Primaryperchannel/wholepaper scores andpairedbaseline
+parity are unaffected. New source resolves subgroup rows before preservation
+computation, reportsactualcanonicalretainedrank and adds strongest directridge
+comparator plus reference-rank2control paireduncertainty. WholeCCA CCloss versus
+direct is larger than .005 on pilotmeans; use corrected pairedtable before any
+qualificationdecision, not weakcontextcomparator passes. Native/coupled-source
+validation remains absent. Numericalfixtures for the revisedreporting run on
+Kaggle before fullreplication; no author-iCanClean parity orsuperiorityclaim.
+
+
+### CCA pilot fully recovered; reporting contracts launched
+
+All188manifestpayloads/completion verified forcca-pilot001/1 afterboundedresume.
+Manifest56e6e9349cc605382a4c249ba0b7f6feee617e28143fe02ad82032d674aa7952.
+Runner219.862469s,peak657744KiB. Primaryplots/tablemetrics recovered. v1subgroup
+engineeringcopylimitation retained; no subgroupqualificationclaim.
+
+Dataset-free contractscca-contracts001/1 submitted atpublished
+a9d882c3fc7956c9edfa2f0adceaf7f73367792d to vmd-nonfrontal-cca-contracts.
+Tests include exactsubgroupchannelresolution and stronger-calibrateddirect CCgate,
+plus297earlierfixtures. Pending numericalresult. Revisedfull320scorewilluse
+ownsubgroupspectral/covariance calculation,actualretainedrank,pooledSNR andpaired
+CCA-versus-direct/reference-rank2uncertainty. Fixedrecipes/sourcepartitions unchanged.
+No duplicatedAutoVMDsearch,weights orconfirmationaccess.
+
+
+### Revised CCA reporting contracts verified
+
+cca-contracts001/1 at a9d882c3fc7956c9edfa2f0adceaf7f73367792d completed:
+299passed,14warnings,17.72s; all8manifestpayloads/completion verified. Runner
+21.360177s,peak106072KiB. Fixedsubgroupchannelresolution and strongestdirect
+comparator fixture passed; earlier CCAreconstruction,lag/scaling/permutation/
+serialization fixtures pass. Fullcomparison mayproceed with unchangedrecipes.
+This is a reporting/numerical checkpoint, not native/fresh qualification.
+
+
+### Full CCA/direct comparison launched after corrected contracts
+
+nonfrontal-cca-full001/1 submitted atlatestpublished
+b0c861373a8bc66c4538b78269a3b9b988ce3171 to vmd-nonfrontal-cca-full.
+Full320examples/32recipients/21fixedarms; samecorpus002/2 andmatched-context-full001/1.
+Numericalcontractsuite precedes scoring. Correctsubgroupspectral/covariancemetrics,
+pooledSNR,actualcanonicalranks,strongestdirectridgeCCgate andmatchedCCA/direct/
+reference-rank2uncertainty. No algorithmparameter/source split changes frompilot.
+Lunamonitor follows status during activecampaign; primaryagent handlesdiagnosis.
+The19.601765direct and17.549658CCApilotmeans are not extrapolated as fullresults.
+Fullcompletion/recoverypending; native/coupledsourcevalidation unresolved.
+
+### Full corrected CCA/direct comparison completed — 14 October 2026
+
+Run `nonfrontal-cca-full-001/1`, campaign `vmd-nonfrontal-cca-20261014`,
+published source `b0c861373a8bc66c4538b78269a3b9b988ce3171`.
+[Kaggle notebook](https://www.kaggle.com/code/satyapaladugu/vmd-nonfrontal-cca-full).
+Immutable parents: `satyapaladugu/vmd-eog-corpus/2` and
+`satyapaladugu/vmd-matched-context-full/1`. The same 320 examples cover
+32 recipients, five donors and 32 calibration bundles. All 21 arms completed.
+Kaggle tests: **299 passed**, 14 warnings, 20.68 seconds. Verified checks:
+5,760 frozen-frontal parity comparisons, 192 saved-fit replays and 549,000
+baseline paper-metric comparisons. Stage runtime 986.118150 seconds; total
+runner runtime 1,193.665894 seconds; peak memory 2,451,336 KiB.
+
+The table reports output SNR, not SNR improvement. Channel-first means and
+within-window channel-pooled energy SNR are separately balanced over source/
+condition/input-level groups; the latter is not a new acceptance gate and is
+not a single concatenated global-energy calculation.
+
+| Frozen frontal VMD + nonfrontal method | Mean output SNR, dB | Pooled-window SNR, dB | MSE, V² | Temporal RRMSE | Ordinary Pearson CC |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Complete calibrated lagged reference ridge | **17.533717** | **14.780705** | 3.546698e-12 | .191564 | .972400 |
+| Reference-side CCA rank 2 | 15.833574 | 13.923972 | 4.280153e-12 | .222509 | .965985 |
+| Previous rest-whitened reference rank 2 | 15.155692 | 13.480444 | 4.913399e-12 | .242700 | .960545 |
+| EEG-side CCA rank 2 | 13.597170 | 12.168657 | 6.092703e-12 | .272894 | .952032 |
+| Reference-side CCA rank 1 | 12.981316 | 10.798309 | 1.511775e-11 | .354372 | .928033 |
+| EEG-side CCA rank 1 | 12.519167 | 10.576723 | 1.604671e-11 | .369297 | .922790 |
+
+All these joint arms retain identical K3/alpha2000 frontal output. The
+17.533717 dB result is an **EOG-assisted regional hybrid on development-exposed
+regression-generated mixtures**, not VMD alone, EEG-only deployment, a fresh
+confirmation score or evidence of superiority over published methods.
+The simpler complete reference field is the strongest of these six fixed
+nonfrontal recipes. Removing directions through CCA did not improve it.
+
+| Verified output region | Direct ridge mean / pooled, dB | CCA reference rank 2 mean / pooled, dB | Previous rank 2 mean / pooled, dB |
+| --- | ---: | ---: | ---: |
+| Frontal, unchanged | 17.112814 / 16.628262 | 17.112814 / 16.628262 | 17.112814 / 16.628262 |
+| Middle, 20 channels | **18.652706 / 18.614822** | 15.447017 / 15.613187 | 14.141899 / 14.341411 |
+| Temporal/shared, six channels | **21.298006 / 20.412816** | 18.559419 / 17.726674 | 17.452148 / 16.610706 |
+| Central/shared, all 26 channels | **19.263160 / 19.193922** | 16.165264 / 16.352900 | 14.905802 / 15.124574 |
+| Posterior | **15.350217 / 14.584468** | 14.432034 / 13.602651 | 14.095698 / 13.279070 |
+
+Middle and temporal rows are now scored on their own channel sets before
+spectral/covariance calculation. They are not duplicated central/shared
+preservation rows. Their larger dB scores cannot be added to frontal/posterior
+scores to obtain a cap score.
+
+| Condition | Input SNR, dB | Direct joint ridge output, dB | CCA reference rank 2 output, dB | Previous rank 2 output, dB |
+| --- | ---: | ---: | ---: | ---: |
+| Blink | -5 | 18.369567 | 16.916620 | 16.124917 |
+| Blink | 0 | 19.684750 | 18.792334 | 18.250146 |
+| Blink | 5 | 17.914413 | 17.773645 | 17.562110 |
+| Lateral | -5 | **13.278714** | 9.212597 | 8.050232 |
+| Lateral | 0 | **16.219934** | 12.921279 | 11.869812 |
+| Lateral | 5 | **17.940872** | 15.474983 | 14.796459 |
+| Mixed | -5 | 17.621888 | 15.960562 | 15.118827 |
+| Mixed | 0 | 18.920192 | 17.880395 | 17.300671 |
+| Mixed | 5 | 17.853123 | 17.569747 | 17.328050 |
+
+The largest remaining problem is severe lateral movement: even the stronger
+hybrid is below 15 dB in that stratum. Weak blink/mixed cases must remain visible;
+their improvement does not establish native false-positive preservation.
+
+Matched supplemental uncertainty was computed on Kaggle using 500 paired
+recipient/donor Poisson multiplier draws, 498 valid. This is a project
+approximation, not the paper's native participant permutation procedure:
+CCA reference-rank2 minus previous rank2 whole-cap SNR = +0.677882 dB,
+95% interval [.315406, 1.059387]; CCA reference-rank2 minus complete ridge =
+**-1.700143 dB**, interval **[-2.548602, -.943181]**. Its CC difference versus
+complete ridge = -.006414969, interval [-.011541962, -.002287459].
+
+The CCA rank2 arm fails the strongest new direct-comparator whole-cap CC gate:
+deterioration **.006414969 > .005**; the verified middle deterioration is
+**.012577343 > .005**. Posterior CCA mean 14.432034 also misses the 15 dB gate.
+Passes against weaker context controls must not replace these comparisons.
+Complete ridge passes the controlled clean-preservation checks against the
+old context controls; zero reported clean modification/alpha/beta/covariance
+error concerns idealized synthetic clean inputs only. A self-comparator row
+for ridge has zero CC loss by construction and is not independent qualification.
+
+The unchanged frontal output still loses .007441477 CC against its archived
+stronger calibrated raw-frontal control, exceeding .005. This experiment does
+not provide the new complete-ridge nonfrontal system paired with a raw-frontal
+output; that matched frontend ablation remains to be evaluated. Previous native
+frontal resting-preservation failures also remain unresolved. Qualification,
+teacher promotion, neural training and reserved confirmation access remain false.
+
+Gate tables retain 170 whole-cap failure-flagged channel rows (39 frontal,
+53 posterior and 78 central/shared). These include inherited historical flags;
+they are not 170 new CCA solver failures or 170 failed records. All eligible
+rows remain scored. The summary distinguishes fixed output parity from active
+algorithm faults. Coverage/true-artifact/generation-multiplier tables are
+evaluator-only after predictions and never select components or gain.
+
+Core outputs, tests, plots, parent/source identities, gate tables and matched
+uncertainty were checksum verified. Manifest SHA256:
+`c8418eb6acc9977aab73fa7606bfd5326dcdf0f12b056922fdabed1816bc91eb`.
+Bulk recovery completed: all **1,058 manifest payloads**, completion and source
+identity are verified locally in the retrieval receipt. The saved run directory
+contains 3,575,310,609 bytes including logs/receipt. The whole-cap PNG was visually
+inspected and is readable. HTML visual QA was not performed.
+
+Decision: retain complete calibrated nonfrontal reference ridge as the stronger
+development candidate, preserve the negative CCA/rank-one/EEG-side results, and
+stop this fixed CCA recipe rather than launch a blind rank/threshold search.
+Next checkpoint is RC01-RC05 reference-coupling/provenance repair followed by
+matched fixed frontal controls and native qualification. An eligible author-code
+SGEYESUB challenger still requires the six calibrated movement/rest labels;
+they cannot be guessed from HEOG signs. No claim that coupling repair guarantees
+an SNR gain. No AutoVMD search, neural weights, new dataset or reserved source
+was used in this completed comparison.
+
+
 ---
 
 ### Snapshot: NONFRONTAL_GAIN_DIAGNOSIS_PLAN.md
@@ -71394,6 +76588,153 @@ severelateral pooled5.444037→5.570377 even with target-fittedscalar; fieldshap
 and gatecoverage need investigation. Validate source/reference coupling before
 newconfidence rules; then test a distinctreferenceCCA or eligibleSGEYESUB.
 Alloraclefigures remain nondeployable; no models/native/fresh qualification.
+
+
+---
+
+### Snapshot: NONFRONTAL_CCA_PLAN.md
+
+[Original](docs/NONFRONTAL_CCA_PLAN.md); captured SHA256 `a3ba97ff76941604388bdc7bd898116ec8912e426c711734e7d9c6c05d3c9147`.
+
+# Posterior/middle regularized CCA adaptation
+
+14October2026. User requested the next approach after fixed-strength diagnosis.
+All numerical work runs on Kaggle. FrontalVMD K3/2000 stays frozen. AutoVMD,
+neural training and reserved data remain closed.
+
+## Scientific question and scope
+
+Can calibration-selected EEG/EOG canonical directions improve the artifact field
+when scalar gain cannot fix severe lateral reconstruction? Six fixedmethods:
+directjointlagridge; previousrest-whitenedreference-rank2; referenceCCA rank1/2;
+EEGCCA rank1/2. Each has posterior-only,central-only andboth compositions, plus
+identity and two inheritedcontextcontrols:21arms. Same exactcorpus002 and
+matched-context-full001 parents, unscoredcalibration, lagbank[-10,0,10], ridge.01,
+fieldadmission.4 andgaincap8. No broadsearch or scoring-target fitting.
+
+## Literature and labelled adaptations
+
+Primary paper and author implementation:
+https://doi.org/10.3390/s23198214
+https://github.com/downeyryanj/iCanClean
+The paper uses CCA to identify reference-correlated directions, choose candidate
+noise components and subtract a regressed projection. Its cited ocular benchmark
+is phantomEEG, not evidence of our human reconstructionSNR. Reference-side,
+EEG-side and joint source choices are distinct. Our frozen-calibration,regularized,
+lagged lowrank implementation is an adaptation. MATLAB parity and published
+settings are not claimed. Source code is newly authored; author code is not vendored.
+
+## Algorithm and interfaces
+
+fit_experts(calibrationEEG,references,masks,trialtypes,boundaries,policy) accepts
+no scoringtarget,trueartifact or generationmultiplier. Standardize EEG and lagged
+reference predictors using valid calibration moments. Exclude outerlag edges and
+trialjoin edges before covariance estimation. Whiten both covariance matrices
+withfixedregularization.01 in standardizedcoordinates; SVD their crosscovariance.
+Record regularizedsingularvalues and actual paired calibrationPearsonCC separately.
+Admit canonicaldirections at squared actualCC>=.16, corresponding to|CC|>=.4.
+This threshold matching is a project choice, not the paper's publishedoptimum.
+Retain first1/2admitteddirections in regularizedSVD order; fewer available are
+explicitly recorded; no admitteddirection gives scoredpass-through withfailure.
+
+Reference arm: truncate the standardizedreference design in canonical coordinates
+then apply the same frozenridgecoefficients. Fullreferencebasis must reconstruct
+identity and exactly reproduce matchedridge within numericaltolerance. Rank1/2
+truncation, rather than naming a fullrank regressionCCA, is the substantivechange.
+
+EEG arm: apply calibrated canonicalEEG directions to scoringEEG and the calibrated
+ridgebackprojection. These directions can retain neuralcontent; use as a separate
+preservation-risk control. Every branch uses the same originalinput fieldassociation
+gate. Referencearms estimate a boundedregion gain from observedEEG/candidatefield;
+EEGarms preserve unitcorrection strength. HEOG/VEOG access and differences are
+reported. No target, conditionlabel or knowninputSNR enters correction.
+
+Outputonly verified regions1/2. Frontal andunknown/maskedrows remain frozen.
+Each regional correction refers to originalEEG and is composed once. Save fitted
+matrices,means/scales,actualCC,admissionindices,regularizedspectra,coefficients,
+rank andfailures. Reload and replay every fit bit-for-bit before scoring.
+
+## Coupling prerequisite and current execution decision
+
+Producerinspection confirms legacycorpus fields are scaled while EOGreferences
+are not; the paired construction is regression-derived and development-exposed.
+The original RC01-RC05 repair remains pending; do not claim it passed or relabel
+this corpus as coupled/fresh. Current next-approach request proceeds with a matched
+legacyengineeringpilot, with explicit limitation, rather than qualifying a model.
+Save a coupling audit and evaluator-only gatecoverage/trueartifact energy after
+predictions. These values cannot affect admission or inference. Corrected-source
+and nativevalidation remain required before any qualification or promotion.
+
+## Tests, pilot and stop rules
+
+Tests coverfullreference/ridgeparity,boundaries,sourceunits/scaling,channelpermutation,
+constantreferences,invalidpolicies,outputregionmasks,lag-edgezero andsavedfitreplay.
+Kaggle runner executes all fixtures before50source-balancedexamples. Compare all
+eligible blink/lateral/mixed/clean cases, runtime/memory and failurepass-through.
+Report paperMSE,temporalRRMSE,ordinaryCC,SNRoutput/improvement separately, plus
+middle20channel andtemporal6channel diagnostics. Same engineeringgates; native
+EEG receives suppression/preservation proxies, not reconstructionSNR.
+
+Full320replication follows only verified pilot contracts/recovery and a useful
+matchedresult. If CCA is inferior or degenerates to ridge, retain negative evidence,
+stop this recipe, and prioritize coupled-source repair/eligibleSGEYESUB rather
+than another blindrank/thresholdgrid. No automatic neural promotion. Frontal
+VMD superiority still requires the matched rawcontrol; fixedfrontaloutput never
+constitutes a new VMD gain. Source-aware uncertainty is supplemental, not exact
+paper-native participantpermutation. All savedoutputs pin publishedSHA/parents.
+
+
+## Pilot evidence and revised full check
+
+Pilotv1 primarywholemeans:directridge19.601765,CCAreference2 17.549658,previous
+rank2 16.728031dB.297tests passed. CCAimproves the older rank2point, but the
+simpledirectcontrol is stronger. Preserve primaryscores; subgroup preservation
+copybug is documented and repaired before use. Revisedsource computes middle/
+temporalmetrics on their own channels, adds pooledSNR and labelled strongest
+newdirectcontrol plus matchedCCA-versus-rank2/direct uncertainty. Gates unchanged.
+The next full320run tests samefixedrecipes after focusedKagglerepairfixtures;
+no pilotselectedweight/rank, no newthresholdbank or sourceconstruction change.
+
+
+## Reproduce the full corrected comparison
+
+From the project root after Kaggle authentication:
+
+```powershell
+python tools/kaggle_campaign.py submit --stage nonfrontal-cca --run-id nonfrontal-cca-reproduction-001 --profile full --config configs/nonfrontal_cca.json --source-sha b0c861373a8bc66c4538b78269a3b9b988ce3171 --kernel-slug vmd-nonfrontal-cca-reproduction --kernel-source satyapaladugu/vmd-eog-corpus/2 --kernel-source satyapaladugu/vmd-matched-context-full/1
+```
+
+Choose a new run ID if that one exists. This is local orchestration only;
+all numericaltests,fitting,evaluation andplotting execute on Kaggle. Check and
+recover the submitted run with:
+
+```powershell
+python tools/kaggle_campaign.py status --run-id nonfrontal-cca-reproduction-001
+python tools/retrieve_bounded.py --run-id nonfrontal-cca-reproduction-001
+```
+
+Numberednotebook62pins the actualfullsourceSHA andversionedparents. Earlier
+pilot source/notebook/results remain archived; laterdocumentation commits do
+not change runningexperiments. No neuralmodel istrained by these commands.
+
+## Completed comparison and decision
+
+The corrected full320 run completed at b0c8613 with 299 passing Kaggle tests.
+Complete calibrated reference ridge: 17.533717 dB channel-first mean and
+14.780705 dB pooled-window mean. Reference CCA rank2: 15.833574 / 13.923972;
+previous rest-whitened rank2: 15.155692 / 13.480444. All use identical frozen
+frontal VMD. CCA improves the old rank2 control but loses to complete ridge:
+matched CCA-minus-ridge SNR interval [-2.548602, -.943181] dB. It also fails
+the strongest direct-control CC gate (.006414969 deterioration > .005).
+
+Retain complete ridge as a development candidate and preserve the negative
+CCA evidence. No wider rank/threshold grid, teacher or student is authorized
+by these outcomes. The severe lateral -5 dB stratum remains 13.278714 dB,
+the legacy corpus coupling mismatch remains unrepaired, and native frontal
+preservation and matched no-VMD frontend qualification remain unresolved.
+Prioritize the bounded RC01-RC05 source-coupling repair and native evaluation.
+See NONFRONTAL_CHALLENGERS_RESULTS.md for all regions, conditions, metrics,
+uncertainty, recovery identities and qualification limitations.
 
 
 ---
@@ -72136,7 +77477,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/calibration_frontal_context.py](<src/vmd_eog/calibration_frontal_context.py>) | 26402 | `a661a66114dda376ab31b5fff0f4128f51223d786e680d22246aa564825f5c2b` |
 | [src/vmd_eog/campaign.py](<src/vmd_eog/campaign.py>) | 1596 | `2e6a073e6a3ac4d831781886a0c4f0a040a367cb70d15af45150d6a41a1c69c3` |
 | [src/vmd_eog/classical_fixture.py](<src/vmd_eog/classical_fixture.py>) | 4755 | `4b660fa880354ae815b1110f2bd3044003ccd2475b42e576a3b8b748e2d8aab3` |
-| [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 7282 | `0187998346d1d8d8e293aa08fd3bd72ae8ff7567b00771c2ca10c9c42b89ae50` |
+| [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 7300 | `d297ff0b1586ae34635b7aa9856981efe91cf14bdbd0bc0498a02eeac6052f13` |
 | [src/vmd_eog/corpus.py](<src/vmd_eog/corpus.py>) | 15469 | `b5064d6944fd1c36d75a5c6f4f82e85212f4b10b7462db1ef3fc922d5441db2b` |
 | [src/vmd_eog/coverage_uncertainty.py](<src/vmd_eog/coverage_uncertainty.py>) | 13987 | `8755dbb1063e0eb158cf5146486b8bf7a2eaac5c2565552055d4d41257f268a0` |
 | [src/vmd_eog/data.py](<src/vmd_eog/data.py>) | 13051 | `49d0b5a8137db4b9a67111b84af94ced4a1661baac5d64dfbd9f7c76bcb39b08` |
@@ -72171,8 +77512,9 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/neural_diagnosis.py](<src/vmd_eog/neural_diagnosis.py>) | 7067 | `ff7bfc7581e679ef94810271ec36968146e3112946a2f5268599ab76f3bcf16e` |
 | [src/vmd_eog/neural_experiments.py](<src/vmd_eog/neural_experiments.py>) | 26062 | `afb67325e95c84c916be8b8b6ea39b75c8118a75a500db155b32bdee58afd007` |
 | [src/vmd_eog/neural_losses.py](<src/vmd_eog/neural_losses.py>) | 3521 | `7105f797e4bb220546dbc0eb6ce04293e570f2c4762b26d6f9f9e1187bad8249` |
+| [src/vmd_eog/nonfrontal_cca.py](<src/vmd_eog/nonfrontal_cca.py>) | 10890 | `2d6b696aa1e986a9fc9a8f54a06070d671aec9b1d7694c20bc90917b3b913a0e` |
 | [src/vmd_eog/nonfrontal_challengers.py](<src/vmd_eog/nonfrontal_challengers.py>) | 13267 | `07bfd51a88ee9e703382eb5a385d47ec5269d9e05320b1e4f19a7035600d2ce6` |
-| [src/vmd_eog/nonfrontal_experiment.py](<src/vmd_eog/nonfrontal_experiment.py>) | 21800 | `6421c1eba7484b335d829a1d759e21d765f61b9d9301ef5c669272739d11b1b8` |
+| [src/vmd_eog/nonfrontal_experiment.py](<src/vmd_eog/nonfrontal_experiment.py>) | 26880 | `1f3f9b93269079d73d331df9cd6a02d118fe0cf96a584d7c42ed1a1879c9d915` |
 | [src/vmd_eog/nonfrontal_gain_diagnostic.py](<src/vmd_eog/nonfrontal_gain_diagnostic.py>) | 15666 | `5d4729e3722ce69cdbe64f0977940e6e2b3ae23e6cee1280dbccc62421c97230` |
 | [src/vmd_eog/nonfrontal_mwf.py](<src/vmd_eog/nonfrontal_mwf.py>) | 4822 | `c57db8430d0e3645195b8efa3c3e7583657c17e50170e5928fce0700e7b48afa` |
 | [src/vmd_eog/nonfrontal_review.py](<src/vmd_eog/nonfrontal_review.py>) | 16209 | `5499677ba2d89caee5ee84e9cba48378f04827678d467ac8368a2bc9cb464a99` |
@@ -72191,7 +77533,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/regional_coverage.py](<src/vmd_eog/regional_coverage.py>) | 19817 | `269c86d2494cced2d1b6404a97953f461f2664574c73bd47ce20f28b23b278bd` |
 | [src/vmd_eog/regional_diagnostic.py](<src/vmd_eog/regional_diagnostic.py>) | 16581 | `d1f7dd35a8501732e6619ad166e9fe8857539901aad69cc2fb9c02a60bbce5d2` |
 | [src/vmd_eog/regional_integration.py](<src/vmd_eog/regional_integration.py>) | 16689 | `b514cdfd692d160ff96d9a4666dc25f788a6d27a0526d004ff335a25db91b133` |
-| [src/vmd_eog/runner.py](<src/vmd_eog/runner.py>) | 6035 | `44d85be4b4fdd302c8ba0abb54197e8d7e4dde74a5bfdcd7332044bdd193086c` |
+| [src/vmd_eog/runner.py](<src/vmd_eog/runner.py>) | 6053 | `7bf1f040b6f60229d312ae99e9fa944b5cb416268d1026280424c053e82d123f` |
 | [src/vmd_eog/signal.py](<src/vmd_eog/signal.py>) | 2710 | `233c86044033895b49dd602117ac7fb04ee84cfa3c6d0500ac466c8e760d7a3c` |
 | [src/vmd_eog/sobi.py](<src/vmd_eog/sobi.py>) | 5696 | `cb8b89ea6de05ce2bdc0fffd6e24a1ae469c7b9746c89ca2e89cf9bb747ead58` |
 | [src/vmd_eog/vmd.py](<src/vmd_eog/vmd.py>) | 4812 | `2705aedce1f71226882ee6df6e9efa127a9717d6aab0fc8676288f3643cb626a` |
@@ -72208,6 +77550,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [configs/frontal_replication.json](<configs/frontal_replication.json>) | 2522 | `0b56857678a5c6390342eb42db3f4f71269475d20d779683823a270e38808c41` |
 | [configs/frontal_screen.json](<configs/frontal_screen.json>) | 284 | `7e7506778e47b246741697c0aff5527740e82076e51e72fb45be7606f30eb2df` |
 | [configs/guard17_replay.json](<configs/guard17_replay.json>) | 1189 | `99d372ce62c0452be024a0eb9243256f391ea84381585dd90bfdecd29352ecc2` |
+| [configs/nonfrontal_cca.json](<configs/nonfrontal_cca.json>) | 3051 | `6f01386c2622098c5b301bee585260cccc1b7cf7e8da2e07bb9ec0ef18dfcb82` |
 | [configs/nonfrontal_challengers.json](<configs/nonfrontal_challengers.json>) | 2959 | `dcda98685260c5cfa0412c099f3d704a2e5b41e6dcb46e2f05bb8e7d8542033e` |
 | [configs/nonfrontal_gain_diagnostic.json](<configs/nonfrontal_gain_diagnostic.json>) | 3205 | `1244100ec99fbc7b36c3e6dfbe4aa4e9320e67fc7107ab0ddbf95a66fdd69a4c` |
 | [configs/nonfrontal_mwf.json](<configs/nonfrontal_mwf.json>) | 2978 | `fb92cd25c3e51e822275b4e6ded9df272edfacbae63ac844caaa03c811b6e390` |
@@ -72283,6 +77626,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [notebooks/59_Central_Posterior_GEVD_MWF.ipynb](<notebooks/59_Central_Posterior_GEVD_MWF.ipynb>) | 9069 | `aea0ece312b7b73f952b67eb011fb03c7100748f09349038e9f46cd633175d90` |
 | [notebooks/60_Frozen_Frontend_SNR_Review.ipynb](<notebooks/60_Frozen_Frontend_SNR_Review.ipynb>) | 9387 | `ee30d9202f06de8d27106dace46fbbb899d15ca20122fa365e2667fcf2445bc2` |
 | [notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb](<notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb>) | 9704 | `a39eaa7190e2e11aeee30332e114cfa0a20e9f7128c2cc7d3955791abd8584d7` |
+| [notebooks/62_Nonfrontal_CCA_Adaptation.ipynb](<notebooks/62_Nonfrontal_CCA_Adaptation.ipynb>) | 9949 | `df0b250cccedc6d586bcf1083c485bd4969ec591ffce575e34b62f60ee9af2ba` |
 | [tests/test_artifacts.py](<tests/test_artifacts.py>) | 777 | `ccd2badb790151ebe841704a952af7efbc980b0031c9a17185175a5238ec2d8b` |
 | [tests/test_autovmd.py](<tests/test_autovmd.py>) | 1271 | `42bcf6e4e7dc1644f0745e52e6be225d3dafed204ef97fddf507e75a8f838a49` |
 | [tests/test_brainvision.py](<tests/test_brainvision.py>) | 1240 | `5b1eb58e28f241c48d10f15290fe20e280812cf22c377847a4fb0135490e2813` |
@@ -72305,6 +77649,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_native_protocol.py](<tests/test_native_protocol.py>) | 3999 | `9b29c33a8cceeaebf70e68bda936f58e51d1df862af733321511820cbf26c5ff` |
 | [tests/test_neural.py](<tests/test_neural.py>) | 3443 | `3144e342001dfe84e6c36c65d1e873af1f15717bbd431be4e27059e9eaba1e55` |
 | [tests/test_neural_selection.py](<tests/test_neural_selection.py>) | 1523 | `dc723553a998edef0ddbeb274db5858768f350106919543b321cfcb1326d7b06` |
+| [tests/test_nonfrontal_cca.py](<tests/test_nonfrontal_cca.py>) | 6974 | `fe5a6b0a4d7e06de12f88d94103418442203835e2adcf445cf7e72be9a387560` |
 | [tests/test_nonfrontal_challengers.py](<tests/test_nonfrontal_challengers.py>) | 6462 | `2c2968771320de4c28a27a1d57654318855a63c811561fc384ecb134dbb8a91c` |
 | [tests/test_nonfrontal_gain_diagnostic.py](<tests/test_nonfrontal_gain_diagnostic.py>) | 1680 | `97eb21178431c4a6d12c2025af3512ee7cb3ad0c24d59e4b863eee371a3f0556` |
 | [tests/test_nonfrontal_mwf.py](<tests/test_nonfrontal_mwf.py>) | 2232 | `af8347c0680f4a4e91f3cc033c51fed37b82f2ae58eb7c240683e644cef82774` |
@@ -72328,14 +77673,14 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_sobi.py](<tests/test_sobi.py>) | 2486 | `3f90b70c5e0228615d7eb97ecc4ceca3dc75804513a6c72e4cc0ed09f1934a76` |
 | [tests/test_vmd_diagnosis.py](<tests/test_vmd_diagnosis.py>) | 1644 | `85824e2e028f45c78f6110b8c184cff63e9587d9f13a753bbd18787c9902acfd` |
 | [tools/bandroute_chain.py](<tools/bandroute_chain.py>) | 6369 | `81a1a5600f259f0e0b37d8e9df6f891aa60cf68c8a62ddee1457c09f34b4ffd3` |
-| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 65356 | `992ae9a38b04ea42c34d1836f0b9952dfe7574ea26ddc7ab3354dd2a24ca35fe` |
-| [tools/build_work_ledger.py](<tools/build_work_ledger.py>) | 6743 | `43541ba79bfa151fce03f85da83e0fa314330514b11d11ba4fa6bc07b13e7c45` |
+| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 66765 | `cccf15cf1a03a8aa03e391d0286d82b27b209fd1fb0e32bf046297fceac6591f` |
+| [tools/build_work_ledger.py](<tools/build_work_ledger.py>) | 6791 | `fec306b7421e8e3b13c97426a3b46140d5f03b7362af965cdce4c00c5fedb3ef` |
 | [tools/coverage_chain.py](<tools/coverage_chain.py>) | 4686 | `199e7c0b22c9c586b722437ad6855c9df77f310c7333c1077ddf87a37bae7435` |
 | [tools/diagnostic_chain.py](<tools/diagnostic_chain.py>) | 6851 | `913b0243e23da65adfd787dedace965699bf23162488a7bab6198c73f491eeb6` |
 | [tools/download_vmd_cache.py](<tools/download_vmd_cache.py>) | 7475 | `c3b3d1bbb9fb62cad4fc26b76d75b6bab514c117a8387cf7306465e8c52929e1` |
 | [tools/frontal_queue.py](<tools/frontal_queue.py>) | 11738 | `71a59007d3ec9137b558fee20870164cd7d3e6dc4181ebeeb25260b499d67e62` |
 | [tools/guard17_replay.py](<tools/guard17_replay.py>) | 4518 | `d5c056a1159b50997ae2859f70f9d8d8b1525d16cdc93c63c5ee4d888cec5dcb` |
-| [tools/kaggle_campaign.py](<tools/kaggle_campaign.py>) | 8271 | `26b7c8e0554a3fe292bffd70085bfd0245ee1c4497220028f0783d4f0cdd44f3` |
+| [tools/kaggle_campaign.py](<tools/kaggle_campaign.py>) | 8289 | `dad79294d26e3679800e684a4afc01dc80c55ef14d05003de7d07f2ebe51e3c1` |
 | [tools/kaggle_log.py](<tools/kaggle_log.py>) | 1485 | `05d7b5b4acb3da503b9e34f13165f973d34bf21aa449af1e6683fb97764094e0` |
 | [tools/phase_a_chain.py](<tools/phase_a_chain.py>) | 5442 | `ba46e9386fd5c45b1f6904f36a8e9514508ccd99ddf817b2c8357aa6627bde16` |
 | [tools/regional_chain.py](<tools/regional_chain.py>) | 3447 | `87567309f60fe17f740de68041587a1eb1ac6f541065ddb8441a495503b36f41` |

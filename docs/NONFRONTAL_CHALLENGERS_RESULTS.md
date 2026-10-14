@@ -598,3 +598,128 @@ cca-contracts001/1 at a9d882c3fc7956c9edfa2f0adceaf7f73367792d completed:
 comparator fixture passed; earlier CCAreconstruction,lag/scaling/permutation/
 serialization fixtures pass. Fullcomparison mayproceed with unchangedrecipes.
 This is a reporting/numerical checkpoint, not native/fresh qualification.
+
+
+### Full CCA/direct comparison launched after corrected contracts
+
+nonfrontal-cca-full001/1 submitted atlatestpublished
+b0c861373a8bc66c4538b78269a3b9b988ce3171 to vmd-nonfrontal-cca-full.
+Full320examples/32recipients/21fixedarms; samecorpus002/2 andmatched-context-full001/1.
+Numericalcontractsuite precedes scoring. Correctsubgroupspectral/covariancemetrics,
+pooledSNR,actualcanonicalranks,strongestdirectridgeCCgate andmatchedCCA/direct/
+reference-rank2uncertainty. No algorithmparameter/source split changes frompilot.
+Lunamonitor follows status during activecampaign; primaryagent handlesdiagnosis.
+The19.601765direct and17.549658CCApilotmeans are not extrapolated as fullresults.
+Fullcompletion/recoverypending; native/coupledsourcevalidation unresolved.
+
+### Full corrected CCA/direct comparison completed — 14 October 2026
+
+Run `nonfrontal-cca-full-001/1`, campaign `vmd-nonfrontal-cca-20261014`,
+published source `b0c861373a8bc66c4538b78269a3b9b988ce3171`.
+[Kaggle notebook](https://www.kaggle.com/code/satyapaladugu/vmd-nonfrontal-cca-full).
+Immutable parents: `satyapaladugu/vmd-eog-corpus/2` and
+`satyapaladugu/vmd-matched-context-full/1`. The same 320 examples cover
+32 recipients, five donors and 32 calibration bundles. All 21 arms completed.
+Kaggle tests: **299 passed**, 14 warnings, 20.68 seconds. Verified checks:
+5,760 frozen-frontal parity comparisons, 192 saved-fit replays and 549,000
+baseline paper-metric comparisons. Stage runtime 986.118150 seconds; total
+runner runtime 1,193.665894 seconds; peak memory 2,451,336 KiB.
+
+The table reports output SNR, not SNR improvement. Channel-first means and
+within-window channel-pooled energy SNR are separately balanced over source/
+condition/input-level groups; the latter is not a new acceptance gate and is
+not a single concatenated global-energy calculation.
+
+| Frozen frontal VMD + nonfrontal method | Mean output SNR, dB | Pooled-window SNR, dB | MSE, V² | Temporal RRMSE | Ordinary Pearson CC |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Complete calibrated lagged reference ridge | **17.533717** | **14.780705** | 3.546698e-12 | .191564 | .972400 |
+| Reference-side CCA rank 2 | 15.833574 | 13.923972 | 4.280153e-12 | .222509 | .965985 |
+| Previous rest-whitened reference rank 2 | 15.155692 | 13.480444 | 4.913399e-12 | .242700 | .960545 |
+| EEG-side CCA rank 2 | 13.597170 | 12.168657 | 6.092703e-12 | .272894 | .952032 |
+| Reference-side CCA rank 1 | 12.981316 | 10.798309 | 1.511775e-11 | .354372 | .928033 |
+| EEG-side CCA rank 1 | 12.519167 | 10.576723 | 1.604671e-11 | .369297 | .922790 |
+
+All these joint arms retain identical K3/alpha2000 frontal output. The
+17.533717 dB result is an **EOG-assisted regional hybrid on development-exposed
+regression-generated mixtures**, not VMD alone, EEG-only deployment, a fresh
+confirmation score or evidence of superiority over published methods.
+The simpler complete reference field is the strongest of these six fixed
+nonfrontal recipes. Removing directions through CCA did not improve it.
+
+| Verified output region | Direct ridge mean / pooled, dB | CCA reference rank 2 mean / pooled, dB | Previous rank 2 mean / pooled, dB |
+| --- | ---: | ---: | ---: |
+| Frontal, unchanged | 17.112814 / 16.628262 | 17.112814 / 16.628262 | 17.112814 / 16.628262 |
+| Middle, 20 channels | **18.652706 / 18.614822** | 15.447017 / 15.613187 | 14.141899 / 14.341411 |
+| Temporal/shared, six channels | **21.298006 / 20.412816** | 18.559419 / 17.726674 | 17.452148 / 16.610706 |
+| Central/shared, all 26 channels | **19.263160 / 19.193922** | 16.165264 / 16.352900 | 14.905802 / 15.124574 |
+| Posterior | **15.350217 / 14.584468** | 14.432034 / 13.602651 | 14.095698 / 13.279070 |
+
+Middle and temporal rows are now scored on their own channel sets before
+spectral/covariance calculation. They are not duplicated central/shared
+preservation rows. Their larger dB scores cannot be added to frontal/posterior
+scores to obtain a cap score.
+
+| Condition | Input SNR, dB | Direct joint ridge output, dB | CCA reference rank 2 output, dB | Previous rank 2 output, dB |
+| --- | ---: | ---: | ---: | ---: |
+| Blink | -5 | 18.369567 | 16.916620 | 16.124917 |
+| Blink | 0 | 19.684750 | 18.792334 | 18.250146 |
+| Blink | 5 | 17.914413 | 17.773645 | 17.562110 |
+| Lateral | -5 | **13.278714** | 9.212597 | 8.050232 |
+| Lateral | 0 | **16.219934** | 12.921279 | 11.869812 |
+| Lateral | 5 | **17.940872** | 15.474983 | 14.796459 |
+| Mixed | -5 | 17.621888 | 15.960562 | 15.118827 |
+| Mixed | 0 | 18.920192 | 17.880395 | 17.300671 |
+| Mixed | 5 | 17.853123 | 17.569747 | 17.328050 |
+
+The largest remaining problem is severe lateral movement: even the stronger
+hybrid is below 15 dB in that stratum. Weak blink/mixed cases must remain visible;
+their improvement does not establish native false-positive preservation.
+
+Matched supplemental uncertainty was computed on Kaggle using 500 paired
+recipient/donor Poisson multiplier draws, 498 valid. This is a project
+approximation, not the paper's native participant permutation procedure:
+CCA reference-rank2 minus previous rank2 whole-cap SNR = +0.677882 dB,
+95% interval [.315406, 1.059387]; CCA reference-rank2 minus complete ridge =
+**-1.700143 dB**, interval **[-2.548602, -.943181]**. Its CC difference versus
+complete ridge = -.006414969, interval [-.011541962, -.002287459].
+
+The CCA rank2 arm fails the strongest new direct-comparator whole-cap CC gate:
+deterioration **.006414969 > .005**; the verified middle deterioration is
+**.012577343 > .005**. Posterior CCA mean 14.432034 also misses the 15 dB gate.
+Passes against weaker context controls must not replace these comparisons.
+Complete ridge passes the controlled clean-preservation checks against the
+old context controls; zero reported clean modification/alpha/beta/covariance
+error concerns idealized synthetic clean inputs only. A self-comparator row
+for ridge has zero CC loss by construction and is not independent qualification.
+
+The unchanged frontal output still loses .007441477 CC against its archived
+stronger calibrated raw-frontal control, exceeding .005. This experiment does
+not provide the new complete-ridge nonfrontal system paired with a raw-frontal
+output; that matched frontend ablation remains to be evaluated. Previous native
+frontal resting-preservation failures also remain unresolved. Qualification,
+teacher promotion, neural training and reserved confirmation access remain false.
+
+Gate tables retain 170 whole-cap failure-flagged channel rows (39 frontal,
+53 posterior and 78 central/shared). These include inherited historical flags;
+they are not 170 new CCA solver failures or 170 failed records. All eligible
+rows remain scored. The summary distinguishes fixed output parity from active
+algorithm faults. Coverage/true-artifact/generation-multiplier tables are
+evaluator-only after predictions and never select components or gain.
+
+Core outputs, tests, plots, parent/source identities, gate tables and matched
+uncertainty were checksum verified. Manifest SHA256:
+`c8418eb6acc9977aab73fa7606bfd5326dcdf0f12b056922fdabed1816bc91eb`.
+Bulk recovery completed: all **1,058 manifest payloads**, completion and source
+identity are verified locally in the retrieval receipt. The saved run directory
+contains 3,575,310,609 bytes including logs/receipt. The whole-cap PNG was visually
+inspected and is readable. HTML visual QA was not performed.
+
+Decision: retain complete calibrated nonfrontal reference ridge as the stronger
+development candidate, preserve the negative CCA/rank-one/EEG-side results, and
+stop this fixed CCA recipe rather than launch a blind rank/threshold search.
+Next checkpoint is RC01-RC05 reference-coupling/provenance repair followed by
+matched fixed frontal controls and native qualification. An eligible author-code
+SGEYESUB challenger still requires the six calibrated movement/rest labels;
+they cannot be guessed from HEOG signs. No claim that coupling repair guarantees
+an SNR gain. No AutoVMD search, neural weights, new dataset or reserved source
+was used in this completed comparison.

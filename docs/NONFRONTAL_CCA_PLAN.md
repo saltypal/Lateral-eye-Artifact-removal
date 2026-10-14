@@ -96,3 +96,44 @@ temporalmetrics on their own channels, adds pooledSNR and labelled strongest
 newdirectcontrol plus matchedCCA-versus-rank2/direct uncertainty. Gates unchanged.
 The next full320run tests samefixedrecipes after focusedKagglerepairfixtures;
 no pilotselectedweight/rank, no newthresholdbank or sourceconstruction change.
+
+
+## Reproduce the full corrected comparison
+
+From the project root after Kaggle authentication:
+
+```powershell
+python tools/kaggle_campaign.py submit --stage nonfrontal-cca --run-id nonfrontal-cca-reproduction-001 --profile full --config configs/nonfrontal_cca.json --source-sha b0c861373a8bc66c4538b78269a3b9b988ce3171 --kernel-slug vmd-nonfrontal-cca-reproduction --kernel-source satyapaladugu/vmd-eog-corpus/2 --kernel-source satyapaladugu/vmd-matched-context-full/1
+```
+
+Choose a new run ID if that one exists. This is local orchestration only;
+all numericaltests,fitting,evaluation andplotting execute on Kaggle. Check and
+recover the submitted run with:
+
+```powershell
+python tools/kaggle_campaign.py status --run-id nonfrontal-cca-reproduction-001
+python tools/retrieve_bounded.py --run-id nonfrontal-cca-reproduction-001
+```
+
+Numberednotebook62pins the actualfullsourceSHA andversionedparents. Earlier
+pilot source/notebook/results remain archived; laterdocumentation commits do
+not change runningexperiments. No neuralmodel istrained by these commands.
+
+## Completed comparison and decision
+
+The corrected full320 run completed at b0c8613 with 299 passing Kaggle tests.
+Complete calibrated reference ridge: 17.533717 dB channel-first mean and
+14.780705 dB pooled-window mean. Reference CCA rank2: 15.833574 / 13.923972;
+previous rest-whitened rank2: 15.155692 / 13.480444. All use identical frozen
+frontal VMD. CCA improves the old rank2 control but loses to complete ridge:
+matched CCA-minus-ridge SNR interval [-2.548602, -.943181] dB. It also fails
+the strongest direct-control CC gate (.006414969 deterioration > .005).
+
+Retain complete ridge as a development candidate and preserve the negative
+CCA evidence. No wider rank/threshold grid, teacher or student is authorized
+by these outcomes. The severe lateral -5 dB stratum remains 13.278714 dB,
+the legacy corpus coupling mismatch remains unrepaired, and native frontal
+preservation and matched no-VMD frontend qualification remain unresolved.
+Prioritize the bounded RC01-RC05 source-coupling repair and native evaluation.
+See NONFRONTAL_CHALLENGERS_RESULTS.md for all regions, conditions, metrics,
+uncertainty, recovery identities and qualification limitations.
