@@ -1,0 +1,56 @@
+{
+  "branch": "research/vmd-eog-removal-notebooks",
+  "fs": 200,
+  "window": 1024,
+  "hop": 512,
+  "seed": 42,
+  "confirmation_fraction": 0.2,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "source_dataset": "satyapaladugu/lateral-eye-complete-dataset",
+  "required_supplement_sha256": "79a3c4f2e1c1d545b477aa3de05fdc9c1c07c0355b820755392d8a5519e67e65",
+  "preservation": {
+    "clean_change": 0.01,
+    "alpha_db": 0.5,
+    "beta_db": 0.5,
+    "covariance": 0.02,
+    "pearson_deterioration": 0.005
+  },
+  "target_definition": "controlled_recipient_reference; low-ocular LEMON plus donor-calibration ridge ocular field",
+  "reserved_access": "closed until verified freeze",
+  "schema_version": 4,
+  "campaign_id": "vmd-coupled-frontal-review-20261015",
+  "scope": "fixed_frontal_coupled_pilot_review",
+  "autovmd_enabled": false,
+  "model_authorization": "Bounded classical coverage only; no models or confirmation",
+  "fixed_recipes": [
+    {
+      "K": 3,
+      "alpha": 2000
+    }
+  ],
+  "imported_parents": {
+    "coupled-pilot-002": "55bb09388501f5f2db1eaa49a9a2d8ef557a2287fd70989e92915286af8ac7cd"
+  },
+  "acceptance": {
+    "controlled_output_snr_db": 15,
+    "stretch_output_snr_db": 20
+  },
+  "pending_stages": [
+    "verify original source prefixes/calibration",
+    "separate homogeneous coupled producer and pilot",
+    "matched frontend review",
+    "native preservation qualification"
+  ],
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "classical_grid": {
+    "tolerance": 1e-06,
+    "max_iterations": 2000
+  },
+  "review_parent": {
+    "run_id": "coupled-pilot-002",
+    "campaign_id": "vmd-coupled-pilot-20261015",
+    "git_sha": "7c289d307b71298559b8b394f6e3d5f3e06247b8",
+    "manifest_sha256": "55bb09388501f5f2db1eaa49a9a2d8ef557a2287fd70989e92915286af8ac7cd"
+  }
+}

@@ -249,3 +249,7 @@ acceptance. Complete ridge17.533717mean/14.780705pooled is a development candida
 
 - [x] 2026-10-15: Author N04 coupled pilot module/config/notebook and boundary/channel fixtures.
 - [ ] N04: Pass Kaggle tests, produce twenty records and verify every recovered payload before N05 fixed frontal comparisons.
+
+- [x] N04: coupled-pilot-002/2 passed 316 Kaggle tests, saved 20 records, all 37 manifest payloads verified. Version 1 failed and is preserved.
+- [x] N05: Author five-arm fixed frontal review, explicit completed-parent configuration and notebook 69.
+- [ ] N05: Complete Kaggle execution, recover outputs, inspect figures and assess frontal preservation before new correction methods.

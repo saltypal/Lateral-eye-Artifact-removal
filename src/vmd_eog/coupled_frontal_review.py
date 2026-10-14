@@ -146,7 +146,8 @@ def run(input_root, output, config, profile):
     means = grouped.groupby(["arm", "scope"])[["mse", "rrmse_time", "pearson_cc", "snr_energy_db", "pooled_snr_db"]].mean()
     means.to_csv(output / "method_means.csv")
     import matplotlib.pyplot as plt
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    fig.subplots_adjust(top=.76, bottom=.23, wspace=.3)
     for axis, scope in zip(axes, ("frontal", "whole")):
         shown = means.xs(scope, level="scope").drop(index="identity")
         positions = np.arange(len(shown))
@@ -156,8 +157,9 @@ def run(input_root, output, config, profile):
         axis.set_ylabel("Output SNR (dB)")
         axis.set_title(scope.replace("_", " ").title())
         axis.grid(axis="y", alpha=.2)
-    axes[0].legend(loc="upper left", bbox_to_anchor=(0, 1.22), ncol=2, frameon=False)
-    fig.suptitle("Coupled engineering pilot: two development pairs, not qualification", y=1.08)
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(.5, .93), ncol=2, frameon=False)
+    fig.suptitle("Coupled engineering pilot: two development pairs, not qualification", y=.99)
     fig.savefig(output / "fixed_frontal_snr.png", dpi=160, bbox_inches="tight")
     plt.close(fig)
     atomic_json(output / "coupled_frontal_summary.json", {"examples": len(rows), "arms": 5,
