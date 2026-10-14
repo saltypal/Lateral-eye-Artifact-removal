@@ -202,7 +202,7 @@ the retained method. No AutoVMD, new numerical run or neural training started by
 - [x] NF01 Six target-free mechanisms, composition contracts, saved-fit/baseline parity and notebook58 validated on Kaggle:281tests passed at472b217.
 - [x] NF02 Exact corpus002/context-match-full001 manifests and all consumed split/waveform/montage/calibration identities verified.
 - [x] NF03 nonfrontal-pilot-002/2 completed50examples/5recipients/5donors;900frontal/30fit/85800metric checks, all186payloadsverified. Rank2both whole16.728031 versus matched13.994230dB; not qualified.
-- [x] NF04 Same fixed-recipe320-example comparison completed:281tests,32recipients,21arms; whole rank2joint15.155692 versus13.162704dB. Core evidence verified; full bulk recovery tracked separately.
+- [x] NF04 Same fixed-recipe320-example comparison completed:281tests,32recipients,21arms; whole rank2joint15.155692 versus13.162704dB. All1050manifest payloads and completion verified locally; predictions and fits recovered.
 - [ ] NF05 Source-aware review and grouped shortlist evaluation; no scoring-target selection.
 - [ ] NF06 Frozen native OSF blink/lateral/rest preservation validation.
 - [ ] NF07 Author-code eligible SGEYESUB and ERP/BCI validation after calibration contracts.
@@ -213,9 +213,9 @@ the retained method. No AutoVMD, new numerical run or neural training started by
 See docs/NONFRONTAL_CHALLENGERS_PLAN.md. Exploratory regional experiments are
 authorized despite current frontal qualification failures; no teacher/model promotion.
 
-- [ ] NF10 Frozen frontend/aggregation review: exact same nonfrontal output with VMD versus archived raw frontal; channel-first versus pooled SNR; verified middle versus temporal subgroups. No new fitting.
+- [x] NF10 Completed320-example frozen frontend/aggregation review: exact same nonfrontal output with VMD versus archived raw frontal; channel-first versus pooled SNR; verified middle versus temporal subgroups. No new fitting.
 
 - [ ] NF11 One conservative gain/shrinkage challenger after saved-decision diagnosis; observable inputs only, grouped recipient/donor selection.
 - [ ] NF12 Fixed reference-CCA pilot after rank/reconstruction/trial fixtures; matched EOG versus signed frontal-context references.
 - [ ] NF13 Multichannel SOBI selective-source control only if it adds a distinct hypothesis; no nonfrontal VMD.
-- [ ] NF14 Frozen review failure-lineage interpretation documented; revised conservative/historical provenance fixture passed on Kaggle before reuse.
+- [x] NF14 Frozen reviewv1 historical/conservative flag limitation documented; revised provenance fixtures passed within290Kaggle contracts004 tests. Numericalreviewv1 scores remain valid; no active-failure count inferred.

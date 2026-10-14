@@ -21,6 +21,9 @@ def require_kaggle():
 
 def require_approval(stage, input_root, config):
     if config.get("schema_version") == 4:
+        if stage == "nonfrontal-gain-diagnostic":
+            from .nonfrontal_gain_diagnostic import readiness
+            return readiness(input_root, config)
         if stage == "nonfrontal-review":
             from .nonfrontal_review import readiness
             return readiness(input_root, config)

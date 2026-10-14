@@ -12,7 +12,10 @@ The most important findings are:
 - Current frontal calibrated K3/2000 hybrid: **17.112814 dB** on controlled LEMON–OSF development mixtures. Matched calibrated raw gain: **18.193247 dB**. VMD has not demonstrated superiority over this control.
 - Temporal monotonic support: frontal VMD **16.079988 dB**, passing controlled gates, but native worst-record resting modification **18.512966%** and covariance error **0.127834** fail the declared preservation criteria. Alpha/beta preservation passes for that native pilot.
 - Posterior best-candidate development table: direct EOG regression **13.542 dB**, full-montage-supported ICA **13.523 dB**. These are partial-gate search results, not a qualified held-out winner.
-- Completed regional development comparison: frontal VMD + posterior direct regression **9.094213 dB** whole cap; frontal VMD + full ICA posterior output **9.089350 dB**; matched raw frontal + direct posterior **9.337592 dB**. The 15 dB target and native preservation qualification remain unmet. No independently qualified EEG-only deployment model, final external validation or complete 10–50-channel export qualification exists yet.
+- Earlier regional development comparison (central/shared pass-through): frontal VMD + posterior direct regression **9.094213 dB** whole cap; frontal VMD + full ICA posterior output **9.089350 dB**; matched raw frontal + direct posterior **9.337592 dB**. The 15 dB target and native preservation qualification remain unmet. No independently qualified EEG-only deployment model, final external validation or complete 10–50-channel export qualification exists yet.
+
+- Latest fixed nonfrontal320-example comparison: **15.155692 dB** whole-cap channel-first mean with unchanged frontal VMD plus reference-field rank2 middle/posterior correction, versus13.162704dB matched context control. Middle/shared14.905802dB; posterior14.095698dB. All1050manifest payloads recovered and verified. This is development-exposed EOG-assisted evidence; severe lateral−5 remains8.050232dB and weak blink/mixed cases worsen. Completed frontend audit reports pooled whole-cap13.480444dB, below15; raw-frontal control15.399070mean/13.686979pooled. No fresh qualification.
+- Latest numerical contracts: **290tests passed** on Kaggle at6dedb47; all8payloadsverified. Updated failure lineage distinguishes historical replaced-branch flags from nonfrontal faults. No new model trained or reserved source opened.
 
 ## 1. Objective, workflow and changes in direction
 
@@ -20,7 +23,7 @@ The objective is simultaneous blink/vertical and lateral-eye suppression with ne
 
 The chronological development path is dataset/signal audit → classical comparisons → AutoVMD/band-routing implementation and short neural pilots → user-stopped AutoVMD → fixed frontal-only VMD adaptations → historical guarded-model replay → calibrated frontal transfer and preservation challengers → separate posterior support comparisons. These stages have distinct configurations and evidence. A successful result from one stage does not retroactively qualify another.
 
-The active direction is fixed **frontal VMD artifact estimation**, an independent **posterior estimator**, and one final artifact subtraction. AutoVMD is stopped; its code/caches/failures remain historical evidence. Exploratory regional integration is complete. The next stage is a regional/channel error diagnostic, native preservation repair and bounded posterior challengers before estimated frontal-field transfer. Qualification remains unresolved. New teacher/student or production claims must satisfy their separate gates.
+The active direction is fixed **frontal VMD artifact estimation**, an independent **posterior estimator**, and one final artifact subtraction. AutoVMD is stopped; its code/caches/failures remain historical evidence. Exploratory regional integration, regional error/context diagnosis and the fixed21-arm posterior/middle comparison are complete. The frozen frontend/aggregation audit is complete. It confirms raw frontal is stronger and pooled whole-cap SNR remains below15dB. Next proposed work is conservative gain, eligible reference-CCA/SGEYESUB, explicit signed frontal-field communication and native preservation qualification. Qualification remains unresolved. New teacher/student or production claims must satisfy their separate gates.
 
 All numerical tests, decompositions, fitting, evaluation, training and plotting run on Kaggle. Local work authors modules/notebooks, inspects saved evidence, performs Git operations and submits/retrieves jobs. Reusable code is in Git, not trapped in notebook cells. Every notebook pins an exact published SHA and versioned parents, checks out fresh code and saves persistent campaign/run artifacts.
 
@@ -1625,6 +1628,64 @@ Whole-cap PNG inspected. Notebook HTML layout has not been visually inspected.
 Complete per-channel tables, all21arms, predictions, fits, failures and conditions
 are in the versioned Kaggle outputs and indexed recovery directory. No broad
 AutoVMD search, neural stage or reserved confirmation access was restarted.
+
+
+
+### Full result recovery confirmed — 14 October2026,00:43:37UTC
+
+The resumed bounded download recovered all1050manifest payloads of
+nonfrontal-full001/1; exact hashes and completion are verified in its receipt.
+Downloaded outputs1052 include state and manifest. Previous interrupted attempts
+remain known; the completed receipt supersedes the partial recovery status.
+Predictions, per-record shards, all32calibration fits, full metrics, diagnostics,
+configuration and environment are available locally and in immutable Kaggle output.
+
+
+
+## Frozen frontend and SNR aggregation audit — complete
+
+Run nonfrontal-review001/1 atf86d37499a2da96a54b073289ea3861588478b37 completed
+320examples/32recipients/5donors with7arms,1600exact parent-array checks and
+549000archived paper-metric checks.289tests passed(14warnings,19.74s). No fitting,
+AutoVMD, neural weights, reserved access or new decompositions. Stage534.824925s,
+runner632.100575s,peak1088332KiB. Core tables and identity checksum verified;
+665payload full recovery is separately tracked in its receipt.
+
+| Frozen system | Mean channel SNR dB | Pooled-window energy SNR dB | CC |
+| --- | ---: | ---: | ---: |
+| Old VMD-context regional output | 13.162704 | 11.268085 | .934641 |
+| VMD frontal+ICA component ridge elsewhere | 14.735326 | 12.838938 | .952350 |
+| VMD frontal+reference rank2 elsewhere | **15.155692** | **13.480444** | .960545 |
+| Raw frontal+same ICA component ridge | 14.978704 | 13.035402 | .954039 |
+| Raw frontal+same reference rank2 | **15.399070** | **13.686979** | .962234 |
+
+Mean channel SNR averages per-channel dB before source-balanced aggregation.
+Pooled energy sums signal/error across available scope channels/time within each
+window, then uses the same source-balanced condition/input averaging. Both use
+10log10(signal energy/reconstruction-error energy). They are different
+aggregations, not invented alternative equations. Regional dB cannot be added.
+The pooled metric remains below15dB; this run cannot be declared target-qualified.
+
+Frontal VMD mean17.112814/pooled16.628262 versus raw18.193247/17.939047dB.
+Unchanged nonfrontal rank2 mean/pooled:posterior14.095698/13.279070,
+centralshared14.905802/15.124574. Actual20middle channels14.141899/14.341411;
+6temporal17.452148/16.610706dB. Therefore the pooled centralshared bucket
+obscures a weaker true middle subgroup. Grouping did not change correction.
+
+Whole VMD-minus-raw frontend meanSNRdelta−.243378dB with supplemental95%interval
+[−.516659,+.043339]; wholeCCdelta−.001689[−.002925,−.000494]. FrontalCCdelta
+−.007441 exceeds preservation comparator tolerance. These contrasts do not
+support VMD superiority. Preference for VMD cannot change the reported winner.
+
+The v1 failure_rows_scored counter contains conservative historical parent
+flags, not active branch failures after frontend replacement. Revised source
+separates historical and nonfrontal fault provenance; its fixtures passed among
+290contracts004 tests. This affects interpretation, not calculated waveforms,
+SNR,CC or baseline parity. No active failure count is fabricated.
+
+Whole PNG visually inspected/readable. NotebookHTML visual inspection remains
+unperformed. The next bounded strength/blend experiment uses saved fields only;
+its target-fitted scalar/blend bounds are evaluator-only and cannot drive inference.
 
 <!-- BEGIN GENERATED EVIDENCE -->
 

@@ -400,6 +400,22 @@ print('Channel-first and pooled-energy SNR are separate aggregations.')
 print('Module: nonfrontal_review.py; two disjoint fields, one subtraction.')
 '''
         DETAILS[stage] = 'Attach exact completed nonfrontal-full001/1 and matched-context-full001/1. Verify source/split identities and every consumed prediction. Hold nonfrontal outputs fixed and replace only frontal rows with archived calibrated raw regression; retain the matched VMD output. Report all seven arms, verified middle versus temporal subgroups, paper metrics, preservation, source-aware supplemental uncertainty and both channel-first and pooled-energy SNR. No new fit, neural model, AutoVMD, reserved data or native qualification.'
+    if stage == 'nonfrontal-gain-diagnostic':
+        tables = '''import pandas as pd
+from IPython.display import display
+print((OUT/'gain_summary.json').read_text())
+display(pd.read_csv(OUT/'gain_method_means.csv'))
+display(pd.read_csv(OUT/'gain_condition_means.csv'))
+print((OUT/'gain_gates.json').read_text())
+display(pd.read_csv(OUT/'coverage_uncertainty_intervals.csv'))
+print('Evaluator-only target-fitted bounds are diagnostic and cannot be used at inference.')
+display(pd.read_csv(OUT/'evaluator_only_gain_bounds.csv').head(12))
+'''
+        inspect_modules = '''print((CHECKOUT/'docs/NONFRONTAL_GAIN_DIAGNOSIS_PLAN.md').read_text())
+print('Module: nonfrontal_gain_diagnostic.py')
+print('Fixed strengths/blends use saved fields only; no target or condition enters correction.')
+'''
+        DETAILS[stage] = 'Attach exact completed nonfrontal-full001/1 only. Hold frontal K3/2000 outputs bit-for-bit. Compare fixed0.25/0.5/0.75 strength on saved nonfrontal rank2 fields and convex blends with the old VMD-context nonfrontal fields. Four archived controls remain unchanged. These weights are predeclared and not fitted or selected from scoring targets. Only after predictions exist, calculate explicitly nondeployable scalar/blend oracle bounds and close mean-bias/centered-error energy accounting. Save every prediction, per-example progress, paper metrics, channel-first/pooled SNR, condition/subgroup results, conservative historical failure flags and preservation gates. Pilot precedes full cohort. No new VMD, calibration, neural weights or reserved access.'
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':
         detail = 'Requires verified research readiness. Paired-only EEG TCN-BiGRU, input-derived scaling, signed metadata context, zero correction heads and no runtime EOG/VMD. Classical accuracy gates do not prevent paired learning.'

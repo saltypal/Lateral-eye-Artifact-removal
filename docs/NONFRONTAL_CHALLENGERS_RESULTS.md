@@ -1,4 +1,4 @@
-# Posterior and central component correction: verified development pilot
+# Posterior and central component correction: pilots and full development results
 
 14 October 2026 IST. New numerical evidence, not a final winner or qualification.
 
@@ -279,3 +279,67 @@ retains raw parent's whole-pipeline flags conservatively and declares active raw
 frontend failure counts unavailable from these parents. The new lineage regression
 fixture requires Kaggle validation before the revised module is used again.
 No parent flag was silently dropped, and no qualification follows from this audit.
+
+
+### Full result recovery confirmed — 14 October2026,00:43:37UTC
+
+The resumed bounded download recovered all1050manifest payloads of
+nonfrontal-full001/1; exact hashes and completion are verified in its receipt.
+Downloaded outputs1052 include state and manifest. Previous interrupted attempts
+remain known; the completed receipt supersedes the partial recovery status.
+Predictions, per-record shards, all32calibration fits, full metrics, diagnostics,
+configuration and environment are available locally and in immutable Kaggle output.
+
+
+Latest dataset-free contracts004/1 source6dedb47142dd9d4f37e8b4f743be4497d8f9f7ee:
+290passed,14warnings,18.98seconds; all8manifest payloads and completion verified.
+Runner22.903515s, peak105988KiB. Includes reconstruction/composition, SNR aggregation,
+exact arm lineage and historical replaced-VMD fault fixtures. Numerical tests run
+on Kaggle only. This validates fixtures, not new native qualification or a second
+full review execution at the revised source.
+
+
+## Frozen frontend and SNR aggregation audit — complete
+
+Run nonfrontal-review001/1 atf86d37499a2da96a54b073289ea3861588478b37 completed
+320examples/32recipients/5donors with7arms,1600exact parent-array checks and
+549000archived paper-metric checks.289tests passed(14warnings,19.74s). No fitting,
+AutoVMD, neural weights, reserved access or new decompositions. Stage534.824925s,
+runner632.100575s,peak1088332KiB. Core tables and identity checksum verified;
+665payload full recovery is separately tracked in its receipt.
+
+| Frozen system | Mean channel SNR dB | Pooled-window energy SNR dB | CC |
+| --- | ---: | ---: | ---: |
+| Old VMD-context regional output | 13.162704 | 11.268085 | .934641 |
+| VMD frontal+ICA component ridge elsewhere | 14.735326 | 12.838938 | .952350 |
+| VMD frontal+reference rank2 elsewhere | **15.155692** | **13.480444** | .960545 |
+| Raw frontal+same ICA component ridge | 14.978704 | 13.035402 | .954039 |
+| Raw frontal+same reference rank2 | **15.399070** | **13.686979** | .962234 |
+
+Mean channel SNR averages per-channel dB before source-balanced aggregation.
+Pooled energy sums signal/error across available scope channels/time within each
+window, then uses the same source-balanced condition/input averaging. Both use
+10log10(signal energy/reconstruction-error energy). They are different
+aggregations, not invented alternative equations. Regional dB cannot be added.
+The pooled metric remains below15dB; this run cannot be declared target-qualified.
+
+Frontal VMD mean17.112814/pooled16.628262 versus raw18.193247/17.939047dB.
+Unchanged nonfrontal rank2 mean/pooled:posterior14.095698/13.279070,
+centralshared14.905802/15.124574. Actual20middle channels14.141899/14.341411;
+6temporal17.452148/16.610706dB. Therefore the pooled centralshared bucket
+obscures a weaker true middle subgroup. Grouping did not change correction.
+
+Whole VMD-minus-raw frontend meanSNRdelta−.243378dB with supplemental95%interval
+[−.516659,+.043339]; wholeCCdelta−.001689[−.002925,−.000494]. FrontalCCdelta
+−.007441 exceeds preservation comparator tolerance. These contrasts do not
+support VMD superiority. Preference for VMD cannot change the reported winner.
+
+The v1 failure_rows_scored counter contains conservative historical parent
+flags, not active branch failures after frontend replacement. Revised source
+separates historical and nonfrontal fault provenance; its fixtures passed among
+290contracts004 tests. This affects interpretation, not calculated waveforms,
+SNR,CC or baseline parity. No active failure count is fabricated.
+
+Whole PNG visually inspected/readable. NotebookHTML visual inspection remains
+unperformed. The next bounded strength/blend experiment uses saved fields only;
+its target-fitted scalar/blend bounds are evaluator-only and cannot drive inference.
