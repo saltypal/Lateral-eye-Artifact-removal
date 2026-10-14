@@ -87,3 +87,39 @@ def test_invalid_cca_family_or_threshold_cannot_silently_launch():
     cal, policy = fixture()
     with pytest.raises(ValueError, match="policy"):
         fit_experts(cal, {**policy, "cca_r2_threshold": 1.1})
+
+
+def test_subgroup_channel_rows_are_resolved_before_preservation_metrics():
+    from vmd_eog.nonfrontal_experiment import scoring_scopes
+    data = {"channel_names": np.array(["F3", "Pz", "Cz", "FT7", "Unknown"]),
+            "regions": np.array([0, 1, 2, 2, 3]), "mask": np.ones(5, bool)}
+    scopes = scoring_scopes(data, include_subgroups=True)
+    np.testing.assert_array_equal(scopes["middle_verified"], [2])
+    np.testing.assert_array_equal(scopes["temporal_shared"], [3])
+    np.testing.assert_array_equal(scopes["central_shared"], [2, 3])
+    invalid = {**data, "regions": np.array([0, 1, 2, 2, 2])}
+    with pytest.raises(ValueError, match="anatomy"):
+        scoring_scopes(invalid, include_subgroups=True)
+
+
+def test_cca_preservation_uses_stronger_direct_control_as_well_as_context():
+    import pandas as pd
+    from vmd_eog.nonfrontal_experiment import labelled_gates
+    rows = []
+    for arm in ("identity", "ridge_direct:both", "cca_reference_rank2:both"):
+        for condition, example in (("clean", "clean"), ("blink", "dirty")):
+            direct_loss = .02 if arm.startswith("cca_") else 0.
+            rows.append({"scope": "central_shared", "example_id": example, "channel": "Cz",
+                "recipient": "recipient", "condition": condition, "input_snr_db": 0.,
+                "evaluated_family": arm, "snr_energy_db": 17., "mse": 1., "rrmse_time": .1,
+                "pearson_cc": .97, "cc_deterioration": -.07,
+                "cc_deterioration_vs_vmd_context": -.07, "cc_deterioration_vs_raw_context": -.07,
+                "cc_deterioration_vs_calibrated_direct": direct_loss, "clean_change": 0.,
+                "alpha_db": 0., "beta_db": 0., "covariance_error": 0., "failure": None})
+    config = {"method_family": "cca_adaptation", "preservation": {"clean_change": .01,
+              "alpha_db": .5, "beta_db": .5, "covariance": .02, "pearson_deterioration": .005}}
+    reports = labelled_gates(pd.DataFrame(rows), config)["central_shared"]
+    direct = next(row for row in reports["ridge_direct:both"] if row["arm"] == "cca_reference_rank2:both")
+    weaker = next(row for row in reports["central_frontal_raw_context"] if row["arm"] == "cca_reference_rank2:both")
+    assert direct["gates"]["paired_correlation"] is False
+    assert weaker["gates"]["paired_correlation"] is True

@@ -510,3 +510,65 @@ claim. FrontalK3/2000outputs unchanged; allnewfit/outputonlynonfrontal.
 Previousgain-full001 resumedrecovery succeeded:all665manifestpayloads andcompletion
 verified locally, after interruptedSSL/chunkeddownloads. Failedretrievalattempts
 are transportfaults, not numericalkernelfailures. Immutablegainrun preserved.
+
+
+### CCA pilot submitted
+
+nonfrontal-cca-pilot001/1 submitted toKaggle vmd-nonfrontal-cca-pilot at exact
+publishedSHA1a2283151a9c840522ea4df25a239519fefcda81. Pilot50source-balanced
+examples/21arms; sixfixedmethods with posterior/central/both outputs. Attachonly
+corpus002/2 andmatched-context-full001/1. Notebook62copiedfromactualsubmission
+withcorrectSHA/config/parents. Tests precede scoring; completionpending. Existing
+Lunamonitor askedtofollowthisrun; primaryagentretainsdiagnosis/fixresponsibility.
+NoCCAaccuracy,SNRimprovement,authorparity,repaircompletion orqualifiedteacher
+claim beforeverifiedoutputs. Legacyreferenceamplitudemismatch remains explicit.
+
+
+### CCA subgroup preservation correction authored before claims
+
+Staticreview found firstsource1a22831 derives middle/temporal rows by copying
+central score rows. Perchannelpaper metrics retain correctchannelrows, but alpha/
+beta/covariance engineeringvalues inherit fullcentral group rather than subgroup.
+These are not valid subgroup-preservation estimates if clean correction occurs.
+A fix resolves exactsubgroupchannelrows beforepaired/spectral/covariance scoring,
+with explicit unknown-anatomy fixture. Sourcefix is authored/notyetKagglevalidated.
+Version1 continues for preservedfailure/evidence; retrieve beforeversion2push.
+No subgroupgate,VMDbenefit,teacher ormodelqualification claimed fromversion1.
+Matchedprimarywhole/frontal/posterior/centralpaper metrics are unaffected by this
+reportingfix. Fullcorpus/algorithm/thresholds remainunchanged.
+
+
+### First CCA pilot complete, primary metric evidence
+
+nonfrontal-cca-pilot001/1 at1a2283151a9c840522ea4df25a239519fefcda81 completed
+50examples/5recipients/5donors/5calibrations/21arms.297tests passed,14warnings,
+13.41s;900frozen-frontalchecks,30savedfitreplay,85800baselinepapermetricchecks.
+Stage87.033244s. Core14payloads/completion verified; full188payload recovery
+pending separately. No source/datachange,scoringtargetfit,newVMD,models orreserved.
+
+| Joint nonfrontal method | Whole mean channel output SNR dB | CC |
+| --- | ---: | ---: |
+| Direct calibrated lagridge | **19.601765** | .983597 |
+| ReferenceCCA rank2 | **17.549658** | .976053 |
+| Previousreference-rank2control | 16.728031 | .970836 |
+| EEGCCA rank2 | 15.163465 | .966923 |
+| ReferenceCCA rank1 | 14.345758 | .938454 |
+| EEGCCA rank1 | 13.716166 | .932696 |
+
+The17.55CCAresult improves the matchedoldrank2pointmean, but direct19.60 is
+stronger and cannot be omitted. CCA does not beat the simplerfullfieldcontrol.
+This is the same source-balancedpilot as componentpilot002, distinct from the
+sortedrecipientgainpilot. Do not compare pilotfrontal20.176007 with full17.112814
+as if a method changed. Direct centralshared21.755970 andposterior16.097518;
+CCAref2central17.992342/post15.010884. These are channelmeans, not yet pooledSNR.
+Pilotv1 lacks pooledtables; correctedfullsource adds them without replacingmetrics.
+
+Middle/temporalspectral-covariance gates fromv1 remainunqualified because of the
+reported subgroupcopybug. Primaryperchannel/wholepaper scores andpairedbaseline
+parity are unaffected. New source resolves subgroup rows before preservation
+computation, reportsactualcanonicalretainedrank and adds strongest directridge
+comparator plus reference-rank2control paireduncertainty. WholeCCA CCloss versus
+direct is larger than .005 on pilotmeans; use corrected pairedtable before any
+qualificationdecision, not weakcontextcomparator passes. Native/coupled-source
+validation remains absent. Numericalfixtures for the revisedreporting run on
+Kaggle before fullreplication; no author-iCanClean parity orsuperiorityclaim.

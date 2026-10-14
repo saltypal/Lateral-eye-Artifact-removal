@@ -25,6 +25,23 @@ RAW_FRONTAL = "raw_frontal_comparator"
 COMPOSITIONS = {"posterior": (1,), "central": (2,), "both": (1, 2)}
 
 
+def scoring_scopes(data, include_subgroups=False):
+    """Choose exact channel rows before spectral/covariance preservation scoring."""
+    regions, mask = data["regions"], data["mask"]
+    scopes = {"whole": np.flatnonzero(mask), **{label: np.flatnonzero(mask & (regions == index))
+              for index, label in GROUPS.items()}}
+    if include_subgroups:
+        from .nonfrontal_review import MIDDLE, TEMPORAL
+        central = mask & (regions == 2)
+        names = data["channel_names"]
+        middle = np.flatnonzero(central & np.isin(names, list(MIDDLE)))
+        temporal = np.flatnonzero(central & np.isin(names, list(TEMPORAL)))
+        if len(middle) + len(temporal) != int(central.sum()):
+            raise ValueError("CCA central anatomy is not covered by verified subgroups")
+        scopes.update(middle_verified=middle, temporal_shared=temporal)
+    return {name: ids for name, ids in scopes.items() if len(ids)}
+
+
 def validate_family(config):
     scope, family = config.get("scope"), config.get("method_family")
     valid = ((scope == "fixed_nonfrontal_component_challengers" and family in (None, "component_challengers"))
@@ -142,6 +159,8 @@ def labelled_gates(scores, config):
         comparisons = {BASELINE: "cc_deterioration_vs_vmd_context", RAW_CONTEXT: "cc_deterioration_vs_raw_context"}
         if scope == "frontal":
             comparisons[RAW_FRONTAL] = "cc_deterioration"
+        if config.get("method_family") == "cca_adaptation":
+            comparisons["ridge_direct:both"] = "cc_deterioration_vs_calibrated_direct"
         output[scope] = {}
         for comparator, column in comparisons.items():
             reports = controlled_gates(group.assign(cc_deterioration=group[column]), config)
@@ -219,6 +238,7 @@ def run(input_root, output, config, profile):
                            (old_scores.evaluated_family == BASELINE)]
     prior_failures = inherited.groupby("example_id").failure.first().to_dict()
     fitted_by_calibration, records, fit_records, decisions = {}, [], [], []
+    pooled_rows = []
     coverage_rows = []
     parity_checks = fit_replay_checks = 0
     for number, row in enumerate(rows):
@@ -275,10 +295,7 @@ def run(input_root, output, config, profile):
                 if not np.array_equal(estimates[name][frontal], saved[BASELINE][frontal]):
                     raise RuntimeError("Frozen frontal output changed")
                 parity_checks += 1
-        available = np.flatnonzero(data["mask"])
-        scopes = {"whole": available, **{label: np.flatnonzero(data["mask"] & (data["regions"] == index))
-                  for index, label in GROUPS.items()}}
-        scopes = {name: ids for name, ids in scopes.items() if len(ids)}
+        scopes = scoring_scopes(data, include_subgroups=family == "cca_adaptation")
         meta = {key: row[key] for key in ("example_id", "recipient", "donor", "condition", "input_snr_db")}
         meta["fold"] = row["partition"]["fold"]
         example_records = []
@@ -296,6 +313,11 @@ def run(input_root, output, config, profile):
                 comparison = paired_channels(saved[comparator_name][ids], target, raw)
                 vmd_comparison = paired_channels(saved[BASELINE][ids], target, raw)
                 raw_comparison = paired_channels(saved[RAW_CONTEXT][ids], target, raw)
+                if family == "cca_adaptation":
+                    direct_comparison = paired_channels(estimates["ridge_direct:both"][ids], target, raw)
+                    from .nonfrontal_review import pooled_snr
+                    pooled_rows.append({**meta, "scope": scope, "evaluated_family": arm,
+                                        "pooled_energy_snr_db": pooled_snr(cleaned[ids], target)})
                 engineering = paired(cleaned[ids], target, config["fs"])
                 for local, index in enumerate(ids):
                     example_records.append({**meta, "scope": scope, "channel": str(data["channel_names"][index]),
@@ -304,6 +326,8 @@ def run(input_root, output, config, profile):
                         "cc_deterioration": float(comparison["pearson_cc"][local] - paper["pearson_cc"][local]),
                         "cc_deterioration_vs_vmd_context": float(vmd_comparison["pearson_cc"][local] - paper["pearson_cc"][local]),
                         "cc_deterioration_vs_raw_context": float(raw_comparison["pearson_cc"][local] - paper["pearson_cc"][local]),
+                        **({"cc_deterioration_vs_calibrated_direct": float(direct_comparison["pearson_cc"][local] - paper["pearson_cc"][local])}
+                           if family == "cca_adaptation" else {}),
                         "clean_change": float(paper["rrmse_time"][local]),
                         "alpha_db": engineering["alpha_db"], "beta_db": engineering["beta_db"],
                         "covariance_error": engineering["covariance"], "apply_runtime_s": apply_runtime})
@@ -337,20 +361,19 @@ def run(input_root, output, config, profile):
                     "total_examples": len(rows), "calibrations": len(fitted_by_calibration)})
         print("NONFRONTAL_SAVED", number + 1, len(rows), flush=True)
     scores = pd.DataFrame(records)
-    if family == "cca_adaptation":
-        from .nonfrontal_review import MIDDLE, TEMPORAL
-        central = scores[scores.scope == "central_shared"]
-        middle = central[central.channel.isin(MIDDLE)].assign(scope="middle_verified")
-        temporal = central[central.channel.isin(TEMPORAL)].assign(scope="temporal_shared")
-        if len(middle) + len(temporal) != len(central):
-            raise ValueError("CCA central anatomy is not covered by verified subgroups")
-        scores = pd.concat((scores, middle, temporal), ignore_index=True)
     scores.to_csv(output / "nonfrontal_channel_scores.csv.gz", index=False, compression="gzip")
     dirty = scores[scores.condition != "clean"]
     fields = list(PAPER_KEYS) + ["cc_deterioration"]
     grouped = dirty.groupby(["scope", "evaluated_family", "recipient", "condition", "input_snr_db"])[fields].agg(strict_mean)
     grouped.groupby(["scope", "evaluated_family", "recipient"]).agg(strict_mean).groupby(
         ["scope", "evaluated_family"]).agg(strict_mean).reset_index().to_csv(output / "nonfrontal_method_means.csv", index=False)
+    if family == "cca_adaptation":
+        pooled = pd.DataFrame(pooled_rows)
+        pooled.to_csv(output / "cca_pooled_example_scores.csv", index=False)
+        balanced = pooled[pooled.condition != "clean"].groupby(
+            ["scope", "evaluated_family", "recipient", "condition", "input_snr_db"])["pooled_energy_snr_db"].agg(strict_mean)
+        balanced.groupby(["scope", "evaluated_family", "recipient"]).agg(strict_mean).groupby(
+            ["scope", "evaluated_family"]).agg(strict_mean).reset_index().to_csv(output / "cca_pooled_method_means.csv", index=False)
     grouped.groupby(["scope", "evaluated_family", "condition", "input_snr_db"]).agg(strict_mean).reset_index().to_csv(
         output / "nonfrontal_condition_means.csv", index=False)
     baseline_metric_checks = reconcile_baselines(scores[scores.scope.isin(("whole", "frontal", "posterior", "central_shared"))], old_scores)
@@ -373,6 +396,12 @@ def run(input_root, output, config, profile):
     uncertainty_report(uncertainty_scores, output, comparators=(BASELINE, RAW_CONTEXT),
         candidates=tuple(method + ":both" for method in methods), repetitions=500,
         scopes=("whole", "posterior", "central_shared"))
+    if family == "cca_adaptation":
+        comparisons = output / "matched_cca_controls"
+        uncertainty_report(uncertainty_scores, comparisons,
+            comparators=("ridge_direct:both", "reference_rank2_control:both"),
+            candidates=tuple(method + ":both" for method in methods if method.startswith("cca_")),
+            repetitions=500, scopes=("whole", "posterior", "central_shared"))
     atomic_json(output / "nonfrontal_summary.json", {"profile": profile, "examples": len(rows),
         "recipients": len({row["recipient"] for row in rows}), "donors": len({row["donor"] for row in rows}),
         "calibrations": len(fitted_by_calibration), "arms": list(estimates),

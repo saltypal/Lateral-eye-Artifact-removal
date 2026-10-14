@@ -84,3 +84,15 @@ than another blindrank/thresholdgrid. No automatic neural promotion. Frontal
 VMD superiority still requires the matched rawcontrol; fixedfrontaloutput never
 constitutes a new VMD gain. Source-aware uncertainty is supplemental, not exact
 paper-native participantpermutation. All savedoutputs pin publishedSHA/parents.
+
+
+## Pilot evidence and revised full check
+
+Pilotv1 primarywholemeans:directridge19.601765,CCAreference2 17.549658,previous
+rank2 16.728031dB.297tests passed. CCAimproves the older rank2point, but the
+simpledirectcontrol is stronger. Preserve primaryscores; subgroup preservation
+copybug is documented and repaired before use. Revisedsource computes middle/
+temporalmetrics on their own channels, adds pooledSNR and labelled strongest
+newdirectcontrol plus matchedCCA-versus-rank2/direct uncertainty. Gates unchanged.
+The next full320run tests samefixedrecipes after focusedKagglerepairfixtures;
+no pilotselectedweight/rank, no newthresholdbank or sourceconstruction change.

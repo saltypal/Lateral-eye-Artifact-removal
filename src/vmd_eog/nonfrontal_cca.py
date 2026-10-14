@@ -136,10 +136,15 @@ def estimate_fields(eeg, references, regions, mask, fitted, policy):
     artifacts, details = {}, {}
     for method in METHODS:
         artifacts[method] = np.zeros_like(eeg)
+        requested = int(method[-1]) if method.startswith("cca_") else None
+        selected = fitted.admitted[:requested] if requested else np.array([], dtype=int)
         details[method] = {"regions": {}, "calibration_canonical_cc": fitted.correlations.tolist(),
                            "calibration_regularized_singular_values": fitted.singular_values.tolist(),
                            "calibration_admitted_indices": fitted.admitted.tolist(),
-                           "cca_r2_threshold": policy["cca_r2_threshold"], "paired_target_access": False}
+                           "cca_r2_threshold": policy["cca_r2_threshold"], "paired_target_access": False,
+                           "requested_canonical_rank": requested,
+                           "retained_canonical_rank": len(selected) if requested else None,
+                           "selected_canonical_indices": selected.tolist()}
         if method not in candidates:
             continue
         candidate = candidates[method]
