@@ -1513,6 +1513,29 @@ CombiningfrozenfrontalVMDwithnewnonfrontaloutputs isaregionalhybrid. Explicit
 signedfrontalestimatedfield/no-context/matchedrawcontext ablation isNF09pending,
 notclaimedalreadytestedbytherank2pilot. No newteacher ormodelpromotion.
 
+## GEVD-MWF pilot recovered: stop fixed negative controls
+
+nonfrontal-mwf-pilot-001/1 at6c1a4bf completed50examples/5recipients/5donors/
+5calibrations/9arms.282tests passed/14warnings/24.42s,300frozen-frontalchecks,
+10saved-fitchecks and85800baselinemetricchecks. All186manifestpayloadsverified,
+including50predictions/decisions/fits. Manifestaf46b1de8474cf46f909b3d0a0e1d4a
+073f59f9556ca5dd67ce669e293c9fb99. Stage71.287043s/runner280.045952s/
+peak453780KiB; wholePNG inspected, notebookHTMLvisualgap retained.
+
+MWFrank1both whole12.570601/central8.609306/posterior12.725037; rank2bothwhole
+12.619925/central8.692977/posterior12.761755dB versusmatchedbaseline13.994230.
+Cleanmetricszero, but CCdeterioration.035678871/.035660532>.005 andSNRtargetfails.
+Stopbothfixedrecipes; no fullMWFreplication orpromotion. This isnotallMWFfailure.
+Referencefieldrank2 (16.728031) isdifferentfromGEVD-MWFrank2(12.619925), explicitly
+documented. Fullcondition/channel/bothsingle-region tables andnegativepredictions
+persist; seeNONFRONTAL_CHALLENGERS_RESULTS.md. Main6methodfull001stillRUNNING.
+
+Retrievaltool nowprioritizesidentity/summaries/tablesbeforelargeNPZs and records
+manifestpayloadcount/allpayloadverification separatelyfromcompletion. This changes
+downloadorder/reporting only; checksumcriteria unchanged. Guardagainstmistyped
+scope/family authoredat27d80fc stillneedsfutureKaggletestexecution; currently
+publishedMWFpilotusedcorrectconfig andpassedits282tests.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

@@ -141,3 +141,48 @@ Allper-example/channel metrics and all21arms persist, includingnegative results.
 Next: run allsix fixedmechanisms unchanged on320examples/32developmentrecipients,
 then groupedshortlist review, original-label eligible native evaluation and
 centralGEVD-MWF/SGEYESUB/CCA challengers. Do not select a final system from this pilot.
+
+## Parallel fixed GEVD-MWF pilot: completed, negative result
+
+Run `nonfrontal-mwf-pilot-001`, notebook59,
+https://www.kaggle.com/code/satyapaladugu/vmd-middle-posterior-mwf-pilot (version1),
+source `6c1a4bf4eefc05df2609246aaaaf2f46093416c4`. Same50examples/five recipients/
+five donors and exact input parents. Two fixed ranks, instantaneous full-montage
+support, strength1, same0.4reference-field association gate. Three controls plus
+six disjoint regional compositions. No grid repetition or scoring-target fitting.
+
+All282tests passed (14warnings,24.42s),300frozen-frontal checks,10saved-fit replay
+checks and85,800baseline metric checks. All186manifestpayloads verified, including
+all50prediction bundles and fivefits. Manifest
+`af46b1de8474cf46f909b3d0a0e1d4a073f59f9556ca5dd67ce669e293c9fb99`.
+Stage71.287043s, runner280.045952s, peak453780KiB. Whole-cap PNG inspected;
+saved tables/JSON and completion verified. NotebookHTML visual inspection remains
+unperformed. Separate pre-run review found the submitted family/config correct;
+a future guard against mistyped family labels was authored separately.
+
+| Fixed MWF composition | Whole output SNR dB | Temporal RRMSE | CC |
+| --- | ---: | ---: | ---: |
+| Rank1: posterior only | 13.696121 | 0.316873 | 0.937612 |
+| Rank1: central only | 12.868710 | 0.398675 | 0.917513 |
+| Rank1: both | 12.570601 | 0.421426 | 0.909723 |
+| Rank2: posterior only | 13.706579 | 0.316188 | 0.936757 |
+| Rank2: central only | 12.907576 | 0.383476 | 0.918386 |
+| Rank2: both | 12.619925 | 0.405541 | 0.909741 |
+
+Matched frozen baseline remains13.994230dB/CC0.945402. MWFboth rank1/rank2
+central scores8.609306/8.692977 and posterior12.725037/12.761755dB. Synthetic
+clean preservation iszero, but whole CC deterioration against the VMDcontext
+comparator is0.035678871/0.035660532, above0.005. Both fail SNR15 and pairedCC
+gates. Stop these two fixed recipes before full replication or teacher promotion.
+This does not establish that every MWF configuration or the published method
+fails. It establishes that these matched controls are inferior on this pilot.
+
+Reference-fieldrank2 transfer16.728031dB and GEVD-MWFrank2 control12.619925dB are
+different algorithms. Rank alone is not a method identity. The new stronger
+reference method estimates a calibrated EOG field then rest-whitens/truncates
+it and fits output-region gain; the MWF applies an ocular/rest covariance-derived
+operator to original scoring EEG. Full reporting retains this information access.
+
+MWF evidence is under `results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/`.
+The same file names as the first pilot store complete per-channel/condition
+metrics, all9arms, decisions and fitted matrices. Negative results remain archived.

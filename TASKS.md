@@ -207,6 +207,7 @@ the retained method. No AutoVMD, new numerical run or neural training started by
 - [ ] NF06 Frozen native OSF blink/lateral/rest preservation validation.
 - [ ] NF07 Author-code eligible SGEYESUB and ERP/BCI validation after calibration contracts.
 - [ ] NF08 Fixed central GEVD-MWF controls, followed by eligible CCA/SOBI/ASR challengers in the documented priority order; retain negative results.
+- [x] NF08a Fixed MWF rank1/rank2 pilot completed and rejected:282tests,50examples,all186payloadsverified; whole12.570601/12.619925 vs13.994230, CCgatefails. No MWFfull queue.
 - [ ] NF09 Explicit signed frontal-field communication ablation for shortlisted nonfrontal experts; distinguish full-montage raw support from VMD-field transfer.
 
 See docs/NONFRONTAL_CHALLENGERS_PLAN.md. Exploratory regional experiments are

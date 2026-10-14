@@ -82,6 +82,18 @@ def main():
             if not token:
                 break
     print("SELECTED_OUTPUTS", len(selected), flush=True)
+    # Recover identity and compact review tables before large prediction bundles.
+    # This changes download order only; every selected byte is still verified.
+    critical = {"artifact_manifest.json", "run_spec.json", "execution_state.json",
+                "tests.txt", "nonfrontal_controlled_gates.json"}
+    def priority(item):
+        name = Path(item.file_name).name
+        if name in critical or name.endswith("_summary.json") or name.endswith("_means.csv"):
+            return 0, item.file_name
+        if name.endswith(".npz"):
+            return 2, item.file_name
+        return 1, item.file_name
+    selected.sort(key=priority)
     with ThreadPoolExecutor(max_workers=4) as pool:
         downloaded = list(pool.map(lambda item: download(item, destination), selected))
     specs = list(destination.rglob("run_spec.json"))
@@ -104,6 +116,9 @@ def main():
             raise ValueError("Recovered checksum mismatch: " + relative)
         verified.append(relative)
     receipt = {"run_id": args.run_id, "git_sha": spec["git_sha"], "verified_payloads": verified,
+               "manifest_payload_count": len(hashes),
+               "all_manifest_payloads_verified": set(verified) == set(hashes),
+               "downloaded_outputs": len(downloaded),
                "utc": datetime.now(timezone.utc).isoformat(), "retrieval_method": "bounded HTTP; four download workers",
                "completion_verified": json.loads((parent / "execution_state.json").read_text()).get("status") == "complete"}
     (destination / "retrieval_receipt.json").write_text(json.dumps(receipt, indent=2), encoding="utf-8")
