@@ -28,7 +28,8 @@ COMPOSITIONS = {"posterior": (1,), "central": (2,), "both": (1, 2)}
 def validate_family(config):
     scope, family = config.get("scope"), config.get("method_family")
     valid = ((scope == "fixed_nonfrontal_component_challengers" and family in (None, "component_challengers"))
-             or (scope == "fixed_nonfrontal_mwf_controls" and family == "mwf_controls"))
+             or (scope == "fixed_nonfrontal_mwf_controls" and family == "mwf_controls")
+             or (scope == "fixed_nonfrontal_cca_adaptation" and family == "cca_adaptation"))
     if not valid:
         raise ValueError("Nonfrontal scope/method-family pairing differs")
     return family
@@ -36,7 +37,7 @@ def validate_family(config):
 
 def readiness(input_root, config):
     validate_family(config)
-    if (config.get("scope") not in ("fixed_nonfrontal_component_challengers", "fixed_nonfrontal_mwf_controls")
+    if (config.get("scope") not in ("fixed_nonfrontal_component_challengers", "fixed_nonfrontal_mwf_controls", "fixed_nonfrontal_cca_adaptation")
             or config.get("autovmd_enabled") is not False
             or config.get("reserved_access") != "closed until verified freeze"):
         raise ValueError("Nonfrontal experiment policy differs")
@@ -193,7 +194,12 @@ def plot_results(output):
 
 def run(input_root, output, config, profile):
     started = time.perf_counter()
-    if validate_family(config) == "mwf_controls":
+    family = validate_family(config)
+    if family == "cca_adaptation":
+        from .nonfrontal_cca import METHODS as methods, fit_experts as fit_function
+        from .nonfrontal_cca import estimate_fields as estimate_function
+        from .nonfrontal_cca import save_experts as save_function, load_experts as load_function
+    elif family == "mwf_controls":
         from .nonfrontal_mwf import METHODS as methods, fit_experts as fit_function
         from .nonfrontal_mwf import estimate_fields as estimate_function
         from .nonfrontal_mwf import save_experts as save_function, load_experts as load_function
@@ -213,6 +219,7 @@ def run(input_root, output, config, profile):
                            (old_scores.evaluated_family == BASELINE)]
     prior_failures = inherited.groupby("example_id").failure.first().to_dict()
     fitted_by_calibration, records, fit_records, decisions = {}, [], [], []
+    coverage_rows = []
     parity_checks = fit_replay_checks = 0
     for number, row in enumerate(rows):
         print("NONFRONTAL_START", number + 1, len(rows), row["example_id"], flush=True)
@@ -306,6 +313,23 @@ def run(input_root, output, config, profile):
             regions=data["regions"], mask=data["mask"], **estimates)
         decisions.append({**meta, "details": detail, "failures": failures,
                           "inherited_failure": prior, "apply_runtime_s": apply_runtime})
+        if family == "cca_adaptation":
+            # Evaluator-only coverage uses paired truth after every estimate exists.
+            # It cannot change admission, direction selection, gain or prediction.
+            for method in methods:
+                for region, label in ((1, "posterior"), (2, "central_shared")):
+                    ids = np.flatnonzero(data["mask"] & (data["regions"] == region))
+                    if not len(ids):
+                        continue
+                    truth = original[ids] - data["paired_reference"][ids]
+                    info = detail[method]["regions"].get(str(region), {})
+                    coverage_rows.append({**meta, "method": method, "scope": label,
+                        "triggered": bool(info.get("triggered", False)), "method_failure": failures.get(method),
+                        "true_artifact_energy": float(np.sum(truth ** 2)),
+                        "estimated_artifact_energy": float(np.sum(artifacts[method][ids] ** 2)),
+                        "association": info.get("association"), "gain": info.get("gain"),
+                        "generation_multiplier": row["recipe"]["amplitude"],
+                        "legacy_reference_scaled_with_field": False, "evaluation_only": True})
         atomic_json(predictions / (row["example_id"] + ".json"), decisions[-1])
         pd.DataFrame(example_records).to_csv(shards / (row["example_id"] + ".csv.gz"),
                                             index=False, compression="gzip")
@@ -313,6 +337,14 @@ def run(input_root, output, config, profile):
                     "total_examples": len(rows), "calibrations": len(fitted_by_calibration)})
         print("NONFRONTAL_SAVED", number + 1, len(rows), flush=True)
     scores = pd.DataFrame(records)
+    if family == "cca_adaptation":
+        from .nonfrontal_review import MIDDLE, TEMPORAL
+        central = scores[scores.scope == "central_shared"]
+        middle = central[central.channel.isin(MIDDLE)].assign(scope="middle_verified")
+        temporal = central[central.channel.isin(TEMPORAL)].assign(scope="temporal_shared")
+        if len(middle) + len(temporal) != len(central):
+            raise ValueError("CCA central anatomy is not covered by verified subgroups")
+        scores = pd.concat((scores, middle, temporal), ignore_index=True)
     scores.to_csv(output / "nonfrontal_channel_scores.csv.gz", index=False, compression="gzip")
     dirty = scores[scores.condition != "clean"]
     fields = list(PAPER_KEYS) + ["cc_deterioration"]
@@ -321,11 +353,20 @@ def run(input_root, output, config, profile):
         ["scope", "evaluated_family"]).agg(strict_mean).reset_index().to_csv(output / "nonfrontal_method_means.csv", index=False)
     grouped.groupby(["scope", "evaluated_family", "condition", "input_snr_db"]).agg(strict_mean).reset_index().to_csv(
         output / "nonfrontal_condition_means.csv", index=False)
-    baseline_metric_checks = reconcile_baselines(scores, old_scores)
+    baseline_metric_checks = reconcile_baselines(scores[scores.scope.isin(("whole", "frontal", "posterior", "central_shared"))], old_scores)
     gates = labelled_gates(scores, config)
     atomic_json(output / "nonfrontal_controlled_gates.json", gates)
     write_jsonl(output / "nonfrontal_fit_records.jsonl", fit_records)
     write_jsonl(output / "nonfrontal_decisions.jsonl", decisions)
+    if family == "cca_adaptation":
+        pd.DataFrame(coverage_rows).to_csv(output / "cca_coverage_audit.csv", index=False)
+        atomic_json(output / "cca_coupling_audit.json", {
+            "legacy_reference_scaled_with_field": False,
+            "verified_producer": "corpus.py: calibration/scoring injected fields scaled; reference arrays unscaled",
+            "new_generator_applied": False, "fresh_qualification_allowed": False,
+            "policy": "matched legacy engineering comparison; current user requested next approach; RC repair remains pending",
+            "reference_ranks": [1, 2], "reference_predictors": "HEOG/VEOG x three lags",
+            "author_code_parity": False, "paired_truth_access": "coverage/metrics only after predictions"})
     from .coverage_uncertainty import uncertainty_report
     uncertainty_scores = scores[scores.scope.isin(("whole", "posterior", "central_shared"))].rename(
         columns={"evaluated_family": "arm"})
@@ -337,7 +378,7 @@ def run(input_root, output, config, profile):
         "calibrations": len(fitted_by_calibration), "arms": list(estimates),
         "frozen_frontal_parity_checks": parity_checks, "source_split_sha256": config["source_split_sha256"],
         "saved_fit_replay_checks": fit_replay_checks, "baseline_paper_metric_checks": baseline_metric_checks,
-        "new_decompositions": ("calibration-only GEVD-MWF" if config.get("method_family") == "mwf_controls" else "calibration-only ICA") + "; no VMD solver executed",
+        "new_decompositions": {"mwf_controls": "calibration-only GEVD-MWF", "cca_adaptation": "calibration-only regularized CCA"}.get(family, "calibration-only ICA") + "; no VMD solver executed",
         "runtime_s": time.perf_counter() - started, "weights_trained": False,
         "autovmd_executed": False, "scoring_target_fit": False, "reserved_confirmation_opened": False,
         "qualification": False, "native_validation_required": True,

@@ -224,4 +224,6 @@ authorized despite current frontal qualification failures; no teacher/model prom
 
 - [x] NF11b Full320fixedstrength/blendcomparison completed292tests/549000baselinechecks. Blend0.75point15.370676mean/13.826832pooled; gainCIcrosseszero and severelateralworsens. No final replacement or widergrid.
 - [x] NF11c Evaluator-onlybounds/mean-varianceaccounting saved onKaggle; severe middle lateral scalarheadroom only5.444→5.570pooled. Prioritize field/coverage and coupling, not scalarstrength alone.
-- [ ] NF11d Fullgain665payload recovery verification; core14payloads/completion alreadyverified.
+- [x] NF11d Fullgain665payload recovery andcompletionverified; interruptedtransportattempts resumed fromverifiedfiles.
+
+- [ ] NF12a CCA contracts/source-balanced50examplepilot:module/config/notebook62authored; matchedlegacycouplinglimitationdisclosed. AllnumericalworkKaggle; noautoVMD/models.

@@ -366,7 +366,7 @@ display(sources[['id', 'role', 'paired_target', 'frontal_mapping', 'independent_
 display(sources[['id', 'limitations']])
 print((OUT/'published_sensitivity_table.json').read_text())
 '''
-    if stage in ('nonfrontal-challengers', 'nonfrontal-mwf-controls'):
+    if stage in ('nonfrontal-challengers', 'nonfrontal-mwf-controls', 'nonfrontal-cca'):
         tables = '''import pandas as pd
 from IPython.display import display
 print((OUT/'nonfrontal_summary.json').read_text())
@@ -385,6 +385,13 @@ print('Frontal outputs frozen; no posterior/central VMD; no AutoVMD or model tra
         DETAILS[stage] = 'Fixed-recipe posterior and central component-correction adaptations. Pin corpus002 and matched-context-full001. Match full-montage calibration support, preserve frontal outputs and score separate region changes plus their composition. No clean target enters fitting or correction. Save all predictions, component fits, per-record progress, paper metrics and failure rows. Pilot precedes full development evaluation; native and independent qualification remain separate.'
         if stage == 'nonfrontal-mwf-controls':
             DETAILS[stage] = 'Two fixed GEVD-MWF controls, rank1/rank2 with instantaneous full-montage support and strength1. Reuse the validated posterior solver but output only posterior/central rows. Same field-association gate, parents, scoring cohort and frozen frontal VMD output as notebook58. No repeated posterior grid, target fitting or teacher promotion.'
+        if stage == 'nonfrontal-cca':
+            DETAILS[stage] = 'Six fixed calibration-only CCA/control mechanisms: direct joint ridge, previous rest-whitened reference-rank2, rank1/rank2 canonical reference-direction truncation, and rank1/rank2 EEG-source backprojection. Same lag bank, calibration/scoring separation, original-input field gate and frozen frontal VMD outputs. Regularization0.01 and actual calibration Pearson squared admission0.16 are project adaptations, not published optima. Reference full-basis identity and matched ridge parity must pass; saved fits replay bit-for-bit. Report middle/temporal subgroups, paper metrics, conditions, gate failures, uncertainty and preservation. Known synthetic reference coupling mismatch remains disclosed; no fresh/native qualification or models. See NONFRONTAL_CCA_PLAN.md.'
+            inspect_modules = '''CONFIGURATION = json.loads((CHECKOUT/RUN_SPEC['config_path']).read_text())
+print((CHECKOUT/'docs/NONFRONTAL_CCA_PLAN.md').read_text())
+print('Inspectable modules: nonfrontal_cca.py and nonfrontal_experiment.py')
+print('Known legacy coupling limitation; no repaired-corpus or author-parity claim.')
+'''
     if stage == 'nonfrontal-review':
         tables = '''import pandas as pd
 from IPython.display import display

@@ -27,7 +27,7 @@ def require_approval(stage, input_root, config):
         if stage == "nonfrontal-review":
             from .nonfrontal_review import readiness
             return readiness(input_root, config)
-        if stage in ("nonfrontal-challengers", "nonfrontal-mwf-controls"):
+        if stage in ("nonfrontal-challengers", "nonfrontal-mwf-controls", "nonfrontal-cca"):
             from .nonfrontal_experiment import readiness
             return readiness(input_root, config)
         if stage == "regional-context-match":

@@ -23,7 +23,7 @@ def dispatch_stage(stage, input_root, output, config, profile, experiment):
         if stage == "nonfrontal-review":
             from .nonfrontal_review import run
             return run(input_root, output, config, profile)
-        if stage in ("nonfrontal-challengers", "nonfrontal-mwf-controls"):
+        if stage in ("nonfrontal-challengers", "nonfrontal-mwf-controls", "nonfrontal-cca"):
             from .nonfrontal_experiment import run
             return run(input_root, output, config, profile)
         if stage == "regional-context-match":

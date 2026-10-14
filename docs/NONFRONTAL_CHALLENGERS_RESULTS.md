@@ -489,3 +489,24 @@ eligible authorSGEYESUB parity. Gate-missed and unavailable-field cases remain
 included. Confidence-dependent gains require observableinputs and grouped source
 selection, never condition labels or oracle coefficients. Native suppression/
 resting preservation and independent datasets remain mandatory before models.
+
+
+## Next approach authored: posterior/middle CCA adaptation
+
+Currentuser requested nextapproach. Authored src/vmd_eog/nonfrontal_cca.py,
+calibration-onlyregularized canonicaldirectionfit,reference1/2 andEEG1/2arms,
+matchedjointdirectridge andoldrank2controls. Reuses21armregioncomposition/reporting
+engine. Addedfullreference/ridgeidentity,permutation,units,boundaries,constantrefs,
+mask andsavedreplay fixtures. StaticAST/notebookinspection passed locally;
+numericalvalidation notyetperformed. Confignonfrontal_cca,numberednotebook62.
+
+Auditconfirms oldsynthetic EEGfield/referenceamplitudemismatch. RC01-RC05 remain
+pending; the current nextapproach runs only a matchedlegacyengineeringpilot with
+explicitcoupling/coverageaudit. This is an executiondecision under the user's
+newdirection, not a claim that repair/nativequalificationpassed. No thresholds
+relaxed or reserved/modelwork opened. No authorMATLABparity/iCanCleanreplication
+claim. FrontalK3/2000outputs unchanged; allnewfit/outputonlynonfrontal.
+
+Previousgain-full001 resumedrecovery succeeded:all665manifestpayloads andcompletion
+verified locally, after interruptedSSL/chunkeddownloads. Failedretrievalattempts
+are transportfaults, not numericalkernelfailures. Immutablegainrun preserved.
