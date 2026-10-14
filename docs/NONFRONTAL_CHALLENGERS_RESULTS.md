@@ -321,7 +321,9 @@ Pooled energy sums signal/error across available scope channels/time within each
 window, then uses the same source-balanced condition/input averaging. Both use
 10log10(signal energy/reconstruction-error energy). They are different
 aggregations, not invented alternative equations. Regional dB cannot be added.
-The pooled metric remains below15dB; this run cannot be declared target-qualified.
+The pooled metric remains below15dB and is a supplemental aggregation audit,
+not a newly imposed engineering gate. The declared channel-first development
+criterion is exceeded; fresh-source and preservation qualification remain unmet.
 
 Frontal VMD mean17.112814/pooled16.628262 versus raw18.193247/17.939047dB.
 Unchanged nonfrontal rank2 mean/pooled:posterior14.095698/13.279070,
@@ -343,3 +345,65 @@ SNR,CC or baseline parity. No active failure count is fabricated.
 Whole PNG visually inspected/readable. NotebookHTML visual inspection remains
 unperformed. The next bounded strength/blend experiment uses saved fields only;
 its target-fitted scalar/blend bounds are evaluator-only and cannot drive inference.
+
+
+### Fixed nonfrontal gain/blend pilot launched
+
+nonfrontal-gain-pilot001/1 atsourcec049d8dca726adb032f9ee45b32353d9164dd272,
+Kagglevmd-nonfrontal-fixed-gain-pilot, exact nonfrontal-full001/1 parent.
+Ten arms:foursavedcontrols plus three fixedstrengths and three fixedblends.
+Pilotfirst50developmentexamples/fiverecipients, frontalVMD unchanged. No
+AutoVMD, newcalibration, target-guided inference, reserved access or neuraltraining.
+Correct submitted notebook copied to numbered61 with exactSHA/spec. Numerical
+suite runs before scoring. Completion and recovery have not yet been established.
+Primaryagent monitors directly after monitoring subagent became unavailable from
+its usage limit; continuous background monitoring is not asserted.
+
+Frozen review001 manifestSHA256:
+90cb1a71ec0a4cbf42b7d619c689fadb5c32df168c761ade4c2cbffd98426861.
+Core13payloads verified; full665payload recovery remains inprogress. WholePNG
+visually inspected. The full21armparent retains all1050payloads verified locally.
+
+
+### Frontend audit recovery confirmed
+
+At01:26:21UTC14October2026 the receipt verified all665manifest payloads and
+completion for nonfrontal-review001/1. Core and bulk recovery are now complete:
+all320raw-frontal prediction bundles,metric shards,paper scores,subgroup tables,
+condition tables,oracle-free comparison,source-aware intervals,figures and lineage
+limitations are preserved. Manifest90cb1a71ec0a4cbf42b7d619c689fadb5c32df168c761ade4c2cbffd98426861.
+Earlier partial-download statements are historical and superseded by this receipt.
+
+
+## Fixed strength/blend pilot completed
+
+nonfrontal-gain-pilot001/1 atc049d8dca726adb032f9ee45b32353d9164dd272 completed
+50examples/5sortedrecipient participants/4ocular donors. This is a deterministic
+subset of the full cohort; it differs from the earlier source-balanced50example
+component pilot. Compare within this run only, not its baseline20.086786frontal
+against earlier20.176007 as if methods changed.292tests passed,14warnings,
+18.63s;85200archived paper-metric checks. Stage86.230018s,runner159.251149s,
+peak832820KiB. No calibration/weight fitting,AutoVMD,models or reserved sources.
+
+| Fixed nonfrontal arm | Whole mean channel SNR dB | Pooled-window SNR dB | CC |
+| --- | ---: | ---: | ---: |
+| Unchanged rank2joint | 15.906784 | 13.699583 | .965093 |
+| Strength0.25 | 10.268276 | 7.263809 | .883922 |
+| Strength0.50 | 11.886580 | 9.650133 | .918388 |
+| Strength0.75 | 14.347441 | 12.426323 | .950711 |
+| Old/rank2blend0.25 | 14.491577 | 12.355973 | .949559 |
+| Old/rank2blend0.50 | 15.268996 | 13.298144 | .960385 |
+| Old/rank2blend0.75 | 15.944701 | 13.861136 | .966507 |
+
+The largest fixedblend pilotgain isonly+.037918dB channelmean; supplemental95%
+interval[−.679458,+.858902],454/500validdraws. No evidence of superiority or
+selected production weight follows. Simple uniform attenuation is inferior.
+Middleblend0.75mean14.569999 versus14.246635; temporal17.185124 versus18.197961.
+This illustrates subgroup tradeoffs hidden in the wholeaverage.
+
+Optimistic scalar/blend reports use scoring targets after fixedarms exist and
+are explicitly diagnostic_target_fit=true/deployable=false. They do not change
+any prediction or constitute achievable generalization. Full comparison adds
+participant-balanced bound summaries to make gain-versus-shape headroom clear.
+Primary scores use unchanged paper equations; clean and CC gates are unchanged.
+Core output recovery verified; full123payload recovery tracked independently.

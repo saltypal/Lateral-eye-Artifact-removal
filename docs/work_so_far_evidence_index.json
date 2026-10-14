@@ -1,6 +1,6 @@
 {
-  "snapshot_utc": "2026-10-14T00:44:12.824002+00:00",
-  "git_sha": "f86d37499a2da96a54b073289ea3861588478b37",
+  "snapshot_utc": "2026-10-14T01:29:54.452865+00:00",
+  "git_sha": "c049d8dca726adb032f9ee45b32353d9164dd272",
   "tables_and_logs": [
     {
       "path": "results/review-fast/frontal-event-hybrid-001/results/vmd-frontal-replication-20261011/frontal-event-hybrid-001/tests.txt",
@@ -4956,6 +4956,11 @@
       "path": "results/vmd-eog-20261010/nonfrontal-contracts-003/results/vmd-eog-20261010/nonfrontal-contracts-003/tests.txt",
       "bytes": 2511,
       "sha256": "9b0173aa57b55eab0a9f803f5c8c59302e76db5176c802096a9da4a0c6000e9d"
+    },
+    {
+      "path": "results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/tests.txt",
+      "bytes": 2591,
+      "sha256": "842d4763947d0c60ace9c0bc37dc60059bf917538393e5e64a3c7dc04f5c9879"
     },
     {
       "path": "results/vmd-eog-20261010/paper-fixture-001/results/vmd-eog-20261010/paper-fixture-001/paper_metric_fixture.csv",
@@ -12243,6 +12248,311 @@
       "sha256": "37d694ab7b74270b4ca8ebfdf8ecfba1824d330f6272afa2e559cc7a5442ad0c"
     },
     {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_paired_differences.csv",
+      "bytes": 13005384,
+      "sha256": "4269a03f92e32a8fd458ea6f6e6e368fa76863b8169a08a609a3af10f95462c1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_channel_strata.csv",
+      "bytes": 4367016,
+      "sha256": "e2031ce74a58fe1384f454e12f1bd42e5336d6f9c82e6a54b6b5de081c437038"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_intervals.csv",
+      "bytes": 24397,
+      "sha256": "a68ac5908977677aed2bb33ee4f0eeeb3e3debacfda882ac066cd6086ccd3cc4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/evaluator_only_gain_bounds.csv",
+      "bytes": 50624,
+      "sha256": "fd284ebec2c3116f64bd8b334454256a5dd08d596ebda39d9bc39ab974484a41"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_channel_scores.csv.gz",
+      "bytes": 2114256,
+      "sha256": "eff05be349b22c637c7b12d70f1a2fefffd8aa539cb1bb895a26fe0bbd287746"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_condition_means.csv",
+      "bytes": 84059,
+      "sha256": "00d374ea06825a488afcfb144882e178b81a45c4fcbd8ef59f32ab16c354856b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_decisions.jsonl",
+      "bytes": 26466,
+      "sha256": "f4ff0b5c83bef20b9f1cf35fefdab3b351d22e01e50773d01e98ece70d1460dc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_example_snr.csv",
+      "bytes": 338548,
+      "sha256": "4b90276fa402b74722e52b7963b39b25e2a3bf0709826d175f3b62cf68d1f878"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_method_means.csv",
+      "bytes": 9985,
+      "sha256": "d0a17460016e785c4b0dc353da35c5f07442282675aed0a6bbca397eeabfce8b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_selection_manifest.jsonl",
+      "bytes": 60992,
+      "sha256": "cdcfe3065710f4af1db2d15f79db75de46a48077c8985bbf05a4f0d07ec079b4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-blink-snr+0.csv.gz",
+      "bytes": 49151,
+      "sha256": "793d84f6fa1c57104254fb9f2c9208ce22ef947937b0d75009a8fe646f49b3a6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-blink-snr+5.csv.gz",
+      "bytes": 47252,
+      "sha256": "d0f53e7eca06c9e54d9ae7a81a384930501fa8903ceb017491748378dc6966c7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-blink-snr-5.csv.gz",
+      "bytes": 54851,
+      "sha256": "e2c1b07b45f72cd355773875b0b5cb0557c04e6a965a37cd93199b239400d0e3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-clean-clean.csv.gz",
+      "bytes": 4804,
+      "sha256": "ceaee80548140ed1368b74e39ed72f6d11666e465119e4622c6a8b1b43c45656"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-lateral-snr+0.csv.gz",
+      "bytes": 54658,
+      "sha256": "18a76add81933081bded7c8b2bcbdb941e5c5b5c5ebf64803806ffe1245cfd27"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-lateral-snr+5.csv.gz",
+      "bytes": 47046,
+      "sha256": "3467928a44e70880dc1d19c68d84e3a90e0fad7caf36cd2df7c3d86271243d75"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-lateral-snr-5.csv.gz",
+      "bytes": 56034,
+      "sha256": "00b9ad0e475f8da8bbd3dfc22ab9e250118ed7cbe998f365befc05da5f84a545"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-mixed-snr+0.csv.gz",
+      "bytes": 49065,
+      "sha256": "601d811ad6dbf5fa86f8eca1779e41608f12407ef3afdcadf83a380743806372"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-mixed-snr+5.csv.gz",
+      "bytes": 47194,
+      "sha256": "90c9c9610e5f8e3966779ad7fca160eb3c3b3cd76824bfe7a0db886e89635342"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-mixed-snr-5.csv.gz",
+      "bytes": 54788,
+      "sha256": "246b7858c25586749dd70502d565ce99637039b70bdd2f050c7858399c4be831"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-blink-snr+0.csv.gz",
+      "bytes": 43744,
+      "sha256": "67e1fb5cca1b1f6b8898a7c60a4ede0105013bb375f2402c2b79f33f6324f792"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-blink-snr+5.csv.gz",
+      "bytes": 34937,
+      "sha256": "8584786bf585540249b1681982dad1d976efce16a84030eab99163f595d040eb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-blink-snr-5.csv.gz",
+      "bytes": 75385,
+      "sha256": "8932bb9cd6853e78cd7493a4293cfbdcb9be1ef75fffda31fcac2425d785420b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-clean-clean.csv.gz",
+      "bytes": 4633,
+      "sha256": "f3a93f4de901b7247ff4f7853ee0349101b4a77b423dd4cfa33433ea66157d20"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-lateral-snr+0.csv.gz",
+      "bytes": 53193,
+      "sha256": "54ea41f463a013002794d2ddd7d8f298b2c58f420e353e54c2a2725a4d65d8a0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-lateral-snr+5.csv.gz",
+      "bytes": 45044,
+      "sha256": "15fbc87e5b7307957919be127cc9a6f4a8f2d25406408df2b2087a5d049a1d41"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-lateral-snr-5.csv.gz",
+      "bytes": 53624,
+      "sha256": "77ceb8e1f99708795167dc32409b73f550de5b073577e61fd6f3670e705eb611"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-mixed-snr+0.csv.gz",
+      "bytes": 43606,
+      "sha256": "80bf4d6f7dc1f775eb0de535e1fa47a55a2781f141f0839c14ac1098cffe78c2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-mixed-snr+5.csv.gz",
+      "bytes": 34968,
+      "sha256": "adbcbace5c82c244e861b9be19ab38e694b3d6a4f209884e82643d3d07d35be7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-mixed-snr-5.csv.gz",
+      "bytes": 51567,
+      "sha256": "167d3abc4d458d7186d14d9cff9763da574104c4b2eb71700a4566b92fee5a2e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-blink-snr+0.csv.gz",
+      "bytes": 43081,
+      "sha256": "9eda2acdd2a6921ef18a2e67421680fe379b4cb23d7c519fcfa2af1cfc023e99"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-blink-snr+5.csv.gz",
+      "bytes": 41715,
+      "sha256": "ffc856a86615e1fa130a6092446e5c3d85811c8e888734abede07104f74a5da1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-blink-snr-5.csv.gz",
+      "bytes": 52207,
+      "sha256": "64dd9755471005532fdcbdb40e0c2e35bf911ba81d790ece450196af5e2cc93e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-clean-clean.csv.gz",
+      "bytes": 4633,
+      "sha256": "d026cfc8a25e590c7646987ae64d739de0119f61fceac8ad78f657faa224751e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-lateral-snr+0.csv.gz",
+      "bytes": 44138,
+      "sha256": "2299a1eb2c9ffbc1f7e9f72ca4316426ee0072f5601b3083267827021efacfa2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-lateral-snr+5.csv.gz",
+      "bytes": 42600,
+      "sha256": "e390eb1b695c64d43fc5c451c58faa550ceca9352ae89dad4ef239618c157b69"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-lateral-snr-5.csv.gz",
+      "bytes": 52453,
+      "sha256": "59e2203f3da08b0b90338b66461caf655ad7b169d64bb346fabcd4d06e1ce7e7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-mixed-snr+0.csv.gz",
+      "bytes": 42864,
+      "sha256": "b17ade8d086bb520fe59415ad10b25b6f24cb10366e4bff4a73555308967d2dc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-mixed-snr+5.csv.gz",
+      "bytes": 41615,
+      "sha256": "864e6eaa4866bf8e5008863758a4f4cc772c684e891aa527bb5d1ead73c26bbc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-mixed-snr-5.csv.gz",
+      "bytes": 52107,
+      "sha256": "47fb1a7e9676bf3f7208f24776693c64b936b1632ed75a5aa0bca460fa8ddec0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-blink-snr+0.csv.gz",
+      "bytes": 48357,
+      "sha256": "00cc9c3bfc4dea25febfcebeaad53160bb53e4186f00c1c034d83758d5aaab1a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-blink-snr+5.csv.gz",
+      "bytes": 46956,
+      "sha256": "54aba63a7afa418827633c91b8406393d6b1d6d8696d177f05ba01726f7334a9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-blink-snr-5.csv.gz",
+      "bytes": 50632,
+      "sha256": "9467652f5745cea30ccfdaf975ab8a87f0e11ee5697051dddf59b1147bee6386"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-clean-clean.csv.gz",
+      "bytes": 4798,
+      "sha256": "06299491be05e39f2c238d1970368552ffe7b8ab2664f1b244697f08bb01e4a2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-lateral-snr+0.csv.gz",
+      "bytes": 55123,
+      "sha256": "38bc9c25878ef7e0139775c3ab62e775d588462c6212b815a8605d26adb62002"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-lateral-snr+5.csv.gz",
+      "bytes": 48524,
+      "sha256": "168a98071a9deb2a908f187db194c2669d5012beea73f5e7fc1d7dd2e968b92d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-lateral-snr-5.csv.gz",
+      "bytes": 55701,
+      "sha256": "bf5439efeafb32a9f08b7690d99bf8103cae6e02de4314d15580152ed3c5db3c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-mixed-snr+0.csv.gz",
+      "bytes": 48482,
+      "sha256": "095bcf458752f4bfe9c16b045d4baad22f2d72abde24103654819ba71496549b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-mixed-snr+5.csv.gz",
+      "bytes": 47083,
+      "sha256": "f8c66023376c63046c8d68406874772e14daf1f2875a1f7a7b0e15bba19fa6df"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-mixed-snr-5.csv.gz",
+      "bytes": 54854,
+      "sha256": "4560851a472ee7b95468282795e3013bef328806e1d7be37f852f5ea496834f9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-blink-snr+0.csv.gz",
+      "bytes": 41481,
+      "sha256": "a154688686de529c3daf40d1d95354c717435aa8d4fe2d4e6fba2f3571253fbc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-blink-snr+5.csv.gz",
+      "bytes": 34762,
+      "sha256": "b6b40035e691d83f09eafa638cb25b4c697c5076b517fadcf4552b9bbae854fb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-blink-snr-5.csv.gz",
+      "bytes": 44214,
+      "sha256": "8ad2ec693d30ab170dc3ff71487e77170611a706cd8c156effe069dd2ef62a9b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-clean-clean.csv.gz",
+      "bytes": 4634,
+      "sha256": "7042f06e71faf7e97766e8e9d49ba567ad70a4c75c05233042d75a75d37cbd51"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-lateral-snr+0.csv.gz",
+      "bytes": 43331,
+      "sha256": "57f9b4888666de6b4ebdb9d1f63084c8f309e1b95816f9f0b22bf80e02940c9a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-lateral-snr+5.csv.gz",
+      "bytes": 13788,
+      "sha256": "d6e42b8c50c09109a8d6a388fd5533da7b1b1009517ce63e20e94441a0c0d8fe"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-lateral-snr-5.csv.gz",
+      "bytes": 53623,
+      "sha256": "c78634a51f44cb4f154893808eb95bec89d77e1d972258caf8767b2ffbec0463"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-mixed-snr+0.csv.gz",
+      "bytes": 41546,
+      "sha256": "0cea2763fdbcb14aea1f970c46954013ab5657c2ee3de7db7817fa27a5b587ee"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-mixed-snr+5.csv.gz",
+      "bytes": 34665,
+      "sha256": "eb9befbaf9e13bb60f4c3944983e68bc5c6ce5843ffd0e09591c37f6f26c2f50"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-mixed-snr-5.csv.gz",
+      "bytes": 44094,
+      "sha256": "41cf9017b3e55ffb4baea651b48d353ccd9f8dbce5508f7d50a5b9b1864a8b91"
+    },
+    {
+      "path": "results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/tests.txt",
+      "bytes": 2591,
+      "sha256": "391a3b9e846674c4d3eb2159739848d531a378bde528f518623de7ae786aa46e"
+    },
+    {
       "path": "results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/coverage_paired_differences.csv",
       "bytes": 8889245,
       "sha256": "af407cf5c2bb34a1dbcf9bc883d63f75fa164e9b5e4884d68661b29580b4a156"
@@ -12541,6 +12851,1666 @@
       "path": "results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/tests.txt",
       "bytes": 2511,
       "sha256": "6714701809278286ab8496b7964b2283ee1f43fb798369e85a10aa3580d45c3f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/coverage_paired_differences.csv",
+      "bytes": 31342333,
+      "sha256": "5e249d4470777155b8105a147c71aa5b8a4720183e4174d4e8a9347f2cbdccb4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/coverage_uncertainty_channel_strata.csv",
+      "bytes": 10547819,
+      "sha256": "9bd9a38a087b21d50cee46425712f4a72a6c0b8da89d2b7ec43b04d33ac11dd9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/coverage_uncertainty_intervals.csv",
+      "bytes": 10951,
+      "sha256": "db1cab5dc7adccdd39a7b78f84d026ca705202d4c642a240eb27bb3b6dad7051"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/matched_ica_frontend_uncertainty/coverage_paired_differences.csv",
+      "bytes": 15147731,
+      "sha256": "465be8d1cb475a46eeed5fd4bb5a2bb7286f5fab27175bc7a799a86ad4248787"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/matched_ica_frontend_uncertainty/coverage_uncertainty_channel_strata.csv",
+      "bytes": 4752977,
+      "sha256": "0ea4ba91d35b2536265ea08f1303bc8f19554d5d313cbdfc0805f33ac32017dd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/matched_ica_frontend_uncertainty/coverage_uncertainty_intervals.csv",
+      "bytes": 5457,
+      "sha256": "888290948f54f55b80edd1a5e7a2511a7fbd02bd9bd222d1686b6d89136f7d5e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_channel_scores.csv.gz",
+      "bytes": 11374767,
+      "sha256": "226475ffbc6764b27467e3f2ddcbe108a344ac3f3f7da60634054710db32d6f0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_condition_means.csv",
+      "bytes": 60164,
+      "sha256": "ae6cbbe4f3f3b18014ba5d76b2a92b8f898d479305a00d0270780b052bf883fe"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_example_snr.csv",
+      "bytes": 1797804,
+      "sha256": "0e0548bd781d338c4110d6e65fdacc9faa260db099c48fb72e3d7173ad218638"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_method_means.csv",
+      "bytes": 7131,
+      "sha256": "7a73914e67a00ef293934b32a905906129a015b14190039bdd5ef941c3732d1d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_selection_manifest.jsonl",
+      "bytes": 391132,
+      "sha256": "c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-blink-snr+0.csv.gz",
+      "bytes": 40242,
+      "sha256": "1160d7e4ed34d33112d9392048ed0737edf963227f1e6a0edcd050b2fc91c4dc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-blink-snr+5.csv.gz",
+      "bytes": 39718,
+      "sha256": "9eb38f404fb62f3426af2b2abf7b7cc72e47551ab22cb1ac19a58506ca9e66f1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-blink-snr-5.csv.gz",
+      "bytes": 44448,
+      "sha256": "10fd744bed9dc09ecbb6231aae0a475a0c56c77701a62ca340343a3042a3f4bc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-clean-clean.csv.gz",
+      "bytes": 3542,
+      "sha256": "c7cc029e275b4fe1828c7818848db5aa3c9a6963695a188930581fe3f7629105"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-lateral-snr+0.csv.gz",
+      "bytes": 44351,
+      "sha256": "dc34d2f547e5aae496251218ccfa4e9b07c2f3924a2300f976375b057da50de9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-lateral-snr+5.csv.gz",
+      "bytes": 39635,
+      "sha256": "402ea3e79fd9683559a84faf796e88c24680ee38af3dcc318186dd6dc791bd62"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-lateral-snr-5.csv.gz",
+      "bytes": 44781,
+      "sha256": "d96774890e4fb4e6e53c7fae28f9179bca93e1a50ceb2dcf79ab598b6376dc5c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-mixed-snr+0.csv.gz",
+      "bytes": 40179,
+      "sha256": "0e8fde3c538b36abab4cff8852dd347b6ce6aa79ec71953b17b578a03f134212"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-mixed-snr+5.csv.gz",
+      "bytes": 39677,
+      "sha256": "d6edb5fed71796365f20b056fec41ff61398a80b3615c28cde106c907a4a2d54"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-mixed-snr-5.csv.gz",
+      "bytes": 43707,
+      "sha256": "5f364817b4053c585f3d7776803ecf5cba169ea9b74c3cedbab7d3b175529385"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-blink-snr+0.csv.gz",
+      "bytes": 38218,
+      "sha256": "7e4a642da8575c2d5a15862669d6726fb6612d1fb265852848c7022ce465e629"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-blink-snr+5.csv.gz",
+      "bytes": 29928,
+      "sha256": "cb70e2c399ba5bb6638425342580197e1b30dc8534c21263eecae3420d1ddbe6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-blink-snr-5.csv.gz",
+      "bytes": 61814,
+      "sha256": "5f71faaa5db5e97e513ba18d937a86ec8358ba2f0604e3b47973da4c5997d433"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-clean-clean.csv.gz",
+      "bytes": 3420,
+      "sha256": "19ac29570d5856744f252f573b357cf624c48bcb2199ed3ab9ed1515227cf107"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-lateral-snr+0.csv.gz",
+      "bytes": 41855,
+      "sha256": "521b93058657f87a90b967ccfb0a33e43acd8ddf01a283885a242e24ba38a4e8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-lateral-snr+5.csv.gz",
+      "bytes": 38657,
+      "sha256": "fce8bf597edeccf35f0a75a4e79d3fd61733d594348ac214c5309401eeff350d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-lateral-snr-5.csv.gz",
+      "bytes": 42045,
+      "sha256": "b0dab66167b6e08b136a886b682657f63990061e69d866957c92f22fe510c59a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-mixed-snr+0.csv.gz",
+      "bytes": 37572,
+      "sha256": "c860e96642abcc0ab7d43ca1738db38917f91090d9f507901adcdf81a3ab3842"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-mixed-snr+5.csv.gz",
+      "bytes": 29915,
+      "sha256": "0e5cf8c695312effdda9160e1954da7d1820752779d84cf653830da8980ba67d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-mixed-snr-5.csv.gz",
+      "bytes": 41337,
+      "sha256": "ea484073d0df6c9fcb398c91eaf86b772e372bf27e6e0f96f858ef446be3c53f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-blink-snr+0.csv.gz",
+      "bytes": 38119,
+      "sha256": "a3456ac4c0367cfbdb47176214f288b34fe0711ce72614e0c2b5884ac585415a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-blink-snr+5.csv.gz",
+      "bytes": 38088,
+      "sha256": "4f63de79988df1643c7264a69f419d96d7d00926aec21f66620ad456226b7475"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-blink-snr-5.csv.gz",
+      "bytes": 41639,
+      "sha256": "0e8af5859232d405d943de912eac93dacf9b8151b62ae5b1b14408107f92c3de"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-clean-clean.csv.gz",
+      "bytes": 3421,
+      "sha256": "5d207fb1bd2bded94324153dff7df92101060dcd6d898980aa17ec923d47a14a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-lateral-snr+0.csv.gz",
+      "bytes": 38414,
+      "sha256": "fe0048a242550f0e4094adfcf17ce1cd3fbbc805cb5bf0d1c3980e314635f0a8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-lateral-snr+5.csv.gz",
+      "bytes": 38001,
+      "sha256": "e6b90521ec11f589d5f65d840422a36836c7d111caea821fa8544ccc8e073844"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-lateral-snr-5.csv.gz",
+      "bytes": 41500,
+      "sha256": "0bb3c34fc0a53de613b059a2af040dae29be26116e1dd94ee315a650eca5170b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-mixed-snr+0.csv.gz",
+      "bytes": 37210,
+      "sha256": "2edcebda299c9a672cda48942aba4175c0041ca88ac169bb0130cd2cf1539d67"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-mixed-snr+5.csv.gz",
+      "bytes": 37831,
+      "sha256": "1b2fcae6fbf3eabe9bd62221d80f7b8315bc3082e63cdd85faf310a822938e7e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-mixed-snr-5.csv.gz",
+      "bytes": 41593,
+      "sha256": "517bad830394e40e850104a27220fdc00331105ebdc33bfa93aeb43052804db7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-blink-snr+0.csv.gz",
+      "bytes": 40077,
+      "sha256": "6e045100d7bec47d7054f2570fdc2786a719ded4fbbc52c5fed8794db2ff2be9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-blink-snr+5.csv.gz",
+      "bytes": 39763,
+      "sha256": "faf84fe508fac55125ec8be0c7974741c4eaedfdc96ad1bcfb386f2d13a6b17f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-blink-snr-5.csv.gz",
+      "bytes": 40695,
+      "sha256": "62b91c2192adfd6ca48c694664ab1cd6f02bf7729f521c410deeebc64d709e72"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-clean-clean.csv.gz",
+      "bytes": 3539,
+      "sha256": "5727327a3c9fe1a61ec081235213af8d7e63c76bf28a2959339da82b387cde3b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-lateral-snr+0.csv.gz",
+      "bytes": 45941,
+      "sha256": "79eb007c7b3b7a547750d2b09d5a524e1e744a9d3728240a9f572c0af16a2c87"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-lateral-snr+5.csv.gz",
+      "bytes": 40192,
+      "sha256": "6891bd715c95a5bd87fe2e43b4f18cf42ec946d4b10e90d296cfa660ebd2139c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-lateral-snr-5.csv.gz",
+      "bytes": 45789,
+      "sha256": "a313861285efe6f61a63466d0279fc7700965e9760e50d87f866e82fa25cca63"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-mixed-snr+0.csv.gz",
+      "bytes": 40140,
+      "sha256": "660e7fb38ed3114344523d7bbcaffe3cbf69ad1bdb30db2ae0c1d2aeca0322e0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-mixed-snr+5.csv.gz",
+      "bytes": 39811,
+      "sha256": "989185fbfd8ff353f339a74e7be93cd55abb0b6d3458bbe6d1af4da60075f942"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-mixed-snr-5.csv.gz",
+      "bytes": 43296,
+      "sha256": "1e321623def8bb3ef5639418580777204244e9bddacb2ef6464a02bbcc6504e3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-blink-snr+0.csv.gz",
+      "bytes": 37644,
+      "sha256": "effa5863d095ceabb34435f44f4cc39770149f7cc5a174d633fb46224be88d72"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-blink-snr+5.csv.gz",
+      "bytes": 29890,
+      "sha256": "864488a9025d1cd39c0cc1870395d32fb05eab2074ffa1ae987713353bdc980d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-blink-snr-5.csv.gz",
+      "bytes": 38448,
+      "sha256": "f493810a1c9dfa51d575dc29866a2521f3e035331c91a60776e14c15982ea6ec"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-clean-clean.csv.gz",
+      "bytes": 3421,
+      "sha256": "712a9db440df9acafd48637591581c60995d056d601ffd1e6540214387f8ca46"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-lateral-snr+0.csv.gz",
+      "bytes": 37694,
+      "sha256": "c4eb9c75fa981276ac43700ee2995814d305ec6b1757a360d9d489beafbaf845"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-lateral-snr+5.csv.gz",
+      "bytes": 20986,
+      "sha256": "cf4f22775b4b099bfd3d7bd521097bea6b83f7327d502b684796914591eca4e5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-lateral-snr-5.csv.gz",
+      "bytes": 42022,
+      "sha256": "4deb81ec5774fe0377e841e94618dca865bbea8b35a221a206877588590d73b2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-mixed-snr+0.csv.gz",
+      "bytes": 36862,
+      "sha256": "8e9ad54b29655ea242a1c130ded3b62c9dab672d14d46115baa854fbf8349361"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-mixed-snr+5.csv.gz",
+      "bytes": 29783,
+      "sha256": "9bb58e2d28c514b9f914cdc86112ac014d91bb7755073389cc467f7a0d9c752c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-mixed-snr-5.csv.gz",
+      "bytes": 37775,
+      "sha256": "869ba259d6df516aa602046741de093bc1112c630807ca0bb508c92683a6e19a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-blink-snr+0.csv.gz",
+      "bytes": 38173,
+      "sha256": "0fe6b36725f7a9684f8e0666be26312bf4d56ce4358c1bbc3cae3cd1ebb923de"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-blink-snr+5.csv.gz",
+      "bytes": 37910,
+      "sha256": "90f6fbfc66f438cac81f3470d9317f929cd0d577ca236ed7ad32e591305e938b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-blink-snr-5.csv.gz",
+      "bytes": 41375,
+      "sha256": "b20ab205373b446ec709f68b97bd152ed22c7443fb9a4fdb9379aff397ce6297"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-clean-clean.csv.gz",
+      "bytes": 3420,
+      "sha256": "7ec3cf4c396a8e921aaf1f930e3626d03cd01fffe450aac9fafc58d61480a9f5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-lateral-snr+0.csv.gz",
+      "bytes": 41270,
+      "sha256": "6183d1e4d6e2c83d707e097e15e1f6b22f2d2c50ef27a4afedece34fd63f9418"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-lateral-snr+5.csv.gz",
+      "bytes": 38207,
+      "sha256": "09d94b3afd10f903db4f6e5d22bc6e70b626aa8478cd3e4fa7be5f9843f5a229"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-lateral-snr-5.csv.gz",
+      "bytes": 41747,
+      "sha256": "34f2c2d8d2c0e1d4b499a994a0372593f6787aa2d1b36bf73a65972e24538fa4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-mixed-snr+0.csv.gz",
+      "bytes": 37519,
+      "sha256": "0354007bad8ebb66550c49bfaa1d6dddb6f793abe48c24083529a0981e2cb12a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-mixed-snr+5.csv.gz",
+      "bytes": 37599,
+      "sha256": "2badda102b41e434345fbf71f5ad14309f1cd717dc06b5bbb27e4c196fc7470e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-mixed-snr-5.csv.gz",
+      "bytes": 41309,
+      "sha256": "039af213a1fd239711edaba79dda29fdbc8984c7631273aeec2fcc58dac61669"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-blink-snr+0.csv.gz",
+      "bytes": 37565,
+      "sha256": "f6577670b58ca24b035bdf026ef98f1c2e924fa1801d7906f64b59c85f906ce7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-blink-snr+5.csv.gz",
+      "bytes": 29953,
+      "sha256": "7a67f713371aef8c3f629e308392b8d5e8028686dc611e7a3f0ded779bfc067b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-blink-snr-5.csv.gz",
+      "bytes": 37934,
+      "sha256": "89ee1c995d5ab1568d2c9d447d85d10bfa1899cf551c2af7a38560279a26096d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-clean-clean.csv.gz",
+      "bytes": 3420,
+      "sha256": "47e1535c20170eea04e59f3997ea923fcbff0b69052be4c74cff9fe2a34555bc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-lateral-snr+0.csv.gz",
+      "bytes": 38081,
+      "sha256": "54c79841b78894bc04b34ea05ceead7a518e1d7c9cd2c21d62f6fc726d0f5acf"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-lateral-snr+5.csv.gz",
+      "bytes": 38056,
+      "sha256": "317307fc8e75293b1cde89697d94cdc8b8c629bdac7ac0235fd310e389cc967a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-lateral-snr-5.csv.gz",
+      "bytes": 41832,
+      "sha256": "780d5b49e1b72cb7bfa277e28a41b957ade441fe9a68317a1d296cc15d5c0dd5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-mixed-snr+0.csv.gz",
+      "bytes": 36903,
+      "sha256": "f8d4b558b1c3f231a818cf0b83a9b60973d4ac22356aa51f7796a732e74225ae"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-mixed-snr+5.csv.gz",
+      "bytes": 29922,
+      "sha256": "b1e5dc9f681a315ab2f4149d3fcb7486d00fc660ab7082d6f36f606b00aa46d4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-mixed-snr-5.csv.gz",
+      "bytes": 37092,
+      "sha256": "0d5f1c0aa167e5e616eead0ece6f080f202a29850ecaff8a9e5828d0382e113a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-blink-snr+0.csv.gz",
+      "bytes": 41219,
+      "sha256": "1028b6c5333620cc1f80bf0e286f8aa32d512fc7c74eac77087fd89a47b7b93a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-blink-snr+5.csv.gz",
+      "bytes": 38454,
+      "sha256": "5e7e6540f6c6d3d6ae58e0cb1b7b943c19f8dcef4e4877d9f8e0065495b26d23"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-blink-snr-5.csv.gz",
+      "bytes": 42026,
+      "sha256": "46b9d157cc817254b0647d4ebbbffc81b219053728a6c9189e7e0b4bb25bc75f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-clean-clean.csv.gz",
+      "bytes": 3420,
+      "sha256": "5c65e64ea318501c489338a588686e16efe6c02a839c76582632d84898c5a2d9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-lateral-snr+0.csv.gz",
+      "bytes": 41917,
+      "sha256": "4219675e250f002981bd379d4fc4b7cd92411c6fa1392462d2e329e5ebeab174"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-lateral-snr+5.csv.gz",
+      "bytes": 38274,
+      "sha256": "16dae33ae221079fab8532e5e72fd050c532692b9341e2ed749581ddb899ac3d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-lateral-snr-5.csv.gz",
+      "bytes": 41957,
+      "sha256": "3084b80ca4f42da640c1e2f4048c60fe86b0499e393d59173b17320b64540bf6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-mixed-snr+0.csv.gz",
+      "bytes": 41245,
+      "sha256": "c5e3389484a727cf73dbbb24756f63a99ab27ada4cf51a780dfb4479f20b9126"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-mixed-snr+5.csv.gz",
+      "bytes": 37917,
+      "sha256": "ed3e31819c5bec9591faa163aaa5db7a08681a980127fc2537f754fbe78e522c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-mixed-snr-5.csv.gz",
+      "bytes": 41804,
+      "sha256": "2682f790a4ea07d0376a07d655bebf078f8dbf43ccdd688aed6d134c0f3b2f5c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-blink-snr+0.csv.gz",
+      "bytes": 39667,
+      "sha256": "b42ed15850dfe9e165cafa72a76beb1042900bb740bd41d73e77efc1575bf1a7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-blink-snr+5.csv.gz",
+      "bytes": 39609,
+      "sha256": "a076810cd2ea982f9b1146942218da9030e23c6c8fdea74bd3aaad335c52f859"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-blink-snr-5.csv.gz",
+      "bytes": 43564,
+      "sha256": "d5a2660cfc917f55b38c40d0bd55ef262f4d9845b64a741c1355a598f34fc479"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-clean-clean.csv.gz",
+      "bytes": 3539,
+      "sha256": "ca246fd0109edb8e363bbb4c0fe9333802611ad5e60c65279c893d23c2911101"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-lateral-snr+0.csv.gz",
+      "bytes": 39796,
+      "sha256": "ede0479b06e3ea6b5edc57ed47676538c44cad7262a96115fa604b97a1e897b2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-lateral-snr+5.csv.gz",
+      "bytes": 39638,
+      "sha256": "57ef957edf2e8af8d9ec35f19d5bb16c59c29da456c9314dee1d61648f6dfde3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-lateral-snr-5.csv.gz",
+      "bytes": 43057,
+      "sha256": "aabfada042b7fb5433cdbb2ea724bc6013981868e4ca69b740d8e290947bd0c3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-mixed-snr+0.csv.gz",
+      "bytes": 39894,
+      "sha256": "d6a230e4d172e91e93ed140fcfe37034e6e7d59c3494d71e19a775de22d90bb0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-mixed-snr+5.csv.gz",
+      "bytes": 39585,
+      "sha256": "b715f4e0209aa3677cbcecb98b1f86e14e71b7262417018cafa9cd3531283e91"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-mixed-snr-5.csv.gz",
+      "bytes": 43481,
+      "sha256": "d593514a7767dc40404d5604a372cef9b7588973fa4b38cb93fc7cd08d6fc2bf"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-blink-snr+0.csv.gz",
+      "bytes": 40078,
+      "sha256": "f30b2511a17b2f2c10d4acd72c59a2109c3507b77e7dd9e51ca8fab392f348a6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-blink-snr+5.csv.gz",
+      "bytes": 39711,
+      "sha256": "0bea4168459383d67ffcebeb1dd7b8761c5d8c12138499cf509dbf431b4c7a9c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-blink-snr-5.csv.gz",
+      "bytes": 43033,
+      "sha256": "4953b655ff69804d5970ac2603ca5b530f4c02386c08649c4af5af770c7f28e5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-clean-clean.csv.gz",
+      "bytes": 3539,
+      "sha256": "cc0cd5a492376ff025474cd3bf647f05f3d55516ffe7015724e633b3766bf0bb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-lateral-snr+0.csv.gz",
+      "bytes": 42994,
+      "sha256": "1cd6b523938ed48f30b1cd3b33e218f042cf3d21404d899c87bb3c3a6cbf7b6b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-lateral-snr+5.csv.gz",
+      "bytes": 39569,
+      "sha256": "655c52e18882b842ddb3f31c054e8456bde2dc190426a9565a05febd046cc982"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-lateral-snr-5.csv.gz",
+      "bytes": 43195,
+      "sha256": "dcaaca5d07dd8224ca179f46e7e5ccb140359ca98f153928377d3436e082d0ed"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-mixed-snr+0.csv.gz",
+      "bytes": 40189,
+      "sha256": "25639dcf671206714caa9b4db69983c92b1a6ee1f961d447c299874bd5907df5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-mixed-snr+5.csv.gz",
+      "bytes": 39785,
+      "sha256": "d68b7850d84a75bfe94e8b438ac9440f549dcbbee11471cfa44042b77dc4558a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-mixed-snr-5.csv.gz",
+      "bytes": 43191,
+      "sha256": "1d537ee248d00a2f29e12882fccde4dca4297f4cadaf10042153859a4780c344"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-blink-snr+0.csv.gz",
+      "bytes": 40204,
+      "sha256": "4c19bd3e4bfcfb3a066e338d73cf1a7a44fd34fca937160fb250cd0faaf6532a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-blink-snr+5.csv.gz",
+      "bytes": 39894,
+      "sha256": "fa6ed0e39299005b303aff2f86859a9acc27eaa96e970b4c23485c7649dbba74"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-blink-snr-5.csv.gz",
+      "bytes": 43107,
+      "sha256": "1eeeeb2ba24628e045bc46a1fef3d2fd614f2ce5077f20252626425c2620699e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-clean-clean.csv.gz",
+      "bytes": 3539,
+      "sha256": "14cdba0afaa8a65d8ca4d9d17906e1487e6e78171e270bd3f641dbb37f536c97"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-lateral-snr+0.csv.gz",
+      "bytes": 39651,
+      "sha256": "2843dfdc97bde02e1ffd7866b22ebe70ed45b4841d4fcac93bef13cd67e797d4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-lateral-snr+5.csv.gz",
+      "bytes": 39665,
+      "sha256": "75947b85340538df201d1605e89924de886a81d4911936c8363f148c22803f5c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-lateral-snr-5.csv.gz",
+      "bytes": 42924,
+      "sha256": "64dad7284c2840f55e86e37aac7fc5de403fdd7e5242542230e9a60323fad3ae"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-mixed-snr+0.csv.gz",
+      "bytes": 40202,
+      "sha256": "97c9be33741407ec44f8f493b41e68e440a282d4078b84686010c2fa508d0987"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-mixed-snr+5.csv.gz",
+      "bytes": 39746,
+      "sha256": "655ead761bccb45e920445bd146a334a1d089d8e63725e2c857e94fe8fe19432"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-mixed-snr-5.csv.gz",
+      "bytes": 42992,
+      "sha256": "409ae6fa16e838627b4e2bc2751da83e2e523b57c42532b6fe43f3e64e1ed215"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-blink-snr+0.csv.gz",
+      "bytes": 39709,
+      "sha256": "bdf0dd05b74d14e57768879b68831e402532336e1a4ad7c4c8d6daaaa564587a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-blink-snr+5.csv.gz",
+      "bytes": 39485,
+      "sha256": "0f0cc2b7221cec6a941aa771a8d2b87d73b8736c045118805831640c684c3279"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-blink-snr-5.csv.gz",
+      "bytes": 40271,
+      "sha256": "8b038a4bca5072ecf909c0e2fb199da3aacdfe2a9a819ea8c82c9163b6c3f696"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-clean-clean.csv.gz",
+      "bytes": 3542,
+      "sha256": "96b5edb386940ac29f0944894d470678a2199b274371f37d5c6eec5a9847763a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-lateral-snr+0.csv.gz",
+      "bytes": 40237,
+      "sha256": "4b53feb52104f5ff25323fdc64b9f3825cff09fc5342a9c4155a76afdf228366"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-lateral-snr+5.csv.gz",
+      "bytes": 39725,
+      "sha256": "3f568e89fae2230c5181a61c4172f3a3d23cf4f62d66d3812e473ec586afd429"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-lateral-snr-5.csv.gz",
+      "bytes": 43897,
+      "sha256": "2e4581ac6491963e4f135085785bf3d4a51a7f33853ddac03d573edf986ee492"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-mixed-snr+0.csv.gz",
+      "bytes": 39658,
+      "sha256": "0cf1e5b1c6f15e3723331c0a17524a35321eb362c213b61965e5508c4d4e73be"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-mixed-snr+5.csv.gz",
+      "bytes": 39460,
+      "sha256": "18d38b5bb82e8bcf68469e54cf2d5537b9e2c8657c05792c914121e55a102eb5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-mixed-snr-5.csv.gz",
+      "bytes": 40164,
+      "sha256": "8db713ce80e35585bcf92ffe7ff7bb96f8b3f1d5fe1a0dbef932a646c4580c87"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-blink-snr+0.csv.gz",
+      "bytes": 40055,
+      "sha256": "e60e4bbf25220e51fccf0fa8a2e988607951934a5808b111650d025a45fb297a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-blink-snr+5.csv.gz",
+      "bytes": 39711,
+      "sha256": "1ec1ffebf460b7f5d41d490f3d93a895fcc1b146463a9abb6662e8aa03567cb0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-blink-snr-5.csv.gz",
+      "bytes": 44037,
+      "sha256": "d4220f5a89f89a4c3758ca9607eb1fbe7b3346abee95b659035993c6b6f01b56"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-clean-clean.csv.gz",
+      "bytes": 3538,
+      "sha256": "13d55054baa29f38dfa9aba2aaf24243e6602901abdb99953931d5a269ffa937"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-lateral-snr+0.csv.gz",
+      "bytes": 40432,
+      "sha256": "1dcccdd4fe13e2be36537fa9a1f4f3bae070efceaddcf6b004b7b508cffe798e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-lateral-snr+5.csv.gz",
+      "bytes": 39830,
+      "sha256": "1bc0c1fa159616e9eb6d4072cd61531671726540cfa18628f017c8649126821f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-lateral-snr-5.csv.gz",
+      "bytes": 44698,
+      "sha256": "dc322f97299faf7d711e86fb6e363e60f5ae3aea6afbfa54cc03cb85ae5ffdbf"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-mixed-snr+0.csv.gz",
+      "bytes": 39724,
+      "sha256": "8258a70133b14c1de2367d6df20f793efdf8a9eb8c54b958b37a072297e75126"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-mixed-snr+5.csv.gz",
+      "bytes": 39735,
+      "sha256": "999d9ad577e6a1ec659943f49500440bcc7cc97252961bff4c287653e62b2587"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-mixed-snr-5.csv.gz",
+      "bytes": 44017,
+      "sha256": "b23808ac6960db658d6f8f62f364e2bcbe949ee47b69549e2aa89e85e0423559"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-blink-snr+0.csv.gz",
+      "bytes": 39611,
+      "sha256": "2b780ee65c5fb12b0056dd238f363fa84b4adb93a2f95e17a00eb070fb44bab6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-blink-snr+5.csv.gz",
+      "bytes": 31184,
+      "sha256": "df2816511dd2a999fdf14ab4f803e7c6c3aec7ba4e33fdc4dd536a652087389a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-blink-snr-5.csv.gz",
+      "bytes": 43007,
+      "sha256": "eae939f7eecc194b0a4902b9073fb8ca147451f98fcd7d7a9c89749bfe8f2d40"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-clean-clean.csv.gz",
+      "bytes": 3539,
+      "sha256": "849fd272a034f974259dc6afe0f7a3903e4ab371b970962c8bff34e7aed12fef"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-lateral-snr+0.csv.gz",
+      "bytes": 40321,
+      "sha256": "c49234776c2a86de0d719cbdf7f98b17f27698dc6f0d077fc6f3bac8905180e6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-lateral-snr+5.csv.gz",
+      "bytes": 39808,
+      "sha256": "81eb22c4eb3c86a6e5ce9d991c21ecb4d81034e80670d4081944e849e80cf03d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-lateral-snr-5.csv.gz",
+      "bytes": 43268,
+      "sha256": "c9104b0a118f4116ce7cf3fd3918d49e7dacc86c15150d5d7ab017cbc5feb681"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-mixed-snr+0.csv.gz",
+      "bytes": 39625,
+      "sha256": "9bd7b0ed481560668d163b984c2c79f145fd89101bf4bf8e09395e5c77e269eb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-mixed-snr+5.csv.gz",
+      "bytes": 31227,
+      "sha256": "3b4ff09473851eac5946e5a1bac2687894213293195bef10f100e3d3432d1dcc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-mixed-snr-5.csv.gz",
+      "bytes": 42892,
+      "sha256": "08eec16babaff798399a37761765014455bd6c486389c953f156bab13a35d0bd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-blink-snr+0.csv.gz",
+      "bytes": 37741,
+      "sha256": "3459bcf24d8d675ccf4b82c0b9f25eca47a05bc71b5ef72e227e1b606f358cb2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-blink-snr+5.csv.gz",
+      "bytes": 29960,
+      "sha256": "1e43239e0f156f1c9262de223eefa16d3aaead54d55ea5f71fe75cbf8d8006cb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-blink-snr-5.csv.gz",
+      "bytes": 41060,
+      "sha256": "82f4b8947c11cbd316c8bf448db7bf71544e159b57a079d3a3037c18a742c5a6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-clean-clean.csv.gz",
+      "bytes": 3420,
+      "sha256": "b88a3a3d2c10e110a301eb4bc90c5d56e6b3ae6b8526e2a7db6275a71c9936c2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-lateral-snr+0.csv.gz",
+      "bytes": 41640,
+      "sha256": "6564778b4742cb438542dbd0ec9ede64e4b30bd671a544db1c7eddde07da8784"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-lateral-snr+5.csv.gz",
+      "bytes": 38426,
+      "sha256": "559bd33219c70a58334c5e1ef206bf3aaed01020101bf435a498309f9115482a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-lateral-snr-5.csv.gz",
+      "bytes": 41826,
+      "sha256": "e13f5cb11d7b4b19e004f09099fb42b9c65b471a49ee65d785363f422f3fe6f3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-mixed-snr+0.csv.gz",
+      "bytes": 37006,
+      "sha256": "02500871961a51899177fa62261d8ab3e6294751fab5507d1b869a8eae0f9e05"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-mixed-snr+5.csv.gz",
+      "bytes": 29873,
+      "sha256": "e9a18725235285579928768972cb971aff94bd66498239a51cbc45318777e2ea"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-mixed-snr-5.csv.gz",
+      "bytes": 40994,
+      "sha256": "abd890124e1e49a89d3a6d26f852c759255fb15eda88cc914b9b52247fbb3f90"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-blink-snr+0.csv.gz",
+      "bytes": 40092,
+      "sha256": "7153102c16bff78921d642197963cd49c6dc4c6a08dc67ab9ce5d196782699ee"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-blink-snr+5.csv.gz",
+      "bytes": 39803,
+      "sha256": "8ce1ebf0b6c479b7984268fd9d3a1ee38eace06046fad69f5b79d87dd392f3b5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-blink-snr-5.csv.gz",
+      "bytes": 43278,
+      "sha256": "63cf4aa5f609d9f925d2e50fe073de34a971af3c23f5651ad7f8159a42a2ed8f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-clean-clean.csv.gz",
+      "bytes": 3538,
+      "sha256": "a460bb05b2852173ca30ad3254b0c84dbc528b98931b3eccd4caa4949cf8d2ab"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-lateral-snr+0.csv.gz",
+      "bytes": 40173,
+      "sha256": "ba5058382d0033a015a548abe1068eb883ae19a82a16aa58dc1e24ec970831c7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-lateral-snr+5.csv.gz",
+      "bytes": 39752,
+      "sha256": "65401d46a4f7603ff9226950ca7e4d9380562046bc31214808895e8529d60703"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-lateral-snr-5.csv.gz",
+      "bytes": 44403,
+      "sha256": "7238e6a7518f810283cd2c31cdeb2049fa11be23b97782266c68df884189369a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-mixed-snr+0.csv.gz",
+      "bytes": 40035,
+      "sha256": "da81b964331c548f499868b29d1bd0384105b1c1a5175625696b0a59c8e099fd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-mixed-snr+5.csv.gz",
+      "bytes": 39699,
+      "sha256": "dd6ca9c79fc8a3eaeb3ba152749b2c75b468fed44c7c0373d1d2e31b12c8c454"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-mixed-snr-5.csv.gz",
+      "bytes": 43332,
+      "sha256": "03e2c61221b27a00225f21c54b83069aaedeb0700a4d0c50753f394966083aa5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-blink-snr+0.csv.gz",
+      "bytes": 39670,
+      "sha256": "141e222b68cc8a3e148cda0a1d36cad554b13c339e090f6290e3ba35e784c002"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-blink-snr+5.csv.gz",
+      "bytes": 39678,
+      "sha256": "561a894da3b675d12a6c203c4a68e890331847e191e83df4d44a339cd683fded"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-blink-snr-5.csv.gz",
+      "bytes": 44276,
+      "sha256": "3c0e22b592a8e7d34dfd204f17945c31398c2717ba9aa389ce5945a0359892e4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-clean-clean.csv.gz",
+      "bytes": 3542,
+      "sha256": "64600b60b93bdd948e30209def4f8f879ced76e5d2fc2b7a5017504ff490e873"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-lateral-snr+0.csv.gz",
+      "bytes": 43277,
+      "sha256": "549139f69c5a3d530f04ffb5b607bc7174e189e36b44b215fa97154cf48eb409"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-lateral-snr+5.csv.gz",
+      "bytes": 42819,
+      "sha256": "aad417063480ba337e0b28dae5037d86428a4cf80c0092d54f758bb3ccb11730"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-lateral-snr-5.csv.gz",
+      "bytes": 43719,
+      "sha256": "2b18a4b8fdd58d3328aa15ba1861cf57464d63559c48046d04c15d0f1fc36c28"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-mixed-snr+0.csv.gz",
+      "bytes": 39716,
+      "sha256": "e2d8ff14831cd5f31d0d57a99bfcb88487d00f4d04a7c7752080681f8c105347"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-mixed-snr+5.csv.gz",
+      "bytes": 39615,
+      "sha256": "a47bf0ff02857c3534c886b74d35696462339ae4c484b4364073bb952626bb52"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-mixed-snr-5.csv.gz",
+      "bytes": 43035,
+      "sha256": "cc63b322fee527ffc0070c79b99acaa6d479f664c566654b620519c8370da74b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-blink-snr+0.csv.gz",
+      "bytes": 41273,
+      "sha256": "1f41500a95fb617abfe880545f2e596df24e03db066277d11681c268364e875e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-blink-snr+5.csv.gz",
+      "bytes": 37714,
+      "sha256": "2310cbc95fa20fef7570eb9341572b88a0e0570cbaa53af42268cf9333c1f762"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-blink-snr-5.csv.gz",
+      "bytes": 41598,
+      "sha256": "fb742a8bd8ea330f587fcf509195ee48ddc469a7fd1355b88d1ed66667c8b2f6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-clean-clean.csv.gz",
+      "bytes": 3420,
+      "sha256": "6fc12e699b9f2ec3c018a23a1d09aa3e370009507d1b0f7d645b61e679b70a20"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-lateral-snr+0.csv.gz",
+      "bytes": 41534,
+      "sha256": "2e027e2d8568de75864ca3324dcaf6e6a36d5b88608ad5625d553caa4f369d13"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-lateral-snr+5.csv.gz",
+      "bytes": 37306,
+      "sha256": "98a137f1816b9c42bdf5009fb7ac45c64ff0dbe549b7a8a307c74930fd0768a1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-lateral-snr-5.csv.gz",
+      "bytes": 41722,
+      "sha256": "462f0bcd77327a816a91428d8813be75c74a278d9b670809c80fe3ee2bd9b73a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-mixed-snr+0.csv.gz",
+      "bytes": 41219,
+      "sha256": "4bb28f89b6b5bbdf15e7f60cf1f06486a2d55c6b9b56312ce5b351d85ba472aa"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-mixed-snr+5.csv.gz",
+      "bytes": 37455,
+      "sha256": "abeee06a9e28abc1f0313260a36f4e234fcf8a493bbf6ff8f45f2006198d26e4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-mixed-snr-5.csv.gz",
+      "bytes": 41548,
+      "sha256": "c73c6b02b3fcb2056513c492b281fafbbc23ee2a81fcd79a155d7778f0bc4f47"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-blink-snr+0.csv.gz",
+      "bytes": 39736,
+      "sha256": "df12aa863e4a9728f77ee48fdfb7f70afffb2619fd1548c52711b81da1b499fd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-blink-snr+5.csv.gz",
+      "bytes": 31137,
+      "sha256": "43d847bc6dfdbc896d395e69b8d13fbb33c42807a44bb850dcf9f1a508a17e5c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-blink-snr-5.csv.gz",
+      "bytes": 40099,
+      "sha256": "e1d127a7eba0902a9231efcc89e0c309a11297b448c36d0cf6dd452617e5d0a1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-clean-clean.csv.gz",
+      "bytes": 3538,
+      "sha256": "ff2005dc0fcdd8f7f04af56db4476baf51a689f223377eba1c349bbbb2ad19b4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-lateral-snr+0.csv.gz",
+      "bytes": 40232,
+      "sha256": "1d6c92b667f25772e516fd9b9803666b26c62e76d2399a437311f6bd753aa37f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-lateral-snr+5.csv.gz",
+      "bytes": 39684,
+      "sha256": "eee5ca35264ceef2115b6583ce48583d862bd8dc03c6ea549c4a5540442e6c49"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-lateral-snr-5.csv.gz",
+      "bytes": 43855,
+      "sha256": "4e0123e646b5cc5971f39ff7735d737837b0622817f4a463b19d33efa04ce484"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-mixed-snr+0.csv.gz",
+      "bytes": 39526,
+      "sha256": "beff29febeb4df1ecf11f1ef44aae044428be93ecff3a2c79a0781458e0385b1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-mixed-snr+5.csv.gz",
+      "bytes": 31041,
+      "sha256": "0120a2c9bc6134db2d7fcedc500b6e321d7ff52eb5ebbfb988be80a17e28c83e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-mixed-snr-5.csv.gz",
+      "bytes": 39808,
+      "sha256": "0f4ac263a679dfe2825b69d036d0d6229c718ef40a8bc5ea99c50d4c4716dce3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-blink-snr+0.csv.gz",
+      "bytes": 39857,
+      "sha256": "4a60d89d94c0c85d887e51bc3cb0f66385d188438f1666fb57ea4ea58724a6af"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-blink-snr+5.csv.gz",
+      "bytes": 31240,
+      "sha256": "6fe4493fd19cde2cb317e6c7f23d43577266727aa39396296436b4b49f065604"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-blink-snr-5.csv.gz",
+      "bytes": 61597,
+      "sha256": "ff7d05245c3a90e88a0dddbb9689c26e23f9f33bda936e685f4d4b639b458c28"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-clean-clean.csv.gz",
+      "bytes": 3542,
+      "sha256": "2e979e125dcdcbba67d538813cb67e1255b5b13a090775364f0ae3ec2206c310"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-lateral-snr+0.csv.gz",
+      "bytes": 43322,
+      "sha256": "ee1e21305b208aba4795aeecefc48a32346e5a5b0a197d390631712768fa8350"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-lateral-snr+5.csv.gz",
+      "bytes": 39802,
+      "sha256": "1776115b783f957a33c4d5975dd00c4bf5c7c363356d1a5ba0ed2b7d4d5b400f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-lateral-snr-5.csv.gz",
+      "bytes": 43618,
+      "sha256": "1896d69f78bf760936e66aab25cdb32d49ca16e49d7752f646df441ccbb96559"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-mixed-snr+0.csv.gz",
+      "bytes": 39893,
+      "sha256": "eba02d3dcf68ee00fcf1cd7b647dbfc5addc58dc868d97ecc4d71dc4290fcb7d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-mixed-snr+5.csv.gz",
+      "bytes": 31160,
+      "sha256": "ad90f3bcf61f5c970e2a99cfcf94c3e21c82c204ad86603de0971f3dbb551ce0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-mixed-snr-5.csv.gz",
+      "bytes": 40454,
+      "sha256": "985331c3314692cdd398ccda875511d8fdae8eac76e6663d2c5fe52f8e67413e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-blink-snr+0.csv.gz",
+      "bytes": 39665,
+      "sha256": "5d5aaeab7d2b27372bfd504205db866517d2b31eb80bc617200464c4739bf17c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-blink-snr+5.csv.gz",
+      "bytes": 31186,
+      "sha256": "cf1128a195e2bf96e8185b4defdab5c000eaedb45f325980fcc38f2727fb422e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-blink-snr-5.csv.gz",
+      "bytes": 39996,
+      "sha256": "91669be3f221af1ec76dbaec3bf1413727b82a2a316ca32c1431ef5e0596b24b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-clean-clean.csv.gz",
+      "bytes": 3542,
+      "sha256": "3fe9adca22c03d218f6fcf05e8acfe549961f2559a7d000d2de7686771d8fb13"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-lateral-snr+0.csv.gz",
+      "bytes": 43127,
+      "sha256": "dc02e78752a0d22cbe220419d8f3d381e952f53ac62a2c9a690cf8f7c9de7bbd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-lateral-snr+5.csv.gz",
+      "bytes": 39760,
+      "sha256": "4334687f36288c34b5569bf1ed8a79bb8dbdfaff721a7c6380f76cef432e6c41"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-lateral-snr-5.csv.gz",
+      "bytes": 43603,
+      "sha256": "017ed07954fefae47a7daca1cc8a5f0d2be522ac388e50f171d6c73afc04bfbe"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-mixed-snr+0.csv.gz",
+      "bytes": 39741,
+      "sha256": "f17153c0928210482f5c4d1e58bcca7003e34a35c67809118eac7c858484e902"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-mixed-snr+5.csv.gz",
+      "bytes": 31225,
+      "sha256": "56d2182c462c0540b8fb5bc2d111db94c460b4bacedf7e50d0c1ee02e329d6c0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-mixed-snr-5.csv.gz",
+      "bytes": 40029,
+      "sha256": "9aa7b1e815a1a3491d508a940c59e4fee03ca434d4f1e58f129968497c5db140"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-blink-snr+0.csv.gz",
+      "bytes": 43524,
+      "sha256": "acee55a83aa743c65bdfd767d863cb0b80684a5c2e467d989df1d8c7ef97bda9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-blink-snr+5.csv.gz",
+      "bytes": 39974,
+      "sha256": "c2977a688be36381e39c3736bafc4ecb6485a10231a54bb5d4737bb05f58bd60"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-blink-snr-5.csv.gz",
+      "bytes": 43418,
+      "sha256": "21cd148eb4d57cf456895b99d5700f9cc444069208f4406b99ed9a5e3be18f23"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-clean-clean.csv.gz",
+      "bytes": 3539,
+      "sha256": "e09cb679b71fb7e49ed5ea97b3312adeca7e71f13936df984905f3575b87389b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-lateral-snr+0.csv.gz",
+      "bytes": 40192,
+      "sha256": "795405d1eff790b0c876b5d970ae2b7dec2b3a9abb9d9758de86d3dadeb5d3f9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-lateral-snr+5.csv.gz",
+      "bytes": 39669,
+      "sha256": "e4ed56928fbef34314af5c1e607e5431d027d5b461dcb1ad3944c8472f49423a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-lateral-snr-5.csv.gz",
+      "bytes": 43225,
+      "sha256": "f890349b32c0ead4ba4cb21bb2da1c670094cee3003a789f7663406a49c61288"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-mixed-snr+0.csv.gz",
+      "bytes": 43126,
+      "sha256": "2751a5d9b44bbb69e13143736b427a3bc12b564672a03ff549103b970de67991"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-mixed-snr+5.csv.gz",
+      "bytes": 39999,
+      "sha256": "b52c58c131e33f9bb439f9954956212e4e1a70466cc3371d776644adc42e0947"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-mixed-snr-5.csv.gz",
+      "bytes": 43494,
+      "sha256": "fb81a49bc783d86f3bf2776d5128c60cfbf50a455e06474f4fce5f285d4332c0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-blink-snr+0.csv.gz",
+      "bytes": 39786,
+      "sha256": "3b72b04dc054b039579543656611e47523fbab18ba9242b141648369101f0b9c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-blink-snr+5.csv.gz",
+      "bytes": 31217,
+      "sha256": "690c2a90096ec7523df73df8c945935f8bdbae53297bc008f85a266e343fb782"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-blink-snr-5.csv.gz",
+      "bytes": 40137,
+      "sha256": "b38ad15c4fc52b2b72c4479408d640a05ea091fae2b4a11b93193c884582c226"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-clean-clean.csv.gz",
+      "bytes": 3539,
+      "sha256": "ecab5c0a5aa4b00648fa018871a8eee7af7ef07f78b813a38f1cbb2556a0d880"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-lateral-snr+0.csv.gz",
+      "bytes": 42415,
+      "sha256": "bfcaa58344b9a7efdadcf2e42b22010aaa22097d2faf65a16e271d09d053cb34"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-lateral-snr+5.csv.gz",
+      "bytes": 39971,
+      "sha256": "720b85578eba9133bc05f8de25255802543f3caf2eae37ec6af7fe73ff54594f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-lateral-snr-5.csv.gz",
+      "bytes": 42708,
+      "sha256": "c1667c4b55ce6ce41d136900ba312ff77fdd4d0ef13a253565ec1b96629ba69a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-mixed-snr+0.csv.gz",
+      "bytes": 39780,
+      "sha256": "e5fcda5fa6a37fba2841bed451a9fff57a9af8be715291123f5f03ba64851315"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-mixed-snr+5.csv.gz",
+      "bytes": 31275,
+      "sha256": "7fd884e75be62fe6b4bb604a50841b4affb85c6201ce0da82bc9288323f50af9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-mixed-snr-5.csv.gz",
+      "bytes": 40192,
+      "sha256": "f47086286f113f570d9194ded91f1cb02fde5df95f904c572f02b73c12e324dc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-blink-snr+0.csv.gz",
+      "bytes": 41433,
+      "sha256": "079a2bf67f0c6189d7844de4c32a06e438c63900ee2c5853d4df26838c809bc5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-blink-snr+5.csv.gz",
+      "bytes": 30096,
+      "sha256": "0f42c1e1f73ddfc9fa989f42d1316a57e091d492c3a6ffd79b1e35d9bced03ab"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-blink-snr-5.csv.gz",
+      "bytes": 41892,
+      "sha256": "2469287e047541f4a29fd2aed7dc9c4011fad238984fc3da062788587d96e0c5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-clean-clean.csv.gz",
+      "bytes": 3421,
+      "sha256": "0d529cf2834feccd78a44cb2829cb9feb49e59bc1d95be0991754d298963a1db"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-lateral-snr+0.csv.gz",
+      "bytes": 41766,
+      "sha256": "e3effd4ccb363c97eee410da02994177854764ce7919a7c8de09bdb442571e01"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-lateral-snr+5.csv.gz",
+      "bytes": 31197,
+      "sha256": "2d1b575d6a1a2d1822f7e3e248840d4eaf2bb8858d22043d48893e38c6337b52"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-lateral-snr-5.csv.gz",
+      "bytes": 42131,
+      "sha256": "df0a290fb89f95795598f6eb59b67acb0ed9f250a2939612d4e9a0749fa81504"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-mixed-snr+0.csv.gz",
+      "bytes": 41397,
+      "sha256": "4e4e1ea5b86d90f880dabc7e078c87727d248eecd0059ef766bf8b537845b2cc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-mixed-snr+5.csv.gz",
+      "bytes": 30001,
+      "sha256": "488a62edccbb87382daec86a3f741299d09478158ee9f660f2f72a82237e7915"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-mixed-snr-5.csv.gz",
+      "bytes": 41853,
+      "sha256": "2086c43486f27a9bae200d9d2b271534687bdba00266bc601b862d42627faf83"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-blink-snr+0.csv.gz",
+      "bytes": 39805,
+      "sha256": "a3c46e59837dc550a59130842d6be09f804e54f987ca2e63fc8994760e9b86cf"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-blink-snr+5.csv.gz",
+      "bytes": 31168,
+      "sha256": "14f642762bd32964fd518f396ded5d806219d4a426f6b501c87fdb5f1440e994"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-blink-snr-5.csv.gz",
+      "bytes": 40212,
+      "sha256": "a789b7eb7dea340dab21aea0b1b1f5b100eee3e8765dfd2f42623849c6c85fbb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-clean-clean.csv.gz",
+      "bytes": 3539,
+      "sha256": "2359b615d46abaf36f4ab4725d87c3a03b9a620076cc5ac663d5c66453030295"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-lateral-snr+0.csv.gz",
+      "bytes": 40223,
+      "sha256": "d52a044d686f434569eef6ad5a09e5a7c2c5da3f8eaf320be9a8d583e253b5e5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-lateral-snr+5.csv.gz",
+      "bytes": 39682,
+      "sha256": "0748ff568ddb234044c4db7401af6d72caa3bf328774398569033a974ed06b40"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-lateral-snr-5.csv.gz",
+      "bytes": 43324,
+      "sha256": "ea55af70d7b2eb0d1e2cdec127a4ba33e9a34c6bab79bd940a74eaa5ba2a40a9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-mixed-snr+0.csv.gz",
+      "bytes": 39771,
+      "sha256": "8c2c66a3a0dcb24d25f6fddd632288d4cc180b15c5c407ad756d80b8f27cf415"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-mixed-snr+5.csv.gz",
+      "bytes": 31175,
+      "sha256": "e9678fa6e73e97880cfa1be6a65a8367697532fc402298bd545ac5eaace05f75"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-mixed-snr-5.csv.gz",
+      "bytes": 40289,
+      "sha256": "960fce9084cc68c92a751ac5642560c130fe1dda3dc73ac7481720bc4af98d47"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-blink-snr+0.csv.gz",
+      "bytes": 39817,
+      "sha256": "f207f4fd7f7fca5768707303d4887c9390e77701ac5edabd850c3167c606af01"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-blink-snr+5.csv.gz",
+      "bytes": 31206,
+      "sha256": "3813a86ee647432157d9242c8855ed13d1c32494052046563388765302a81ab5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-blink-snr-5.csv.gz",
+      "bytes": 42870,
+      "sha256": "c0d3e107b328b7415e84a7819179738bfc9574d55afc27ab436226e86e82719a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-clean-clean.csv.gz",
+      "bytes": 3539,
+      "sha256": "217e448138e7d31de6d4debd37331972d60428f8a545b552fb472f6a9bc3fd72"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-lateral-snr+0.csv.gz",
+      "bytes": 42899,
+      "sha256": "e370098ddde26a25339172684b3e9fb01c112c160df1564628a53b4bab3da787"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-lateral-snr+5.csv.gz",
+      "bytes": 39944,
+      "sha256": "43aa91c5a481e3382eac4c1e6076f9207e53bbbfc35f8ffae90386778fa69846"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-lateral-snr-5.csv.gz",
+      "bytes": 43251,
+      "sha256": "b4cdc1961aae3ed2c4928157a3b98a6229fffa10853ce884e14d9952451fe1f2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-mixed-snr+0.csv.gz",
+      "bytes": 39895,
+      "sha256": "27faaf4a61ac6b36c8f54080b812185c79e349cbb374e7193ec12058839731b9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-mixed-snr+5.csv.gz",
+      "bytes": 31212,
+      "sha256": "5e640172a49c1109b2211da054647c8abc67f7728a54f76e457338c5511cb2b1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-mixed-snr-5.csv.gz",
+      "bytes": 42974,
+      "sha256": "1822d591ec49720fe8c6aa5948452bbc035ce2dd6775c5633cc0eb42ef554128"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-blink-snr+0.csv.gz",
+      "bytes": 40296,
+      "sha256": "72f315c5f1b0b2cdbadd5da1a8360f243e5e919b31d531326754c60d2982da31"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-blink-snr+5.csv.gz",
+      "bytes": 39775,
+      "sha256": "adeaaf12605ba98e8aaea3ccca8d4363c8c8952fb44d9bb0754079b147ec4081"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-blink-snr-5.csv.gz",
+      "bytes": 43615,
+      "sha256": "2ff867992a5fc0854a9e23cdb2e6afe8acd086bb22e389a39cded7ee33645114"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-clean-clean.csv.gz",
+      "bytes": 3542,
+      "sha256": "493736f168943832302b823337716c5ca634590ead1866ecbaadd1316d265ff9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-lateral-snr+0.csv.gz",
+      "bytes": 43487,
+      "sha256": "a98386ca964626b746dcc1c716a4e1d3aad515230ee584df5413558044c93fc8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-lateral-snr+5.csv.gz",
+      "bytes": 40103,
+      "sha256": "fd26aaa06f8fde223c3ab021c3157c032103f387a0d2230657faf1a28ab25fb3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-lateral-snr-5.csv.gz",
+      "bytes": 43810,
+      "sha256": "1b82138acae35835502a893ea66e016be816dbea31c9e1e7e34828ca350e2777"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-mixed-snr+0.csv.gz",
+      "bytes": 40201,
+      "sha256": "e173415bada6e31009d48071e9ad9aaf2a9b91751fda7cb96c009583aa017cfc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-mixed-snr+5.csv.gz",
+      "bytes": 39851,
+      "sha256": "bc2db646719dec53bd89beb77a832fb7818da305c79786a2dbcaecd639453f95"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-mixed-snr-5.csv.gz",
+      "bytes": 43785,
+      "sha256": "0d83385ba783cde0fa085873f774166e481f1f454401be6946b9eb7dbee3727d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-blink-snr+0.csv.gz",
+      "bytes": 38315,
+      "sha256": "1bc71f60f9d9b2872d631ed13b4fe6c325a8cb286b4835f14aa4d384d545ec73"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-blink-snr+5.csv.gz",
+      "bytes": 30112,
+      "sha256": "792c30e20b6267468352b401a55e048eaf434fefc5b1cfe6a80c85d4686d4d7c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-blink-snr-5.csv.gz",
+      "bytes": 41490,
+      "sha256": "cd99d6a7306fc091cef24967e17c56bdedd467fe97b930e73f637565690c63bd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-clean-clean.csv.gz",
+      "bytes": 3420,
+      "sha256": "d2b4aa1337019ee2d4d22395d7f43ca227a944cbd24a337c08eae3ca77e5f916"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-lateral-snr+0.csv.gz",
+      "bytes": 41843,
+      "sha256": "010afc275f6343bdb0f612771bedf47ba945fef6a2e6efe972b63be679507c71"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-lateral-snr+5.csv.gz",
+      "bytes": 38687,
+      "sha256": "9d93af926a7b391dff6ab222538a667acec44abd2c996490ca777b36f2a3a56c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-lateral-snr-5.csv.gz",
+      "bytes": 41978,
+      "sha256": "9f945cc10754ca4d114c91c89a0f67ca70a6ab1c16cc5ac116c2d1094f91450e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-mixed-snr+0.csv.gz",
+      "bytes": 37988,
+      "sha256": "d21aa4ce70b854f28c1ee470e9a413e4d699bca76e950d9c4bf54246d10878fe"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-mixed-snr+5.csv.gz",
+      "bytes": 38130,
+      "sha256": "6ff42fcdd0894ed75e90e4a005650187987adec89fbcd55c45f0a365e8adcba4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-mixed-snr-5.csv.gz",
+      "bytes": 41494,
+      "sha256": "34380c3cdd50fa08fc5a1a4cd03df2aab47a6fb0bcf867dd5754a4a779815132"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-blink-snr+0.csv.gz",
+      "bytes": 38189,
+      "sha256": "cfc1315db487fe9bcd91577065c0ede8b427f8044b94223c10798d32f27d69bb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-blink-snr+5.csv.gz",
+      "bytes": 30518,
+      "sha256": "d71e0f02adc7d56c0b86c33be31039b9c75d1d3d6ec8963823c318588d58791d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-blink-snr-5.csv.gz",
+      "bytes": 38320,
+      "sha256": "b3d564ef262cd51526007126d06e7679c3fb2fd51274a061f98e0b52385b9cc1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-clean-clean.csv.gz",
+      "bytes": 3420,
+      "sha256": "4f9836a952bb5b5bb25182ff4af72a6e8cf11637496fb365b561671faca95244"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-lateral-snr+0.csv.gz",
+      "bytes": 41535,
+      "sha256": "4041ff6420fe83744453f9256636ca7fe29aa6f56b1db9bd6914427b0991bac3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-lateral-snr+5.csv.gz",
+      "bytes": 38314,
+      "sha256": "98c37d27e29bdfff666fd30d1b88cc80cee18df2f379815df93cfa434b95282b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-lateral-snr-5.csv.gz",
+      "bytes": 41853,
+      "sha256": "74178d947267dacc4f2218e95a2599a417417b0ce6c73637576d3270174cd440"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-mixed-snr+0.csv.gz",
+      "bytes": 38178,
+      "sha256": "aaf4da26ae147b795d14ee76c65be280245ae7fe4ad04953af653bd91e110916"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-mixed-snr+5.csv.gz",
+      "bytes": 29801,
+      "sha256": "a16a98395f58c800de6aba7efd43a18c13273ac2e23482b62227988e67866779"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-mixed-snr-5.csv.gz",
+      "bytes": 59865,
+      "sha256": "775eb8ac021d6318046539ab5067df68ddf72238cada9bbb1e95a6d609d6ba06"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-blink-snr+0.csv.gz",
+      "bytes": 41069,
+      "sha256": "2470bda63930370c3ee6b7c9bf95b49b15043a642dc067a34ce96452493cdc42"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-blink-snr+5.csv.gz",
+      "bytes": 37854,
+      "sha256": "bc074964706314efc516f58035abfab79abf193e8b03ffb3af862c96cbbda0ff"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-blink-snr-5.csv.gz",
+      "bytes": 41550,
+      "sha256": "7b45db890aae879b377e26a7ce868acb65f9782a701cd6db38b2583359790ad6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-clean-clean.csv.gz",
+      "bytes": 3421,
+      "sha256": "faec3156ef4d7d45250e8d08520217d8c188561a5aef0d26e7e086dae44655b1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-lateral-snr+0.csv.gz",
+      "bytes": 41189,
+      "sha256": "cfd5f24e408322e4df238004db5080fd2a3ec81802ece2890edeab1401458cee"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-lateral-snr+5.csv.gz",
+      "bytes": 37569,
+      "sha256": "eae19341990a967481cedc974611471afda4ef40cd6f5e09e1ab0d2b92d616cc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-lateral-snr-5.csv.gz",
+      "bytes": 40616,
+      "sha256": "4838ccb0bd977d6f5c782fd05515536ddee76ce35ce1d08710858cda371a7a1a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-mixed-snr+0.csv.gz",
+      "bytes": 40888,
+      "sha256": "87a5472c5f609709fd083eea6bb96a5d4c427b236305b79c0128b3fb6e2add01"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-mixed-snr+5.csv.gz",
+      "bytes": 37380,
+      "sha256": "cdaa173b8d4d65cec545e50b7468a82c3b71f0881e0ce4e03fe612f3962c60db"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-mixed-snr-5.csv.gz",
+      "bytes": 41662,
+      "sha256": "af7cdaa59a08c26b3b00d2eaf783873a2520faf0f85eff971a2f806ec6b61386"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-blink-snr+0.csv.gz",
+      "bytes": 38201,
+      "sha256": "371cf03362b5abb2224636db81dc3eb4aa09d1b197af6abd615db14d90252156"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-blink-snr+5.csv.gz",
+      "bytes": 37397,
+      "sha256": "e342d14a8e84942c520ad2e0b205d875c7d9907c12588dc0dedba60d09d62c83"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-blink-snr-5.csv.gz",
+      "bytes": 41583,
+      "sha256": "a96fb17d8fffdf188e2847c354dd239c06e94e6de54cfdde3012a2ee84630bcb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-clean-clean.csv.gz",
+      "bytes": 3420,
+      "sha256": "b0ce9b2c6854962ac02a4d469e9361e8a9609493d22ff0bb7b77c6dbf7989767"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-lateral-snr+0.csv.gz",
+      "bytes": 41603,
+      "sha256": "271a3a48d62f65be0a1bbdbf0a64e1ac1fdc4019cbbc1b61a928df0311922ba5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-lateral-snr+5.csv.gz",
+      "bytes": 38265,
+      "sha256": "013df801ba13d1f16a2bdc8336ce7e5399bcee2a85a398e214a242adb9f2bda1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-lateral-snr-5.csv.gz",
+      "bytes": 41916,
+      "sha256": "c464328e36ac5a17aa956b4f3f1d3f07c987874bd086290d1ae989b8d5436418"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-mixed-snr+0.csv.gz",
+      "bytes": 37733,
+      "sha256": "f1fbef7fc44c90e3ba2ec23af184fbf716bf54a2a724599f6c096ed763fc8d0d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-mixed-snr+5.csv.gz",
+      "bytes": 38018,
+      "sha256": "a08d704b5c0725b5bc310709e0381a540de6fa4455965b45a37cdd27cc16b72d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-mixed-snr-5.csv.gz",
+      "bytes": 41484,
+      "sha256": "38cfdb6774ee8bd727e88e4652d6e3162f404dc11ce9b48acdaca2baaf29c63b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-blink-snr+0.csv.gz",
+      "bytes": 39610,
+      "sha256": "d6ad2e4904a3526c78b70a5ac982ce23065ea8e1e4f7759df0f460c3cd14c5bb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-blink-snr+5.csv.gz",
+      "bytes": 31140,
+      "sha256": "47e11501ce41dd9927c651386e7651bb088b8bdc843be1bed3618df4f035e2c5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-blink-snr-5.csv.gz",
+      "bytes": 40061,
+      "sha256": "8d1cdf4feb98592eeef180fefbfacec8e9eef56f3225b2d5cac4494f6db3c368"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-clean-clean.csv.gz",
+      "bytes": 3538,
+      "sha256": "9ad3a9336c373e43da31cda5e16688b7f55124ba5420213cb3320b298716184f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-lateral-snr+0.csv.gz",
+      "bytes": 40487,
+      "sha256": "da1f392f8dc00510054cd2b7dd8f30076e69a0ff7740f4476fa20c2479506d4d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-lateral-snr+5.csv.gz",
+      "bytes": 39985,
+      "sha256": "0baf02b36b45316ceb2e34bef6d14a874d38f821e16fd14adb67c6b8bc7081a9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-lateral-snr-5.csv.gz",
+      "bytes": 43274,
+      "sha256": "f5ebdd9664b947b1528de1ee10a86d6a5102bf148129340bdb98178d910c5e2b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-mixed-snr+0.csv.gz",
+      "bytes": 39706,
+      "sha256": "1bca9c978f95bf0d16763f501bd61e720b96ab784dec5f0edd5399806c118775"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-mixed-snr+5.csv.gz",
+      "bytes": 31207,
+      "sha256": "c810c94d574d9d891e570101facdba3963956e88b7ed8d84d34bfbd9afc20752"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-mixed-snr-5.csv.gz",
+      "bytes": 40086,
+      "sha256": "030dc6bf2eb7dded1dd9c035ee170ef390f3e5c346ade04a5ba0926cb6b3c7eb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/tests.txt",
+      "bytes": 2591,
+      "sha256": "30a348d2b6e6a93e9c0871502a6633a71f2a66dde360449a48947b9bfd09cf5f"
     },
     {
       "path": "results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/chain_events.jsonl",

@@ -1664,7 +1664,9 @@ Pooled energy sums signal/error across available scope channels/time within each
 window, then uses the same source-balanced condition/input averaging. Both use
 10log10(signal energy/reconstruction-error energy). They are different
 aggregations, not invented alternative equations. Regional dB cannot be added.
-The pooled metric remains below15dB; this run cannot be declared target-qualified.
+The pooled metric remains below15dB and is a supplemental aggregation audit,
+not a newly imposed engineering gate. The declared channel-first development
+criterion is exceeded; fresh-source and preservation qualification remain unmet.
 
 Frontal VMD mean17.112814/pooled16.628262 versus raw18.193247/17.939047dB.
 Unchanged nonfrontal rank2 mean/pooled:posterior14.095698/13.279070,
@@ -1687,13 +1689,78 @@ Whole PNG visually inspected/readable. NotebookHTML visual inspection remains
 unperformed. The next bounded strength/blend experiment uses saved fields only;
 its target-fitted scalar/blend bounds are evaluator-only and cannot drive inference.
 
+
+
+### Fixed nonfrontal gain/blend pilot launched
+
+nonfrontal-gain-pilot001/1 atsourcec049d8dca726adb032f9ee45b32353d9164dd272,
+Kagglevmd-nonfrontal-fixed-gain-pilot, exact nonfrontal-full001/1 parent.
+Ten arms:foursavedcontrols plus three fixedstrengths and three fixedblends.
+Pilotfirst50developmentexamples/fiverecipients, frontalVMD unchanged. No
+AutoVMD, newcalibration, target-guided inference, reserved access or neuraltraining.
+Correct submitted notebook copied to numbered61 with exactSHA/spec. Numerical
+suite runs before scoring. Completion and recovery have not yet been established.
+Primaryagent monitors directly after monitoring subagent became unavailable from
+its usage limit; continuous background monitoring is not asserted.
+
+Frozen review001 manifestSHA256:
+90cb1a71ec0a4cbf42b7d619c689fadb5c32df168c761ade4c2cbffd98426861.
+Core13payloads verified; full665payload recovery remains inprogress. WholePNG
+visually inspected. The full21armparent retains all1050payloads verified locally.
+
+
+
+### Frontend audit recovery confirmed
+
+At01:26:21UTC14October2026 the receipt verified all665manifest payloads and
+completion for nonfrontal-review001/1. Core and bulk recovery are now complete:
+all320raw-frontal prediction bundles,metric shards,paper scores,subgroup tables,
+condition tables,oracle-free comparison,source-aware intervals,figures and lineage
+limitations are preserved. Manifest90cb1a71ec0a4cbf42b7d619c689fadb5c32df168c761ade4c2cbffd98426861.
+Earlier partial-download statements are historical and superseded by this receipt.
+
+
+
+## Fixed strength/blend pilot completed
+
+nonfrontal-gain-pilot001/1 atc049d8dca726adb032f9ee45b32353d9164dd272 completed
+50examples/5sortedrecipient participants/4ocular donors. This is a deterministic
+subset of the full cohort; it differs from the earlier source-balanced50example
+component pilot. Compare within this run only, not its baseline20.086786frontal
+against earlier20.176007 as if methods changed.292tests passed,14warnings,
+18.63s;85200archived paper-metric checks. Stage86.230018s,runner159.251149s,
+peak832820KiB. No calibration/weight fitting,AutoVMD,models or reserved sources.
+
+| Fixed nonfrontal arm | Whole mean channel SNR dB | Pooled-window SNR dB | CC |
+| --- | ---: | ---: | ---: |
+| Unchanged rank2joint | 15.906784 | 13.699583 | .965093 |
+| Strength0.25 | 10.268276 | 7.263809 | .883922 |
+| Strength0.50 | 11.886580 | 9.650133 | .918388 |
+| Strength0.75 | 14.347441 | 12.426323 | .950711 |
+| Old/rank2blend0.25 | 14.491577 | 12.355973 | .949559 |
+| Old/rank2blend0.50 | 15.268996 | 13.298144 | .960385 |
+| Old/rank2blend0.75 | 15.944701 | 13.861136 | .966507 |
+
+The largest fixedblend pilotgain isonly+.037918dB channelmean; supplemental95%
+interval[−.679458,+.858902],454/500validdraws. No evidence of superiority or
+selected production weight follows. Simple uniform attenuation is inferior.
+Middleblend0.75mean14.569999 versus14.246635; temporal17.185124 versus18.197961.
+This illustrates subgroup tradeoffs hidden in the wholeaverage.
+
+Optimistic scalar/blend reports use scoring targets after fixedarms exist and
+are explicitly diagnostic_target_fit=true/deployable=false. They do not change
+any prediction or constitute achievable generalization. Full comparison adds
+participant-balanced bound summaries to make gain-versus-shape headroom clear.
+Primary scores use unchanged paper equations; clean and CC gates are unchanged.
+Core output recovery verified; full123payload recovery tracked independently.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
 
-Metadata captured `2026-10-14T00:44:12.824002+00:00` at repository HEAD `f86d37499a2da96a54b073289ea3861588478b37`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
+Metadata captured `2026-10-14T01:29:54.452865+00:00` at repository HEAD `c049d8dca726adb032f9ee45b32353d9164dd272`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
 
-## Appendix A. All 119 recorded launch specifications
+## Appendix A. All 121 recorded launch specifications
 
 ### audit-001
 
@@ -4364,6 +4431,29 @@ Metadata captured `2026-10-14T00:44:12.824002+00:00` at repository HEAD `f86d374
 }
 ```
 
+### nonfrontal-contracts-004
+
+[.kaggle-work/nonfrontal-contracts-004/run_spec.json](.kaggle-work/nonfrontal-contracts-004/run_spec.json); SHA256 `ccc6d893b55fd5e225c697de041458d6a4f70be073370af514345e64be23588b`.
+
+```json
+{
+  "run_id": "nonfrontal-contracts-004",
+  "stage": "contracts",
+  "git_sha": "6dedb47142dd9d4f37e8b4f743be4497d8f9f7ee",
+  "campaign_id": "vmd-eog-20261010",
+  "config_path": "configs/campaign.json",
+  "experiment": {},
+  "profile": "pilot",
+  "parent_run": null,
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-nonfrontal-lineage-contracts",
+  "requested_kernel": "satyapaladugu/vmd-nonfrontal-lineage-contracts",
+  "kernel_version": 1
+}
+```
+
 ### nonfrontal-full-001
 
 [.kaggle-work/nonfrontal-full-001/run_spec.json](.kaggle-work/nonfrontal-full-001/run_spec.json); SHA256 `fb68b9def237c9c5de6a4401a4bc1530b975496444f696a16396c193f1b27ffb`.
@@ -4386,6 +4476,31 @@ Metadata captured `2026-10-14T00:44:12.824002+00:00` at repository HEAD `f86d374
   "dataset_sources": [],
   "kernel": "satyapaladugu/vmd-nonfrontal-challengers-full",
   "requested_kernel": "satyapaladugu/vmd-nonfrontal-challengers-full",
+  "kernel_version": 1
+}
+```
+
+### nonfrontal-gain-pilot-001
+
+[.kaggle-work/nonfrontal-gain-pilot-001/run_spec.json](.kaggle-work/nonfrontal-gain-pilot-001/run_spec.json); SHA256 `6afe061fc63e06aff9c36e6fe09e892839978c1b926d756d8c8e5ef7c416d329`.
+
+```json
+{
+  "run_id": "nonfrontal-gain-pilot-001",
+  "stage": "nonfrontal-gain-diagnostic",
+  "git_sha": "c049d8dca726adb032f9ee45b32353d9164dd272",
+  "campaign_id": "vmd-nonfrontal-gain-20261014",
+  "config_path": "configs/nonfrontal_gain_diagnostic.json",
+  "experiment": {},
+  "profile": "pilot",
+  "parent_run": "nonfrontal-full-001",
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [
+    "satyapaladugu/vmd-nonfrontal-challengers-full/1"
+  ],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-nonfrontal-fixed-gain-pilot",
+  "requested_kernel": "satyapaladugu/vmd-nonfrontal-fixed-gain-pilot",
   "kernel_version": 1
 }
 ```
@@ -34477,6 +34592,72 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 }
 ```
 
+### results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/artifact_manifest.json
+
+[Saved payload](results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/artifact_manifest.json); SHA256 `1b8c91ef080f20a04fd830684bffea81c1fa334886f2d886fd22e9b3ada2286f`.
+
+```json
+{
+  "configuration.json": "87c5c61ded39dc03fb0e6b4467b43063769dc06c4bfea0f84ce8ea4809782fe9",
+  "run_spec.json": "8665aa11e075b27c3cccda9f5b2d988ef0026d615cf1230d0b3dbadfbe8df8ef",
+  "contracts_summary.json": "191fad9436aa08da042a48e14678583f5992fe6dbb51f0978b0e45973dbab3f6",
+  "tests.txt": "842d4763947d0c60ace9c0bc37dc60059bf917538393e5e64a3c7dc04f5c9879",
+  "resource_summary.json": "7449c38216acb91de357836ca53aec22e026a6f3e3dc05e3d1dbf80697cda992",
+  "environment.json": "ab9475fff22dfbe552e30ae52a0b792633a5974e5f1c6760ccedbbb3f949fd9e",
+  "parent_identities.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+}
+```
+
+### results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/contracts_summary.json
+
+[Saved payload](results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/contracts_summary.json); SHA256 `191fad9436aa08da042a48e14678583f5992fe6dbb51f0978b0e45973dbab3f6`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "842d4763947d0c60ace9c0bc37dc60059bf917538393e5e64a3c7dc04f5c9879"
+}
+```
+
+### results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/resource_summary.json
+
+[Saved payload](results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/resource_summary.json); SHA256 `7449c38216acb91de357836ca53aec22e026a6f3e3dc05e3d1dbf80697cda992`.
+
+```json
+{
+  "wall_time_s": 22.903515338999966,
+  "peak_resident_memory_kib": 105988
+}
+```
+
+### results/vmd-eog-20261010/nonfrontal-contracts-004/retrieval_receipt.json
+
+[Saved payload](results/vmd-eog-20261010/nonfrontal-contracts-004/retrieval_receipt.json); SHA256 `1c468f529287ffce15c0416bbcf4210227b5b98e243004ae1012a87150fc0d70`.
+
+```json
+{
+  "run_id": "nonfrontal-contracts-004",
+  "git_sha": "6dedb47142dd9d4f37e8b4f743be4497d8f9f7ee",
+  "verified_payloads": [
+    "configuration.json",
+    "contracts_summary.json",
+    "environment.json",
+    "experiment.json",
+    "parent_identities.json",
+    "resource_summary.json",
+    "run_spec.json",
+    "tests.txt"
+  ],
+  "manifest_payload_count": 8,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 10,
+  "utc": "2026-10-14T00:47:12.706405+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
 ### results/vmd-eog-20261010/paper-fixture-001/results/vmd-eog-20261010/paper-fixture-001/artifact_manifest.json
 
 [Saved payload](results/vmd-eog-20261010/paper-fixture-001/results/vmd-eog-20261010/paper-fixture-001/artifact_manifest.json); SHA256 `51dc18e680665a2f4fbdf52b6ba9e12b9b2574bbae80b0653172ca6d41fe164a`.
@@ -47899,6 +48080,240 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 }
 ```
 
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/artifact_manifest.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/artifact_manifest.json); SHA256 `c08e56896be2dfc69c9e1eb361f5a1c9f5906b8be28fe36b8611c85d269282eb`.
+
+```json
+{
+  "parent_identities.json": "2fbf762f02fdddcd392b75889d6a9cb56c98681f599d057f16e321f39f2d89b8",
+  "gain_method_means.csv": "d0a17460016e785c4b0dc353da35c5f07442282675aed0a6bbca397eeabfce8b",
+  "gain_snr_aggregation.png": "0a96e46678af77d3fc95c62881d359cce4c21fe9607304f851c7678627cada46",
+  "coverage_uncertainty_intervals.csv": "a68ac5908977677aed2bb33ee4f0eeeb3e3debacfda882ac066cd6086ccd3cc4",
+  "gain_summary.json": "7390a97ed7c3c394b32795d7f75a71f9d13d93169327f74d9ff3f8b4ec971a8a",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "gain_selection_manifest.jsonl": "cdcfe3065710f4af1db2d15f79db75de46a48077c8985bbf05a4f0d07ec079b4",
+  "gain_decisions.jsonl": "f4ff0b5c83bef20b9f1cf35fefdab3b351d22e01e50773d01e98ece70d1460dc",
+  "gain_gates.json": "6bdb66eb7ae27ef93b93676629e1f0569628a26b01925d75ceed6444662bd1b8",
+  "configuration.json": "5afcc25e6e4cd7d00b802f17c68ffcedcfde305006da148a80c077217a8fdedd",
+  "coverage_uncertainty_method.json": "0379461275a946fa1b350b0adf663a2a19a85e1134c8251764da11763aa66ef5",
+  "resource_summary.json": "b8f7cb4f66023e40abf7c137e76586aa44d82b268ada237789e6c9f9768ffc34",
+  "tests.txt": "391a3b9e846674c4d3eb2159739848d531a378bde528f518623de7ae786aa46e",
+  "evaluator_only_gain_bounds.csv": "fd284ebec2c3116f64bd8b334454256a5dd08d596ebda39d9bc39ab974484a41",
+  "coverage_uncertainty_channel_strata.csv": "e2031ce74a58fe1384f454e12f1bd42e5336d6f9c82e6a54b6b5de081c437038",
+  "stage_tests_summary.json": "c9dce99e98e756e6898afeeffc5d927c0b4b740e7ade69697c3fa05efd466061",
+  "gain_channel_scores.csv.gz": "eff05be349b22c637c7b12d70f1a2fefffd8aa539cb1bb895a26fe0bbd287746",
+  "run_spec.json": "1d27a972290adc3fbb08d20c1f830601f6fa87dacc531ad29a25cc615b108a33",
+  "gain_condition_means.csv": "00d374ea06825a488afcfb144882e178b81a45c4fcbd8ef59f32ab16c354856b",
+  "gain_progress.json": "84ab074c756cff7be4a22a2b02ed2559215c7081a7658164f5ca73fc6d2b1c6e",
+  "gain_example_snr.csv": "4b90276fa402b74722e52b7963b39b25e2a3bf0709826d175f3b62cf68d1f878",
+  "environment.json": "fead0aa0d6f23c6988187ee57c4f19bad788ea19fd2d34306ea980845e14a51e",
+  "coverage_paired_differences.csv": "4269a03f92e32a8fd458ea6f6e6e368fa76863b8169a08a609a3af10f95462c1",
+  "gain_predictions/sub-032306-000-blink-snr+0.npz": "314ed8ffb97206ba1344c9748c8da732aa7fd000c3203c49c79357537b494439",
+  "gain_predictions/sub-032309-000-mixed-snr-5.npz": "f65efb13a7f534380fb862a9a8fbe4cf3b819a33b739794c06d1cacb53726939",
+  "gain_predictions/sub-032305-000-clean-clean.npz": "52e2c781a0917b6bc063dc8c74956e78e73cdc4909ad2c305cd1420f9fd44bb0",
+  "gain_predictions/sub-032309-000-mixed-snr+5.npz": "bd8dc3bac4b56962e5db38be67477b3323621a409c0d82f8e1d09fa5dde5a94a",
+  "gain_predictions/sub-032308-000-blink-snr+5.npz": "8f08a6566c3f08efd17a5ea0ac487a7f365bc77da288717fd69cfdee3051e62e",
+  "gain_predictions/sub-032306-000-lateral-snr+5.npz": "09094597d799c1fd9f5435204fd77ef3dff414cba7bf1ad76a12c7779f35b20f",
+  "gain_predictions/sub-032305-000-blink-snr+5.npz": "64e062ebda71ce83ae4d1b22e636166ad33304592f9421abf5ecdd369eb27628",
+  "gain_predictions/sub-032305-000-lateral-snr+5.npz": "92171207cf6198c6bb894ef7459149a0030bb2f4351f39ef2b7f0c9331d984b8",
+  "gain_predictions/sub-032308-000-blink-snr+0.npz": "d8ada7430ae43f05eeedc3a07cdf118121c1a103eb6d951e533275380165dea5",
+  "gain_predictions/sub-032305-000-lateral-snr+0.npz": "bc5b50ba2c8fa65901f012c322b9075fac3c0c37a789c66f281f6020f2deb606",
+  "gain_predictions/sub-032307-000-blink-snr-5.npz": "f9aaade11be4007643091950ce9de5cd7ac3fb518909ee72844f42683b074f4e",
+  "gain_predictions/sub-032306-000-mixed-snr+5.npz": "8310807e1f95d982b34c8674514e053c714e4b9925476bf016c12992941706ca",
+  "gain_predictions/sub-032306-000-mixed-snr-5.npz": "2c37754d356a5722f3d1f4b2d25634f958e889002a2b43ba61a0a573ef49b068",
+  "gain_predictions/sub-032305-000-mixed-snr+5.npz": "a640b0291e84085202cdbca1d3185ccf4ecc8f0d2961eb2d6794b75b3f1c9bc4",
+  "gain_predictions/sub-032309-000-blink-snr+5.npz": "491ad9d8ddccf82f8aebbae0aef3b0da1ccc4c4ba5b808d9a423a0dc095dbfdc",
+  "gain_predictions/sub-032305-000-lateral-snr-5.npz": "f17b7f3f2369a8ce302769ac4f45977a0d754cbaf3efa09244944db7eb40c6dc",
+  "gain_predictions/sub-032305-000-mixed-snr+0.npz": "44547545727d0c5fbabcdb81c440c3b243f12090f1c3bccdc07be385d2969721",
+  "gain_predictions/sub-032306-000-mixed-snr+0.npz": "28ac2718b90e3d0d1d8d21f761b0796b88a28ffb9853ab6fadcb869f7e2d5552",
+  "gain_predictions/sub-032308-000-mixed-snr+5.npz": "a798110930a678ba77b2fbde4e09ef353d670dcef73dc853977ae5ca000dd9fe",
+  "gain_predictions/sub-032307-000-clean-clean.npz": "c99169b46b603ed7c70366f1c9819c7f5b4f5323487d67673a8dbe3534f8d3cc",
+  "gain_predictions/sub-032306-000-blink-snr-5.npz": "d931b04ecdd7f6982662c049ec907ceb87f0d53235be24b1b39da74449eb7324",
+  "gain_predictions/sub-032307-000-lateral-snr+0.npz": "ed6f1ac74f2712df883481fca260addfeadd72bd3535966090fe9edfe222569f",
+  "gain_predictions/sub-032306-000-blink-snr+5.npz": "b3ec7c8d6025df47419c7e6d6abf984047859259af13c72f93c13249da4a996f",
+  "gain_predictions/sub-032309-000-lateral-snr+5.npz": "cbad214b62799c5bfd1f67b505136ae5180155a777c024f4cdbf36372e945c60",
+  "gain_predictions/sub-032308-000-blink-snr-5.npz": "83e15c8fcffa2a7dca5efdb90ed1fbdde12ac045ad3bcecd5bb1da19e56a92fc",
+  "gain_predictions/sub-032307-000-blink-snr+5.npz": "ddd2c6d0b79aec7b2ba7c7dc4442b5d782b102366e839701ad40ff0720795d56",
+  "gain_predictions/sub-032309-000-lateral-snr-5.npz": "d95189a634fc8cc537724a509867b0d418a2c4bcb1c78478e71eaaf8a5de8b5a",
+  "gain_predictions/sub-032308-000-lateral-snr+0.npz": "89a129449b41b6d14db0b7f7e0dc49df7d5c6a9ba9faa8adb7af06cb4dc4a5e9",
+  "gain_predictions/sub-032308-000-mixed-snr+0.npz": "092c5a6ef83314b9f9a8abd66daa0c2941f6c8ac8c58b74603416ade567c4512",
+  "gain_predictions/sub-032307-000-mixed-snr+5.npz": "7c2b8e151f69955851b76f27acffe6e73d3f6e3c53cebe0f12682f974e19727d",
+  "gain_predictions/sub-032309-000-blink-snr-5.npz": "c445ed32d91fc0ea93fe94a702e1d5c3af0eccbf4f9f5b51938f03f30d1c9762",
+  "gain_predictions/sub-032305-000-blink-snr-5.npz": "000d3375630907f44e159fa5ef3dce20a81cdeb2de60db50d4aca3ea13da6947",
+  "gain_predictions/sub-032308-000-mixed-snr-5.npz": "b26942f928a5ed0d73e4e728318617e908f15eeb09982e3e935cde52a160f65d",
+  "gain_predictions/sub-032307-000-mixed-snr+0.npz": "7708d92447a2d64ecc6b6c92678dd1616e318b1e441a857145e397815f655a15",
+  "gain_predictions/sub-032305-000-mixed-snr-5.npz": "0a4b491c329bb69bea4ffe0a6e748c7f4a6597bd4ce096c01c40fdf95276b005",
+  "gain_predictions/sub-032309-000-clean-clean.npz": "8f5afeb19caaa27eb3f18b2301a96ffdf3b30e40a572f99f6e36cb4c15aa1d4a",
+  "gain_predictions/sub-032309-000-blink-snr+0.npz": "a080cb89a13579411c0dcd4c74c29d96b40097b6fd67bd70593d85c564f5c124",
+  "gain_predictions/sub-032308-000-lateral-snr-5.npz": "e34387ad41a7f1c3e70f97b1fa2a8ecf3404362ceb678f1ae958c8957344fb56",
+  "gain_predictions/sub-032307-000-blink-snr+0.npz": "285a7d4525ed70bfcc4ec93a5441bc7bc1b83f97f64e423ed406ee54465a7215",
+  "gain_predictions/sub-032305-000-blink-snr+0.npz": "b4701c2933890fc5d6e06ef0a0e54c9ebc8d49e2d6dd47a7b3e4f4e29306cc41",
+  "gain_predictions/sub-032308-000-lateral-snr+5.npz": "3d1d1f251bc7787b967ad7906d76295f9952008d2c900f5c5e9df875e83918c8",
+  "gain_predictions/sub-032306-000-lateral-snr+0.npz": "171097adb70b0f62a3ed9d3b390b2d6275b505c94b6b94a64b329b4a8d56ef4c",
+  "gain_predictions/sub-032309-000-lateral-snr+0.npz": "169b6655e1693199ac0bd3809e994c3500c80698706c13b722a78d42d80dde81",
+  "gain_predictions/sub-032306-000-lateral-snr-5.npz": "d19ad818ba18d3e7896910e37a5183f2dcf519712ecb732fa1c534690b7ccbc8",
+  "gain_predictions/sub-032307-000-lateral-snr-5.npz": "8f0f032b072cc50ae140882d3a577f8a1f41d311c4e380d2f47ca35eeb1c7c50",
+  "gain_predictions/sub-032307-000-lateral-snr+5.npz": "2fd5be7512581c48a201cd23776c29df37a2ab9d3c56c8c2f390815407ab2b70",
+  "gain_predictions/sub-032307-000-mixed-snr-5.npz": "241164ab32fc296abb0a493788e6babe65fff3479d58079c93748cc836cbb320",
+  "gain_predictions/sub-032309-000-mixed-snr+0.npz": "1aff142de54060d33e52640cee26727d7836f539f7558d8828b792991e0d8908",
+  "gain_predictions/sub-032308-000-clean-clean.npz": "36873c5df1732f2f0f5c9ede6f54c0f9fc79e77dc65847940e920983b13deb13",
+  "gain_predictions/sub-032306-000-clean-clean.npz": "9990c32cf7e6438a197c5e07cac063ff68deafceddf21040d534c5a9b97a30f3",
+  "gain_shards/sub-032305-000-blink-snr-5.csv.gz": "e2c1b07b45f72cd355773875b0b5cb0557c04e6a965a37cd93199b239400d0e3",
+  "gain_shards/sub-032309-000-blink-snr+0.csv.gz": "a154688686de529c3daf40d1d95354c717435aa8d4fe2d4e6fba2f3571253fbc",
+  "gain_shards/sub-032306-000-blink-snr+0.csv.gz": "67e1fb5cca1b1f6b8898a7c60a4ede0105013bb375f2402c2b79f33f6324f792",
+  "gain_shards/sub-032306-000-lateral-snr-5.csv.gz": "77ceb8e1f99708795167dc32409b73f550de5b073577e61fd6f3670e705eb611",
+  "gain_shards/sub-032305-000-clean-clean.csv.gz": "ceaee80548140ed1368b74e39ed72f6d11666e465119e4622c6a8b1b43c45656",
+  "gain_shards/sub-032307-000-lateral-snr+0.csv.gz": "2299a1eb2c9ffbc1f7e9f72ca4316426ee0072f5601b3083267827021efacfa2",
+  "gain_shards/sub-032309-000-mixed-snr-5.csv.gz": "41cf9017b3e55ffb4baea651b48d353ccd9f8dbce5508f7d50a5b9b1864a8b91",
+  "gain_shards/sub-032308-000-blink-snr+0.csv.gz": "00cc9c3bfc4dea25febfcebeaad53160bb53e4186f00c1c034d83758d5aaab1a",
+  "gain_shards/sub-032307-000-lateral-snr-5.csv.gz": "59e2203f3da08b0b90338b66461caf655ad7b169d64bb346fabcd4d06e1ce7e7",
+  "gain_shards/sub-032306-000-clean-clean.csv.gz": "f3a93f4de901b7247ff4f7853ee0349101b4a77b423dd4cfa33433ea66157d20",
+  "gain_shards/sub-032305-000-mixed-snr+5.csv.gz": "90c9c9610e5f8e3966779ad7fca160eb3c3b3cd76824bfe7a0db886e89635342",
+  "gain_shards/sub-032308-000-clean-clean.csv.gz": "06299491be05e39f2c238d1970368552ffe7b8ab2664f1b244697f08bb01e4a2",
+  "gain_shards/sub-032305-000-lateral-snr-5.csv.gz": "00b9ad0e475f8da8bbd3dfc22ab9e250118ed7cbe998f365befc05da5f84a545",
+  "gain_shards/sub-032305-000-mixed-snr+0.csv.gz": "601d811ad6dbf5fa86f8eca1779e41608f12407ef3afdcadf83a380743806372",
+  "gain_shards/sub-032307-000-mixed-snr+0.csv.gz": "b17ade8d086bb520fe59415ad10b25b6f24cb10366e4bff4a73555308967d2dc",
+  "gain_shards/sub-032309-000-lateral-snr-5.csv.gz": "c78634a51f44cb4f154893808eb95bec89d77e1d972258caf8767b2ffbec0463",
+  "gain_shards/sub-032308-000-blink-snr-5.csv.gz": "9467652f5745cea30ccfdaf975ab8a87f0e11ee5697051dddf59b1147bee6386",
+  "gain_shards/sub-032306-000-blink-snr+5.csv.gz": "8584786bf585540249b1681982dad1d976efce16a84030eab99163f595d040eb",
+  "gain_shards/sub-032308-000-lateral-snr-5.csv.gz": "bf5439efeafb32a9f08b7690d99bf8103cae6e02de4314d15580152ed3c5db3c",
+  "gain_shards/sub-032307-000-blink-snr+5.csv.gz": "ffc856a86615e1fa130a6092446e5c3d85811c8e888734abede07104f74a5da1",
+  "gain_shards/sub-032307-000-clean-clean.csv.gz": "d026cfc8a25e590c7646987ae64d739de0119f61fceac8ad78f657faa224751e",
+  "gain_shards/sub-032308-000-mixed-snr+0.csv.gz": "095bcf458752f4bfe9c16b045d4baad22f2d72abde24103654819ba71496549b",
+  "gain_shards/sub-032309-000-clean-clean.csv.gz": "7042f06e71faf7e97766e8e9d49ba567ad70a4c75c05233042d75a75d37cbd51",
+  "gain_shards/sub-032305-000-blink-snr+0.csv.gz": "793d84f6fa1c57104254fb9f2c9208ce22ef947937b0d75009a8fe646f49b3a6",
+  "gain_shards/sub-032309-000-blink-snr-5.csv.gz": "8ad2ec693d30ab170dc3ff71487e77170611a706cd8c156effe069dd2ef62a9b",
+  "gain_shards/sub-032307-000-mixed-snr-5.csv.gz": "47fb1a7e9676bf3f7208f24776693c64b936b1632ed75a5aa0bca460fa8ddec0",
+  "gain_shards/sub-032308-000-lateral-snr+0.csv.gz": "38bc9c25878ef7e0139775c3ab62e775d588462c6212b815a8605d26adb62002",
+  "gain_shards/sub-032308-000-mixed-snr+5.csv.gz": "f8c66023376c63046c8d68406874772e14daf1f2875a1f7a7b0e15bba19fa6df",
+  "gain_shards/sub-032307-000-blink-snr-5.csv.gz": "64dd9755471005532fdcbdb40e0c2e35bf911ba81d790ece450196af5e2cc93e",
+  "gain_shards/sub-032309-000-mixed-snr+5.csv.gz": "eb9befbaf9e13bb60f4c3944983e68bc5c6ce5843ffd0e09591c37f6f26c2f50",
+  "gain_shards/sub-032305-000-lateral-snr+0.csv.gz": "18a76add81933081bded7c8b2bcbdb941e5c5b5c5ebf64803806ffe1245cfd27",
+  "gain_shards/sub-032308-000-blink-snr+5.csv.gz": "54aba63a7afa418827633c91b8406393d6b1d6d8696d177f05ba01726f7334a9",
+  "gain_shards/sub-032306-000-blink-snr-5.csv.gz": "8932bb9cd6853e78cd7493a4293cfbdcb9be1ef75fffda31fcac2425d785420b",
+  "gain_shards/sub-032305-000-lateral-snr+5.csv.gz": "3467928a44e70880dc1d19c68d84e3a90e0fad7caf36cd2df7c3d86271243d75",
+  "gain_shards/sub-032305-000-mixed-snr-5.csv.gz": "246b7858c25586749dd70502d565ce99637039b70bdd2f050c7858399c4be831",
+  "gain_shards/sub-032306-000-mixed-snr+5.csv.gz": "adbcbace5c82c244e861b9be19ab38e694b3d6a4f209884e82643d3d07d35be7",
+  "gain_shards/sub-032309-000-mixed-snr+0.csv.gz": "0cea2763fdbcb14aea1f970c46954013ab5657c2ee3de7db7817fa27a5b587ee",
+  "gain_shards/sub-032307-000-lateral-snr+5.csv.gz": "e390eb1b695c64d43fc5c451c58faa550ceca9352ae89dad4ef239618c157b69",
+  "gain_shards/sub-032309-000-blink-snr+5.csv.gz": "b6b40035e691d83f09eafa638cb25b4c697c5076b517fadcf4552b9bbae854fb",
+  "gain_shards/sub-032309-000-lateral-snr+0.csv.gz": "57f9b4888666de6b4ebdb9d1f63084c8f309e1b95816f9f0b22bf80e02940c9a",
+  "gain_shards/sub-032308-000-lateral-snr+5.csv.gz": "168a98071a9deb2a908f187db194c2669d5012beea73f5e7fc1d7dd2e968b92d",
+  "gain_shards/sub-032306-000-mixed-snr+0.csv.gz": "80bf4d6f7dc1f775eb0de535e1fa47a55a2781f141f0839c14ac1098cffe78c2",
+  "gain_shards/sub-032307-000-mixed-snr+5.csv.gz": "864e6eaa4866bf8e5008863758a4f4cc772c684e891aa527bb5d1ead73c26bbc",
+  "gain_shards/sub-032305-000-blink-snr+5.csv.gz": "d0f53e7eca06c9e54d9ae7a81a384930501fa8903ceb017491748378dc6966c7",
+  "gain_shards/sub-032307-000-blink-snr+0.csv.gz": "9eda2acdd2a6921ef18a2e67421680fe379b4cb23d7c519fcfa2af1cfc023e99",
+  "gain_shards/sub-032306-000-lateral-snr+5.csv.gz": "15fbc87e5b7307957919be127cc9a6f4a8f2d25406408df2b2087a5d049a1d41",
+  "gain_shards/sub-032306-000-lateral-snr+0.csv.gz": "54ea41f463a013002794d2ddd7d8f298b2c58f420e353e54c2a2725a4d65d8a0",
+  "gain_shards/sub-032309-000-lateral-snr+5.csv.gz": "d6e42b8c50c09109a8d6a388fd5533da7b1b1009517ce63e20e94441a0c0d8fe",
+  "gain_shards/sub-032306-000-mixed-snr-5.csv.gz": "167d3abc4d458d7186d14d9cff9763da574104c4b2eb71700a4566b92fee5a2e",
+  "gain_shards/sub-032308-000-mixed-snr-5.csv.gz": "4560851a472ee7b95468282795e3013bef328806e1d7be37f852f5ea496834f9"
+}
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/execution_state.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/execution_state.json); SHA256 `23aff422052a1001bf28f37fbf988a53deecd1a74a072f5131333a7585c2b0bd`.
+
+```json
+{
+  "stage": "nonfrontal-gain-diagnostic",
+  "status": "complete",
+  "artifacts": 123
+}
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_summary.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_summary.json); SHA256 `7390a97ed7c3c394b32795d7f75a71f9d13d93169327f74d9ff3f8b4ec971a8a`.
+
+```json
+{
+  "profile": "pilot",
+  "examples": 50,
+  "recipients": 5,
+  "arms": [
+    "identity",
+    "central_frontal_vmd_context",
+    "central_frontal_raw_context",
+    "reference_rank2:both",
+    "strength_rank2:0.25",
+    "blend_old_rank2:0.25",
+    "strength_rank2:0.5",
+    "blend_old_rank2:0.5",
+    "strength_rank2:0.75",
+    "blend_old_rank2:0.75"
+  ],
+  "baseline_paper_metric_checks": 85200,
+  "weights_fitted": false,
+  "fixed_arm_target_access": false,
+  "oracle_target_access": "evaluation-only; cannot select per-window output",
+  "global_selection_performed": false,
+  "reserved_confirmation_opened": false,
+  "autovmd_executed": false,
+  "qualification": false,
+  "new_calibration_fits": 0,
+  "failure_flags": "conservative historical parent flags, not new active-failure counts",
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "runtime_s": 86.23001773700003
+}
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/resource_summary.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/resource_summary.json); SHA256 `b8f7cb4f66023e40abf7c137e76586aa44d82b268ada237789e6c9f9768ffc34`.
+
+```json
+{
+  "wall_time_s": 159.25114877800007,
+  "peak_resident_memory_kib": 832820
+}
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/stage_tests_summary.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/stage_tests_summary.json); SHA256 `c9dce99e98e756e6898afeeffc5d927c0b4b740e7ade69697c3fa05efd466061`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "391a3b9e846674c4d3eb2159739848d531a378bde528f518623de7ae786aa46e"
+}
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/retrieval_receipt.json); SHA256 `f86383f78f38d6138d8ea652c223686f1716ff8accb9e1e3e752c4f9de654202`.
+
+```json
+{
+  "run_id": "nonfrontal-gain-pilot-001",
+  "git_sha": "c049d8dca726adb032f9ee45b32353d9164dd272",
+  "verified_payloads": [
+    "configuration.json",
+    "coverage_uncertainty_intervals.csv",
+    "evaluator_only_gain_bounds.csv",
+    "gain_condition_means.csv",
+    "gain_gates.json",
+    "gain_method_means.csv",
+    "gain_snr_aggregation.png",
+    "gain_summary.json",
+    "parent_identities.json",
+    "resource_summary.json",
+    "run_spec.json",
+    "stage_tests_summary.json",
+    "tests.txt"
+  ],
+  "manifest_payload_count": 123,
+  "all_manifest_payloads_verified": false,
+  "downloaded_outputs": 15,
+  "utc": "2026-10-14T01:27:50.637241+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
 ### results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/artifact_manifest.json
 
 [Saved payload](results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/artifact_manifest.json); SHA256 `af46b1de8474cf46f909b3d0a0e1d4a073f59f9556ca5dd67ce669e293c9fb99`.
@@ -48368,6 +48783,1463 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
   "all_manifest_payloads_verified": true,
   "downloaded_outputs": 188,
   "utc": "2026-10-14T00:06:53.683806+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
+### results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/artifact_manifest.json
+
+[Saved payload](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/artifact_manifest.json); SHA256 `90cb1a71ec0a4cbf42b7d619c689fadb5c32df168c761ade4c2cbffd98426861`.
+
+```json
+{
+  "frontend_snr_aggregation.png": "bf0aa6150215a90d8ac359eff98239831b6a02bccbcadd492e1f643de06d4845",
+  "review_method_means.csv": "7a73914e67a00ef293934b32a905906129a015b14190039bdd5ef941c3732d1d",
+  "resource_summary.json": "64141e02eeed1d1841bf109055b8f8fffdef0aa22ec420a48c5186760beb77d8",
+  "coverage_paired_differences.csv": "5e249d4470777155b8105a147c71aa5b8a4720183e4174d4e8a9347f2cbdccb4",
+  "coverage_uncertainty_intervals.csv": "db1cab5dc7adccdd39a7b78f84d026ca705202d4c642a240eb27bb3b6dad7051",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "run_spec.json": "7b8931f1eebe40fdff8bb7f177be71851ed7bc118ba42c22e998cc03718eda13",
+  "environment.json": "c22767a8c5d7871cd62182551a8885d8363aa137345e3de641dae3301e4d24f4",
+  "tests.txt": "30a348d2b6e6a93e9c0871502a6633a71f2a66dde360449a48947b9bfd09cf5f",
+  "stage_tests_summary.json": "0741b639a29a80c64abba922d5bc117dd64191b8d7a42f0161b534af2fc5e556",
+  "review_example_snr.csv": "0e0548bd781d338c4110d6e65fdacc9faa260db099c48fb72e3d7173ad218638",
+  "coverage_uncertainty_channel_strata.csv": "9bd9a38a087b21d50cee46425712f4a72a6c0b8da89d2b7ec43b04d33ac11dd9",
+  "review_selection_manifest.jsonl": "c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2",
+  "review_gates.json": "e92a846bfb97ab2b05d30e00516d3532b35da0a58e0c0b2ad94f34527d6fbe3a",
+  "coverage_uncertainty_method.json": "deb2df77e78ce2981967382f492929d50ae8a1e8b2324fb05bb5d0e79ee63b6a",
+  "review_condition_means.csv": "ae6cbbe4f3f3b18014ba5d76b2a92b8f898d479305a00d0270780b052bf883fe",
+  "review_channel_scores.csv.gz": "226475ffbc6764b27467e3f2ddcbe108a344ac3f3f7da60634054710db32d6f0",
+  "parent_identities.json": "00ed5886aa82a0f57700a3c4d4b322f327403065f9d6f50feb5531f38bf7c7d7",
+  "frontend_review_summary.json": "6e5ab685cfafa40f17b791b6d1320ded5fe99960971f4aaa16d54afd8212ef25",
+  "review_progress.json": "706333850d7f455771a4a7eb838b28c35cb52465a045ac3f10adc4917cee37cc",
+  "configuration.json": "987c310b17fa37c3f6ff7a3d3aa9664f44967518c851aac32f43f9b034b12e60",
+  "matched_ica_frontend_uncertainty/coverage_paired_differences.csv": "465be8d1cb475a46eeed5fd4bb5a2bb7286f5fab27175bc7a799a86ad4248787",
+  "matched_ica_frontend_uncertainty/coverage_uncertainty_intervals.csv": "888290948f54f55b80edd1a5e7a2511a7fbd02bd9bd222d1686b6d89136f7d5e",
+  "matched_ica_frontend_uncertainty/coverage_uncertainty_channel_strata.csv": "0ea4ba91d35b2536265ea08f1303bc8f19554d5d313cbdfc0805f33ac32017dd",
+  "matched_ica_frontend_uncertainty/coverage_uncertainty_method.json": "0280f564d5f5d8df70d1d0699879aa757b00f36f842f5774d47aaa01b5d01e37",
+  "review_shards/sub-032323-000-clean-clean.csv.gz": "6fc12e699b9f2ec3c018a23a1d09aa3e370009507d1b0f7d645b61e679b70a20",
+  "review_shards/sub-032321-000-lateral-snr-5.csv.gz": "7238e6a7518f810283cd2c31cdeb2049fa11be23b97782266c68df884189369a",
+  "review_shards/sub-032323-000-mixed-snr-5.csv.gz": "c73c6b02b3fcb2056513c492b281fafbbc23ee2a81fcd79a155d7778f0bc4f47",
+  "review_shards/sub-032325-000-clean-clean.csv.gz": "2e979e125dcdcbba67d538813cb67e1255b5b13a090775364f0ae3ec2206c310",
+  "review_shards/sub-032336-000-mixed-snr+0.csv.gz": "d21aa4ce70b854f28c1ee470e9a413e4d699bca76e950d9c4bf54246d10878fe",
+  "review_shards/sub-032330-000-blink-snr-5.csv.gz": "a789b7eb7dea340dab21aea0b1b1f5b100eee3e8765dfd2f42623849c6c85fbb",
+  "review_shards/sub-032336-000-clean-clean.csv.gz": "d2b4aa1337019ee2d4d22395d7f43ca227a944cbd24a337c08eae3ca77e5f916",
+  "review_shards/sub-032308-000-lateral-snr-5.csv.gz": "a313861285efe6f61a63466d0279fc7700965e9760e50d87f866e82fa25cca63",
+  "review_shards/sub-032334-000-mixed-snr+5.csv.gz": "bc2db646719dec53bd89beb77a832fb7818da305c79786a2dbcaecd639453f95",
+  "review_shards/sub-032324-000-blink-snr+0.csv.gz": "df12aa863e4a9728f77ee48fdfb7f70afffb2619fd1548c52711b81da1b499fd",
+  "review_shards/sub-032330-000-mixed-snr-5.csv.gz": "960fce9084cc68c92a751ac5642560c130fe1dda3dc73ac7481720bc4af98d47",
+  "review_shards/sub-032318-000-blink-snr-5.csv.gz": "d4220f5a89f89a4c3758ca9607eb1fbe7b3346abee95b659035993c6b6f01b56",
+  "review_shards/sub-032328-000-mixed-snr+0.csv.gz": "e5fcda5fa6a37fba2841bed451a9fff57a9af8be715291123f5f03ba64851315",
+  "review_shards/sub-032310-000-blink-snr+0.csv.gz": "0fe6b36725f7a9684f8e0666be26312bf4d56ce4358c1bbc3cae3cd1ebb923de",
+  "review_shards/sub-032309-000-lateral-snr+5.csv.gz": "cf4f22775b4b099bfd3d7bd521097bea6b83f7327d502b684796914591eca4e5",
+  "review_shards/sub-032341-000-lateral-snr+0.csv.gz": "da1f392f8dc00510054cd2b7dd8f30076e69a0ff7740f4476fa20c2479506d4d",
+  "review_shards/sub-032312-000-mixed-snr+0.csv.gz": "f8d4b558b1c3f231a818cf0b83a9b60973d4ac22356aa51f7796a732e74225ae",
+  "review_shards/sub-032341-000-blink-snr+5.csv.gz": "47e11501ce41dd9927c651386e7651bb088b8bdc843be1bed3618df4f035e2c5",
+  "review_shards/sub-032323-000-blink-snr+5.csv.gz": "2310cbc95fa20fef7570eb9341572b88a0e0570cbaa53af42268cf9333c1f762",
+  "review_shards/sub-032336-000-blink-snr+5.csv.gz": "792c30e20b6267468352b401a55e048eaf434fefc5b1cfe6a80c85d4686d4d7c",
+  "review_shards/sub-032339-000-mixed-snr+5.csv.gz": "cdaa173b8d4d65cec545e50b7468a82c3b71f0881e0ce4e03fe612f3962c60db",
+  "review_shards/sub-032318-000-blink-snr+0.csv.gz": "e60e4bbf25220e51fccf0fa8a2e988607951934a5808b111650d025a45fb297a",
+  "review_shards/sub-032305-000-lateral-snr-5.csv.gz": "d96774890e4fb4e6e53c7fae28f9179bca93e1a50ceb2dcf79ab598b6376dc5c",
+  "review_shards/sub-032341-000-lateral-snr-5.csv.gz": "f5ebdd9664b947b1528de1ee10a86d6a5102bf148129340bdb98178d910c5e2b",
+  "review_shards/sub-032339-000-blink-snr-5.csv.gz": "7b45db890aae879b377e26a7ce868acb65f9782a701cd6db38b2583359790ad6",
+  "review_shards/sub-032339-000-lateral-snr+0.csv.gz": "cfd5f24e408322e4df238004db5080fd2a3ec81802ece2890edeab1401458cee",
+  "review_shards/sub-032325-000-blink-snr+0.csv.gz": "4a60d89d94c0c85d887e51bc3cb0f66385d188438f1666fb57ea4ea58724a6af",
+  "review_shards/sub-032312-000-lateral-snr+0.csv.gz": "54c79841b78894bc04b34ea05ceead7a518e1d7c9cd2c21d62f6fc726d0f5acf",
+  "review_shards/sub-032316-000-lateral-snr+0.csv.gz": "2843dfdc97bde02e1ffd7866b22ebe70ed45b4841d4fcac93bef13cd67e797d4",
+  "review_shards/sub-032326-000-mixed-snr+0.csv.gz": "f17153c0928210482f5c4d1e58bcca7003e34a35c67809118eac7c858484e902",
+  "review_shards/sub-032326-000-mixed-snr-5.csv.gz": "9aa7b1e815a1a3491d508a940c59e4fee03ca434d4f1e58f129968497c5db140",
+  "review_shards/sub-032309-000-mixed-snr+0.csv.gz": "8e9ad54b29655ea242a1c130ded3b62c9dab672d14d46115baa854fbf8349361",
+  "review_shards/sub-032307-000-mixed-snr-5.csv.gz": "517bad830394e40e850104a27220fdc00331105ebdc33bfa93aeb43052804db7",
+  "review_shards/sub-032316-000-mixed-snr-5.csv.gz": "409ae6fa16e838627b4e2bc2751da83e2e523b57c42532b6fe43f3e64e1ed215",
+  "review_shards/sub-032305-000-mixed-snr+0.csv.gz": "0e8fde3c538b36abab4cff8852dd347b6ce6aa79ec71953b17b578a03f134212",
+  "review_shards/sub-032328-000-mixed-snr+5.csv.gz": "7fd884e75be62fe6b4bb604a50841b4affb85c6201ce0da82bc9288323f50af9",
+  "review_shards/sub-032320-000-mixed-snr-5.csv.gz": "abd890124e1e49a89d3a6d26f852c759255fb15eda88cc914b9b52247fbb3f90",
+  "review_shards/sub-032309-000-clean-clean.csv.gz": "712a9db440df9acafd48637591581c60995d056d601ffd1e6540214387f8ca46",
+  "review_shards/sub-032325-000-blink-snr+5.csv.gz": "6fe4493fd19cde2cb317e6c7f23d43577266727aa39396296436b4b49f065604",
+  "review_shards/sub-032330-000-lateral-snr+0.csv.gz": "d52a044d686f434569eef6ad5a09e5a7c2c5da3f8eaf320be9a8d583e253b5e5",
+  "review_shards/sub-032336-000-lateral-snr+0.csv.gz": "010afc275f6343bdb0f612771bedf47ba945fef6a2e6efe972b63be679507c71",
+  "review_shards/sub-032314-000-lateral-snr+5.csv.gz": "57ef957edf2e8af8d9ec35f19d5bb16c59c29da456c9314dee1d61648f6dfde3",
+  "review_shards/sub-032323-000-mixed-snr+0.csv.gz": "4bb28f89b6b5bbdf15e7f60cf1f06486a2d55c6b9b56312ce5b351d85ba472aa",
+  "review_shards/sub-032341-000-blink-snr+0.csv.gz": "d6ad2e4904a3526c78b70a5ac982ce23065ea8e1e4f7759df0f460c3cd14c5bb",
+  "review_shards/sub-032331-000-mixed-snr+5.csv.gz": "5e640172a49c1109b2211da054647c8abc67f7728a54f76e457338c5511cb2b1",
+  "review_shards/sub-032305-000-mixed-snr-5.csv.gz": "5f364817b4053c585f3d7776803ecf5cba169ea9b74c3cedbab7d3b175529385",
+  "review_shards/sub-032326-000-clean-clean.csv.gz": "3fe9adca22c03d218f6fcf05e8acfe549961f2559a7d000d2de7686771d8fb13",
+  "review_shards/sub-032308-000-blink-snr+5.csv.gz": "faf84fe508fac55125ec8be0c7974741c4eaedfdc96ad1bcfb386f2d13a6b17f",
+  "review_shards/sub-032313-000-mixed-snr+0.csv.gz": "c5e3389484a727cf73dbbb24756f63a99ab27ada4cf51a780dfb4479f20b9126",
+  "review_shards/sub-032316-000-lateral-snr-5.csv.gz": "64dad7284c2840f55e86e37aac7fc5de403fdd7e5242542230e9a60323fad3ae",
+  "review_shards/sub-032340-000-mixed-snr+5.csv.gz": "a08d704b5c0725b5bc310709e0381a540de6fa4455965b45a37cdd27cc16b72d",
+  "review_shards/sub-032331-000-lateral-snr+5.csv.gz": "43aa91c5a481e3382eac4c1e6076f9207e53bbbfc35f8ffae90386778fa69846",
+  "review_shards/sub-032329-000-blink-snr-5.csv.gz": "2469287e047541f4a29fd2aed7dc9c4011fad238984fc3da062788587d96e0c5",
+  "review_shards/sub-032307-000-blink-snr+0.csv.gz": "a3456ac4c0367cfbdb47176214f288b34fe0711ce72614e0c2b5884ac585415a",
+  "review_shards/sub-032315-000-mixed-snr-5.csv.gz": "1d537ee248d00a2f29e12882fccde4dca4297f4cadaf10042153859a4780c344",
+  "review_shards/sub-032341-000-mixed-snr-5.csv.gz": "030dc6bf2eb7dded1dd9c035ee170ef390f3e5c346ade04a5ba0926cb6b3c7eb",
+  "review_shards/sub-032328-000-lateral-snr+0.csv.gz": "bfcaa58344b9a7efdadcf2e42b22010aaa22097d2faf65a16e271d09d053cb34",
+  "review_shards/sub-032338-000-blink-snr-5.csv.gz": "b3d564ef262cd51526007126d06e7679c3fb2fd51274a061f98e0b52385b9cc1",
+  "review_shards/sub-032319-000-clean-clean.csv.gz": "849fd272a034f974259dc6afe0f7a3903e4ab371b970962c8bff34e7aed12fef",
+  "review_shards/sub-032309-000-mixed-snr-5.csv.gz": "869ba259d6df516aa602046741de093bc1112c630807ca0bb508c92683a6e19a",
+  "review_shards/sub-032308-000-blink-snr+0.csv.gz": "6e045100d7bec47d7054f2570fdc2786a719ded4fbbc52c5fed8794db2ff2be9",
+  "review_shards/sub-032323-000-lateral-snr-5.csv.gz": "462f0bcd77327a816a91428d8813be75c74a278d9b670809c80fe3ee2bd9b73a",
+  "review_shards/sub-032312-000-blink-snr-5.csv.gz": "89ee1c995d5ab1568d2c9d447d85d10bfa1899cf551c2af7a38560279a26096d",
+  "review_shards/sub-032323-000-mixed-snr+5.csv.gz": "abeee06a9e28abc1f0313260a36f4e234fcf8a493bbf6ff8f45f2006198d26e4",
+  "review_shards/sub-032339-000-lateral-snr-5.csv.gz": "4838ccb0bd977d6f5c782fd05515536ddee76ce35ce1d08710858cda371a7a1a",
+  "review_shards/sub-032327-000-mixed-snr-5.csv.gz": "fb81a49bc783d86f3bf2776d5128c60cfbf50a455e06474f4fce5f285d4332c0",
+  "review_shards/sub-032309-000-lateral-snr-5.csv.gz": "4deb81ec5774fe0377e841e94618dca865bbea8b35a221a206877588590d73b2",
+  "review_shards/sub-032329-000-lateral-snr-5.csv.gz": "df0a290fb89f95795598f6eb59b67acb0ed9f250a2939612d4e9a0749fa81504",
+  "review_shards/sub-032319-000-mixed-snr-5.csv.gz": "08eec16babaff798399a37761765014455bd6c486389c953f156bab13a35d0bd",
+  "review_shards/sub-032310-000-clean-clean.csv.gz": "7ec3cf4c396a8e921aaf1f930e3626d03cd01fffe450aac9fafc58d61480a9f5",
+  "review_shards/sub-032331-000-blink-snr-5.csv.gz": "c0d3e107b328b7415e84a7819179738bfc9574d55afc27ab436226e86e82719a",
+  "review_shards/sub-032340-000-blink-snr+5.csv.gz": "e342d14a8e84942c520ad2e0b205d875c7d9907c12588dc0dedba60d09d62c83",
+  "review_shards/sub-032340-000-lateral-snr-5.csv.gz": "c464328e36ac5a17aa956b4f3f1d3f07c987874bd086290d1ae989b8d5436418",
+  "review_shards/sub-032320-000-lateral-snr+5.csv.gz": "559bd33219c70a58334c5e1ef206bf3aaed01020101bf435a498309f9115482a",
+  "review_shards/sub-032334-000-blink-snr+0.csv.gz": "72f315c5f1b0b2cdbadd5da1a8360f243e5e919b31d531326754c60d2982da31",
+  "review_shards/sub-032307-000-lateral-snr+0.csv.gz": "fe0048a242550f0e4094adfcf17ce1cd3fbbc805cb5bf0d1c3980e314635f0a8",
+  "review_shards/sub-032325-000-mixed-snr-5.csv.gz": "985331c3314692cdd398ccda875511d8fdae8eac76e6663d2c5fe52f8e67413e",
+  "review_shards/sub-032322-000-lateral-snr+5.csv.gz": "aad417063480ba337e0b28dae5037d86428a4cf80c0092d54f758bb3ccb11730",
+  "review_shards/sub-032314-000-lateral-snr+0.csv.gz": "ede0479b06e3ea6b5edc57ed47676538c44cad7262a96115fa604b97a1e897b2",
+  "review_shards/sub-032336-000-mixed-snr-5.csv.gz": "34380c3cdd50fa08fc5a1a4cd03df2aab47a6fb0bcf867dd5754a4a779815132",
+  "review_shards/sub-032326-000-blink-snr-5.csv.gz": "91669be3f221af1ec76dbaec3bf1413727b82a2a316ca32c1431ef5e0596b24b",
+  "review_shards/sub-032319-000-blink-snr+5.csv.gz": "df2816511dd2a999fdf14ab4f803e7c6c3aec7ba4e33fdc4dd536a652087389a",
+  "review_shards/sub-032327-000-lateral-snr-5.csv.gz": "f890349b32c0ead4ba4cb21bb2da1c670094cee3003a789f7663406a49c61288",
+  "review_shards/sub-032316-000-blink-snr+5.csv.gz": "fa6ed0e39299005b303aff2f86859a9acc27eaa96e970b4c23485c7649dbba74",
+  "review_shards/sub-032306-000-blink-snr+0.csv.gz": "7e4a642da8575c2d5a15862669d6726fb6612d1fb265852848c7022ce465e629",
+  "review_shards/sub-032321-000-blink-snr+0.csv.gz": "7153102c16bff78921d642197963cd49c6dc4c6a08dc67ab9ce5d196782699ee",
+  "review_shards/sub-032313-000-lateral-snr-5.csv.gz": "3084b80ca4f42da640c1e2f4048c60fe86b0499e393d59173b17320b64540bf6",
+  "review_shards/sub-032328-000-blink-snr-5.csv.gz": "b38ad15c4fc52b2b72c4479408d640a05ea091fae2b4a11b93193c884582c226",
+  "review_shards/sub-032339-000-clean-clean.csv.gz": "faec3156ef4d7d45250e8d08520217d8c188561a5aef0d26e7e086dae44655b1",
+  "review_shards/sub-032313-000-blink-snr-5.csv.gz": "46b9d157cc817254b0647d4ebbbffc81b219053728a6c9189e7e0b4bb25bc75f",
+  "review_shards/sub-032313-000-lateral-snr+0.csv.gz": "4219675e250f002981bd379d4fc4b7cd92411c6fa1392462d2e329e5ebeab174",
+  "review_shards/sub-032308-000-mixed-snr+0.csv.gz": "660e7fb38ed3114344523d7bbcaffe3cbf69ad1bdb30db2ae0c1d2aeca0322e0",
+  "review_shards/sub-032308-000-clean-clean.csv.gz": "5727327a3c9fe1a61ec081235213af8d7e63c76bf28a2959339da82b387cde3b",
+  "review_shards/sub-032323-000-blink-snr-5.csv.gz": "fb742a8bd8ea330f587fcf509195ee48ddc469a7fd1355b88d1ed66667c8b2f6",
+  "review_shards/sub-032338-000-mixed-snr+0.csv.gz": "aaf4da26ae147b795d14ee76c65be280245ae7fe4ad04953af653bd91e110916",
+  "review_shards/sub-032324-000-mixed-snr+0.csv.gz": "beff29febeb4df1ecf11f1ef44aae044428be93ecff3a2c79a0781458e0385b1",
+  "review_shards/sub-032319-000-mixed-snr+0.csv.gz": "9bd7b0ed481560668d163b984c2c79f145fd89101bf4bf8e09395e5c77e269eb",
+  "review_shards/sub-032321-000-lateral-snr+5.csv.gz": "65401d46a4f7603ff9226950ca7e4d9380562046bc31214808895e8529d60703",
+  "review_shards/sub-032338-000-mixed-snr+5.csv.gz": "a16a98395f58c800de6aba7efd43a18c13273ac2e23482b62227988e67866779",
+  "review_shards/sub-032315-000-blink-snr+5.csv.gz": "0bea4168459383d67ffcebeb1dd7b8761c5d8c12138499cf509dbf431b4c7a9c",
+  "review_shards/sub-032306-000-lateral-snr+0.csv.gz": "521b93058657f87a90b967ccfb0a33e43acd8ddf01a283885a242e24ba38a4e8",
+  "review_shards/sub-032323-000-lateral-snr+5.csv.gz": "98a137f1816b9c42bdf5009fb7ac45c64ff0dbe549b7a8a307c74930fd0768a1",
+  "review_shards/sub-032327-000-lateral-snr+0.csv.gz": "795405d1eff790b0c876b5d970ae2b7dec2b3a9abb9d9758de86d3dadeb5d3f9",
+  "review_shards/sub-032331-000-mixed-snr-5.csv.gz": "1822d591ec49720fe8c6aa5948452bbc035ce2dd6775c5633cc0eb42ef554128",
+  "review_shards/sub-032341-000-lateral-snr+5.csv.gz": "0baf02b36b45316ceb2e34bef6d14a874d38f821e16fd14adb67c6b8bc7081a9",
+  "review_shards/sub-032322-000-mixed-snr+0.csv.gz": "e2d8ff14831cd5f31d0d57a99bfcb88487d00f4d04a7c7752080681f8c105347",
+  "review_shards/sub-032321-000-blink-snr-5.csv.gz": "63cf4aa5f609d9f925d2e50fe073de34a971af3c23f5651ad7f8159a42a2ed8f",
+  "review_shards/sub-032307-000-mixed-snr+0.csv.gz": "2edcebda299c9a672cda48942aba4175c0041ca88ac169bb0130cd2cf1539d67",
+  "review_shards/sub-032318-000-mixed-snr+5.csv.gz": "999d9ad577e6a1ec659943f49500440bcc7cc97252961bff4c287653e62b2587",
+  "review_shards/sub-032317-000-mixed-snr+0.csv.gz": "0cf1e5b1c6f15e3723331c0a17524a35321eb362c213b61965e5508c4d4e73be",
+  "review_shards/sub-032317-000-clean-clean.csv.gz": "96b5edb386940ac29f0944894d470678a2199b274371f37d5c6eec5a9847763a",
+  "review_shards/sub-032330-000-lateral-snr+5.csv.gz": "0748ff568ddb234044c4db7401af6d72caa3bf328774398569033a974ed06b40",
+  "review_shards/sub-032312-000-mixed-snr-5.csv.gz": "0d5f1c0aa167e5e616eead0ece6f080f202a29850ecaff8a9e5828d0382e113a",
+  "review_shards/sub-032322-000-blink-snr+0.csv.gz": "141e222b68cc8a3e148cda0a1d36cad554b13c339e090f6290e3ba35e784c002",
+  "review_shards/sub-032309-000-lateral-snr+0.csv.gz": "c4eb9c75fa981276ac43700ee2995814d305ec6b1757a360d9d489beafbaf845",
+  "review_shards/sub-032312-000-lateral-snr+5.csv.gz": "317307fc8e75293b1cde89697d94cdc8b8c629bdac7ac0235fd310e389cc967a",
+  "review_shards/sub-032310-000-mixed-snr+0.csv.gz": "0354007bad8ebb66550c49bfaa1d6dddb6f793abe48c24083529a0981e2cb12a",
+  "review_shards/sub-032310-000-lateral-snr-5.csv.gz": "34f2c2d8d2c0e1d4b499a994a0372593f6787aa2d1b36bf73a65972e24538fa4",
+  "review_shards/sub-032326-000-lateral-snr-5.csv.gz": "017ed07954fefae47a7daca1cc8a5f0d2be522ac388e50f171d6c73afc04bfbe",
+  "review_shards/sub-032318-000-blink-snr+5.csv.gz": "1ec1ffebf460b7f5d41d490f3d93a895fcc1b146463a9abb6662e8aa03567cb0",
+  "review_shards/sub-032319-000-lateral-snr+0.csv.gz": "c49234776c2a86de0d719cbdf7f98b17f27698dc6f0d077fc6f3bac8905180e6",
+  "review_shards/sub-032339-000-mixed-snr-5.csv.gz": "af7cdaa59a08c26b3b00d2eaf783873a2520faf0f85eff971a2f806ec6b61386",
+  "review_shards/sub-032305-000-clean-clean.csv.gz": "c7cc029e275b4fe1828c7818848db5aa3c9a6963695a188930581fe3f7629105",
+  "review_shards/sub-032308-000-lateral-snr+0.csv.gz": "79eb007c7b3b7a547750d2b09d5a524e1e744a9d3728240a9f572c0af16a2c87",
+  "review_shards/sub-032321-000-mixed-snr+0.csv.gz": "da81b964331c548f499868b29d1bd0384105b1c1a5175625696b0a59c8e099fd",
+  "review_shards/sub-032316-000-blink-snr+0.csv.gz": "4c19bd3e4bfcfb3a066e338d73cf1a7a44fd34fca937160fb250cd0faaf6532a",
+  "review_shards/sub-032338-000-lateral-snr+5.csv.gz": "98c37d27e29bdfff666fd30d1b88cc80cee18df2f379815df93cfa434b95282b",
+  "review_shards/sub-032319-000-lateral-snr-5.csv.gz": "c9104b0a118f4116ce7cf3fd3918d49e7dacc86c15150d5d7ab017cbc5feb681",
+  "review_shards/sub-032307-000-lateral-snr-5.csv.gz": "0bb3c34fc0a53de613b059a2af040dae29be26116e1dd94ee315a650eca5170b",
+  "review_shards/sub-032328-000-mixed-snr-5.csv.gz": "f47086286f113f570d9194ded91f1cb02fde5df95f904c572f02b73c12e324dc",
+  "review_shards/sub-032329-000-lateral-snr+5.csv.gz": "2d1b575d6a1a2d1822f7e3e248840d4eaf2bb8858d22043d48893e38c6337b52",
+  "review_shards/sub-032316-000-lateral-snr+5.csv.gz": "75947b85340538df201d1605e89924de886a81d4911936c8363f148c22803f5c",
+  "review_shards/sub-032315-000-blink-snr+0.csv.gz": "f30b2511a17b2f2c10d4acd72c59a2109c3507b77e7dd9e51ca8fab392f348a6",
+  "review_shards/sub-032319-000-blink-snr-5.csv.gz": "eae939f7eecc194b0a4902b9073fb8ca147451f98fcd7d7a9c89749bfe8f2d40",
+  "review_shards/sub-032336-000-lateral-snr-5.csv.gz": "9f945cc10754ca4d114c91c89a0f67ca70a6ab1c16cc5ac116c2d1094f91450e",
+  "review_shards/sub-032319-000-blink-snr+0.csv.gz": "2b780ee65c5fb12b0056dd238f363fa84b4adb93a2f95e17a00eb070fb44bab6",
+  "review_shards/sub-032318-000-clean-clean.csv.gz": "13d55054baa29f38dfa9aba2aaf24243e6602901abdb99953931d5a269ffa937",
+  "review_shards/sub-032313-000-blink-snr+5.csv.gz": "5e7e6540f6c6d3d6ae58e0cb1b7b943c19f8dcef4e4877d9f8e0065495b26d23",
+  "review_shards/sub-032313-000-lateral-snr+5.csv.gz": "16dae33ae221079fab8532e5e72fd050c532692b9341e2ed749581ddb899ac3d",
+  "review_shards/sub-032336-000-mixed-snr+5.csv.gz": "6ff42fcdd0894ed75e90e4a005650187987adec89fbcd55c45f0a365e8adcba4",
+  "review_shards/sub-032327-000-lateral-snr+5.csv.gz": "e4ed56928fbef34314af5c1e607e5431d027d5b461dcb1ad3944c8472f49423a",
+  "review_shards/sub-032329-000-mixed-snr+5.csv.gz": "488a62edccbb87382daec86a3f741299d09478158ee9f660f2f72a82237e7915",
+  "review_shards/sub-032327-000-blink-snr+5.csv.gz": "c2977a688be36381e39c3736bafc4ecb6485a10231a54bb5d4737bb05f58bd60",
+  "review_shards/sub-032314-000-clean-clean.csv.gz": "ca246fd0109edb8e363bbb4c0fe9333802611ad5e60c65279c893d23c2911101",
+  "review_shards/sub-032315-000-lateral-snr+5.csv.gz": "655c52e18882b842ddb3f31c054e8456bde2dc190426a9565a05febd046cc982",
+  "review_shards/sub-032327-000-mixed-snr+5.csv.gz": "b52c58c131e33f9bb439f9954956212e4e1a70466cc3371d776644adc42e0947",
+  "review_shards/sub-032319-000-mixed-snr+5.csv.gz": "3b4ff09473851eac5946e5a1bac2687894213293195bef10f100e3d3432d1dcc",
+  "review_shards/sub-032321-000-lateral-snr+0.csv.gz": "ba5058382d0033a015a548abe1068eb883ae19a82a16aa58dc1e24ec970831c7",
+  "review_shards/sub-032339-000-blink-snr+5.csv.gz": "bc074964706314efc516f58035abfab79abf193e8b03ffb3af862c96cbbda0ff",
+  "review_shards/sub-032312-000-clean-clean.csv.gz": "47e1535c20170eea04e59f3997ea923fcbff0b69052be4c74cff9fe2a34555bc",
+  "review_shards/sub-032329-000-blink-snr+5.csv.gz": "0f42c1e1f73ddfc9fa989f42d1316a57e091d492c3a6ffd79b1e35d9bced03ab",
+  "review_shards/sub-032315-000-mixed-snr+0.csv.gz": "25639dcf671206714caa9b4db69983c92b1a6ee1f961d447c299874bd5907df5",
+  "review_shards/sub-032328-000-lateral-snr+5.csv.gz": "720b85578eba9133bc05f8de25255802543f3caf2eae37ec6af7fe73ff54594f",
+  "review_shards/sub-032322-000-blink-snr+5.csv.gz": "561a894da3b675d12a6c203c4a68e890331847e191e83df4d44a339cd683fded",
+  "review_shards/sub-032327-000-clean-clean.csv.gz": "e09cb679b71fb7e49ed5ea97b3312adeca7e71f13936df984905f3575b87389b",
+  "review_shards/sub-032310-000-blink-snr-5.csv.gz": "b20ab205373b446ec709f68b97bd152ed22c7443fb9a4fdb9379aff397ce6297",
+  "review_shards/sub-032317-000-blink-snr-5.csv.gz": "8b038a4bca5072ecf909c0e2fb199da3aacdfe2a9a819ea8c82c9163b6c3f696",
+  "review_shards/sub-032321-000-mixed-snr+5.csv.gz": "dd6ca9c79fc8a3eaeb3ba152749b2c75b468fed44c7c0373d1d2e31b12c8c454",
+  "review_shards/sub-032340-000-mixed-snr+0.csv.gz": "f1fbef7fc44c90e3ba2ec23af184fbf716bf54a2a724599f6c096ed763fc8d0d",
+  "review_shards/sub-032313-000-mixed-snr-5.csv.gz": "2682f790a4ea07d0376a07d655bebf078f8dbf43ccdd688aed6d134c0f3b2f5c",
+  "review_shards/sub-032341-000-clean-clean.csv.gz": "9ad3a9336c373e43da31cda5e16688b7f55124ba5420213cb3320b298716184f",
+  "review_shards/sub-032321-000-blink-snr+5.csv.gz": "8ce1ebf0b6c479b7984268fd9d3a1ee38eace06046fad69f5b79d87dd392f3b5",
+  "review_shards/sub-032338-000-lateral-snr-5.csv.gz": "74178d947267dacc4f2218e95a2599a417417b0ce6c73637576d3270174cd440",
+  "review_shards/sub-032317-000-lateral-snr+0.csv.gz": "4b53feb52104f5ff25323fdc64b9f3825cff09fc5342a9c4155a76afdf228366",
+  "review_shards/sub-032338-000-mixed-snr-5.csv.gz": "775eb8ac021d6318046539ab5067df68ddf72238cada9bbb1e95a6d609d6ba06",
+  "review_shards/sub-032328-000-lateral-snr-5.csv.gz": "c1667c4b55ce6ce41d136900ba312ff77fdd4d0ef13a253565ec1b96629ba69a",
+  "review_shards/sub-032327-000-blink-snr+0.csv.gz": "acee55a83aa743c65bdfd767d863cb0b80684a5c2e467d989df1d8c7ef97bda9",
+  "review_shards/sub-032307-000-blink-snr-5.csv.gz": "0e8af5859232d405d943de912eac93dacf9b8151b62ae5b1b14408107f92c3de",
+  "review_shards/sub-032326-000-lateral-snr+0.csv.gz": "dc02e78752a0d22cbe220419d8f3d381e952f53ac62a2c9a690cf8f7c9de7bbd",
+  "review_shards/sub-032339-000-lateral-snr+5.csv.gz": "eae19341990a967481cedc974611471afda4ef40cd6f5e09e1ab0d2b92d616cc",
+  "review_shards/sub-032310-000-mixed-snr+5.csv.gz": "2badda102b41e434345fbf71f5ad14309f1cd717dc06b5bbb27e4c196fc7470e",
+  "review_shards/sub-032334-000-mixed-snr-5.csv.gz": "0d83385ba783cde0fa085873f774166e481f1f454401be6946b9eb7dbee3727d",
+  "review_shards/sub-032318-000-lateral-snr-5.csv.gz": "dc322f97299faf7d711e86fb6e363e60f5ae3aea6afbfa54cc03cb85ae5ffdbf",
+  "review_shards/sub-032330-000-blink-snr+0.csv.gz": "a3c46e59837dc550a59130842d6be09f804e54f987ca2e63fc8994760e9b86cf",
+  "review_shards/sub-032326-000-blink-snr+5.csv.gz": "cf1128a195e2bf96e8185b4defdab5c000eaedb45f325980fcc38f2727fb422e",
+  "review_shards/sub-032325-000-blink-snr-5.csv.gz": "ff7d05245c3a90e88a0dddbb9689c26e23f9f33bda936e685f4d4b639b458c28",
+  "review_shards/sub-032325-000-lateral-snr+0.csv.gz": "ee1e21305b208aba4795aeecefc48a32346e5a5b0a197d390631712768fa8350",
+  "review_shards/sub-032313-000-blink-snr+0.csv.gz": "1028b6c5333620cc1f80bf0e286f8aa32d512fc7c74eac77087fd89a47b7b93a",
+  "review_shards/sub-032341-000-mixed-snr+5.csv.gz": "c810c94d574d9d891e570101facdba3963956e88b7ed8d84d34bfbd9afc20752",
+  "review_shards/sub-032305-000-lateral-snr+0.csv.gz": "dc34d2f547e5aae496251218ccfa4e9b07c2f3924a2300f976375b057da50de9",
+  "review_shards/sub-032305-000-lateral-snr+5.csv.gz": "402ea3e79fd9683559a84faf796e88c24680ee38af3dcc318186dd6dc791bd62",
+  "review_shards/sub-032317-000-lateral-snr+5.csv.gz": "3f568e89fae2230c5181a61c4172f3a3d23cf4f62d66d3812e473ec586afd429",
+  "review_shards/sub-032306-000-lateral-snr+5.csv.gz": "fce8bf597edeccf35f0a75a4e79d3fd61733d594348ac214c5309401eeff350d",
+  "review_shards/sub-032309-000-mixed-snr+5.csv.gz": "9bb58e2d28c514b9f914cdc86112ac014d91bb7755073389cc467f7a0d9c752c",
+  "review_shards/sub-032340-000-mixed-snr-5.csv.gz": "38cfdb6774ee8bd727e88e4652d6e3162f404dc11ce9b48acdaca2baaf29c63b",
+  "review_shards/sub-032308-000-mixed-snr-5.csv.gz": "1e321623def8bb3ef5639418580777204244e9bddacb2ef6464a02bbcc6504e3",
+  "review_shards/sub-032339-000-mixed-snr+0.csv.gz": "87a5472c5f609709fd083eea6bb96a5d4c427b236305b79c0128b3fb6e2add01",
+  "review_shards/sub-032313-000-clean-clean.csv.gz": "5c65e64ea318501c489338a588686e16efe6c02a839c76582632d84898c5a2d9",
+  "review_shards/sub-032306-000-blink-snr-5.csv.gz": "5f71faaa5db5e97e513ba18d937a86ec8358ba2f0604e3b47973da4c5997d433",
+  "review_shards/sub-032330-000-blink-snr+5.csv.gz": "14f642762bd32964fd518f396ded5d806219d4a426f6b501c87fdb5f1440e994",
+  "review_shards/sub-032325-000-mixed-snr+5.csv.gz": "ad90f3bcf61f5c970e2a99cfcf94c3e21c82c204ad86603de0971f3dbb551ce0",
+  "review_shards/sub-032305-000-blink-snr+5.csv.gz": "9eb38f404fb62f3426af2b2abf7b7cc72e47551ab22cb1ac19a58506ca9e66f1",
+  "review_shards/sub-032331-000-lateral-snr+0.csv.gz": "e370098ddde26a25339172684b3e9fb01c112c160df1564628a53b4bab3da787",
+  "review_shards/sub-032324-000-mixed-snr+5.csv.gz": "0120a2c9bc6134db2d7fcedc500b6e321d7ff52eb5ebbfb988be80a17e28c83e",
+  "review_shards/sub-032327-000-mixed-snr+0.csv.gz": "2751a5d9b44bbb69e13143736b427a3bc12b564672a03ff549103b970de67991",
+  "review_shards/sub-032324-000-lateral-snr+5.csv.gz": "eee5ca35264ceef2115b6583ce48583d862bd8dc03c6ea549c4a5540442e6c49",
+  "review_shards/sub-032331-000-lateral-snr-5.csv.gz": "b4cdc1961aae3ed2c4928157a3b98a6229fffa10853ce884e14d9952451fe1f2",
+  "review_shards/sub-032305-000-mixed-snr+5.csv.gz": "d6edb5fed71796365f20b056fec41ff61398a80b3615c28cde106c907a4a2d54",
+  "review_shards/sub-032320-000-blink-snr-5.csv.gz": "82f4b8947c11cbd316c8bf448db7bf71544e159b57a079d3a3037c18a742c5a6",
+  "review_shards/sub-032310-000-lateral-snr+0.csv.gz": "6183d1e4d6e2c83d707e097e15e1f6b22f2d2c50ef27a4afedece34fd63f9418",
+  "review_shards/sub-032322-000-lateral-snr-5.csv.gz": "2b18a4b8fdd58d3328aa15ba1861cf57464d63559c48046d04c15d0f1fc36c28",
+  "review_shards/sub-032334-000-clean-clean.csv.gz": "493736f168943832302b823337716c5ca634590ead1866ecbaadd1316d265ff9",
+  "review_shards/sub-032320-000-lateral-snr-5.csv.gz": "e13f5cb11d7b4b19e004f09099fb42b9c65b471a49ee65d785363f422f3fe6f3",
+  "review_shards/sub-032338-000-lateral-snr+0.csv.gz": "4041ff6420fe83744453f9256636ca7fe29aa6f56b1db9bd6914427b0991bac3",
+  "review_shards/sub-032336-000-blink-snr+0.csv.gz": "1bc71f60f9d9b2872d631ed13b4fe6c325a8cb286b4835f14aa4d384d545ec73",
+  "review_shards/sub-032325-000-lateral-snr-5.csv.gz": "1896d69f78bf760936e66aab25cdb32d49ca16e49d7752f646df441ccbb96559",
+  "review_shards/sub-032315-000-blink-snr-5.csv.gz": "4953b655ff69804d5970ac2603ca5b530f4c02386c08649c4af5af770c7f28e5",
+  "review_shards/sub-032320-000-mixed-snr+5.csv.gz": "e9a18725235285579928768972cb971aff94bd66498239a51cbc45318777e2ea",
+  "review_shards/sub-032336-000-blink-snr-5.csv.gz": "cd99d6a7306fc091cef24967e17c56bdedd467fe97b930e73f637565690c63bd",
+  "review_shards/sub-032320-000-lateral-snr+0.csv.gz": "6564778b4742cb438542dbd0ec9ede64e4b30bd671a544db1c7eddde07da8784",
+  "review_shards/sub-032310-000-lateral-snr+5.csv.gz": "09d94b3afd10f903db4f6e5d22bc6e70b626aa8478cd3e4fa7be5f9843f5a229",
+  "review_shards/sub-032340-000-blink-snr-5.csv.gz": "a96fb17d8fffdf188e2847c354dd239c06e94e6de54cfdde3012a2ee84630bcb",
+  "review_shards/sub-032307-000-lateral-snr+5.csv.gz": "e6b90521ec11f589d5f65d840422a36836c7d111caea821fa8544ccc8e073844",
+  "review_shards/sub-032312-000-blink-snr+5.csv.gz": "7a67f713371aef8c3f629e308392b8d5e8028686dc611e7a3f0ded779bfc067b",
+  "review_shards/sub-032322-000-clean-clean.csv.gz": "64600b60b93bdd948e30209def4f8f879ced76e5d2fc2b7a5017504ff490e873",
+  "review_shards/sub-032306-000-clean-clean.csv.gz": "19ac29570d5856744f252f573b357cf624c48bcb2199ed3ab9ed1515227cf107",
+  "review_shards/sub-032329-000-clean-clean.csv.gz": "0d529cf2834feccd78a44cb2829cb9feb49e59bc1d95be0991754d298963a1db",
+  "review_shards/sub-032328-000-blink-snr+0.csv.gz": "3b72b04dc054b039579543656611e47523fbab18ba9242b141648369101f0b9c",
+  "review_shards/sub-032314-000-mixed-snr+5.csv.gz": "b715f4e0209aa3677cbcecb98b1f86e14e71b7262417018cafa9cd3531283e91",
+  "review_shards/sub-032334-000-mixed-snr+0.csv.gz": "e173415bada6e31009d48071e9ad9aaf2a9b91751fda7cb96c009583aa017cfc",
+  "review_shards/sub-032318-000-mixed-snr+0.csv.gz": "8258a70133b14c1de2367d6df20f793efdf8a9eb8c54b958b37a072297e75126",
+  "review_shards/sub-032328-000-clean-clean.csv.gz": "ecab5c0a5aa4b00648fa018871a8eee7af7ef07f78b813a38f1cbb2556a0d880",
+  "review_shards/sub-032338-000-blink-snr+0.csv.gz": "cfc1315db487fe9bcd91577065c0ede8b427f8044b94223c10798d32f27d69bb",
+  "review_shards/sub-032306-000-mixed-snr+5.csv.gz": "0e5cf8c695312effdda9160e1954da7d1820752779d84cf653830da8980ba67d",
+  "review_shards/sub-032320-000-mixed-snr+0.csv.gz": "02500871961a51899177fa62261d8ab3e6294751fab5507d1b869a8eae0f9e05",
+  "review_shards/sub-032334-000-blink-snr-5.csv.gz": "2ff867992a5fc0854a9e23cdb2e6afe8acd086bb22e389a39cded7ee33645114",
+  "review_shards/sub-032327-000-blink-snr-5.csv.gz": "21cd148eb4d57cf456895b99d5700f9cc444069208f4406b99ed9a5e3be18f23",
+  "review_shards/sub-032317-000-lateral-snr-5.csv.gz": "2e4581ac6491963e4f135085785bf3d4a51a7f33853ddac03d573edf986ee492",
+  "review_shards/sub-032319-000-lateral-snr+5.csv.gz": "81eb22c4eb3c86a6e5ce9d991c21ecb4d81034e80670d4081944e849e80cf03d",
+  "review_shards/sub-032334-000-lateral-snr+5.csv.gz": "fd26aaa06f8fde223c3ab021c3157c032103f387a0d2230657faf1a28ab25fb3",
+  "review_shards/sub-032334-000-blink-snr+5.csv.gz": "adeaaf12605ba98e8aaea3ccca8d4363c8c8952fb44d9bb0754079b147ec4081",
+  "review_shards/sub-032320-000-clean-clean.csv.gz": "b88a3a3d2c10e110a301eb4bc90c5d56e6b3ae6b8526e2a7db6275a71c9936c2",
+  "review_shards/sub-032312-000-lateral-snr-5.csv.gz": "780d5b49e1b72cb7bfa277e28a41b957ade441fe9a68317a1d296cc15d5c0dd5",
+  "review_shards/sub-032341-000-blink-snr-5.csv.gz": "8d1cdf4feb98592eeef180fefbfacec8e9eef56f3225b2d5cac4494f6db3c368",
+  "review_shards/sub-032316-000-mixed-snr+5.csv.gz": "655ead761bccb45e920445bd146a334a1d089d8e63725e2c857e94fe8fe19432",
+  "review_shards/sub-032330-000-mixed-snr+5.csv.gz": "e9678fa6e73e97880cfa1be6a65a8367697532fc402298bd545ac5eaace05f75",
+  "review_shards/sub-032308-000-mixed-snr+5.csv.gz": "989185fbfd8ff353f339a74e7be93cd55abb0b6d3458bbe6d1af4da60075f942",
+  "review_shards/sub-032315-000-mixed-snr+5.csv.gz": "d68b7850d84a75bfe94e8b438ac9440f549dcbbee11471cfa44042b77dc4558a",
+  "review_shards/sub-032317-000-mixed-snr+5.csv.gz": "18d38b5bb82e8bcf68469e54cf2d5537b9e2c8657c05792c914121e55a102eb5",
+  "review_shards/sub-032330-000-lateral-snr-5.csv.gz": "ea55af70d7b2eb0d1e2cdec127a4ba33e9a34c6bab79bd940a74eaa5ba2a40a9",
+  "review_shards/sub-032318-000-mixed-snr-5.csv.gz": "b23808ac6960db658d6f8f62f364e2bcbe949ee47b69549e2aa89e85e0423559",
+  "review_shards/sub-032318-000-lateral-snr+0.csv.gz": "1dcccdd4fe13e2be36537fa9a1f4f3bae070efceaddcf6b004b7b508cffe798e",
+  "review_shards/sub-032314-000-blink-snr+0.csv.gz": "b42ed15850dfe9e165cafa72a76beb1042900bb740bd41d73e77efc1575bf1a7",
+  "review_shards/sub-032323-000-blink-snr+0.csv.gz": "1f41500a95fb617abfe880545f2e596df24e03db066277d11681c268364e875e",
+  "review_shards/sub-032324-000-lateral-snr-5.csv.gz": "4e0123e646b5cc5971f39ff7735d737837b0622817f4a463b19d33efa04ce484",
+  "review_shards/sub-032315-000-lateral-snr+0.csv.gz": "1cd6b523938ed48f30b1cd3b33e218f042cf3d21404d899c87bb3c3a6cbf7b6b",
+  "review_shards/sub-032328-000-blink-snr+5.csv.gz": "690c2a90096ec7523df73df8c945935f8bdbae53297bc008f85a266e343fb782",
+  "review_shards/sub-032324-000-mixed-snr-5.csv.gz": "0f4ac263a679dfe2825b69d036d0d6229c718ef40a8bc5ea99c50d4c4716dce3",
+  "review_shards/sub-032325-000-lateral-snr+5.csv.gz": "1776115b783f957a33c4d5975dd00c4bf5c7c363356d1a5ba0ed2b7d4d5b400f",
+  "review_shards/sub-032314-000-blink-snr-5.csv.gz": "d5a2660cfc917f55b38c40d0bd55ef262f4d9845b64a741c1355a598f34fc479",
+  "review_shards/sub-032324-000-clean-clean.csv.gz": "ff2005dc0fcdd8f7f04af56db4476baf51a689f223377eba1c349bbbb2ad19b4",
+  "review_shards/sub-032336-000-lateral-snr+5.csv.gz": "9d93af926a7b391dff6ab222538a667acec44abd2c996490ca777b36f2a3a56c",
+  "review_shards/sub-032340-000-lateral-snr+5.csv.gz": "013df801ba13d1f16a2bdc8336ce7e5399bcee2a85a398e214a242adb9f2bda1",
+  "review_shards/sub-032323-000-lateral-snr+0.csv.gz": "2e027e2d8568de75864ca3324dcaf6e6a36d5b88608ad5625d553caa4f369d13",
+  "review_shards/sub-032330-000-mixed-snr+0.csv.gz": "8c2c66a3a0dcb24d25f6fddd632288d4cc180b15c5c407ad756d80b8f27cf415",
+  "review_shards/sub-032317-000-blink-snr+0.csv.gz": "bdf0dd05b74d14e57768879b68831e402532336e1a4ad7c4c8d6daaaa564587a",
+  "review_shards/sub-032329-000-mixed-snr-5.csv.gz": "2086c43486f27a9bae200d9d2b271534687bdba00266bc601b862d42627faf83",
+  "review_shards/sub-032326-000-lateral-snr+5.csv.gz": "4334687f36288c34b5569bf1ed8a79bb8dbdfaff721a7c6380f76cef432e6c41",
+  "review_shards/sub-032326-000-mixed-snr+5.csv.gz": "56d2182c462c0540b8fb5bc2d111db94c460b4bacedf7e50d0c1ee02e329d6c0",
+  "review_shards/sub-032341-000-mixed-snr+0.csv.gz": "1bca9c978f95bf0d16763f501bd61e720b96ab784dec5f0edd5399806c118775",
+  "review_shards/sub-032312-000-blink-snr+0.csv.gz": "f6577670b58ca24b035bdf026ef98f1c2e924fa1801d7906f64b59c85f906ce7",
+  "review_shards/sub-032307-000-clean-clean.csv.gz": "5d207fb1bd2bded94324153dff7df92101060dcd6d898980aa17ec923d47a14a",
+  "review_shards/sub-032324-000-blink-snr-5.csv.gz": "e1d127a7eba0902a9231efcc89e0c309a11297b448c36d0cf6dd452617e5d0a1",
+  "review_shards/sub-032309-000-blink-snr+5.csv.gz": "864488a9025d1cd39c0cc1870395d32fb05eab2074ffa1ae987713353bdc980d",
+  "review_shards/sub-032316-000-blink-snr-5.csv.gz": "1eeeeb2ba24628e045bc46a1fef3d2fd614f2ce5077f20252626425c2620699e",
+  "review_shards/sub-032306-000-blink-snr+5.csv.gz": "cb70e2c399ba5bb6638425342580197e1b30dc8534c21263eecae3420d1ddbe6",
+  "review_shards/sub-032334-000-lateral-snr-5.csv.gz": "1b82138acae35835502a893ea66e016be816dbea31c9e1e7e34828ca350e2777",
+  "review_shards/sub-032308-000-blink-snr-5.csv.gz": "62b91c2192adfd6ca48c694664ab1cd6f02bf7729f521c410deeebc64d709e72",
+  "review_shards/sub-032320-000-blink-snr+5.csv.gz": "1e43239e0f156f1c9262de223eefa16d3aaead54d55ea5f71fe75cbf8d8006cb",
+  "review_shards/sub-032313-000-mixed-snr+5.csv.gz": "ed3e31819c5bec9591faa163aaa5db7a08681a980127fc2537f754fbe78e522c",
+  "review_shards/sub-032315-000-lateral-snr-5.csv.gz": "dcaaca5d07dd8224ca179f46e7e5ccb140359ca98f153928377d3436e082d0ed",
+  "review_shards/sub-032312-000-mixed-snr+5.csv.gz": "b1e5dc9f681a315ab2f4149d3fcb7486d00fc660ab7082d6f36f606b00aa46d4",
+  "review_shards/sub-032316-000-clean-clean.csv.gz": "14cdba0afaa8a65d8ca4d9d17906e1487e6e78171e270bd3f641dbb37f536c97",
+  "review_shards/sub-032306-000-mixed-snr+0.csv.gz": "c860e96642abcc0ab7d43ca1738db38917f91090d9f507901adcdf81a3ab3842",
+  "review_shards/sub-032320-000-blink-snr+0.csv.gz": "3459bcf24d8d675ccf4b82c0b9f25eca47a05bc71b5ef72e227e1b606f358cb2",
+  "review_shards/sub-032308-000-lateral-snr+5.csv.gz": "6891bd715c95a5bd87fe2e43b4f18cf42ec946d4b10e90d296cfa660ebd2139c",
+  "review_shards/sub-032340-000-blink-snr+0.csv.gz": "371cf03362b5abb2224636db81dc3eb4aa09d1b197af6abd615db14d90252156",
+  "review_shards/sub-032309-000-blink-snr+0.csv.gz": "effa5863d095ceabb34435f44f4cc39770149f7cc5a174d633fb46224be88d72",
+  "review_shards/sub-032305-000-blink-snr+0.csv.gz": "1160d7e4ed34d33112d9392048ed0737edf963227f1e6a0edcd050b2fc91c4dc",
+  "review_shards/sub-032322-000-blink-snr-5.csv.gz": "3c0e22b592a8e7d34dfd204f17945c31398c2717ba9aa389ce5945a0359892e4",
+  "review_shards/sub-032324-000-blink-snr+5.csv.gz": "43d847bc6dfdbc896d395e69b8d13fbb33c42807a44bb850dcf9f1a508a17e5c",
+  "review_shards/sub-032331-000-blink-snr+5.csv.gz": "3813a86ee647432157d9242c8855ed13d1c32494052046563388765302a81ab5",
+  "review_shards/sub-032324-000-lateral-snr+0.csv.gz": "1d6c92b667f25772e516fd9b9803666b26c62e76d2399a437311f6bd753aa37f",
+  "review_shards/sub-032314-000-lateral-snr-5.csv.gz": "aabfada042b7fb5433cdbb2ea724bc6013981868e4ca69b740d8e290947bd0c3",
+  "review_shards/sub-032338-000-clean-clean.csv.gz": "4f9836a952bb5b5bb25182ff4af72a6e8cf11637496fb365b561671faca95244",
+  "review_shards/sub-032316-000-mixed-snr+0.csv.gz": "97c9be33741407ec44f8f493b41e68e440a282d4078b84686010c2fa508d0987",
+  "review_shards/sub-032331-000-clean-clean.csv.gz": "217e448138e7d31de6d4debd37331972d60428f8a545b552fb472f6a9bc3fd72",
+  "review_shards/sub-032321-000-mixed-snr-5.csv.gz": "03e2c61221b27a00225f21c54b83069aaedeb0700a4d0c50753f394966083aa5",
+  "review_shards/sub-032325-000-mixed-snr+0.csv.gz": "eba02d3dcf68ee00fcf1cd7b647dbfc5addc58dc868d97ecc4d71dc4290fcb7d",
+  "review_shards/sub-032340-000-clean-clean.csv.gz": "b0ce9b2c6854962ac02a4d469e9361e8a9609493d22ff0bb7b77c6dbf7989767",
+  "review_shards/sub-032329-000-blink-snr+0.csv.gz": "079a2bf67f0c6189d7844de4c32a06e438c63900ee2c5853d4df26838c809bc5",
+  "review_shards/sub-032315-000-clean-clean.csv.gz": "cc0cd5a492376ff025474cd3bf647f05f3d55516ffe7015724e633b3766bf0bb",
+  "review_shards/sub-032314-000-blink-snr+5.csv.gz": "a076810cd2ea982f9b1146942218da9030e23c6c8fdea74bd3aaad335c52f859",
+  "review_shards/sub-032306-000-lateral-snr-5.csv.gz": "b0dab66167b6e08b136a886b682657f63990061e69d866957c92f22fe510c59a",
+  "review_shards/sub-032310-000-blink-snr+5.csv.gz": "90f6fbfc66f438cac81f3470d9317f929cd0d577ca236ed7ad32e591305e938b",
+  "review_shards/sub-032334-000-lateral-snr+0.csv.gz": "a98386ca964626b746dcc1c716a4e1d3aad515230ee584df5413558044c93fc8",
+  "review_shards/sub-032338-000-blink-snr+5.csv.gz": "d71e0f02adc7d56c0b86c33be31039b9c75d1d3d6ec8963823c318588d58791d",
+  "review_shards/sub-032310-000-mixed-snr-5.csv.gz": "039af213a1fd239711edaba79dda29fdbc8984c7631273aeec2fcc58dac61669",
+  "review_shards/sub-032326-000-blink-snr+0.csv.gz": "5d5aaeab7d2b27372bfd504205db866517d2b31eb80bc617200464c4739bf17c",
+  "review_shards/sub-032314-000-mixed-snr+0.csv.gz": "d6a230e4d172e91e93ed140fcfe37034e6e7d59c3494d71e19a775de22d90bb0",
+  "review_shards/sub-032340-000-lateral-snr+0.csv.gz": "271a3a48d62f65be0a1bbdbf0a64e1ac1fdc4019cbbc1b61a928df0311922ba5",
+  "review_shards/sub-032329-000-mixed-snr+0.csv.gz": "4e4e1ea5b86d90f880dabc7e078c87727d248eecd0059ef766bf8b537845b2cc",
+  "review_shards/sub-032317-000-blink-snr+5.csv.gz": "0f0cc2b7221cec6a941aa771a8d2b87d73b8736c045118805831640c684c3279",
+  "review_shards/sub-032306-000-mixed-snr-5.csv.gz": "ea484073d0df6c9fcb398c91eaf86b772e372bf27e6e0f96f858ef446be3c53f",
+  "review_shards/sub-032339-000-blink-snr+0.csv.gz": "2470bda63930370c3ee6b7c9bf95b49b15043a642dc067a34ce96452493cdc42",
+  "review_shards/sub-032329-000-lateral-snr+0.csv.gz": "e3effd4ccb363c97eee410da02994177854764ce7919a7c8de09bdb442571e01",
+  "review_shards/sub-032331-000-mixed-snr+0.csv.gz": "27faaf4a61ac6b36c8f54080b812185c79e349cbb374e7193ec12058839731b9",
+  "review_shards/sub-032331-000-blink-snr+0.csv.gz": "f207f4fd7f7fca5768707303d4887c9390e77701ac5edabd850c3167c606af01",
+  "review_shards/sub-032322-000-lateral-snr+0.csv.gz": "549139f69c5a3d530f04ffb5b607bc7174e189e36b44b215fa97154cf48eb409",
+  "review_shards/sub-032309-000-blink-snr-5.csv.gz": "f493810a1c9dfa51d575dc29866a2521f3e035331c91a60776e14c15982ea6ec",
+  "review_shards/sub-032322-000-mixed-snr-5.csv.gz": "cc63b322fee527ffc0070c79b99acaa6d479f664c566654b620519c8370da74b",
+  "review_shards/sub-032314-000-mixed-snr-5.csv.gz": "d593514a7767dc40404d5604a372cef9b7588973fa4b38cb93fc7cd08d6fc2bf",
+  "review_shards/sub-032307-000-blink-snr+5.csv.gz": "4f63de79988df1643c7264a69f419d96d7d00926aec21f66620ad456226b7475",
+  "review_shards/sub-032321-000-clean-clean.csv.gz": "a460bb05b2852173ca30ad3254b0c84dbc528b98931b3eccd4caa4949cf8d2ab",
+  "review_shards/sub-032305-000-blink-snr-5.csv.gz": "10fd744bed9dc09ecbb6231aae0a475a0c56c77701a62ca340343a3042a3f4bc",
+  "review_shards/sub-032322-000-mixed-snr+5.csv.gz": "a47bf0ff02857c3534c886b74d35696462339ae4c484b4364073bb952626bb52",
+  "review_shards/sub-032330-000-clean-clean.csv.gz": "2359b615d46abaf36f4ab4725d87c3a03b9a620076cc5ac663d5c66453030295",
+  "review_shards/sub-032317-000-mixed-snr-5.csv.gz": "8db713ce80e35585bcf92ffe7ff7bb96f8b3f1d5fe1a0dbef932a646c4580c87",
+  "review_shards/sub-032307-000-mixed-snr+5.csv.gz": "1b2fcae6fbf3eabe9bd62221d80f7b8315bc3082e63cdd85faf310a822938e7e",
+  "review_shards/sub-032318-000-lateral-snr+5.csv.gz": "1bc0c1fa159616e9eb6d4072cd61531671726540cfa18628f017c8649126821f",
+  "frontend_predictions/sub-032312-000-clean-clean.npz": "d425d275e0ee8ef6e73272e999b7b3bd75ef2adc4fe7c9de64a6f0c5e1dcaebc",
+  "frontend_predictions/sub-032321-000-lateral-snr+0.npz": "04305b7d13df981f6d753f692d86aa7eb2a9ffdb1a9e050add2d803a88c2371a",
+  "frontend_predictions/sub-032327-000-clean-clean.npz": "569624414ad5da41b2e02be14c8bebb46531410394b44f580a2ac24d96a43f59",
+  "frontend_predictions/sub-032306-000-mixed-snr+0.npz": "8b9e7537e9036de85a6e2d07363e3ad244fe2a02af29997faa887e0187dfbeff",
+  "frontend_predictions/sub-032340-000-blink-snr+5.npz": "8d6ab9ba7f2741921949c7e7e6417219dfa9a9e0859cc0fdfd25ed7ea51e1511",
+  "frontend_predictions/sub-032322-000-blink-snr+5.npz": "8fb5f013ab7384eae5cb52cdf39dc22f74b877fd4529d1be4295bc4a7768c591",
+  "frontend_predictions/sub-032314-000-mixed-snr+0.npz": "c12aae905fa7f5465fc5b1653eda35e02305ec171f7808a1ccbdbe7c148c1229",
+  "frontend_predictions/sub-032340-000-lateral-snr-5.npz": "cc6a341147c4dcf1f338ec85c97dbf0ee42ead2ef214cc294e9fe7ba95ad7dd7",
+  "frontend_predictions/sub-032334-000-blink-snr+0.npz": "a4214b2db3cd0619a09dfd38021bb3c498c78a86733aad200a8247e5b91cbcb8",
+  "frontend_predictions/sub-032331-000-mixed-snr-5.npz": "cf36c1af700db8f5aa3c0d1aba46e1f439d67564912b06c5090a6e6a1d9cfa17",
+  "frontend_predictions/sub-032328-000-mixed-snr+5.npz": "cb2f9917a0268d9a4ad7f4dbd287a6bc074b755a9f78652a2c0a777170139c01",
+  "frontend_predictions/sub-032314-000-mixed-snr+5.npz": "12aef63e9430bc33b735c513914ad9465810981eb10b9139fc56ba179571955d",
+  "frontend_predictions/sub-032327-000-lateral-snr-5.npz": "b58e317ace77751318ec80b60ca2f0bf7729b63d1e1d33dbfbb17140f9cfa661",
+  "frontend_predictions/sub-032339-000-lateral-snr+0.npz": "8fe2e48f6dba682a2d067f003de5a8b251f3e416d38156d75917f61c65854c07",
+  "frontend_predictions/sub-032312-000-lateral-snr+0.npz": "758aa119eab32263de9216635260117d42bb34a11e53288b778c6ffabcb402e7",
+  "frontend_predictions/sub-032306-000-mixed-snr-5.npz": "b886d6f27b5be5e343bc701bd9afd4780674b72e633df8a841b78578cc07e271",
+  "frontend_predictions/sub-032327-000-blink-snr+0.npz": "b19b82b2d7258b6da68f92a2fb290b11cdf15892a48d87bff6f4331b287cf5d4",
+  "frontend_predictions/sub-032326-000-blink-snr+5.npz": "41fbafade23421900f958da5e3661f19750ebe072d62e5552e11a678ffdc11f2",
+  "frontend_predictions/sub-032331-000-lateral-snr+5.npz": "d58397d63ae28436a560a1296dad5d9f579f88dfad8c9f339c9e5a139e30092a",
+  "frontend_predictions/sub-032320-000-mixed-snr-5.npz": "72827d913e1e435342bb5d6e112a939395f9c1b0a2c6c1ef677c7f91aec99707",
+  "frontend_predictions/sub-032331-000-blink-snr+0.npz": "519f51490d05aab65eaae1854adf3c2dd488a33b20723d746767c1255f780e61",
+  "frontend_predictions/sub-032331-000-mixed-snr+0.npz": "0f300c6a0b0c9467b15508262fc8f27bc9318cb5967db9627d683b04edf724ea",
+  "frontend_predictions/sub-032330-000-blink-snr+0.npz": "bd4aee0888637dfa0f8b127f61a671e500316d3072e10331025f9e6d96f7e106",
+  "frontend_predictions/sub-032307-000-mixed-snr-5.npz": "e3ed6eb0087f5c0ca1364d34cf21ca1f1d0b3e38c4cdfd21f2b62f853c5f8ee3",
+  "frontend_predictions/sub-032319-000-lateral-snr+0.npz": "09340bdb016f1e2270c78e5b38b48fc86c899ee23eff1579de081aee0131d794",
+  "frontend_predictions/sub-032339-000-blink-snr-5.npz": "55efb2f2319e7b61ab262b0864f9f5c6756abe71a29624a2314116ff498b826a",
+  "frontend_predictions/sub-032310-000-blink-snr-5.npz": "759b7cdf0166b4f1444a2a027adc5be2805a36115736cbc45c16c1cc46560461",
+  "frontend_predictions/sub-032313-000-blink-snr-5.npz": "17c704474b3aae858c76e2573a36f3d80cdb6df7c5841644e7e83c43c8365865",
+  "frontend_predictions/sub-032318-000-lateral-snr+5.npz": "e0f2ef1a05726db32051e6f53cd8f2e6fbc9bb2d0759ed589e6fdc86869e686a",
+  "frontend_predictions/sub-032322-000-blink-snr+0.npz": "01f058bc7531e2b8a1b9198eb25d956706cd3f6a607970b98b3bc4efdf61b69f",
+  "frontend_predictions/sub-032321-000-mixed-snr+0.npz": "fad4e27dc84d27e49ff364ef9834dec285bad979d45a6c88f2c7fe09a2396d24",
+  "frontend_predictions/sub-032309-000-mixed-snr+0.npz": "d2a2cec4d857524c62a6b3c5088223c2246e46d8546ab4f03c111412b800d44d",
+  "frontend_predictions/sub-032327-000-lateral-snr+5.npz": "1653853618f87dc621b00a15682c5734495d1d3a5da24616b7a781d911379e05",
+  "frontend_predictions/sub-032338-000-clean-clean.npz": "a0b233afdaa35dbeeb8e045bc13e54b2d65cace2adcd5036db74e8113bde46be",
+  "frontend_predictions/sub-032323-000-blink-snr-5.npz": "dd80d1057c33cbb87c357dfd63aa9a417b7c9c30bb20139605daded7baf0c98c",
+  "frontend_predictions/sub-032341-000-lateral-snr+0.npz": "0371f4cff25eae822d2ae107f303bdacde5fe3c2fbbb0592735b1fe3b0ea5791",
+  "frontend_predictions/sub-032321-000-lateral-snr-5.npz": "3bd191e8afd6276ee2b741c7022b77d6b8e401633ccaadf8055d552767aa1b4a",
+  "frontend_predictions/sub-032330-000-mixed-snr+0.npz": "53209134df8a60619190e191f7eac2895ee3f5544bb7efc4538e3c02bdcf9b1e",
+  "frontend_predictions/sub-032313-000-blink-snr+0.npz": "bbb504c188196bfc16ee65fef455224c0b296a92af4737f06b8a9ad6adda7b15",
+  "frontend_predictions/sub-032336-000-lateral-snr+5.npz": "fdccc9f0c73c282f34c814f474cacb73c64efe6df2423138f78cb93fa0ae0a78",
+  "frontend_predictions/sub-032317-000-clean-clean.npz": "2a5da1e6df69978d8a43078ffdbeb725d7f54e36191e3e4235c0f010116a71ee",
+  "frontend_predictions/sub-032320-000-clean-clean.npz": "a0790a5b5a1c674f5719aa2bc1bde12bfa04855fa0219a4092e8407dfb57e56f",
+  "frontend_predictions/sub-032330-000-blink-snr+5.npz": "18b6407d124f729727837ffc4460edc4e54342020367e930af1c4da4e93b359c",
+  "frontend_predictions/sub-032331-000-lateral-snr+0.npz": "3c459d555abd1e8a50be0d20cec13f13f848eb6a5ac4d776f00e5dbc06babe13",
+  "frontend_predictions/sub-032339-000-mixed-snr-5.npz": "956aaa2d499f4d4900ad1f8669a7c75c2bca30d7c9fd4c7b581c1d69b924c755",
+  "frontend_predictions/sub-032318-000-lateral-snr+0.npz": "172f1e707a29c1f33b167db54b170a44d717fa8c5126a16d8bb1967ce652f331",
+  "frontend_predictions/sub-032320-000-mixed-snr+0.npz": "26de44cfaf824868d3c66bb17e8edf287f85466d0e36162cedc5505f2b51aa56",
+  "frontend_predictions/sub-032319-000-clean-clean.npz": "6d5732433fb67baf9578d2a2f0a263e7fe09a3bfc0a317ea96d208768152d333",
+  "frontend_predictions/sub-032313-000-mixed-snr-5.npz": "a4f7a2b1a139f4027ef0dce1c53976b4a416b2d618539c9fd1bcd4459eecbd87",
+  "frontend_predictions/sub-032340-000-mixed-snr+5.npz": "3610b3ef07e0668d9c2f3bf1f4b177347418cd3c0df04fdab380f9b9746a65d6",
+  "frontend_predictions/sub-032305-000-lateral-snr+0.npz": "2b2630ad88a7c23f19d64515aaa5a8e13efacb717994599b317534d867173012",
+  "frontend_predictions/sub-032312-000-mixed-snr+0.npz": "4b726d842c16e46fd5beb42c9e8eb71a3a2a4fd2e94069c1f3d1a15d5376e5ea",
+  "frontend_predictions/sub-032322-000-lateral-snr-5.npz": "f2a5ae9f5dd847531c90e6d94c8e5d047674d3b919ec19deb2fdae81f077200a",
+  "frontend_predictions/sub-032328-000-blink-snr+0.npz": "fc09730a5b12b4f17c60b60c797759aaddbf344561948bd666385f740bfb3a48",
+  "frontend_predictions/sub-032309-000-clean-clean.npz": "a7c33ec95cf8ce40f7cce8e3e52bfb168123300df640b00721733cf1f597865c",
+  "frontend_predictions/sub-032326-000-lateral-snr-5.npz": "efb01b8044c5817e2aa5d9a555a897b3a9f44b0e8083e7a2f1da6f755c2edc41",
+  "frontend_predictions/sub-032338-000-mixed-snr-5.npz": "55d4007df5d20e9340e0dfbb1dd10bd27ba382e66047e8f6f0b960d7c1bbfe2e",
+  "frontend_predictions/sub-032308-000-mixed-snr-5.npz": "81cfe87105d07b375d84cdaa828add30851ea00c5fb00222054916971ab1450c",
+  "frontend_predictions/sub-032327-000-mixed-snr+0.npz": "4ad34fd5d8feb0a9462e011ba9028342d98f24f7906074cbccc987e54c725df9",
+  "frontend_predictions/sub-032331-000-clean-clean.npz": "6f404b9143f41893bb104fd500157e65ff37584ee97d15faf22289a97a4e7044",
+  "frontend_predictions/sub-032310-000-mixed-snr-5.npz": "519ab8a51fb4b0fc588bab5606077635d1f873e478963cb994290c9cf3676473",
+  "frontend_predictions/sub-032305-000-blink-snr-5.npz": "355cff1f62f6d1bd550efd7e3da9bbc9c88960d80ad825049b7065ef2af7e1a9",
+  "frontend_predictions/sub-032313-000-lateral-snr-5.npz": "15627c733a626953dc6a74d8a9d6322ac323fe9217206df538cdb674476a9e70",
+  "frontend_predictions/sub-032306-000-lateral-snr+0.npz": "a42e2b4c2141baabfe70d6d6156e2e04a27b71b6c030304a79416273bb46c252",
+  "frontend_predictions/sub-032339-000-mixed-snr+5.npz": "890eee48f15920c9c54639d90ecb33e9c27f15b044bf2e54df45e1f48c4e1ea0",
+  "frontend_predictions/sub-032329-000-lateral-snr-5.npz": "17deda7a7e18e6a9d9ad750e9efcd59a5a7c959c9948d15f281cc70a95c750ff",
+  "frontend_predictions/sub-032306-000-mixed-snr+5.npz": "e2ddc1d997320a8e04c44ab4ce7fb802484ce217737e5e579fd7de24f2b646a4",
+  "frontend_predictions/sub-032305-000-blink-snr+5.npz": "c430e0cb08deed862256c8b7affcbb3b1436a3ce3d330f6477458c3df320d586",
+  "frontend_predictions/sub-032312-000-mixed-snr-5.npz": "63c527c8cf75ad3de95bcbe1b95455d548104a4a202f1332b520df98f59f2e20",
+  "frontend_predictions/sub-032317-000-mixed-snr+0.npz": "e0cdee0a4257053800ab1065088180e7d7e3d92d3d24d5aced44b3e6975bf1a7",
+  "frontend_predictions/sub-032310-000-lateral-snr+0.npz": "e512b0e5155883f5eb5e5c89838036c00fb898578dd43ba0f0ded208635d8c1b",
+  "frontend_predictions/sub-032309-000-lateral-snr+5.npz": "17ae13a7dc47a3f872abc862ffaee8a7acee4553825fb540543c39e3ada55e3d",
+  "frontend_predictions/sub-032313-000-clean-clean.npz": "2717ff6ebb3149e4656d36d995178834a121b19ee182510b7270719f5986c33d",
+  "frontend_predictions/sub-032328-000-lateral-snr+5.npz": "a1b9733f612b256ebf6c2df1a35ee0b8848948e16be33f8575e39e9dd28edb12",
+  "frontend_predictions/sub-032310-000-blink-snr+0.npz": "54fe79a9c67109ee9048a8c658e45a034e2e3a18a500a305998489b109cb84ac",
+  "frontend_predictions/sub-032326-000-mixed-snr-5.npz": "fc291e9bde9977f3fabd6bc14bed4fa28b4b5f634a9d9556ec96286d5948eb18",
+  "frontend_predictions/sub-032309-000-lateral-snr+0.npz": "cf65b4ad6b7c7a8e1074b1d5815d1de310f6c7d297e1ef264bbd7bc850e4f83e",
+  "frontend_predictions/sub-032334-000-blink-snr-5.npz": "ec4d6c2802c098c8b3388bce4a7c2e2e5b9407c5de5a7eec6790b2d943b63799",
+  "frontend_predictions/sub-032320-000-mixed-snr+5.npz": "84f9b3f9f90055b1e20ee779249cf26baf0a4943fae88b052de072c3ec333438",
+  "frontend_predictions/sub-032312-000-blink-snr-5.npz": "a02b7c8d87795f936c05a4c9709079ae967e1bdb6e65b511773e9b28f54af289",
+  "frontend_predictions/sub-032339-000-clean-clean.npz": "d7b0ec8eb9fe2b6f1c9c0979f9caea9e229fdbd952d95f1d6c4da29bc403e264",
+  "frontend_predictions/sub-032318-000-clean-clean.npz": "1644caf48f5f2f0109b3b3c24c025f7d20b82da1c5df432e453a2188f876ccf4",
+  "frontend_predictions/sub-032339-000-lateral-snr-5.npz": "87efc3e5ee14d0a6c527178843cc6210762a2459301b80b26eacefff1d2ba755",
+  "frontend_predictions/sub-032315-000-lateral-snr-5.npz": "9ecef1b4230d039ce8e244070c05ab3ac68f9b2d41b7f566c6d0350fb8865276",
+  "frontend_predictions/sub-032318-000-blink-snr-5.npz": "a60a807dbb2b74b4b4ae9a102b679b998587fa846e11ecbc5e2e205ef5b7de71",
+  "frontend_predictions/sub-032306-000-lateral-snr+5.npz": "8574966eba06927a8c0458f7fc02d0bed121fb994b10f49026fe2c2a8179276a",
+  "frontend_predictions/sub-032310-000-mixed-snr+0.npz": "ce6917a085bf69588abd0d00780176d0d76eb695972d201fd227b6d2b2fe5b1a",
+  "frontend_predictions/sub-032325-000-lateral-snr-5.npz": "9a830453d66889ea80e7dfddec97512ed94f462828dcc1fc5ff7621a3e1ae80a",
+  "frontend_predictions/sub-032315-000-mixed-snr-5.npz": "5cbb644050d02f7b873861409902503a6d91c1f490de71e80da516b7a4c2a547",
+  "frontend_predictions/sub-032325-000-blink-snr+5.npz": "a29fad942335483753eb9eb2e46648c96f62a6379d6a43f0839e8369b2e6b492",
+  "frontend_predictions/sub-032305-000-mixed-snr+0.npz": "ac016d58831a101bec2bd4abd182ff9bdcbdb9017c40e8b55d0cf097a4148c99",
+  "frontend_predictions/sub-032321-000-blink-snr+5.npz": "68c7e7af1818473705161697f6814ef23722b1530579f8e22ede9fd90fe00e2f",
+  "frontend_predictions/sub-032314-000-lateral-snr+5.npz": "464420599e8383f47e6621bc26a90234bd682b644e89497d9de84be5b672bac9",
+  "frontend_predictions/sub-032316-000-clean-clean.npz": "aa543da8750c5bfd88129f58ef18d0058a9def8d2c81226d89b3675f5b746e40",
+  "frontend_predictions/sub-032321-000-mixed-snr-5.npz": "65d77fabce048f90f6497f08c2d7b17bdb56dba491c05b5f5c031c35c37fb616",
+  "frontend_predictions/sub-032317-000-blink-snr+0.npz": "96cb9a8e4e606b26a93a383b5e55e30f0ca9869837e4e12ed2d5e4b3b3292612",
+  "frontend_predictions/sub-032322-000-lateral-snr+5.npz": "75b29abe181aea411912642d86a572751e68a631602b3759a1a5dbca57df6f67",
+  "frontend_predictions/sub-032339-000-lateral-snr+5.npz": "d168c84eaa33f73e111816cd25116c75485feb246c7d05e4e81e8ec229cc741b",
+  "frontend_predictions/sub-032316-000-lateral-snr-5.npz": "ef4b4c5a1a5278a97d68fbfed665d81a5b9655ca988ae56ce186aefc49dfdbf4",
+  "frontend_predictions/sub-032325-000-blink-snr-5.npz": "ad89333b5204cb8667b25a04faca1ee1e82c96183c388c4526c930e14c9ae568",
+  "frontend_predictions/sub-032320-000-lateral-snr-5.npz": "d5b4c469fa77ff092e01ee0812d67cb004bcfa1d560a75d6ce9789c9f8bdb8b3",
+  "frontend_predictions/sub-032324-000-clean-clean.npz": "470ceb7c090219ae06c9b4fa96184d4c64a3ea8bca0ad75d735aa122b952e5e9",
+  "frontend_predictions/sub-032320-000-lateral-snr+5.npz": "2db47d4e93728f29e8f3f192be6ded4653e4c6824603e820a907d660ec992ef4",
+  "frontend_predictions/sub-032307-000-mixed-snr+5.npz": "97c9fc39806ab0f17068cf84f359e05706d21105132523ef2fcac2be027975a1",
+  "frontend_predictions/sub-032339-000-blink-snr+5.npz": "3de6a05bb346128673b903e7f8c13500ff18c9fc68e4f043d15c83362f949e6b",
+  "frontend_predictions/sub-032318-000-mixed-snr+0.npz": "9ba7e38bdd21cf448e93544afcdfb3699fd570cbdb67947d89998b26da21f6f3",
+  "frontend_predictions/sub-032309-000-mixed-snr-5.npz": "df5cedb2624500cff78df805484b506fb771f253cf2fd3e627aed39b02d98914",
+  "frontend_predictions/sub-032305-000-blink-snr+0.npz": "9f10dd28fa2c33b6bf97080d44631c2dfb95b26e4f41117f755cd695db52ac71",
+  "frontend_predictions/sub-032310-000-lateral-snr-5.npz": "66d68b120af0d6187c762ab61b398bf0a51c380e73f9d3aadf17d4a8593bd452",
+  "frontend_predictions/sub-032309-000-mixed-snr+5.npz": "275a3f9c00126c3f9e85da9cf6047467c56c9388bea4e71515dec36fbaf3dd6e",
+  "frontend_predictions/sub-032317-000-lateral-snr+0.npz": "8431884a16e9b14fae485d602570beb8d70342aa0441460ce9a3a7f16d5e8276",
+  "frontend_predictions/sub-032313-000-lateral-snr+0.npz": "d9498c0a3325fb2532f41d830c7800f0832c51c4ac67de07d0626ef51ee5e3e5",
+  "frontend_predictions/sub-032329-000-mixed-snr-5.npz": "312f9b79882d4deca9615ef4855f1daca6d95a389b313f5d887b7de714739137",
+  "frontend_predictions/sub-032334-000-mixed-snr+5.npz": "ea09bb833eb7fb84fece7abc31b80a0d155a9ec3f8e45ae3d81bfd15a238e341",
+  "frontend_predictions/sub-032318-000-blink-snr+5.npz": "f7d75890d60b90649fa866a11effd745bf3b1ff633886ad3b7fc4292f57349a5",
+  "frontend_predictions/sub-032338-000-lateral-snr+5.npz": "72596975bd6051fbbd21b037d2b1db5dc66c87b4369661d6d81b2c570555e983",
+  "frontend_predictions/sub-032323-000-lateral-snr-5.npz": "3a005cb7ee566acead59231da3aadcbad886f203b7b218257b3280bea1d327cd",
+  "frontend_predictions/sub-032316-000-mixed-snr+5.npz": "97797ef68038e1900842c012f8142cdcf1885213e574d94bf289945fc0f3b823",
+  "frontend_predictions/sub-032306-000-blink-snr+0.npz": "36b891ea60839a50472e3cc550c95446bbfb87f45b8a4c1d97da2610341ba27a",
+  "frontend_predictions/sub-032338-000-mixed-snr+5.npz": "5cf438a89b44cbd0084b26c37a8a33833892e60aff48b62bef1a23cdb15ddb04",
+  "frontend_predictions/sub-032313-000-mixed-snr+0.npz": "b0f1e8d2d097c08d86bdaeb929fc28cb2560ee5ae120bafca16aa7e9632c6103",
+  "frontend_predictions/sub-032317-000-mixed-snr+5.npz": "0fbb7b0b73ac089b534cf9e161a86d3b98625bf3fc3c8925d5fcc0268fcbf497",
+  "frontend_predictions/sub-032312-000-lateral-snr+5.npz": "49baa3b4930724e30b8db672d1c8a0e641a9bb45fb8b693b922990720fa505f0",
+  "frontend_predictions/sub-032316-000-lateral-snr+5.npz": "6e430d93f668ea602b1f71e4d79548a8d58fcb4ae5c5bbdc4a96a368b0d913e9",
+  "frontend_predictions/sub-032340-000-blink-snr-5.npz": "06ca7ad26343d8092bf67b059f578ee3241e5483670862403386c8770d9c872b",
+  "frontend_predictions/sub-032318-000-lateral-snr-5.npz": "581603641b9549f2a8da9de310e29b0f59b2822625a2b0580bed00dc5f30b020",
+  "frontend_predictions/sub-032330-000-clean-clean.npz": "901b40195e7e8de642cb73b4e5967be754c422872ebd3be8d2f62bb66359579f",
+  "frontend_predictions/sub-032334-000-mixed-snr-5.npz": "38e21467d0efa1239cb5595ff8e4d8324aa6519f8abd5daadc80727134fc014f",
+  "frontend_predictions/sub-032331-000-mixed-snr+5.npz": "55aabff686d2d7a028b241aa87b4fb7de2e2200f75612bb938a2d854347157fa",
+  "frontend_predictions/sub-032324-000-mixed-snr+5.npz": "9b3ca8d8668baa2e86256ed2f7e3b2b80674ffb8740475cb045a5962cbe76654",
+  "frontend_predictions/sub-032315-000-mixed-snr+0.npz": "d7c6594223826dcdb04bac30df2c35e88766ff55ba9327ef3786c924b06ebfa1",
+  "frontend_predictions/sub-032321-000-blink-snr-5.npz": "d38d8bcd2a0061cf28c0ba6215c80f06eaecda0e824822b6584b68e75cf797a9",
+  "frontend_predictions/sub-032313-000-mixed-snr+5.npz": "927cad43c9efd99f2bafc6429dc763dee82c4b029fd14c73bda88b6f0762bfd5",
+  "frontend_predictions/sub-032319-000-mixed-snr+5.npz": "d58630ac260321d20ea55f03d031fa5e7e69aa64a81c0f1400f89b3d72b33dfc",
+  "frontend_predictions/sub-032316-000-lateral-snr+0.npz": "b9b5fc11b6d7ea65e35ace98360f651bacc72b0f41635ea006becebaabfa9664",
+  "frontend_predictions/sub-032323-000-lateral-snr+0.npz": "7d0be550bda47b136a086ed48c2d37688e9f9cb1be5efc994f4253aa15455712",
+  "frontend_predictions/sub-032326-000-lateral-snr+5.npz": "1099bf013e5f418bad0638c5c4ceaff656029ba03d819b2f6929cfd907995f88",
+  "frontend_predictions/sub-032323-000-blink-snr+0.npz": "2303e7ebb9af79aea962e6e0115cd1bbd7d5f6a215905428756d7ccba289e016",
+  "frontend_predictions/sub-032308-000-lateral-snr+5.npz": "b43cdf6100f469f39bcfa089352c24eccda5205da6907aa0678432c73f5d1035",
+  "frontend_predictions/sub-032308-000-lateral-snr-5.npz": "2c66bc82c03b0034b84bb3b57dcb9389d98f05591966f0a2b3ca474ca8eab450",
+  "frontend_predictions/sub-032327-000-blink-snr+5.npz": "671c1391e710e4cb87a766197ea9ebc212868e6889bfe333724dc23fc4bd2fcb",
+  "frontend_predictions/sub-032324-000-lateral-snr+5.npz": "af3ca5a8bd7a5e6f422047bc076fac614aaf550f7de9cd80a13fb2a4543d8a7b",
+  "frontend_predictions/sub-032329-000-blink-snr+5.npz": "ed6babbb580c288bb023312a2ab5f87430d6a0998170fe077d1e1794f669dffe",
+  "frontend_predictions/sub-032329-000-blink-snr-5.npz": "ddf5dfd3d11504667daecb5fd5b612cd5f9a52f42560c440849c6650ad5bfa9d",
+  "frontend_predictions/sub-032305-000-mixed-snr+5.npz": "7395ca19f910e3fe2f387096720e16c9c7ac3ae4f71d0dbc72949a44897f86de",
+  "frontend_predictions/sub-032336-000-clean-clean.npz": "729e2ba735973ccec3d7d3c01d69a5104a0879d3c434f79d8435752adc2576d8",
+  "frontend_predictions/sub-032321-000-blink-snr+0.npz": "b2d87d58c65c1365be7ca5b9f0fd63f3aba3f21d08418dcdbd282168076ffb8c",
+  "frontend_predictions/sub-032312-000-lateral-snr-5.npz": "ba8e39f1eb1067d4acb722504579a06d82ae0b2561cf6354c7e5b21279ecf6a4",
+  "frontend_predictions/sub-032338-000-mixed-snr+0.npz": "0f61361f74ac14e4868e60d01bdab899e3daa8474833d1b53144c322c88e6fac",
+  "frontend_predictions/sub-032334-000-lateral-snr-5.npz": "f5734fa170cf780f228842adef751d8aed6f5c7669efd2872c028cedf8482546",
+  "frontend_predictions/sub-032326-000-mixed-snr+0.npz": "1c5fe1cc13b692b49cbd0fd54ffbbb88a70f406306ac1968d1322d1933223816",
+  "frontend_predictions/sub-032315-000-lateral-snr+5.npz": "f8ad9016bf8f995ad1da397ff27f203c2803fdaf0c3c6e95254c3c4b84420a7c",
+  "frontend_predictions/sub-032338-000-blink-snr+0.npz": "faaf997a25e07d2481ddfdd874457ba3449df7dfd86a4e2ab2db0ea69c2a75d3",
+  "frontend_predictions/sub-032329-000-blink-snr+0.npz": "4175cb560856c758bf7c6b2f73ad0b0db9c64092479ee38b4b3d4fd4789a9d48",
+  "frontend_predictions/sub-032325-000-blink-snr+0.npz": "7b76a75a99c5cc2e5c357321d02d6031b176fbf23d85a8eaec3e715beab18008",
+  "frontend_predictions/sub-032314-000-lateral-snr+0.npz": "6f04a963988ac97ddb8863060a0eee0c94bff38ad828eda0e83cd20529094269",
+  "frontend_predictions/sub-032328-000-mixed-snr-5.npz": "3e70e106a8bfca702a76cc4eccb2e2e823e1588b4696c820f7fd1fb17d270725",
+  "frontend_predictions/sub-032326-000-blink-snr+0.npz": "398fdb943f6c55dbc33f6e32aa3d68629bfb20397779f2a7c705c2f2234e4f8d",
+  "frontend_predictions/sub-032326-000-clean-clean.npz": "91771b17ba25acadc0d2058721783f2c70aa41e92bf94a8cd578f2b1c8e0ddd6",
+  "frontend_predictions/sub-032315-000-blink-snr+5.npz": "b13d3173e3c2a284d7eb7f975e90beeca27d69b1a4f85823b77f2d0bcd4261a2",
+  "frontend_predictions/sub-032310-000-blink-snr+5.npz": "0db07338e87cde04fb87745852328a55a8d510e5eb69c4f3fc43236d10eef525",
+  "frontend_predictions/sub-032316-000-blink-snr+5.npz": "70f1dfad4d2a18f59a408db30734e2facc124f63e1e70906e8ea46c58d2cdb37",
+  "frontend_predictions/sub-032307-000-lateral-snr-5.npz": "7767930264aca28da1d997703da7bb3c90edb07586cde0b4c8d4144937f35125",
+  "frontend_predictions/sub-032315-000-clean-clean.npz": "7f9161336859c3f427d989a7c28998275fd4d68d1cb104d08b74200da91c0d3b",
+  "frontend_predictions/sub-032325-000-mixed-snr+5.npz": "85525309a27de0780e58b92530ceb230e46be97716eb658dbe0ad0bec29791ad",
+  "frontend_predictions/sub-032308-000-blink-snr-5.npz": "16316950e2147aaa531cd6b62fdfb1ef03c72c766464e7ed09f01b38272432db",
+  "frontend_predictions/sub-032317-000-blink-snr+5.npz": "8b1db7d8223af24ecb736b104b3f2a030722be1f865fd0678311d0dea87c4673",
+  "frontend_predictions/sub-032323-000-mixed-snr-5.npz": "27b524f7959c086ab125938c6d248cb60b37ceec4a530b0ba8f33c7643a93adb",
+  "frontend_predictions/sub-032317-000-blink-snr-5.npz": "66baa051c0343bf7049e793e5f656db28c73858627d85922009912f8a97da71d",
+  "frontend_predictions/sub-032326-000-mixed-snr+5.npz": "d1c8dd669d35950ada6574d7150f961548e22cdd6a36d1db39187170061b1a36",
+  "frontend_predictions/sub-032322-000-clean-clean.npz": "b7a69da27d7c82acc481722b5aa0d7175f0d21d86ea7ce881ffb9f9df71cfe77",
+  "frontend_predictions/sub-032305-000-clean-clean.npz": "39b333d7c79c212e4aef95de2a549848335da2e47ecd316398d7261f7c897c18",
+  "frontend_predictions/sub-032336-000-blink-snr-5.npz": "a4d0abc83978746d85d7bf03babe03c29d4cefa639a41e7f53a1b9e640fa6a30",
+  "frontend_predictions/sub-032319-000-blink-snr-5.npz": "145feddf33e09d86642196cacf37163580d3c4a40beee8b52d47b23f03e36bfb",
+  "frontend_predictions/sub-032317-000-lateral-snr-5.npz": "b55f850e51ca59161fa3c04558877bd775747da81011a508a601b4f6ce3bb158",
+  "frontend_predictions/sub-032328-000-mixed-snr+0.npz": "c140003c7c91d3933194b7138fb276f3105c7c35375507c0a0f6892430fc422c",
+  "frontend_predictions/sub-032328-000-clean-clean.npz": "e1818a3187b79bd1eae93b5d83c4ce159b222b22d5c1d40244de49a676f79d7d",
+  "frontend_predictions/sub-032307-000-blink-snr+5.npz": "320aaf667d51efb5fd943f12a60f81f6584455477c241520dce24f8c9a1e7abe",
+  "frontend_predictions/sub-032318-000-mixed-snr-5.npz": "6f7b7e2b0fb195bae92329fba45d39bc21eb0a0953b52b18f00cc5db28bd4ca1",
+  "frontend_predictions/sub-032325-000-mixed-snr+0.npz": "2666ee82e84b9b3651595fec25e3c8ce31d43e3ac1f50436b628192dcc0c0987",
+  "frontend_predictions/sub-032330-000-lateral-snr+0.npz": "7ef9ae753456b4e76f735c99dd947b1019f1d925fd8da7b3f86cdfe6f4aa1e23",
+  "frontend_predictions/sub-032307-000-clean-clean.npz": "07ccf18cc61c9ccff3cf8020383b42dcbce1e3251b34a58fff5ad95547d3c8cc",
+  "frontend_predictions/sub-032307-000-lateral-snr+5.npz": "7b8cd82e0063928e9e7f5d99bdd4da15d914e9ff2eba388e4b5265a0dc38ca0e",
+  "frontend_predictions/sub-032316-000-mixed-snr-5.npz": "fa714361bc102c15899f3282dfb0ef6b2c44cbd7a5112b5431c0e89d896ce0ee",
+  "frontend_predictions/sub-032319-000-mixed-snr-5.npz": "10b6554593b52519eeb595dea7934ebf769c5223f0add6a254ded47fedd75f9f",
+  "frontend_predictions/sub-032327-000-mixed-snr+5.npz": "d53053e29cd6b1dc5eedaac27dfdde041bdd74d328db38ad48124ed41ea19e64",
+  "frontend_predictions/sub-032305-000-lateral-snr-5.npz": "1e63ce76a1b47db112fbb67bda462fdaefec2aae1fa22cd5368225b8c67181fd",
+  "frontend_predictions/sub-032321-000-clean-clean.npz": "034010d89bc65a5a85304a0f7fc30ad3149792b1b671a97c592d7cacb28a460e",
+  "frontend_predictions/sub-032310-000-mixed-snr+5.npz": "8523f190a1198f5c48fb511278030335679c4f194b281944dc11676c35687665",
+  "frontend_predictions/sub-032310-000-clean-clean.npz": "d91bdb0aee1fb79d32ecaf5203e206a1f7c24784392775f5d79f0adb82fb7461",
+  "frontend_predictions/sub-032341-000-mixed-snr+0.npz": "f24f5ebb12884d2a030dd605a9eeba3c84d857637dce774b222446f461a3df27",
+  "frontend_predictions/sub-032305-000-lateral-snr+5.npz": "74377947fdf2f7ba1f6f43761b5ae1e7dcc16e511a179891dfcc2fcfe09093c2",
+  "frontend_predictions/sub-032340-000-mixed-snr+0.npz": "72058b989e704d1e625398c988db12b8b2b6ce6ecd7f05b97d8264b2bcd6679d",
+  "frontend_predictions/sub-032308-000-mixed-snr+0.npz": "453383a9ea696958a0742a6b2380d08a5a0a018ee5e1dc6672d987ea53511e5b",
+  "frontend_predictions/sub-032320-000-blink-snr+0.npz": "12f4816ea4976336217cc8e3efdcaba03bc13ea39c53abb62c04337e02d5876f",
+  "frontend_predictions/sub-032338-000-blink-snr-5.npz": "9af720c7329f47b3b8d313d7b2e71e8f2be9e46935a8b6c63ecdb54a97f3da24",
+  "frontend_predictions/sub-032322-000-lateral-snr+0.npz": "0bd0781a00e4cb1bf0ea5c71bab72ae3d9accbad6cc58321849dd097edaa9c38",
+  "frontend_predictions/sub-032329-000-lateral-snr+0.npz": "139ed5de68fa99f649a3c42f217a9261bfc806018fcbb9819e68eab551ef9b6a",
+  "frontend_predictions/sub-032340-000-blink-snr+0.npz": "12104c077a28ccc1eec613d89e4dc3847b55b9cb3582ca4d8573b2573cf407d1",
+  "frontend_predictions/sub-032312-000-blink-snr+5.npz": "50779ddba3a0be7ca6233a6e6126a62001844fb7606778604ff9f61d6852c085",
+  "frontend_predictions/sub-032308-000-lateral-snr+0.npz": "08ea42f033b776bcadfb2479a70e3cf80e5c910b34ee134789cccff462709539",
+  "frontend_predictions/sub-032341-000-mixed-snr+5.npz": "3afc7a89cfdd5431495e814f193af6d95f5ef7d9a1de919260baa57479bc509e",
+  "frontend_predictions/sub-032313-000-blink-snr+5.npz": "13baf3471a85f07ac14c294f738f2f22ef58d23f37ced4d854dfaed667a0785e",
+  "frontend_predictions/sub-032326-000-lateral-snr+0.npz": "ee61670a60711a2e0740df92f32bdcb18c81ad39b6e197ecc84e8f779b86f387",
+  "frontend_predictions/sub-032325-000-lateral-snr+0.npz": "8d4dab64f79004d94498f5ec349fc24cabd2d386214d5ea5ada9fa300f4b26fe",
+  "frontend_predictions/sub-032340-000-lateral-snr+0.npz": "4de7e79d776361145b8a2dba28664877c451872916dbcfc6760c93e97379aced",
+  "frontend_predictions/sub-032320-000-blink-snr+5.npz": "d562b30df2c2ae2e02171ee56b3f27358130a17919af858c7a2c74204f914260",
+  "frontend_predictions/sub-032306-000-lateral-snr-5.npz": "736a2ffe48be184ecf5d421b2f0bf364fa0bfba2aa996abb2283cf0dfc5eb7c8",
+  "frontend_predictions/sub-032336-000-lateral-snr+0.npz": "ffbcf637f3b48741dea93e391c9353d0258c697134533dd567cd1a8ae4bba893",
+  "frontend_predictions/sub-032336-000-mixed-snr+0.npz": "f211d032c7b737048c1115aafb3a21d595a0320783e7b68d378eed569fac7d14",
+  "frontend_predictions/sub-032327-000-mixed-snr-5.npz": "1e182fda3181708339992b48b611cce408d94f55bfc21b21e60af50f10594845",
+  "frontend_predictions/sub-032308-000-mixed-snr+5.npz": "4ee5c64f8418ef021b0eb722795a65104705cc17314bf68e61246d9a8af04617",
+  "frontend_predictions/sub-032319-000-lateral-snr-5.npz": "36e61ee6062be4cf54903c62f91c0a6cebf02b39f7e008ca9fe5c8c3d875ee3a",
+  "frontend_predictions/sub-032339-000-mixed-snr+0.npz": "44e714a63ab3ca44bcdf2fe283764cda408b454b144c26cdfb029fd6dbf2b09e",
+  "frontend_predictions/sub-032306-000-clean-clean.npz": "44c5568d8b02634a94ec0fadd80681323d91b7cb95b8a92e39a3e28da0a2f025",
+  "frontend_predictions/sub-032322-000-mixed-snr-5.npz": "6f071ef183948986e8c214124eacdd35cec84fbab994649d7b1290c658f3e1f2",
+  "frontend_predictions/sub-032307-000-blink-snr+0.npz": "43f5921837895821c2a3168051437fbb4c24c1bb8d994413beb8c6c88ebda97e",
+  "frontend_predictions/sub-032322-000-mixed-snr+5.npz": "5c99d3b29640d28279f051dbd9b5da664a7390739e0fb7343154d48c456c62b7",
+  "frontend_predictions/sub-032319-000-mixed-snr+0.npz": "6fa12b464fa3e23e5f3dadca3d3a733e00748ef17353f08bc2f392fd5e992b6c",
+  "frontend_predictions/sub-032325-000-mixed-snr-5.npz": "109d4f5c528d6aab801e4e9b7f4168dff80493743e0f8d4613e1c5317a611072",
+  "frontend_predictions/sub-032305-000-mixed-snr-5.npz": "a4b351ba84ff650ff1c6ebed4efee403174effa2b3f740c0cc6607d0433fa78d",
+  "frontend_predictions/sub-032306-000-blink-snr-5.npz": "fdaef10924ab487ba6d4ecb04674764873787a042f70d2a20bf19eb99b184003",
+  "frontend_predictions/sub-032330-000-mixed-snr+5.npz": "8e70f904f4a0623deba086866276f5dcbe9711a15105af5fc56dffeefb19f3c4",
+  "frontend_predictions/sub-032312-000-blink-snr+0.npz": "7f6ab32af2910b3d94c7ac01b9e0d5a997a969f5203dcc648007214c3a10eee5",
+  "frontend_predictions/sub-032319-000-blink-snr+0.npz": "82d4c8d5ab0ca17820890b7796d06469823f46eb081cfa9268958d9bf15111bd",
+  "frontend_predictions/sub-032309-000-lateral-snr-5.npz": "c8bf023974ac71f42092a635f1166510846e5feca8b437166d10dd0ad5dc8bbf",
+  "frontend_predictions/sub-032327-000-lateral-snr+0.npz": "5a17d024372302773fc732273436bd34d90e966e4a147681f0ffe32ce7677ae0",
+  "frontend_predictions/sub-032314-000-lateral-snr-5.npz": "afd0650020dea8df1b767e7e6c2dda5e91e95219d73151d4fca5d65bba45c9e7",
+  "frontend_predictions/sub-032318-000-mixed-snr+5.npz": "ddd4ed081f09f63f57ac36c4cd0f712ad106b66beb2dbbf81bfd08b9104f9867",
+  "frontend_predictions/sub-032322-000-mixed-snr+0.npz": "839196340966ce7f23f959103bdb5ea13c8cfe52c5aff8ef328bb210839531c6",
+  "frontend_predictions/sub-032330-000-blink-snr-5.npz": "28f2584414ca58dd1c52132616a8be36a20cc0b691b515efa3fb34e456da9cc4",
+  "frontend_predictions/sub-032334-000-lateral-snr+0.npz": "0e178c9ec7111f42b64d57abaca6fec18c70b4951c39334b42f4b28472b71cdc",
+  "frontend_predictions/sub-032309-000-blink-snr-5.npz": "cee805473d46d93d9b531d2a4314d7be07b9fa35af51275b72aaf30d1e6b493f",
+  "frontend_predictions/sub-032319-000-lateral-snr+5.npz": "f341a9ebd4284d58e74f2233a7a0380e37d40b5c950ced7323b39be6f31bce0f",
+  "frontend_predictions/sub-032329-000-clean-clean.npz": "052b5b50270ad56fdc53cfc9f29f0ff00bf8d94bb3555c6f1537516f57901245",
+  "frontend_predictions/sub-032338-000-blink-snr+5.npz": "42d8bf6d2f60e147ca46b12af7155051461a2c4eb380fdc3b9ab62d1b37a94ea",
+  "frontend_predictions/sub-032336-000-mixed-snr+5.npz": "86c506ab8748dda80e6380f1ecd8d6cb9ca3999f2c2488e5d0f2156af83d478d",
+  "frontend_predictions/sub-032309-000-blink-snr+0.npz": "9c0b774c6f533863d3d79fad87fbc95c7ec6d9198891cdfb78b772c9e7ce3b5e",
+  "frontend_predictions/sub-032325-000-lateral-snr+5.npz": "e60d25fcc5c9acaf86c5d8e1b3aab5599d471d116d81ccf35062826260aaab8a",
+  "frontend_predictions/sub-032324-000-lateral-snr-5.npz": "ce029d3b25f63eed03a27e7f645b61d6c8859a07d18156b5241158cd4458b648",
+  "frontend_predictions/sub-032319-000-blink-snr+5.npz": "486c046b14019f7f49e5e42127f06e8a6f93e491253fa6932bbd4062cb3e2469",
+  "frontend_predictions/sub-032308-000-clean-clean.npz": "76d3c7621eb5d1053c66a5a3d0fff1c8402a49e9f0127030c390aa50c7abee2e",
+  "frontend_predictions/sub-032315-000-lateral-snr+0.npz": "c2ba38c713ba4a0c99bad4d1c3f827a21335034429621862521f3088eeb07e8d",
+  "frontend_predictions/sub-032313-000-lateral-snr+5.npz": "a5703d07b7c3f3bca0a910aff14be7653f7fce4b60a5d23ac3b24f21d01cc132",
+  "frontend_predictions/sub-032324-000-blink-snr+0.npz": "0b813096380f4de2ddaa66ef54093c702ef99725eb5827c22ba163b7ba0d6772",
+  "frontend_predictions/sub-032314-000-blink-snr+0.npz": "f9ea889748ee239ceff8f1a31d018893668bf74b548349acf11515b20b7a7d5d",
+  "frontend_predictions/sub-032315-000-mixed-snr+5.npz": "1fff99ffe5f4eb4630d83dd4fcdd8f425fec6294c0fb38c4ad79669420abcec6",
+  "frontend_predictions/sub-032341-000-blink-snr-5.npz": "f2428449eebe8303e7a8a3e2d7f20e35b3c0505d59382fcacbe963f4d24a16e8",
+  "frontend_predictions/sub-032307-000-lateral-snr+0.npz": "5a495db7bdac38c4e5756719d9cdf30ea27d9138ee6f442bc577f077c8718ef9",
+  "frontend_predictions/sub-032316-000-blink-snr+0.npz": "f57d7b4f0f69c44db03661c8a71ad24e2abc0e2b9453eb43b3c27b58a95f8274",
+  "frontend_predictions/sub-032328-000-blink-snr-5.npz": "157620769a0ed7dccc5ae67a06909e310194bc2811c2e7069b89922948ca8b27",
+  "frontend_predictions/sub-032308-000-blink-snr+0.npz": "e942362a502f0a5b0727388aea749a84963d122dfbe6625cbc9dca261dd69adc",
+  "frontend_predictions/sub-032310-000-lateral-snr+5.npz": "cd52357f0af653ca09b3109a5f3cab2be79ca3497017c621f8ba482f784e8ea9",
+  "frontend_predictions/sub-032336-000-blink-snr+5.npz": "c982fd3b7d881bda944ba9a027ec8f3572d45f713cf616f0cdcba6ae30a90ee1",
+  "frontend_predictions/sub-032331-000-lateral-snr-5.npz": "9de976ac5ad683ce48913de8e96b7fc33429797334ac34a20b492a79f783b0e3",
+  "frontend_predictions/sub-032316-000-mixed-snr+0.npz": "48ab325f463bb6e48f102d4698351e8ad0cbf17e7385cfc299749d7460ca132d",
+  "frontend_predictions/sub-032320-000-lateral-snr+0.npz": "c42bb0247ee102a75bb093ce10914a1567d77304fae2b351be781ac8f1c6af23",
+  "frontend_predictions/sub-032320-000-blink-snr-5.npz": "a9adcce8b17bb7e56d3cfde2454c006694e598418bf3969080878475f0578e9f",
+  "frontend_predictions/sub-032328-000-lateral-snr+0.npz": "e0a6f782c912c3bbe49a7d6971fad67ea75c0d623a5f465ec2b80e272583aaf2",
+  "frontend_predictions/sub-032314-000-blink-snr+5.npz": "a84628dad4e9a59839d23924bd89314c961901607e132445ea24afaa76b25d88",
+  "frontend_predictions/sub-032323-000-mixed-snr+0.npz": "9c352522b4c1819babb15e065af0aef3be4cd1a9085265bc1e2ffac129c38cf3",
+  "frontend_predictions/sub-032323-000-mixed-snr+5.npz": "d5d8f1b7ef9c83b8e99ad8070ab3336bdcb1824bc5f8c1c277ed9929d18e8279",
+  "frontend_predictions/sub-032324-000-blink-snr-5.npz": "3ca462acb7bde15dadde3e732b7e404d34c07262d4721e1939a4c43ea705c00a",
+  "frontend_predictions/sub-032314-000-clean-clean.npz": "8511d51d9ea7bda39c2d156c46502f3b5f546674ec555313d51f717f36f8fd30",
+  "frontend_predictions/sub-032329-000-mixed-snr+0.npz": "abb6036427a66a524921d1bd59366b4876869ee8633208a23d59512cef1c1b43",
+  "frontend_predictions/sub-032325-000-clean-clean.npz": "3cda095b90e9f98fb15e32a68be22cdec0c16e25df41d448726c33a59c1d602b",
+  "frontend_predictions/sub-032324-000-lateral-snr+0.npz": "8a3aaf634b1f1904220ba12d8d9704eb9407a42d7d27de619003b57b50e7e40f",
+  "frontend_predictions/sub-032329-000-mixed-snr+5.npz": "ac9a9afe791649223c4189afdcfa13b41188aef2d0db3e0bc98ac7cd2736e52a",
+  "frontend_predictions/sub-032324-000-blink-snr+5.npz": "b26266462a005f966ad93de84d0d76859136c8407d25f4c378aad56c5dcc528e",
+  "frontend_predictions/sub-032330-000-mixed-snr-5.npz": "dc4ffb77bb153260aeb7f0725b365f9a7e4426a69226287c4f59d6e1c040393f",
+  "frontend_predictions/sub-032336-000-lateral-snr-5.npz": "829bb66fdfc41ab51aab66757430e3b319405fb0891afecb384abe28005ac216",
+  "frontend_predictions/sub-032338-000-lateral-snr+0.npz": "b35f69cde9785534845de48d6c961d02d9be12cd54d88d0a3134febdcc785baf",
+  "frontend_predictions/sub-032330-000-lateral-snr+5.npz": "e7c3c7cf2f5d4535a29983f37ae2e15010418e15ab2b5692ab049138bc75b876",
+  "frontend_predictions/sub-032315-000-blink-snr+0.npz": "a344b20fa56edf6d2d5d1841ec59ba1ac034700b5941b8182173a1ba9eb9cf09",
+  "frontend_predictions/sub-032334-000-mixed-snr+0.npz": "8fa2829da6a3716d15af1f9b8497134e5e90b7c5e0dbc3ac934a8bb73652418c",
+  "frontend_predictions/sub-032307-000-mixed-snr+0.npz": "0a648d368291ab359a09c416fcc090c8a5d867d61a3c156080a207851a58898e",
+  "frontend_predictions/sub-032341-000-blink-snr+0.npz": "860eed237722e72f1e4401a266984d046d80b2f9495d06a9b9834f5a2b380512",
+  "frontend_predictions/sub-032328-000-lateral-snr-5.npz": "fd8dfa36f999ece2fe96177495ddd16011f7f69c7fb3464a16bea26a091f060e",
+  "frontend_predictions/sub-032331-000-blink-snr+5.npz": "d142d5966f6280624e5e7db3d0f8d60a824895779e9125a187d552c5e4f8873f",
+  "frontend_predictions/sub-032331-000-blink-snr-5.npz": "28e414108f96606e878887e55f831be05a49e5cb1bd4c500ae333f1cc39495e6",
+  "frontend_predictions/sub-032327-000-blink-snr-5.npz": "34057812e15a5638ae70cabd19dbee89255140cd719a4cc1b0dd237ff8c83475",
+  "frontend_predictions/sub-032329-000-lateral-snr+5.npz": "94692c17b4ab5fb76a35498d6c600eb204d73128d26376e25faad4ed618dd430",
+  "frontend_predictions/sub-032321-000-lateral-snr+5.npz": "da063a5f678de44963c4ac1d0b056536d5ceb8fbdaa3e0cc30abadbcd6df32fc",
+  "frontend_predictions/sub-032314-000-mixed-snr-5.npz": "866897bac1cfc91864e074181c57ead6d7cf40dcc1b7bc44a7f5a3e512846974",
+  "frontend_predictions/sub-032314-000-blink-snr-5.npz": "e2acd362e44780916cda9326b553644c808816c43246eeb037fc304af0e41dab",
+  "frontend_predictions/sub-032336-000-blink-snr+0.npz": "d5d15aeacd710626027cbae804523dc9f71eaa8601fc69ad6ccf41c58ab5d831",
+  "frontend_predictions/sub-032336-000-mixed-snr-5.npz": "e203e023da8c4c6f0a225734833aef898c0de9b095c4cba07ee7b8a25467aad2",
+  "frontend_predictions/sub-032334-000-lateral-snr+5.npz": "5a5c828e633eaed5dc7b3528f27e0baf6a45461b8f9ce6ea27aa1b0232a52845",
+  "frontend_predictions/sub-032341-000-lateral-snr+5.npz": "a50fc9fb888976c84ecdac3ef36bc4e01b931b99a1fe8dfaad257f50e35a4b26",
+  "frontend_predictions/sub-032312-000-mixed-snr+5.npz": "5fe3eb77ce1102fb2bfe9bc778e741ab699f568095d2e9413848d7b626109228",
+  "frontend_predictions/sub-032338-000-lateral-snr-5.npz": "c4122f3e7fc70b6556b5ea6e1cde8cf7ee637b9ececf1b11beb6d6db9055b0ef",
+  "frontend_predictions/sub-032330-000-lateral-snr-5.npz": "fb11237ca2dd1ce450d027f91c90a23096509540ecf95594d59813e036900290",
+  "frontend_predictions/sub-032307-000-blink-snr-5.npz": "1818d309ed671ff674feb10065e2e94c54f19aac8894ed4ed853f83a622df36c",
+  "frontend_predictions/sub-032316-000-blink-snr-5.npz": "7b2e9f89d5c42bbc76cf0039fd342e9808bc68ef4dd09ba368ca93d39eca7c13",
+  "frontend_predictions/sub-032322-000-blink-snr-5.npz": "2ce507e185456ada58e331e7e88c4d461b369b7838811141cb45feb29187faf1",
+  "frontend_predictions/sub-032341-000-mixed-snr-5.npz": "6480ff246940cfe48de2b4d69c4cf86569ae95edcddacd55cd44a585f9bafba6",
+  "frontend_predictions/sub-032308-000-blink-snr+5.npz": "5a39b8fd59a30e85b498b54c24651392d552adf000f976cf5e719323cc07f520",
+  "frontend_predictions/sub-032340-000-clean-clean.npz": "1a97c31d6ea07dd1614d75b1265eebe741b63ec0145e20b97123e18a6717e2e6",
+  "frontend_predictions/sub-032328-000-blink-snr+5.npz": "801d3658fc3bcd403903aa0095fd88c9a6d5e01591394c6b3a539c0710f990da",
+  "frontend_predictions/sub-032323-000-blink-snr+5.npz": "e728082df620d1af16e726ac6a7f8daeaa6e2275433cffb84781b0f84988f9d6",
+  "frontend_predictions/sub-032324-000-mixed-snr-5.npz": "304140562ab598505eeca2370db02c0eb7d8e67d4102835fe43dbe32b09cb15c",
+  "frontend_predictions/sub-032309-000-blink-snr+5.npz": "2367b65a43b9a1410f85dc67977c485dcfc6a4109bdffec318ce0e0c02725e5a",
+  "frontend_predictions/sub-032306-000-blink-snr+5.npz": "ededf3a3a3b5fb5492b6d9497a5d7f15045d632b5033e7db1473cc5023ed8df0",
+  "frontend_predictions/sub-032324-000-mixed-snr+0.npz": "96eccea90a9f2394f991ef99c8be7c760bacd9bc31630fc73afec127f703d8ea",
+  "frontend_predictions/sub-032341-000-blink-snr+5.npz": "d7898c817bb908b0341531994da7308ffdd6a67d621a2f7e6445a00bf77a328e",
+  "frontend_predictions/sub-032317-000-mixed-snr-5.npz": "005834f3a1aec7b79572106f5d7b9621e0c71d63f36be769005e3e98d99b0998",
+  "frontend_predictions/sub-032340-000-mixed-snr-5.npz": "fb320d1dc3d609172083f1cb75868a240c7b2f1156236ca171981c8c4fb61b40",
+  "frontend_predictions/sub-032334-000-clean-clean.npz": "6c5ff2aea494494957b04c70506f0781e668b9b31e016b336a6fb6dfc613dd2c",
+  "frontend_predictions/sub-032321-000-mixed-snr+5.npz": "5259067c2e9a869938e915c8453793ed4a73338b16b829391d9643b0696d139a",
+  "frontend_predictions/sub-032326-000-blink-snr-5.npz": "7f3bbe1a88cf7af28401dff9fff2735ee57603a21abd695ffff2ee27d06d0bb6",
+  "frontend_predictions/sub-032340-000-lateral-snr+5.npz": "cab2d583b29095020f832fde3093f70d97357504e85d2ec124c9375dc36a3e26",
+  "frontend_predictions/sub-032341-000-lateral-snr-5.npz": "77b2d2cf617bfa2b4ab68cd78d04d0f4881b140a614b938c1fad8094c16e851f",
+  "frontend_predictions/sub-032339-000-blink-snr+0.npz": "ecd2f26ec7c9b4ed264e004b3648e9a3b2fa4704df3bc64b9a2c40c73e667a60",
+  "frontend_predictions/sub-032315-000-blink-snr-5.npz": "ba9f74f167f10bd0c66de0ea3d7e8fbb0eb08aacc28e8df5a8b2c66f7f3a1959",
+  "frontend_predictions/sub-032318-000-blink-snr+0.npz": "bbbdddb09e262f7abf95dc3007462dd147e9dfcecc7ef4185e6e15f8bf1f89c4",
+  "frontend_predictions/sub-032341-000-clean-clean.npz": "04eec7e2f69947196b482578d643b95bb0f4dd4b87746acba4d86f0d4bbc3cdd",
+  "frontend_predictions/sub-032323-000-lateral-snr+5.npz": "48166c20578eb92d5cc32e1313980d570a5b4956f491a1bfb582a1d66e947dae",
+  "frontend_predictions/sub-032323-000-clean-clean.npz": "19aba4fb35e95962966d79fb2c03363bbfe77ab2407a46ec364eb72a9e8426e9",
+  "frontend_predictions/sub-032317-000-lateral-snr+5.npz": "e006876c32b19bc490d94d87c26a6cb90c68e9d8b7b474bd345d156e41284cf7",
+  "frontend_predictions/sub-032334-000-blink-snr+5.npz": "7fd25df977cd8c5464d5f3201186e539c9d22063ed484bbb01edb0d640776cc9"
+}
+```
+
+### results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/execution_state.json
+
+[Saved payload](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/execution_state.json); SHA256 `610598dadf8850b2e5b7bb49a5ca6babf2a722eaa1ab06c5acf6bf6b27ff930d`.
+
+```json
+{
+  "stage": "nonfrontal-review",
+  "status": "complete",
+  "artifacts": 665
+}
+```
+
+### results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/frontend_review_summary.json
+
+[Saved payload](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/frontend_review_summary.json); SHA256 `6e5ab685cfafa40f17b791b6d1320ded5fe99960971f4aaa16d54afd8212ef25`.
+
+```json
+{
+  "examples": 320,
+  "recipients": 32,
+  "donors": 5,
+  "parent_array_checks": 1600,
+  "baseline_paper_metric_checks": 549000,
+  "arms": [
+    "identity",
+    "central_frontal_vmd_context",
+    "central_frontal_raw_context",
+    "reference_rank2:both",
+    "ica_component_ridge:both",
+    "raw_frontal+reference_rank2",
+    "raw_frontal+ica_component_ridge"
+  ],
+  "new_fits": 0,
+  "weights_trained": false,
+  "autovmd_executed": false,
+  "uncertainty_contrasts": "rank2 frontend matched in root; ICA frontend matched in subfolder; ICA versus common rank2 control is whole-pipeline contrast",
+  "reserved_confirmation_opened": false,
+  "qualification": false,
+  "native_validation_required": true,
+  "runtime_s": 534.824925352,
+  "channel_first_snr": "per-channel dB, then balanced recipient/condition/input means",
+  "pooled_energy_snr": "sum over available scope channels/time within window, then balanced recipient/condition/input means",
+  "subgroups": {
+    "middle_verified": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "CP1",
+      "CP2",
+      "CP3",
+      "CP4",
+      "CP5",
+      "CP6",
+      "CPz",
+      "Cz",
+      "FC1",
+      "FC2",
+      "FC3",
+      "FC4",
+      "FC5",
+      "FC6"
+    ],
+    "temporal_shared": [
+      "FT7",
+      "FT8",
+      "T7",
+      "T8",
+      "TP7",
+      "TP8"
+    ]
+  }
+}
+```
+
+### results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/resource_summary.json
+
+[Saved payload](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/resource_summary.json); SHA256 `64141e02eeed1d1841bf109055b8f8fffdef0aa22ec420a48c5186760beb77d8`.
+
+```json
+{
+  "wall_time_s": 632.100574893,
+  "peak_resident_memory_kib": 1088332
+}
+```
+
+### results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/stage_tests_summary.json
+
+[Saved payload](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/stage_tests_summary.json); SHA256 `0741b639a29a80c64abba922d5bc117dd64191b8d7a42f0161b534af2fc5e556`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "30a348d2b6e6a93e9c0871502a6633a71f2a66dde360449a48947b9bfd09cf5f"
+}
+```
+
+### results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/retrieval_receipt.json); SHA256 `dac2877ca058b97eee80785d2e7f63efbed3379b6272f18b6a45f7a7ee740ad2`.
+
+```json
+{
+  "run_id": "nonfrontal-review-001",
+  "git_sha": "f86d37499a2da96a54b073289ea3861588478b37",
+  "verified_payloads": [
+    "configuration.json",
+    "coverage_paired_differences.csv",
+    "coverage_uncertainty_channel_strata.csv",
+    "coverage_uncertainty_intervals.csv",
+    "coverage_uncertainty_method.json",
+    "environment.json",
+    "experiment.json",
+    "frontend_review_summary.json",
+    "frontend_snr_aggregation.png",
+    "parent_identities.json",
+    "resource_summary.json",
+    "review_channel_scores.csv.gz",
+    "review_condition_means.csv",
+    "review_example_snr.csv",
+    "review_gates.json",
+    "review_method_means.csv",
+    "review_progress.json",
+    "review_selection_manifest.jsonl",
+    "run_spec.json",
+    "stage_tests_summary.json",
+    "tests.txt",
+    "frontend_predictions/sub-032305-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032305-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032305-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032305-000-clean-clean.npz",
+    "frontend_predictions/sub-032305-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032305-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032305-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032305-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032305-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032305-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032306-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032306-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032306-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032306-000-clean-clean.npz",
+    "frontend_predictions/sub-032306-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032306-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032306-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032306-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032306-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032306-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032307-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032307-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032307-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032307-000-clean-clean.npz",
+    "frontend_predictions/sub-032307-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032307-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032307-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032307-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032307-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032307-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032308-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032308-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032308-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032308-000-clean-clean.npz",
+    "frontend_predictions/sub-032308-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032308-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032308-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032308-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032308-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032308-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032309-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032309-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032309-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032309-000-clean-clean.npz",
+    "frontend_predictions/sub-032309-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032309-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032309-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032309-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032309-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032309-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032310-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032310-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032310-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032310-000-clean-clean.npz",
+    "frontend_predictions/sub-032310-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032310-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032310-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032310-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032310-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032310-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032312-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032312-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032312-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032312-000-clean-clean.npz",
+    "frontend_predictions/sub-032312-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032312-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032312-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032312-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032312-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032312-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032313-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032313-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032313-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032313-000-clean-clean.npz",
+    "frontend_predictions/sub-032313-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032313-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032313-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032313-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032313-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032313-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032314-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032314-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032314-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032314-000-clean-clean.npz",
+    "frontend_predictions/sub-032314-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032314-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032314-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032314-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032314-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032314-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032315-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032315-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032315-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032315-000-clean-clean.npz",
+    "frontend_predictions/sub-032315-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032315-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032315-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032315-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032315-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032315-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032316-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032316-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032316-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032316-000-clean-clean.npz",
+    "frontend_predictions/sub-032316-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032316-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032316-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032316-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032316-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032316-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032317-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032317-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032317-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032317-000-clean-clean.npz",
+    "frontend_predictions/sub-032317-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032317-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032317-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032317-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032317-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032317-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032318-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032318-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032318-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032318-000-clean-clean.npz",
+    "frontend_predictions/sub-032318-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032318-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032318-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032318-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032318-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032318-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032319-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032319-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032319-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032319-000-clean-clean.npz",
+    "frontend_predictions/sub-032319-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032319-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032319-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032319-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032319-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032319-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032320-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032320-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032320-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032320-000-clean-clean.npz",
+    "frontend_predictions/sub-032320-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032320-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032320-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032320-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032320-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032320-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032321-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032321-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032321-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032321-000-clean-clean.npz",
+    "frontend_predictions/sub-032321-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032321-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032321-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032321-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032321-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032321-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032322-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032322-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032322-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032322-000-clean-clean.npz",
+    "frontend_predictions/sub-032322-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032322-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032322-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032322-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032322-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032322-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032323-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032323-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032323-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032323-000-clean-clean.npz",
+    "frontend_predictions/sub-032323-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032323-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032323-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032323-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032323-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032323-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032324-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032324-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032324-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032324-000-clean-clean.npz",
+    "frontend_predictions/sub-032324-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032324-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032324-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032324-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032324-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032324-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032325-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032325-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032325-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032325-000-clean-clean.npz",
+    "frontend_predictions/sub-032325-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032325-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032325-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032325-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032325-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032325-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032326-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032326-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032326-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032326-000-clean-clean.npz",
+    "frontend_predictions/sub-032326-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032326-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032326-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032326-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032326-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032326-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032327-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032327-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032327-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032327-000-clean-clean.npz",
+    "frontend_predictions/sub-032327-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032327-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032327-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032327-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032327-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032327-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032328-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032328-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032328-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032328-000-clean-clean.npz",
+    "frontend_predictions/sub-032328-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032328-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032328-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032328-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032328-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032328-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032329-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032329-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032329-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032329-000-clean-clean.npz",
+    "frontend_predictions/sub-032329-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032329-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032329-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032329-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032329-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032329-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032330-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032330-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032330-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032330-000-clean-clean.npz",
+    "frontend_predictions/sub-032330-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032330-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032330-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032330-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032330-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032330-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032331-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032331-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032331-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032331-000-clean-clean.npz",
+    "frontend_predictions/sub-032331-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032331-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032331-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032331-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032331-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032331-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032334-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032334-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032334-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032334-000-clean-clean.npz",
+    "frontend_predictions/sub-032334-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032334-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032334-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032334-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032334-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032334-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032336-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032336-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032336-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032336-000-clean-clean.npz",
+    "frontend_predictions/sub-032336-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032336-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032336-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032336-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032336-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032336-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032338-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032338-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032338-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032338-000-clean-clean.npz",
+    "frontend_predictions/sub-032338-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032338-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032338-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032338-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032338-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032338-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032339-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032339-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032339-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032339-000-clean-clean.npz",
+    "frontend_predictions/sub-032339-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032339-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032339-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032339-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032339-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032339-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032340-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032340-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032340-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032340-000-clean-clean.npz",
+    "frontend_predictions/sub-032340-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032340-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032340-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032340-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032340-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032340-000-mixed-snr-5.npz",
+    "frontend_predictions/sub-032341-000-blink-snr+0.npz",
+    "frontend_predictions/sub-032341-000-blink-snr+5.npz",
+    "frontend_predictions/sub-032341-000-blink-snr-5.npz",
+    "frontend_predictions/sub-032341-000-clean-clean.npz",
+    "frontend_predictions/sub-032341-000-lateral-snr+0.npz",
+    "frontend_predictions/sub-032341-000-lateral-snr+5.npz",
+    "frontend_predictions/sub-032341-000-lateral-snr-5.npz",
+    "frontend_predictions/sub-032341-000-mixed-snr+0.npz",
+    "frontend_predictions/sub-032341-000-mixed-snr+5.npz",
+    "frontend_predictions/sub-032341-000-mixed-snr-5.npz",
+    "matched_ica_frontend_uncertainty/coverage_paired_differences.csv",
+    "matched_ica_frontend_uncertainty/coverage_uncertainty_channel_strata.csv",
+    "matched_ica_frontend_uncertainty/coverage_uncertainty_intervals.csv",
+    "matched_ica_frontend_uncertainty/coverage_uncertainty_method.json",
+    "review_shards/sub-032305-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032305-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032305-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032305-000-clean-clean.csv.gz",
+    "review_shards/sub-032305-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032305-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032305-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032305-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032305-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032305-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032306-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032306-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032306-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032306-000-clean-clean.csv.gz",
+    "review_shards/sub-032306-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032306-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032306-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032306-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032306-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032306-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032307-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032307-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032307-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032307-000-clean-clean.csv.gz",
+    "review_shards/sub-032307-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032307-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032307-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032307-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032307-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032307-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032308-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032308-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032308-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032308-000-clean-clean.csv.gz",
+    "review_shards/sub-032308-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032308-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032308-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032308-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032308-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032308-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032309-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032309-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032309-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032309-000-clean-clean.csv.gz",
+    "review_shards/sub-032309-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032309-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032309-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032309-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032309-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032309-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032310-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032310-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032310-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032310-000-clean-clean.csv.gz",
+    "review_shards/sub-032310-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032310-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032310-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032310-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032310-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032310-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032312-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032312-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032312-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032312-000-clean-clean.csv.gz",
+    "review_shards/sub-032312-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032312-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032312-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032312-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032312-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032312-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032313-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032313-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032313-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032313-000-clean-clean.csv.gz",
+    "review_shards/sub-032313-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032313-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032313-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032313-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032313-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032313-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032314-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032314-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032314-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032314-000-clean-clean.csv.gz",
+    "review_shards/sub-032314-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032314-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032314-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032314-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032314-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032314-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032315-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032315-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032315-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032315-000-clean-clean.csv.gz",
+    "review_shards/sub-032315-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032315-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032315-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032315-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032315-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032315-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032316-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032316-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032316-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032316-000-clean-clean.csv.gz",
+    "review_shards/sub-032316-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032316-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032316-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032316-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032316-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032316-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032317-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032317-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032317-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032317-000-clean-clean.csv.gz",
+    "review_shards/sub-032317-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032317-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032317-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032317-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032317-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032317-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032318-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032318-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032318-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032318-000-clean-clean.csv.gz",
+    "review_shards/sub-032318-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032318-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032318-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032318-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032318-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032318-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032319-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032319-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032319-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032319-000-clean-clean.csv.gz",
+    "review_shards/sub-032319-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032319-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032319-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032319-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032319-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032319-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032320-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032320-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032320-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032320-000-clean-clean.csv.gz",
+    "review_shards/sub-032320-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032320-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032320-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032320-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032320-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032320-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032321-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032321-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032321-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032321-000-clean-clean.csv.gz",
+    "review_shards/sub-032321-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032321-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032321-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032321-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032321-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032321-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032322-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032322-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032322-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032322-000-clean-clean.csv.gz",
+    "review_shards/sub-032322-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032322-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032322-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032322-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032322-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032322-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032323-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032323-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032323-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032323-000-clean-clean.csv.gz",
+    "review_shards/sub-032323-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032323-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032323-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032323-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032323-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032323-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032324-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032324-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032324-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032324-000-clean-clean.csv.gz",
+    "review_shards/sub-032324-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032324-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032324-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032324-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032324-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032324-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032325-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032325-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032325-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032325-000-clean-clean.csv.gz",
+    "review_shards/sub-032325-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032325-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032325-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032325-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032325-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032325-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032326-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032326-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032326-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032326-000-clean-clean.csv.gz",
+    "review_shards/sub-032326-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032326-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032326-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032326-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032326-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032326-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032327-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032327-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032327-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032327-000-clean-clean.csv.gz",
+    "review_shards/sub-032327-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032327-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032327-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032327-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032327-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032327-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032328-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032328-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032328-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032328-000-clean-clean.csv.gz",
+    "review_shards/sub-032328-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032328-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032328-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032328-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032328-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032328-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032329-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032329-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032329-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032329-000-clean-clean.csv.gz",
+    "review_shards/sub-032329-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032329-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032329-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032329-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032329-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032329-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032330-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032330-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032330-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032330-000-clean-clean.csv.gz",
+    "review_shards/sub-032330-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032330-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032330-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032330-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032330-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032330-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032331-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032331-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032331-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032331-000-clean-clean.csv.gz",
+    "review_shards/sub-032331-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032331-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032331-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032331-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032331-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032331-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032334-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032334-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032334-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032334-000-clean-clean.csv.gz",
+    "review_shards/sub-032334-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032334-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032334-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032334-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032334-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032334-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032336-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032336-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032336-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032336-000-clean-clean.csv.gz",
+    "review_shards/sub-032336-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032336-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032336-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032336-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032336-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032336-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032338-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032338-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032338-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032338-000-clean-clean.csv.gz",
+    "review_shards/sub-032338-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032338-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032338-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032338-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032338-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032338-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032339-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032339-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032339-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032339-000-clean-clean.csv.gz",
+    "review_shards/sub-032339-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032339-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032339-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032339-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032339-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032339-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032340-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032340-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032340-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032340-000-clean-clean.csv.gz",
+    "review_shards/sub-032340-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032340-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032340-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032340-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032340-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032340-000-mixed-snr-5.csv.gz",
+    "review_shards/sub-032341-000-blink-snr+0.csv.gz",
+    "review_shards/sub-032341-000-blink-snr+5.csv.gz",
+    "review_shards/sub-032341-000-blink-snr-5.csv.gz",
+    "review_shards/sub-032341-000-clean-clean.csv.gz",
+    "review_shards/sub-032341-000-lateral-snr+0.csv.gz",
+    "review_shards/sub-032341-000-lateral-snr+5.csv.gz",
+    "review_shards/sub-032341-000-lateral-snr-5.csv.gz",
+    "review_shards/sub-032341-000-mixed-snr+0.csv.gz",
+    "review_shards/sub-032341-000-mixed-snr+5.csv.gz",
+    "review_shards/sub-032341-000-mixed-snr-5.csv.gz"
+  ],
+  "manifest_payload_count": 665,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 667,
+  "utc": "2026-10-14T01:26:21.035704+00:00",
   "retrieval_method": "bounded HTTP; four download workers",
   "completion_verified": true
 }
@@ -50154,6 +52026,7 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-eog-20261010/native-protocol-pilot-001/results/vmd-eog-20261010/native-protocol-pilot-001/tests.txt](results/vmd-eog-20261010/native-protocol-pilot-001/results/vmd-eog-20261010/native-protocol-pilot-001/tests.txt) | 99 | `98d0a727d601430bc33dd80e8bcfa176bd181fdc66699a158b81bf428e033f1f` |
 | [results/vmd-eog-20261010/nonfrontal-contracts-002/results/vmd-eog-20261010/nonfrontal-contracts-002/tests.txt](results/vmd-eog-20261010/nonfrontal-contracts-002/results/vmd-eog-20261010/nonfrontal-contracts-002/tests.txt) | 5004 | `0c018a43f7fe7c2a1e552d7af21af16ad3b635d894b65970c5ad4e1e0f00542a` |
 | [results/vmd-eog-20261010/nonfrontal-contracts-003/results/vmd-eog-20261010/nonfrontal-contracts-003/tests.txt](results/vmd-eog-20261010/nonfrontal-contracts-003/results/vmd-eog-20261010/nonfrontal-contracts-003/tests.txt) | 2511 | `9b0173aa57b55eab0a9f803f5c8c59302e76db5176c802096a9da4a0c6000e9d` |
+| [results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/tests.txt](results/vmd-eog-20261010/nonfrontal-contracts-004/results/vmd-eog-20261010/nonfrontal-contracts-004/tests.txt) | 2591 | `842d4763947d0c60ace9c0bc37dc60059bf917538393e5e64a3c7dc04f5c9879` |
 | [results/vmd-eog-20261010/paper-fixture-001/results/vmd-eog-20261010/paper-fixture-001/paper_metric_fixture.csv](results/vmd-eog-20261010/paper-fixture-001/results/vmd-eog-20261010/paper-fixture-001/paper_metric_fixture.csv) | 291 | `f5a8325ffce5313aa12d26f962753cde61a2887a6da2d62d18275aa005a90401` |
 | [results/vmd-eog-20261010/paper-fixture-001/results/vmd-eog-20261010/paper-fixture-001/tests.txt](results/vmd-eog-20261010/paper-fixture-001/results/vmd-eog-20261010/paper-fixture-001/tests.txt) | 99 | `ecd8f7a353341183608dec07a94473d8bfcaa6d321f30d92a2f8c899205a100b` |
 | [results/vmd-eog-20261010/paper-fixture-002/results/vmd-eog-20261010/paper-fixture-002/paper_metric_fixture.csv](results/vmd-eog-20261010/paper-fixture-002/results/vmd-eog-20261010/paper-fixture-002/paper_metric_fixture.csv) | 291 | `f5a8325ffce5313aa12d26f962753cde61a2887a6da2d62d18275aa005a90401` |
@@ -51611,6 +53484,67 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz) | 146637 | `9c769292865be373bba221c7c6394979c1de7614689fca807ee22aaaf4dd80d8` |
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/nonfrontal_selection_manifest.jsonl](results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/nonfrontal_selection_manifest.jsonl) | 61174 | `d3c7959a49e6e0a21fe42c6737cdc03bfaed366f14fe42ad9290aec8583758fc` |
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/tests.txt](results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/tests.txt) | 2511 | `37d694ab7b74270b4ca8ebfdf8ecfba1824d330f6272afa2e559cc7a5442ad0c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_paired_differences.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_paired_differences.csv) | 13005384 | `4269a03f92e32a8fd458ea6f6e6e368fa76863b8169a08a609a3af10f95462c1` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_channel_strata.csv) | 4367016 | `e2031ce74a58fe1384f454e12f1bd42e5336d6f9c82e6a54b6b5de081c437038` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_intervals.csv) | 24397 | `a68ac5908977677aed2bb33ee4f0eeeb3e3debacfda882ac066cd6086ccd3cc4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/evaluator_only_gain_bounds.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/evaluator_only_gain_bounds.csv) | 50624 | `fd284ebec2c3116f64bd8b334454256a5dd08d596ebda39d9bc39ab974484a41` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_channel_scores.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_channel_scores.csv.gz) | 2114256 | `eff05be349b22c637c7b12d70f1a2fefffd8aa539cb1bb895a26fe0bbd287746` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_condition_means.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_condition_means.csv) | 84059 | `00d374ea06825a488afcfb144882e178b81a45c4fcbd8ef59f32ab16c354856b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_decisions.jsonl](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_decisions.jsonl) | 26466 | `f4ff0b5c83bef20b9f1cf35fefdab3b351d22e01e50773d01e98ece70d1460dc` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_example_snr.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_example_snr.csv) | 338548 | `4b90276fa402b74722e52b7963b39b25e2a3bf0709826d175f3b62cf68d1f878` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_method_means.csv](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_method_means.csv) | 9985 | `d0a17460016e785c4b0dc353da35c5f07442282675aed0a6bbca397eeabfce8b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_selection_manifest.jsonl](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_selection_manifest.jsonl) | 60992 | `cdcfe3065710f4af1db2d15f79db75de46a48077c8985bbf05a4f0d07ec079b4` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-blink-snr+0.csv.gz) | 49151 | `793d84f6fa1c57104254fb9f2c9208ce22ef947937b0d75009a8fe646f49b3a6` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-blink-snr+5.csv.gz) | 47252 | `d0f53e7eca06c9e54d9ae7a81a384930501fa8903ceb017491748378dc6966c7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-blink-snr-5.csv.gz) | 54851 | `e2c1b07b45f72cd355773875b0b5cb0557c04e6a965a37cd93199b239400d0e3` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-clean-clean.csv.gz) | 4804 | `ceaee80548140ed1368b74e39ed72f6d11666e465119e4622c6a8b1b43c45656` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-lateral-snr+0.csv.gz) | 54658 | `18a76add81933081bded7c8b2bcbdb941e5c5b5c5ebf64803806ffe1245cfd27` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-lateral-snr+5.csv.gz) | 47046 | `3467928a44e70880dc1d19c68d84e3a90e0fad7caf36cd2df7c3d86271243d75` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-lateral-snr-5.csv.gz) | 56034 | `00b9ad0e475f8da8bbd3dfc22ab9e250118ed7cbe998f365befc05da5f84a545` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-mixed-snr+0.csv.gz) | 49065 | `601d811ad6dbf5fa86f8eca1779e41608f12407ef3afdcadf83a380743806372` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-mixed-snr+5.csv.gz) | 47194 | `90c9c9610e5f8e3966779ad7fca160eb3c3b3cd76824bfe7a0db886e89635342` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032305-000-mixed-snr-5.csv.gz) | 54788 | `246b7858c25586749dd70502d565ce99637039b70bdd2f050c7858399c4be831` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-blink-snr+0.csv.gz) | 43744 | `67e1fb5cca1b1f6b8898a7c60a4ede0105013bb375f2402c2b79f33f6324f792` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-blink-snr+5.csv.gz) | 34937 | `8584786bf585540249b1681982dad1d976efce16a84030eab99163f595d040eb` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-blink-snr-5.csv.gz) | 75385 | `8932bb9cd6853e78cd7493a4293cfbdcb9be1ef75fffda31fcac2425d785420b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-clean-clean.csv.gz) | 4633 | `f3a93f4de901b7247ff4f7853ee0349101b4a77b423dd4cfa33433ea66157d20` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-lateral-snr+0.csv.gz) | 53193 | `54ea41f463a013002794d2ddd7d8f298b2c58f420e353e54c2a2725a4d65d8a0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-lateral-snr+5.csv.gz) | 45044 | `15fbc87e5b7307957919be127cc9a6f4a8f2d25406408df2b2087a5d049a1d41` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-lateral-snr-5.csv.gz) | 53624 | `77ceb8e1f99708795167dc32409b73f550de5b073577e61fd6f3670e705eb611` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-mixed-snr+0.csv.gz) | 43606 | `80bf4d6f7dc1f775eb0de535e1fa47a55a2781f141f0839c14ac1098cffe78c2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-mixed-snr+5.csv.gz) | 34968 | `adbcbace5c82c244e861b9be19ab38e694b3d6a4f209884e82643d3d07d35be7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032306-000-mixed-snr-5.csv.gz) | 51567 | `167d3abc4d458d7186d14d9cff9763da574104c4b2eb71700a4566b92fee5a2e` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-blink-snr+0.csv.gz) | 43081 | `9eda2acdd2a6921ef18a2e67421680fe379b4cb23d7c519fcfa2af1cfc023e99` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-blink-snr+5.csv.gz) | 41715 | `ffc856a86615e1fa130a6092446e5c3d85811c8e888734abede07104f74a5da1` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-blink-snr-5.csv.gz) | 52207 | `64dd9755471005532fdcbdb40e0c2e35bf911ba81d790ece450196af5e2cc93e` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-clean-clean.csv.gz) | 4633 | `d026cfc8a25e590c7646987ae64d739de0119f61fceac8ad78f657faa224751e` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-lateral-snr+0.csv.gz) | 44138 | `2299a1eb2c9ffbc1f7e9f72ca4316426ee0072f5601b3083267827021efacfa2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-lateral-snr+5.csv.gz) | 42600 | `e390eb1b695c64d43fc5c451c58faa550ceca9352ae89dad4ef239618c157b69` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-lateral-snr-5.csv.gz) | 52453 | `59e2203f3da08b0b90338b66461caf655ad7b169d64bb346fabcd4d06e1ce7e7` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-mixed-snr+0.csv.gz) | 42864 | `b17ade8d086bb520fe59415ad10b25b6f24cb10366e4bff4a73555308967d2dc` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-mixed-snr+5.csv.gz) | 41615 | `864e6eaa4866bf8e5008863758a4f4cc772c684e891aa527bb5d1ead73c26bbc` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032307-000-mixed-snr-5.csv.gz) | 52107 | `47fb1a7e9676bf3f7208f24776693c64b936b1632ed75a5aa0bca460fa8ddec0` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-blink-snr+0.csv.gz) | 48357 | `00cc9c3bfc4dea25febfcebeaad53160bb53e4186f00c1c034d83758d5aaab1a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-blink-snr+5.csv.gz) | 46956 | `54aba63a7afa418827633c91b8406393d6b1d6d8696d177f05ba01726f7334a9` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-blink-snr-5.csv.gz) | 50632 | `9467652f5745cea30ccfdaf975ab8a87f0e11ee5697051dddf59b1147bee6386` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-clean-clean.csv.gz) | 4798 | `06299491be05e39f2c238d1970368552ffe7b8ab2664f1b244697f08bb01e4a2` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-lateral-snr+0.csv.gz) | 55123 | `38bc9c25878ef7e0139775c3ab62e775d588462c6212b815a8605d26adb62002` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-lateral-snr+5.csv.gz) | 48524 | `168a98071a9deb2a908f187db194c2669d5012beea73f5e7fc1d7dd2e968b92d` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-lateral-snr-5.csv.gz) | 55701 | `bf5439efeafb32a9f08b7690d99bf8103cae6e02de4314d15580152ed3c5db3c` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-mixed-snr+0.csv.gz) | 48482 | `095bcf458752f4bfe9c16b045d4baad22f2d72abde24103654819ba71496549b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-mixed-snr+5.csv.gz) | 47083 | `f8c66023376c63046c8d68406874772e14daf1f2875a1f7a7b0e15bba19fa6df` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032308-000-mixed-snr-5.csv.gz) | 54854 | `4560851a472ee7b95468282795e3013bef328806e1d7be37f852f5ea496834f9` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-blink-snr+0.csv.gz) | 41481 | `a154688686de529c3daf40d1d95354c717435aa8d4fe2d4e6fba2f3571253fbc` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-blink-snr+5.csv.gz) | 34762 | `b6b40035e691d83f09eafa638cb25b4c697c5076b517fadcf4552b9bbae854fb` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-blink-snr-5.csv.gz) | 44214 | `8ad2ec693d30ab170dc3ff71487e77170611a706cd8c156effe069dd2ef62a9b` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-clean-clean.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-clean-clean.csv.gz) | 4634 | `7042f06e71faf7e97766e8e9d49ba567ad70a4c75c05233042d75a75d37cbd51` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-lateral-snr+0.csv.gz) | 43331 | `57f9b4888666de6b4ebdb9d1f63084c8f309e1b95816f9f0b22bf80e02940c9a` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-lateral-snr+5.csv.gz) | 13788 | `d6e42b8c50c09109a8d6a388fd5533da7b1b1009517ce63e20e94441a0c0d8fe` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-lateral-snr-5.csv.gz) | 53623 | `c78634a51f44cb4f154893808eb95bec89d77e1d972258caf8767b2ffbec0463` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-mixed-snr+0.csv.gz) | 41546 | `0cea2763fdbcb14aea1f970c46954013ab5657c2ee3de7db7817fa27a5b587ee` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-mixed-snr+5.csv.gz) | 34665 | `eb9befbaf9e13bb60f4c3944983e68bc5c6ce5843ffd0e09591c37f6f26c2f50` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_shards/sub-032309-000-mixed-snr-5.csv.gz) | 44094 | `41cf9017b3e55ffb4baea651b48d353ccd9f8dbce5508f7d50a5b9b1864a8b91` |
+| [results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/tests.txt](results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/tests.txt) | 2591 | `391a3b9e846674c4d3eb2159739848d531a378bde528f518623de7ae786aa46e` |
 | [results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/coverage_paired_differences.csv](results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/coverage_paired_differences.csv) | 8889245 | `af407cf5c2bb34a1dbcf9bc883d63f75fa164e9b5e4884d68661b29580b4a156` |
 | [results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/coverage_uncertainty_channel_strata.csv) | 3049347 | `9bc197ce6ca9a42bfb22aac70900ae2c9de06b5ef0a0f1058f578639dfa398b9` |
 | [results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/coverage_uncertainty_intervals.csv) | 16419 | `b10323a478f62ca0f0844876dbc0d0895acad26bf18f267d5c1260e580ec3d90` |
@@ -51671,6 +53605,338 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz) | 63584 | `11748d58dfa13aec0b14904a9518dcde59b634d809e7989e8b700bf3a465e798` |
 | [results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/nonfrontal_selection_manifest.jsonl](results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/nonfrontal_selection_manifest.jsonl) | 61174 | `d3c7959a49e6e0a21fe42c6737cdc03bfaed366f14fe42ad9290aec8583758fc` |
 | [results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/tests.txt](results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/tests.txt) | 2511 | `6714701809278286ab8496b7964b2283ee1f43fb798369e85a10aa3580d45c3f` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/coverage_paired_differences.csv](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/coverage_paired_differences.csv) | 31342333 | `5e249d4470777155b8105a147c71aa5b8a4720183e4174d4e8a9347f2cbdccb4` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/coverage_uncertainty_channel_strata.csv) | 10547819 | `9bd9a38a087b21d50cee46425712f4a72a6c0b8da89d2b7ec43b04d33ac11dd9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/coverage_uncertainty_intervals.csv) | 10951 | `db1cab5dc7adccdd39a7b78f84d026ca705202d4c642a240eb27bb3b6dad7051` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/matched_ica_frontend_uncertainty/coverage_paired_differences.csv](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/matched_ica_frontend_uncertainty/coverage_paired_differences.csv) | 15147731 | `465be8d1cb475a46eeed5fd4bb5a2bb7286f5fab27175bc7a799a86ad4248787` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/matched_ica_frontend_uncertainty/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/matched_ica_frontend_uncertainty/coverage_uncertainty_channel_strata.csv) | 4752977 | `0ea4ba91d35b2536265ea08f1303bc8f19554d5d313cbdfc0805f33ac32017dd` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/matched_ica_frontend_uncertainty/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/matched_ica_frontend_uncertainty/coverage_uncertainty_intervals.csv) | 5457 | `888290948f54f55b80edd1a5e7a2511a7fbd02bd9bd222d1686b6d89136f7d5e` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_channel_scores.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_channel_scores.csv.gz) | 11374767 | `226475ffbc6764b27467e3f2ddcbe108a344ac3f3f7da60634054710db32d6f0` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_condition_means.csv](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_condition_means.csv) | 60164 | `ae6cbbe4f3f3b18014ba5d76b2a92b8f898d479305a00d0270780b052bf883fe` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_example_snr.csv](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_example_snr.csv) | 1797804 | `0e0548bd781d338c4110d6e65fdacc9faa260db099c48fb72e3d7173ad218638` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_method_means.csv](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_method_means.csv) | 7131 | `7a73914e67a00ef293934b32a905906129a015b14190039bdd5ef941c3732d1d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_selection_manifest.jsonl](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_selection_manifest.jsonl) | 391132 | `c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-blink-snr+0.csv.gz) | 40242 | `1160d7e4ed34d33112d9392048ed0737edf963227f1e6a0edcd050b2fc91c4dc` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-blink-snr+5.csv.gz) | 39718 | `9eb38f404fb62f3426af2b2abf7b7cc72e47551ab22cb1ac19a58506ca9e66f1` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-blink-snr-5.csv.gz) | 44448 | `10fd744bed9dc09ecbb6231aae0a475a0c56c77701a62ca340343a3042a3f4bc` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-clean-clean.csv.gz) | 3542 | `c7cc029e275b4fe1828c7818848db5aa3c9a6963695a188930581fe3f7629105` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-lateral-snr+0.csv.gz) | 44351 | `dc34d2f547e5aae496251218ccfa4e9b07c2f3924a2300f976375b057da50de9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-lateral-snr+5.csv.gz) | 39635 | `402ea3e79fd9683559a84faf796e88c24680ee38af3dcc318186dd6dc791bd62` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-lateral-snr-5.csv.gz) | 44781 | `d96774890e4fb4e6e53c7fae28f9179bca93e1a50ceb2dcf79ab598b6376dc5c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-mixed-snr+0.csv.gz) | 40179 | `0e8fde3c538b36abab4cff8852dd347b6ce6aa79ec71953b17b578a03f134212` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-mixed-snr+5.csv.gz) | 39677 | `d6edb5fed71796365f20b056fec41ff61398a80b3615c28cde106c907a4a2d54` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032305-000-mixed-snr-5.csv.gz) | 43707 | `5f364817b4053c585f3d7776803ecf5cba169ea9b74c3cedbab7d3b175529385` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-blink-snr+0.csv.gz) | 38218 | `7e4a642da8575c2d5a15862669d6726fb6612d1fb265852848c7022ce465e629` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-blink-snr+5.csv.gz) | 29928 | `cb70e2c399ba5bb6638425342580197e1b30dc8534c21263eecae3420d1ddbe6` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-blink-snr-5.csv.gz) | 61814 | `5f71faaa5db5e97e513ba18d937a86ec8358ba2f0604e3b47973da4c5997d433` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-clean-clean.csv.gz) | 3420 | `19ac29570d5856744f252f573b357cf624c48bcb2199ed3ab9ed1515227cf107` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-lateral-snr+0.csv.gz) | 41855 | `521b93058657f87a90b967ccfb0a33e43acd8ddf01a283885a242e24ba38a4e8` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-lateral-snr+5.csv.gz) | 38657 | `fce8bf597edeccf35f0a75a4e79d3fd61733d594348ac214c5309401eeff350d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-lateral-snr-5.csv.gz) | 42045 | `b0dab66167b6e08b136a886b682657f63990061e69d866957c92f22fe510c59a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-mixed-snr+0.csv.gz) | 37572 | `c860e96642abcc0ab7d43ca1738db38917f91090d9f507901adcdf81a3ab3842` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-mixed-snr+5.csv.gz) | 29915 | `0e5cf8c695312effdda9160e1954da7d1820752779d84cf653830da8980ba67d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032306-000-mixed-snr-5.csv.gz) | 41337 | `ea484073d0df6c9fcb398c91eaf86b772e372bf27e6e0f96f858ef446be3c53f` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-blink-snr+0.csv.gz) | 38119 | `a3456ac4c0367cfbdb47176214f288b34fe0711ce72614e0c2b5884ac585415a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-blink-snr+5.csv.gz) | 38088 | `4f63de79988df1643c7264a69f419d96d7d00926aec21f66620ad456226b7475` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-blink-snr-5.csv.gz) | 41639 | `0e8af5859232d405d943de912eac93dacf9b8151b62ae5b1b14408107f92c3de` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-clean-clean.csv.gz) | 3421 | `5d207fb1bd2bded94324153dff7df92101060dcd6d898980aa17ec923d47a14a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-lateral-snr+0.csv.gz) | 38414 | `fe0048a242550f0e4094adfcf17ce1cd3fbbc805cb5bf0d1c3980e314635f0a8` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-lateral-snr+5.csv.gz) | 38001 | `e6b90521ec11f589d5f65d840422a36836c7d111caea821fa8544ccc8e073844` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-lateral-snr-5.csv.gz) | 41500 | `0bb3c34fc0a53de613b059a2af040dae29be26116e1dd94ee315a650eca5170b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-mixed-snr+0.csv.gz) | 37210 | `2edcebda299c9a672cda48942aba4175c0041ca88ac169bb0130cd2cf1539d67` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-mixed-snr+5.csv.gz) | 37831 | `1b2fcae6fbf3eabe9bd62221d80f7b8315bc3082e63cdd85faf310a822938e7e` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032307-000-mixed-snr-5.csv.gz) | 41593 | `517bad830394e40e850104a27220fdc00331105ebdc33bfa93aeb43052804db7` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-blink-snr+0.csv.gz) | 40077 | `6e045100d7bec47d7054f2570fdc2786a719ded4fbbc52c5fed8794db2ff2be9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-blink-snr+5.csv.gz) | 39763 | `faf84fe508fac55125ec8be0c7974741c4eaedfdc96ad1bcfb386f2d13a6b17f` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-blink-snr-5.csv.gz) | 40695 | `62b91c2192adfd6ca48c694664ab1cd6f02bf7729f521c410deeebc64d709e72` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-clean-clean.csv.gz) | 3539 | `5727327a3c9fe1a61ec081235213af8d7e63c76bf28a2959339da82b387cde3b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-lateral-snr+0.csv.gz) | 45941 | `79eb007c7b3b7a547750d2b09d5a524e1e744a9d3728240a9f572c0af16a2c87` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-lateral-snr+5.csv.gz) | 40192 | `6891bd715c95a5bd87fe2e43b4f18cf42ec946d4b10e90d296cfa660ebd2139c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-lateral-snr-5.csv.gz) | 45789 | `a313861285efe6f61a63466d0279fc7700965e9760e50d87f866e82fa25cca63` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-mixed-snr+0.csv.gz) | 40140 | `660e7fb38ed3114344523d7bbcaffe3cbf69ad1bdb30db2ae0c1d2aeca0322e0` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-mixed-snr+5.csv.gz) | 39811 | `989185fbfd8ff353f339a74e7be93cd55abb0b6d3458bbe6d1af4da60075f942` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032308-000-mixed-snr-5.csv.gz) | 43296 | `1e321623def8bb3ef5639418580777204244e9bddacb2ef6464a02bbcc6504e3` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-blink-snr+0.csv.gz) | 37644 | `effa5863d095ceabb34435f44f4cc39770149f7cc5a174d633fb46224be88d72` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-blink-snr+5.csv.gz) | 29890 | `864488a9025d1cd39c0cc1870395d32fb05eab2074ffa1ae987713353bdc980d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-blink-snr-5.csv.gz) | 38448 | `f493810a1c9dfa51d575dc29866a2521f3e035331c91a60776e14c15982ea6ec` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-clean-clean.csv.gz) | 3421 | `712a9db440df9acafd48637591581c60995d056d601ffd1e6540214387f8ca46` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-lateral-snr+0.csv.gz) | 37694 | `c4eb9c75fa981276ac43700ee2995814d305ec6b1757a360d9d489beafbaf845` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-lateral-snr+5.csv.gz) | 20986 | `cf4f22775b4b099bfd3d7bd521097bea6b83f7327d502b684796914591eca4e5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-lateral-snr-5.csv.gz) | 42022 | `4deb81ec5774fe0377e841e94618dca865bbea8b35a221a206877588590d73b2` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-mixed-snr+0.csv.gz) | 36862 | `8e9ad54b29655ea242a1c130ded3b62c9dab672d14d46115baa854fbf8349361` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-mixed-snr+5.csv.gz) | 29783 | `9bb58e2d28c514b9f914cdc86112ac014d91bb7755073389cc467f7a0d9c752c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032309-000-mixed-snr-5.csv.gz) | 37775 | `869ba259d6df516aa602046741de093bc1112c630807ca0bb508c92683a6e19a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-blink-snr+0.csv.gz) | 38173 | `0fe6b36725f7a9684f8e0666be26312bf4d56ce4358c1bbc3cae3cd1ebb923de` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-blink-snr+5.csv.gz) | 37910 | `90f6fbfc66f438cac81f3470d9317f929cd0d577ca236ed7ad32e591305e938b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-blink-snr-5.csv.gz) | 41375 | `b20ab205373b446ec709f68b97bd152ed22c7443fb9a4fdb9379aff397ce6297` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-clean-clean.csv.gz) | 3420 | `7ec3cf4c396a8e921aaf1f930e3626d03cd01fffe450aac9fafc58d61480a9f5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-lateral-snr+0.csv.gz) | 41270 | `6183d1e4d6e2c83d707e097e15e1f6b22f2d2c50ef27a4afedece34fd63f9418` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-lateral-snr+5.csv.gz) | 38207 | `09d94b3afd10f903db4f6e5d22bc6e70b626aa8478cd3e4fa7be5f9843f5a229` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-lateral-snr-5.csv.gz) | 41747 | `34f2c2d8d2c0e1d4b499a994a0372593f6787aa2d1b36bf73a65972e24538fa4` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-mixed-snr+0.csv.gz) | 37519 | `0354007bad8ebb66550c49bfaa1d6dddb6f793abe48c24083529a0981e2cb12a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-mixed-snr+5.csv.gz) | 37599 | `2badda102b41e434345fbf71f5ad14309f1cd717dc06b5bbb27e4c196fc7470e` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032310-000-mixed-snr-5.csv.gz) | 41309 | `039af213a1fd239711edaba79dda29fdbc8984c7631273aeec2fcc58dac61669` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-blink-snr+0.csv.gz) | 37565 | `f6577670b58ca24b035bdf026ef98f1c2e924fa1801d7906f64b59c85f906ce7` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-blink-snr+5.csv.gz) | 29953 | `7a67f713371aef8c3f629e308392b8d5e8028686dc611e7a3f0ded779bfc067b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-blink-snr-5.csv.gz) | 37934 | `89ee1c995d5ab1568d2c9d447d85d10bfa1899cf551c2af7a38560279a26096d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-clean-clean.csv.gz) | 3420 | `47e1535c20170eea04e59f3997ea923fcbff0b69052be4c74cff9fe2a34555bc` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-lateral-snr+0.csv.gz) | 38081 | `54c79841b78894bc04b34ea05ceead7a518e1d7c9cd2c21d62f6fc726d0f5acf` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-lateral-snr+5.csv.gz) | 38056 | `317307fc8e75293b1cde89697d94cdc8b8c629bdac7ac0235fd310e389cc967a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-lateral-snr-5.csv.gz) | 41832 | `780d5b49e1b72cb7bfa277e28a41b957ade441fe9a68317a1d296cc15d5c0dd5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-mixed-snr+0.csv.gz) | 36903 | `f8d4b558b1c3f231a818cf0b83a9b60973d4ac22356aa51f7796a732e74225ae` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-mixed-snr+5.csv.gz) | 29922 | `b1e5dc9f681a315ab2f4149d3fcb7486d00fc660ab7082d6f36f606b00aa46d4` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032312-000-mixed-snr-5.csv.gz) | 37092 | `0d5f1c0aa167e5e616eead0ece6f080f202a29850ecaff8a9e5828d0382e113a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-blink-snr+0.csv.gz) | 41219 | `1028b6c5333620cc1f80bf0e286f8aa32d512fc7c74eac77087fd89a47b7b93a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-blink-snr+5.csv.gz) | 38454 | `5e7e6540f6c6d3d6ae58e0cb1b7b943c19f8dcef4e4877d9f8e0065495b26d23` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-blink-snr-5.csv.gz) | 42026 | `46b9d157cc817254b0647d4ebbbffc81b219053728a6c9189e7e0b4bb25bc75f` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-clean-clean.csv.gz) | 3420 | `5c65e64ea318501c489338a588686e16efe6c02a839c76582632d84898c5a2d9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-lateral-snr+0.csv.gz) | 41917 | `4219675e250f002981bd379d4fc4b7cd92411c6fa1392462d2e329e5ebeab174` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-lateral-snr+5.csv.gz) | 38274 | `16dae33ae221079fab8532e5e72fd050c532692b9341e2ed749581ddb899ac3d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-lateral-snr-5.csv.gz) | 41957 | `3084b80ca4f42da640c1e2f4048c60fe86b0499e393d59173b17320b64540bf6` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-mixed-snr+0.csv.gz) | 41245 | `c5e3389484a727cf73dbbb24756f63a99ab27ada4cf51a780dfb4479f20b9126` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-mixed-snr+5.csv.gz) | 37917 | `ed3e31819c5bec9591faa163aaa5db7a08681a980127fc2537f754fbe78e522c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032313-000-mixed-snr-5.csv.gz) | 41804 | `2682f790a4ea07d0376a07d655bebf078f8dbf43ccdd688aed6d134c0f3b2f5c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-blink-snr+0.csv.gz) | 39667 | `b42ed15850dfe9e165cafa72a76beb1042900bb740bd41d73e77efc1575bf1a7` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-blink-snr+5.csv.gz) | 39609 | `a076810cd2ea982f9b1146942218da9030e23c6c8fdea74bd3aaad335c52f859` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-blink-snr-5.csv.gz) | 43564 | `d5a2660cfc917f55b38c40d0bd55ef262f4d9845b64a741c1355a598f34fc479` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-clean-clean.csv.gz) | 3539 | `ca246fd0109edb8e363bbb4c0fe9333802611ad5e60c65279c893d23c2911101` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-lateral-snr+0.csv.gz) | 39796 | `ede0479b06e3ea6b5edc57ed47676538c44cad7262a96115fa604b97a1e897b2` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-lateral-snr+5.csv.gz) | 39638 | `57ef957edf2e8af8d9ec35f19d5bb16c59c29da456c9314dee1d61648f6dfde3` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-lateral-snr-5.csv.gz) | 43057 | `aabfada042b7fb5433cdbb2ea724bc6013981868e4ca69b740d8e290947bd0c3` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-mixed-snr+0.csv.gz) | 39894 | `d6a230e4d172e91e93ed140fcfe37034e6e7d59c3494d71e19a775de22d90bb0` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-mixed-snr+5.csv.gz) | 39585 | `b715f4e0209aa3677cbcecb98b1f86e14e71b7262417018cafa9cd3531283e91` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032314-000-mixed-snr-5.csv.gz) | 43481 | `d593514a7767dc40404d5604a372cef9b7588973fa4b38cb93fc7cd08d6fc2bf` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-blink-snr+0.csv.gz) | 40078 | `f30b2511a17b2f2c10d4acd72c59a2109c3507b77e7dd9e51ca8fab392f348a6` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-blink-snr+5.csv.gz) | 39711 | `0bea4168459383d67ffcebeb1dd7b8761c5d8c12138499cf509dbf431b4c7a9c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-blink-snr-5.csv.gz) | 43033 | `4953b655ff69804d5970ac2603ca5b530f4c02386c08649c4af5af770c7f28e5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-clean-clean.csv.gz) | 3539 | `cc0cd5a492376ff025474cd3bf647f05f3d55516ffe7015724e633b3766bf0bb` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-lateral-snr+0.csv.gz) | 42994 | `1cd6b523938ed48f30b1cd3b33e218f042cf3d21404d899c87bb3c3a6cbf7b6b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-lateral-snr+5.csv.gz) | 39569 | `655c52e18882b842ddb3f31c054e8456bde2dc190426a9565a05febd046cc982` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-lateral-snr-5.csv.gz) | 43195 | `dcaaca5d07dd8224ca179f46e7e5ccb140359ca98f153928377d3436e082d0ed` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-mixed-snr+0.csv.gz) | 40189 | `25639dcf671206714caa9b4db69983c92b1a6ee1f961d447c299874bd5907df5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-mixed-snr+5.csv.gz) | 39785 | `d68b7850d84a75bfe94e8b438ac9440f549dcbbee11471cfa44042b77dc4558a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032315-000-mixed-snr-5.csv.gz) | 43191 | `1d537ee248d00a2f29e12882fccde4dca4297f4cadaf10042153859a4780c344` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-blink-snr+0.csv.gz) | 40204 | `4c19bd3e4bfcfb3a066e338d73cf1a7a44fd34fca937160fb250cd0faaf6532a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-blink-snr+5.csv.gz) | 39894 | `fa6ed0e39299005b303aff2f86859a9acc27eaa96e970b4c23485c7649dbba74` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-blink-snr-5.csv.gz) | 43107 | `1eeeeb2ba24628e045bc46a1fef3d2fd614f2ce5077f20252626425c2620699e` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-clean-clean.csv.gz) | 3539 | `14cdba0afaa8a65d8ca4d9d17906e1487e6e78171e270bd3f641dbb37f536c97` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-lateral-snr+0.csv.gz) | 39651 | `2843dfdc97bde02e1ffd7866b22ebe70ed45b4841d4fcac93bef13cd67e797d4` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-lateral-snr+5.csv.gz) | 39665 | `75947b85340538df201d1605e89924de886a81d4911936c8363f148c22803f5c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-lateral-snr-5.csv.gz) | 42924 | `64dad7284c2840f55e86e37aac7fc5de403fdd7e5242542230e9a60323fad3ae` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-mixed-snr+0.csv.gz) | 40202 | `97c9be33741407ec44f8f493b41e68e440a282d4078b84686010c2fa508d0987` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-mixed-snr+5.csv.gz) | 39746 | `655ead761bccb45e920445bd146a334a1d089d8e63725e2c857e94fe8fe19432` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032316-000-mixed-snr-5.csv.gz) | 42992 | `409ae6fa16e838627b4e2bc2751da83e2e523b57c42532b6fe43f3e64e1ed215` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-blink-snr+0.csv.gz) | 39709 | `bdf0dd05b74d14e57768879b68831e402532336e1a4ad7c4c8d6daaaa564587a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-blink-snr+5.csv.gz) | 39485 | `0f0cc2b7221cec6a941aa771a8d2b87d73b8736c045118805831640c684c3279` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-blink-snr-5.csv.gz) | 40271 | `8b038a4bca5072ecf909c0e2fb199da3aacdfe2a9a819ea8c82c9163b6c3f696` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-clean-clean.csv.gz) | 3542 | `96b5edb386940ac29f0944894d470678a2199b274371f37d5c6eec5a9847763a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-lateral-snr+0.csv.gz) | 40237 | `4b53feb52104f5ff25323fdc64b9f3825cff09fc5342a9c4155a76afdf228366` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-lateral-snr+5.csv.gz) | 39725 | `3f568e89fae2230c5181a61c4172f3a3d23cf4f62d66d3812e473ec586afd429` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-lateral-snr-5.csv.gz) | 43897 | `2e4581ac6491963e4f135085785bf3d4a51a7f33853ddac03d573edf986ee492` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-mixed-snr+0.csv.gz) | 39658 | `0cf1e5b1c6f15e3723331c0a17524a35321eb362c213b61965e5508c4d4e73be` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-mixed-snr+5.csv.gz) | 39460 | `18d38b5bb82e8bcf68469e54cf2d5537b9e2c8657c05792c914121e55a102eb5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032317-000-mixed-snr-5.csv.gz) | 40164 | `8db713ce80e35585bcf92ffe7ff7bb96f8b3f1d5fe1a0dbef932a646c4580c87` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-blink-snr+0.csv.gz) | 40055 | `e60e4bbf25220e51fccf0fa8a2e988607951934a5808b111650d025a45fb297a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-blink-snr+5.csv.gz) | 39711 | `1ec1ffebf460b7f5d41d490f3d93a895fcc1b146463a9abb6662e8aa03567cb0` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-blink-snr-5.csv.gz) | 44037 | `d4220f5a89f89a4c3758ca9607eb1fbe7b3346abee95b659035993c6b6f01b56` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-clean-clean.csv.gz) | 3538 | `13d55054baa29f38dfa9aba2aaf24243e6602901abdb99953931d5a269ffa937` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-lateral-snr+0.csv.gz) | 40432 | `1dcccdd4fe13e2be36537fa9a1f4f3bae070efceaddcf6b004b7b508cffe798e` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-lateral-snr+5.csv.gz) | 39830 | `1bc0c1fa159616e9eb6d4072cd61531671726540cfa18628f017c8649126821f` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-lateral-snr-5.csv.gz) | 44698 | `dc322f97299faf7d711e86fb6e363e60f5ae3aea6afbfa54cc03cb85ae5ffdbf` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-mixed-snr+0.csv.gz) | 39724 | `8258a70133b14c1de2367d6df20f793efdf8a9eb8c54b958b37a072297e75126` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-mixed-snr+5.csv.gz) | 39735 | `999d9ad577e6a1ec659943f49500440bcc7cc97252961bff4c287653e62b2587` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032318-000-mixed-snr-5.csv.gz) | 44017 | `b23808ac6960db658d6f8f62f364e2bcbe949ee47b69549e2aa89e85e0423559` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-blink-snr+0.csv.gz) | 39611 | `2b780ee65c5fb12b0056dd238f363fa84b4adb93a2f95e17a00eb070fb44bab6` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-blink-snr+5.csv.gz) | 31184 | `df2816511dd2a999fdf14ab4f803e7c6c3aec7ba4e33fdc4dd536a652087389a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-blink-snr-5.csv.gz) | 43007 | `eae939f7eecc194b0a4902b9073fb8ca147451f98fcd7d7a9c89749bfe8f2d40` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-clean-clean.csv.gz) | 3539 | `849fd272a034f974259dc6afe0f7a3903e4ab371b970962c8bff34e7aed12fef` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-lateral-snr+0.csv.gz) | 40321 | `c49234776c2a86de0d719cbdf7f98b17f27698dc6f0d077fc6f3bac8905180e6` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-lateral-snr+5.csv.gz) | 39808 | `81eb22c4eb3c86a6e5ce9d991c21ecb4d81034e80670d4081944e849e80cf03d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-lateral-snr-5.csv.gz) | 43268 | `c9104b0a118f4116ce7cf3fd3918d49e7dacc86c15150d5d7ab017cbc5feb681` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-mixed-snr+0.csv.gz) | 39625 | `9bd7b0ed481560668d163b984c2c79f145fd89101bf4bf8e09395e5c77e269eb` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-mixed-snr+5.csv.gz) | 31227 | `3b4ff09473851eac5946e5a1bac2687894213293195bef10f100e3d3432d1dcc` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032319-000-mixed-snr-5.csv.gz) | 42892 | `08eec16babaff798399a37761765014455bd6c486389c953f156bab13a35d0bd` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-blink-snr+0.csv.gz) | 37741 | `3459bcf24d8d675ccf4b82c0b9f25eca47a05bc71b5ef72e227e1b606f358cb2` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-blink-snr+5.csv.gz) | 29960 | `1e43239e0f156f1c9262de223eefa16d3aaead54d55ea5f71fe75cbf8d8006cb` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-blink-snr-5.csv.gz) | 41060 | `82f4b8947c11cbd316c8bf448db7bf71544e159b57a079d3a3037c18a742c5a6` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-clean-clean.csv.gz) | 3420 | `b88a3a3d2c10e110a301eb4bc90c5d56e6b3ae6b8526e2a7db6275a71c9936c2` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-lateral-snr+0.csv.gz) | 41640 | `6564778b4742cb438542dbd0ec9ede64e4b30bd671a544db1c7eddde07da8784` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-lateral-snr+5.csv.gz) | 38426 | `559bd33219c70a58334c5e1ef206bf3aaed01020101bf435a498309f9115482a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-lateral-snr-5.csv.gz) | 41826 | `e13f5cb11d7b4b19e004f09099fb42b9c65b471a49ee65d785363f422f3fe6f3` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-mixed-snr+0.csv.gz) | 37006 | `02500871961a51899177fa62261d8ab3e6294751fab5507d1b869a8eae0f9e05` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-mixed-snr+5.csv.gz) | 29873 | `e9a18725235285579928768972cb971aff94bd66498239a51cbc45318777e2ea` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032320-000-mixed-snr-5.csv.gz) | 40994 | `abd890124e1e49a89d3a6d26f852c759255fb15eda88cc914b9b52247fbb3f90` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-blink-snr+0.csv.gz) | 40092 | `7153102c16bff78921d642197963cd49c6dc4c6a08dc67ab9ce5d196782699ee` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-blink-snr+5.csv.gz) | 39803 | `8ce1ebf0b6c479b7984268fd9d3a1ee38eace06046fad69f5b79d87dd392f3b5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-blink-snr-5.csv.gz) | 43278 | `63cf4aa5f609d9f925d2e50fe073de34a971af3c23f5651ad7f8159a42a2ed8f` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-clean-clean.csv.gz) | 3538 | `a460bb05b2852173ca30ad3254b0c84dbc528b98931b3eccd4caa4949cf8d2ab` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-lateral-snr+0.csv.gz) | 40173 | `ba5058382d0033a015a548abe1068eb883ae19a82a16aa58dc1e24ec970831c7` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-lateral-snr+5.csv.gz) | 39752 | `65401d46a4f7603ff9226950ca7e4d9380562046bc31214808895e8529d60703` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-lateral-snr-5.csv.gz) | 44403 | `7238e6a7518f810283cd2c31cdeb2049fa11be23b97782266c68df884189369a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-mixed-snr+0.csv.gz) | 40035 | `da81b964331c548f499868b29d1bd0384105b1c1a5175625696b0a59c8e099fd` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-mixed-snr+5.csv.gz) | 39699 | `dd6ca9c79fc8a3eaeb3ba152749b2c75b468fed44c7c0373d1d2e31b12c8c454` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032321-000-mixed-snr-5.csv.gz) | 43332 | `03e2c61221b27a00225f21c54b83069aaedeb0700a4d0c50753f394966083aa5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-blink-snr+0.csv.gz) | 39670 | `141e222b68cc8a3e148cda0a1d36cad554b13c339e090f6290e3ba35e784c002` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-blink-snr+5.csv.gz) | 39678 | `561a894da3b675d12a6c203c4a68e890331847e191e83df4d44a339cd683fded` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-blink-snr-5.csv.gz) | 44276 | `3c0e22b592a8e7d34dfd204f17945c31398c2717ba9aa389ce5945a0359892e4` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-clean-clean.csv.gz) | 3542 | `64600b60b93bdd948e30209def4f8f879ced76e5d2fc2b7a5017504ff490e873` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-lateral-snr+0.csv.gz) | 43277 | `549139f69c5a3d530f04ffb5b607bc7174e189e36b44b215fa97154cf48eb409` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-lateral-snr+5.csv.gz) | 42819 | `aad417063480ba337e0b28dae5037d86428a4cf80c0092d54f758bb3ccb11730` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-lateral-snr-5.csv.gz) | 43719 | `2b18a4b8fdd58d3328aa15ba1861cf57464d63559c48046d04c15d0f1fc36c28` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-mixed-snr+0.csv.gz) | 39716 | `e2d8ff14831cd5f31d0d57a99bfcb88487d00f4d04a7c7752080681f8c105347` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-mixed-snr+5.csv.gz) | 39615 | `a47bf0ff02857c3534c886b74d35696462339ae4c484b4364073bb952626bb52` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032322-000-mixed-snr-5.csv.gz) | 43035 | `cc63b322fee527ffc0070c79b99acaa6d479f664c566654b620519c8370da74b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-blink-snr+0.csv.gz) | 41273 | `1f41500a95fb617abfe880545f2e596df24e03db066277d11681c268364e875e` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-blink-snr+5.csv.gz) | 37714 | `2310cbc95fa20fef7570eb9341572b88a0e0570cbaa53af42268cf9333c1f762` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-blink-snr-5.csv.gz) | 41598 | `fb742a8bd8ea330f587fcf509195ee48ddc469a7fd1355b88d1ed66667c8b2f6` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-clean-clean.csv.gz) | 3420 | `6fc12e699b9f2ec3c018a23a1d09aa3e370009507d1b0f7d645b61e679b70a20` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-lateral-snr+0.csv.gz) | 41534 | `2e027e2d8568de75864ca3324dcaf6e6a36d5b88608ad5625d553caa4f369d13` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-lateral-snr+5.csv.gz) | 37306 | `98a137f1816b9c42bdf5009fb7ac45c64ff0dbe549b7a8a307c74930fd0768a1` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-lateral-snr-5.csv.gz) | 41722 | `462f0bcd77327a816a91428d8813be75c74a278d9b670809c80fe3ee2bd9b73a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-mixed-snr+0.csv.gz) | 41219 | `4bb28f89b6b5bbdf15e7f60cf1f06486a2d55c6b9b56312ce5b351d85ba472aa` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-mixed-snr+5.csv.gz) | 37455 | `abeee06a9e28abc1f0313260a36f4e234fcf8a493bbf6ff8f45f2006198d26e4` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032323-000-mixed-snr-5.csv.gz) | 41548 | `c73c6b02b3fcb2056513c492b281fafbbc23ee2a81fcd79a155d7778f0bc4f47` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-blink-snr+0.csv.gz) | 39736 | `df12aa863e4a9728f77ee48fdfb7f70afffb2619fd1548c52711b81da1b499fd` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-blink-snr+5.csv.gz) | 31137 | `43d847bc6dfdbc896d395e69b8d13fbb33c42807a44bb850dcf9f1a508a17e5c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-blink-snr-5.csv.gz) | 40099 | `e1d127a7eba0902a9231efcc89e0c309a11297b448c36d0cf6dd452617e5d0a1` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-clean-clean.csv.gz) | 3538 | `ff2005dc0fcdd8f7f04af56db4476baf51a689f223377eba1c349bbbb2ad19b4` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-lateral-snr+0.csv.gz) | 40232 | `1d6c92b667f25772e516fd9b9803666b26c62e76d2399a437311f6bd753aa37f` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-lateral-snr+5.csv.gz) | 39684 | `eee5ca35264ceef2115b6583ce48583d862bd8dc03c6ea549c4a5540442e6c49` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-lateral-snr-5.csv.gz) | 43855 | `4e0123e646b5cc5971f39ff7735d737837b0622817f4a463b19d33efa04ce484` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-mixed-snr+0.csv.gz) | 39526 | `beff29febeb4df1ecf11f1ef44aae044428be93ecff3a2c79a0781458e0385b1` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-mixed-snr+5.csv.gz) | 31041 | `0120a2c9bc6134db2d7fcedc500b6e321d7ff52eb5ebbfb988be80a17e28c83e` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032324-000-mixed-snr-5.csv.gz) | 39808 | `0f4ac263a679dfe2825b69d036d0d6229c718ef40a8bc5ea99c50d4c4716dce3` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-blink-snr+0.csv.gz) | 39857 | `4a60d89d94c0c85d887e51bc3cb0f66385d188438f1666fb57ea4ea58724a6af` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-blink-snr+5.csv.gz) | 31240 | `6fe4493fd19cde2cb317e6c7f23d43577266727aa39396296436b4b49f065604` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-blink-snr-5.csv.gz) | 61597 | `ff7d05245c3a90e88a0dddbb9689c26e23f9f33bda936e685f4d4b639b458c28` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-clean-clean.csv.gz) | 3542 | `2e979e125dcdcbba67d538813cb67e1255b5b13a090775364f0ae3ec2206c310` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-lateral-snr+0.csv.gz) | 43322 | `ee1e21305b208aba4795aeecefc48a32346e5a5b0a197d390631712768fa8350` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-lateral-snr+5.csv.gz) | 39802 | `1776115b783f957a33c4d5975dd00c4bf5c7c363356d1a5ba0ed2b7d4d5b400f` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-lateral-snr-5.csv.gz) | 43618 | `1896d69f78bf760936e66aab25cdb32d49ca16e49d7752f646df441ccbb96559` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-mixed-snr+0.csv.gz) | 39893 | `eba02d3dcf68ee00fcf1cd7b647dbfc5addc58dc868d97ecc4d71dc4290fcb7d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-mixed-snr+5.csv.gz) | 31160 | `ad90f3bcf61f5c970e2a99cfcf94c3e21c82c204ad86603de0971f3dbb551ce0` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032325-000-mixed-snr-5.csv.gz) | 40454 | `985331c3314692cdd398ccda875511d8fdae8eac76e6663d2c5fe52f8e67413e` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-blink-snr+0.csv.gz) | 39665 | `5d5aaeab7d2b27372bfd504205db866517d2b31eb80bc617200464c4739bf17c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-blink-snr+5.csv.gz) | 31186 | `cf1128a195e2bf96e8185b4defdab5c000eaedb45f325980fcc38f2727fb422e` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-blink-snr-5.csv.gz) | 39996 | `91669be3f221af1ec76dbaec3bf1413727b82a2a316ca32c1431ef5e0596b24b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-clean-clean.csv.gz) | 3542 | `3fe9adca22c03d218f6fcf05e8acfe549961f2559a7d000d2de7686771d8fb13` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-lateral-snr+0.csv.gz) | 43127 | `dc02e78752a0d22cbe220419d8f3d381e952f53ac62a2c9a690cf8f7c9de7bbd` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-lateral-snr+5.csv.gz) | 39760 | `4334687f36288c34b5569bf1ed8a79bb8dbdfaff721a7c6380f76cef432e6c41` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-lateral-snr-5.csv.gz) | 43603 | `017ed07954fefae47a7daca1cc8a5f0d2be522ac388e50f171d6c73afc04bfbe` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-mixed-snr+0.csv.gz) | 39741 | `f17153c0928210482f5c4d1e58bcca7003e34a35c67809118eac7c858484e902` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-mixed-snr+5.csv.gz) | 31225 | `56d2182c462c0540b8fb5bc2d111db94c460b4bacedf7e50d0c1ee02e329d6c0` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032326-000-mixed-snr-5.csv.gz) | 40029 | `9aa7b1e815a1a3491d508a940c59e4fee03ca434d4f1e58f129968497c5db140` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-blink-snr+0.csv.gz) | 43524 | `acee55a83aa743c65bdfd767d863cb0b80684a5c2e467d989df1d8c7ef97bda9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-blink-snr+5.csv.gz) | 39974 | `c2977a688be36381e39c3736bafc4ecb6485a10231a54bb5d4737bb05f58bd60` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-blink-snr-5.csv.gz) | 43418 | `21cd148eb4d57cf456895b99d5700f9cc444069208f4406b99ed9a5e3be18f23` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-clean-clean.csv.gz) | 3539 | `e09cb679b71fb7e49ed5ea97b3312adeca7e71f13936df984905f3575b87389b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-lateral-snr+0.csv.gz) | 40192 | `795405d1eff790b0c876b5d970ae2b7dec2b3a9abb9d9758de86d3dadeb5d3f9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-lateral-snr+5.csv.gz) | 39669 | `e4ed56928fbef34314af5c1e607e5431d027d5b461dcb1ad3944c8472f49423a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-lateral-snr-5.csv.gz) | 43225 | `f890349b32c0ead4ba4cb21bb2da1c670094cee3003a789f7663406a49c61288` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-mixed-snr+0.csv.gz) | 43126 | `2751a5d9b44bbb69e13143736b427a3bc12b564672a03ff549103b970de67991` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-mixed-snr+5.csv.gz) | 39999 | `b52c58c131e33f9bb439f9954956212e4e1a70466cc3371d776644adc42e0947` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032327-000-mixed-snr-5.csv.gz) | 43494 | `fb81a49bc783d86f3bf2776d5128c60cfbf50a455e06474f4fce5f285d4332c0` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-blink-snr+0.csv.gz) | 39786 | `3b72b04dc054b039579543656611e47523fbab18ba9242b141648369101f0b9c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-blink-snr+5.csv.gz) | 31217 | `690c2a90096ec7523df73df8c945935f8bdbae53297bc008f85a266e343fb782` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-blink-snr-5.csv.gz) | 40137 | `b38ad15c4fc52b2b72c4479408d640a05ea091fae2b4a11b93193c884582c226` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-clean-clean.csv.gz) | 3539 | `ecab5c0a5aa4b00648fa018871a8eee7af7ef07f78b813a38f1cbb2556a0d880` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-lateral-snr+0.csv.gz) | 42415 | `bfcaa58344b9a7efdadcf2e42b22010aaa22097d2faf65a16e271d09d053cb34` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-lateral-snr+5.csv.gz) | 39971 | `720b85578eba9133bc05f8de25255802543f3caf2eae37ec6af7fe73ff54594f` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-lateral-snr-5.csv.gz) | 42708 | `c1667c4b55ce6ce41d136900ba312ff77fdd4d0ef13a253565ec1b96629ba69a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-mixed-snr+0.csv.gz) | 39780 | `e5fcda5fa6a37fba2841bed451a9fff57a9af8be715291123f5f03ba64851315` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-mixed-snr+5.csv.gz) | 31275 | `7fd884e75be62fe6b4bb604a50841b4affb85c6201ce0da82bc9288323f50af9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032328-000-mixed-snr-5.csv.gz) | 40192 | `f47086286f113f570d9194ded91f1cb02fde5df95f904c572f02b73c12e324dc` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-blink-snr+0.csv.gz) | 41433 | `079a2bf67f0c6189d7844de4c32a06e438c63900ee2c5853d4df26838c809bc5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-blink-snr+5.csv.gz) | 30096 | `0f42c1e1f73ddfc9fa989f42d1316a57e091d492c3a6ffd79b1e35d9bced03ab` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-blink-snr-5.csv.gz) | 41892 | `2469287e047541f4a29fd2aed7dc9c4011fad238984fc3da062788587d96e0c5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-clean-clean.csv.gz) | 3421 | `0d529cf2834feccd78a44cb2829cb9feb49e59bc1d95be0991754d298963a1db` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-lateral-snr+0.csv.gz) | 41766 | `e3effd4ccb363c97eee410da02994177854764ce7919a7c8de09bdb442571e01` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-lateral-snr+5.csv.gz) | 31197 | `2d1b575d6a1a2d1822f7e3e248840d4eaf2bb8858d22043d48893e38c6337b52` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-lateral-snr-5.csv.gz) | 42131 | `df0a290fb89f95795598f6eb59b67acb0ed9f250a2939612d4e9a0749fa81504` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-mixed-snr+0.csv.gz) | 41397 | `4e4e1ea5b86d90f880dabc7e078c87727d248eecd0059ef766bf8b537845b2cc` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-mixed-snr+5.csv.gz) | 30001 | `488a62edccbb87382daec86a3f741299d09478158ee9f660f2f72a82237e7915` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032329-000-mixed-snr-5.csv.gz) | 41853 | `2086c43486f27a9bae200d9d2b271534687bdba00266bc601b862d42627faf83` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-blink-snr+0.csv.gz) | 39805 | `a3c46e59837dc550a59130842d6be09f804e54f987ca2e63fc8994760e9b86cf` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-blink-snr+5.csv.gz) | 31168 | `14f642762bd32964fd518f396ded5d806219d4a426f6b501c87fdb5f1440e994` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-blink-snr-5.csv.gz) | 40212 | `a789b7eb7dea340dab21aea0b1b1f5b100eee3e8765dfd2f42623849c6c85fbb` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-clean-clean.csv.gz) | 3539 | `2359b615d46abaf36f4ab4725d87c3a03b9a620076cc5ac663d5c66453030295` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-lateral-snr+0.csv.gz) | 40223 | `d52a044d686f434569eef6ad5a09e5a7c2c5da3f8eaf320be9a8d583e253b5e5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-lateral-snr+5.csv.gz) | 39682 | `0748ff568ddb234044c4db7401af6d72caa3bf328774398569033a974ed06b40` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-lateral-snr-5.csv.gz) | 43324 | `ea55af70d7b2eb0d1e2cdec127a4ba33e9a34c6bab79bd940a74eaa5ba2a40a9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-mixed-snr+0.csv.gz) | 39771 | `8c2c66a3a0dcb24d25f6fddd632288d4cc180b15c5c407ad756d80b8f27cf415` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-mixed-snr+5.csv.gz) | 31175 | `e9678fa6e73e97880cfa1be6a65a8367697532fc402298bd545ac5eaace05f75` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032330-000-mixed-snr-5.csv.gz) | 40289 | `960fce9084cc68c92a751ac5642560c130fe1dda3dc73ac7481720bc4af98d47` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-blink-snr+0.csv.gz) | 39817 | `f207f4fd7f7fca5768707303d4887c9390e77701ac5edabd850c3167c606af01` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-blink-snr+5.csv.gz) | 31206 | `3813a86ee647432157d9242c8855ed13d1c32494052046563388765302a81ab5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-blink-snr-5.csv.gz) | 42870 | `c0d3e107b328b7415e84a7819179738bfc9574d55afc27ab436226e86e82719a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-clean-clean.csv.gz) | 3539 | `217e448138e7d31de6d4debd37331972d60428f8a545b552fb472f6a9bc3fd72` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-lateral-snr+0.csv.gz) | 42899 | `e370098ddde26a25339172684b3e9fb01c112c160df1564628a53b4bab3da787` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-lateral-snr+5.csv.gz) | 39944 | `43aa91c5a481e3382eac4c1e6076f9207e53bbbfc35f8ffae90386778fa69846` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-lateral-snr-5.csv.gz) | 43251 | `b4cdc1961aae3ed2c4928157a3b98a6229fffa10853ce884e14d9952451fe1f2` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-mixed-snr+0.csv.gz) | 39895 | `27faaf4a61ac6b36c8f54080b812185c79e349cbb374e7193ec12058839731b9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-mixed-snr+5.csv.gz) | 31212 | `5e640172a49c1109b2211da054647c8abc67f7728a54f76e457338c5511cb2b1` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032331-000-mixed-snr-5.csv.gz) | 42974 | `1822d591ec49720fe8c6aa5948452bbc035ce2dd6775c5633cc0eb42ef554128` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-blink-snr+0.csv.gz) | 40296 | `72f315c5f1b0b2cdbadd5da1a8360f243e5e919b31d531326754c60d2982da31` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-blink-snr+5.csv.gz) | 39775 | `adeaaf12605ba98e8aaea3ccca8d4363c8c8952fb44d9bb0754079b147ec4081` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-blink-snr-5.csv.gz) | 43615 | `2ff867992a5fc0854a9e23cdb2e6afe8acd086bb22e389a39cded7ee33645114` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-clean-clean.csv.gz) | 3542 | `493736f168943832302b823337716c5ca634590ead1866ecbaadd1316d265ff9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-lateral-snr+0.csv.gz) | 43487 | `a98386ca964626b746dcc1c716a4e1d3aad515230ee584df5413558044c93fc8` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-lateral-snr+5.csv.gz) | 40103 | `fd26aaa06f8fde223c3ab021c3157c032103f387a0d2230657faf1a28ab25fb3` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-lateral-snr-5.csv.gz) | 43810 | `1b82138acae35835502a893ea66e016be816dbea31c9e1e7e34828ca350e2777` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-mixed-snr+0.csv.gz) | 40201 | `e173415bada6e31009d48071e9ad9aaf2a9b91751fda7cb96c009583aa017cfc` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-mixed-snr+5.csv.gz) | 39851 | `bc2db646719dec53bd89beb77a832fb7818da305c79786a2dbcaecd639453f95` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032334-000-mixed-snr-5.csv.gz) | 43785 | `0d83385ba783cde0fa085873f774166e481f1f454401be6946b9eb7dbee3727d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-blink-snr+0.csv.gz) | 38315 | `1bc71f60f9d9b2872d631ed13b4fe6c325a8cb286b4835f14aa4d384d545ec73` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-blink-snr+5.csv.gz) | 30112 | `792c30e20b6267468352b401a55e048eaf434fefc5b1cfe6a80c85d4686d4d7c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-blink-snr-5.csv.gz) | 41490 | `cd99d6a7306fc091cef24967e17c56bdedd467fe97b930e73f637565690c63bd` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-clean-clean.csv.gz) | 3420 | `d2b4aa1337019ee2d4d22395d7f43ca227a944cbd24a337c08eae3ca77e5f916` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-lateral-snr+0.csv.gz) | 41843 | `010afc275f6343bdb0f612771bedf47ba945fef6a2e6efe972b63be679507c71` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-lateral-snr+5.csv.gz) | 38687 | `9d93af926a7b391dff6ab222538a667acec44abd2c996490ca777b36f2a3a56c` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-lateral-snr-5.csv.gz) | 41978 | `9f945cc10754ca4d114c91c89a0f67ca70a6ab1c16cc5ac116c2d1094f91450e` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-mixed-snr+0.csv.gz) | 37988 | `d21aa4ce70b854f28c1ee470e9a413e4d699bca76e950d9c4bf54246d10878fe` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-mixed-snr+5.csv.gz) | 38130 | `6ff42fcdd0894ed75e90e4a005650187987adec89fbcd55c45f0a365e8adcba4` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032336-000-mixed-snr-5.csv.gz) | 41494 | `34380c3cdd50fa08fc5a1a4cd03df2aab47a6fb0bcf867dd5754a4a779815132` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-blink-snr+0.csv.gz) | 38189 | `cfc1315db487fe9bcd91577065c0ede8b427f8044b94223c10798d32f27d69bb` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-blink-snr+5.csv.gz) | 30518 | `d71e0f02adc7d56c0b86c33be31039b9c75d1d3d6ec8963823c318588d58791d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-blink-snr-5.csv.gz) | 38320 | `b3d564ef262cd51526007126d06e7679c3fb2fd51274a061f98e0b52385b9cc1` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-clean-clean.csv.gz) | 3420 | `4f9836a952bb5b5bb25182ff4af72a6e8cf11637496fb365b561671faca95244` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-lateral-snr+0.csv.gz) | 41535 | `4041ff6420fe83744453f9256636ca7fe29aa6f56b1db9bd6914427b0991bac3` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-lateral-snr+5.csv.gz) | 38314 | `98c37d27e29bdfff666fd30d1b88cc80cee18df2f379815df93cfa434b95282b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-lateral-snr-5.csv.gz) | 41853 | `74178d947267dacc4f2218e95a2599a417417b0ce6c73637576d3270174cd440` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-mixed-snr+0.csv.gz) | 38178 | `aaf4da26ae147b795d14ee76c65be280245ae7fe4ad04953af653bd91e110916` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-mixed-snr+5.csv.gz) | 29801 | `a16a98395f58c800de6aba7efd43a18c13273ac2e23482b62227988e67866779` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032338-000-mixed-snr-5.csv.gz) | 59865 | `775eb8ac021d6318046539ab5067df68ddf72238cada9bbb1e95a6d609d6ba06` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-blink-snr+0.csv.gz) | 41069 | `2470bda63930370c3ee6b7c9bf95b49b15043a642dc067a34ce96452493cdc42` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-blink-snr+5.csv.gz) | 37854 | `bc074964706314efc516f58035abfab79abf193e8b03ffb3af862c96cbbda0ff` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-blink-snr-5.csv.gz) | 41550 | `7b45db890aae879b377e26a7ce868acb65f9782a701cd6db38b2583359790ad6` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-clean-clean.csv.gz) | 3421 | `faec3156ef4d7d45250e8d08520217d8c188561a5aef0d26e7e086dae44655b1` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-lateral-snr+0.csv.gz) | 41189 | `cfd5f24e408322e4df238004db5080fd2a3ec81802ece2890edeab1401458cee` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-lateral-snr+5.csv.gz) | 37569 | `eae19341990a967481cedc974611471afda4ef40cd6f5e09e1ab0d2b92d616cc` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-lateral-snr-5.csv.gz) | 40616 | `4838ccb0bd977d6f5c782fd05515536ddee76ce35ce1d08710858cda371a7a1a` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-mixed-snr+0.csv.gz) | 40888 | `87a5472c5f609709fd083eea6bb96a5d4c427b236305b79c0128b3fb6e2add01` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-mixed-snr+5.csv.gz) | 37380 | `cdaa173b8d4d65cec545e50b7468a82c3b71f0881e0ce4e03fe612f3962c60db` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032339-000-mixed-snr-5.csv.gz) | 41662 | `af7cdaa59a08c26b3b00d2eaf783873a2520faf0f85eff971a2f806ec6b61386` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-blink-snr+0.csv.gz) | 38201 | `371cf03362b5abb2224636db81dc3eb4aa09d1b197af6abd615db14d90252156` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-blink-snr+5.csv.gz) | 37397 | `e342d14a8e84942c520ad2e0b205d875c7d9907c12588dc0dedba60d09d62c83` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-blink-snr-5.csv.gz) | 41583 | `a96fb17d8fffdf188e2847c354dd239c06e94e6de54cfdde3012a2ee84630bcb` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-clean-clean.csv.gz) | 3420 | `b0ce9b2c6854962ac02a4d469e9361e8a9609493d22ff0bb7b77c6dbf7989767` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-lateral-snr+0.csv.gz) | 41603 | `271a3a48d62f65be0a1bbdbf0a64e1ac1fdc4019cbbc1b61a928df0311922ba5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-lateral-snr+5.csv.gz) | 38265 | `013df801ba13d1f16a2bdc8336ce7e5399bcee2a85a398e214a242adb9f2bda1` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-lateral-snr-5.csv.gz) | 41916 | `c464328e36ac5a17aa956b4f3f1d3f07c987874bd086290d1ae989b8d5436418` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-mixed-snr+0.csv.gz) | 37733 | `f1fbef7fc44c90e3ba2ec23af184fbf716bf54a2a724599f6c096ed763fc8d0d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-mixed-snr+5.csv.gz) | 38018 | `a08d704b5c0725b5bc310709e0381a540de6fa4455965b45a37cdd27cc16b72d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032340-000-mixed-snr-5.csv.gz) | 41484 | `38cfdb6774ee8bd727e88e4652d6e3162f404dc11ce9b48acdaca2baaf29c63b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-blink-snr+0.csv.gz) | 39610 | `d6ad2e4904a3526c78b70a5ac982ce23065ea8e1e4f7759df0f460c3cd14c5bb` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-blink-snr+5.csv.gz) | 31140 | `47e11501ce41dd9927c651386e7651bb088b8bdc843be1bed3618df4f035e2c5` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-blink-snr-5.csv.gz) | 40061 | `8d1cdf4feb98592eeef180fefbfacec8e9eef56f3225b2d5cac4494f6db3c368` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-clean-clean.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-clean-clean.csv.gz) | 3538 | `9ad3a9336c373e43da31cda5e16688b7f55124ba5420213cb3320b298716184f` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-lateral-snr+0.csv.gz) | 40487 | `da1f392f8dc00510054cd2b7dd8f30076e69a0ff7740f4476fa20c2479506d4d` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-lateral-snr+5.csv.gz) | 39985 | `0baf02b36b45316ceb2e34bef6d14a874d38f821e16fd14adb67c6b8bc7081a9` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-lateral-snr-5.csv.gz) | 43274 | `f5ebdd9664b947b1528de1ee10a86d6a5102bf148129340bdb98178d910c5e2b` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-mixed-snr+0.csv.gz) | 39706 | `1bca9c978f95bf0d16763f501bd61e720b96ab784dec5f0edd5399806c118775` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-mixed-snr+5.csv.gz) | 31207 | `c810c94d574d9d891e570101facdba3963956e88b7ed8d84d34bfbd9afc20752` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_shards/sub-032341-000-mixed-snr-5.csv.gz) | 40086 | `030dc6bf2eb7dded1dd9c035ee170ef390f3e5c346ade04a5ba0926cb6b3c7eb` |
+| [results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/tests.txt](results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/tests.txt) | 2591 | `30a348d2b6e6a93e9c0871502a6633a71f2a66dde360449a48947b9bfd09cf5f` |
 | [results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/chain_events.jsonl](results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/chain_events.jsonl) | 1609 | `fe9a2a0527deb2dd39a5e97139f27a4de1a8167b2efe1cd15f6bbcf0c41d3e17` |
 | [results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/diagnostic_channel_means.csv](results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/diagnostic_channel_means.csv) | 76955 | `d39c4583a78960d399290018f8855f24353780f8d782799d1ab9cf4027b9f7e9` |
 | [results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/diagnostic_channel_scores.csv.gz](results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/results/vmd-regional-challengers-20261013/regional-diagnostic-full-001/diagnostic_channel_scores.csv.gz) | 2818143 | `09dcecb2d078097166774c2f911e90f7e0313b35e9b8aef25f9cb5ba99ab4e4a` |
@@ -59370,6 +61636,717 @@ whole,wavelet_ica:posterior,7.566701355586298e-12,0.29311040494677587,0.94547455
 
 ```
 
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,strength_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.1097769449989457e-11,6.665146471053594e-12,1.750729720950924e-11,454,454,False
+whole,strength_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.27317162429640923,0.2060754988188356,0.3392406244338395,454,454,False
+whole,strength_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.08117110638235804,-0.09751933985968801,-0.06620188950694285,454,454,False
+whole,strength_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.638507369053247,-7.23443605527091,-3.603149864171951,454,454,False
+whole,strength_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.638507369053247,-7.23443605527091,-3.6031498641719506,454,454,False
+posterior,strength_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.5841670085593568e-12,1.925093120049207e-12,5.421987689488375e-12,454,454,False
+posterior,strength_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.09241679074724223,0.03623868114427329,0.19745218339578546,454,454,False
+posterior,strength_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.027671249821190777,-0.054692484445710496,-0.009564460737366803,454,454,False
+posterior,strength_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.468303081886724,-5.643025718073313,-0.5630691899659876,454,454,False
+posterior,strength_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.468303081886724,-5.643025718073313,-0.5630691899659876,454,454,False
+central_shared,strength_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.171261799570829e-11,1.1955149936163617e-11,3.558326292916518e-11,454,454,False
+central_shared,strength_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5337689679314955,0.4201603982462365,0.601568763483333,454,454,False
+central_shared,strength_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.1582580840909637,-0.17428118448328658,-0.14069172451510445,454,454,False
+central_shared,strength_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-10.629677408591263,-13.22971014870084,-7.392469852469517,454,454,False
+central_shared,strength_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-10.629677408591263,-13.22971014870084,-7.392469852469517,454,454,False
+whole,blend_old_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.5551933058657718e-12,-5.663326495137363e-13,8.23095490903924e-12,454,454,False
+whole,blend_old_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.05077873517334758,-0.03359642761478429,0.10069897502126227,454,454,False
+whole,blend_old_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.015534560521318441,-0.03411838709187907,0.011176340578988538,454,454,False
+whole,blend_old_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.415206481060835,-2.933196113602739,0.7114056392399145,454,454,False
+whole,blend_old_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.415206481060835,-2.933196113602739,0.7114056392399145,454,454,False
+posterior,blend_old_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.376566672262986e-13,-1.3064724725183326e-12,8.611116917249453e-13,454,454,True
+posterior,blend_old_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.000820205412957113,-0.045755878656038536,0.056531555847302135,454,454,False
+posterior,blend_old_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0014438165664370057,-0.010049915006275875,0.011967769048951351,454,454,True
+posterior,blend_old_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.401745847040983,-2.9918465181817355,1.372965263043845,454,454,False
+posterior,blend_old_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.401745847040983,-2.9918465181817355,1.372965263043845,454,454,False
+central_shared,blend_old_rank2:0.25,reference_rank2:both,mse,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,7.880476480877184e-12,-3.0862756515186115e-13,1.85593419656968e-11,454,454,False
+central_shared,blend_old_rank2:0.25,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.11026701502228317,-0.041508888738182946,0.21026439686243992,454,454,False
+central_shared,blend_old_rank2:0.25,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.034834069392187805,-0.07115816353851998,0.01627344625968371,454,454,False
+central_shared,blend_old_rank2:0.25,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.8203250270549582,-6.323417076967224,0.5836610414646921,454,454,False
+central_shared,blend_old_rank2:0.25,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.8203250270549582,-6.323417076967224,0.5836610414646922,454,454,False
+whole,strength_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.9977510383186196e-12,2.927609153560951e-12,9.050333013717288e-12,454,454,False
+whole,strength_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.15714427390316513,0.12510603684377367,0.2095657036885479,454,454,False
+whole,strength_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.04670526971777357,-0.05965405043716885,-0.03449223306988285,454,454,False
+whole,strength_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.020204017377023,-5.728006829495393,-2.6579415459180793,454,454,False
+whole,strength_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.020204017377023,-5.728006829495393,-2.6579415459180793,454,454,False
+posterior,strength_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.5064241458509143e-12,2.751838880720705e-13,2.585003154981961e-12,454,454,False
+posterior,strength_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.04707481572211404,0.005664675513185262,0.11861016351529853,454,454,False
+posterior,strength_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.013495175821135375,-0.029221108682982985,-0.0005281451970856133,454,454,False
+posterior,strength_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.4753430829142662,-4.320041058376101,-0.12445993934876148,454,454,False
+posterior,strength_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.4753430829142662,-4.320041058376101,-0.12445993934876148,454,454,False
+central_shared,strength_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,9.845379766906415e-12,5.263873795799488e-12,1.8369417249433447e-11,454,454,False
+central_shared,strength_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.311053923953938,0.2713337764214152,0.3738194856461003,454,454,False
+central_shared,strength_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.09266848795638191,-0.10937953757195171,-0.07655825997340686,454,454,False
+central_shared,strength_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.772276860295898,-9.6222521442824,-5.714503729750711,454,454,False
+central_shared,strength_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.772276860295898,-9.6222521442824,-5.714503729750711,454,454,False
+whole,blend_old_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.3697389990798278e-12,-7.140795342249661e-13,3.5726544492421865e-12,454,454,False
+whole,blend_old_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.015801343454641428,-0.04069279548478222,0.05181176251983771,454,454,False
+whole,blend_old_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.004708427793301152,-0.016874707252910612,0.012318719956432826,454,454,False
+whole,blend_old_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6377882721374681,-1.805591232830817,1.0917045547516213,454,454,False
+whole,blend_old_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.637788272137468,-1.805591232830817,1.0917045547516213,454,454,False
+posterior,blend_old_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.209999578502971e-13,-1.159800167872185e-12,3.2291607830955767e-13,454,454,True
+posterior,blend_old_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.006654976493011894,-0.03800139299286611,0.02857793825490033,454,454,True
+posterior,blend_old_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.00313015158059009,-0.0026356581367654435,0.009921757284546506,454,454,True
+posterior,blend_old_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.09605326576618975,-2.1026769931160088,1.1218652627674535,454,454,False
+posterior,blend_old_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.09605326576618972,-2.1026769931160083,1.1218652627674532,454,454,False
+central_shared,blend_old_rank2:0.5,reference_rank2:both,mse,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.2559122879116012e-12,-7.454003767490971e-13,8.352103759164631e-12,454,454,False
+central_shared,blend_old_rank2:0.5,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03904877082292269,-0.06300598735588125,0.11691984428808992,454,454,False
+central_shared,blend_old_rank2:0.5,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.012378473840137752,-0.036117528257381674,0.020229706502566166,454,454,False
+central_shared,blend_old_rank2:0.5,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.3292641918707266,-4.111411556407643,1.6155163147312472,454,454,False
+central_shared,blend_old_rank2:0.5,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.3292641918707266,-4.111411556407643,1.6155163147312472,454,454,False
+whole,strength_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.298494554988799e-12,4.2353340285501253e-13,3.2145672772142108e-12,454,454,False
+whole,strength_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.05026828479628918,0.025611764490749478,0.08488670285733038,454,454,False
+whole,strength_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.01438245769088596,-0.02178940552548603,-0.006774622989129295,454,454,False
+whole,strength_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.559343310786235,-3.4031118325200382,-0.5588421180154934,454,454,False
+whole,strength_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.559343310786235,-3.4031118325200382,-0.5588421180154934,454,454,False
+posterior,strength_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.1170180966446213e-13,-3.6651381861099847e-13,7.776739251525028e-13,454,454,False
+posterior,strength_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.010144063796896377,-0.013502916500661844,0.04306902679984022,454,454,False
+posterior,strength_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.003056886989784975,-0.0077217075491324266,0.0034670408786033574,454,454,False
+posterior,strength_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.30021236410264934,-2.2984128170877844,0.5822778364003645,454,454,False
+posterior,strength_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.30021236410264934,-2.2984128170877844,0.5822778364003645,454,454,False
+central_shared,strength_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.6078404350036503e-12,1.2126423045846036e-12,6.508329606378385e-12,454,454,False
+central_shared,strength_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.10259591863213352,0.06700145207600172,0.15467238093896987,454,454,False
+central_shared,strength_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.029213634882670748,-0.04445680081077756,-0.01764622731011396,454,454,False
+central_shared,strength_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.1912989200313753,-5.82697095117807,-1.3218704595906847,454,454,False
+central_shared,strength_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.1912989200313753,-5.82697095117807,-1.321870459590685,454,454,False
+whole,blend_old_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.8467456379123718e-13,-5.25301984387054e-13,8.290028128957724e-13,454,454,False
+whole,blend_old_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.004582417212844829,-0.028849696598866072,0.015997612369736926,454,454,True
+whole,blend_old_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0014139154544776317,-0.004103987957234228,0.00840939169114376,454,454,True
+whole,blend_old_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.037917562343316065,-0.6794578032959475,0.8589024498115102,454,454,True
+whole,blend_old_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,56,56,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.037917562343316044,-0.6794578032959475,0.8589024498115103,454,454,True
+posterior,blend_old_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.417810687748643e-13,-7.243093436994075e-13,3.587884773457596e-14,454,454,True
+posterior,blend_old_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.007620415461629451,-0.022351105150316106,0.006257524655606846,454,454,True
+posterior,blend_old_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0026619059911888727,0.0001389586426319095,0.005881333833745776,454,454,True
+posterior,blend_old_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.09362577423441898,-0.922034337879031,0.6860263436264249,454,454,True
+posterior,blend_old_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,17,17,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.09362577423441898,-0.922034337879031,0.6860263436264249,454,454,True
+central_shared,blend_old_rank2:0.75,reference_rank2:both,mse,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,6.290867942858736e-13,-6.425245216984768e-13,2.1656564372656993e-12,454,454,False
+central_shared,blend_old_rank2:0.75,reference_rank2:both,rrmse_time,lower_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.004758816430117929,-0.048023515572239474,0.0396667644875919,454,454,True
+central_shared,blend_old_rank2:0.75,reference_rank2:both,pearson_cc,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.001284910065508579,-0.010036782944340461,0.014461514432506477,454,454,True
+central_shared,blend_old_rank2:0.75,reference_rank2:both,snr_energy_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0150095416025549,-1.662134463333842,1.41468621385252,454,454,True
+central_shared,blend_old_rank2:0.75,reference_rank2:both,snr_improvement_db,higher_is_better,available,,5,4,26,26,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.015009541602554941,-1.662134463333842,1.41468621385252,454,454,True
+
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_condition_means.csv
+
+```csv
+scope,evaluated_family,condition,input_snr_db,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration
+central_shared,blend_old_rank2:0.25,blink,-5.0,4.300838425966339e-12,0.3321119212047732,0.9422016296722507,10.831105310325096,13.020173019890354,0.03222543981573918
+central_shared,blend_old_rank2:0.25,blink,0.0,1.3772210878455203e-12,0.1946689160073548,0.9778434826799106,15.352623480196138,12.541691329322468,0.009472522459171092
+central_shared,blend_old_rank2:0.25,blink,5.0,5.246398070513275e-13,0.11107570767606449,0.992326357870392,20.173760965930377,12.362828896245148,-0.0412293855816467
+central_shared,blend_old_rank2:0.25,lateral,-5.0,5.745304144279938e-11,0.938112021473609,0.7213486906166495,2.5682166459900433,5.5996369021559635,0.1761037551905254
+central_shared,blend_old_rank2:0.25,lateral,0.0,1.7926162999768543e-11,0.523491670405788,0.8623138974088495,7.581018756698471,5.612439152425461,0.0956002159288484
+central_shared,blend_old_rank2:0.25,lateral,5.0,7.099713046278401e-12,0.3188889949951968,0.9360541568193337,12.024947790560466,5.056368267475897,0.028062562461437974
+central_shared,blend_old_rank2:0.25,mixed,-5.0,6.190617934765664e-12,0.3852117972336574,0.9259140806889729,9.265856058271618,11.728031663347407,0.0432935023175377
+central_shared,blend_old_rank2:0.25,mixed,0.0,1.953570240093238e-12,0.21399967442081666,0.9738704239866477,14.329906805830873,11.79208255046773,0.010030268568161985
+central_shared,blend_old_rank2:0.25,mixed,5.0,8.200278250912317e-13,0.12756720785742695,0.989999835751535,18.915955683594547,11.378131509419852,-0.040052256630084784
+central_shared,blend_old_rank2:0.5,blink,-5.0,2.2704056538794558e-12,0.24860536102207412,0.963863638969606,13.44829907382477,15.637366783390025,0.010563430518383921
+central_shared,blend_old_rank2:0.5,blink,0.0,7.632422449271184e-13,0.1480571201217477,0.9863925805757956,17.73446457766535,14.923532426791677,0.0009234245632860885
+central_shared,blend_old_rank2:0.5,blink,5.0,7.987922880887543e-13,0.14058005402110582,0.9860538273259609,18.8624292159579,11.05149714627267,-0.03495685503721554
+central_shared,blend_old_rank2:0.5,lateral,-5.0,3.049991927062364e-11,0.6985043058485972,0.8013754246771334,4.699520237183107,7.730940493349027,0.09607702113004143
+central_shared,blend_old_rank2:0.5,lateral,0.0,1.0228515458074826e-11,0.3979711787289456,0.911479349245494,9.59825798479685,7.62967838052384,0.046434764092203845
+central_shared,blend_old_rank2:0.5,lateral,5.0,5.861996235110979e-12,0.2646371074948101,0.9529789881024098,13.55525189394137,6.586672370856805,0.011137731178361993
+central_shared,blend_old_rank2:0.5,mixed,-5.0,3.351783859973853e-12,0.2879344748298404,0.9544523196670054,11.805789689482737,14.267965294558525,0.014755263339505182
+central_shared,blend_old_rank2:0.5,mixed,0.0,1.1651410171805464e-12,0.16594643556971383,0.9835569372143402,16.557705572326036,14.019881316962895,0.0003437553404697615
+central_shared,blend_old_rank2:0.5,mixed,5.0,1.084959045110254e-12,0.1519276758436079,0.9838198496852473,18.2012207688776,10.663396594702904,-0.033872270563796894
+central_shared,blend_old_rank2:0.75,blink,-5.0,1.1854759808474464e-12,0.19096550498274906,0.9755275330547866,16.06163944298184,18.2507071525471,-0.0011004635667966594
+central_shared,blend_old_rank2:0.75,blink,0.0,4.76127345553335e-13,0.12031025275830946,0.989709457356521,20.066986801323864,17.25605465045019,-0.0023934522174393494
+central_shared,blend_old_rank2:0.75,blink,5.0,1.545704120254281e-12,0.19113862913268878,0.9711577252737864,17.391037953923217,9.580105884237986,-0.02006075298504103
+central_shared,blend_old_rank2:0.75,lateral,-5.0,1.4247962730795777e-11,0.518501254336879,0.8734144956284192,6.818473024091794,9.849893280257714,0.024037950178755697
+central_shared,blend_old_rank2:0.75,lateral,0.0,5.37248959297642e-12,0.3035813983386614,0.9475616058014493,11.547412751603742,9.578833147330732,0.010352507536248463
+central_shared,blend_old_rank2:0.75,lateral,5.0,5.177311933264466e-12,0.22538630322985836,0.9630180079406452,15.015088097167261,8.046508574082697,0.0010987113401263074
+central_shared,blend_old_rank2:0.75,mixed,-5.0,1.7958722743677525e-12,0.22075530009680328,0.9701275149170719,14.363062606017033,16.82523821109282,-0.0009199319105610431
+central_shared,blend_old_rank2:0.75,mixed,0.0,7.905666922710668e-13,0.1403945388207785,0.9870347935100557,18.380757523456282,15.84293326809314,-0.0031341009552459083
+central_shared,blend_old_rank2:0.75,mixed,5.0,1.7918149600073212e-12,0.19886224650634937,0.9693922371310741,16.916944414750226,9.379120240575528,-0.019444658009623687
+central_shared,central_frontal_raw_context,blink,-5.0,6.904936779980176e-12,0.4348788524880212,0.9118471309267173,8.377222811698356,10.566290521263614,0.06257993856127261
+central_shared,central_frontal_raw_context,blink,0.0,2.1962708182591945e-12,0.2470615783542741,0.9660450449983218,13.268148443727885,10.457216292854213,0.021270960140760003
+central_shared,central_frontal_raw_context,blink,5.0,7.122977394201756e-13,0.14216607674998646,0.9878676096393753,18.048512142786393,10.237580073101165,-0.03677063735062983
+central_shared,central_frontal_raw_context,lateral,-5.0,9.44534444012363e-11,1.2028324963293655,0.6502226448432153,0.5511077121455731,3.5825279683114934,0.24722980096395947
+central_shared,central_frontal_raw_context,lateral,0.0,2.97874382230308e-11,0.6792278746802972,0.8061957183254501,5.478596151026485,3.5100165467534756,0.1517183950122476
+central_shared,central_frontal_raw_context,lateral,5.0,9.312546523827858e-12,0.3962261472409553,0.9113593886872697,9.987231350377025,3.0186518272924565,0.05275733059350192
+central_shared,central_frontal_raw_context,mixed,-5.0,9.621106356261985e-12,0.48011724434539993,0.8945636116566202,7.356997834156012,9.8191734392318,0.07464397134989044
+central_shared,central_frontal_raw_context,mixed,0.0,3.054412221736371e-12,0.2716307350149391,0.9596839641520798,12.280040135983132,9.742215880619987,0.02421672840272989
+central_shared,central_frontal_raw_context,mixed,5.0,9.935761671295006e-13,0.15570625721379922,0.9856692541188037,17.104352294104856,9.566528119930158,-0.035721674997353584
+central_shared,central_frontal_vmd_context,blink,-5.0,7.276774297108098e-12,0.4288195435189121,0.9136476316279312,8.592677945267717,10.781745654832974,0.060779437860058724
+central_shared,central_frontal_vmd_context,blink,0.0,2.31806387430854e-12,0.2513472690713058,0.9649359969525223,13.164391895334713,10.353459744461041,0.02238000818655935
+central_shared,central_frontal_vmd_context,blink,5.0,7.232466771420012e-13,0.1417457146131422,0.9879231798100914,18.107818587124925,10.296886517439697,-0.0368262075213461
+central_shared,central_frontal_vmd_context,lateral,-5.0,9.510732924732302e-11,1.209137495199881,0.647568369355296,0.5350230470179921,3.566443303183912,0.24988407645187888
+central_shared,central_frontal_vmd_context,lateral,0.0,2.846543221805757e-11,0.665730761190448,0.8097307928041515,5.654324662613488,3.685745058340477,0.1481833205335464
+central_shared,central_frontal_vmd_context,lateral,5.0,8.890462366766734e-12,0.3811896367744351,0.9148146158296061,10.576786781757562,3.608207258672995,0.049302103451165494
+central_shared,central_frontal_vmd_context,mixed,-5.0,1.0312374498743188e-11,0.4980002009145716,0.8889152629956035,7.050063471608789,9.512239076684576,0.08029232001090712
+central_shared,central_frontal_vmd_context,mixed,0.0,3.155854361009143e-12,0.27494788799512143,0.9589484915205242,12.187070354227547,9.649246098864406,0.02495220103428563
+central_shared,central_frontal_vmd_context,mixed,5.0,9.97021299950255e-13,0.154720577999581,0.9859341254393632,17.153382340329063,9.615558166154361,-0.03598654631791287
+central_shared,identity,blink,-5.0,6.183191098329204e-11,1.5201697637899616,0.6065549688934364,-2.1890677095652586,0.0,0.36787210059455344
+central_shared,identity,blink,0.0,1.955296764643812e-11,0.8548542931730182,0.775456203119842,2.810932150873673,0.0,0.21185980201923985
+central_shared,identity,blink,5.0,6.183191383014028e-12,0.48071990071509835,0.8942441147254044,7.810932069685229,0.0,0.05685285756334093
+central_shared,identity,lateral,-5.0,1.3468376824060673e-10,1.7276277652880256,0.5465222549686921,-3.0314202561659203,0.0,0.3509301908384829
+central_shared,identity,lateral,0.0,4.259074842485757e-11,0.9715165030742027,0.7280630050724619,1.9685796042730108,0.0,0.22985110826523578
+central_shared,identity,lateral,5.0,1.3468377449241516e-11,0.5463238828266885,0.8679662078428217,6.968579523084567,0.0,0.09615051143794999
+central_shared,identity,mixed,-5.0,6.517071459707121e-11,1.5451065066902157,0.5953457224668119,-2.462175605075788,0.0,0.3738618605396987
+central_shared,identity,mixed,0.0,2.060879008862338e-11,0.8688772544428893,0.7698947825229631,2.537824255363143,0.0,0.2140059100318467
+central_shared,identity,mixed,5.0,6.5170717613039e-12,0.488605591401494,0.89217826235069,7.537824174174699,0.0,0.057769316770760304
+central_shared,reference_rank2:both,blink,-5.0,1.0460494068703118e-12,0.18610343160545093,0.9744270694879897,16.715115779273408,18.90418348883867,0.0
+central_shared,reference_rank2:both,blink,0.0,5.158763897241702e-13,0.12774582692465772,0.9873160051390817,19.91626681427177,17.105334663398093,0.0
+central_shared,reference_rank2:both,blink,5.0,2.7653753035479083e-12,0.2513420664691909,0.9510969722887455,15.88904303083402,8.078110961148791,0.0
+central_shared,reference_rank2:both,lateral,-5.0,8.69717182331583e-12,0.47261029354178125,0.897452445807175,7.453855315829498,10.485275571995418,0.0
+central_shared,reference_rank2:both,lateral,0.0,3.3580854044733266e-12,0.27709179455792965,0.9579141133376978,12.143067083330473,10.174487479057461,0.0
+central_shared,reference_rank2:both,lateral,5.0,5.045660140738863e-12,0.22001396695429937,0.9641167192807716,15.214221700039712,8.245642176955142,0.0
+central_shared,reference_rank2:both,mixed,-5.0,1.5228831779473625e-12,0.21342578595644396,0.9692075830065108,15.145343315919149,17.60751892099494,0.0
+central_shared,reference_rank2:both,mixed,0.0,8.298472653648004e-13,0.147716333034059,0.9839006925548098,18.470764258622957,15.932940003259816,0.0
+central_shared,reference_rank2:both,mixed,5.0,2.9405955697824328e-12,0.256675277030326,0.9499475791214504,15.478639442771279,7.9408152685965785,0.0
+central_shared,strength_rank2:0.25,blink,-5.0,3.5162728822322893e-11,1.1422803087505957,0.6938160825892886,0.27273215039880117,2.4617998599640596,0.28061098689870123
+central_shared,strength_rank2:0.25,blink,0.0,1.1137466897427893e-11,0.6406525045785338,0.8413932683459346,5.293191438895337,2.4822592880216643,0.1459227367931471
+central_shared,strength_rank2:0.25,blink,5.0,4.433481815779885e-12,0.3974715301401125,0.9184679766217606,9.526304148922353,1.7153720792371252,0.03262899566698489
+central_shared,strength_rank2:0.25,lateral,-5.0,8.126711583706385e-11,1.348361834585929,0.6246215735339898,-1.0417176166991922,1.9897026394667279,0.27283087227318503
+central_shared,strength_rank2:0.25,lateral,0.0,2.62449711453622e-11,0.7614351540125275,0.7933246262235352,3.914670105268795,1.9460905009957845,0.1645894871141625
+central_shared,strength_rank2:0.25,lateral,5.0,9.707974774484658e-12,0.4437385678702509,0.9019384875802189,8.595995891960225,1.6274163688756573,0.062178231700552734
+central_shared,strength_rank2:0.25,mixed,-5.0,3.751552313710838e-11,1.1646174792101733,0.684060837946354,-0.03118444468324964,2.4309911603925385,0.2851467450601568
+central_shared,strength_rank2:0.25,mixed,0.0,1.1979395183424131e-11,0.6542088093665942,0.8364518442646703,4.975151779546408,2.4373275241832646,0.1474488482901394
+central_shared,strength_rank2:0.25,mixed,5.0,4.686448830165712e-12,0.40387929894288,0.9169817260998064,9.254076609961437,1.7162524357867384,0.032965853021643864
+central_shared,strength_rank2:0.5,blink,-5.0,1.614202450592956e-11,0.7679499174212443,0.7999600174469828,3.69612995137512,5.885197660940378,0.17446705204100732
+central_shared,strength_rank2:0.5,blink,0.0,5.159451438305489e-12,0.42856493078434416,0.909428229608233,8.773245038787111,5.9623128879134395,0.0778877755308489
+central_shared,strength_rank2:0.5,blink,5.0,3.28060928012415e-12,0.31545129746787337,0.939456046061179,12.081458045513003,4.270525975827773,0.011640926227566191
+central_shared,strength_rank2:0.5,lateral,-5.0,4.246379896633439e-11,0.9839165208231698,0.7209769687435309,1.4521664027542696,4.48358665892019,0.17647547706364403
+central_shared,strength_rank2:0.5,lateral,0.0,1.4257601548799704e-11,0.5594896846482363,0.8629442857364668,6.345685708574022,4.377106104301012,0.094969827601231
+central_shared,strength_rank2:0.5,lateral,5.0,7.050720998148597e-12,0.3455052877584137,0.9332760050816884,10.650530517199616,3.68195099411505,0.03084071419908328
+central_shared,strength_rank2:0.5,mixed,-5.0,1.768915408060013e-11,0.7884628763848378,0.7917734858826962,3.3245868971886288,5.786762502264418,0.1774340971238145
+central_shared,strength_rank2:0.5,mixed,0.0,5.8064397444812855e-12,0.44215148560458306,0.905107401032922,8.366154335359436,5.828330079996293,0.07879329152188781
+central_shared,strength_rank2:0.5,mixed,5.0,3.480161821199406e-12,0.32071809076687796,0.9384403488230962,11.785868101477966,4.248043927303268,0.01150723029835406
+central_shared,strength_rank2:0.75,blink,-5.0,4.769798034112033e-12,0.406023292522078,0.9155887905990563,9.296838043533302,11.48590575309856,0.05883827888893366
+central_shared,strength_rank2:0.75,blink,0.0,1.6189212690709148e-12,0.22432577127735023,0.9675192056825557,14.648373661053304,11.837441510179634,0.019796799456525998
+central_shared,strength_rank2:0.75,blink,5.0,2.7245737760468247e-12,0.23906101288636766,0.9524105345071276,17.243733188426603,9.432801118741375,-0.001313562218382479
+central_shared,strength_rank2:0.75,lateral,-5.0,1.8273817628418393e-11,0.6572678854950944,0.8295967948495718,4.633493337692146,7.664913593858065,0.06785565095760322
+central_shared,strength_rank2:0.75,lateral,0.0,6.628639635170078e-12,0.3783195742983846,0.9266790788211982,9.450503139325772,7.4819235350527595,0.031235034516499626
+central_shared,strength_rank2:0.75,lateral,5.0,5.496616120233332e-12,0.25898120615682424,0.9565018821039049,13.301531241405977,6.332951718321409,0.007614837176866791
+central_shared,strength_rank2:0.75,mixed,-5.0,5.691607427546456e-12,0.42736838773938857,0.9088537111352682,8.682347550182683,11.144523155258472,0.060353871871242526
+central_shared,strength_rank2:0.75,mixed,0.0,2.0899237717948425e-12,0.23989970679005168,0.9637443494916658,13.919108065656744,11.381283810293597,0.02015634306314399
+central_shared,strength_rank2:0.75,mixed,5.0,2.8982107344049794e-12,0.24484120659780095,0.9515621188898468,16.528698233333355,8.990874059158655,-0.0016145397683965997
+frontal,blend_old_rank2:0.25,blink,-5.0,2.99873126301126e-12,0.18974740933060194,0.9784679420666617,19.177440685730343,29.889426770307487,0.0
+frontal,blend_old_rank2:0.25,blink,0.0,4.048583094313687e-13,0.07594254669170267,0.9961725182097906,23.828737413704904,29.540723637843115,0.0
+frontal,blend_old_rank2:0.25,blink,5.0,2.8505097196050827e-13,0.05221626252362553,0.9978200732727254,28.11799034150233,28.829976646828992,0.0
+frontal,blend_old_rank2:0.25,lateral,-5.0,9.244011680321246e-12,0.3208245731485871,0.9418989311600219,10.822651407499206,17.801009370938193,0.0
+frontal,blend_old_rank2:0.25,lateral,0.0,5.8482079259066875e-12,0.2241814871123365,0.9680496738742981,14.380050164721435,16.358408267721487,0.0
+frontal,blend_old_rank2:0.25,lateral,5.0,1.2538451176545053e-11,0.21446436303719923,0.9558859793867824,17.208528352303567,14.186886536492063,0.0
+frontal,blend_old_rank2:0.25,mixed,-5.0,1.3264842975225604e-12,0.13793595562894684,0.9880287533876265,18.39570203998193,29.075553237425602,0.0
+frontal,blend_old_rank2:0.25,mixed,0.0,7.666723986573673e-13,0.09175561351127914,0.9940593006008301,22.34351312224209,28.023364459246828,0.0
+frontal,blend_old_rank2:0.25,mixed,5.0,6.055618797404109e-13,0.065596883521439,0.9959752710469596,26.50645988158061,27.18631129977379,0.0
+frontal,blend_old_rank2:0.5,blink,-5.0,2.99873126301126e-12,0.18974740933060194,0.9784679420666617,19.177440685730343,29.889426770307487,0.0
+frontal,blend_old_rank2:0.5,blink,0.0,4.048583094313687e-13,0.07594254669170267,0.9961725182097906,23.828737413704904,29.540723637843115,0.0
+frontal,blend_old_rank2:0.5,blink,5.0,2.8505097196050827e-13,0.05221626252362553,0.9978200732727254,28.11799034150233,28.829976646828992,0.0
+frontal,blend_old_rank2:0.5,lateral,-5.0,9.244011680321246e-12,0.3208245731485871,0.9418989311600219,10.822651407499206,17.801009370938193,0.0
+frontal,blend_old_rank2:0.5,lateral,0.0,5.8482079259066875e-12,0.2241814871123365,0.9680496738742981,14.380050164721435,16.358408267721487,0.0
+frontal,blend_old_rank2:0.5,lateral,5.0,1.2538451176545053e-11,0.21446436303719923,0.9558859793867824,17.208528352303567,14.186886536492063,0.0
+frontal,blend_old_rank2:0.5,mixed,-5.0,1.3264842975225604e-12,0.13793595562894684,0.9880287533876265,18.39570203998193,29.075553237425602,0.0
+frontal,blend_old_rank2:0.5,mixed,0.0,7.666723986573673e-13,0.09175561351127914,0.9940593006008301,22.34351312224209,28.023364459246828,0.0
+frontal,blend_old_rank2:0.5,mixed,5.0,6.055618797404109e-13,0.065596883521439,0.9959752710469596,26.50645988158061,27.18631129977379,0.0
+frontal,blend_old_rank2:0.75,blink,-5.0,2.99873126301126e-12,0.18974740933060194,0.9784679420666617,19.177440685730343,29.889426770307487,0.0
+frontal,blend_old_rank2:0.75,blink,0.0,4.048583094313687e-13,0.07594254669170267,0.9961725182097906,23.828737413704904,29.540723637843115,0.0
+frontal,blend_old_rank2:0.75,blink,5.0,2.8505097196050827e-13,0.05221626252362553,0.9978200732727254,28.11799034150233,28.829976646828992,0.0
+frontal,blend_old_rank2:0.75,lateral,-5.0,9.244011680321246e-12,0.3208245731485871,0.9418989311600219,10.822651407499206,17.801009370938193,0.0
+frontal,blend_old_rank2:0.75,lateral,0.0,5.8482079259066875e-12,0.2241814871123365,0.9680496738742981,14.380050164721435,16.358408267721487,0.0
+frontal,blend_old_rank2:0.75,lateral,5.0,1.2538451176545053e-11,0.21446436303719923,0.9558859793867824,17.208528352303567,14.186886536492063,0.0
+frontal,blend_old_rank2:0.75,mixed,-5.0,1.3264842975225604e-12,0.13793595562894684,0.9880287533876265,18.39570203998193,29.075553237425602,0.0
+frontal,blend_old_rank2:0.75,mixed,0.0,7.666723986573673e-13,0.09175561351127914,0.9940593006008301,22.34351312224209,28.023364459246828,0.0
+frontal,blend_old_rank2:0.75,mixed,5.0,6.055618797404109e-13,0.065596883521439,0.9959752710469596,26.50645988158061,27.18631129977379,0.0
+frontal,central_frontal_raw_context,blink,-5.0,2.99873126301126e-12,0.18974740933060194,0.9784679420666617,19.177440685730343,29.889426770307487,0.0
+frontal,central_frontal_raw_context,blink,0.0,4.048583094313687e-13,0.07594254669170267,0.9961725182097906,23.828737413704904,29.540723637843115,0.0
+frontal,central_frontal_raw_context,blink,5.0,2.8505097196050827e-13,0.05221626252362553,0.9978200732727254,28.11799034150233,28.829976646828992,0.0
+frontal,central_frontal_raw_context,lateral,-5.0,9.244011680321246e-12,0.3208245731485871,0.9418989311600219,10.822651407499206,17.801009370938193,0.0
+frontal,central_frontal_raw_context,lateral,0.0,5.8482079259066875e-12,0.2241814871123365,0.9680496738742981,14.380050164721435,16.358408267721487,0.0
+frontal,central_frontal_raw_context,lateral,5.0,1.2538451176545053e-11,0.21446436303719923,0.9558859793867824,17.208528352303567,14.186886536492063,0.0
+frontal,central_frontal_raw_context,mixed,-5.0,1.3264842975225604e-12,0.13793595562894684,0.9880287533876265,18.39570203998193,29.075553237425602,0.0
+frontal,central_frontal_raw_context,mixed,0.0,7.666723986573673e-13,0.09175561351127914,0.9940593006008301,22.34351312224209,28.023364459246828,0.0
+frontal,central_frontal_raw_context,mixed,5.0,6.055618797404109e-13,0.065596883521439,0.9959752710469596,26.50645988158061,27.18631129977379,0.0
+frontal,central_frontal_vmd_context,blink,-5.0,2.99873126301126e-12,0.18974740933060194,0.9784679420666617,19.177440685730343,29.889426770307487,0.0
+frontal,central_frontal_vmd_context,blink,0.0,4.048583094313687e-13,0.07594254669170267,0.9961725182097906,23.828737413704904,29.540723637843115,0.0
+frontal,central_frontal_vmd_context,blink,5.0,2.8505097196050827e-13,0.05221626252362553,0.9978200732727254,28.11799034150233,28.829976646828992,0.0
+frontal,central_frontal_vmd_context,lateral,-5.0,9.244011680321246e-12,0.3208245731485871,0.9418989311600219,10.822651407499206,17.801009370938193,0.0
+frontal,central_frontal_vmd_context,lateral,0.0,5.8482079259066875e-12,0.2241814871123365,0.9680496738742981,14.380050164721435,16.358408267721487,0.0
+frontal,central_frontal_vmd_context,lateral,5.0,1.2538451176545053e-11,0.21446436303719923,0.9558859793867824,17.208528352303567,14.186886536492063,0.0
+frontal,central_frontal_vmd_context,mixed,-5.0,1.3264842975225604e-12,0.13793595562894684,0.9880287533876265,18.39570203998193,29.075553237425602,0.0
+frontal,central_frontal_vmd_context,mixed,0.0,7.666723986573673e-13,0.09175561351127914,0.9940593006008301,22.34351312224209,28.023364459246828,0.0
+frontal,central_frontal_vmd_context,mixed,5.0,6.055618797404109e-13,0.065596883521439,0.9959752710469596,26.50645988158061,27.18631129977379,0.0
+frontal,identity,blink,-5.0,5.482931164258404e-10,3.6299891219156684,0.3041333763388547,-10.711986084577148,0.0,0.674334565727807
+frontal,identity,blink,0.0,1.7338551240503282e-10,2.0412929252169167,0.4770114124357372,-5.711986224138217,0.0,0.5191611057740534
+frontal,identity,blink,5.0,5.482931418612363e-11,1.1479033799197274,0.6769280068846945,-0.7119863053266606,0.0,0.32089206638803097
+frontal,identity,lateral,-5.0,3.5473977662548186e-10,2.4669891958963284,0.3944998431869317,-6.978357963438984,0.0,0.5473990879730903
+frontal,identity,lateral,0.0,1.1217857039470074e-10,1.3872899952539892,0.5973178640826771,-1.9783581030000517,0.0,0.3707318097916209
+frontal,identity,lateral,5.0,3.547397935505921e-11,0.7801305020039578,0.7862544682203716,3.0216418158115044,0.0,0.16963151116641093
+frontal,identity,mixed,-5.0,5.397695058234464e-10,3.603840241001845,0.2998643668694851,-10.67985119744367,0.0,0.6881643865181414
+frontal,identity,mixed,0.0,1.706901099806742e-10,2.026588328604716,0.47554706082233633,-5.679851337004738,0.0,0.5185122397784938
+frontal,identity,mixed,5.0,5.3976953083209526e-11,1.1396343774593662,0.6780078575731474,-0.6798514181931822,0.0,0.3179674134738124
+frontal,reference_rank2:both,blink,-5.0,2.99873126301126e-12,0.18974740933060194,0.9784679420666617,19.177440685730343,29.889426770307487,0.0
+frontal,reference_rank2:both,blink,0.0,4.048583094313687e-13,0.07594254669170267,0.9961725182097906,23.828737413704904,29.540723637843115,0.0
+frontal,reference_rank2:both,blink,5.0,2.8505097196050827e-13,0.05221626252362553,0.9978200732727254,28.11799034150233,28.829976646828992,0.0
+frontal,reference_rank2:both,lateral,-5.0,9.244011680321246e-12,0.3208245731485871,0.9418989311600219,10.822651407499206,17.801009370938193,0.0
+frontal,reference_rank2:both,lateral,0.0,5.8482079259066875e-12,0.2241814871123365,0.9680496738742981,14.380050164721435,16.358408267721487,0.0
+frontal,reference_rank2:both,lateral,5.0,1.2538451176545053e-11,0.21446436303719923,0.9558859793867824,17.208528352303567,14.186886536492063,0.0
+frontal,reference_rank2:both,mixed,-5.0,1.3264842975225604e-12,0.13793595562894684,0.9880287533876265,18.39570203998193,29.075553237425602,0.0
+frontal,reference_rank2:both,mixed,0.0,7.666723986573673e-13,0.09175561351127914,0.9940593006008301,22.34351312224209,28.023364459246828,0.0
+frontal,reference_rank2:both,mixed,5.0,6.055618797404109e-13,0.065596883521439,0.9959752710469596,26.50645988158061,27.18631129977379,0.0
+frontal,strength_rank2:0.25,blink,-5.0,2.99873126301126e-12,0.18974740933060194,0.9784679420666617,19.177440685730343,29.889426770307487,0.0
+frontal,strength_rank2:0.25,blink,0.0,4.048583094313687e-13,0.07594254669170267,0.9961725182097906,23.828737413704904,29.540723637843115,0.0
+frontal,strength_rank2:0.25,blink,5.0,2.8505097196050827e-13,0.05221626252362553,0.9978200732727254,28.11799034150233,28.829976646828992,0.0
+frontal,strength_rank2:0.25,lateral,-5.0,9.244011680321246e-12,0.3208245731485871,0.9418989311600219,10.822651407499206,17.801009370938193,0.0
+frontal,strength_rank2:0.25,lateral,0.0,5.8482079259066875e-12,0.2241814871123365,0.9680496738742981,14.380050164721435,16.358408267721487,0.0
+frontal,strength_rank2:0.25,lateral,5.0,1.2538451176545053e-11,0.21446436303719923,0.9558859793867824,17.208528352303567,14.186886536492063,0.0
+frontal,strength_rank2:0.25,mixed,-5.0,1.3264842975225604e-12,0.13793595562894684,0.9880287533876265,18.39570203998193,29.075553237425602,0.0
+frontal,strength_rank2:0.25,mixed,0.0,7.666723986573673e-13,0.09175561351127914,0.9940593006008301,22.34351312224209,28.023364459246828,0.0
+frontal,strength_rank2:0.25,mixed,5.0,6.055618797404109e-13,0.065596883521439,0.9959752710469596,26.50645988158061,27.18631129977379,0.0
+frontal,strength_rank2:0.5,blink,-5.0,2.99873126301126e-12,0.18974740933060194,0.9784679420666617,19.177440685730343,29.889426770307487,0.0
+frontal,strength_rank2:0.5,blink,0.0,4.048583094313687e-13,0.07594254669170267,0.9961725182097906,23.828737413704904,29.540723637843115,0.0
+frontal,strength_rank2:0.5,blink,5.0,2.8505097196050827e-13,0.05221626252362553,0.9978200732727254,28.11799034150233,28.829976646828992,0.0
+frontal,strength_rank2:0.5,lateral,-5.0,9.244011680321246e-12,0.3208245731485871,0.9418989311600219,10.822651407499206,17.801009370938193,0.0
+frontal,strength_rank2:0.5,lateral,0.0,5.8482079259066875e-12,0.2241814871123365,0.9680496738742981,14.380050164721435,16.358408267721487,0.0
+frontal,strength_rank2:0.5,lateral,5.0,1.2538451176545053e-11,0.21446436303719923,0.9558859793867824,17.208528352303567,14.186886536492063,0.0
+frontal,strength_rank2:0.5,mixed,-5.0,1.3264842975225604e-12,0.13793595562894684,0.9880287533876265,18.39570203998193,29.075553237425602,0.0
+frontal,strength_rank2:0.5,mixed,0.0,7.666723986573673e-13,0.09175561351127914,0.9940593006008301,22.34351312224209,28.023364459246828,0.0
+frontal,strength_rank2:0.5,mixed,5.0,6.055618797404109e-13,0.065596883521439,0.9959752710469596,26.50645988158061,27.18631129977379,0.0
+frontal,strength_rank2:0.75,blink,-5.0,2.99873126301126e-12,0.18974740933060194,0.9784679420666617,19.177440685730343,29.889426770307487,0.0
+frontal,strength_rank2:0.75,blink,0.0,4.048583094313687e-13,0.07594254669170267,0.9961725182097906,23.828737413704904,29.540723637843115,0.0
+frontal,strength_rank2:0.75,blink,5.0,2.8505097196050827e-13,0.05221626252362553,0.9978200732727254,28.11799034150233,28.829976646828992,0.0
+frontal,strength_rank2:0.75,lateral,-5.0,9.244011680321246e-12,0.3208245731485871,0.9418989311600219,10.822651407499206,17.801009370938193,0.0
+frontal,strength_rank2:0.75,lateral,0.0,5.8482079259066875e-12,0.2241814871123365,0.9680496738742981,14.380050164721435,16.358408267721487,0.0
+frontal,strength_rank2:0.75,lateral,5.0,1.2538451176545053e-11,0.21446436303719923,0.9558859793867824,17.208528352303567,14.186886536492063,0.0
+frontal,strength_rank2:0.75,mixed,-5.0,1.3264842975225604e-12,0.13793595562894684,0.9880287533876265,18.39570203998193,29.075553237425602,0.0
+frontal,strength_rank2:0.75,mixed,0.0,7.666723986573673e-13,0.09175561351127914,0.9940593006008301,22.34351312224209,28.023364459246828,0.0
+frontal,strength_rank2:0.75,mixed,5.0,6.055618797404109e-13,0.065596883521439,0.9959752710469596,26.50645988158061,27.18631129977379,0.0
+middle_verified,blend_old_rank2:0.25,blink,-5.0,3.4411784537777476e-12,0.34810783347804275,0.9382558048751453,10.293009105029343,13.729844786992341,0.03030671833702498
+middle_verified,blend_old_rank2:0.25,blink,0.0,1.081588642228622e-12,0.204142564952618,0.9763118510750706,14.797751397435643,13.234587218959712,0.008072383895387824
+middle_verified,blend_old_rank2:0.25,blink,5.0,3.955305503635815e-13,0.11508174574323378,0.9919278347493481,19.76806736709302,13.204903269805532,-0.05022567324480452
+middle_verified,blend_old_rank2:0.25,lateral,-5.0,3.4293175518728493e-11,0.9091122686808706,0.7316426266244683,2.7221520515705833,5.835656488458585,0.1582608993586331
+middle_verified,blend_old_rank2:0.25,lateral,0.0,1.096108850233121e-11,0.5095547888901362,0.8689390517356376,7.720053512527258,5.83355808897633,0.0857897633786073
+middle_verified,blend_old_rank2:0.25,lateral,5.0,4.636501931355212e-12,0.31246999898253874,0.9388702428606432,12.133963022268675,5.247467679906191,0.025674236763809553
+middle_verified,blend_old_rank2:0.25,mixed,-5.0,4.487330347751465e-12,0.39609150887661565,0.9232418846590423,8.939307627880748,12.523350155146577,0.03967251830031628
+middle_verified,blend_old_rank2:0.25,mixed,0.0,1.3818667315022448e-12,0.21888395892933868,0.9730893860380764,14.051840809087292,12.635883475914188,0.007440390662988903
+middle_verified,blend_old_rank2:0.25,mixed,5.0,5.857703857994276e-13,0.13016201901592325,0.9897160337346278,18.652877126929315,12.236919874944656,-0.04898805204566211
+middle_verified,blend_old_rank2:0.5,blink,-5.0,1.84196705651467e-12,0.26333100112783253,0.960653501893369,12.796028366593495,16.232864048556497,0.007909021318801186
+middle_verified,blend_old_rank2:0.5,blink,0.0,6.101030290913153e-13,0.15686394600744644,0.9851481963376918,17.079381977153833,15.5162177986779,-0.0007639613672334345
+middle_verified,blend_old_rank2:0.5,blink,5.0,6.97329922039721e-13,0.15256497225931231,0.9838920999113856,18.04441725881909,11.481253161531601,-0.04218993840684204
+middle_verified,blend_old_rank2:0.5,lateral,-5.0,1.8530233288193924e-11,0.6812468883038801,0.8092136340674339,4.77268183114449,7.886186268032489,0.08068989191566786
+middle_verified,blend_old_rank2:0.5,lateral,0.0,6.384090495608313e-12,0.3896699920375273,0.9157944103920075,9.673350873367003,7.786855449816071,0.03893440472223737
+middle_verified,blend_old_rank2:0.5,lateral,5.0,3.908781822149159e-12,0.2599740407166096,0.955199206741562,13.635516461530074,6.7490211191675895,0.009345272882890814
+middle_verified,blend_old_rank2:0.5,mixed,-5.0,2.454243572306568e-12,0.29796814722272363,0.9520085117348023,11.432989158438085,15.017031685703918,0.010905891224556295
+middle_verified,blend_old_rank2:0.5,mixed,0.0,8.434405970307816e-13,0.17133001307782864,0.9826936053752078,16.20097992649771,14.785022593324607,-0.002163828674142336
+middle_verified,blend_old_rank2:0.5,mixed,5.0,8.970065232167097e-13,0.16265843496341734,0.9816694828895061,17.545897615607526,11.129940363622872,-0.040941501200540215
+middle_verified,blend_old_rank2:0.75,blink,-5.0,1.0688434431397583e-12,0.208304000965691,0.9717308426067716,15.187526773927013,18.62436245589001,-0.0031683193946013
+middle_verified,blend_old_rank2:0.75,blink,0.0,4.305401312232252e-13,0.13170082418263232,0.9880057085568016,19.143102552510207,17.579938374034278,-0.0036214735863432357
+middle_verified,blend_old_rank2:0.75,blink,5.0,1.4644424397340694e-12,0.21368379704863116,0.96568962416215,16.16464477621503,9.60148067892754,-0.023987462657606328
+middle_verified,blend_old_rank2:0.75,lateral,-5.0,9.514279769640434e-12,0.5171843194300288,0.875474852501654,6.7506910770968585,9.86419551398486,0.014428673481447569
+middle_verified,blend_old_rank2:0.75,lateral,0.0,3.6258251840910717e-12,0.30336384337524785,0.9483991874492386,11.477025172051393,9.590529748500463,0.006329627665006138
+middle_verified,blend_old_rank2:0.75,lateral,5.0,3.5360897400621467e-12,0.22372165718642573,0.9643889408203922,14.99472036824459,8.108225025882101,0.00015553880406058985
+middle_verified,blend_old_rank2:0.75,mixed,-5.0,1.4666361761000346e-12,0.23479360759001064,0.9665433725741946,13.80061757304723,17.384660100313063,-0.0036289696148357974
+middle_verified,blend_old_rank2:0.75,mixed,0.0,6.562408713660802e-13,0.1502654608132284,0.9853003169235265,17.718314537933587,16.302357204760487,-0.004770540222461121
+middle_verified,blend_old_rank2:0.75,mixed,5.0,1.63307064398103e-12,0.2199035618301936,0.963976344881987,15.893346977796885,9.477389725812227,-0.02324836319302134
+middle_verified,central_frontal_raw_context,blink,-5.0,5.544385499474442e-12,0.45658958146184403,0.9055833814058806,7.839881087293567,11.276716769256565,0.06297914180628958
+middle_verified,central_frontal_raw_context,blink,0.0,1.7398961369097037e-12,0.25913530686104325,0.9636266503008024,12.733567527621375,11.170403349145442,0.02075758466965571
+middle_verified,central_frontal_raw_context,blink,5.0,5.534756492465062e-13,0.1489295421052034,0.9870329136586721,17.51527748286577,10.952113385578281,-0.04533075215412848
+middle_verified,central_frontal_raw_context,lateral,-5.0,5.659098480785553e-11,1.1676726405188547,0.6613887883589438,0.7738633634522251,3.8873678003402263,0.22851473762415786
+middle_verified,central_frontal_raw_context,lateral,0.0,1.7899755335400573e-11,0.6583747357020714,0.8150684539092297,5.72823743452799,3.841742010977061,0.1396603612050151
+middle_verified,central_frontal_raw_context,lateral,5.0,5.8872596905292165e-12,0.38656756528824043,0.9151440734641156,10.203616470159783,3.3171211277972974,0.04940040616033724
+middle_verified,central_frontal_raw_context,mixed,-5.0,7.066275350465884e-12,0.4954337120406603,0.8905117314373134,7.004155807053818,10.588198334319651,0.07240267152204508
+middle_verified,central_frontal_raw_context,mixed,0.0,2.21045844450978e-12,0.27963380434455964,0.9580581931501257,11.947132395193421,10.53117506202032,0.022471583550939644
+middle_verified,central_frontal_raw_context,mixed,5.0,7.071568438039441e-13,0.15982786838177568,0.985105062818756,16.803765627950703,10.387808375966046,-0.044377081129790094
+middle_verified,central_frontal_vmd_context,blink,-5.0,5.866477634928991e-12,0.44875700942130753,0.9080164280646323,8.082832450231775,11.519668132194775,0.06054609514753786
+middle_verified,central_frontal_vmd_context,blink,0.0,1.844996970635146e-12,0.263375578392606,0.9624959222239392,12.640910623940751,11.07774644546482,0.021888312746518965
+middle_verified,central_frontal_vmd_context,blink,5.0,5.590443247056509e-13,0.14802673209636255,0.9871584620874637,17.611131951767383,11.047967854479896,-0.045456300582920176
+middle_verified,central_frontal_vmd_context,lateral,-5.0,5.680310646124413e-11,1.170519740074188,0.6591225702336937,0.7598058982560005,3.873310335144003,0.2307809557494079
+middle_verified,central_frontal_vmd_context,lateral,0.0,1.735681920425977e-11,0.6472716758639502,0.8178646415191796,5.856900849339132,3.970405425788202,0.13686417359506514
+middle_verified,central_frontal_vmd_context,lateral,5.0,5.7192500676803045e-12,0.37353182272629604,0.917964459035933,10.713447961006219,3.826952618643733,0.04658002058851972
+middle_verified,central_frontal_vmd_context,mixed,-5.0,7.565896502434728e-12,0.5125616973300033,0.8851189413531442,6.720935993835897,10.304978521101727,0.07779546160621456
+middle_verified,central_frontal_vmd_context,mixed,0.0,2.2715192747804696e-12,0.2818747317397793,0.9575808749955309,11.89687620926631,10.48091887609321,0.02294890170553457
+middle_verified,central_frontal_vmd_context,mixed,5.0,6.993622317291841e-13,0.15782880824578766,0.9855435917682123,16.91420979712505,10.498252545140392,-0.04481561007924645
+middle_verified,identity,blink,-5.0,6.152215349410866e-11,1.7116528044557637,0.5575307020940791,-3.436835681962998,0.0,0.41103182111809106
+middle_verified,identity,blink,0.0,1.945501371425652e-11,0.9625331218315278,0.7395182671967507,1.563164178475933,0.0,0.24486596777370756
+middle_verified,identity,blink,5.0,6.152215631750995e-12,0.5412721565982807,0.8744734683910729,6.563164097287489,0.0,0.06722869311347078
+middle_verified,identity,lateral,-5.0,9.755337213933291e-11,1.7578878809261327,0.5463849993616356,-3.113504436888001,0.0,0.343518526621466
+middle_verified,identity,lateral,0.0,3.084908584439763e-11,0.9885330173232241,0.725818895365642,1.886495423550929,0.0,0.22890991974860278
+middle_verified,identity,lateral,5.0,9.755337663013915e-12,0.5558929721976169,0.8648892810003114,6.886495342362487,0.0,0.09965519862414131
+middle_verified,identity,mixed,-5.0,6.334349214317706e-11,1.7266146065190857,0.5502012768618,-3.5840425272658303,0.0,0.4127131260975587
+middle_verified,identity,mixed,0.0,2.0030971584144728e-11,0.9709467615536402,0.7355832007079582,1.4159573331731008,0.0,0.24494657599310718
+middle_verified,identity,mixed,5.0,6.334349505270546e-12,0.5460034939320284,0.8730235338070127,6.415957251984658,0.0,0.06770444788195305
+middle_verified,reference_rank2:both,blink,-5.0,1.1218076136530113e-12,0.211760704107225,0.96856252321217,15.48405387477211,18.92088955673511,0.0
+middle_verified,reference_rank2:both,blink,0.0,5.428999486243519e-13,0.14535042348868674,0.984384234970458,18.61261286239141,17.04944868391547,0.0
+middle_verified,reference_rank2:both,blink,5.0,2.6968681034466267e-12,0.28437205760727247,0.9417021615045437,14.423830579216816,7.860666481929327,0.0
+middle_verified,reference_rank2:both,lateral,-5.0,7.245314963068022e-12,0.4935327438395064,0.8899035259831016,7.124875742984493,10.238380179872493,0.0
+middle_verified,reference_rank2:both,lateral,0.0,2.68629256777949e-12,0.2886494785912557,0.9547288151142448,11.807724374354166,9.921228950803236,0.0
+middle_verified,reference_rank2:both,lateral,5.0,3.5184256850941754e-12,0.2233960825545605,0.9645444796244528,14.968173617665053,8.081678275302565,0.0
+middle_verified,reference_rank2:both,mixed,-5.0,1.5245081591318652e-12,0.23811627727547488,0.9629144029593586,14.163315692074383,17.74735821934021,0.0
+middle_verified,reference_rank2:both,mixed,0.0,8.202675545081403e-13,0.16512404607283965,0.9805297767010653,17.411358070361338,15.995400737188238,0.0
+middle_verified,reference_rank2:both,mixed,5.0,2.793962748092389e-12,0.2879372607175526,0.9407279816889659,14.223773045731198,7.80781579374654,0.0
+middle_verified,strength_rank2:0.25,blink,-5.0,3.494889351459659e-11,1.28535443999701,0.650328750739235,-0.9606622568201864,2.476173425142812,0.31823377247293505
+middle_verified,strength_rank2:0.25,blink,0.0,1.1065534217073464e-11,0.7208797833572219,0.8137267742290912,4.0604672923733744,2.4973031138974413,0.17065746074136695
+middle_verified,strength_rank2:0.25,blink,5.0,4.377621670482196e-12,0.4473564175735386,0.9028169536651015,8.292736912874364,1.729572815586875,0.03888520783944214
+middle_verified,strength_rank2:0.25,lateral,-5.0,5.910814452000827e-11,1.3753032927130946,0.622141537940083,-1.1611083952431347,1.9523960416448667,0.2677619880430186
+middle_verified,strength_rank2:0.25,lateral,0.0,1.9052555525050415e-11,0.7762958565882265,0.7899120337863963,3.7974610610091966,1.9109656374582666,0.16481678132784852
+middle_verified,strength_rank2:0.25,lateral,5.0,6.96947933828367e-12,0.4511605567615303,0.8997199628245282,8.491502046942667,1.6050067045801817,0.06482451679992451
+middle_verified,strength_rank2:0.25,mixed,-5.0,3.6392303208607326e-11,1.3004976901111107,0.6431752223461161,-1.140409569484572,2.4436329577812583,0.31973918061324247
+middle_verified,strength_rank2:0.25,mixed,0.0,1.1612595922234705e-11,0.730480069657938,0.8096763891859029,3.866273538534031,2.45031620536093,0.1708533875151623
+middle_verified,strength_rank2:0.25,mixed,5.0,4.5152699989751055e-12,0.45113949729857666,0.9017955650079091,8.14331740054571,1.7273601485610537,0.03893241668105668
+middle_verified,strength_rank2:0.5,blink,-5.0,1.60244158746833e-11,0.8632656163507658,0.7670713642477106,2.4878111324162617,5.92464681437926,0.20149115896445952
+middle_verified,strength_rank2:0.5,blink,0.0,5.117022090407086e-12,0.4817293519470794,0.892217634077584,7.567361052149084,6.00419687367315,0.09216660089287435
+middle_verified,strength_rank2:0.5,blink,5.0,3.2101990953418686e-12,0.35490749599546106,0.9277589634728164,10.873296834462975,4.310132737175485,0.013943198031727295
+middle_verified,strength_rank2:0.5,lateral,-5.0,3.1241725784189245e-11,1.0082068031076403,0.7157773908904396,1.268258130489127,4.3817625673771285,0.174126135092662
+middle_verified,strength_rank2:0.5,lateral,0.0,1.0426579872498317e-11,0.5725728511357208,0.8589829486199037,6.169676925377688,4.283181501826759,0.09574586649434128
+middle_verified,strength_rank2:0.5,lateral,5.0,5.001374567053631e-12,0.3509823841424401,0.9322052156768276,10.508274301743509,3.6217789593810203,0.03233926394762508
+middle_verified,strength_rank2:0.5,mixed,-5.0,1.7105409566409888e-11,0.879317762796194,0.7601051238330501,2.2387387022266725,5.822781229492503,0.2028092791263086
+middle_verified,strength_rank2:0.5,mixed,0.0,5.6046866966586004e-12,0.4929948526622612,0.8881213595085768,7.281615355606,5.8656580224329,0.09240841719248839
+middle_verified,strength_rank2:0.5,mixed,5.0,3.318845704013599e-12,0.3580845440555661,0.927093269258101,10.696134074412432,4.280176822427776,0.013634712430864938
+middle_verified,strength_rank2:0.75,blink,-5.0,4.748720574368774e-12,0.4558298459287224,0.8994087327306464,8.1365629896643,11.573398671627299,0.06915379048152395
+middle_verified,strength_rank2:0.75,blink,0.0,1.609477334257381e-12,0.2518513802202794,0.960848764592459,13.49165742539644,11.928493246920507,0.023535470377999253
+middle_verified,strength_rank2:0.75,blink,5.0,2.6499479063300126e-12,0.2690855422108839,0.9433440303284761,16.087178528451656,9.524014431164165,-0.0016418688239324222
+middle_verified,strength_rank2:0.75,lateral,-5.0,1.3954115931875825e-11,0.6796489431201259,0.8223520902912501,4.353737687256879,7.467242124144879,0.06755143569185151
+middle_verified,strength_rank2:0.75,lateral,0.0,4.971158886741343e-12,0.3901884692882771,0.923143484982852,9.181092955054698,7.294597531503767,0.03158533013139272
+middle_verified,strength_rank2:0.75,lateral,5.0,3.8510233493237994e-12,0.2628806530218313,0.9565451945931386,13.097729847822592,6.211234505460103,0.007999285031314137
+middle_verified,strength_rank2:0.75,mixed,-5.0,5.482811216584731e-12,0.47530691485943954,0.8926455879792762,7.651842356307607,11.235884883573437,0.07026881498008247
+middle_verified,strength_rank2:0.75,mixed,0.0,2.0072439074164118e-12,0.2667078389680583,0.9568058043073295,12.893665339837497,11.477708006664397,0.023723972393735943
+middle_verified,strength_rank2:0.75,mixed,5.0,2.7450766203860273e-12,0.27338321789024583,0.9427517820320542,15.49876527316945,9.082808021184796,-0.0020238003430884275
+posterior,blend_old_rank2:0.25,blink,-5.0,3.5035971106338548e-12,0.23178797892578143,0.9682100184054754,13.640921738394027,5.838100711972521,-0.015583766796020007
+posterior,blend_old_rank2:0.25,blink,0.0,2.701634242577282e-12,0.218639784727511,0.9725913918458217,14.099176716584804,1.2963558297243678,-0.009110035753827022
+posterior,blend_old_rank2:0.25,blink,5.0,1.0816037048906233e-12,0.1434725323453853,0.987853988600573,17.86486972081131,0.06204891513931632,-0.00019977041579760484
+posterior,blend_old_rank2:0.25,lateral,-5.0,1.0008854158918282e-11,0.4161996821284273,0.9168615641321727,8.32508528954397,6.1596788112495275,0.03276094375755807
+posterior,blend_old_rank2:0.25,lateral,0.0,6.980531567066122e-12,0.31507750531873857,0.9459396901597856,10.959982835636994,3.7945764969036206,0.003394758312372774
+posterior,blend_old_rank2:0.25,lateral,5.0,3.990542040820072e-12,0.25439862473726044,0.9631498933212843,12.966712443395958,0.8013061858510268,-0.008066662792778482
+posterior,blend_old_rank2:0.25,mixed,-5.0,4.0517854682703985e-12,0.24354850613979565,0.9645734357620661,13.232290367660298,6.1380395807428485,-0.006012263452698266
+posterior,blend_old_rank2:0.25,mixed,0.0,3.0728458279374026e-12,0.23203033029775053,0.9700782997010411,13.45297564421558,1.3587249968592012,-0.01002040993290018
+posterior,blend_old_rank2:0.25,mixed,5.0,1.220417384018531e-12,0.15293460019646846,0.9866438290333251,17.13421270669118,0.03996214052324795,-0.00015714202384233122
+posterior,blend_old_rank2:0.5,blink,-5.0,3.7114730072971885e-12,0.2267007326224629,0.9667506346865625,14.321567549775452,6.518746523353945,-0.014124383077107222
+posterior,blend_old_rank2:0.5,blink,0.0,2.819053321172594e-12,0.22719589098990456,0.970769094828527,13.777356068866933,0.9745351820064949,-0.007287738736532386
+posterior,blend_old_rank2:0.5,blink,5.0,1.08163215941536e-12,0.14347679237755767,0.9878540481964414,17.86457981928523,0.06175901361323607,-0.00019983001166606136
+posterior,blend_old_rank2:0.5,lateral,-5.0,7.994663710684482e-12,0.3658254321005802,0.9336501662171134,9.390071604409801,7.2246651261153545,0.01597234167261733
+posterior,blend_old_rank2:0.5,lateral,0.0,6.92209406793465e-12,0.2973349885165329,0.9498816050109392,11.674469840382192,4.509063501648819,-0.0005471565387808986
+posterior,blend_old_rank2:0.5,lateral,5.0,4.102113849584028e-12,0.2623986983327559,0.9612174212582094,12.697085309414437,0.5316790518695036,-0.006134190729703501
+posterior,blend_old_rank2:0.5,mixed,-5.0,3.899293993097472e-12,0.2229071549649871,0.9663728139381778,14.497378286527098,7.403127499609647,-0.007811641628810098
+posterior,blend_old_rank2:0.5,mixed,0.0,3.2119940359942545e-12,0.2421603562907435,0.9679205434445832,13.06409074441466,0.9698400970582789,-0.00786265367644229
+posterior,blend_old_rank2:0.5,mixed,5.0,1.2194037443365548e-12,0.1528128614678727,0.9866627985083685,17.14086147133147,0.046610905163535075,-0.00017611149888568524
+posterior,blend_old_rank2:0.75,blink,-5.0,4.4273558956764795e-12,0.235273995340835,0.9613991412880717,14.709103091505671,6.906282065084167,-0.008772889678616285
+posterior,blend_old_rank2:0.75,blink,0.0,3.072224245205277e-12,0.2412421738859976,0.9676189679194241,13.249436837101296,0.4466159502408579,-0.004137611827429663
+posterior,blend_old_rank2:0.75,blink,5.0,1.0859345273390048e-12,0.144013047133347,0.9877831859314128,17.83391395093009,0.031093145258095402,-0.0001289677466372932
+posterior,blend_old_rank2:0.75,lateral,-5.0,6.7141109939660415e-12,0.3262246029126941,0.9451430466538362,10.482338020340157,8.316931542045712,0.004479461235894516
+posterior,blend_old_rank2:0.75,lateral,0.0,7.168700160123205e-12,0.28618478142566894,0.9510435873741565,12.349618950018975,5.1842126112856,-0.001709138901998262
+posterior,blend_old_rank2:0.75,lateral,5.0,4.295282736739557e-12,0.2728639974932279,0.9584449440543679,12.414581578805102,0.24917532126016914,-0.0033617135258620368
+posterior,blend_old_rank2:0.75,mixed,-5.0,4.203021516487184e-12,0.2160924256632637,0.9643593729757903,15.44280742761419,8.348556640696739,-0.005798200666422463
+posterior,blend_old_rank2:0.75,mixed,0.0,3.485171248279455e-12,0.2570281321031931,0.9644669834161984,12.531605391369139,0.4373547440127597,-0.004409093648057585
+posterior,blend_old_rank2:0.75,mixed,5.0,1.2228905673792739e-12,0.15320080098761232,0.9866056861710536,17.121166806728127,0.0269162405601926,-0.00011899916157078166
+posterior,central_frontal_raw_context,blink,-5.0,3.803728205686479e-12,0.24975024625516426,0.9654003539581588,12.733463832837206,4.930642806415699,-0.012774102348703242
+posterior,central_frontal_raw_context,blink,0.0,2.7199670094193408e-12,0.21818657476362904,0.972779635530026,14.055290574022688,1.2524696871622525,-0.009298279438031402
+posterior,central_frontal_raw_context,blink,5.0,1.0858491637647947e-12,0.14400390094991886,0.987772807132534,17.834359385375517,0.031538579703526574,-0.00011858894775845143
+posterior,central_frontal_raw_context,lateral,-5.0,1.275668233866744e-11,0.4736810102486502,0.8966760962471654,7.302980244256318,5.137573765961875,0.05294641164256538
+posterior,central_frontal_raw_context,lateral,0.0,7.344012657517631e-12,0.3372287726262905,0.9395513390040531,10.31240623978854,3.146999901055164,0.00978310946810538
+posterior,central_frontal_raw_context,lateral,5.0,3.960567310447688e-12,0.2510668166642888,0.963982704382914,13.075139723590826,0.9097334660458936,-0.008899473854408091
+posterior,central_frontal_raw_context,mixed,-5.0,4.6604959420059645e-12,0.27276523607589265,0.9590785413352846,12.003730346557518,4.909479559640069,-0.0005173690259168944
+posterior,central_frontal_raw_context,mixed,0.0,3.067726624108901e-12,0.2296726111013209,0.9706308526119383,13.517130800174888,1.4228801528185095,-0.010572962843797329
+posterior,central_frontal_raw_context,mixed,5.0,1.225931486425203e-12,0.1534860286650208,0.9865374879582303,17.108988255152063,0.014737688984128283,-5.080094874741393e-05
+posterior,central_frontal_vmd_context,blink,-5.0,3.803728205686479e-12,0.24975024625516426,0.9654003539581588,12.733463832837206,4.930642806415699,-0.012774102348703242
+posterior,central_frontal_vmd_context,blink,0.0,2.7199670094193408e-12,0.21818657476362904,0.972779635530026,14.055290574022688,1.2524696871622525,-0.009298279438031402
+posterior,central_frontal_vmd_context,blink,5.0,1.0858491637647947e-12,0.14400390094991886,0.987772807132534,17.834359385375517,0.031538579703526574,-0.00011858894775845143
+posterior,central_frontal_vmd_context,lateral,-5.0,1.275668233866744e-11,0.4736810102486502,0.8966760962471654,7.302980244256318,5.137573765961875,0.05294641164256538
+posterior,central_frontal_vmd_context,lateral,0.0,7.344012657517631e-12,0.3372287726262905,0.9395513390040531,10.31240623978854,3.146999901055164,0.00978310946810538
+posterior,central_frontal_vmd_context,lateral,5.0,3.960567310447688e-12,0.2510668166642888,0.963982704382914,13.075139723590826,0.9097334660458936,-0.008899473854408091
+posterior,central_frontal_vmd_context,mixed,-5.0,4.6604959420059645e-12,0.27276523607589265,0.9590785413352846,12.003730346557518,4.909479559640069,-0.0005173690259168944
+posterior,central_frontal_vmd_context,mixed,0.0,3.067726624108901e-12,0.2296726111013209,0.9706308526119383,13.517130800174888,1.4228801528185095,-0.010572962843797329
+posterior,central_frontal_vmd_context,mixed,5.0,1.225931486425203e-12,0.1534860286650208,0.9865374879582303,17.108988255152063,0.014737688984128283,-5.080094874741393e-05
+posterior,identity,blink,-5.0,1.0945107508094201e-11,0.4578197731898812,0.9028037842691692,7.8028210264215065,0.0,0.049822467340286315
+posterior,identity,blink,0.0,3.461147014675331e-12,0.2574509828817306,0.9634813560919945,12.802820886860436,0.0,0.0
+posterior,identity,blink,5.0,1.0945108086615578e-12,0.14477532834622592,0.9876542181847755,17.802820805671995,0.0,0.0
+posterior,identity,lateral,-5.0,4.57004851435786e-11,0.8997278572235896,0.7432298391419379,2.165406478294444,0.0,0.20639266874779275
+posterior,identity,lateral,0.0,1.4451762708175495e-11,0.5059541644944141,0.8819164074355186,7.165406338733374,0.0,0.06741804103663972
+posterior,identity,lateral,5.0,4.570048702286659e-12,0.28451893786590315,0.9550832305285057,12.165406257544934,0.0,0.0
+posterior,identity,mixed,-5.0,1.2308777886865814e-11,0.4866304545947731,0.8939743710038375,7.094250786917449,0.0,0.0645868013055304
+posterior,identity,mixed,0.0,3.892377464793007e-12,0.27365241991673506,0.9600578897681409,12.094250647356379,0.0,0.0
+posterior,identity,mixed,5.0,1.2308778531466888e-12,0.15388606601124188,0.9864866870094829,17.094250566167936,0.0,0.0
+posterior,reference_rank2:both,blink,-5.0,5.651245775771726e-12,0.26010492753487713,0.9526262516094555,14.402013676417074,6.599192649995567,0.0
+posterior,reference_rank2:both,blink,0.0,3.461147014675331e-12,0.2574509828817306,0.9634813560919945,12.802820886860436,0.0,0.0
+posterior,reference_rank2:both,blink,5.0,1.0945108086615578e-12,0.14477532834622592,0.9876542181847755,17.802820805671995,0.0,0.0
+posterior,reference_rank2:both,lateral,-5.0,6.1671960087629575e-12,0.30824382057372696,0.9496225078897307,11.148952621871889,8.983546143577446,0.0
+posterior,reference_rank2:both,lateral,0.0,7.720349843631794e-12,0.2875537021178518,0.9493344484721584,12.507582030140824,5.342175691407448,0.0
+posterior,reference_rank2:both,lateral,5.0,4.570048702286659e-12,0.28451893786590315,0.9550832305285057,12.165406257544934,0.0,0.0
+posterior,reference_rank2:both,mixed,-5.0,4.962968038439538e-12,0.2305215108522119,0.9585611723093678,15.273842594271514,8.179591807354061,0.0
+posterior,reference_rank2:both,mixed,0.0,3.892377464793007e-12,0.27365241991673506,0.9600578897681409,12.094250647356379,0.0,0.0
+posterior,reference_rank2:both,mixed,5.0,1.2308778531466888e-12,0.15388606601124188,0.9864866870094829,17.094250566167936,0.0,0.0
+posterior,strength_rank2:0.25,blink,-5.0,8.062358999998613e-12,0.38338551834828527,0.9250137995133677,9.43531271636247,1.6324916899409616,0.027612452096087686
+posterior,strength_rank2:0.25,blink,0.0,3.461147014675331e-12,0.2574509828817306,0.9634813560919945,12.802820886860436,0.0,0.0
+posterior,strength_rank2:0.25,blink,5.0,1.0945108086615578e-12,0.14477532834622592,0.9876542181847755,17.802820805671995,0.0,0.0
+posterior,strength_rank2:0.25,lateral,-5.0,2.902396122395002e-11,0.7152373986751689,0.8054832151899362,4.048552773749095,1.8831462954546514,0.14413929269979459
+posterior,strength_rank2:0.25,lateral,0.0,1.1377130534973986e-11,0.4322707636818576,0.9069858567937865,8.429687360510137,1.26428102177676,0.04234859167837191
+posterior,strength_rank2:0.25,lateral,5.0,4.570048702286659e-12,0.28451893786590315,0.9550832305285057,12.165406257544934,0.0,0.0
+posterior,strength_rank2:0.25,mixed,-5.0,8.295811984717605e-12,0.38728139709853604,0.9236202603929049,9.20411033509908,2.10985954818163,0.03494091191646282
+posterior,strength_rank2:0.25,mixed,0.0,3.892377464793007e-12,0.27365241991673506,0.9600578897681409,12.094250647356379,0.0,0.0
+posterior,strength_rank2:0.25,mixed,5.0,1.2308778531466888e-12,0.15388606601124188,0.9864866870094829,17.094250566167936,0.0,0.0
+posterior,strength_rank2:0.5,blink,-5.0,6.219132541913003e-12,0.31220337444245566,0.942943571336453,11.705193968463837,3.902372942042331,0.009682680273002337
+posterior,strength_rank2:0.5,blink,0.0,3.461147014675331e-12,0.2574509828817306,0.9634813560919945,12.802820886860436,0.0,0.0
+posterior,strength_rank2:0.5,blink,5.0,1.0945108086615578e-12,0.14477532834622592,0.9876542181847755,17.802820805671995,0.0,0.0
+posterior,strength_rank2:0.5,lateral,-5.0,1.6876238394937888e-11,0.5399872921466105,0.8691736857954343,6.360566237042667,4.195159758748222,0.08044882209429635
+posterior,strength_rank2:0.5,lateral,0.0,9.230350999816199e-12,0.36284806767752953,0.9292517708601657,10.018699883420336,2.853293544686962,0.020082677611992457
+posterior,strength_rank2:0.5,lateral,5.0,4.570048702286659e-12,0.28451893786590315,0.9550832305285057,12.165406257544934,0.0,0.0
+posterior,strength_rank2:0.5,mixed,-5.0,5.733855042597155e-12,0.2950585683110986,0.9473187698984405,11.969843087546058,4.875592300628613,0.011242402410927214
+posterior,strength_rank2:0.5,mixed,0.0,3.892377464793007e-12,0.27365241991673506,0.9600578897681409,12.094250647356379,0.0,0.0
+posterior,strength_rank2:0.5,mixed,5.0,1.2308778531466888e-12,0.15388606601124188,0.9864866870094829,17.094250566167936,0.0,0.0
+posterior,strength_rank2:0.75,blink,-5.0,5.4154281338373745e-12,0.2567776792179208,0.9531576470788075,14.606385644371334,6.803564617949827,-0.0005313954693519973
+posterior,strength_rank2:0.75,blink,0.0,3.461147014675331e-12,0.2574509828817306,0.9634813560919945,12.802820886860436,0.0,0.0
+posterior,strength_rank2:0.75,blink,5.0,1.0945108086615578e-12,0.14477532834622592,0.9876542181847755,17.802820805671995,0.0,0.0
+posterior,strength_rank2:0.75,lateral,-5.0,9.2573166565422e-12,0.38731108671880926,0.9242242418915598,9.138640536566559,6.97323405827211,0.025398265998170792
+posterior,strength_rank2:0.75,lateral,0.0,8.011424102702135e-12,0.3059577376131846,0.944923128967502,11.774996880559609,4.609590541826232,0.004411319504656314
+posterior,strength_rank2:0.75,lateral,5.0,4.570048702286659e-12,0.28451893786590315,0.9550832305285057,12.165406257544934,0.0,0.0
+posterior,strength_rank2:0.75,mixed,-5.0,4.622907060504466e-12,0.22767403170082062,0.9603273794347782,15.110456584279955,8.016205797362506,-0.0017662071254103393
+posterior,strength_rank2:0.75,mixed,0.0,3.892377464793007e-12,0.27365241991673506,0.9600578897681409,12.094250647356379,0.0,0.0
+posterior,strength_rank2:0.75,mixed,5.0,1.2308778531466888e-12,0.15388606601124188,0.9864866870094829,17.094250566167936,0.0,0.0
+temporal_shared,blend_old_rank2:0.25,blink,-5.0,7.166371666594979e-12,0.2787922136272079,0.9553543789959361,12.624759327977618,10.654600462883742,0.03862117807811985
+temporal_shared,blend_old_rank2:0.25,blink,0.0,2.3626625732351793e-12,0.16309008618981063,0.9829489213627115,17.2021970893978,10.232038363864993,0.014139651005115323
+temporal_shared,blend_old_rank2:0.25,blink,5.0,9.550039960104812e-13,0.0977222474521669,0.9936547682738721,21.52607296205489,9.555914317710531,-0.011241760037787332
+temporal_shared,blend_old_rank2:0.25,lateral,-5.0,1.346525945230357e-10,1.0347778641160699,0.6870355705905864,2.0550986273882415,4.812904947813889,0.23557994129683305
+temporal_shared,blend_old_rank2:0.25,lateral,0.0,4.114307799122631e-11,0.5699479421246275,0.8402300496528887,7.117569570602514,4.875376030589232,0.12830172442965218
+temporal_shared,blend_old_rank2:0.25,lateral,5.0,1.5310416762689034e-11,0.3402856483707236,0.9266672033483021,11.661563684866426,4.419370226041588,0.0360236481201994
+temporal_shared,blend_old_rank2:0.25,mixed,-5.0,1.1868243224812994e-11,0.34894609175712993,0.9348214007887415,10.354350826241191,9.076970024016841,0.05536344904160906
+temporal_shared,blend_old_rank2:0.25,mixed,0.0,3.8592486020632156e-12,0.19771872605907664,0.976473883815219,15.256793461642824,8.979412798979542,0.018663194918738923
+temporal_shared,blend_old_rank2:0.25,mixed,5.0,1.6008859560639126e-12,0.11891783732910591,0.9909458424745587,19.792884205812,8.51550362433716,-0.010266271911493683
+temporal_shared,blend_old_rank2:0.5,blink,-5.0,3.698534311762074e-12,0.19951989400287942,0.9745640958903964,15.62253476459568,13.652375899501802,0.0194114611836597
+temporal_shared,blend_old_rank2:0.5,blink,0.0,1.2737062977131285e-12,0.11870103383608517,0.9905405280361423,19.918073246037064,12.947914520504265,0.0065480443316845
+temporal_shared,blend_old_rank2:0.5,blink,5.0,1.1370001749188648e-12,0.10063032656041748,0.9932595853745454,21.589135739753917,9.618977095409559,-0.010846577138460553
+temporal_shared,blend_old_rank2:0.5,lateral,-5.0,7.03988725453893e-11,0.7560290309976545,0.7752480600427993,4.455648257311832,7.21345457773748,0.14736745184462002
+temporal_shared,blend_old_rank2:0.5,lateral,0.0,2.304326533296321e-11,0.4256418010336736,0.8970958120904488,9.34794835622969,7.105754816216408,0.07143596199209215
+temporal_shared,blend_old_rank2:0.5,lateral,5.0,1.237271094498371e-11,0.28018066342214526,0.9455782593052355,13.287703335312363,6.045509876487526,0.017112592163265924
+temporal_shared,blend_old_rank2:0.5,mixed,-5.0,6.343584818864804e-12,0.25448890018689646,0.9625983461076825,13.048458126298238,11.771077324073888,0.027586503722668153
+temporal_shared,blend_old_rank2:0.5,mixed,0.0,2.2374757510130937e-12,0.1480011772093311,0.9864347100114479,17.746791058420474,11.46941039575719,0.00870236872251009
+temporal_shared,blend_old_rank2:0.5,mixed,5.0,1.7114674514220682e-12,0.11615847877757643,0.9909877390043842,20.38563127977784,9.108250698303003,-0.01030816844131919
+temporal_shared,blend_old_rank2:0.75,blink,-5.0,1.5742511065397407e-12,0.13317051837294244,0.9881831678815038,18.975348339831264,17.005189474737392,0.005792389192552143
+temporal_shared,blend_old_rank2:0.75,blink,0.0,6.280847266537012e-13,0.08234168134390005,0.9953886200222533,23.146600964036036,16.176442238503235,0.001699952345573608
+temporal_shared,blend_old_rank2:0.75,blink,5.0,1.8165763886549867e-12,0.11598806941288091,0.9893847289792415,21.479015212950493,9.508856568606134,-0.006971720743156706
+temporal_shared,blend_old_rank2:0.75,lateral,-5.0,3.002690593464692e-11,0.5228910373597131,0.8665466393843033,7.044412847408249,9.802219167833897,0.05606887250311612
+temporal_shared,blend_old_rank2:0.75,lateral,0.0,1.119470428926092e-11,0.3043065815500399,0.9447696669754846,11.782038016778243,9.539844476764962,0.02376210710705621
+temporal_shared,blend_old_rank2:0.75,lateral,5.0,1.0648052577272192e-11,0.23093512337463382,0.9584482316748228,15.082980526909518,7.84078706808468,0.0042426197936787004
+temporal_shared,blend_old_rank2:0.75,mixed,-5.0,2.8933259352601446e-12,0.17396094178611196,0.9820746560599959,16.23787938258304,14.960498580358685,0.008110193770354806
+temporal_shared,blend_old_rank2:0.75,mixed,0.0,1.2383194286210217e-12,0.10749146551261232,0.9928163821318199,20.588900808531925,14.311520145868641,0.0023206966021381394
+temporal_shared,blend_old_rank2:0.75,mixed,5.0,2.3209626800949586e-12,0.12872452876020182,0.9874452112946965,20.32893587126137,9.05155528978653,-0.00676564073163152
+temporal_shared,central_frontal_raw_context,blink,-5.0,1.1440107714999296e-11,0.3625097559086116,0.9327262959961733,10.16836189304765,8.198203027953776,0.06124926107788277
+temporal_shared,central_frontal_raw_context,blink,0.0,3.717519756090831e-12,0.20681581666504342,0.9741063606567192,15.050084830749588,8.079926105216787,0.022982211711107658
+temporal_shared,central_frontal_raw_context,blink,5.0,1.2417047066657398e-12,0.11962119223259682,0.9906499295750525,19.825961009188482,7.855802364844121,-0.008236921338967671
+temporal_shared,central_frontal_raw_context,lateral,-5.0,2.2066164304583893e-10,1.3200320156977363,0.6130021664574544,-0.19141112554326895,2.5663951948823795,0.3096133454299651
+temporal_shared,central_frontal_raw_context,lateral,0.0,6.941304784846485e-11,0.7487383379410499,0.7766199330461852,4.6464585393548035,2.4042649993415215,0.19191184103635575
+temporal_shared,central_frontal_raw_context,lateral,5.0,2.0730169301489995e-11,0.4284214204166716,0.8987437727644506,9.265947617767825,2.0237541589429857,0.06394707870405088
+temporal_shared,central_frontal_raw_context,mixed,-5.0,1.8137209708915656e-11,0.42906235202786525,0.908069879054309,8.53313792449665,7.2557571222723,0.08211497077604162
+temporal_shared,central_frontal_raw_context,mixed,0.0,5.867591479158342e-12,0.24495383724953732,0.9651032008252607,13.389732605282163,7.112351942618882,0.030033877908697375
+temporal_shared,central_frontal_raw_context,mixed,5.0,1.9483072448813557e-12,0.1419675533205444,0.9875498917856304,18.10630784795204,6.8289272664772,-0.006870321222565224
+temporal_shared,central_frontal_vmd_context,blink,-5.0,1.1977763171038453e-11,0.3623613238442606,0.9324183101722611,10.29216292872085,8.322004063626977,0.06155724690179498
+temporal_shared,central_frontal_vmd_context,blink,0.0,3.894953553219854e-12,0.2112529046669717,0.9730695793811328,14.909329466647929,7.939170741115123,0.024018992986693972
+temporal_shared,central_frontal_vmd_context,blink,5.0,1.2705878519298361e-12,0.12080898966907427,0.9904722388855174,19.76344070498339,7.793282060639028,-0.008059230649432527
+temporal_shared,central_frontal_vmd_context,lateral,-5.0,2.22788071867586e-10,1.3378633456188584,0.609054366427304,-0.21425312377536967,2.5435531966502785,0.3135611454601154
+temporal_shared,central_frontal_vmd_context,lateral,0.0,6.549414226405023e-11,0.727261045612108,0.7826179637540569,4.979070706861346,2.7368771668480623,0.18591381032848395
+temporal_shared,central_frontal_vmd_context,lateral,5.0,1.9461170030388163e-11,0.4067156836015656,0.9043151384751834,10.121249517595373,2.879056058770534,0.058375712993318105
+temporal_shared,central_frontal_vmd_context,mixed,-5.0,1.9467301153104725e-11,0.4494618795297994,0.9015696684704684,8.147155064185087,6.869774261960734,0.08861518135988232
+temporal_shared,central_frontal_vmd_context,mixed,0.0,6.103637981771388e-12,0.2518584088462619,0.9635072132705023,13.154384170765002,6.877003508101717,0.03162986546345582
+temporal_shared,central_frontal_vmd_context,mixed,5.0,1.989218194020492e-12,0.14435981051222554,0.9872359043431992,17.9506241510091,6.6732435695342645,-0.006556333780134235
+temporal_shared,identity,blink,-5.0,6.286443594723666e-11,0.8818929615706204,0.7699691915579611,1.970158865093873,0.0,0.22400636551609487
+temporal_shared,identity,blink,0.0,1.9879480753710127e-11,0.495924864311319,0.8952493228634794,6.970158725532803,0.0,0.10183924950434749
+temporal_shared,identity,blink,5.0,6.2864438872241436e-12,0.27887904777115724,0.9601462691731767,11.970158644344362,0.0,0.022266739062908075
+temporal_shared,identity,lateral,-5.0,2.584517552448528e-10,1.6267607131610027,0.5469797736588802,-2.7578063204256487,0.0,0.3756357382285393
+temporal_shared,identity,lateral,0.0,8.172962369305733e-11,0.9147947889107975,0.7355433707618617,2.242193540013282,0.0,0.2329884033206792
+temporal_shared,identity,lateral,5.0,2.584517673666683e-11,0.514426918256927,0.8782226306511891,7.242193458824838,0.0,0.0844682208173123
+temporal_shared,identity,mixed,-5.0,7.12614561100517e-11,0.94007950726065,0.7458272078168522,1.2773808022243516,0.0,0.24435764201349866
+temporal_shared,identity,mixed,0.0,2.253485177021887e-11,0.5286455640737197,0.884266721906313,6.277380662663282,0.0,0.11087035682764515
+temporal_shared,identity,mixed,5.0,7.126145948081749e-12,0.29727924963304614,0.9560273574962806,11.27738058147484,0.0,0.024652213066784463
+temporal_shared,reference_rank2:both,blink,-5.0,7.935220509279796e-13,0.10057918993287082,0.993975557074056,20.818655460944406,18.84849659585053,0.0
+temporal_shared,reference_rank2:both,blink,0.0,4.2579786005689817e-13,0.06906383837789434,0.9970885723678269,24.26177998720631,17.2916212616735,0.0
+temporal_shared,reference_rank2:both,blink,5.0,2.9937326372188466e-12,0.1412420960089189,0.9824130082360849,20.773084536224697,8.802925891880339,0.0
+temporal_shared,reference_rank2:both,lateral,-5.0,1.3536694690808519e-11,0.4028687925493637,0.9226155118874194,8.550453891979512,11.30826021240516,0.0
+temporal_shared,reference_rank2:both,lateral,0.0,5.5973948601194495e-12,0.23856618111350905,0.9685317740825408,13.260876113251493,11.018682573238209,0.0
+temporal_shared,reference_rank2:both,lateral,5.0,1.0136441659554485e-11,0.2087402482867624,0.9626908514685015,16.03438197462191,8.792188515797069,0.0
+temporal_shared,reference_rank2:both,mixed,-5.0,1.5174665739990202e-12,0.13112414822634064,0.9901848498303506,18.41876872873505,17.141387926510696,0.0
+temporal_shared,reference_rank2:both,mixed,0.0,8.617796348869998e-13,0.08969062290479031,0.9951370787339581,22.00211821949502,15.724737556831737,0.0
+temporal_shared,reference_rank2:both,mixed,5.0,3.4293716420825827e-12,0.15246866473957074,0.9806795705630652,19.661527432904876,8.384146851430037,0.0
+temporal_shared,strength_rank2:0.25,blink,-5.0,3.587551318141057e-11,0.6653665379292151,0.8387738554228008,4.38404684112876,2.4138879760348866,0.1552017016512551
+temporal_shared,strength_rank2:0.25,blink,0.0,1.137724249860931e-11,0.3732282419829071,0.9336149154020792,9.402271927301879,2.432113201769074,0.06347365696574761
+temporal_shared,strength_rank2:0.25,blink,5.0,4.619682300105515e-12,0.23118857202869228,0.9706380531439575,13.638194935748984,1.6680362914046263,0.011774955092127438
+temporal_shared,strength_rank2:0.25,lateral,-5.0,1.5513035356058242e-10,1.2585569741620433,0.6328883588470129,-0.6437483548860499,2.1140579655395983,0.2897271530404065
+temporal_shared,strength_rank2:0.25,lateral,0.0,5.021968987973482e-11,0.7118994787601973,0.8046999343473319,4.305366919467459,2.0631733794541764,0.16383183973520893
+temporal_shared,strength_rank2:0.25,lateral,5.0,1.8836292895154614e-11,0.41899860489931984,0.9093335700991879,8.944308708685416,1.7021152498605754,0.05335728136931345
+temporal_shared,strength_rank2:0.25,mixed,-5.0,4.1259589565445206e-11,0.7116834428737163,0.8203462232804795,3.6662326379878243,2.388851835763473,0.1698386265498712
+temporal_shared,strength_rank2:0.25,mixed,0.0,1.3202059387388879e-11,0.399971275062115,0.925703361193895,8.671412582920995,2.3940319202577127,0.06943371754006307
+temporal_shared,strength_rank2:0.25,mixed,5.0,5.2570449341344044e-12,0.24634530442389124,0.9676022630727974,12.956607308013862,1.679226726539019,0.013077307490267795
+temporal_shared,strength_rank2:0.5,blink,-5.0,1.653405327675043e-11,0.45023092098950634,0.909588861444556,7.723859347904647,5.753700482810775,0.08438669562949998
+temporal_shared,strength_rank2:0.5,blink,0.0,5.300882597966833e-12,0.2513501935752268,0.9667968813770627,12.792858327580543,5.822699602047736,0.030291690990764154
+temporal_shared,strength_rank2:0.5,blink,5.0,3.5153098960650883e-12,0.1839306357092477,0.9784463213557224,16.108662082346424,4.138503438002066,0.00396668688036251
+temporal_shared,strength_rank2:0.5,lateral,-5.0,7.987070957348493e-11,0.9029489132082688,0.738308894920502,2.065193976971413,4.823000297397061,0.18430661696691736
+temporal_shared,strength_rank2:0.5,lateral,0.0,2.7027673803137655e-11,0.5158791296899545,0.8761487427916774,6.932381652561807,4.690188112548523,0.09238303129086337
+temporal_shared,strength_rank2:0.5,lateral,5.0,1.388187576846515e-11,0.3272482998116592,0.9368453030978909,11.124717902053321,3.882524443228482,0.02584554837061064
+temporal_shared,strength_rank2:0.5,mixed,-5.0,1.963496912790093e-11,0.4856132550136502,0.8973346927148498,6.94408088039515,5.666700078170799,0.0928501571155009
+temporal_shared,strength_rank2:0.5,mixed,0.0,6.478949903890239e-12,0.27267359541232283,0.9617275394474054,11.981284267870887,5.703903605207606,0.033409539286552575
+temporal_shared,strength_rank2:0.5,mixed,5.0,4.017882211818762e-12,0.1961632464712508,0.9762639473730805,15.418314858363084,4.140934276888243,0.004415623189984467
+temporal_shared,strength_rank2:0.75,blink,-5.0,4.840056233256229e-12,0.2400014478332635,0.96952231682709,13.164421556429968,11.194262691336094,0.024453240246966025
+temporal_shared,strength_rank2:0.75,blink,0.0,1.6504010517826953e-12,0.13257374146758621,0.9897540093162116,18.50409444657619,11.533935721043381,0.007334563051615166
+temporal_shared,strength_rank2:0.75,blink,5.0,2.973326675102866e-12,0.13897924847131363,0.9826322151026343,21.09891538834311,9.128756743998746,-0.00021920686654933741
+temporal_shared,strength_rank2:0.75,lateral,-5.0,3.267282328356029e-11,0.5826643600783225,0.8537458100439773,5.566012172476369,8.323818492902017,0.06886970184344221
+temporal_shared,strength_rank2:0.75,lateral,0.0,1.215357546326587e-11,0.33875659099874234,0.9384643916156848,10.348537086896014,8.106343546882732,0.030067382466855967
+temporal_shared,strength_rank2:0.75,lateral,5.0,1.098192535659844e-11,0.2459830499401341,0.9563575071397924,13.980869220017263,6.738675761192425,0.006333344328708972
+temporal_shared,strength_rank2:0.75,mixed,-5.0,6.3875947974188695e-12,0.26757329733921886,0.962880788321908,12.117364863099612,10.83998406087526,0.027304061508442706
+temporal_shared,strength_rank2:0.75,mixed,0.0,2.3655233197229444e-12,0.15053926619669633,0.9868728334394538,17.33725048505422,11.059869822390937,0.008264245294504147
+temporal_shared,strength_rank2:0.75,mixed,5.0,3.408657781134821e-12,0.14970116895631808,0.9809299084158223,19.961808100546364,8.684427519071523,-0.00025033785275717276
+whole,blend_old_rank2:0.25,blink,-5.0,3.7518583531553814e-12,0.26777623136469336,0.9587580806899096,13.644002632558777,14.637155706590097,0.009942229245706246
+whole,blend_old_rank2:0.25,blink,0.0,1.5619919205641571e-12,0.1745636026840339,0.980499948293439,16.921543215643773,12.914696429236159,0.0015272448033505721
+whole,blend_old_rank2:0.25,blink,5.0,6.430832244996389e-13,0.1075661077901727,0.9922126913011265,21.283852226285696,12.277005521066524,-0.019184957834496846
+whole,blend_old_rank2:0.25,lateral,-5.0,3.171039564419953e-11,0.6336417012734036,0.8328970476311314,6.258106834487654,8.562479597769531,0.09106468274462909
+whole,blend_old_rank2:0.25,lateral,0.0,1.1770638762964147e-11,0.3894947831704655,0.9127417060375029,10.204292471711918,7.5086653745548615,0.0450603269801739
+whole,blend_old_rank2:0.25,lateral,5.0,7.434072011606992e-12,0.27534713280958667,0.9488555546728868,13.495459481405476,5.799832465436866,0.010331950838003246
+whole,blend_old_rank2:0.25,mixed,-5.0,4.4045045169843475e-12,0.28382845698425396,0.9523504272539203,12.61603560017563,13.949530246732582,0.018177706165488593
+whole,blend_old_rank2:0.25,mixed,0.0,2.0284582880173864e-12,0.19136010571054995,0.9773868279721223,15.902235411719214,12.235730197837238,0.0015103430501105933
+whole,blend_old_rank2:0.25,mixed,5.0,8.977733595365391e-13,0.12128524627819999,0.990326278993979,20.098668423311203,11.432163290617668,-0.01861848130109946
+whole,blend_old_rank2:0.5,blink,-5.0,2.8831733937575402e-12,0.22788457017748232,0.9682517428633121,15.055733810005142,16.04888688403646,0.00044856707230363105
+whole,blend_old_rank2:0.5,blink,0.0,1.316104573147046e-12,0.15579948681661548,0.9838702861706157,17.914223033019617,13.907376246612003,-0.0018430930738262117
+whole,blend_old_rank2:0.5,blink,5.0,7.709854563611189e-13,0.12133184256295057,0.989296030479615,20.666587679880642,11.659740974661473,-0.016268297012985305
+whole,blend_old_rank2:0.5,lateral,-5.0,1.868437092772949e-11,0.5081761605149834,0.8748003221722034,7.567282574048238,9.871655337330115,0.049161408203557175
+whole,blend_old_rank2:0.5,lateral,0.0,8.201607583928498e-12,0.3262953369021343,0.9365389235343822,11.357339689561663,8.661712592404609,0.021263109483294684
+whole,blend_old_rank2:0.5,lateral,5.0,6.903429813499343e-12,0.25300546106904487,0.9559895665362278,14.113839000566784,6.418211984598176,0.0031979389746622745
+whole,blend_old_rank2:0.5,mixed,-5.0,3.044412275114075e-12,0.23252600956813502,0.9660796342789849,14.182283294558664,15.51577794111562,0.004448499140424123
+whole,blend_old_rank2:0.5,mixed,0.0,1.708505035077404e-12,0.17242414475120937,0.9811790261955938,16.802532716797888,13.136027502915914,-0.0022818551733609837
+whole,blend_old_rank2:0.5,mixed,5.0,1.0210982618401122e-12,0.13262383023444918,0.9874582251672385,19.761138379171,11.094633246477468,-0.01575042747435902
+whole,blend_old_rank2:0.75,blink,-5.0,2.6091534066218805e-12,0.204138927664695,0.97194542557487,16.373474863226885,17.366627937258205,-0.0032451156392541577
+whole,blend_old_rank2:0.75,blink,0.0,1.2636228241824487e-12,0.14740919913755263,0.9844180764331399,18.82355093527485,14.81670414886724,-0.002390883336350436
+whole,blend_old_rank2:0.75,blink,5.0,1.1193263951915698e-12,0.1449546921706641,0.9823645408757036,19.972946173327834,10.966099468108668,-0.009336807409073968
+whole,blend_old_rank2:0.75,lateral,-5.0,1.0801223168397283e-11,0.41326886126157597,0.9114378990254302,8.879075302210783,11.183448065492659,0.012523831350330241
+whole,blend_old_rank2:0.75,lateral,0.0,6.033209549520528e-12,0.2793889409219611,0.9535008616365307,12.465502254466767,9.769875157309714,0.0043011713811460526
+whole,blend_old_rank2:0.75,lateral,5.0,6.651256998221537e-12,0.23828098543316764,0.9597217197575365,14.696585382036158,7.00095836606755,-0.0005342142466464282
+whole,blend_old_rank2:0.75,mixed,-5.0,2.418173193300581e-12,0.1993703518928435,0.9727157087309557,15.656374174254712,16.989868820811665,-0.0021875753115466866
+whole,blend_old_rank2:0.75,mixed,0.0,1.6216183024312134e-12,0.16529880686073062,0.9817097639711084,17.47544565667268,13.8089404427907,-0.0028125929488756855
+whole,blend_old_rank2:0.75,mixed,5.0,1.350523564990269e-12,0.1545022312464375,0.9807508506229073,19.15935794646602,10.492852813772483,-0.009043052930027617
+whole,central_frontal_raw_context,blink,-5.0,5.0445408159695734e-12,0.3206361895202293,0.9439201441395527,12.233639821625946,13.226792895657265,0.024780165796063076
+whole,central_frontal_raw_context,blink,0.0,1.9450817969488638e-12,0.1985180013467317,0.9751248893570335,15.951676990933837,11.944830204526225,0.0069023037397559685
+whole,central_frontal_raw_context,blink,5.0,7.30583583233508e-13,0.12204539428043248,0.9901318976846284,20.297727676444403,11.290880971225235,-0.017104164217998735
+whole,central_frontal_raw_context,lateral,-5.0,4.9617341799973384e-11,0.7730568389740549,0.7939631897002821,5.014216056308528,7.318588819590403,0.12999854067547834
+whole,central_frontal_raw_context,lateral,0.0,1.734914223778219e-11,0.4679645787217469,0.8849750382498538,9.033967451704008,6.338340354546953,0.07282699476782302
+whole,central_frontal_raw_context,lateral,5.0,8.43577274730816e-12,0.30968516529203205,0.9378234992607307,12.598116324440522,4.902489308471911,0.02136400625015924
+whole,central_frontal_raw_context,mixed,-5.0,6.1804420266386826e-12,0.3367005077150385,0.9361845805287666,11.352209676140026,12.68570432269698,0.03434355289064225
+whole,central_frontal_raw_context,mixed,0.0,2.5350077953207306e-12,0.21716155999221542,0.971016652857652,14.981073060657328,11.314567846775352,0.007880518164580685
+whole,central_frontal_raw_context,mixed,5.0,9.790334491726276e-13,0.1343876065506725,0.9882989821923817,19.260398029134116,10.593892896440584,-0.01659118449950194
+whole,central_frontal_vmd_context,blink,-5.0,5.215208284815404e-12,0.31776050837535885,0.9447787005481967,12.334967513155927,13.328120587187248,0.023921609387419173
+whole,central_frontal_vmd_context,blink,0.0,2.001284866433782e-12,0.2004903946406623,0.9746145411887286,15.903861249204349,11.897014462796736,0.007412651908060982
+whole,central_frontal_vmd_context,blink,5.0,7.356196996071294e-13,0.12184469734810052,0.9901583076654396,20.325419941370587,11.318573236151419,-0.017130574198809957
+whole,central_frontal_vmd_context,lateral,-5.0,4.987929731780742e-11,0.7756294526350799,0.792806298064194,5.008204621596739,7.3125773848786135,0.13115543231156637
+whole,central_frontal_vmd_context,lateral,0.0,1.6740303086627474e-11,0.46169572162929756,0.8866266888032858,9.114724790321365,6.419097693164311,0.07117534421439102
+whole,central_frontal_vmd_context,lateral,5.0,8.243183592544487e-12,0.3028146083258759,0.9394149503950757,12.865122599089585,5.169495583120972,0.019772555115814404
+whole,central_frontal_vmd_context,mixed,-5.0,6.4984499189113986e-12,0.3448917819916247,0.9336020337286663,11.212007549783618,12.54550219634057,0.036926099690742606
+whole,central_frontal_vmd_context,mixed,0.0,2.5814780612511606e-12,0.21865772696933083,0.9706855415418761,14.939428588240833,11.272923374358855,0.008211629480356749
+whole,central_frontal_vmd_context,mixed,5.0,9.805488580795503e-13,0.13391561970520474,0.9884235484265778,19.28403479105401,10.617529658360477,-0.016715750733698215
+whole,identity,blink,-5.0,1.577002381872508e-10,1.6679715305987919,0.6301747802263682,-0.9931530740313189,0.0,0.3385255297092476
+whole,identity,blink,0.0,4.986919549909475e-11,0.937969336153755,0.7660982728203531,4.006846786407612,0.0,0.2159289202764362
+whole,identity,blink,5.0,1.5770024555987324e-11,0.5274589246373964,0.8738538269744487,9.00684670521917,0.0,0.09917390649218095
+whole,identity,lateral,-5.0,1.577002381872508e-10,1.6370299649533457,0.5731512622559125,-2.3043727632818762,0.0,0.35081046811984795
+whole,identity,lateral,0.0,4.986919549909475e-11,0.9205696150599867,0.7462699652025864,2.695627097157055,0.0,0.21153206781509043
+whole,identity,lateral,5.0,1.5770024555987328e-11,0.5176743421048832,0.8765726272661741,7.6956270159686095,0.0,0.08261487824471603
+whole,identity,mixed,-5.0,1.5770023818725074e-10,1.6824755677418342,0.6212594579472871,-1.3334946465569533,0.0,0.34926867547212187
+whole,identity,mixed,0.0,4.986919549909473e-11,0.946125555746117,0.762119700868016,3.6665052138819783,0.0,0.21677747015421697
+whole,identity,mixed,5.0,1.5770024555987324e-11,0.532045504003231,0.8727792529717899,8.666505132693533,0.0,0.09892854472108976
+whole,reference_rank2:both,blink,-5.0,2.9297983917484034e-12,0.20978566512717403,0.9687003099356157,16.567834846958824,17.560987920990147,0.0
+whole,reference_rank2:both,blink,0.0,1.4045466736703651e-12,0.1559057491002045,0.9820271930967894,18.615894109547078,14.60904732313946,0.0
+whole,reference_rank2:both,blink,5.0,1.6881060409909913e-12,0.17305000200592943,0.9730277334666295,19.27294862324259,10.26610191802342,0.0
+whole,reference_rank2:both,lateral,-5.0,8.060952366202912e-12,0.386428541659422,0.9239617303757605,9.37698496021587,11.681357723497749,0.0
+whole,reference_rank2:both,lateral,0.0,5.2654446597402356e-12,0.26747541609749187,0.9578020330176769,12.788077819599938,10.092450722442882,0.0
+whole,reference_rank2:both,lateral,5.0,6.677553565773577e-12,0.23943897211499765,0.95918750551089,14.709507537309724,7.013880521341115,0.0
+whole,reference_rank2:both,mixed,-5.0,2.5257872715438652e-12,0.2004779925148597,0.9705281334194089,15.956154737481981,17.289649384038935,0.0
+whole,reference_rank2:both,mixed,0.0,1.767798090078814e-12,0.17385042310093674,0.978897171022233,17.382584009465248,13.716078795583268,0.0
+whole,reference_rank2:both,mixed,5.0,1.88604926898701e-12,0.18144198978421575,0.9717077976928797,18.4910679830256,9.824562850332065,0.0
+whole,strength_rank2:0.25,blink,-5.0,1.9340119522001672e-11,0.6856800772565518,0.831487424480146,7.489216760852239,8.482369834883558,0.13721288545546967
+whole,strength_rank2:0.25,blink,0.0,6.282474934546716e-12,0.3907486746451,0.9151562892611299,11.90788031946163,7.901033533054016,0.06687090383565955
+whole,strength_rank2:0.25,blink,5.0,2.4471264542708675e-12,0.23926896472398598,0.9582575929067145,16.38337535289891,7.37652864767974,0.014770140559915029
+whole,strength_rank2:0.25,lateral,-5.0,4.857843009008837e-11,0.9150039357541665,0.7537280302867976,3.2654926608554584,5.569865424137335,0.17023370008896282
+whole,strength_rank2:0.25,lateral,0.0,1.6960784441219424e-11,0.5351776934083139,0.8689370386335785,7.728928647050677,5.033301549893621,0.0888649943840982
+whole,strength_rank2:0.25,lateral,5.0,8.810151420569786e-12,0.3417793209738935,0.9307664298772907,11.678136890805188,3.9825098748365777,0.028421075633599212
+whole,strength_rank2:0.25,mixed,-5.0,2.0096158310428992e-11,0.6848222585300767,0.8288741079231619,7.103834591742519,8.437329238299471,0.14165402549624706
+whole,strength_rank2:0.25,mixed,0.0,6.889765157999885e-12,0.4057358403207091,0.9113165141284139,11.194861091816296,7.528355877934317,0.06758065689381884
+whole,strength_rank2:0.25,mixed,5.0,2.6809510475155953e-12,0.24818260456011726,0.9567762225994276,15.662761989884732,6.996256857191199,0.014931575093451947
+whole,strength_rank2:0.5,blink,-5.0,1.0040927895205001e-11,0.49233119803190045,0.8857030899113416,9.766266620277891,10.759419694309212,0.08299722002427398
+whole,strength_rank2:0.5,blink,0.0,3.5401090366969104e-12,0.2938148461127576,0.9463054947033582,13.499751584030545,9.492904797622932,0.035721698393431166
+whole,strength_rank2:0.5,blink,5.0,1.92250644820159e-12,0.20210464854558272,0.9677630584089597,17.542978806248815,8.536132101029647,0.005264675057669986
+whole,strength_rank2:0.5,lateral,-5.0,2.693887985981867e-11,0.6931838832998148,0.8178372445243944,5.134022225736191,7.438394989018067,0.10612448585136584
+whole,strength_rank2:0.5,lateral,0.0,1.0765158330891534e-11,0.4207003396029279,0.907876992774668,9.349376787235803,6.653749690078749,0.04992504024300877
+whole,strength_rank2:0.5,lateral,5.0,7.594758865344312e-12,0.2968860925266991,0.9450853614566052,12.616814180489362,4.9211871645207514,0.014102144054284902
+whole,strength_rank2:0.5,mixed,-5.0,1.0193767223856803e-11,0.4838045415472414,0.8856759598243927,9.513045348752563,10.846539995309515,0.08485217359501618
+whole,strength_rank2:0.5,mixed,0.0,4.057836179577545e-12,0.30882863269262156,0.9427481341790698,12.74543808825334,9.078932874371363,0.03614903684316308
+whole,strength_rank2:0.5,mixed,5.0,2.1318518340113754e-12,0.2104990342741721,0.9664968442951313,16.81152482942914,8.145019696735606,0.00521095339774816
+whole,strength_rank2:0.75,blink,-5.0,4.5708208517872455e-12,0.3095165576621487,0.941850187761378,13.240106605270322,14.233259679301643,0.026850122174237878
+whole,strength_rank2:0.75,blink,0.0,1.9141329497381276e-12,0.20043200945952555,0.9728996652686549,16.185511257371548,12.178664470963938,0.009127527828134654
+whole,strength_rank2:0.75,blink,5.0,1.6694996437749642e-12,0.16748408472390533,0.973623128823359,19.884894575629303,10.878047870410136,-0.0005953953567294489
+whole,strength_rank2:0.75,lateral,-5.0,1.3433053951856855e-11,0.4957804109886543,0.8848556692810513,7.460832844942575,9.765205608224452,0.03910606109470906
+whole,strength_rank2:0.75,lateral,0.0,6.866711737065137e-12,0.3197411889636654,0.9420470140145852,11.326586819711144,8.630959722554092,0.01575501900309157
+whole,strength_rank2:0.75,lateral,5.0,6.883892913745576e-12,0.2573065261813965,0.9557053002694837,13.830066131226085,6.134439115257471,0.0034822052414062365
+whole,strength_rank2:0.75,mixed,-5.0,4.3369768775617616e-12,0.2975468635817509,0.9433862352742322,12.951916097071924,14.285410743628878,0.02714189814517664
+whole,strength_rank2:0.75,mixed,0.0,2.3505138236038545e-12,0.21635828900156456,0.9695946469161342,15.283481696443777,11.6169764825618,0.009302524106098567
+whole,strength_rank2:0.75,mixed,5.0,1.8668845745018467e-12,0.17610338410922285,0.9724356407110311,18.963568802104056,10.297063669410523,-0.000727843018151489
+
+```
+
+### results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/results/vmd-nonfrontal-gain-20261014/nonfrontal-gain-pilot-001/gain_method_means.csv
+
+```csv
+scope,evaluated_family,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration,pooled_energy_snr_db
+central_shared,blend_old_rank2:0.25,1.0849536978851074e-11,0.3494586568082986,0.9246525061660602,12.33815461082196,9.899042587861143,0.034834069392187805,11.241698023860051
+central_shared,blend_old_rank2:0.5,6.22497278588549e-12,0.27824041260893806,0.9471081017181102,13.829215446006192,11.390103423045373,0.012378473840137755,12.99709833319454
+central_shared,blend_old_rank2:0.75,3.5981472922597625e-12,0.23443282535589746,0.9607714856237566,15.173489179479471,12.734377156518656,-0.0012849100655085795,14.759990991058306
+central_shared,central_frontal_raw_context,1.7448447692320262e-11,0.4455385847130042,0.8970504852608725,10.272467652889523,7.833355629928707,0.06243609029737539,9.191771871484956
+central_shared,central_frontal_vmd_context,1.74718398711565e-11,0.4450710096974887,0.8969353851483433,10.335726565031312,7.896614542070493,0.06255119040990473,9.188114659289687
+central_shared,identity,4.1178615619383164e-11,1.000422384600177,0.7418028357736804,2.439112022960817,0.0,0.21768373978456762,1.982374965852412
+central_shared,reference_rank2:both,2.969060497973889e-12,0.23919164178601543,0.959486575558248,15.158479637876919,12.7193676149161,0.0,15.206408946995348
+central_shared,strength_rank2:0.25,2.4681678493682177e-11,0.7729606097175108,0.8012284914672844,4.528802229285658,2.08969020632484,0.1582580840909637,4.170059728135496
+central_shared,strength_rank2:0.5,1.2814440264880302e-11,0.5502455657399533,0.866818087601866,7.386202777581021,4.947090754620202,0.09266848795638191,7.190400306090143
+central_shared,strength_rank2:0.75,5.57690093297754e-12,0.34178756041814895,0.9302729406755773,11.967180717845542,9.528068694884727,0.029213634882670748,11.992908612405019
+frontal,blend_old_rank2:0.25,3.7797811003440515e-12,0.15251834383396867,0.9795953825561885,20.086785934362933,24.543517802953062,0.0,19.109150695331884
+frontal,blend_old_rank2:0.5,3.7797811003440515e-12,0.15251834383396867,0.9795953825561885,20.086785934362933,24.543517802953062,0.0,19.109150695331884
+frontal,blend_old_rank2:0.75,3.7797811003440515e-12,0.15251834383396867,0.9795953825561885,20.086785934362933,24.543517802953062,0.0,19.109150695331884
+frontal,central_frontal_raw_context,3.7797811003440515e-12,0.15251834383396867,0.9795953825561885,20.086785934362933,24.543517802953062,0.0,19.109150695331884
+frontal,central_frontal_vmd_context,3.7797811003440515e-12,0.15251834383396867,0.9795953825561885,20.086785934362933,24.543517802953062,0.0,19.109150695331884
+frontal,identity,2.2703742647550764e-10,2.0248508963636125,0.5210626951571372,-4.456731868590127,0.0,0.45853268739905123,-4.533420849366512
+frontal,reference_rank2:both,3.7797811003440515e-12,0.15251834383396867,0.9795953825561885,20.086785934362933,24.543517802953062,0.0,19.109150695331884
+frontal,strength_rank2:0.25,3.7797811003440515e-12,0.15251834383396867,0.9795953825561885,20.086785934362933,24.543517802953062,0.0,19.109150695331884
+frontal,strength_rank2:0.5,3.7797811003440515e-12,0.15251834383396867,0.9795953825561885,20.086785934362933,24.543517802953062,0.0,19.109150695331884
+frontal,strength_rank2:0.75,3.7797811003440515e-12,0.15251834383396867,0.9795953825561885,20.086785934362933,24.543517802953062,0.0,19.109150695331884
+middle_verified,blend_old_rank2:0.25,6.807114562648668e-12,0.3492896319499242,0.9257771907057843,12.119891335535765,10.4980190043449,0.02844479837847792,11.45230036230051
+middle_verified,blend_old_rank2:0.5,4.0185773673501284e-12,0.2817341595240642,0.9473636277047739,13.464582607683479,11.842710276492614,0.00685836137948839,13.004096144719961
+middle_verified,blend_old_rank2:0.75,2.599552044370872e-12,0.24476900804689886,0.9588343544974129,14.569998867646978,12.948126536456112,-0.004612365413150537,14.37667365583594
+middle_verified,central_frontal_raw_context,1.0911071973132844e-11,0.44579608407825033,0.8979465831670932,10.061055244013183,8.439182912822321,0.05627540591716908,9.39456354191253
+middle_verified,central_frontal_vmd_context,1.0965163630266485e-11,0.4448608662100312,0.8978739879201921,10.133005748307614,8.511133417116751,0.056348001164070224,9.425837042522879
+middle_verified,identity,3.4999554635494776e-11,1.084592979481922,0.7186026249762515,1.621872331190863,0.0,0.23561936410801093,1.146081941027227
+middle_verified,reference_rank2:both,2.550038593710897e-12,0.2598043415838193,0.9542219890842624,14.246635317727884,12.624762986537021,0.0,14.229956151875689
+middle_verified,strength_rank2:0.25,2.089359976836797e-11,0.8376075115620274,0.7814770210804849,3.709953114525716,2.0880807833348536,0.17274496800377745,3.3312255107291753
+middle_verified,strength_rank2:0.5,1.0783362139028394e-11,0.5957846291325699,0.8521481410650009,6.56568516765375,4.943812836462887,0.1020738480192613,6.344829928345993
+middle_verified,strength_rank2:0.75,4.668841747476035e-12,0.3694314228342071,0.9219828302041646,11.1546924892179,9.53282015802704,0.032239158880097686,11.137636898442617
+posterior,blend_old_rank2:0.25,4.067979056125841e-12,0.24534328275745762,0.9639891234401716,13.519580829214902,2.8320881854406315,-0.0014438165664370055,12.873842910448028
+posterior,blend_old_rank2:0.5,3.884635765501842e-12,0.2378681008514886,0.9656754584543247,13.825273410489695,3.137780766715424,-0.00313015158059009,13.219195436409464
+posterior,blend_old_rank2:0.75,3.9638546545772756e-12,0.23690266188287104,0.9652072128649236,14.014952450490304,3.327459806716033,-0.0026619059911888723,13.351520648952174
+posterior,central_frontal_raw_context,4.5138845264492705e-12,0.25887124415001955,0.960267757573367,13.104832155750618,2.4173395119763468,0.002277549300367547,12.400441392523746
+posterior,central_frontal_vmd_context,4.5138845264492705e-12,0.25887124415001955,0.960267757573367,13.104832155750618,2.4173395119763468,0.002277549300367547,12.400441392523746
+posterior,identity,1.085056612114193e-11,0.3849351093916105,0.9194097537148181,10.687492643774272,0.0,0.043135553158916574,9.761791314364038
+posterior,reference_rank2:both,4.30563572335214e-12,0.24452307734450054,0.9625453068737346,13.921326676255887,3.233834032481613,0.0,13.120701514726306
+posterior,strength_rank2:0.25,7.889802731911498e-12,0.33693986809174276,0.9348740570525438,11.453023594369162,0.7655309505948892,0.027671249821190774,10.581581627128509
+posterior,strength_rank2:0.5,5.812059869203053e-12,0.29159789306661454,0.9490501310525993,12.44598359334162,1.7584909495673475,0.013495175821135371,11.653126024384704
+posterior,strength_rank2:0.75,4.617337533016603e-12,0.2546671411413969,0.9594884198839496,13.621114312153235,2.933621668378964,0.0030568869897849736,12.866454345104605
+temporal_shared,blend_old_rank2:0.25,2.4324278366192425e-11,0.3500220730028799,0.9209035577003128,13.065698861775946,7.90245453291528,0.05613163943788742,11.106313493475103
+temporal_shared,blend_old_rank2:0.5,1.357962418100336e-11,0.26659458955851767,0.9462563484292315,15.044658240415234,9.881413911554569,0.030778848708968975,13.165758136276745
+temporal_shared,blend_old_rank2:0.75,6.9267981185560656e-12,0.1999788830525596,0.9672285893782357,17.185123552254463,12.021879223393793,0.00980660775996461,15.580124016377775
+temporal_shared,central_frontal_raw_context,3.923970008961166e-11,0.4446802534955173,0.8940634922401373,10.977175682477327,5.8139313536166615,0.08297170489806313,9.076363974808885
+temporal_shared,central_frontal_vmd_context,3.916076067412324e-11,0.4457714879890139,0.8938067092421805,11.011462620776967,5.848218291916302,0.08322848789601975,9.061106851441714
+temporal_shared,identity,6.17754855656778e-11,0.7198537349943599,0.8191368717651105,5.1632443288606655,0.0,0.15789832537308995,3.6426034083278274
+temporal_shared,reference_rank2:both,4.365800178850531e-12,0.17048264246000233,0.9770351971382002,18.197960705040362,13.034716376179698,0.0,17.243958933057687
+temporal_shared,strength_rank2:0.25,3.730860757806286e-11,0.5574709369024553,0.8670667260899492,7.258299278485458,2.0950549496247937,0.10996847104825122,5.826208253910729
+temporal_shared,strength_rank2:0.5,1.958470068438667e-11,0.3984486877645653,0.9157179093914163,10.121261477338587,4.9580171484779205,0.061317287746784,8.84359423041817
+temporal_shared,strength_rank2:0.75,8.603764884649224e-12,0.2496413523646217,0.9579066422469527,14.675474813271013,9.512230484410347,0.01912855489124763,13.63798751320192
+whole,blend_old_rank2:0.25,7.133641786836458e-12,0.2716514853405955,0.9495587292051131,14.491577366366593,11.035250981093503,0.01553456052131844,12.355973220814997
+whole,blend_old_rank2:0.5,4.948187480050514e-12,0.2366740936218894,0.9603848619331303,15.26899557528996,11.812669190016871,0.004708427793301151,13.29814388153054
+whole,blend_old_rank2:0.75,3.763123044761924e-12,0.21629033295440311,0.966507205180909,15.944701409770744,12.488375024497653,-0.0014139154544776315,13.861136187667068
+whole,central_frontal_raw_context,1.0312994028038637e-11,0.32001731582146153,0.935715430441209,13.413669454154302,9.957343068881212,0.029377859285222428,11.107577498988922
+whole,central_frontal_vmd_context,1.0319485965119755e-11,0.3197445012911706,0.9356789567068935,13.44308573820189,9.9867593529288,0.029414333019538125,11.09330332891164
+whole,identity,7.444648608077761e-11,1.0410355934443711,0.7469199051703261,3.4563263852730897,0.0,0.2181733845561053,1.0914831407088995e-07
+whole,reference_rank2:both,3.5784484809706857e-12,0.22087275016724797,0.9650932897264314,15.906783847427429,12.450457462154338,0.0,13.699583334827276
+whole,strength_rank2:0.25,1.4676217930960148e-11,0.4940443744636573,0.8839221833440736,10.268276478374183,6.8119500931010935,0.08117110638235805,7.263808584633802
+whole,strength_rank2:0.5,8.576199519289304e-12,0.3780170240704131,0.918388020008658,11.886579830050405,8.430253444777316,0.04670526971777357,9.650132760598677
+whole,strength_rank2:0.75,4.8769430359594845e-12,0.27114103496353714,0.9507108320355455,14.347440536641193,10.891114151368104,0.01438245769088596,12.426322552789298
+
+```
+
 ### results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/coverage_uncertainty_intervals.csv
 
 ```csv
@@ -59808,6 +62785,514 @@ whole,mwf_rank1:posterior,8.835503756721653e-12,0.3168731601351607,0.93761200287
 whole,mwf_rank2:both,1.3304063207341984e-11,0.40554114001530017,0.9097413647300631,12.619924920418,9.143522280055768,0.03546263072570723
 whole,mwf_rank2:central,1.2039102111769736e-11,0.3834757401603054,0.9183857904645437,12.907575504883079,9.431172864520848,0.026818204991226464
 whole,mwf_rank2:posterior,8.587861063863528e-12,0.3161877893434775,0.9367574713827663,13.70657902270473,10.230176382342496,0.00844652407300377
+
+```
+
+### results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,reference_rank2:both,raw_frontal+reference_rank2,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.9499240011834773e-13,9.021945677641365e-14,6.213726172223074e-13,498,498,False
+whole,reference_rank2:both,raw_frontal+reference_rank2,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007227056803968834,0.0021873403542381517,0.012141678872015841,498,498,False
+whole,reference_rank2:both,raw_frontal+reference_rank2,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0016890608687639306,-0.002925134669906432,-0.0004937889510440007,498,498,False
+whole,reference_rank2:both,raw_frontal+reference_rank2,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.24337842259686449,-0.516659013718717,0.043339157145407474,498,498,False
+whole,reference_rank2:both,raw_frontal+reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.2433784225968645,-0.516659013718717,0.043339157145407474,498,498,False
+frontal,reference_rank2:both,raw_frontal+reference_rank2,mse,lower_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.2976505361146253e-12,3.9954954670467177e-13,2.7645006460449237e-12,498,498,False
+frontal,reference_rank2:both,raw_frontal+reference_rank2,rrmse_time,lower_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03186944815682968,0.009591648491324812,0.05300961225825535,498,498,False
+frontal,reference_rank2:both,raw_frontal+reference_rank2,pearson_cc,higher_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00744147678203266,-0.012689505874520644,-0.0021597315036702546,498,498,False
+frontal,reference_rank2:both,raw_frontal+reference_rank2,snr_energy_db,higher_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327374,498,498,False
+frontal,reference_rank2:both,raw_frontal+reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327368,498,498,False
+posterior,reference_rank2:both,raw_frontal+reference_rank2,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,reference_rank2:both,raw_frontal+reference_rank2,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,reference_rank2:both,raw_frontal+reference_rank2,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,reference_rank2:both,raw_frontal+reference_rank2,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,reference_rank2:both,raw_frontal+reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,reference_rank2:both,raw_frontal+reference_rank2,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,reference_rank2:both,raw_frontal+reference_rank2,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,reference_rank2:both,raw_frontal+reference_rank2,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,reference_rank2:both,raw_frontal+reference_rank2,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,reference_rank2:both,raw_frontal+reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+whole,ica_component_ridge:both,raw_frontal+reference_rank2,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.766019042910975e-12,1.9158481844627374e-13,1.2467911385301444e-11,498,498,False
+whole,ica_component_ridge:both,raw_frontal+reference_rank2,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.034605801559612986,-0.0073088378558368305,0.09052500844516324,498,498,False
+whole,ica_component_ridge:both,raw_frontal+reference_rank2,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.009883847680088823,-0.026118697553875084,0.0017837025089206821,498,498,False
+whole,ica_component_ridge:both,raw_frontal+reference_rank2,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6637443097617112,-1.8342431262820367,0.4133578633957751,498,498,False
+whole,ica_component_ridge:both,raw_frontal+reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6637443097617113,-1.8342431262820367,0.4133578633957752,498,498,False
+frontal,ica_component_ridge:both,raw_frontal+reference_rank2,mse,lower_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.2976505361146253e-12,3.9954954670467177e-13,2.7645006460449237e-12,498,498,False
+frontal,ica_component_ridge:both,raw_frontal+reference_rank2,rrmse_time,lower_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03186944815682968,0.009591648491324812,0.05300961225825535,498,498,False
+frontal,ica_component_ridge:both,raw_frontal+reference_rank2,pearson_cc,higher_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00744147678203266,-0.012689505874520644,-0.0021597315036702546,498,498,False
+frontal,ica_component_ridge:both,raw_frontal+reference_rank2,snr_energy_db,higher_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327374,498,498,False
+frontal,ica_component_ridge:both,raw_frontal+reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327368,498,498,False
+posterior,ica_component_ridge:both,raw_frontal+reference_rank2,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.643828971226075e-12,1.0882981653610887e-13,1.1494853523329257e-11,498,498,False
+posterior,ica_component_ridge:both,raw_frontal+reference_rank2,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.016667768966626667,-0.0033173116060788922,0.055158944196813886,498,498,False
+posterior,ica_component_ridge:both,raw_frontal+reference_rank2,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.005306315004856582,-0.016553061449643938,0.0004901532985205964,498,498,False
+posterior,ica_component_ridge:both,raw_frontal+reference_rank2,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.3534183490040563,-1.2448173299832115,0.2057477731447159,498,498,False
+posterior,ica_component_ridge:both,raw_frontal+reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.3534183490040563,-1.2448173299832115,0.20574777314471587,498,498,False
+central_shared,ica_component_ridge:both,raw_frontal+reference_rank2,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.807978460171583e-12,-2.3602072976996047e-14,2.0183523357935287e-11,498,498,False
+central_shared,ica_component_ridge:both,raw_frontal+reference_rank2,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.04871055490505643,-0.028915177229208725,0.14528305654323775,498,498,False
+central_shared,ica_component_ridge:both,raw_frontal+reference_rank2,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.014366745042008916,-0.04180176454260471,0.006451500533969187,498,498,False
+central_shared,ica_component_ridge:both,raw_frontal+reference_rank2,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6814580839989827,-2.5877788686217027,1.5161754485541101,498,498,False
+central_shared,ica_component_ridge:both,raw_frontal+reference_rank2,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6814580839989827,-2.5877788686217027,1.5161754485541103,498,498,False
+
+```
+
+### results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/matched_ica_frontend_uncertainty/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,ica_component_ridge:both,raw_frontal+ica_component_ridge,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.9499240011834773e-13,9.021945677641365e-14,6.213726172223074e-13,498,498,False
+whole,ica_component_ridge:both,raw_frontal+ica_component_ridge,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007227056803968834,0.0021873403542381517,0.012141678872015841,498,498,False
+whole,ica_component_ridge:both,raw_frontal+ica_component_ridge,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0016890608687639306,-0.002925134669906432,-0.0004937889510440007,498,498,False
+whole,ica_component_ridge:both,raw_frontal+ica_component_ridge,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.24337842259686449,-0.516659013718717,0.043339157145407474,498,498,False
+whole,ica_component_ridge:both,raw_frontal+ica_component_ridge,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.2433784225968645,-0.516659013718717,0.043339157145407474,498,498,False
+frontal,ica_component_ridge:both,raw_frontal+ica_component_ridge,mse,lower_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.2976505361146253e-12,3.9954954670467177e-13,2.7645006460449237e-12,498,498,False
+frontal,ica_component_ridge:both,raw_frontal+ica_component_ridge,rrmse_time,lower_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.03186944815682968,0.009591648491324812,0.05300961225825535,498,498,False
+frontal,ica_component_ridge:both,raw_frontal+ica_component_ridge,pearson_cc,higher_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00744147678203266,-0.012689505874520644,-0.0021597315036702546,498,498,False
+frontal,ica_component_ridge:both,raw_frontal+ica_component_ridge,snr_energy_db,higher_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327374,498,498,False
+frontal,ica_component_ridge:both,raw_frontal+ica_component_ridge,snr_improvement_db,higher_is_better,available,,32,5,39,39,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0804323069583162,-2.286125724286123,0.18765417958327368,498,498,False
+posterior,ica_component_ridge:both,raw_frontal+ica_component_ridge,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,ica_component_ridge:both,raw_frontal+ica_component_ridge,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,ica_component_ridge:both,raw_frontal+ica_component_ridge,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,ica_component_ridge:both,raw_frontal+ica_component_ridge,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+posterior,ica_component_ridge:both,raw_frontal+ica_component_ridge,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,ica_component_ridge:both,raw_frontal+ica_component_ridge,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,ica_component_ridge:both,raw_frontal+ica_component_ridge,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,ica_component_ridge:both,raw_frontal+ica_component_ridge,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,ica_component_ridge:both,raw_frontal+ica_component_ridge,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+central_shared,ica_component_ridge:both,raw_frontal+ica_component_ridge,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0,0.0,0.0,498,498,False
+
+```
+
+### results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_condition_means.csv
+
+```csv
+scope,evaluated_family,condition,input_snr_db,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration
+central_shared,central_frontal_raw_context,blink,-5.0,8.7113270022848e-12,0.3901028570573999,0.9219112525027495,10.259144819418312,12.934904254283987,0.05655041857191342
+central_shared,central_frontal_raw_context,blink,0.0,2.784607498816179e-12,0.22348088206668437,0.9682724150337797,15.047605771042537,12.723365340964609,0.020299335363320726
+central_shared,central_frontal_raw_context,blink,5.0,9.191681689742103e-13,0.13197247507830961,0.9876918144698738,19.532543117227455,12.208302644093218,-0.05059242817326154
+central_shared,central_frontal_raw_context,lateral,-5.0,1.2304647275940395e-10,1.3778853934560389,0.6585744028184813,0.00516136367422898,3.5681781357499593,0.20183426024137646
+central_shared,central_frontal_raw_context,lateral,0.0,3.884539130155558e-11,0.7731982876574748,0.8022681902639754,5.051728759192768,3.6147456663248954,0.13827465616996396
+central_shared,central_frontal_raw_context,lateral,5.0,1.2124940046676404e-11,0.4354877647221337,0.903054837062174,10.028546977905311,3.5915638419811344,0.06539648086745724
+central_shared,central_frontal_raw_context,mixed,-5.0,1.2761502687128586e-11,0.48744633111412916,0.891276196683582,8.064359917864328,10.963180365882895,0.08264657279855411
+central_shared,central_frontal_raw_context,mixed,0.0,4.0612972582806225e-12,0.2771760235117668,0.9551748769718892,12.943418741226571,10.842239324301534,0.03159325332221087
+central_shared,central_frontal_raw_context,mixed,5.0,1.324915361839858e-12,0.16116714017939393,0.9828086354272356,17.611248333720397,10.510068873739058,-0.04236459126666621
+central_shared,central_frontal_vmd_context,blink,-5.0,1.0312375548320551e-11,0.4083574541075213,0.9158527995972728,9.940204469137406,12.615963904003081,0.06260887147739007
+central_shared,central_frontal_vmd_context,blink,0.0,2.9212648018883483e-12,0.2266987944640323,0.9674942138296767,14.934144773161641,12.609904343083713,0.021077536567423498
+central_shared,central_frontal_vmd_context,blink,5.0,9.364213525897776e-13,0.13112457604542302,0.9877390443484659,19.634388041568066,12.310147568433834,-0.050639658051853775
+central_shared,central_frontal_vmd_context,lateral,-5.0,1.1791686254077602e-10,1.365594206062247,0.6568241927345383,-0.03242235111718711,3.5305944209585434,0.20358447032531946
+central_shared,central_frontal_vmd_context,lateral,0.0,3.561041884961458e-11,0.7494661451918165,0.8069638894061817,5.197155390768863,3.7601722979009886,0.13357895702775782
+central_shared,central_frontal_vmd_context,lateral,5.0,1.0732079757899935e-11,0.41278590140123983,0.9095806116298268,10.396344636462834,3.9593615005386544,0.05887070629980448
+central_shared,central_frontal_vmd_context,mixed,-5.0,1.363630431666875e-11,0.5059957730275868,0.8854522132065983,7.655153369163665,10.553973817182232,0.08847055627553796
+central_shared,central_frontal_vmd_context,mixed,0.0,4.224102672724472e-12,0.2813637376276265,0.9541631565807493,12.78475330471781,10.683573887792775,0.03260497371335071
+central_shared,central_frontal_vmd_context,mixed,5.0,1.3380383951000604e-12,0.16075541883236877,0.9829354363422104,17.621187584179644,10.520008124198302,-0.04249139218164095
+central_shared,ica_component_ridge:both,blink,-5.0,1.6354571254115732e-12,0.1764541218686284,0.9783333512289197,16.968924530750677,19.644683965616352,0.00012831984574319748
+central_shared,ica_component_ridge:both,blink,0.0,7.272700273971379e-13,0.12231940587592603,0.9884160851999204,20.367892450976495,18.043652020898566,0.00015566519718004007
+central_shared,ica_component_ridge:both,blink,5.0,3.712048021311634e-12,0.3155671437390427,0.937467145216953,14.80623325863554,7.481992785501306,-0.00036775892034074983
+central_shared,ica_component_ridge:both,lateral,-5.0,5.414061699508331e-11,0.8070734953225723,0.7998226392534379,4.43768286143013,8.00069963350586,0.060586023806419885
+central_shared,ica_component_ridge:both,lateral,0.0,1.5772348721577594e-11,0.45606299970967457,0.8998277739589546,9.408996157954054,7.9720130650861805,0.040715072474984876
+central_shared,ica_component_ridge:both,lateral,5.0,6.73589607505457e-12,0.29096285567809843,0.9474424052770734,13.67473278986306,7.237749653938883,0.021008912652558036
+central_shared,ica_component_ridge:both,mixed,-5.0,2.7746925026985317e-12,0.22153570780149354,0.9690844471137106,14.787534540443144,17.686354988461716,0.004838322368425643
+central_shared,ica_component_ridge:both,mixed,0.0,1.1083426122962274e-12,0.14622680613838007,0.9847999811811254,18.52850420140153,16.427324784476497,0.001968149112974639
+central_shared,ica_component_ridge:both,mixed,5.0,3.685604195062452e-12,0.3063762165352377,0.9401760453204348,15.038597535432999,7.9374180754516575,0.00026799884013467654
+central_shared,identity,blink,-5.0,9.055057040775391e-11,1.703976078656812,0.5968215529967646,-2.6757594348656752,0.0,0.3816401180778982
+central_shared,identity,blink,0.0,2.86346055999757e-11,0.9582161809881862,0.7611262318042633,2.3242404300779285,0.0,0.2274455185928369
+central_shared,identity,blink,5.0,9.055057088126805e-12,0.5388445535648259,0.8814349439259775,7.324240473134234,0.0,0.0556644423706347
+central_shared,identity,lateral,-5.0,1.8526853440925106e-10,1.8888049208349842,0.5420851870576309,-3.5630167720757306,0.0,0.3183234760022269
+central_shared,identity,lateral,0.0,5.858705684476455e-11,1.0621530783994655,0.7150439220286704,1.4369830928678733,0.0,0.22549892440526906
+central_shared,identity,lateral,5.0,1.8526853544379874e-11,0.5972925658198422,0.854175593857474,6.436983135924179,0.0,0.11427572407215739
+central_shared,identity,mixed,-5.0,9.349894235513793e-11,1.724456096512982,0.5888345217734154,-2.898820448018567,0.0,0.38508824770872063
+central_shared,identity,mixed,0.0,2.956696270587159e-11,0.969732941521019,0.7566462034098469,2.1011794169250364,0.0,0.23012192688425312
+central_shared,identity,mixed,5.0,9.349894288461347e-12,0.5453209039445652,0.8795804663252401,7.101179459981342,0.0,0.06086357783532936
+central_shared,raw_frontal+ica_component_ridge,blink,-5.0,1.6354571254115732e-12,0.1764541218686284,0.9783333512289197,16.968924530750677,19.644683965616352,0.00012831984574319748
+central_shared,raw_frontal+ica_component_ridge,blink,0.0,7.272700273971379e-13,0.12231940587592603,0.9884160851999204,20.367892450976495,18.043652020898566,0.00015566519718004007
+central_shared,raw_frontal+ica_component_ridge,blink,5.0,3.712048021311634e-12,0.3155671437390427,0.937467145216953,14.80623325863554,7.481992785501306,-0.00036775892034074983
+central_shared,raw_frontal+ica_component_ridge,lateral,-5.0,5.414061699508331e-11,0.8070734953225723,0.7998226392534379,4.43768286143013,8.00069963350586,0.060586023806419885
+central_shared,raw_frontal+ica_component_ridge,lateral,0.0,1.5772348721577594e-11,0.45606299970967457,0.8998277739589546,9.408996157954054,7.9720130650861805,0.040715072474984876
+central_shared,raw_frontal+ica_component_ridge,lateral,5.0,6.73589607505457e-12,0.29096285567809843,0.9474424052770734,13.67473278986306,7.237749653938883,0.021008912652558036
+central_shared,raw_frontal+ica_component_ridge,mixed,-5.0,2.7746925026985317e-12,0.22153570780149354,0.9690844471137106,14.787534540443144,17.686354988461716,0.004838322368425643
+central_shared,raw_frontal+ica_component_ridge,mixed,0.0,1.1083426122962274e-12,0.14622680613838007,0.9847999811811254,18.52850420140153,16.427324784476497,0.001968149112974639
+central_shared,raw_frontal+ica_component_ridge,mixed,5.0,3.685604195062452e-12,0.3063762165352377,0.9401760453204348,15.038597535432999,7.9374180754516575,0.00026799884013467654
+central_shared,raw_frontal+reference_rank2,blink,-5.0,1.1799869272285528e-12,0.17728278489259025,0.978461671074663,16.827442595546366,19.503202030412037,0.0
+central_shared,raw_frontal+reference_rank2,blink,0.0,5.934155398021161e-13,0.12273631832809703,0.9885717503971003,20.25053864855813,17.926298218480202,0.0
+central_shared,raw_frontal+reference_rank2,blink,5.0,3.690992402758184e-12,0.31664002577638706,0.9370993862966122,14.840418304975374,7.51617783184114,0.0
+central_shared,raw_frontal+reference_rank2,lateral,-5.0,1.740435249200128e-11,0.5851868085542671,0.8604086630598577,6.232025610789458,9.795042382865189,0.0
+central_shared,raw_frontal+reference_rank2,lateral,0.0,5.549756214643043e-12,0.3330133406651646,0.9405428464339395,11.11575285129216,9.678769758424288,0.0
+central_shared,raw_frontal+reference_rank2,lateral,5.0,3.665092964229396e-12,0.22604725821805874,0.9684513179296314,15.274112361485667,8.837129225561489,0.0
+central_shared,raw_frontal+reference_rank2,mixed,-5.0,1.6021877713478348e-12,0.20276333623871048,0.9739227694821362,15.38146210602789,18.280282554046458,0.0
+central_shared,raw_frontal+reference_rank2,mixed,0.0,7.410509593635872e-13,0.1363385240284542,0.9867681302941,19.03977541833998,16.93859600141494,0.0
+central_shared,raw_frontal+reference_rank2,mixed,5.0,3.593634862974781e-12,0.3041753618218166,0.9404440441605695,15.190693185863456,8.089513725882112,0.0
+central_shared,reference_rank2:both,blink,-5.0,1.1799869272285528e-12,0.17728278489259025,0.978461671074663,16.827442595546366,19.503202030412037,0.0
+central_shared,reference_rank2:both,blink,0.0,5.934155398021161e-13,0.12273631832809703,0.9885717503971003,20.25053864855813,17.926298218480202,0.0
+central_shared,reference_rank2:both,blink,5.0,3.690992402758184e-12,0.31664002577638706,0.9370993862966122,14.840418304975374,7.51617783184114,0.0
+central_shared,reference_rank2:both,lateral,-5.0,1.740435249200128e-11,0.5851868085542671,0.8604086630598577,6.232025610789458,9.795042382865189,0.0
+central_shared,reference_rank2:both,lateral,0.0,5.549756214643043e-12,0.3330133406651646,0.9405428464339395,11.11575285129216,9.678769758424288,0.0
+central_shared,reference_rank2:both,lateral,5.0,3.665092964229396e-12,0.22604725821805874,0.9684513179296314,15.274112361485667,8.837129225561489,0.0
+central_shared,reference_rank2:both,mixed,-5.0,1.6021877713478348e-12,0.20276333623871048,0.9739227694821362,15.38146210602789,18.280282554046458,0.0
+central_shared,reference_rank2:both,mixed,0.0,7.410509593635872e-13,0.1363385240284542,0.9867681302941,19.03977541833998,16.93859600141494,0.0
+central_shared,reference_rank2:both,mixed,5.0,3.593634862974781e-12,0.3041753618218166,0.9404440441605695,15.190693185863456,8.089513725882112,0.0
+frontal,central_frontal_raw_context,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.006258394370925189
+frontal,central_frontal_raw_context,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0017197266870093045
+frontal,central_frontal_raw_context,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0009934208585503329
+frontal,central_frontal_raw_context,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.02409121982978059
+frontal,central_frontal_raw_context,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.015596921703714729
+frontal,central_frontal_raw_context,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.00965631451201366
+frontal,central_frontal_raw_context,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.004499517567770406
+frontal,central_frontal_raw_context,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0026664110185225277
+frontal,central_frontal_raw_context,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0014913644900072013
+frontal,central_frontal_vmd_context,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.006258394370925189
+frontal,central_frontal_vmd_context,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0017197266870093045
+frontal,central_frontal_vmd_context,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0009934208585503329
+frontal,central_frontal_vmd_context,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.02409121982978059
+frontal,central_frontal_vmd_context,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.015596921703714729
+frontal,central_frontal_vmd_context,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.00965631451201366
+frontal,central_frontal_vmd_context,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.004499517567770406
+frontal,central_frontal_vmd_context,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0026664110185225277
+frontal,central_frontal_vmd_context,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0014913644900072013
+frontal,ica_component_ridge:both,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.006258394370925189
+frontal,ica_component_ridge:both,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0017197266870093045
+frontal,ica_component_ridge:both,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0009934208585503329
+frontal,ica_component_ridge:both,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.02409121982978059
+frontal,ica_component_ridge:both,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.015596921703714729
+frontal,ica_component_ridge:both,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.00965631451201366
+frontal,ica_component_ridge:both,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.004499517567770406
+frontal,ica_component_ridge:both,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0026664110185225277
+frontal,ica_component_ridge:both,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0014913644900072013
+frontal,identity,blink,-5.0,7.403422266942269e-10,4.1239474930779165,0.2546059565948502,-11.666787907817575,0.0,0.7292888215546334
+frontal,identity,blink,0.0,2.3411677654089895e-10,2.3190661337910843,0.4180029554759048,-6.6667880428739705,0.0,0.5725088582117509
+frontal,identity,blink,5.0,7.403422318546091e-11,1.3041067151689552,0.6190039671535059,-1.666787999817665,0.0,0.37362791347189195
+frontal,identity,lateral,-5.0,4.706787708651855e-10,2.834047685308765,0.3669296614005887,-8.113828549301228,0.0,0.5712870063529476
+frontal,identity,lateral,0.0,1.4884170130108913e-10,1.5937021557405027,0.5579549515555366,-3.1138286843576246,0.0,0.4183201647075321
+frontal,identity,lateral,5.0,4.706787749827606e-11,0.896204577214837,0.748554916904236,1.8861713586986808,0.0,0.23650909221837754
+frontal,identity,mixed,-5.0,7.324623675368554e-10,4.099289636053002,0.252768909904321,-11.638926680931508,0.0,0.729385598126042
+frontal,identity,mixed,0.0,2.3162494620031827e-10,2.30520000159495,0.41751898359997885,-6.638926815987905,0.0,0.5720535607687335
+frontal,identity,mixed,5.0,7.324623725547525e-11,1.2963092160178702,0.6200305157917552,-1.6389267729315997,0.0,0.3719250883915216
+frontal,raw_frontal+ica_component_ridge,blink,-5.0,1.5165448711732449e-12,0.16030936318089545,0.9838947781494837,17.278728536706595,28.945516444524166,0.0
+frontal,raw_frontal+ica_component_ridge,blink,0.0,8.712711552256905e-13,0.11762450451501613,0.9905118136876558,20.262943569655526,26.929731612529494,0.0
+frontal,raw_frontal+ica_component_ridge,blink,5.0,6.67217239655074e-13,0.09860103888332569,0.992631880625398,22.340021043914213,24.006809043731874,0.0
+frontal,raw_frontal+ica_component_ridge,lateral,-5.0,1.3497105770242564e-11,0.3361457048925418,0.9382166677535364,11.028577099439076,19.142405648740304,0.0
+frontal,raw_frontal+ica_component_ridge,lateral,0.0,3.72457080231086e-12,0.19405080191041418,0.9762751162630687,15.704484530409491,18.818313214767116,0.0
+frontal,raw_frontal+ica_component_ridge,lateral,5.0,3.1338663932474082e-12,0.13539972546274343,0.9850640091226137,19.374809284279173,17.48863792558049,0.0
+frontal,raw_frontal+ica_component_ridge,mixed,-5.0,1.8195618026074843e-12,0.1713570810122932,0.982154508030363,16.518510443353534,28.157437124285046,0.0
+frontal,raw_frontal+ica_component_ridge,mixed,0.0,1.0176708333536567e-12,0.12502601593857904,0.9895725443687122,19.562233792767564,26.201160608755472,0.0
+frontal,raw_frontal+ica_component_ridge,mixed,5.0,7.640854999489628e-13,0.10428666886746647,0.9919556041832768,21.668911645326535,23.307838418258136,0.0
+frontal,raw_frontal+reference_rank2,blink,-5.0,1.5165448711732449e-12,0.16030936318089545,0.9838947781494837,17.278728536706595,28.945516444524166,0.0
+frontal,raw_frontal+reference_rank2,blink,0.0,8.712711552256905e-13,0.11762450451501613,0.9905118136876558,20.262943569655526,26.929731612529494,0.0
+frontal,raw_frontal+reference_rank2,blink,5.0,6.67217239655074e-13,0.09860103888332569,0.992631880625398,22.340021043914213,24.006809043731874,0.0
+frontal,raw_frontal+reference_rank2,lateral,-5.0,1.3497105770242564e-11,0.3361457048925418,0.9382166677535364,11.028577099439076,19.142405648740304,0.0
+frontal,raw_frontal+reference_rank2,lateral,0.0,3.72457080231086e-12,0.19405080191041418,0.9762751162630687,15.704484530409491,18.818313214767116,0.0
+frontal,raw_frontal+reference_rank2,lateral,5.0,3.1338663932474082e-12,0.13539972546274343,0.9850640091226137,19.374809284279173,17.48863792558049,0.0
+frontal,raw_frontal+reference_rank2,mixed,-5.0,1.8195618026074843e-12,0.1713570810122932,0.982154508030363,16.518510443353534,28.157437124285046,0.0
+frontal,raw_frontal+reference_rank2,mixed,0.0,1.0176708333536567e-12,0.12502601593857904,0.9895725443687122,19.562233792767564,26.201160608755472,0.0
+frontal,raw_frontal+reference_rank2,mixed,5.0,7.640854999489628e-13,0.10428666886746647,0.9919556041832768,21.668911645326535,23.307838418258136,0.0
+frontal,reference_rank2:both,blink,-5.0,4.724716277086463e-12,0.19043677175645699,0.9776363837785584,16.842724357805302,28.509512265622874,0.006258394370925189
+frontal,reference_rank2:both,blink,0.0,1.0113751008487918e-12,0.12526900883004996,0.9887920870006466,20.062975065057103,26.72976310793107,0.0017197266870093045
+frontal,reference_rank2:both,blink,5.0,7.612124392312467e-13,0.10408021156749837,0.9916384597668476,22.11064245860635,23.777430458424018,0.0009934208585503329
+frontal,reference_rank2:both,lateral,-5.0,1.693696247013856e-11,0.41748149044276034,0.9141254479237557,8.954401981614147,17.068230530915372,0.02409121982978059
+frontal,reference_rank2:both,lateral,0.0,5.952642255223183e-12,0.2593893675825281,0.9606781945593541,13.129188963526648,16.243017647884272,0.015596921703714729
+frontal,reference_rank2:both,lateral,5.0,4.336525126740917e-12,0.18614745465850238,0.9754076946106001,16.622937802753107,14.736766444054428,0.00965631451201366
+frontal,reference_rank2:both,mixed,-5.0,2.830513191105037e-12,0.1965175848201306,0.9776549904625925,15.992406042976192,27.631332723907697,0.004499517567770406
+frontal,reference_rank2:both,mixed,0.0,1.234536576890084e-12,0.1374750614271053,0.9869061333501897,19.10044641754046,25.73937323352836,0.0026664110185225277
+frontal,reference_rank2:both,mixed,5.0,9.022657555322897e-13,0.11282898698971039,0.9904642396932696,21.19960609334756,22.838532866279156,0.0014913644900072013
+middle_verified,central_frontal_raw_context,blink,-5.0,6.045485442447288e-12,0.40461433988323525,0.9181918655451454,9.915336859977494,13.914604860951696,0.05615833106279415
+middle_verified,central_frontal_raw_context,blink,0.0,1.9471364199175455e-12,0.23242155203374573,0.9663756206677451,14.679186389744967,13.678454525775564,0.019841419503415773
+middle_verified,central_frontal_raw_context,blink,5.0,6.572666801130586e-13,0.13809123707248835,0.986709537095059,19.116519851506098,13.115787944480392,-0.06233184127923745
+middle_verified,central_frontal_raw_context,lateral,-5.0,8.647059679151171e-11,1.39444566252865,0.6612400063635019,-0.0727073670899119,3.652767622588362,0.1917676089178768
+middle_verified,central_frontal_raw_context,lateral,0.0,2.8092073660734526e-11,0.7840566529740877,0.8036469495005572,4.956327368118565,3.6818024928532354,0.1328147441745699
+middle_verified,central_frontal_raw_context,lateral,5.0,8.927427499155132e-12,0.4424811448193952,0.902621040940352,9.91697411909795,3.6424492007763165,0.06333761811809571
+middle_verified,central_frontal_raw_context,mixed,-5.0,8.942129497016592e-12,0.5029404800099979,0.887955147541379,7.7939800924055955,11.90723232553521,0.08167019001436537
+middle_verified,central_frontal_raw_context,mixed,0.0,2.864933659751344e-12,0.28641359483444145,0.9531961947792167,12.657292908019393,11.770545276205405,0.031100565690708033
+middle_verified,central_frontal_raw_context,mixed,5.0,9.5264322142042e-13,0.1672461776632983,0.9816848010754261,17.289808859599816,11.403061184729523,-0.05285182949299394
+middle_verified,central_frontal_vmd_context,blink,-5.0,7.371696106343295e-12,0.4234510004077015,0.9119162562680698,9.606958574100075,13.606226575074277,0.062433940339869765
+middle_verified,central_frontal_vmd_context,blink,0.0,2.037734986714086e-12,0.23537626841270737,0.9657074905489346,14.566582320833453,13.565850456864052,0.020509549622226293
+middle_verified,central_frontal_vmd_context,blink,5.0,6.671624624065577e-13,0.1368718430325339,0.9868286066238905,19.23923301457222,13.238501107546515,-0.06245091080806883
+middle_verified,central_frontal_vmd_context,lateral,-5.0,8.537723772442602e-11,1.3827453147079298,0.6589596370933813,-0.11446934402220013,3.6110056456560744,0.19404797818799732
+middle_verified,central_frontal_vmd_context,lateral,0.0,2.6231258870081952e-11,0.7611929186953752,0.8075333681019452,5.0852978075109405,3.8107729322456096,0.1289283255731818
+middle_verified,central_frontal_vmd_context,lateral,5.0,8.011712907443225e-12,0.4197544869802443,0.9086983396766626,10.277398733447686,4.002873815126052,0.05726031938178513
+middle_verified,central_frontal_vmd_context,mixed,-5.0,9.514352392086515e-12,0.5205129054208093,0.882383694637439,7.41630075197201,11.529552985101624,0.08724164291830537
+middle_verified,central_frontal_vmd_context,mixed,0.0,2.9673219267844526e-12,0.2900485052961075,0.9523677471201717,12.513119379383317,11.626371747569328,0.03192901334975305
+middle_verified,central_frontal_vmd_context,mixed,5.0,9.588511046500806e-13,0.16642069273134227,0.9819074331179165,17.321891543995612,11.43514386912532,-0.05307446153548431
+middle_verified,ica_component_ridge:both,blink,-5.0,1.3448657362713806e-12,0.18705595415886186,0.9762231930903397,16.354834440082712,20.35410244105691,-0.0018729964824001374
+middle_verified,ica_component_ridge:both,blink,0.0,6.413434140059398e-13,0.132117416672409,0.9867366063107817,19.618359119743435,18.617627255774032,-0.0005195661396208215
+middle_verified,ica_component_ridge:both,blink,5.0,3.726193721828373e-12,0.3606441978017282,0.9249853784172165,13.65672027895263,7.655988371926923,-0.0006076826013949003
+middle_verified,ica_component_ridge:both,lateral,-5.0,4.079338969403563e-11,0.8149028687589459,0.7972034956485405,4.312508491569053,8.037983481247327,0.05580411963283827
+middle_verified,ica_component_ridge:both,lateral,0.0,1.1824343894372507e-11,0.46182127976702736,0.8989727208231518,9.265313056901173,7.9907881816358435,0.03748897285197526
+middle_verified,ica_component_ridge:both,lateral,5.0,5.0577104937860275e-12,0.2969664515193069,0.9466104852648158,13.5455991233539,7.271074205032265,0.019348173793631934
+middle_verified,ica_component_ridge:both,mixed,-5.0,2.2133301130959746e-12,0.23235644179206882,0.9665914607783258,14.31409609034398,18.427348323473595,0.003033876777418714
+middle_verified,ica_component_ridge:both,mixed,0.0,9.3657178967981e-13,0.15596008608145606,0.9828849194253981,17.935163062961657,17.04841543114767,0.0014118410445265574
+middle_verified,ica_component_ridge:both,mixed,5.0,3.6240995911175157e-12,0.34742719870954014,0.928701005831363,14.037534052833777,8.150786377963485,0.00013196575106903433
+middle_verified,identity,blink,-5.0,9.167273592303381e-11,1.939218428025133,0.5475766235835521,-3.999268000974202,0.0,0.42677357302438745
+middle_verified,identity,blink,0.0,2.8989465490145862e-11,1.0905026776767341,0.7232190272623187,1.0007318639694018,0.0,0.2629980129088423
+middle_verified,identity,blink,5.0,9.167273642954889e-12,0.6132347169124162,0.8591294507445809,6.000731907025707,0.0,0.06524824507124072
+middle_verified,identity,lateral,-5.0,1.4173804683246298e-10,1.935908010540931,0.5371623472755072,-3.7254749896782737,0.0,0.31584526800587154
+middle_verified,identity,lateral,0.0,4.482150750940096e-11,1.088641092864763,0.7102751107282785,1.2745248752653298,0.0,0.22618658294684857
+middle_verified,identity,lateral,5.0,1.4173804751712201e-11,0.6121878707555217,0.8500452257371287,6.274524918321635,0.0,0.11591343332131893
+middle_verified,identity,mixed,-5.0,9.323496457665658e-11,1.9506131182549318,0.5425009047742341,-4.113252233129614,0.0,0.4271244327815104
+middle_verified,identity,mixed,0.0,2.948348558308442e-11,1.0969103829562608,0.7200808086031227,0.886747631813989,0.0,0.2642159518668019
+middle_verified,identity,mixed,5.0,9.323496511011115e-12,0.6168380343945715,0.8577997924282292,5.8867476748702945,0.0,0.07103317915420296
+middle_verified,raw_frontal+ica_component_ridge,blink,-5.0,1.3448657362713806e-12,0.18705595415886186,0.9762231930903397,16.354834440082712,20.35410244105691,-0.0018729964824001374
+middle_verified,raw_frontal+ica_component_ridge,blink,0.0,6.413434140059398e-13,0.132117416672409,0.9867366063107817,19.618359119743435,18.617627255774032,-0.0005195661396208215
+middle_verified,raw_frontal+ica_component_ridge,blink,5.0,3.726193721828373e-12,0.3606441978017282,0.9249853784172165,13.65672027895263,7.655988371926923,-0.0006076826013949003
+middle_verified,raw_frontal+ica_component_ridge,lateral,-5.0,4.079338969403563e-11,0.8149028687589459,0.7972034956485405,4.312508491569053,8.037983481247327,0.05580411963283827
+middle_verified,raw_frontal+ica_component_ridge,lateral,0.0,1.1824343894372507e-11,0.46182127976702736,0.8989727208231518,9.265313056901173,7.9907881816358435,0.03748897285197526
+middle_verified,raw_frontal+ica_component_ridge,lateral,5.0,5.0577104937860275e-12,0.2969664515193069,0.9466104852648158,13.5455991233539,7.271074205032265,0.019348173793631934
+middle_verified,raw_frontal+ica_component_ridge,mixed,-5.0,2.2133301130959746e-12,0.23235644179206882,0.9665914607783258,14.31409609034398,18.427348323473595,0.003033876777418714
+middle_verified,raw_frontal+ica_component_ridge,mixed,0.0,9.3657178967981e-13,0.15596008608145606,0.9828849194253981,17.935163062961657,17.04841543114767,0.0014118410445265574
+middle_verified,raw_frontal+ica_component_ridge,mixed,5.0,3.6240995911175157e-12,0.34742719870954014,0.928701005831363,14.037534052833777,8.150786377963485,0.00013196575106903433
+middle_verified,raw_frontal+reference_rank2,blink,-5.0,1.1718610223478938e-12,0.19670089318188216,0.9743501966079396,15.843988226545992,19.843256227520193,0.0
+middle_verified,raw_frontal+reference_rank2,blink,0.0,5.986217318627994e-13,0.13710587651945616,0.9862170401711609,19.19104223428191,18.19031037031251,0.0
+middle_verified,raw_frontal+reference_rank2,blink,5.0,3.729989675148061e-12,0.3633094439453083,0.9243776958158216,13.559415660686053,7.558683753660346,0.0
+middle_verified,raw_frontal+reference_rank2,lateral,-5.0,1.4444105595255441e-11,0.6087991201778172,0.8530076152813788,5.936290540553829,9.661765530232103,0.0
+middle_verified,raw_frontal+reference_rank2,lateral,0.0,4.5965667351704944e-12,0.34633292736524923,0.9364616936751271,10.819772594157165,9.545247718891833,0.0
+middle_verified,raw_frontal+reference_rank2,lateral,5.0,2.8796488158016796e-12,0.23740966129129354,0.9659586590584477,14.981840175978201,8.707315257656568,0.0
+middle_verified,raw_frontal+reference_rank2,mixed,-5.0,1.4853202730657808e-12,0.2211004391106261,0.9696253375557445,14.621977434328938,18.735229667458555,0.0
+middle_verified,raw_frontal+reference_rank2,mixed,0.0,7.051514920167928e-13,0.1499309896349597,0.9842967604699246,18.19962094097427,17.31287330916028,0.0
+middle_verified,raw_frontal+reference_rank2,mixed,5.0,3.565024463505814e-12,0.3462693516037284,0.9288329715824322,14.123140758774788,8.236393083904495,0.0
+middle_verified,reference_rank2:both,blink,-5.0,1.1718610223478938e-12,0.19670089318188216,0.9743501966079396,15.843988226545992,19.843256227520193,0.0
+middle_verified,reference_rank2:both,blink,0.0,5.986217318627994e-13,0.13710587651945616,0.9862170401711609,19.19104223428191,18.19031037031251,0.0
+middle_verified,reference_rank2:both,blink,5.0,3.729989675148061e-12,0.3633094439453083,0.9243776958158216,13.559415660686053,7.558683753660346,0.0
+middle_verified,reference_rank2:both,lateral,-5.0,1.4444105595255441e-11,0.6087991201778172,0.8530076152813788,5.936290540553829,9.661765530232103,0.0
+middle_verified,reference_rank2:both,lateral,0.0,4.5965667351704944e-12,0.34633292736524923,0.9364616936751271,10.819772594157165,9.545247718891833,0.0
+middle_verified,reference_rank2:both,lateral,5.0,2.8796488158016796e-12,0.23740966129129354,0.9659586590584477,14.981840175978201,8.707315257656568,0.0
+middle_verified,reference_rank2:both,mixed,-5.0,1.4853202730657808e-12,0.2211004391106261,0.9696253375557445,14.621977434328938,18.735229667458555,0.0
+middle_verified,reference_rank2:both,mixed,0.0,7.051514920167928e-13,0.1499309896349597,0.9842967604699246,18.19962094097427,17.31287330916028,0.0
+middle_verified,reference_rank2:both,mixed,5.0,3.565024463505814e-12,0.3462693516037284,0.9288329715824322,14.123140758774788,8.236393083904495,0.0
+posterior,central_frontal_raw_context,blink,-5.0,5.3508915829791035e-12,0.24254480986496413,0.9661796212096143,13.253278476476218,5.081946966503899,-0.005450155057512212
+posterior,central_frontal_raw_context,blink,0.0,3.652272142122162e-12,0.20344442289370696,0.9760818977702728,14.808287085067047,1.6369557101511263,-0.006024413796513254
+posterior,central_frontal_raw_context,blink,5.0,1.5472913112027568e-12,0.13439632653955924,0.9893389326022559,18.415490749447386,0.2441593314751629,-0.0010316313218839005
+posterior,central_frontal_raw_context,lateral,-5.0,2.2850309694547185e-11,0.4852817370330735,0.8937795104902229,7.32837334701995,4.824499473729672,0.032533614465198014
+posterior,central_frontal_raw_context,lateral,0.0,1.1504723659448555e-11,0.3339733460674183,0.9415942592569913,10.4782487663873,2.974375028153419,0.0018404460083628206
+posterior,central_frontal_raw_context,lateral,5.0,6.32233408033367e-12,0.2500549134271595,0.9642653373322998,13.24845992342835,0.7445861421381611,-0.006325573934737292
+posterior,central_frontal_raw_context,mixed,-5.0,6.30113647127874e-12,0.2674909221277167,0.9601441469666683,12.386580112196505,4.815948213492379,-0.001126820807382691
+posterior,central_frontal_raw_context,mixed,0.0,4.0694212695240496e-12,0.21697153225347734,0.9735351882465382,14.159600100357768,1.5889683367100387,-0.005723401041305545
+posterior,central_frontal_raw_context,mixed,5.0,1.6883189539383493e-12,0.1421687182766142,0.9883872710920965,17.79700454629996,0.2263727395959262,-0.0010822202130230433
+posterior,central_frontal_vmd_context,blink,-5.0,5.3508915829791035e-12,0.24254480986496413,0.9661796212096143,13.253278476476218,5.081946966503899,-0.005450155057512212
+posterior,central_frontal_vmd_context,blink,0.0,3.652272142122162e-12,0.20344442289370696,0.9760818977702728,14.808287085067047,1.6369557101511263,-0.006024413796513254
+posterior,central_frontal_vmd_context,blink,5.0,1.5472913112027568e-12,0.13439632653955924,0.9893389326022559,18.415490749447386,0.2441593314751629,-0.0010316313218839005
+posterior,central_frontal_vmd_context,lateral,-5.0,2.2850309694547185e-11,0.4852817370330735,0.8937795104902229,7.32837334701995,4.824499473729672,0.032533614465198014
+posterior,central_frontal_vmd_context,lateral,0.0,1.1504723659448555e-11,0.3339733460674183,0.9415942592569913,10.4782487663873,2.974375028153419,0.0018404460083628206
+posterior,central_frontal_vmd_context,lateral,5.0,6.32233408033367e-12,0.2500549134271595,0.9642653373322998,13.24845992342835,0.7445861421381611,-0.006325573934737292
+posterior,central_frontal_vmd_context,mixed,-5.0,6.30113647127874e-12,0.2674909221277167,0.9601441469666683,12.386580112196505,4.815948213492379,-0.001126820807382691
+posterior,central_frontal_vmd_context,mixed,0.0,4.0694212695240496e-12,0.21697153225347734,0.9735351882465382,14.159600100357768,1.5889683367100387,-0.005723401041305545
+posterior,central_frontal_vmd_context,mixed,5.0,1.6883189539383493e-12,0.1421687182766142,0.9883872710920965,17.79700454629996,0.2263727395959262,-0.0010822202130230433
+posterior,ica_component_ridge:both,blink,-5.0,5.887684307013013e-12,0.23566060139004505,0.9612789648194726,14.723755397562847,6.552423887590531,-0.0005494986673705243
+posterior,ica_component_ridge:both,blink,0.0,3.876018331692185e-12,0.2260805445004144,0.9703608975411315,14.11904947904172,0.947718104125801,-0.000303413567372072
+posterior,ica_component_ridge:both,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,ica_component_ridge:both,lateral,-5.0,3.2257513618145887e-11,0.47686846621515067,0.891358368556252,8.435256257287344,5.931382383997068,0.03495475639916888
+posterior,ica_component_ridge:both,lateral,0.0,1.6080169656626787e-11,0.3486026923095536,0.931357699604452,10.872002277875936,3.368128539642055,0.01207700566090201
+posterior,ica_component_ridge:both,lateral,5.0,7.292395313568838e-12,0.2747198858075779,0.9578129795697512,12.709692245556797,0.20581846426660938,0.00012678382781134307
+posterior,ica_component_ridge:both,mixed,-5.0,6.899881560167713e-12,0.25256198664166374,0.9578654196473982,13.763822610606649,6.193190711902523,0.001151906511887236
+posterior,ica_component_ridge:both,mixed,0.0,4.407515477616142e-12,0.24201457182108363,0.9675124923265503,13.314979427218361,0.7443476635706331,0.0002992948786823651
+posterior,ica_component_ridge:both,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,identity,blink,-5.0,1.7255059257460965e-11,0.4430909936923725,0.9108608886606898,8.171331509972317,0.0,0.049868577491412235
+posterior,identity,blink,0.0,5.456529057760393e-12,0.2491683807556408,0.9661606140242498,13.171331374915919,0.0,0.003896869949509736
+posterior,identity,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,identity,lateral,-5.0,7.458580117034407e-11,0.8875569670866447,0.75796139275581,2.503873873290278,0.0,0.16835173219961086
+posterior,identity,lateral,0.0,2.358610212146117e-11,0.4991099690164714,0.8874394216964088,7.503873738233882,0.0,0.05599528356894528
+posterior,identity,lateral,5.0,7.458580121496565e-12,0.2806701597203878,0.9564696159695605,12.503873781290189,0.0,0.0014701474280019913
+posterior,identity,mixed,-5.0,1.8685462518560905e-11,0.4677663592738666,0.9039098803943856,7.570631898704125,0.0,0.05510744576489999
+posterior,identity,mixed,0.0,5.908862299888986e-12,0.2630443587350042,0.9634133821623307,12.570631763647729,0.0,0.0043984050429019
+posterior,identity,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,raw_frontal+ica_component_ridge,blink,-5.0,5.887684307013013e-12,0.23566060139004505,0.9612789648194726,14.723755397562847,6.552423887590531,-0.0005494986673705243
+posterior,raw_frontal+ica_component_ridge,blink,0.0,3.876018331692185e-12,0.2260805445004144,0.9703608975411315,14.11904947904172,0.947718104125801,-0.000303413567372072
+posterior,raw_frontal+ica_component_ridge,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,raw_frontal+ica_component_ridge,lateral,-5.0,3.2257513618145887e-11,0.47686846621515067,0.891358368556252,8.435256257287344,5.931382383997068,0.03495475639916888
+posterior,raw_frontal+ica_component_ridge,lateral,0.0,1.6080169656626787e-11,0.3486026923095536,0.931357699604452,10.872002277875936,3.368128539642055,0.01207700566090201
+posterior,raw_frontal+ica_component_ridge,lateral,5.0,7.292395313568838e-12,0.2747198858075779,0.9578129795697512,12.709692245556797,0.20581846426660938,0.00012678382781134307
+posterior,raw_frontal+ica_component_ridge,mixed,-5.0,6.899881560167713e-12,0.25256198664166374,0.9578654196473982,13.763822610606649,6.193190711902523,0.001151906511887236
+posterior,raw_frontal+ica_component_ridge,mixed,0.0,4.407515477616142e-12,0.24201457182108363,0.9675124923265503,13.314979427218361,0.7443476635706331,0.0002992948786823651
+posterior,raw_frontal+ica_component_ridge,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,raw_frontal+reference_rank2,blink,-5.0,5.81889764813007e-12,0.23785396651417418,0.960729466152102,14.611607825168097,6.4402763151957805,0.0
+posterior,raw_frontal+reference_rank2,blink,0.0,3.907684262354115e-12,0.22751943406194658,0.9700574839737595,14.058109650622008,0.8867782757060872,0.0
+posterior,raw_frontal+reference_rank2,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,raw_frontal+reference_rank2,lateral,-5.0,1.371648675499009e-11,0.3742125803955232,0.9263131249554208,10.017882763985462,7.514008890695184,0.0
+posterior,raw_frontal+reference_rank2,lateral,0.0,1.1750115143837083e-11,0.30804595534743107,0.943434705265354,12.067127578298477,4.563253840064595,0.0
+posterior,raw_frontal+reference_rank2,lateral,5.0,7.279888448573566e-12,0.27397844825170403,0.9579397633975626,12.74528015969651,0.24140637840632206,0.0
+posterior,raw_frontal+reference_rank2,mixed,-5.0,6.192276590670523e-12,0.24537994168686317,0.9590173261592855,14.11862892185486,6.547997023150735,0.0
+posterior,raw_frontal+reference_rank2,mixed,0.0,4.241368675240436e-12,0.2395085017282068,0.9678117872052326,13.500685936560751,0.9300541729130227,0.0
+posterior,raw_frontal+reference_rank2,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+posterior,reference_rank2:both,blink,-5.0,5.81889764813007e-12,0.23785396651417418,0.960729466152102,14.611607825168097,6.4402763151957805,0.0
+posterior,reference_rank2:both,blink,0.0,3.907684262354115e-12,0.22751943406194658,0.9700574839737595,14.058109650622008,0.8867782757060872,0.0
+posterior,reference_rank2:both,blink,5.0,1.725505933644121e-12,0.14011767675405862,0.988307301280372,18.171331417972226,0.0,0.0
+posterior,reference_rank2:both,lateral,-5.0,1.371648675499009e-11,0.3742125803955232,0.9263131249554208,10.017882763985462,7.514008890695184,0.0
+posterior,reference_rank2:both,lateral,0.0,1.1750115143837083e-11,0.30804595534743107,0.943434705265354,12.067127578298477,4.563253840064595,0.0
+posterior,reference_rank2:both,lateral,5.0,7.279888448573566e-12,0.27397844825170403,0.9579397633975626,12.74528015969651,0.24140637840632206,0.0
+posterior,reference_rank2:both,mixed,-5.0,6.192276590670523e-12,0.24537994168686317,0.9590173261592855,14.11862892185486,6.547997023150735,0.0
+posterior,reference_rank2:both,mixed,0.0,4.241368675240436e-12,0.2395085017282068,0.9678117872052326,13.500685936560751,0.9300541729130227,0.0
+posterior,reference_rank2:both,mixed,5.0,1.868546261991353e-12,0.14792071260189474,0.9873050508790734,17.570631806704032,0.0,0.0
+temporal_shared,central_frontal_raw_context,blink,-5.0,1.759746553507651e-11,0.3417312476379486,0.9343092090280962,11.405171350887702,9.66923556539162,0.0578573769356443
+temporal_shared,central_frontal_raw_context,blink,0.0,5.576177761811622e-12,0.1936786488431466,0.9745950629205614,16.27567037536778,9.539734724928095,0.021825721563003907
+temporal_shared,central_frontal_raw_context,blink,5.0,1.792173131844716e-12,0.11157660176438061,0.9909660723859226,20.919287336298623,9.183351642802634,-0.011461051153341853
+temporal_shared,central_frontal_raw_context,lateral,-5.0,2.4496605931904487e-10,1.3226844965473357,0.6496890576684127,0.2647237995546992,3.2862131796219507,0.2353897646530419
+temporal_shared,central_frontal_raw_context,lateral,0.0,7.468978343762573e-11,0.7370037366020987,0.7976723261420363,5.3697333961067795,3.3912229112304275,0.15647436282127752
+temporal_shared,central_frontal_raw_context,lateral,5.0,2.2783315205080642e-11,0.4121764977312617,0.9045008241349144,10.400456507263184,3.421945979330528,0.07225935669866233
+temporal_shared,central_frontal_raw_context,mixed,-5.0,2.5492746654168565e-11,0.43579916812790004,0.9023463604909251,8.965626002726768,7.816340500375178,0.08590118207918324
+temporal_shared,central_frontal_raw_context,mixed,0.0,8.049175920044884e-12,0.24638411910285118,0.9617704842807979,13.897171518583828,7.747886151288634,0.03323554542722035
+temporal_shared,central_frontal_raw_context,mixed,5.0,2.565822496571319e-12,0.14090368189971275,0.9865547499332677,18.682713247455677,7.533427837104177,-0.007407130512240461
+temporal_shared,central_frontal_vmd_context,blink,-5.0,2.0114640354911405e-11,0.3580456331069205,0.9289746106946162,11.051024119261845,9.315088333765765,0.0631919752691244
+temporal_shared,central_frontal_vmd_context,blink,0.0,5.866364185802555e-12,0.197773881301782,0.9734499580988177,16.15935294758894,9.423417297149253,0.022970826384747522
+temporal_shared,central_frontal_vmd_context,blink,5.0,1.8339509865338438e-12,0.11196701942172008,0.9907738367637177,20.95157146488755,9.215635771391561,-0.011268815531136933
+temporal_shared,central_frontal_vmd_context,lateral,-5.0,2.2638227859527612e-10,1.3084238439099716,0.6497060448717279,0.24106762523285624,3.262557005300108,0.23537277744972662
+temporal_shared,central_frontal_vmd_context,lateral,0.0,6.687428544805668e-11,0.710376900179954,0.8050656270869694,5.570014001628604,3.591503516752253,0.14908106187634454
+temporal_shared,central_frontal_vmd_context,lateral,5.0,1.9799969259422307e-11,0.38955728280455804,0.9125215181403742,10.792830979846654,3.8143204519139964,0.06423866269320237
+temporal_shared,central_frontal_vmd_context,mixed,-5.0,2.7376144065276206e-11,0.4576053317168454,0.8956806084371285,8.451328759802523,7.302043257450933,0.09256693413297987
+temporal_shared,central_frontal_vmd_context,mixed,0.0,8.413371825857872e-12,0.2524145120660233,0.9601478547826754,13.690199722499461,7.540914355204266,0.03485817492534289
+temporal_shared,central_frontal_vmd_context,mixed,5.0,2.601996029933327e-12,0.14187117250245707,0.9863621137565237,18.618841051459754,7.469555641108253,-0.0072144943354963695
+temporal_shared,ica_component_ridge:both,blink,-5.0,2.604095089212216e-12,0.14111468090118356,0.9853672116908528,19.01589149964391,17.27995571414783,0.006799374272887645
+temporal_shared,ica_component_ridge:both,blink,0.0,1.0136920720344653e-12,0.08965936988764954,0.9940143481637158,22.866336888420026,16.130401237980337,0.0024064363198495805
+temporal_shared,ica_component_ridge:both,blink,5.0,3.664895686255842e-12,0.1653102968634244,0.9790730345494076,18.637943190911905,6.902007497415915,0.00043198668317308514
+temporal_shared,ica_component_ridge:both,lateral,-5.0,9.863137466524221e-11,0.7809755838679941,0.8085531179364293,4.854930760967051,7.876420141034303,0.07652570438502526
+temporal_shared,ica_component_ridge:both,lateral,0.0,2.89323648122612e-11,0.43686873285183225,0.902677951078297,9.887939828130325,7.909429343253972,0.05146873788501696
+temporal_shared,ica_component_ridge:both,lateral,5.0,1.2329848012616377e-11,0.27095086954073666,0.9502154719845983,14.105178344893595,7.126667816960939,0.02654470884897838
+temporal_shared,ica_component_ridge:both,mixed,-5.0,4.645900468040391e-12,0.18546659449957603,0.9773944015649929,16.36566270744036,15.216377205088772,0.010853141005115403
+temporal_shared,ica_component_ridge:both,mixed,0.0,1.680912021017618e-12,0.11378253966146018,0.9911835203668835,20.50630799620111,14.357022628905916,0.00382250934113491
+temporal_shared,ica_component_ridge:both,mixed,5.0,3.890619541545572e-12,0.16953960928756284,0.9784261769506739,18.37547581076373,7.22619040041223,0.000721442470353484
+temporal_shared,identity,blink,-5.0,8.681001869015422e-11,0.9198349140957427,0.7609713177074731,1.7359357854960804,0.0,0.2311952682562675
+temporal_shared,identity,blink,0.0,2.745173929940849e-11,0.5172611920263599,0.8874835802774128,6.735935650439684,0.0,0.10893720420615252
+temporal_shared,identity,blink,5.0,8.681001905366524e-12,0.29087734240619145,0.9557865878639662,11.735935693495989,0.0,0.023718433368614632
+temporal_shared,identity,lateral,-5.0,3.303701596652113e-10,1.7317946218151623,0.5584946529980429,-3.0214893800672518,0.0,0.3265841693234116
+temporal_shared,identity,lateral,0.0,1.0447222129597653e-10,0.9738596968484741,0.7309399596966433,1.978510484876352,0.0,0.22320672926667073
+temporal_shared,identity,lateral,5.0,3.303701618660546e-11,0.5476415493675771,0.8679434875919578,6.978510527932658,0.0,0.10881669324161894
+temporal_shared,identity,mixed,-5.0,9.43788682834091e-11,0.9705993573731495,0.7432799117706868,1.1492855023515907,0.0,0.24496763079942155
+temporal_shared,identity,mixed,0.0,2.98452197818288e-11,0.5458081367368801,0.8785308527655946,6.149285367295194,0.0,0.11647517694242375
+temporal_shared,identity,mixed,5.0,9.437886879962112e-12,0.30693046911121113,0.95218271264861,11.1492854103515,0.0,0.02696490677241743
+temporal_shared,raw_frontal+ica_component_ridge,blink,-5.0,2.604095089212216e-12,0.14111468090118356,0.9853672116908528,19.01589149964391,17.27995571414783,0.006799374272887645
+temporal_shared,raw_frontal+ica_component_ridge,blink,0.0,1.0136920720344653e-12,0.08965936988764954,0.9940143481637158,22.866336888420026,16.130401237980337,0.0024064363198495805
+temporal_shared,raw_frontal+ica_component_ridge,blink,5.0,3.664895686255842e-12,0.1653102968634244,0.9790730345494076,18.637943190911905,6.902007497415915,0.00043198668317308514
+temporal_shared,raw_frontal+ica_component_ridge,lateral,-5.0,9.863137466524221e-11,0.7809755838679941,0.8085531179364293,4.854930760967051,7.876420141034303,0.07652570438502526
+temporal_shared,raw_frontal+ica_component_ridge,lateral,0.0,2.89323648122612e-11,0.43686873285183225,0.902677951078297,9.887939828130325,7.909429343253972,0.05146873788501696
+temporal_shared,raw_frontal+ica_component_ridge,lateral,5.0,1.2329848012616377e-11,0.27095086954073666,0.9502154719845983,14.105178344893595,7.126667816960939,0.02654470884897838
+temporal_shared,raw_frontal+ica_component_ridge,mixed,-5.0,4.645900468040391e-12,0.18546659449957603,0.9773944015649929,16.36566270744036,15.216377205088772,0.010853141005115403
+temporal_shared,raw_frontal+ica_component_ridge,mixed,0.0,1.680912021017618e-12,0.11378253966146018,0.9911835203668835,20.50630799620111,14.357022628905916,0.00382250934113491
+temporal_shared,raw_frontal+ica_component_ridge,mixed,5.0,3.890619541545572e-12,0.16953960928756284,0.9784261769506739,18.37547581076373,7.22619040041223,0.000721442470353484
+temporal_shared,raw_frontal+reference_rank2,blink,-5.0,1.2070732768307493e-12,0.11255575726161723,0.9921665859637405,20.105623825547607,18.36968804005153,0.0
+temporal_shared,raw_frontal+reference_rank2,blink,0.0,5.760615662665051e-13,0.07483779102356664,0.9964207844835653,23.78219336281221,17.046257712372523,0.0
+temporal_shared,raw_frontal+reference_rank2,blink,5.0,3.5610014947919254e-12,0.1610752985466496,0.9795050212325808,19.11042711927311,7.374491425777119,0.0
+temporal_shared,raw_frontal+reference_rank2,lateral,-5.0,2.727184214782075e-11,0.5064791031424335,0.8850788223214545,7.217809178241556,10.239298558308807,0.0
+temporal_shared,raw_frontal+reference_rank2,lateral,0.0,8.727054479551537e-12,0.288614718331549,0.9541466889633139,12.10235370840882,10.123843223532468,0.0
+temporal_shared,raw_frontal+reference_rank2,lateral,5.0,6.283240125655114e-12,0.1881725813072761,0.9767601808335766,16.248352979843887,9.269842451911227,0.0
+temporal_shared,raw_frontal+reference_rank2,mixed,-5.0,1.991746098954682e-12,0.14163965999899178,0.9882475425701083,17.91307767835773,16.763792176006135,0.0
+temporal_shared,raw_frontal+reference_rank2,mixed,0.0,8.607158505195684e-13,0.09103030534010252,0.9950060297080183,21.840290342892327,15.691004975597131,0.0
+temporal_shared,raw_frontal+reference_rank2,mixed,5.0,3.689002861204672e-12,0.16386206254877733,0.9791476194210273,18.749201276159,7.599915865807498,0.0
+temporal_shared,reference_rank2:both,blink,-5.0,1.2070732768307493e-12,0.11255575726161723,0.9921665859637405,20.105623825547607,18.36968804005153,0.0
+temporal_shared,reference_rank2:both,blink,0.0,5.760615662665051e-13,0.07483779102356664,0.9964207844835653,23.78219336281221,17.046257712372523,0.0
+temporal_shared,reference_rank2:both,blink,5.0,3.5610014947919254e-12,0.1610752985466496,0.9795050212325808,19.11042711927311,7.374491425777119,0.0
+temporal_shared,reference_rank2:both,lateral,-5.0,2.727184214782075e-11,0.5064791031424335,0.8850788223214545,7.217809178241556,10.239298558308807,0.0
+temporal_shared,reference_rank2:both,lateral,0.0,8.727054479551537e-12,0.288614718331549,0.9541466889633139,12.10235370840882,10.123843223532468,0.0
+temporal_shared,reference_rank2:both,lateral,5.0,6.283240125655114e-12,0.1881725813072761,0.9767601808335766,16.248352979843887,9.269842451911227,0.0
+temporal_shared,reference_rank2:both,mixed,-5.0,1.991746098954682e-12,0.14163965999899178,0.9882475425701083,17.91307767835773,16.763792176006135,0.0
+temporal_shared,reference_rank2:both,mixed,0.0,8.607158505195684e-13,0.09103030534010252,0.9950060297080183,21.840290342892327,15.691004975597131,0.0
+temporal_shared,reference_rank2:both,mixed,5.0,3.689002861204672e-12,0.16386206254877733,0.9791476194210273,18.749201276159,7.599915865807498,0.0
+whole,central_frontal_raw_context,blink,-5.0,6.748902989334355e-12,0.29781838805365457,0.9486193446971068,12.718306129870879,13.97904794853235,0.025414901006917665
+whole,central_frontal_raw_context,blink,0.0,2.6603294013277673e-12,0.19474014714716636,0.9754059080853406,16.122024002517733,12.382765956235605,0.007749706453027533
+whole,central_frontal_raw_context,blink,5.0,1.0822046684494116e-12,0.12633517355868262,0.989112257183272,19.77468855037383,11.035430461035396,-0.023127802822828725
+whole,central_frontal_raw_context,lateral,-5.0,6.732802143269438e-11,0.8756830157118772,0.7914996634470974,4.369781631652605,7.035392826895622,0.10755482393921699
+whole,central_frontal_raw_context,lateral,0.0,2.2771846645088493e-11,0.5167252836871099,0.8826128721273313,8.616931590476286,6.2825429207757,0.06690010418441014
+whole,central_frontal_raw_context,lateral,5.0,8.543626902834829e-12,0.31984542056771637,0.938948235893138,12.560166834173291,5.2257781214164005,0.02990497478905583
+whole,central_frontal_raw_context,mixed,-5.0,8.485381474220644e-12,0.3514307636922832,0.9327830829705862,11.249659393927743,12.796607893996477,0.03825804633608862
+whole,central_frontal_raw_context,mixed,0.0,3.4258520435695185e-12,0.22617633274388904,0.9682254194999529,14.74075796641601,11.287706601541139,0.013177677042060127
+whole,central_frontal_raw_context,mixed,5.0,1.3446076609945714e-12,0.1440654550973341,0.9863212359351882,18.496492344068418,10.043440936137241,-0.01925349504896083
+whole,central_frontal_vmd_context,blink,-5.0,7.472509764425969e-12,0.30603350655736605,0.9458946198948804,12.575095017921539,13.835836836583011,0.028139625809144038
+whole,central_frontal_vmd_context,blink,0.0,2.7230563364059844e-12,0.19620842628109383,0.9750492806220421,16.070493494410016,12.331235448127883,0.008106333916326067
+whole,central_frontal_vmd_context,blink,5.0,1.0900369169423798e-12,0.12594011206232916,0.9891342771951416,19.82175656657848,11.082498477240044,-0.023149822834698228
+whole,central_frontal_vmd_context,lateral,-5.0,6.491243884286319e-11,0.8697656420053376,0.7907332731259915,4.353715536771632,7.01932673201465,0.10832121426032283
+whole,central_frontal_vmd_context,lateral,0.0,2.1277227607814933e-11,0.5058077505459555,0.8847660889908915,8.683517601283125,6.349128931582538,0.0647468873208499
+whole,central_frontal_vmd_context,lateral,5.0,7.904909647965577e-12,0.3095055712961219,0.9419199302923698,12.726614426250006,5.392225713493117,0.026933280389824232
+whole,central_frontal_vmd_context,mixed,-5.0,8.88517492776125e-12,0.35989174594501083,0.9301260008201225,11.06268608775848,12.609634587827212,0.040915128486552335
+whole,central_frontal_vmd_context,mixed,0.0,3.5001715075463636e-12,0.2280731898035079,0.9677662117658743,14.668753551325228,11.215702186450354,0.013636884776138697
+whole,central_frontal_vmd_context,mixed,5.0,1.3504604615279367e-12,0.14386382646335855,0.9863813526556096,18.501700072134703,10.048648664203528,-0.019313611769382268
+whole,ica_component_ridge:both,blink,-5.0,3.699595003493372e-12,0.19856861638663434,0.9727264521473347,16.22390751031385,17.484649328975323,0.0013077935566897163
+whole,ica_component_ridge:both,blink,0.0,1.797973177738954e-12,0.155810818954704,0.9827978150011252,18.32369730341845,14.584439257136317,0.0003577995372429683
+whole,ica_component_ridge:both,blink,5.0,2.4090542799675267e-12,0.21182868496076404,0.9659327090259436,17.54777928408552,8.808521194747081,5.1745334499620914e-05
+whole,ica_component_ridge:both,lateral,-5.0,3.8724458398165157e-11,0.6131108621560126,0.8550358988118514,6.742548506999148,9.408159702242166,0.044018588574462995
+whole,ica_component_ridge:both,lateral,0.0,1.366143834277362e-11,0.3772070022232535,0.9236923090717741,10.720312940330217,8.38592427062963,0.02582066723996721
+whole,ica_component_ridge:both,lateral,5.0,6.386103378475707e-12,0.2618362230073906,0.9571036215721335,14.0520401090137,6.7176513962568105,0.011749589110060495
+whole,ica_component_ridge:both,mixed,-5.0,4.116634486918897e-12,0.22580778424336445,0.9674397501084465,14.737300647552281,16.28424914762101,0.0036013791982282125
+whole,ica_component_ridge:both,mixed,0.0,2.1910997726848104e-12,0.17454020511947044,0.9798132476116761,17.010459172077603,13.557407807202733,0.0015898489303369278
+whole,ica_component_ridge:both,mixed,5.0,2.4734761458657467e-12,0.21199608136579906,0.9666105232469161,17.25988707510313,8.806835667171956,0.0004572176393112747
+whole,identity,blink,-5.0,2.1523536880478355e-10,1.852456772806029,0.6191432389048042,-1.2607418186614718,0.0,0.3548910067992203
+whole,identity,blink,0.0,6.806340223002671e-11,1.0417130126436924,0.7485309459747176,3.739258046282132,0.0,0.23462466856365055
+whole,identity,blink,5.0,2.1523537024564744e-11,0.5857982724571003,0.8559062755523226,8.739258089338438,0.0,0.1100781788081206
+whole,identity,lateral,-5.0,2.1523536880478355e-10,1.7848325008070447,0.5709428248450331,-2.665611195243018,0.0,0.32811166254128127
+whole,identity,lateral,0.0,6.80634022300267e-11,1.003685089271221,0.734228651613424,2.334388669700586,0.0,0.2152843246983174
+whole,identity,lateral,5.0,2.1523537024564744e-11,0.5644135997645876,0.8627774249978108,7.3343887127568905,0.0,0.10607578568438297
+whole,identity,mixed,-5.0,2.152353688047835e-10,1.8640035919807916,0.6128832896658915,-1.5469485000687326,0.0,0.35815783964078335
+whole,identity,mixed,0.0,6.80634022300267e-11,1.0482062663263894,0.7455096536614748,3.4530513648748706,0.0,0.2358934428805381
+whole,identity,mixed,5.0,2.1523537024564744e-11,0.589449697339514,0.8549790399180435,8.453051407931177,0.0,0.1120887009681839
+whole,raw_frontal+ica_component_ridge,blink,-5.0,2.9783177367690794e-12,0.1917581083344069,0.9741378420634416,16.320842291544707,17.581584110206176,-0.0001035963594171426
+whole,raw_frontal+ica_component_ridge,blink,0.0,1.7670200367875318e-12,0.15412677717281675,0.9831781834339457,18.36598258442478,14.62672453814265,-2.2568895577569235e-05
+whole,raw_frontal+ica_component_ridge,blink,5.0,2.3883762113132755e-12,0.21062698145505804,0.9661512800057284,17.596367617759768,8.85710952842133,-0.00016682564528506757
+whole,raw_frontal+ica_component_ridge,lateral,-5.0,3.7936222882683964e-11,0.5945052951809009,0.8605476039778809,7.216145085563502,9.88175628080652,0.03850688340843349
+whole,raw_frontal+ica_component_ridge,lateral,0.0,1.3151707805193497e-11,0.3623288034664637,0.9272455476359424,11.306235992409537,8.971847322708951,0.022267428675799006
+whole,raw_frontal+ica_component_ridge,lateral,5.0,6.113685948946182e-12,0.25037083339923916,0.9592861735649816,14.673370359291962,7.33898164653507,0.009567037117212365
+whole,raw_frontal+ica_component_ridge,mixed,-5.0,3.8839934755989865e-12,0.2200750441439057,0.9684585463138078,14.854798373013963,16.401746873082697,0.0025825829928671274
+whole,raw_frontal+ica_component_ridge,mixed,0.0,2.1427718803957226e-12,0.1717682358718279,0.9804073629006991,17.11209658184746,13.659045216972586,0.0009957336413139047
+whole,raw_frontal+ica_component_ridge,mixed,5.0,2.442805407330424e-12,0.21010268815705452,0.9669413345196494,17.36249946641,8.909448058478826,0.00012640636657793264
+whole,raw_frontal+reference_rank2,blink,-5.0,2.7496965792736863e-12,0.19278282761659613,0.9740342457040245,16.221851694344203,17.482593513005675,0.0
+whole,raw_frontal+reference_rank2,blink,0.0,1.7164046367565889e-12,0.15476728834546966,0.9831556145383682,18.292431088987122,14.55317304270499,0.0
+whole,raw_frontal+reference_rank2,blink,5.0,2.3790784978313945e-12,0.2111241342804885,0.9659844543604432,17.61069859248213,8.871440503143692,0.0
+whole,raw_frontal+reference_rank2,lateral,-5.0,1.5397173630185045e-11,0.4614856609271897,0.8990544873863144,8.52382883886063,11.18944003410365,0.0
+whole,raw_frontal+reference_rank2,lateral,0.0,7.159208908179233e-12,0.29369640281896514,0.9495129763117415,12.455735261107467,10.121346591406883,0.0
+whole,raw_frontal+reference_rank2,lateral,5.0,4.710366892255295e-12,0.22061163290801572,0.9688532106821939,15.417789745747964,8.083401032991073,0.0
+whole,raw_frontal+reference_rank2,mixed,-5.0,3.1289798797960164e-12,0.20922601667987978,0.9710411293066747,15.236324677387122,16.783273177455854,0.0
+whole,raw_frontal+reference_rank2,mixed,0.0,1.9240656085074833e-12,0.16646797871909685,0.9814030965420129,17.40230885196287,13.949257487088001,0.0
+whole,raw_frontal+reference_rank2,mixed,5.0,2.400686967100265e-12,0.20909212208517475,0.9670677408862274,17.43066258586978,8.977611177938606,0.0
+whole,reference_rank2:both,blink,-5.0,3.4709738459979785e-12,0.19959333566882353,0.9726228557879176,16.12491691311335,17.385658731774818,0.0014113899161068586
+whole,reference_rank2:both,blink,0.0,1.747357777708011e-12,0.15645133012735693,0.9827752461055477,18.250145807980793,14.510887761698658,0.0003803684328205376
+whole,reference_rank2:both,blink,5.0,2.3997565664856457e-12,0.21232583778619452,0.9657658833806586,17.562110258807884,8.822852169469444,0.00021857097978468848
+whole,reference_rank2:both,lateral,-5.0,1.6185409145666238e-11,0.48009122790230147,0.8935427822202848,8.050232260296276,10.715843455539297,0.005511705166029503
+whole,reference_rank2:both,lateral,0.0,7.668939445759356e-12,0.30857460157575484,0.9459597377475731,11.869812209028147,9.535423539327562,0.0035532385641682098
+whole,reference_rank2:both,lateral,5.0,4.982784321784821e-12,0.23207702251616724,0.9666706586893458,14.796459495469703,7.462070782712812,0.0021825519928481306
+whole,reference_rank2:both,mixed,-5.0,3.3616208911159272e-12,0.2149587567793385,0.9700223331013138,15.118826951925437,16.66577545199417,0.0010187962053610847
+whole,reference_rank2:both,mixed,0.0,1.9723935007965715e-12,0.16923994796673936,0.9808089812529899,17.300671442193018,13.847620077318146,0.0005941152890230232
+whole,reference_rank2:both,mixed,5.0,2.4313577056355873e-12,0.2109855152939193,0.9667369296134941,17.328050194562913,8.874998786631735,0.0003308112727333422
+
+```
+
+### results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/results/vmd-nonfrontal-review-20261014/nonfrontal-review-001/review_method_means.csv
+
+```csv
+scope,evaluated_family,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration,pooled_energy_snr_db
+central_shared,central_frontal_raw_context,2.2731069120551133e-11,0.4731019060937035,0.8967814023593045,10.949306422363545,8.995172049702365,0.05595977309942989,10.154835711420333
+central_shared,central_frontal_vmd_context,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.05640722460589881,10.069310921021064
+central_shared,ica_component_ridge:both,1.0032475141765891e-11,0.31584208362989485,0.9383744304167254,14.22434425854307,12.27020988588189,0.014366745042008917,14.074993603349661
+central_shared,identity,5.811538636041364e-11,1.1098663689158537,0.7306387359088092,1.9541343726611802,0.0,0.22210243954992515,1.7230380471289644
+central_shared,raw_frontal+ica_component_ridge,1.0032475141765891e-11,0.31584208362989485,0.9383744304167254,14.22434425854307,12.27020988588189,0.014366745042008917,14.074993603349661
+central_shared,raw_frontal+reference_rank2,4.224496681594309e-12,0.2671315287248385,0.9527411754587344,14.905802342542053,12.951667969880873,0.0,15.124574424424274
+central_shared,reference_rank2:both,4.224496681594309e-12,0.2671315287248385,0.9527411754587344,14.905802342542053,12.951667969880873,0.0,15.124574424424274
+frontal,central_frontal_raw_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266,16.62826215949223
+frontal,central_frontal_vmd_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266,16.62826215949223
+frontal,ica_component_ridge:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266,16.62826215949223
+frontal,identity,3.0582390300864297e-10,2.307985957107543,0.47281897982007526,-5.473181121702266,0.0,0.5083229004226034,-5.387673982307646
+frontal,raw_frontal+ica_component_ridge,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0,17.939047170828083
+frontal,raw_frontal+reference_rank2,3.0013215964183274e-12,0.16031121162925283,0.9811418802426786,18.19324666065019,23.666427782352457,0.0,17.939047170828083
+frontal,reference_rank2:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266,16.62826215949223
+middle_verified,central_frontal_raw_context,1.609996587467418e-11,0.48363453797992667,0.8957356848342647,10.694746564597775,9.640745048210633,0.05127853407884382,10.138939147336087
+middle_verified,central_frontal_vmd_context,1.590414760899291e-11,0.48181932618719453,0.8951447303542679,10.656923642421457,9.602922126034317,0.05186948855884062,10.060706620320929
+middle_verified,ica_component_ridge:both,7.795760938688128e-12,0.33213909947348264,0.9343232517322149,13.671125301860258,12.617123785473119,0.012690967180893766,13.482313225307813
+middle_verified,identity,5.140053120227365e-11,1.2160060369312515,0.7053099212374392,1.054001516387141,0.0,0.24170429767566942,0.8617410657651863
+middle_verified,raw_frontal+ica_component_ridge,7.795760938688128e-12,0.33213909947348264,0.9343232517322149,13.671125301860258,12.617123785473119,0.012690967180893766,13.482313225307813
+middle_verified,raw_frontal+reference_rank2,3.686254422686084e-12,0.28966207809225786,0.9470142189131086,14.141898729586796,13.087897213199653,0.0,14.341411185075662
+middle_verified,reference_rank2:both,3.686254422686084e-12,0.28966207809225786,0.9470142189131086,14.141898729586796,13.087897213199653,0.0,14.341411185075662
+posterior,central_frontal_raw_context,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0008455382556892118,12.68323339055742
+posterior,central_frontal_vmd_context,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0008455382556892118,12.68323339055742
+posterior,ica_component_ridge:both,8.921692273385116e-12,0.26050523756016025,0.9570176860249392,13.74228010220288,2.6603344172328023,0.005306315004856583,12.848664519921716
+posterior,identity,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.03767649571614244,10.097879805690477
+posterior,raw_frontal+ica_component_ridge,8.921692273385116e-12,0.26050523756016025,0.9570176860249392,13.74228010220288,2.6603344172328023,0.005306315004856583,12.848664519921716
+posterior,raw_frontal+reference_rank2,6.277863302159039e-12,0.24383746859353359,0.9623240010297958,14.095698451206937,3.013752766236858,0.0,13.27906956281004
+posterior,reference_rank2:both,6.277863302159039e-12,0.24383746859353359,0.9623240010297958,14.095698451206937,3.013752766236858,0.0,13.27906956281004
+temporal_shared,central_frontal_raw_context,4.4834746606807647e-11,0.4379931331396262,0.9002671274427705,11.797839281582782,6.843262054674804,0.07156390316805014,10.281303762358693
+temporal_shared,central_frontal_vmd_context,4.214033341678559e-11,0.43644839744558134,0.9002980191813945,11.725136741356465,6.770559514448488,0.0715330114294261,10.167252650697375
+temporal_shared,ica_component_ridge:both,1.74881891520251e-11,0.26151869748460216,0.9518783593650946,16.068407447485782,11.113830220577803,0.01995267124572608,15.043722639153303
+temporal_shared,identity,8.049823688754696e-11,0.7560674755311942,0.8150681181467097,4.954577226907977,0.0,0.15676291246411095,3.4584888328733374
+temporal_shared,raw_frontal+ica_component_ridge,1.74881891520251e-11,0.26151869748460216,0.9518783593650946,16.068407447485782,11.113830220577803,0.01995267124572608,15.043722639153303
+temporal_shared,raw_frontal+reference_rank2,6.018637544621723e-12,0.19202969750010707,0.9718310306108207,17.45214771905958,12.497570492151606,0.0,16.61070558087139
+temporal_shared,reference_rank2:both,6.018637544621723e-12,0.19202969750010707,0.9718310306108207,17.45214771905958,12.497570492151606,0.0,16.61070558087139
+whole,central_frontal_raw_context,1.3598974802057107e-11,0.339202220028857,0.9348364466487793,13.18320093816409,10.00763485184066,0.027397659542109706,11.289970644739368
+whole,central_frontal_vmd_context,1.3235109557028176e-11,0.3383433078844535,0.9346412261514359,13.162703594937025,9.987137508613593,0.027592880039453066,11.268085202217994
+whole,ica_component_ridge:both,8.384425887342644e-12,0.27007847537971036,0.9523502585108001,14.735325838765988,11.55975975244256,0.009883847680088825,12.838938027343856
+whole,identity,1.0160743601979166e-10,1.1482843114884855,0.7338779272370579,3.17556608632343,0.0,0.22835617895383095,2.8472650157040924e-07
+whole,raw_frontal+ica_component_ridge,8.089433487224296e-12,0.2628514185757415,0.954039319379564,14.978704261362854,11.803138175039422,0.008194786811324893,13.0354024185416
+whole,raw_frontal+reference_rank2,4.618406844431668e-12,0.23547267382009734,0.962234106190889,15.3990701485277,12.22350406220427,0.0,13.686978905353499
+whole,reference_rank2:both,4.9133992445500155e-12,0.2426997306240662,0.960545045322125,15.155691725930836,11.980125639607405,0.001689060868763931,13.480443502175145
 
 ```
 
@@ -65073,9 +68558,9 @@ memory at10–50channels remain measured deliverables, not assumed scalability.
 
 ### Snapshot: NONFRONTAL_CHALLENGERS_RESULTS.md
 
-[Original](docs/NONFRONTAL_CHALLENGERS_RESULTS.md); captured SHA256 `eac7e808a6c250bd49cf4e07e2cb5aa5ab4b56f99b12c1fe91f46675c5aa3adf`.
+[Original](docs/NONFRONTAL_CHALLENGERS_RESULTS.md); captured SHA256 `b9eb51d3bf272555fa5ef867e52aee08d2a9f060fa7f4164d9b863acd7913bd9`.
 
-# Posterior and central component correction: verified development pilot
+# Posterior and central component correction: pilots and full development results
 
 14 October 2026 IST. New numerical evidence, not a final winner or qualification.
 
@@ -65356,6 +68841,196 @@ retains raw parent's whole-pipeline flags conservatively and declares active raw
 frontend failure counts unavailable from these parents. The new lineage regression
 fixture requires Kaggle validation before the revised module is used again.
 No parent flag was silently dropped, and no qualification follows from this audit.
+
+
+### Full result recovery confirmed — 14 October2026,00:43:37UTC
+
+The resumed bounded download recovered all1050manifest payloads of
+nonfrontal-full001/1; exact hashes and completion are verified in its receipt.
+Downloaded outputs1052 include state and manifest. Previous interrupted attempts
+remain known; the completed receipt supersedes the partial recovery status.
+Predictions, per-record shards, all32calibration fits, full metrics, diagnostics,
+configuration and environment are available locally and in immutable Kaggle output.
+
+
+Latest dataset-free contracts004/1 source6dedb47142dd9d4f37e8b4f743be4497d8f9f7ee:
+290passed,14warnings,18.98seconds; all8manifest payloads and completion verified.
+Runner22.903515s, peak105988KiB. Includes reconstruction/composition, SNR aggregation,
+exact arm lineage and historical replaced-VMD fault fixtures. Numerical tests run
+on Kaggle only. This validates fixtures, not new native qualification or a second
+full review execution at the revised source.
+
+
+## Frozen frontend and SNR aggregation audit — complete
+
+Run nonfrontal-review001/1 atf86d37499a2da96a54b073289ea3861588478b37 completed
+320examples/32recipients/5donors with7arms,1600exact parent-array checks and
+549000archived paper-metric checks.289tests passed(14warnings,19.74s). No fitting,
+AutoVMD, neural weights, reserved access or new decompositions. Stage534.824925s,
+runner632.100575s,peak1088332KiB. Core tables and identity checksum verified;
+665payload full recovery is separately tracked in its receipt.
+
+| Frozen system | Mean channel SNR dB | Pooled-window energy SNR dB | CC |
+| --- | ---: | ---: | ---: |
+| Old VMD-context regional output | 13.162704 | 11.268085 | .934641 |
+| VMD frontal+ICA component ridge elsewhere | 14.735326 | 12.838938 | .952350 |
+| VMD frontal+reference rank2 elsewhere | **15.155692** | **13.480444** | .960545 |
+| Raw frontal+same ICA component ridge | 14.978704 | 13.035402 | .954039 |
+| Raw frontal+same reference rank2 | **15.399070** | **13.686979** | .962234 |
+
+Mean channel SNR averages per-channel dB before source-balanced aggregation.
+Pooled energy sums signal/error across available scope channels/time within each
+window, then uses the same source-balanced condition/input averaging. Both use
+10log10(signal energy/reconstruction-error energy). They are different
+aggregations, not invented alternative equations. Regional dB cannot be added.
+The pooled metric remains below15dB and is a supplemental aggregation audit,
+not a newly imposed engineering gate. The declared channel-first development
+criterion is exceeded; fresh-source and preservation qualification remain unmet.
+
+Frontal VMD mean17.112814/pooled16.628262 versus raw18.193247/17.939047dB.
+Unchanged nonfrontal rank2 mean/pooled:posterior14.095698/13.279070,
+centralshared14.905802/15.124574. Actual20middle channels14.141899/14.341411;
+6temporal17.452148/16.610706dB. Therefore the pooled centralshared bucket
+obscures a weaker true middle subgroup. Grouping did not change correction.
+
+Whole VMD-minus-raw frontend meanSNRdelta−.243378dB with supplemental95%interval
+[−.516659,+.043339]; wholeCCdelta−.001689[−.002925,−.000494]. FrontalCCdelta
+−.007441 exceeds preservation comparator tolerance. These contrasts do not
+support VMD superiority. Preference for VMD cannot change the reported winner.
+
+The v1 failure_rows_scored counter contains conservative historical parent
+flags, not active branch failures after frontend replacement. Revised source
+separates historical and nonfrontal fault provenance; its fixtures passed among
+290contracts004 tests. This affects interpretation, not calculated waveforms,
+SNR,CC or baseline parity. No active failure count is fabricated.
+
+Whole PNG visually inspected/readable. NotebookHTML visual inspection remains
+unperformed. The next bounded strength/blend experiment uses saved fields only;
+its target-fitted scalar/blend bounds are evaluator-only and cannot drive inference.
+
+
+### Fixed nonfrontal gain/blend pilot launched
+
+nonfrontal-gain-pilot001/1 atsourcec049d8dca726adb032f9ee45b32353d9164dd272,
+Kagglevmd-nonfrontal-fixed-gain-pilot, exact nonfrontal-full001/1 parent.
+Ten arms:foursavedcontrols plus three fixedstrengths and three fixedblends.
+Pilotfirst50developmentexamples/fiverecipients, frontalVMD unchanged. No
+AutoVMD, newcalibration, target-guided inference, reserved access or neuraltraining.
+Correct submitted notebook copied to numbered61 with exactSHA/spec. Numerical
+suite runs before scoring. Completion and recovery have not yet been established.
+Primaryagent monitors directly after monitoring subagent became unavailable from
+its usage limit; continuous background monitoring is not asserted.
+
+Frozen review001 manifestSHA256:
+90cb1a71ec0a4cbf42b7d619c689fadb5c32df168c761ade4c2cbffd98426861.
+Core13payloads verified; full665payload recovery remains inprogress. WholePNG
+visually inspected. The full21armparent retains all1050payloads verified locally.
+
+
+### Frontend audit recovery confirmed
+
+At01:26:21UTC14October2026 the receipt verified all665manifest payloads and
+completion for nonfrontal-review001/1. Core and bulk recovery are now complete:
+all320raw-frontal prediction bundles,metric shards,paper scores,subgroup tables,
+condition tables,oracle-free comparison,source-aware intervals,figures and lineage
+limitations are preserved. Manifest90cb1a71ec0a4cbf42b7d619c689fadb5c32df168c761ade4c2cbffd98426861.
+Earlier partial-download statements are historical and superseded by this receipt.
+
+
+## Fixed strength/blend pilot completed
+
+nonfrontal-gain-pilot001/1 atc049d8dca726adb032f9ee45b32353d9164dd272 completed
+50examples/5sortedrecipient participants/4ocular donors. This is a deterministic
+subset of the full cohort; it differs from the earlier source-balanced50example
+component pilot. Compare within this run only, not its baseline20.086786frontal
+against earlier20.176007 as if methods changed.292tests passed,14warnings,
+18.63s;85200archived paper-metric checks. Stage86.230018s,runner159.251149s,
+peak832820KiB. No calibration/weight fitting,AutoVMD,models or reserved sources.
+
+| Fixed nonfrontal arm | Whole mean channel SNR dB | Pooled-window SNR dB | CC |
+| --- | ---: | ---: | ---: |
+| Unchanged rank2joint | 15.906784 | 13.699583 | .965093 |
+| Strength0.25 | 10.268276 | 7.263809 | .883922 |
+| Strength0.50 | 11.886580 | 9.650133 | .918388 |
+| Strength0.75 | 14.347441 | 12.426323 | .950711 |
+| Old/rank2blend0.25 | 14.491577 | 12.355973 | .949559 |
+| Old/rank2blend0.50 | 15.268996 | 13.298144 | .960385 |
+| Old/rank2blend0.75 | 15.944701 | 13.861136 | .966507 |
+
+The largest fixedblend pilotgain isonly+.037918dB channelmean; supplemental95%
+interval[−.679458,+.858902],454/500validdraws. No evidence of superiority or
+selected production weight follows. Simple uniform attenuation is inferior.
+Middleblend0.75mean14.569999 versus14.246635; temporal17.185124 versus18.197961.
+This illustrates subgroup tradeoffs hidden in the wholeaverage.
+
+Optimistic scalar/blend reports use scoring targets after fixedarms exist and
+are explicitly diagnostic_target_fit=true/deployable=false. They do not change
+any prediction or constitute achievable generalization. Full comparison adds
+participant-balanced bound summaries to make gain-versus-shape headroom clear.
+Primary scores use unchanged paper equations; clean and CC gates are unchanged.
+Core output recovery verified; full123payload recovery tracked independently.
+
+
+---
+
+### Snapshot: NONFRONTAL_GAIN_DIAGNOSIS_PLAN.md
+
+[Original](docs/NONFRONTAL_GAIN_DIAGNOSIS_PLAN.md); captured SHA256 `230f5dd0efe455f41a459ba2a23104000919d41ede286c76fd5b9e126755e1f9`.
+
+# Fixed nonfrontal strength and blend diagnosis
+
+14October2026. This is a bounded exploratory experiment using immutable full001
+predictions. It does not select a final teacher or open confirmation data.
+
+## Evidence and hypothesis
+
+Frozen review found VMD+rank2 whole mean-channel SNR15.155692dB but pooled-window
+energy SNR13.480444dB. Raw-frontal+same rank2:15.399070 and13.686979dB.
+Verified middle14.141899dB versus temporal17.452148dB. Severe lateral and weak
+blink/mixed cases remain bottlenecks. The current method fits the map using
+calibration but estimates region gain on scoring EEG; excessive gain is one
+possible cause. It is not assumed before error diagnosis.
+
+## Fixed target-free arms
+
+Four unchanged controls:identity,oldVMDcontext,oldrawcontext,rank2joint.
+Six new arms use predeclared weights0.25/0.5/0.75:
+
+- strength:artifact=weight*saved_rank2_artifact on nonfrontal rows.
+- blend:artifact=(1-weight)*old_nonfrontal_artifact+weight*rank2_artifact.
+
+Frontal VMD is unchanged. Both fields refer to the same original input. Apply one
+subtraction; unknown/masked rows pass through. No input-SNR label, target,
+condition, participant outcome or evaluation gain enters these fixed recipes.
+No VMD, ICA or new calibration fit runs. Static inspection locally; numerical
+fixtures and execution on Kaggle only. Fifty-example pilot precedes full320.
+
+## Evaluator-only bounds
+
+After every output is generated, use paired references to calculate an optimistic
+scalar gain bound(0..8) and old/rank2 blend bound(0..1), separately for posterior,
+central/shared,true middle and temporal. These are nondeployable diagnostics
+and cannot determine per-window inference weights. Save their coefficients only
+in an explicitly evaluator-only report, never a recipe/checkpoint. Close current
+residual energy into channel mean-bias and centered error energy. If even the
+optimistic scalar cannot help, strength alone cannot fix field shape.
+
+## Evidence and decisions
+
+Verify exact full001/1 identity/manifest/split and every prediction/decision.
+Check archived paper metrics, frontal/unknown parity, weights, masks, scalar
+accounting and failure lineage. Keep historical parent flags labelled separately
+from new failures. Save all fits(no new ones), progress,predictions,per-channel
+metrics,condition/input tables, middle/temporal results and source-aware intervals.
+Report channel-first mean and pooled-window SNR side-by-side; no aggregate swap.
+Paired paper MSE/RRMSE/CC remain primary; fixed gains do not fit clean targets.
+Clean engineering gates are unchanged and strongest raw frontal failure persists.
+
+No globally selected weight is claimed from this exposed pilot/full cohort.
+Grouped recipient/donor-excluded tuning and native qualification are later stages.
+A successful weaker-artifact correction must not degrade severe lateral cases.
+If these fixed variants fail, retain rank2 and move to distinct reference CCA or
+eligible SGEYESUB; do not keep expanding a blind strength grid. No models yet.
 
 
 ---
@@ -66098,7 +69773,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/calibration_frontal_context.py](<src/vmd_eog/calibration_frontal_context.py>) | 26402 | `a661a66114dda376ab31b5fff0f4128f51223d786e680d22246aa564825f5c2b` |
 | [src/vmd_eog/campaign.py](<src/vmd_eog/campaign.py>) | 1596 | `2e6a073e6a3ac4d831781886a0c4f0a040a367cb70d15af45150d6a41a1c69c3` |
 | [src/vmd_eog/classical_fixture.py](<src/vmd_eog/classical_fixture.py>) | 4755 | `4b660fa880354ae815b1110f2bd3044003ccd2475b42e576a3b8b748e2d8aab3` |
-| [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 7121 | `9293a7b46e4901181f38999520d0956893f844a4b0ed8c76df403df2ae11088e` |
+| [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 7282 | `0187998346d1d8d8e293aa08fd3bd72ae8ff7567b00771c2ca10c9c42b89ae50` |
 | [src/vmd_eog/corpus.py](<src/vmd_eog/corpus.py>) | 15469 | `b5064d6944fd1c36d75a5c6f4f82e85212f4b10b7462db1ef3fc922d5441db2b` |
 | [src/vmd_eog/coverage_uncertainty.py](<src/vmd_eog/coverage_uncertainty.py>) | 13987 | `8755dbb1063e0eb158cf5146486b8bf7a2eaac5c2565552055d4d41257f268a0` |
 | [src/vmd_eog/data.py](<src/vmd_eog/data.py>) | 13051 | `49d0b5a8137db4b9a67111b84af94ced4a1661baac5d64dfbd9f7c76bcb39b08` |
@@ -66135,6 +69810,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/neural_losses.py](<src/vmd_eog/neural_losses.py>) | 3521 | `7105f797e4bb220546dbc0eb6ce04293e570f2c4762b26d6f9f9e1187bad8249` |
 | [src/vmd_eog/nonfrontal_challengers.py](<src/vmd_eog/nonfrontal_challengers.py>) | 13267 | `07bfd51a88ee9e703382eb5a385d47ec5269d9e05320b1e4f19a7035600d2ce6` |
 | [src/vmd_eog/nonfrontal_experiment.py](<src/vmd_eog/nonfrontal_experiment.py>) | 21800 | `6421c1eba7484b335d829a1d759e21d765f61b9d9301ef5c669272739d11b1b8` |
+| [src/vmd_eog/nonfrontal_gain_diagnostic.py](<src/vmd_eog/nonfrontal_gain_diagnostic.py>) | 15666 | `5d4729e3722ce69cdbe64f0977940e6e2b3ae23e6cee1280dbccc62421c97230` |
 | [src/vmd_eog/nonfrontal_mwf.py](<src/vmd_eog/nonfrontal_mwf.py>) | 4822 | `c57db8430d0e3645195b8efa3c3e7583657c17e50170e5928fce0700e7b48afa` |
 | [src/vmd_eog/nonfrontal_review.py](<src/vmd_eog/nonfrontal_review.py>) | 16209 | `5499677ba2d89caee5ee84e9cba48378f04827678d467ac8368a2bc9cb464a99` |
 | [src/vmd_eog/nonfrontal_ridge.py](<src/vmd_eog/nonfrontal_ridge.py>) | 9910 | `3d3056ece92a10701ba5e89d73b90ef648b7b792175c0ef0a07f5b9a87049989` |
@@ -66152,7 +69828,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/regional_coverage.py](<src/vmd_eog/regional_coverage.py>) | 19817 | `269c86d2494cced2d1b6404a97953f461f2664574c73bd47ce20f28b23b278bd` |
 | [src/vmd_eog/regional_diagnostic.py](<src/vmd_eog/regional_diagnostic.py>) | 16581 | `d1f7dd35a8501732e6619ad166e9fe8857539901aad69cc2fb9c02a60bbce5d2` |
 | [src/vmd_eog/regional_integration.py](<src/vmd_eog/regional_integration.py>) | 16689 | `b514cdfd692d160ff96d9a4666dc25f788a6d27a0526d004ff335a25db91b133` |
-| [src/vmd_eog/runner.py](<src/vmd_eog/runner.py>) | 5869 | `37cca457ef56b1e2ffa150407c9b6d725b2c7ad3947cecf735775f31142ae5c9` |
+| [src/vmd_eog/runner.py](<src/vmd_eog/runner.py>) | 6035 | `44d85be4b4fdd302c8ba0abb54197e8d7e4dde74a5bfdcd7332044bdd193086c` |
 | [src/vmd_eog/signal.py](<src/vmd_eog/signal.py>) | 2710 | `233c86044033895b49dd602117ac7fb04ee84cfa3c6d0500ac466c8e760d7a3c` |
 | [src/vmd_eog/sobi.py](<src/vmd_eog/sobi.py>) | 5696 | `cb8b89ea6de05ce2bdc0fffd6e24a1ae469c7b9746c89ca2e89cf9bb747ead58` |
 | [src/vmd_eog/vmd.py](<src/vmd_eog/vmd.py>) | 4812 | `2705aedce1f71226882ee6df6e9efa127a9717d6aab0fc8676288f3643cb626a` |
@@ -66170,6 +69846,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [configs/frontal_screen.json](<configs/frontal_screen.json>) | 284 | `7e7506778e47b246741697c0aff5527740e82076e51e72fb45be7606f30eb2df` |
 | [configs/guard17_replay.json](<configs/guard17_replay.json>) | 1189 | `99d372ce62c0452be024a0eb9243256f391ea84381585dd90bfdecd29352ecc2` |
 | [configs/nonfrontal_challengers.json](<configs/nonfrontal_challengers.json>) | 2959 | `dcda98685260c5cfa0412c099f3d704a2e5b41e6dcb46e2f05bb8e7d8542033e` |
+| [configs/nonfrontal_gain_diagnostic.json](<configs/nonfrontal_gain_diagnostic.json>) | 3205 | `1244100ec99fbc7b36c3e6dfbe4aa4e9320e67fc7107ab0ddbf95a66fdd69a4c` |
 | [configs/nonfrontal_mwf.json](<configs/nonfrontal_mwf.json>) | 2978 | `fb92cd25c3e51e822275b4e6ded9df272edfacbae63ac844caaa03c811b6e390` |
 | [configs/nonfrontal_review.json](<configs/nonfrontal_review.json>) | 3464 | `320e29d7ed6802b2611b55521959b8bf6f4bffb13dec4fcd069659e94d26ca46` |
 | [configs/posterior_context_queue.json](<configs/posterior_context_queue.json>) | 1260 | `539282ce0f4058375a0a7b4cd0d4e9ee82feafc659af90c1524529e344b41be5` |
@@ -66242,6 +69919,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [notebooks/58_Posterior_Central_Challengers.ipynb](<notebooks/58_Posterior_Central_Challengers.ipynb>) | 9223 | `d7d5c553a96006f16bbe128bbc5f0129a1cd5618bdb1e058fff56b5bfb76af68` |
 | [notebooks/59_Central_Posterior_GEVD_MWF.ipynb](<notebooks/59_Central_Posterior_GEVD_MWF.ipynb>) | 9069 | `aea0ece312b7b73f952b67eb011fb03c7100748f09349038e9f46cd633175d90` |
 | [notebooks/60_Frozen_Frontend_SNR_Review.ipynb](<notebooks/60_Frozen_Frontend_SNR_Review.ipynb>) | 9387 | `ee30d9202f06de8d27106dace46fbbb899d15ca20122fa365e2667fcf2445bc2` |
+| [notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb](<notebooks/61_Nonfrontal_Fixed_Gain_Diagnosis.ipynb>) | 9701 | `206c2f85e126495ec77f4bf9db8bdec328d0a05f549c0ce82ab9c87498e80087` |
 | [tests/test_artifacts.py](<tests/test_artifacts.py>) | 777 | `ccd2badb790151ebe841704a952af7efbc980b0031c9a17185175a5238ec2d8b` |
 | [tests/test_autovmd.py](<tests/test_autovmd.py>) | 1271 | `42bcf6e4e7dc1644f0745e52e6be225d3dafed204ef97fddf507e75a8f838a49` |
 | [tests/test_brainvision.py](<tests/test_brainvision.py>) | 1240 | `5b1eb58e28f241c48d10f15290fe20e280812cf22c377847a4fb0135490e2813` |
@@ -66265,6 +69943,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_neural.py](<tests/test_neural.py>) | 3443 | `3144e342001dfe84e6c36c65d1e873af1f15717bbd431be4e27059e9eaba1e55` |
 | [tests/test_neural_selection.py](<tests/test_neural_selection.py>) | 1523 | `dc723553a998edef0ddbeb274db5858768f350106919543b321cfcb1326d7b06` |
 | [tests/test_nonfrontal_challengers.py](<tests/test_nonfrontal_challengers.py>) | 6462 | `2c2968771320de4c28a27a1d57654318855a63c811561fc384ecb134dbb8a91c` |
+| [tests/test_nonfrontal_gain_diagnostic.py](<tests/test_nonfrontal_gain_diagnostic.py>) | 1680 | `97eb21178431c4a6d12c2025af3512ee7cb3ad0c24d59e4b863eee371a3f0556` |
 | [tests/test_nonfrontal_mwf.py](<tests/test_nonfrontal_mwf.py>) | 2232 | `af8347c0680f4a4e91f3cc033c51fed37b82f2ae58eb7c240683e644cef82774` |
 | [tests/test_nonfrontal_review.py](<tests/test_nonfrontal_review.py>) | 2146 | `5cbfac2dd162f7597938a1bc95b08a05c697ebd72323d63793c55568bca9f486` |
 | [tests/test_nonfrontal_ridge.py](<tests/test_nonfrontal_ridge.py>) | 5458 | `c5ddad31d4336e2f8f5b74777e479ec6b7b7d714f1be6f2737895ed3fd0a4a58` |
@@ -66286,14 +69965,14 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_sobi.py](<tests/test_sobi.py>) | 2486 | `3f90b70c5e0228615d7eb97ecc4ceca3dc75804513a6c72e4cc0ed09f1934a76` |
 | [tests/test_vmd_diagnosis.py](<tests/test_vmd_diagnosis.py>) | 1644 | `85824e2e028f45c78f6110b8c184cff63e9587d9f13a753bbd18787c9902acfd` |
 | [tools/bandroute_chain.py](<tools/bandroute_chain.py>) | 6369 | `81a1a5600f259f0e0b37d8e9df6f891aa60cf68c8a62ddee1457c09f34b4ffd3` |
-| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 63787 | `8834c05d746940bbd2637a304e2f364abe5b13be02c8022380d8975bfba12693` |
-| [tools/build_work_ledger.py](<tools/build_work_ledger.py>) | 6684 | `5d7f4f217254ad04e8262e168e07ab05ce7f9cb044c6fa4de00495cbdd52d219` |
+| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 65356 | `992ae9a38b04ea42c34d1836f0b9952dfe7574ea26ddc7ab3354dd2a24ca35fe` |
+| [tools/build_work_ledger.py](<tools/build_work_ledger.py>) | 6743 | `43541ba79bfa151fce03f85da83e0fa314330514b11d11ba4fa6bc07b13e7c45` |
 | [tools/coverage_chain.py](<tools/coverage_chain.py>) | 4686 | `199e7c0b22c9c586b722437ad6855c9df77f310c7333c1077ddf87a37bae7435` |
 | [tools/diagnostic_chain.py](<tools/diagnostic_chain.py>) | 6851 | `913b0243e23da65adfd787dedace965699bf23162488a7bab6198c73f491eeb6` |
 | [tools/download_vmd_cache.py](<tools/download_vmd_cache.py>) | 7475 | `c3b3d1bbb9fb62cad4fc26b76d75b6bab514c117a8387cf7306465e8c52929e1` |
 | [tools/frontal_queue.py](<tools/frontal_queue.py>) | 11738 | `71a59007d3ec9137b558fee20870164cd7d3e6dc4181ebeeb25260b499d67e62` |
 | [tools/guard17_replay.py](<tools/guard17_replay.py>) | 4518 | `d5c056a1159b50997ae2859f70f9d8d8b1525d16cdc93c63c5ee4d888cec5dcb` |
-| [tools/kaggle_campaign.py](<tools/kaggle_campaign.py>) | 8241 | `d737460d3376cbd206702965cddcb77b2835e85117876a01819494ff38738501` |
+| [tools/kaggle_campaign.py](<tools/kaggle_campaign.py>) | 8271 | `26b7c8e0554a3fe292bffd70085bfd0245ee1c4497220028f0783d4f0cdd44f3` |
 | [tools/kaggle_log.py](<tools/kaggle_log.py>) | 1485 | `05d7b5b4acb3da503b9e34f13165f973d34bf21aa449af1e6683fb97764094e0` |
 | [tools/phase_a_chain.py](<tools/phase_a_chain.py>) | 5442 | `ba46e9386fd5c45b1f6904f36a8e9514508ccd99ddf817b2c8357aa6627bde16` |
 | [tools/regional_chain.py](<tools/regional_chain.py>) | 3447 | `87567309f60fe17f740de68041587a1eb1ac6f541065ddb8441a495503b36f41` |

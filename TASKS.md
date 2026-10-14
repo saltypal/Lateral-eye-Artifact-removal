@@ -219,3 +219,5 @@ authorized despite current frontal qualification failures; no teacher/model prom
 - [ ] NF12 Fixed reference-CCA pilot after rank/reconstruction/trial fixtures; matched EOG versus signed frontal-context references.
 - [ ] NF13 Multichannel SOBI selective-source control only if it adds a distinct hypothesis; no nonfrontal VMD.
 - [x] NF14 Frozen reviewv1 historical/conservative flag limitation documented; revised provenance fixtures passed within290Kaggle contracts004 tests. Numericalreviewv1 scores remain valid; no active-failure count inferred.
+
+- [x] NF11a Fixedstrength/blend50examplepilot completed292tests; unchangedrank2 retained. Bestblendgain+.037918dB with CIcrossingzero. Fullmatchedcheck and gain/shapebounds follow; no selectedinferencerule.

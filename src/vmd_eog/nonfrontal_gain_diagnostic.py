@@ -173,7 +173,16 @@ def run(input_root, output, config, profile):
     frame, example_frame = pd.DataFrame(frames), pd.DataFrame(examples)
     frame.to_csv(output / "gain_channel_scores.csv.gz", index=False, compression="gzip")
     example_frame.to_csv(output / "gain_example_snr.csv", index=False)
-    pd.DataFrame(diagnostics).to_csv(output / "evaluator_only_gain_bounds.csv", index=False)
+    bounds = pd.DataFrame(diagnostics)
+    bounds.to_csv(output / "evaluator_only_gain_bounds.csv", index=False)
+    bound_fields = ["oracle_scalar", "oracle_blend", "current_pooled_snr_db",
+                    "oracle_scalar_pooled_snr_db", "oracle_blend_pooled_snr_db",
+                    "residual_energy", "mean_bias_energy", "centered_error_energy"]
+    bound_strata = bounds.groupby(["scope", "recipient", "condition", "input_snr_db"])[bound_fields].agg(strict_mean)
+    bound_strata.groupby(["scope", "recipient"]).agg(strict_mean).groupby("scope").agg(strict_mean).to_csv(
+        output / "evaluator_only_bound_means.csv")
+    bound_strata.groupby(["scope", "condition", "input_snr_db"]).agg(strict_mean).to_csv(
+        output / "evaluator_only_bound_condition_means.csv")
     write_jsonl(output / "gain_decisions.jsonl", decisions)
     from .nonfrontal_experiment import reconcile_baselines
     checks = reconcile_baselines(frame[frame.scope.isin(("whole", "frontal", "posterior", "central_shared"))], old_scores)

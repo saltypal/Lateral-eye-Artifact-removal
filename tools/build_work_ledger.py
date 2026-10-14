@@ -68,6 +68,7 @@ def main():
     parts.append("## Appendix E. Detailed historical protocols, findings and repairs\n\nSnapshots preserve all original detail. Earlier future-tense plans and statuses are historical, not current conclusions. Stopped AutoVMD plans are not active authorization.\n\n")
     documents = ["FRONTAL_METHOD_GUIDE.md", "FRONTAL_PAPER_AUDIT.md", "GUARDED_REPLAY_RESULTS_20261011.md", "GUARDED_K3_ALPHA2000_REPLAY.md", "AUTOVMD_IMPLEMENTATION.md", "EVALUATION_PROTOCOL.md", "FRONTAL_RESULTS.md", "POSTERIOR_CONTEXT_PLAN.md", "REPAIRS.md", "RESEARCH_ALTERNATIVES_20261010.md", "NEURAL_PRESERVATION_DIAGNOSIS.md", "NEURAL_DIAGNOSIS_REPAIR_002.md", "SCIENTIFIC_EXPLANATION.md", "VMD_CORRECTION_DIAGNOSIS.md", "ALGORITHM_REFERENCES.md", "NATIVE_PROTOCOL_PLAN.md", "VMD_SOBI_PLAN.md", "IMPLEMENTATION_PLAN.md", "FRONTAL_REPLICATION_PLAN.md", "SIX_HOUR_DELIVERY.md"]
     documents.extend(["NONFRONTAL_CHALLENGERS_PLAN.md", "NONFRONTAL_CHALLENGERS_RESULTS.md",
+                      "NONFRONTAL_GAIN_DIAGNOSIS_PLAN.md",
                       "FRONTAL_SNR_IMPROVEMENT_PLAN.md", "CENTRAL_COVERAGE_RESULTS.md",
                       "MATCHED_CONTEXT_RESULTS.md", "FRONTAL_SHAPE_DIAGNOSTIC_RESULTS.md"])
     for name in documents:
