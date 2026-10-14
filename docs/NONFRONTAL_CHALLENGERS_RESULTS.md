@@ -186,3 +186,75 @@ operator to original scoring EEG. Full reporting retains this information access
 MWF evidence is under `results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/`.
 The same file names as the first pilot store complete per-channel/condition
 metrics, all9arms, decisions and fitted matrices. Negative results remain archived.
+
+
+## Full nonfrontal comparison — 14 October 2026
+
+`nonfrontal-full-001/1` completed on Kaggle at source
+`46171ac7d14715b853e722013edfde2260a86fb6`. The exact matched development cohort
+contains320examples,32recipient participants and5ocular donors. There are21arms:
+identity and two saved context controls, followed by six fixed mechanisms with
+posterior-only, central-only and joint compositions. No frontal predictions changed,
+no posterior/central VMD ran, no clean target entered fitting, and no model trained.
+
+281tests passed;5760frozen-frontal parity checks,192saved-fit replay checks and
+549000baseline paper-metric checks passed. Stage runtime1103.517074s, runner
+1216.063582s, peak2091892KiB. Exact manifest:
+`5c0776e2f99374cb5c1fd13aa1076eae4aada28d6551a20ee293a5d6474ef0b2`.
+Core tables/status/identity are checksum verified. Full bulk prediction recovery hit
+interrupted downloads; a byte-verified resume was added. Complete recovery must
+be checked from the receipt, separately from successful Kaggle execution.
+
+| Joint nonfrontal method | Whole mean output SNR dB | Temporal RRMSE | Pearson CC |
+| --- | ---: | ---: | ---: |
+| Identity | 3.175566 | 1.148284 | 0.733878 |
+| Saved VMD frontal-context control | 13.162704 | 0.338343 | 0.934641 |
+| Saved raw frontal-context control | 13.183201 | 0.339202 | 0.934836 |
+| ICA component ridge | 14.735326 | 0.270078 | 0.952350 |
+| ICA rejection | 12.541144 | 0.326524 | 0.937555 |
+| Reference-field rank1 | 12.453789 | 0.394229 | 0.918336 |
+| Reference-field rank2 | **15.155692** | **0.242700** | **0.960545** |
+| Selective wavelet–ICA | 12.333200 | 0.343143 | 0.933246 |
+| Wavelet–ICA | 12.396655 | 0.340632 | 0.933751 |
+
+The two context controls above both retain VMD frontal output; their labels refer
+to context representation. They are not a raw-regression frontal-output ablation.
+The stronger method uses an EOG-calibrated ocular field, rest-covariance whitening,
+two retained reference-derived components and calibration-derived output gains.
+It is a project adaptation, not an exact SGEYESUB/iCanClean reproduction or MWF.
+
+With rank2joint correction, unchanged frontal SNR is17.112814dB; central/shared
+rises10.903434→14.905802dB, posterior13.541703→14.095698dB. Regional scores
+cannot be added. These summaries average per-channel dB within source-balanced
+strata. A frozen-output follow-up explicitly compares pooled whole-window energy
+SNR against channel-first averages and splits verified middle from temporal rows.
+
+Whole output SNR for rank2 by condition/input level:
+
+| Condition | −5dB input | 0dB input | +5dB input |
+| --- | ---: | ---: | ---: |
+| Blink | 16.124917 | 18.250146 | 17.562110 |
+| Lateral | 8.050232 | 11.869812 | 14.796459 |
+| Mixed | 15.118827 | 17.300671 | 17.328050 |
+
+Weak blink+5 and mixed+5 worsen relative to19.821757 and18.501700dB saved
+VMD-context controls. Severe lateral remains8.05dB. A high aggregate cannot hide
+these failures. Next correction-confidence/shrinkage work must infer contamination
+from observable EEG/EOG and unscored calibration, never from true input-SNR labels.
+
+Supplemental recipient/donor-aware multiplier uncertainty for rank2minus VMD-context
+is+1.992988dB,95% interval[0.679036,3.333935],498/500valid draws. This is not the
+OSF paper's native participant permutation procedure, independent validation or
+proof of superiority over published methods. Full source-aware results remain saved.
+
+Whole controlled preservation/CC gates pass versus the two context controls.
+Frontal paired CC deterioration is0.007441477 versus strongest calibrated raw
+frontal, above0.005. New native validation is absent; previous frontal native gates
+remain failed. Overall qualification remainsfalse. Controlled references are
+low-ocular EEG, not proven clean EEG; ocular mixtures are regression-derived.
+This is development-exposed exploratory evidence, not a fresh15dB acceptance pass.
+
+Whole-cap PNG inspected. Notebook HTML layout has not been visually inspected.
+Complete per-channel tables, all21arms, predictions, fits, failures and conditions
+are in the versioned Kaggle outputs and indexed recovery directory. No broad
+AutoVMD search, neural stage or reserved confirmation access was restarted.

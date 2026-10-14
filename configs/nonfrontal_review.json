@@ -1,0 +1,124 @@
+{
+  "branch": "research/vmd-eog-removal-notebooks",
+  "fs": 200,
+  "window": 1024,
+  "hop": 512,
+  "seed": 42,
+  "confirmation_fraction": 0.2,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "source_dataset": "satyapaladugu/lateral-eye-complete-dataset",
+  "required_supplement_sha256": "79a3c4f2e1c1d545b477aa3de05fdc9c1c07c0355b820755392d8a5519e67e65",
+  "preservation": {
+    "clean_change": 0.01,
+    "alpha_db": 0.5,
+    "beta_db": 0.5,
+    "covariance": 0.02,
+    "pearson_deterioration": 0.005
+  },
+  "target_definition": "controlled_recipient_reference; low-ocular LEMON plus donor-calibration ridge ocular field",
+  "reserved_access": "closed until verified freeze",
+  "schema_version": 4,
+  "campaign_id": "vmd-nonfrontal-review-20261014",
+  "scope": "frozen_frontend_and_snr_review",
+  "autovmd_enabled": false,
+  "model_authorization": "Bounded classical coverage only; no models or confirmation",
+  "fixed_recipes": [
+    {
+      "K": 3,
+      "alpha": 2000
+    }
+  ],
+  "require_archived_modes": true,
+  "classical_grid": {
+    "tolerance": 1e-06,
+    "max_iterations": 2000,
+    "thresholds": [
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "strengths": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "lag_banks": [
+      [
+        0
+      ],
+      [
+        -10,
+        0,
+        10
+      ],
+      [
+        -20,
+        -10,
+        0,
+        10,
+        20
+      ]
+    ],
+    "ridge_penalties": [
+      0.001,
+      0.01,
+      0.1
+    ]
+  },
+  "imported_parents": {
+    "nonfrontal-full-001": "5c0776e2f99374cb5c1fd13aa1076eae4aada28d6551a20ee293a5d6474ef0b2",
+    "context-match-full-001": "42f9a02ab6b653f25564de56f9162190ced7848e7b165165698e5645d2ba2a50"
+  },
+  "acceptance": {
+    "controlled_output_snr_db": 15,
+    "stretch_output_snr_db": 20
+  },
+  "paper_implementations": {
+    "liu_zhang_2022": "selector_structure_adaptation; author parity pending missing helpers",
+    "dora_biswal_2020": "deferred until full numerical methods available",
+    "xiong_2024": "fixed_recipe_SVM_SOBI_ApEn_adaptation; GA deferred"
+  },
+  "pending_stages": [
+    "frozen frontend/aggregation review",
+    "native validation"
+  ],
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "context_parent": {
+    "run_id": "context-match-full-001",
+    "git_sha": "c285e5398ba5cb31a3cf2163b81c48f2b767bf7e",
+    "campaign_id": "vmd-context-match-20261013",
+    "manifest_sha256": "42f9a02ab6b653f25564de56f9162190ced7848e7b165165698e5645d2ba2a50"
+  },
+  "challenger_policy": {
+    "lags": [
+      -10,
+      0,
+      10
+    ],
+    "penalty": 0.01,
+    "association": 0.4,
+    "gain_cap": 8.0,
+    "wavelet": "sym4",
+    "wavelet_level": 6,
+    "mad_multiplier": 3.0,
+    "dilation": 50,
+    "taper": 10
+  },
+  "review_parents": {
+    "context": {
+      "run_id": "context-match-full-001",
+      "git_sha": "c285e5398ba5cb31a3cf2163b81c48f2b767bf7e",
+      "campaign_id": "vmd-context-match-20261013",
+      "manifest_sha256": "42f9a02ab6b653f25564de56f9162190ced7848e7b165165698e5645d2ba2a50"
+    },
+    "full": {
+      "run_id": "nonfrontal-full-001",
+      "git_sha": "46171ac7d14715b853e722013edfde2260a86fb6",
+      "campaign_id": "vmd-nonfrontal-challengers-20261014",
+      "manifest_sha256": "5c0776e2f99374cb5c1fd13aa1076eae4aada28d6551a20ee293a5d6474ef0b2"
+    }
+  }
+}

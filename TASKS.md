@@ -202,7 +202,7 @@ the retained method. No AutoVMD, new numerical run or neural training started by
 - [x] NF01 Six target-free mechanisms, composition contracts, saved-fit/baseline parity and notebook58 validated on Kaggle:281tests passed at472b217.
 - [x] NF02 Exact corpus002/context-match-full001 manifests and all consumed split/waveform/montage/calibration identities verified.
 - [x] NF03 nonfrontal-pilot-002/2 completed50examples/5recipients/5donors;900frontal/30fit/85800metric checks, all186payloadsverified. Rank2both whole16.728031 versus matched13.994230dB; not qualified.
-- [ ] NF04 Same fixed-recipe320-example comparison after pilot contracts/recovery pass.
+- [x] NF04 Same fixed-recipe320-example comparison completed:281tests,32recipients,21arms; whole rank2joint15.155692 versus13.162704dB. Core evidence verified; full bulk recovery tracked separately.
 - [ ] NF05 Source-aware review and grouped shortlist evaluation; no scoring-target selection.
 - [ ] NF06 Frozen native OSF blink/lateral/rest preservation validation.
 - [ ] NF07 Author-code eligible SGEYESUB and ERP/BCI validation after calibration contracts.
@@ -212,3 +212,5 @@ the retained method. No AutoVMD, new numerical run or neural training started by
 
 See docs/NONFRONTAL_CHALLENGERS_PLAN.md. Exploratory regional experiments are
 authorized despite current frontal qualification failures; no teacher/model promotion.
+
+- [ ] NF10 Frozen frontend/aggregation review: exact same nonfrontal output with VMD versus archived raw frontal; channel-first versus pooled SNR; verified middle versus temporal subgroups. No new fitting.

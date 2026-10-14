@@ -385,6 +385,21 @@ print('Frontal outputs frozen; no posterior/central VMD; no AutoVMD or model tra
         DETAILS[stage] = 'Fixed-recipe posterior and central component-correction adaptations. Pin corpus002 and matched-context-full001. Match full-montage calibration support, preserve frontal outputs and score separate region changes plus their composition. No clean target enters fitting or correction. Save all predictions, component fits, per-record progress, paper metrics and failure rows. Pilot precedes full development evaluation; native and independent qualification remain separate.'
         if stage == 'nonfrontal-mwf-controls':
             DETAILS[stage] = 'Two fixed GEVD-MWF controls, rank1/rank2 with instantaneous full-montage support and strength1. Reuse the validated posterior solver but output only posterior/central rows. Same field-association gate, parents, scoring cohort and frozen frontal VMD output as notebook58. No repeated posterior grid, target fitting or teacher promotion.'
+    if stage == 'nonfrontal-review':
+        tables = '''import pandas as pd
+from IPython.display import display
+print((OUT/'frontend_review_summary.json').read_text())
+display(pd.read_csv(OUT/'review_method_means.csv'))
+display(pd.read_csv(OUT/'review_condition_means.csv'))
+print((OUT/'review_gates.json').read_text())
+display(pd.read_csv(OUT/'coverage_uncertainty_intervals.csv'))
+'''
+        inspect_modules = '''print((CHECKOUT/'docs/NONFRONTAL_CHALLENGERS_PLAN.md').read_text())
+print('Frozen predictions only; no fitting or parameter selection.')
+print('Channel-first and pooled-energy SNR are separate aggregations.')
+print('Module: nonfrontal_review.py; two disjoint fields, one subtraction.')
+'''
+        DETAILS[stage] = 'Attach exact completed nonfrontal-full001/1 and matched-context-full001/1. Verify source/split identities and every consumed prediction. Hold nonfrontal outputs fixed and replace only frontal rows with archived calibrated raw regression; retain the matched VMD output. Report all seven arms, verified middle versus temporal subgroups, paper metrics, preservation, source-aware supplemental uncertainty and both channel-first and pooled-energy SNR. No new fit, neural model, AutoVMD, reserved data or native qualification.'
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':
         detail = 'Requires verified research readiness. Paired-only EEG TCN-BiGRU, input-derived scaling, signed metadata context, zero correction heads and no runtime EOG/VMD. Classical accuracy gates do not prevent paired learning.'

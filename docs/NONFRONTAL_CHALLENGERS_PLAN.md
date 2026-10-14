@@ -98,6 +98,21 @@ project settings, not published optimal parameters. New recipes are experimental
   references, no reconstruction SNR. Previous native failures remain recorded.
 - NF07 Eligible author SGEYESUB, selective wavelet replication and ERP/BCI tests
   follow their source/calibration contracts; no guessed anatomy or head model.
+- NF10 Frozen-output review: compare each shortlisted nonfrontal correction with
+  archived VMD versus raw-regression frontal outputs, without new fitting. Report
+  both declared channel-first mean SNR and per-window pooled-energy SNR. Split
+  verified middle FC/C/CP channels from temporal shared channels for additional
+  diagnostics while preserving the original primary regional bucket. No neural
+  or teacher promotion. Original-input artifact composition, baseline metric
+  parity, exact parent identities and failure counts remain required.
+
+Full-development result motivates the next hypothesis: reference-rank2 raises
+whole channel-first mean from13.162704 to15.155692dB, but blink+5 output falls
+from19.821757 to17.562110 and mixed+5 from18.501700 to17.328050. Severe lateral
+-5 remains8.050232. Diagnose weak-input overcorrection and severe-lateral residuals
+before a calibration-fitted confidence/shrinkage blend with the old branch.
+Such a blend is a proposed correction experiment, not a selected recipe or an
+excuse to use true input-SNR labels at inference. No broad K/alpha search.
 
 Parallel GEVD-MWF control: numbered notebook59 uses the same corpus/context
 parents and reporting engine with a separate campaign. Exactly two recipes,

@@ -20,15 +20,19 @@ import requests
 from kaggle.api.kaggle_api_extended import KaggleApi
 
 
-def download(item, destination):
+def download(item, destination, expected_hash=None):
     path = (destination / item.file_name).resolve()
     if not path.is_relative_to(destination.resolve()):
         raise ValueError("Output path escapes destination")
+    if expected_hash and path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == expected_hash:
+        return item.file_name
     for attempt in range(3):
         try:
             response = requests.get(item.url, timeout=(15, 45))
             response.raise_for_status()
             content = response.content
+            if expected_hash and hashlib.sha256(content).hexdigest() != expected_hash:
+                raise ValueError("Downloaded payload checksum differs")
             if path.suffix == ".json":
                 json.loads(content)
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -36,7 +40,7 @@ def download(item, destination):
             temporary.write_bytes(content)
             os.replace(temporary, path)
             return item.file_name
-        except (requests.RequestException, json.JSONDecodeError) as error:
+        except (requests.RequestException, json.JSONDecodeError, ValueError) as error:
             # URLs may contain credentials; expose only exception type and filename.
             print("DOWNLOAD_RETRY", item.file_name, attempt + 1, type(error).__name__, flush=True)
             if attempt == 2:
@@ -94,8 +98,19 @@ def main():
             return 2, item.file_name
         return 1, item.file_name
     selected.sort(key=priority)
+    # Fetch the signed manifest first, then resume only byte-verified local files.
+    manifests = [item for item in selected if Path(item.file_name).name == "artifact_manifest.json"]
+    if len(manifests) != 1:
+        raise ValueError("Missing or ambiguous output manifest")
+    download(manifests[0], destination)
+    manifest_path = destination / manifests[0].file_name
+    expected_hashes = json.loads(manifest_path.read_text())
+    prefix_path = Path(manifests[0].file_name).parent
+    def recover(item):
+        relative = Path(item.file_name).relative_to(prefix_path).as_posix()
+        return download(item, destination, expected_hashes.get(relative))
     with ThreadPoolExecutor(max_workers=4) as pool:
-        downloaded = list(pool.map(lambda item: download(item, destination), selected))
+        downloaded = list(pool.map(recover, selected))
     specs = list(destination.rglob("run_spec.json"))
     if len(specs) != 1:
         raise ValueError("Missing or ambiguous recovered identity")
@@ -109,7 +124,7 @@ def main():
     for path in parent.rglob("*"):
         if not path.is_file():
             continue
-        if path.name in ("artifact_manifest.json", "execution_state.json"):
+        if path.name in ("artifact_manifest.json", "execution_state.json") or path.name.endswith(".download"):
             continue
         relative = path.relative_to(parent).as_posix()
         if hashlib.sha256(path.read_bytes()).hexdigest() != hashes.get(relative):
