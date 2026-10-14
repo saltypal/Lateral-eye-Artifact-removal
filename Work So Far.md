@@ -2129,6 +2129,28 @@ APIstatusRUNNING for both this review andsource-audit001; version-identifiable
 logs/test/evaluation results are not yet available. No success or gain claimed.
 The next dependent generator stage remains gated on recoveredoriginalsources.
 
+### Original source recovery complete; homogeneous producer algebra authored
+
+reference-source-audit001/1 completed atfdfdd93: 305passed,14warnings,20.16s.
+Bothoriginal LEMON sources sub-032305/sub-032306 recovered61x24000 unscoredprefix
+samples and12 eligible scoringwindows each. Original donors study02_p10_prep /
+study01_p02_prep (participantsosf:p10/p02, folds3/4) checksum/axes/trial identities
+verified. All45manifestpayloads/completion/source identity recovered andverified.
+Stage61.929761s; runner305.051948s; peak2617212KiB. No unmixing, newmixture, VMD
+experiment, neuralweights, reservedsource oraccuracyqualification. Unknown donor
+physical units remainexplicit; recipient MNE unitsvolts are verified.
+
+N03 authored coupled_field.py: one fixed calibration reference baseline, signed
+finite-lag driver coordinates, donor-calibration ridge and no forward intercept.
+F(aR)=aF(R) operates on excursions, not raw reference offsets. Producer-only
+paired truth sets a shared generated-reference/injected-field multiplier. Zero
+injection explicitly sets both tozero andcannot establish nativefalsepositives.
+Original donorcalibration alone fits the field; scoringtargets do not fit any
+coefficients. Six synthetic Kaggle fixtures cover signedhomogeneity/zero,
+referenceunits, joinisolation, equalmultipliers/inputlevels and invalidsources.
+These numerical fixtures arepending; the newtwo-pair corpus has notbeen generated
+and coupling repair isnotdeclared complete. Legacy generator/results unchanged.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance
