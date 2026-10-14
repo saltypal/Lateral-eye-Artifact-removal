@@ -1586,7 +1586,8 @@ be checked from the receipt, separately from successful Kaggle execution.
 The two context controls above both retain VMD frontal output; their labels refer
 to context representation. They are not a raw-regression frontal-output ablation.
 The stronger method uses an EOG-calibrated ocular field, rest-covariance whitening,
-two retained reference-derived components and calibration-derived output gains.
+two retained reference-derived components and scoring-window region gains
+estimated from observed EEG versus the calibrated field (never the clean target).
 It is a project adaptation, not an exact SGEYESUB/iCanClean reproduction or MWF.
 
 With rank2joint correction, unchanged frontal SNR is17.112814dB; central/shared
@@ -1629,9 +1630,9 @@ AutoVMD search, neural stage or reserved confirmation access was restarted.
 
 ## Evidence annex: snapshot provenance
 
-Metadata captured `2026-10-14T00:19:05.978340+00:00` at repository HEAD `7fdb353e5791edc07b92dfa8ecf706a5bcb5ad2e`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
+Metadata captured `2026-10-14T00:44:12.824002+00:00` at repository HEAD `f86d37499a2da96a54b073289ea3861588478b37`. Local artifact presence does not establish live remote status. Exact saved metrics below are not recalculated.
 
-## Appendix A. All 118 recorded launch specifications
+## Appendix A. All 119 recorded launch specifications
 
 ### audit-001
 
@@ -4403,6 +4404,32 @@ Metadata captured `2026-10-14T00:19:05.978340+00:00` at repository HEAD `7fdb353
   "kernel": "satyapaladugu/vmd-nonfrontal-challengers-pilot",
   "requested_kernel": "satyapaladugu/vmd-nonfrontal-challengers-pilot",
   "kernel_version": 2
+}
+```
+
+### nonfrontal-review-001
+
+[.kaggle-work/nonfrontal-review-001/run_spec.json](.kaggle-work/nonfrontal-review-001/run_spec.json); SHA256 `c9bdd306ac9a9d5cbff09f9456175ef49dd1d446e7755a8618b80a5f874773ca`.
+
+```json
+{
+  "run_id": "nonfrontal-review-001",
+  "stage": "nonfrontal-review",
+  "git_sha": "f86d37499a2da96a54b073289ea3861588478b37",
+  "campaign_id": "vmd-nonfrontal-review-20261014",
+  "config_path": "configs/nonfrontal_review.json",
+  "experiment": {},
+  "profile": "full",
+  "parent_run": "nonfrontal-full-001",
+  "source_resolution": "latest published at launch",
+  "kernel_sources": [
+    "satyapaladugu/vmd-nonfrontal-challengers-full/1",
+    "satyapaladugu/vmd-matched-context-full/1"
+  ],
+  "dataset_sources": [],
+  "kernel": "satyapaladugu/vmd-frozen-frontend-snr-review",
+  "requested_kernel": "satyapaladugu/vmd-frozen-frontend-snr-review",
+  "kernel_version": 1
 }
 ```
 
@@ -45029,6 +45056,2220 @@ Byte-identical duplicate copies appear once. Historical gate labels retain their
 }
 ```
 
+### results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/artifact_manifest.json
+
+[Saved payload](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/artifact_manifest.json); SHA256 `5c0776e2f99374cb5c1fd13aa1076eae4aada28d6551a20ee293a5d6474ef0b2`.
+
+```json
+{
+  "paper_evaluation_protocol.json": "4129a8eb51c68992a19b0f5649f35b722bbd80f7c80ed4dd5b6b329c8b9d64a2",
+  "resource_summary.json": "aa1b0596f52aa5757b4bb20e46d4677d4b2a75dd0380be6b151261fa9353c50a",
+  "configuration.json": "826f1390c219146ca76ec26d3d9d5031c6588f64cf17ccb8896a6cb301ba8417",
+  "coverage_uncertainty_intervals.csv": "5c760614cd5d360fa13888ef4461fda30f3b41efdbdf58e5525cd8d82df36556",
+  "nonfrontal_whole.png": "285c9c65c9cacf99a79148efb028c80879432b1e3164b6c59b787c00eeec710d",
+  "nonfrontal_summary.json": "320a63fe63ed42b6367126c56c884d30eecc293e7988ae72269f6ff8c7305b1c",
+  "nonfrontal_decisions.jsonl": "68d8a5bd2e183497ee7d0c1017b0d050ce1320fd392b6215aeb5e1ce8e36b364",
+  "nonfrontal_progress.json": "4369a6f655a62bd3ffd7fa2adcb1069c8eb30fc092e45c8af421996339192cdc",
+  "EVALUATION_PROTOCOL.md": "29e1d638e1d301e49151a72ffdc973635f2054fde9ce27df71c7f92d1c45886f",
+  "nonfrontal_controlled_gates.json": "694f5f78279592ed6edd311c6cc7f81d71cd61780fd4d33c9ae75af6ca621b70",
+  "experiment.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "coverage_uncertainty_channel_strata.csv": "5a4cb080eb5e4b9d61d9d924fc23727cd98aca565c41abd284fb537c75b65409",
+  "nonfrontal_condition_means.csv": "9a09c5d85c7f42e46c1748d55b5d046b0e20a467ac80773eb881df47c39a5fa2",
+  "nonfrontal_channel_scores.csv.gz": "009cdd1308009823a76e4ab6d6efddb8f9a8e809ce4fa3406476380fba239872",
+  "environment.json": "69802e07a6ab8e96a6575b9ce7c8e7d513bb3e6e311309549add8c4055fa8117",
+  "nonfrontal_fit_records.jsonl": "64fccb5586914c8cbdbeb446c19b5fd3896775f3479d8b3eafe40401491ed482",
+  "nonfrontal_selection_manifest.jsonl": "c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2",
+  "stage_tests_summary.json": "11be4a290655992c80ef6d04f3575f3e4c1e2823980426b70b092bf13cad374e",
+  "nonfrontal_central_shared.png": "4d6af2fe1a7eff6ae7c1d50cca40c88270e324c1f074cf02e42eb781730d5352",
+  "coverage_paired_differences.csv": "c746ab50c9e0c621a094f160dcd6df2b1c7e1863404db162f40b39eb43f9a89c",
+  "coverage_uncertainty_method.json": "23833204386fa08a09faf969dde9808e23fd41ab69654798493a24db82aefb86",
+  "run_spec.json": "b22024821d2ecc4e1d3ef68b97eba529cc96d7f9983319506724d4189d70aff0",
+  "nonfrontal_method_means.csv": "844960e676252ebc07d0f7ac91bad94fecd4daba0b87e16b2c2aa6bc2206b7a7",
+  "nonfrontal_posterior.png": "13af27d7f72fe55ffb1451910f69b1762ca00ca131949702ae75b53634621b80",
+  "parent_identities.json": "118c0945f03a80492f7435e8ed2455c2ff9032973adf7823ebb8c1bb040c537c",
+  "tests.txt": "688bd85d87556922b1403ba567b6299954530718c2cd0e73eba154eb2849e2fe",
+  "nonfrontal_metric_shards/sub-032318-000-mixed-snr+0.csv.gz": "c85563961172eae5dfddc58f51bba15a8be70b3050774485641256405231493f",
+  "nonfrontal_metric_shards/sub-032312-000-blink-snr+5.csv.gz": "bcb939be21ca4c761070c9d48bd8abd99762d13baecb6349f2342f5d99f090ab",
+  "nonfrontal_metric_shards/sub-032315-000-blink-snr+0.csv.gz": "4c268e0eb61f59abf51409923d675c3def05f3dfc44c5f7ad9dd7a7ceb685f95",
+  "nonfrontal_metric_shards/sub-032322-000-mixed-snr+0.csv.gz": "558077b5494c1544a958518e5ece0b25303fb2685255f99637b69f2087461984",
+  "nonfrontal_metric_shards/sub-032309-000-mixed-snr+0.csv.gz": "e27757fac354aefa3de9968b23e25b21501e9cb1db35f766c95251239627e082",
+  "nonfrontal_metric_shards/sub-032320-000-lateral-snr+0.csv.gz": "ea689a46e2a7b3b242070947d7b7636f7281538689c55cd642ba3c29d235c38c",
+  "nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz": "c061da8bcb2efcd13dbfa8348e374c16d195f80eb74f6e277f740c19cb8501ae",
+  "nonfrontal_metric_shards/sub-032312-000-blink-snr-5.csv.gz": "9935994dd4221c5d27258035c512a04afa63d5125a6fc4260f856ac1647dd52e",
+  "nonfrontal_metric_shards/sub-032334-000-mixed-snr+0.csv.gz": "08bce40d4f161f0323de615c2457959ed519b387f799992bf27909ca523fa5e3",
+  "nonfrontal_metric_shards/sub-032318-000-blink-snr+0.csv.gz": "470db2feb480083c63305788695e8c37e6e8d58245d82f1f421aa0da3af7d0d5",
+  "nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz": "43913f4ddc10300fc0e979cadb3e1295af6976e5351fc512f419c123787a4ce1",
+  "nonfrontal_metric_shards/sub-032330-000-mixed-snr+0.csv.gz": "5b6a74c3c08cd3821a412e3d8f8b33cb4c931e2ef895f48e7100d1e1c4881eba",
+  "nonfrontal_metric_shards/sub-032340-000-lateral-snr-5.csv.gz": "336eaeb9dab74d092c5e4d435f4c6ee0d92b2f2545535e8393e765397397078e",
+  "nonfrontal_metric_shards/sub-032324-000-lateral-snr+0.csv.gz": "90bff58ff437bfbd00d8f6c9ff7ea1c9b45901f63c813ad16c1da8cd88beb256",
+  "nonfrontal_metric_shards/sub-032322-000-lateral-snr+5.csv.gz": "fb7dae13b8dbf36958ce145d84cdea7feba9df14f3a607a55de9bb8c8847f6bd",
+  "nonfrontal_metric_shards/sub-032317-000-lateral-snr+0.csv.gz": "19f9da12880de1f759634259159ef7c23ef2daec051e7614e987a47227f63968",
+  "nonfrontal_metric_shards/sub-032321-000-blink-snr+0.csv.gz": "9a17c2e5aed9115c3e72fe480c845328ab8948288804a04607e8aeea8fdcf216",
+  "nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz": "3952400c710573ce35fde0107658cc058f49d984000645e9a6cc2edfd6b98a45",
+  "nonfrontal_metric_shards/sub-032336-000-mixed-snr+5.csv.gz": "5bf3bbafecfaa606e95fc2df0f6db2ba18d68c4cc7adae5dbecbd8eb87387f20",
+  "nonfrontal_metric_shards/sub-032336-000-blink-snr-5.csv.gz": "123e18cea15c124df55fedcb27415c3742c8505c6fb211a8080b6494bcd20925",
+  "nonfrontal_metric_shards/sub-032327-000-mixed-snr-5.csv.gz": "a63e62b333698543d0da10bddb201e56daec93265225c76730beb0ed174bf64c",
+  "nonfrontal_metric_shards/sub-032315-000-lateral-snr-5.csv.gz": "a5258afbfa311b257902b432e228aa333d58533216d088b555dfc19b59c2589f",
+  "nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz": "ccc834f77bd36ed33741d241f7ee27c585dbd2851915648f51703f36a00f633d",
+  "nonfrontal_metric_shards/sub-032341-000-lateral-snr+5.csv.gz": "0f4252db1f86ab03b5a60c20ea9e053667dd0ff663c460def62ed0ab19f1b589",
+  "nonfrontal_metric_shards/sub-032329-000-mixed-snr+5.csv.gz": "114e3a61100376aa4fe3018eaf02d9d12e7a8a2a4f1fdf68d0feafca0ac0307f",
+  "nonfrontal_metric_shards/sub-032341-000-mixed-snr-5.csv.gz": "f2af7c10d540dbbecdc50b1bc4479621dd69c719946c7096133df9c1b02fc85b",
+  "nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz": "26d9d3b21990ecd5a1e998ecd5d6272c894f3c6abb6b7166fbc792ad2e214b1a",
+  "nonfrontal_metric_shards/sub-032326-000-lateral-snr+0.csv.gz": "bd58d1531fd7e3d0150d06f281b8b47297bbb6c9a00e312ae1507a4bccfdc229",
+  "nonfrontal_metric_shards/sub-032317-000-clean-clean.csv.gz": "ac5e30e50ead46a2a8d5cb445aac092b2ff9f7d051e312df95038de711b99381",
+  "nonfrontal_metric_shards/sub-032336-000-lateral-snr+5.csv.gz": "07b21e821923c5b06641b20ee4381abc237052deb8907ca5a613977a98fbe769",
+  "nonfrontal_metric_shards/sub-032327-000-lateral-snr+0.csv.gz": "9f136ad4263b32cca6e430797b69ef8657652ccfc97db136249ba732ba31816d",
+  "nonfrontal_metric_shards/sub-032317-000-blink-snr-5.csv.gz": "68889c09469bc3a0d3de2488830a1cd24cbf07bf7eefae581d29f2b52fdcd362",
+  "nonfrontal_metric_shards/sub-032316-000-mixed-snr-5.csv.gz": "907ec0aad5a9a29b5ec1a61a49738cac3ac9dcdf2a856b0f0d81cc137b268b63",
+  "nonfrontal_metric_shards/sub-032309-000-clean-clean.csv.gz": "829a3552e88ee8f96be1883a786f9e1387d93217139034571da6beaae4a85277",
+  "nonfrontal_metric_shards/sub-032315-000-lateral-snr+5.csv.gz": "231e902da27d41cdb8d5f4a3b29d9e279be0baa23a8aca6d8e70e45ce5662aa8",
+  "nonfrontal_metric_shards/sub-032310-000-blink-snr+5.csv.gz": "d91b6db748e88478bb4f006a2bf307a8d32cca67223ab8766d13b08dd9edfd45",
+  "nonfrontal_metric_shards/sub-032316-000-blink-snr-5.csv.gz": "7f464fb8e78be1cfb829a27de36bc941810b0fcc4cca3e72e0e95ba4b2db3601",
+  "nonfrontal_metric_shards/sub-032326-000-blink-snr-5.csv.gz": "331d4434fa23aaa4269d7dd4f4388035efaa77b4552701b0a76ba40b33d71cda",
+  "nonfrontal_metric_shards/sub-032321-000-lateral-snr+0.csv.gz": "b41d96bd1bd5ef271cb5df6537d5888a670806fa35fc0cbbca7acba35951f51e",
+  "nonfrontal_metric_shards/sub-032339-000-lateral-snr+5.csv.gz": "4b96d1f7b16ed5d47d01580b691d7e029a436af6f51ddbce31c0042c81bf57a4",
+  "nonfrontal_metric_shards/sub-032331-000-lateral-snr+0.csv.gz": "0e0745f2952f7f0c233fec15598bb5b0644f8c1d080d6dc70596b393680bb84f",
+  "nonfrontal_metric_shards/sub-032323-000-lateral-snr+0.csv.gz": "4d72a6934681a513ff4b69c1a567054c2e8cc5877dd893c9eb7e56482b43bda4",
+  "nonfrontal_metric_shards/sub-032338-000-blink-snr+0.csv.gz": "23f8c81287aded9248a7c6a4d858423f28ddbba2b634877766205cc543028b82",
+  "nonfrontal_metric_shards/sub-032313-000-mixed-snr+0.csv.gz": "0f2c7ef059474955e20a6c0b49f42bb190bd75f1b2e7c4950fa6efe809cc6ecd",
+  "nonfrontal_metric_shards/sub-032331-000-mixed-snr+5.csv.gz": "7ea725b339c9472c5b6bbabbf702a588053dc0391b1736d8d8a9860d8359cced",
+  "nonfrontal_metric_shards/sub-032329-000-clean-clean.csv.gz": "ee8691b9e7e92694830773592fbd74c5946a33006ac38abbca655c0684265815",
+  "nonfrontal_metric_shards/sub-032318-000-blink-snr+5.csv.gz": "de1ac0adb7f5911b194f95aa8bd452b39a81067efcb7e094c4422db88a9f91fc",
+  "nonfrontal_metric_shards/sub-032340-000-mixed-snr+5.csv.gz": "748f9d2235c29ffd86f504f2ab4eb9f72cc1485d791c5ae48c44f0f2cf680359",
+  "nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz": "842217e53bd00dce7fe3f7b1df3b509212500245fd1e0e0c6ea77b54ef34373d",
+  "nonfrontal_metric_shards/sub-032309-000-blink-snr+5.csv.gz": "54418e8935f80a5d10fbc5316ff13078a7146f639a6ae32c8f3d300bf7ba222b",
+  "nonfrontal_metric_shards/sub-032331-000-blink-snr+0.csv.gz": "e0de3be0cd785bf99cce6e9480957ebbfdfa27bb94daed76fb2359711b0d877b",
+  "nonfrontal_metric_shards/sub-032328-000-mixed-snr+5.csv.gz": "5215cbdaaddb2350abd8bac3856dd568596c49fd65c532801b0f5de596c1d796",
+  "nonfrontal_metric_shards/sub-032310-000-mixed-snr+0.csv.gz": "edd8433adcee9d3d3a8cd4f8598aa13455034c67cc65f0b6a3f9edc0c66ba20d",
+  "nonfrontal_metric_shards/sub-032325-000-mixed-snr+5.csv.gz": "993953f72a76a8ce7e05e890869d858007f52f7b4349fa38b773431254533fe1",
+  "nonfrontal_metric_shards/sub-032324-000-lateral-snr-5.csv.gz": "e2da89cf255c46be5c9db40623c5eb43d977181b6c70a969010c33c8c48e2c97",
+  "nonfrontal_metric_shards/sub-032317-000-mixed-snr-5.csv.gz": "4442d041dc7ebf8134301e5377187e45bf6b72d6585df05168b1a727009b6b06",
+  "nonfrontal_metric_shards/sub-032312-000-mixed-snr-5.csv.gz": "784a8e5e922f92d6bea73b5d0d93ad86f1f3b5062fec4fab789f4d416ad61d91",
+  "nonfrontal_metric_shards/sub-032317-000-mixed-snr+5.csv.gz": "a86b8e7495671b61caa8f943d978ba3622dffab73d84d462cf532d16f2c3079e",
+  "nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz": "25c27b16e63b14c52b63bc4f295f9960a88a70f690a1f85ea0636da01b2b016f",
+  "nonfrontal_metric_shards/sub-032329-000-lateral-snr+5.csv.gz": "4d34dffe6ab41f6be36359101e7f79eea981f1e7ed1117b4ef29d1cee12bc67e",
+  "nonfrontal_metric_shards/sub-032328-000-lateral-snr-5.csv.gz": "0620859fab19885d3d0d1eb419ecd571285f96631b8c373fa4a95ee833f599f1",
+  "nonfrontal_metric_shards/sub-032328-000-blink-snr+5.csv.gz": "6f4fb6505f93b90d24422bd8f1f232ab3ac8b260c3a9c4bdefbffc6f46242a69",
+  "nonfrontal_metric_shards/sub-032328-000-blink-snr-5.csv.gz": "4a455c3340ed988df7c756e77cc11101af7be33981ca6973c1244c1c401e4536",
+  "nonfrontal_metric_shards/sub-032315-000-mixed-snr-5.csv.gz": "fbd2d4317ff1f8a3b1185824d0fd810add28a7eebe3c534774fb99823322d550",
+  "nonfrontal_metric_shards/sub-032326-000-mixed-snr+5.csv.gz": "e6f397b02f7a7bc379028f7e65ed72fa1399809160bc137c88ea99c7a6d8ac8b",
+  "nonfrontal_metric_shards/sub-032338-000-lateral-snr-5.csv.gz": "3125b708c7ba15730597f27c103994fc863f3bc1a370eec012f8a139a2960303",
+  "nonfrontal_metric_shards/sub-032312-000-clean-clean.csv.gz": "6c39f50387f5f6a32422b61f4d882943329139cde31db4804b88a1ace10e8290",
+  "nonfrontal_metric_shards/sub-032316-000-blink-snr+0.csv.gz": "cf202db22316ec5621def1ea25ff8e977b84e23395ce0f5291b73d04c0ddc711",
+  "nonfrontal_metric_shards/sub-032338-000-blink-snr+5.csv.gz": "8dcdbb770a8299868d8ee48c201b214093c886e6e1c54cbbba3ece2f90714c4f",
+  "nonfrontal_metric_shards/sub-032324-000-clean-clean.csv.gz": "1067ad04116d753a56401faeb42f02770146d5d1df57188cfe36c91eae8d42b6",
+  "nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz": "024393149735bda3113b383f701760603064e576b2ad1b7276e184c2b472708f",
+  "nonfrontal_metric_shards/sub-032316-000-mixed-snr+5.csv.gz": "7dbb35b93b026b47e5162d82c5a93402c9bd8e1bd7aaa374f93778771cf4d5b4",
+  "nonfrontal_metric_shards/sub-032309-000-mixed-snr+5.csv.gz": "932f5575c44e3070ebe6e7761cbb271a0f8b2f052c97af14f0d8b8aead62bdbb",
+  "nonfrontal_metric_shards/sub-032316-000-clean-clean.csv.gz": "1c05e0595385f84c1498f8b4bf644391cfa7dd176bcd89d3e61e551389832280",
+  "nonfrontal_metric_shards/sub-032321-000-mixed-snr+5.csv.gz": "21c37ed60616bdefb3c76442e26a673617aa65600bae103adf13636b2b78e6f8",
+  "nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz": "b0a6e520172083ea135d36358f749ba4d92630a3d6357031872a3bac7f7dfe6c",
+  "nonfrontal_metric_shards/sub-032339-000-blink-snr+5.csv.gz": "fc9a30b6000514ef02b1112af83d807660e16882c4a633a900de9cc217135fe6",
+  "nonfrontal_metric_shards/sub-032309-000-blink-snr-5.csv.gz": "8f907a94b84009562c50001dd5b137dfa94cde7533beff870cb88ba2d1e5f389",
+  "nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz": "39632a9dd36af61a06e3bab331f83274df14faf2eb26c4ce7267c2c72b695912",
+  "nonfrontal_metric_shards/sub-032336-000-blink-snr+5.csv.gz": "3ae9bd1c2f671a73446f3a6ea0aef9e15cee109382b983b4c864b3f0dcd25e5f",
+  "nonfrontal_metric_shards/sub-032318-000-lateral-snr+0.csv.gz": "ae6f5c45bf599dbcbaeeae0668616c8d660dadac4249ac26bd556129de24bb35",
+  "nonfrontal_metric_shards/sub-032316-000-blink-snr+5.csv.gz": "95b751940054b5fdd8ca3b0b6490a3c9f709ad8a4b8a4adec169599a936e1eeb",
+  "nonfrontal_metric_shards/sub-032320-000-mixed-snr+0.csv.gz": "5d484d3b00c071a68e654b4778f5a73b6140d03c2fec5f763184d5fa3718d0f8",
+  "nonfrontal_metric_shards/sub-032322-000-lateral-snr+0.csv.gz": "26f07aeefc2d5d44be80468a9b9deb7fd07e83a0b8212cb5871a7b3ebbb2e8d4",
+  "nonfrontal_metric_shards/sub-032318-000-blink-snr-5.csv.gz": "b00f495da9186ed7e8e7c4d971e1afe7678c22afe37aea33b58ae6188008b42c",
+  "nonfrontal_metric_shards/sub-032327-000-mixed-snr+0.csv.gz": "fdbdc47ba47088c542f7bf1bbf898ec893ce8f5fe89d2967032a864851e73386",
+  "nonfrontal_metric_shards/sub-032331-000-lateral-snr+5.csv.gz": "97d8d45ee7de161a4a794103bc1e6df00610118c7f29e37b5c66a7abfdd39166",
+  "nonfrontal_metric_shards/sub-032331-000-mixed-snr+0.csv.gz": "3a5a75a414aa7da5457ef1c9e7972882a23c0fd09669cfd58ddcaf0f61d890a6",
+  "nonfrontal_metric_shards/sub-032336-000-lateral-snr-5.csv.gz": "1657b415d6dd144f33f6c18e019d169190b9a087c4b127f69e0b9ea83d056685",
+  "nonfrontal_metric_shards/sub-032318-000-lateral-snr+5.csv.gz": "4021a66c6610c64ee704345d27afc82971561e79dcc1d976588bc3df433ca2a0",
+  "nonfrontal_metric_shards/sub-032338-000-mixed-snr-5.csv.gz": "3d7efd4c6838013a702de35729afe3935c4b7f1e471b1751cac91ac5263da3bd",
+  "nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz": "9789176a9f3d5a018a9d2fca8a9941e48cd5d55428b61bb343bdc92df9bb262d",
+  "nonfrontal_metric_shards/sub-032313-000-blink-snr+0.csv.gz": "5f621ff65326a8539c30ef5403aaf75a5264002c55bf03b8c732c4405041b751",
+  "nonfrontal_metric_shards/sub-032330-000-lateral-snr+0.csv.gz": "15cf68e7280b6717c932b7fcf5948624dcef380401164ea58f36d7ec67710fab",
+  "nonfrontal_metric_shards/sub-032327-000-blink-snr+0.csv.gz": "8a126bb7c75902928c329e006478747c548816c773d675872f538ba252a64587",
+  "nonfrontal_metric_shards/sub-032324-000-blink-snr+0.csv.gz": "490d2cf4679ca67304b0b62bf19c2dc8b5de2180b2f2ae874737dbcc066bd662",
+  "nonfrontal_metric_shards/sub-032330-000-mixed-snr-5.csv.gz": "48679fd2980278e60744c57fe4ba17d80851d4f8093349b294db3dd5dbb80991",
+  "nonfrontal_metric_shards/sub-032319-000-blink-snr-5.csv.gz": "3232719309e52e90afd575a5d8a8ef53568e6652d9807d634baa0bc6e5d69825",
+  "nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz": "27f3dde0d1f8a799084d3e103fc5fa9f7aa68b6f31e9ad7bcd63783f98f0e9d6",
+  "nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz": "664f6efcfcea82443e5468e36d2b85a52efd9695750a0334211192b3768bc635",
+  "nonfrontal_metric_shards/sub-032334-000-clean-clean.csv.gz": "a9329b3bb160f916f0a0e2d0aee3af16edf82207d1c85bb8021e6343e5a25372",
+  "nonfrontal_metric_shards/sub-032321-000-mixed-snr+0.csv.gz": "61c92db782c315d02ae5bd683cf527df2d3988227656e4004b82b83263e02a0c",
+  "nonfrontal_metric_shards/sub-032310-000-clean-clean.csv.gz": "d855464f248b0c4ab6672e27cccaba43d8ec260ced4d50cdb677369ac8fc8465",
+  "nonfrontal_metric_shards/sub-032334-000-lateral-snr-5.csv.gz": "07f97ac66b7758bbce7e0ee94626fda41707dbeef526283bb795e4706dab45f1",
+  "nonfrontal_metric_shards/sub-032327-000-blink-snr-5.csv.gz": "53ad05f10610769ebdf8ca5f3581f69a31cf937d1519dd68d9b1db5c2d988199",
+  "nonfrontal_metric_shards/sub-032312-000-lateral-snr+0.csv.gz": "01b6d538a7e7c526b36783ede43f10705a510ba5f39159c303d5564a3d49fccc",
+  "nonfrontal_metric_shards/sub-032334-000-mixed-snr+5.csv.gz": "b577d702191549d84addf250a84cbb83781eca51f43d66f52cec5d4e043d944e",
+  "nonfrontal_metric_shards/sub-032323-000-mixed-snr-5.csv.gz": "c7951227739a59505edd43d363182ab7f16950ccaada0db557de6cafdaf6d299",
+  "nonfrontal_metric_shards/sub-032320-000-blink-snr+0.csv.gz": "959785aa2b32b60ef7eb3bd14849168c82cf6ef0ed3e052d90abb5aeef3b5e04",
+  "nonfrontal_metric_shards/sub-032313-000-mixed-snr+5.csv.gz": "1d80e298d1c2d1f584145add106fe6373403fbf37768153f5f4933e792050fff",
+  "nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz": "519de0344866775e8dd160a1761f27c639644c0742846f2b9d4f403635e7815e",
+  "nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz": "e0ce82f39e9846466f5dd6ec7c7afaad82c4c8f34d29e9165c34d232a3a068ec",
+  "nonfrontal_metric_shards/sub-032331-000-blink-snr+5.csv.gz": "f03196fb5cfa18d05199365ec733631480f0ee70236238943dfc6ae9094aef24",
+  "nonfrontal_metric_shards/sub-032329-000-lateral-snr+0.csv.gz": "da32c34656fcc24b02e35c651feb7628d49bc6f4144e415c13693e65eb3d2c6c",
+  "nonfrontal_metric_shards/sub-032310-000-blink-snr-5.csv.gz": "4a9b052a68974ae35a4bc2baa571e643ce4e07f0ab48fe88158bf338b802defd",
+  "nonfrontal_metric_shards/sub-032322-000-blink-snr-5.csv.gz": "3229f76ae34319930a555116e4d5f2ba8cc0f9db1c628193faafb1b327219104",
+  "nonfrontal_metric_shards/sub-032341-000-lateral-snr+0.csv.gz": "2d0f1bd12f8031377a66cda34d91451b96daf5e150f949590068e10b31fb0ec5",
+  "nonfrontal_metric_shards/sub-032317-000-blink-snr+0.csv.gz": "c32820170a2ecd772dd6a9058110f6bf2ff7f474a5ad5ff15e3e3ca807919bb6",
+  "nonfrontal_metric_shards/sub-032327-000-lateral-snr+5.csv.gz": "714e3f4e25115a47e2f289cb73a1c8b6780f2cc9c97b070f128d191d25e4facd",
+  "nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz": "9f7386de7df0458fe809ccf06a8f457f8ee0e3a79dc744cbc67ebd9dd34fe08b",
+  "nonfrontal_metric_shards/sub-032341-000-mixed-snr+0.csv.gz": "993c6e1e63134495e72a618c0665fc195523fc320ee6f32548814e5e80e0a437",
+  "nonfrontal_metric_shards/sub-032341-000-mixed-snr+5.csv.gz": "865fc7c2e2726d87b4f74e2357a175cc72e9b664139e2efa702b1e7af2346c10",
+  "nonfrontal_metric_shards/sub-032336-000-blink-snr+0.csv.gz": "0d06ddcd3b08b7377b145ac5a6d1ca891092ef7823085ea85e118a674a987333",
+  "nonfrontal_metric_shards/sub-032313-000-blink-snr+5.csv.gz": "fb07289b1c4e67502f29ade68e65b71c2c532e6b84a830770e33f2cf63c98913",
+  "nonfrontal_metric_shards/sub-032313-000-clean-clean.csv.gz": "5a800c350e283d39a8ceddb0d35c410d8e1a546305f27b773d62c3f9e3f0965f",
+  "nonfrontal_metric_shards/sub-032321-000-clean-clean.csv.gz": "c7c50ff1d5c1e6d6da3912d65a40bf2dbf61960d6e10ddef5cfa67f97abbdf25",
+  "nonfrontal_metric_shards/sub-032330-000-lateral-snr-5.csv.gz": "713880602e2e8a8afd81298203201893c6f63df840031b9ee75489a5fbda23fc",
+  "nonfrontal_metric_shards/sub-032339-000-mixed-snr-5.csv.gz": "c7991e326bcae9ba3c090435937eb21eee9fde5566ee05c83cc0fc341acf2abf",
+  "nonfrontal_metric_shards/sub-032310-000-mixed-snr+5.csv.gz": "8f9de24035b7c8ed83d117949361b036936b4888f58e07ef0894692e92668872",
+  "nonfrontal_metric_shards/sub-032331-000-blink-snr-5.csv.gz": "3a637e4b6f9ebaa1397b4f8a5af4fcca2c7782ea2f76b4b79de6233026bc2d3c",
+  "nonfrontal_metric_shards/sub-032326-000-lateral-snr+5.csv.gz": "e9afe70bf0e77eddcaefe1d1cf696f2be55cf2a208a49ca8b04a6e65f7b77f39",
+  "nonfrontal_metric_shards/sub-032313-000-lateral-snr-5.csv.gz": "85687e445ee7f5a0fee4386e8d3a69028901bbfd576c183d663087776e322557",
+  "nonfrontal_metric_shards/sub-032320-000-blink-snr-5.csv.gz": "03d4e1f5c5e1a5ffa8b85f4c350e063267204f9546aac69a46134936e80b0ce8",
+  "nonfrontal_metric_shards/sub-032320-000-lateral-snr-5.csv.gz": "e38a706164e6cd66965af746057ea7a1d05af04af15358cf954990cc4361fee7",
+  "nonfrontal_metric_shards/sub-032320-000-mixed-snr-5.csv.gz": "c94f384b86792f748277a5baa94cca54e9780c035582ed00c7d0494ed64dfb9d",
+  "nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz": "6a8e2d18107b5f05ea4eca63d070d06c703f18049f0a5e69dfbbc454dd28990f",
+  "nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz": "32e8dc5da002eb0defbd61d978b731ad4f5ebb30b1693c4d69c9496929b91dca",
+  "nonfrontal_metric_shards/sub-032316-000-lateral-snr+5.csv.gz": "313912aa90a1aaab2586e34d60b0da957404dd9d449ceaa3a187f1df15e28568",
+  "nonfrontal_metric_shards/sub-032328-000-mixed-snr+0.csv.gz": "a5cf5050812b5189e896b9dbc519fb199d22776a4a6851d33d5b1fb960116e40",
+  "nonfrontal_metric_shards/sub-032313-000-lateral-snr+0.csv.gz": "8be28fa43fa8254366aaafb927d3d1188ee8344dbbb0af94a28b620fdf5d3d61",
+  "nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz": "629db051d328a2d2e8b5792514d7f06d1f5fc2f8d300effadeebda1b13c4c43d",
+  "nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz": "07846ad09a8dd559fa9605254bb1541b98c6f44bee6db4f67cd7fb0ca92d4353",
+  "nonfrontal_metric_shards/sub-032340-000-mixed-snr+0.csv.gz": "977713bb07055b0787016238580b6e25b3e548c9f8a04d92dedf5d641b99cd0f",
+  "nonfrontal_metric_shards/sub-032321-000-lateral-snr-5.csv.gz": "7b8eadacde8c8bece29b96ad511608d8114265729e87bc79120ae6ae26bd7113",
+  "nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz": "36bd4348b15c9282e90fecc4865ff782aa506a8b39c1c89b37d94d87f0000460",
+  "nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz": "724eefe29cb393e2f95a3ff259298ed8c2dbd0315eec95184785eb6b5822de3e",
+  "nonfrontal_metric_shards/sub-032321-000-blink-snr-5.csv.gz": "6fcafe2068f16ff4cd120aa00801e8857795e03440d6900fb12f5834d8e0752a",
+  "nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz": "fc46ba3011e9c742ef641f06c86ed7f53a717934fad7f00db15b3e76a79c889e",
+  "nonfrontal_metric_shards/sub-032309-000-mixed-snr-5.csv.gz": "e537ead10647ac53d1f567c77f6567bebcff8c0645ba6d50299b7a0355ca75f1",
+  "nonfrontal_metric_shards/sub-032326-000-lateral-snr-5.csv.gz": "d11c1542ad58474b247d351350647629c907c6e348e52a576ac96ace2d00321f",
+  "nonfrontal_metric_shards/sub-032334-000-mixed-snr-5.csv.gz": "e91eb5f392414c1b0b475e5edf60e81a2b3fe958be5e30ebf6dad3196c87866a",
+  "nonfrontal_metric_shards/sub-032318-000-mixed-snr-5.csv.gz": "c3f7f1a9e551718855e41d8ba2ddf6f3a7c13ac943fd1afb8718eb84fbd8d22a",
+  "nonfrontal_metric_shards/sub-032339-000-mixed-snr+5.csv.gz": "a02023921fddef2a5906869da32f82b2ab20259afda29d52a1f3b83d8eced490",
+  "nonfrontal_metric_shards/sub-032309-000-lateral-snr+5.csv.gz": "46f17bbc84ddfe2eaecc5e5d44c49df52d192d495ae9892a4375fd5d1f78778d",
+  "nonfrontal_metric_shards/sub-032323-000-blink-snr+5.csv.gz": "df4c5478e372ce2d91cda62cbbdff3760cec746fd7f52c8ce7e8f1c0509a00d5",
+  "nonfrontal_metric_shards/sub-032334-000-lateral-snr+0.csv.gz": "2e9eeb40b8cab233af3070d203432587a192f3e205031fdef6e8447fd166a960",
+  "nonfrontal_metric_shards/sub-032310-000-lateral-snr+5.csv.gz": "76692fd0bb0df4e5ac3f10dd2c1f8df3cdb3435b046a9d475839d73701048301",
+  "nonfrontal_metric_shards/sub-032321-000-lateral-snr+5.csv.gz": "b1aed489f31a6a004ce415f98d2729e36c60b839e446f9c2c6326bab9da8299d",
+  "nonfrontal_metric_shards/sub-032330-000-blink-snr+0.csv.gz": "e2e08ee01a04aa93f0d3d15a95f263c27ad82943214ee4ee6a5a499f24885773",
+  "nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz": "5f2cae1b9ef014c6b3881e87af7b9586891e2a49f31635ae289aa9fcc030fd49",
+  "nonfrontal_metric_shards/sub-032320-000-lateral-snr+5.csv.gz": "0bba7b892f13423cadf4a0cb4dd5a28e2eeac7c258387817b25448ca6de5d046",
+  "nonfrontal_metric_shards/sub-032339-000-lateral-snr+0.csv.gz": "1c5a25356b0692036c7e6e80e972d5a5da322a66e13962f08ff5a9a41c9aaafa",
+  "nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz": "4a10da364362d7cbe29ba38b11cde3033bd35472d956a2d3178cf044565f34ec",
+  "nonfrontal_metric_shards/sub-032325-000-lateral-snr-5.csv.gz": "108ff4d454b6a9bc26f28f3de63ab6380a15b845d27af16db17c25b3618fd5ed",
+  "nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz": "dad757d80b6e702f4b9ce61680d1b8fe4e58fb26562f3b3273f27f1b228db005",
+  "nonfrontal_metric_shards/sub-032325-000-clean-clean.csv.gz": "8d2ed99593c1a8e93eb8b3ca3af3e42d836b8854dd17468ff53782532b013dde",
+  "nonfrontal_metric_shards/sub-032339-000-blink-snr+0.csv.gz": "7037129b301a22eebddacf21ebc1de1fb4fbdd2d7a409bcaa051a1f026d6eee6",
+  "nonfrontal_metric_shards/sub-032319-000-clean-clean.csv.gz": "dda069b85e8d189e0350f068ea747b2c58648eb5e5a3c5017fbeae3e78d1144f",
+  "nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz": "16906a6581cf1d1955ff845b2f1cbe343ac8f36390e3297d52581963051397d4",
+  "nonfrontal_metric_shards/sub-032325-000-blink-snr+5.csv.gz": "2036ddfb3f2ffa190bca40f1eb23449e6f49b487160f852f0d19d64fd65d1a76",
+  "nonfrontal_metric_shards/sub-032316-000-lateral-snr+0.csv.gz": "2be138e397b823a84e951895682afcd8142df1d333b336fef862c44def02fcbc",
+  "nonfrontal_metric_shards/sub-032309-000-lateral-snr-5.csv.gz": "0991ff366e0688be2f779167e0106941e97baeb6f2486c46125a101eea067710",
+  "nonfrontal_metric_shards/sub-032313-000-lateral-snr+5.csv.gz": "79212cb6a18f447b691964507d84cbde0cc7fd71f22b343d509a6b215a1ac3c1",
+  "nonfrontal_metric_shards/sub-032326-000-blink-snr+0.csv.gz": "6379da034cee9056b48f9df5ee4c0de29575ddb14c45d3a01bfbcd73e2640932",
+  "nonfrontal_metric_shards/sub-032328-000-mixed-snr-5.csv.gz": "6c391a47a53a39a6016fd5dc66f0bca950cb09c2d73defcbd237d2d936dd6beb",
+  "nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz": "78985113921947dbd677ff86af95b1e56168d932bee22ff66284e92feaa6b64d",
+  "nonfrontal_metric_shards/sub-032341-000-blink-snr-5.csv.gz": "a55b0ea6461e836b8970ed8259da86d9bd1d3cdb275d726f59e8617637843703",
+  "nonfrontal_metric_shards/sub-032317-000-lateral-snr-5.csv.gz": "6b114f7f08c2399a34ce1c4769f7c00c43cb9a9e1bc8b15671e87b97080bc119",
+  "nonfrontal_metric_shards/sub-032319-000-lateral-snr+5.csv.gz": "7ec01394f99cc006546c1f2bb9e95b90594ab4a758937682a3f2934fdfac5009",
+  "nonfrontal_metric_shards/sub-032341-000-clean-clean.csv.gz": "81a95c5d2cc7e153c955410384cc277e3ebafdb0f550bb9f883db54184849a94",
+  "nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz": "e9097e2554bbab9b04fd6497a3a957fcb5dfe0f05b6cd2a789ec6c775b2bd6fd",
+  "nonfrontal_metric_shards/sub-032324-000-lateral-snr+5.csv.gz": "088c43780c1cfd81ed6b9fb44b6066b3a9b3795393435d7798854ccbe65c792a",
+  "nonfrontal_metric_shards/sub-032313-000-blink-snr-5.csv.gz": "d4a0d94f9902c75486be906ed216df4d4dc447e64a36cdfed4fa87726719a8d6",
+  "nonfrontal_metric_shards/sub-032338-000-mixed-snr+0.csv.gz": "273acfdb93ee5f97f8f6a1feea891e87dcebd72d6c9e24fec1c34842f9caf7a4",
+  "nonfrontal_metric_shards/sub-032339-000-blink-snr-5.csv.gz": "3a4b06cf79aa523ae0b1506176ac5f73f88661bce10eda21d9f0967076156375",
+  "nonfrontal_metric_shards/sub-032328-000-lateral-snr+0.csv.gz": "29abd8b68df6bc820ce98c7d6d9e0ff85d5d120d4991a2b76f82e0d7bc638919",
+  "nonfrontal_metric_shards/sub-032323-000-mixed-snr+0.csv.gz": "6ee87719c77c8c7ff6b6f2b4a1174c2360812a674a8650601c973a28a510c033",
+  "nonfrontal_metric_shards/sub-032339-000-clean-clean.csv.gz": "ef57570d61672a38a451adcecee55c878d1e91ea69fc425ebaadbce40713e2ca",
+  "nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz": "48a33acc819e580ce5bb5ab215352adc441e2bd6acdb503a6f33b402f925bc69",
+  "nonfrontal_metric_shards/sub-032329-000-lateral-snr-5.csv.gz": "51a2df82022ccf3c55e6e6de6adcb63d158fa762e26043b775e4b6d5043bde96",
+  "nonfrontal_metric_shards/sub-032331-000-lateral-snr-5.csv.gz": "afd4aa7a7dd887af3d8aa44fdefafc23f2588f921b14a60faa1a7745c3d53b0e",
+  "nonfrontal_metric_shards/sub-032325-000-lateral-snr+0.csv.gz": "1f19d21e0878909d121ce57dbbb56e8c5fc067eed1478a95ea56737779764b33",
+  "nonfrontal_metric_shards/sub-032319-000-mixed-snr-5.csv.gz": "9fe4b052781da767b1d0b19dbd387246f3894dab5cadcd58548a309795fc7ed3",
+  "nonfrontal_metric_shards/sub-032319-000-lateral-snr+0.csv.gz": "f4455bcfe6522211ff479537a6e83d83d172e3513aeb518ac1275147fd272052",
+  "nonfrontal_metric_shards/sub-032326-000-mixed-snr-5.csv.gz": "712f10575409ca382a84efd7e157a2d95d5f41cd44f3c206e5afdc12d9266c0d",
+  "nonfrontal_metric_shards/sub-032329-000-blink-snr+0.csv.gz": "5ad1ebee9ecc35f824720675b8683b410e889c039a4e0afa7b409b15dda075f5",
+  "nonfrontal_metric_shards/sub-032338-000-clean-clean.csv.gz": "6c55f42f3f1b20f71c0480c3eb6eaae3ab356b2166322dfa50cca0cca0d53173",
+  "nonfrontal_metric_shards/sub-032326-000-mixed-snr+0.csv.gz": "0069d69f5f11f8a6f549b8ec2d19f42808f6a1976eac7ee3f3d40672876ff914",
+  "nonfrontal_metric_shards/sub-032312-000-lateral-snr+5.csv.gz": "3fe0a96781a1a1367ac9846e238366fb6a0e5da85c8343f18aeafbc903f781b5",
+  "nonfrontal_metric_shards/sub-032323-000-blink-snr-5.csv.gz": "be2fc7d250f4392f941525a1b59c5d86babb9d7da3195a37d9ed0b1e25b9bb6b",
+  "nonfrontal_metric_shards/sub-032309-000-lateral-snr+0.csv.gz": "e181ad395decc2adcb22f83c0ef1ab567982ff714840f2d2fe87ba43d61beea1",
+  "nonfrontal_metric_shards/sub-032315-000-clean-clean.csv.gz": "9309e88e538d7109d7b69d353b8eade316fff19116fbf66c232c3edd706c8990",
+  "nonfrontal_metric_shards/sub-032338-000-blink-snr-5.csv.gz": "b8bf9e012f50bf3c0fe644a501321dc7ce0b4d41c8f90979bb414cc0d2115de0",
+  "nonfrontal_metric_shards/sub-032321-000-mixed-snr-5.csv.gz": "d7f62d130b4427cfa7c37f6079fa47791ece107eb790ff8639b8d03c451cb45e",
+  "nonfrontal_metric_shards/sub-032340-000-mixed-snr-5.csv.gz": "f6af9c13a328727b9c6fe24afb37729e1b3313d38a52ef01a76e1df1de230a70",
+  "nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz": "8cb04b91a8b213d4988e431e49797d68e84187ad3e2785b484db04241647d680",
+  "nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz": "837f214da529ceed8782f4bb738fd89a3750b1bb3f76dc6df87e0b0a2d8428e9",
+  "nonfrontal_metric_shards/sub-032340-000-blink-snr-5.csv.gz": "4dc90f9165ec8ac34247c1dfffa18cbd37a052b1bbd8257f02231c08b432e05c",
+  "nonfrontal_metric_shards/sub-032330-000-clean-clean.csv.gz": "e3fbcb3599923d8a56743ca4f46cc1fd122274a5c45b7a1fb3a5c071b5786b00",
+  "nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz": "062eb1ae826430577f7a396588c687a22a2a43c7f6ee3aed47b8d7fa38c74a60",
+  "nonfrontal_metric_shards/sub-032328-000-clean-clean.csv.gz": "e379f12d38435cd0e249b8a23c78a5f8f779c09212027ffddcbcdf4c882423c6",
+  "nonfrontal_metric_shards/sub-032336-000-mixed-snr+0.csv.gz": "8d5656b7f5ae2123efc0c6f247f1ff2fa0cd1f708b12c6c17eab9427cecbcdd2",
+  "nonfrontal_metric_shards/sub-032312-000-blink-snr+0.csv.gz": "864f94aa34a00f3e5860cb1b8a809349a245b865ae48465aa91ee938d4529c10",
+  "nonfrontal_metric_shards/sub-032323-000-clean-clean.csv.gz": "1d293a6dcbaa61098789eb267d87605c54aaddaeec1787bc22807d49d609cffa",
+  "nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz": "de5f311ae463eb7a495fa8efb85a12fda15d27ecf76664c20a3be3eb99940ff1",
+  "nonfrontal_metric_shards/sub-032310-000-lateral-snr-5.csv.gz": "67de7ca67bf229c85b88bece5f0cdc6b0c44bdc32c4d9faaec427a74b923a75c",
+  "nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz": "b1360ac09880ff77ecaf0dc49e36762d08eef4340c434dd70bef192c57dfaef9",
+  "nonfrontal_metric_shards/sub-032325-000-blink-snr-5.csv.gz": "0742dc5d1070afb21d69e14b64d9a6be898ecd7994ef0a0a8a5fef3980f0ad43",
+  "nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz": "fbe66beca196952f6f6131a18bc2bbb427b2f377c1abca8d455859012bd9db12",
+  "nonfrontal_metric_shards/sub-032331-000-clean-clean.csv.gz": "f90842efe54b94d379bd2582f117fae4b9d1cab58c58db8f19b0915914b00e3e",
+  "nonfrontal_metric_shards/sub-032326-000-blink-snr+5.csv.gz": "bc9eae615a9429ba76bfec9381a2bbad7e75e10ec26304e5005ad3d0908e6c73",
+  "nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz": "9b1618d21883dcc282702c229a18813f8854af73cf6d2427c1b0bb97b8cb34f2",
+  "nonfrontal_metric_shards/sub-032329-000-blink-snr+5.csv.gz": "5412f806ad2af8b3cf2d1792bcd5ee1580b91be4e7cd259b36367a4f101e397b",
+  "nonfrontal_metric_shards/sub-032315-000-blink-snr+5.csv.gz": "3f6e7d1a79a7dd336084bf52850d3df82bbf190cbc5e285197264f28e4b2a3e2",
+  "nonfrontal_metric_shards/sub-032340-000-clean-clean.csv.gz": "8c1f3e302a95ec295affcf99007dc1cdbfc7adf45d0821cceb6c19b0b6c70bb4",
+  "nonfrontal_metric_shards/sub-032316-000-lateral-snr-5.csv.gz": "ac493a8d980f1250588454c3c5edec11d13b76e2dba6949fd3ad862a43c1654f",
+  "nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz": "444743e1b9a7d827ef9fe6c66e29a904d9a886ffd299534a3b77e15500697555",
+  "nonfrontal_metric_shards/sub-032326-000-clean-clean.csv.gz": "b6142bafaa5864ebbfd6968343735cb4bc6f6a44233131ac6c1ed528fc766980",
+  "nonfrontal_metric_shards/sub-032334-000-blink-snr+5.csv.gz": "c760436aba7d1f0088cdcbc86dd28c87045da0b41c4ddfe4daf8a8d535ed575d",
+  "nonfrontal_metric_shards/sub-032338-000-lateral-snr+0.csv.gz": "b1b1bee64eb1b3623a319f6188501d2dfc856c1ba49e91ba42b6aa9e7e999d25",
+  "nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz": "1d1e1b968b7c40e2856763ca1724c981fe5d77acc4e583f292c0aa62c759e85f",
+  "nonfrontal_metric_shards/sub-032341-000-lateral-snr-5.csv.gz": "1a6c9981c72af8bd87fc000096e5c8d09e479791ef823488ded6b809228e2cc1",
+  "nonfrontal_metric_shards/sub-032338-000-mixed-snr+5.csv.gz": "51f953953fb4052f2ca608031e56e8507eeb46a4edf2fe8022a1e2e82ce86c03",
+  "nonfrontal_metric_shards/sub-032341-000-blink-snr+0.csv.gz": "223a63a483c7b4db40224dff014fcce84dda7553d4f43f5697a7901e465db387",
+  "nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz": "5cdf135e466434122fa850f808bfe7508d8ca82294c7ce2bfc567f8bb7897d11",
+  "nonfrontal_metric_shards/sub-032324-000-blink-snr+5.csv.gz": "4405c2e1337804e2454c393afc52fd8b413d8193c246082c4aab8492267ec661",
+  "nonfrontal_metric_shards/sub-032325-000-mixed-snr-5.csv.gz": "cd25d7b9204d2be673839e4a9bfbd93c45b988653c85df338905279ac0613fe8",
+  "nonfrontal_metric_shards/sub-032328-000-blink-snr+0.csv.gz": "ba5037c5cd581c7f22f5dead97bc917c93767848f8ac0f6f7b5f5a7126aa11c5",
+  "nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz": "0566a1d9ed3a25e1d8b98d00e1f1e08558c4c94b7a03be97051d3de3746eb398",
+  "nonfrontal_metric_shards/sub-032336-000-mixed-snr-5.csv.gz": "9dd6f5c3a02597f23e3ce2b998145f398b202004ba0307d75661f9433c6dbf6a",
+  "nonfrontal_metric_shards/sub-032340-000-lateral-snr+5.csv.gz": "4961752367946f63b2e85c21999794a843416cfc42eb3af7d403909e669b4c5a",
+  "nonfrontal_metric_shards/sub-032312-000-lateral-snr-5.csv.gz": "bcc0570997ada84c2acd0954650458236ad751bed9676d4f476dfabcfb9ced8e",
+  "nonfrontal_metric_shards/sub-032319-000-mixed-snr+0.csv.gz": "745f4d4f78afac917b22cd18b79a341b75fc2b0ecfcf393aedfa6582682be44f",
+  "nonfrontal_metric_shards/sub-032315-000-lateral-snr+0.csv.gz": "f2c3e92a13545b80f367ed4b5abe65fa3091c287725f5438517c5738307ed6c8",
+  "nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz": "03ca61e4920e6b9fe2351644fd7405998153ef14fa52b0abb788ce12156e80ef",
+  "nonfrontal_metric_shards/sub-032310-000-mixed-snr-5.csv.gz": "939d036f3638b59acb34861af3572150911017024cce9d3c6cef5b935cae8517",
+  "nonfrontal_metric_shards/sub-032325-000-lateral-snr+5.csv.gz": "675f6a2cda02fc6b0f10a1b801ece5bbe16f00c90fecfb132d3ff190f5b1688a",
+  "nonfrontal_metric_shards/sub-032324-000-mixed-snr+5.csv.gz": "ea706f24ea8a7c404d16365485877128259fe887963db0ec89eac893014050e5",
+  "nonfrontal_metric_shards/sub-032328-000-lateral-snr+5.csv.gz": "d449c40d8ab1a41f62c0b87ea88ddd747d6fa76f89f3ed28925a6981984cfa7d",
+  "nonfrontal_metric_shards/sub-032322-000-mixed-snr-5.csv.gz": "9bdeadff2da618ef6a6fdf407233558aaaf4a7d9b51e18a3abe6e4aaeb00f459",
+  "nonfrontal_metric_shards/sub-032334-000-blink-snr-5.csv.gz": "2ef5231c2757e97b4f5e3d37ec31ad4c6e4eeeeda04345f27d3b29a86f7baa1a",
+  "nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz": "1ba81d8323cef12f518dd16cd33ac20fdeceeeee4aab8336e4ec303a29684bbb",
+  "nonfrontal_metric_shards/sub-032340-000-lateral-snr+0.csv.gz": "220c096f90ff246a318143abb67a2ec006162fc8c927348935141dd257304a28",
+  "nonfrontal_metric_shards/sub-032315-000-mixed-snr+0.csv.gz": "1d1141f52e790398928f8986390700ded135d01d76097d34230125df33a9003a",
+  "nonfrontal_metric_shards/sub-032323-000-mixed-snr+5.csv.gz": "f7ba0f1654df0054f7f4ff0616a11ecc5bd01407075ca23fa37bc102d29a0863",
+  "nonfrontal_metric_shards/sub-032322-000-mixed-snr+5.csv.gz": "121bb86c192a90906981fd39885de529cf9e80fbdc1ac8fb458faab458e4d7a1",
+  "nonfrontal_metric_shards/sub-032318-000-mixed-snr+5.csv.gz": "76ca1f9103d7bea6c433e9e58ce2e25ecbf8d04711e3dac8df8ab0365603d700",
+  "nonfrontal_metric_shards/sub-032319-000-blink-snr+5.csv.gz": "919b7139a7ee69864137ae174286908be80e45528c2a0ac4cbe29d8f5b65e2c2",
+  "nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz": "d40ca7bb3f85d185b265e10fce83c3caa50ac9b4b5fd4ecf71876c60d45df14b",
+  "nonfrontal_metric_shards/sub-032318-000-lateral-snr-5.csv.gz": "dc66f57a64d519637bca88752b5d62073d51ecb7196ff0917dc6abfd08b72a35",
+  "nonfrontal_metric_shards/sub-032339-000-mixed-snr+0.csv.gz": "9ef38ef78a096a20bceeaf37b80bb6276659a4ab0ae1c40f0b504daa913a9305",
+  "nonfrontal_metric_shards/sub-032320-000-clean-clean.csv.gz": "3b5c0259241a8ba31803153ea31aeea9c1081f5468f351fd8fcd8b279809c0b0",
+  "nonfrontal_metric_shards/sub-032323-000-blink-snr+0.csv.gz": "a3b303e83852e28929b47b990f7279c72eb8a89bb978ae0339438560af2a3a7b",
+  "nonfrontal_metric_shards/sub-032317-000-blink-snr+5.csv.gz": "ea17727c8efb833ce9d4cbcbcfe5450295203d0ff4888d826d7fa881c665dbe3",
+  "nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz": "fff61bf71d2bd511f3235f7b00095f4656d3dbbc0f70bd8d9e7246a32f7b3f0a",
+  "nonfrontal_metric_shards/sub-032315-000-mixed-snr+5.csv.gz": "32c696d2f5ec4db0e190e64caa497ebccecc5cff20a5817fa361978d98036a14",
+  "nonfrontal_metric_shards/sub-032322-000-lateral-snr-5.csv.gz": "a8c4b848656828fd8ba785e60b064a996934cf29e51551743f125b1c7a76a848",
+  "nonfrontal_metric_shards/sub-032310-000-blink-snr+0.csv.gz": "69ae0491c23d8141bde227dc7c9ade877837b166ef6af0d41b301b917daa3975",
+  "nonfrontal_metric_shards/sub-032312-000-mixed-snr+0.csv.gz": "4b6dbbd61f6602b70a4611ec5c54176e714ac1191984d960cad0d6aba59b9f10",
+  "nonfrontal_metric_shards/sub-032334-000-lateral-snr+5.csv.gz": "ae1bff6bd782485752c34dbeded7ed50b45152238ffcd6766dbeda9fa13853b5",
+  "nonfrontal_metric_shards/sub-032327-000-mixed-snr+5.csv.gz": "3b2bbb0ff5e44d470915ec4db16c0cac8018c66a03b2c27df7f9bdb4bb006dee",
+  "nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz": "9acaab559a58f546d8b0ee35f7d2b168dd5c07c572ac91e5ea6a80aba2b02b9e",
+  "nonfrontal_metric_shards/sub-032322-000-blink-snr+5.csv.gz": "71526da0c09e826e4c4c31af6de71a16714da146b26b68c0f79837def68fbde5",
+  "nonfrontal_metric_shards/sub-032329-000-blink-snr-5.csv.gz": "6b7608158e26cf58d9534a626456c29fbc2f0d41483f9cf331a9776bdfb17e08",
+  "nonfrontal_metric_shards/sub-032313-000-mixed-snr-5.csv.gz": "3ca9097720768eedcc5def6cc17ff57244da78a706e067bfe5a4c85e46b680c5",
+  "nonfrontal_metric_shards/sub-032340-000-blink-snr+0.csv.gz": "f4675c48bd68e8e290468e4f45f1f49d73678786e6be277c6150cb88352f4151",
+  "nonfrontal_metric_shards/sub-032316-000-mixed-snr+0.csv.gz": "09196dceb6b2bd396de1a60dff064decbbaff1beaed95f1cff1e6df7cf02b4a4",
+  "nonfrontal_metric_shards/sub-032321-000-blink-snr+5.csv.gz": "2c5fb7247e3bbdcf4ef0a6c2450c6a1dbbfc4adf8be7c1412f6a2a942ba1fdfe",
+  "nonfrontal_metric_shards/sub-032341-000-blink-snr+5.csv.gz": "1cdf4e57004a9620e73292d7218276ba53d10530fbb6d4d34adaa380b126adb6",
+  "nonfrontal_metric_shards/sub-032329-000-mixed-snr+0.csv.gz": "a67570bc64902b5ea803b6e1b4572ce90ddad6062e8d6fd9cb1d3c8053fd235e",
+  "nonfrontal_metric_shards/sub-032317-000-mixed-snr+0.csv.gz": "88834f129732978834b52fd33cceed40d474adf28a73226636aff41a3e48a070",
+  "nonfrontal_metric_shards/sub-032312-000-mixed-snr+5.csv.gz": "452914016a319962a5fe30f1b2a5609e9487c8317ba496e0614cf051b076b6d4",
+  "nonfrontal_metric_shards/sub-032319-000-mixed-snr+5.csv.gz": "5f7e6b43c5faf033a3a013576373d1de860741cc0f707371f36dea74e730915e",
+  "nonfrontal_metric_shards/sub-032327-000-blink-snr+5.csv.gz": "7fec661ff1ce1433b1b7aab6924576ef64c65264a4338061d3ee3d5b6c061826",
+  "nonfrontal_metric_shards/sub-032319-000-lateral-snr-5.csv.gz": "2ea8c4d8987504a45c5201f95a940eb82d47f7a9eb05bff4b5a07ebfbfd06eff",
+  "nonfrontal_metric_shards/sub-032323-000-lateral-snr+5.csv.gz": "cc186ef99f178203c994a900a2a0d44538f3eb984a1b55b94bdc0b121c124ce0",
+  "nonfrontal_metric_shards/sub-032324-000-blink-snr-5.csv.gz": "30a102c128b9d07ecde5d0d8b19c060f7a9f70ed5d7c3bcf22ea83b617298ad6",
+  "nonfrontal_metric_shards/sub-032338-000-lateral-snr+5.csv.gz": "8617a8ac49ff1f0081e020e87adafc03b20843f071cafaafc794ea0ee7962657",
+  "nonfrontal_metric_shards/sub-032319-000-blink-snr+0.csv.gz": "dee1b73dbd9a45c533556d5850bfd8507d2fca2b875509d2f3bb26f75428717e",
+  "nonfrontal_metric_shards/sub-032330-000-blink-snr+5.csv.gz": "94b34fa02a02ff0f44f4133d7efa8537cfed21bd1e52c707e7e029a0db3f5483",
+  "nonfrontal_metric_shards/sub-032336-000-lateral-snr+0.csv.gz": "694863863c2e09d00477c0222cfadde66d37c50e72e992b1dafb54c1a83db451",
+  "nonfrontal_metric_shards/sub-032329-000-mixed-snr-5.csv.gz": "5758398e79bf65b35b066b55590c30b02e6cd08cf9ef65348f0db4bc7279e9de",
+  "nonfrontal_metric_shards/sub-032315-000-blink-snr-5.csv.gz": "24e2bcdab5a3d88fba28555349426dfe0352ad4b95e0c5c05fa228393080681a",
+  "nonfrontal_metric_shards/sub-032330-000-lateral-snr+5.csv.gz": "9fbecbfa53fb942bb0760e6a8d3922aabe602890a67c97242b130653571c08e7",
+  "nonfrontal_metric_shards/sub-032331-000-mixed-snr-5.csv.gz": "bc3fbafccee694df8b0a8a63b398bc9adb50161667dc17a17c7f89470c8b53af",
+  "nonfrontal_metric_shards/sub-032327-000-clean-clean.csv.gz": "9f81792ef23a84f7d54dc7d0d5b903bf9c7ee7e92a782e3323e87d364df31eb2",
+  "nonfrontal_metric_shards/sub-032318-000-clean-clean.csv.gz": "006d2d92d34b50c1ed5c516398597d1372940ad0573094957b639692c4c7c139",
+  "nonfrontal_metric_shards/sub-032322-000-blink-snr+0.csv.gz": "996aeb010a6a04fdd1c4a80f1612ab9e7ae83b5d106620c0c8634eb9f30fd391",
+  "nonfrontal_metric_shards/sub-032310-000-lateral-snr+0.csv.gz": "52d4a472454bebc30c0d01e5cc3be17ddeaa6e01d35ab8fe1b50a6ae74435c39",
+  "nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz": "d93591173c368c39f749fe1bcba754e62041b93901f3ccbcd486b4e13307b85a",
+  "nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz": "a9dee79a1a3e01fcf4cf58cb464643ea81b8355460d0924f8ad007c7761bff0f",
+  "nonfrontal_metric_shards/sub-032336-000-clean-clean.csv.gz": "a82e32d389f5ef01f9a1606ca8ccbda9ab380bc8134124ca47398cc5ea32aaf2",
+  "nonfrontal_metric_shards/sub-032330-000-blink-snr-5.csv.gz": "71c5ac3d3e88199dbcdcba5c9c25b571c76d46d73426ec0d1250b8d96ab77480",
+  "nonfrontal_metric_shards/sub-032324-000-mixed-snr-5.csv.gz": "4a15fcf824cfa3161958ad5f88ef3c4afc2b94acbadb331d431fa5cb7e3c35c5",
+  "nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz": "88ee236f72a3b48d084b702a6bf319b2e490748f26665e3ab89a9516b5b2195c",
+  "nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz": "db20cb67a3bc09aac72bbbeced1e82400b173896e2c1918d06ee478f8c96f975",
+  "nonfrontal_metric_shards/sub-032320-000-mixed-snr+5.csv.gz": "74a10dfa59290f17ef6e7c5a16bd2505d7b6ef608394cf4485f46a4d3bdb3526",
+  "nonfrontal_metric_shards/sub-032330-000-mixed-snr+5.csv.gz": "e90077fe4b784312855ef2a46b0e070f913f6391a5b6f1c379c3cc0fabecd11e",
+  "nonfrontal_metric_shards/sub-032320-000-blink-snr+5.csv.gz": "1b6c5e11e4adf8c273e5db8084336ba128629962109e7ba285c2d55d8a7888ed",
+  "nonfrontal_metric_shards/sub-032324-000-mixed-snr+0.csv.gz": "65c6f229e000ad9782d5baa720998e4e46e210f09eff399cddbf3c52fdca8e7e",
+  "nonfrontal_metric_shards/sub-032325-000-mixed-snr+0.csv.gz": "5da849552502d4361ed89a56538a4879fd0afad8f878abb95d80bb72af628162",
+  "nonfrontal_metric_shards/sub-032323-000-lateral-snr-5.csv.gz": "8f7236de5b8b613febe8673d976fb234b816ca92b1d55718e8f51baabaaacb72",
+  "nonfrontal_metric_shards/sub-032340-000-blink-snr+5.csv.gz": "41261c4fddd198e995de79c0a95432f2932b672980c632cd0c58fc6dda7b0304",
+  "nonfrontal_metric_shards/sub-032325-000-blink-snr+0.csv.gz": "5f49bf2bf11d6c5a6fcc6379db7616ab4b98d9291e4e49b1300aa6de1097ee15",
+  "nonfrontal_metric_shards/sub-032327-000-lateral-snr-5.csv.gz": "b7fcd1d8c38818558da1f2f8eed5d2b949d8f6edff3970f7fbb75cfb50969eb0",
+  "nonfrontal_metric_shards/sub-032309-000-blink-snr+0.csv.gz": "8a7da1ee8fd2acae84104349e8519ba9a2a2fc9dde3392d549a662b27a7ea3ef",
+  "nonfrontal_metric_shards/sub-032339-000-lateral-snr-5.csv.gz": "57f71b8c7902e8b334249e86180809999b3137b75bf541b107e954a5899ff9ec",
+  "nonfrontal_metric_shards/sub-032317-000-lateral-snr+5.csv.gz": "aa11c99a289ed499eef4d7a91998be83106409ffec00820e624a6c8d9843c86e",
+  "nonfrontal_metric_shards/sub-032322-000-clean-clean.csv.gz": "a57ea5bd84732dfe0374d22b99b5055718ea5076b3c3e92f0224bbcccc9dd448",
+  "nonfrontal_metric_shards/sub-032334-000-blink-snr+0.csv.gz": "34baf517ec6ed8e66aa92d34fa8f41bd71f0c073e74cbb2ade9b3d4de1aef2f6",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr-5.npz": "d0224efce20ba2d940e5403fc2764ca5fd3e14c91e05e97e9687d000bcb6c553",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr-5.npz": "43ad34d2a12cf28f5516efe89a3e3ef0c26786362f6c5e4b30b4165ac61ab6f1",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr-5.npz": "8e3175d4444e36cc58935dff18643398934b8b6cbf64814a02f46f2227d9fc7c",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr-5.npz": "39ba752ca04ea62feb7d3f509a283dddeb22c167741189efe4984a63847d0760",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr-5.npz": "24e535856a455722414d8ad8d3cca08a3096026171030bc4cbd9c5a217684e0d",
+  "nonfrontal_predictions/sub-032306-000-clean-clean.npz": "d46084d9e030ae92f264a03586f0ec121b4c61ac4a1dcbac777cd0f56d0dacef",
+  "nonfrontal_predictions/sub-032323-000-blink-snr-5.npz": "0cf8f41aafe3fd7050093c56981108d4bf599359bc434ae11970ee6b7e3ca9a7",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr+5.json": "d8afbd6355c74a978d5f78c06fdf3c64bc17ca4fd41329747d2a26020b490352",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr+5.npz": "5fc868e83f351d9f985fbf8d7430993d5129c862bf7febb2f6b2e4a6b9c291fa",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+5.npz": "0264f63795f6437b58ed9eef8a89d96281f22803c29331dfee95b809d4a2ab5b",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+0.json": "9764d81c3ca381b092a1097c8cd909100fe12b8be75170a68166665cda8cdfd2",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr-5.npz": "2810594b230b82948fd7fe872a209eafd941963fa113d0457fc798573a73ad67",
+  "nonfrontal_predictions/sub-032330-000-blink-snr-5.npz": "31bcbf95e45bd28d8e87e2a068560be3ab2abcb20d78edf87ef20edc06dccfae",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr+0.npz": "94edfa9f9e39fe89cb045aba690ad214ee13bb6c91804d0ac57afdef799db718",
+  "nonfrontal_predictions/sub-032320-000-blink-snr+5.json": "d5a0cfed393f19cca2c275893ea0cf0aae6aa63d63653b7d4bf4719ccd5a228c",
+  "nonfrontal_predictions/sub-032315-000-clean-clean.json": "38f79dd2d0a46575990f00d20b6c767eba2f2e9fa8375bdb7cc8b16a64825527",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr-5.json": "ec86261cb3f5b7fa59dec4e6efbaad33dff4c3bfa03b222e6221ce15e539b51b",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr-5.npz": "32d42b611d621921449fda3950ef1fcdfa6666f0ff7cff94636a8b8a5e3844d4",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr+0.npz": "55ae7b754f500e08e8c8c565b59780727b146e823f6a8ddf7e9c6a30519cf5c4",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr+0.json": "732ec5971fb402b28bf8a4bbade1553bb75fa55bc3a1a43ec3515dcb28fe0345",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr-5.json": "65347986a6a00543d2b3ce79a951029a178f24ca1469d2e324f28519824b9316",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr-5.npz": "0b69620945db8fa9e58e6bf842df9ecd960a0cdc8a853fcdb254e3740188ad73",
+  "nonfrontal_predictions/sub-032328-000-blink-snr+5.npz": "d4ac1d97c2dd92bbdc36507596f6121417d7e9373a07747aff161ca787b2e04d",
+  "nonfrontal_predictions/sub-032316-000-clean-clean.json": "fdcddf5b87f0d0c63df7d27e3fbd0f1f4f11f9bc81b96abf7330f5f111ea38fa",
+  "nonfrontal_predictions/sub-032330-000-clean-clean.npz": "9e20d89466279147c8e2af0daa1f59861a0643aeefc12837b8a5a2e39c909af1",
+  "nonfrontal_predictions/sub-032326-000-blink-snr+5.json": "9f7e2e66233a94295a773487424fd63a50c70b489c20a27b4c0e403e7d810ffe",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr+5.npz": "af7db8fc59c7ab1beec98435342cc007a56fa049614567816921497853a449c2",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr-5.json": "0ba0d29d5dc6b04c5e1e0d84cd3adeda741759217adc05c1c4f67d901b597750",
+  "nonfrontal_predictions/sub-032320-000-clean-clean.npz": "69ce45fb280f5dc68b22f3f5e452d3cc9203e1a7d241408d10b6502ad00ac63e",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+0.npz": "0372c209d44f8854e93a08010e19b7b8225e9cb25416472d53247693b45caff1",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr-5.json": "0ad4b25cf770bd7b28fccf84d53d3a9f42b58841204126455b274143703144dd",
+  "nonfrontal_predictions/sub-032324-000-clean-clean.npz": "bff98fe60109fc3de71fdc60c59b6e5950c921567a8dedd668232885e3659c93",
+  "nonfrontal_predictions/sub-032338-000-blink-snr+0.json": "8f8471eaedbd20602dfb119ef70458985170cce14fcb56630a6734958d9b0a14",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr+0.npz": "bbc3ac76427bb51f09a026fe713e36f24aa400aa00a154b64c19257cb070226b",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr+0.npz": "e977485854c3852092de29923bcfaf0178620d88fa59d1ee9fdb87ce94fd9022",
+  "nonfrontal_predictions/sub-032341-000-clean-clean.json": "3e0a55aaaa23d60e778d6975f418a068601cad2a912a6bb8a976bb0571691867",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+5.npz": "55d14fc910e89ad9c3207e44145d913a11a1c2024a6612a7bbd7a6875df55fec",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr-5.npz": "ad91bae322a914023243055262ea9004344b4a4fbe99c39c756703028ad9f960",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr-5.npz": "8ed7bcdceaaba6cac02b81ba5db2ce2500fea603cec0405de0e60f94ff6919b9",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr+0.npz": "baa9c4d78fc89ce7cb391524e5bbf17650c250736a8292e3c71f3812f8059e53",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr+5.npz": "c8c1b7c0581bf6fbabb161d29bdac0a8472effdfaac3b0a427d413b149057737",
+  "nonfrontal_predictions/sub-032323-000-clean-clean.npz": "d210bc99cbe245171e039b7358843c0011f832f236a2684fc443e793d4d50ec0",
+  "nonfrontal_predictions/sub-032338-000-blink-snr+0.npz": "bb4d76a4a4f8dff89c8800fa6953616e45827a94f01aabb185fec090b61f4385",
+  "nonfrontal_predictions/sub-032309-000-blink-snr-5.npz": "63d06956e4bf75e0ac9c21d049e84654c9797fd733d8184fe646da487fb273f2",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr-5.npz": "d9b1d1066a8d2c3ef096fc2ba7f9095f97c4b5b56d41446ad95ecd19d9afcde8",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr+5.json": "9356d134fbd380a2b1ee8562e83f9904d9fa95d60f98b07cb3dcb6a342093ee8",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr+5.npz": "0516447b56b1571c2074b52633ab8a745260008246d6bb2a5b13d9806d3dc9a6",
+  "nonfrontal_predictions/sub-032336-000-clean-clean.npz": "f0d738b5147152f987a6fe846e6eb78cebb6103cbec2987962f8cd2f0518084a",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+5.json": "796f6785341f9d3ad3f24a3516c4da88c0fce25620bc0e78b78add68ba1598cc",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr-5.npz": "130c28ec6e73cecf8e2c9e2d71489d2acf5c012aa7623d2273555d7f89b018a2",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr+5.npz": "5888b61ca643a5db47b0ad84d7ebeb281a6e64a89c1837ea536c63f65c928888",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+5.json": "704fc54328f62c4d9b1f8755814d0725d717138aec67326bde453b1807892fbd",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr-5.json": "f12c9cb2b51eaebd0ee4bf430741a31012bb1ae0b21f328e08c0149777765f59",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr-5.json": "1c8e996127be43bcc14a5ec7abd7c21ce261371878bedfe42ec763bead685775",
+  "nonfrontal_predictions/sub-032322-000-clean-clean.json": "5bf0a607bd0fa5b3715925a91a971644ae28984694298a3416f25ef19e4c8bb5",
+  "nonfrontal_predictions/sub-032323-000-blink-snr+5.json": "ade3b009940319853bfe6b7d2418351d37d9d9a460c80ec46e389e90b18c0720",
+  "nonfrontal_predictions/sub-032321-000-blink-snr-5.npz": "20ae3d05ed8eda716b528d7723a562ffc833a7267865e06dc531a25d6bc30076",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr+0.npz": "948914edb21a2038cae68f40cef9861752e6bf6b041d04e808c6c1e38e1aea92",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr+0.json": "a2d7411b6cf69de83fe6196c2a05419d26a4806274737926d556101042c4b3af",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+0.json": "f20077b0f441c60acadeb6d84b0b4c82a10cbd9895f504ccc1f62e03c6f5137a",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+0.json": "67dd18e53fb620d8db019d59d704841dd4598697dd2595b6a0a8b56856ca8a8a",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr+0.npz": "3578b96a4af8e3babd7c7e0b45bb254fd3a27837de40d08f148ab556a68c386c",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr+0.json": "0c4b20c3579c931eb189f75a3246a42795b2223d4b627ca587026084220b2d54",
+  "nonfrontal_predictions/sub-032336-000-clean-clean.json": "411042d212b68f651aaf40828084bbafc05e5adb42929efffb8c0ad67beaad82",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr+5.npz": "cbc4cfa823f665600258c0d81d4da89bf4fb71e158fc014d76e42fcf26bf8d42",
+  "nonfrontal_predictions/sub-032340-000-blink-snr+5.json": "e645185d1aa961f5dc837d689c776f489d32f9c20266a1a6a828cc93df8744d4",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr+5.npz": "af74d0bd45e98fdba378037cfa27c93d7593cc7d2b95651f9f82f7034a598695",
+  "nonfrontal_predictions/sub-032329-000-blink-snr+0.npz": "80df4754329613050082e2303f0c7d652a71d5139654fd146ebff521ea62b120",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr+0.json": "b865c639107339720a0ff10cb5d3f0fde2e9e1fda1750f9fb2837a04a5c12c16",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr+5.npz": "0f7d462a9607939921947bf79c3fdcd5c0ea63d9268635558200be53518bf60b",
+  "nonfrontal_predictions/sub-032341-000-blink-snr-5.json": "37352813f5c957d072ec46e1b474d114305397e4c3d94c9a699322d93338e98c",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+5.npz": "6e6c4663a9e4cd97fe6720a23ff96fed625051e7bcdc08e4326b5b1e6e2ae4d6",
+  "nonfrontal_predictions/sub-032339-000-blink-snr+5.npz": "34e3688afa46c0fa917215b1ce2fc2ae6276eaef54bc21609babbdcf88436c13",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr+0.json": "01c2d0cfb42b9ac7a2e97afe5131a495ac09d3b07d662cd6d506f97c159dc8b6",
+  "nonfrontal_predictions/sub-032327-000-blink-snr+0.json": "d832056f62b4317ebf4f11e592ef311cade6e5dc44dc82b84f91e0258023c88a",
+  "nonfrontal_predictions/sub-032318-000-blink-snr+0.npz": "edc35e98475847b6c0501d299312b3670481b24cd16598672f0030d4ddab631d",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr+5.json": "74a4d101d415cc88b28a7332f22d8cb6a87d7df28bae1e9448cac588a66084f5",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr-5.npz": "2604b77e3077626d2b7f67b1a9cdbfbd5941aceeda84b8d7eac9be38b38641cc",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr-5.npz": "7177df4b5fdebb243b27f2b6c12f3b2debc67502b3372a2bd558ef4ffbeaeac6",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr+0.json": "903b41586186d22d2d4a9f341d213b8b768dcd1920aaa8339566704e694e4777",
+  "nonfrontal_predictions/sub-032317-000-clean-clean.npz": "146f956b262ad3405cc2fa9dec837d47d16698a3c42c203974e6591b91a3298b",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+5.json": "71e3198746be4f75d09147d7ef046454527a81db462714ca8d38093a4e602cb7",
+  "nonfrontal_predictions/sub-032316-000-blink-snr+0.json": "7d8c985f5e7ef1384dc80bbbfcc28682721a95012c6690e5427c74e793bec482",
+  "nonfrontal_predictions/sub-032313-000-blink-snr+0.json": "119c47360d69230138de3e87da2606620c0e5072a4e3c633c3ee5feb09bce036",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr+0.npz": "d4b6ac7508cba8f1f93bba55295b0038d2a9dd52414e727b6c41e3d402366cec",
+  "nonfrontal_predictions/sub-032327-000-blink-snr-5.npz": "e87bd6662091c89a539db895a3e6ab56a34ef6e70233e9ceb7f9c1b455b61800",
+  "nonfrontal_predictions/sub-032319-000-blink-snr+5.json": "c06b3607c567d28fd993e769648b4b716a4b21b2cc65f39924e8fc8745e655a6",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr-5.json": "7f8f3da989c09db337dcaed6fc7026a6d147025106cf3938452879195ea5585f",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr+0.json": "f7f23579140fb1bc79e6fc3a043b12effd6d162902c3b442865a94d8e38d7e4a",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr-5.json": "d4999e57c3dcb81ca55adb2517316fe521d75f68c7cdcb2d415f2a67b4263c77",
+  "nonfrontal_predictions/sub-032321-000-blink-snr+0.npz": "4797c15d5801f28db10c1480f140e6ac8cd330e26dc8ca30a05bb506919fffa7",
+  "nonfrontal_predictions/sub-032319-000-clean-clean.npz": "10680d2ac8047b33156783412c75e3be90ebdd7c9001cd09a79bbf4d7097e2e1",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr+5.json": "94a7b57b90c4ff512e5994703c6b4830a11fd793a0e4a414ce0b5e9cccf916e9",
+  "nonfrontal_predictions/sub-032331-000-blink-snr+5.npz": "c3f849beab876522f3daf33667bbd490c5a5f0123b73ebb1f9f36a06d5843fce",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+5.json": "5597b61bb08ef1bf333e81e2df85be2f0029d569a5f543e83c8e9ceb581e9286",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr-5.npz": "ad94e54152a6681c9bfb0516eacd99124d796cbb0477a5e6882105b607356f20",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr+5.npz": "528ca7a8e058a6b71218757affed282511677fd64fa88c49713ad6a762bf7ecf",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr+0.npz": "6432a5ca65bcfbb1c1baf6aa00745d0be2689ef748bcc7e8a48d1fb55a9e829c",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr+0.npz": "1ae79b225d18460c0692c5938a2dc47a0dd462a1acbf53871effafb648f2a039",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr+5.npz": "dd49076526806e9c588b767d106af9823569c4fc775522d11019a3eb917d7401",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+0.json": "bcf305c772c761827fc4d8e2716b51ee983ce30a9e97d0731c3234bf7dc3f8c8",
+  "nonfrontal_predictions/sub-032325-000-blink-snr-5.json": "12468c6fe8b8cef2a4471c8306a5c7c9b71363efe73d782e92d871eb8eaff4b3",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr+0.json": "fe3947a3b40f98290ccfbedfff0cf18c8332370b5528bccf7888e36325490bbc",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr+5.json": "a700f1e9a8e01522565d2da7eaeec619828e5410b8c2ac03cd133d4cbe91f448",
+  "nonfrontal_predictions/sub-032305-000-blink-snr-5.json": "7b35cd592e1bc126b4eee07940177cea65d034763559557a5e8535ad95e6e695",
+  "nonfrontal_predictions/sub-032308-000-blink-snr-5.npz": "7928d62756e111fb6f74ea5f771c9610575bbe9b888fe5cf49091c6fa51e5388",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr+0.json": "55f40943705567126ea0eaac4f2db247707deb64b03e58b9fdcd17bb0ab06780",
+  "nonfrontal_predictions/sub-032325-000-clean-clean.npz": "3f28d271d9de995af68ea43027be102ca701a3928a8ed19d0da45b66dc39196a",
+  "nonfrontal_predictions/sub-032326-000-blink-snr-5.json": "71b246e6b799def81deaec5dcfb4ce365902cb6f2f399e03533f03594c9518c1",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr+0.npz": "48e9db869c1ac872f2644a02c779c1dccc967b546ab5492450bdae71e3136c6d",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr+0.npz": "2ba556202b800822ad836004363eeacd02f69ab26b13abc9b0ad7c1127f9a0dd",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr+0.npz": "b6099bc84a6cdff4ae39fa58eaa271ae19ff90295de098f856065eb65ac5a102",
+  "nonfrontal_predictions/sub-032320-000-blink-snr-5.json": "910cf578ad3044639d3fb72d19b4f57daaed00a6bc413aab98938a1a52287482",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr+5.json": "c1b276d71cc17abf518ee9ba2fe98cb30228e614de950b0ac98e72b2a643e8f5",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+0.npz": "6b15c95c9dc064ad52604dfc68ad7af83720f1399c56cc4852790fc0a9a91a02",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr+0.npz": "6b5719dec84fb99076919ab8f281461fc882b7a00941ba2212de3d6cca7a0069",
+  "nonfrontal_predictions/sub-032326-000-blink-snr-5.npz": "1b7bd9513c9d5063daebc65b43adb065edfd3f255087037cf8bddc8f82823739",
+  "nonfrontal_predictions/sub-032312-000-blink-snr-5.json": "fb14b3840f5e01174350d3cb96842e5be6d6743b9ac076163c7d5892bb0f9c95",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr-5.npz": "0a1c04644c433b5591606c9ffb894bdcdf7667885f1d730bb8bd9b63bb83e058",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr-5.json": "4f5229b150249926b4db146d576ca34957aa92d2d3ab1c1c48c31315203637cb",
+  "nonfrontal_predictions/sub-032310-000-blink-snr+0.json": "e042bd5bfbfc0233b8ccbd9b6b1e48b387b7d3bb4406987b8d184acde3d0c5b5",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr-5.npz": "0df00d2eee2ad691209062a68b8ec19b63f30a6cb8752749cb0e2edb3dc48ed5",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr-5.json": "4f30089e498e5c69e502e3bafbe2cef50004f89de255854b929d91cf53430443",
+  "nonfrontal_predictions/sub-032318-000-blink-snr+5.json": "82ad15b442faae32f84f1e905f7af2586624e3d4fa85301951335af7fd67d76a",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr-5.json": "9ed91fec517ca510daa8b436b094b26fd51a8f583596aa56172ec9488617352c",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr+0.npz": "887b5ca450715c81ab6cc3ac8d819cc06b9cfecf0bb6393a6bd3a37b7271102e",
+  "nonfrontal_predictions/sub-032314-000-clean-clean.json": "288cdf752f1c6eb61606a01d27d6b023e28dffe6a66fd1b7ef723322004f832d",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr+5.json": "e1be89f6b0e78f7505d7fc396147612caf0f1bbeed5f0d5cd5115b24b9407523",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+5.json": "6a2e46e3cb0d241305dd0a2b1f67e5c6fdbbac0b7a64ae5efa13ab5cc77e6f76",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr-5.json": "8ec864c3597a9ca15b6de742726a2f25352f5d95d8771d155c779b7dbd0a4121",
+  "nonfrontal_predictions/sub-032322-000-blink-snr+0.json": "8bafb80353b8400a1b4eb0e0b867e25e270ba05129ee01e69dedd3484a8009c5",
+  "nonfrontal_predictions/sub-032341-000-blink-snr+0.json": "a8f47b6cb810ff464fa5bee67c08a04706c383f2dfbec4776be67d7b6cea4dcb",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr-5.json": "9a33b57271eba9df4e916740d3e7c3d6edce2ece16cbf7ae9a4bb82563a26362",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr+0.npz": "39fee096c3c93d81c0a1043d5c9ed434b814d11a13360a4823bbce60214c3381",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr+0.json": "3b69fb1c020d00032a84a96be03912fd46d8e2e98676e7f881c264c8ee46257b",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr+0.json": "46d70a3df44802ab7cf9542d1034d8ae398f1f7da54130ec02d0a4b2210ee98d",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr-5.npz": "70062bd6954b96e3bbb428170436d1354c1e72ab39f8545843e6fb32685a213b",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr-5.npz": "189dad2ec1273e60bc98d66971bd73d8287fa1387c624f2946cf1fd2b7e41ac0",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr-5.json": "d9e8f733e5c3253c58f5c30a1e0b416f0656c2dd9cf1807c98833de10f66c408",
+  "nonfrontal_predictions/sub-032305-000-blink-snr-5.npz": "0d8ac11d830782a533711f3cfab6c4afa28e1a079a8818bf39954f03481e0ab5",
+  "nonfrontal_predictions/sub-032326-000-clean-clean.npz": "461da1c22feac5cd6443927cd92eee3733c87de1ea4523239bf61a1ce12e88a4",
+  "nonfrontal_predictions/sub-032339-000-blink-snr+0.json": "a6b570c1b1aa0266bfdd05f8a220fdf74d7fff9fe3267abd4dbf20225028488f",
+  "nonfrontal_predictions/sub-032310-000-blink-snr+0.npz": "9d7757e969af03dc82d9a0a4740c558f83cb26083260eeb083c1ac8afd887b90",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr+5.npz": "675c84176b922c2a8b9788feefd6217ae812f47234fff55e84038e9f726f3c47",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr+5.npz": "0ba5be1003d8bddfd18f7d765556f767c6b7b877b1caff03cc676bbffd27d85b",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr-5.npz": "b693382ec1daa3c2208f8aa93447736d5c20a36a20a3184be8628fe5d4fc610f",
+  "nonfrontal_predictions/sub-032314-000-blink-snr-5.json": "fd63e98c25dbc6b1fcd5db2a1b26665699af92b2f8fb2d3ffdffb7955314830e",
+  "nonfrontal_predictions/sub-032312-000-blink-snr+0.json": "a71a250a9c16f419740b85bba79b4bc58aeda40c14d6eaefdc87f5dad44e4307",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr-5.json": "4d0c58fd85637208e497212d4e6907700d697a2b2f9e507a2e3fc33d043ef785",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr+5.json": "553eed93b3d690fccd576bdbe4846bade4e43e65f232c3b803bd5b67cb08c29b",
+  "nonfrontal_predictions/sub-032338-000-blink-snr-5.npz": "35d99ba6bf2d4cb88f9b515c43f0df11f68284f71b2322cb3b6a33b547b05d6c",
+  "nonfrontal_predictions/sub-032340-000-clean-clean.npz": "032a1b9d843069cc9ea3fcd8923e4d7faf48f8a200d20d9a801bc5b3366565a8",
+  "nonfrontal_predictions/sub-032338-000-clean-clean.json": "56befad1e8d2aebcf458081fb970f142cea0cea5501bbeacd8f9867f5e366207",
+  "nonfrontal_predictions/sub-032322-000-blink-snr+5.json": "eb5ef3b4eea852f93a5dccb49e8ed78fc736aceccfaf7abe3f068acd5f9943c4",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr+5.json": "10c7109ab42acf4cbba0a8094a6aaf1576ae6026cb1608edbcd999d00822eed2",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr-5.npz": "1612be67aba9a3b0fcca901c3b511989ccd0f74136b4a81e98720b96a17b7990",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr+0.json": "128b7803b5a7ce2c91629371c2899173de9bb98fdc0f5063aaffeb7833b5df76",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr+0.npz": "48e16dbb8446605b25790a3238cc363ad73f510a156ace38cc47f22f7c53d83d",
+  "nonfrontal_predictions/sub-032331-000-clean-clean.npz": "ef73e0850b10a8c8c451b3145e4aaaa887d91861143b18833729fa5a67cf434f",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr+0.npz": "c78c071679ab75210215dabd7b41dfd80a55f9028996683eacb57fa4c87c69d2",
+  "nonfrontal_predictions/sub-032330-000-clean-clean.json": "bde3cc512a176a780b92aa24319576638bbdad5c7cde212d9f2f8bcf346fe02a",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr-5.json": "c2d1c662780ff67cbde6677e9a75ed0acf8b4a9371250d8b15afb6089433ce4f",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr-5.npz": "b0af7ade923fa41bd4084db00e1004310729e8a2fe7bdb0253b2b4f650432a22",
+  "nonfrontal_predictions/sub-032305-000-clean-clean.json": "dbd36674255fcf95cb2f2c639879130a10eb972220bf1fa65eeb17ab83c63231",
+  "nonfrontal_predictions/sub-032336-000-blink-snr+5.json": "2a4876814aa57dc4b0fc292200e9e149e535df296d1d264ef53a7cd715ae523c",
+  "nonfrontal_predictions/sub-032325-000-blink-snr+0.npz": "285fa65005d6f42748a5c11b81f867bbcd63ce5d9c2e28c59ed1330fe05bd426",
+  "nonfrontal_predictions/sub-032313-000-blink-snr-5.npz": "002ff4404426ec04b4c21ab6e23f72897f3c53174c6598836654a3cfebc23688",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr-5.npz": "5550315e1cc52a66bb1e07d83712edfb462121256e3a475a49437cb058f048c0",
+  "nonfrontal_predictions/sub-032316-000-blink-snr+5.json": "a6a97ebd8578ab37e39612dd769cfb27df173c45e1ba7749630fbf764664bfe4",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr+5.npz": "fefb78354dc16ed5b420e5c34f5d19514a0de83102c50f9e10b24c8b52d6f163",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr+5.npz": "364180f9901d000990a0c958561ad299dcd300d6f06ec4639e39ae9bc982d8b1",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr+5.npz": "fbe3064cdf93f326ac5e9eb2596e939f01ca16866c41114fcdfeefe8a601958f",
+  "nonfrontal_predictions/sub-032312-000-blink-snr+5.npz": "5dc3731c5586d8140817bf7ee047f7cc705d71f0ecef489760d2a9a801342f16",
+  "nonfrontal_predictions/sub-032339-000-blink-snr-5.json": "5dfcc76a42b644ac441fe6ad59e5bebda46959cc459eace5e3123ccebda0b125",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+5.npz": "923a0f2d890f2297792d7abb2cd494ea50952447ef7b895f1f39d2debf8596ed",
+  "nonfrontal_predictions/sub-032313-000-blink-snr+5.json": "d8e53e306304ce1c0ba6dedae970cf7e46eed561a51d910d99867a452e03d95d",
+  "nonfrontal_predictions/sub-032322-000-blink-snr-5.json": "10f8e63679b473abee12186c663933e838b8aeef5ccf37b77a1219944e60c744",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr+5.npz": "b1f28554d21d23adfa1defe36eb09dc9845d16d084495745b43956e40607cbdf",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr+5.json": "1906d2b55391ce4b2e8b2b40dba8222d5d2fcf392cc3517d32e7181761c739ab",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr+0.npz": "41b93d0cbab7274ce937716e355a9dbcc625a9ffbebfcb5c3e7a6e6d1c585d45",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr+5.npz": "192c75174b2453f51f219c5e0f576dea0cfacb2dc64f3d44a77758fd2014ca96",
+  "nonfrontal_predictions/sub-032336-000-blink-snr-5.npz": "e59cc0a092d2d793e68da2573fb59424d62e58217cd377dcdc2b302370ead897",
+  "nonfrontal_predictions/sub-032338-000-blink-snr+5.npz": "9471eb4caf6d09674afc375a5e185ec217d00a394a673989b948f5110c0b5713",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr-5.json": "05af93718705ceb15355c8d511d5dd8b3ad59b1281c81531074492e5db13c8ec",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr+5.json": "1b5f3e0247fccd730bca0903ebd59d8d3934e71ea4b9720ce3f89124b38f842f",
+  "nonfrontal_predictions/sub-032320-000-clean-clean.json": "97281caee11edfb62ba13e42231f8a650dd231010c506bf5e0dedeae8df9350a",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr+5.npz": "d7dae1b93efe4c547579d86b492c79e9d578b894e380f88409b73333daa7f48e",
+  "nonfrontal_predictions/sub-032327-000-blink-snr-5.json": "3d91fc4ecd7925545990f0df8667a4d494821d837ea9108700a3df4829af00bc",
+  "nonfrontal_predictions/sub-032327-000-blink-snr+0.npz": "a3415949652b05d556673f66e7a9e5b3ad5c601124882ec367a54e3b67708557",
+  "nonfrontal_predictions/sub-032315-000-blink-snr-5.npz": "575ffa98b63c1c4e66a687aa1a1cf2a8220805578ed81436cd4db82836420b3e",
+  "nonfrontal_predictions/sub-032338-000-blink-snr+5.json": "6116674235db22fc825b6aa5631a69ad9290b1f9e8d749fa2f4d0fb031a280ed",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+0.npz": "6c351b04ae8c7a96e646a11dae00716894cc2896836e2c0d5f22003a9ec79f5b",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr-5.json": "f640027799e2bd3e1cba9c62dd4c996fd27022f5a3eea8a175842e34f886ba7d",
+  "nonfrontal_predictions/sub-032305-000-clean-clean.npz": "f691486abfe48ae6ae5c0fd75dd40d3c5722d38416b802cddf1c9d3a5e3e4d10",
+  "nonfrontal_predictions/sub-032322-000-clean-clean.npz": "21737785fed2034ccbc6deab4095cdde9e5bc2bf07c2d1eae93f233db8cc1c3b",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr-5.json": "9c05e884dc6e73e7286566ca061b449776dd95f8765831c3835590c020237f8d",
+  "nonfrontal_predictions/sub-032315-000-blink-snr+0.json": "d61481d4aea91f81ba4afab5f50a65edff553b1456f3c60746b593953bc17e24",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr-5.npz": "01cce304058a358ca226d957535e9100a9b25226b498f5f75e32a0dd6425d692",
+  "nonfrontal_predictions/sub-032317-000-blink-snr+5.json": "3300fba9dd7a2b4b2b0aa0749be175000da6f3a6b94d75c234ba3bf3a118fea7",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr+0.json": "8ec666d91457e6803d2a6b6ed18f6f771248b0f14e63e90437eb8930e6f8bb90",
+  "nonfrontal_predictions/sub-032317-000-blink-snr+5.npz": "91aed46ff515da67ff9a789f8b5799b10193336609611b3c6ec36607183b48c2",
+  "nonfrontal_predictions/sub-032341-000-blink-snr+5.json": "7fbd0a4e16895fe81784e061e10f674d2b4dd69ad15e087b3c84b78354c0c817",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr+5.json": "8c04919f0b815fb8c584ae755df5bb01dd8059e77d72d60cad8b1c3ae0dd3aeb",
+  "nonfrontal_predictions/sub-032331-000-blink-snr+0.json": "ab13a09c10ebd94f42c9a3524f24b03c0ab39201992d19459ef7baa01299aa3f",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr+5.json": "a538c345bb0b4b7bb764558c336f797d33f102f8232a0d86188fc77ea91045e6",
+  "nonfrontal_predictions/sub-032339-000-blink-snr+5.json": "c074eaa28a5011f756167316f2f71bdc1cb37b7c178720e5748c2f2bf3d1c8a6",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr+5.json": "a01be33e5413f845bc2a7772de4471fe2b7cd7e957f08b1f37e3bf6f98807944",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr+0.json": "24987294eb2a240bf28120be9f8cf5b81036ba35bc2f8c334533a05f9d25efb8",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr+0.json": "2d881b8fc6dc7d489233800028422205c25c0e0098c7cbe85584ae44205251a3",
+  "nonfrontal_predictions/sub-032324-000-blink-snr+0.json": "039180f60eeea3aa1c169310540e83fe053495367a7f2bcb3e57198fc1f2250d",
+  "nonfrontal_predictions/sub-032315-000-blink-snr+5.json": "0d944d225cc511fe7d4da1eb3607f1f3814d68863956187ab1023619981f14f5",
+  "nonfrontal_predictions/sub-032326-000-blink-snr+0.npz": "bb407cc41ff6cdfa5130d67c658f68a9615eb9a09fda13a3e2cf701271bff13e",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr+0.json": "528dfaa072e923f2dc4ee87ea24b57f1edcd460c7a6e835effa21c6c3df741fe",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr+5.npz": "232d37287ced158ea8cd6ce06899bdcd33586ce0b5c1f4623729ba452def28f4",
+  "nonfrontal_predictions/sub-032317-000-blink-snr+0.json": "624f604075641216db0fe953c1fccfcbfad6064f9fb73088164ece4aaa3dabf6",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr-5.npz": "7fda79108cc8f2a63c1495b22de8b21a7b5fcdcd8ae66be374be81e86380b105",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr+5.npz": "451d4fe29aff2f65bae579f621b24a2068260c67677b9528529154d40ea1b2b9",
+  "nonfrontal_predictions/sub-032319-000-blink-snr+5.npz": "8621ae8866b07ea347367c4118505c716dbf8ebaed86170faa5b06af26574acd",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr+0.json": "cc16a22e6c07f1b76843e4408eeca3aa18d1321168e5438c1fe6ac12b7a392a4",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+5.json": "48a457cf52bcf47500d74d57ca9fe8b4942cba4b22b697e2e26db5c28623791f",
+  "nonfrontal_predictions/sub-032324-000-blink-snr-5.npz": "9f0635d9a089f9c62774e7bb9829d52652b615bb48f4fe639248f71e99256f7e",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr-5.json": "cfc829d39bcb0ba20513b3511c8f09aeecc5cbb9a322aa7dbcc6bbe0b1cce590",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr-5.npz": "d9bd30a4ff5f12395b8c63f49bccb919486aab294c0fd7022cbe6db803015421",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr-5.npz": "5a6cd4f52579d27f8220db0e58712bbdcf92c5786900a6d2e6722e946a26c08b",
+  "nonfrontal_predictions/sub-032313-000-clean-clean.npz": "0d7d130d9234895ac1fc2360ca19157b6fe07baa0f157b40aa3835916202e093",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr+0.npz": "94b19f114677ebfd014db9a46db9ab7482299d2bf022174618d14a800404750e",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+5.json": "06fbf8fc837d497d6176baddf6ff67e42929bd6e8fcaf06d1ce96693e52c579f",
+  "nonfrontal_predictions/sub-032321-000-clean-clean.json": "86e7ada107509f307b1b5d79332d981ff4cbb45ee62fccac4e4ce7ecf1990e82",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+5.json": "425b0ea172d6bad4fc8a9c67e072102c20899c15809a96fdfdd73b4c3bf74c8a",
+  "nonfrontal_predictions/sub-032336-000-blink-snr-5.json": "fa96736762eaad2283d753bacde09666fadedce3cab28fe1d0b7ccb0068576e1",
+  "nonfrontal_predictions/sub-032334-000-blink-snr+5.npz": "a101543b85d34be3477b96a17ac8de736496e05b5d9c86b11172705bc6373c3e",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr-5.npz": "4ca361f0b3a693da1ac2b44b6db6710f708453129015a614acf18851a319d396",
+  "nonfrontal_predictions/sub-032319-000-blink-snr-5.npz": "d1ec02d55526e1bd0c52e50611ae86df67c60d25faa5b43bf6ae2c20d32ccb15",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr-5.json": "912242b9401cd0fd988f2c9959219eb066d81db5f289c1ce9d4d26eb38695e42",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr+5.json": "ad1ed8caf01529ae3e181eb1ce8414ff007d785c9b431a1cd52c32188f1fdc3e",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr+0.json": "9fbc243e613a99206b36b996e460640f03af75abd7f7bd4c0f04c4cbd7a94e5e",
+  "nonfrontal_predictions/sub-032318-000-blink-snr-5.json": "a6a549ab4c97ced849d852bc4ae1d912aefc152eccadb8d7d8fcb22297648c62",
+  "nonfrontal_predictions/sub-032318-000-blink-snr+0.json": "962e45e8b09b9f9f1565a317027159ab88294b02e27a92799324fe59c2df0e01",
+  "nonfrontal_predictions/sub-032323-000-blink-snr+0.npz": "f760123f29d9b12e8b3b1e6ff4f7e847b53edd1baf92e988c74822a9e7e35b53",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+0.json": "88c91e2a3145330f7b94188d43cec57e965ba02d7ca20fa61de47d20e46e5b3c",
+  "nonfrontal_predictions/sub-032326-000-blink-snr+0.json": "0d2dbfb2a24b411d6c755c6c4dc0205b0c78ecd6478bde2036da0fa0742e1255",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr+0.json": "43521a93dbf18ed866d3f509e0126d2cf74019cdde219e2e59305236688f45df",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+5.npz": "cd3f964aa2726bb24c0fd7e3a076139b7cf2947acf5c7cc5ed7c1d9bd9178b0f",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr-5.json": "170ba9815bbd6e47c5237ed334604ff0b2a1984d393ab4f8ac3c32c7e360765e",
+  "nonfrontal_predictions/sub-032324-000-blink-snr+5.npz": "7fbd989c82963341c3a3665e8717492e849315bac2cd9b75b634c36c2bb37df1",
+  "nonfrontal_predictions/sub-032313-000-clean-clean.json": "ee722091918f22a33150f705d70bd3e34cd87611211f462e608d5d312bb4d9c7",
+  "nonfrontal_predictions/sub-032328-000-blink-snr-5.json": "f59036742f878431a05ee6368b1a16869b91bdd31d40c52d74a07b8d971cbac3",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr+5.json": "beaf421916b3b6e3a87ba11af5373ad3f90eac6c95db1861e4224739bc6896d9",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr-5.json": "e1f1be20813f04fe3c67973db566bb0cedf5f64daa37f02885d0e735fb551eb7",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr+5.json": "8596557b8fde1e1d6919cab117f5626a415be29d2c99d1fa5be581baac7574ec",
+  "nonfrontal_predictions/sub-032338-000-clean-clean.npz": "c9e87c4b6a04454d7b93950aa3d70d6475cb12afb260ae75cf4cb27c46ffdb12",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr-5.json": "253713c810a142e53f42ec1db37266de18180224272831a5c40e76c86721c8bd",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+0.npz": "3c86c59ca5d20e06fee26e3c4f0d6a4628ca8edb230eec57032410bc963cad07",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr+0.json": "6f92742e781d14532dc4dc82a00a8e2f58826b7c96482f6872278737f87d1dc2",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr+0.json": "15361d6a44dabf39e489731e2b46488de90b03e7fa9f39b63b0dc0e0fabaf175",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+0.json": "b2e40eb87238c632612cf643adf11752d87a5e094a2f683d768a5d728409c7ab",
+  "nonfrontal_predictions/sub-032308-000-clean-clean.npz": "7415b25093db5bad6d2296315d10c435f1a6c064973b11d07a85fc96d1c21d17",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr-5.npz": "681f2e03d02483a2a30907386e1dcb64fcf9362852d7b7356c642324164f04de",
+  "nonfrontal_predictions/sub-032323-000-blink-snr+0.json": "664d3067bf9f28ca3a54e82018d5753ec78e9a04f58b0176735a427c60159ef1",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr-5.json": "dabd0d0cc44639d293f4540ec37b2ddce69fe121b79ab45157385fb80e36b651",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr-5.npz": "48fa13740de9e1b75f6e1e4982f84feecb392d300403f648652bedf0b189ff27",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+0.json": "94ce04be9309baabec54f6cf6c4570300510b8e2a39d023178d598604998e084",
+  "nonfrontal_predictions/sub-032334-000-blink-snr+5.json": "f4002927d241b2b956ef233586c6c7aa6d701d87632d2231e348363bd9d8d958",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr+0.npz": "d7497df64afd1050a967e68ce2cb41e5d805450ee2d845b3f3feae1d7197dbd8",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr+0.json": "2bd18cbba9f3e62997d09f957a94a8bf6c773d5432cac509609ad056f748531b",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr-5.json": "294674d21ed606ff478ca23e1094c3255793b9646e7ecef52cebc703c5c4069e",
+  "nonfrontal_predictions/sub-032319-000-mixed-snr+5.npz": "7618e1424fccf215924bf6dade5b288eba73f43da8d6808d8fd0b29f82e445e0",
+  "nonfrontal_predictions/sub-032334-000-blink-snr-5.npz": "6cfb0ac7c9ef8d67cb4ec072ae99667e152e2641db8b9fc08963914c830f3ec0",
+  "nonfrontal_predictions/sub-032315-000-blink-snr-5.json": "e9baac24259e6a80ec46105a7cb402e8c53a1818e99fa09783178a2dadc7717d",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr-5.json": "bf8ad8dcfd99ee0893a07a4c77610eca6f0b00f34bbedd1f37bb1097e217f06e",
+  "nonfrontal_predictions/sub-032319-000-blink-snr+0.json": "cdb16bb7f07f87ae2e0a1ad2264156a0e92bc34036ac4cd490bf9efbe0feffa1",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr+5.npz": "5194cbb8dd7d273072573947afa2f2fc3db4a8baaf650f345d05701724cc5033",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+5.npz": "eaf5621105324036768a33cadd7680c647f94494891084d1f57fa360cb43a804",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr+5.json": "eee235057ea40982be321e2b3f6996cfc5d0e7b1f7d9115bf0a0c8e13c620a0a",
+  "nonfrontal_predictions/sub-032312-000-clean-clean.json": "cbe7eedb15d4ff47ee16f316b69dca5890bdeacb353086424388a4385031a443",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr+5.json": "15c017a7467bfa90ada24f7942d4a87c953a6b52978f798cf0572a93699a01e5",
+  "nonfrontal_predictions/sub-032322-000-blink-snr+5.npz": "18c042e3519451cb92167abbc4b753a686096a4c29481da527b8aec745ff677b",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr+5.npz": "607fd3071ab0dc35a6e5f44fe6d4f3ff0fc98755d2fb6ac6979bbb2b3f0cc138",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+5.json": "49d6aad046c47c04a64596bfbfc41ff38dba6e42df61bb14de738dcb22761e63",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr-5.json": "80f17cf675c62c6a33c389d40ed30015b1c98e3276cbc7435630b856dc250893",
+  "nonfrontal_predictions/sub-032331-000-blink-snr+5.json": "9d452ff0824b169c4f7ffe8c7bf83c66419a2be47c9917e9c1cbd53b8028986d",
+  "nonfrontal_predictions/sub-032320-000-blink-snr+5.npz": "c0009b332cebc9282abe5b247ec575c5c30d1ac2176bb2dffd0a183512725893",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr+5.npz": "75734a186ff3234ba4226c6ebf0d4560b0b8790200a196d47adc48698f38657d",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+0.json": "b8a9f0937b100c75609f3d88a5395d20341739c8acc4cdfab6387e8a87877977",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr-5.json": "b7c8e46f2671aa601c9fbd6a6d4e1a15b07f8021de25c9f4f005056e50dc4b3d",
+  "nonfrontal_predictions/sub-032320-000-blink-snr-5.npz": "f0a109c028095249e22618b9488999abfffc3f0fba5d57b9e8d39b1094aba1ba",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr+5.json": "02398b0a4d09b82e36ba5093fe3cb02f7d5b4e6646a3a39e3bde98161ab47577",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr+0.json": "bc1bbf5c9a0d896f41e7ab078fb2f4df19dbc75c81cdfd856d0bcbae3cf3bef6",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+5.json": "14874253e3fbc0e6062ca4c2beeb68a4291f830e56fcd570a3b5cf2c3cfc1825",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr+5.npz": "8292052ea23a63faee411ca5429943becabbb70e78ee126e430e1b0ac7b3cfb2",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr+0.json": "9e1131a9c9f03966f1f790f0a71dde597f192bc9fb33e01b7617d49760f552bf",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+0.npz": "9f7eb947673232c38c3fe7a7f2137a14313ca921bc0dffdfe4a7c4adce08baf9",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr+0.npz": "0ce6203cdf05a8060be3cc517a0ba9a2994ade24b4efce909b59933a13116a48",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr+5.json": "09a78552c93dded37726117d1ec7d391ccfd0db79816dc63316dc849f4f01150",
+  "nonfrontal_predictions/sub-032306-000-clean-clean.json": "a3d187997a65b3583655643f8cdefc2bbb46e71ca4bf328d11592942332dd01d",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr+0.json": "73d8e5398b41d479486314ef296e3a7c62b8a98b9d3dd5f62ef4086f439f224e",
+  "nonfrontal_predictions/sub-032336-000-blink-snr+0.npz": "7233b1dc506caa704748b35cc0878a0e18e0d7840fc79b4a405d4dfba09f6287",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr+5.npz": "c7afbebec2d4ca14d97adf9dd34baefba32604fb9d066ad9e47b708fb4f2a8cf",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+5.json": "aa546b14f9ae4cd7514fdddea8b3e97d7cb61abc767f5875aefaa34a389f363d",
+  "nonfrontal_predictions/sub-032339-000-clean-clean.json": "00049add1a9b1fa1c96f41d1eca50b4f21879bf2d4807b1f3804e031126ba8e3",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr+5.npz": "b1ff5828ce132dadc703025a1ab3bcc44dbd3eb6c9954f03b3d9431b8259f5de",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr+5.json": "c2976eee983cbe46a5fd6d2db263c47766a95facf7e8c1afa901035c0123cbc1",
+  "nonfrontal_predictions/sub-032330-000-blink-snr-5.json": "9a4c958ab232e6976a7555778bf50c2a6ec26cbf8a226810fbd9682635b5c65b",
+  "nonfrontal_predictions/sub-032318-000-clean-clean.npz": "564ccd42a35a076bed24a6cab1b4b9e716cc2f40183516c01d91d52a356b62f6",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr-5.npz": "ede8c94bafb13dc3376db3d12f7ecfa67634f11b1de58f9a85dc8b1024ad76a6",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr+5.json": "eba7879e880aed4d677525a29a99f296f419987d04656c60a606970ab0b8036b",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr-5.npz": "4d69de033b2517c7c4807ba80137550820b68f3489fcb60eb5cc6d31545d5d04",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr+0.npz": "77107bbb33ade78c186a943ae6bb89454052a476a7a8f090084bc00f0933a106",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr+5.npz": "290f64e3baa0ef58b0688de2179769b2223f5c26b5b12e4799889183a8228ba1",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr+5.npz": "271feda5308d681e71d27d35e6ae0b958b6e1e16a6d3186ad03a9b98f8ec7356",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr+0.npz": "e91edad44c912adf812d74a79a163c8d48ace85b0dff451881ecbc80bc4ba616",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr+0.npz": "7a8201fba34c6e48ecaa4ec5ccdd81f60159de7914fa8efaec5dfd4c0d3b54a2",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr+0.npz": "f02e20ae1ebc744b70acfc1f640697afb0e011a72027d349c01fad282a937d53",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr+5.json": "9d6c09b5a0a110efc80917939256257486f62a006005953a010a810d2139e9b8",
+  "nonfrontal_predictions/sub-032307-000-blink-snr-5.npz": "a546ab448c5d65d206f24555e2f07191b4df23241dc6b46517053e3911891755",
+  "nonfrontal_predictions/sub-032316-000-blink-snr+5.npz": "42a81b77668af31ed171e5ca93d24643f96ce2da8f55db1569e6cf4655867a7c",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr+0.npz": "c74bfdc3c6dca633fa7c2e8413c1af33198af12400f84a9adf404da85db194e8",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+0.npz": "efe8e5801939bd8242bbe1d551ed9f548c9e1a559b8824980daa8b5dd8826a35",
+  "nonfrontal_predictions/sub-032325-000-clean-clean.json": "30d4a8b0626f7e5304abb5875154f740eeb4cdf09105b93063c8a64a1fe822d5",
+  "nonfrontal_predictions/sub-032329-000-blink-snr+5.npz": "9bfda19e9e9d7e98dab62f2c4ddad959bf347b4cfc73abbfed0626d1f311f508",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr-5.json": "c03af7a1e592c7b9ef0c933b571e783b0756143e3c798b1eaf636c782f368c75",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr-5.npz": "2526bc9130cd4d3d60317dcb0284f95ef9cd4741e627338dc5fa4e59fb11a1a4",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+5.npz": "e0cd6c85e815551c6445f27aa404c48759c849327bfbe17ffc704b11420588fe",
+  "nonfrontal_predictions/sub-032317-000-clean-clean.json": "9681b9a923d88860689d42326dd0500ed3a977c2f8979e38aa0a8950964c81c8",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr+5.json": "8e3c8bbd233077830c2587365244986449cb338c720290a2fed559e49e0bff43",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr+0.npz": "2cfb0cf71dd10e5c7d5653b88bdafc4c3e444542fb9613e77651820a6060bd93",
+  "nonfrontal_predictions/sub-032310-000-blink-snr-5.json": "298d9b944f5c0bcaf153a7cd110ef05bb9a0fb97f64f9bf219a9271c35db3c77",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr+0.npz": "f7a769219b67121686efd5863df1f9839d87745f6af22f500b70ffebe46fb6ac",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr-5.json": "cae0c9405ce59fb8881b6581a93ee09e5e670657725d93cf534891611635d09b",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr+0.json": "435002b6cab29b3cfdb1e2bd64b0e9c2272ca27e8e4c878a3f554cf6f01119dc",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+0.npz": "cc008534711a68c2e2417c58b5e08f08446041072e02423c36ef3b02cb57e643",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+0.json": "e836a8ff05ae6bfb1d44d0082904e1b33a0c96d58bb011eb73ac3245137357dd",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+0.json": "d4cac2201dbd0c453f0bf98f748e30aa0a13922f7c9c11a53727c0eb1082e8fd",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr-5.json": "7b535b58a04f3acb49010d4014904070e809a20d1300a338f6e90c5c700c5268",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr+5.npz": "48db8682d5c20060eb244cc4145681f5ab879c7bd196b8c73b87ec461393af7d",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr+0.json": "fda61cdd9d8afa33691d23e719a1ea40abf8775554e2812b6da691abf033d042",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+0.json": "f02dc8b74b2b980f355fad9ff69412102756cbc8783505fb9004c26d880337cd",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr-5.npz": "432ae157e6ccc8cd09bba30d4cd3483a4c7db2001e189ccae8481bc44671f66d",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr+0.json": "f7b79929155a633751869227b8c3a4521e244ed4402c9f7e35f212d472a458d1",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr+0.json": "14e00f1311a36aa9b8fe9b01addc30832839b40bfa029997f464e1eecde2333a",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr+0.npz": "0eef94db63ad4efb95a769f1411a9473dc3fdc9aea498567f2c213c2098298af",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr-5.npz": "2246a6d40be7e2f0ad1105837ea91a2f749319a5fd24d9e9c4fcb0fe24613589",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+5.npz": "364266904327f1761df5178edeada043054d8a1997cbd5b91ca3bf1f7b4a50b5",
+  "nonfrontal_predictions/sub-032319-000-clean-clean.json": "4c04d07fbd8d6e4682a40ddf0c842df76ad7bd44b165dd37858964f48a21108d",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr+5.npz": "b6fa92a344e5780682cb5e3dbd2f2f4b40a5808f87c8ba99c9053b58b0982d76",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr+5.npz": "21aea2c0955b48fbab24787c2b7638cafdff9a873ad8a134bd49e62c330ad7b4",
+  "nonfrontal_predictions/sub-032310-000-blink-snr+5.json": "a8a753f6425e4100d6a2e7256f4a9eb69ca54e07e45d0051b9c9f23216adfb91",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr+5.npz": "ab816439ea13ccdfa94dfb65dae411334a478919c41449d842ebe9b2b86d8cdb",
+  "nonfrontal_predictions/sub-032313-000-blink-snr-5.json": "d26a43124b4dd19e4e7ece3492bfba3d1cf6215c0797bcceb165468d30915d25",
+  "nonfrontal_predictions/sub-032309-000-blink-snr+0.npz": "c048e5da188b41d986fa4b0ce3c03e783e4013e43fd7d9ba5a334e3c7b370abe",
+  "nonfrontal_predictions/sub-032324-000-blink-snr+0.npz": "850427c9ae34a3d2b62334ef123d662e17d05227f2ab01713ad49d887c9ce5cf",
+  "nonfrontal_predictions/sub-032315-000-blink-snr+0.npz": "1e04bb9af17ffba787e920281c77478123c9cacdaa4b901738e2223d920dcbb5",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr-5.npz": "bea547286c5644cf3866d8b5f7e2c072e2151227008e89a9d1f2287b7804a0c2",
+  "nonfrontal_predictions/sub-032321-000-blink-snr+0.json": "f434f4fe92d152c3fc431f9c6999dde31e5319990bb7ca18c74c6ab7fb25b84c",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+5.npz": "96e935e591df9d46a86a8621fbdec62fe66da3871a6fb515804950ab7b6030fe",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+0.npz": "227155f7c275f62d702879df77b6aaca0424b2254d7c59d863b2239707b7c8a2",
+  "nonfrontal_predictions/sub-032339-000-clean-clean.npz": "921dca6825415d76ef7b3e02137c3c2a6a462d66a10368648762ae97716f21aa",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr-5.json": "908add3cfb5514daaf81c9c670be376c38bb905ba42392f1e916740cc8046fcb",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr+5.json": "39db2e6cb11d78f037cc725094a1d16424682fd85bc289cf9f2be9133fc5aa85",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr+0.json": "fed9c4bf4f55d69e00cce8c69fe7bb4087882d3e76e5b0fe623f564d31084c87",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr-5.json": "b2c834a6668616f2d96804ed777a3c18a8fafc7c0e17b1a19f16b348119e148e",
+  "nonfrontal_predictions/sub-032334-000-clean-clean.npz": "c9f2670164759ed17abe9922f747caae9a1c686c12cba9581c89b6ad8f2e00a6",
+  "nonfrontal_predictions/sub-032306-000-blink-snr-5.npz": "233604c3ee01f499069580917792d54bcc1a7016ad1d5a17b290a6731e5b1cfb",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr-5.json": "c66b9f2f827c69050c28e6647c230006a1ea5478f354e47c5f8779284616ddf3",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr-5.json": "724ab6dff943de404163338b05717d87ec09460ef975126eb2cc2c7999fd28de",
+  "nonfrontal_predictions/sub-032317-000-blink-snr-5.npz": "a0ab8708f64db4d9db9766206fd1c29da2c249e0474396e5e7388398db11cdea",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr+5.npz": "e4b8104011f640635d8b86be1e9bbbbf2ae3c7e2409d5a592ab9bdd0799c3c17",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr+5.json": "e74bdb4674d29a93bf536c21c2a3c9bbda9c3c97fb59f3503dfd3b5577f13b3a",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr-5.npz": "2203bfa826b977f8c74c655ff3859f67a29f5580936c0ab5d7c9e85506a679a0",
+  "nonfrontal_predictions/sub-032314-000-clean-clean.npz": "73ed928f5aafcc77ab813b64fcce952937bb8a6393c4a812d3b53fd36c01d8a3",
+  "nonfrontal_predictions/sub-032331-000-clean-clean.json": "3b58f3c0638d64c4e77a1179b920163aebf1d565216beacb01ed7f783e4b29d8",
+  "nonfrontal_predictions/sub-032312-000-blink-snr-5.npz": "89caf1d6f9db502db66ac5b6661c3e04d7288242b32de347ebddf97c159a1da0",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr+0.npz": "7288db75dbf6a3cd0630fceba742e73b71b3f8b12e541402553b3b36cbfac2c1",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr+5.npz": "d0f36697a1a7824681d20a52fa89308485d71d5177b1504dafc49d21f7774575",
+  "nonfrontal_predictions/sub-032341-000-clean-clean.npz": "6307632814bc9d08985e8711ceaad9018d1c17b0ead02bd0d57265a747e61bf5",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr+0.json": "0ffdc1b1f0a3ac91dcefac340ef83e2ae7c3c09e4de67804868e6a68ebd2a5ad",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr+5.npz": "1cc793595ecc38f3ee43709168ec9bfe811f84460d21624e6e913fb4ea43111a",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr+0.json": "a7de8939cac8db1411ddeaba15e720bf3d892c61e72067a2f87bf2795db3b503",
+  "nonfrontal_predictions/sub-032334-000-blink-snr+0.npz": "e82bd3885a7b2d96639cf9f91efa98c896d9043d0a129a0cc467b5810c2c0b31",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr-5.npz": "ae51435e9ccf9d1cd7e6c596618faa95870c062892008337e961a4074810be70",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr-5.json": "f94c544ca1cf7e94496a1b8c43cd7103db1e13c02a5077f950c74c7b724d325b",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr-5.json": "86907ea78be6b324de82480cc35ae6c84291d7014ac8353d13cfd0e6d08192d6",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr+0.json": "a806e6af3bf84e75dc9428774b1871722cd2c0884f1aff7175c63899672233c4",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr-5.npz": "253050ec0111aff91c60d68be83ec99bee6c3879d024556d9309d27575c82e15",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr+0.npz": "64da90c8f8fe80d2fd5ed8026d8ace957eab791c497419a6943eaa45b902f40f",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr-5.json": "39bbc26af6177f6a1d22e8a837f18d9b010cacc5409f2148a6e531380656acb6",
+  "nonfrontal_predictions/sub-032330-000-blink-snr+0.json": "731efaaa11bbaa5e0f94602f237fd2f492abe9ca8c74644109a4459b3dd07847",
+  "nonfrontal_predictions/sub-032327-000-clean-clean.json": "b893dd8699de3362f5427561de529dec57ba22f3ac172972bc7494560bd0440d",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr+0.json": "9d701bfabfa3005051b33b30e29888e21919abf1b9838ef6ea6f78d00d4f481f",
+  "nonfrontal_predictions/sub-032325-000-blink-snr+5.json": "aa87b8246eb0909e9e8fe9d4c60d5bd9e8e8f69e3f75c6ff211c1f728bb58c0f",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr-5.json": "73c1b3f4ac9bf7e90a2e6fc80a01bb8d8e5f3634d5df8995013435a4a426e604",
+  "nonfrontal_predictions/sub-032339-000-blink-snr-5.npz": "53b31f33f290bcc55ecebfe09de90317053bb848a3024f7dff55d2d502a535de",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr+5.json": "b57045a90ee4ed1ff1cf08fb57deb5a0f5146df48fb409b93a35e936537939cd",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr+0.json": "97b0406e9111cb426e29a33fc0eac2d6e23d5cea0736edf76b34bdeb1d62f008",
+  "nonfrontal_predictions/sub-032328-000-blink-snr+0.json": "475ebe97eb4e863bee7a4142c90a64184bfd949c274208c43148a42ed125a3ec",
+  "nonfrontal_predictions/sub-032329-000-blink-snr+5.json": "ade09cc589bcf006f9a952739db90525dd029c0d468245a84bf0251ce463deaf",
+  "nonfrontal_predictions/sub-032313-000-blink-snr+5.npz": "30d733747898366cab60c351a8ec73ac19e9d6d0f09011372e49ca4423836534",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+0.json": "364d69f69169ba48c1eaf99b81da35ceb116f8714ff791cc4d5688a4212c67f3",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr-5.npz": "f46c14b7c0af1f485d3baaae58fab5855f506e5cc87559c69ffd0fd57f737ea6",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr+0.npz": "3c2d28f751c913a0aaa0e752e3009b6b4b8c68b2a9f17181c78cada8295bb282",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr+0.json": "0dc748f128b294a182e0dbe3f61f0eed63d8d7631391add0f0c40dfb52dee35f",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr+5.json": "e17f25a99adaf33c3de4ef3a56cd5f535427bc6ddaacab7f9b058b108adc9fdd",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr-5.json": "72ff285eb15aebbdecfdab54c594e67acca399c447e38d5439ff3fe2c3c7b974",
+  "nonfrontal_predictions/sub-032315-000-lateral-snr+5.json": "d5f958c30f8a94bc073667a703aa4726ce877178f6171f745e2ccd098692c185",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr-5.npz": "ac5e27898557c397de8e1822ce960a314cc2f3112567fdb0059f5200312059cf",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+0.json": "7fea322e6b547d439e9586a18df9e48cca285cb77bba94eba4b90f08e3ea265f",
+  "nonfrontal_predictions/sub-032316-000-blink-snr-5.json": "8e6814cf499db37b6a7352f7d58781075bd867ed257fc3898cfdc3fbe3a80eb1",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr+5.npz": "be787b1805f0fd96183dc4957814ca32d424350cc80061c2c1294f2e1e40272a",
+  "nonfrontal_predictions/sub-032306-000-blink-snr-5.json": "4691e41977348d2d030d34afd2c8bfd9b25656dd3ce0afceb9a6b030c7b688b8",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr-5.json": "691c7e767a98ac4d7a04cd3325417d62c0e766e745fdfb8fed77770a08817d79",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr+0.json": "21ba313d15a936da092a3e4dc274766fb3262eb7ed93091e0d8b6d5a9a1717d1",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr-5.npz": "109fae34e97a74aa08caca34258d2771c1cd260e1404533a5ef0c5a506f45211",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr-5.json": "dc6cfd2ef6f5861990a0872ed9c0eb31e63da365a7c29699296f810adbb14856",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr-5.npz": "32c09c05f9e9111e66459418020431ba34dbea6f1dfdda7766cb789d5809b613",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr-5.json": "436bf9178b1fd51a0b4540e6d23743c946ae2c768697cc3db16e99a4c4a2d9f9",
+  "nonfrontal_predictions/sub-032327-000-mixed-snr+5.npz": "f77c903534a35ab825fd39199e1ba007643efa0a5d12ea1e7090faa6487a3b4c",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr-5.npz": "1c1079af9047868a103187e5f0ef38f9a75bce4049018ba6fb7c10c62dbac005",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr-5.json": "bbc4b76674e5059d7d59524df01c8601275179657e89f2d9b6a40bb64695a432",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr+0.npz": "f18f8d91c14389dcde3e76e4a55af204a85006d75119da9f3b36620be30cebb7",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr+0.json": "43ebbed5ef8aa8c082e45d01477b642cb0cd7a1854714588f80609e91ec93e15",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr-5.npz": "c93e82f60d504ff26fc9f84d1e1b07e4df50736f6dfa1bef66ea4f222605c116",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr-5.npz": "e2201e35da91cc6382b838181e40e1506593fb70e2334e459df29d9dc416d271",
+  "nonfrontal_predictions/sub-032334-000-blink-snr-5.json": "c71bdd36656413da0bdbd99f3dd4c888d18e6443966179018ce1d9c96526e5e2",
+  "nonfrontal_predictions/sub-032322-000-lateral-snr+5.json": "d637ee4b1d15fb9e660f06c3bf1623e96ac85fa2a894d4bbeb0e1cf8fd4e6647",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr-5.npz": "3a6ee7e944b1a19384eb5e2bec6d1d022580f9e6f4a069513a12e54772e72aa9",
+  "nonfrontal_predictions/sub-032313-000-mixed-snr+5.npz": "b41e8c9a8eeaa52c3056d657e238bcd82fbecabae459f82f2531074c93c8561f",
+  "nonfrontal_predictions/sub-032315-000-blink-snr+5.npz": "526d32136454fed45b9bd4d37ee23d08725a44842eaed5964c9c9efbb023c0e2",
+  "nonfrontal_predictions/sub-032331-000-blink-snr+0.npz": "cd24f4b10d105b692c3c57506d6df6a49d78aad05dfa87edbc9ff9170368b4fe",
+  "nonfrontal_predictions/sub-032321-000-clean-clean.npz": "cabb7da724fe8a9cb9e1ebcedbde47ed19bcbf50c4b1157a9757c1dc96dc6005",
+  "nonfrontal_predictions/sub-032314-000-blink-snr-5.npz": "03583a95f3d5bdb74ba65d14997f6dbed7d1476688aed1c38bf6972d99f81cc9",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr+0.json": "24123df3e82852cf94fc25279c42ae805b49928cfa9b5d6bb87f2f7f03ea4482",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr+0.json": "0e13cce51d8c1e24700f06df87b5d57adb4c91cbf6fbc674512e7e4401fa1d1b",
+  "nonfrontal_predictions/sub-032334-000-mixed-snr+0.npz": "6115443efd670db9e7c0af234553cf423e03296451d666e596d7ba6462b717d6",
+  "nonfrontal_predictions/sub-032334-000-blink-snr+0.json": "c9fd9fecf41d669bad0a634ee591cf16bd00a0cea5f1206bedb947ffb763e2e4",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr+5.json": "05d1d43c48c11254086be27c7171cb72358672300eb3f8c7830b8c4a2b07e3db",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr-5.npz": "5851b904e6ff5c41479886f94ea5ab21d65ff6c0a6587436c969bf73d7bb6082",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr+5.npz": "79f320fa7a770331aa350842f8c99973e82e174d25de1df6a0eb73302164225a",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr-5.npz": "daa44ff522a29ae783ee31bee2d35fb06738cf338bc6863f83e31e99acd040bd",
+  "nonfrontal_predictions/sub-032329-000-mixed-snr+5.json": "c439bbe7b0d69cc69c5f248a08a9d904c5de32160947c1a8aa9193d2a06a4ef1",
+  "nonfrontal_predictions/sub-032325-000-blink-snr+0.json": "045e025db73fead4d14dc10888a4d9b0844de47eb1177c8a553ad0317ecbf2b6",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr-5.json": "d5032fa06506e45a20bdc1a53d2b0aa54808dd34d63cf4f775eb57ebd511fc8a",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr-5.json": "1a40d4712cdc0a09b87ca3ba31f21425257c038ec67b65ef732305c7ccb98b72",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr+0.json": "949816e0c00135e5956550beaa5316775606a82d1db44ab1051eb525db906a60",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr+5.npz": "42e30046add8bd24b8a87b7a1b3c0e0d55d040c577caf7eee7fcd3c14747fab3",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+0.npz": "09e50ca9e88793567e9bd8c901cc2b8f9419a41e17d9c4e2187cf7ae98ea6a5a",
+  "nonfrontal_predictions/sub-032329-000-blink-snr-5.npz": "8d2b1c0c09faac2f27971151326acd49809fb3a46722a2fe72e69db88a6b4dfa",
+  "nonfrontal_predictions/sub-032306-000-mixed-snr+5.npz": "4b833af69882ecd698e4a4b47332ee481c0a283ccb207f22ba90e6ac563445d6",
+  "nonfrontal_predictions/sub-032329-000-clean-clean.json": "845f6fc3e96bde47813186c4f02114d62f236a1631c4bc26796380f6f5df7d30",
+  "nonfrontal_predictions/sub-032321-000-blink-snr-5.json": "75f5d714b21987545aa09c08d48c049e631640e401f70c72584b262db755015e",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr+0.npz": "933f67eb7bbfe9212b1afce85bfa0fcbf4f3ebe5687a5d0e75ad1b0b1d424e94",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr-5.json": "deaec6a27a16c8bd4d70ed437cf304d7a22309bfe081f5bacbf42b52c505d824",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr+5.npz": "90f117bfc1e26311b929e61e5085118907cfaa557dc269d29109b7e123fedd5d",
+  "nonfrontal_predictions/sub-032319-000-blink-snr+0.npz": "9d3fbe0de96376c57b0fbe33d2498b180ad83bdb97e9898263e4b77b741d593a",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr+0.json": "3381112ab4b283e7a0b51fb4aa2aa2810c290e2db96328249015a6caaee67694",
+  "nonfrontal_predictions/sub-032321-000-blink-snr+5.json": "edb3971cdb9b89fb8a415d6db0d42c757588fd04edd164da67f4af4ab256133b",
+  "nonfrontal_predictions/sub-032321-000-blink-snr+5.npz": "06be13e40a37186f23ef6714d68a7970a1dac7832705104f0a3665627ad49bd0",
+  "nonfrontal_predictions/sub-032328-000-lateral-snr+5.json": "ac9fcb2419c7111c9cd55bab1b4dbf6af7539969d8156fb26d64b32718471823",
+  "nonfrontal_predictions/sub-032316-000-blink-snr+0.npz": "b94479c632fadf505531a938e218d5fdf988784d45f98bc145754f8424703a62",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+5.npz": "5177e8f2c7b11c344620bf86a8277de18b9bfccd0bcb6543c3d9c5e71e526a37",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr+0.npz": "210374a66d0685ed14d9e2c7b8aceb0ec9d3c2d12272b364119475cd799d2b3d",
+  "nonfrontal_predictions/sub-032306-000-lateral-snr+5.json": "ad296d9f79ca4b97d432d3f98a0ee887f5dd97c5f346c0c1e7d2e8548d3d3d82",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr+5.json": "23ada92015513d00c086f39b67106cbdb06ced60c7fcdd58efa50b57c483f80c",
+  "nonfrontal_predictions/sub-032325-000-blink-snr+5.npz": "55d9f7eef0ad534fcd5f4dc887746d250d6cd012b5a051d0341b3cba930f7812",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr-5.npz": "49817f2e82604725be8d7aa58012e3eadbc4b8fad5254e13e8df87fb98e97f5d",
+  "nonfrontal_predictions/sub-032323-000-blink-snr-5.json": "a89ea2bce5d97700895c010ee0aeaee75cea5b30bc134fbf4c446fc37797f98d",
+  "nonfrontal_predictions/sub-032329-000-blink-snr-5.json": "652f2171113f3545e91d1ee73e71801501d373b6e5e642cbd6e3d6dc2a07f14e",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr-5.json": "ceb504f7bd111af093fb395e291188fa2e7813bc4572b73a64071439c60a6893",
+  "nonfrontal_predictions/sub-032319-000-blink-snr-5.json": "395847789e0d1dd2639d667967727f083aaa4f3484c78a5ddc52e55fb4d77d77",
+  "nonfrontal_predictions/sub-032324-000-blink-snr-5.json": "a1d13fe8d33bf9059521642965c5d9b5471d16f9054c598ac5881b2db08109c5",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr+5.json": "3ebdfb35aa47b13e8a68c8e7c02324abec614b50ea003795e36685027373ca77",
+  "nonfrontal_predictions/sub-032308-000-blink-snr-5.json": "198e344f0cd7ec3ae945b60bf68e80d79890ef085e1f4817e3bd93dc12a1117d",
+  "nonfrontal_predictions/sub-032331-000-blink-snr-5.npz": "d5876689040837e55ec18a04e4b57d7a64c6154b9892d83bfe067819c0f3bcc0",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr+0.json": "6c48ad9ec4e32b0e6d52942dc4c66040dc97347459ac95a0ad0629d4dabbcf10",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr-5.json": "4089fe8adc7792f046a3bea29e766377f675fd2dfe033c0f847bb8d76f3b30e5",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr+0.json": "552f509d4925cec434bdb9c8fec6ac75ca97d1fcd81326934cb89cb375d10bc1",
+  "nonfrontal_predictions/sub-032310-000-blink-snr-5.npz": "6d9e2f7e67d65990af7e88d7fe6dc312cafb57da3b3b1038d6edf331d5663b75",
+  "nonfrontal_predictions/sub-032314-000-lateral-snr+5.json": "aa39924d17602bc6a39f15884e93d10392b06efe3f6ca94f11dcdf5ed98f6aac",
+  "nonfrontal_predictions/sub-032328-000-clean-clean.npz": "b380d23a5a7049c05a47e7b8481ed6c3b92f3e28e6f29ea57912864e640794c3",
+  "nonfrontal_predictions/sub-032312-000-blink-snr+5.json": "2adac45b8f13271f7c41793929c5002cf65b59f72ace4c54f440d4eb987cbb0b",
+  "nonfrontal_predictions/sub-032318-000-lateral-snr+5.npz": "c342063da0c104fb62f5bf1a83f8cd2f4c0fb8aee50ab74ff3f05c9c48acfedd",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr+5.json": "162af1aa9aed8261203b76d126e407083ab0b75c2e7151c1868250785ae92963",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr-5.npz": "dcbc3edb7e8c62290a69d41bcfdeb7e07ce02de88fd7f43314cb54e926c53056",
+  "nonfrontal_predictions/sub-032327-000-clean-clean.npz": "c53cce4ca6085d51b73ae05d6a5012a266dad12d206ae9b1ed0e194438ee6077",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr-5.npz": "e04b231ab59472bdde0afb42a9c125a519c12dd342fd7f8917fbb9905651f41a",
+  "nonfrontal_predictions/sub-032307-000-blink-snr-5.json": "f5c29bd90d976e684fd2a05656bd91bafce6a66762cee8104c21624f686127f3",
+  "nonfrontal_predictions/sub-032340-000-blink-snr+0.json": "7c88d7b7271ecb9b9d82e533e9c8d6fe8fb53d4f98ef1e159c60c6b6ae0d23e7",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr-5.json": "404fa1e4a5e244ac3d66c722cb38459835e35ddf23d320db0a1fb81061a0b54b",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr-5.npz": "950c6d280d03464b8c07f34fea648402d6307d5b955fea7902b3f5f50623486f",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr+5.json": "507f35c4fb6600f5042dc616f25776bc8101a987244b096694bcd0170594b329",
+  "nonfrontal_predictions/sub-032308-000-blink-snr+5.npz": "128c2b8c53fd97e33f162a52b3a50528d560eaddc27c43298db3f20c4392d4eb",
+  "nonfrontal_predictions/sub-032340-000-blink-snr-5.json": "cd9c1f33d0e78f67c6f382019ff619df3fa2dbdad9c5a6267c9b9fc0cdefbd88",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr+5.json": "d3118c9be8c12c697d7b1f690a0c45f41fee37f8c80540b171c1cdb7575c94c5",
+  "nonfrontal_predictions/sub-032305-000-blink-snr+5.json": "cbdc55171387c8550c5c7f604e6a05c3595a41ef9c8906d90db9033d028a4bbd",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr+0.npz": "bed9f34c77489c5c1658a173949b8b244447a520cec44bdbc20e8764456eb47b",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+0.json": "2540f2786b6ebbf7ec82cf9d7e0aa94fc8ba963d455fa80eda934264a6b61708",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr+5.npz": "157f92ac9ba34446abddd826ab76370bb74fc12bdc524b6b18645098e1154ce5",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr-5.npz": "3716d3cc51f9d50cb888570f2b2e6d4d87b855644c0c5394b6fc14a71a6e2126",
+  "nonfrontal_predictions/sub-032316-000-mixed-snr+0.json": "74fb82ef84c1b25193fb3528ce0a0649755a299b0051ea8d6d81ff53a990a3d0",
+  "nonfrontal_predictions/sub-032318-000-blink-snr+5.npz": "172fd479198f7fc214f68a5934eb467d199e2740eb12604515122fa75da69904",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr+0.npz": "55bdd7aa89a02acedc56a0c7ba24f41b5969b8e3adca0493623156baa78e72c4",
+  "nonfrontal_predictions/sub-032329-000-clean-clean.npz": "fe1312bd355a1e4e5a54d7dd40cfc569ae05ebf9f4121c704fec7bee0a7cbf55",
+  "nonfrontal_predictions/sub-032316-000-blink-snr-5.npz": "4237c6cba916206fd5c60a1654db6899f815448ba0725ce2fa7053eba88580a5",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr+0.npz": "17ecb5c493a7eedf548c0bd7d778b1430f152b839cc01ac169aaf0dcaf85de94",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr+5.npz": "61a25be9db5a215f954660a128b5d463dd18887e5221b4b94dc9c6d9c5a8c9ee",
+  "nonfrontal_predictions/sub-032330-000-blink-snr+5.json": "05c7d0b32485e8256b0effa9913325e8972e5767a77611a1f87d4e17019d6c26",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr+5.json": "3d17b664e438a2b81eed1a5531d8fee46accefadf088142b0b90d970a322827b",
+  "nonfrontal_predictions/sub-032324-000-mixed-snr+5.json": "9b2f869f614c99d62328c8add3b6a8a82d70fe2d0212cbc3907b0cf961c3b64c",
+  "nonfrontal_predictions/sub-032341-000-blink-snr-5.npz": "91e9924a209b11c771dbf7e32c546b65f9d3ecdeb146344f3cef5ea73b80375b",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr+0.json": "98c1b35489d7f90bfda8e50e1d7eba6b64113f7056ee4bf613160eeff778f03e",
+  "nonfrontal_predictions/sub-032339-000-blink-snr+0.npz": "10e3fcef1349f180ee69adc418d98cdc6f26435c23a3f84da487673ccc92e27a",
+  "nonfrontal_predictions/sub-032339-000-lateral-snr+0.npz": "05725b7f0ff6be2db209c56864d1cfa86228b8c3269b7c4c7369c3f16ca00940",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr+0.json": "6b0f9d850857e019fcb2c7207f84f3b6b5a788b9e3417f963af6001c9e4db018",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr+5.npz": "6b26dc96b064614b0546e440ecab974b2821d2a154b4724645e50e69bbde96da",
+  "nonfrontal_predictions/sub-032314-000-mixed-snr+0.json": "ba088e94597b994aa90d41fc7e35d6759ebad523acd8b5020b5d0ea30ed10cb5",
+  "nonfrontal_predictions/sub-032341-000-blink-snr+0.npz": "9160f059a29d0e709ca0d351f9e1fc06314d2cba8a165bfa4ce525c25443bcd8",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr+0.npz": "839a778284afb2247b4de3e79c870da38c1bd72c1dd35eaacf69f81a0f4a6082",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr+5.json": "0aa8efa523af174de278b2252f91ec2169d9440572c6d13a33de75ab8292000a",
+  "nonfrontal_predictions/sub-032340-000-blink-snr+5.npz": "89da44a175c8e2dd80fd32e65e1f7fac8ae81aef81d41eb21922628cda70e575",
+  "nonfrontal_predictions/sub-032328-000-blink-snr+0.npz": "5d5cec7038b743ca4dcb2979a929d135247c83827fbc65b142d1407c5321f178",
+  "nonfrontal_predictions/sub-032319-000-lateral-snr-5.json": "f3aa34c1a0a050371f191639624df118749e6af89841dbebe751c2cf21111841",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr-5.json": "53c150382142d1bd4a8ec29ef2061dabe930733aa8f5c62f0599e5caee958952",
+  "nonfrontal_predictions/sub-032328-000-mixed-snr+5.json": "d31d8c43ea7fd45dcbdd3ca0a321f42629a6ab0074ebdfc520749e7b2769014b",
+  "nonfrontal_predictions/sub-032330-000-blink-snr+5.npz": "42e355d80dc47b2ff3954c86123e14c4d45a0803fe6a185e64bafdc9a19e81bd",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr+0.npz": "b345bbd2e2319d20bf2f928b0d2b5d1601ad9c89332a161dc5996bbc320f820a",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr-5.json": "e5e9087fb18d00305543cfee10147c1ce5eab25232173773ebf70efbde182344",
+  "nonfrontal_predictions/sub-032306-000-blink-snr+0.npz": "1e52cd5feff8f66a63c79d2363ebc6cb7b8c3ca1e188da641252e31eae27c1ec",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr+5.npz": "d37b2df8c21c47af37382fa3e77271923978da9e239555442bef3d0a4ebc2890",
+  "nonfrontal_predictions/sub-032309-000-lateral-snr+5.npz": "3ba6c5d9d51e8aa1bc48207a02c08c45a07cf57d62d4b8528bc9b9740df8be32",
+  "nonfrontal_predictions/sub-032336-000-mixed-snr+5.npz": "dee956ed661951f0e96987f075555db55547e53a9132af5b37d8b004b5b4cb2f",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr+5.json": "588646673155fb11aabb2d856c95f1460e1bb1307ef5fb8213670a607bf488de",
+  "nonfrontal_predictions/sub-032328-000-blink-snr-5.npz": "5cb71d6a5a0adb0b08e622f221fa8e3d17c1c3d775675cf62fd4c6d1fcfbd9ef",
+  "nonfrontal_predictions/sub-032323-000-lateral-snr-5.npz": "b8a724dcb9c57bc54fd9b6bbdf65e68a71b99dda9da33a8e7fcdd5796a4e36b3",
+  "nonfrontal_predictions/sub-032317-000-blink-snr-5.json": "99ba3bb6a9c81ed6d7f951b3fd8fd9d0a3ffcc561bf96154000bc1a36e0aafff",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+5.npz": "7e8c41248e05d0c86d1afb34e513609317328f48c04cfce532cd43f55063c30b",
+  "nonfrontal_predictions/sub-032331-000-blink-snr-5.json": "691539913b6deb0ff40ca909a56a94f6e6ed1f819ce44b044ca3406a466383af",
+  "nonfrontal_predictions/sub-032341-000-blink-snr+5.npz": "e51deb0b9b162a9c6804288a858d64c36a1b0fc387d25481dce4ed0ca38d597f",
+  "nonfrontal_predictions/sub-032322-000-blink-snr+0.npz": "2c46bd2898edfee0639f72691a3ddfa660b26613020614a6f52f6b15b50bdbad",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr+0.json": "c59504c754c921b933ec83081055478d0e593304e33ec97a0102bce9e316311a",
+  "nonfrontal_predictions/sub-032313-000-lateral-snr+0.npz": "47806e524bd23dd72c4a5042c4f1944ed20816cf17ae6f464a8aecf55321c6b6",
+  "nonfrontal_predictions/sub-032308-000-mixed-snr+0.npz": "7ac453aa43bbca1cf1ba23840b6059480628a812961a4528432bd885534188a1",
+  "nonfrontal_predictions/sub-032320-000-blink-snr+0.npz": "091439f655446f9c094dea0ec70fdd456a8a09be616d82339ae445b4b2c37bb2",
+  "nonfrontal_predictions/sub-032318-000-blink-snr-5.npz": "c2b979d9e9a784128abe54e9c4bc7b164de5884892d3b0fde49456dcede0d80d",
+  "nonfrontal_predictions/sub-032318-000-mixed-snr+5.json": "75a5d538561eb88ae4673f7164f004a37e27d3ac3c942148ec5064e7a7fac7cf",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr-5.json": "2ee2405c563601382e4bdf39d7d9c8dbbadaac36a5e8723a13b49f3ffb715461",
+  "nonfrontal_predictions/sub-032309-000-blink-snr+5.json": "ffec9b67608df501a6995a8359c42a41bd88cb2df74d12aeb9ba488f0cff5a8a",
+  "nonfrontal_predictions/sub-032322-000-blink-snr-5.npz": "eaf0d100e0d45922ea75efae3450ac0854cc3f347bf0e4b4bcba386ae9cab2a7",
+  "nonfrontal_predictions/sub-032339-000-mixed-snr-5.npz": "09c0844e2fa0344db36710c935646c527bd111a008025777d98ad56bc40085b3",
+  "nonfrontal_predictions/sub-032320-000-lateral-snr+0.json": "44a55ca7336999baab3705e3360b7bcbb7142a9c70d96ed5578652062dae20b8",
+  "nonfrontal_predictions/sub-032309-000-blink-snr+5.npz": "ef26d6a34088871e5b652e25615e98dc508c24b8fb2017a5e355946b5cbad0d6",
+  "nonfrontal_predictions/sub-032323-000-blink-snr+5.npz": "43387ecd1196e444629308835f484dc8d207298c64d3bc10ecad16f6e1c7cdb7",
+  "nonfrontal_predictions/sub-032338-000-lateral-snr+5.json": "9b5364ec7630e71991b52c212d770262f2d2fbbc579304a958821853c475c4e7",
+  "nonfrontal_predictions/sub-032326-000-clean-clean.json": "b5ca7254ed4e0a6db70bab365c5dd09fa071de55ad64dc22840581271b1ea63d",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr-5.npz": "40bd5bac3c1b2c923a2a9faa447baa39c7d8677d79d6baf5c5b63a74f69ab9af",
+  "nonfrontal_predictions/sub-032340-000-blink-snr+0.npz": "e8d383a20b0b0f3e860062118d297cd6be45466643905416ba0767710fd0a1ed",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr+0.json": "54aba749fbb3d3b8c57c99a1e04eb4790bc1c1eb001006be2837f38c7ebeda03",
+  "nonfrontal_predictions/sub-032307-000-clean-clean.npz": "d1f1f98e8149874a91f14c540bc00da99355b743f1a74b4b07cd5b54b12d133e",
+  "nonfrontal_predictions/sub-032327-000-blink-snr+5.json": "c8dd132ed175584b9d3a5888b5ca2a3a73a211762c252deee45ca6ef3f17b38d",
+  "nonfrontal_predictions/sub-032336-000-blink-snr+5.npz": "7b1d86206b2c5c1cdec726c9afeb8bdb3310e9c30e550e4520f3deea7536fc2e",
+  "nonfrontal_predictions/sub-032340-000-blink-snr-5.npz": "47a719b90e956eb8b746b07bb0d748e55378f2a9eaf5952a4684da14a33d61f6",
+  "nonfrontal_predictions/sub-032307-000-lateral-snr-5.npz": "c9630532f8fa4f11a71237f0bc1c3d3c79f2b6679ecb4b95ea63388e535a0249",
+  "nonfrontal_predictions/sub-032312-000-blink-snr+0.npz": "c2067d440de676d20dc0ed46880540f63c814d135dd155730f1cdbfb97f456c8",
+  "nonfrontal_predictions/sub-032330-000-blink-snr+0.npz": "7501d578259c9e5f1eb260d862b0166f53a5a599d0e3e76d3bc8d0010397311d",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr+0.json": "a497c422c08c8501f7520b3ec1ae4292eb59f5cc0113ff574459ceda20347b80",
+  "nonfrontal_predictions/sub-032323-000-clean-clean.json": "75dcb76e270c693e87f3f6fe60df969cba9caf32eab7cee5f359cea27dee13e1",
+  "nonfrontal_predictions/sub-032326-000-blink-snr+5.npz": "4e63b7dfc484aec112165c09c84c9d1e5c3ae89c1bf08b6c1b8435146d7d4f06",
+  "nonfrontal_predictions/sub-032338-000-blink-snr-5.json": "ebde343fd91f6b7db6f5d572472e726d448b153ec4c88cff4b0f836afd84530e",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr+0.npz": "f9b0b81b4e5b40391411426e6d7e9125f60314cea665192c1aab0b62eef83cf7",
+  "nonfrontal_predictions/sub-032327-000-blink-snr+5.npz": "62d0aac4e8af07b9c43c724bc4715ae53b4c5cc1481b3bf131071ff0afeba3e0",
+  "nonfrontal_predictions/sub-032315-000-clean-clean.npz": "102acb163f054ce5a8705d51b00a3a232170e76af2a637408130c478f173bea7",
+  "nonfrontal_predictions/sub-032310-000-lateral-snr+0.json": "97b5fda34c5bd3f5b370aa5ff81e14fd8cdb91b2f5185069fa70512e97d9cf77",
+  "nonfrontal_predictions/sub-032309-000-blink-snr-5.json": "0910b4a9df6c79beb7b57172fb7227fbee247694fdf75b5988b1bd9c4a1c1946",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr+5.npz": "d8607a7747ea272967f1322f1669977ae2b04b35c12267bf0d47c9256e80748a",
+  "nonfrontal_predictions/sub-032334-000-clean-clean.json": "3035dc332dad2a72b6e5bb6f0b0e29572c13b939dcae482b00e2ca1e10e3d712",
+  "nonfrontal_predictions/sub-032325-000-lateral-snr-5.npz": "43e8ebd7ac46bc737b5ed105aa7381ff24e785f70291e7dd6517c84fdf0a9c9e",
+  "nonfrontal_predictions/sub-032322-000-mixed-snr+5.json": "56856fa63b0c6f667348a38aba597dfdd3f0214986af6a01c663abeae0f43392",
+  "nonfrontal_predictions/sub-032324-000-clean-clean.json": "cc71475cf6cfd384e015998fc6509042b6756b135bf60fa2589d20ed4edd250c",
+  "nonfrontal_predictions/sub-032308-000-clean-clean.json": "fe3fa1d681ac1ed006bd250c97760476f5b869d18f4073f041188f726ebb4cdc",
+  "nonfrontal_predictions/sub-032341-000-mixed-snr-5.json": "d1d842de29e6fc2165cf3755747c4892f8b73720a4b11d3ec9e502c7abc3bafb",
+  "nonfrontal_predictions/sub-032324-000-blink-snr+5.json": "9a5ea8a6cd2787b797ea05133656d3aa0443009dbfd4878cd9a88032ebd802ec",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr+5.npz": "a82dc8bd746967ebb3ed918c54a29098faf53b30989a4d03a7f4e1e2311a3c69",
+  "nonfrontal_predictions/sub-032340-000-clean-clean.json": "41b598b4f2547f6fc3ae2a1bf5be7e950d389410f96c52627ee2216d205d6d63",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr+0.npz": "1a812ef5570f346f139f358db10b3d08b2e29b518aafb998062127b3aed00229",
+  "nonfrontal_predictions/sub-032341-000-lateral-snr-5.npz": "48b90bc6e6f2a8a542ca3bd568bab8c5b1a81b4945b999f2a2c34cf28a5356dd",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr+0.npz": "37188a20c1143df71c9ceab6edb0af3a5ab6f2fc89671040d4e82b5cb2ec138b",
+  "nonfrontal_predictions/sub-032312-000-clean-clean.npz": "f3dbebe1ce62b24be285351b3037c7b7ca8a4454c6f57e47f3d63603b2d83efd",
+  "nonfrontal_predictions/sub-032328-000-clean-clean.json": "129e5180e374e6d8e0dc427bd51d483b23ccdd1449b175e8167b1d2584851e02",
+  "nonfrontal_predictions/sub-032314-000-blink-snr+5.npz": "994b32bfc1986dc7966102fb61dc12e5286d5352db8b2be1728e78d627db08ce",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr-5.json": "54bcba502339887d9496c55a85c1e4044e31492bdda753f1868bac17de1d7217",
+  "nonfrontal_predictions/sub-032310-000-blink-snr+5.npz": "ea7cf3e250f1118d981632fb8e2d9af3bf381bba98ec4341bc47d7de2538bac1",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr+5.npz": "37a77e4b3efb699691002513b53b5481e3524e4881530dce105c6fd06750c692",
+  "nonfrontal_predictions/sub-032330-000-lateral-snr-5.json": "291d6a7f26ea39f0e8a1bbbbbf11041dda6679cfe9c9a3baa76adc91adda3299",
+  "nonfrontal_predictions/sub-032310-000-clean-clean.npz": "0fbe518d902d4f3f7399bcc81a77168356c77d322d0ee999e975c530f0c896f2",
+  "nonfrontal_predictions/sub-032316-000-lateral-snr+5.npz": "b5714b910fad8f97ace9bfcdec448022bf0e24e7c6faf9fa262f1d0a4b94ec84",
+  "nonfrontal_predictions/sub-032305-000-mixed-snr+0.npz": "d0af43d89754f34195a79f9d3ea9ab0f3495b863df8042733ed685f0ccd8ac8a",
+  "nonfrontal_predictions/sub-032325-000-blink-snr-5.npz": "41b3ee58b05fb55875fc765fc604ba93f91d4981286d4682727c3ebde74d029e",
+  "nonfrontal_predictions/sub-032329-000-blink-snr+0.json": "e311a358b107db4d6999e5fa01fa7ae763d240e770075f1cf9bd8bf5d96c6e53",
+  "nonfrontal_predictions/sub-032309-000-mixed-snr+5.json": "aedc7510a9ee7a432f990dd3fa5224acf15bdb33293a4fb9a68e04aae4ec190b",
+  "nonfrontal_predictions/sub-032309-000-clean-clean.json": "8a962bbaff8526a773dcc545689313eda9bcd6e31a6bb025e728f1168d7a2ec3",
+  "nonfrontal_predictions/sub-032317-000-mixed-snr+0.json": "7d29c1892fb5ec4426318cda19b86ea9592326b549df9efd3d81a5fd88765bbb",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr+0.npz": "f598f0ea0c8516b0d6e8dde3f486d4625950d2e3b56e6f4db0f7abd63674e8f3",
+  "nonfrontal_predictions/sub-032334-000-lateral-snr+0.npz": "7317e6640472a14cc5b9899acb9688625ebe2633e180dc5b82f3eebeb3dc1054",
+  "nonfrontal_predictions/sub-032307-000-clean-clean.json": "4bdc080196c42814e72bd282323b79d83dc9b7f1d47470f720e93e4b073127ac",
+  "nonfrontal_predictions/sub-032307-000-mixed-snr+0.npz": "ed0cb2f8ffecfaa465aab66a6dfdb2dcce3da701b163939ffdcac03d700fa3f9",
+  "nonfrontal_predictions/sub-032324-000-lateral-snr+5.json": "4552275a80a17b94ff5cd8339bb1b47f5ac1a34f17501c74d8439439385bdf1f",
+  "nonfrontal_predictions/sub-032310-000-mixed-snr+5.json": "77d943112be74d0f895a69143b2e09cacf31d7930c2ab015c38c05624f58bba5",
+  "nonfrontal_predictions/sub-032320-000-mixed-snr+5.npz": "3172b0eada4f6c2566767cd08619b79f83fc72b4cb265c5f0cd8ecc2af335389",
+  "nonfrontal_predictions/sub-032310-000-clean-clean.json": "21d5bfcfc7bf1a85bcd8e1c8fe4a4e0efce9a950debd46d71e20d8fe7d0b58cd",
+  "nonfrontal_predictions/sub-032328-000-blink-snr+5.json": "02bdd85e5df5056ee6206852b6f0a8fa6f57853ea6a8e36e1eab84752f4f6fd5",
+  "nonfrontal_predictions/sub-032307-000-blink-snr+5.json": "212cda03dabe38f2b7a4186316495570cc91ed0b677ef1fd47eeb1250307cd0e",
+  "nonfrontal_predictions/sub-032326-000-mixed-snr-5.npz": "bd77432704c54533bc6a8efc6886a5baa789524ea154a72fd72da807e14e4933",
+  "nonfrontal_predictions/sub-032317-000-blink-snr+0.npz": "2f02aea7a6ca3731ad8850e916a566f239a050549727805e8962f10ae369a09e",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr-5.json": "4076a08e8e9df913f2c89c2de839e956e6c405846e820ab89083ed94cf9f8d35",
+  "nonfrontal_predictions/sub-032316-000-clean-clean.npz": "d971fbc216ed7eb3cfdd31eccd2713174dd5f3b838fb34151f12446bdf101994",
+  "nonfrontal_predictions/sub-032329-000-lateral-snr+0.npz": "8737ee47dba59e23e81cc515236a9bf91c72664c88dfa33f46e807431f6ec4c9",
+  "nonfrontal_predictions/sub-032308-000-lateral-snr+0.npz": "25880b0eb8cbc9ece41850b32b96546a417c8d20b3b56a3a646dc0f7feac8916",
+  "nonfrontal_predictions/sub-032325-000-mixed-snr+0.npz": "fad13751edf7959da0443c49bc88023283291cb8e01e0fa050c07cb6a2512129",
+  "nonfrontal_predictions/sub-032336-000-blink-snr+0.json": "6bc70a07bc434a31120108be3abc1a440cf50cca02ae47bcdfb15606c327e7ca",
+  "nonfrontal_predictions/sub-032338-000-mixed-snr+5.json": "19fd5a3d90c176a84c0d6acf3cb9fc322554567e345b36d346251ceeb10d7314",
+  "nonfrontal_predictions/sub-032323-000-mixed-snr+0.npz": "b21182cac4d5e767fad6a984ed3c7bc7a8d6316da2258f0533251847afa93902",
+  "nonfrontal_predictions/sub-032317-000-lateral-snr+5.json": "e2f19848744de36cf846bdc1511c2b0bda15dd4058f6d8d7439498bed33e1393",
+  "nonfrontal_predictions/sub-032309-000-clean-clean.npz": "09909ad2acfb8c46d953deceec9e15b3b105dc9cb6271758e990d53af7dee534",
+  "nonfrontal_predictions/sub-032336-000-lateral-snr-5.npz": "d2c2555293abcbcdea8c5044d08f2a0d901172aaa8e80e1b65474b2da4aac311",
+  "nonfrontal_predictions/sub-032321-000-lateral-snr-5.json": "1cef17f2c1c7881b058e041833dfdf888ad5bfc6ac410fa3b1ab37d353f9630d",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr+0.json": "26959cd56e44b9fe3469adb17d91d9164660519a7036d851adaa3f584db339fb",
+  "nonfrontal_predictions/sub-032312-000-lateral-snr+0.npz": "84599ced6908a6551031642d23f0b78b7ad020fc0f55a8613e57f202c28496c4",
+  "nonfrontal_predictions/sub-032313-000-blink-snr+0.npz": "87ab2f2a219d9c3491462041e68a6da7809997cd9810923bb15ccf642214d19e",
+  "nonfrontal_predictions/sub-032318-000-clean-clean.json": "501116b26509fdae4948a30aa5f929be95e78023cfc8793ca924d60441ff602c",
+  "nonfrontal_predictions/sub-032331-000-lateral-snr-5.json": "9edd8c7d2533f19969c9e4bd8698c42e84b905ec802277befd77ae18d778d6ff",
+  "nonfrontal_predictions/sub-032305-000-lateral-snr+0.npz": "5bac10cd4334f008d17ce9147698f9384b65374e35ef90926f33ddf10f2c0022",
+  "nonfrontal_predictions/sub-032309-000-blink-snr+0.json": "910843466e638f5325bfc2086fe9d23b9d1e34b597ea8af18cd12d8c514092b7",
+  "nonfrontal_predictions/sub-032340-000-lateral-snr-5.npz": "7bbc30bd45efac85746237d9dd0f30da21bf28d013d3f33b43bd0a0b0f486873",
+  "nonfrontal_predictions/sub-032326-000-lateral-snr+5.json": "2ea34af57b67c5a3780c0ef584b621f4899224156a3f58bb1a2fe0f3beff6c51",
+  "nonfrontal_predictions/sub-032321-000-mixed-snr+0.npz": "5da6be58dda2d191884ac84fac03d1680fa3981c670e4824eecf8981c24979a2",
+  "nonfrontal_predictions/sub-032330-000-mixed-snr-5.npz": "dff5df8489da742fda4aa8ccebd1c4c9e001dd6bc35f697f05a0484631cae2cf",
+  "nonfrontal_predictions/sub-032312-000-mixed-snr+5.npz": "49c342a8c83acbc49570f8a590539c9d12c9f840c3f93397f0ae572648fc50c3",
+  "nonfrontal_predictions/sub-032320-000-blink-snr+0.json": "6ba342a3a9e216f32f584a6845be106274ec7b564d5877c03c86e77e3d39c0be",
+  "nonfrontal_predictions/sub-032331-000-mixed-snr+5.json": "0bfffea5da53eeb19a345761865a6059a14b64d6e93ffdf8cecc5bb09846c785",
+  "nonfrontal_predictions/sub-032327-000-lateral-snr-5.json": "f4376ed3592d47ec99018b8eb767070c181bc134d9fb92c705c664e284c08d4f",
+  "nonfrontal_predictions/sub-032340-000-mixed-snr-5.json": "46c5b5ff388c9ad347cc61f1058a685474be5b7c789e33a1bbf85398caf9abaa",
+  "nonfrontal_predictions/sub-032315-000-mixed-snr-5.json": "35bdd11164e5b878f2e2335168179ee3af35ca0cc5f0ff09ac9c1ec70777e03f",
+  "nonfrontal_fits/3c790c7240313ddde1cf77abb4bf4d9f8985a3aa8c821b4d89fa805080fb5e79/fit_status.json": "f76eebf3128e77f2e5dc12133917cd466aa8923fcf338ebf5811bde521f7e240",
+  "nonfrontal_fits/3c790c7240313ddde1cf77abb4bf4d9f8985a3aa8c821b4d89fa805080fb5e79/fitted_arrays.npz": "c42a3ca4afda6089ca2897d88ce3753e125b665de3cadcaf09f15ad857b5b733",
+  "nonfrontal_fits/36aa4ee06f6f86685573f4a0f3c8cb725069d8339bc6e422b1c5229b6d282275/fit_status.json": "0d4a72c3e9a993ca2e1d7f0280352f51348ff8f76257c67828d670ff58108613",
+  "nonfrontal_fits/36aa4ee06f6f86685573f4a0f3c8cb725069d8339bc6e422b1c5229b6d282275/fitted_arrays.npz": "1b77b686545682d01cecb6ca593b2bc7bbe474e3f24771db4f242102599f26d8",
+  "nonfrontal_fits/57d7832b089af8e6844da844449f596eccd317583f192b2bf8d762cd427e25e0/fit_status.json": "7b4fc02a4f2168690ea1637285f602750aaa31a85b38c5fdf530d1abffe07f4b",
+  "nonfrontal_fits/57d7832b089af8e6844da844449f596eccd317583f192b2bf8d762cd427e25e0/fitted_arrays.npz": "cc3e0246c082612b63f044a6baa7795fd62f2b506bb1db7c7b1c4c68fc9a59c7",
+  "nonfrontal_fits/e439d5a92b3aa75bee0c61ed0fd6fe5613ac155803bafe29604a507667c9e5cd/fit_status.json": "58c14cf1a3ba61499de0a804877b384cc3d815e377f6bdff42eb1b3c9bf3f2a5",
+  "nonfrontal_fits/e439d5a92b3aa75bee0c61ed0fd6fe5613ac155803bafe29604a507667c9e5cd/fitted_arrays.npz": "1ca27414abadd04247e5a62a850d9e719fa5be6f9d031d75f65933df29e55aa2",
+  "nonfrontal_fits/4d5219de2630092646d226a7cb75b707cf042f6235f3b5d308ea3815487ff741/fit_status.json": "490379d7d7748f92b6865cdb6a8041802a91479ff27aff8073d81d99a9c6dee9",
+  "nonfrontal_fits/4d5219de2630092646d226a7cb75b707cf042f6235f3b5d308ea3815487ff741/fitted_arrays.npz": "e0ac11abb8b66046f8777e9b9eff98bde3e56c7f6b4b7276b53ed592238a1908",
+  "nonfrontal_fits/7c3d0685d115b99553e7a5397bbf4517b6f57db11742f4914090fd52d86e1125/fit_status.json": "7f706742439c83171b0190cc8c6c4138b4d94165cbeb23b76592f3435d3a1124",
+  "nonfrontal_fits/7c3d0685d115b99553e7a5397bbf4517b6f57db11742f4914090fd52d86e1125/fitted_arrays.npz": "c9ecb075ea9da5aa614c8d9f1e27743b97e443a36c9e4633c606e8e4f41f0466",
+  "nonfrontal_fits/0b42e44a7de4ce4da14ae018f78cbedeefc4c7d34ee3db13c6da2531ae8ec3cb/fit_status.json": "991c91a2214061753a1281f5d9c49d82e01c0a2b9fe8bfe97926f3deab9bca37",
+  "nonfrontal_fits/0b42e44a7de4ce4da14ae018f78cbedeefc4c7d34ee3db13c6da2531ae8ec3cb/fitted_arrays.npz": "137935168ddeb92b93c19fd44650b7ed893eee6732db40dd750aecbbd2b1d2b0",
+  "nonfrontal_fits/76a5d46d193ef41cf644092b1a845889ea9ad918cd7a8492fc8a4a01acddc3a1/fit_status.json": "8fda83844433365a43578503a9c14c8001f284ca41fdbed3e5f5c271a8160328",
+  "nonfrontal_fits/76a5d46d193ef41cf644092b1a845889ea9ad918cd7a8492fc8a4a01acddc3a1/fitted_arrays.npz": "f5e32ccf1b3cd61868712f2dbe4dc6adfbc6687c980fee1b4f2f7a91fd21b21b",
+  "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fit_status.json": "471554e8771d1d4e6df7b9178216589838d657e4f7aea731a04f054e1321b5d5",
+  "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fitted_arrays.npz": "0fc5a16d33062254d5412341e4913e6486cbdd76d12031151d2218fafceb71eb",
+  "nonfrontal_fits/219711a1d49955e77db5c1bed668856061efafb72430cb6678f062c3d0c3d2f8/fit_status.json": "84407e99b0382f1bd3a0c1b3c0394035404788c6e71f89ab9c0dc6ba50b0c3f1",
+  "nonfrontal_fits/219711a1d49955e77db5c1bed668856061efafb72430cb6678f062c3d0c3d2f8/fitted_arrays.npz": "5935cb55c91da94b8d114efd8cb86c8a0f50fbaad949553d07b538fc6e859e4a",
+  "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fit_status.json": "41a1f1fa21b793c5ec6a376aaa2b4ae53695daa15921b4e3afec049ed18ed720",
+  "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fitted_arrays.npz": "acd650c81809e122837ddf49bfa9f3254bf83a666d62cfa057c0c6e5679c6d44",
+  "nonfrontal_fits/f6fc00b5018aff9aa6aa485c085b0f2312bc0fe21ca5c6e66d0ec36cec806ad6/fit_status.json": "199e4e739668db7484741c9842046b92716c374c3fadeefa17c52eee5adb4f81",
+  "nonfrontal_fits/f6fc00b5018aff9aa6aa485c085b0f2312bc0fe21ca5c6e66d0ec36cec806ad6/fitted_arrays.npz": "ed2ff985e1d7e82a450d43965f4fa5e2222775d872acb6984b09eb04620e12be",
+  "nonfrontal_fits/f671f7ae57f5eee95b42caeb87df03ede2f5d1d88865a3a278f550d4ba21e22e/fit_status.json": "36abd4b7baa9e35d864fbbd559fa9cb3b0a4643fe73759c79bbce4717c93defb",
+  "nonfrontal_fits/f671f7ae57f5eee95b42caeb87df03ede2f5d1d88865a3a278f550d4ba21e22e/fitted_arrays.npz": "20856aa5ed2843387893e92b6cb4f835e646a6e11f0de94d5c633c0d0ba39ddc",
+  "nonfrontal_fits/4db5d694444a81b24b04657bff20e2feccdd85127e79dc7d7beda4ff424610d4/fit_status.json": "a2b366e6e951f4bb530e49f97a6b3e3603e342d770d28d7c275ce836e0d0b177",
+  "nonfrontal_fits/4db5d694444a81b24b04657bff20e2feccdd85127e79dc7d7beda4ff424610d4/fitted_arrays.npz": "f02ff010a25794819990797d38384c570987f0c37bfbc1b4f223286c87a1441f",
+  "nonfrontal_fits/d4d39247e5f60068e4424173fc5f0ae337818ee55d2ad51e8b4cd5b5074dba8d/fit_status.json": "d08a844fe9a3189980c6bfa8333437d0730708511236065293b2d31f30c95574",
+  "nonfrontal_fits/d4d39247e5f60068e4424173fc5f0ae337818ee55d2ad51e8b4cd5b5074dba8d/fitted_arrays.npz": "2f1c2d21cf31969c31e6913d6fbcfe63ff956f1383c09ad4d999002f00c30ad3",
+  "nonfrontal_fits/023b3bd6ec23dd235ca97d576b07c7d945f29017afb7321d9ae831b9ff83b277/fit_status.json": "ea2c1f9d72af0e39dc634b01db93d3c0cfc12b04ac7175e13e2b03dbf7544bfd",
+  "nonfrontal_fits/023b3bd6ec23dd235ca97d576b07c7d945f29017afb7321d9ae831b9ff83b277/fitted_arrays.npz": "85ae4c4fd94dbef7ac1747d15c04d212a7146102422a49e9faa7548cf2fe733f",
+  "nonfrontal_fits/387f2c1585fce6fdb4e814419548c49fe5957d5befb4143b2e57c1716f99c628/fit_status.json": "dd1f288d107cc6944ce98e5262b43535ce966cf5810758a6e9992d4fede58f1a",
+  "nonfrontal_fits/387f2c1585fce6fdb4e814419548c49fe5957d5befb4143b2e57c1716f99c628/fitted_arrays.npz": "47592e79c1842dc4f969481392f65f1f4a8643db33f93c41ed08e651ee925d4b",
+  "nonfrontal_fits/7b49504aba668e9c65eb8785ce769c3f10a1daf462dcedc2982f7a9a3222c2b9/fit_status.json": "e8dcf705502e60ae91c8bed491952002ceedd2c2bd774c2533fe9963c5292dac",
+  "nonfrontal_fits/7b49504aba668e9c65eb8785ce769c3f10a1daf462dcedc2982f7a9a3222c2b9/fitted_arrays.npz": "391cc46a023425bea0ecf4d07d7894a5b774030295d7ef8761775ef91c788c96",
+  "nonfrontal_fits/ad07f91c9ee5f380da5862ba923335d370639545f8252db6952b88dcb3ee3c83/fit_status.json": "1cae48e43aae3f996e8c180c738d195218a7d09a76feba4609fed1b69aef033d",
+  "nonfrontal_fits/ad07f91c9ee5f380da5862ba923335d370639545f8252db6952b88dcb3ee3c83/fitted_arrays.npz": "ec50920a8ed7211c61ce7898bbbb6ecd0f7f9abab25f91c6d9047dce37c9557e",
+  "nonfrontal_fits/1e2d0217a89ac79871d441f22e3f376cdfb9d062bf2f3d3ef79aaa84c919ee65/fit_status.json": "77a5d284c494d051692242d8da46470fb38a1406c149c2ddb4659fc54aa8ce49",
+  "nonfrontal_fits/1e2d0217a89ac79871d441f22e3f376cdfb9d062bf2f3d3ef79aaa84c919ee65/fitted_arrays.npz": "fa1a0823fa6fd20172789f6da7a1cb7343124b6625958b0266b9502402f285f1",
+  "nonfrontal_fits/8f92594b68511732a6e27aab5f6790ad1d15480240a2c81434ecae3700273f9a/fit_status.json": "b0fa493b2a3fe6b8512334f7fb6cdf888a86ec902da671188c1a84df294b27e3",
+  "nonfrontal_fits/8f92594b68511732a6e27aab5f6790ad1d15480240a2c81434ecae3700273f9a/fitted_arrays.npz": "c03d94ca6daa9439e8a63396fbd9200bbf180e452c9157e440b15d595034465d",
+  "nonfrontal_fits/4c8dcc138431a9350d3ee43123277212d282e8caee581e651f204a09812f213a/fit_status.json": "3c3d9939614b4af20838678af53b49628a5e2b9465f89c1de699849e48da6c2a",
+  "nonfrontal_fits/4c8dcc138431a9350d3ee43123277212d282e8caee581e651f204a09812f213a/fitted_arrays.npz": "1ce4d88e6ff4fa4846f4538ad48a3ee0766f0991653a677bcd784d48377ce01e",
+  "nonfrontal_fits/7344f4936681c7c788b96ba8d5121770e8d250740bf409d2a55b505e4e4b3e19/fit_status.json": "99c1e47017889150f50b5b3cee29e6a094b4b9a1afa2fcdc9983dc21245c6a80",
+  "nonfrontal_fits/7344f4936681c7c788b96ba8d5121770e8d250740bf409d2a55b505e4e4b3e19/fitted_arrays.npz": "d399ed3d6851fadf3abbf1180d6a0a7ebb967471a88207344d2fb8ec5a3101d2",
+  "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fit_status.json": "274ab9d11eac87e2a29dbe7167795ced0c81565b5f2bd23f2bd8ccd7d5de7ceb",
+  "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fitted_arrays.npz": "4563f40f6fd3c427facb9c36aaac03649330c244e2cd0f141632f433370625e9",
+  "nonfrontal_fits/c51ca53e20a2f43c9a5d3e57e31cd06d4b300a4f376b8e2712f0da88915d27dc/fit_status.json": "312cde79acf15766e197f412e457f77e52813ab7013c8586390d32363bba8fe1",
+  "nonfrontal_fits/c51ca53e20a2f43c9a5d3e57e31cd06d4b300a4f376b8e2712f0da88915d27dc/fitted_arrays.npz": "c8d16f6cecfe2789c7dce449d778e7f637139d71e8809141db6cd99f9bdc0ae9",
+  "nonfrontal_fits/0d3ff45297bcaf05aac80dee91f8ece16ae91b2d5e87506cf0fb6a2bb313ac51/fit_status.json": "f4a811eeeb97d93d6f4e26d4fb77f41957feee3f02095f6c1e362738db778797",
+  "nonfrontal_fits/0d3ff45297bcaf05aac80dee91f8ece16ae91b2d5e87506cf0fb6a2bb313ac51/fitted_arrays.npz": "84f373d20211cab9c2422ced143eace719db3b3f8d01ceb430166816359725c8",
+  "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fit_status.json": "c813e921a79c3fc09887fa4ed589de74ef31c319191de90ac690c77fc4bcc236",
+  "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fitted_arrays.npz": "2eee07f45b8b3f7b132cac8c82b5c3587d48da19588e538b62b79757d14a03b8",
+  "nonfrontal_fits/5865ca35dce5c5a24a9638d94f34fc7c0091d36b1ddae507e6f6c36bc3602c6e/fit_status.json": "0d4a72c3e9a993ca2e1d7f0280352f51348ff8f76257c67828d670ff58108613",
+  "nonfrontal_fits/5865ca35dce5c5a24a9638d94f34fc7c0091d36b1ddae507e6f6c36bc3602c6e/fitted_arrays.npz": "12aef8cd0b999f7c656625323c8aa577b5ae7846cacd8cc6974fbc98571bcc2d",
+  "nonfrontal_fits/56b2accdf6cb1ae132431c0a25b006aa0546aaa74093a6a287c2e4ccb9ca8d7e/fit_status.json": "671b4e68719a5ec32c365e812f4f7da4d92739cc86d7ddee3f5edf8fd9981bbc",
+  "nonfrontal_fits/56b2accdf6cb1ae132431c0a25b006aa0546aaa74093a6a287c2e4ccb9ca8d7e/fitted_arrays.npz": "8b0f4cbfb9d0b769deba400d6ff0cb5facc73d6063c9c60be9d6c15b3d24e824",
+  "nonfrontal_fits/fda2987a2232d8b2b510575561b4c03d512e39501986703d3005ef5972047cb6/fit_status.json": "8a52f17372e8f4670f301c1cdc65ea38ee484393843cb4618897eeb1f871010c",
+  "nonfrontal_fits/fda2987a2232d8b2b510575561b4c03d512e39501986703d3005ef5972047cb6/fitted_arrays.npz": "3dad885a87fa9bc7dd3018847a979883157e6250448d6ed636588f80cb8e1335",
+  "nonfrontal_fits/685dc0baba7506a785e40fcde256594693b6908621262014c5f79829ada600be/fit_status.json": "c37af76a083539f28b20429d0ca9d8c9843bb502b54a2d42cae986f7f3531154",
+  "nonfrontal_fits/685dc0baba7506a785e40fcde256594693b6908621262014c5f79829ada600be/fitted_arrays.npz": "b1b24198469599319fb02ef1ea56dca5c090a0af794b038b6dd809620447ccc8",
+  "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fit_status.json": "239adc22d6360fccb9b2ce293a861c078744db59be205a5646e9bda3838bdfd4",
+  "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fitted_arrays.npz": "2bdc05b5c6fd81ab03752cb11f94af451a4b6efed633ae7513e351d107ab1001"
+}
+```
+
+### results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/execution_state.json
+
+[Saved payload](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/execution_state.json); SHA256 `d6daf5253cfc4c6af3baa7e8223169b355bd29c0b04c3ef2b922f330f31dca63`.
+
+```json
+{
+  "stage": "nonfrontal-challengers",
+  "status": "complete",
+  "artifacts": 1050
+}
+```
+
+### results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_summary.json
+
+[Saved payload](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_summary.json); SHA256 `320a63fe63ed42b6367126c56c884d30eecc293e7988ae72269f6ff8c7305b1c`.
+
+```json
+{
+  "profile": "full",
+  "examples": 320,
+  "recipients": 32,
+  "donors": 5,
+  "calibrations": 32,
+  "arms": [
+    "identity",
+    "central_frontal_vmd_context",
+    "central_frontal_raw_context",
+    "ica_rejection:posterior",
+    "ica_rejection:central",
+    "ica_rejection:both",
+    "ica_component_ridge:posterior",
+    "ica_component_ridge:central",
+    "ica_component_ridge:both",
+    "wavelet_ica:posterior",
+    "wavelet_ica:central",
+    "wavelet_ica:both",
+    "selective_wavelet_ica:posterior",
+    "selective_wavelet_ica:central",
+    "selective_wavelet_ica:both",
+    "reference_rank1:posterior",
+    "reference_rank1:central",
+    "reference_rank1:both",
+    "reference_rank2:posterior",
+    "reference_rank2:central",
+    "reference_rank2:both"
+  ],
+  "frozen_frontal_parity_checks": 5760,
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "saved_fit_replay_checks": 192,
+  "baseline_paper_metric_checks": 549000,
+  "new_decompositions": "calibration-only ICA; no VMD solver executed",
+  "runtime_s": 1103.51707407,
+  "weights_trained": false,
+  "autovmd_executed": false,
+  "scoring_target_fit": false,
+  "reserved_confirmation_opened": false,
+  "qualification": false,
+  "native_validation_required": true,
+  "reference_amplitude_mismatch": true,
+  "field_generator_bias": "regression-derived controlled field",
+  "uncertainty": "supplemental recipient/donor Poisson approximation, 500 draws; not paper-native permutation"
+}
+```
+
+### results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/resource_summary.json
+
+[Saved payload](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/resource_summary.json); SHA256 `aa1b0596f52aa5757b4bb20e46d4677d4b2a75dd0380be6b151261fa9353c50a`.
+
+```json
+{
+  "wall_time_s": 1216.0635822240001,
+  "peak_resident_memory_kib": 2091892
+}
+```
+
+### results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/stage_tests_summary.json
+
+[Saved payload](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/stage_tests_summary.json); SHA256 `11be4a290655992c80ef6d04f3575f3e4c1e2823980426b70b092bf13cad374e`.
+
+```json
+{
+  "passed": true,
+  "tests_sha256": "688bd85d87556922b1403ba567b6299954530718c2cd0e73eba154eb2849e2fe"
+}
+```
+
+### results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/retrieval_receipt.json
+
+[Saved payload](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/retrieval_receipt.json); SHA256 `b9ec0fe27e802b2baec6b73a963e254b1ad6b0e0fb3fa5d39558e650554d3b42`.
+
+```json
+{
+  "run_id": "nonfrontal-full-001",
+  "git_sha": "46171ac7d14715b853e722013edfde2260a86fb6",
+  "verified_payloads": [
+    "configuration.json",
+    "coverage_paired_differences.csv",
+    "coverage_uncertainty_channel_strata.csv",
+    "coverage_uncertainty_intervals.csv",
+    "coverage_uncertainty_method.json",
+    "environment.json",
+    "EVALUATION_PROTOCOL.md",
+    "experiment.json",
+    "nonfrontal_central_shared.png",
+    "nonfrontal_channel_scores.csv.gz",
+    "nonfrontal_condition_means.csv",
+    "nonfrontal_controlled_gates.json",
+    "nonfrontal_decisions.jsonl",
+    "nonfrontal_fit_records.jsonl",
+    "nonfrontal_method_means.csv",
+    "nonfrontal_posterior.png",
+    "nonfrontal_progress.json",
+    "nonfrontal_selection_manifest.jsonl",
+    "nonfrontal_summary.json",
+    "nonfrontal_whole.png",
+    "paper_evaluation_protocol.json",
+    "parent_identities.json",
+    "resource_summary.json",
+    "run_spec.json",
+    "stage_tests_summary.json",
+    "tests.txt",
+    "nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032309-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032310-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032312-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032313-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032315-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032316-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032317-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032318-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032319-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032320-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032321-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032322-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032323-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032324-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032325-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032326-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032327-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032328-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032329-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032330-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032331-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032334-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032336-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032338-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032339-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032340-000-mixed-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-blink-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-blink-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-blink-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-clean-clean.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-lateral-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-lateral-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-lateral-snr-5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-mixed-snr+0.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-mixed-snr+5.csv.gz",
+    "nonfrontal_metric_shards/sub-032341-000-mixed-snr-5.csv.gz",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032305-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032305-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032305-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032305-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032305-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032305-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032305-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032306-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032306-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032306-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032306-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032306-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032306-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032306-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032307-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032307-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032307-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032307-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032307-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032307-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032307-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032308-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032308-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032308-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032308-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032308-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032308-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032308-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032309-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032309-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032309-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032309-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032309-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032309-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032309-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032309-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032309-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032309-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032310-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032310-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032310-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032310-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032310-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032310-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032310-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032310-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032310-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032310-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032312-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032312-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032312-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032312-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032312-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032312-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032312-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032312-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032312-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032312-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032313-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032313-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032313-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032313-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032313-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032313-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032313-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032313-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032313-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032313-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032314-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032314-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032314-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032314-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032314-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032314-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032314-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032315-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032315-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032315-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032315-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032315-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032315-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032315-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032315-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032315-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032315-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032316-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032316-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032316-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032316-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032316-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032316-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032316-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032316-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032316-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032316-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032317-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032317-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032317-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032317-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032317-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032317-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032317-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032317-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032317-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032317-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032318-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032318-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032318-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032318-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032318-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032318-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032318-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032318-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032318-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032318-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032319-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032319-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032319-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032319-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032319-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032319-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032319-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032319-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032319-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032319-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032320-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032320-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032320-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032320-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032320-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032320-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032320-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032320-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032320-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032320-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032321-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032321-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032321-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032321-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032321-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032321-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032321-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032321-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032321-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032321-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032322-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032322-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032322-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032322-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032322-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032322-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032322-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032322-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032322-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032322-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032323-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032323-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032323-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032323-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032323-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032323-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032323-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032323-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032323-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032323-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032324-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032324-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032324-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032324-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032324-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032324-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032324-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032324-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032324-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032324-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032325-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032325-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032325-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032325-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032325-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032325-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032325-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032325-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032325-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032325-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032326-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032326-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032326-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032326-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032326-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032326-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032326-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032326-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032326-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032326-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032327-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032327-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032327-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032327-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032327-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032327-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032327-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032327-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032327-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032327-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032328-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032328-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032328-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032328-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032328-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032328-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032328-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032328-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032328-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032328-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032329-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032329-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032329-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032329-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032329-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032329-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032329-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032329-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032329-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032329-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032330-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032330-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032330-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032330-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032330-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032330-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032330-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032330-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032330-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032330-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032331-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032331-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032331-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032331-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032331-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032331-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032331-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032331-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032331-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032331-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032334-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032334-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032334-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032334-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032334-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032334-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032334-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032334-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032334-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032334-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032336-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032336-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032336-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032336-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032336-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032336-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032336-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032336-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032336-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032336-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032338-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032338-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032338-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032338-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032338-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032338-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032338-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032338-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032338-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032338-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032339-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032339-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032339-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032339-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032339-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032339-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032339-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032339-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032339-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032339-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032340-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032340-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032340-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032340-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032340-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032340-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032340-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032340-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032340-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032340-000-mixed-snr-5.npz",
+    "nonfrontal_predictions/sub-032341-000-blink-snr+0.json",
+    "nonfrontal_predictions/sub-032341-000-blink-snr+0.npz",
+    "nonfrontal_predictions/sub-032341-000-blink-snr+5.json",
+    "nonfrontal_predictions/sub-032341-000-blink-snr+5.npz",
+    "nonfrontal_predictions/sub-032341-000-blink-snr-5.json",
+    "nonfrontal_predictions/sub-032341-000-blink-snr-5.npz",
+    "nonfrontal_predictions/sub-032341-000-clean-clean.json",
+    "nonfrontal_predictions/sub-032341-000-clean-clean.npz",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr+0.json",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr+0.npz",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr+5.json",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr+5.npz",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr-5.json",
+    "nonfrontal_predictions/sub-032341-000-lateral-snr-5.npz",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr+0.json",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr+0.npz",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr+5.json",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr+5.npz",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr-5.json",
+    "nonfrontal_predictions/sub-032341-000-mixed-snr-5.npz",
+    "nonfrontal_fits/023b3bd6ec23dd235ca97d576b07c7d945f29017afb7321d9ae831b9ff83b277/fitted_arrays.npz",
+    "nonfrontal_fits/023b3bd6ec23dd235ca97d576b07c7d945f29017afb7321d9ae831b9ff83b277/fit_status.json",
+    "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fitted_arrays.npz",
+    "nonfrontal_fits/0a2f4e9fd257106ce3577d1ace6d5b260cf3fc3e3975e8a03087b63a864e8742/fit_status.json",
+    "nonfrontal_fits/0b42e44a7de4ce4da14ae018f78cbedeefc4c7d34ee3db13c6da2531ae8ec3cb/fitted_arrays.npz",
+    "nonfrontal_fits/0b42e44a7de4ce4da14ae018f78cbedeefc4c7d34ee3db13c6da2531ae8ec3cb/fit_status.json",
+    "nonfrontal_fits/0d3ff45297bcaf05aac80dee91f8ece16ae91b2d5e87506cf0fb6a2bb313ac51/fitted_arrays.npz",
+    "nonfrontal_fits/0d3ff45297bcaf05aac80dee91f8ece16ae91b2d5e87506cf0fb6a2bb313ac51/fit_status.json",
+    "nonfrontal_fits/1e2d0217a89ac79871d441f22e3f376cdfb9d062bf2f3d3ef79aaa84c919ee65/fitted_arrays.npz",
+    "nonfrontal_fits/1e2d0217a89ac79871d441f22e3f376cdfb9d062bf2f3d3ef79aaa84c919ee65/fit_status.json",
+    "nonfrontal_fits/219711a1d49955e77db5c1bed668856061efafb72430cb6678f062c3d0c3d2f8/fitted_arrays.npz",
+    "nonfrontal_fits/219711a1d49955e77db5c1bed668856061efafb72430cb6678f062c3d0c3d2f8/fit_status.json",
+    "nonfrontal_fits/36aa4ee06f6f86685573f4a0f3c8cb725069d8339bc6e422b1c5229b6d282275/fitted_arrays.npz",
+    "nonfrontal_fits/36aa4ee06f6f86685573f4a0f3c8cb725069d8339bc6e422b1c5229b6d282275/fit_status.json",
+    "nonfrontal_fits/387f2c1585fce6fdb4e814419548c49fe5957d5befb4143b2e57c1716f99c628/fitted_arrays.npz",
+    "nonfrontal_fits/387f2c1585fce6fdb4e814419548c49fe5957d5befb4143b2e57c1716f99c628/fit_status.json",
+    "nonfrontal_fits/3c790c7240313ddde1cf77abb4bf4d9f8985a3aa8c821b4d89fa805080fb5e79/fitted_arrays.npz",
+    "nonfrontal_fits/3c790c7240313ddde1cf77abb4bf4d9f8985a3aa8c821b4d89fa805080fb5e79/fit_status.json",
+    "nonfrontal_fits/4c8dcc138431a9350d3ee43123277212d282e8caee581e651f204a09812f213a/fitted_arrays.npz",
+    "nonfrontal_fits/4c8dcc138431a9350d3ee43123277212d282e8caee581e651f204a09812f213a/fit_status.json",
+    "nonfrontal_fits/4d5219de2630092646d226a7cb75b707cf042f6235f3b5d308ea3815487ff741/fitted_arrays.npz",
+    "nonfrontal_fits/4d5219de2630092646d226a7cb75b707cf042f6235f3b5d308ea3815487ff741/fit_status.json",
+    "nonfrontal_fits/4db5d694444a81b24b04657bff20e2feccdd85127e79dc7d7beda4ff424610d4/fitted_arrays.npz",
+    "nonfrontal_fits/4db5d694444a81b24b04657bff20e2feccdd85127e79dc7d7beda4ff424610d4/fit_status.json",
+    "nonfrontal_fits/56b2accdf6cb1ae132431c0a25b006aa0546aaa74093a6a287c2e4ccb9ca8d7e/fitted_arrays.npz",
+    "nonfrontal_fits/56b2accdf6cb1ae132431c0a25b006aa0546aaa74093a6a287c2e4ccb9ca8d7e/fit_status.json",
+    "nonfrontal_fits/57d7832b089af8e6844da844449f596eccd317583f192b2bf8d762cd427e25e0/fitted_arrays.npz",
+    "nonfrontal_fits/57d7832b089af8e6844da844449f596eccd317583f192b2bf8d762cd427e25e0/fit_status.json",
+    "nonfrontal_fits/5865ca35dce5c5a24a9638d94f34fc7c0091d36b1ddae507e6f6c36bc3602c6e/fitted_arrays.npz",
+    "nonfrontal_fits/5865ca35dce5c5a24a9638d94f34fc7c0091d36b1ddae507e6f6c36bc3602c6e/fit_status.json",
+    "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fitted_arrays.npz",
+    "nonfrontal_fits/6544bc172bb0fce7467316a44dca1b591aae0abd96c2c15d31f305c5ffbfa944/fit_status.json",
+    "nonfrontal_fits/685dc0baba7506a785e40fcde256594693b6908621262014c5f79829ada600be/fitted_arrays.npz",
+    "nonfrontal_fits/685dc0baba7506a785e40fcde256594693b6908621262014c5f79829ada600be/fit_status.json",
+    "nonfrontal_fits/7344f4936681c7c788b96ba8d5121770e8d250740bf409d2a55b505e4e4b3e19/fitted_arrays.npz",
+    "nonfrontal_fits/7344f4936681c7c788b96ba8d5121770e8d250740bf409d2a55b505e4e4b3e19/fit_status.json",
+    "nonfrontal_fits/76a5d46d193ef41cf644092b1a845889ea9ad918cd7a8492fc8a4a01acddc3a1/fitted_arrays.npz",
+    "nonfrontal_fits/76a5d46d193ef41cf644092b1a845889ea9ad918cd7a8492fc8a4a01acddc3a1/fit_status.json",
+    "nonfrontal_fits/7b49504aba668e9c65eb8785ce769c3f10a1daf462dcedc2982f7a9a3222c2b9/fitted_arrays.npz",
+    "nonfrontal_fits/7b49504aba668e9c65eb8785ce769c3f10a1daf462dcedc2982f7a9a3222c2b9/fit_status.json",
+    "nonfrontal_fits/7c3d0685d115b99553e7a5397bbf4517b6f57db11742f4914090fd52d86e1125/fitted_arrays.npz",
+    "nonfrontal_fits/7c3d0685d115b99553e7a5397bbf4517b6f57db11742f4914090fd52d86e1125/fit_status.json",
+    "nonfrontal_fits/8f92594b68511732a6e27aab5f6790ad1d15480240a2c81434ecae3700273f9a/fitted_arrays.npz",
+    "nonfrontal_fits/8f92594b68511732a6e27aab5f6790ad1d15480240a2c81434ecae3700273f9a/fit_status.json",
+    "nonfrontal_fits/ad07f91c9ee5f380da5862ba923335d370639545f8252db6952b88dcb3ee3c83/fitted_arrays.npz",
+    "nonfrontal_fits/ad07f91c9ee5f380da5862ba923335d370639545f8252db6952b88dcb3ee3c83/fit_status.json",
+    "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fitted_arrays.npz",
+    "nonfrontal_fits/b7fdf82d768cf92b31f40ef29a4ecfa410574eb8558efa953e7df507f8af43fb/fit_status.json",
+    "nonfrontal_fits/c51ca53e20a2f43c9a5d3e57e31cd06d4b300a4f376b8e2712f0da88915d27dc/fitted_arrays.npz",
+    "nonfrontal_fits/c51ca53e20a2f43c9a5d3e57e31cd06d4b300a4f376b8e2712f0da88915d27dc/fit_status.json",
+    "nonfrontal_fits/d4d39247e5f60068e4424173fc5f0ae337818ee55d2ad51e8b4cd5b5074dba8d/fitted_arrays.npz",
+    "nonfrontal_fits/d4d39247e5f60068e4424173fc5f0ae337818ee55d2ad51e8b4cd5b5074dba8d/fit_status.json",
+    "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fitted_arrays.npz",
+    "nonfrontal_fits/d8932fd088119cd7a60999f6a6605fb5be0e8053c587b4ee2576d2c7d6ee7ae2/fit_status.json",
+    "nonfrontal_fits/e439d5a92b3aa75bee0c61ed0fd6fe5613ac155803bafe29604a507667c9e5cd/fitted_arrays.npz",
+    "nonfrontal_fits/e439d5a92b3aa75bee0c61ed0fd6fe5613ac155803bafe29604a507667c9e5cd/fit_status.json",
+    "nonfrontal_fits/f671f7ae57f5eee95b42caeb87df03ede2f5d1d88865a3a278f550d4ba21e22e/fitted_arrays.npz",
+    "nonfrontal_fits/f671f7ae57f5eee95b42caeb87df03ede2f5d1d88865a3a278f550d4ba21e22e/fit_status.json",
+    "nonfrontal_fits/f6fc00b5018aff9aa6aa485c085b0f2312bc0fe21ca5c6e66d0ec36cec806ad6/fitted_arrays.npz",
+    "nonfrontal_fits/f6fc00b5018aff9aa6aa485c085b0f2312bc0fe21ca5c6e66d0ec36cec806ad6/fit_status.json",
+    "nonfrontal_fits/fda2987a2232d8b2b510575561b4c03d512e39501986703d3005ef5972047cb6/fitted_arrays.npz",
+    "nonfrontal_fits/fda2987a2232d8b2b510575561b4c03d512e39501986703d3005ef5972047cb6/fit_status.json",
+    "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fitted_arrays.npz",
+    "nonfrontal_fits/feb78162a5d0330ea08873b9c0dd0a11b67a58f3292716b66cec667400db25b7/fit_status.json"
+  ],
+  "manifest_payload_count": 1050,
+  "all_manifest_payloads_verified": true,
+  "downloaded_outputs": 1052,
+  "utc": "2026-10-14T00:43:37.789843+00:00",
+  "retrieval_method": "bounded HTTP; four download workers",
+  "completion_verified": true
+}
+```
+
 ### results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-001/failure_recovery_audit.json
 
 [Saved payload](results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-001/failure_recovery_audit.json); SHA256 `c4b394c791acf1058956c0682fac9b3d8202598584dcd554cababc838e745416`.
@@ -48918,6 +51159,336 @@ Large per-channel and candidate tables remain lossless in the linked files. This
 | [results/vmd-frontal-replication-20261011/native-trial-support-001/results/vmd-frontal-replication-20261011/native-trial-support-001/unchanged_parent_reports/native_frontal_preservation_records.csv](results/vmd-frontal-replication-20261011/native-trial-support-001/results/vmd-frontal-replication-20261011/native-trial-support-001/unchanged_parent_reports/native_frontal_preservation_records.csv) | 1234 | `52f0a52dcf9f6807b1322a137dfe1777e1fac6e9759b083ba18d1b5de58b0ab1` |
 | [results/vmd-frontal-replication-20261011/native-trial-support-001/watch_events.jsonl](results/vmd-frontal-replication-20261011/native-trial-support-001/watch_events.jsonl) | 3855 | `91d700ebc266d18a50d5c4aefcadda226bbbadc75c0d3247d19abd39bb2dd844` |
 | [results/vmd-frontal-replication-20261011/orchestration/events.jsonl](results/vmd-frontal-replication-20261011/orchestration/events.jsonl) | 190815 | `22bc6b02c5506921d1f876e798ca359cd47ee1bb5f45f2dbf94a9d224a2343ea` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_paired_differences.csv](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_paired_differences.csv) | 170650203 | `c746ab50c9e0c621a094f160dcd6df2b1c7e1863404db162f40b39eb43f9a89c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_channel_strata.csv) | 60532737 | `5a4cb080eb5e4b9d61d9d924fc23727cd98aca565c41abd284fb537c75b65409` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_intervals.csv](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_intervals.csv) | 50473 | `5c760614cd5d360fa13888ef4461fda30f3b41efdbdf58e5525cd8d82df36556` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_channel_scores.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_channel_scores.csv.gz) | 38687601 | `009cdd1308009823a76e4ab6d6efddb8f9a8e809ce4fa3406476380fba239872` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_condition_means.csv](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_condition_means.csv) | 121543 | `9a09c5d85c7f42e46c1748d55b5d046b0e20a467ac80773eb881df47c39a5fa2` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_decisions.jsonl](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_decisions.jsonl) | 890624 | `68d8a5bd2e183497ee7d0c1017b0d050ce1320fd392b6215aeb5e1ce8e36b364` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_fit_records.jsonl](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_fit_records.jsonl) | 8504 | `64fccb5586914c8cbdbeb446c19b5fd3896775f3479d8b3eafe40401491ed482` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_method_means.csv](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_method_means.csv) | 12672 | `844960e676252ebc07d0f7ac91bad94fecd4daba0b87e16b2c2aa6bc2206b7a7` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz) | 131820 | `8cb04b91a8b213d4988e431e49797d68e84187ad3e2785b484db04241647d680` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz) | 128138 | `d40ca7bb3f85d185b265e10fce83c3caa50ac9b4b5fd4ecf71876c60d45df14b` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz) | 147182 | `664f6efcfcea82443e5468e36d2b85a52efd9695750a0334211192b3768bc635` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz) | 8327 | `03ca61e4920e6b9fe2351644fd7405998153ef14fa52b0abb788ce12156e80ef` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz) | 146486 | `78985113921947dbd677ff86af95b1e56168d932bee22ff66284e92feaa6b64d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz) | 126916 | `9acaab559a58f546d8b0ee35f7d2b168dd5c07c572ac91e5ea6a80aba2b02b9e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz) | 147558 | `842217e53bd00dce7fe3f7b1df3b509212500245fd1e0e0c6ea77b54ef34373d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz) | 131592 | `5cdf135e466434122fa850f808bfe7508d8ca82294c7ce2bfc567f8bb7897d11` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz) | 127562 | `9789176a9f3d5a018a9d2fca8a9941e48cd5d55428b61bb343bdc92df9bb262d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz) | 146859 | `07846ad09a8dd559fa9605254bb1541b98c6f44bee6db4f67cd7fb0ca92d4353` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz) | 130421 | `837f214da529ceed8782f4bb738fd89a3750b1bb3f76dc6df87e0b0a2d8428e9` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz) | 121420 | `48a33acc819e580ce5bb5ab215352adc441e2bd6acdb503a6f33b402f925bc69` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz) | 194306 | `6a8e2d18107b5f05ea4eca63d070d06c703f18049f0a5e69dfbbc454dd28990f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz) | 7925 | `88ee236f72a3b48d084b702a6bf319b2e490748f26665e3ab89a9516b5b2195c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz) | 143064 | `b0a6e520172083ea135d36358f749ba4d92630a3d6357031872a3bac7f7dfe6c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz) | 131102 | `32e8dc5da002eb0defbd61d978b731ad4f5ebb30b1693c4d69c9496929b91dca` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz) | 143957 | `36bd4348b15c9282e90fecc4865ff782aa506a8b39c1c89b37d94d87f0000460` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz) | 130126 | `ccc834f77bd36ed33741d241f7ee27c585dbd2851915648f51703f36a00f633d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz) | 121347 | `fbe66beca196952f6f6131a18bc2bbb427b2f377c1abca8d455859012bd9db12` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz) | 142613 | `fc46ba3011e9c742ef641f06c86ed7f53a717934fad7f00db15b3e76a79c889e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz) | 128528 | `1d1e1b968b7c40e2856763ca1724c981fe5d77acc4e583f292c0aa62c759e85f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz) | 126354 | `43913f4ddc10300fc0e979cadb3e1295af6976e5351fc512f419c123787a4ce1` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz) | 143114 | `39632a9dd36af61a06e3bab331f83274df14faf2eb26c4ce7267c2c72b695912` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz) | 7928 | `024393149735bda3113b383f701760603064e576b2ad1b7276e184c2b472708f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz) | 128495 | `062eb1ae826430577f7a396588c687a22a2a43c7f6ee3aed47b8d7fa38c74a60` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz) | 125684 | `16906a6581cf1d1955ff845b2f1cbe343ac8f36390e3297d52581963051397d4` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz) | 140727 | `26d9d3b21990ecd5a1e998ecd5d6272c894f3c6abb6b7166fbc792ad2e214b1a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz) | 128722 | `1ba81d8323cef12f518dd16cd33ac20fdeceeeee4aab8336e4ec303a29684bbb` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz) | 126246 | `c061da8bcb2efcd13dbfa8348e374c16d195f80eb74f6e277f740c19cb8501ae` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz) | 142952 | `9b1618d21883dcc282702c229a18813f8854af73cf6d2427c1b0bb97b8cb34f2` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz) | 129595 | `db20cb67a3bc09aac72bbbeced1e82400b173896e2c1918d06ee478f8c96f975` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz) | 126513 | `5f2cae1b9ef014c6b3881e87af7b9586891e2a49f31635ae289aa9fcc030fd49` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz) | 134782 | `4a10da364362d7cbe29ba38b11cde3033bd35472d956a2d3178cf044565f34ec` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz) | 8345 | `b1360ac09880ff77ecaf0dc49e36762d08eef4340c434dd70bef192c57dfaef9` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz) | 146681 | `de5f311ae463eb7a495fa8efb85a12fda15d27ecf76664c20a3be3eb99940ff1` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz) | 130350 | `e9097e2554bbab9b04fd6497a3a957fcb5dfe0f05b6cd2a789ec6c775b2bd6fd` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz) | 147223 | `d93591173c368c39f749fe1bcba754e62041b93901f3ccbcd486b4e13307b85a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz) | 129959 | `629db051d328a2d2e8b5792514d7f06d1f5fc2f8d300effadeebda1b13c4c43d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz) | 126760 | `dad757d80b6e702f4b9ce61680d1b8fe4e58fb26562f3b3273f27f1b228db005` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz) | 146860 | `a9dee79a1a3e01fcf4cf58cb464643ea81b8355460d0924f8ad007c7761bff0f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr+0.csv.gz) | 126310 | `8a7da1ee8fd2acae84104349e8519ba9a2a2fc9dde3392d549a662b27a7ea3ef` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr+5.csv.gz) | 120228 | `54418e8935f80a5d10fbc5316ff13078a7146f639a6ae32c8f3d300bf7ba222b` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr-5.csv.gz) | 130467 | `8f907a94b84009562c50001dd5b137dfa94cde7533beff870cb88ba2d1e5f389` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-clean-clean.csv.gz) | 7928 | `829a3552e88ee8f96be1883a786f9e1387d93217139034571da6beaae4a85277` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr+0.csv.gz) | 126835 | `e181ad395decc2adcb22f83c0ef1ab567982ff714840f2d2fe87ba43d61beea1` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr+5.csv.gz) | 53091 | `46f17bbc84ddfe2eaecc5e5d44c49df52d192d495ae9892a4375fd5d1f78778d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr-5.csv.gz) | 142282 | `0991ff366e0688be2f779167e0106941e97baeb6f2486c46125a101eea067710` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr+0.csv.gz) | 126138 | `e27757fac354aefa3de9968b23e25b21501e9cb1db35f766c95251239627e082` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr+5.csv.gz) | 119723 | `932f5575c44e3070ebe6e7761cbb271a0f8b2f052c97af14f0d8b8aead62bdbb` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr-5.csv.gz) | 130384 | `e537ead10647ac53d1f567c77f6567bebcff8c0645ba6d50299b7a0355ca75f1` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr+0.csv.gz) | 128510 | `69ae0491c23d8141bde227dc7c9ade877837b166ef6af0d41b301b917daa3975` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr+5.csv.gz) | 125953 | `d91b6db748e88478bb4f006a2bf307a8d32cca67223ab8766d13b08dd9edfd45` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr-5.csv.gz) | 142046 | `4a9b052a68974ae35a4bc2baa571e643ce4e07f0ab48fe88158bf338b802defd` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-clean-clean.csv.gz) | 7927 | `d855464f248b0c4ab6672e27cccaba43d8ec260ced4d50cdb677369ac8fc8465` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr+0.csv.gz) | 141836 | `52d4a472454bebc30c0d01e5cc3be17ddeaa6e01d35ab8fe1b50a6ae74435c39` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr+5.csv.gz) | 126372 | `76692fd0bb0df4e5ac3f10dd2c1f8df3cdb3435b046a9d475839d73701048301` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr-5.csv.gz) | 143069 | `67de7ca67bf229c85b88bece5f0cdc6b0c44bdc32c4d9faaec427a74b923a75c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr+0.csv.gz) | 127320 | `edd8433adcee9d3d3a8cd4f8598aa13455034c67cc65f0b6a3f9edc0c66ba20d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr+5.csv.gz) | 125892 | `8f9de24035b7c8ed83d117949361b036936b4888f58e07ef0894692e92668872` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr-5.csv.gz) | 142132 | `939d036f3638b59acb34861af3572150911017024cce9d3c6cef5b935cae8517` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr+0.csv.gz) | 126962 | `864f94aa34a00f3e5860cb1b8a809349a245b865ae48465aa91ee938d4529c10` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr+5.csv.gz) | 121655 | `bcb939be21ca4c761070c9d48bd8abd99762d13baecb6349f2342f5d99f090ab` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr-5.csv.gz) | 128107 | `9935994dd4221c5d27258035c512a04afa63d5125a6fc4260f856ac1647dd52e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-clean-clean.csv.gz) | 7952 | `6c39f50387f5f6a32422b61f4d882943329139cde31db4804b88a1ace10e8290` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr+0.csv.gz) | 131111 | `01b6d538a7e7c526b36783ede43f10705a510ba5f39159c303d5564a3d49fccc` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr+5.csv.gz) | 126415 | `3fe0a96781a1a1367ac9846e238366fb6a0e5da85c8343f18aeafbc903f781b5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr-5.csv.gz) | 143369 | `bcc0570997ada84c2acd0954650458236ad751bed9676d4f476dfabcfb9ced8e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr+0.csv.gz) | 126933 | `4b6dbbd61f6602b70a4611ec5c54176e714ac1191984d960cad0d6aba59b9f10` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr+5.csv.gz) | 121491 | `452914016a319962a5fe30f1b2a5609e9487c8317ba496e0614cf051b076b6d4` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr-5.csv.gz) | 127956 | `784a8e5e922f92d6bea73b5d0d93ad86f1f3b5062fec4fab789f4d416ad61d91` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr+0.csv.gz) | 141955 | `5f621ff65326a8539c30ef5403aaf75a5264002c55bf03b8c732c4405041b751` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr+5.csv.gz) | 128745 | `fb07289b1c4e67502f29ade68e65b71c2c532e6b84a830770e33f2cf63c98913` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr-5.csv.gz) | 144260 | `d4a0d94f9902c75486be906ed216df4d4dc447e64a36cdfed4fa87726719a8d6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-clean-clean.csv.gz) | 7929 | `5a800c350e283d39a8ceddb0d35c410d8e1a546305f27b773d62c3f9e3f0965f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr+0.csv.gz) | 143349 | `8be28fa43fa8254366aaafb927d3d1188ee8344dbbb0af94a28b620fdf5d3d61` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr+5.csv.gz) | 128814 | `79212cb6a18f447b691964507d84cbde0cc7fd71f22b343d509a6b215a1ac3c1` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr-5.csv.gz) | 143837 | `85687e445ee7f5a0fee4386e8d3a69028901bbfd576c183d663087776e322557` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr+0.csv.gz) | 141878 | `0f2c7ef059474955e20a6c0b49f42bb190bd75f1b2e7c4950fa6efe809cc6ecd` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr+5.csv.gz) | 128897 | `1d80e298d1c2d1f584145add106fe6373403fbf37768153f5f4933e792050fff` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr-5.csv.gz) | 143799 | `3ca9097720768eedcc5def6cc17ff57244da78a706e067bfe5a4c85e46b680c5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz) | 127199 | `e0ce82f39e9846466f5dd6ec7c7afaad82c4c8f34d29e9165c34d232a3a068ec` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz) | 126955 | `3952400c710573ce35fde0107658cc058f49d984000645e9a6cc2edfd6b98a45` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz) | 146236 | `9f7386de7df0458fe809ccf06a8f457f8ee0e3a79dc744cbc67ebd9dd34fe08b` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz) | 8322 | `25c27b16e63b14c52b63bc4f295f9960a88a70f690a1f85ea0636da01b2b016f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz) | 128390 | `27f3dde0d1f8a799084d3e103fc5fa9f7aa68b6f31e9ad7bcd63783f98f0e9d6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz) | 126933 | `0566a1d9ed3a25e1d8b98d00e1f1e08558c4c94b7a03be97051d3de3746eb398` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz) | 146127 | `fff61bf71d2bd511f3235f7b00095f4656d3dbbc0f70bd8d9e7246a32f7b3f0a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz) | 129532 | `724eefe29cb393e2f95a3ff259298ed8c2dbd0315eec95184785eb6b5822de3e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz) | 126553 | `519de0344866775e8dd160a1761f27c639644c0742846f2b9d4f403635e7815e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz) | 146602 | `444743e1b9a7d827ef9fe6c66e29a904d9a886ffd299534a3b77e15500697555` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr+0.csv.gz) | 130743 | `4c268e0eb61f59abf51409923d675c3def05f3dfc44c5f7ad9dd7a7ceb685f95` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr+5.csv.gz) | 128027 | `3f6e7d1a79a7dd336084bf52850d3df82bbf190cbc5e285197264f28e4b2a3e2` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr-5.csv.gz) | 147217 | `24e2bcdab5a3d88fba28555349426dfe0352ad4b95e0c5c05fa228393080681a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-clean-clean.csv.gz) | 8324 | `9309e88e538d7109d7b69d353b8eade316fff19116fbf66c232c3edd706c8990` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr+0.csv.gz) | 146039 | `f2c3e92a13545b80f367ed4b5abe65fa3091c287725f5438517c5738307ed6c8` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr+5.csv.gz) | 126882 | `231e902da27d41cdb8d5f4a3b29d9e279be0baa23a8aca6d8e70e45ce5662aa8` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr-5.csv.gz) | 146784 | `a5258afbfa311b257902b432e228aa333d58533216d088b555dfc19b59c2589f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr+0.csv.gz) | 130714 | `1d1141f52e790398928f8986390700ded135d01d76097d34230125df33a9003a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr+5.csv.gz) | 127738 | `32c696d2f5ec4db0e190e64caa497ebccecc5cff20a5817fa361978d98036a14` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr-5.csv.gz) | 147148 | `fbd2d4317ff1f8a3b1185824d0fd810add28a7eebe3c534774fb99823322d550` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr+0.csv.gz) | 131379 | `cf202db22316ec5621def1ea25ff8e977b84e23395ce0f5291b73d04c0ddc711` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr+5.csv.gz) | 128628 | `95b751940054b5fdd8ca3b0b6490a3c9f709ad8a4b8a4adec169599a936e1eeb` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr-5.csv.gz) | 146640 | `7f464fb8e78be1cfb829a27de36bc941810b0fcc4cca3e72e0e95ba4b2db3601` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-clean-clean.csv.gz) | 8323 | `1c05e0595385f84c1498f8b4bf644391cfa7dd176bcd89d3e61e551389832280` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr+0.csv.gz) | 127247 | `2be138e397b823a84e951895682afcd8142df1d333b336fef862c44def02fcbc` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr+5.csv.gz) | 127081 | `313912aa90a1aaab2586e34d60b0da957404dd9d449ceaa3a187f1df15e28568` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr-5.csv.gz) | 146226 | `ac493a8d980f1250588454c3c5edec11d13b76e2dba6949fd3ad862a43c1654f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr+0.csv.gz) | 131579 | `09196dceb6b2bd396de1a60dff064decbbaff1beaed95f1cff1e6df7cf02b4a4` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr+5.csv.gz) | 128490 | `7dbb35b93b026b47e5162d82c5a93402c9bd8e1bd7aaa374f93778771cf4d5b4` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr-5.csv.gz) | 146158 | `907ec0aad5a9a29b5ec1a61a49738cac3ac9dcdf2a856b0f0d81cc137b268b63` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr+0.csv.gz) | 127297 | `c32820170a2ecd772dd6a9058110f6bf2ff7f474a5ad5ff15e3e3ca807919bb6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr+5.csv.gz) | 126587 | `ea17727c8efb833ce9d4cbcbcfe5450295203d0ff4888d826d7fa881c665dbe3` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr-5.csv.gz) | 131722 | `68889c09469bc3a0d3de2488830a1cd24cbf07bf7eefae581d29f2b52fdcd362` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-clean-clean.csv.gz) | 8327 | `ac5e30e50ead46a2a8d5cb445aac092b2ff9f7d051e312df95038de711b99381` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr+0.csv.gz) | 130895 | `19f9da12880de1f759634259159ef7c23ef2daec051e7614e987a47227f63968` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr+5.csv.gz) | 126607 | `aa11c99a289ed499eef4d7a91998be83106409ffec00820e624a6c8d9843c86e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr-5.csv.gz) | 148144 | `6b114f7f08c2399a34ce1c4769f7c00c43cb9a9e1bc8b15671e87b97080bc119` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr+0.csv.gz) | 126680 | `88834f129732978834b52fd33cceed40d474adf28a73226636aff41a3e48a070` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr+5.csv.gz) | 126363 | `a86b8e7495671b61caa8f943d978ba3622dffab73d84d462cf532d16f2c3079e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr-5.csv.gz) | 131253 | `4442d041dc7ebf8134301e5377187e45bf6b72d6585df05168b1a727009b6b06` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr+0.csv.gz) | 129295 | `470db2feb480083c63305788695e8c37e6e8d58245d82f1f421aa0da3af7d0d5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr+5.csv.gz) | 127596 | `de1ac0adb7f5911b194f95aa8bd452b39a81067efcb7e094c4422db88a9f91fc` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr-5.csv.gz) | 146838 | `b00f495da9186ed7e8e7c4d971e1afe7678c22afe37aea33b58ae6188008b42c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-clean-clean.csv.gz) | 8322 | `006d2d92d34b50c1ed5c516398597d1372940ad0573094957b639692c4c7c139` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr+0.csv.gz) | 132787 | `ae6f5c45bf599dbcbaeeae0668616c8d660dadac4249ac26bd556129de24bb35` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr+5.csv.gz) | 128044 | `4021a66c6610c64ee704345d27afc82971561e79dcc1d976588bc3df433ca2a0` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr-5.csv.gz) | 146970 | `dc66f57a64d519637bca88752b5d62073d51ecb7196ff0917dc6abfd08b72a35` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr+0.csv.gz) | 127908 | `c85563961172eae5dfddc58f51bba15a8be70b3050774485641256405231493f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr+5.csv.gz) | 127462 | `76ca1f9103d7bea6c433e9e58ce2e25ecbf8d04711e3dac8df8ab0365603d700` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr-5.csv.gz) | 146529 | `c3f7f1a9e551718855e41d8ba2ddf6f3a7c13ac943fd1afb8718eb84fbd8d22a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr+0.csv.gz) | 127202 | `dee1b73dbd9a45c533556d5850bfd8507d2fca2b875509d2f3bb26f75428717e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr+5.csv.gz) | 121894 | `919b7139a7ee69864137ae174286908be80e45528c2a0ac4cbe29d8f5b65e2c2` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr-5.csv.gz) | 146109 | `3232719309e52e90afd575a5d8a8ef53568e6652d9807d634baa0bc6e5d69825` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-clean-clean.csv.gz) | 8362 | `dda069b85e8d189e0350f068ea747b2c58648eb5e5a3c5017fbeae3e78d1144f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr+0.csv.gz) | 132890 | `f4455bcfe6522211ff479537a6e83d83d172e3513aeb518ac1275147fd272052` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr+5.csv.gz) | 127167 | `7ec01394f99cc006546c1f2bb9e95b90594ab4a758937682a3f2934fdfac5009` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr-5.csv.gz) | 147234 | `2ea8c4d8987504a45c5201f95a940eb82d47f7a9eb05bff4b5a07ebfbfd06eff` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr+0.csv.gz) | 127122 | `745f4d4f78afac917b22cd18b79a341b75fc2b0ecfcf393aedfa6582682be44f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr+5.csv.gz) | 122052 | `5f7e6b43c5faf033a3a013576373d1de860741cc0f707371f36dea74e730915e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr-5.csv.gz) | 145809 | `9fe4b052781da767b1d0b19dbd387246f3894dab5cadcd58548a309795fc7ed3` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr+0.csv.gz) | 127765 | `959785aa2b32b60ef7eb3bd14849168c82cf6ef0ed3e052d90abb5aeef3b5e04` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr+5.csv.gz) | 121511 | `1b6c5e11e4adf8c273e5db8084336ba128629962109e7ba285c2d55d8a7888ed` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr-5.csv.gz) | 142399 | `03d4e1f5c5e1a5ffa8b85f4c350e063267204f9546aac69a46134936e80b0ce8` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-clean-clean.csv.gz) | 7927 | `3b5c0259241a8ba31803153ea31aeea9c1081f5468f351fd8fcd8b279809c0b0` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr+0.csv.gz) | 142044 | `ea689a46e2a7b3b242070947d7b7636f7281538689c55cd642ba3c29d235c38c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr+5.csv.gz) | 130031 | `0bba7b892f13423cadf4a0cb4dd5a28e2eeac7c258387817b25448ca6de5d046` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr-5.csv.gz) | 143258 | `e38a706164e6cd66965af746057ea7a1d05af04af15358cf954990cc4361fee7` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr+0.csv.gz) | 127561 | `5d484d3b00c071a68e654b4778f5a73b6140d03c2fec5f763184d5fa3718d0f8` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr+5.csv.gz) | 121073 | `74a10dfa59290f17ef6e7c5a16bd2505d7b6ef608394cf4485f46a4d3bdb3526` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr-5.csv.gz) | 142012 | `c94f384b86792f748277a5baa94cca54e9780c035582ed00c7d0494ed64dfb9d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr+0.csv.gz) | 129814 | `9a17c2e5aed9115c3e72fe480c845328ab8948288804a04607e8aeea8fdcf216` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr+5.csv.gz) | 127275 | `2c5fb7247e3bbdcf4ef0a6c2450c6a1dbbfc4adf8be7c1412f6a2a942ba1fdfe` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr-5.csv.gz) | 146552 | `6fcafe2068f16ff4cd120aa00801e8857795e03440d6900fb12f5834d8e0752a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-clean-clean.csv.gz) | 8344 | `c7c50ff1d5c1e6d6da3912d65a40bf2dbf61960d6e10ddef5cfa67f97abbdf25` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr+0.csv.gz) | 129635 | `b41d96bd1bd5ef271cb5df6537d5888a670806fa35fc0cbbca7acba35951f51e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr+5.csv.gz) | 126560 | `b1aed489f31a6a004ce415f98d2729e36c60b839e446f9c2c6326bab9da8299d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr-5.csv.gz) | 146675 | `7b8eadacde8c8bece29b96ad511608d8114265729e87bc79120ae6ae26bd7113` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr+0.csv.gz) | 129611 | `61c92db782c315d02ae5bd683cf527df2d3988227656e4004b82b83263e02a0c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr+5.csv.gz) | 126434 | `21c37ed60616bdefb3c76442e26a673617aa65600bae103adf13636b2b78e6f8` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr-5.csv.gz) | 146142 | `d7f62d130b4427cfa7c37f6079fa47791ece107eb790ff8639b8d03c451cb45e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr+0.csv.gz) | 128105 | `996aeb010a6a04fdd1c4a80f1612ab9e7ae83b5d106620c0c8634eb9f30fd391` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr+5.csv.gz) | 127010 | `71526da0c09e826e4c4c31af6de71a16714da146b26b68c0f79837def68fbde5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr-5.csv.gz) | 146951 | `3229f76ae34319930a555116e4d5f2ba8cc0f9db1c628193faafb1b327219104` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-clean-clean.csv.gz) | 8328 | `a57ea5bd84732dfe0374d22b99b5055718ea5076b3c3e92f0224bbcccc9dd448` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr+0.csv.gz) | 146932 | `26f07aeefc2d5d44be80468a9b9deb7fd07e83a0b8212cb5871a7b3ebbb2e8d4` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr+5.csv.gz) | 145648 | `fb7dae13b8dbf36958ce145d84cdea7feba9df14f3a607a55de9bb8c8847f6bd` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr-5.csv.gz) | 147919 | `a8c4b848656828fd8ba785e60b064a996934cf29e51551743f125b1c7a76a848` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr+0.csv.gz) | 128048 | `558077b5494c1544a958518e5ece0b25303fb2685255f99637b69f2087461984` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr+5.csv.gz) | 126915 | `121bb86c192a90906981fd39885de529cf9e80fbdc1ac8fb458faab458e4d7a1` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr-5.csv.gz) | 147030 | `9bdeadff2da618ef6a6fdf407233558aaaf4a7d9b51e18a3abe6e4aaeb00f459` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr+0.csv.gz) | 142349 | `a3b303e83852e28929b47b990f7279c72eb8a89bb978ae0339438560af2a3a7b` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr+5.csv.gz) | 129049 | `df4c5478e372ce2d91cda62cbbdff3760cec746fd7f52c8ce7e8f1c0509a00d5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr-5.csv.gz) | 143026 | `be2fc7d250f4392f941525a1b59c5d86babb9d7da3195a37d9ed0b1e25b9bb6b` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-clean-clean.csv.gz) | 7928 | `1d293a6dcbaa61098789eb267d87605c54aaddaeec1787bc22807d49d609cffa` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr+0.csv.gz) | 142786 | `4d72a6934681a513ff4b69c1a567054c2e8cc5877dd893c9eb7e56482b43bda4` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr+5.csv.gz) | 126768 | `cc186ef99f178203c994a900a2a0d44538f3eb984a1b55b94bdc0b121c124ce0` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr-5.csv.gz) | 143691 | `8f7236de5b8b613febe8673d976fb234b816ca92b1d55718e8f51baabaaacb72` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr+0.csv.gz) | 142152 | `6ee87719c77c8c7ff6b6f2b4a1174c2360812a674a8650601c973a28a510c033` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr+5.csv.gz) | 129030 | `f7ba0f1654df0054f7f4ff0616a11ecc5bd01407075ca23fa37bc102d29a0863` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr-5.csv.gz) | 143315 | `c7951227739a59505edd43d363182ab7f16950ccaada0db557de6cafdaf6d299` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr+0.csv.gz) | 127284 | `490d2cf4679ca67304b0b62bf19c2dc8b5de2180b2f2ae874737dbcc066bd662` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr+5.csv.gz) | 121563 | `4405c2e1337804e2454c393afc52fd8b413d8193c246082c4aab8492267ec661` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr-5.csv.gz) | 130103 | `30a102c128b9d07ecde5d0d8b19c060f7a9f70ed5d7c3bcf22ea83b617298ad6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-clean-clean.csv.gz) | 8325 | `1067ad04116d753a56401faeb42f02770146d5d1df57188cfe36c91eae8d42b6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr+0.csv.gz) | 131863 | `90bff58ff437bfbd00d8f6c9ff7ea1c9b45901f63c813ad16c1da8cd88beb256` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr+5.csv.gz) | 127139 | `088c43780c1cfd81ed6b9fb44b6066b3a9b3795393435d7798854ccbe65c792a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr-5.csv.gz) | 147430 | `e2da89cf255c46be5c9db40623c5eb43d977181b6c70a969010c33c8c48e2c97` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr+0.csv.gz) | 126934 | `65c6f229e000ad9782d5baa720998e4e46e210f09eff399cddbf3c52fdca8e7e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr+5.csv.gz) | 121288 | `ea706f24ea8a7c404d16365485877128259fe887963db0ec89eac893014050e5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr-5.csv.gz) | 128796 | `4a15fcf824cfa3161958ad5f88ef3c4afc2b94acbadb331d431fa5cb7e3c35c5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr+0.csv.gz) | 128762 | `5f49bf2bf11d6c5a6fcc6379db7616ab4b98d9291e4e49b1300aa6de1097ee15` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr+5.csv.gz) | 121317 | `2036ddfb3f2ffa190bca40f1eb23449e6f49b487160f852f0d19d64fd65d1a76` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr-5.csv.gz) | 194479 | `0742dc5d1070afb21d69e14b64d9a6be898ecd7994ef0a0a8a5fef3980f0ad43` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-clean-clean.csv.gz) | 8328 | `8d2ed99593c1a8e93eb8b3ca3af3e42d836b8854dd17468ff53782532b013dde` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr+0.csv.gz) | 147224 | `1f19d21e0878909d121ce57dbbb56e8c5fc067eed1478a95ea56737779764b33` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr+5.csv.gz) | 127942 | `675f6a2cda02fc6b0f10a1b801ece5bbe16f00c90fecfb132d3ff190f5b1688a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr-5.csv.gz) | 147896 | `108ff4d454b6a9bc26f28f3de63ab6380a15b845d27af16db17c25b3618fd5ed` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr+0.csv.gz) | 128706 | `5da849552502d4361ed89a56538a4879fd0afad8f878abb95d80bb72af628162` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr+5.csv.gz) | 121185 | `993953f72a76a8ce7e05e890869d858007f52f7b4349fa38b773431254533fe1` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr-5.csv.gz) | 132594 | `cd25d7b9204d2be673839e4a9bfbd93c45b988653c85df338905279ac0613fe8` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr+0.csv.gz) | 127393 | `6379da034cee9056b48f9df5ee4c0de29575ddb14c45d3a01bfbcd73e2640932` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr+5.csv.gz) | 121916 | `bc9eae615a9429ba76bfec9381a2bbad7e75e10ec26304e5005ad3d0908e6c73` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr-5.csv.gz) | 129363 | `331d4434fa23aaa4269d7dd4f4388035efaa77b4552701b0a76ba40b33d71cda` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-clean-clean.csv.gz) | 8328 | `b6142bafaa5864ebbfd6968343735cb4bc6f6a44233131ac6c1ed528fc766980` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr+0.csv.gz) | 146599 | `bd58d1531fd7e3d0150d06f281b8b47297bbb6c9a00e312ae1507a4bccfdc229` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr+5.csv.gz) | 127542 | `e9afe70bf0e77eddcaefe1d1cf696f2be55cf2a208a49ca8b04a6e65f7b77f39` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr-5.csv.gz) | 147848 | `d11c1542ad58474b247d351350647629c907c6e348e52a576ac96ace2d00321f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr+0.csv.gz) | 127287 | `0069d69f5f11f8a6f549b8ec2d19f42808f6a1976eac7ee3f3d40672876ff914` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr+5.csv.gz) | 121620 | `e6f397b02f7a7bc379028f7e65ed72fa1399809160bc137c88ea99c7a6d8ac8b` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr-5.csv.gz) | 129495 | `712f10575409ca382a84efd7e157a2d95d5f41cd44f3c206e5afdc12d9266c0d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr+0.csv.gz) | 146882 | `8a126bb7c75902928c329e006478747c548816c773d675872f538ba252a64587` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr+5.csv.gz) | 128568 | `7fec661ff1ce1433b1b7aab6924576ef64c65264a4338061d3ee3d5b6c061826` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr-5.csv.gz) | 147224 | `53ad05f10610769ebdf8ca5f3581f69a31cf937d1519dd68d9b1db5c2d988199` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-clean-clean.csv.gz) | 8343 | `9f81792ef23a84f7d54dc7d0d5b903bf9c7ee7e92a782e3323e87d364df31eb2` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr+0.csv.gz) | 131252 | `9f136ad4263b32cca6e430797b69ef8657652ccfc97db136249ba732ba31816d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr+5.csv.gz) | 125412 | `714e3f4e25115a47e2f289cb73a1c8b6780f2cc9c97b070f128d191d25e4facd` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr-5.csv.gz) | 146053 | `b7fcd1d8c38818558da1f2f8eed5d2b949d8f6edff3970f7fbb75cfb50969eb0` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr+0.csv.gz) | 146888 | `fdbdc47ba47088c542f7bf1bbf898ec893ce8f5fe89d2967032a864851e73386` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr+5.csv.gz) | 128824 | `3b2bbb0ff5e44d470915ec4db16c0cac8018c66a03b2c27df7f9bdb4bb006dee` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr-5.csv.gz) | 147261 | `a63e62b333698543d0da10bddb201e56daec93265225c76730beb0ed174bf64c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr+0.csv.gz) | 127534 | `ba5037c5cd581c7f22f5dead97bc917c93767848f8ac0f6f7b5f5a7126aa11c5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr+5.csv.gz) | 121308 | `6f4fb6505f93b90d24422bd8f1f232ab3ac8b260c3a9c4bdefbffc6f46242a69` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr-5.csv.gz) | 130693 | `4a455c3340ed988df7c756e77cc11101af7be33981ca6973c1244c1c401e4536` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-clean-clean.csv.gz) | 8323 | `e379f12d38435cd0e249b8a23c78a5f8f779c09212027ffddcbcdf4c882423c6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr+0.csv.gz) | 143364 | `29abd8b68df6bc820ce98c7d6d9e0ff85d5d120d4991a2b76f82e0d7bc638919` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr+5.csv.gz) | 128234 | `d449c40d8ab1a41f62c0b87ea88ddd747d6fa76f89f3ed28925a6981984cfa7d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr-5.csv.gz) | 145119 | `0620859fab19885d3d0d1eb419ecd571285f96631b8c373fa4a95ee833f599f1` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr+0.csv.gz) | 127418 | `a5cf5050812b5189e896b9dbc519fb199d22776a4a6851d33d5b1fb960116e40` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr+5.csv.gz) | 121861 | `5215cbdaaddb2350abd8bac3856dd568596c49fd65c532801b0f5de596c1d796` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr-5.csv.gz) | 130773 | `6c391a47a53a39a6016fd5dc66f0bca950cb09c2d73defcbd237d2d936dd6beb` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr+0.csv.gz) | 143007 | `5ad1ebee9ecc35f824720675b8683b410e889c039a4e0afa7b409b15dda075f5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr+5.csv.gz) | 121315 | `5412f806ad2af8b3cf2d1792bcd5ee1580b91be4e7cd259b36367a4f101e397b` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr-5.csv.gz) | 143628 | `6b7608158e26cf58d9534a626456c29fbc2f0d41483f9cf331a9776bdfb17e08` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-clean-clean.csv.gz) | 7926 | `ee8691b9e7e92694830773592fbd74c5946a33006ac38abbca655c0684265815` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr+0.csv.gz) | 141821 | `da32c34656fcc24b02e35c651feb7628d49bc6f4144e415c13693e65eb3d2c6c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr+5.csv.gz) | 127066 | `4d34dffe6ab41f6be36359101e7f79eea981f1e7ed1117b4ef29d1cee12bc67e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr-5.csv.gz) | 143175 | `51a2df82022ccf3c55e6e6de6adcb63d158fa762e26043b775e4b6d5043bde96` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr+0.csv.gz) | 142671 | `a67570bc64902b5ea803b6e1b4572ce90ddad6062e8d6fd9cb1d3c8053fd235e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr+5.csv.gz) | 120891 | `114e3a61100376aa4fe3018eaf02d9d12e7a8a2a4f1fdf68d0feafca0ac0307f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr-5.csv.gz) | 143822 | `5758398e79bf65b35b066b55590c30b02e6cd08cf9ef65348f0db4bc7279e9de` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr+0.csv.gz) | 127049 | `e2e08ee01a04aa93f0d3d15a95f263c27ad82943214ee4ee6a5a499f24885773` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr+5.csv.gz) | 121365 | `94b34fa02a02ff0f44f4133d7efa8537cfed21bd1e52c707e7e029a0db3f5483` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr-5.csv.gz) | 131030 | `71c5ac3d3e88199dbcdcba5c9c25b571c76d46d73426ec0d1250b8d96ab77480` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-clean-clean.csv.gz) | 8324 | `e3fbcb3599923d8a56743ca4f46cc1fd122274a5c45b7a1fb3a5c071b5786b00` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr+0.csv.gz) | 131780 | `15cf68e7280b6717c932b7fcf5948624dcef380401164ea58f36d7ec67710fab` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr+5.csv.gz) | 127050 | `9fbecbfa53fb942bb0760e6a8d3922aabe602890a67c97242b130653571c08e7` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr-5.csv.gz) | 147347 | `713880602e2e8a8afd81298203201893c6f63df840031b9ee75489a5fbda23fc` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr+0.csv.gz) | 127249 | `5b6a74c3c08cd3821a412e3d8f8b33cb4c931e2ef895f48e7100d1e1c4881eba` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr+5.csv.gz) | 121116 | `e90077fe4b784312855ef2a46b0e070f913f6391a5b6f1c379c3cc0fabecd11e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr-5.csv.gz) | 130924 | `48679fd2980278e60744c57fe4ba17d80851d4f8093349b294db3dd5dbb80991` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr+0.csv.gz) | 128274 | `e0de3be0cd785bf99cce6e9480957ebbfdfa27bb94daed76fb2359711b0d877b` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr+5.csv.gz) | 121535 | `f03196fb5cfa18d05199365ec733631480f0ee70236238943dfc6ae9094aef24` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr-5.csv.gz) | 146260 | `3a637e4b6f9ebaa1397b4f8a5af4fcca2c7782ea2f76b4b79de6233026bc2d3c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-clean-clean.csv.gz) | 8325 | `f90842efe54b94d379bd2582f117fae4b9d1cab58c58db8f19b0915914b00e3e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr+0.csv.gz) | 145663 | `0e0745f2952f7f0c233fec15598bb5b0644f8c1d080d6dc70596b393680bb84f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr+5.csv.gz) | 129590 | `97d8d45ee7de161a4a794103bc1e6df00610118c7f29e37b5c66a7abfdd39166` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr-5.csv.gz) | 147005 | `afd4aa7a7dd887af3d8aa44fdefafc23f2588f921b14a60faa1a7745c3d53b0e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr+0.csv.gz) | 129118 | `3a5a75a414aa7da5457ef1c9e7972882a23c0fd09669cfd58ddcaf0f61d890a6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr+5.csv.gz) | 121954 | `7ea725b339c9472c5b6bbabbf702a588053dc0391b1736d8d8a9860d8359cced` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr-5.csv.gz) | 146283 | `bc3fbafccee694df8b0a8a63b398bc9adb50161667dc17a17c7f89470c8b53af` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr+0.csv.gz) | 131333 | `34baf517ec6ed8e66aa92d34fa8f41bd71f0c073e74cbb2ade9b3d4de1aef2f6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr+5.csv.gz) | 128853 | `c760436aba7d1f0088cdcbc86dd28c87045da0b41c4ddfe4daf8a8d535ed575d` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr-5.csv.gz) | 146795 | `2ef5231c2757e97b4f5e3d37ec31ad4c6e4eeeeda04345f27d3b29a86f7baa1a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-clean-clean.csv.gz) | 8328 | `a9329b3bb160f916f0a0e2d0aee3af16edf82207d1c85bb8021e6343e5a25372` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr+0.csv.gz) | 147172 | `2e9eeb40b8cab233af3070d203432587a192f3e205031fdef6e8447fd166a960` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr+5.csv.gz) | 130691 | `ae1bff6bd782485752c34dbeded7ed50b45152238ffcd6766dbeda9fa13853b5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr-5.csv.gz) | 148540 | `07f97ac66b7758bbce7e0ee94626fda41707dbeef526283bb795e4706dab45f1` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr+0.csv.gz) | 131580 | `08bce40d4f161f0323de615c2457959ed519b387f799992bf27909ca523fa5e3` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr+5.csv.gz) | 128874 | `b577d702191549d84addf250a84cbb83781eca51f43d66f52cec5d4e043d944e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr-5.csv.gz) | 146847 | `e91eb5f392414c1b0b475e5edf60e81a2b3fe958be5e30ebf6dad3196c87866a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr+0.csv.gz) | 128083 | `0d06ddcd3b08b7377b145ac5a6d1ca891092ef7823085ea85e118a674a987333` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr+5.csv.gz) | 122146 | `3ae9bd1c2f671a73446f3a6ea0aef9e15cee109382b983b4c864b3f0dcd25e5f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr-5.csv.gz) | 141997 | `123e18cea15c124df55fedcb27415c3742c8505c6fb211a8080b6494bcd20925` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-clean-clean.csv.gz) | 7928 | `a82e32d389f5ef01f9a1606ca8ccbda9ab380bc8134124ca47398cc5ea32aaf2` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr+0.csv.gz) | 142759 | `694863863c2e09d00477c0222cfadde66d37c50e72e992b1dafb54c1a83db451` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr+5.csv.gz) | 129695 | `07b21e821923c5b06641b20ee4381abc237052deb8907ca5a613977a98fbe769` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr-5.csv.gz) | 143312 | `1657b415d6dd144f33f6c18e019d169190b9a087c4b127f69e0b9ea83d056685` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr+0.csv.gz) | 127126 | `8d5656b7f5ae2123efc0c6f247f1ff2fa0cd1f708b12c6c17eab9427cecbcdd2` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr+5.csv.gz) | 126801 | `5bf3bbafecfaa606e95fc2df0f6db2ba18d68c4cc7adae5dbecbd8eb87387f20` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr-5.csv.gz) | 142265 | `9dd6f5c3a02597f23e3ce2b998145f398b202004ba0307d75661f9433c6dbf6a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr+0.csv.gz) | 126626 | `23f8c81287aded9248a7c6a4d858423f28ddbba2b634877766205cc543028b82` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr+5.csv.gz) | 121370 | `8dcdbb770a8299868d8ee48c201b214093c886e6e1c54cbbba3ece2f90714c4f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr-5.csv.gz) | 127539 | `b8bf9e012f50bf3c0fe644a501321dc7ce0b4d41c8f90979bb414cc0d2115de0` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-clean-clean.csv.gz) | 7928 | `6c55f42f3f1b20f71c0480c3eb6eaae3ab356b2166322dfa50cca0cca0d53173` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr+0.csv.gz) | 142427 | `b1b1bee64eb1b3623a319f6188501d2dfc856c1ba49e91ba42b6aa9e7e999d25` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr+5.csv.gz) | 128064 | `8617a8ac49ff1f0081e020e87adafc03b20843f071cafaafc794ea0ee7962657` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr-5.csv.gz) | 143556 | `3125b708c7ba15730597f27c103994fc863f3bc1a370eec012f8a139a2960303` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr+0.csv.gz) | 126387 | `273acfdb93ee5f97f8f6a1feea891e87dcebd72d6c9e24fec1c34842f9caf7a4` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr+5.csv.gz) | 120764 | `51f953953fb4052f2ca608031e56e8507eeb46a4edf2fe8022a1e2e82ce86c03` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr-5.csv.gz) | 185981 | `3d7efd4c6838013a702de35729afe3935c4b7f1e471b1751cac91ac5263da3bd` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr+0.csv.gz) | 141833 | `7037129b301a22eebddacf21ebc1de1fb4fbdd2d7a409bcaa051a1f026d6eee6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr+5.csv.gz) | 127277 | `fc9a30b6000514ef02b1112af83d807660e16882c4a633a900de9cc217135fe6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr-5.csv.gz) | 143425 | `3a4b06cf79aa523ae0b1506176ac5f73f88661bce10eda21d9f0967076156375` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-clean-clean.csv.gz) | 7927 | `ef57570d61672a38a451adcecee55c878d1e91ea69fc425ebaadbce40713e2ca` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr+0.csv.gz) | 142694 | `1c5a25356b0692036c7e6e80e972d5a5da322a66e13962f08ff5a9a41c9aaafa` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr+5.csv.gz) | 127509 | `4b96d1f7b16ed5d47d01580b691d7e029a436af6f51ddbce31c0042c81bf57a4` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr-5.csv.gz) | 139640 | `57f71b8c7902e8b334249e86180809999b3137b75bf541b107e954a5899ff9ec` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr+0.csv.gz) | 141701 | `9ef38ef78a096a20bceeaf37b80bb6276659a4ab0ae1c40f0b504daa913a9305` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr+5.csv.gz) | 127419 | `a02023921fddef2a5906869da32f82b2ab20259afda29d52a1f3b83d8eced490` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr-5.csv.gz) | 143569 | `c7991e326bcae9ba3c090435937eb21eee9fde5566ee05c83cc0fc341acf2abf` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr+0.csv.gz) | 127203 | `f4675c48bd68e8e290468e4f45f1f49d73678786e6be277c6150cb88352f4151` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr+5.csv.gz) | 125922 | `41261c4fddd198e995de79c0a95432f2932b672980c632cd0c58fc6dda7b0304` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr-5.csv.gz) | 143181 | `4dc90f9165ec8ac34247c1dfffa18cbd37a052b1bbd8257f02231c08b432e05c` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-clean-clean.csv.gz) | 7928 | `8c1f3e302a95ec295affcf99007dc1cdbfc7adf45d0821cceb6c19b0b6c70bb4` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr+0.csv.gz) | 142492 | `220c096f90ff246a318143abb67a2ec006162fc8c927348935141dd257304a28` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr+5.csv.gz) | 128001 | `4961752367946f63b2e85c21999794a843416cfc42eb3af7d403909e669b4c5a` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr-5.csv.gz) | 143678 | `336eaeb9dab74d092c5e4d435f4c6ee0d92b2f2545535e8393e765397397078e` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr+0.csv.gz) | 126019 | `977713bb07055b0787016238580b6e25b3e548c9f8a04d92dedf5d641b99cd0f` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr+5.csv.gz) | 126300 | `748f9d2235c29ffd86f504f2ab4eb9f72cc1485d791c5ae48c44f0f2cf680359` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr-5.csv.gz) | 142810 | `f6af9c13a328727b9c6fe24afb37729e1b3313d38a52ef01a76e1df1de230a70` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr+0.csv.gz) | 126958 | `223a63a483c7b4db40224dff014fcce84dda7553d4f43f5697a7901e465db387` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr+5.csv.gz) | 121513 | `1cdf4e57004a9620e73292d7218276ba53d10530fbb6d4d34adaa380b126adb6` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr-5.csv.gz) | 130175 | `a55b0ea6461e836b8970ed8259da86d9bd1d3cdb275d726f59e8617637843703` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-clean-clean.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-clean-clean.csv.gz) | 8324 | `81a95c5d2cc7e153c955410384cc277e3ebafdb0f550bb9f883db54184849a94` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr+0.csv.gz) | 133835 | `2d0f1bd12f8031377a66cda34d91451b96daf5e150f949590068e10b31fb0ec5` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr+5.csv.gz) | 128821 | `0f4252db1f86ab03b5a60c20ea9e053667dd0ff663c460def62ed0ab19f1b589` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr-5.csv.gz) | 147089 | `1a6c9981c72af8bd87fc000096e5c8d09e479791ef823488ded6b809228e2cc1` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr+0.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr+0.csv.gz) | 127113 | `993c6e1e63134495e72a618c0665fc195523fc320ee6f32548814e5e80e0a437` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr+5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr+5.csv.gz) | 122250 | `865fc7c2e2726d87b4f74e2357a175cc72e9b664139e2efa702b1e7af2346c10` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr-5.csv.gz](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr-5.csv.gz) | 130303 | `f2af7c10d540dbbecdc50b1bc4479621dd69c719946c7096133df9c1b02fc85b` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_selection_manifest.jsonl](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_selection_manifest.jsonl) | 391132 | `c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2` |
+| [results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/tests.txt](results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/tests.txt) | 2511 | `688bd85d87556922b1403ba567b6299954530718c2cd0e73eba154eb2849e2fe` |
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-001/tests.txt](results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-001/tests.txt) | 5004 | `29a4f4e87d2da8daab32382cf55c3f10afd02d879ee0737c4c7d5145eaeaab62` |
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/coverage_paired_differences.csv](results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/coverage_paired_differences.csv) | 26985557 | `cf6feb1e34aad4cbe66c2e7a8cc3881ed93d73aefe99320d638af5b10e14a04a` |
 | [results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/coverage_uncertainty_channel_strata.csv](results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/coverage_uncertainty_channel_strata.csv) | 9513555 | `862f289ea46324a65b1f395022cef37aa34629781b93342d2a00a0fe0bc1b9a3` |
@@ -56182,6 +58753,284 @@ study01_p03_prep,vmd_trial_separate,0.983233999484048,0.15450310175797857,0.2211
 
 ```
 
+### results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_intervals.csv
+
+```csv
+scope,candidate,comparator,metric,direction,status,reason,recipients,donors,candidate_failure_rows,comparator_failure_rows,requested_draws,seed,method,mean_delta,ci95_lower,ci95_upper,valid_draws,valid_mass_draws,favors_candidate
+whole,ica_rejection:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.4481778879269794e-12,-8.909169135251969e-12,2.7059412918274548e-12,498,498,True
+whole,ica_rejection:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.011819049085275677,-0.06592310716529776,0.04896027217901638,498,498,True
+whole,ica_rejection:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0029140383144135268,-0.016379858234958102,0.01782711005444513,498,498,True
+whole,ica_rejection:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6215593040770969,-1.5487835329766337,0.178043019880844,498,498,False
+whole,ica_rejection:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6215593040770969,-1.5487835329766337,0.178043019880844,498,498,False
+posterior,ica_rejection:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.756801195637702e-12,2.2405593391399399e-13,1.1777786176358726e-11,498,498,False
+posterior,ica_rejection:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.01482916422974733,-0.004585455700669185,0.03701866551308858,498,498,False
+posterior,ica_rejection:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00672059444002778,-0.014594465279260395,-0.0008997881619901689,498,498,False
+posterior,ica_rejection:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.03919629775268332,-0.6769549235974306,0.5923146414937572,498,498,False
+posterior,ica_rejection:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.03919629775268331,-0.6769549235974306,0.5923146414937572,498,498,False
+central_shared,ica_rejection:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-9.425912836068997e-12,-2.1536030489966057e-11,2.408434278087201e-12,498,498,True
+central_shared,ica_rejection:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.036352284138113734,-0.15756531877523305,0.08839050949201634,498,498,True
+central_shared,ica_rejection:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.011003691457310248,-0.029961926572424604,0.04350309412628753,498,498,True
+central_shared,ica_rejection:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.3380357716432785,-3.227389223320713,0.2964899038031099,498,498,False
+central_shared,ica_rejection:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.3380357716432787,-3.2273892233207135,0.2964899038031099,498,498,False
+whole,ica_component_ridge:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-4.850683669685532e-12,-1.0481781844210973e-11,1.0805532157465457e-12,498,498,True
+whole,ica_component_ridge:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.06826483250474313,-0.12464398944780572,0.01620724462800551,498,498,True
+whole,ica_component_ridge:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.01770903235936424,-0.00730379040408711,0.03260297219575792,498,498,True
+whole,ica_component_ridge:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.572622243828965,0.019231811620950605,2.63221878637934,498,498,True
+whole,ica_component_ridge:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.572622243828965,0.019231811620950584,2.63221878637934,498,498,True
+posterior,ica_component_ridge:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.8898368105657174e-12,-7.267390939316485e-14,6.904526995642296e-12,498,498,False
+posterior,ica_component_ridge:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007580045506416952,-0.020952152112460966,0.03564709927639495,498,498,False
+posterior,ica_component_ridge:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00446077674916737,-0.012231931344420901,0.002998744770326825,498,498,False
+posterior,ica_component_ridge:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.20057753479393725,-0.779221608249488,1.2483459318597612,498,498,True
+posterior,ica_component_ridge:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.20057753479393725,-0.779221608249488,1.2483459318597612,498,498,True
+central_shared,ica_component_ridge:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.1926176884409942e-11,-2.3899945259959153e-11,-1.057921566285866e-13,498,498,True
+central_shared,ica_component_ridge:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.15550702823231202,-0.27924314097312347,0.013267346645530467,498,498,True
+central_shared,ica_component_ridge:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.04204047956388989,-0.0062374707107140884,0.07464481762511999,498,498,True
+central_shared,ica_component_ridge:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.3209099009827647,0.35128819383983617,5.208963336361942,498,498,True
+central_shared,ica_component_ridge:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.3209099009827647,0.35128819383983617,5.208963336361942,498,498,True
+whole,wavelet_ica:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.6835965723338346e-12,-8.032766300012687e-12,3.7889655680356744e-12,498,498,True
+whole,wavelet_ica:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.002288665758190443,-0.048519417484924846,0.0568875163602548,498,498,False
+whole,wavelet_ica:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0008898353465418612,-0.017847676236815227,0.012399401774781434,498,498,False
+whole,wavelet_ica:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.7660484311083748,-1.7315577335162804,-0.0036958849734421376,498,498,False
+whole,wavelet_ica:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.7660484311083748,-1.7315577335162806,-0.003695884973442154,498,498,False
+posterior,wavelet_ica:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.092259028878583e-12,5.851419825280591e-13,1.1744347618887621e-11,498,498,False
+posterior,wavelet_ica:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.021811956133431197,0.006633395575809872,0.04119688812275148,498,498,False
+posterior,wavelet_ica:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.008521320275732991,-0.01626822377455764,-0.0036096329607189256,498,498,False
+posterior,wavelet_ica:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.18426706191883052,-0.7339224280033868,0.28766322819806145,498,498,False
+posterior,wavelet_ica:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.18426706191883052,-0.7339224280033868,0.28766322819806145,498,498,False
+central_shared,wavelet_ica:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.989521442724478e-12,-1.9559328702520224e-11,3.580730484431169e-12,498,498,True
+central_shared,wavelet_ica:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.010385902710075303,-0.12176508318199968,0.10841892422114188,498,498,True
+central_shared,wavelet_ica:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.003969872174665213,-0.03343250682886625,0.03363139163113938,498,498,True
+central_shared,wavelet_ica:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.5510303054884014,-3.5671914567224245,0.07007295574268035,498,498,False
+central_shared,wavelet_ica:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.5510303054884014,-3.5671914567224245,0.07007295574268037,498,498,False
+whole,selective_wavelet_ica:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.634029351666825e-12,-8.01104192587201e-12,3.7594290412862146e-12,498,498,True
+whole,selective_wavelet_ica:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.00479931712421536,-0.04640088987451629,0.058930679030114085,498,498,False
+whole,selective_wavelet_ica:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.001395041751277283,-0.018285048902333446,0.01183335482474932,498,498,False
+whole,selective_wavelet_ica:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.8295040732585455,-1.8602848277906687,-0.020213118022031462,498,498,False
+whole,selective_wavelet_ica:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.8295040732585455,-1.8602848277906687,-0.020213118022031476,498,498,False
+posterior,selective_wavelet_ica:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.0921659478292174e-12,5.908468474083061e-13,1.1726915358353918e-11,498,498,False
+posterior,selective_wavelet_ica:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.021985323431018885,0.0066739484227374525,0.04145572048592738,498,498,False
+posterior,selective_wavelet_ica:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.008529221908156037,-0.016165589433105733,-0.0036542923917570243,498,498,False
+posterior,selective_wavelet_ica:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.19122949492030114,-0.7456897608341327,0.2883871469933809,498,498,False
+posterior,selective_wavelet_ica:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.19122949492030117,-0.7456897608341327,0.2883871469933809,498,498,False
+central_shared,selective_wavelet_ica:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.880938310527245e-12,-1.9528534840979397e-11,3.5582751808488993e-12,498,498,True
+central_shared,selective_wavelet_ica:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.004996222199333289,-0.11693343481859061,0.11132194322234072,498,498,True
+central_shared,selective_wavelet_ica:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.002869361091866451,-0.03421753834553822,0.03216509942420608,498,498,True
+central_shared,selective_wavelet_ica:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.6856735354136605,-3.7557191160892978,-0.011851824189767686,498,498,False
+central_shared,selective_wavelet_ica:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.6856735354136605,-3.7557191160892978,-0.011851824189767754,498,498,False
+whole,reference_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.528788302610023e-12,-1.322184223092903e-12,1.06999465052914e-11,498,498,False
+whole,reference_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.055885453767931796,-0.0011076095828975116,0.1092721503493195,498,498,False
+whole,reference_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.016305254239143196,-0.0314672478352131,-0.0013965302902722101,498,498,False
+whole,reference_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.7089148825219582,-1.8674758919536016,0.19362438165031645,498,498,False
+whole,reference_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.7089148825219582,-1.8674758919536016,0.19362438165031642,498,498,False
+posterior,reference_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.713537428423424e-12,1.9845692745404053e-12,1.1857874020589166e-11,498,498,False
+posterior,reference_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.05817951405130747,0.032423627720968386,0.08302632874891204,498,498,False
+posterior,reference_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.019680860894229983,-0.027903886410288972,-0.011202803748652018,498,498,False
+posterior,reference_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.8844262010732542,-1.5890017842132609,-0.2140981639565463,498,498,False
+posterior,reference_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.8844262010732542,-1.5890017842132609,-0.2140981639565463,498,498,False
+central_shared,reference_rank1:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.9656303094358165e-12,-6.1475015605421825e-12,1.681713894560497e-11,498,498,False
+central_shared,reference_rank1:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.08210739684075158,-0.03172479685044598,0.19271610808011064,498,498,False
+central_shared,reference_rank1:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.02215164200131208,-0.05360854357677493,0.009559482673235642,498,498,False
+central_shared,reference_rank1:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9402590551648996,-3.4128530967773485,1.0468786553386036,498,498,False
+central_shared,reference_rank1:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9402590551648997,-3.4128530967773485,1.0468786553386036,498,498,False
+whole,reference_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.32171031247816e-12,-1.7950305825192353e-11,-3.324402471228206e-12,498,498,True
+whole,reference_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0956435772603873,-0.15600073933075653,-0.03980640248743665,498,498,True
+whole,reference_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.02590381917068913,0.009870613848366848,0.04263215921835881,498,498,True
+whole,reference_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.9929881309938116,0.6790363279450927,3.333934721477259,498,498,True
+whole,reference_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.9929881309938116,0.6790363279450927,3.333934721477259,498,498,True
+posterior,reference_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.539921606603571e-13,-4.288138836529453e-12,8.366221582569159e-13,498,498,True
+posterior,reference_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00908772346020972,-0.052701163529484646,0.022465755904565496,498,498,True
+posterior,reference_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0008455382556892112,-0.007493255815572267,0.012707522730795374,498,498,True
+posterior,reference_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5539958837979936,-0.6256025288772751,2.078600583290465,498,498,True
+posterior,reference_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5539958837979936,-0.6256025288772751,2.078600583290465,498,498,True
+central_shared,reference_rank2:both,central_frontal_vmd_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.7734155344581524e-11,-3.709019692389598e-11,-7.360801129929433e-12,498,498,True
+central_shared,reference_rank2:both,central_frontal_vmd_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.20421758313736843,-0.3262033208198327,-0.09235715992968624,498,498,True
+central_shared,reference_rank2:both,central_frontal_vmd_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0564072246058988,0.024454425871051115,0.0888377281878763,498,498,True
+central_shared,reference_rank2:both,central_frontal_vmd_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.002367984981748,1.6309697566844783,6.082529981596732,498,498,True
+central_shared,reference_rank2:both,central_frontal_vmd_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.002367984981747,1.630969756684478,6.082529981596732,498,498,True
+whole,ica_rejection:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.812043132955912e-12,-1.0643642014076063e-11,2.5770072494678605e-12,498,498,True
+whole,ica_rejection:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.012677961229679237,-0.0741660235836267,0.049355834212022054,498,498,True
+whole,ica_rejection:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.002718817817070167,-0.017362182200591287,0.018142421144724866,498,498,True
+whole,ica_rejection:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6420566473041631,-1.6189872089008144,0.2544239600900823,498,498,False
+whole,ica_rejection:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.6420566473041631,-1.6189872089008144,0.2544239600900823,498,498,False
+posterior,ica_rejection:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,2.756801195637702e-12,2.2405593391399399e-13,1.1777786176358726e-11,498,498,False
+posterior,ica_rejection:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.01482916422974733,-0.004585455700669185,0.03701866551308858,498,498,False
+posterior,ica_rejection:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00672059444002778,-0.014594465279260395,-0.0008997881619901689,498,498,False
+posterior,ica_rejection:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.03919629775268332,-0.6769549235974306,0.5923146414937572,498,498,False
+posterior,ica_rejection:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.03919629775268331,-0.6769549235974306,0.5923146414937572,498,498,False
+central_shared,ica_rejection:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.0198329930444298e-11,-2.6308288675552475e-11,2.634899487535705e-12,498,498,True
+central_shared,ica_rejection:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.03810507836961031,-0.1759493111841205,0.09264918246942999,498,498,True
+central_shared,ica_rejection:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.010556239950841335,-0.03093004255843105,0.04437243142914603,498,498,True
+central_shared,ica_rejection:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.3839078364465192,-3.329860579544315,0.3854167817342672,498,498,False
+central_shared,ica_rejection:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.383907836446519,-3.329860579544315,0.3854167817342672,498,498,False
+whole,ica_component_ridge:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-5.2145489147144635e-12,-1.2166482788575969e-11,1.1571913566983422e-12,498,498,True
+whole,ica_component_ridge:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0691237446491467,-0.13249744052109033,0.017697620068135113,498,498,True
+whole,ica_component_ridge:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.01751381186202088,-0.00719103867103355,0.033188971913571286,498,498,True
+whole,ica_component_ridge:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.552124900601899,-0.04232316350458107,2.6479361076928423,498,498,True
+whole,ica_component_ridge:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.552124900601899,-0.0423231635045811,2.6479361076928423,498,498,True
+posterior,ica_component_ridge:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.8898368105657174e-12,-7.267390939316485e-14,6.904526995642296e-12,498,498,False
+posterior,ica_component_ridge:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.007580045506416952,-0.020952152112460966,0.03564709927639495,498,498,False
+posterior,ica_component_ridge:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00446077674916737,-0.012231931344420901,0.002998744770326825,498,498,False
+posterior,ica_component_ridge:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.20057753479393725,-0.779221608249488,1.2483459318597612,498,498,True
+posterior,ica_component_ridge:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.20057753479393725,-0.779221608249488,1.2483459318597612,498,498,True
+central_shared,ica_component_ridge:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.2698593978785242e-11,-2.8893274475548518e-11,4.727270072602305e-13,498,498,True
+central_shared,ica_component_ridge:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.1572598224638086,-0.29523743589592194,0.012414411029732576,498,498,True
+central_shared,ica_component_ridge:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.041593028057420975,-0.007139465931738826,0.07536661611655628,498,498,True
+central_shared,ica_component_ridge:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.2750378361795245,0.3248965525127041,5.215075900077468,498,498,True
+central_shared,ica_component_ridge:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.275037836179524,0.3248965525127042,5.215075900077468,498,498,True
+whole,wavelet_ica:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-3.0474618173627673e-12,-9.532978986497322e-12,3.2657006932048144e-12,498,498,True
+whole,wavelet_ica:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.001429753613786883,-0.05597459271308993,0.05836006634381334,498,498,False
+whole,wavelet_ica:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.001085055843885221,-0.018764996238654453,0.012907440010269814,498,498,False
+whole,wavelet_ica:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.7865457743354409,-1.8154687740601896,0.05335128170873471,498,498,False
+whole,wavelet_ica:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.786545774335441,-1.8154687740601894,0.05335128170873471,498,498,False
+posterior,wavelet_ica:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.092259028878583e-12,5.851419825280591e-13,1.1744347618887621e-11,498,498,False
+posterior,wavelet_ica:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.021811956133431197,0.006633395575809872,0.04119688812275148,498,498,False
+posterior,wavelet_ica:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.008521320275732991,-0.01626822377455764,-0.0036096329607189256,498,498,False
+posterior,wavelet_ica:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.18426706191883052,-0.7339224280033868,0.28766322819806145,498,498,False
+posterior,wavelet_ica:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.18426706191883052,-0.7339224280033868,0.28766322819806145,498,498,False
+central_shared,wavelet_ica:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.761938537099779e-12,-2.3879930589642533e-11,4.073957516977283e-12,498,498,True
+central_shared,wavelet_ica:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.01213869694157187,-0.13732750161316953,0.10959970488700387,498,498,True
+central_shared,wavelet_ica:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0035224206681962996,-0.03400337005220559,0.035169529695501946,498,498,True
+central_shared,wavelet_ica:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.5969023702916418,-3.652103438525284,0.1585492271894722,498,498,False
+central_shared,wavelet_ica:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.5969023702916418,-3.6521034385252844,0.1585492271894722,498,498,False
+whole,selective_wavelet_ica:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-2.9978945966957573e-12,-9.479077398040157e-12,3.306340536803707e-12,498,498,True
+whole,selective_wavelet_ica:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.003940404979811798,-0.054072141942619716,0.06167096867935427,498,498,False
+whole,selective_wavelet_ica:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.0015902622486206426,-0.018789340869599273,0.012766480338300093,498,498,False
+whole,selective_wavelet_ica:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.8500014164856118,-1.9267720361095613,0.045450941061555145,498,498,False
+whole,selective_wavelet_ica:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.8500014164856118,-1.9267720361095613,0.04545094106155511,498,498,False
+posterior,selective_wavelet_ica:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.0921659478292174e-12,5.908468474083061e-13,1.1726915358353918e-11,498,498,False
+posterior,selective_wavelet_ica:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.021985323431018885,0.0066739484227374525,0.04145572048592738,498,498,False
+posterior,selective_wavelet_ica:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.008529221908156037,-0.016165589433105733,-0.0036542923917570243,498,498,False
+posterior,selective_wavelet_ica:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.19122949492030114,-0.7456897608341327,0.2883871469933809,498,498,False
+posterior,selective_wavelet_ica:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.19122949492030117,-0.7456897608341327,0.2883871469933809,498,498,False
+central_shared,selective_wavelet_ica:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.653355404902545e-12,-2.3773004572989773e-11,4.109270719835116e-12,498,498,True
+central_shared,selective_wavelet_ica:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.006749016430829866,-0.13282377751803295,0.11235519227595941,498,498,True
+central_shared,selective_wavelet_ica:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.002421909585397538,-0.034443300526979984,0.03398708269919926,498,498,True
+central_shared,selective_wavelet_ica:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.731545600216901,-3.905318562651306,0.06849557837548972,498,498,False
+central_shared,selective_wavelet_ica:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.731545600216901,-3.905318562651306,0.06849557837548968,498,498,False
+whole,reference_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,4.164923057581092e-12,-2.6745250292342688e-12,1.0406475140868724e-11,498,498,False
+whole,reference_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.05502654162352824,-0.007981981351142763,0.10780654362134176,498,498,False
+whole,reference_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.016500474736486557,-0.03160298822173252,-0.00017587047139590604,498,498,False
+whole,reference_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.7294122257490244,-1.9017042782365638,0.230515258807621,498,498,False
+whole,reference_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.7294122257490244,-1.9017042782365634,0.23051525880762103,498,498,False
+posterior,reference_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.713537428423424e-12,1.9845692745404053e-12,1.1857874020589166e-11,498,498,False
+posterior,reference_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.05817951405130747,0.032423627720968386,0.08302632874891204,498,498,False
+posterior,reference_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.019680860894229983,-0.027903886410288972,-0.011202803748652018,498,498,False
+posterior,reference_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.8844262010732542,-1.5890017842132609,-0.2140981639565463,498,498,False
+posterior,reference_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.8844262010732542,-1.5890017842132609,-0.2140981639565463,498,498,False
+central_shared,reference_rank1:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,5.1932132150605175e-12,-8.32600674749197e-12,1.6964661916839192e-11,498,498,False
+central_shared,reference_rank1:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.080354602609255,-0.050195111089974605,0.19441013484785735,498,498,False
+central_shared,reference_rank1:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.022599093507781002,-0.05423564998894261,0.01229676062829138,498,498,False
+central_shared,reference_rank1:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9861311199681402,-3.4515489160970305,1.0590826584171096,498,498,False
+central_shared,reference_rank1:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.9861311199681402,-3.4515489160970305,1.0590826584171096,498,498,False
+whole,reference_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-8.685575557507092e-12,-2.1113679518825235e-11,-2.6905486103552936e-12,498,498,True
+whole,reference_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.09650248940479084,-0.16629282358076222,-0.03960449610040709,498,498,True
+whole,reference_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.025708598673345774,0.00930919207821503,0.044205488323861925,498,498,True
+whole,reference_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.9724907877667455,0.6756734007579581,3.3595269748937815,498,498,True
+whole,reference_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,170,170,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,1.9724907877667455,0.6756734007579582,3.3595269748937815,498,498,True
+posterior,reference_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-7.539921606603571e-13,-4.288138836529453e-12,8.366221582569159e-13,498,498,True
+posterior,reference_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.00908772346020972,-0.052701163529484646,0.022465755904565496,498,498,True
+posterior,reference_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.0008455382556892112,-0.007493255815572267,0.012707522730795374,498,498,True
+posterior,reference_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5539958837979936,-0.6256025288772751,2.078600583290465,498,498,True
+posterior,reference_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,53,53,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.5539958837979936,-0.6256025288772751,2.078600583290465,498,498,True
+central_shared,reference_rank2:both,central_frontal_raw_context,mse,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-1.8506572438956825e-11,-4.3500437217956946e-11,-6.210247186656543e-12,498,498,True
+central_shared,reference_rank2:both,central_frontal_raw_context,rrmse_time,lower_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,-0.205970377368865,-0.3417814102224798,-0.08741878537047468,498,498,True
+central_shared,reference_rank2:both,central_frontal_raw_context,pearson_cc,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,0.055959773099429885,0.02304629959143698,0.09200586999083629,498,498,True
+central_shared,reference_rank2:both,central_frontal_raw_context,snr_energy_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.956495920178507,1.6348378040745841,6.147159909176948,498,498,True
+central_shared,reference_rank2:both,central_frontal_raw_context,snr_improvement_db,higher_is_better,available,,32,5,78,78,500,42,paired recipient/donor Poisson multiplier percentile interval; project approximation,3.956495920178507,1.634837804074584,6.147159909176948,498,498,True
+
+```
+
+### results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_method_means.csv
+
+```csv
+scope,evaluated_family,mse,rrmse_time,pearson_cc,snr_energy_db,snr_improvement_db,cc_deterioration
+central_shared,central_frontal_raw_context,2.2731069120551133e-11,0.4731019060937035,0.8967814023593045,10.949306422363545,8.995172049702365,0.0
+central_shared,central_frontal_vmd_context,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,ica_component_ridge:both,1.0032475141765891e-11,0.31584208362989485,0.9383744304167254,14.22434425854307,12.27020988588189,-0.041593028057420975
+central_shared,ica_component_ridge:central,1.0032475141765891e-11,0.31584208362989485,0.9383744304167254,14.22434425854307,12.27020988588189,-0.041593028057420975
+central_shared,ica_component_ridge:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,ica_rejection:both,1.2532739190106836e-11,0.43499682772409315,0.9073376423101459,9.565398585917027,7.611264213255846,-0.010556239950841336
+central_shared,ica_rejection:central,1.2532739190106836e-11,0.43499682772409315,0.9073376423101459,9.565398585917027,7.611264213255846,-0.010556239950841336
+central_shared,ica_rejection:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,identity,5.811538636041364e-11,1.1098663689158537,0.7306387359088092,1.9541343726611802,0.0,0.16614266645049525
+central_shared,reference_rank1:both,2.7924282335611653e-11,0.5534565087029586,0.8741823088515235,9.963175302395406,8.009040929734224,0.022599093507781
+central_shared,reference_rank1:central,2.7924282335611653e-11,0.5534565087029586,0.8741823088515235,9.963175302395406,8.009040929734224,0.022599093507781
+central_shared,reference_rank1:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,reference_rank2:both,4.224496681594309e-12,0.2671315287248385,0.9527411754587344,14.905802342542053,12.951667969880873,-0.05595977309942989
+central_shared,reference_rank2:central,4.224496681594309e-12,0.2671315287248385,0.9527411754587344,14.905802342542053,12.951667969880873,-0.05595977309942989
+central_shared,reference_rank2:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,selective_wavelet_ica:both,1.4077713715648588e-11,0.4663528896628736,0.899203311944702,9.217760822146644,7.263626449485464,-0.00242190958539754
+central_shared,selective_wavelet_ica:central,1.4077713715648588e-11,0.4663528896628736,0.899203311944702,9.217760822146644,7.263626449485464,-0.00242190958539754
+central_shared,selective_wavelet_ica:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+central_shared,wavelet_ica:both,1.3969130583451354e-11,0.4609632091521316,0.9003038230275008,9.352404052071904,7.398269679410724,-0.0035224206681962996
+central_shared,wavelet_ica:central,1.3969130583451354e-11,0.4609632091521316,0.9003038230275008,9.352404052071904,7.398269679410724,-0.0035224206681962996
+central_shared,wavelet_ica:posterior,2.195865202617583e-11,0.47134911186220696,0.8963339508528356,10.903434357560304,8.949299984899124,0.0004474515064689135
+frontal,central_frontal_raw_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,central_frontal_vmd_context,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,ica_component_ridge:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,ica_component_ridge:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,ica_component_ridge:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,ica_rejection:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,ica_rejection:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,ica_rejection:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,identity,3.0582390300864297e-10,2.307985957107543,0.47281897982007526,-5.473181121702266,0.0,0.5083229004226034
+frontal,reference_rank1:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,reference_rank1:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,reference_rank1:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,reference_rank2:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,reference_rank2:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,reference_rank2:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,selective_wavelet_ica:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,selective_wavelet_ica:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,selective_wavelet_ica:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,wavelet_ica:both,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,wavelet_ica:central,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+frontal,wavelet_ica:posterior,4.298972132532952e-12,0.19218065978608248,0.973700403460646,17.112814353691874,22.58599547539414,0.00744147678203266
+posterior,central_frontal_raw_context,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,central_frontal_vmd_context,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,ica_component_ridge:both,8.921692273385116e-12,0.26050523756016025,0.9570176860249392,13.74228010220288,2.6603344172328023,0.004460776749167371
+posterior,ica_component_ridge:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,ica_component_ridge:posterior,8.921692273385116e-12,0.26050523756016025,0.9570176860249392,13.74228010220288,2.6603344172328023,0.004460776749167371
+posterior,ica_rejection:both,9.788656658457099e-12,0.26775435628349065,0.9547578683340788,13.502506269656259,2.4205605846861813,0.0067205944400277814
+posterior,ica_rejection:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,ica_rejection:posterior,9.788656658457099e-12,0.26775435628349065,0.9547578683340788,13.502506269656259,2.4205605846861813,0.0067205944400277814
+posterior,identity,1.7392272082512058e-11,0.3753828419595935,0.9246475053136534,11.081945684970076,0.0,0.036830957460453236
+posterior,reference_rank1:both,1.2745392891242822e-11,0.3111047061050508,0.9417976018798766,12.657276366335688,1.5753306813656107,0.019680860894229983
+posterior,reference_rank1:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,reference_rank1:posterior,1.2745392891242822e-11,0.3111047061050508,0.9417976018798766,12.657276366335688,1.5753306813656107,0.019680860894229983
+posterior,reference_rank2:both,6.277863302159039e-12,0.24383746859353359,0.9623240010297958,14.095698451206937,3.013752766236858,-0.0008455382556892118
+posterior,reference_rank2:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,reference_rank2:posterior,6.277863302159039e-12,0.24383746859353359,0.9623240010297958,14.095698451206937,3.013752766236858,-0.0008455382556892118
+posterior,selective_wavelet_ica:both,1.0124021410648614e-11,0.2749105154847622,0.9529492408659506,13.35047307248864,2.2685273875185636,0.008529221908156037
+posterior,selective_wavelet_ica:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,selective_wavelet_ica:posterior,1.0124021410648614e-11,0.2749105154847622,0.9529492408659506,13.35047307248864,2.2685273875185636,0.008529221908156037
+posterior,wavelet_ica:both,1.012411449169798e-11,0.27473714818717454,0.9529571424983736,13.357435505490113,2.2754898205200345,0.008521320275732994
+posterior,wavelet_ica:central,7.031855462819397e-12,0.2529251920537433,0.9614784627741065,13.541702567408944,2.4597568824388647,0.0
+posterior,wavelet_ica:posterior,1.012411449169798e-11,0.27473714818717454,0.9529571424983736,13.357435505490113,2.2754898205200345,0.008521320275732994
+whole,central_frontal_raw_context,1.3598974802057107e-11,0.339202220028857,0.9348364466487793,13.18320093816409,10.00763485184066,0.0
+whole,central_frontal_vmd_context,1.3235109557028176e-11,0.3383433078844535,0.9346412261514359,13.162703594937025,9.987137508613593,0.0001952204973433599
+whole,ica_component_ridge:both,8.384425887342644e-12,0.27007847537971036,0.9523502585108001,14.735325838765988,11.55975975244256,-0.017513811862020882
+whole,ica_component_ridge:central,7.791139647766606e-12,0.2675058966312992,0.9538007709911412,14.678288794888795,11.502722708565365,-0.018964324342361987
+whole,ica_component_ridge:posterior,1.3828395796604214e-11,0.34091588663286465,0.9331907136710947,13.21974063881422,10.044174552490787,0.0016457329776844666
+whole,ica_rejection:both,9.786931669101195e-12,0.3265242587991778,0.9375552644658494,12.541144290859926,9.365578204536497,-0.0027188178170701664
+whole,ica_rejection:central,8.930980384443313e-12,0.32175689592623424,0.9396892286444409,12.556559295697337,9.380993209373909,-0.004852781995661772
+whole,ica_rejection:posterior,1.409106084168606e-11,0.3431106707573971,0.9325072619728443,13.147288590099613,9.971722503776181,0.0023291846759349658
+whole,identity,1.0160743601979166e-10,1.1482843114884855,0.7338779272370579,3.17556608632343,0.0,0.20095851941172121
+whole,reference_rank1:both,1.77638978596382e-11,0.3942287616523853,0.9183359719122928,12.453788712415065,9.278222626091635,0.016500474736486553
+whole,reference_rank1:central,1.5961516724837994e-11,0.3758190909743201,0.9245668236864005,12.735996838203787,9.560430751880357,0.010269622962378738
+whole,reference_rank1:posterior,1.5037490691828382e-11,0.35675297856251864,0.9284103743773281,12.8804954691483,9.704929382824869,0.0064260722714511755
+whole,reference_rank2:both,4.9133992445500155e-12,0.2426997306240662,0.960545045322125,15.155691725930836,11.980125639607405,-0.025708598673345778
+whole,reference_rank2:central,5.13707504899712e-12,0.2453083703832401,0.9603417130184776,14.989945552694493,11.814379466371062,-0.025505266369698333
+whole,reference_rank2:posterior,1.301143375258107e-11,0.3357346681252795,0.9348445584550833,13.328449768173366,10.152883681849938,-8.111806304081463e-06
+whole,selective_wavelet_ica:both,1.060108020536135e-11,0.3431426250086688,0.9332461844001587,12.333199521678479,9.157633435355049,0.0015902622486206439
+whole,selective_wavelet_ica:central,9.63762868346822e-12,0.33612456123664414,0.9359536631842288,12.396500195806583,9.220934109483153,-0.0011172165354494277
+whole,selective_wavelet_ica:posterior,1.4198561078921309e-11,0.34536137165647823,0.9319337473673659,13.099402920808917,9.923836834485488,0.0029026992814134302
+whole,wavelet_ica:both,1.055151298469434e-11,0.3406319736426439,0.933751390804894,12.396655163828648,9.22108907750522,0.0010850558438852218
+whole,wavelet_ica:central,9.588016349659495e-12,0.333666094704517,0.9364567910912003,12.457839396847955,9.282273310524527,-0.001620344442420931
+whole,wavelet_ica:posterior,1.419860619206302e-11,0.3453091868225804,0.9319358258651298,13.101519361917715,9.925953275594285,0.0029006207836495125
+
+```
+
 ### results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-002/coverage_uncertainty_intervals.csv
 
 ```csv
@@ -61901,7 +64750,7 @@ Deadline remains16:27 UTC. Recover evidence before spending the final90 minutes 
 
 ### Snapshot: NONFRONTAL_CHALLENGERS_PLAN.md
 
-[Original](docs/NONFRONTAL_CHALLENGERS_PLAN.md); captured SHA256 `9b25468663c9bd58bf1747cde60e47485aac3a775bc59620aa46340616c984c0`.
+[Original](docs/NONFRONTAL_CHALLENGERS_PLAN.md); captured SHA256 `6693b9d2e2b48de9bee0d7f822bbb3ba00bed4bbdfecf4766ead414b076d6aab`.
 
 # Posterior and central correction challengers
 
@@ -62003,6 +64852,21 @@ project settings, not published optimal parameters. New recipes are experimental
   references, no reconstruction SNR. Previous native failures remain recorded.
 - NF07 Eligible author SGEYESUB, selective wavelet replication and ERP/BCI tests
   follow their source/calibration contracts; no guessed anatomy or head model.
+- NF10 Frozen-output review: compare each shortlisted nonfrontal correction with
+  archived VMD versus raw-regression frontal outputs, without new fitting. Report
+  both declared channel-first mean SNR and per-window pooled-energy SNR. Split
+  verified middle FC/C/CP channels from temporal shared channels for additional
+  diagnostics while preserving the original primary regional bucket. No neural
+  or teacher promotion. Original-input artifact composition, baseline metric
+  parity, exact parent identities and failure counts remain required.
+
+Full-development result motivates the next hypothesis: reference-rank2 raises
+whole channel-first mean from13.162704 to15.155692dB, but blink+5 output falls
+from19.821757 to17.562110 and mixed+5 from18.501700 to17.328050. Severe lateral
+-5 remains8.050232. Diagnose weak-input overcorrection and severe-lateral residuals
+before a calibration-fitted confidence/shrinkage blend with the old branch.
+Such a blend is a proposed correction experiment, not a selected recipe or an
+excuse to use true input-SNR labels at inference. No broad K/alpha search.
 
 Parallel GEVD-MWF control: numbered notebook59 uses the same corpus/context
 parents and reporting engine with a separate campaign. Exactly two recipes,
@@ -62076,11 +64940,79 @@ SNR is assessed from composed waveforms, never summed regional dB. If the fixed
 challengers fail, report their shortfall and use the existing frozen baseline.
 
 
+## Executable follow-up order after full320 comparison
+
+The completed comparison rejects the tested MWF, whole-IC rejection and wavelet
+recipes as next production candidates. Keep them as controls; do not repeat a
+large blind grid. Frontal K3/2000 outputs remain fixed during these nonfrontal tests.
+
+1. **NF10 frozen frontend and aggregation audit — launched.** Exact full001/1 and
+   context-match-full001/1 outputs only. Compare VMD/ridge frontal with identical
+   rank2 or ICA-component-ridge middle/posterior outputs. Report pooled-energy and
+   channel-first SNR separately; do not compare the historical17.9272dB as if its
+   cohort, EOG access and aggregation were identical. Report20verified middle and
+   6temporal-channel subgroups. Success means complete parity/provenance, not a
+   desired winner. No new fit or closed-source access.
+2. **NF11 weak-artifact conservative gain — proposed.** Audit saved association,
+   gain and artifact/EEG-energy ratios per condition first. The current method
+   estimates its map on calibration, but region gain from observed scoring EEG;
+   it is not a calibration-only gain. Neural contribution to this estimate is
+   a plausible overcorrection mechanism, not an established root cause. Compare
+   the existing gain with one calibration-constrained gain/shrinkage variant.
+   Use the existing declared strength bank0.25/0.5/0.75/1 rather than inventing a
+   broad search. If blending old and rank2 fields, use a=(1-w)*a_old+w*a_rank2 on
+   disjoint nonfrontal rows, then subtract once from original. The weight must be
+   inferred from observable EEG/EOG and training/calibration, never true input
+   SNR, clean target, condition labels or scoring artifact. Grouped selection
+   excludes both recipients and donors. Reject if weak blink/mixed loss persists
+   or clean/CC gates fail; retain severe lateral and every original interval.
+3. **NF12 reference CCA challenger — proposed.** Reuse verified calibration,
+   references and rest covariance. CCA separates EEG/reference-correlated latent
+   directions; estimate their sensor projection on calibration, then correct only
+   reference-supported portions. Compare HEOG/VEOG alone against the same EOG
+   plus separate signed frontal artifact context. Raw-frontal and no-context
+   controls must match information/budget. Use rank1/2 controls first. Require
+   reconstruction, numerical-rank, permutation and trial-boundary fixtures before
+   the50example pilot. Original iCanClean validation here is phantom data; ours
+   would be a labelled human-ocular adaptation, not a reproduced published score.
+4. **NF07 author SGEYESUB parity — eligibility before implementation.** Original
+   sample labels1/2left/right,3/4up/down,5blink,6rest are distinct from our four
+   trial codes. Read existing ARTIFACTCLASSES channel on Kaggle; do not create
+   left/right labels from HEOG signs. Verify native channel/reference/filter and
+   actual calibration duration per recording. Match author MATLAB/Octave outputs
+   on deterministic fixtures before a Python method gets the published name.
+   Insufficient labels/calibration or unavailable parity blocks this arm, not the
+   whole campaign. It may consume raw full-montage calibration but outputs only
+   middle/posterior correction here; no nonfrontal VMD.
+5. **NF13 temporal-separation control — conditional.** Multichannel SOBI plus
+   selective reference regression provides a separation assumption different from
+   ICA. Repair rank/trial-boundary contracts before porting the VMD-domain helper;
+   do not decompose posterior signals with VMD. One fixed delay bank and matched
+   calibration first, not another unconstrained grid. ASR/rASR remain later
+   preservation controls requiring eligible low-ocular calibration.
+6. **NF06 native qualification and fresh source validation.** Frozen shortlisted
+   recipe on unchanged native HEOG/VEOG references, blink/lateral/rest/ERP or BCI
+   outcomes where eligible. No native reconstruction SNR. Fix source/reference
+   coupling in a separately versioned controlled corpus; preserve old scores.
+   Only a frozen system evaluated on reserved/independent data can satisfy the
+   fresh15dB target. No student training is authorized by current development gain.
+
+Middle/temporal subgroup results determine whether separate policies are useful;
+montage labels alone do not establish physiological artifact dominance. Protect
+central mu/alpha/beta and posterior alpha with the existing paired/rest tests;
+actual task-response preservation additionally requires eligible labelled data.
+
+Each new numerical arm gets a Git module, pinned Kaggle notebook,50example pilot,
+recoverable fits/predictions/progress, matched320comparison only after contracts
+pass, source-aware uncertainty and native qualification separately. Runtime and
+memory at10–50channels remain measured deliverables, not assumed scalability.
+
+
 ---
 
 ### Snapshot: NONFRONTAL_CHALLENGERS_RESULTS.md
 
-[Original](docs/NONFRONTAL_CHALLENGERS_RESULTS.md); captured SHA256 `7a9c8fc2240aa704769b742eb0218383a727f90ca1758903beb15b143c38b3ea`.
+[Original](docs/NONFRONTAL_CHALLENGERS_RESULTS.md); captured SHA256 `eac7e808a6c250bd49cf4e07e2cb5aa5ab4b56f99b12c1fe91f46675c5aa3adf`.
 
 # Posterior and central component correction: verified development pilot
 
@@ -62270,6 +65202,99 @@ operator to original scoring EEG. Full reporting retains this information access
 MWF evidence is under `results/vmd-nonfrontal-mwf-20261014/nonfrontal-mwf-pilot-001/`.
 The same file names as the first pilot store complete per-channel/condition
 metrics, all9arms, decisions and fitted matrices. Negative results remain archived.
+
+
+## Full nonfrontal comparison — 14 October 2026
+
+`nonfrontal-full-001/1` completed on Kaggle at source
+`46171ac7d14715b853e722013edfde2260a86fb6`. The exact matched development cohort
+contains320examples,32recipient participants and5ocular donors. There are21arms:
+identity and two saved context controls, followed by six fixed mechanisms with
+posterior-only, central-only and joint compositions. No frontal predictions changed,
+no posterior/central VMD ran, no clean target entered fitting, and no model trained.
+
+281tests passed;5760frozen-frontal parity checks,192saved-fit replay checks and
+549000baseline paper-metric checks passed. Stage runtime1103.517074s, runner
+1216.063582s, peak2091892KiB. Exact manifest:
+`5c0776e2f99374cb5c1fd13aa1076eae4aada28d6551a20ee293a5d6474ef0b2`.
+Core tables/status/identity are checksum verified. Full bulk prediction recovery hit
+interrupted downloads; a byte-verified resume was added. Complete recovery must
+be checked from the receipt, separately from successful Kaggle execution.
+
+| Joint nonfrontal method | Whole mean output SNR dB | Temporal RRMSE | Pearson CC |
+| --- | ---: | ---: | ---: |
+| Identity | 3.175566 | 1.148284 | 0.733878 |
+| Saved VMD frontal-context control | 13.162704 | 0.338343 | 0.934641 |
+| Saved raw frontal-context control | 13.183201 | 0.339202 | 0.934836 |
+| ICA component ridge | 14.735326 | 0.270078 | 0.952350 |
+| ICA rejection | 12.541144 | 0.326524 | 0.937555 |
+| Reference-field rank1 | 12.453789 | 0.394229 | 0.918336 |
+| Reference-field rank2 | **15.155692** | **0.242700** | **0.960545** |
+| Selective wavelet–ICA | 12.333200 | 0.343143 | 0.933246 |
+| Wavelet–ICA | 12.396655 | 0.340632 | 0.933751 |
+
+The two context controls above both retain VMD frontal output; their labels refer
+to context representation. They are not a raw-regression frontal-output ablation.
+The stronger method uses an EOG-calibrated ocular field, rest-covariance whitening,
+two retained reference-derived components and scoring-window region gains
+estimated from observed EEG versus the calibrated field (never the clean target).
+It is a project adaptation, not an exact SGEYESUB/iCanClean reproduction or MWF.
+
+With rank2joint correction, unchanged frontal SNR is17.112814dB; central/shared
+rises10.903434→14.905802dB, posterior13.541703→14.095698dB. Regional scores
+cannot be added. These summaries average per-channel dB within source-balanced
+strata. A frozen-output follow-up explicitly compares pooled whole-window energy
+SNR against channel-first averages and splits verified middle from temporal rows.
+
+Whole output SNR for rank2 by condition/input level:
+
+| Condition | −5dB input | 0dB input | +5dB input |
+| --- | ---: | ---: | ---: |
+| Blink | 16.124917 | 18.250146 | 17.562110 |
+| Lateral | 8.050232 | 11.869812 | 14.796459 |
+| Mixed | 15.118827 | 17.300671 | 17.328050 |
+
+Weak blink+5 and mixed+5 worsen relative to19.821757 and18.501700dB saved
+VMD-context controls. Severe lateral remains8.05dB. A high aggregate cannot hide
+these failures. Next correction-confidence/shrinkage work must infer contamination
+from observable EEG/EOG and unscored calibration, never from true input-SNR labels.
+
+Supplemental recipient/donor-aware multiplier uncertainty for rank2minus VMD-context
+is+1.992988dB,95% interval[0.679036,3.333935],498/500valid draws. This is not the
+OSF paper's native participant permutation procedure, independent validation or
+proof of superiority over published methods. Full source-aware results remain saved.
+
+Whole controlled preservation/CC gates pass versus the two context controls.
+Frontal paired CC deterioration is0.007441477 versus strongest calibrated raw
+frontal, above0.005. New native validation is absent; previous frontal native gates
+remain failed. Overall qualification remainsfalse. Controlled references are
+low-ocular EEG, not proven clean EEG; ocular mixtures are regression-derived.
+This is development-exposed exploratory evidence, not a fresh15dB acceptance pass.
+
+Whole-cap PNG inspected. Notebook HTML layout has not been visually inspected.
+Complete per-channel tables, all21arms, predictions, fits, failures and conditions
+are in the versioned Kaggle outputs and indexed recovery directory. No broad
+AutoVMD search, neural stage or reserved confirmation access was restarted.
+
+
+## Frozen frontend audit launch and failure-lineage correction
+
+`nonfrontal-review-001/1` submitted at exact published source
+`f86d37499a2da96a54b073289ea3861588478b37`; full profile with only
+nonfrontal-full001/1 and matched-context-full001/1. Notebook60 is copied from
+that actual launch and pins the correct full configuration and parent versions.
+It adds no fitting and seven matched output arms. Core paired metrics and pooled
+SNR audit run on Kaggle, with both middle and temporal subgroup diagnostics.
+
+Static review found a reporting distinction: a raw-frontal composition must not
+call the replaced VMD parent's faults active branch faults. Version1's gate
+`failure_rows_scored` means conservative historical parent flags, not active
+composed-output failures. Metric calculations and arrays are unaffected. A newer
+source fix keeps historical flags separate from decision-JSON nonfrontal faults,
+retains raw parent's whole-pipeline flags conservatively and declares active raw
+frontend failure counts unavailable from these parents. The new lineage regression
+fixture requires Kaggle validation before the revised module is used again.
+No parent flag was silently dropped, and no qualification follows from this audit.
 
 
 ---
@@ -63012,7 +66037,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/calibration_frontal_context.py](<src/vmd_eog/calibration_frontal_context.py>) | 26402 | `a661a66114dda376ab31b5fff0f4128f51223d786e680d22246aa564825f5c2b` |
 | [src/vmd_eog/campaign.py](<src/vmd_eog/campaign.py>) | 1596 | `2e6a073e6a3ac4d831781886a0c4f0a040a367cb70d15af45150d6a41a1c69c3` |
 | [src/vmd_eog/classical_fixture.py](<src/vmd_eog/classical_fixture.py>) | 4755 | `4b660fa880354ae815b1110f2bd3044003ccd2475b42e576a3b8b748e2d8aab3` |
-| [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 6978 | `64c288e6e43f8ef7b1f948f83d5ab676a7d44e020e842e30101195cf0a5b08a0` |
+| [src/vmd_eog/contracts.py](<src/vmd_eog/contracts.py>) | 7121 | `9293a7b46e4901181f38999520d0956893f844a4b0ed8c76df403df2ae11088e` |
 | [src/vmd_eog/corpus.py](<src/vmd_eog/corpus.py>) | 15469 | `b5064d6944fd1c36d75a5c6f4f82e85212f4b10b7462db1ef3fc922d5441db2b` |
 | [src/vmd_eog/coverage_uncertainty.py](<src/vmd_eog/coverage_uncertainty.py>) | 13987 | `8755dbb1063e0eb158cf5146486b8bf7a2eaac5c2565552055d4d41257f268a0` |
 | [src/vmd_eog/data.py](<src/vmd_eog/data.py>) | 13051 | `49d0b5a8137db4b9a67111b84af94ced4a1661baac5d64dfbd9f7c76bcb39b08` |
@@ -63050,6 +66075,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/nonfrontal_challengers.py](<src/vmd_eog/nonfrontal_challengers.py>) | 13267 | `07bfd51a88ee9e703382eb5a385d47ec5269d9e05320b1e4f19a7035600d2ce6` |
 | [src/vmd_eog/nonfrontal_experiment.py](<src/vmd_eog/nonfrontal_experiment.py>) | 21800 | `6421c1eba7484b335d829a1d759e21d765f61b9d9301ef5c669272739d11b1b8` |
 | [src/vmd_eog/nonfrontal_mwf.py](<src/vmd_eog/nonfrontal_mwf.py>) | 4822 | `c57db8430d0e3645195b8efa3c3e7583657c17e50170e5928fce0700e7b48afa` |
+| [src/vmd_eog/nonfrontal_review.py](<src/vmd_eog/nonfrontal_review.py>) | 16209 | `5499677ba2d89caee5ee84e9cba48378f04827678d467ac8368a2bc9cb464a99` |
 | [src/vmd_eog/nonfrontal_ridge.py](<src/vmd_eog/nonfrontal_ridge.py>) | 9910 | `3d3056ece92a10701ba5e89d73b90ef648b7b792175c0ef0a07f5b9a87049989` |
 | [src/vmd_eog/osf_reader.py](<src/vmd_eog/osf_reader.py>) | 5620 | `1cfcf13f9b892d7579ef6db6f7cd3398f8da71ef15010c105927094d5e6327c9` |
 | [src/vmd_eog/paper_evaluation.py](<src/vmd_eog/paper_evaluation.py>) | 5863 | `fb57345d4c8471b52912826bca47085993411b5787cadc159780919449698779` |
@@ -63065,7 +66091,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [src/vmd_eog/regional_coverage.py](<src/vmd_eog/regional_coverage.py>) | 19817 | `269c86d2494cced2d1b6404a97953f461f2664574c73bd47ce20f28b23b278bd` |
 | [src/vmd_eog/regional_diagnostic.py](<src/vmd_eog/regional_diagnostic.py>) | 16581 | `d1f7dd35a8501732e6619ad166e9fe8857539901aad69cc2fb9c02a60bbce5d2` |
 | [src/vmd_eog/regional_integration.py](<src/vmd_eog/regional_integration.py>) | 16689 | `b514cdfd692d160ff96d9a4666dc25f788a6d27a0526d004ff335a25db91b133` |
-| [src/vmd_eog/runner.py](<src/vmd_eog/runner.py>) | 5721 | `bfa727463e86b4ceab1631abbcbcf3d7d7441d057648e9d0898093147837d9bf` |
+| [src/vmd_eog/runner.py](<src/vmd_eog/runner.py>) | 5869 | `37cca457ef56b1e2ffa150407c9b6d725b2c7ad3947cecf735775f31142ae5c9` |
 | [src/vmd_eog/signal.py](<src/vmd_eog/signal.py>) | 2710 | `233c86044033895b49dd602117ac7fb04ee84cfa3c6d0500ac466c8e760d7a3c` |
 | [src/vmd_eog/sobi.py](<src/vmd_eog/sobi.py>) | 5696 | `cb8b89ea6de05ce2bdc0fffd6e24a1ae469c7b9746c89ca2e89cf9bb747ead58` |
 | [src/vmd_eog/vmd.py](<src/vmd_eog/vmd.py>) | 4812 | `2705aedce1f71226882ee6df6e9efa127a9717d6aab0fc8676288f3643cb626a` |
@@ -63084,6 +66110,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [configs/guard17_replay.json](<configs/guard17_replay.json>) | 1189 | `99d372ce62c0452be024a0eb9243256f391ea84381585dd90bfdecd29352ecc2` |
 | [configs/nonfrontal_challengers.json](<configs/nonfrontal_challengers.json>) | 2959 | `dcda98685260c5cfa0412c099f3d704a2e5b41e6dcb46e2f05bb8e7d8542033e` |
 | [configs/nonfrontal_mwf.json](<configs/nonfrontal_mwf.json>) | 2978 | `fb92cd25c3e51e822275b4e6ded9df272edfacbae63ac844caaa03c811b6e390` |
+| [configs/nonfrontal_review.json](<configs/nonfrontal_review.json>) | 3464 | `320e29d7ed6802b2611b55521959b8bf6f4bffb13dec4fcd069659e94d26ca46` |
 | [configs/posterior_context_queue.json](<configs/posterior_context_queue.json>) | 1260 | `539282ce0f4058375a0a7b4cd0d4e9ee82feafc659af90c1524529e344b41be5` |
 | [configs/regional_diagnostic.json](<configs/regional_diagnostic.json>) | 3032 | `6400d9761ec89e6282c80c76c4cddde095b10020c8604137a23af870fa8c31a2` |
 | [configs/regional_integration.json](<configs/regional_integration.json>) | 2592 | `2941e521784acf19b0b96ee92946e4a50946ff23a8da67f33fa641e7b5811d79` |
@@ -63153,6 +66180,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [notebooks/57_Frontal_Benchmark_Source_Eligibility.ipynb](<notebooks/57_Frontal_Benchmark_Source_Eligibility.ipynb>) | 13264 | `e66c1891f8dd9ff376a1acc1c7bd6ea4b4c10434305f1db352baa3b6a2f66812` |
 | [notebooks/58_Posterior_Central_Challengers.ipynb](<notebooks/58_Posterior_Central_Challengers.ipynb>) | 9223 | `d7d5c553a96006f16bbe128bbc5f0129a1cd5618bdb1e058fff56b5bfb76af68` |
 | [notebooks/59_Central_Posterior_GEVD_MWF.ipynb](<notebooks/59_Central_Posterior_GEVD_MWF.ipynb>) | 9069 | `aea0ece312b7b73f952b67eb011fb03c7100748f09349038e9f46cd633175d90` |
+| [notebooks/60_Frozen_Frontend_SNR_Review.ipynb](<notebooks/60_Frozen_Frontend_SNR_Review.ipynb>) | 9387 | `ee30d9202f06de8d27106dace46fbbb899d15ca20122fa365e2667fcf2445bc2` |
 | [tests/test_artifacts.py](<tests/test_artifacts.py>) | 777 | `ccd2badb790151ebe841704a952af7efbc980b0031c9a17185175a5238ec2d8b` |
 | [tests/test_autovmd.py](<tests/test_autovmd.py>) | 1271 | `42bcf6e4e7dc1644f0745e52e6be225d3dafed204ef97fddf507e75a8f838a49` |
 | [tests/test_brainvision.py](<tests/test_brainvision.py>) | 1240 | `5b1eb58e28f241c48d10f15290fe20e280812cf22c377847a4fb0135490e2813` |
@@ -63177,6 +66205,7 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_neural_selection.py](<tests/test_neural_selection.py>) | 1523 | `dc723553a998edef0ddbeb274db5858768f350106919543b321cfcb1326d7b06` |
 | [tests/test_nonfrontal_challengers.py](<tests/test_nonfrontal_challengers.py>) | 6462 | `2c2968771320de4c28a27a1d57654318855a63c811561fc384ecb134dbb8a91c` |
 | [tests/test_nonfrontal_mwf.py](<tests/test_nonfrontal_mwf.py>) | 2232 | `af8347c0680f4a4e91f3cc033c51fed37b82f2ae58eb7c240683e644cef82774` |
+| [tests/test_nonfrontal_review.py](<tests/test_nonfrontal_review.py>) | 2146 | `5cbfac2dd162f7597938a1bc95b08a05c697ebd72323d63793c55568bca9f486` |
 | [tests/test_nonfrontal_ridge.py](<tests/test_nonfrontal_ridge.py>) | 5458 | `c5ddad31d4336e2f8f5b74777e479ec6b7b7d714f1be6f2737895ed3fd0a4a58` |
 | [tests/test_ocular_metric.py](<tests/test_ocular_metric.py>) | 952 | `17de7f20f85bcca26d6188c848058e3fa8347ec591f9e23b88aefc8ab0c5ceab` |
 | [tests/test_paper_figures.py](<tests/test_paper_figures.py>) | 2421 | `e246e3084dfa77bd5b901fe8b64f4947a4d2bcfd91d3352d1d71900a960c14c9` |
@@ -63196,16 +66225,16 @@ Current file identities below make the architecture inspectable; each launched e
 | [tests/test_sobi.py](<tests/test_sobi.py>) | 2486 | `3f90b70c5e0228615d7eb97ecc4ceca3dc75804513a6c72e4cc0ed09f1934a76` |
 | [tests/test_vmd_diagnosis.py](<tests/test_vmd_diagnosis.py>) | 1644 | `85824e2e028f45c78f6110b8c184cff63e9587d9f13a753bbd18787c9902acfd` |
 | [tools/bandroute_chain.py](<tools/bandroute_chain.py>) | 6369 | `81a1a5600f259f0e0b37d8e9df6f891aa60cf68c8a62ddee1457c09f34b4ffd3` |
-| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 62531 | `c5ff6c917f13e4a141ea5520d95ca7244c58cf71b38fa659f2dc93c397ff41e0` |
+| [tools/build_notebooks.py](<tools/build_notebooks.py>) | 63787 | `8834c05d746940bbd2637a304e2f364abe5b13be02c8022380d8975bfba12693` |
 | [tools/build_work_ledger.py](<tools/build_work_ledger.py>) | 6684 | `5d7f4f217254ad04e8262e168e07ab05ce7f9cb044c6fa4de00495cbdd52d219` |
 | [tools/coverage_chain.py](<tools/coverage_chain.py>) | 4686 | `199e7c0b22c9c586b722437ad6855c9df77f310c7333c1077ddf87a37bae7435` |
 | [tools/diagnostic_chain.py](<tools/diagnostic_chain.py>) | 6851 | `913b0243e23da65adfd787dedace965699bf23162488a7bab6198c73f491eeb6` |
 | [tools/download_vmd_cache.py](<tools/download_vmd_cache.py>) | 7475 | `c3b3d1bbb9fb62cad4fc26b76d75b6bab514c117a8387cf7306465e8c52929e1` |
 | [tools/frontal_queue.py](<tools/frontal_queue.py>) | 11738 | `71a59007d3ec9137b558fee20870164cd7d3e6dc4181ebeeb25260b499d67e62` |
 | [tools/guard17_replay.py](<tools/guard17_replay.py>) | 4518 | `d5c056a1159b50997ae2859f70f9d8d8b1525d16cdc93c63c5ee4d888cec5dcb` |
-| [tools/kaggle_campaign.py](<tools/kaggle_campaign.py>) | 8220 | `5ca0fe892298107c6b8a09e3cf3f0374979ba1a9184ff338341858817dfd5525` |
+| [tools/kaggle_campaign.py](<tools/kaggle_campaign.py>) | 8241 | `d737460d3376cbd206702965cddcb77b2835e85117876a01819494ff38738501` |
 | [tools/kaggle_log.py](<tools/kaggle_log.py>) | 1485 | `05d7b5b4acb3da503b9e34f13165f973d34bf21aa449af1e6683fb97764094e0` |
 | [tools/phase_a_chain.py](<tools/phase_a_chain.py>) | 5442 | `ba46e9386fd5c45b1f6904f36a8e9514508ccd99ddf817b2c8357aa6627bde16` |
 | [tools/regional_chain.py](<tools/regional_chain.py>) | 3447 | `87567309f60fe17f740de68041587a1eb1ac6f541065ddb8441a495503b36f41` |
-| [tools/retrieve_bounded.py](<tools/retrieve_bounded.py>) | 5979 | `92f521271f3d82a0bc841163d994a11ee6ed7a190aa4df39db02d1db8f0872cb` |
+| [tools/retrieve_bounded.py](<tools/retrieve_bounded.py>) | 6971 | `34588c9c66ca1c098df736e01a7494eaa13a321ab28191f178e5889bc4d58787` |
 | [tools/run_watch.py](<tools/run_watch.py>) | 3083 | `67591f279ca00f8de29c500c6ba1a382417d7dea7668c7a5702a8932c629d6eb` |

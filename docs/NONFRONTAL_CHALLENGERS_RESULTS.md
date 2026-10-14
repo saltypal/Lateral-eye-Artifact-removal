@@ -220,7 +220,8 @@ be checked from the receipt, separately from successful Kaggle execution.
 The two context controls above both retain VMD frontal output; their labels refer
 to context representation. They are not a raw-regression frontal-output ablation.
 The stronger method uses an EOG-calibrated ocular field, rest-covariance whitening,
-two retained reference-derived components and calibration-derived output gains.
+two retained reference-derived components and scoring-window region gains
+estimated from observed EEG versus the calibrated field (never the clean target).
 It is a project adaptation, not an exact SGEYESUB/iCanClean reproduction or MWF.
 
 With rank2joint correction, unchanged frontal SNR is17.112814dB; central/shared
@@ -258,3 +259,23 @@ Whole-cap PNG inspected. Notebook HTML layout has not been visually inspected.
 Complete per-channel tables, all21arms, predictions, fits, failures and conditions
 are in the versioned Kaggle outputs and indexed recovery directory. No broad
 AutoVMD search, neural stage or reserved confirmation access was restarted.
+
+
+## Frozen frontend audit launch and failure-lineage correction
+
+`nonfrontal-review-001/1` submitted at exact published source
+`f86d37499a2da96a54b073289ea3861588478b37`; full profile with only
+nonfrontal-full001/1 and matched-context-full001/1. Notebook60 is copied from
+that actual launch and pins the correct full configuration and parent versions.
+It adds no fitting and seven matched output arms. Core paired metrics and pooled
+SNR audit run on Kaggle, with both middle and temporal subgroup diagnostics.
+
+Static review found a reporting distinction: a raw-frontal composition must not
+call the replaced VMD parent's faults active branch faults. Version1's gate
+`failure_rows_scored` means conservative historical parent flags, not active
+composed-output failures. Metric calculations and arrays are unaffected. A newer
+source fix keeps historical flags separate from decision-JSON nonfrontal faults,
+retains raw parent's whole-pipeline flags conservatively and declares active raw
+frontend failure counts unavailable from these parents. The new lineage regression
+fixture requires Kaggle validation before the revised module is used again.
+No parent flag was silently dropped, and no qualification follows from this audit.

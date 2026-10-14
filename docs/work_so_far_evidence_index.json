@@ -1,6 +1,6 @@
 {
-  "snapshot_utc": "2026-10-14T00:19:05.978340+00:00",
-  "git_sha": "7fdb353e5791edc07b92dfa8ecf706a5bcb5ad2e",
+  "snapshot_utc": "2026-10-14T00:44:12.824002+00:00",
+  "git_sha": "f86d37499a2da96a54b073289ea3861588478b37",
   "tables_and_logs": [
     {
       "path": "results/review-fast/frontal-event-hybrid-001/results/vmd-frontal-replication-20261011/frontal-event-hybrid-001/tests.txt",
@@ -10286,6 +10286,1656 @@
       "path": "results/vmd-frontal-replication-20261011/orchestration/events.jsonl",
       "bytes": 190815,
       "sha256": "22bc6b02c5506921d1f876e798ca359cd47ee1bb5f45f2dbf94a9d224a2343ea"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_paired_differences.csv",
+      "bytes": 170650203,
+      "sha256": "c746ab50c9e0c621a094f160dcd6df2b1c7e1863404db162f40b39eb43f9a89c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_channel_strata.csv",
+      "bytes": 60532737,
+      "sha256": "5a4cb080eb5e4b9d61d9d924fc23727cd98aca565c41abd284fb537c75b65409"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/coverage_uncertainty_intervals.csv",
+      "bytes": 50473,
+      "sha256": "5c760614cd5d360fa13888ef4461fda30f3b41efdbdf58e5525cd8d82df36556"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_channel_scores.csv.gz",
+      "bytes": 38687601,
+      "sha256": "009cdd1308009823a76e4ab6d6efddb8f9a8e809ce4fa3406476380fba239872"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_condition_means.csv",
+      "bytes": 121543,
+      "sha256": "9a09c5d85c7f42e46c1748d55b5d046b0e20a467ac80773eb881df47c39a5fa2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_decisions.jsonl",
+      "bytes": 890624,
+      "sha256": "68d8a5bd2e183497ee7d0c1017b0d050ce1320fd392b6215aeb5e1ce8e36b364"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_fit_records.jsonl",
+      "bytes": 8504,
+      "sha256": "64fccb5586914c8cbdbeb446c19b5fd3896775f3479d8b3eafe40401491ed482"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_method_means.csv",
+      "bytes": 12672,
+      "sha256": "844960e676252ebc07d0f7ac91bad94fecd4daba0b87e16b2c2aa6bc2206b7a7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+0.csv.gz",
+      "bytes": 131820,
+      "sha256": "8cb04b91a8b213d4988e431e49797d68e84187ad3e2785b484db04241647d680"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr+5.csv.gz",
+      "bytes": 128138,
+      "sha256": "d40ca7bb3f85d185b265e10fce83c3caa50ac9b4b5fd4ecf71876c60d45df14b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-blink-snr-5.csv.gz",
+      "bytes": 147182,
+      "sha256": "664f6efcfcea82443e5468e36d2b85a52efd9695750a0334211192b3768bc635"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-clean-clean.csv.gz",
+      "bytes": 8327,
+      "sha256": "03ca61e4920e6b9fe2351644fd7405998153ef14fa52b0abb788ce12156e80ef"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+0.csv.gz",
+      "bytes": 146486,
+      "sha256": "78985113921947dbd677ff86af95b1e56168d932bee22ff66284e92feaa6b64d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr+5.csv.gz",
+      "bytes": 126916,
+      "sha256": "9acaab559a58f546d8b0ee35f7d2b168dd5c07c572ac91e5ea6a80aba2b02b9e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-lateral-snr-5.csv.gz",
+      "bytes": 147558,
+      "sha256": "842217e53bd00dce7fe3f7b1df3b509212500245fd1e0e0c6ea77b54ef34373d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+0.csv.gz",
+      "bytes": 131592,
+      "sha256": "5cdf135e466434122fa850f808bfe7508d8ca82294c7ce2bfc567f8bb7897d11"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr+5.csv.gz",
+      "bytes": 127562,
+      "sha256": "9789176a9f3d5a018a9d2fca8a9941e48cd5d55428b61bb343bdc92df9bb262d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032305-000-mixed-snr-5.csv.gz",
+      "bytes": 146859,
+      "sha256": "07846ad09a8dd559fa9605254bb1541b98c6f44bee6db4f67cd7fb0ca92d4353"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+0.csv.gz",
+      "bytes": 130421,
+      "sha256": "837f214da529ceed8782f4bb738fd89a3750b1bb3f76dc6df87e0b0a2d8428e9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr+5.csv.gz",
+      "bytes": 121420,
+      "sha256": "48a33acc819e580ce5bb5ab215352adc441e2bd6acdb503a6f33b402f925bc69"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-blink-snr-5.csv.gz",
+      "bytes": 194306,
+      "sha256": "6a8e2d18107b5f05ea4eca63d070d06c703f18049f0a5e69dfbbc454dd28990f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-clean-clean.csv.gz",
+      "bytes": 7925,
+      "sha256": "88ee236f72a3b48d084b702a6bf319b2e490748f26665e3ab89a9516b5b2195c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+0.csv.gz",
+      "bytes": 143064,
+      "sha256": "b0a6e520172083ea135d36358f749ba4d92630a3d6357031872a3bac7f7dfe6c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr+5.csv.gz",
+      "bytes": 131102,
+      "sha256": "32e8dc5da002eb0defbd61d978b731ad4f5ebb30b1693c4d69c9496929b91dca"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-lateral-snr-5.csv.gz",
+      "bytes": 143957,
+      "sha256": "36bd4348b15c9282e90fecc4865ff782aa506a8b39c1c89b37d94d87f0000460"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+0.csv.gz",
+      "bytes": 130126,
+      "sha256": "ccc834f77bd36ed33741d241f7ee27c585dbd2851915648f51703f36a00f633d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr+5.csv.gz",
+      "bytes": 121347,
+      "sha256": "fbe66beca196952f6f6131a18bc2bbb427b2f377c1abca8d455859012bd9db12"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032306-000-mixed-snr-5.csv.gz",
+      "bytes": 142613,
+      "sha256": "fc46ba3011e9c742ef641f06c86ed7f53a717934fad7f00db15b3e76a79c889e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+0.csv.gz",
+      "bytes": 128528,
+      "sha256": "1d1e1b968b7c40e2856763ca1724c981fe5d77acc4e583f292c0aa62c759e85f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr+5.csv.gz",
+      "bytes": 126354,
+      "sha256": "43913f4ddc10300fc0e979cadb3e1295af6976e5351fc512f419c123787a4ce1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-blink-snr-5.csv.gz",
+      "bytes": 143114,
+      "sha256": "39632a9dd36af61a06e3bab331f83274df14faf2eb26c4ce7267c2c72b695912"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-clean-clean.csv.gz",
+      "bytes": 7928,
+      "sha256": "024393149735bda3113b383f701760603064e576b2ad1b7276e184c2b472708f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+0.csv.gz",
+      "bytes": 128495,
+      "sha256": "062eb1ae826430577f7a396588c687a22a2a43c7f6ee3aed47b8d7fa38c74a60"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr+5.csv.gz",
+      "bytes": 125684,
+      "sha256": "16906a6581cf1d1955ff845b2f1cbe343ac8f36390e3297d52581963051397d4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-lateral-snr-5.csv.gz",
+      "bytes": 140727,
+      "sha256": "26d9d3b21990ecd5a1e998ecd5d6272c894f3c6abb6b7166fbc792ad2e214b1a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+0.csv.gz",
+      "bytes": 128722,
+      "sha256": "1ba81d8323cef12f518dd16cd33ac20fdeceeeee4aab8336e4ec303a29684bbb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr+5.csv.gz",
+      "bytes": 126246,
+      "sha256": "c061da8bcb2efcd13dbfa8348e374c16d195f80eb74f6e277f740c19cb8501ae"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032307-000-mixed-snr-5.csv.gz",
+      "bytes": 142952,
+      "sha256": "9b1618d21883dcc282702c229a18813f8854af73cf6d2427c1b0bb97b8cb34f2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+0.csv.gz",
+      "bytes": 129595,
+      "sha256": "db20cb67a3bc09aac72bbbeced1e82400b173896e2c1918d06ee478f8c96f975"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr+5.csv.gz",
+      "bytes": 126513,
+      "sha256": "5f2cae1b9ef014c6b3881e87af7b9586891e2a49f31635ae289aa9fcc030fd49"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-blink-snr-5.csv.gz",
+      "bytes": 134782,
+      "sha256": "4a10da364362d7cbe29ba38b11cde3033bd35472d956a2d3178cf044565f34ec"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-clean-clean.csv.gz",
+      "bytes": 8345,
+      "sha256": "b1360ac09880ff77ecaf0dc49e36762d08eef4340c434dd70bef192c57dfaef9"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+0.csv.gz",
+      "bytes": 146681,
+      "sha256": "de5f311ae463eb7a495fa8efb85a12fda15d27ecf76664c20a3be3eb99940ff1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr+5.csv.gz",
+      "bytes": 130350,
+      "sha256": "e9097e2554bbab9b04fd6497a3a957fcb5dfe0f05b6cd2a789ec6c775b2bd6fd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-lateral-snr-5.csv.gz",
+      "bytes": 147223,
+      "sha256": "d93591173c368c39f749fe1bcba754e62041b93901f3ccbcd486b4e13307b85a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+0.csv.gz",
+      "bytes": 129959,
+      "sha256": "629db051d328a2d2e8b5792514d7f06d1f5fc2f8d300effadeebda1b13c4c43d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr+5.csv.gz",
+      "bytes": 126760,
+      "sha256": "dad757d80b6e702f4b9ce61680d1b8fe4e58fb26562f3b3273f27f1b228db005"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032308-000-mixed-snr-5.csv.gz",
+      "bytes": 146860,
+      "sha256": "a9dee79a1a3e01fcf4cf58cb464643ea81b8355460d0924f8ad007c7761bff0f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr+0.csv.gz",
+      "bytes": 126310,
+      "sha256": "8a7da1ee8fd2acae84104349e8519ba9a2a2fc9dde3392d549a662b27a7ea3ef"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr+5.csv.gz",
+      "bytes": 120228,
+      "sha256": "54418e8935f80a5d10fbc5316ff13078a7146f639a6ae32c8f3d300bf7ba222b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-blink-snr-5.csv.gz",
+      "bytes": 130467,
+      "sha256": "8f907a94b84009562c50001dd5b137dfa94cde7533beff870cb88ba2d1e5f389"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-clean-clean.csv.gz",
+      "bytes": 7928,
+      "sha256": "829a3552e88ee8f96be1883a786f9e1387d93217139034571da6beaae4a85277"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr+0.csv.gz",
+      "bytes": 126835,
+      "sha256": "e181ad395decc2adcb22f83c0ef1ab567982ff714840f2d2fe87ba43d61beea1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr+5.csv.gz",
+      "bytes": 53091,
+      "sha256": "46f17bbc84ddfe2eaecc5e5d44c49df52d192d495ae9892a4375fd5d1f78778d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-lateral-snr-5.csv.gz",
+      "bytes": 142282,
+      "sha256": "0991ff366e0688be2f779167e0106941e97baeb6f2486c46125a101eea067710"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr+0.csv.gz",
+      "bytes": 126138,
+      "sha256": "e27757fac354aefa3de9968b23e25b21501e9cb1db35f766c95251239627e082"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr+5.csv.gz",
+      "bytes": 119723,
+      "sha256": "932f5575c44e3070ebe6e7761cbb271a0f8b2f052c97af14f0d8b8aead62bdbb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032309-000-mixed-snr-5.csv.gz",
+      "bytes": 130384,
+      "sha256": "e537ead10647ac53d1f567c77f6567bebcff8c0645ba6d50299b7a0355ca75f1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr+0.csv.gz",
+      "bytes": 128510,
+      "sha256": "69ae0491c23d8141bde227dc7c9ade877837b166ef6af0d41b301b917daa3975"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr+5.csv.gz",
+      "bytes": 125953,
+      "sha256": "d91b6db748e88478bb4f006a2bf307a8d32cca67223ab8766d13b08dd9edfd45"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-blink-snr-5.csv.gz",
+      "bytes": 142046,
+      "sha256": "4a9b052a68974ae35a4bc2baa571e643ce4e07f0ab48fe88158bf338b802defd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-clean-clean.csv.gz",
+      "bytes": 7927,
+      "sha256": "d855464f248b0c4ab6672e27cccaba43d8ec260ced4d50cdb677369ac8fc8465"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr+0.csv.gz",
+      "bytes": 141836,
+      "sha256": "52d4a472454bebc30c0d01e5cc3be17ddeaa6e01d35ab8fe1b50a6ae74435c39"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr+5.csv.gz",
+      "bytes": 126372,
+      "sha256": "76692fd0bb0df4e5ac3f10dd2c1f8df3cdb3435b046a9d475839d73701048301"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-lateral-snr-5.csv.gz",
+      "bytes": 143069,
+      "sha256": "67de7ca67bf229c85b88bece5f0cdc6b0c44bdc32c4d9faaec427a74b923a75c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr+0.csv.gz",
+      "bytes": 127320,
+      "sha256": "edd8433adcee9d3d3a8cd4f8598aa13455034c67cc65f0b6a3f9edc0c66ba20d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr+5.csv.gz",
+      "bytes": 125892,
+      "sha256": "8f9de24035b7c8ed83d117949361b036936b4888f58e07ef0894692e92668872"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032310-000-mixed-snr-5.csv.gz",
+      "bytes": 142132,
+      "sha256": "939d036f3638b59acb34861af3572150911017024cce9d3c6cef5b935cae8517"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr+0.csv.gz",
+      "bytes": 126962,
+      "sha256": "864f94aa34a00f3e5860cb1b8a809349a245b865ae48465aa91ee938d4529c10"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr+5.csv.gz",
+      "bytes": 121655,
+      "sha256": "bcb939be21ca4c761070c9d48bd8abd99762d13baecb6349f2342f5d99f090ab"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-blink-snr-5.csv.gz",
+      "bytes": 128107,
+      "sha256": "9935994dd4221c5d27258035c512a04afa63d5125a6fc4260f856ac1647dd52e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-clean-clean.csv.gz",
+      "bytes": 7952,
+      "sha256": "6c39f50387f5f6a32422b61f4d882943329139cde31db4804b88a1ace10e8290"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr+0.csv.gz",
+      "bytes": 131111,
+      "sha256": "01b6d538a7e7c526b36783ede43f10705a510ba5f39159c303d5564a3d49fccc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr+5.csv.gz",
+      "bytes": 126415,
+      "sha256": "3fe0a96781a1a1367ac9846e238366fb6a0e5da85c8343f18aeafbc903f781b5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-lateral-snr-5.csv.gz",
+      "bytes": 143369,
+      "sha256": "bcc0570997ada84c2acd0954650458236ad751bed9676d4f476dfabcfb9ced8e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr+0.csv.gz",
+      "bytes": 126933,
+      "sha256": "4b6dbbd61f6602b70a4611ec5c54176e714ac1191984d960cad0d6aba59b9f10"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr+5.csv.gz",
+      "bytes": 121491,
+      "sha256": "452914016a319962a5fe30f1b2a5609e9487c8317ba496e0614cf051b076b6d4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032312-000-mixed-snr-5.csv.gz",
+      "bytes": 127956,
+      "sha256": "784a8e5e922f92d6bea73b5d0d93ad86f1f3b5062fec4fab789f4d416ad61d91"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr+0.csv.gz",
+      "bytes": 141955,
+      "sha256": "5f621ff65326a8539c30ef5403aaf75a5264002c55bf03b8c732c4405041b751"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr+5.csv.gz",
+      "bytes": 128745,
+      "sha256": "fb07289b1c4e67502f29ade68e65b71c2c532e6b84a830770e33f2cf63c98913"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-blink-snr-5.csv.gz",
+      "bytes": 144260,
+      "sha256": "d4a0d94f9902c75486be906ed216df4d4dc447e64a36cdfed4fa87726719a8d6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-clean-clean.csv.gz",
+      "bytes": 7929,
+      "sha256": "5a800c350e283d39a8ceddb0d35c410d8e1a546305f27b773d62c3f9e3f0965f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr+0.csv.gz",
+      "bytes": 143349,
+      "sha256": "8be28fa43fa8254366aaafb927d3d1188ee8344dbbb0af94a28b620fdf5d3d61"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr+5.csv.gz",
+      "bytes": 128814,
+      "sha256": "79212cb6a18f447b691964507d84cbde0cc7fd71f22b343d509a6b215a1ac3c1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-lateral-snr-5.csv.gz",
+      "bytes": 143837,
+      "sha256": "85687e445ee7f5a0fee4386e8d3a69028901bbfd576c183d663087776e322557"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr+0.csv.gz",
+      "bytes": 141878,
+      "sha256": "0f2c7ef059474955e20a6c0b49f42bb190bd75f1b2e7c4950fa6efe809cc6ecd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr+5.csv.gz",
+      "bytes": 128897,
+      "sha256": "1d80e298d1c2d1f584145add106fe6373403fbf37768153f5f4933e792050fff"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032313-000-mixed-snr-5.csv.gz",
+      "bytes": 143799,
+      "sha256": "3ca9097720768eedcc5def6cc17ff57244da78a706e067bfe5a4c85e46b680c5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+0.csv.gz",
+      "bytes": 127199,
+      "sha256": "e0ce82f39e9846466f5dd6ec7c7afaad82c4c8f34d29e9165c34d232a3a068ec"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr+5.csv.gz",
+      "bytes": 126955,
+      "sha256": "3952400c710573ce35fde0107658cc058f49d984000645e9a6cc2edfd6b98a45"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-blink-snr-5.csv.gz",
+      "bytes": 146236,
+      "sha256": "9f7386de7df0458fe809ccf06a8f457f8ee0e3a79dc744cbc67ebd9dd34fe08b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-clean-clean.csv.gz",
+      "bytes": 8322,
+      "sha256": "25c27b16e63b14c52b63bc4f295f9960a88a70f690a1f85ea0636da01b2b016f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+0.csv.gz",
+      "bytes": 128390,
+      "sha256": "27f3dde0d1f8a799084d3e103fc5fa9f7aa68b6f31e9ad7bcd63783f98f0e9d6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr+5.csv.gz",
+      "bytes": 126933,
+      "sha256": "0566a1d9ed3a25e1d8b98d00e1f1e08558c4c94b7a03be97051d3de3746eb398"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-lateral-snr-5.csv.gz",
+      "bytes": 146127,
+      "sha256": "fff61bf71d2bd511f3235f7b00095f4656d3dbbc0f70bd8d9e7246a32f7b3f0a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+0.csv.gz",
+      "bytes": 129532,
+      "sha256": "724eefe29cb393e2f95a3ff259298ed8c2dbd0315eec95184785eb6b5822de3e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr+5.csv.gz",
+      "bytes": 126553,
+      "sha256": "519de0344866775e8dd160a1761f27c639644c0742846f2b9d4f403635e7815e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032314-000-mixed-snr-5.csv.gz",
+      "bytes": 146602,
+      "sha256": "444743e1b9a7d827ef9fe6c66e29a904d9a886ffd299534a3b77e15500697555"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr+0.csv.gz",
+      "bytes": 130743,
+      "sha256": "4c268e0eb61f59abf51409923d675c3def05f3dfc44c5f7ad9dd7a7ceb685f95"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr+5.csv.gz",
+      "bytes": 128027,
+      "sha256": "3f6e7d1a79a7dd336084bf52850d3df82bbf190cbc5e285197264f28e4b2a3e2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-blink-snr-5.csv.gz",
+      "bytes": 147217,
+      "sha256": "24e2bcdab5a3d88fba28555349426dfe0352ad4b95e0c5c05fa228393080681a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-clean-clean.csv.gz",
+      "bytes": 8324,
+      "sha256": "9309e88e538d7109d7b69d353b8eade316fff19116fbf66c232c3edd706c8990"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr+0.csv.gz",
+      "bytes": 146039,
+      "sha256": "f2c3e92a13545b80f367ed4b5abe65fa3091c287725f5438517c5738307ed6c8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr+5.csv.gz",
+      "bytes": 126882,
+      "sha256": "231e902da27d41cdb8d5f4a3b29d9e279be0baa23a8aca6d8e70e45ce5662aa8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-lateral-snr-5.csv.gz",
+      "bytes": 146784,
+      "sha256": "a5258afbfa311b257902b432e228aa333d58533216d088b555dfc19b59c2589f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr+0.csv.gz",
+      "bytes": 130714,
+      "sha256": "1d1141f52e790398928f8986390700ded135d01d76097d34230125df33a9003a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr+5.csv.gz",
+      "bytes": 127738,
+      "sha256": "32c696d2f5ec4db0e190e64caa497ebccecc5cff20a5817fa361978d98036a14"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032315-000-mixed-snr-5.csv.gz",
+      "bytes": 147148,
+      "sha256": "fbd2d4317ff1f8a3b1185824d0fd810add28a7eebe3c534774fb99823322d550"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr+0.csv.gz",
+      "bytes": 131379,
+      "sha256": "cf202db22316ec5621def1ea25ff8e977b84e23395ce0f5291b73d04c0ddc711"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr+5.csv.gz",
+      "bytes": 128628,
+      "sha256": "95b751940054b5fdd8ca3b0b6490a3c9f709ad8a4b8a4adec169599a936e1eeb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-blink-snr-5.csv.gz",
+      "bytes": 146640,
+      "sha256": "7f464fb8e78be1cfb829a27de36bc941810b0fcc4cca3e72e0e95ba4b2db3601"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-clean-clean.csv.gz",
+      "bytes": 8323,
+      "sha256": "1c05e0595385f84c1498f8b4bf644391cfa7dd176bcd89d3e61e551389832280"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr+0.csv.gz",
+      "bytes": 127247,
+      "sha256": "2be138e397b823a84e951895682afcd8142df1d333b336fef862c44def02fcbc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr+5.csv.gz",
+      "bytes": 127081,
+      "sha256": "313912aa90a1aaab2586e34d60b0da957404dd9d449ceaa3a187f1df15e28568"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-lateral-snr-5.csv.gz",
+      "bytes": 146226,
+      "sha256": "ac493a8d980f1250588454c3c5edec11d13b76e2dba6949fd3ad862a43c1654f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr+0.csv.gz",
+      "bytes": 131579,
+      "sha256": "09196dceb6b2bd396de1a60dff064decbbaff1beaed95f1cff1e6df7cf02b4a4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr+5.csv.gz",
+      "bytes": 128490,
+      "sha256": "7dbb35b93b026b47e5162d82c5a93402c9bd8e1bd7aaa374f93778771cf4d5b4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032316-000-mixed-snr-5.csv.gz",
+      "bytes": 146158,
+      "sha256": "907ec0aad5a9a29b5ec1a61a49738cac3ac9dcdf2a856b0f0d81cc137b268b63"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr+0.csv.gz",
+      "bytes": 127297,
+      "sha256": "c32820170a2ecd772dd6a9058110f6bf2ff7f474a5ad5ff15e3e3ca807919bb6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr+5.csv.gz",
+      "bytes": 126587,
+      "sha256": "ea17727c8efb833ce9d4cbcbcfe5450295203d0ff4888d826d7fa881c665dbe3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-blink-snr-5.csv.gz",
+      "bytes": 131722,
+      "sha256": "68889c09469bc3a0d3de2488830a1cd24cbf07bf7eefae581d29f2b52fdcd362"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-clean-clean.csv.gz",
+      "bytes": 8327,
+      "sha256": "ac5e30e50ead46a2a8d5cb445aac092b2ff9f7d051e312df95038de711b99381"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr+0.csv.gz",
+      "bytes": 130895,
+      "sha256": "19f9da12880de1f759634259159ef7c23ef2daec051e7614e987a47227f63968"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr+5.csv.gz",
+      "bytes": 126607,
+      "sha256": "aa11c99a289ed499eef4d7a91998be83106409ffec00820e624a6c8d9843c86e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-lateral-snr-5.csv.gz",
+      "bytes": 148144,
+      "sha256": "6b114f7f08c2399a34ce1c4769f7c00c43cb9a9e1bc8b15671e87b97080bc119"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr+0.csv.gz",
+      "bytes": 126680,
+      "sha256": "88834f129732978834b52fd33cceed40d474adf28a73226636aff41a3e48a070"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr+5.csv.gz",
+      "bytes": 126363,
+      "sha256": "a86b8e7495671b61caa8f943d978ba3622dffab73d84d462cf532d16f2c3079e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032317-000-mixed-snr-5.csv.gz",
+      "bytes": 131253,
+      "sha256": "4442d041dc7ebf8134301e5377187e45bf6b72d6585df05168b1a727009b6b06"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr+0.csv.gz",
+      "bytes": 129295,
+      "sha256": "470db2feb480083c63305788695e8c37e6e8d58245d82f1f421aa0da3af7d0d5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr+5.csv.gz",
+      "bytes": 127596,
+      "sha256": "de1ac0adb7f5911b194f95aa8bd452b39a81067efcb7e094c4422db88a9f91fc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-blink-snr-5.csv.gz",
+      "bytes": 146838,
+      "sha256": "b00f495da9186ed7e8e7c4d971e1afe7678c22afe37aea33b58ae6188008b42c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-clean-clean.csv.gz",
+      "bytes": 8322,
+      "sha256": "006d2d92d34b50c1ed5c516398597d1372940ad0573094957b639692c4c7c139"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr+0.csv.gz",
+      "bytes": 132787,
+      "sha256": "ae6f5c45bf599dbcbaeeae0668616c8d660dadac4249ac26bd556129de24bb35"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr+5.csv.gz",
+      "bytes": 128044,
+      "sha256": "4021a66c6610c64ee704345d27afc82971561e79dcc1d976588bc3df433ca2a0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-lateral-snr-5.csv.gz",
+      "bytes": 146970,
+      "sha256": "dc66f57a64d519637bca88752b5d62073d51ecb7196ff0917dc6abfd08b72a35"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr+0.csv.gz",
+      "bytes": 127908,
+      "sha256": "c85563961172eae5dfddc58f51bba15a8be70b3050774485641256405231493f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr+5.csv.gz",
+      "bytes": 127462,
+      "sha256": "76ca1f9103d7bea6c433e9e58ce2e25ecbf8d04711e3dac8df8ab0365603d700"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032318-000-mixed-snr-5.csv.gz",
+      "bytes": 146529,
+      "sha256": "c3f7f1a9e551718855e41d8ba2ddf6f3a7c13ac943fd1afb8718eb84fbd8d22a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr+0.csv.gz",
+      "bytes": 127202,
+      "sha256": "dee1b73dbd9a45c533556d5850bfd8507d2fca2b875509d2f3bb26f75428717e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr+5.csv.gz",
+      "bytes": 121894,
+      "sha256": "919b7139a7ee69864137ae174286908be80e45528c2a0ac4cbe29d8f5b65e2c2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-blink-snr-5.csv.gz",
+      "bytes": 146109,
+      "sha256": "3232719309e52e90afd575a5d8a8ef53568e6652d9807d634baa0bc6e5d69825"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-clean-clean.csv.gz",
+      "bytes": 8362,
+      "sha256": "dda069b85e8d189e0350f068ea747b2c58648eb5e5a3c5017fbeae3e78d1144f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr+0.csv.gz",
+      "bytes": 132890,
+      "sha256": "f4455bcfe6522211ff479537a6e83d83d172e3513aeb518ac1275147fd272052"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr+5.csv.gz",
+      "bytes": 127167,
+      "sha256": "7ec01394f99cc006546c1f2bb9e95b90594ab4a758937682a3f2934fdfac5009"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-lateral-snr-5.csv.gz",
+      "bytes": 147234,
+      "sha256": "2ea8c4d8987504a45c5201f95a940eb82d47f7a9eb05bff4b5a07ebfbfd06eff"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr+0.csv.gz",
+      "bytes": 127122,
+      "sha256": "745f4d4f78afac917b22cd18b79a341b75fc2b0ecfcf393aedfa6582682be44f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr+5.csv.gz",
+      "bytes": 122052,
+      "sha256": "5f7e6b43c5faf033a3a013576373d1de860741cc0f707371f36dea74e730915e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032319-000-mixed-snr-5.csv.gz",
+      "bytes": 145809,
+      "sha256": "9fe4b052781da767b1d0b19dbd387246f3894dab5cadcd58548a309795fc7ed3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr+0.csv.gz",
+      "bytes": 127765,
+      "sha256": "959785aa2b32b60ef7eb3bd14849168c82cf6ef0ed3e052d90abb5aeef3b5e04"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr+5.csv.gz",
+      "bytes": 121511,
+      "sha256": "1b6c5e11e4adf8c273e5db8084336ba128629962109e7ba285c2d55d8a7888ed"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-blink-snr-5.csv.gz",
+      "bytes": 142399,
+      "sha256": "03d4e1f5c5e1a5ffa8b85f4c350e063267204f9546aac69a46134936e80b0ce8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-clean-clean.csv.gz",
+      "bytes": 7927,
+      "sha256": "3b5c0259241a8ba31803153ea31aeea9c1081f5468f351fd8fcd8b279809c0b0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr+0.csv.gz",
+      "bytes": 142044,
+      "sha256": "ea689a46e2a7b3b242070947d7b7636f7281538689c55cd642ba3c29d235c38c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr+5.csv.gz",
+      "bytes": 130031,
+      "sha256": "0bba7b892f13423cadf4a0cb4dd5a28e2eeac7c258387817b25448ca6de5d046"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-lateral-snr-5.csv.gz",
+      "bytes": 143258,
+      "sha256": "e38a706164e6cd66965af746057ea7a1d05af04af15358cf954990cc4361fee7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr+0.csv.gz",
+      "bytes": 127561,
+      "sha256": "5d484d3b00c071a68e654b4778f5a73b6140d03c2fec5f763184d5fa3718d0f8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr+5.csv.gz",
+      "bytes": 121073,
+      "sha256": "74a10dfa59290f17ef6e7c5a16bd2505d7b6ef608394cf4485f46a4d3bdb3526"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032320-000-mixed-snr-5.csv.gz",
+      "bytes": 142012,
+      "sha256": "c94f384b86792f748277a5baa94cca54e9780c035582ed00c7d0494ed64dfb9d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr+0.csv.gz",
+      "bytes": 129814,
+      "sha256": "9a17c2e5aed9115c3e72fe480c845328ab8948288804a04607e8aeea8fdcf216"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr+5.csv.gz",
+      "bytes": 127275,
+      "sha256": "2c5fb7247e3bbdcf4ef0a6c2450c6a1dbbfc4adf8be7c1412f6a2a942ba1fdfe"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-blink-snr-5.csv.gz",
+      "bytes": 146552,
+      "sha256": "6fcafe2068f16ff4cd120aa00801e8857795e03440d6900fb12f5834d8e0752a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-clean-clean.csv.gz",
+      "bytes": 8344,
+      "sha256": "c7c50ff1d5c1e6d6da3912d65a40bf2dbf61960d6e10ddef5cfa67f97abbdf25"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr+0.csv.gz",
+      "bytes": 129635,
+      "sha256": "b41d96bd1bd5ef271cb5df6537d5888a670806fa35fc0cbbca7acba35951f51e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr+5.csv.gz",
+      "bytes": 126560,
+      "sha256": "b1aed489f31a6a004ce415f98d2729e36c60b839e446f9c2c6326bab9da8299d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-lateral-snr-5.csv.gz",
+      "bytes": 146675,
+      "sha256": "7b8eadacde8c8bece29b96ad511608d8114265729e87bc79120ae6ae26bd7113"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr+0.csv.gz",
+      "bytes": 129611,
+      "sha256": "61c92db782c315d02ae5bd683cf527df2d3988227656e4004b82b83263e02a0c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr+5.csv.gz",
+      "bytes": 126434,
+      "sha256": "21c37ed60616bdefb3c76442e26a673617aa65600bae103adf13636b2b78e6f8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032321-000-mixed-snr-5.csv.gz",
+      "bytes": 146142,
+      "sha256": "d7f62d130b4427cfa7c37f6079fa47791ece107eb790ff8639b8d03c451cb45e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr+0.csv.gz",
+      "bytes": 128105,
+      "sha256": "996aeb010a6a04fdd1c4a80f1612ab9e7ae83b5d106620c0c8634eb9f30fd391"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr+5.csv.gz",
+      "bytes": 127010,
+      "sha256": "71526da0c09e826e4c4c31af6de71a16714da146b26b68c0f79837def68fbde5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-blink-snr-5.csv.gz",
+      "bytes": 146951,
+      "sha256": "3229f76ae34319930a555116e4d5f2ba8cc0f9db1c628193faafb1b327219104"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-clean-clean.csv.gz",
+      "bytes": 8328,
+      "sha256": "a57ea5bd84732dfe0374d22b99b5055718ea5076b3c3e92f0224bbcccc9dd448"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr+0.csv.gz",
+      "bytes": 146932,
+      "sha256": "26f07aeefc2d5d44be80468a9b9deb7fd07e83a0b8212cb5871a7b3ebbb2e8d4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr+5.csv.gz",
+      "bytes": 145648,
+      "sha256": "fb7dae13b8dbf36958ce145d84cdea7feba9df14f3a607a55de9bb8c8847f6bd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-lateral-snr-5.csv.gz",
+      "bytes": 147919,
+      "sha256": "a8c4b848656828fd8ba785e60b064a996934cf29e51551743f125b1c7a76a848"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr+0.csv.gz",
+      "bytes": 128048,
+      "sha256": "558077b5494c1544a958518e5ece0b25303fb2685255f99637b69f2087461984"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr+5.csv.gz",
+      "bytes": 126915,
+      "sha256": "121bb86c192a90906981fd39885de529cf9e80fbdc1ac8fb458faab458e4d7a1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032322-000-mixed-snr-5.csv.gz",
+      "bytes": 147030,
+      "sha256": "9bdeadff2da618ef6a6fdf407233558aaaf4a7d9b51e18a3abe6e4aaeb00f459"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr+0.csv.gz",
+      "bytes": 142349,
+      "sha256": "a3b303e83852e28929b47b990f7279c72eb8a89bb978ae0339438560af2a3a7b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr+5.csv.gz",
+      "bytes": 129049,
+      "sha256": "df4c5478e372ce2d91cda62cbbdff3760cec746fd7f52c8ce7e8f1c0509a00d5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-blink-snr-5.csv.gz",
+      "bytes": 143026,
+      "sha256": "be2fc7d250f4392f941525a1b59c5d86babb9d7da3195a37d9ed0b1e25b9bb6b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-clean-clean.csv.gz",
+      "bytes": 7928,
+      "sha256": "1d293a6dcbaa61098789eb267d87605c54aaddaeec1787bc22807d49d609cffa"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr+0.csv.gz",
+      "bytes": 142786,
+      "sha256": "4d72a6934681a513ff4b69c1a567054c2e8cc5877dd893c9eb7e56482b43bda4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr+5.csv.gz",
+      "bytes": 126768,
+      "sha256": "cc186ef99f178203c994a900a2a0d44538f3eb984a1b55b94bdc0b121c124ce0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-lateral-snr-5.csv.gz",
+      "bytes": 143691,
+      "sha256": "8f7236de5b8b613febe8673d976fb234b816ca92b1d55718e8f51baabaaacb72"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr+0.csv.gz",
+      "bytes": 142152,
+      "sha256": "6ee87719c77c8c7ff6b6f2b4a1174c2360812a674a8650601c973a28a510c033"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr+5.csv.gz",
+      "bytes": 129030,
+      "sha256": "f7ba0f1654df0054f7f4ff0616a11ecc5bd01407075ca23fa37bc102d29a0863"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032323-000-mixed-snr-5.csv.gz",
+      "bytes": 143315,
+      "sha256": "c7951227739a59505edd43d363182ab7f16950ccaada0db557de6cafdaf6d299"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr+0.csv.gz",
+      "bytes": 127284,
+      "sha256": "490d2cf4679ca67304b0b62bf19c2dc8b5de2180b2f2ae874737dbcc066bd662"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr+5.csv.gz",
+      "bytes": 121563,
+      "sha256": "4405c2e1337804e2454c393afc52fd8b413d8193c246082c4aab8492267ec661"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-blink-snr-5.csv.gz",
+      "bytes": 130103,
+      "sha256": "30a102c128b9d07ecde5d0d8b19c060f7a9f70ed5d7c3bcf22ea83b617298ad6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-clean-clean.csv.gz",
+      "bytes": 8325,
+      "sha256": "1067ad04116d753a56401faeb42f02770146d5d1df57188cfe36c91eae8d42b6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr+0.csv.gz",
+      "bytes": 131863,
+      "sha256": "90bff58ff437bfbd00d8f6c9ff7ea1c9b45901f63c813ad16c1da8cd88beb256"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr+5.csv.gz",
+      "bytes": 127139,
+      "sha256": "088c43780c1cfd81ed6b9fb44b6066b3a9b3795393435d7798854ccbe65c792a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-lateral-snr-5.csv.gz",
+      "bytes": 147430,
+      "sha256": "e2da89cf255c46be5c9db40623c5eb43d977181b6c70a969010c33c8c48e2c97"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr+0.csv.gz",
+      "bytes": 126934,
+      "sha256": "65c6f229e000ad9782d5baa720998e4e46e210f09eff399cddbf3c52fdca8e7e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr+5.csv.gz",
+      "bytes": 121288,
+      "sha256": "ea706f24ea8a7c404d16365485877128259fe887963db0ec89eac893014050e5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032324-000-mixed-snr-5.csv.gz",
+      "bytes": 128796,
+      "sha256": "4a15fcf824cfa3161958ad5f88ef3c4afc2b94acbadb331d431fa5cb7e3c35c5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr+0.csv.gz",
+      "bytes": 128762,
+      "sha256": "5f49bf2bf11d6c5a6fcc6379db7616ab4b98d9291e4e49b1300aa6de1097ee15"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr+5.csv.gz",
+      "bytes": 121317,
+      "sha256": "2036ddfb3f2ffa190bca40f1eb23449e6f49b487160f852f0d19d64fd65d1a76"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-blink-snr-5.csv.gz",
+      "bytes": 194479,
+      "sha256": "0742dc5d1070afb21d69e14b64d9a6be898ecd7994ef0a0a8a5fef3980f0ad43"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-clean-clean.csv.gz",
+      "bytes": 8328,
+      "sha256": "8d2ed99593c1a8e93eb8b3ca3af3e42d836b8854dd17468ff53782532b013dde"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr+0.csv.gz",
+      "bytes": 147224,
+      "sha256": "1f19d21e0878909d121ce57dbbb56e8c5fc067eed1478a95ea56737779764b33"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr+5.csv.gz",
+      "bytes": 127942,
+      "sha256": "675f6a2cda02fc6b0f10a1b801ece5bbe16f00c90fecfb132d3ff190f5b1688a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-lateral-snr-5.csv.gz",
+      "bytes": 147896,
+      "sha256": "108ff4d454b6a9bc26f28f3de63ab6380a15b845d27af16db17c25b3618fd5ed"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr+0.csv.gz",
+      "bytes": 128706,
+      "sha256": "5da849552502d4361ed89a56538a4879fd0afad8f878abb95d80bb72af628162"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr+5.csv.gz",
+      "bytes": 121185,
+      "sha256": "993953f72a76a8ce7e05e890869d858007f52f7b4349fa38b773431254533fe1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032325-000-mixed-snr-5.csv.gz",
+      "bytes": 132594,
+      "sha256": "cd25d7b9204d2be673839e4a9bfbd93c45b988653c85df338905279ac0613fe8"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr+0.csv.gz",
+      "bytes": 127393,
+      "sha256": "6379da034cee9056b48f9df5ee4c0de29575ddb14c45d3a01bfbcd73e2640932"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr+5.csv.gz",
+      "bytes": 121916,
+      "sha256": "bc9eae615a9429ba76bfec9381a2bbad7e75e10ec26304e5005ad3d0908e6c73"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-blink-snr-5.csv.gz",
+      "bytes": 129363,
+      "sha256": "331d4434fa23aaa4269d7dd4f4388035efaa77b4552701b0a76ba40b33d71cda"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-clean-clean.csv.gz",
+      "bytes": 8328,
+      "sha256": "b6142bafaa5864ebbfd6968343735cb4bc6f6a44233131ac6c1ed528fc766980"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr+0.csv.gz",
+      "bytes": 146599,
+      "sha256": "bd58d1531fd7e3d0150d06f281b8b47297bbb6c9a00e312ae1507a4bccfdc229"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr+5.csv.gz",
+      "bytes": 127542,
+      "sha256": "e9afe70bf0e77eddcaefe1d1cf696f2be55cf2a208a49ca8b04a6e65f7b77f39"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-lateral-snr-5.csv.gz",
+      "bytes": 147848,
+      "sha256": "d11c1542ad58474b247d351350647629c907c6e348e52a576ac96ace2d00321f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr+0.csv.gz",
+      "bytes": 127287,
+      "sha256": "0069d69f5f11f8a6f549b8ec2d19f42808f6a1976eac7ee3f3d40672876ff914"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr+5.csv.gz",
+      "bytes": 121620,
+      "sha256": "e6f397b02f7a7bc379028f7e65ed72fa1399809160bc137c88ea99c7a6d8ac8b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032326-000-mixed-snr-5.csv.gz",
+      "bytes": 129495,
+      "sha256": "712f10575409ca382a84efd7e157a2d95d5f41cd44f3c206e5afdc12d9266c0d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr+0.csv.gz",
+      "bytes": 146882,
+      "sha256": "8a126bb7c75902928c329e006478747c548816c773d675872f538ba252a64587"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr+5.csv.gz",
+      "bytes": 128568,
+      "sha256": "7fec661ff1ce1433b1b7aab6924576ef64c65264a4338061d3ee3d5b6c061826"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-blink-snr-5.csv.gz",
+      "bytes": 147224,
+      "sha256": "53ad05f10610769ebdf8ca5f3581f69a31cf937d1519dd68d9b1db5c2d988199"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-clean-clean.csv.gz",
+      "bytes": 8343,
+      "sha256": "9f81792ef23a84f7d54dc7d0d5b903bf9c7ee7e92a782e3323e87d364df31eb2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr+0.csv.gz",
+      "bytes": 131252,
+      "sha256": "9f136ad4263b32cca6e430797b69ef8657652ccfc97db136249ba732ba31816d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr+5.csv.gz",
+      "bytes": 125412,
+      "sha256": "714e3f4e25115a47e2f289cb73a1c8b6780f2cc9c97b070f128d191d25e4facd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-lateral-snr-5.csv.gz",
+      "bytes": 146053,
+      "sha256": "b7fcd1d8c38818558da1f2f8eed5d2b949d8f6edff3970f7fbb75cfb50969eb0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr+0.csv.gz",
+      "bytes": 146888,
+      "sha256": "fdbdc47ba47088c542f7bf1bbf898ec893ce8f5fe89d2967032a864851e73386"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr+5.csv.gz",
+      "bytes": 128824,
+      "sha256": "3b2bbb0ff5e44d470915ec4db16c0cac8018c66a03b2c27df7f9bdb4bb006dee"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032327-000-mixed-snr-5.csv.gz",
+      "bytes": 147261,
+      "sha256": "a63e62b333698543d0da10bddb201e56daec93265225c76730beb0ed174bf64c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr+0.csv.gz",
+      "bytes": 127534,
+      "sha256": "ba5037c5cd581c7f22f5dead97bc917c93767848f8ac0f6f7b5f5a7126aa11c5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr+5.csv.gz",
+      "bytes": 121308,
+      "sha256": "6f4fb6505f93b90d24422bd8f1f232ab3ac8b260c3a9c4bdefbffc6f46242a69"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-blink-snr-5.csv.gz",
+      "bytes": 130693,
+      "sha256": "4a455c3340ed988df7c756e77cc11101af7be33981ca6973c1244c1c401e4536"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-clean-clean.csv.gz",
+      "bytes": 8323,
+      "sha256": "e379f12d38435cd0e249b8a23c78a5f8f779c09212027ffddcbcdf4c882423c6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr+0.csv.gz",
+      "bytes": 143364,
+      "sha256": "29abd8b68df6bc820ce98c7d6d9e0ff85d5d120d4991a2b76f82e0d7bc638919"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr+5.csv.gz",
+      "bytes": 128234,
+      "sha256": "d449c40d8ab1a41f62c0b87ea88ddd747d6fa76f89f3ed28925a6981984cfa7d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-lateral-snr-5.csv.gz",
+      "bytes": 145119,
+      "sha256": "0620859fab19885d3d0d1eb419ecd571285f96631b8c373fa4a95ee833f599f1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr+0.csv.gz",
+      "bytes": 127418,
+      "sha256": "a5cf5050812b5189e896b9dbc519fb199d22776a4a6851d33d5b1fb960116e40"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr+5.csv.gz",
+      "bytes": 121861,
+      "sha256": "5215cbdaaddb2350abd8bac3856dd568596c49fd65c532801b0f5de596c1d796"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032328-000-mixed-snr-5.csv.gz",
+      "bytes": 130773,
+      "sha256": "6c391a47a53a39a6016fd5dc66f0bca950cb09c2d73defcbd237d2d936dd6beb"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr+0.csv.gz",
+      "bytes": 143007,
+      "sha256": "5ad1ebee9ecc35f824720675b8683b410e889c039a4e0afa7b409b15dda075f5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr+5.csv.gz",
+      "bytes": 121315,
+      "sha256": "5412f806ad2af8b3cf2d1792bcd5ee1580b91be4e7cd259b36367a4f101e397b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-blink-snr-5.csv.gz",
+      "bytes": 143628,
+      "sha256": "6b7608158e26cf58d9534a626456c29fbc2f0d41483f9cf331a9776bdfb17e08"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-clean-clean.csv.gz",
+      "bytes": 7926,
+      "sha256": "ee8691b9e7e92694830773592fbd74c5946a33006ac38abbca655c0684265815"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr+0.csv.gz",
+      "bytes": 141821,
+      "sha256": "da32c34656fcc24b02e35c651feb7628d49bc6f4144e415c13693e65eb3d2c6c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr+5.csv.gz",
+      "bytes": 127066,
+      "sha256": "4d34dffe6ab41f6be36359101e7f79eea981f1e7ed1117b4ef29d1cee12bc67e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-lateral-snr-5.csv.gz",
+      "bytes": 143175,
+      "sha256": "51a2df82022ccf3c55e6e6de6adcb63d158fa762e26043b775e4b6d5043bde96"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr+0.csv.gz",
+      "bytes": 142671,
+      "sha256": "a67570bc64902b5ea803b6e1b4572ce90ddad6062e8d6fd9cb1d3c8053fd235e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr+5.csv.gz",
+      "bytes": 120891,
+      "sha256": "114e3a61100376aa4fe3018eaf02d9d12e7a8a2a4f1fdf68d0feafca0ac0307f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032329-000-mixed-snr-5.csv.gz",
+      "bytes": 143822,
+      "sha256": "5758398e79bf65b35b066b55590c30b02e6cd08cf9ef65348f0db4bc7279e9de"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr+0.csv.gz",
+      "bytes": 127049,
+      "sha256": "e2e08ee01a04aa93f0d3d15a95f263c27ad82943214ee4ee6a5a499f24885773"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr+5.csv.gz",
+      "bytes": 121365,
+      "sha256": "94b34fa02a02ff0f44f4133d7efa8537cfed21bd1e52c707e7e029a0db3f5483"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-blink-snr-5.csv.gz",
+      "bytes": 131030,
+      "sha256": "71c5ac3d3e88199dbcdcba5c9c25b571c76d46d73426ec0d1250b8d96ab77480"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-clean-clean.csv.gz",
+      "bytes": 8324,
+      "sha256": "e3fbcb3599923d8a56743ca4f46cc1fd122274a5c45b7a1fb3a5c071b5786b00"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr+0.csv.gz",
+      "bytes": 131780,
+      "sha256": "15cf68e7280b6717c932b7fcf5948624dcef380401164ea58f36d7ec67710fab"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr+5.csv.gz",
+      "bytes": 127050,
+      "sha256": "9fbecbfa53fb942bb0760e6a8d3922aabe602890a67c97242b130653571c08e7"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-lateral-snr-5.csv.gz",
+      "bytes": 147347,
+      "sha256": "713880602e2e8a8afd81298203201893c6f63df840031b9ee75489a5fbda23fc"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr+0.csv.gz",
+      "bytes": 127249,
+      "sha256": "5b6a74c3c08cd3821a412e3d8f8b33cb4c931e2ef895f48e7100d1e1c4881eba"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr+5.csv.gz",
+      "bytes": 121116,
+      "sha256": "e90077fe4b784312855ef2a46b0e070f913f6391a5b6f1c379c3cc0fabecd11e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032330-000-mixed-snr-5.csv.gz",
+      "bytes": 130924,
+      "sha256": "48679fd2980278e60744c57fe4ba17d80851d4f8093349b294db3dd5dbb80991"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr+0.csv.gz",
+      "bytes": 128274,
+      "sha256": "e0de3be0cd785bf99cce6e9480957ebbfdfa27bb94daed76fb2359711b0d877b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr+5.csv.gz",
+      "bytes": 121535,
+      "sha256": "f03196fb5cfa18d05199365ec733631480f0ee70236238943dfc6ae9094aef24"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-blink-snr-5.csv.gz",
+      "bytes": 146260,
+      "sha256": "3a637e4b6f9ebaa1397b4f8a5af4fcca2c7782ea2f76b4b79de6233026bc2d3c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-clean-clean.csv.gz",
+      "bytes": 8325,
+      "sha256": "f90842efe54b94d379bd2582f117fae4b9d1cab58c58db8f19b0915914b00e3e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr+0.csv.gz",
+      "bytes": 145663,
+      "sha256": "0e0745f2952f7f0c233fec15598bb5b0644f8c1d080d6dc70596b393680bb84f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr+5.csv.gz",
+      "bytes": 129590,
+      "sha256": "97d8d45ee7de161a4a794103bc1e6df00610118c7f29e37b5c66a7abfdd39166"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-lateral-snr-5.csv.gz",
+      "bytes": 147005,
+      "sha256": "afd4aa7a7dd887af3d8aa44fdefafc23f2588f921b14a60faa1a7745c3d53b0e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr+0.csv.gz",
+      "bytes": 129118,
+      "sha256": "3a5a75a414aa7da5457ef1c9e7972882a23c0fd09669cfd58ddcaf0f61d890a6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr+5.csv.gz",
+      "bytes": 121954,
+      "sha256": "7ea725b339c9472c5b6bbabbf702a588053dc0391b1736d8d8a9860d8359cced"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032331-000-mixed-snr-5.csv.gz",
+      "bytes": 146283,
+      "sha256": "bc3fbafccee694df8b0a8a63b398bc9adb50161667dc17a17c7f89470c8b53af"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr+0.csv.gz",
+      "bytes": 131333,
+      "sha256": "34baf517ec6ed8e66aa92d34fa8f41bd71f0c073e74cbb2ade9b3d4de1aef2f6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr+5.csv.gz",
+      "bytes": 128853,
+      "sha256": "c760436aba7d1f0088cdcbc86dd28c87045da0b41c4ddfe4daf8a8d535ed575d"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-blink-snr-5.csv.gz",
+      "bytes": 146795,
+      "sha256": "2ef5231c2757e97b4f5e3d37ec31ad4c6e4eeeeda04345f27d3b29a86f7baa1a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-clean-clean.csv.gz",
+      "bytes": 8328,
+      "sha256": "a9329b3bb160f916f0a0e2d0aee3af16edf82207d1c85bb8021e6343e5a25372"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr+0.csv.gz",
+      "bytes": 147172,
+      "sha256": "2e9eeb40b8cab233af3070d203432587a192f3e205031fdef6e8447fd166a960"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr+5.csv.gz",
+      "bytes": 130691,
+      "sha256": "ae1bff6bd782485752c34dbeded7ed50b45152238ffcd6766dbeda9fa13853b5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-lateral-snr-5.csv.gz",
+      "bytes": 148540,
+      "sha256": "07f97ac66b7758bbce7e0ee94626fda41707dbeef526283bb795e4706dab45f1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr+0.csv.gz",
+      "bytes": 131580,
+      "sha256": "08bce40d4f161f0323de615c2457959ed519b387f799992bf27909ca523fa5e3"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr+5.csv.gz",
+      "bytes": 128874,
+      "sha256": "b577d702191549d84addf250a84cbb83781eca51f43d66f52cec5d4e043d944e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032334-000-mixed-snr-5.csv.gz",
+      "bytes": 146847,
+      "sha256": "e91eb5f392414c1b0b475e5edf60e81a2b3fe958be5e30ebf6dad3196c87866a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr+0.csv.gz",
+      "bytes": 128083,
+      "sha256": "0d06ddcd3b08b7377b145ac5a6d1ca891092ef7823085ea85e118a674a987333"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr+5.csv.gz",
+      "bytes": 122146,
+      "sha256": "3ae9bd1c2f671a73446f3a6ea0aef9e15cee109382b983b4c864b3f0dcd25e5f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-blink-snr-5.csv.gz",
+      "bytes": 141997,
+      "sha256": "123e18cea15c124df55fedcb27415c3742c8505c6fb211a8080b6494bcd20925"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-clean-clean.csv.gz",
+      "bytes": 7928,
+      "sha256": "a82e32d389f5ef01f9a1606ca8ccbda9ab380bc8134124ca47398cc5ea32aaf2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr+0.csv.gz",
+      "bytes": 142759,
+      "sha256": "694863863c2e09d00477c0222cfadde66d37c50e72e992b1dafb54c1a83db451"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr+5.csv.gz",
+      "bytes": 129695,
+      "sha256": "07b21e821923c5b06641b20ee4381abc237052deb8907ca5a613977a98fbe769"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-lateral-snr-5.csv.gz",
+      "bytes": 143312,
+      "sha256": "1657b415d6dd144f33f6c18e019d169190b9a087c4b127f69e0b9ea83d056685"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr+0.csv.gz",
+      "bytes": 127126,
+      "sha256": "8d5656b7f5ae2123efc0c6f247f1ff2fa0cd1f708b12c6c17eab9427cecbcdd2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr+5.csv.gz",
+      "bytes": 126801,
+      "sha256": "5bf3bbafecfaa606e95fc2df0f6db2ba18d68c4cc7adae5dbecbd8eb87387f20"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032336-000-mixed-snr-5.csv.gz",
+      "bytes": 142265,
+      "sha256": "9dd6f5c3a02597f23e3ce2b998145f398b202004ba0307d75661f9433c6dbf6a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr+0.csv.gz",
+      "bytes": 126626,
+      "sha256": "23f8c81287aded9248a7c6a4d858423f28ddbba2b634877766205cc543028b82"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr+5.csv.gz",
+      "bytes": 121370,
+      "sha256": "8dcdbb770a8299868d8ee48c201b214093c886e6e1c54cbbba3ece2f90714c4f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-blink-snr-5.csv.gz",
+      "bytes": 127539,
+      "sha256": "b8bf9e012f50bf3c0fe644a501321dc7ce0b4d41c8f90979bb414cc0d2115de0"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-clean-clean.csv.gz",
+      "bytes": 7928,
+      "sha256": "6c55f42f3f1b20f71c0480c3eb6eaae3ab356b2166322dfa50cca0cca0d53173"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr+0.csv.gz",
+      "bytes": 142427,
+      "sha256": "b1b1bee64eb1b3623a319f6188501d2dfc856c1ba49e91ba42b6aa9e7e999d25"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr+5.csv.gz",
+      "bytes": 128064,
+      "sha256": "8617a8ac49ff1f0081e020e87adafc03b20843f071cafaafc794ea0ee7962657"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-lateral-snr-5.csv.gz",
+      "bytes": 143556,
+      "sha256": "3125b708c7ba15730597f27c103994fc863f3bc1a370eec012f8a139a2960303"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr+0.csv.gz",
+      "bytes": 126387,
+      "sha256": "273acfdb93ee5f97f8f6a1feea891e87dcebd72d6c9e24fec1c34842f9caf7a4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr+5.csv.gz",
+      "bytes": 120764,
+      "sha256": "51f953953fb4052f2ca608031e56e8507eeb46a4edf2fe8022a1e2e82ce86c03"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032338-000-mixed-snr-5.csv.gz",
+      "bytes": 185981,
+      "sha256": "3d7efd4c6838013a702de35729afe3935c4b7f1e471b1751cac91ac5263da3bd"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr+0.csv.gz",
+      "bytes": 141833,
+      "sha256": "7037129b301a22eebddacf21ebc1de1fb4fbdd2d7a409bcaa051a1f026d6eee6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr+5.csv.gz",
+      "bytes": 127277,
+      "sha256": "fc9a30b6000514ef02b1112af83d807660e16882c4a633a900de9cc217135fe6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-blink-snr-5.csv.gz",
+      "bytes": 143425,
+      "sha256": "3a4b06cf79aa523ae0b1506176ac5f73f88661bce10eda21d9f0967076156375"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-clean-clean.csv.gz",
+      "bytes": 7927,
+      "sha256": "ef57570d61672a38a451adcecee55c878d1e91ea69fc425ebaadbce40713e2ca"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr+0.csv.gz",
+      "bytes": 142694,
+      "sha256": "1c5a25356b0692036c7e6e80e972d5a5da322a66e13962f08ff5a9a41c9aaafa"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr+5.csv.gz",
+      "bytes": 127509,
+      "sha256": "4b96d1f7b16ed5d47d01580b691d7e029a436af6f51ddbce31c0042c81bf57a4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-lateral-snr-5.csv.gz",
+      "bytes": 139640,
+      "sha256": "57f71b8c7902e8b334249e86180809999b3137b75bf541b107e954a5899ff9ec"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr+0.csv.gz",
+      "bytes": 141701,
+      "sha256": "9ef38ef78a096a20bceeaf37b80bb6276659a4ab0ae1c40f0b504daa913a9305"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr+5.csv.gz",
+      "bytes": 127419,
+      "sha256": "a02023921fddef2a5906869da32f82b2ab20259afda29d52a1f3b83d8eced490"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032339-000-mixed-snr-5.csv.gz",
+      "bytes": 143569,
+      "sha256": "c7991e326bcae9ba3c090435937eb21eee9fde5566ee05c83cc0fc341acf2abf"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr+0.csv.gz",
+      "bytes": 127203,
+      "sha256": "f4675c48bd68e8e290468e4f45f1f49d73678786e6be277c6150cb88352f4151"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr+5.csv.gz",
+      "bytes": 125922,
+      "sha256": "41261c4fddd198e995de79c0a95432f2932b672980c632cd0c58fc6dda7b0304"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-blink-snr-5.csv.gz",
+      "bytes": 143181,
+      "sha256": "4dc90f9165ec8ac34247c1dfffa18cbd37a052b1bbd8257f02231c08b432e05c"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-clean-clean.csv.gz",
+      "bytes": 7928,
+      "sha256": "8c1f3e302a95ec295affcf99007dc1cdbfc7adf45d0821cceb6c19b0b6c70bb4"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr+0.csv.gz",
+      "bytes": 142492,
+      "sha256": "220c096f90ff246a318143abb67a2ec006162fc8c927348935141dd257304a28"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr+5.csv.gz",
+      "bytes": 128001,
+      "sha256": "4961752367946f63b2e85c21999794a843416cfc42eb3af7d403909e669b4c5a"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-lateral-snr-5.csv.gz",
+      "bytes": 143678,
+      "sha256": "336eaeb9dab74d092c5e4d435f4c6ee0d92b2f2545535e8393e765397397078e"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr+0.csv.gz",
+      "bytes": 126019,
+      "sha256": "977713bb07055b0787016238580b6e25b3e548c9f8a04d92dedf5d641b99cd0f"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr+5.csv.gz",
+      "bytes": 126300,
+      "sha256": "748f9d2235c29ffd86f504f2ab4eb9f72cc1485d791c5ae48c44f0f2cf680359"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032340-000-mixed-snr-5.csv.gz",
+      "bytes": 142810,
+      "sha256": "f6af9c13a328727b9c6fe24afb37729e1b3313d38a52ef01a76e1df1de230a70"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr+0.csv.gz",
+      "bytes": 126958,
+      "sha256": "223a63a483c7b4db40224dff014fcce84dda7553d4f43f5697a7901e465db387"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr+5.csv.gz",
+      "bytes": 121513,
+      "sha256": "1cdf4e57004a9620e73292d7218276ba53d10530fbb6d4d34adaa380b126adb6"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-blink-snr-5.csv.gz",
+      "bytes": 130175,
+      "sha256": "a55b0ea6461e836b8970ed8259da86d9bd1d3cdb275d726f59e8617637843703"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-clean-clean.csv.gz",
+      "bytes": 8324,
+      "sha256": "81a95c5d2cc7e153c955410384cc277e3ebafdb0f550bb9f883db54184849a94"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr+0.csv.gz",
+      "bytes": 133835,
+      "sha256": "2d0f1bd12f8031377a66cda34d91451b96daf5e150f949590068e10b31fb0ec5"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr+5.csv.gz",
+      "bytes": 128821,
+      "sha256": "0f4252db1f86ab03b5a60c20ea9e053667dd0ff663c460def62ed0ab19f1b589"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-lateral-snr-5.csv.gz",
+      "bytes": 147089,
+      "sha256": "1a6c9981c72af8bd87fc000096e5c8d09e479791ef823488ded6b809228e2cc1"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr+0.csv.gz",
+      "bytes": 127113,
+      "sha256": "993c6e1e63134495e72a618c0665fc195523fc320ee6f32548814e5e80e0a437"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr+5.csv.gz",
+      "bytes": 122250,
+      "sha256": "865fc7c2e2726d87b4f74e2357a175cc72e9b664139e2efa702b1e7af2346c10"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_metric_shards/sub-032341-000-mixed-snr-5.csv.gz",
+      "bytes": 130303,
+      "sha256": "f2af7c10d540dbbecdc50b1bc4479621dd69c719946c7096133df9c1b02fc85b"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/nonfrontal_selection_manifest.jsonl",
+      "bytes": 391132,
+      "sha256": "c03db4a370496843081ca705625a6b62c1b8d3970dbbade4a18ddd0ed0bc25a2"
+    },
+    {
+      "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-full-001/tests.txt",
+      "bytes": 2511,
+      "sha256": "688bd85d87556922b1403ba567b6299954530718c2cd0e73eba154eb2849e2fe"
     },
     {
       "path": "results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-001/results/vmd-nonfrontal-challengers-20261014/nonfrontal-pilot-001/tests.txt",

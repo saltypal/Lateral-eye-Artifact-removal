@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from vmd_eog.nonfrontal_review import inherited_failure, pooled_snr, swap_frontend
+from vmd_eog.nonfrontal_review import composed_failure_provenance, inherited_failure, pooled_snr, swap_frontend
 
 
 def test_frontend_swap_composes_once_and_preserves_other_regions():
@@ -36,3 +36,12 @@ def test_failure_lineage_is_specific_to_parent_arm():
     assert inherited_failure(scores, "one", "rank2") is None
     with pytest.raises(ValueError, match="Missing"):
         inherited_failure(scores, "one", "missing")
+
+
+def test_replaced_vmd_failure_is_historical_in_raw_frontend_composition():
+    report = composed_failure_provenance("VMD failed", None, None)
+    assert report["failure"] is None
+    assert report["historical_parent_failures"] == "VMD failed"
+    assert "not independently separable" in report["active_raw_frontend_failure_status"]
+    report = composed_failure_provenance("VMD failed", "ICA failed", "raw parent flag")
+    assert report["failure"] == "ICA failed; raw parent flag"

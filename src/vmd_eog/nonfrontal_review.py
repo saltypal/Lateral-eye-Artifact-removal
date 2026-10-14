@@ -67,6 +67,14 @@ def inherited_failure(scores, example_id, arm):
     return "; ".join(labels) or None
 
 
+def composed_failure_provenance(historical, method_failure, raw_parent_failure):
+    """Replaced VMD faults stay historical; raw parent's whole-pipeline flag is conservative."""
+    conservative = "; ".join(value for value in (method_failure, raw_parent_failure) if value) or None
+    return {"failure": conservative, "historical_parent_failures": historical,
+            "nonfrontal_method_failure": method_failure, "raw_frontend_parent_flags": raw_parent_failure,
+            "active_raw_frontend_failure_status": "not independently separable from parent whole-pipeline flags"}
+
+
 def readiness(input_root, config):
     if (config.get("scope") != "frozen_frontend_and_snr_review"
             or config.get("autovmd_enabled") is not False
@@ -119,6 +127,11 @@ def run(input_root, output, config, profile):
         verify_parent(context, (control_relative,))
         saved = dict(np.load(full / relative, allow_pickle=False))
         old = dict(np.load(context / control_relative, allow_pickle=False))
+        decision_relative = "nonfrontal_predictions/" + row["example_id"] + ".json"
+        verify_parent(full, (decision_relative,))
+        decision = json.loads((full / decision_relative).read_text())
+        if decision.get("example_id") != row["example_id"]:
+            raise ValueError("Parent decision identity differs")
         for key in ("original", "target", "names", "regions", "mask"):
             if not np.array_equal(saved[key], old[key]):
                 raise ValueError("Frontend parents differ: " + key)
@@ -143,9 +156,14 @@ def run(input_root, output, config, profile):
         meta = {key: row[key] for key in ("example_id", "recipient", "donor", "condition", "input_snr_db")}
         failures = {arm: inherited_failure(source_scores, row["example_id"], arm) for arm in estimates if arm not in new}
         raw_failure = inherited_failure(context_scores, row["example_id"], FRONTAL_RAW)
+        provenance = {arm: {"failure": value, "historical_parent_failures": value,
+                           "nonfrontal_method_failure": decision["failures"].get(arm.split(":")[0]),
+                           "raw_frontend_parent_flags": None,
+                           "active_raw_frontend_failure_status": "not applicable"} for arm, value in failures.items()}
         for family in FAMILIES:
             arm = "raw_frontal+" + family.split(":")[0]
-            failures[arm] = "; ".join(value for value in (failures[family], raw_failure) if value) or None
+            provenance[arm] = composed_failure_provenance(failures[family],
+                decision["failures"].get(family.split(":")[0]), raw_failure)
         current = []
         for arm, cleaned in estimates.items():
             for scope, ids in scopes.items():
@@ -158,7 +176,7 @@ def run(input_root, output, config, profile):
                     "channel_mean_snr_db": float(np.mean(paper["snr_energy_db"]))})
                 for local, index in enumerate(ids):
                     current.append({**meta, "scope": scope, "channel": str(names[index]),
-                        "evaluated_family": arm, "failure": failures[arm],
+                        "evaluated_family": arm, **provenance[arm],
                         **{name: float(value[local]) for name, value in paper.items()},
                         "cc_deterioration": float(comparator["pearson_cc"][local] - paper["pearson_cc"][local]),
                         "clean_change": float(paper["rrmse_time"][local]), "alpha_db": engineering["alpha_db"],
@@ -189,6 +207,8 @@ def run(input_root, output, config, profile):
     for reports in gates.values():
         for report in reports:
             report["comparator"] = CONTROL
+            report["conservative_failure_flag_rows"] = report.pop("failure_rows_scored")
+            report["failure_flag_interpretation"] = "conservative inherited flags; not active branch failure counts"
             report["mean_cc_deterioration_vs_comparator"] = report.pop("mean_cc_deterioration_vs_direct")
     atomic_json(output / "review_gates.json", gates)
     from .coverage_uncertainty import uncertainty_report
@@ -217,6 +237,7 @@ def run(input_root, output, config, profile):
     atomic_json(output / "frontend_review_summary.json", {"examples": len(rows), "recipients": 32, "donors": 5,
         "parent_array_checks": checks, "baseline_paper_metric_checks": baseline_checks, "arms": list(estimates),
         "new_fits": 0, "weights_trained": False, "autovmd_executed": False,
+        "failure_provenance": "replaced VMD flags historical only; nonfrontal decision faults separate; raw parent whole-pipeline flags conservative, active frontend count unknown",
         "uncertainty_contrasts": "rank2 frontend matched in root; ICA frontend matched in subfolder; ICA versus common rank2 control is whole-pipeline contrast",
         "reserved_confirmation_opened": False, "qualification": False,
         "native_validation_required": True, "runtime_s": time.perf_counter() - started,

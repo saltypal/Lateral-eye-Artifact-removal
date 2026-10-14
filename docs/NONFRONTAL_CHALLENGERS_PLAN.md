@@ -184,3 +184,71 @@ not independent validation or production qualification. Native tests required.
 Retain all failures. No method wins because it includes VMD. Best whole-system
 SNR is assessed from composed waveforms, never summed regional dB. If the fixed
 challengers fail, report their shortfall and use the existing frozen baseline.
+
+
+## Executable follow-up order after full320 comparison
+
+The completed comparison rejects the tested MWF, whole-IC rejection and wavelet
+recipes as next production candidates. Keep them as controls; do not repeat a
+large blind grid. Frontal K3/2000 outputs remain fixed during these nonfrontal tests.
+
+1. **NF10 frozen frontend and aggregation audit — launched.** Exact full001/1 and
+   context-match-full001/1 outputs only. Compare VMD/ridge frontal with identical
+   rank2 or ICA-component-ridge middle/posterior outputs. Report pooled-energy and
+   channel-first SNR separately; do not compare the historical17.9272dB as if its
+   cohort, EOG access and aggregation were identical. Report20verified middle and
+   6temporal-channel subgroups. Success means complete parity/provenance, not a
+   desired winner. No new fit or closed-source access.
+2. **NF11 weak-artifact conservative gain — proposed.** Audit saved association,
+   gain and artifact/EEG-energy ratios per condition first. The current method
+   estimates its map on calibration, but region gain from observed scoring EEG;
+   it is not a calibration-only gain. Neural contribution to this estimate is
+   a plausible overcorrection mechanism, not an established root cause. Compare
+   the existing gain with one calibration-constrained gain/shrinkage variant.
+   Use the existing declared strength bank0.25/0.5/0.75/1 rather than inventing a
+   broad search. If blending old and rank2 fields, use a=(1-w)*a_old+w*a_rank2 on
+   disjoint nonfrontal rows, then subtract once from original. The weight must be
+   inferred from observable EEG/EOG and training/calibration, never true input
+   SNR, clean target, condition labels or scoring artifact. Grouped selection
+   excludes both recipients and donors. Reject if weak blink/mixed loss persists
+   or clean/CC gates fail; retain severe lateral and every original interval.
+3. **NF12 reference CCA challenger — proposed.** Reuse verified calibration,
+   references and rest covariance. CCA separates EEG/reference-correlated latent
+   directions; estimate their sensor projection on calibration, then correct only
+   reference-supported portions. Compare HEOG/VEOG alone against the same EOG
+   plus separate signed frontal artifact context. Raw-frontal and no-context
+   controls must match information/budget. Use rank1/2 controls first. Require
+   reconstruction, numerical-rank, permutation and trial-boundary fixtures before
+   the50example pilot. Original iCanClean validation here is phantom data; ours
+   would be a labelled human-ocular adaptation, not a reproduced published score.
+4. **NF07 author SGEYESUB parity — eligibility before implementation.** Original
+   sample labels1/2left/right,3/4up/down,5blink,6rest are distinct from our four
+   trial codes. Read existing ARTIFACTCLASSES channel on Kaggle; do not create
+   left/right labels from HEOG signs. Verify native channel/reference/filter and
+   actual calibration duration per recording. Match author MATLAB/Octave outputs
+   on deterministic fixtures before a Python method gets the published name.
+   Insufficient labels/calibration or unavailable parity blocks this arm, not the
+   whole campaign. It may consume raw full-montage calibration but outputs only
+   middle/posterior correction here; no nonfrontal VMD.
+5. **NF13 temporal-separation control — conditional.** Multichannel SOBI plus
+   selective reference regression provides a separation assumption different from
+   ICA. Repair rank/trial-boundary contracts before porting the VMD-domain helper;
+   do not decompose posterior signals with VMD. One fixed delay bank and matched
+   calibration first, not another unconstrained grid. ASR/rASR remain later
+   preservation controls requiring eligible low-ocular calibration.
+6. **NF06 native qualification and fresh source validation.** Frozen shortlisted
+   recipe on unchanged native HEOG/VEOG references, blink/lateral/rest/ERP or BCI
+   outcomes where eligible. No native reconstruction SNR. Fix source/reference
+   coupling in a separately versioned controlled corpus; preserve old scores.
+   Only a frozen system evaluated on reserved/independent data can satisfy the
+   fresh15dB target. No student training is authorized by current development gain.
+
+Middle/temporal subgroup results determine whether separate policies are useful;
+montage labels alone do not establish physiological artifact dominance. Protect
+central mu/alpha/beta and posterior alpha with the existing paired/rest tests;
+actual task-response preservation additionally requires eligible labelled data.
+
+Each new numerical arm gets a Git module, pinned Kaggle notebook,50example pilot,
+recoverable fits/predictions/progress, matched320comparison only after contracts
+pass, source-aware uncertainty and native qualification separately. Runtime and
+memory at10–50channels remain measured deliverables, not assumed scalability.

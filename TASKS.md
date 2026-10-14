@@ -214,3 +214,8 @@ See docs/NONFRONTAL_CHALLENGERS_PLAN.md. Exploratory regional experiments are
 authorized despite current frontal qualification failures; no teacher/model promotion.
 
 - [ ] NF10 Frozen frontend/aggregation review: exact same nonfrontal output with VMD versus archived raw frontal; channel-first versus pooled SNR; verified middle versus temporal subgroups. No new fitting.
+
+- [ ] NF11 One conservative gain/shrinkage challenger after saved-decision diagnosis; observable inputs only, grouped recipient/donor selection.
+- [ ] NF12 Fixed reference-CCA pilot after rank/reconstruction/trial fixtures; matched EOG versus signed frontal-context references.
+- [ ] NF13 Multichannel SOBI selective-source control only if it adds a distinct hypothesis; no nonfrontal VMD.
+- [ ] NF14 Frozen review failure-lineage interpretation documented; revised conservative/historical provenance fixture passed on Kaggle before reuse.
