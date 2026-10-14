@@ -2077,6 +2077,26 @@ an SNR gain. No AutoVMD search, neural weights, new dataset or reserved source
 was used in this completed comparison.
 
 
+## Next regional validation plan and original-source audit authored
+
+14 October 2026. Plan: docs/NEXT_REGIONAL_VALIDATION_PLAN.md. N01 source recovery
+and N02 saved-output frontend comparison are independent; homogeneous coupling
+fixtures, new two-pair corpus, fixed-frontal pilot and native preservation follow
+in dependency order. No wider decomposition search or model promotion.
+
+The first implementation is reference_coupling_audit.py: deterministic two
+eligible recipient/donor pairs with different donor identities/folds, immutable
+corpus002/2 and CCAfull001/1 parents, original LEMON archive/header SHA checks
+before numerical loading, original unscored prefix recovery, and original donor
+calibration axes/trial/metadata checks. Prefixes are not algebraically recovered
+from mixed calibration EEG. Donor physical units absent from source metadata
+remain unknown; the future generated driver uses explicit original numeric units.
+Shared prepare_lemon has optional pre-load hash guards; historical callers and
+artifacts retain their archived sources. Six focused contracts are authored for
+source/partition identity, deterministic selection and checksum failures before
+signal loading. Numerical tests and source downloads are pending on Kaggle.
+This stage creates no mixture, VMD solve, fitted artifact model or neural weights.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

@@ -1,0 +1,61 @@
+{
+  "branch": "research/vmd-eog-removal-notebooks",
+  "fs": 200,
+  "window": 1024,
+  "hop": 512,
+  "seed": 42,
+  "confirmation_fraction": 0.2,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "source_dataset": "satyapaladugu/lateral-eye-complete-dataset",
+  "required_supplement_sha256": "79a3c4f2e1c1d545b477aa3de05fdc9c1c07c0355b820755392d8a5519e67e65",
+  "preservation": {
+    "clean_change": 0.01,
+    "alpha_db": 0.5,
+    "beta_db": 0.5,
+    "covariance": 0.02,
+    "pearson_deterioration": 0.005
+  },
+  "target_definition": "controlled_recipient_reference; low-ocular LEMON plus donor-calibration ridge ocular field",
+  "reserved_access": "closed until verified freeze",
+  "schema_version": 4,
+  "campaign_id": "vmd-regional-validation-20261014",
+  "scope": "bounded_original_reference_source_audit",
+  "autovmd_enabled": false,
+  "model_authorization": "Bounded classical coverage only; no models or confirmation",
+  "fixed_recipes": [
+    {
+      "K": 3,
+      "alpha": 2000
+    }
+  ],
+  "imported_parents": {
+    "corpus-002": "93da62cb9cec2984ec9687ee27f308d2dbea6dd57abd62541468daafb89d5e0d",
+    "nonfrontal-cca-full-001": "c8418eb6acc9977aab73fa7606bfd5326dcdf0f12b056922fdabed1816bc91eb"
+  },
+  "acceptance": {
+    "controlled_output_snr_db": 15,
+    "stretch_output_snr_db": 20
+  },
+  "pending_stages": [
+    "verify original source prefixes/calibration",
+    "separate homogeneous coupled producer and pilot",
+    "matched frontend review",
+    "native preservation qualification"
+  ],
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "audit_parents": {
+    "corpus": {
+      "run_id": "corpus-002",
+      "git_sha": "addd2c82c3224d194f0e5442c2fd2c150e7f329d",
+      "campaign_id": "vmd-eog-20261010",
+      "manifest_sha256": "93da62cb9cec2984ec9687ee27f308d2dbea6dd57abd62541468daafb89d5e0d"
+    },
+    "full": {
+      "run_id": "nonfrontal-cca-full-001",
+      "git_sha": "b0c861373a8bc66c4538b78269a3b9b988ce3171",
+      "campaign_id": "vmd-nonfrontal-cca-20261014",
+      "manifest_sha256": "c8418eb6acc9977aab73fa7606bfd5326dcdf0f12b056922fdabed1816bc91eb"
+    }
+  }
+}

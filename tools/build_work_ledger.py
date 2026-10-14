@@ -70,6 +70,7 @@ def main():
     documents.extend(["NONFRONTAL_CHALLENGERS_PLAN.md", "NONFRONTAL_CHALLENGERS_RESULTS.md",
                       "NONFRONTAL_GAIN_DIAGNOSIS_PLAN.md",
                       "NONFRONTAL_CCA_PLAN.md",
+                      "NEXT_REGIONAL_VALIDATION_PLAN.md", "FRONTAL_REFERENCE_COUPLING_REPAIR_PLAN.md",
                       "FRONTAL_SNR_IMPROVEMENT_PLAN.md", "CENTRAL_COVERAGE_RESULTS.md",
                       "MATCHED_CONTEXT_RESULTS.md", "FRONTAL_SHAPE_DIAGNOSTIC_RESULTS.md"])
     for name in documents:

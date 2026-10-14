@@ -231,3 +231,18 @@ authorized despite current frontal qualification failures; no teacher/model prom
 - [x] NF12c All1,058 fullCCA manifest payloads, completion and source identity verified locally; complete predictions, fits, metrics and logs recovered (run directory3,575,310,609bytes).
 - [ ] RC01-RC05 Bounded reference-coupling/source-provenance repair and new fixed-frontal pilot; see docs/FRONTAL_REFERENCE_COUPLING_REPAIR_PLAN.md. Do not reuse old VMD caches on different input hashes.
 - [ ] NF15 Match the new complete-ridge nonfrontal candidate with raw-frontal versus fixed-VMD output, then validate native preservation. Keep reserved confirmation sources closed until final freeze.
+
+## Next regional validation stage — 14 October 2026
+
+See docs/NEXT_REGIONAL_VALIDATION_PLAN.md for inputs, outputs, dependencies and
+acceptance. Complete ridge17.533717mean/14.780705pooled is a development candidate.
+
+- [x] N00 Freeze evidence and write the dependency-ordered plan; no AutoVMD restart.
+- [ ] N01 Recover two original recipient prefixes and checksum-verified donor calibrations on Kaggle; source-only selection, distinct donors/folds, no mixed-array unmixing. Module/config/tests authored; numerical execution pending.
+- [ ] N02 Saved-output matched frontend contribution for the new direct-ridge hybrid; independent of source recovery, no new fitting.
+- [ ] N03 Homogeneous coupled-generator implementation and Kaggle boundary/scaling/leakage fixtures.
+- [ ] N04 Separately versioned two-pair20-example coupled corpus, complete recovery.
+- [ ] N05 New fixed-frontal modes and matched regional pilot; old mode hashes are not reusable.
+- [ ] N06 Two-record native feasibility then eligible development preservation evaluation.
+- [ ] N07 One residual-supported challenger if necessary, grouped development comparisons.
+- [ ] N08 Classical qualification/freeze before EEG-only students and independent/export stages.

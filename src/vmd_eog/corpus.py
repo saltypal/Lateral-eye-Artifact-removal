@@ -38,11 +38,16 @@ def prepare_lemon(source,temp_root,config,profile):
     folder=Path(temp_root)/source["participant"]; folder.mkdir()
     archive=folder/"raw.tar.gz"; safe_download(source["url"],archive)
     digest=sha256_file(archive)
+    if source.get("expected_archive_sha256") and digest != source["expected_archive_sha256"]:
+        raise ValueError("LEMON archive checksum differs from the archived source")
     with tarfile.open(archive) as stream:
         # Python extraction filter rejects links, device files and escaping paths.
         stream.extractall(folder,filter="data")
     headers=sorted(folder.rglob("*.vhdr"))
     if len(headers)!=1: raise ValueError("Expected one raw BrainVision recording per participant")
+    if (source.get("expected_header_sha256")
+            and sha256_file(headers[0]) != source["expected_header_sha256"]):
+        raise ValueError("LEMON header checksum differs from the archived source")
     inventory=[str(p.relative_to(folder)) for p in folder.rglob("*") if p.is_file() and p!=archive]
     print("LEMON_ARCHIVE_FILES",source["participant"],inventory,flush=True)
     resolved,repair=repair_links(headers[0])

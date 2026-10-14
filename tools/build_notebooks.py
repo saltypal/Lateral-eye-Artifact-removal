@@ -427,6 +427,17 @@ print('Module: nonfrontal_gain_diagnostic.py')
 print('Fixed strengths/blends use saved fields only; no target or condition enters correction.')
 '''
         DETAILS[stage] = 'Attach exact completed nonfrontal-full001/1 only. Hold frontal K3/2000 outputs bit-for-bit. Compare fixed0.25/0.5/0.75 strength on saved nonfrontal rank2 fields and convex blends with the old VMD-context nonfrontal fields. Four archived controls remain unchanged. These weights are predeclared and not fitted or selected from scoring targets. Only after predictions exist, calculate explicitly nondeployable scalar/blend oracle bounds and close mean-bias/centered-error energy accounting. Save every prediction, per-example progress, paper metrics, channel-first/pooled SNR, condition/subgroup results, conservative historical failure flags and preservation gates. Pilot precedes full cohort. No new VMD, calibration, neural weights or reserved access.'
+    if stage == 'reference-coupling-audit':
+        tables = '''print((OUT/'source_probe_summary.json').read_text())
+print((OUT/'source_probe_selection.jsonl').read_text())
+print((OUT/'source_probe_completed.jsonl').read_text())
+print('Original sources recovered; coupling repair and accuracy qualification remain pending.')
+'''
+        inspect_modules = '''print((CHECKOUT/'docs/NEXT_REGIONAL_VALIDATION_PLAN.md').read_text())
+print('Modules: reference_coupling_audit.py and checksummed prepare_lemon in corpus.py.')
+print('Original recipient calibration is reacquired; mixed calibration is never unmixed.')
+'''
+        DETAILS[stage] = 'Attach exact corpus002/2 and CCAfull001/1. Source-only selection of two development pairs with distinct donors. Verify original recipient archive/header hashes before numerical loading; recover the unscored prefix and original donor calibration with explicit units/axes/trial identities. All tests run before source processing. Save each completed pair and progress. No new mixture, solver, training, reserved access or qualification. This is prerequisite source recovery for separately versioned coupling repair.'
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':
         detail = 'Requires verified research readiness. Paired-only EEG TCN-BiGRU, input-derived scaling, signed metadata context, zero correction heads and no runtime EOG/VMD. Classical accuracy gates do not prevent paired learning.'

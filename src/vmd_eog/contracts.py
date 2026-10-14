@@ -4,7 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 
-PHASE_A = ("contracts", "audit", "source-fixture", "classical-fixture", "paper-fixture", "native-protocol", "vmd-diagnosis", "vmd-sobi", "corpus", "vmd", "posterior", "regional", "review")
+PHASE_A = ("contracts", "audit", "source-fixture", "classical-fixture", "paper-fixture", "native-protocol", "vmd-diagnosis", "vmd-sobi", "corpus", "vmd", "posterior", "regional", "review", "reference-coupling-audit")
 PHASE_B = ("teacher-oof", "student-paired", "student-distill", "freeze", "final-eval", "export")
 RESEARCH_STAGES = ("research-ready", "neural-fixture", "neural-diagnosis", "autovmd-cache", "autovmd-search", "router-train", "neural-review", "benchmark", "posterior-context")
 
@@ -21,6 +21,9 @@ def require_kaggle():
 
 def require_approval(stage, input_root, config):
     if config.get("schema_version") == 4:
+        if stage == "reference-coupling-audit":
+            from .reference_coupling_audit import readiness
+            return readiness(input_root, config)
         if stage == "nonfrontal-gain-diagnostic":
             from .nonfrontal_gain_diagnostic import readiness
             return readiness(input_root, config)
