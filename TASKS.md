@@ -246,3 +246,6 @@ acceptance. Complete ridge17.533717mean/14.780705pooled is a development candida
 - [ ] N06 Two-record native feasibility then eligible development preservation evaluation.
 - [ ] N07 One residual-supported challenger if necessary, grouped development comparisons.
 - [ ] N08 Classical qualification/freeze before EEG-only students and independent/export stages.
+
+- [x] 2026-10-15: Author N04 coupled pilot module/config/notebook and boundary/channel fixtures.
+- [ ] N04: Pass Kaggle tests, produce twenty records and verify every recovered payload before N05 fixed frontal comparisons.

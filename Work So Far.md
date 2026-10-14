@@ -82854,3 +82854,8 @@ Current file identities below make the architecture inspectable; each launched e
 | [tools/regional_chain.py](<tools/regional_chain.py>) | 3447 | `87567309f60fe17f740de68041587a1eb1ac6f541065ddb8441a495503b36f41` |
 | [tools/retrieve_bounded.py](<tools/retrieve_bounded.py>) | 6971 | `34588c9c66ca1c098df736e01a7494eaa13a321ab28191f178e5889bc4d58787` |
 | [tools/run_watch.py](<tools/run_watch.py>) | 3083 | `67591f279ca00f8de29c500c6ba1a382417d7dea7668c7a5702a8932c629d6eb` |
+
+
+## 2026-10-15 — Repaired coupled pilot implementation
+
+Implemented `coupled_pilot.py`, explicit immutable-parent configuration and notebook 68. Two source-only pairs remain fixed from the recovered source audit. Each generates one idealized zero-driver clean control plus blink/lateral/mixed at -5/0/+5 dB. Calibration ends on a whole donor-trial boundary within the recovered recipient prefix. Original annotated scoring donors are separated from calibration trials. Homogeneous field and EOG excursions share one multiplier; paired targets and generation parameters remain producer/evaluator truth. Checks cover replay, finite arrays, nominal input SNR and channel identity. No VMD or model is run by this stage. Regression-generated bias and unknown native cleanliness remain. Local validation is AST/JSON only; numerical tests and integration are pending Kaggle execution. AutoVMD remains stopped.

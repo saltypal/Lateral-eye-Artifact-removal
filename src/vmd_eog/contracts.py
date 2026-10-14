@@ -21,6 +21,9 @@ def require_kaggle():
 
 def require_approval(stage, input_root, config):
     if config.get("schema_version") == 4:
+        if stage == "coupled-pilot":
+            from .coupled_pilot import readiness
+            return readiness(input_root, config)
         if stage == "reference-coupling-audit":
             from .reference_coupling_audit import readiness
             return readiness(input_root, config)

@@ -119,7 +119,7 @@ qualification. Two-pair pilots are engineering checks, not generalization tests.
 
 - [x] N01 Original source/calibration recovery verified on Kaggle:305tests, two distinct donor/fold pairs, all45payloads recovered.
 - [x] N02 Exact new hybrid frontend contribution evaluated in repairedversion2:313tests,320examples,549000baseline checks; failedversion1/all651payloads retained.
-- [ ] N03 Homogeneous coupling and boundary fixtures pass.
+- [x] N03 Homogeneous coupling and boundary fixtures passed on Kaggle at c6a8420; pilot integration remains separately gated.
 - [ ] N04 Two-pair new corpus saved and fully recovered.
 - [ ] N05 Fixed frontal/matched nonfrontal pilot completed.
 - [ ] N06 Native dependencies, trial evaluation and preservation qualification.

@@ -438,6 +438,10 @@ print('Modules: reference_coupling_audit.py and checksummed prepare_lemon in cor
 print('Original recipient calibration is reacquired; mixed calibration is never unmixed.')
 '''
         DETAILS[stage] = 'Attach exact corpus002/2 and CCAfull001/1. Source-only selection of two development pairs with distinct donors. Verify original recipient archive/header hashes before numerical loading; recover the unscored prefix and original donor calibration with explicit units/axes/trial identities. All tests run before source processing. Save each completed pair and progress. No new mixture, solver, training, reserved access or qualification. This is prerequisite source recovery for separately versioned coupling repair.'
+    if stage == 'coupled-pilot':
+        tables = "print((OUT/'coupled_pilot_summary.json').read_text())\nprint((OUT/'producer_diagnostics.json').read_text())\n"
+        inspect_modules = "print((CHECKOUT/'src/vmd_eog/coupled_pilot.py').read_text())\nprint('Producer truth is not a denoiser input. No accuracy qualification in this notebook.')\n"
+        DETAILS[stage] = 'Twenty-record engineering pilot from two frozen development recipient/donor pairs. Verify source and corpus manifests, recover chronological scoring windows and complete unscored calibration trials. Use one shared multiplier for homogeneous injected ocular fields and HEOG/VEOG excursions. Save observed calibration separately from producer-only background and field truth. Preserve source units, trial boundaries, regional input SNR and hashes. No VMD, neural training, reserved access or teacher qualification. Follow with newly hashed fixed frontal K3/2000 decompositions only after full recovery.'
     detail = DETAILS[stage]
     if spec.get('campaign_id','').startswith('vmd-bandroute') and stage == 'student-paired':
         detail = 'Requires verified research readiness. Paired-only EEG TCN-BiGRU, input-derived scaling, signed metadata context, zero correction heads and no runtime EOG/VMD. Classical accuracy gates do not prevent paired learning.'
