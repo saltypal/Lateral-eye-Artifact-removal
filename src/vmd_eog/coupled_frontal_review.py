@@ -17,6 +17,34 @@ from .paper_metrics import paired_channels
 from .reference import lag_matrix
 
 
+def validate_mode_reconstruction(modes, residual, original):
+    """Bound quantization of stored vectors; do not sum float32 caches in float32.
+
+    For round-to-nearest storage, epsilon times the sum of component magnitudes
+    conservatively covers component rounding. Double-precision arithmetic gets
+    a separate small budget. This is unrelated to EEG-preservation thresholds.
+    """
+    modes, residual = np.asarray(modes), np.asarray(residual)
+    original = np.asarray(original, dtype=np.float64)
+    if (modes.ndim != 2 or original.ndim != 1 or modes.shape[-1] != original.size
+            or residual.shape != original.shape or modes.dtype.kind != "f"
+            or residual.dtype.kind != "f"
+            or not all(np.isfinite(value).all() for value in (modes, residual, original))):
+        raise ValueError("Invalid stored mode reconstruction arrays")
+    vectors = modes.astype(np.float64)
+    remainder = residual.astype(np.float64)
+    reconstructed = vectors.sum(axis=0, dtype=np.float64) + remainder
+    magnitudes = np.abs(vectors).sum(axis=0) + np.abs(remainder)
+    storage_epsilon = max(np.finfo(modes.dtype).eps, np.finfo(residual.dtype).eps)
+    budget = storage_epsilon * magnitudes + 8 * np.finfo(np.float64).eps * np.maximum(magnitudes, np.abs(original))
+    error = np.abs(reconstructed - original)
+    if np.any(error > budget):
+        raise ValueError("Mode reconstruction exceeds storage-rounding budget")
+    return {"max_absolute_error_v": float(error.max()),
+            "max_rounding_budget_v": float(budget.max()),
+            "accumulation_dtype": "float64", "storage_epsilon": float(storage_epsilon)}
+
+
 def readiness(input_root, config):
     if (config.get("scope") != "fixed_frontal_coupled_pilot_review"
             or config.get("autovmd_enabled") is not False
@@ -80,10 +108,10 @@ def run(input_root, output, config, profile):
         bundles = decompose_frontal(eeg, names, regions, FixedRecipe(3), config, mask)
         mode_arrays, mode_info = {}, {}
         for index, (modes, residual, info) in bundles.items():
-            np.testing.assert_allclose(modes.sum(0) + residual, eeg[index], rtol=1e-5, atol=1e-12)
+            reconstruction = validate_mode_reconstruction(modes, residual, eeg[index])
             mode_arrays[f"channel_{index}_modes"] = modes
             mode_arrays[f"channel_{index}_residual"] = residual
-            mode_info[str(index)] = info
+            mode_info[str(index)] = {**info, "stored_reconstruction": reconstruction}
         np.savez_compressed(output / "modes" / (row["example_id"] + ".npz"), **mode_arrays)
         atomic_json(output / "modes" / (row["example_id"] + ".json"),
                     {"input_sha256": sha256_file(parent / row["array_path"]), "K": 3,

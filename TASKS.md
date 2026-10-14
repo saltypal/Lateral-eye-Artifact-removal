@@ -253,3 +253,6 @@ acceptance. Complete ridge17.533717mean/14.780705pooled is a development candida
 - [x] N04: coupled-pilot-002/2 passed 316 Kaggle tests, saved 20 records, all 37 manifest payloads verified. Version 1 failed and is preserved.
 - [x] N05: Author five-arm fixed frontal review, explicit completed-parent configuration and notebook 69.
 - [ ] N05: Complete Kaggle execution, recover outputs, inspect figures and assess frontal preservation before new correction methods.
+
+- [x] Diagnose fixed-frontal review v1: 317 tests passed; stored-mode reconstruction precision failure; all 26 failed payloads recovered.
+- [ ] Verify repaired reconstruction fixture and complete frontal review v2 on Kaggle.
