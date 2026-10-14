@@ -31,3 +31,19 @@ source SHA, stage and campaign. Missing/ambiguous identity is distinguished
 from an actual identity mismatch. The first retrieval and its outputs remain
 preserved; the explicit identity-inclusive retry verifies the same saved run.
 
+# 14 October 2026: new hybrid frozen review main/subgroup scope mismatch
+
+Run new-hybrid-frontend-review-001/1 at b7914b8 saved all320examples, then failed
+with ValueError:Baseline metric cohort differs in nonfrontal_review.py:204.
+The CCA parent includes actual middle/temporal diagnostic scopes. The caller
+filtered current rows to fourmain scopes but supplied allparent scopes to the
+strict parity function. The archived earlier parent lacked those diagnostic rows.
+
+Repair: filter both current andparent on the same declared whole/frontal/
+posterior/central_shared scopes. Exactmain row coverage, source metadata and
+paper-metric parity stay unchanged. Newfixture accepts only extra diagnostic
+scopes and still rejects a missingprimary channel. Recipes, arrays, splits,
+weights and preservation thresholds are unchanged. Failed logs/state/partial
+artifacts remain evidence. Focused Kaggle contracts must pass before repaired
+version2; no completed metric table or qualification is inferred from run1.
+

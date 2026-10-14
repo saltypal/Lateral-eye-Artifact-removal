@@ -1,7 +1,21 @@
 import numpy as np
 import pytest
 
-from vmd_eog.nonfrontal_review import composed_failure_provenance, inherited_failure, pooled_snr, swap_frontend, review_recipes
+from vmd_eog.nonfrontal_review import composed_failure_provenance, inherited_failure, pooled_snr, swap_frontend, review_recipes, reconcile_review_baselines
+
+
+def test_frontend_main_region_parity_ignores_only_declared_diagnostic_scopes():
+    import pandas as pd
+    from vmd_eog.posterior_context import PAPER_KEYS
+    row = {"example_id": "one", "scope": "whole", "channel": "F3", "evaluated_family": "identity",
+           "recipient": "recipient", "donor": "donor", "condition": "blink", "input_snr_db": 0.,
+           **{key: .5 for key in PAPER_KEYS}}
+    current = pd.DataFrame([row])
+    parent = pd.DataFrame([row, {**row, "scope": "middle_verified", "channel": "C3"}])
+    assert reconcile_review_baselines(current, parent) == len(PAPER_KEYS)
+    missing_main = pd.DataFrame([row, {**row, "channel": "F4"}])
+    with pytest.raises(ValueError, match="cohort differs"):
+        reconcile_review_baselines(current, missing_main)
 
 
 def test_frozen_review_declares_the_strongest_new_frontend_control():

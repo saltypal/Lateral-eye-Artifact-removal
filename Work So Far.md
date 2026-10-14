@@ -2151,6 +2151,27 @@ referenceunits, joinisolation, equalmultipliers/inputlevels and invalidsources.
 These numerical fixtures arepending; the newtwo-pair corpus has notbeen generated
 and coupling repair isnotdeclared complete. Legacy generator/results unchanged.
 
+### Coupled-field contracts passed; frontend reporting failure preserved
+
+coupled-field-contracts001/1 atc6a842050226850d9400dc54603a77695098e132 completed
+312passed,14warnings,21.74s; all8manifestpayloads/completion verified. Runner
+26.020272s,peak105596KiB. Forwardzero/signedhomogeneity, reference-unit invariance,
+trial-join isolation andgenerated EEG/EOG same-amplitude tests pass. Numerical
+source contracts areverified; the realtwo-pair coupled corpus remains pending.
+This is not an SNR experiment, native preservation gate or teacher qualification.
+
+new-hybrid-frontend-review001/1 atb7914b8 processedand savedall320examples, then
+failed at nonfrontal_review.py:204 with ValueError:Baseline metric cohort differs.
+The new CCAparent has actualmiddle/temporal subgroup rows; the old review caller
+filteredcurrentmain scopes but comparedwith allparent scopes. This is a reporting
+interface mismatch, not source cohort drift. Failedrunner state,checksummed partial
+outputs andlogs remain evidence. No completedresult/qualification is asserted.
+Fix authored: explicitly compare both sides on whole/frontal/posterior/central
+scopes. Exact row/metadata/metric equality stays mandatory. A focused fixture
+accepts extra diagnostic scopes while still rejecting a missingmain channel.
+Kaggle tests mustpass before the repaired full notebook version is launched.
+No thresholds, waveforms, recipes, correction weights or splits changed.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

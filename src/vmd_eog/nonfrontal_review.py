@@ -30,6 +30,13 @@ def review_recipes(config):
     return families, "raw_frontal+" + families[0].split(":")[0]
 
 
+def reconcile_review_baselines(current, parent):
+    """Both sides compare the same declared main regions, with strict row parity."""
+    from .nonfrontal_experiment import reconcile_baselines
+    scopes = ("whole", "frontal", "posterior", "central_shared")
+    return reconcile_baselines(current[current.scope.isin(scopes)], parent[parent.scope.isin(scopes)])
+
+
 def swap_frontend(original, candidate, raw_frontal, regions, mask):
     """Two disjoint artifact estimates, one subtraction from original EEG."""
     original, candidate, raw_frontal = map(lambda value: np.asarray(value, dtype=np.float64),
@@ -200,8 +207,7 @@ def run(input_root, output, config, profile):
     frame, pool_frame = pd.DataFrame(scores), pd.DataFrame(pooled)
     frame.to_csv(output / "review_channel_scores.csv.gz", index=False, compression="gzip")
     pool_frame.to_csv(output / "review_example_snr.csv", index=False)
-    from .nonfrontal_experiment import reconcile_baselines
-    baseline_checks = reconcile_baselines(frame[frame.scope.isin(("whole", "frontal", "posterior", "central_shared"))], source_scores)
+    baseline_checks = reconcile_review_baselines(frame, source_scores)
     dirty = frame[frame.condition != "clean"]
     fields = list(PAPER_KEYS) + ["cc_deterioration"]
     source = dirty.groupby(["scope", "evaluated_family", "recipient", "condition", "input_snr_db"])[fields].agg(strict_mean)
