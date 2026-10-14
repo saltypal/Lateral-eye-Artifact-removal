@@ -1918,6 +1918,34 @@ qualificationdecision, not weakcontextcomparator passes. Native/coupled-source
 validation remains absent. Numericalfixtures for the revisedreporting run on
 Kaggle before fullreplication; no author-iCanClean parity orsuperiorityclaim.
 
+
+
+### CCA pilot fully recovered; reporting contracts launched
+
+All188manifestpayloads/completion verified forcca-pilot001/1 afterboundedresume.
+Manifest56e6e9349cc605382a4c249ba0b7f6feee617e28143fe02ad82032d674aa7952.
+Runner219.862469s,peak657744KiB. Primaryplots/tablemetrics recovered. v1subgroup
+engineeringcopylimitation retained; no subgroupqualificationclaim.
+
+Dataset-free contractscca-contracts001/1 submitted atpublished
+a9d882c3fc7956c9edfa2f0adceaf7f73367792d to vmd-nonfrontal-cca-contracts.
+Tests include exactsubgroupchannelresolution and stronger-calibrateddirect CCgate,
+plus297earlierfixtures. Pending numericalresult. Revisedfull320scorewilluse
+ownsubgroupspectral/covariance calculation,actualretainedrank,pooledSNR andpaired
+CCA-versus-direct/reference-rank2uncertainty. Fixedrecipes/sourcepartitions unchanged.
+No duplicatedAutoVMDsearch,weights orconfirmationaccess.
+
+
+
+### Revised CCA reporting contracts verified
+
+cca-contracts001/1 at a9d882c3fc7956c9edfa2f0adceaf7f73367792d completed:
+299passed,14warnings,17.72s; all8manifestpayloads/completion verified. Runner
+21.360177s,peak106072KiB. Fixedsubgroupchannelresolution and strongestdirect
+comparator fixture passed; earlier CCAreconstruction,lag/scaling/permutation/
+serialization fixtures pass. Fullcomparison mayproceed with unchangedrecipes.
+This is a reporting/numerical checkpoint, not native/fresh qualification.
+
 <!-- BEGIN GENERATED EVIDENCE -->
 
 ## Evidence annex: snapshot provenance

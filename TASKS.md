@@ -227,3 +227,6 @@ authorized despite current frontal qualification failures; no teacher/model prom
 - [x] NF11d Fullgain665payload recovery andcompletionverified; interruptedtransportattempts resumed fromverifiedfiles.
 
 - [ ] NF12a CCA contracts/source-balanced50examplepilot:module/config/notebook62authored; matchedlegacycouplinglimitationdisclosed. AllnumericalworkKaggle; noautoVMD/models.
+
+- [x] NF12a CCA source-balanced50pilot297tests/21arms/all188payloadsverified; direct19.601765 versusCCAref2 17.549658 andoldrank2 16.728031dB. v1subgroupcopybugpreserved; revised299contracttests/all8payloadsverified beforefull.
+- [ ] NF12b Corrected320examplefullCCA/direct/rank2comparison,ownsubgrouppreservation,pooledSNR,strongestdirectCCgates andmatcheduncertainty.
