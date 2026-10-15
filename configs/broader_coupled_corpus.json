@@ -1,0 +1,79 @@
+{
+  "branch": "research/vmd-eog-removal-notebooks",
+  "fs": 200,
+  "window": 1024,
+  "hop": 512,
+  "seed": 42,
+  "confirmation_fraction": 0.2,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "source_dataset": "satyapaladugu/lateral-eye-complete-dataset",
+  "required_supplement_sha256": "79a3c4f2e1c1d545b477aa3de05fdc9c1c07c0355b820755392d8a5519e67e65",
+  "preservation": {
+    "clean_change": 0.01,
+    "alpha_db": 0.5,
+    "beta_db": 0.5,
+    "covariance": 0.02,
+    "pearson_deterioration": 0.005
+  },
+  "target_definition": "controlled_recipient_reference; low-ocular LEMON plus donor-calibration ridge ocular field",
+  "reserved_access": "closed until verified freeze",
+  "schema_version": 4,
+  "campaign_id": "vmd-broader-corpus-20261015",
+  "scope": "broader_homogeneous_coupled_corpus",
+  "autovmd_enabled": false,
+  "model_authorization": "Frozen classical development validation only; no models or confirmation",
+  "fixed_recipes": [
+    {
+      "K": 3,
+      "alpha": 2000
+    }
+  ],
+  "imported_parents": {
+    "corpus-002": "93da62cb9cec2984ec9687ee27f308d2dbea6dd57abd62541468daafb89d5e0d",
+    "broader-sources-shard0-001": "404b87019f5c6a11706fc548d078c6e5ddbbea3899323767a9851176781578ec",
+    "broader-sources-shard1-001": "bff1bf004f14786c625c5faa1c0ece235e04997746ae4b002a38646232e9d252"
+  },
+  "acceptance": {
+    "controlled_output_snr_db": 15,
+    "stretch_output_snr_db": 20
+  },
+  "pending_stages": [
+    "verify original source prefixes/calibration",
+    "separate homogeneous coupled producer and pilot",
+    "matched frontend review",
+    "native preservation qualification"
+  ],
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "producer_parents": {
+    "corpus": {
+      "run_id": "corpus-002",
+      "git_sha": "addd2c82c3224d194f0e5442c2fd2c150e7f329d",
+      "campaign_id": "vmd-eog-20261010",
+      "manifest_sha256": "93da62cb9cec2984ec9687ee27f308d2dbea6dd57abd62541468daafb89d5e0d"
+    },
+    "shard0": {
+      "run_id": "broader-sources-shard0-001",
+      "campaign_id": "vmd-broader-sources-20261015",
+      "git_sha": "90806870be379bed69b7b86c6d2bfde5bfcefce6",
+      "manifest_sha256": "404b87019f5c6a11706fc548d078c6e5ddbbea3899323767a9851176781578ec"
+    },
+    "shard1": {
+      "run_id": "broader-sources-shard1-001",
+      "campaign_id": "vmd-broader-sources-20261015",
+      "git_sha": "90806870be379bed69b7b86c6d2bfde5bfcefce6",
+      "manifest_sha256": "bff1bf004f14786c625c5faa1c0ece235e04997746ae4b002a38646232e9d252"
+    }
+  },
+  "pilot_recipient_ids": [
+    "lemon:sub-032305",
+    "lemon:sub-032306"
+  ],
+  "pilot_donor_ids": [
+    "osf:p10",
+    "osf:p02"
+  ],
+  "cohort_path": "data_provenance/anchored_validation_cohort_20261015.json",
+  "cohort_sha256": "5dbf38c3c0475fcc2ba4d3a988cb000aff2584cc657b5c9a6aa6b7d17a09050f",
+  "anchored_vmd_weight": 0.25
+}

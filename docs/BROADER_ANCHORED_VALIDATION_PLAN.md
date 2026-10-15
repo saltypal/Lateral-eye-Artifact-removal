@@ -77,7 +77,7 @@ no native reconstruction SNR, teacher qualification or students from this stage.
 
 - [x] Freeze and verify full source-only cohort and shard membership.
 - [x] Pass broader module fixtures on Kaggle:330 tests, source4daa3fb.
-- [ ] Recover both original-source shards on Kaggle and verify all artifacts.
+- [x] Recover both original-source shards on Kaggle and verify all artifacts:32/32 sources,542 payloads.
 - [ ] Generate and recover the repaired 320-record corpus.
 - [ ] Run and recover five-arm comparison with new fixed frontal modes.
 - [ ] Review grouped conditions, exposure, uncertainty and preservation.

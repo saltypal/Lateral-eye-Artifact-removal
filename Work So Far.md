@@ -82907,3 +82907,6 @@ Broader recovery shard0/1 version1 are submitted at 90806870be379bed69b7b86c6d2b
 
 
 2026-10-15 broader-module-contracts-001/1:330 Kaggle tests passed,14 warnings,21.32s; source4daa3fb3df369b79ce5a65d2bed3d30b0511e9fe. All8 manifest payloads verified. Recovery shard1 reports16/16 original sources, no failures,310.500914s processing; full download verification pending at this entry. Shard0 still RUNNING. No broader corpus or accuracy result yet. The planned320 examples are ten variants of one5.12-second recipient window per participant, not320 independent recordings. Authored prepare_broader_stage.py to refuse incomplete recovery/contract artifacts and generate exact versioned-parent configurations only after full byte verification.
+
+
+2026-10-15 source recovery completed: broader-sources-shard0-001/1 and shard1-001/1 each recovered16/16 frozen sources, no failures; all271 manifest payloads per shard were downloaded and byte-verified (542 total). Stage runtimes304.208121s and310.500914s, excluding notebook bootstrap and local retrieval. Combined source membership is32 recipients/five donors/five frozen buckets, no reserved exposure. prepare_broader_stage.py verified receipts and generated config/notebook73 with exact original-corpus2 and recovery1 parents. Corpus generation is the next numerical stage; no new accuracy score is claimed.
