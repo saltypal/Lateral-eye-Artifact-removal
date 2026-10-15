@@ -61,5 +61,6 @@
       "git_sha": "7f098ff09e74bb154c622d581543316a715ff577",
       "manifest_sha256": "6a8393ef23d9f54639caa54d6e6d11408e07ac56edaea0f510897d74adbe33d1"
     }
-  }
+  },
+  "anchored_vmd_weight": 0.25
 }

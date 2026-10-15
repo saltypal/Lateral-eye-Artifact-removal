@@ -14,7 +14,7 @@ from .reference import lag_matrix, correlations
 
 def calibration_transfer(eeg, references, calibration, names, regions, mask,
                          bundles=None, threshold=.4, lags=(-10,0,10), penalty=.01,
-                        gain_mode="shared", return_axis_fields=False):
+                        gain_mode="shared", return_axis_fields=False, anchor_weight=.25):
     """Return correction in original units; clean targets are never accepted.
 
     A shared gain reduces independent per-channel projection of neural content.
@@ -44,9 +44,11 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
         raise ValueError("Finite, same-channel calibration and aligned eye references required")
     if not 0 <= threshold <= 1 or penalty <= 0 or 0 not in lags:
         raise ValueError("Invalid declared calibration-transfer settings")
-    if gain_mode not in ("shared", "axis", "mode_projection", "projected_axis"):
-        raise ValueError("Gain mode must be shared, axis, mode_projection or projected_axis")
-    if gain_mode in ("mode_projection", "projected_axis") and bundles is None:
+    if gain_mode not in ("shared", "axis", "mode_projection", "projected_axis", "residual_shared", "anchored_shared"):
+        raise ValueError("Unknown declared calibration gain mode")
+    if not np.isfinite(anchor_weight) or not 0 <= anchor_weight <= 1:
+        raise ValueError("Anchor weight must lie between zero and one")
+    if gain_mode in ("mode_projection", "projected_axis", "residual_shared", "anchored_shared") and bundles is None:
         raise ValueError("Mode-projected gain requires verified frontal VMD bundles")
     design, valid = lag_matrix(cal_refs,lags)
     valid &= boundary_valid(cal_eeg.shape[-1],calibration.get("boundaries",()),lags)
@@ -76,6 +78,7 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
     association = float(np.sum(centered_input*centered_field) /
         np.sqrt(denominator*input_energy)) if denominator > 0 and input_energy > 0 else 0.
     selected = []
+    residual_selected = []
     failed = set()
     values = original[ids].copy()
     if bundles is not None:
@@ -87,6 +90,7 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
             if info.get("failure") or info.get("hit_iteration_limit"):
                 failed.add(int(index))
                 selected.append([])
+                residual_selected.append(False)
                 continue
             modes = np.asarray(modes,dtype=np.float64)
             if modes.shape != (3,original.shape[-1]) or not np.isfinite(modes).all():
@@ -95,6 +99,15 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
             keep = np.max(np.abs(correlations(modes,references,20)),axis=1) >= .2
             values[local] = modes[keep].sum(0)
             selected.append(np.flatnonzero(keep).tolist())
+            use_residual = False
+            if gain_mode == "residual_shared":
+                residual = np.asarray(residual,dtype=np.float64)
+                if residual.shape != (original.shape[-1],) or not np.isfinite(residual).all():
+                    raise ValueError("Invalid frontal reconstruction residual")
+                use_residual = bool(np.max(np.abs(correlations(residual[None],references,20))) >= .2)
+                if use_residual:
+                    values[local] += residual
+            residual_selected.append(use_residual)
     usable = np.asarray([int(index) not in failed for index in ids])
     observed = values[:,score_valid]-values[:,score_valid].mean(-1,keepdims=True)
     gain_denominator = float(np.sum(centered_field[usable]**2))
@@ -119,6 +132,12 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
     gain = gain_numerator/gain_denominator if gain_denominator > 0 else 0.
     # Fixed safety bound, not selected using the controlled target amplitudes.
     gain = float(np.clip(gain,0.,8.))
+    raw_gain_anchor = None
+    if gain_mode == "anchored_shared":
+        raw_numerator = float(np.sum(centered_input[usable]*centered_field[usable]))
+        raw_denominator = float(np.sum(centered_field[usable]**2))
+        raw_gain_anchor = float(np.clip(raw_numerator/raw_denominator,0.,8.)) if raw_denominator > 0 else 0.
+        gain = (1-anchor_weight)*raw_gain_anchor + anchor_weight*gain
     # Decisions are saved as strict JSON; NumPy scalar booleans are not JSON values.
     triggered = bool(association >= threshold)
     axis_gains = None
@@ -190,9 +209,11 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
         "gain":gain if axis_gains is None else None,"gain_mode":gain_mode,
         "axis_gains":axis_gains.tolist() if axis_gains is not None else None,
         "axis_gain_prior":axis_gain_prior,"axis_gram_eigenvalues":axis_gram_eigenvalues,
+        "raw_gain_anchor":raw_gain_anchor,"anchor_weight":anchor_weight if gain_mode=="anchored_shared" else None,
         "triggered":triggered,"lags":list(lags),"penalty":penalty,
         "field_projection_energy_fraction":projected_fraction,
         "selected_modes":selected[local] if bundles is not None else None,
+        "residual_selected":residual_selected[local] if bundles is not None else False,
         "failure":"scored_passthrough" if int(index) in failed else None,
         "inference_target_access":False} for local,index in enumerate(ids)]
     if return_axis_fields:

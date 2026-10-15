@@ -16,13 +16,15 @@ from .paper_metrics import paired_channels
 from .reference import correlations
 
 
-ARMS = ("identity", "raw_shared", "vmd_shared", "vmd_projection", "raw_axis", "vmd_projected_axis")
+ARMS = ("identity", "raw_shared", "vmd_shared", "vmd_projection", "raw_axis", "vmd_projected_axis",
+        "vmd_residual", "vmd_anchored")
 
 
 def readiness(input_root, config):
     if (config.get("scope") != "bounded_lateral_gain_repair"
             or config.get("autovmd_enabled") is not False
             or config.get("fixed_recipes") != [{"K": 3, "alpha": 2000}]
+            or config.get("anchored_vmd_weight") != .25
             or config.get("reserved_access") != "closed until verified freeze"):
         raise ValueError("Lateral gain repair policy differs")
     parents = {}
@@ -101,9 +103,12 @@ def run(input_root, output, config, profile):
         detail = {}
         for arm, gain_mode, context in (("vmd_projection", "mode_projection", bundles),
                                         ("raw_axis", "axis", None),
-                                        ("vmd_projected_axis", "projected_axis", bundles)):
+                                        ("vmd_projected_axis", "projected_axis", bundles),
+                                        ("vmd_residual", "residual_shared", bundles),
+                                        ("vmd_anchored", "anchored_shared", bundles)):
             cleaned, artifact, detail[arm] = calibration_transfer(original, refs, calibration,
-                names, regions, mask, bundles=context, gain_mode=gain_mode)
+                names, regions, mask, bundles=context, gain_mode=gain_mode,
+                anchor_weight=config["anchored_vmd_weight"])
             if np.any(artifact[(regions != 0) | ~mask]):
                 raise RuntimeError("Frontal repair modified a nonfrontal or masked row")
             cleaned[nonfrontal] = saved["raw+ridge"][nonfrontal]
@@ -163,8 +168,8 @@ def run(input_root, output, config, profile):
 
 def plot_conditions(records, output):
     import matplotlib.pyplot as plt
-    fig, axes = plt.subplots(1, 3, figsize=(16, 5))
-    fig.subplots_adjust(top=.76, bottom=.16, wspace=.28)
+    fig, axes = plt.subplots(1, 3, figsize=(16, 6))
+    fig.subplots_adjust(top=.72, bottom=.16, wspace=.28)
     shown = records[(records.scope == "frontal") & (records.arm != "identity")]
     for axis, condition in zip(axes, ("blink", "lateral", "mixed")):
         subset = shown[shown.condition == condition]

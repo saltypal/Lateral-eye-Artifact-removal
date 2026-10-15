@@ -68,3 +68,18 @@ def test_projected_axis_respects_units_and_channel_permutation():
     permuted_bundles = {new: bundles[old] for new,old in enumerate(order) if old in bundles}
     actual = apply(original[order], refs, permuted_cal, permuted_meta, permuted_bundles)[1]
     np.testing.assert_allclose(actual, expected[order], rtol=1e-10, atol=1e-12)
+
+
+def test_reference_supported_residual_repairs_missing_ocular_gain_and_anchor_limits_loss():
+    original, refs, cal, meta, _ = fixture()
+    original = np.array([[1., .3], [-1., .3], [.4, 1.], [0., 0.]]) @ refs
+    bundles = {i: (np.stack([original[i] * .5, np.zeros(1024), np.zeros(1024)]),
+                   original[i] * .5, {}) for i in range(3)}
+    arguments = dict(eeg=original, references=refs, calibration=cal, bundles=bundles, lags=(0,), **meta)
+    old = calibration_transfer(**arguments, gain_mode="shared")
+    residual = calibration_transfer(**arguments, gain_mode="residual_shared")
+    anchored = calibration_transfer(**arguments, gain_mode="anchored_shared")
+    raw = calibration_transfer(original, refs, cal, lags=(0,), **meta)
+    assert all(item["residual_selected"] for item in residual[2])
+    assert np.linalg.norm(residual[0][:3]) < .35 * np.linalg.norm(old[0][:3])
+    assert np.linalg.norm(anchored[0][:3] - raw[0][:3]) < .35 * np.linalg.norm(old[0][:3] - raw[0][:3])

@@ -149,3 +149,46 @@ normalized coefficient penalties can correspond to radically different physical
 gains for weak versus strong axes. Neither these equations nor their tests
 establish real-data superiority. The full calibrated fields are restored only
 after gain estimation, with original EEG minus the estimated artifact once.
+
+## Measured rejection of the projected-field proposal
+
+`lateral-gain-review-002/2` at 9a8a91e completed 322 Kaggle tests and all 20
+records. All 37 payloads were recovered and verified; manifest
+`c82ce0cddaedb46f0ed57c2e555ff71dda833f9e9260f936eebac0e83268d5c2`.
+Tests passed in 23.37 s; numerical experiment took 35.712861 s. No new VMD.
+The condition plot was visually inspected: labels and legend are readable.
+
+The projected scalar and projected-axis arms are rejected as proposed fixes:
+frontal mean pooled-window SNR was 9.748292 and 6.974390 dB respectively,
+versus 21.768334 for the old VMD gain and 20.488443 for raw shared regression.
+At severe lateral input, their two-recipient pooled-window means were 10.884512
+and 7.876364 dB versus old VMD 10.142813 and raw shared 13.756186 dB. Raw-axis
+separation alone did not beat shared regression on every lateral level either.
+Do not report the failed proposals as improvements because their tests passed.
+
+Projection onto EEG-derived modes can produce an inflated gain when mode
+content is increasingly dominated by neural EEG. A compatible denominator does
+not make the data-dependent subspace a correct ocular-source estimator.
+
+## Version 3: residual completion and conservative anchoring
+
+The observed severe-lateral residual of the first frontal channel has absolute
+reference association above the existing 0.2 component threshold in both pairs
+(VEOG 0.233927 for sub-032305 and HEOG 0.209442 for sub-032306). This motivates
+testing residual eligibility, not assuming all residual content is ocular.
+
+Add two fixed arms to the same matched comparison, preserving all six earlier
+arms and negative results:
+
+- `vmd_residual`: include the reconstruction residual in the gain observation
+  only when it satisfies the same 0.2 reference-association rule as modes. Keep
+  the full-field denominator; never delete the residual from EEG wholesale.
+- `vmd_anchored`: g = 0.75*g_raw + 0.25*g_VMD with both original bounded gains.
+  This limits the effect of incomplete mode selection while retaining a VMD
+  adjustment. The weight0.25 is an explicitly declared engineering choice, not
+  a published optimum or a learned condition-label selector.
+
+New fixtures isolate a missing ocular contribution in the residual and verify
+its recovery, plus reduction of deviation from the raw-field anchor. Existing
+reference, units and region fixtures cover both arms. These are development
+repairs and remain unqualified until the real pilot, grouped and native checks.

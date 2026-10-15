@@ -267,3 +267,6 @@ acceptance. Complete ridge17.533717mean/14.780705pooled is a development candida
 
 - [x] Diagnose projected-axis ambiguity on rank-collapsed mode support; preserve failed version1 and unchanged failing assertion.
 - [ ] Validate common-gain-anchored projected-axis fit on Kaggle before running the six-arm data comparison.
+
+- [x] Complete and recover lateral repair v2:322tests,20records,37payloads; projected-field proposals rejected on measured results.
+- [ ] Test residual-aware and raw-anchored VMD arms with all earlier controls and unchanged preservation limits.

@@ -86,7 +86,7 @@ def test_corrector_reconstruction_uses_same_float64_contract_as_cache_reader():
     assert not artifact.any()
 
 
-@pytest.mark.parametrize("gain_mode",["shared","axis","mode_projection","projected_axis"])
+@pytest.mark.parametrize("gain_mode",["shared","axis","mode_projection","projected_axis","residual_shared","anchored_shared"])
 def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions(gain_mode):
     from vmd_eog.frontal_calibration_transfer import calibration_transfer
     from vmd_eog.reference import lag_matrix
@@ -115,7 +115,7 @@ def test_calibration_hybrid_corrects_signed_fields_and_preserves_units_regions(g
     np.testing.assert_allclose(scaled,corrected*1e-6,rtol=1e-8,atol=1e-12)
     np.testing.assert_allclose(original-corrected,artifact)
     zero_refs = np.zeros_like(refs)
-    clean,clean_artifact,_ = calibration_transfer(original,zero_refs,calibration,names,regions,mask,bundles=bundles if gain_mode in ("mode_projection","projected_axis") else None,gain_mode=gain_mode)
+    clean,clean_artifact,_ = calibration_transfer(original,zero_refs,calibration,names,regions,mask,bundles=bundles if gain_mode in ("mode_projection","projected_axis","residual_shared","anchored_shared") else None,gain_mode=gain_mode)
     np.testing.assert_array_equal(clean,original)
     assert not clean_artifact.any()
 
