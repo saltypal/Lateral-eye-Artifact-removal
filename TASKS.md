@@ -16,7 +16,9 @@
 - [x] Review lateral/blink/mixed and corrected failure counts. Fallback whole17.804727dB/frontal18.261209dB; incremental VMD benefit unproven; frontal worst-recipient CC loss0.006224758 still exceeds0.005.
 - [ ] Recover original artifacts through byte bundle: Kaggle packaging COMPLETE; first local attempt timed out on its manifest. Retrying; full local recovery remains incomplete.
 - [x] Publish and submit native-frozen-frontal-001/1 atc48af6a: two source-ID-sorted records, all51 scoring trials; frontal only, posterior pass-through.
-- [ ] Complete native input verification/tests, review every condition and resting gate; job currently RUNNING, no native score yet.
+- [x] Complete native-frozen-frontal-001/1:341 tests,51 trials,306 windows,4284 frontal decompositions; all744 payloads locally verified. Four solver-flagged channel windows retained.
+- [x] Review native outcomes: lateral association reduced in both records, but every active arm fails all four resting preservation limits. Anchored worst relative RMS change0.541158 versus0.01 limit. Teacher remains unqualified.
+- [ ] Diagnose saved native resting interventions and calibration/reference quality before designing the next bounded support adaptation; reuse earlier event/support failure evidence.
 - [ ] Validate unchanged-reference native OSF suppression/rest preservation before qualification.
 
 Current phase design: [BROADER_ANCHORED_VALIDATION_PLAN.md](docs/BROADER_ANCHORED_VALIDATION_PLAN.md).
