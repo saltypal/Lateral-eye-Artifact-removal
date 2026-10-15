@@ -270,3 +270,7 @@ acceptance. Complete ridge17.533717mean/14.780705pooled is a development candida
 
 - [x] Complete and recover lateral repair v2:322tests,20records,37payloads; projected-field proposals rejected on measured results.
 - [ ] Test residual-aware and raw-anchored VMD arms with all earlier controls and unchanged preservation limits.
+
+- [x] Complete lateral repair v3:325tests,20records/eightarms,all37payloads verified and figure inspected.
+- [x] Identify anchored frontal VMD as a provisional balanced pilot candidate; document residual/projection failures and comparison to direct ridge.
+- [ ] Broader recipient/donor-separated development evaluation and native OSF preservation before teacher qualification.
