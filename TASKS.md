@@ -10,6 +10,7 @@
 - [x] Complete broader-coupled-corpus-001/1:320 examples,330 tests,all398 payloads verified, source4f1921c.
 - [x] Pin corpus output and submit broader-frontal-review-001/1:sourcef126300, five frozen arms, matched nonfrontal correction.
 - [ ] Complete and fully recover/verify the five-arm comparison (currently RUNNING).
+- [x] Start persistent45-second watcher with bounded full retrieval; PID16576 verified alive and heartbeat advancing.
 - [ ] Review lateral/blink/mixed, source-aware uncertainty, clean gates and failure counts.
 - [ ] Validate unchanged-reference native OSF suppression/rest preservation before qualification.
 
