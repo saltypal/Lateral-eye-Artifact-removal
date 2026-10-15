@@ -50,6 +50,9 @@ def _validate_scores(scores):
         raise ValueError("Coverage score table is missing columns: " + ", ".join(sorted(missing)))
     if scores.empty:
         raise ValueError("Coverage score table is empty")
+    failures = scores.loc[scores.failure.notna(), "failure"]
+    if not failures.map(lambda value: isinstance(value, str) and bool(value.strip())).all():
+        raise ValueError("Failure contract requires null for success or a nonempty failure reason")
     if scores[list(KEY_COLUMNS + META_COLUMNS[:-1])].isna().any().any():
         raise ValueError("Coverage keys and source metadata must be defined")
     if scores.loc[scores.condition != "clean", "input_snr_db"].isna().any():

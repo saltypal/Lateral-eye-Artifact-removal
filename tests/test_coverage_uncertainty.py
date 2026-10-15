@@ -57,6 +57,13 @@ def score_fixture():
     return pd.DataFrame(rows)
 
 
+def test_boolean_success_cannot_be_counted_as_a_failure(tmp_path):
+    scores = score_fixture()
+    scores["failure"] = False
+    with pytest.raises(ValueError, match="null for success"):
+        uncertainty_report(scores, tmp_path, scopes=("frontal",), repetitions=20)
+
+
 def test_explicit_frontal_scope_retains_paired_analysis_without_fabricated_regions(tmp_path):
     scores = score_fixture()
     frontal = scores[scores.scope == "frontal"].copy()

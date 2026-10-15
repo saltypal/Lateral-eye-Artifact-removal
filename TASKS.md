@@ -9,8 +9,10 @@
 - [x] Publish strict producer/comparison modules and exact-parent notebook73.
 - [x] Complete broader-coupled-corpus-001/1:320 examples,330 tests,all398 payloads verified, source4f1921c.
 - [x] Pin corpus output and submit broader-frontal-review-001/1:sourcef126300, five frozen arms, matched nonfrontal correction.
-- [ ] Complete and fully recover/verify the five-arm comparison (currently RUNNING).
-- [x] Start persistent45-second watcher with bounded full retrieval; PID16576 verified alive and heartbeat advancing.
+- [x] Complete five-arm numerical comparison:330 tests,320 examples,4160 channel decompositions/3 iteration-cap cases; sourcef126300.
+- [ ] Complete local recovery:1396/1947 payloads verified so far; transport HTTP502/TLS failures, not a numerical failure.
+- [ ] Run cached reporting-contract repair and failure-only raw fallback, with complete parent verification on Kaggle before tests.
+- [x] Persistent watcher detected COMPLETE and attempted recovery; now stopped with retrieval_attention after five transport failures. Primary agent is repairing recovery.
 - [ ] Review lateral/blink/mixed, source-aware uncertainty, clean gates and failure counts.
 - [ ] Validate unchanged-reference native OSF suppression/rest preservation before qualification.
 

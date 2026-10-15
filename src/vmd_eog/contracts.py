@@ -21,6 +21,9 @@ def require_kaggle():
 
 def require_approval(stage, input_root, config):
     if config.get("schema_version") == 4:
+        if stage == "broader-cached-review":
+            from .broader_cached_review import readiness
+            return readiness(input_root, config)
         if stage == "contracts" and config.get("scope") == "broader_fixed_module_contracts":
             if (config.get("autovmd_enabled") is not False
                     or config.get("fixed_recipes") != [{"K": 3, "alpha": 2000}]

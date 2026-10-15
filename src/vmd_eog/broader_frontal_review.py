@@ -99,13 +99,14 @@ def score_predictions(stored, predictions, row, config, failed_channels):
                                   "input_snr_db", "pilot_recipient_exposed", "pilot_donor_exposed")},
                                 "fold": row["partition"]["fold"], "arm": arm, "scope": scope,
                                 "channel": str(names[index]),
-                                "failure": bool(arm.startswith("vmd") and int(index) in failed_channels),
+                                "failure": ("mode_decomposition_failure"
+                                            if arm.startswith("vmd") and int(index) in failed_channels else None),
                                 **{key: float(value[local]) for key, value in metrics.items()},
                                 "pooled_snr_db": engineering["snr_db"]})
     return records, gates
 
 
-def save_tables(records, gates, output):
+def save_tables(records, gates, output, *, arms=ARMS, candidates=("vmd_anchored",)):
     table = pd.DataFrame(records)
     table.to_csv(output / "channel_metrics.csv", index=False)
     contaminated = table[table.condition != "clean"]
@@ -122,25 +123,25 @@ def save_tables(records, gates, output):
                             ("exposure_means", ["pilot_recipient_exposed", "pilot_donor_exposed", "arm", "scope"])):
         grouped.groupby(group)[columns].mean().to_csv(output / (filename + ".csv"))
     uncertainty_report(contaminated, output, comparators=("raw_shared", "raw_axis"),
-                       candidates=("vmd_anchored",), repetitions=2000, seed=42)
+                       candidates=candidates, repetitions=2000, seed=42)
     # Every record remains visible. This is deliberately more conservative than
     # judging only the mean, and does not by itself qualify a native teacher.
     atomic_json(output / "preservation_summary.json", {
         arm: {"all_record_cc_pass": all(row["cc_pass"] for row in gates if row["arm"] == arm),
               "all_clean_record_pass": all(row["clean_pass"] for row in gates
                                             if row["arm"] == arm and row["condition"] == "clean")}
-        for arm in ARMS})
+        for arm in arms})
     return grouped
 
 
-def plot_conditions(records, output):
+def plot_conditions(records, output, *, arms=ARMS):
     import matplotlib.pyplot as plt
     fig, axes = plt.subplots(2, 3, figsize=(15, 9), sharex=True)
     fig.subplots_adjust(top=.83, bottom=.09, hspace=.38, wspace=.3)
     for row_index, scope in enumerate(("frontal", "whole")):
         for axis, condition in zip(axes[row_index], ("blink", "lateral", "mixed")):
             shown = records[(records.scope == scope) & (records.condition == condition)]
-            for arm in ARMS[1:]:
+            for arm in arms[1:]:
                 points = shown[shown.arm == arm].groupby("input_snr_db")["pooled_snr_db"].mean()
                 axis.plot(points.index, points.values, marker="o", label=arm.replace("_", " "))
             axis.set_title(scope.title() + ": " + condition)
@@ -149,7 +150,7 @@ def plot_conditions(records, output):
             axis.set_ylabel("Mean pooled-window output SNR (dB)")
             axis.grid(alpha=.2)
     handles, labels = axes[0, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(.5, .94), ncol=4, frameon=False)
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(.5, .94), ncol=3 if len(arms) > 5 else 4, frameon=False)
     fig.suptitle("Frozen frontal recipes: 32 development recipients, five donors; not fresh confirmation", y=.99)
     fig.savefig(output / "broader_condition_snr.png", dpi=160, bbox_inches="tight")
     plt.close(fig)

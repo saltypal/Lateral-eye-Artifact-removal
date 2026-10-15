@@ -40,7 +40,8 @@ def test_evaluation_preserves_all_arms_and_marks_failed_frontal_channels():
     assert {record["scope"] for record in records} == {"whole", "frontal", "posterior", "central_shared"}
     assert all(record["channel"] == "Fp1" and record["arm"].startswith("vmd")
                for record in records if record["failure"])
-    assert sum(record["failure"] for record in records) == 4
+    assert sum(bool(record["failure"]) for record in records) == 4
+    assert all(record["failure"] is None or isinstance(record["failure"], str) for record in records)
     assert all(gate["cc_pass"] for gate in gates)
     assert all(gate["clean_checks"] is None for gate in gates)
     # Scoring cannot overwrite the saved predictions.

@@ -4,7 +4,7 @@ This tool performs orchestration and byte/provenance checks only. Signed downloa
 URLs and credentials are never printed or persisted.
 """
 import argparse
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -12,12 +12,25 @@ import os
 from pathlib import Path
 import re
 import time
+import threading
 
 ROOT = Path(__file__).resolve().parents[1]
 os.environ["KAGGLE_CONFIG_DIR"] = str(ROOT / ".kaggle-config")
 
 import requests
 from kaggle.api.kaggle_api_extended import KaggleApi
+
+
+HTTP_STATE = threading.local()
+
+
+def http_session(reset=False):
+    if reset and hasattr(HTTP_STATE, "session"):
+        HTTP_STATE.session.close()
+        del HTTP_STATE.session
+    if not hasattr(HTTP_STATE, "session"):
+        HTTP_STATE.session = requests.Session()
+    return HTTP_STATE.session
 
 
 def download(item, destination, expected_hash=None):
@@ -28,7 +41,7 @@ def download(item, destination, expected_hash=None):
         return item.file_name
     for attempt in range(3):
         try:
-            response = requests.get(item.url, timeout=(15, 45))
+            response = http_session().get(item.url, timeout=(15, 45))
             response.raise_for_status()
             content = response.content
             if expected_hash and hashlib.sha256(content).hexdigest() != expected_hash:
@@ -42,7 +55,17 @@ def download(item, destination, expected_hash=None):
             return item.file_name
         except (requests.RequestException, json.JSONDecodeError, ValueError) as error:
             # URLs may contain credentials; expose only exception type and filename.
-            print("DOWNLOAD_RETRY", item.file_name, attempt + 1, type(error).__name__, flush=True)
+            message = str(error).lower()
+            reason = next((label for label, needle in (("certificate_verification", "certificate verify failed"),
+                ("ssl_eof", "eof occurred"), ("connection_reset", "connection reset"),
+                ("dns", "name resolution"), ("timeout", "timed out")) if needle in message), "transport_or_payload")
+            response = getattr(error, "response", None)
+            status = None if response is None else response.status_code
+            if response is not None and "request has expired" in response.text.lower():
+                reason = "signed_link_expired"
+            print("DOWNLOAD_RETRY", item.file_name, attempt + 1, type(error).__name__, reason,
+                  "HTTP", status, flush=True)
+            http_session(reset=True)
             if attempt == 2:
                 raise RuntimeError("Output download unavailable: " + item.file_name) from None
             time.sleep(3)
@@ -109,8 +132,38 @@ def main():
     def recover(item):
         relative = Path(item.file_name).relative_to(prefix_path).as_posix()
         return download(item, destination, expected_hashes.get(relative))
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        downloaded = list(pool.map(recover, selected))
+    # Keep only four tasks in flight. Eager pool.map queues the entire archive;
+    # after a failed request its context manager can wait through hundreds of
+    # unrelated queued retries before reporting the original failure.
+    pool = ThreadPoolExecutor(max_workers=4)
+    iterator = iter(selected)
+    pending, downloaded = {}, []
+    def submit_next():
+        item = next(iterator, None)
+        if item is not None:
+            pending[pool.submit(recover, item)] = item.file_name
+    for _ in range(4):
+        submit_next()
+    try:
+        while pending:
+            completed, _ = wait(pending, return_when=FIRST_COMPLETED)
+            for future in completed:
+                pending.pop(future)
+                downloaded.append(future.result())
+                submit_next()
+            progress = {"run_id": args.run_id, "completed_output_files": len(downloaded),
+                        "selected_output_files": len(selected), "in_flight": len(pending),
+                        "utc": datetime.now(timezone.utc).isoformat(), "full_verification_complete": False}
+            temporary = destination / "retrieval_progress.tmp"
+            temporary.write_text(json.dumps(progress, indent=2), encoding="utf-8")
+            os.replace(temporary, destination / "retrieval_progress.json")
+    except BaseException:
+        for future in pending:
+            future.cancel()
+        pool.shutdown(wait=False, cancel_futures=True)
+        raise
+    else:
+        pool.shutdown(wait=True)
     specs = list(destination.rglob("run_spec.json"))
     if len(specs) != 1:
         raise ValueError("Missing or ambiguous recovered identity")
@@ -137,6 +190,9 @@ def main():
                "utc": datetime.now(timezone.utc).isoformat(), "retrieval_method": "bounded HTTP; four download workers",
                "completion_verified": json.loads((parent / "execution_state.json").read_text()).get("status") == "complete"}
     (destination / "retrieval_receipt.json").write_text(json.dumps(receipt, indent=2), encoding="utf-8")
+    (destination / "retrieval_progress.json").write_text(json.dumps({"run_id": args.run_id,
+        "completed_output_files": len(downloaded), "selected_output_files": len(selected),
+        "utc": receipt["utc"], "full_verification_complete": receipt["all_manifest_payloads_verified"]}, indent=2), encoding="utf-8")
     print("VERIFIED_OUTPUTS", len(verified), "COMPLETE", receipt["completion_verified"], flush=True)
 
 
