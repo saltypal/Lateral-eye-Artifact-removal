@@ -47,6 +47,9 @@ homogeneous field/shared reference multiplier and whole-trial calibration prefix
 No algebraic recovery of recipient background from old mixed calibration.
 Persist generation truth separately from denoiser inputs, all source hashes,
 trial/window identities, regional input SNR and low-ocular/reference limitations.
+The 320 examples are ten variants of one 5.12-second recipient window per
+participant, not 320 independent recordings. Ocular waveforms are reused from
+five donors. Report that limited temporal and donor diversity explicitly.
 Both recipient and donor identities remain separated across the frozen folds.
 The regression-generated-field bias remains and requires native evaluation.
 
@@ -72,7 +75,8 @@ no native reconstruction SNR, teacher qualification or students from this stage.
 
 ## Execution checklist
 
-- [ ] Freeze and verify full source-only cohort and shard membership.
+- [x] Freeze and verify full source-only cohort and shard membership.
+- [x] Pass broader module fixtures on Kaggle:330 tests, source4daa3fb.
 - [ ] Recover both original-source shards on Kaggle and verify all artifacts.
 - [ ] Generate and recover the repaired 320-record corpus.
 - [ ] Run and recover five-arm comparison with new fixed frontal modes.
