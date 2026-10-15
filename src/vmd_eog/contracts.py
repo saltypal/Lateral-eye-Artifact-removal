@@ -21,6 +21,9 @@ def require_kaggle():
 
 def require_approval(stage, input_root, config):
     if config.get("schema_version") == 4:
+        if stage == "lateral-gain-review":
+            from .lateral_gain_review import readiness
+            return readiness(input_root, config)
         if stage == "coupled-frontal-review":
             from .coupled_frontal_review import readiness
             return readiness(input_root, config)

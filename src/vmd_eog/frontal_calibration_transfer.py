@@ -44,9 +44,9 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
         raise ValueError("Finite, same-channel calibration and aligned eye references required")
     if not 0 <= threshold <= 1 or penalty <= 0 or 0 not in lags:
         raise ValueError("Invalid declared calibration-transfer settings")
-    if gain_mode not in ("shared", "axis", "mode_projection"):
-        raise ValueError("Gain mode must be shared, axis or mode_projection")
-    if gain_mode == "mode_projection" and bundles is None:
+    if gain_mode not in ("shared", "axis", "mode_projection", "projected_axis"):
+        raise ValueError("Gain mode must be shared, axis, mode_projection or projected_axis")
+    if gain_mode in ("mode_projection", "projected_axis") and bundles is None:
         raise ValueError("Mode-projected gain requires verified frontal VMD bundles")
     design, valid = lag_matrix(cal_refs,lags)
     valid &= boundary_valid(cal_eeg.shape[-1],calibration.get("boundaries",()),lags)
@@ -122,7 +122,7 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
     # Decisions are saved as strict JSON; NumPy scalar booleans are not JSON values.
     triggered = bool(association >= threshold)
     axis_gains = None
-    if gain_mode == "axis":
+    if gain_mode in ("axis", "projected_axis"):
         # lag_matrix is lag-major: HEOG rows 0,2,4 and VEOG rows 1,3,5.
         # Calibration fixes each signed spatial field; scoring fits only two
         # montage-wide gains. This is not a per-channel target regression.
@@ -131,6 +131,21 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
         axis_fields[:,:,~score_valid] = 0
         centered_axes = axis_fields[:,:,score_valid]
         centered_axes -= centered_axes.mean(-1,keepdims=True)
+        if gain_mode == "projected_axis":
+            # Both signed ocular fields and the observation use the same mode
+            # span. Full field energy must not dilute a partial-span estimate.
+            projected_axes = np.zeros_like(centered_axes)
+            for local,index in enumerate(ids):
+                if not usable[local] or not selected[local]:
+                    continue
+                vectors = np.asarray(bundles[int(index)][0],dtype=np.float64)[selected[local]][:,score_valid]
+                vectors = vectors-vectors.mean(-1,keepdims=True)
+                coefficients_in_modes = np.linalg.lstsq(vectors.T,centered_axes[:,local].T,rcond=None)[0]
+                projected_axes[:,local] = (vectors.T @ coefficients_in_modes).T
+            full_axis_energy = float(np.sum(centered_axes[:,usable]**2))
+            projected_fraction = (float(np.sum(projected_axes[:,usable]**2))/full_axis_energy
+                                  if full_axis_energy > 0 else 0.)
+            centered_axes = projected_axes
         features = centered_axes[:,usable].reshape(2,-1)
         observation = observed[usable].reshape(-1)
         rms = np.sqrt(np.mean(features**2,axis=1)) if observation.size else np.zeros(2)
