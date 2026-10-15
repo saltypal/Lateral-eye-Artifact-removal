@@ -274,3 +274,8 @@ acceptance. Complete ridge17.533717mean/14.780705pooled is a development candida
 - [x] Complete lateral repair v3:325tests,20records/eightarms,all37payloads verified and figure inspected.
 - [x] Identify anchored frontal VMD as a provisional balanced pilot candidate; document residual/projection failures and comparison to direct ridge.
 - [ ] Broader recipient/donor-separated development evaluation and native OSF preservation before teacher qualification.
+
+- [x] Freeze broader source cohort:32recipients/5donors/5folds, two deterministic16-source shards and exact metadata digest.
+- [x] Author original-source recovery module/notebook71/configuration; preserve old two-pair audit guard and add shard/source fixtures.
+- [ ] Pass Kaggle contracts, recover both shards and verify every saved artifact.
+- [ ] Generate repaired320-record corpus, then fixed five-arm anchored validation and native OSF assessment.

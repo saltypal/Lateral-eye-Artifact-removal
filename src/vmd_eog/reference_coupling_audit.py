@@ -13,14 +13,11 @@ from .corpus import prepare_lemon, unique_parent
 from .io import atomic_json, read_jsonl, sha256_file, write_jsonl
 
 
-def choose_pairs(rows, recipients, split, count=2):
-    """Source-only deterministic choice; prediction/metric values are not inputs."""
-    if count != 2:
-        raise ValueError("Source audit is bounded to two pairs")
+def development_pairs(rows, recipients, split):
+    """Yield deterministic verified development identities without using scores."""
     records = {record["participant"]: record for record in recipients}
     if len(records) != len(recipients):
         raise ValueError("Duplicate recipient manifest identity")
-    pairs, donors, folds = [], set(), set()
     for recipient in sorted({row["recipient"] for row in rows}):
         record = records.get(recipient)
         if record is None:
@@ -33,8 +30,6 @@ def choose_pairs(rows, recipients, split, count=2):
         if (partition.get("role") != "development" or partition != row["partition"]
                 or partition != record["partition"] or partition != donor_partition):
             raise ValueError("Recipient/donor source partition differs or is reserved")
-        if row["donor"] in donors or partition["fold"] in folds:
-            continue
         participant = recipient.removeprefix("lemon:")
         if not re.fullmatch(r"sub-\d+", participant):
             raise ValueError("Invalid original recipient identity")
@@ -52,12 +47,23 @@ def choose_pairs(rows, recipients, split, count=2):
         for key in ("archive_sha256", "source_header_sha256"):
             if not re.fullmatch(r"[0-9a-f]{64}", record.get(key, "")):
                 raise ValueError("Original source checksum missing")
-        pairs.append({"recipient": recipient, "donor": row["donor"],
+        yield {"recipient": recipient, "donor": row["donor"],
                       "donor_record": donor_record, "partition": partition,
                       "recipient_start": row["recipe"]["recipient_start"],
-                      "legacy_example_id": row["example_id"], "source": record})
-        donors.add(row["donor"])
-        folds.add(partition["fold"])
+                      "legacy_example_id": row["example_id"], "source": record}
+
+
+def choose_pairs(rows, recipients, split, count=2):
+    """Keep the original source audit bounded to two distinct donor/fold pairs."""
+    if count != 2:
+        raise ValueError("Source audit is bounded to two pairs")
+    pairs, donors, folds = [], set(), set()
+    for pair in development_pairs(rows, recipients, split):
+        if pair["donor"] in donors or pair["partition"]["fold"] in folds:
+            continue
+        pairs.append(pair)
+        donors.add(pair["donor"])
+        folds.add(pair["partition"]["fold"])
         if len(pairs) == count:
             return pairs
     raise ValueError("Need two recoverable development pairs with distinct donors")
@@ -96,6 +102,75 @@ def readiness(input_root, config):
     return corpus, pairs
 
 
+def recover_original_pair(corpus, pair, output, config):
+    """Recover original sources, never unmix a historical contaminated array."""
+    directory = output / "original_sources" / pair["recipient"].removeprefix("lemon:")
+    directory.mkdir(parents=True)
+    donor_base = Path("calibration") / pair["donor_record"]
+    required = [(donor_base / name).as_posix() for name in ("calibration.npz", "record.json")]
+    verify_parent(corpus, required)
+    donor_record = json.loads((corpus / donor_base / "record.json").read_text())
+    axis_names = [name.upper().replace("_", "").replace("-", "") for name in donor_record["eog_names"]]
+    if (donor_record["participant"] != pair["donor"] or donor_record["partition"] != pair["partition"]
+            or len(axis_names) != 2 or axis_names[0] not in ("HEOG", "EOGH")
+            or axis_names[1] not in ("VEOG", "EOGV")
+            or not set(donor_record["calibration_trial_ids"]).isdisjoint(donor_record["scoring_trial_ids"])):
+        raise ValueError("Original donor identity/axes/trial separation differs")
+    donor_path = corpus / donor_base / "calibration.npz"
+    donor_arrays = dict(np.load(donor_path, allow_pickle=False))
+    duration = donor_arrays["eeg"].shape[-1]
+    if (donor_arrays["eeg"].ndim != 2
+            or donor_arrays["eeg"].shape[0] != len(donor_arrays["channel_names"])
+            or donor_arrays["references"].shape != (2, duration)
+            or donor_arrays["trial_types"].shape != (duration,)
+            or np.any(donor_arrays["boundaries"] <= 0)
+            or np.any(donor_arrays["boundaries"] >= duration)
+            or np.any(np.diff(donor_arrays["boundaries"]) <= 0)
+            or not all(np.isfinite(donor_arrays[key]).all() for key in ("eeg", "references"))):
+        raise ValueError("Original donor calibration shape/boundary contract differs")
+    shutil.copy2(donor_path, directory / "donor_calibration.npz")
+    atomic_json(directory / "donor_record.json", donor_record)
+    source = pair["source"]
+    request = {"participant": pair["recipient"].removeprefix("lemon:"), "url": source["url"],
+               "expected_archive_sha256": source["archive_sha256"],
+               "expected_header_sha256": source["source_header_sha256"]}
+    # The original prefix is reacquired, never reconstructed from mixed EEG.
+    with tempfile.TemporaryDirectory(prefix="reference-source-probe-") as temporary:
+        record, calibration, windows = prepare_lemon(request, temporary, config, "full")
+    if (record["channel_names"] != source["channel_names"]
+            or record["native_fs"] != source["native_fs"]
+            or record["calibration_end_sample_native"] != source["calibration_end_sample_native"]
+            or record["eog_channels"] != source["eog_channels"]
+            or record["reference"] != source["reference"]
+            or record["units"] != source["units"]):
+        raise ValueError("Recovered original source/preprocessing metadata differs")
+    if calibration.ndim != 2 or calibration.shape[0] != len(record["channel_names"]):
+        raise ValueError("Recovered original recipient calibration axis differs")
+    if not np.isfinite(calibration).all():
+        raise ValueError("Recovered original recipient calibration is nonfinite")
+    if pair["recipient_start"] not in {window["start"] for window in windows}:
+        raise ValueError("Original chronological scoring window cannot be recovered")
+    np.savez_compressed(directory / "recipient_calibration.npz", eeg=calibration,
+                        channel_names=np.asarray(record["channel_names"], dtype="U64"))
+    window_rows = []
+    for number, window in enumerate(windows):
+        name = f"recipient-window-{number:02d}.npz"
+        np.savez_compressed(directory / name, eeg=window["eeg"])
+        window_rows.append({"array": name, "start": window["start"], "ocular_rms": window["ocular_rms"]})
+    record.update(partition=pair["partition"], scoring_windows=window_rows,
+                  recovered_calibration="recipient_calibration.npz")
+    atomic_json(directory / "recipient_record.json", record)
+    return {"recipient": pair["recipient"], "donor": pair["donor"],
+                          "donor_record": pair["donor_record"], "archive_sha256": record["archive_sha256"],
+                          "header_sha256": record["source_header_sha256"],
+                          "recipient_prefix_sha256": sha256_file(directory / "recipient_calibration.npz"),
+                          "original_donor_calibration_sha256": sha256_file(donor_path),
+                          "recipient_units": record["units"],
+                          "donor_physical_units": donor_record.get("units", "unknown; original cached numeric units"),
+                          "calibration_shape": list(calibration.shape), "scoring_windows": len(windows),
+                          "algebraic_unmixing": False, "reserved_source_access": False}
+
+
 def run(input_root, output, config, profile):
     if profile != "pilot":
         raise ValueError("Original-source recovery is a bounded pilot only")
@@ -106,71 +181,7 @@ def run(input_root, output, config, profile):
     completed = []
     for index, pair in enumerate(pairs):
         print("SOURCE_PROBE_START", index + 1, len(pairs), pair["recipient"], pair["donor"], flush=True)
-        directory = output / "original_sources" / pair["recipient"].removeprefix("lemon:")
-        directory.mkdir(parents=True)
-        donor_base = Path("calibration") / pair["donor_record"]
-        required = [(donor_base / name).as_posix() for name in ("calibration.npz", "record.json")]
-        verify_parent(corpus, required)
-        donor_record = json.loads((corpus / donor_base / "record.json").read_text())
-        axis_names = [name.upper().replace("_", "").replace("-", "") for name in donor_record["eog_names"]]
-        if (donor_record["participant"] != pair["donor"] or donor_record["partition"] != pair["partition"]
-                or len(axis_names) != 2 or axis_names[0] not in ("HEOG", "EOGH")
-                or axis_names[1] not in ("VEOG", "EOGV")
-                or not set(donor_record["calibration_trial_ids"]).isdisjoint(donor_record["scoring_trial_ids"])):
-            raise ValueError("Original donor identity/axes/trial separation differs")
-        donor_path = corpus / donor_base / "calibration.npz"
-        donor_arrays = dict(np.load(donor_path, allow_pickle=False))
-        duration = donor_arrays["eeg"].shape[-1]
-        if (donor_arrays["eeg"].ndim != 2
-                or donor_arrays["eeg"].shape[0] != len(donor_arrays["channel_names"])
-                or donor_arrays["references"].shape != (2, duration)
-                or donor_arrays["trial_types"].shape != (duration,)
-                or np.any(donor_arrays["boundaries"] <= 0)
-                or np.any(donor_arrays["boundaries"] >= duration)
-                or np.any(np.diff(donor_arrays["boundaries"]) <= 0)
-                or not all(np.isfinite(donor_arrays[key]).all() for key in ("eeg", "references"))):
-            raise ValueError("Original donor calibration shape/boundary contract differs")
-        shutil.copy2(donor_path, directory / "donor_calibration.npz")
-        atomic_json(directory / "donor_record.json", donor_record)
-        source = pair["source"]
-        request = {"participant": pair["recipient"].removeprefix("lemon:"), "url": source["url"],
-                   "expected_archive_sha256": source["archive_sha256"],
-                   "expected_header_sha256": source["source_header_sha256"]}
-        # The original prefix is reacquired, never reconstructed from mixed EEG.
-        with tempfile.TemporaryDirectory(prefix="reference-source-probe-") as temporary:
-            record, calibration, windows = prepare_lemon(request, temporary, config, "full")
-        if (record["channel_names"] != source["channel_names"]
-                or record["native_fs"] != source["native_fs"]
-                or record["calibration_end_sample_native"] != source["calibration_end_sample_native"]
-                or record["eog_channels"] != source["eog_channels"]
-                or record["reference"] != source["reference"]
-                or record["units"] != source["units"]):
-            raise ValueError("Recovered original source/preprocessing metadata differs")
-        if calibration.ndim != 2 or calibration.shape[0] != len(record["channel_names"]):
-            raise ValueError("Recovered original recipient calibration axis differs")
-        if not np.isfinite(calibration).all():
-            raise ValueError("Recovered original recipient calibration is nonfinite")
-        if pair["recipient_start"] not in {window["start"] for window in windows}:
-            raise ValueError("Original chronological scoring window cannot be recovered")
-        np.savez_compressed(directory / "recipient_calibration.npz", eeg=calibration,
-                            channel_names=np.asarray(record["channel_names"], dtype="U64"))
-        window_rows = []
-        for number, window in enumerate(windows):
-            name = f"recipient-window-{number:02d}.npz"
-            np.savez_compressed(directory / name, eeg=window["eeg"])
-            window_rows.append({"array": name, "start": window["start"], "ocular_rms": window["ocular_rms"]})
-        record.update(partition=pair["partition"], scoring_windows=window_rows,
-                      recovered_calibration="recipient_calibration.npz")
-        atomic_json(directory / "recipient_record.json", record)
-        completed.append({"recipient": pair["recipient"], "donor": pair["donor"],
-                          "donor_record": pair["donor_record"], "archive_sha256": record["archive_sha256"],
-                          "header_sha256": record["source_header_sha256"],
-                          "recipient_prefix_sha256": sha256_file(directory / "recipient_calibration.npz"),
-                          "original_donor_calibration_sha256": sha256_file(donor_path),
-                          "recipient_units": record["units"],
-                          "donor_physical_units": donor_record.get("units", "unknown; original cached numeric units"),
-                          "calibration_shape": list(calibration.shape), "scoring_windows": len(windows),
-                          "algebraic_unmixing": False, "reserved_source_access": False})
+        completed.append(recover_original_pair(corpus, pair, output, config))
         write_jsonl(output / "source_probe_completed.jsonl", completed)
         atomic_json(output / "source_probe_progress.json", {"completed_pairs": len(completed), "total_pairs": len(pairs)})
         print("SOURCE_PROBE_SAVED", len(completed), len(pairs), flush=True)
