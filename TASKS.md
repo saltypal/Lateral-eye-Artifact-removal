@@ -15,7 +15,8 @@
 - [x] Persistent watcher detected COMPLETE and attempted recovery; now stopped with retrieval_attention after five transport failures. Primary agent is repairing recovery.
 - [x] Review lateral/blink/mixed and corrected failure counts. Fallback whole17.804727dB/frontal18.261209dB; incremental VMD benefit unproven; frontal worst-recipient CC loss0.006224758 still exceeds0.005.
 - [ ] Recover original artifacts through byte bundle: Kaggle packaging COMPLETE; first local attempt timed out on its manifest. Retrying; full local recovery remains incomplete.
-- [ ] Run frozen frontal-only native cache diagnostic on the first two source-ID-sorted development recordings, all eligible scoring trials; no posterior correction or parameter selection.
+- [x] Publish and submit native-frozen-frontal-001/1 atc48af6a: two source-ID-sorted records, all51 scoring trials; frontal only, posterior pass-through.
+- [ ] Complete native input verification/tests, review every condition and resting gate; job currently RUNNING, no native score yet.
 - [ ] Validate unchanged-reference native OSF suppression/rest preservation before qualification.
 
 Current phase design: [BROADER_ANCHORED_VALIDATION_PLAN.md](docs/BROADER_ANCHORED_VALIDATION_PLAN.md).

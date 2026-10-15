@@ -188,4 +188,3 @@ readable; its vertical axis explicitly uses mean pooled-window SNR, which is
 different from the channel-first target above. Lateral performance is the
 remaining weak condition. Packaging of the original parent completed on Kaggle;
 full local recovery is still pending because of download timeouts/HTTP502.
-
