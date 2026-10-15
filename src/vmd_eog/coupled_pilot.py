@@ -100,6 +100,100 @@ def validate_generated_pair(generated, model, level, boundaries=None):
             raise ValueError(f"Measured controlled input SNR differs: {measured} vs {level}")
 
 
+def build_pair(probe, corpus, pair, output, config):
+    """Produce one fixed ten-record pair from verified original source artifacts."""
+    rows = []
+    participant = pair["recipient"].removeprefix("lemon:")
+    base = "original_sources/" + participant + "/"
+    names = ("recipient_record.json", "donor_record.json")
+    verify_parent(probe, tuple(base + name for name in names))
+    recipient = json.loads((probe / base / names[0]).read_text())
+    donor = json.loads((probe / base / names[1]).read_text())
+    if (donor["record_id"] != pair["donor_record"] or donor["participant"] != pair["donor"]
+            or donor["partition"] != pair["partition"]
+            or not set(donor["calibration_trial_ids"]).isdisjoint(donor["scoring_trial_ids"])):
+        raise ValueError("Original donor identity or trial separation differs")
+    cal = checked_arrays(probe, base + "donor_calibration.npz")
+    background = checked_arrays(probe, base + "recipient_calibration.npz")
+    selected = [w for w in recipient["scoring_windows"] if w["start"] == pair["recipient_start"]]
+    if len(selected) != 1:
+        raise ValueError("Frozen chronological recipient window is ambiguous")
+    target_path = base + selected[0]["array"]
+    target_full = checked_arrays(probe, target_path)["eeg"]
+    rids, dids = channel_intersection(background["channel_names"], cal["channel_names"])
+    metadata = channel_metadata(background["channel_names"][rids].tolist())
+    duration, cuts = whole_trial_prefix(cal["boundaries"], cal["eeg"].shape[-1], background["eeg"].shape[-1])
+    model = fit_donor_field(cal["eeg"][dids, :duration], cal["references"][:, :duration], cuts)
+    cal_driver = model.excursions(cal["references"][:, :duration])
+    mixed_cal = generated_pair(background["eeg"][rids, :duration], cal_driver, model, 0., cuts)
+    validate_generated_pair(mixed_cal, model, 0., cuts)
+    pair_id = participant + "-" + donor["record_id"]
+    caldir = output / "calibration" / pair_id
+    caldir.mkdir(parents=True)
+    # Only allowed observed calibration reaches the downstream denoiser.
+    np.savez_compressed(caldir / "calibration.npz", eeg=mixed_cal["eeg"],
+                        references=mixed_cal["references"], boundaries=cuts,
+                        trial_types=cal["trial_types"][:duration], **metadata)
+    truthdir = output / "producer_truth" / pair_id
+    truthdir.mkdir(parents=True)
+    np.savez_compressed(truthdir / "field.npz", baseline=model.baseline, scales=model.scales,
+                        coefficients=model.coefficients, lags=model.lags,
+                        calibration_background=background["eeg"][rids, :duration],
+                        calibration_artifact=mixed_cal["true_artifact"])
+    drivers, source_windows = {}, {}
+    for condition in ("blink", "lateral"):
+        eligible = [w for w in donor["windows"] if w["condition"] == condition]
+        if not eligible:
+            raise ValueError("Missing annotated donor condition: " + condition)
+        window = eligible[0]  # chronological source order; never metric-selected
+        if window["trial"] not in donor["scoring_trial_ids"]:
+            raise ValueError("Scoring donor window overlaps calibration")
+        number = donor["windows"].index(window)
+        relative = "arrays/" + donor["record_id"] + f"-native-{number:03d}.npz"
+        ocular = checked_arrays(corpus, relative)
+        if ocular["references"].shape != (2, 1024):
+            raise ValueError("Donor scoring reference shape differs")
+        drivers[condition] = model.excursions(ocular["references"])
+        source_windows[condition] = {"window": window, "array": relative,
+                                     "sha256": sha256_file(corpus / relative)}
+    drivers["mixed"] = (drivers["blink"] + drivers["lateral"]) / np.sqrt(2.)
+    drivers["clean"] = np.zeros((2, 1024))
+    target = np.asarray(target_full[rids], dtype=np.float64)
+    if target.shape != (len(rids), 1024):
+        raise ValueError("Recipient scoring shape differs")
+    for condition in ("clean", "blink", "lateral", "mixed"):
+        for level in ([None] if condition == "clean" else [-5., 0., 5.]):
+            generated = generated_pair(target, drivers[condition], model, level)
+            validate_generated_pair(generated, model, level)
+            suffix = "clean" if level is None else f"snr{int(level):+d}"
+            example_id = pair_id + "-" + condition + "-" + suffix
+            # Producer parameters and truth are not inputs to correction APIs.
+            np.savez_compressed(output / "arrays" / (example_id + ".npz"),
+                                **{k: v for k, v in generated.items() if k != "generation_amplitude"}, **metadata)
+            regional_snr = {}
+            for label, region in (("frontal", 0), ("posterior", 1), ("central_shared", 2)):
+                ids = metadata["regions"] == region
+                energy = float(np.sum(generated["true_artifact"][ids] ** 2))
+                regional_snr[label] = float(10 * np.log10(np.sum(target[ids] ** 2) / energy)) if energy > 0 else None
+            rows.append({"example_id": example_id, "array_path": "arrays/" + example_id + ".npz",
+                         "recipient": pair["recipient"], "donor": pair["donor"], "partition": pair["partition"],
+                         "condition": condition, "input_snr_db": level, "regional_input_snr_db": regional_snr,
+                         "target_kind": "controlled_recipient_reference", "dataset": "controlled_LEMON_OSF_coupled",
+                         "calibration": "calibration/" + pair_id + "/calibration.npz",
+                         "recipient_start": pair["recipient_start"], "target_sha256": sha256_file(probe / target_path),
+                         "scoring_field_mean": generated["true_artifact"].mean(-1).tolist(),
+                         "valid_lag_samples": int(valid_driver_design(generated["references"], model.lags, None)[1].sum()),
+                         "generation_amplitude_evaluator_only": generated["generation_amplitude"]})
+    _, valid = valid_driver_design(cal_driver, model.lags, cuts)
+    diagnostic = {"pair_id": pair_id, "source_windows": source_windows,
+                            "calibration_samples": duration, "calibration_boundaries": cuts.tolist(),
+                            "valid_calibration_samples": int(valid.sum()), "channels": len(rids),
+                            "calibration_generation_amplitude_evaluator_only": mixed_cal["generation_amplitude"],
+                            "calibration_field_mean": mixed_cal["true_artifact"].mean(-1).tolist(),
+                            "recipient_units": recipient["units"], "donor_units": donor.get("units", "unknown original numerical coordinates")}
+    return rows, diagnostic
+
+
 def run(input_root, output, config, profile):
     if profile != "pilot":
         raise ValueError("Coupled producer is a bounded pilot only")
@@ -110,97 +204,12 @@ def run(input_root, output, config, profile):
     rows, diagnostics = [], []
     (output / "arrays").mkdir()
     for pair in pairs:
-        participant = pair["recipient"].removeprefix("lemon:")
-        base = "original_sources/" + participant + "/"
-        names = ("recipient_record.json", "donor_record.json")
-        verify_parent(probe, tuple(base + name for name in names))
-        recipient = json.loads((probe / base / names[0]).read_text())
-        donor = json.loads((probe / base / names[1]).read_text())
-        if (donor["record_id"] != pair["donor_record"] or donor["participant"] != pair["donor"]
-                or donor["partition"] != pair["partition"]
-                or not set(donor["calibration_trial_ids"]).isdisjoint(donor["scoring_trial_ids"])):
-            raise ValueError("Original donor identity or trial separation differs")
-        cal = checked_arrays(probe, base + "donor_calibration.npz")
-        background = checked_arrays(probe, base + "recipient_calibration.npz")
-        selected = [w for w in recipient["scoring_windows"] if w["start"] == pair["recipient_start"]]
-        if len(selected) != 1:
-            raise ValueError("Frozen chronological recipient window is ambiguous")
-        target_path = base + selected[0]["array"]
-        target_full = checked_arrays(probe, target_path)["eeg"]
-        rids, dids = channel_intersection(background["channel_names"], cal["channel_names"])
-        metadata = channel_metadata(background["channel_names"][rids].tolist())
-        duration, cuts = whole_trial_prefix(cal["boundaries"], cal["eeg"].shape[-1], background["eeg"].shape[-1])
-        model = fit_donor_field(cal["eeg"][dids, :duration], cal["references"][:, :duration], cuts)
-        cal_driver = model.excursions(cal["references"][:, :duration])
-        mixed_cal = generated_pair(background["eeg"][rids, :duration], cal_driver, model, 0., cuts)
-        validate_generated_pair(mixed_cal, model, 0., cuts)
-        pair_id = participant + "-" + donor["record_id"]
-        caldir = output / "calibration" / pair_id
-        caldir.mkdir(parents=True)
-        # Only allowed observed calibration reaches the downstream denoiser.
-        np.savez_compressed(caldir / "calibration.npz", eeg=mixed_cal["eeg"],
-                            references=mixed_cal["references"], boundaries=cuts,
-                            trial_types=cal["trial_types"][:duration], **metadata)
-        truthdir = output / "producer_truth" / pair_id
-        truthdir.mkdir(parents=True)
-        np.savez_compressed(truthdir / "field.npz", baseline=model.baseline, scales=model.scales,
-                            coefficients=model.coefficients, lags=model.lags,
-                            calibration_background=background["eeg"][rids, :duration],
-                            calibration_artifact=mixed_cal["true_artifact"])
-        drivers, source_windows = {}, {}
-        for condition in ("blink", "lateral"):
-            eligible = [w for w in donor["windows"] if w["condition"] == condition]
-            if not eligible:
-                raise ValueError("Missing annotated donor condition: " + condition)
-            window = eligible[0]  # chronological source order; never metric-selected
-            if window["trial"] not in donor["scoring_trial_ids"]:
-                raise ValueError("Scoring donor window overlaps calibration")
-            number = donor["windows"].index(window)
-            relative = "arrays/" + donor["record_id"] + f"-native-{number:03d}.npz"
-            ocular = checked_arrays(corpus, relative)
-            if ocular["references"].shape != (2, 1024):
-                raise ValueError("Donor scoring reference shape differs")
-            drivers[condition] = model.excursions(ocular["references"])
-            source_windows[condition] = {"window": window, "array": relative,
-                                         "sha256": sha256_file(corpus / relative)}
-        drivers["mixed"] = (drivers["blink"] + drivers["lateral"]) / np.sqrt(2.)
-        drivers["clean"] = np.zeros((2, 1024))
-        target = np.asarray(target_full[rids], dtype=np.float64)
-        if target.shape != (len(rids), 1024):
-            raise ValueError("Recipient scoring shape differs")
-        for condition in ("clean", "blink", "lateral", "mixed"):
-            for level in ([None] if condition == "clean" else [-5., 0., 5.]):
-                generated = generated_pair(target, drivers[condition], model, level)
-                validate_generated_pair(generated, model, level)
-                suffix = "clean" if level is None else f"snr{int(level):+d}"
-                example_id = pair_id + "-" + condition + "-" + suffix
-                # Producer parameters and truth are not inputs to correction APIs.
-                np.savez_compressed(output / "arrays" / (example_id + ".npz"),
-                                    **{k: v for k, v in generated.items() if k != "generation_amplitude"}, **metadata)
-                regional_snr = {}
-                for label, region in (("frontal", 0), ("posterior", 1), ("central_shared", 2)):
-                    ids = metadata["regions"] == region
-                    energy = float(np.sum(generated["true_artifact"][ids] ** 2))
-                    regional_snr[label] = float(10 * np.log10(np.sum(target[ids] ** 2) / energy)) if energy > 0 else None
-                rows.append({"example_id": example_id, "array_path": "arrays/" + example_id + ".npz",
-                             "recipient": pair["recipient"], "donor": pair["donor"], "partition": pair["partition"],
-                             "condition": condition, "input_snr_db": level, "regional_input_snr_db": regional_snr,
-                             "target_kind": "controlled_recipient_reference", "dataset": "controlled_LEMON_OSF_coupled",
-                             "calibration": "calibration/" + pair_id + "/calibration.npz",
-                             "recipient_start": pair["recipient_start"], "target_sha256": sha256_file(probe / target_path),
-                             "scoring_field_mean": generated["true_artifact"].mean(-1).tolist(),
-                             "valid_lag_samples": int(valid_driver_design(generated["references"], model.lags, None)[1].sum()),
-                             "generation_amplitude_evaluator_only": generated["generation_amplitude"]})
-        _, valid = valid_driver_design(cal_driver, model.lags, cuts)
-        diagnostics.append({"pair_id": pair_id, "source_windows": source_windows,
-                            "calibration_samples": duration, "calibration_boundaries": cuts.tolist(),
-                            "valid_calibration_samples": int(valid.sum()), "channels": len(rids),
-                            "calibration_generation_amplitude_evaluator_only": mixed_cal["generation_amplitude"],
-                            "calibration_field_mean": mixed_cal["true_artifact"].mean(-1).tolist(),
-                            "recipient_units": recipient["units"], "donor_units": donor.get("units", "unknown original numerical coordinates")})
+        pair_rows, diagnostic = build_pair(probe, corpus, pair, output, config)
+        rows.extend(pair_rows)
+        diagnostics.append(diagnostic)
         write_jsonl(output / "corpus_manifest.jsonl", rows)
         atomic_json(output / "producer_diagnostics.json", diagnostics)
-        print("COUPLED_PAIR_SAVED", pair_id, len(rows), flush=True)
+        print("COUPLED_PAIR_SAVED", diagnostic["pair_id"], len(rows), flush=True)
     if len(rows) != 20:
         raise ValueError("Bounded pilot must contain exactly twenty records")
     atomic_json(output / "coupled_pilot_summary.json", {"examples": len(rows), "pairs": 2,

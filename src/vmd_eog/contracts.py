@@ -21,6 +21,18 @@ def require_kaggle():
 
 def require_approval(stage, input_root, config):
     if config.get("schema_version") == 4:
+        if stage == "contracts" and config.get("scope") == "broader_fixed_module_contracts":
+            if (config.get("autovmd_enabled") is not False
+                    or config.get("fixed_recipes") != [{"K": 3, "alpha": 2000}]
+                    or config.get("reserved_access") != "closed until verified freeze"):
+                raise ValueError("Broader fixture policy differs")
+            return
+        if stage == "broader-frontal-review":
+            from .broader_frontal_review import readiness
+            return readiness(input_root, config)
+        if stage == "broader-coupled-corpus":
+            from .broader_coupled_corpus import readiness
+            return readiness(input_root, config)
         if stage == "broader-source-recovery":
             from .broader_source_recovery import readiness
             return readiness(input_root, config)

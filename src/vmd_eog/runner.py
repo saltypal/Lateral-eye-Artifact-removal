@@ -17,6 +17,12 @@ from .artifacts import record_parent_identities
 def dispatch_stage(stage, input_root, output, config, profile, experiment):
     """Route implemented schema-2 stages through their campaign dispatcher."""
     if config.get("schema_version") == 4:
+        if stage == "broader-frontal-review":
+            from .broader_frontal_review import run
+            return run(input_root, output, config, profile)
+        if stage == "broader-coupled-corpus":
+            from .broader_coupled_corpus import run
+            return run(input_root, output, config, profile)
         if stage == "broader-source-recovery":
             from .broader_source_recovery import run
             return run(input_root, output, config, profile, experiment or {})

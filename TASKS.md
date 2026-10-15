@@ -279,3 +279,6 @@ acceptance. Complete ridge17.533717mean/14.780705pooled is a development candida
 - [x] Author original-source recovery module/notebook71/configuration; preserve old two-pair audit guard and add shard/source fixtures.
 - [ ] Pass Kaggle contracts, recover both shards and verify every saved artifact.
 - [ ] Generate repaired320-record corpus, then fixed five-arm anchored validation and native OSF assessment.
+
+
+Broader recovery shard0/1 version1 are submitted at 90806870be379bed69b7b86c6d2bfde5bfcefce6 and were RUNNING at the latest live check. No recovery-completion or new accuracy result is claimed. Prepared a strict 32-source union validator, shared unchanged per-pair corpus producer, and five-arm frontal review. Fixed K3/2000 and anchor weight0.25; nonfrontal correction is shared exactly. Predictions precede evaluator-only targets. Save per-record progress and source/fold/exposure tables; source-aware intervals are supplementary project analysis, not paper-native tests. Local AST inspection found the extracted per-pair computational statements unchanged. Numerical fixtures and source recovery must pass on Kaggle before dependent execution.
