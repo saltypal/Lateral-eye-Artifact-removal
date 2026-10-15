@@ -155,6 +155,39 @@ def plot_conditions(records, output):
     plt.close(fig)
 
 
+def plot_mode_example(stored, row, bundles, output, fs):
+    """Illustrate the first lateral/0dB row, never a score-selected example.
+
+    The dashed injected field is evaluator-only generation truth. Correlation
+    with EOG establishes association, not a biologically pure ocular mode.
+    """
+    import matplotlib.pyplot as plt
+    index = min(bundles)
+    modes, residual, info = bundles[index]
+    times = np.arange(stored["eeg"].shape[-1]) / fs
+    fig, axes = plt.subplots(5, 1, figsize=(12, 10), sharex=True)
+    fig.subplots_adjust(top=.88, bottom=.07, hspace=.5)
+    axes[0].plot(times, stored["eeg"][index] * 1e6, label="Observed EEG")
+    axes[0].plot(times, stored["true_artifact"][index] * 1e6, "--", label="Injected field (evaluator only)")
+    axes[0].legend(loc="upper right", fontsize=9)
+    axes[0].set_title("Input; low-ocular reference is not proven artifact-free")
+    centers = info.get("centers_hz", [None] * 3)
+    for mode_index, axis in enumerate(axes[1:4]):
+        axis.plot(times, modes[mode_index] * 1e6)
+        frequency = "unavailable" if centers[mode_index] is None else f"{centers[mode_index]:.2f} Hz"
+        axis.set_title(f"Mode {mode_index + 1}: measured centre {frequency}; adaptive vector")
+    axes[4].plot(times, residual * 1e6)
+    axes[4].set_title("Reconstruction residual; not assumed to be purely neural or ocular")
+    for axis in axes:
+        axis.set_ylabel("microvolts")
+        axis.grid(alpha=.2)
+    axes[-1].set_xlabel("Time (s)")
+    fig.suptitle("Fixed K3/alpha2000: " + row["example_id"] + " / " + str(stored["channel_names"][index])
+                 + "\nFirst chronological lateral/0dB example; nominal whole-input level", y=.98, fontsize=10)
+    fig.savefig(output / "predeclared_lateral_modes.png", dpi=160, bbox_inches="tight")
+    plt.close(fig)
+
+
 def run(input_root, output, config, profile):
     if profile != "full":
         raise ValueError("Broader frontal validation requires the complete frozen cohort")
@@ -162,7 +195,8 @@ def run(input_root, output, config, profile):
     started = time.perf_counter()
     for folder in ("predictions", "modes", "fits", "record_metrics", "record_decisions"):
         (output / folder).mkdir()
-    records, gates, progress = [], [], []
+    records, gates, progress, mode_records = [], [], [], []
+    mode_example_saved = False
     failed_count = channel_decompositions = 0
     for row in rows:
         verify_parent(parent, (row["array_path"], row["calibration"]))
@@ -181,6 +215,17 @@ def run(input_root, output, config, profile):
             metadata[str(index)] = {**info, "reconstruction": reconstruction,
                 "mode_reference_cc": correlations(modes, refs, 20).tolist(),
                 "residual_reference_cc": correlations(residual[None], refs, 20).tolist()}
+            for number in range(3):
+                mode_records.append({"example_id": row["example_id"], "recipient": row["recipient"],
+                    "donor": row["donor"], "condition": row["condition"], "input_snr_db": row["input_snr_db"],
+                    "channel": str(names[index]), "mode": number + 1,
+                    "center_hz": info.get("centers_hz", [None] * 3)[number],
+                    "bandwidth_hz": info.get("bandwidth_hz", [None] * 3)[number],
+                    "heog_maxlag_cc": metadata[str(index)]["mode_reference_cc"][number][0],
+                    "veog_maxlag_cc": metadata[str(index)]["mode_reference_cc"][number][1],
+                    "residual_heog_maxlag_cc": metadata[str(index)]["residual_reference_cc"][0][0],
+                    "residual_veog_maxlag_cc": metadata[str(index)]["residual_reference_cc"][0][1],
+                    "solver_failed": bool(info.get("failure") or info.get("hit_iteration_limit"))})
             if info.get("failure") or info.get("hit_iteration_limit"):
                 failed.add(index)
         channel_decompositions += len(bundles)
@@ -202,6 +247,9 @@ def run(input_root, output, config, profile):
             np.testing.assert_array_equal(predictions[arm][nonfrontal_ids], predictions["raw_shared"][nonfrontal_ids])
         # Paired truth first enters an API here, after predictions are complete.
         scored, checks = score_predictions(stored, predictions, row, config, failed)
+        if not mode_example_saved and row["condition"] == "lateral" and row["input_snr_db"] == 0:
+            plot_mode_example(stored, row, bundles, output, config["fs"])
+            mode_example_saved = True
         records.extend(scored)
         gates.extend(checks)
         np.savez_compressed(output / "predictions" / (row["example_id"] + ".npz"),
@@ -214,6 +262,7 @@ def run(input_root, output, config, profile):
         write_jsonl(output / "review_progress.jsonl", progress)
         print("BROADER_FRONTAL_SAVED", len(progress), len(rows), row["example_id"], flush=True)
     grouped = save_tables(records, gates, output)
+    pd.DataFrame(mode_records).to_csv(output / "mode_reference_diagnostics.csv", index=False)
     plot_conditions(grouped, output)
     atomic_json(output / "broader_frontal_summary.json", {"examples": len(rows), "arms": list(ARMS),
                 "recipient_count": 32, "donor_count": 5, "source_cohort_sha256": config["cohort_sha256"],

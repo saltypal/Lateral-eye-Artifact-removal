@@ -67,6 +67,12 @@ channel-first and mean pooled-window SNR; blink/lateral/mixed and input levels;
 frontal/posterior/middle/whole; recipient/donor/fold summaries and source-aware
 uncertainty. Report pilot-exposed versus other recipients/donors explicitly.
 Never add regional dB scores. Keep all eligible failures and count pass-throughs.
+The mode diagnostic table stores measured centres/bandwidths and signed peak
+mode/residual associations over +/-20 samples (+/-100ms). Those associations
+are internal diagnostics, distinct from ordinary zero-lag paired Pearson CC.
+Illustrate the first chronological lateral/0dB record and first frontal channel,
+including failed decomposition if present. Injected-field truth appears only
+in this evaluator-side figure, never in mode selection or correction.
 
 Engineering limits remain clean modification<=1%, alpha/beta<=0.5dB,
 covariance<=0.02, paired CC deterioration<=0.005 versus both direct controls.
@@ -78,7 +84,7 @@ no native reconstruction SNR, teacher qualification or students from this stage.
 - [x] Freeze and verify full source-only cohort and shard membership.
 - [x] Pass broader module fixtures on Kaggle:330 tests, source4daa3fb.
 - [x] Recover both original-source shards on Kaggle and verify all artifacts:32/32 sources,542 payloads.
-- [ ] Generate and recover the repaired 320-record corpus.
+- [x] Generate and recover the repaired320-example corpus:330 tests,all398 payloads verified.
 - [ ] Run and recover five-arm comparison with new fixed frontal modes.
 - [ ] Review grouped conditions, exposure, uncertainty and preservation.
 - [ ] Validate native OSF without retuning or opening reserved sources.
