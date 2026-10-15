@@ -1,0 +1,66 @@
+{
+  "branch": "research/vmd-eog-removal-notebooks",
+  "fs": 200,
+  "window": 1024,
+  "hop": 512,
+  "seed": 42,
+  "confirmation_fraction": 0.2,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "source_dataset": "satyapaladugu/lateral-eye-complete-dataset",
+  "required_supplement_sha256": "79a3c4f2e1c1d545b477aa3de05fdc9c1c07c0355b820755392d8a5519e67e65",
+  "preservation": {
+    "clean_change": 0.01,
+    "alpha_db": 0.5,
+    "beta_db": 0.5,
+    "covariance": 0.02,
+    "pearson_deterioration": 0.005
+  },
+  "target_definition": "controlled_recipient_reference; low-ocular LEMON plus donor-calibration ridge ocular field",
+  "reserved_access": "closed until verified freeze",
+  "schema_version": 4,
+  "campaign_id": "vmd-broader-bundle-20261015",
+  "scope": "verified_original_artifact_bundle",
+  "autovmd_enabled": false,
+  "model_authorization": "Frozen classical development validation only; no models or confirmation",
+  "fixed_recipes": [
+    {
+      "K": 3,
+      "alpha": 2000
+    }
+  ],
+  "imported_parents": {
+    "broader-frontal-review-001": "665bd1a1bbeccbd8c19076cee222b7a12aecef7ea452e5d9e09dc1dcb7500935"
+  },
+  "acceptance": {
+    "controlled_output_snr_db": 15,
+    "stretch_output_snr_db": 20
+  },
+  "pending_stages": [
+    "verify original source prefixes/calibration",
+    "separate homogeneous coupled producer and pilot",
+    "matched frontend review",
+    "native preservation qualification"
+  ],
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "classical_grid": {
+    "tolerance": 1e-06,
+    "max_iterations": 2000
+  },
+  "cohort_path": "data_provenance/anchored_validation_cohort_20261015.json",
+  "cohort_sha256": "5dbf38c3c0475fcc2ba4d3a988cb000aff2584cc657b5c9a6aa6b7d17a09050f",
+  "anchored_vmd_weight": 0.25,
+  "bundle_parent": {
+    "run_id": "broader-frontal-review-001",
+    "campaign_id": "vmd-broader-review-20261015",
+    "git_sha": "f126300611889d83d6b3427d4254fdcde731ad40",
+    "manifest_sha256": "665bd1a1bbeccbd8c19076cee222b7a12aecef7ea452e5d9e09dc1dcb7500935"
+  },
+  "local_parent_recovery_audit": {
+    "run_id": "broader-frontal-review-001",
+    "locally_verified_payloads": 1396,
+    "manifest_payloads": 1947,
+    "complete_local_recovery": false,
+    "full_parent_byte_verification_required_on_kaggle_before_tests": true
+  }
+}

@@ -58,7 +58,7 @@ def recovered(run_id, summary_name):
 def checked_metadata_for_remote_verification(run_id, summary_name):
     """Pin a completed parent despite incomplete local recovery.
 
-    Only the cached-review stage can use this explicit route. Its runner calls
+    Only cached review/byte recovery can use this explicit route. The runner calls
     record_parent_identities/verify_parent on every mounted parent payload
     before numerical tests or analysis. No complete local receipt is invented.
     """
@@ -99,17 +99,17 @@ def checked_metadata_for_remote_verification(run_id, summary_name):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("stage", choices=("corpus", "review", "cached"))
+    parser.add_argument("stage", choices=("corpus", "review", "cached", "bundle"))
     parser.add_argument("--contracts-run", default="broader-module-contracts-001")
     parser.add_argument("--shard0", default="broader-sources-shard0-001")
     parser.add_argument("--shard1", default="broader-sources-shard1-001")
     parser.add_argument("--corpus-run", default="broader-coupled-corpus-001")
     parser.add_argument("--review-run", default="broader-frontal-review-001")
     parser.add_argument("--remote-parent-verification", action="store_true",
-                        help="Cached review only:check local metadata, then require complete Kaggle parent verification")
+                        help="Cached review/bundle only:check local metadata, then require complete Kaggle parent verification")
     args = parser.parse_args()
-    if args.remote_parent_verification and args.stage != "cached":
-        raise ValueError("Remote-verification route is restricted to the cached evidence repair")
+    if args.remote_parent_verification and args.stage not in ("cached", "bundle"):
+        raise ValueError("Remote-verification route is restricted to cached repair/byte recovery")
     _, contracts, _, _ = recovered(args.contracts_run, "contracts_summary.json")
     if contracts.get("passed") is not True:
         raise ValueError("Broader implementation contracts did not pass")
@@ -145,7 +145,7 @@ def main():
                       review_parent=pin, imported_parents={pin["run_id"]: pin["manifest_sha256"]})
         kernels = [kernel]
         stage, number = "broader-frontal-review", "74_Broader_Fixed_Frontal_Review"
-    else:
+    elif args.stage == "cached":
         _, summary, corpus_pin, corpus_kernel = recovered(args.corpus_run, "broader_corpus_summary.json")
         if args.remote_parent_verification:
             _, review_summary, cache_pin, cache_kernel, audit = checked_metadata_for_remote_verification(
@@ -165,6 +165,22 @@ def main():
                       local_parent_recovery_audit=audit)
         kernels = [corpus_kernel, cache_kernel]
         stage, number = "broader-cached-review", "75_Broader_Cached_Evidence_And_Fallback"
+    else:
+        if args.remote_parent_verification:
+            _, summary, pin, kernel, audit = checked_metadata_for_remote_verification(
+                args.review_run, "broader_frontal_summary.json")
+        else:
+            _, summary, pin, kernel = recovered(args.review_run, "broader_frontal_summary.json")
+            audit = {"complete_local_recovery": True}
+        if summary.get("reserved_confirmation_opened") is not False:
+            raise ValueError("Bundle parent opened reserved sources")
+        config = read(ROOT / "configs/broader_frontal_review.json")
+        config.pop("review_parent")
+        config.update(campaign_id="vmd-broader-bundle-20261015", scope="verified_original_artifact_bundle",
+                      bundle_parent=pin, imported_parents={pin["run_id"]: pin["manifest_sha256"]},
+                      local_parent_recovery_audit=audit)
+        kernels = [kernel]
+        stage, number = "artifact-bundle", "76_Verified_Artifact_Byte_Bundle"
     config["cohort_path"], config["cohort_sha256"] = source["cohort_path"], source["cohort_sha256"]
     config["anchored_vmd_weight"] = .25
     config["model_authorization"] = "Frozen classical development validation only; no models or confirmation"
