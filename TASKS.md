@@ -1,4 +1,20 @@
-# Active research task list — 13 October 2026
+# Active research task list — 15 October 2026
+
+
+## Current checkpoint: broader fixed frontal validation
+
+- [x] Freeze 32-recipient/five-donor/five-bucket development cohort.
+- [x] Recover all original source pairs; verify both version1 shards,542 payloads.
+- [x] Pass all330 broader implementation tests on Kaggle, source4daa3fb.
+- [x] Publish strict producer/comparison modules and exact-parent notebook73.
+- [ ] Complete broader-coupled-corpus-001/1 (currently RUNNING, source4f1921c), then fully recover/verify320 examples.
+- [ ] Pin corpus output and run five fixed frontal arms with matched nonfrontal correction.
+- [ ] Review lateral/blink/mixed, source-aware uncertainty, clean gates and failure counts.
+- [ ] Validate unchanged-reference native OSF suppression/rest preservation before qualification.
+
+Current phase design: [BROADER_ANCHORED_VALIDATION_PLAN.md](docs/BROADER_ANCHORED_VALIDATION_PLAN.md).
+No broader cleaning score or qualified teacher is available at this checkpoint.
+Earlier regional milestones and failure evidence remain below.
 
 Current checklist. Dependencies and acceptance checks:
 [REGIONAL_NEXT_STEPS_20261013.md](docs/REGIONAL_NEXT_STEPS_20261013.md).
@@ -277,7 +293,7 @@ acceptance. Complete ridge17.533717mean/14.780705pooled is a development candida
 
 - [x] Freeze broader source cohort:32recipients/5donors/5folds, two deterministic16-source shards and exact metadata digest.
 - [x] Author original-source recovery module/notebook71/configuration; preserve old two-pair audit guard and add shard/source fixtures.
-- [ ] Pass Kaggle contracts, recover both shards and verify every saved artifact.
+- [x] Pass Kaggle contracts, recover both shards and verify every saved artifact:330 tests,32 sources,542 payloads.
 - [ ] Generate repaired320-record corpus, then fixed five-arm anchored validation and native OSF assessment.
 
 
