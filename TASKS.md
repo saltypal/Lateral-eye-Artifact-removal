@@ -264,3 +264,6 @@ acceptance. Complete ridge17.533717mean/14.780705pooled is a development candida
 - [x] Re-review lateral literature and document primary-source support, limitations and rejected title matches.
 - [x] Implement projected separate-axis frontal gain and notebook70 with six predeclared matched arms.
 - [ ] Run lateral-gain-review on Kaggle; inspect lateral gains, MSE/RRMSE/CC and preservation before claiming improvement.
+
+- [x] Diagnose projected-axis ambiguity on rank-collapsed mode support; preserve failed version1 and unchanged failing assertion.
+- [ ] Validate common-gain-anchored projected-axis fit on Kaggle before running the six-arm data comparison.

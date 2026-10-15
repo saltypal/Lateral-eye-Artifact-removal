@@ -122,6 +122,8 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
     # Decisions are saved as strict JSON; NumPy scalar booleans are not JSON values.
     triggered = bool(association >= threshold)
     axis_gains = None
+    axis_gain_prior = None
+    axis_gram_eigenvalues = None
     if gain_mode in ("axis", "projected_axis"):
         # lag_matrix is lag-major: HEOG rows 0,2,4 and VEOG rows 1,3,5.
         # Calibration fixes each signed spatial field; scoring fits only two
@@ -145,6 +147,10 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
             full_axis_energy = float(np.sum(centered_axes[:,usable]**2))
             projected_fraction = (float(np.sum(projected_axes[:,usable]**2))/full_axis_energy
                                   if full_axis_energy > 0 else 0.)
+            joint = projected_axes.sum(axis=0)[usable]
+            joint_energy = float(np.sum(joint**2))
+            axis_gain_prior = (float(np.clip(np.sum(observed[usable]*joint)/joint_energy,0.,8.))
+                               if joint_energy > 0 else 0.)
             centered_axes = projected_axes
         features = centered_axes[:,usable].reshape(2,-1)
         observation = observed[usable].reshape(-1)
@@ -155,6 +161,12 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
             normalized = features[active_axes]/rms[active_axes,None]
             gram = normalized @ normalized.T / observation.size
             rhs = normalized @ observation / observation.size
+            if gain_mode == "projected_axis":
+                # Narrow mode spans can collapse distinct axes onto the same
+                # direction. A common physical-gain prior resolves that ambiguity
+                # without arbitrarily allocating it to a large weak-axis gain.
+                rhs += penalty * rms[active_axes] * axis_gain_prior
+                axis_gram_eigenvalues = np.linalg.eigvalsh(gram).tolist()
             solved = np.linalg.solve(gram+penalty*np.eye(len(gram)),rhs)
             axis_gains[active_axes] = np.clip(solved/rms[active_axes],0.,8.)
         estimated_field = np.einsum("a,act->ct",axis_gains,axis_fields)
@@ -177,6 +189,7 @@ def calibration_transfer(eeg, references, calibration, names, regions, mask,
     details = [{"channel":str(names[index]),"field_association":association,
         "gain":gain if axis_gains is None else None,"gain_mode":gain_mode,
         "axis_gains":axis_gains.tolist() if axis_gains is not None else None,
+        "axis_gain_prior":axis_gain_prior,"axis_gram_eigenvalues":axis_gram_eigenvalues,
         "triggered":triggered,"lags":list(lags),"penalty":penalty,
         "field_projection_energy_fraction":projected_fraction,
         "selected_modes":selected[local] if bundles is not None else None,

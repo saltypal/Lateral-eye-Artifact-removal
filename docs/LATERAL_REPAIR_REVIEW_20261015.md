@@ -102,7 +102,11 @@ Add `gain_mode="projected_axis"` to the existing frontal calibration transfer.
 Calibration still fits joint lagged HEOG/VEOG coefficients. Split the two signed
 axis fields using the existing lag-major row ordering. Project each field into
 the selected VMD-mode span for that channel. Estimate two regularized gains from
-these projected features and selected-mode observations. Apply the bounded gains
+these projected features and selected-mode observations. Anchor regularization
+at the matched-subspace common gain: a narrow projected span can otherwise make
+the two fields collinear and let a zero-centered minimum-norm solution assign
+large, physically inconsistent gains when restored to the full fields. Save the
+prior and projected Gram eigenvalues. Apply the bounded gains
 to the full calibrated axis fields once. No absolute-value HEOG substitution,
 eye-direction guessing, independent per-channel scoring regression or global
 correlation-to-zero objective. Existing modes and their residuals remain intact.
