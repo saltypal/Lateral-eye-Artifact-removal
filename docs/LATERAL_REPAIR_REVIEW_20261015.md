@@ -125,3 +125,27 @@ report blink/mixed/clean as well. Keep the existing CC<=0.005 deterioration,
 clean modification<=1%, alpha/beta<=0.5dB and covariance<=0.02 requirements.
 Two pairs cannot qualify generalization even if these checks pass. Native OSF
 and broader grouped development remain required; no student authorization.
+
+## Mathematical implementation of the repair
+
+For frontal channel c, let v_c be its selected-mode sum, f_c its calibrated
+joint ocular field, and P_c the temporal projection onto its selected-mode
+span. All vectors in these gain calculations are centered on valid scoring
+samples. The old gain uses sum_c <v_c,f_c> / sum_c ||f_c||². The matched scalar
+gain uses sum_c <v_c,P_c f_c> / sum_c ||P_c f_c||², followed by the existing
+[0,8] clipping. Zero projected energy yields zero gain.
+
+For two signed axis fields f_c,H and f_c,V, define features P_c f_c,a and their
+RMS values d_a, stacked over usable frontal rows and samples. Write normalized
+features as Z_a = feature_a/d_a and coefficients theta_a = d_a*g_a. The repaired
+axis fit minimizes ||Z^T theta-v||²/N + lambda*||theta-d*g0||², with lambda=0.01
+and g0 the matched scalar gain. Solve the regularized normal equations, convert
+theta back to physical gains, then apply the declared [0,8] clipping. This last
+clipping is a safety operation, not an exact box-constrained optimizer. Inactive
+axes receive zero gain. Gram eigenvalues and the common-gain prior are saved.
+
+The prior matters when projection makes the axes collinear: otherwise equal
+normalized coefficient penalties can correspond to radically different physical
+gains for weak versus strong axes. Neither these equations nor their tests
+establish real-data superiority. The full calibrated fields are restored only
+after gain estimation, with original EEG minus the estimated artifact once.
