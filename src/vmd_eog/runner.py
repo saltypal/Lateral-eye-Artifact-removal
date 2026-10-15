@@ -17,6 +17,9 @@ from .artifacts import record_parent_identities
 def dispatch_stage(stage, input_root, output, config, profile, experiment):
     """Route implemented schema-2 stages through their campaign dispatcher."""
     if config.get("schema_version") == 4:
+        if stage == "native-cached-frontal":
+            from .native_cached_frontal import run
+            return run(input_root, output, config, profile)
         if stage == "artifact-bundle":
             from .artifact_bundle import run
             return run(input_root, output, config, profile)

@@ -144,3 +144,48 @@ not satisfy the fresh-confirmation requirement or establish production readiness
 
 
 Transport recovery update:1396/1947 parent payloads are locally byte-verified. An explicit cached-review-only metadata route pins exact completed run/SHA/manifest and verifies all present local files. The Kaggle runner must verify EVERY mounted parent payload before tests or analysis; a partial local receipt is never labelled complete. Local download continues separately. No source/split/recipe/acceptance check is removed.
+# Cached evidence repair and failure-only fallback: completed follow-up
+
+`broader-cached-review-001/1`, source
+`5ad2c35c4070026bb7ac6be995679dd326a6a4a9`, completed with332 tests
+(14 warnings,20.39s) and131.191077s stage runtime. It consumed the exact
+version1 corpus and five-arm parent, verifying every parent byte on Kaggle.
+No new VMD decomposition, calibration fit or recipe selection occurred.
+All original paper metrics and original uncertainty point estimates/intervals
+reproduced at the declared numerical tolerance. The corrected reporting contract
+counts three candidate failure rows and zero raw-control failure rows.
+
+The new arm chooses saved raw-shared predictions only for the three frontal
+channels flagged by the solver. These were blink/mixed cases, so lateral
+predictions remain unchanged. Original predictions and failed-run evidence stay
+archived separately.
+
+| Measure, contaminated development records | Original anchored | Raw fallback arm | Matched raw shared |
+|---|---:|---:|---:|
+| Channel-first mean whole output SNR,dB |17.799616|17.804727|17.785746|
+| Channel-first mean frontal output SNR,dB |18.238703|18.261209|18.182199|
+| Whole SNR improvement,dB |14.578166|14.583278|14.564297|
+| Mean pooled-window whole output SNR,dB |15.116150|15.200363|15.211023|
+| Frontal MSE,source amplitude squared |3.559869e-12|2.617076e-12|2.535332e-12|
+| Frontal ordinary Pearson CC |0.980432|0.981111|0.981665|
+
+Fallback-minus-raw channel-first SNR differences remain inconclusive:
+whole+0.018981dB, supplemental source-aware95% interval[-0.071359,+0.132357];
+frontal+0.079010dB, interval[-0.319093,+0.570154]. These intervals include zero.
+There is no demonstrated incremental VMD benefit over matched direct regression.
+
+Worst-recipient mean frontal CC deterioration against raw shared drops from
+0.013147884 to0.006224758 (recipientsub-032329), but still fails the unchanged
+0.005 limit. Against raw axis the corresponding worst-recipient statistic is
+0.004534726. Both comparators remain visible; reporting the passing comparator
+alone would hide a failure. Whole-head means cannot excuse frontal loss.
+The zero-reference idealized clean controls do not establish native preservation.
+Teacher qualification remains false; no new neural training is authorized by
+this result.
+
+The six-panel condition plot was visually inspected: labels and curves are
+readable; its vertical axis explicitly uses mean pooled-window SNR, which is
+different from the channel-first target above. Lateral performance is the
+remaining weak condition. Packaging of the original parent completed on Kaggle;
+full local recovery is still pending because of download timeouts/HTTP502.
+

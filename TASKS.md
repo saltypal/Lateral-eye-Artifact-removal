@@ -11,13 +11,16 @@
 - [x] Pin corpus output and submit broader-frontal-review-001/1:sourcef126300, five frozen arms, matched nonfrontal correction.
 - [x] Complete five-arm numerical comparison:330 tests,320 examples,4160 channel decompositions/3 iteration-cap cases; sourcef126300.
 - [ ] Complete local recovery:1396/1947 payloads verified so far; transport HTTP502/TLS failures, not a numerical failure.
-- [ ] Run cached reporting-contract repair and failure-only raw fallback, with complete parent verification on Kaggle before tests.
+- [x] Complete cached review version1 at5ad2c35:332 Kaggle tests; original primary metrics and uncertainty values reproduced; three failure-only replacements.
 - [x] Persistent watcher detected COMPLETE and attempted recovery; now stopped with retrieval_attention after five transport failures. Primary agent is repairing recovery.
-- [ ] Review lateral/blink/mixed, source-aware uncertainty, clean gates and failure counts.
+- [x] Review lateral/blink/mixed and corrected failure counts. Fallback whole17.804727dB/frontal18.261209dB; incremental VMD benefit unproven; frontal worst-recipient CC loss0.006224758 still exceeds0.005.
+- [ ] Recover original artifacts through byte bundle: Kaggle packaging COMPLETE; first local attempt timed out on its manifest. Retrying; full local recovery remains incomplete.
+- [ ] Run frozen frontal-only native cache diagnostic on the first two source-ID-sorted development recordings, all eligible scoring trials; no posterior correction or parameter selection.
 - [ ] Validate unchanged-reference native OSF suppression/rest preservation before qualification.
 
 Current phase design: [BROADER_ANCHORED_VALIDATION_PLAN.md](docs/BROADER_ANCHORED_VALIDATION_PLAN.md).
-No broader cleaning score or qualified teacher is available at this checkpoint.
+Broader controlled development scores are available. No teacher is qualified;
+native resting preservation and independent confirmation remain incomplete.
 Earlier regional milestones and failure evidence remain below.
 
 Current checklist. Dependencies and acceptance checks:
