@@ -3,6 +3,7 @@
 Numerical execution is Kaggle-only through runner.py. No predictions change.
 """
 import json
+import shutil
 
 import numpy as np
 import pandas as pd
@@ -144,13 +145,31 @@ def run(input_root, output, config, profile):
     fig, ax = plt.subplots(figsize=(10, 5))
     for method, label, color in zip(METHODS, LABELS, COLORS):
         with np.load(parent / "native_rest_spectra" / f"{record}-{method}.npz", allow_pickle=False) as spectrum:
-            ax.semilogy(spectrum["frequencies_hz"], spectrum["psd_after"].mean(axis=0), label=label, color=color)
+            frequencies = spectrum["frequencies_hz"]
+            visible = (frequencies >= .5) & (frequencies <= 40)
+            ax.semilogy(frequencies[visible], spectrum["psd_after"].mean(axis=0)[visible], label=label, color=color)
     ax.set(xlim=(.5, 40), xlabel="Frequency (Hz)", ylabel="PSD (original array units²/Hz)",
            title=f"Resting PSD, frontal-channel mean: {record}")
     ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1))
     finish(fig, 8, "rest_psd", "First record by ID, all resting trials, archived segment-weighted PSD; physical amplitude units unverified.")
 
-    audit = audit_modes(parent, output)
+    audit_reused = None
+    if config.get("audit_parent"):
+        audit_parent = declared_parent(input_root, "native_visual_summary.json", config["audit_parent"])
+        previous = json.loads((audit_parent / "configuration.json").read_text())
+        summary = json.loads((audit_parent / "native_visual_summary.json").read_text())
+        if (previous["visual_parent"] != config["visual_parent"]
+                or summary.get("all_cached_selections_reproduced") is not True
+                or summary.get("mode_rows") != 12852 or summary.get("predictions_changed") is not False
+                or summary.get("reserved_confirmation_opened") is not False):
+            raise ValueError("Reusable mode audit source or verification differs")
+        shutil.copy2(audit_parent / "all_mode_reference_correlations.csv", output / "all_mode_reference_correlations.csv")
+        audit = pd.read_csv(output / "all_mode_reference_correlations.csv")
+        if len(audit) != 12852:
+            raise ValueError("Reusable audit row coverage differs")
+        audit_reused = config["audit_parent"]
+    else:
+        audit = audit_modes(parent, output)
     example = audit.sort_values(["trial_key", "window", "channel", "mode"]).iloc[0]
     chosen = audit[(audit.trial_key == example.trial_key) & (audit.window == example.window)
                    & (audit.channel == example.channel)].sort_values("mode")
@@ -169,5 +188,6 @@ def run(input_root, output, config, profile):
     atomic_json(output / "figure_inventory.json", inventory)
     atomic_json(output / "native_visual_summary.json", {"figures": len(inventory), "formats": ["png", "pdf", "svg"],
         "mode_rows": len(audit), "all_cached_selections_reproduced": True,
+        "mode_audit_reused_from": audit_reused,
         "predictions_changed": False, "new_vmd_decompositions": 0, "teacher_qualified": False,
         "reserved_confirmation_opened": False})

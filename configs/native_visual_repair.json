@@ -1,0 +1,58 @@
+{
+  "branch": "research/vmd-eog-removal-notebooks",
+  "fs": 200,
+  "window": 1024,
+  "hop": 512,
+  "seed": 42,
+  "confirmation_fraction": 0.2,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "source_dataset": "satyapaladugu/lateral-eye-complete-dataset",
+  "required_supplement_sha256": "79a3c4f2e1c1d545b477aa3de05fdc9c1c07c0355b820755392d8a5519e67e65",
+  "preservation": {
+    "clean_change": 0.01,
+    "alpha_db": 0.5,
+    "beta_db": 0.5,
+    "covariance": 0.02,
+    "pearson_deterioration": 0.005
+  },
+  "target_definition": "controlled_recipient_reference; low-ocular LEMON plus donor-calibration ridge ocular field",
+  "reserved_access": "closed until verified freeze",
+  "schema_version": 4,
+  "campaign_id": "vmd-native-figure-repair-20261016",
+  "scope": "native_cached_visual_audit",
+  "autovmd_enabled": false,
+  "model_authorization": "Frozen classical development validation only; no models or confirmation",
+  "fixed_recipes": [
+    {
+      "K": 3,
+      "alpha": 2000
+    }
+  ],
+  "imported_parents": {
+    "native-frozen-frontal-001": "ccc9253ee7b71f676bfacf805c5d7aabf3b4fed3cae147abad707c04ff071111",
+    "native-visual-audit-001": "5cebb1737ffc8fe54ea4815fbb97e023170c04783b1381c3787daa59d4461d07"
+  },
+  "acceptance": {
+    "controlled_output_snr_db": 15,
+    "stretch_output_snr_db": 20
+  },
+  "source_split_sha256": "9109ee9b28ab4faeb259773254211387dc8f53ac1c033064bdcc8399a2dd4f8c",
+  "classical_grid": {
+    "tolerance": 1e-06,
+    "max_iterations": 2000
+  },
+  "anchored_vmd_weight": 0.25,
+  "visual_parent": {
+    "run_id": "native-frozen-frontal-001",
+    "campaign_id": "vmd-native-frozen-20261015",
+    "git_sha": "c48af6a0cda4d6bd905856613a3cf0c01f5bdcd2",
+    "manifest_sha256": "ccc9253ee7b71f676bfacf805c5d7aabf3b4fed3cae147abad707c04ff071111"
+  },
+  "audit_parent": {
+    "run_id": "native-visual-audit-001",
+    "campaign_id": "vmd-native-figures-20261016",
+    "git_sha": "e79ecdb014b1bd1d29489470f538a984b49a8a2c",
+    "manifest_sha256": "5cebb1737ffc8fe54ea4815fbb97e023170c04783b1381c3787daa59d4461d07"
+  }
+}
