@@ -1,0 +1,32 @@
+{
+  "modes": {
+    "source": "D:\\Bunker\\BrainComputerInterface\\Lateral Eye Dataset\\VMD_EOG_Removal\\results\\vmd-broader-review-20261015\\broader-frontal-review-001\\results\\vmd-broader-review-20261015\\broader-frontal-review-001\\predeclared_lateral_modes.png",
+    "sha256": "a8841c74f4d64778997b813f5cb1082fe14b31240ffe96376b2e22685a46501a",
+    "signal_processing": false,
+    "new_numerical_plot": false
+  },
+  "centers": {
+    "source": "D:\\Bunker\\BrainComputerInterface\\Lateral Eye Dataset\\VMD_EOG_Removal\\results\\vmd-eog-20261010\\vmd-001\\results\\vmd-eog-20261010\\vmd-001\\K_sweep_centers.png",
+    "sha256": "0c5a4127752396c2a25290ede865388b77bdba3d84d5b32607255deb32bd7361",
+    "signal_processing": false,
+    "new_numerical_plot": false
+  },
+  "bounded": {
+    "source": "D:\\Bunker\\BrainComputerInterface\\Lateral Eye Dataset\\VMD_EOG_Removal\\results\\vmd-frontal-replication-20261011\\native-bounded-feasibility-001\\results\\vmd-frontal-replication-20261011\\native-bounded-feasibility-001\\bounded_native_preservation.png",
+    "sha256": "d8f07e19a388c11ba67910f2531b2a1fd815fc06bbc0259cfcba747bbfc9cfea",
+    "signal_processing": false,
+    "new_numerical_plot": false
+  },
+  "errors": {
+    "source": "D:\\Bunker\\BrainComputerInterface\\Lateral Eye Dataset\\VMD_EOG_Removal\\results\\vmd-regional-challengers-20261013\\regional-diagnostic-full-001\\results\\vmd-regional-challengers-20261013\\regional-diagnostic-full-001\\diagnostic_error_shares.png",
+    "sha256": "0139195d965830ad0fcd39e758c469da41407204b5680ffd07603b215b8101d0",
+    "signal_processing": false,
+    "new_numerical_plot": false
+  },
+  "conditions": {
+    "source": "D:\\Bunker\\BrainComputerInterface\\Lateral Eye Dataset\\VMD_EOG_Removal\\results\\vmd-broader-cached-20261015\\broader-cached-review-001\\results\\vmd-broader-cached-20261015\\broader-cached-review-001\\broader_condition_snr.png",
+    "sha256": "03a89fb3be5461e20c13d39c3db490c4c60e1bb9d03f9ce199eedb011677b4bd",
+    "signal_processing": false,
+    "new_numerical_plot": false
+  }
+}
