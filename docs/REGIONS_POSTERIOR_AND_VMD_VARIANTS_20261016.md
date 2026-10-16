@@ -184,3 +184,31 @@ The generated head is conceptual; measured figures require actual evidence.
 For the final report, target at least28 evidence-backed plots/panels across main
 paper and supplement. The present deliverable is nine native figures plus one
 conceptual illustration and the complete mode audit, not all32 completed figures.
+
+
+## Completed visualization evidence
+
+native-visual-audit001/1 completed at e79ecdb014b1bd1d29489470f538a984b49a8a2c:
+342tests,25.09s; nine figures,12852 mode rows, all saved mode selections replayed.
+All38manifest payloads recovered and independently rechecked. Mode audit manifest
+5cebb1737ffc8fe54ea4815fbb97e023170c04783b1381c3787daa59d4461d07.
+All nine PNGs visually inspected. Initial PSD axes included out-of-view frequency
+bins in autoscaling; notebook inline loop missed the figures subdirectory.
+
+Presentation repair native-visual-audit002/2 at36dab063b4c276ac49d6d5111563bc57ccd8a2b5:
+342tests,19.79s, all38payloads recovered/verified. Exact prior mode CSV reused
+with original source/summary/manifest compatibility checks; no repeated VMD or
+mode-selection analysis. PSD masks frequencies before plotting and the notebook
+renders inventory captions and images. Corrected PSD visually inspected.
+Manifest1b6c876307a0de1cdd496284ca57aeea4b24476d79ed1985de6227124a1d14f2.
+Figures remain numerical native development evidence from two participants;
+no predictions, thresholds, qualification or reserved access changed.
+
+Offline gallery:
+results/vmd-native-figure-repair-20261016/native-visual-audit-002/presentation/native_diagnostic_gallery.html
+Complete audit CSV:
+results/vmd-native-figure-repair-20261016/native-visual-audit-002/results/vmd-native-figure-repair-20261016/native-visual-audit-002/all_mode_reference_correlations.csv
+The gallery embeds original verified PNG bytes; local authoring did not compute
+metrics or manipulate images. HTML browser layout itself has not been screenshot
+reviewed; individual plotted images were inspected directly. Image-generation
+prompt is preserved beside the conceptual head image as a .prompt.txt file.

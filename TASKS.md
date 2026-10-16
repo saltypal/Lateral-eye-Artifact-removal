@@ -9,8 +9,8 @@
 - [x] Audit older posterior search plus later component/rank/CCA results; preserve incompatible-protocol distinctions.
 - [x] Review primary SVMD/MVMD/VME evidence; author bounded frontal-only variant proposal without restarting AutoVMD.
 - [x] Publish notebook78 at e79ecdb and submit native-visual-audit-001/1.
-- [ ] Pass new lag/sign fixture and all existing Kaggle contracts, replay all12852 mode-reference selections.
-- [ ] Retrieve, verify and visually inspect nine PNG/PDF/SVG figures and complete mode audit table.
+- [x] Pass342 Kaggle tests; audit all12852 mode rows and reproduce every cached selection at e79ecdb.
+- [x] Retrieve and verify all38payloads for each figure run; visually inspect nine plots and corrected PSD. Version2 at36dab06 reuses exact audit, fixes inline display and PSD axes;342tests pass. Offline gallery saved beside outputs.
 - [x] Register32 paper figure questions with measured/pending status; target at least28 supported plots across paper/supplement.
 
 ## Current checkpoint: broader fixed frontal validation
