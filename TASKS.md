@@ -1,5 +1,17 @@
-# Active research task list — 15 October 2026
+# Active research task list — 16 October 2026
 
+
+
+## Visualization and regional explanation —16October
+
+- [x] Verify electrode-name masks and explain central/shared versus frontal context.
+- [x] Generate and save conceptual top-view colored head illustration.
+- [x] Audit older posterior search plus later component/rank/CCA results; preserve incompatible-protocol distinctions.
+- [x] Review primary SVMD/MVMD/VME evidence; author bounded frontal-only variant proposal without restarting AutoVMD.
+- [x] Publish notebook78 at e79ecdb and submit native-visual-audit-001/1.
+- [ ] Pass new lag/sign fixture and all existing Kaggle contracts, replay all12852 mode-reference selections.
+- [ ] Retrieve, verify and visually inspect nine PNG/PDF/SVG figures and complete mode audit table.
+- [x] Register32 paper figure questions with measured/pending status; target at least28 supported plots across paper/supplement.
 
 ## Current checkpoint: broader fixed frontal validation
 
