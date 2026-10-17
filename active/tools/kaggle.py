@@ -1,6 +1,7 @@
 """Small local notebook author/submission tool. It never imports EEG modules."""
 import argparse
 from datetime import datetime, timezone
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -185,7 +186,28 @@ def main():
     if args.action == "retrieve":
         destination = ROOT/"results/klados-osf-20261017"/args.run_id
         destination.mkdir(parents=True, exist_ok=True)
-        print(cli("kernels", "output", KERNEL, "-p", str(destination)))
+        print(cli("kernels", "output", KERNEL, "-p", str(destination), "-f", "results/|log|ipynb"))
+        manifests = list(destination.rglob("artifact_manifest.json"))
+        if len(manifests) != 1:
+            raise RuntimeError("No unique completed artifact manifest; partial/failed outputs remain saved")
+        manifest = json.loads(manifests[0].read_text())
+        expected = json.loads((ROOT/".kaggle-work"/args.run_id/"run_spec.json").read_text())
+        if manifest["run_id"] != args.run_id or manifest["git_sha"] != expected["git_sha"]:
+            raise ValueError("Retrieved notebook version does not match the requested run")
+        for entry in manifest["files"]:
+            path = (manifests[0].parent/entry["path"]).resolve()
+            if not path.is_relative_to(manifests[0].parent.resolve()):
+                raise ValueError("Artifact path escapes its result directory")
+            if not path.is_file() or path.stat().st_size != entry["bytes"]:
+                raise ValueError("Artifact missing or truncated: "+entry["path"])
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            if digest != entry["sha256"]:
+                raise ValueError("Artifact checksum mismatch: "+entry["path"])
+        receipt = {"run_id": args.run_id, "git_sha": manifest["git_sha"],
+            "payloads_verified": len(manifest["files"]), "all_manifest_payloads_verified": True,
+            "accuracy_or_production_qualification_claimed": False}
+        (destination/"retrieval_receipt.json").write_text(json.dumps(receipt, indent=2))
+        print(json.dumps(receipt, indent=2))
         return
     config = json.loads((ROOT/"active/config.json").read_text())
     sha = git("rev-parse", "HEAD")
