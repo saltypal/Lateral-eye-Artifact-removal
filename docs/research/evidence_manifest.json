@@ -1,6 +1,6 @@
 {
   "date": "2026-10-17",
-  "source_head_at_build": "2e8afd4cc219b9048247aae1a38c6091b8230bf2",
+  "source_head_at_build": "dbbfcc455274cfcb16872849e5537f1dd3338667",
   "figure_count": 54,
   "figures": [
     {
@@ -599,7 +599,7 @@
     }
   ],
   "results_snapshot_sha256": "55b5ab4c16355ee4ce80c9137a9bdfc259973b7fa69f8576508f89d3aa0c4c50",
-  "report_sha256": "1be71b203368fc940e1ded2c9754b3860aaf3caf22fcaab0b7a37883649e247b",
+  "report_sha256": "801c36407a7664aa850119d644ebfbdb84f541e44585c41ae649b12f80258187",
   "excluded": [
     "10_native_mode_correlations.png: superseded reference diagnostic"
   ]

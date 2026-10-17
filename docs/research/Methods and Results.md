@@ -4,6 +4,23 @@ Research record • 17 October 2026 • Klados paired EEG and native OSF eye-art
 
 This document separates measured results, implementation adaptations and proposed work. **VMD is our preferred frontal representation. The historical VMD–EOG hybrid achieved 16.13 dB frontal output SNR versus 15.23 dB for the original direct-regression control.** This supports that specific comparison, not universal VMD superiority. A newer calibrated ridge control scored 17.49 dB with lower clean-target correlation; both controls are reported below. No current method is production-qualified. All numerical results and scientific figures were produced on Kaggle; this document assembles saved evidence without rerunning signal processing.
 
+### Latest verified results — checked again on 17 October 2026
+
+The latest completed receipts are `frontal-spatial-full-002` (530 verified artifacts) and `frontal-posterior-combined-001` (84 verified artifacts). Both are included in this report and its figure atlas. No later completed run was found in the local results or the fetched research branch during this check. The table below separates paired accuracy, native suppression and whole-cap composition; these columns are not interchangeable endpoints.
+
+| Latest finding | Accepted measurement | Meaning |
+|---|---|---|
+| Historical VMD–EOG, paired frontal | SNR16.134624dB; clean CC0.984644 | Seven frontal channels on reused Klados records |
+| Calibration-frozen ridge, paired frontal | SNR17.488734dB; clean CC0.952944 | Higher mean dB, lower CC and worse mean RMSE than historical VMD; a different fit from score-window ridge |
+| REG-ICA, paired frontal | SNR5.665687dB; clean CC0.849560 | Accepted recomputation; supersedes the failed run's5.597328dB |
+| SGEYESUB, native OSF | Blink VEOG CC0.109069; lateral HEOG CC0.033802 | Strong native suppression, but mean resting modification25.33%; not qualified |
+| REG-ICA, native OSF | Blink VEOG CC0.337483; lateral HEOG CC0.170647 | Mean resting modification41.25%; not qualified |
+| Historical frontal VMD + posterior pass-through | Whole-cap SNR13.679530dB; CC0.966309 | Best measured composition among the tested arms; still not qualified |
+| Historical frontal VMD + posterior ridge | Whole-cap SNR13.065156dB | Adding this posterior correction reduced the combined mean |
+| Historical frontal VMD + posterior rank1MWF | Whole-cap SNR12.510022dB | Adding this posterior correction reduced the combined mean |
+
+**Accepted spatial-run warning:** one of12ICA calibration fits reached its512-step cap (Klados record14). Its results remain included, and the fit is not claimed converged. There were no method exceptions. The repaired run recomputed fits because failed-parent recovery was unavailable; a generic recovery-reuse sentence in the original generated run report is inaccurate for that execution. The curated result ledger corrects it while preserving the original artifact unchanged. Fixed seeds did not establish bitwise solver reproducibility between workers. No new neural training or fresh confirmation evaluation is implied by this documentation update.
+
 ## 1. Datasets and electrode provenance
 
 **OSF.** The [eye-artifact dataset associated with SGEYESUB](https://doi.org/10.17605/OSF.IO/2QGRD) contains named EEG channels, horizontal and vertical EOG references, and annotated eye-movement/rest conditions, making it useful for native ocular suppression and preservation assessment. Our completed native frontal comparison uses four development participants, p02–p05, and 32 scored trials across blink, lateral, vertical and resting conditions, with separate unscored calibration. Five exact common frontal names are F3/F4/F7/F8/Fz: FPz was not substituted for absent FP1/FP2. The central/temporal study examines 21 FC/C/CP and six FT/T/TP channels in the available sessions. HEOG_lpf and VEOG_lpf remain the scoring references, with necessary resampling disclosed. Native recordings have no paired clean EEG: reduced EEG–EOG correlation is a suppression proxy, and resting modification is a preservation proxy. Neither is ground-truth reconstruction accuracy, so native OSF receives no output reconstruction SNR or clean-target CC.
