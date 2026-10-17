@@ -253,3 +253,20 @@ outputs retained to avoid original zero-initialization boundary deletion.
 Full58channel native fit, score common5frontal exact parent inputs.
 A focused readiness run must verify true six-class calibration and original
 runtime before full four-participant evaluation. No new results claimed.
+
+### Original spatial backend readiness verified
+
+Run frontal-spatial-readiness-001, exact published source
+a77ca55d358f9c91aae781aaff58c939209b005c, Kaggle frontal-sgeyesub-regica/1.
+All40 contracts passed; original SGEYESUB fit/apply on real study01_p02
+full58-channel calibration passed (13.293s fit/apply), original Infomax/FD/SRLS
+small fixture passed. Recovered52/52 checksummed payloads and actual3/3-cell
+notebook, one figure/table, no errors; waveform visually inspected. Runtime
+success is not efficacy or qualification. Full frontal-only comparison adds
+REG-ICA to the exact original paired Klados windows and both methods to four
+native OSF sessions. Original ICA learning-rate history/step cap saved; all
+failures retained. SGEYESUB remains ineligible on Klados without verified six
+calibration classes. New paired calibration uses first2000 independently
+preprocessed samples and a matched calibrated ridge control; earlier scoring-
+window ridge remains distinct. No new VMD, LEMON, central/posterior scoring,
+message passing or neural training. Full numerical results pending.

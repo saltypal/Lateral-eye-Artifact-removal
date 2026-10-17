@@ -114,8 +114,8 @@ frontal-only; no explicit inter-region messaging is introduced here.
 
 - [x] Record user-approved fitting scope and explanation.
 - [x] Locate author sources and identify calibration/runtime requirements.
-- [ ] Validate original OSF six-class calibration and author-code backend on Kaggle.
-- [ ] Run matched full-montage candidates/controls and report each region separately.
+- [x] Validate original OSF six-class calibration and author-code backend on Kaggle:40 contracts,52 verified payloads.
+- [ ] Run matched full-montage candidates/controls and report frontal first (latest user sequencing).
 - [ ] Apply preservation-first selection with paired uncertainty; no forced winner.
 
 Detailed selection, information-access and non-reproduction rules are in

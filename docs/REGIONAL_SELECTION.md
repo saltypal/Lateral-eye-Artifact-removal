@@ -1,8 +1,11 @@
 # Regional candidate selection: matched SGEYESUB and REG-ICA comparison
 
-Status: the user explicitly approved full-montage spatial fitting on17October2026,
-with frontal, central and temporal scores reported separately. Author sources
-are inspected; the SGEYESUB/REG-ICA numerical comparison has not yet run.
+Status: the user explicitly approved full-montage spatial fitting on17October2026.
+Latest sequencing: complete frontal SGEYESUB/REG-ICA comparison first, then
+research/select central, temporal and posterior candidates. Readiness run
+frontal-spatial-readiness-001 passed40 contracts and original author-code
+runtime checks on Kaggle;52 payloads and actual3/3-cell notebook recovered.
+The full accuracy comparison is pending, not established by readiness.
 This is distinct from the completed region-only central/temporal experiment.
 
 ## Approved fitting scope and rationale
@@ -21,8 +24,9 @@ components. Full montage offers more information but does not guarantee better
 separation, preservation or generalization. This is an experimental rationale,
 not a measured superiority claim.
 
-After fitting, apply the model to the original scoring EEG and evaluate the
-frontal, FC/C/CP and FT/T/TP rows separately. Outputs share one fitted model;
+After fitting, apply the model to the original scoring EEG and evaluate only
+frontal rows in this stage. Later FC/C/CP and FT/T/TP scores remain separate.
+Outputs share one fitted model;
 these are not independently fitted regional algorithms. The posterior channels
 may inform the full-montage fit, but posterior candidate selection is outside
 this comparison. No cross-region dB summation. No inferred electrode aliases.
@@ -40,8 +44,8 @@ results table and final report. Match controls before claiming an improvement.
 
 ## Candidates and reproducibility
 
-Add SGEYESUB and REG-ICA to frontal, central (FC/C/CP) and separately reported
-temporal (FT/T/TP) evaluation. Keep historical VMD on frontal channels only.
+Add SGEYESUB and REG-ICA to frontal evaluation first; defer central (FC/C/CP)
+and separately reported temporal (FT/T/TP) execution. Keep historical VMD on frontal channels only.
 Keep identity and matched direct HEOG/VEOG regression as controls. Include the
 existing MWF baseline only under matching inputs, calibration and scoring.
 

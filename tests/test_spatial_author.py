@@ -14,3 +14,16 @@ def test_sample_classes_never_filter_or_cross_trial_boundary():
 def test_sgeyesub_rejects_trial_condition_labels_before_author_execution(tmp_path):
     with pytest.raises(ValueError,match='classes1'):
         fit_sgeyesub(np.zeros((3,10)),np.array([1,2,3,4,1,2,3,4,1,2]),tmp_path,tmp_path)
+
+
+def test_uncertainty_pairs_cluster_id_instead_of_row_position():
+    import pandas as pd
+    from eog_clean.spatial_report import bootstrap_difference
+    first=pd.Series([2.,4.,6.],index=['a','b','c'])
+    second=pd.Series([5.,1.,3.],index=['c','a','b'])
+    result=bootstrap_difference(first,second)
+    assert result['clusters']==3
+    assert result['mean_difference']==1.
+    assert result['ci95_lower']==result['ci95_upper']==1.
+    with pytest.raises(ValueError,match='clusters'):
+        bootstrap_difference(first.iloc[:1],second)

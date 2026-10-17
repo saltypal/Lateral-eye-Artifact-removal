@@ -84,16 +84,24 @@ mu=mean(X,2);centered=X-mu;
 dim=rank(centered);
 assert(dim>=2);
 if dim<size(X,1)
- [weights,sphere]=runica(centered,'extended',1,'pca',dim,'maxsteps',512,'stop',1e-7,'verbose','off','interrupt','off');
+ [weights,sphere,compvars,bias,signs,lrates]=runica(centered,'extended',1,'pca',dim,'maxsteps',512,'stop',1e-7,'verbose','off','interrupt','off');
 else
- [weights,sphere]=runica(centered,'extended',1,'maxsteps',512,'stop',1e-7,'verbose','off','interrupt','off');
+ [weights,sphere,compvars,bias,signs,lrates]=runica(centered,'extended',1,'maxsteps',512,'stop',1e-7,'verbose','off','interrupt','off');
 end
 U=weights*sphere;A=pinv(U);S=U*centered;
 selected=regica_fd(S);
 assert(all(isfinite(U(:))) && ~isempty(selected));
-save('-mat7-binary','model.mat','U','A','mu','selected');
+save('-mat7-binary','model.mat','U','A','mu','selected','lrates','dim');
 """)
-    return loadmat(directory/'model.mat')
+    model=loadmat(directory/'model.mat')
+    steps=int(model['lrates'].size)
+    save_json(directory/'solver_diagnostics.json',{
+        'rank':int(model['dim'].item()),'channels':int(values.shape[0]),
+        'calibration_samples':int(values.shape[-1]),'steps':steps,
+        'step_cap':512,'hit_step_cap':steps>=512,
+        'selected_component_indices_one_based':model['selected'].astype(int).reshape(-1).tolist(),
+        'convergence_claim':'not established when cap reached; original runica learning-rate history retained'})
+    return model
 
 
 def predict_regica(values, eyes, model, backend, directory):

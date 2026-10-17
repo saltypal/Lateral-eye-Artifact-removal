@@ -38,6 +38,9 @@ regression through Octave. Freezing ICA/selection on calibration and resetting
 SRLS per trial is an explicit evaluation adaptation. The two boundary samples
 are retained rather than deleted by the original filter's zero initialization.
 No neural training, AutoVMD search, LEMON or confirmation access.
+The full stage also evaluates REG-ICA on the exact paired Klados windows and
+seven frontal rows of the completed benchmark. All19 EEG rows fit its ICA;
+SGEYESUB is ineligible on Klados without its six-class calibration labels.
 '''),md('## 1. Exact source, numerical dependencies and original-code runtime'),bootstrap,
     md('''## 2. Numerical contracts, then declared execution stage
 
@@ -76,6 +79,10 @@ if RUN_SPEC['stage']=='readiness':
     display(pd.DataFrame([{'method':'SGEYESUB','runtime_check':'real full-montage calibration'},
                           {'method':'REG-ICA','runtime_check':'author ICA/FD/SRLS fixture'}]))
 else:
+    from eog_clean.spatial_report import report
+    FIGURES=report(OUTPUT,'/kaggle/input')
+    if (OUTPUT/'klados_comparison.csv').is_file():
+        display(pd.read_csv(OUTPUT/'klados_comparison.csv').round(6))
     table=pd.read_csv(OUTPUT/'osf_comparison.csv');rest=pd.read_csv(OUTPUT/'osf_rest_summary.csv')
     display(table.round(6));display(rest.round(6))
     display(pd.read_csv(OUTPUT/'osf_rest_worst_participant.csv').round(6))
@@ -92,6 +99,10 @@ else:
 figure.tight_layout();path=OUTPUT/'frontal_spatial_review.png'
 figure.savefig(path,dpi=150,bbox_inches='tight');figure.savefig(OUTPUT/'frontal_spatial_review.pdf',bbox_inches='tight')
 plt.close(figure);display(Image(filename=str(path)))
+for figure_path in FIGURES:display(Image(filename=figure_path))
+if RUN_SPEC['stage']!='readiness':
+    display(pd.read_csv(OUTPUT/'preservation_review.csv'))
+    display(pd.read_csv(OUTPUT/'paired_cluster_uncertainty.csv').round(6))
 save_json(OUTPUT/'execution_state.json',{'state':'complete','git_sha':actual,
     'stage':RUN_SPEC['stage'],'scored_regions':['frontal'],'production_qualified':False})
 ''')]
@@ -119,7 +130,9 @@ def main():
         'language':'python','kernel_type':'notebook','is_private':True,'enable_internet':True,'enable_gpu':False,
         'dataset_sources':['satyapaladugu/lateral-eye-complete-dataset'],
         'kernel_sources':['satyapaladugu/region-aware-eog-restore/1',
-            'satyapaladugu/frontal-klados-and-osf-correlations/1'],'competition_sources':[]}
+            'satyapaladugu/frontal-klados-and-osf-correlations/1',
+            'satyapaladugu/klados-frontal-six-methods/5',
+            'satyapaladugu/region-aware-eog-snr-context/1'],'competition_sources':[]}
     (folder/'kernel-metadata.json').write_text(json.dumps(metadata,indent=2))
     (folder/'run_spec.json').write_text(json.dumps(spec,indent=2))
     message=cli('kernels','push','-p',str(folder));(folder/'submission.txt').write_text(message);print(message)
