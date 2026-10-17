@@ -54,7 +54,9 @@ def load_caches(input_root, output, source_root, config):
         identities[partition] = sorted(set(int(key[0]) for key in cache['keys']))
         caches[partition] = cache
         files.append({'partition':partition,'sha256':digest,'bytes':path.stat().st_size,
-                      'records':identities[partition], 'windows':len(cache['raw'])})
+                      'records':identities[partition], 'windows':len(cache['raw']),
+                      'invalid_dirty_decompositions':int(np.count_nonzero(~cache['valid'].astype(bool))),
+                      'invalid_clean_decompositions':int(np.count_nonzero(~cache['clean_valid'].astype(bool)))})
     for a,b in [('train','val'),('train','test'),('val','test')]:
         if set(identities[a]) & set(identities[b]):
             raise ValueError('Record leakage between partitions')
@@ -221,6 +223,10 @@ def run(input_root, output, source_root, config):
         directory = output/'windows'/f'record_{int(record):02d}_start_{int(start)}'
         directory.mkdir(parents=True,exist_ok=True)
         predictions = {'raw':raw,'clean':target,'eyes':eyes}
+        np.savez_compressed(directory/'historical_modes.npz',modes=test['modes'][window],
+            residual=raw-test['modes'][window].sum(axis=1),valid=test['valid'][window],
+            clean_modes=test['clean_modes'][window],clean_valid=test['clean_valid'][window],
+            clean_residual=target-test['clean_modes'][window].sum(axis=1))
         clean_predictions = {}
         for method in ['identity','direct_eog_regression','resampling_identity',*METHODS]:
             began = time.perf_counter()
@@ -297,9 +303,12 @@ def run(input_root, output, source_root, config):
     frame = pd.DataFrame(rows)
     # First collapse duplicated pooled window fields across channels, then
     # windows within each record, then records equally. No addition of dB.
-    records = frame.groupby(['method','record'],as_index=False).mean(numeric_only=True)
+    metric_names=['snr_out_db','snr_improvement_db','pooled_window_snr_db',
+                  'pooled_snr_improvement_db','mse','rmse','mae','rrmse_t','rrmse_s',
+                  'pearson_cc','heog_cc','veog_cc']
+    records = frame.groupby(['method','record'],as_index=False)[metric_names].mean()
     records.to_csv(output/'per_record.csv',index=False)
-    records.groupby('method',as_index=False).mean(numeric_only=True).to_csv(output/'comparison.csv',index=False)
+    records.groupby('method',as_index=False)[metric_names].mean().to_csv(output/'comparison.csv',index=False)
     save_json(output/'numerical_completion.json',{'complete':True,'methods':METHODS,
         'test_windows':len(test['raw']),'records':len(set(test['keys'][:,0].tolist())),
         'failed_method_windows':len(failures),'smoke':config.get('smoke',False),

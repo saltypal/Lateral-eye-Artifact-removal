@@ -101,12 +101,14 @@ def make_figures(output):
     axis.set(xlabel='Hz',ylabel='Power / Hz (source units squared)',title='First FP1 window spectral comparison')
     axis.legend(fontsize=8,ncol=2)
     save(figure,'09_psd')
-    history = pd.read_csv(output/'bandroute_training.csv')
-    figure,axis=plt.subplots(figsize=(9,5))
-    axis.plot(history.epoch,history.train_mse,'o-',label='Training')
-    axis.plot(history.epoch,history.validation_mse,'o-',label='Validation')
-    axis.set(xlabel='Epoch',ylabel='Input-normalized MSE',title='BandRouteNet author implementation; validation-only selection')
-    axis.legend()
+    figure,axes=plt.subplots(1,2,figsize=(13,5))
+    for axis,name,label in zip(axes,['bandroute','eegoar'],['BandRouteNet','EEGOAR-Net fine-tuning']):
+        history = pd.read_csv(output/f'{name}_training.csv')
+        axis.plot(history.epoch,history.train_mse,'o-',label='Training')
+        axis.plot(history.epoch,history.validation_mse,'o-',label='Validation')
+        axis.set(xlabel='Epoch',ylabel='Input-normalized MSE',title=label+'; validation-only selection')
+        axis.legend()
+    figure.tight_layout()
     save(figure,'10_training')
     modes=pd.read_csv(output/'mode_reference_correlations.csv')
     hist=modes[modes.method=='historical_vmd'].copy()
@@ -124,4 +126,16 @@ def make_figures(output):
     axis.set(yticks=range(6),yticklabels=[LABELS[x] for x in METHODS],
              xlabel='Failed windows retained as identity fallback',title='All method failures remain in scoring')
     save(figure,'12_failures')
+    with np.load(directory/'historical_modes.npz',allow_pickle=False) as archive:
+        vectors,residual=archive['modes'][0],archive['residual'][0]
+    figure,axes=plt.subplots(6,1,figsize=(12,12),sharex=True)
+    axes[0].plot(time,data['raw'][0],label='Original FP1');axes[0].legend(loc='upper right')
+    for axis,index in zip(axes[1:4],range(3)):
+        axis.plot(time,vectors[index],label=f'VMD mode {index+1}')
+        axis.legend(loc='upper right')
+    axes[4].plot(time,residual,label='Retained reconstruction residual');axes[4].legend(loc='upper right')
+    axes[5].plot(time,data['eyes'][0],label='HEOG');axes[5].plot(time,data['eyes'][1],label='VEOG')
+    axes[5].legend(loc='upper right');axes[5].set_xlabel('Seconds')
+    figure.suptitle('Actual K3/alpha2000 mode vectors, residual and aligned EOG; independent amplitude axes')
+    save(figure,'13_mode_vectors')
     return paths

@@ -119,6 +119,8 @@ All methods also receive paired clean inputs for preservation testing. Failures
 remain in scoring as identity fallbacks and are listed separately.
 '''),code('''from eog_clean.frontal_benchmark import run
 run('/kaggle/input',OUTPUT,CHECKOUT,CONFIG)
+from eog_clean.frontal_report import write_review
+write_review(OUTPUT)
 '''),markdown('''## 4. Complete result tables
 
 Primary paper metrics: MSE, RMSE, MAE, temporal/spectral RRMSE and ordinary Pearson CC.
@@ -136,6 +138,7 @@ stratification is presented.
 from IPython.display import display
 display(pd.read_csv(OUTPUT/'comparison.csv').round(6))
 display(pd.read_csv(OUTPUT/'per_record.csv').round(6))
+display(pd.read_csv(OUTPUT/'engineering_gates.csv').round(6))
 display(pd.read_csv(OUTPUT/'clean_preservation.csv').groupby(['method','record']).mean(numeric_only=True).round(6))
 print('FAILURES',json.dumps(json.loads((OUTPUT/'failures.json').read_text()),indent=2))
 print('BANDROUTE_SELECTION', (OUTPUT/'bandroute_selection.json').read_text())

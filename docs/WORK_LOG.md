@@ -60,3 +60,7 @@ Kaggle GPU source025be10 passed29 tests in5.33s. The64-label author montage is a
 ### Six-method smoke003: spatial contract rejected shortcut
 
 Sourceed82c07 passed29 tests in4.40s, then the explicit spatial-width contract rejected anonymous frozen EEGOAR slots. Initial inspection of temporal convolutions was incomplete: depthwise spatial convolutions, width pooling and3x3 decoder layers mix electrodes. No anonymous-slot result was produced. Retrieved9 payloads and the partial executed notebook. Repair retains author architecture and pretrained initialization, defines ncha8 with seven fixed Klados frontal columns plus one absent column, and fine-tunes only on training records with validation-only selection and the same15-epoch budget as BandRouteNet. This is explicitly a Klados fine-tuning adaptation.
+
+### Six-method smoke004: successful GPU integration
+
+Source8d51804 completed all six methods on one archived Klados test window, using one training window per train/validation split and one epoch per neural model. No method exceptions. Passed29 numerical tests. Historical frontal output17.937102dB on this single window is a smoke-only result, not final mean. Saved88 manifest payloads including actual executed notebook and12 inline figures. Author weights from the64-channel model loaded strictly into the8-column custom-montage architecture; spatial fine-tuning forward/backward succeeded. Next: full37/8/8 comparison with15epochs per neural model. Corrected the MWF bibliography to the verified JNE2018 paper DOI10.1088/1741-2552/aaac92.

@@ -66,8 +66,9 @@ Source: https://doi.org/10.1016/j.dib.2016.06.032
    unchanged frozen pretrained inference; no test targets fit the model.
 5. **GEVD–MWF.** Existing regularized instantaneous implementation following
    Somers et al.2018, *A generic EEG artifact removal algorithm based on the
-   multi-channel Wiener filter*, NeuroImage171:403–416,
-   DOI10.1016/j.neuroimage.2017.12.034. It uses marked artifact and artifact-free
+   multi-channel Wiener filter*, Journal of Neural Engineering15(3):036007,
+   DOI10.1088/1741-2552/aaac92 (https://pubmed.ncbi.nlm.nih.gov/29393057/).
+   It uses marked artifact and artifact-free
    covariance estimates to estimate artifact spatial structure; GEVD provides
    a low-rank approximation. Here training EOG activity top/bottom30% supplies
    approximate masks, Ledoit–Wolf stabilizes covariance, rank2 and strength1

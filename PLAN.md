@@ -28,7 +28,8 @@ and record exact remaining reproduction gaps.
 - [x] Run meaningful numerical contracts on Kaggle: 20 passed in pilot v2.
 - [x] Reproduce the historical 17.9272 dB checkpoint on its exact archived cache.
 - [x] Run one native OSF session and save every frontal mode's H/V correlation.
-- [ ] Finish paper adapters and method-specific tests.
+- [x] Finish six method adapters and Kaggle numerical contracts (29 passed).
+- [x] Complete one-window/one-epoch GPU integration run for all six, no method exceptions.
 - [ ] Run the six frontal methods on identical archived Klados records/windows.
 - [ ] Download real executed notebooks, including result tables and plot cells.
 - [ ] Save per-record/channel SNR, improvement, MSE/RMSE, RRMSE and Pearson CC.
