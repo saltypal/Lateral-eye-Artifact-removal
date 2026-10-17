@@ -95,3 +95,14 @@ def test_native_montage_never_aliases_fpz_to_fp1():
     from eog_clean.author_models import pack_frontal_montage
     with pytest.raises(ValueError):
         pack_frontal_montage(np.ones((1,10)),['FPz'],['FP1','FP2','F3'])
+
+
+def test_mode_clean_heog_veog_column_order_on_orthogonal_fixture():
+    from eog_clean.mode_audit import associations
+    # Integer cycles make these vectors exactly orthogonal over the fixture.
+    clean=np.sin(2*np.pi*31*np.arange(1024)/1024)
+    eyes=np.stack([np.sin(2*np.pi*5*np.arange(1024)/1024),
+                   np.cos(2*np.pi*9*np.arange(1024)/1024)])
+    np.testing.assert_allclose(associations(clean,clean,eyes),[1,0,0],atol=1e-12)
+    np.testing.assert_allclose(associations(eyes[0],clean,eyes),[0,1,0],atol=1e-12)
+    np.testing.assert_allclose(associations(eyes[1],clean,eyes),[0,0,1],atol=1e-12)

@@ -81,6 +81,7 @@ def main():
         if (data.startswith(("FROZEN_NATIVE_TRIAL_SAVED ", "BOOTSTRAP_PHASE ",
                              "SOURCE_VERIFIED ","AUTHOR_SOURCES_VERIFIED", "AUTHOR_MODELS_LOADED ",
                              "BANDROUTE_EPOCH_SAVED ", "EEGOAR_EPOCH_SAVED ", "METHOD_SAVED ", "METHOD_FAILED ",
+                             "KLADOS_CLEAN_CC_AND_NPZ_LABELS_VERIFIED ","OSF_FRONTAL_TRIAL_SAVED ",
                              "RUN_COMPLETE ", "Traceback (most recent call last)"))
                 or (" passed" in data and data[:1].isdigit())):
             markers.append({"runtime_s": event.get("time"), "message": data.strip()[:800]})

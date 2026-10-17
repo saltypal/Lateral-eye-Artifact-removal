@@ -65,6 +65,22 @@ Sourceed82c07 passed29 tests in4.40s, then the explicit spatial-width contract r
 
 Source8d51804 completed all six methods on one archived Klados test window, using one training window per train/validation split and one epoch per neural model. No method exceptions. Passed29 numerical tests. Historical frontal output17.937102dB on this single window is a smoke-only result, not final mean. Saved88 manifest payloads including actual executed notebook and12 inline figures. Author weights from the64-channel model loaded strictly into the8-column custom-montage architecture; spatial fine-tuning forward/backward succeeded. Next: full37/8/8 comparison with15epochs per neural model. Corrected the MWF bibliography to the verified JNE2018 paper DOI10.1088/1741-2552/aaac92.
 
-### User requested explicit clean-EGG CC and native frontal OSF
+### User requested explicit clean-EEG CC and native frontal OSF
 
 FullKlados runc196374 completed24 windows/eight records, allsix methods, both neural15epoch budgets and29 contracts; zero method exceptions,922 outputs,13figures. Historical frontal output16.134624dB, cleanEEG CC0.984644 versus raw0.698520; the oldall19 score17.927210 remains separate. User now requested explicit before/after cleanEEG CC and frontal-only OSF before/afterHEOG/VEOG. Implemented independent NumPy CC recomputation, names/source row indices embedded inside labelled KladosNPZ copies, checksum-verified frozen model transfer, and matched five common OSF frontal electrodes F3/F4/F7/F8/Fz because FP1/FP2 are absent and FPz is not an alias. EEGOAR uses its fixed learned slots with two absent-input masks; missing-context transfer is flagged, not retrained on native scoring. FourdevelopmentOSFsessions,two scoringtrials per condition; calibration/scoring disjoint, confirmation closed. No native pairedclean target or reconstructionSNR is invented. Numerical checks and execution of this extension remain pending at this entry.
+
+### OSF launch metadata repair
+
+First SaveKernel rejected a51-character title. A shorter title was accepted and Kaggle assigned canonical slugfrontal-klados-and-osf-correlations (kernel139163159,version1). All parent/dataset sources accepted. Saved original requested run specification plus explicit server submission receipt; local monitoring/retrieval specification reconciles the canonical slug. Numerical sourceb9df0e6 and configuration unchanged. Fixed future authoring title/slug. This was a submission failure, not a numerical experiment failure.
+
+
+### Per-mode clean EEG audit
+
+User's clean-reference request is covered at both levels: cleaned output versus
+paired clean EEG, and every saved VMD/SVMD/VME mode versus paired clean EEG,
+HEOG and VEOG. The CPU audit reuses completed decompositions and retains signed
+and absolute correlations, measured centers, source rows and mode counts.
+It also audits residuals separately. Targets are diagnostic only and never
+select runtime modes. A known orthogonal fixture verifies the three column
+identities. Native resting summaries are calculated on Kaggle from the completed
+OSF participant results. No neural training or decomposition is repeated.

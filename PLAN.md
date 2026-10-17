@@ -30,8 +30,10 @@ and record exact remaining reproduction gaps.
 - [x] Run one native OSF session and save every frontal mode's H/V correlation.
 - [x] Finish six method adapters and Kaggle numerical contracts (29 passed).
 - [x] Complete one-window/one-epoch GPU integration run for all six, no method exceptions.
-- [ ] Run the six frontal methods on identical archived Klados records/windows.
-- [ ] Download real executed notebooks, including result tables and plot cells.
+- [x] Run the six frontal methods on identical archived Klados records/windows.
+- [x] Download full Klados executed notebook: 6/6 code cells, 13 figures, 5 tables, 0 errors.
+- [ ] Independently recompute paired-clean CC and embed labels in NPZ copies.
+- [ ] Complete frontal-only OSF before/after HEOG/VEOG and resting-preservation evaluation.
 - [ ] Save per-record/channel SNR, improvement, MSE/RMSE, RRMSE and Pearson CC.
 - [ ] Save lateral/blink correlation, resting preservation, runtime and failures.
 - [ ] Inspect waveform, mode, correlation, PSD, preservation and metric plots.

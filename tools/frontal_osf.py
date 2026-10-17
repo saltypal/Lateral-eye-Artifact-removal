@@ -6,7 +6,7 @@ import nbformat
 from run import ROOT,BRANCH,git,cli
 from frontal import launcher
 
-KERNEL='satyapaladugu/klados-osf-frontal-correlations'
+KERNEL='satyapaladugu/frontal-klados-and-osf-correlations'
 
 
 def notebook(spec):
@@ -125,7 +125,7 @@ def main():
         raise RuntimeError('Commit and push before exact-SHA submission')
     folder=ROOT/'.kaggle-work'/args.run_id;folder.mkdir(parents=True,exist_ok=False)
     nbformat.write(launcher(spec,notebook(spec)),folder/'experiment.ipynb')
-    metadata={'id':KERNEL,'title':'Frontal Klados Clean CC and Native OSF Correlations',
+    metadata={'id':KERNEL,'title':'Frontal Klados and OSF Correlations',
         'code_file':'experiment.ipynb','language':'python','kernel_type':'notebook',
         'is_private':True,'enable_internet':True,'enable_gpu':True,
         'kernel_sources':config['kernel_sources'],'dataset_sources':config['dataset_sources'],
