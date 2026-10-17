@@ -1,5 +1,7 @@
 # Research documentation
 
+[Download the Word document](Methods%20and%20Results.docx): the updated report with 54 embedded figures and nine editable tables. Its 45-page layout was exported through Microsoft Word and inspected using rendered page images. Internal rendering intermediates are excluded from Git.
+
 Open **[Methods and Results.html](Methods%20and%20Results.html)** in a browser for the portable report. All 54 plots are embedded, so the HTML can be shared by itself. The editable [Markdown report](Methods%20and%20Results.md) uses the adjacent assets directory.
 
 The report contains all nine requested subjects: datasets and label provenance; VMD/AutoVMD/history; regional grouping; regression limitations; frontal papers and adaptations; frontal accuracy and native preservation; nonfrontal candidates/results; measured regional composition; and the proposed student.

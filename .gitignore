@@ -12,3 +12,4 @@ data/
 *.npz
 *.pt
 docs/literature_sources/
+docs/research/word_qa/
