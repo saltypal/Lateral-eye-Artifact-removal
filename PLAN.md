@@ -7,12 +7,12 @@ artifact estimate out. No new invented method names or broad parameter search.
 
 | Order | Method | What we implement | Current status |
 |---|---|---|---|
-| 1 | Historical VMD model | Frozen EOG-assisted 2499-parameter checkpoint, K3/alpha2000; seven frontal rows only | All-19-row 17.927210 dB replay verified; frontal result must be measured separately |
-| 2 | SVMD + FCM | PySDKit successive solver, EEG-demo parameters, declared moving-window FCM adaptation | Implemented; Kaggle numerical check pending |
-| 3 | VME + GMETV | PySDKit VME, original GMETV Algorithm 3 with explicit diagonal C | Implemented adaptation; unavailable ocular settings remain a limitation |
-| 4 | EEGOAR-Net | Author architecture/pretrained initialization; explicit seven+padding montage; Klados training/validation only | Frozen 64-label mapping lacks FP1/FP2; custom-montage fine-tuning adaptation under Kaggle validation |
-| 5 | GEVD–MWF | Rank-two spatial filter; covariance masks from training EOG only | Existing tested core; matched frontal evaluation pending |
-| 6 | BandRouteNet v2 | Pinned author BRAANetV2, paired training, validation-only checkpoint selection | Training adapter implemented; Kaggle GPU smoke then 15 epochs |
+| 1 | Historical VMD model | Frozen EOG-assisted 2499-parameter checkpoint, K3/alpha2000; seven frontal rows only | All-19 replay 17.927210 dB; frontal 16.134624 dB measured separately |
+| 2 | SVMD + FCM | PySDKit successive solver, EEG-demo parameters, declared moving-window FCM adaptation | Validated on Kaggle; adaptation, frontal output 0.952856 dB |
+| 3 | VME + GMETV | PySDKit VME, original GMETV Algorithm 3 with explicit diagonal C | Validated adaptation, 3.847420 dB; ocular settings unavailable |
+| 4 | EEGOAR-Net | Author architecture/pretrained initialization; explicit seven+padding montage; Klados training/validation only | Custom-montage adaptation trained 15 epochs, 9.029842 dB |
+| 5 | GEVD–MWF | Rank-two spatial filter; covariance masks from training EOG only | Matched frontal evaluation complete, 6.210721 dB |
+| 6 | BandRouteNet v2 | Pinned author BRAANetV2, paired training, validation-only checkpoint selection | Pinned author model trained 15 epochs, 6.938775 dB |
 
 Identity and direct HEOG/VEOG regression remain the two simple controls.
 Reproductions and adaptations are labelled separately. Missing paper details
@@ -32,12 +32,15 @@ and record exact remaining reproduction gaps.
 - [x] Complete one-window/one-epoch GPU integration run for all six, no method exceptions.
 - [x] Run the six frontal methods on identical archived Klados records/windows.
 - [x] Download full Klados executed notebook: 6/6 code cells, 13 figures, 5 tables, 0 errors.
-- [ ] Independently recompute paired-clean CC and embed labels in NPZ copies.
-- [ ] Complete frontal-only OSF before/after HEOG/VEOG and resting-preservation evaluation.
-- [ ] Save per-record/channel SNR, improvement, MSE/RMSE, RRMSE and Pearson CC.
-- [ ] Save lateral/blink correlation, resting preservation, runtime and failures.
-- [ ] Inspect waveform, mode, correlation, PSD, preservation and metric plots.
-- [ ] Publish one measured comparison and select a frontal method only from evidence.
+- [x] Independently recompute 1512 paired-clean CC rows and embed NPZ labels.
+- [x] Complete frontal-only OSF: four participants, 32 trials; preservation failure recorded.
+- [x] Save per-record/channel SNR, improvement, MSE/RMSE, RRMSE and Pearson CC.
+- [x] Save lateral/blink correlation, resting preservation, runtime and failures.
+- [x] Generate waveform, mode, correlation, PSD, preservation and metric plots; inspect representative diagnostics.
+- [x] Publish the measured comparison; native preservation does not qualify a winner.
+- [x] Audit 2005 paired components versus clean EEG, HEOG and VEOG.
+- [x] Finish native mode-reference repair: 5071 components; verify all 1280 prediction rows.
+- [ ] Repair false correction on native resting EEG before regional integration.
 
 No native OSF reconstruction SNR is reported because no clean target exists.
 Use Klados paper-listed order as explicitly requested: frontal rows

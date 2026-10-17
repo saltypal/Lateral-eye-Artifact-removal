@@ -96,3 +96,32 @@ against the unchanged H/V arrays embedded in its NPZ. Independently recompute
 every native prediction correlation from saved arrays and require agreement
 with the original table; require complete row coverage. No new denoising,
 training, calibration fitting or model selection occurs in this repair.
+
+### Frontal extension complete: measured findings and recovery
+
+Native source b9df0e6 completed four development participants p02–p05 and32
+trials, five exact frontal names, no method exceptions. All240 payloads verify;
+the executed notebook has5/5 code cells,16 figures,4 HTML tables and no errors.
+Klados independent recomputation agrees for1512 clean-CC rows. The paired
+mode audit checks2005 components/residuals; no undefined paired coefficients.
+
+Historical frontal Klados output16.134624dB and cleanCC0.984644 versus raw
+0.698520 are development-exposed evidence. Native historical blink abs VEOG
+CC0.918516→0.328867 and lateral abs HEOG CC0.358906→0.214818 improve, but
+mean resting relative RMS change0.636283 fails preservation. This is signal
+modification, not a proven neural-loss percentage. All six methods and both
+controls are retained in RESULTS.md, including poor/worsening results. No native
+reconstruction SNR or paired clean correlation is claimed.
+
+CPU reference-audit version2 uses exact published source0876931804df1c4344b70f165f0fb907f3a28bc8.
+It passed32 numerical tests (14 recorded warnings), independently verified every
+one of1280 native prediction correlation rows against the saved scoring table,
+and repaired5071 native component coefficients using unchanged saved H/V.
+No denoising/training changed or repeated. Retrieved25/25 payloads with hashes,
+3/3 executed code cells,3 figures,3 HTML tables and no error cells. Original
+mode CSV and version1 remain unchanged. Native-before/after table results stand.
+
+Source templates and reusable modules are published; actual executed notebooks
+and all numerical artifacts are local under notebooks/executed/ and results/.
+Representative paired mode heatmap visually inspected. Readiness of a production
+frontal system remains false because native preservation is unresolved.

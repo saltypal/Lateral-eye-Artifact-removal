@@ -35,6 +35,9 @@ comparison is measured independently and must not inherit that number.
 | frontal-six-smoke-003 | ed82c07 | 29 contracts; spatial-layer guard rejected frozen anonymous slots; error notebook recovered |
 | frontal-six-smoke-004 | 8d51804 | 29 contracts; all six methods; one window/one epoch only; 88 verified payloads, 12 inline figures, 6/6 executed cells, zero error cells |
 | frontal-six-full-001 | c196374 | Completed: 29 contracts, 24 windows/8 records; 922 verified payloads, 13 figures, 6/6 executed cells, zero error cells |
+| frontal-osf-correlations-001 | b9df0e6 | Completed: 31 contracts, four participants/32 trials; 240 verified payloads, 16 figures, 5/5 cells; native preservation failure |
+| frontal-mode-clean-audit-001 | 405d7aa | Completed: 32 contracts, 2005 paired component rows; 22 payloads, three figures, 3/3 cells |
+| frontal-mode-clean-audit-002 | 0876931 | Completed: 32 contracts; all 1280 native prediction rows verified and 5071 component rows repaired; 25 payloads, three figures, 3/3 cells |
 
 Results live under `results/<campaign>/<run_id>/`. Retrieval receipts state
 execution completion separately from accuracy qualification. Each actual
@@ -62,4 +65,26 @@ added. See PLAN.md for the detailed checks.
 
 ## Current frontal-only correlation extension
 
-User requested explicit clean-EEG CC and native OSF before/afterHEOG/VEOG. Klados beforeCC0.698520, historical frontal afterCC0.984644 and outputSNR16.134624dB. The frontal-only extension independently recomputes CC from saved predictions and writes names/source row indices inside NPZ copies. Native OSF uses five exact common frontal names F3/F4/F7/F8/Fz, fixed Klados neural checkpoints, separate MWF calibration and unchanged H/V evaluation references. Sourceb9df0e6, runfrontal-osf-correlations-001; pending final recovery. No paired clean target exists in native OSF.
+Completed and recovered: the native OSF run uses source b9df0e6, run
+frontal-osf-correlations-001. All 240 payloads verify; its actual executed
+notebook contains five executed code cells, 16 figures, four tables and zero
+error cells. Thirty-one numerical contracts passed. The independent Klados
+check verifies 1512 clean-EEG correlations and writes names/source rows inside
+labelled NPZ copies. Klados raw CC0.698520 becomes historical frontal CC0.984644
+at output SNR16.134624 dB.
+
+Native OSF uses four participants and 32 scored trials, five exact shared
+frontal names F3/F4/F7/F8/Fz, frozen Klados models, separate MWF calibration and
+unchanged H/V evaluation references. No native clean target exists. Historical
+blink abs VEOG CC0.918516 becomes0.328867; lateral abs HEOG CC0.358906
+becomes0.214818. Mean resting relative RMS modification is0.636283 (63.63%).
+This fails preservation; it is not a measured percentage of neural signal lost.
+The comparison does not qualify a native winner. Posterior/central are untouched.
+
+Mode audit version1 (405d7aa) passed32 contracts, recovered22 payloads and
+three figures, and checked2005 paired component rows against clean EEG/HEOG/VEOG.
+Version2 (0876931) repairs5071 native mode/residual reference diagnostics and
+independently verifies all1280 native prediction correlation rows. It passed32
+contracts;25 payloads and the actual3/3-cell notebook with three figures were
+retrieved and verified. No denoising/training was repeated.
+See docs/WORK_LOG.md for the exact mismatch and retained original evidence.

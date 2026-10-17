@@ -1,23 +1,108 @@
-# Current results and frontal correlation status
+# Frontal results: paired Klados and native OSF
 
-The full Klados frontal comparison is complete. All **922 artifacts** were
-retrieved and verified. The executed notebook contains **6/6 executed code
-cells, 13 inline figures, five result tables and zero error cells**.
+All processing is frontal-only. No LEMON or new AutoVMD search is active.
+The full Klados and native OSF notebooks have completed and their actual
+executed notebooks, tables, figures, predictions and modes are downloaded.
 
-Open the [executed Klados notebook](notebooks/executed/frontal-six-full-001.ipynb).
+## Paired Klados: correlation with clean EEG
 
-Correlation with paired clean EEG rises from **0.698520 before cleaning** to
-**0.984644 after the historical frontal VMD model**. Its pooled-window,
-record-balanced output SNR is **16.134624 dB**. The distinct mean-channel SNR is
-17.496008 dB; these aggregations cannot be substituted. The historical
-17.927210 dB result used all 19 rows and remains a separate result.
+Eight archived test records, three windows each, seven frontal channels.
+Mean Pearson CC with paired clean EEG changes from **0.698520 before cleaning**
+to **0.984644 after the historical VMD + EOG model**. Its record-balanced
+pooled-window output SNR is **16.134624 dB**; improvement is **16.928025 dB**.
+The distinct mean-channel SNR is 17.496008 dB. The older 17.927210 dB used all
+19 rows. These are different scopes/aggregations and cannot be substituted.
 
-The frontal OSF run has completed four participants and 32 scored trials.
-Its artifacts are being retrieved. A separate CPU audit checks every saved
-frontal mode against clean EEG, HEOG and VEOG. Native OSF has no paired clean
-EEG target; its results use unchanged-reference ocular correlations and resting
-preservation proxies. All methods use the five exact shared frontal names
-F3/F4/F7/F8/Fz, without substituting FPz for FP1/FP2.
+The paper-list mapping is zero-based rows 0/1/2/3/10/11/16 =
+FP1/FP2/F3/F4/F7/F8/Fz. Labelled NPZ copies embed channel_names and
+source_row_indices alongside predictions and historical modes. This uses the
+user-requested paper list order; independent MATLAB-row binding is unverified.
+No participant identity is inferred from record numbering.
+
+An independent NumPy Pearson calculation verified all **1512** saved
+method/window/channel clean-EEG correlations against the original table.
+The mode audit separately covers **2005 component rows**, including retained
+residuals, with clean EEG, HEOG and VEOG correlations. Clean targets are used
+for diagnosis only, never runtime mode selection.
+
+For example, at FP1 in the historical K3/alpha2000 decomposition:
+
+| Mode | Measured center (Hz) | Mean absolute clean-EEG CC | HEOG CC | VEOG CC |
+|---|---:|---:|---:|---:|
+| 1 | 1.154 | 0.248 | 0.461 | 0.903 |
+| 2 | 7.623 | 0.576 | 0.065 | 0.149 |
+| 3 | 16.633 | 0.408 | 0.004 | 0.013 |
+
+All three CC columns in this example are mean absolute coefficients, with equal
+record weighting. Signed coefficients are also saved. A high EOG association
+does not prove a mode contains only artifact; low CC with full-band clean EEG
+does not prove a narrowband neural mode should be removed.
+
+## Native OSF: unchanged-reference before/after correlations
+
+Four development participants (p02–p05), 32 scored trials, with separate
+unscored calibration. Every method sees the same five exact frontal names:
+F3/F4/F7/F8/Fz. OSF FPz is not substituted for absent FP1/FP2. Posterior and
+central EEG are not corrected. Frozen Klados neural weights are transferred;
+EEGOAR-Net has two missing montage inputs, an explicit transfer limitation.
+
+The blink column uses VEOG; the lateral column uses HEOG. Absolute correlations
+are computed before averaging, then summarized within participant and across
+participants. Full signed and absolute HEOG/VEOG values for every condition,
+channel, trial and method are saved.
+
+| Method | Blink abs VEOG CC after | Lateral abs HEOG CC after | Rest relative RMS change |
+|---|---:|---:|---:|
+| Before / identity | 0.918516 | 0.358906 | approximately 0% |
+| Historical VMD + EOG model | 0.328867 | 0.214818 | 63.63% |
+| SVMD–FCM adaptation | 0.367851 | 0.137215 | 64.55% |
+| VME–GMETV adaptation | 0.367017 | 0.045383 | 49.76% |
+| EEGOAR-Net, Klados fine-tuned | 0.889118 | 0.377380 | 14.59% |
+| GEVD–MWF | 0.559549 | 0.301306 | 61.43% |
+| BandRouteNet | 0.375989 | 0.276730 | 29.13% |
+| Direct EOG regression control | 0.044528 | 0.063976 | 70.26% |
+
+**The historical model reconstructs paired Klados well, but its native OSF
+resting-input preservation fails.** Rest is not paired clean ground truth;
+63.63% signal modification is not a measured percentage of brain activity lost.
+It is nevertheless large and does not support deployment qualification. Low
+EOG CC alone does not establish better cleaning: direct regression illustrates
+the trade-off particularly strongly. EEGOAR-Net slightly worsens lateral CC.
+Native OSF has no paired clean EEG, so no reconstruction SNR or clean-target
+correlation is claimed for it.
+
+## Recovered notebooks and provenance
+
+- [Klados comparison, actual outputs](notebooks/executed/frontal-six-full-001.ipynb):
+  source c196374, 29 contracts, 922 verified payloads, 13 figures, 6/6 executed
+  code cells, zero error cells, zero method exceptions; 16 SVMD solver-cap
+  warnings remain in evidence.
+- [OSF correlations, actual outputs](notebooks/executed/frontal-osf-correlations-001.ipynb):
+  source b9df0e6, 31 contracts, 240 verified payloads, 16 figures, 5/5 executed
+  code cells, zero error cells and method exceptions.
+- [Mode audit version 1, actual outputs](notebooks/executed/frontal-mode-clean-audit-001.ipynb):
+  source 405d7aa, 32 contracts, 22 verified payloads, three figures, 3/3 code
+  cells, zero error cells. Its paired mode correlations are complete.
+
+- [Mode audit version 2, actual outputs](notebooks/executed/frontal-mode-clean-audit-002.ipynb):
+  source 0876931, 32 contracts, 25 verified payloads, three figures, 3/3 code
+  cells, zero error cells. All **1280 native prediction rows** independently
+  match their saved before/after scoring table. **5071 native component rows**
+  are recomputed against unchanged HEOG/VEOG.
+
+The original prediction table already uses unchanged HEOG_lpf/VEOG_lpf
+correctly. Its separate mode CSV used model-preprocessed references. Audit
+version 2 repairs that diagnostic reference mismatch using unchanged references
+embedded beside the saved modes. No denoising, training or original scoring
+result changed. Original artifacts and audit version 1 remain preserved.
+The three final notebooks contain 32 figure outputs in total (13 + 16 + 3).
+
+Artifacts reside below results/<campaign>/<run_id>/ with hash-verified
+retrieval_receipt.json files. SVMD–FCM and VME–GMETV are explicit adaptations:
+unavailable full ocular-paper parameters prevent faithful reproduction claims.
+All current Klados scores are development-exposed, not fresh confirmation.
+The next decision is preservation repair and matched native validation before
+regional integration; none of these results establishes production readiness.
 
 ---
 

@@ -1,6 +1,6 @@
 # EEG ocular artifact removal
 
-One project, two sequential comparison notebooks, one current results document.
+One project, three focused frontal notebooks, one current results document.
 
 - [PLAN.md](PLAN.md): the task checklist and regional decisions.
 - [RESULTS.md](RESULTS.md): measured results and their limits.
@@ -8,6 +8,8 @@ One project, two sequential comparison notebooks, one current results document.
 - [notebooks/Frontal_Comparison.ipynb](notebooks/Frontal_Comparison.ipynb): Kaggle execution.
 - [notebooks/Frontal_OSF_Correlations.ipynb](notebooks/Frontal_OSF_Correlations.ipynb):
   independent paired-clean CC check and frontal-only native OSF transfer.
+- [notebooks/Frontal_Mode_Clean_Correlations.ipynb](notebooks/Frontal_Mode_Clean_Correlations.ipynb):
+  every saved mode versus clean EEG/HEOG/VEOG and native reference audit.
 - `src/eog_clean/`: reusable implementation; `tests/`: numerical contracts.
 - `configs/frontal_six.json`: active six-method comparison and data identities.
 - `configs/experiment.json`: completed baseline pilot configuration.
@@ -50,3 +52,19 @@ requested. Frontal rows are FP1/FP2/F3/F4/F7/F8/Fz; the row binding remains an
 explicit assumption. OSF has named channels but no paired clean target.
 Executed result notebooks are saved after each cell and included in retrieval.
 Existing mentor documents remain untouched.
+
+The completed native run is `frontal-osf-correlations-001`; its actual outputs
+are in `notebooks/executed/frontal-osf-correlations-001.ipynb`. The native mode
+reference audit completed as `frontal-mode-clean-audit-002`; its executed
+notebook is in `notebooks/executed/`. Status and retrieval are reproducible:
+
+```powershell
+python tools/frontal_modes.py status
+python tools/logs.py --run-id frontal-mode-clean-audit-002
+python tools/retrieve.py --run-id frontal-mode-clean-audit-002
+```
+
+Paired accuracy and native preservation are separate findings. The historical
+frontal model reaches 16.134624 dB on reused Klados records, but changes native
+OSF resting input by 63.63% mean relative RMS. See RESULTS.md before selecting
+a method or making a deployment claim.
