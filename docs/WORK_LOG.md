@@ -202,3 +202,21 @@ worst-record clean modifications retained in RESULTS.md; no qualified correction
 selected. Working central/temporal pass-through remains the safe default for
 future system composition; it is not artifact removal. No additional parameter
 tuning, model training or regional communication was started after review.
+
+## Regional comparison requested: SGEYESUB and REG-ICA, including frontal
+
+Inspected SGEYESUB author commit2c95b4f46f37670d25399ac0fdd705ae18248b25 and
+REG-ICA official SCCN plugin archive SHA256
+c0f2f6c696517940b2a011e2b53938336f6176ada5aba6ef192172bacc9b5a51.
+SGEYESUB needs six sample-level artifactclasses, not four trial conditions.
+OSF reader exposes those original sample labels; Klados lacks verified matching
+labels, so do not invent an exact Klados reproduction. REG-ICA has adaptive
+regression options; fixed ridge is not REG-ICA. Backend/runtime and numerical
+reproduction remain unverified, no new scores or jobs claimed.
+
+Recorded selection protocol in docs/REGIONAL_SELECTION.md: reproducibility and
+preservation eligibility before efficacy ranking; paper metrics separated from
+project gates; paired-source uncertainty; separate blink/lateral outcomes and
+regional scoring; no forced winner from conflicting trade-offs. Fitting-scope
+choice presented asynchronously (full montage recommended, region only, both).
+No implementation choice dependent on that answer has been executed.
