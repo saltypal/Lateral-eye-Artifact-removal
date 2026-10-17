@@ -321,3 +321,50 @@ composition/unchanged rows and pooled-SNR versus dB-sum. Save every record/group
 clean control, H/V association, fitted operator, prediction, failure and eight
 figures. No new VMD, broad search, neural training, LEMON or confirmation data.
 This is composition, not VMD-to-posterior messaging. Numerical outcome pending.
+
+### Combined experiment completed and recovered
+
+Sourcef94436ab167d3019aacb4ceeadb64775b42d10c0,
+Kaggle frontal-posterior-combined-comparison/1, runfrontal-posterior-combined-001.
+44 contracts passed;8records,24windows,nine fixedcombinations, zero failures.
+84/84 payloads verified; actual3/3-cell notebook,eight figures,three tables,
+zero errors. SNR, per-record and whole-cap clean-modification plots inspected.
+Whole-cap VMDfront/posterioridentity13.679530dB, posteriorridge13.065156,
+posteriorMWF12.510022. Frontal-only regional score stays16.134624dB. Raw whole
+cap2.902146dB. Central/temporal input remains exactly unchanged. No dB summed.
+Ridge and MWF additions do not improve the measured whole-cap mean; exploratory
+record-cluster differences−0.614374CI[−2.127571,0.557839] and−1.169508CI
+[−2.504891,−0.231968] respectively. No participant inference or fresh test claim.
+All whole-cap preservation/CC gate rows false. VMD+ridge clean modification
+worst-record46.9381%, VMD+MWF25.2517%; ratios are not neural-loss percentages.
+The full per-record/channel evidence and negative results remain saved. Native
+SG/REG frontal run continues; no native combined reconstruction SNR exists.
+
+## Accepted frontal spatial closeout and artifact verification
+
+Runfrontal-spatial-full-002/source d87b2e43116c9a7d58dd3adf755ab8df6a0698e1,
+Kaggle frontal-sgeyesub-regica/3, COMPLETE.42 contracts;8 paired records;
+4 OSF participants/32 trials.530/530 payloads verified. Actual3/3 executed cells,
+eight figures,six tables,zero error outputs. Native summary and worst-participant
+preservation plots visually inspected. No method exceptions; one original
+Infomax fit hit512steps (Klados14), retained as a warning. Accepted REGICA
+paired5.665687dB/CC0.849560 versus earlier incomplete run5.597328dB: both
+preserved, no best-run picking. Fixed seeds do not imply bitwise reproduction.
+
+Native SG blink VEOG CC0.109069, lateral HEOG CC0.033802, mean resting
+modification25.3322%, worst participant31.1498%; all preservation/evidence gates
+remain false. REGICA native0.337483/0.170647, mean rest41.2545%. SG has stronger
+measured lateral suppression than the existing comparators but is not qualified.
+All participant/trial/channel outcomes, original references, matrices and solver
+logs are saved. No native reconstruction SNR is invented.
+
+Recovery metadata correction: failed-parent mount was absent; accepted run
+fully recomputed. Archived generated RESULTS.md contains generic recovery-reuse
+wording. Root curated RESULTS.md explicitly corrects it without modifying the
+checksummed archive. Future module849eae0 reports actual restore availability.
+Numerical input fix preserves exact archived frontal bytes and unchanged
+references after bounded1ULP compatibility validation. All failed evidence remains.
+
+The combined run is separately completed/recovered as recorded above. Central/
+temporal correction and VMD-to-posterior messaging remain future work. Current
+step delivers evidence and negative results, not a qualified teacher/deployment.

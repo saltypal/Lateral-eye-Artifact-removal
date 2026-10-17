@@ -5,8 +5,17 @@ Latest sequencing: complete frontal SGEYESUB/REG-ICA comparison first, then
 research/select central, temporal and posterior candidates. Readiness run
 frontal-spatial-readiness-001 passed40 contracts and original author-code
 runtime checks on Kaggle;52 payloads and actual3/3-cell notebook recovered.
-The full accuracy comparison is pending, not established by readiness.
+The accepted full comparison is now complete as frontal-spatial-full-002,
+source d87b2e43116c9a7d58dd3adf755ab8df6a0698e1:42 contracts,530 verified
+payloads, actual3/3-cell notebook, eight figures, zero execution errors. No
+candidate qualifies under the unchanged preservation/evidence requirements.
 This is distinct from the completed region-only central/temporal experiment.
+
+The user subsequently authorized combined frontal/posterior SNR while frontal
+evaluation ran. That separate paired-only composition completed with44 contracts
+and84 verified artifacts. Posterior ridge and rank1MWF did not improve VMD's
+whole-cap mean. Central/temporal channels remained exactly unchanged. This does
+not establish a qualified hybrid or explicit frontal-to-back message passing.
 
 ## Approved fitting scope and rationale
 

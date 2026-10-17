@@ -278,3 +278,163 @@ These are reused development records and do not qualify any method without
 the paired clean-input/native preservation review. SGEYESUB has no Klados
 paired score because verified six-class calibration annotations are unavailable.
 Full-montage fit, frontal-only output scoring; other regions remain deferred.
+
+## Combined frontal/posterior results requested during frontal evaluation
+
+Completed CPU runfrontal-posterior-combined-001, exact source
+f94436ab167d3019aacb4ceeadb64775b42d10c0, Kaggle
+frontal-posterior-combined-comparison/1.44 contracts passed, no method failures;
+84/84 artifacts verified. Actual3/3 executed cells, eight figures, three tables,
+zero errors. SNR, per-record and clean-modification figures visually inspected.
+
+Eight reused Klados records,24 identical archived windows, full19-channel
+raw/clean targets. Frontal7:FP1/FP2/F3/F4/F7/F8/Fz. Posterior5:P3/P4/O1/O2/Pz.
+Central3 and temporal4 remain exactly unchanged. Paper-list row binding is
+still an assumption. Fit new ridge0.001 and instantaneous GEVD-MWF rank1,
+strength1 on first2000 separately preprocessed samples. MWF uses calibration
+EOG activity bottom/top30%, not known-clean labels. No clean-target fitting.
+Historical frontal outputs and clean-input controls are verified saved parents.
+This is disjoint composition, not explicit frontal-to-posterior message passing.
+
+Whole-cap SNR is calculated from the combined19-channel reconstruction and
+target, averaged within record and then equally across records. **No regional
+dB values are added.** RMSE below is the declared channel/window/record mean
+in source amplitude units, not a separately pooled root of mean MSE.
+
+| Frontal method | Posterior method | Whole-cap SNR dB | RMSE | Clean EEG CC |
+|---|---|---:|---:|---:|
+| Identity | Identity |2.902146|5.600867|0.860895|
+| Identity | Calibrated ridge |2.732457|5.771783|0.856711|
+| Identity | Rank1 MWF |2.712865|5.871333|0.857546|
+| Historical VMD+EOG | Identity |**13.679530**|**2.076279**|**0.966309**|
+| Historical VMD+EOG | Calibrated ridge |13.065156|2.247195|0.962125|
+| Historical VMD+EOG | Rank1 MWF |12.510022|2.346744|0.962960|
+| Calibrated ridge | Identity |12.898252|2.341121|0.954630|
+| Calibrated ridge | Calibrated ridge |12.903361|2.512038|0.950446|
+| Calibrated ridge | Rank1 MWF |11.635197|2.611587|0.951281|
+
+Frontal VMD output remains16.134624dB/CC0.984644 under every posterior option.
+Posterior identity16.294360dB/CC0.979999; ridge18.163185dB/CC0.964101;
+MWF12.701463dB/CC0.967272. Despite ridge's higher posterior mean dB, its
+mean posterior MSE31.696201 exceeds identity3.674021 and whole-cap accuracy
+worsens. Regional mean logs cannot be combined to infer joint performance;
+record/amplitude weighting and poor individual cases matter. Every record is
+retained in per_record_region.csv and the record plot.
+
+Paired record-cluster bootstrap against VMD frontal/posterior pass-through:
+ridge mean whole-cap difference−0.614374dB,95%CI[−2.127571,0.557839];
+MWF−1.169508dB,CI[−2.504891,−0.231968]. These exploratory eight-record intervals
+do not establish participant-level generalization; participant identities are
+unknown. No claim that either posterior correction improves the system.
+
+Worst-record mean whole-cap clean-input modification: VMD+ridge46.9381%,
+VMD+MWF25.2517%, VMD+posterior-identity0%. The VMD+identity arm still fails
+the worst-record CC deterioration gate against the declared fully calibrated
+ridge comparator(0.012449>0.005). All whole-cap gate rows are false. No
+qualified corrective winner, fresh15dB target or native combined evaluation is
+established. Native OSF has no reconstruction SNR. These findings support
+testing better selective posterior methods, not deploying the current hybrids.
+
+Open [the actual executed combined notebook](notebooks/executed/frontal-posterior-combined-001.ipynb).
+All predictions, H/V correlations, fits, controls, tables and figures are under
+results/frontal-posterior-20261017/frontal-posterior-combined-001/.
+
+## Accepted frontal SGEYESUB / REG-ICA closeout
+
+**The frontal extension is complete; no corrective method is qualified.**
+Accepted run `frontal-spatial-full-002`, source
+`d87b2e43116c9a7d58dd3adf755ab8df6a0698e1`, Kaggle
+`satyapaladugu/frontal-sgeyesub-regica/3`. It passed 42 contracts and completed
+eight Klados records and four OSF participants / 32 native scoring trials.
+All 530 artifacts were checksum-verified, including the actual 3/3-cell
+executed notebook with eight figures, six tables and zero error outputs.
+Native suppression and preservation plots were visually inspected.
+
+SGEYESUB uses original six-class native calibration and a full 58-channel EEG
+fit, scored on F3/F4/F7/F8/Fz. It has no paired Klados score: the export lacks
+verified calibration sample classes. REG-ICA uses the original extended
+Infomax, fractal selector and SRLS routines, with calibration-frozen ICA and
+per-trial/window SRLS reset as disclosed evaluation adaptations. It fits 19
+Klados channels under the paper-list mapping assumption and 58 native EEG
+channels. Only frontal outputs are evaluated in this notebook. This does not
+implement inter-region messaging or a separately fitted posterior algorithm.
+
+### Paired frontal comparison on identical archived windows
+
+| Method | Output SNR dB | RMSE | Pearson CC with clean EEG |
+|---|---:|---:|---:|
+| Historical VMD + EOG model |16.134624|1.791442|0.984644|
+| Score-window EOG ridge |15.226231|1.953725|0.982620|
+| Calibration-frozen EOG ridge |17.488734|2.510300|0.952944|
+| REG-ICA author-routine adaptation |5.665687|6.013513|0.849560|
+| SGEYESUB |Not eligible|Not available|Not available|
+
+These are reused development records, not fresh confirmation or a paper SOTA
+comparison. Primary SNR pools channel energy within a window before record
+balancing. It differs from the mean per-channel dB column. Calibrated ridge's
+higher mean dB but worse MSE/CC is retained, not used to force a winner.
+Every per-record result, clean-input control and H/V correlation is saved.
+
+### Native OSF frontal comparison
+
+Values are participant-balanced mean absolute Pearson correlations with the
+same original HEOG/VEOG references. Resting modification is mean relative RMS;
+it is an unpaired preservation proxy, not a neural-loss percentage or SNR.
+
+| Method | Blink VEOG CC | Lateral HEOG CC | Mean rest modification % |
+|---|---:|---:|---:|
+| Before / identity |0.918516|0.358906|0.00|
+| SGEYESUB |0.109069|**0.033802**|25.33|
+| REG-ICA |0.337483|0.170647|41.25|
+| Historical VMD + EOG model |0.328867|0.214818|63.63|
+| Score-window EOG ridge |**0.044528**|0.063976|70.26|
+| GEVD-MWF comparator |0.559549|0.301306|61.43|
+| BandRouteNet adaptation |0.375989|0.276730|29.13|
+| EEGOAR-Net custom-montage fine-tuning |0.889118|0.377380|14.59|
+| SVMD-FCM adaptation |0.367851|0.137215|64.55|
+| VME-GMETV adaptation |0.367017|0.045383|49.76|
+
+SGEYESUB has the lowest measured lateral EOG association in this comparison.
+It does not qualify: worst-participant mean resting modification is
+31.149812% against the fixed 1% engineering limit, and covariance preservation
+also fails. Mean alpha error is 0.649467 dB; mean beta error 0.472962 dB;
+mean relative covariance error 0.084700. The low EOG correlation cannot by
+itself establish clean neural recovery. REG-ICA worst-participant resting
+modification is 51.573949%. Native EEG has no paired reconstruction SNR.
+
+Exploratory four-participant bootstrap for SGEYESUB versus score-window ridge:
+blink absolute-CC difference +0.064541, 95% CI [0.043586,0.084723]; lateral
+difference -0.030174, CI [-0.038909,-0.018779]. This describes the recorded
+suppression trade-off only; four participants and reused development sessions
+do not establish external superiority. Vertical/rest H/V results and all
+individual channels/trials remain in the saved tables.
+
+### Failures, recovery and numerical limits
+
+There were no method exceptions in the accepted run. One of 12 ICA calibration
+fits reached its 512-step cap (Klados record 14); its scores remain included
+and it is not described as converged. The earlier failed run's paired REG-ICA
+score was 5.597328 dB, while the accepted fresh recomputation is 5.665687 dB.
+Both are preserved; no best-run picking or averaging is applied. Fixed seeds
+did not establish bitwise solver reproducibility across the two workers.
+
+Version 2 stopped at a one-float32-ULP archived-input mismatch. The repair
+verifies the narrow rounding condition, logs each discrepancy, and supplies
+the exact archived frontal bytes to scoring. References remain unchanged and
+scientific thresholds were not relaxed. Attempted failed-parent mounting was
+unavailable, so version 3 recomputed all fits and predictions. Its generated
+RESULTS.md contains a generic recovery-reuse sentence that does not describe
+this execution; this curated closeout corrects it. The archived original is
+left unchanged for checksum provenance. Future reporting code now checks
+whether a recovery parent was actually restored.
+
+Open [the actual executed frontal notebook](notebooks/executed/frontal-spatial-full-002.ipynb).
+Saved evidence is under results/frontal-spatial-20261017/frontal-spatial-full-002/.
+The separate combined run is documented above. Neither run uses LEMON,
+AutoVMD search, new neural training or reserved confirmation sources.
+
+Next research shortlist, not selected winners: targeted wavelet ICA from the
+published 2025 RELAX work; original author GEVD-MWF with documented delay
+embedding; and separately scored central/posterior outputs of the verified
+full-montage SG/REG fits. See docs/NONFRONTAL_CANDIDATES_20261017.md for primary
+papers, author code, dependency limitations and the preservation-first rules.

@@ -115,11 +115,13 @@ frontal-only; no explicit inter-region messaging is introduced here.
 - [x] Record user-approved fitting scope and explanation.
 - [x] Locate author sources and identify calibration/runtime requirements.
 - [x] Validate original OSF six-class calibration and author-code backend on Kaggle:40 contracts,52 verified payloads.
-- [ ] Run matched full-montage candidates/controls and report frontal first (latest user sequencing).
-- [ ] Apply preservation-first selection with paired uncertainty; no forced winner.
+- [x] Run matched full-montage candidates/controls and report frontal first: accepted version3,42 contracts,530 verified artifacts.
+- [x] Apply preservation-first selection with paired uncertainty: no method qualifies, no forced winner.
 
 Detailed selection, information-access and non-reproduction rules are in
-docs/REGIONAL_SELECTION.md. No new numerical scores are available yet.
+docs/REGIONAL_SELECTION.md. SGEYESUB native blink/lateral CC0.109069/0.033802;
+mean resting modification25.3322%, worst participant31.1498%. REGICA accepted
+paired score5.665687dB/CC0.849560; one ICA fit reached512steps. See RESULTS.md.
 
 ## User-added combined frontal/posterior measurement
 
@@ -130,9 +132,9 @@ Central/temporal correction and message passing remain excluded.
 - [x] Design nine fixed combinations: frontal identity/historicalVMD/calibrated
   ridge crossed with posterior identity/calibratedridge/rank1MWF.
 - [x] Author standalone notebook07, reusable module and mask/pooled-SNR fixtures.
-- [ ] Run44contracts and the matched8record Klados comparison on Kaggle CPU.
-- [ ] Retrieve actual executed notebook, eight plots, full19channel outputs and tables.
-- [ ] Report frontal/posterior/whole-cap SNR directly from combined outputs,
+- [x] Run44contracts and the matched8record Klados comparison on Kaggle CPU.
+- [x] Retrieve84 verified payloads, actual3/3-cell notebook, eight plots, full19channel outputs and tables.
+- [x] Report frontal/posterior/whole-cap SNR directly from combined outputs,
   plus RMSE/CC and preservation; no regional dB addition or forced winner.
 
 Frontal source predictions and full19channel scoring arrays are immutable
@@ -141,3 +143,9 @@ remain exactly input. SGEYESUB has no guessed Klados score, and native OSF
 has no reconstruction SNR. Posterior MWF is the existing instantaneous
 adaptation with fixed calibration-EOG top/bottom30% masks, rank1,strength1;
 it is not a newly claimed exact author-code reproduction.
+
+Combined outcome: frontalVMD/posterioridentity13.679530dB whole cap;
+frontalVMD/posteriorridge13.065156dB; frontalVMD/posteriorMWF12.510022dB.
+Both posterior additions worsen this measured mean; all whole-cap gates fail.
+No qualified integration winner. Frontal SG/REG native evaluation is complete;
+central/temporal correction and explicit message passing have not been started.

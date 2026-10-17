@@ -184,3 +184,83 @@ released RELAX code), author GEVD-MWF, and later separately scored SGEYESUB/
 REGICA outputs. These are candidates, not new measured winners. Retired LEMON
 posterior results cannot rank the active Klados/OSF comparisons. No new central,
 posterior, neural, AutoVMD or LEMON numerical experiment is launched here.
+
+## Frontal spatial comparison completed; combined experiment added by user
+
+The user subsequently authorized a combined frontal/posterior SNR comparison
+while the frontal SG/REG evaluation ran. This supersedes the previous
+frontal-only execution boundary for that separate combined notebook; central
+and temporal correction and explicit message passing remain excluded.
+
+Accepted frontal run: `frontal-spatial-full-002`, exact source
+`d87b2e43116c9a7d58dd3adf755ab8df6a0698e1`, Kaggle version 3. All 42 contracts
+passed. Eight reused Klados records and four OSF participants / 32 native trials
+completed. All 530 saved artifacts verified; actual 3/3 executed cells, eight
+figures, six tables, no notebook errors. Relevant plots visually inspected.
+Original author routines ran through Octave; full montage fit with frontal-only
+scoring. SGEYESUB is ineligible for a paired Klados result without verified
+six-class calibration. Original REGICA routines retain their documented
+calibration/SRLS wrapper adaptation and source identities.
+
+Accepted paired frontal REGICA output SNR 5.665687 dB, clean Pearson CC 0.849560,
+RMSE 6.013513. Calibration-frozen ridge 17.488734 dB / CC 0.952944; historical
+frontal VMD+EOG 16.134624 dB / CC 0.984644. Old score-window ridge remains
+15.226231 dB / CC 0.982620. Different fitting access stays visible; higher mean
+SNR does not make calibrated ridge the preservation winner. Full per-channel
+and record results and clean-input controls are saved.
+
+Native before blink VEOG abs CC 0.918516; lateral HEOG abs CC 0.358906.
+SGEYESUB after 0.109069 / 0.033802, with mean resting relative modification
+25.3322% and worst-participant mean 31.1498%. REGICA after 0.337483 / 0.170647,
+mean rest modification 41.2545%, worst participant 51.5739%. Historical VMD
+after 0.328867 / 0.214818, mean rest modification 63.6283%. SG has the lowest
+recorded lateral association among these frontal comparators, but no method
+qualifies under unchanged preservation/evidence gates. Native rest is an
+unpaired proxy, not proven neural loss; no native reconstruction SNR is given.
+
+One REGICA calibration reached 512 ICA steps (Klados record 14). It remains
+included with its cap warning. The accepted run has no method exceptions.
+Earlier version 2 failed on one float32 rounding step in 1/8000 scoring values;
+359 artifacts and the failed executed notebook were recovered. Repaired code
+checks at most one representational step and supplies exact archived frontal
+bytes for actual inference; H/V references and scientific thresholds unchanged.
+The requested failed-parent input was not exposed by Kaggle, so the accepted
+run recomputed instead of resumed. Generic cache-reuse wording in its archived
+generated report is corrected in the curated root RESULTS.md; archive bytes
+are preserved. Earlier partial REGICA score 5.597328 dB is not chosen over the
+accepted 5.665687 dB. Fixed seeds did not prove bitwise solver reproducibility.
+
+Combined run: `frontal-posterior-combined-001`, exact source
+`f94436ab167d3019aacb4ceeadb64775b42d10c0`, separate CPU Kaggle notebook.
+All 44 contracts passed; eight records / 24 identical archived full19-channel
+windows, nine fixed combinations, zero method failures. All 84 artifacts
+verified; actual 3/3 cells, eight plots, three tables, no errors. Frontal 7 and
+posterior 5 masks are disjoint; central 3 and temporal 4 remain exactly raw.
+New ridge penalty 0.001 and MWF rank1/strength1 use first2000 calibration
+samples only, with fixed top/bottom30% EOG-activity MWF masks. No clean-target
+fit, new VMD decomposition, AutoVMD search, LEMON or confirmation access.
+
+Whole-cap output SNR / clean CC: raw 2.902146 dB / 0.860895; VMD frontal with
+posterior pass-through 13.679530 / 0.966309; VMD + posterior ridge 13.065156 /
+0.962125; VMD + posterior MWF 12.510022 / 0.962960. Frontal regional SNR stays
+16.134624 dB. Posterior-only identity 16.294360, ridge 18.163185, MWF 12.701463
+dB; ridge's posterior mean dB gain does not translate to a whole-cap gain and
+its mean MSE worsens. No regional dB values are added. Paired record-cluster
+differences against frontal-only correction: ridge -0.614374 dB,
+95% CI [-2.127571,0.557839]; MWF -1.169508 dB, CI [-2.504891,-0.231968].
+Intervals are exploratory record-level evidence, not known participant inference.
+
+Worst-record whole-cap clean modification VMD+ridge 46.9381%, VMD+MWF 25.2517%.
+VMD+posterior pass-through has zero clean modification in these controls but
+fails the declared worst-record CC-deterioration gate versus calibrated ridge.
+All whole-cap gate rows are false. No new qualified regional teacher, fresh
+15 dB acceptance result or production deployment is claimed. This composition
+does not yet send a frontal artifact estimate to a posterior learner.
+
+Executed notebooks: `notebooks/executed/frontal-spatial-full-002.ipynb` and
+`notebooks/executed/frontal-posterior-combined-001.ipynb`. Root RESULTS.md
+contains all comparison summaries and limitations. Next bounded research
+candidates are targeted wavelet ICA (published 2025 RELAX), original author
+GEVD-MWF with delay embedding, and separate central/posterior output evaluation
+of the saved full-montage spatial fits. See the primary references and eligibility
+limits in docs/NONFRONTAL_CANDIDATES_20261017.md. These are candidates, not winners.

@@ -2,14 +2,17 @@
 
 One modular project, Kaggle experiment notebooks, and one current results document.
 
-Current stage: frontal-only comparison of original SGEYESUB/REG-ICA routines
-using full-montage spatial fits. Readiness passed40 Kaggle contracts and original
-backend checks. Version2/frontal-spatial-full-001 failed a one-float32-ULP
-input check and was fully recovered locally. The repaired full comparison is
-runfrontal-spatial-full-002 (Kaggle version3, sourced87b2e4), with42 contracts
-passed. Its attempted failed-parent mount was unavailable, so it recomputes
-rather than resumes. This is not a completed native accuracy claim. Central/posterior selection
-comes afterward; prospective methods and primary references are in
+Completed: frontal SGEYESUB/REG-ICA comparison using full-montage spatial fits,
+and the user-added frontal/posterior combination experiment. Frontal run
+`frontal-spatial-full-002` (Kaggle version 3, source `d87b2e4`) passed 42 contracts;
+530 artifacts and its actual executed notebook are verified. The combined run
+`frontal-posterior-combined-001` (source `f94436a`) passed 44 contracts; 84 artifacts
+and its executed notebook are verified. Both remain unqualified for production.
+
+Measured whole-cap SNR: VMD frontal/posterior pass-through 13.6795 dB;
+posterior ridge 13.0652 dB; posterior rank-1 MWF 12.5100 dB. SGEYESUB has
+strong native lateral suppression but fails resting preservation. Read RESULTS.md.
+Prospective central/posterior methods and primary references are in
 [docs/NONFRONTAL_CANDIDATES_20261017.md](docs/NONFRONTAL_CANDIDATES_20261017.md).
 
 ```powershell
@@ -22,6 +25,8 @@ User-added combined measurement: notebook07 crosses fixed frontal and posterior
 branches on the same full19-channel Klados windows, with central/temporal input
 unchanged. It measures whole-cap SNR from the actual combined output, not added
 regional scores. Separate CPU launch: `python tools/regional_comparison.py submit`.
+Downloaded results: `notebooks/executed/frontal-spatial-full-002.ipynb` and
+`notebooks/executed/frontal-posterior-combined-001.ipynb`.
 
 - [PLAN.md](PLAN.md): the task checklist and regional decisions.
 - [RESULTS.md](RESULTS.md): measured results and their limits.
