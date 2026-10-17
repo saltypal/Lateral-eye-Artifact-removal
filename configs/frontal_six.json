@@ -5,6 +5,11 @@
   "window": 1024,
   "historical_checkpoint_sha256": "4bb7c1b0cfa0e8341c4053ab3099efb16832f045f99e37afde1904a93c2cd0a9",
   "historical_test_cache_sha256": "8202b73390d31f587945b9a1891df95fa15f2b07c42744cbbbf4d64a1b9f7db4",
+  "historical_cache_sha256": {
+    "train": "c6a1113ab579200c9f1db50f3f660188a001fec2e4e9fa69b6a61909f7fcf6d0",
+    "val": "6dd2e858e0ad5a52931e9381f30f5e2933daace6ea2d8dd56717372a143e986c",
+    "test": "8202b73390d31f587945b9a1891df95fa15f2b07c42744cbbbf4d64a1b9f7db4"
+  },
   "kernel_sources": ["satyapaladugu/region-aware-eog-snr-context/1"],
   "dataset_sources": [],
   "bandroute_epochs": 15,

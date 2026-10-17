@@ -47,6 +47,8 @@ def download(item, destination, expected_hash=None):
 
 
 def main():
+    from run import ensure_auth
+    ensure_auth()
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True)
     args = parser.parse_args()

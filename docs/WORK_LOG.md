@@ -52,3 +52,7 @@ User requested historical VMD vs SVMD-FCM vs VME-GMETV vs EEGOAR-Net vs GEVD-MWF
 ### Six-method smoke001: adapter failure preserved
 
 Kaggle GPU source53a8cd3 passed27 numerical tests in4.76s and verified all author-source Git blobs. EEGOAR weights loaded strictly, then label loading failed because the64-channel metadata is a vector, not a scalar dictionary. Retrieved9 hash-verified payloads including actual partially executed notebook (3of6 code cells,1error). Repair accepts the original array format, validates64 labels and retains strict source/weight identities. Added MAE and source-defined spectral RRMSE plus numerical fixtures; repaired run must pass before full launch.
+
+### Six-method smoke002: incomplete author montage
+
+Kaggle GPU source025be10 passed29 tests in5.33s. The64-label author montage is a Unicode vector containing FPz but no FP1/FP2; the adapter correctly refused nonexistent exact names. Retrieved9 verified payloads including partial executed notebook. Repair uses the unchanged channel-shared temporal network with anonymous computational slots; strict spatial-width-one inspection and equal first/last-slot output must pass on Kaggle. No electrode is renamed. OAuth expired during monitoring; restored through refresh token without user intervention and added expiry checks to orchestration. All three parent-cache hashes are now pinned.

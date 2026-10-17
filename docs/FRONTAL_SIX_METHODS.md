@@ -102,3 +102,7 @@ After each cell, it saves the actual executed notebook, including execution
 counts, output tables, stream logs, errors and image payloads. Final artifact
 hashing happens after notebook completion, avoiding a self-hash cycle. Both the
 source notebook and executed notebook are downloaded and verified.
+
+Runtime rows explicitly state device and cached historical decomposition cost exclusion. Historical correction timing must not be advertised as complete runtime VMD latency. SVMD/VME include their on-demand decomposition; neural adapters run on the available GPU. These timings are practical execution costs, not a hardware-matched speed ranking.
+
+EEGOAR montage correction: the released label array omits FP1/FP2. The adaptation uses anonymous computational columns only after verifying every convolution has spatial width1 and equal first/last-slot outputs. This uses shared temporal weights; it does not claim FP1 is FPz or another electrode. The source architecture and weights remain unchanged; the channel-slot contract is saved.

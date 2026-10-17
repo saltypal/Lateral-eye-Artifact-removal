@@ -94,7 +94,11 @@ VME uses compactness 20000 and initial center 0 Hz. GMETV follows the original
 The ocular paper's unspecified optimized matrix is not claimed reproduced.
 
 EEGOAR-Net uses frozen author weights, 128 Hz 1-second segments, a 64-channel
-presence mask and only the seven frontal inputs. Resampling-only is a control.
+presence mask and only the seven frontal inputs. Its released montage omits
+FP1/FP2, so this adapter uses anonymous computational slots, not electrode aliases.
+The author network has temporal-only convolutions. Equal output in first/last
+slots must pass numerically before this adaptation is permitted. This contract
+and the unchanged author label list are saved. Resampling-only is a control.
 No amplitude unit conversion is assumed; original Klados unit ambiguity remains.
 
 GEVD–MWF covariance masks use training EOG activity only (upper/lower 30%), with

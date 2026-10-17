@@ -34,6 +34,8 @@ def load_caches(input_root, output, source_root, config):
     for partition in ('train', 'val', 'test'):
         path = parent/f'{partition}_vmd_cache.npz'
         digest = sha256(path)
+        if digest != config['historical_cache_sha256'][partition]:
+            raise ValueError('Historical '+partition+' cache checksum differs')
         if partition == 'test' and digest != config['historical_test_cache_sha256']:
             raise ValueError('Historical test cache checksum differs')
         with np.load(path, allow_pickle=False) as archive:
@@ -61,6 +63,7 @@ def load_caches(input_root, output, source_root, config):
         raise ValueError('Frozen model checkpoint differs')
     save_json(output/'data_contract.json', {'files':files, 'montage':montage,
         'record_partitions_disjoint':True, 'participant_partitions_verifiable':False,
+        'record_id_definition':'0-based local export record index, not publisher file number',
         'historical_evaluation_development_exposed':True,
         'cache_preprocessing':'historical 200 Hz 0.5–40 Hz; no refiltering',
         'condition_labels_available':False, 'LEMON_used':False})
@@ -182,6 +185,7 @@ def run(input_root, output, source_root, config):
     historical.load_state_dict(torch.load(checkpoint,map_location='cpu',weights_only=True)['model'])
     historical.inference_gate_mode, historical.inference_gate_offset = 'hard', 0.
     eegoar = EEGOAR(author_paths['eegoar'], montage['frontal_names'], device)
+    save_json(output/'eegoar_channel_contract.json',eegoar.slot_contract)
     bandroute, _ = bandroute_model(author_paths['bandroute'], device)
     print('AUTHOR_MODELS_LOADED', 'eegoar_parameters',eegoar.parameters,
           'bandroute_parameters',sum(p.numel() for p in bandroute.parameters()), flush=True)
@@ -268,7 +272,12 @@ def run(input_root, output, source_root, config):
                     'heog_cc':associations[channel,0],'veog_cc':associations[channel,1]})
             clean_rows.append({'method':method,'record':int(record),'start':int(start),
                                'status':status,**preservation(clean_prediction,target)})
-            times.append({'window':window,'method':method,'dirty_and_clean_runtime_s':time.perf_counter()-began})
+            times.append({'window':window,'method':method,
+                          'dirty_and_clean_runtime_s':time.perf_counter()-began,
+                          'historical_cached_vmd_cost_excluded':method=='historical_vmd',
+                          'inference_device':'cpu' if method in ('historical_vmd','svmd_fcm_adaptation',
+                              'vme_gmetv_adaptation','gevd_mwf','direct_eog_regression','identity',
+                              'resampling_identity') else str(device)})
             pd.DataFrame(rows).to_csv(output/'per_channel_window.csv',index=False)
             pd.DataFrame(clean_rows).to_csv(output/'clean_preservation.csv',index=False)
             pd.DataFrame(times).to_csv(output/'runtime.csv',index=False)

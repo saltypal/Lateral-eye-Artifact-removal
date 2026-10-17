@@ -73,8 +73,28 @@ class EEGOAR:
         order = list(channel_set) if isinstance(channel_set,dict) else list(np.asarray(channel_set).ravel())
         if len(order) != 64:
             raise ValueError('Author montage must contain exactly 64 labels')
-        upper = [str(name).upper() for name in order]
-        self.indices = [upper.index(name.upper()) for name in names]
+        # The released 64-label list omits FP1/FP2. Every author Conv2d has
+        # spatial width one and no electrode embedding: columns are shared
+        # temporal processing slots. Verify that property rather than aliasing
+        # a missing electrode to another anatomical location.
+        for layer in self.model.modules():
+            if isinstance(layer,torch.nn.Conv2d) and layer.kernel_size[1] != 1:
+                raise ValueError('Author network now mixes electrodes; anonymous slots are invalid')
+        self.indices = list(range(len(names)))
+        probe = torch.sin(torch.arange(128,device=device)*.1)
+        inputs = torch.zeros((2,1,128,64),device=device)
+        masks = torch.zeros((2,64),device=device)
+        inputs[0,0,:,0],inputs[1,0,:,-1] = probe,probe
+        masks[0,0],masks[1,-1] = 1,1
+        with torch.inference_mode():
+            check = self.model(inputs,masks)
+        torch.testing.assert_close(check[0,0,:,0],check[1,0,:,-1],atol=1e-6,rtol=1e-5)
+        self.slot_contract = {'anatomical_aliasing':False,
+            'mode':'shared channel-independent temporal processing in anonymous slots',
+            'input_channel_names':names,'computational_slots':self.indices,
+            'all_convolution_spatial_widths_one':True,
+            'first_last_slot_equal_output_verified':True,
+            'author_labels':order}
         self.device = device
         self.parameters = sum(value.numel() for value in self.model.parameters())
 

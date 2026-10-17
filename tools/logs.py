@@ -20,6 +20,8 @@ from kagglesdk.kernels.services.kernels_api_service import KernelsApiClient
 
 
 def main():
+    from run import ensure_auth
+    ensure_auth()
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True)
     args = parser.parse_args()

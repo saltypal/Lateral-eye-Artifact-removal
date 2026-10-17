@@ -1,6 +1,6 @@
 """Small local notebook author/submission tool. It never imports EEG modules."""
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import hashlib
 import json
 import os
@@ -20,6 +20,7 @@ def git(*arguments):
 
 
 def cli(*arguments):
+    ensure_auth()
     environment = os.environ.copy()
     environment.update(KAGGLE_CONFIG_DIR=str(ROOT/".kaggle-config"), PYTHONUTF8="1")
     result = subprocess.run(["kaggle", *arguments], env=environment, text=True,
@@ -27,6 +28,26 @@ def cli(*arguments):
     if result.returncode:
         raise RuntimeError(result.stderr or result.stdout)
     return result.stdout
+
+
+def ensure_auth():
+    """Refresh short-lived OAuth before calls; never print credential values."""
+    credential_path = Path.home()/'.kaggle/credentials.json'
+    if not credential_path.is_file():
+        return
+    expiration = json.loads(credential_path.read_text()).get('access_token_expiration')
+    if not expiration or datetime.fromisoformat(expiration) >= datetime.now(timezone.utc)+timedelta(minutes=1):
+        return
+    os.environ['KAGGLE_CONFIG_DIR'] = str(ROOT/'.kaggle-config')
+    from kaggle.api.kaggle_api_extended import KaggleApi
+    from kagglesdk.kaggle_creds import KaggleCredentials
+    api = KaggleApi()
+    api.authenticate()
+    with api.build_kaggle_client() as client:
+        credentials = KaggleCredentials.load(client)
+        if credentials is None:
+            raise RuntimeError('Kaggle OAuth credentials unavailable')
+        credentials.refresh_access_token()
 
 
 def notebook(spec):
