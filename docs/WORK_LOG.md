@@ -190,3 +190,15 @@ Save per-channel metrics, clean-input preservation, original H/V evaluation
 references, named predictions, calibration operators, failures and eight figures.
 Native preservation is a proxy, not reconstruction accuracy. Reference-access
 and failure outcomes stay visible. Numerical tests execute on Kaggle only.
+
+### Central run recovered and reviewed
+
+Kaggle status COMPLETE. Verified248/248 artifacts,3/3 actual executed code
+cells,eight inline figures,four HTML tables,zero errors. No calibration failures.
+Viewed pairedSNR, lateral H/V, pairedclean preservation and native rest
+preservation PNGs. Native selected central21 and temporal6 channels; no
+overlapping masks or frontal context. Individual negative-SNR windows and
+worst-record clean modifications retained in RESULTS.md; no qualified correction
+selected. Working central/temporal pass-through remains the safe default for
+future system composition; it is not artifact removal. No additional parameter
+tuning, model training or regional communication was started after review.

@@ -86,3 +86,20 @@ engineering preservation gates separately. Failed targets remain failures.
 
 Regional implementation remains outside this extension. Discussion may follow
 closeout; integration readiness is not established by closing a failed campaign.
+
+## Active central/temporal comparison
+
+User confirmed central=FC/C/CP; temporal=FT/T/TP separately. This supersedes
+the earlier broad central grouping for this experiment, without changing
+legacy regional definitions. Do not pool temporal rows into central metrics.
+
+- [x] Define disjoint labels and calibration-only fixed recipes.
+- [x] Author reusable module, numerical fixtures and standalone notebook.
+- [x] Publish20584ab and submit Kaggle CPU runcentral-temporal-001.
+- [x] Complete 38 contracts and eight-record paired Klados evaluation.
+- [x] Complete four-participant native OSF evaluation; all corrective preservation gates fail.
+- [x] Recover 248 verified artifacts, 3/3 executed cells, eight figures; inspect key diagnostic plots.
+- [x] Document central and temporal outcomes, including negative-SNR windows and clean-input harm.
+
+Klados calibration/scoring filter boundaries differ from archived frontal
+caches, so region scores must not be combined or claimed a matched comparison.

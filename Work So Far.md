@@ -117,3 +117,36 @@ pretrained-only reproduction; no fake checkpoint, replacement or training.
 Existing scores and native preservation failure stand unchanged. The frontal
 comparison/review campaign is complete with limitations; production
 qualification and regional integration have not been achieved.
+
+## Central/temporal stage launched
+
+User confirmed FC/C/CP central and separate FT/T/TP temporal results. Source
+20584ab, Kaggle CPU central-temporal-eog-comparison/1, runcentral-temporal-001.
+Identity plus calibration-only ridge0.001 and GEVD–MWF rank1 at fixed0.25/1
+strengths. Fits, masks, metrics and predictions remain separate per group.
+No new VMD, neural training, frontal communication, LEMON or confirmation.
+Use eight existing Klados record identities with independent calibration/score
+filtering and four development OSF participants with whole-trial boundaries.
+Numerical results and retrieval remain pending at this chronological entry.
+
+### Central/temporal numerical outcomes
+
+Source20584ab completed eight Klados records and four OSF participants with
+38contracts, zero calibration failures. Central native21 FC/C/CP channels;
+temporal6 FT/T/TP channels. Standalone fits per group, no front/back context.
+Central raw10.5743dB becomes ridge25%12.6422, ridge100%18.3343, MWF25%10.4977,
+MWF100%9.0605dB. Temporal raw12.3977 becomes13.9872,16.7267,12.2443,9.8424dB.
+All corrective preservation gates fail. Central native mean rest changes3.55%,
+14.21%,7.92%,31.70% respectively; worst-participant ridge25%4.06% above1%.
+Clean-input worst-record ridge100% central modification89.35%, temporal136.29%.
+Record16/start3024 central ridge100%−1.073532dB and temporal−4.110142dB remain
+in the results; means do not establish reliable correction. No neural-loss
+percentage is inferred from relative signal modification. Eight figures
+produced; SNR, lateral correlation and both preservation plots visually
+inspected. Full details and exact run links are in RESULTS.md.
+
+Recoverycomplete:248/248 verified payloads, actual3/3-cell notebook,eight plots,
+four tables,zero errors. Kaggle status COMPLETE. The central experiment is
+finished with negative preservation findings; no corrective winner was
+qualified or composed with frontal output. Pass-through remains the working
+default. All source/numerical identities and failure evidence are preserved.

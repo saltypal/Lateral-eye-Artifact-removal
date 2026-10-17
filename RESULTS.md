@@ -1,3 +1,10 @@
+# EEG ocular-removal results
+
+Latest completed stage: central/temporal comparison,38 contracts and248 verified
+artifacts. Central ridge100% output18.3343dB on reused paired Klados records,
+but all corrective preservation checks fail. See the central/temporal section
+below; frontal results remain a separate benchmark.
+
 # Frontal results: paired Klados and native OSF
 
 All processing is frontal-only. No LEMON or new AutoVMD search is active.
@@ -186,3 +193,68 @@ frontal output remains historical16.134624dB/CC0.984644 on reused Klados
 records. Native preservation remains failed, so there is no qualified frontal
 winner. Regional/shared-message implementation is outside this completed
 extension. No new training or numerical improvement is claimed.
+
+# Central and temporal comparison — 17 October 2026
+
+Run `central-temporal-001`, source `20584ab33028b43fada3912960e926c7948f70cc`,
+Kaggle CPU kernel `satyapaladugu/central-temporal-eog-comparison/1`.
+Central = FC/C/CP, temporal = FT/T/TP with separate fits/results. Native OSF
+contains21 central and6 temporal channels per examined session; Klados central
+rows are C3/C4/Cz, temporal T3/T4/T5/T6 using the disclosed paper-list mapping.
+Eight archived Klados test records,24 windows per group; four OSF participants,
+32 scored trials per group. All correction fits use calibration only.
+
+| Fixed method | Central output SNR (dB) | Central clean EEG CC | Temporal output SNR (dB) | Temporal clean EEG CC |
+|---|---:|---:|---:|---:|
+| Identity |10.5743|0.926343|12.3977|0.947137|
+| Ridge,25% strength |12.6422|0.950379|13.9872|0.963254|
+| Ridge,100% strength |18.3343|0.969361|16.7267|0.951142|
+| GEVD–MWF,25% strength |10.4977|0.925898|12.2443|0.949004|
+| GEVD–MWF,100% strength |9.0605|0.917523|9.8424|0.930023|
+
+SNR is pooled energy per window, then equal window means within records and
+equal record means in dB. CC is ordinary Pearson. Ridge penalty0.001 and MWF
+rank1 are fixed; strengths0.25/1 are predefined ablations, not selected recipes.
+These results do not establish superiority over other ranks or MWF algorithms.
+The separately filtered calibration/scoring protocol differs from archived
+frontal caches: no matched cross-region superiority or summed regional dB claim.
+
+Native OSF central results (unchanged H/V references, equal participant weight):
+
+| Method | Blink abs VEOG CC | Lateral abs HEOG CC | Mean resting RMS modification |
+|---|---:|---:|---:|
+| Before / identity |0.783635|0.187934|0%|
+| Ridge25% |0.708279|0.126766|3.55%|
+| Ridge100% |0.109971|0.144744|14.21%|
+| MWF25% |0.725631|0.189268|7.92%|
+| MWF100% |0.219712|0.190806|31.70%|
+
+**No corrective method passes all declared preservation checks.** Worst
+participant mean central rest modification is4.06% for ridge25% and16.25% for
+ridge100%, versus1% engineering threshold. Paired clean-input controls also
+fail: ridge100% worst-record central modification89.35%, temporal136.29%.
+These are signal-modification ratios, not percentages of neural activity lost.
+The strong mean SNR therefore cannot qualify ridge as a safe central method.
+
+Mean scores conceal poor examples: record16/start3024 central ridge100% output
+SNR is−1.073532dB; its temporal output is−4.110142dB. Temporal record45 also
+has negative-output windows. All are included, with no fit failures/exclusions.
+Preservation/comparator gates and individual rows remain available in artifacts.
+Identity is the pass-through control, not a successful artifact-removal model.
+Native EEG has no paired clean target, so no native reconstruction SNR.
+
+The experiment passed38 contracts in5.02s; zero calibration failures. It saved
+eight figures, named prediction arrays, original references, fitted operators,
+per-channel/window metrics, source identities and completion state.
+Open [the executed central/temporal notebook](notebooks/executed/central-temporal-001.ipynb).
+Recovery verification is recorded in results/central-temporal-20261017/central-temporal-001/retrieval_receipt.json.
+
+The next research decision is reliable detection/transfer of ocular activity
+without modifying clean intervals. Frontal information passing is not yet
+implemented or qualified. VMD, neural training, LEMON and confirmation data
+were not used in this central experiment.
+
+Recovery confirmed:248/248 payloads verified,3/3 executed code cells,eight
+inline figures,four HTML tables and zero error outputs. Kaggle reports COMPLETE.
+Scientific execution SHA20584ab is frozen; subsequent documentation commits do
+not alter the experiment.

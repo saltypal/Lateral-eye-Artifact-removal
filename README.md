@@ -1,7 +1,6 @@
 # EEG ocular artifact removal
 
-One project, three frontal evaluation notebooks plus one pretrained closeout,
-and one current results document.
+One modular project, Kaggle experiment notebooks, and one current results document.
 
 - [PLAN.md](PLAN.md): the task checklist and regional decisions.
 - [RESULTS.md](RESULTS.md): measured results and their limits.
@@ -91,3 +90,20 @@ contracts,22 verified artifacts,3/3 executed cells,2 figures,4 tables, no errors
 Open `notebooks/executed/frontal-pretrained-closeout-002.ipynb`. Version1's
 failed source-text identity check remains preserved. Both new candidates are
 not run; native preservation qualification remains false.
+
+Central/temporal stage: `notebooks/05_Central_Temporal_Comparison.ipynb`
+compares identity, calibrated ridge and rank-one GEVD–MWF at fixed25%/100%
+strengths. FC/C/CP and FT/T/TP use separate fits/results. No VMD or frontal
+context. Original Klados and native OSF only; numerical execution on Kaggle CPU.
+
+```powershell
+python tools/central.py status
+python tools/logs.py --run-id central-temporal-001
+python tools/retrieve.py --run-id central-temporal-001
+```
+
+Central/temporal run `central-temporal-001` is complete:38 contracts,248
+verified payloads,3/3 executed cells,eight figures,four tables,no errors. Open
+`notebooks/executed/central-temporal-001.ipynb`. Central ridge100% reaches
+18.3343dB mean paired output but fails preservation; all corrective candidates
+fail the declared gates. Pass-through remains the working default.
