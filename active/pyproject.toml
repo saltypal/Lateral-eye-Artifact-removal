@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "klados-osf-eog"
+version = "0.1.0"
+requires-python = ">=3.10"
+description = "Readable Klados/OSF-only ocular artifact comparison"
+dependencies = ["numpy==1.26.4", "scipy==1.14.1", "scikit-learn==1.5.2", "pandas==2.2.3", "matplotlib==3.8.4", "pymatreader==1.0.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

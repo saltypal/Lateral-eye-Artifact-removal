@@ -1,0 +1,162 @@
+{
+  "seed": 42,
+  "source_manifest_sha": "0dc1b6566fea5f17eb9809849644f30134fc2b4bf8963665754ab5de20406505",
+  "partitions": {
+    "osf:p09": {
+      "role": "confirmation",
+      "fold": null
+    },
+    "osf:p19": {
+      "role": "confirmation",
+      "fold": null
+    },
+    "osf:p16": {
+      "role": "confirmation",
+      "fold": null
+    },
+    "osf:p01": {
+      "role": "confirmation",
+      "fold": null
+    },
+    "osf:p22": {
+      "role": "confirmation",
+      "fold": null
+    },
+    "osf:p08": {
+      "role": "confirmation",
+      "fold": null
+    },
+    "osf:p15": {
+      "role": "confirmation",
+      "fold": null
+    },
+    "osf:p17": {
+      "role": "confirmation",
+      "fold": null
+    },
+    "osf:p05": {
+      "role": "development",
+      "fold": 0
+    },
+    "osf:p34": {
+      "role": "development",
+      "fold": 1
+    },
+    "osf:p06": {
+      "role": "development",
+      "fold": 2
+    },
+    "osf:p27": {
+      "role": "development",
+      "fold": 3
+    },
+    "osf:p18": {
+      "role": "development",
+      "fold": 4
+    },
+    "osf:p20": {
+      "role": "development",
+      "fold": 0
+    },
+    "osf:p25": {
+      "role": "development",
+      "fold": 1
+    },
+    "osf:p26": {
+      "role": "development",
+      "fold": 2
+    },
+    "osf:p13": {
+      "role": "development",
+      "fold": 3
+    },
+    "osf:p21": {
+      "role": "development",
+      "fold": 4
+    },
+    "osf:p33": {
+      "role": "development",
+      "fold": 0
+    },
+    "osf:p31": {
+      "role": "development",
+      "fold": 1
+    },
+    "osf:p12": {
+      "role": "development",
+      "fold": 2
+    },
+    "osf:p14": {
+      "role": "development",
+      "fold": 3
+    },
+    "osf:p39": {
+      "role": "development",
+      "fold": 4
+    },
+    "osf:p29": {
+      "role": "development",
+      "fold": 0
+    },
+    "osf:p36": {
+      "role": "development",
+      "fold": 1
+    },
+    "osf:p07": {
+      "role": "development",
+      "fold": 2
+    },
+    "osf:p35": {
+      "role": "development",
+      "fold": 3
+    },
+    "osf:p04": {
+      "role": "development",
+      "fold": 4
+    },
+    "osf:p03": {
+      "role": "development",
+      "fold": 0
+    },
+    "osf:p38": {
+      "role": "development",
+      "fold": 1
+    },
+    "osf:p32": {
+      "role": "development",
+      "fold": 2
+    },
+    "osf:p30": {
+      "role": "development",
+      "fold": 3
+    },
+    "osf:p02": {
+      "role": "development",
+      "fold": 4
+    },
+    "osf:p23": {
+      "role": "development",
+      "fold": 0
+    },
+    "osf:p24": {
+      "role": "development",
+      "fold": 1
+    },
+    "osf:p28": {
+      "role": "development",
+      "fold": 2
+    },
+    "osf:p10": {
+      "role": "development",
+      "fold": 3
+    },
+    "osf:p11": {
+      "role": "development",
+      "fold": 4
+    },
+    "osf:p37": {
+      "role": "development",
+      "fold": 0
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "source": "https://data.mendeley.com/datasets/wb6yvr725d/4",
+  "doi": "10.17632/wb6yvr725d.4",
+  "version": 4,
+  "licence": "CC BY 4.0",
+  "files": [
+    {
+      "name": "Contaminated_Data.mat",
+      "bytes": 28330804,
+      "sha256": "8756d0f8ab6d1293c4f9bcb2b913780e642c0aff28b350fa607ba89dbcfccf9e",
+      "download": "https://data.mendeley.com/public-files/datasets/wb6yvr725d/files/4715578f-bc5a-4d44-ad84-1edc5880a078/file_downloaded"
+    },
+    {
+      "name": "HEOG.mat",
+      "bytes": 1198492,
+      "sha256": "f4ea94385578b5d040239cf80aa2226e7906df5848f1003c00503559e281e9d8",
+      "download": "https://data.mendeley.com/public-files/datasets/wb6yvr725d/files/3c971ecd-5370-4bca-8899-47e4a3a1cd8c/file_downloaded"
+    },
+    {
+      "name": "Pure_Data.mat",
+      "bytes": 22924611,
+      "sha256": "d5c8e9f0f172ebfa137416a600c39570f885e4242af873aa6fb929fc65dae00b",
+      "download": "https://data.mendeley.com/public-files/datasets/wb6yvr725d/files/b2ba223a-3c10-4c55-9810-62abc4a05a56/file_downloaded"
+    },
+    {
+      "name": "VEOG.mat",
+      "bytes": 1205391,
+      "sha256": "bcc2ca0c577fc093ac4d09bbf3df5ba9147b715f0a7f44a80824c492b51b3b22",
+      "download": "https://data.mendeley.com/public-files/datasets/wb6yvr725d/files/2222a5a6-b275-451b-8ce5-75d4b677aa5c/file_downloaded"
+    }
+  ]
+}

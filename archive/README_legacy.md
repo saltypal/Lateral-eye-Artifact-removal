@@ -1,0 +1,115 @@
+# Regional VMD EOG removal
+
+## Active workflow: fixed frontal VMD replication
+
+Campaign `vmd-frontal-replication-20261011` uses
+`configs/frontal_replication.json`. **AutoVMD is stopped.** The cancelled search,
+caches and older workflows remain historical evidence. Do not restart their
+search/screening queues. K3/alpha2000 and K4/alpha2000 are separate fixed arms;
+correction settings can be selected within an arm, but K is not auto-selected.
+
+Only verified frontal channels receive VMD. Posterior/shared/unknown EEG stays
+unchanged until a validated frontal system is integrated with the other chat's
+versioned posterior experts. Reproduction gaps and adaptations are explicit in
+`docs/FRONTAL_PAPER_AUDIT.md`; execution and the target checklist are in
+`docs/FRONTAL_REPLICATION_PLAN.md`.
+
+Notebooks 24/25/26 execute numerical contracts, frontal comparisons and native
+OSF validation. Reusable implementation is in `frontal_methods.py`,
+`frontal_replication.py` and `frontal_native.py`. The sequence is frontal
+validation, regional integration, then EEG-only students. Neither software tests
+nor the historical EOG-assisted 17.9 dB result qualifies the new system.
+
+From this directory:
+
+```powershell
+python tools/kaggle_campaign.py status --run-id frontal-gain-event-hybrid-001
+python tools/kaggle_campaign.py retrieve --run-id frontal-calibration-hybrid-001
+```
+
+## Measured delivery status (12:16 UTC, 11 October 2026)
+
+The archived frozen EOG-assisted VMD system reproduced **17.92721 dB** on
+its reused unknown-montage benchmark. The new verified-frontal K3/2000
+calibration hybrid achieved **17.11281 dB** on controlled development data;
+matched raw calibration scored **18.19325 dB**. The benchmarks and aggregation
+are different. VMD superiority and independent qualification are unproven.
+
+Native blink/lateral suppression improved but resting modification of 32-46%
+failed preservation. Separate-axis gain and unscaled event gating were negative
+controls. Notebook 41 tests gain-adjusted event support; notebook 42 will run
+native validation only if the corresponding controlled gates pass. Posterior
+integration and new EEG-only neural development remain blocked by frontal
+preservation. See [measured results](docs/FRONTAL_RESULTS.md) and
+[deadline checklist](docs/SIX_HOUR_DELIVERY.md). Every live run pins one SHA;
+later commits do not change a running experiment.
+
+## Historical workflows
+
+The commands and original campaign notes below document earlier work. Active
+launches use the frontal configuration and the exact parent versions recorded
+in their run specifications.
+
+Kaggle notebooks execute and explain the classical research stages. Reusable
+algorithms live in `src/vmd_eog`. Git branch
+`research/vmd-eog-removal-notebooks` is the source of truth. Each fresh launch
+resolves the latest published SHA and pins it for the whole run.
+
+Local work is authoring/static review/Git/CLI orchestration. Numerical computation
+is guarded to Kaggle. Run-specific outputs are saved and retrieved under `results`.
+See `TARGETS.md` and `configs/campaign.json` for the completion and acceptance contract.
+
+Candidate teacher: frontal VMD + joint HEOG/VEOG projection, posterior GEVD-MWF/ICA with raw
+frontal support. Signed left/right context retains lateral polarity. Estimates
+share one input and are subtracted once. User permits the EEG-only student phase
+automatically if all classical gates pass; gate artifacts enforce this condition.
+
+The pipeline is not yet research-qualified. VMD solver/parity and correction
+mechanism contracts passed on Kaggle, but the 15–20 dB target and full regional
+preservation gates remain unestablished. Neural notebooks currently define
+planned interfaces; model implementations and training remain gated. Do not
+describe an authored notebook, synthetic fixture or mechanism pilot as final
+accuracy evidence.
+
+From this project directory, inspect or retrieve an archived run with:
+
+```powershell
+python tools/kaggle_campaign.py status --run-id vmd-001
+python tools/kaggle_campaign.py retrieve --run-id vmd-001 --file-pattern '(summary|run_spec|execution_state)\.json$'
+```
+
+An independent new experiment resolves the latest published source once:
+
+```powershell
+python tools/kaggle_campaign.py submit --stage vmd --run-id vmd-new --profile full --kernel-source satyapaladugu/vmd-eog-corpus/2
+```
+
+Use `--source-sha <exact archived SHA>` for reproduction. Keep parent kernel
+versions pinned and give every rerun a new ID. `docs/SCIENTIFIC_EXPLANATION.md`
+explains mode vectors, frequency bins, regional cooperation, metrics and cost.
+
+The review that includes complete-trial native evaluation waits for immutable
+parents before submission. It remains strictly classical:
+
+```powershell
+python tools/phase_a_chain.py --vmd-run vmd-001 --posterior-run posterior-001 --corpus-run corpus-002 --contracts-run contracts-007 --fixture-run classical-fixture-005 --regional-run regional-paper-001 --native-run native-protocol-full-001 --review-run review-paper-002 --interval 45
+```
+
+Notebook 04a diagnoses VMD reconstruction, correction gates and ocular baseline
+handling; notebook 07b evaluates complete native conditions. Native OSF receives
+paper-based correlation/RMSE/PSD measures, never clean-reference reconstruction
+SNR. Five-participant/eight-second null sampling is an explicitly declared
+adaptation. See `docs/EVALUATION_PROTOCOL.md` for source equations and limitations.
+
+Notebook 04b separately tests the prescribed VMD paper's mode-domain SOBI idea,
+with disclosed EOG/entropy selection and delay-bank adaptations. Its bounded
+pilot/comparison cannot select a final teacher. To launch a new pilot after
+publishing source, use:
+
+```powershell
+python tools/kaggle_campaign.py submit --stage vmd-sobi --run-id vmd-sobi-new --profile pilot --kernel-source satyapaladugu/vmd-eog-corpus/2 --kernel-source satyapaladugu/vmd-eog-vmd/1
+```
+
+## Comprehensive research ledger
+
+[Work So Far.md](<Work So Far.md>) records the methodology, historical and current results, stopped AutoVMD work, posterior evidence, failures and remaining qualification. [Continuing logging contract](docs/RESEARCH_LOGGING_CONTRACT.md) defines updates for every meaningful experiment. Refresh saved metadata with `python tools/build_work_ledger.py`; this does not poll Kaggle or run EEG evaluation.

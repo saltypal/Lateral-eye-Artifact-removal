@@ -1,0 +1,11 @@
+{
+  "source_git_sha": "ca91a42bcd741d69af22d1d97c45f8eb8e1d6dc4",
+  "archive": "legacy_20261017_ca91a42bcd74.zip",
+  "archive_sha256": "ac64334111dcda905ad20b05d743277ef1c981fdc6f5f6f5bd5a925d3a5951c6",
+  "tracked_entries": 382,
+  "autovmd_sha256": "4c560d0ddc55569042485cdc1ee0c6d0a7f4386a82e137a76f667d10131d7be3",
+  "preserved_results_location": "results/ (ignored by Git, retained in place)",
+  "untracked_user_documents": "retained in place; not silently added or moved",
+  "legacy_files_moved": false,
+  "reason": "Preserve other chats' open files and live-path compatibility; active/ is isolated and imports no legacy package."
+}
