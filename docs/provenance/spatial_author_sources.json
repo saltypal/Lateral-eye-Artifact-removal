@@ -1,0 +1,53 @@
+{
+  "sgeyesub": {
+    "repository": "rkobler/eyeartifactcorrection",
+    "git_sha": "2c95b4f46f37670d25399ac0fdd705ae18248b25",
+    "files": [
+      {
+        "path": "algorithms/sgeyesub.m",
+        "sha": "420ca1c3da50313f426feee02daf074dc66bf6dc",
+        "size": 8420
+      },
+      {
+        "path": "algorithms/spatial_filter.m",
+        "sha": "da78cbd39daf4fbadf1a3d123d7896924823461d",
+        "size": 1057
+      },
+      {
+        "path": "external/cov_shrink.m",
+        "sha": "dd57a9f8cd77c25fb159e3936791a2f45fe36eb4",
+        "size": 4486
+      },
+      {
+        "path": "utility/equalizeLabels.m",
+        "sha": "b419f7099dd616cfd39119d5a48affe12cb77b4c",
+        "size": 1765
+      },
+      {
+        "path": "LICENSE",
+        "sha": "0a041280bd00a9d068f503b8ee7ce35214bd24a1",
+        "size": 7652
+      }
+    ]
+  },
+  "eeglab": {
+    "repository": "sccn/eeglab",
+    "git_sha": "8ac485f654d6bbb1a6acb8dc9ef3f2eaf3d409ba",
+    "files": [
+      {
+        "path": "functions/sigprocfunc/runica.m",
+        "sha": "0bfb333240e4892aee2888b3d37a6540032ffdfe",
+        "size": 66545
+      },
+      {
+        "path": "LICENSE",
+        "sha": "dddfb5b628619fa98ba22f1df8e4f4329fe0b9a5",
+        "size": 1514
+      }
+    ]
+  },
+  "regica": {
+    "url": "https://sccn.ucsd.edu/eeglab/plugins/REG-ICAv1.00.zip",
+    "sha256": "c0f2f6c696517940b2a011e2b53938336f6176ada5aba6ef192172bacc9b5a51"
+  }
+}

@@ -239,3 +239,17 @@ contains crls_regica/scrls_regica. A runtime adapter must call verified routines
 explicitly and document compatibility repairs rather than claim the untouched
 wrapper works. scrls_regica depends on shipped fl.m; no symbolic toolbox was
 identified in that routine. No numerical solver was run locally.
+
+## Frontal-first spatial author comparison implementation
+
+User clarified sequencing: compare frontal SGEYESUB/REG-ICA first; other
+regional approaches are subsequent research, no central/posterior scoring now.
+Prepared original author backend through Octave, pinned SGEYESUB2c95b4f and
+EEGLAB8ac485f plus REGICA archive hash. One-hot ind2vec helper replaces only
+a missing MATLAB toolbox encoding. Author solvers remain unchanged.
+REGICA calibration-frozen Infomax/FD selection and author SRLS trial-local
+adaptation are explicitly labelled an evaluation adaptation; first2 component
+outputs retained to avoid original zero-initialization boundary deletion.
+Full58channel native fit, score common5frontal exact parent inputs.
+A focused readiness run must verify true six-class calibration and original
+runtime before full four-participant evaluation. No new results claimed.
