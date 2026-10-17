@@ -81,8 +81,8 @@ engineering preservation gates separately. Failed targets remain failures.
 - [x] Record missing compatible source/checkpoint pairs and limited supplement access.
 - [x] Preserve the no-training/no-substitute rule; both candidates are not run.
 - [x] Submit separate numbered CPU closeout notebook with exact published source.
-- [ ] Recover/verify executed extension notebook, tables, figures and contracts.
-- [ ] Deliver frontal closeout with native preservation failure retained.
+- [x] Recover/verify executed extension: 36 contracts, 22 payloads, 3/3 cells, 2 figures, 4 tables, no errors.
+- [x] Deliver frontal closeout with both unavailable candidates and native preservation failure retained.
 
 Regional implementation remains outside this extension. Discussion may follow
 closeout; integration readiness is not established by closing a failed campaign.

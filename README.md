@@ -77,11 +77,17 @@ checkpoint; no training or substitute architecture is used.
 
 ```powershell
 python tools/frontal_pretrained.py status
-python tools/logs.py --run-id frontal-pretrained-closeout-001
-python tools/retrieve.py --run-id frontal-pretrained-closeout-001
+python tools/logs.py --run-id frontal-pretrained-closeout-002
+python tools/retrieve.py --run-id frontal-pretrained-closeout-002
 ```
 
 The discovery audit can be refreshed with `python tools/audit_frontal_pretrained.py`.
 It updates the evidence snapshot, so reviewed eligibility/configuration identities
 must be refreshed and committed before another notebook submission. A repository
 search hit alone never authorizes treating an unverified checkpoint as evaluated.
+
+The pretrained closeout completed as version2, `frontal-pretrained-closeout-002`:36
+contracts,22 verified artifacts,3/3 executed cells,2 figures,4 tables, no errors.
+Open `notebooks/executed/frontal-pretrained-closeout-002.ipynb`. Version1's
+failed source-text identity check remains preserved. Both new candidates are
+not run; native preservation qualification remains false.

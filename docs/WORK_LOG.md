@@ -152,3 +152,18 @@ with one error. Repair defines discovery identity as canonical JSON SHA256
 encoding and adds a CRLF/LF equivalence plus changed-content rejection fixture.
 Scientific parent result/data SHA256 and byte-count checks remain unchanged.
 A new saved version will rerun contracts and closeout; old failure preserved.
+
+### Pretrained closeout002 completed and recovered
+
+Exact sourcea8c7b7171ad15b373422e233357f670159b0dee8, kernelversion2, run
+frontal-pretrained-closeout-002. Passed36 contracts with14 recorded library
+warnings in4.86s. RUN_COMPLETE reached at87.17s kernel runtime. Retrieved
+22/22 payloads with SHA256 and byte-count verification; actual executed
+notebook3/3 code cells,2 figures,4 HTML tables, zero error outputs. Both PNGs
+visually inspected: all paired methods present, native resampling-only control
+properly absent, before-reference lines and resting modification clearly shown.
+First failed version retained. New inference/training0, both model candidates
+blocked, parents pinned and unchanged, no native preservation resolution.
+Source snapshot dates and access limitations remain explicit. This closes the
+requested frontal experiment/release-review scope without claiming a qualified
+frontal method or starting central/posterior information passing.

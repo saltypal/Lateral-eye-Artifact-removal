@@ -164,3 +164,25 @@ docs/provenance/frontal_pretrained_discovery.json. A separate numbered CPU
 notebook verifies source/hash-pinned completed parents and presents this
 explicit non-execution decision beside the existing metrics. Its completion
 will not change any method score or resolve the native preservation failure.
+
+The extension is now complete: sourcea8c7b7171ad15b373422e233357f670159b0dee8,
+Kaggle kernel `satyapaladugu/frontal-pretrained-closeout/2`,
+run `frontal-pretrained-closeout-002`. **36 contracts passed**; all22 payloads
+were retrieved and SHA256/length verified. The actual executed notebook has
+3/3 executed code cells,2 inline figures,4 HTML tables and zero error outputs.
+Both generated figures were visually inspected for labels, bars and baselines.
+
+Open [the executed pretrained closeout](notebooks/executed/frontal-pretrained-closeout-002.ipynb).
+The notebook shows existing paired reconstruction and native suppression/
+preservation side by side. It does not contain EEG-WNet/Diff-ADN predictions.
+The first version passed35 contracts but failed because Git newline conversion
+changed the raw source-JSON checksum; its failure notebook is preserved. The
+repair uses an explicitly defined canonical-JSON identity for that text snapshot
+only; dataset and scientific artifact checks remain byte-exact.
+
+**Frontal closeout:** the six existing methods and correlation audits are done;
+two new pretrained candidates were investigated but not run. Best paired
+frontal output remains historical16.134624dB/CC0.984644 on reused Klados
+records. Native preservation remains failed, so there is no qualified frontal
+winner. Regional/shared-message implementation is outside this completed
+extension. No new training or numerical improvement is claimed.

@@ -101,3 +101,19 @@ Source266657f, runfrontal-pretrained-closeout-001, CPU Kaggle kernel
 satyapaladugu/frontal-pretrained-closeout/1. The notebook verifies archived
 frontal comparison parents and produces closeout tables/figures; it creates
 no new predictions. Numerical completion/recovery remains pending at this entry.
+
+### Pretrained extension completed
+
+Version1 source266657f passed35 contracts, then failed the source discovery
+JSON byte check because WindowsCRLF and GitLF differed. Retrieved6 failure
+payloads including the actual2/3-cell notebook and error. Version2 source
+a8c7b7171ad15b373422e233357f670159b0dee8 fixes text-snapshot canonicalization
+with an added newline/content-change regression fixture; scientific parent
+checksums stay byte-exact. It passed36 contracts, produced22 verified payloads,
+3/3 executed cells,2 figures,4 HTML tables and zero errors. Both figures were
+visually inspected. Actual notebook: notebooks/executed/frontal-pretrained-closeout-002.ipynb.
+New models run:0. EEG-WNet and Diff-ADN remain unavailable for verified
+pretrained-only reproduction; no fake checkpoint, replacement or training.
+Existing scores and native preservation failure stand unchanged. The frontal
+comparison/review campaign is complete with limitations; production
+qualification and regional integration have not been achieved.
