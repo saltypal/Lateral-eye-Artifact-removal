@@ -292,3 +292,13 @@ verify copied bytes/hashes, paired-window coverage and calibration-input
 identity before reusing outputs/models. Reused fit costs remain in parent logs,
 distinct from new-runtime rows. No clean EEG selects this repair, no missing
 trials excluded and no other regions run.
+
+Repair submitted as frontal-spatial-full-002/source
+d87b2e43116c9a7d58dd3adf755ab8df6a0698e1, Kaggle version3.42 contracts passed,
+including the one-versus-two-ULP regression. Kaggle accepted the previous
+failed version as a metadata parent but did not expose its manifest to the
+repair; the current run therefore recomputes instead of restoring. This is an
+operational recovery failure, not a denoising score. User was explicitly told
+the earlier reuse statement was premature. Failed359-payload archive is safe
+locally. Future runner logs a missing recovery mount explicitly and writes
+the fresh-recomputation decision; no successful cache-recovery claim is made.

@@ -86,6 +86,8 @@ def main():
                              "KLADOS_CLEAN_CC_AND_NPZ_LABELS_VERIFIED ","OSF_FRONTAL_TRIAL_SAVED ",
                              "SPATIAL_KLADOS_RECORD_SAVED ","SPATIAL_FIT_SAVED ",
                              "SPATIAL_FRONTAL_TRIAL_SAVED ","FRONTAL_SPATIAL_READINESS_PASSED ",
+                             "SPATIAL_KLADOS_RECOVERED ","SPATIAL_TRIAL_RECOVERED ",
+                             "SPATIAL_RECOVERY_UNAVAILABLE_FRESH_RECOMPUTATION",
                              "AUTHOR_BACKEND_INSTALL_START",
                              "RUN_COMPLETE ", "Traceback (most recent call last)"))
                 or (" passed" in data and data[:1].isdigit())):

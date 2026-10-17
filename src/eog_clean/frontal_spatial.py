@@ -40,7 +40,13 @@ def restore_failed_parent(input_root,output):
     for path in Path(input_root).rglob('artifact_manifest.json'):
         manifest=json.loads(path.read_text())
         if manifest.get('run_id')=='frontal-spatial-full-001':matches.append((path,manifest))
-    if not matches:return
+    if not matches:
+        save_json(Path(output)/'recovery_parent.json',{'available':False,
+            'requested_parent':'frontal-spatial-full-001/e8d0021',
+            'action':'fresh recomputation; no cached outputs or fits reused',
+            'scientific_acceptance_thresholds_changed':False})
+        print('SPATIAL_RECOVERY_UNAVAILABLE_FRESH_RECOMPUTATION',flush=True)
+        return
     if len(matches)!=1:raise ValueError('Failed parent must be unique')
     path,manifest=matches[0]
     if manifest['git_sha']!='e8d0021bf1c2e67b28babb370411b1e7590fa868' or manifest['complete']:

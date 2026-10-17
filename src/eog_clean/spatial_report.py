@@ -114,7 +114,12 @@ def report(output,input_root):
     text+='Raw/target scoring arrays match pinned previous comparisons exactly; calibration/training and information access remain different. '
     text+='The newly calibrated ridge control is not the earlier score-window-fitted ridge. '
     text+='Clean targets never fit these new methods. Native rest is a proxy, without reconstruction SNR. '
-    text+='Recovery reuses checksum-verified completed outputs and calibration models after input identity checks; actual scored frontal rows use the archived bytes. '
+    recovery=json.loads((output/'recovery_parent.json').read_text()) if (output/'recovery_parent.json').is_file() else {}
+    if recovery.get('copied_verified_files'):
+        text+='Recovery reused checksum-verified completed outputs and calibration models after input identity checks. '
+    else:
+        text+='This execution recomputed the comparisons; no failed-parent outputs or fitted models were reused. '
+    text+='Actual scored frontal rows use the archived bytes. '
     text+='Permitted one-float32-ULP preprocessing differences are recorded separately from unchanged scientific thresholds. Runtime.csv covers this execution; original fit costs for recovered models remain in the failed parent logs. '
     text+='All failure cases remain as identity with explicit logs; solver step caps are not convergence. '
     text+='Reused development evidence cannot establish production qualification or regional integration.\n'
