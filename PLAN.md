@@ -120,3 +120,24 @@ frontal-only; no explicit inter-region messaging is introduced here.
 
 Detailed selection, information-access and non-reproduction rules are in
 docs/REGIONAL_SELECTION.md. No new numerical scores are available yet.
+
+## User-added combined frontal/posterior measurement
+
+User added combined regional evaluation while the frontal SG/REG run remains
+active. This explicitly expands the earlier frontal-only execution boundary.
+Central/temporal correction and message passing remain excluded.
+
+- [x] Design nine fixed combinations: frontal identity/historicalVMD/calibrated
+  ridge crossed with posterior identity/calibratedridge/rank1MWF.
+- [x] Author standalone notebook07, reusable module and mask/pooled-SNR fixtures.
+- [ ] Run44contracts and the matched8record Klados comparison on Kaggle CPU.
+- [ ] Retrieve actual executed notebook, eight plots, full19channel outputs and tables.
+- [ ] Report frontal/posterior/whole-cap SNR directly from combined outputs,
+  plus RMSE/CC and preservation; no regional dB addition or forced winner.
+
+Frontal source predictions and full19channel scoring arrays are immutable
+verified parents. Only frontal/posterior masks change; middle/temporal rows
+remain exactly input. SGEYESUB has no guessed Klados score, and native OSF
+has no reconstruction SNR. Posterior MWF is the existing instantaneous
+adaptation with fixed calibration-EOG top/bottom30% masks, rank1,strength1;
+it is not a newly claimed exact author-code reproduction.

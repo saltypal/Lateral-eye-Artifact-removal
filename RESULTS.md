@@ -258,3 +258,23 @@ Recovery confirmed:248/248 payloads verified,3/3 executed code cells,eight
 inline figures,four HTML tables and zero error outputs. Kaggle reports COMPLETE.
 Scientific execution SHA20584ab is frozen; subsequent documentation commits do
 not alter the experiment.
+
+## Frontal SGEYESUB/REG-ICA extension in progress
+
+Readiness passed40 contracts and original author-code runtime checks;52
+payloads and actual3/3-cell notebook recovered. Full version2/sourcee8d0021
+passed41 contracts and completed paired Klados but failed native p03 input
+equality:onefloat32ULP in1/8000 values.359 payloads and actual failed notebook
+were verified. Version3/source d87b2e43116c9a7d58dd3adf755ab8df6a0698e1,
+runfrontal-spatial-full-002, passed42 contracts including the bounded rounding
+repair. It recomputes after Kaggle did not expose the requested failed parent.
+Native evaluation and full report retrieval are pending at this entry.
+
+Version2's completed paired part: REGICA pooled-window record-balanced
+SNR5.597328dB, PearsonCC0.848019; new calibrated ridge17.488734dB, CC0.952944.
+The historical VMD+EOG comparison on the exact same scoring windows remains
+16.134624dB, CC0.984644. Calibrated and score-window-fitted ridge are distinct.
+These are reused development records and do not qualify any method without
+the paired clean-input/native preservation review. SGEYESUB has no Klados
+paired score because verified six-class calibration annotations are unavailable.
+Full-montage fit, frontal-only output scoring; other regions remain deferred.

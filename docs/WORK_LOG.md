@@ -302,3 +302,22 @@ operational recovery failure, not a denoising score. User was explicitly told
 the earlier reuse statement was premature. Failed359-payload archive is safe
 locally. Future runner logs a missing recovery mount explicitly and writes
 the fresh-recomputation decision; no successful cache-recovery claim is made.
+
+## Combined regional evaluation newly authorized during frontal execution
+
+User requested combined frontal/posterior SNR while the frontal SG/REG run
+continues. Added standalone notebook07 and regional_comparison module. Nine
+fixed combinations cross identity/historicalVMD/calibratedridge frontal with
+identity/calibratedridge/rank1MWF posterior. Frontal outputs and clean controls
+come from checksum-verified completed benchmark; the original full19channel
+cache supplies identical raw/clean/EOG windows. New fits use first2000 original
+samples, independently preprocessed; no clean targets. Ridge penalty0.001;
+MWF rank1,strength1, calibrated EOG activity top/bottom30% proxies.
+
+Frontal7 and posterior5 masks are disjoint; central3 and temporal4 stay exactly
+unchanged. One correction subtraction; whole-cap SNR computed from full19channel
+reconstruction error, never from added regional dB. Add two Kaggle fixtures for
+composition/unchanged rows and pooled-SNR versus dB-sum. Save every record/group,
+clean control, H/V association, fitted operator, prediction, failure and eight
+figures. No new VMD, broad search, neural training, LEMON or confirmation data.
+This is composition, not VMD-to-posterior messaging. Numerical outcome pending.

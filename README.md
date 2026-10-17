@@ -4,16 +4,24 @@ One modular project, Kaggle experiment notebooks, and one current results docume
 
 Current stage: frontal-only comparison of original SGEYESUB/REG-ICA routines
 using full-montage spatial fits. Readiness passed40 Kaggle contracts and original
-backend checks; the full comparison is runfrontal-spatial-full-001 (Kaggle version2,
-sourcee8d0021). This is not a completed accuracy claim. Central/posterior selection
+backend checks. Version2/frontal-spatial-full-001 failed a one-float32-ULP
+input check and was fully recovered locally. The repaired full comparison is
+runfrontal-spatial-full-002 (Kaggle version3, sourced87b2e4), with42 contracts
+passed. Its attempted failed-parent mount was unavailable, so it recomputes
+rather than resumes. This is not a completed native accuracy claim. Central/posterior selection
 comes afterward; prospective methods and primary references are in
 [docs/NONFRONTAL_CANDIDATES_20261017.md](docs/NONFRONTAL_CANDIDATES_20261017.md).
 
 ```powershell
 python tools/frontal_spatial.py status
-python tools/logs.py --run-id frontal-spatial-full-001
-python tools/retrieve.py --run-id frontal-spatial-full-001
+python tools/logs.py --run-id frontal-spatial-full-002
+python tools/retrieve.py --run-id frontal-spatial-full-002
 ```
+
+User-added combined measurement: notebook07 crosses fixed frontal and posterior
+branches on the same full19-channel Klados windows, with central/temporal input
+unchanged. It measures whole-cap SNR from the actual combined output, not added
+regional scores. Separate CPU launch: `python tools/regional_comparison.py submit`.
 
 - [PLAN.md](PLAN.md): the task checklist and regional decisions.
 - [RESULTS.md](RESULTS.md): measured results and their limits.
