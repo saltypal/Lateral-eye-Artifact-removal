@@ -35,6 +35,7 @@ def main():
 
     requests.sessions.Session.send = bounded_send
     chunks, response, error_type = [], None, None
+    http_status = None
     try:
         api = KaggleApi()
         api.authenticate()
@@ -44,6 +45,7 @@ def main():
             request.user_name, request.kernel_slug = spec["kernel"].split("/")
             request.wait_for_logs_url_seconds = 1
             response = client.kernels.kernels_api_client.get_kernel_session_logs_stream(request)
+            http_status = response.status_code
             response.raise_for_status()
             deadline = time.monotonic() + 8
             for chunk in response.iter_content(chunk_size=1024):
@@ -82,6 +84,9 @@ def main():
                              "SOURCE_VERIFIED ","AUTHOR_SOURCES_VERIFIED", "AUTHOR_MODELS_LOADED ",
                              "BANDROUTE_EPOCH_SAVED ", "EEGOAR_EPOCH_SAVED ", "METHOD_SAVED ", "METHOD_FAILED ",
                              "KLADOS_CLEAN_CC_AND_NPZ_LABELS_VERIFIED ","OSF_FRONTAL_TRIAL_SAVED ",
+                             "SPATIAL_KLADOS_RECORD_SAVED ","SPATIAL_FIT_SAVED ",
+                             "SPATIAL_FRONTAL_TRIAL_SAVED ","FRONTAL_SPATIAL_READINESS_PASSED ",
+                             "AUTHOR_BACKEND_INSTALL_START",
                              "RUN_COMPLETE ", "Traceback (most recent call last)"))
                 or (" passed" in data and data[:1].isdigit())):
             markers.append({"runtime_s": event.get("time"), "message": data.strip()[:800]})
@@ -89,6 +94,7 @@ def main():
                "utc": datetime.now(timezone.utc).isoformat(), "bytes": len(text),
                "bootstrap_identity_verified": identity_verified, "incomplete_snapshot": True,
                "stream_end_error_type": error_type, "last_markers": markers[-8:] if identity_verified else [],
+               "http_status": http_status,
                "not_a_completion_or_success_check": True}
     (work / "live_log_snapshot.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary, indent=2))

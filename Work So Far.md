@@ -150,3 +150,37 @@ four tables,zero errors. Kaggle status COMPLETE. The central experiment is
 finished with negative preservation findings; no corrective winner was
 qualified or composed with frontal output. Pass-through remains the working
 default. All source/numerical identities and failure evidence are preserved.
+
+## Frontal-first original SGEYESUB/REG-ICA extension
+
+User approved full-montage fitting and then explicitly requested frontal
+comparison before further central/posterior execution. SGEYESUB/REG-ICA use
+full EEG spatial information (19Klados under disclosed mapping,58nativeOSF),
+while only frontal outputs are scored. This is not VMD-to-posterior messaging.
+SGEYESUB author commit2c95b4f, original EEGLAB Infomax8ac485f and checksum-
+verified SCCN REGICA archive are invoked through Octave. Frozen calibration
+ICA/FD and per-trial/window-reset SRLS are declared REGICA evaluation adaptations;
+first2 component samples retained to avoid zero-initialization deletion.
+
+Readiness runfrontal-spatial-readiness-001/sourcea77ca55 passed40 contracts,
+real full58channel SGEYESUB calibration (all6originalsampleclasses) and original
+REGICA runtime fixture.52/52 payloads recovered, actual3/3 executed cells,
+one figure/table, zero errors; plot inspected. SGEYESUB runtime success is not
+suppression/preservation qualification. Klados lacks the required six-class
+calibration, so its exact SGEYESUB reproduction is not run.
+
+Full runfrontal-spatial-full-001/sourcee8d0021 submitted as Kaggle
+frontal-sgeyesub-regica/2. Paired REGICA uses exactly the saved frontal benchmark
+scoring arrays and a new calibration-frozen ridge comparator, separately from
+the old scoring-window regression. Both methods evaluate the four native OSF
+development sessions on five common frontal channels with unchanged H/V
+references. Clean targets never fit new models. Save failures, operators,
+original ICA learning histories/caps, per-record outputs, preservation tables
+and record/participant-cluster uncertainty. Full results remain pending here.
+
+Subsequent regional literature shortlist is documented in
+docs/NONFRONTAL_CANDIDATES_20261017.md: targeted waveletICA (published2025,
+released RELAX code), author GEVD-MWF, and later separately scored SGEYESUB/
+REGICA outputs. These are candidates, not new measured winners. Retired LEMON
+posterior results cannot rank the active Klados/OSF comparisons. No new central,
+posterior, neural, AutoVMD or LEMON numerical experiment is launched here.

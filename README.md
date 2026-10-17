@@ -2,6 +2,19 @@
 
 One modular project, Kaggle experiment notebooks, and one current results document.
 
+Current stage: frontal-only comparison of original SGEYESUB/REG-ICA routines
+using full-montage spatial fits. Readiness passed40 Kaggle contracts and original
+backend checks; the full comparison is runfrontal-spatial-full-001 (Kaggle version2,
+sourcee8d0021). This is not a completed accuracy claim. Central/posterior selection
+comes afterward; prospective methods and primary references are in
+[docs/NONFRONTAL_CANDIDATES_20261017.md](docs/NONFRONTAL_CANDIDATES_20261017.md).
+
+```powershell
+python tools/frontal_spatial.py status
+python tools/logs.py --run-id frontal-spatial-full-001
+python tools/retrieve.py --run-id frontal-spatial-full-001
+```
+
 - [PLAN.md](PLAN.md): the task checklist and regional decisions.
 - [RESULTS.md](RESULTS.md): measured results and their limits.
 - [docs/PAPERS.md](docs/PAPERS.md): paper methods, datasets and replication status.
