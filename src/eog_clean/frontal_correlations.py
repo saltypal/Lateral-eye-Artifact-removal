@@ -135,7 +135,7 @@ def load_models(input_root,parent,source_root,output,config):
     return historical,eegoar,bandroute,device
 
 
-def _window_predictions(raw,eyes,mwf,models,config):
+def _window_predictions(raw,eyes,mwf,models,config,evaluation_eyes):
     historical,eegoar,bandroute,device=models
     names=config['common_frontal_names']
     modes,valid,residuals,diagnostics=[],[],[],[]
@@ -147,7 +147,7 @@ def _window_predictions(raw,eyes,mwf,models,config):
             vectors,residual,accepted=np.zeros((3,len(vector))),vector.copy(),False
             detail={'error':repr(error),'hit_iteration_limit':False}
         modes.append(vectors);valid.append(accepted);residuals.append(residual)
-        association=correlations(vectors,eyes)
+        association=correlations(vectors,evaluation_eyes)
         for index,row in enumerate(association):
             diagnostics.append({'method':'historical_vmd','channel':names[channel],'mode':index+1,
                                 'heog_cc':float(row[0]),'veog_cc':float(row[1]),
@@ -178,7 +178,7 @@ def _window_predictions(raw,eyes,mwf,models,config):
                     prefix=method+'_channel_'+str(channel)+'_'
                     for key,value in detail.items():
                         if isinstance(value,np.ndarray):extra_modes[prefix+key]=value
-                    association=correlations(detail['modes'],eyes)
+                    association=correlations(detail['modes'],evaluation_eyes)
                     for index,row in enumerate(association):
                         diagnostics.append({'method':method,'channel':names[channel],'mode':index+1,
                             'heog_cc':float(row[0]),'veog_cc':float(row[1]),
@@ -233,7 +233,8 @@ def run_native(root,output,source_root,config,models):
             window_outputs={method:[] for method in ['identity','direct_eog_regression',*METHODS]}
             for start in starts:
                 window=slice(start,start+config['window'])
-                predictions,modes,diagnostics,errors=_window_predictions(raw[:,window],eyes[:,window],mwf,models,config)
+                predictions,modes,diagnostics,errors=_window_predictions(
+                    raw[:,window],eyes[:,window],mwf,models,config,evaluation[:,window])
                 for method,prediction in predictions.items():window_outputs[method].append(prediction)
                 for detail in diagnostics:mode_rows.append({'record':metadata['record'],'trial':trial['index'],
                     'start':start,'condition':CONDITIONS[condition],**detail})

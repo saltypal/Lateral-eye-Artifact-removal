@@ -20,6 +20,73 @@ def associations(vector,clean,eyes):
     return np.array([np.corrcoef(vector,reference)[0,1] for reference in signals])
 
 
+def audit_native_references(native_root,manifest,output):
+    """Independently verify predictions, then repair saved mode-reference pairing.
+
+    The original before/after table uses the correct unmodified LPF references.
+    Its mode CSV used model-preprocessed references. Recompute mode diagnostics
+    from the actual H/V arrays embedded alongside the saved mode vectors.
+    """
+    from .data import sha256
+    entries={row['path']:row for row in manifest['files']}
+    def verify(path):
+        relative=str(path.relative_to(native_root)).replace('\\','/')
+        if sha256(path)!=entries[relative]['sha256']:raise ValueError('Native saved array differs')
+    source=native_root/'osf_frontal_before_after_per_channel.csv'
+    verify(source)
+    previous=pd.read_csv(source).set_index(['method','record','trial','channel'])
+    checks=[]
+    for path in sorted((native_root/'osf').rglob('trial_*_predictions.npz')):
+        verify(path)
+        trial=int(path.name.split('_')[1]);record=path.parent.name
+        with np.load(path,allow_pickle=False) as archive:data={name:archive[name] for name in archive.files}
+        for method in ['identity','direct_eog_regression','historical_vmd','svmd_fcm_adaptation',
+                       'vme_gmetv_adaptation','eegoarnet_finetuned','gevd_mwf','bandroutenet']:
+            for channel,name in enumerate(data['channel_names']):
+                row={'record':record,'trial':trial,'method':method,'channel':str(name)}
+                for reference in ['heog','veog']:
+                    before=float(np.corrcoef(data['raw'][channel],data[reference])[0,1])
+                    after=float(np.corrcoef(data[method][channel],data[reference])[0,1])
+                    expected=previous.loc[(method,record,trial,name)]
+                    if not np.allclose([before,after],
+                        [expected[reference+'_cc_before'],expected[reference+'_cc_after']],
+                        rtol=5e-6,atol=5e-6,equal_nan=True):
+                        raise ValueError('Native saved prediction/reference CC differs from scoring table')
+                    row.update({reference+'_cc_before':before,reference+'_cc_after':after})
+                checks.append(row)
+    if not checks or len(checks)!=len(previous):
+        raise ValueError('Native prediction audit did not cover the complete scoring table')
+    pd.DataFrame(checks).to_csv(output/'native_prediction_correlations_independently_verified.csv',index=False)
+    rows=[]
+    for path in sorted((native_root/'osf').rglob('trial_*_modes.npz')):
+        verify(path)
+        parts=path.stem.split('_');trial,start=int(parts[1]),int(parts[3])
+        with np.load(path,allow_pickle=False) as archive:data={name:archive[name] for name in archive.files}
+        eyes=np.stack([data['heog'],data['veog']])
+        for channel,name in enumerate(data['channel_names']):
+            for method in ['historical_vmd','svmd_fcm_adaptation','vme_gmetv_adaptation']:
+                prefix=method+'_channel_'+str(channel)+'_'
+                vectors=data['modes'][channel] if method=='historical_vmd' else data[prefix+'modes']
+                residual=data['residual'][channel] if method=='historical_vmd' else data[prefix+'residual']
+                components=[('mode',index+1,vector) for index,vector in enumerate(vectors)]
+                components.append(('residual',0,residual))
+                for component,index,vector in components:
+                    heog=float(np.corrcoef(vector,eyes[0])[0,1])
+                    veog=float(np.corrcoef(vector,eyes[1])[0,1])
+                    rows.append({'record':path.parent.name,'trial':trial,'start':start,
+                        'channel':str(name),'method':method,'component':component,'mode':index,
+                        'heog_cc':heog,'veog_cc':veog,'heog_abs_cc':abs(heog),'veog_abs_cc':abs(veog),
+                        'reference':'unchanged evaluation references embedded in saved mode NPZ'})
+    if not rows:
+        raise ValueError('Native component audit found no saved modes')
+    pd.DataFrame(rows).to_csv(output/'native_modes_unchanged_reference_correlations.csv',index=False)
+    save_json(output/'native_reference_audit.json',{'native_prediction_rows_verified':len(checks),
+        'native_component_rows_recomputed':len(rows),
+        'before_after_prediction_table_matches_saved_signals':True,
+        'mode_diagnostic_reference_repair':'original CSV used model-preprocessed references; recomputed from unchanged saved evaluation references',
+        'denoising_repeated':False,'training_repeated':False,'original_native_artifacts_preserved':True})
+
+
 def run(input_root,source_root,output):
     if not Path('/kaggle/input').exists():raise RuntimeError('Numerical work is Kaggle only')
     output=Path(output)
@@ -122,6 +189,7 @@ def run(input_root,source_root,output):
     if len(native)!=1 or not native[0][1]['complete'] or native[0][1]['git_sha']!='b9df0e65e0b7135aae45f9614439272bda88a8f3':
         raise ValueError('Need the exact completed native frontal parent')
     native_path,native_manifest=native[0]
+    audit_native_references(native_path.parent,native_manifest,output)
     entries={row['path']:row for row in native_manifest['files']}
     from .data import sha256
     for name in ['osf_frontal_rest_preservation.csv','osf_frontal_correlation_summary.csv','native_completion.json']:
@@ -143,5 +211,6 @@ def run(input_root,source_root,output):
     with (output/'RESULTS.md').open('a',encoding='utf-8') as stream:
         stream.write('\n## Native frontal before/after correlation\n\n'+native_table.round(6).to_markdown(index=False))
         stream.write('\n\n## Native resting-input preservation proxies\n\n'+pd.concat([mean,worst],axis=1).round(6).to_markdown())
+        stream.write('\n\n## Native reference consistency audit\n\nOriginal before/after prediction correlations were independently verified against saved unmodified HEOG/VEOG. Original mode diagnostics used model-preprocessed references; the corrected per-component file recomputes those coefficients using the unchanged references embedded beside the saved modes. No denoising, training or scoring-table result changed. Original evidence remains preserved.\n')
     print('FRONTAL_MODE_CLEAN_EOG_AUDIT_COMPLETE',len(frame),flush=True)
     return paths

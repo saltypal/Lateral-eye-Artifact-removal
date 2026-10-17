@@ -58,6 +58,7 @@ from IPython.display import display,Image
 display(pd.read_csv(OUTPUT/'frontal_mode_correlation_summary.csv').round(6))
 display(pd.read_csv(OUTPUT/'native_frontal_before_after_summary.csv').round(6))
 display(pd.read_csv(OUTPUT/'native_rest_participant_summary.csv').round(6))
+print((OUTPUT/'native_reference_audit.json').read_text())
 print((OUTPUT/'audit_completion.json').read_text())
 for path in FIGURES:display(Image(filename=path))
 save_json(OUTPUT/'execution_state.json',{'state':'complete','git_sha':actual,

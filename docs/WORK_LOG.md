@@ -84,3 +84,15 @@ It also audits residuals separately. Targets are diagnostic only and never
 select runtime modes. A known orthogonal fixture verifies the three column
 identities. Native resting summaries are calculated on Kaggle from the completed
 OSF participant results. No neural training or decomposition is repeated.
+
+### Native mode-reference diagnostic repair
+
+The completed native before/after prediction table uses unchanged HEOG_lpf and
+VEOG_lpf evaluation references correctly. Inspection found that its separate
+mode-diagnostic CSV used the model-preprocessed EOG inputs instead. Preserve
+that original evidence. Repair future diagnostics to use evaluation references,
+and publish a new CPU audit version recomputing each saved native mode's CC
+against the unchanged H/V arrays embedded in its NPZ. Independently recompute
+every native prediction correlation from saved arrays and require agreement
+with the original table; require complete row coverage. No new denoising,
+training, calibration fitting or model selection occurs in this repair.
