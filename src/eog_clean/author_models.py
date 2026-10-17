@@ -57,6 +57,21 @@ def import_file(name, path):
     return module
 
 
+def pack_frontal_montage(values,names,expected):
+    """Place verified labels into a trained layout; reject electrode aliases."""
+    normalized=[name.upper() for name in expected]
+    if len(set(normalized))!=len(normalized) or len(values)!=len(names):
+        raise ValueError('Ambiguous custom montage labels or channel axis')
+    positions=[normalized.index(name.upper()) for name in names]
+    if len(set(positions))!=len(positions):
+        raise ValueError('Duplicate native electrode labels')
+    padded=np.zeros((len(expected),values.shape[-1]),dtype=np.float32)
+    present=np.zeros(len(expected),dtype=bool)
+    padded[positions]=values
+    present[positions]=True
+    return padded,present,positions
+
+
 class EEGOAR:
     """Author architecture, pretrained initialisation, custom-montage fine-tuning.
 
@@ -110,11 +125,16 @@ class EEGOAR:
         mask[:,self.indices]=1
         return self.model(inputs,mask)
 
-    def predict(self, values):
+    def predict(self, values, present=None):
         if not self.finetuned:
             raise RuntimeError('Custom EEGOAR montage must be fine-tuned before evaluation')
         values = np.asarray(values)
-        scale=max(float(np.sqrt(np.mean(values**2))),1e-8)
+        present=np.ones(len(self.indices),dtype=bool) if present is None else np.asarray(present,dtype=bool)
+        if values.shape[0]!=len(self.indices) or present.shape!=(len(self.indices),) or not present.any():
+            raise ValueError('Custom montage needs seven columns and a nonempty presence mask')
+        if np.any(values[~present]!=0):
+            raise ValueError('Absent custom montage columns must contain zeros')
+        scale=max(float(np.sqrt(np.mean(values[present]**2))),1e-8)
         downsampled = resample_poly(values/scale, 16, 25, axis=-1)
         samples = downsampled.shape[-1]
         padded = np.pad(downsampled, ((0,0),(0,(-samples)%128)), mode='reflect')
@@ -123,7 +143,7 @@ class EEGOAR:
         for channel, index in enumerate(self.indices):
             inputs[:, 0, :, index] = padded[channel].reshape(windows, 128)
         mask = torch.zeros((windows,self.width), device=self.device)
-        mask[:, self.indices] = 1
+        mask[:, self.indices] = torch.from_numpy(present.astype(np.float32)).to(self.device)
         with torch.inference_mode():
             outputs = self.model(torch.from_numpy(inputs).to(self.device), mask).cpu().numpy()
         selected = np.stack([outputs[:, 0, :, index].reshape(-1)[:samples]

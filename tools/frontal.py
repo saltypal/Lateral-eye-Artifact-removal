@@ -173,8 +173,8 @@ print('NUMERICAL_NOTEBOOK_COMPLETE',RUN_SPEC['run_id'],flush=True)
         'name':'python3','display_name':'Python 3','language':'python'}})
 
 
-def launcher(spec):
-    inner=nbformat.writes(experiment(spec))
+def launcher(spec, experiment_notebook=None):
+    inner=nbformat.writes(experiment(spec) if experiment_notebook is None else experiment_notebook)
     source='RUN_SPEC = '+repr(spec)+'\nEXPERIMENT_JSON = '+repr(inner)+'\n'+'''import pathlib,json,hashlib,sys,traceback
 import nbformat
 from nbclient import NotebookClient

@@ -80,3 +80,18 @@ def test_gmetv_reduces_declared_convex_objective():
     answer,detail=gmetv(x,lam,gamma)
     assert detail['converged']
     assert objective(answer)<=objective(x)+1e-8
+
+
+def test_native_montage_exact_labels_and_roundtrip():
+    from eog_clean.author_models import pack_frontal_montage
+    values=np.arange(20,dtype=float).reshape(2,10)
+    padded,present,positions=pack_frontal_montage(values,['FZ','f3'],['FP1','FP2','F3','F4','F7','F8','Fz'])
+    np.testing.assert_array_equal(padded[positions],values)
+    np.testing.assert_array_equal(present,[False,False,True,False,False,False,True])
+    assert np.all(padded[~present]==0)
+
+
+def test_native_montage_never_aliases_fpz_to_fp1():
+    from eog_clean.author_models import pack_frontal_montage
+    with pytest.raises(ValueError):
+        pack_frontal_montage(np.ones((1,10)),['FPz'],['FP1','FP2','F3'])

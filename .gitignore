@@ -3,6 +3,7 @@ __pycache__/
 .kaggle-work/
 .kaggle-config/
 results/
+notebooks/executed/
 .venv/
 data/
 *.eogbundle

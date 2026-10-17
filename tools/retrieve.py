@@ -118,6 +118,11 @@ def main():
              notebook_receipt['executed_code_cells']!=notebook_receipt['code_cells'] or
              notebook_receipt['inline_image_outputs']<1 or notebook_receipt['html_table_outputs']<1):
             raise ValueError('Completed notebook is missing executed cells, result tables or images')
+        import shutil
+        convenient = ROOT/'notebooks'/'executed'/(args.run_id+'.ipynb')
+        convenient.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copy2(executed[0],convenient)
+        notebook_receipt['convenient_local_path']=str(convenient)
     receipt = {"run_id": args.run_id, "git_sha": spec["git_sha"],
         "payloads_verified": len(jobs), "all_manifest_payloads_verified": True,
         "execution_complete":manifest.get('complete',False),
