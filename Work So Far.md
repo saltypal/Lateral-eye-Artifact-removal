@@ -88,3 +88,16 @@ independently verifies all1280 native prediction correlation rows. It passed32
 contracts;25 payloads and the actual3/3-cell notebook with three figures were
 retrieved and verified. No denoising/training was repeated.
 See docs/WORK_LOG.md for the exact mismatch and retained original evidence.
+
+## Pretrained-only frontal extension
+
+User requested EEG-WNet and Diff-ADN with released weights only, without training
+or guessed architectures. Discovery source snapshot/configuration and literature
+notes are committed. Successful exact/compact-name GitHub/Hugging Face searches
+found no matches; access failures prevent claiming all supplements were inspected.
+WNet XML supplies metadata only, IOP redirects to a bot challenge. Neither
+compatible code/checkpoint pair is verified. Both are explicitly not run.
+Source266657f, runfrontal-pretrained-closeout-001, CPU Kaggle kernel
+satyapaladugu/frontal-pretrained-closeout/1. The notebook verifies archived
+frontal comparison parents and produces closeout tables/figures; it creates
+no new predictions. Numerical completion/recovery remains pending at this entry.

@@ -1,6 +1,7 @@
 # EEG ocular artifact removal
 
-One project, three focused frontal notebooks, one current results document.
+One project, three frontal evaluation notebooks plus one pretrained closeout,
+and one current results document.
 
 - [PLAN.md](PLAN.md): the task checklist and regional decisions.
 - [RESULTS.md](RESULTS.md): measured results and their limits.
@@ -68,3 +69,19 @@ Paired accuracy and native preservation are separate findings. The historical
 frontal model reaches 16.134624 dB on reused Klados records, but changes native
 OSF resting input by 63.63% mean relative RMS. See RESULTS.md before selecting
 a method or making a deployment claim.
+
+Pretrained-only extension: `notebooks/04_Frontal_Pretrained_Closeout.ipynb`
+records release eligibility for EEG-WNet and Diff-ADN and carries forward
+verified frontal results. Neither new model has a verified compatible public
+checkpoint; no training or substitute architecture is used.
+
+```powershell
+python tools/frontal_pretrained.py status
+python tools/logs.py --run-id frontal-pretrained-closeout-001
+python tools/retrieve.py --run-id frontal-pretrained-closeout-001
+```
+
+The discovery audit can be refreshed with `python tools/audit_frontal_pretrained.py`.
+It updates the evidence snapshot, so reviewed eligibility/configuration identities
+must be refreshed and committed before another notebook submission. A repository
+search hit alone never authorizes treating an unverified checkpoint as evaluated.

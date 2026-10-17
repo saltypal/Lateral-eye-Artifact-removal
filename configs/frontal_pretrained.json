@@ -1,7 +1,7 @@
 {
   "campaign_id": "frontal-pretrained-20261017",
   "training_allowed": false,
-  "discovery_sha256": "0ef14f0c14386f6cbb9ae3a5a455943a9e3abeb60c008cd695c4a4106c54498a",
+  "discovery_sha256": "90f80619d5bf6918722e6b5aba2b908313451fe29bb426ef5fab2e2fc02af2cc",
   "candidates": [
     {
       "model": "EEG-WNet",
@@ -48,5 +48,6 @@
       ]
     }
   ],
-  "qualification": "Existing frontal native preservation fails; no new model is evaluated."
+  "qualification": "Existing frontal native preservation fails; no new model is evaluated.",
+  "discovery_hash_encoding": "canonical-json-sort-keys-ascii-compact"
 }

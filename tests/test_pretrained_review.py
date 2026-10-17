@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 import pytest
-from eog_clean.pretrained_review import validate_blocked_candidates, verified_table_parent
+from eog_clean.pretrained_review import validate_blocked_candidates, verified_table_parent, discovery_identity
 
 
 def configuration():
@@ -38,3 +38,13 @@ def test_parent_payload_tampering_and_wrong_identity(tmp_path):
         verify('table.csv')
     with pytest.raises(ValueError, match='source SHA differs'):
         verified_table_parent(tmp_path, 'fixture', 'wrong')
+
+
+def test_discovery_identity_handles_git_newlines_but_detects_content_change(tmp_path):
+    path = tmp_path/'discovery.json'
+    path.write_bytes(b'{\n  "release": false\n}\n')
+    expected = discovery_identity(path)
+    path.write_bytes(b'{\r\n  "release": false\r\n}\r\n')
+    assert discovery_identity(path) == expected
+    path.write_bytes(b'{\n  "release": true\n}\n')
+    assert discovery_identity(path) != expected

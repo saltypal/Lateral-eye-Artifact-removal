@@ -150,3 +150,17 @@ Failed method windows: 0. Solver-cap/nonconvergence warning entries: 16. See sav
 ## Interpretation limits
 
 Historically exposed Klados record split; participant IDs unknown. No fresh confirmation or production claim. Frontal assignment uses the requested paper-list order with unverified MATLAB row binding. SVMD–FCM and VME–GMETV are documented adaptations with unavailable ocular-paper settings. EEGOAR-Net is fine-tuned on an explicit custom montage, not frozen electrode aliases. No LEMON or AutoVMD search. Runtime rows disclose cached VMD cost and device. Actual executed notebook, predictions, modes, H/V evidence, checkpoints and figures are saved. Smoke scores are not final accuracy.
+
+## Pretrained-only extension: release eligibility
+
+EEG-WNet and Diff-ADN are **not run—pretrained reproduction unavailable** within
+the inspected sources as of17October2026. No compatible author-code/checkpoint
+pair was verified. Empty searches and failed publisher access are recorded
+separately; they are not proof that weights do not exist anywhere. No new
+training, fine-tuning, substitution or denoising predictions occurred.
+
+The literature survey and release queries are in docs/PAPERS.md and
+docs/provenance/frontal_pretrained_discovery.json. A separate numbered CPU
+notebook verifies source/hash-pinned completed parents and presents this
+explicit non-execution decision beside the existing metrics. Its completion
+will not change any method score or resolve the native preservation failure.

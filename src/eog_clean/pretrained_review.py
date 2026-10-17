@@ -4,10 +4,18 @@ This module does not implement substitute architectures or fabricate predictions
 It verifies completed parents and makes release eligibility visible beside them.
 """
 import json
+import hashlib
 from pathlib import Path
 import shutil
 
 from .data import save_json, sha256
+
+
+def discovery_identity(path):
+    """Hash JSON content independently of Git's Windows/Linux newline conversion."""
+    value = json.loads(Path(path).read_text(encoding='utf-8'))
+    canonical = json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=True)
+    return hashlib.sha256(canonical.encode('utf-8')).hexdigest()
 
 
 def verified_table_parent(input_root, run_id, source_sha):
@@ -59,7 +67,9 @@ def run(input_root, source_root, output):
     review = json.loads((source_root / 'configs/frontal_pretrained.json').read_text())
     candidates = validate_blocked_candidates(review)
     discovery_path = source_root / 'docs/provenance/frontal_pretrained_discovery.json'
-    if sha256(discovery_path) != review['discovery_sha256']:
+    if review.get('discovery_hash_encoding') != 'canonical-json-sort-keys-ascii-compact':
+        raise ValueError('Unknown discovery identity encoding')
+    if discovery_identity(discovery_path) != review['discovery_sha256']:
         raise ValueError('Release discovery snapshot changed without review')
     shutil.copy2(discovery_path, output / discovery_path.name)
     save_json(output / 'pretrained_eligibility.json', review)

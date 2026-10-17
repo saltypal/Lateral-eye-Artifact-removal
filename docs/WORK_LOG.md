@@ -140,3 +140,15 @@ A numbered CPU notebook will verify completed Klados/mode-audit parents and
 preserve an executed closeout with blocked-candidate table and existing metrics.
 It creates no new predictions or denoising scores. Existing frontal failures and
 central/posterior boundaries remain unchanged. No GPU job or author contact.
+
+### Pretrained closeout001: source-text checksum portability failure
+
+Source266657f passed35 contracts in5.79s, then stopped before copying parent
+tables: the discovery snapshot's raw-byte digest was calculated on Windows
+CRLF bytes, while Git/Kaggle checked out LF bytes. No scientific artifact
+identity changed. Retrieved all6 failure payloads and actual2/3-cell notebook
+with one error. Repair defines discovery identity as canonical JSON SHA256
+(sorted keys, ASCII escapes, compact separators), explicitly records the
+encoding and adds a CRLF/LF equivalence plus changed-content rejection fixture.
+Scientific parent result/data SHA256 and byte-count checks remain unchanged.
+A new saved version will rerun contracts and closeout; old failure preserved.
