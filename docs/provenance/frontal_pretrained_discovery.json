@@ -1,0 +1,331 @@
+{
+  "checked_utc": "2026-10-17T06:25:55.005565+00:00",
+  "evidence": [
+    {
+      "source": "github_wnet",
+      "requested_url": "https://api.github.com/search/repositories",
+      "query": {
+        "q": "\"EEG-WNet\"",
+        "per_page": 30
+      },
+      "checked_utc": "2026-10-17T06:25:42.807733+00:00",
+      "http_status": 200,
+      "final_url": "https://api.github.com/search/repositories",
+      "response_sha256": "4af480b8ee5b87b369a76c49bd22c9a783908272ebffbe97898f8ab0f0772a5f",
+      "total_count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "source": "huggingface_wnet",
+      "requested_url": "https://huggingface.co/api/models",
+      "query": {
+        "search": "EEG-WNet",
+        "limit": 30
+      },
+      "checked_utc": "2026-10-17T06:25:42.808350+00:00",
+      "http_status": 200,
+      "final_url": "https://huggingface.co/api/models",
+      "response_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "model_ids": []
+    },
+    {
+      "source": "github_diffadn",
+      "requested_url": "https://api.github.com/search/repositories",
+      "query": {
+        "q": "\"Diff-ADN\"",
+        "per_page": 30
+      },
+      "checked_utc": "2026-10-17T06:25:42.808726+00:00",
+      "http_status": 200,
+      "final_url": "https://api.github.com/search/repositories",
+      "response_sha256": "4af480b8ee5b87b369a76c49bd22c9a783908272ebffbe97898f8ab0f0772a5f",
+      "total_count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "source": "huggingface_diffadn",
+      "requested_url": "https://huggingface.co/api/models",
+      "query": {
+        "search": "Diff-ADN",
+        "limit": 30
+      },
+      "checked_utc": "2026-10-17T06:25:42.810892+00:00",
+      "http_status": 200,
+      "final_url": "https://huggingface.co/api/models",
+      "response_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "model_ids": []
+    },
+    {
+      "source": "github_wnet_compact",
+      "requested_url": "https://api.github.com/search/repositories",
+      "query": {
+        "q": "\"EEGWNet\"",
+        "per_page": 30
+      },
+      "checked_utc": "2026-10-17T06:25:43.907795+00:00",
+      "http_status": 200,
+      "final_url": "https://api.github.com/search/repositories",
+      "response_sha256": "4af480b8ee5b87b369a76c49bd22c9a783908272ebffbe97898f8ab0f0772a5f",
+      "total_count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "source": "huggingface_wnet_compact",
+      "requested_url": "https://huggingface.co/api/models",
+      "query": {
+        "search": "EEGWNet",
+        "limit": 30
+      },
+      "checked_utc": "2026-10-17T06:25:44.021420+00:00",
+      "http_status": 200,
+      "final_url": "https://huggingface.co/api/models",
+      "response_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "model_ids": []
+    },
+    {
+      "source": "github_diffadn_compact",
+      "requested_url": "https://api.github.com/search/repositories",
+      "query": {
+        "q": "\"DiffADN\"",
+        "per_page": 30
+      },
+      "checked_utc": "2026-10-17T06:25:44.865168+00:00",
+      "http_status": 200,
+      "final_url": "https://api.github.com/search/repositories",
+      "response_sha256": "4af480b8ee5b87b369a76c49bd22c9a783908272ebffbe97898f8ab0f0772a5f",
+      "total_count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "source": "huggingface_diffadn_compact",
+      "requested_url": "https://huggingface.co/api/models",
+      "query": {
+        "search": "DiffADN",
+        "limit": 30
+      },
+      "checked_utc": "2026-10-17T06:25:44.866959+00:00",
+      "http_status": 200,
+      "final_url": "https://huggingface.co/api/models",
+      "response_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "model_ids": []
+    },
+    {
+      "source": "crossref_wnet",
+      "requested_url": "https://api.crossref.org/works/10.1016/j.bspc.2026.111553",
+      "query": {},
+      "checked_utc": "2026-10-17T06:25:44.868510+00:00",
+      "http_status": 200,
+      "final_url": "https://api.crossref.org/works/10.1016/j.bspc.2026.111553",
+      "response_sha256": "93b5df3b36bdcf13c816ff58eca5c7da63315839206dd997ff438ef0af1ac41f",
+      "metadata": {
+        "DOI": "10.1016/j.bspc.2026.111553",
+        "title": [
+          "EEG-WNet: A wavelet-guided dual-branch network for ocular artifact suppression in electroencephalogram"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2027,
+              2
+            ]
+          ]
+        },
+        "published-online": null,
+        "published-print": {
+          "date-parts": [
+            [
+              2027,
+              2
+            ]
+          ]
+        },
+        "created": {
+          "date-parts": [
+            [
+              2026,
+              9,
+              25
+            ]
+          ],
+          "date-time": "2026-09-25T07:19:43Z",
+          "timestamp": 1790320783000
+        },
+        "link": [
+          {
+            "URL": "https://api.elsevier.com/content/article/PII:S1746809426021117?httpAccept=text/xml",
+            "content-type": "text/xml",
+            "content-version": "vor",
+            "intended-application": "text-mining"
+          },
+          {
+            "URL": "https://api.elsevier.com/content/article/PII:S1746809426021117?httpAccept=text/plain",
+            "content-type": "text/plain",
+            "content-version": "vor",
+            "intended-application": "text-mining"
+          }
+        ],
+        "resource": {
+          "primary": {
+            "URL": "https://linkinghub.elsevier.com/retrieve/pii/S1746809426021117"
+          }
+        },
+        "relation": {}
+      }
+    },
+    {
+      "source": "crossref_diffadn",
+      "requested_url": "https://api.crossref.org/works/10.1088/1741-2552/aeab36",
+      "query": {},
+      "checked_utc": "2026-10-17T06:25:44.870618+00:00",
+      "http_status": 200,
+      "final_url": "https://api.crossref.org/works/10.1088/1741-2552/aeab36",
+      "response_sha256": "cf11e4b3b1c9e18ea97673bb230ecc84c007aabe10d11c0c3fa181ee78f54036",
+      "metadata": {
+        "DOI": "10.1088/1741-2552/aeab36",
+        "title": [
+          "Diff-ADN: A diffusion-guided artifact denoising network with deterministic residual refinement for EEG"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              9,
+              22
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2026,
+              9,
+              22
+            ]
+          ]
+        },
+        "published-print": null,
+        "created": {
+          "date-parts": [
+            [
+              2026,
+              9,
+              22
+            ]
+          ],
+          "date-time": "2026-09-22T22:53:01Z",
+          "timestamp": 1790117581000
+        },
+        "link": [
+          {
+            "URL": "https://iopscience.iop.org/article/10.1088/1741-2552/aeab36",
+            "content-type": "text/html",
+            "content-version": "am",
+            "intended-application": "text-mining"
+          },
+          {
+            "URL": "https://iopscience.iop.org/article/10.1088/1741-2552/aeab36/pdf",
+            "content-type": "application/pdf",
+            "content-version": "am",
+            "intended-application": "text-mining"
+          },
+          {
+            "URL": "https://iopscience.iop.org/article/10.1088/1741-2552/aeab36/pdf",
+            "content-type": "application/pdf",
+            "content-version": "am",
+            "intended-application": "syndication"
+          },
+          {
+            "URL": "https://iopscience.iop.org/article/10.1088/1741-2552/aeab36/pdf",
+            "content-type": "application/pdf",
+            "content-version": "am",
+            "intended-application": "similarity-checking"
+          }
+        ],
+        "resource": {
+          "primary": {
+            "URL": "https://iopscience.iop.org/article/10.1088/1741-2552/aeab36"
+          }
+        },
+        "relation": {}
+      }
+    },
+    {
+      "source": "europepmc_diffadn",
+      "requested_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+      "query": {
+        "query": "EXT_ID:42772331 AND SRC:MED",
+        "format": "json",
+        "resultType": "core"
+      },
+      "checked_utc": "2026-10-17T06:25:45.678810+00:00",
+      "http_status": 200,
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+      "response_sha256": "e7054f93f552aec65052e3255e1b1729171a7b6ab9964a67257011f28e18aa1c",
+      "records": [
+        {
+          "id": "42772331",
+          "title": "Diff-ADN: A diffusion-guided artifact denoising network with deterministic residual refinement for EEG.",
+          "isOpenAccess": "N",
+          "inPMC": "N",
+          "fullTextUrlList": {
+            "fullTextUrl": [
+              {
+                "availability": "Subscription required",
+                "availabilityCode": "S",
+                "documentStyle": "doi",
+                "site": "DOI",
+                "url": "https://doi.org/10.1088/1741-2552/aeab36"
+              }
+            ]
+          },
+          "dataLinksTagsList": null
+        }
+      ]
+    },
+    {
+      "source": "publisher_wnet",
+      "requested_url": "https://www.sciencedirect.com/science/article/pii/S1746809426021117",
+      "query": {},
+      "checked_utc": "2026-10-17T06:25:45.750934+00:00",
+      "http_status": 403,
+      "final_url": "https://www.sciencedirect.com/science/article/pii/S1746809426021117",
+      "response_sha256": "07578ae3411eed38e00b47842193d219affd7a3cb016294110e24cee12c20021",
+      "inspection": "access failed; no absence claim from this source"
+    },
+    {
+      "source": "publisher_diffadn",
+      "requested_url": "https://iopscience.iop.org/article/10.1088/1741-2552/aeab36",
+      "query": {},
+      "checked_utc": "2026-10-17T06:25:46.204541+00:00",
+      "http_status": 200,
+      "final_url": "https://validate.perfdrive.com/fb803c746e9148689b3984a31fccd902/",
+      "response_sha256": "aa59622c00edbdcb27a16255ec5b026064a59854037440812d2284a9ffc5517b",
+      "inspection": "bot challenge; publisher content and supplements unverified"
+    },
+    {
+      "source": "publisher_wnet_xml",
+      "requested_url": "https://api.elsevier.com/content/article/PII:S1746809426021117",
+      "query": {
+        "httpAccept": "text/xml"
+      },
+      "checked_utc": "2026-10-17T06:25:47.023625+00:00",
+      "http_status": 200,
+      "final_url": "https://api.elsevier.com/content/article/PII:S1746809426021117",
+      "response_sha256": "f10bc179b941458134afc0b307adc2050d94274541eb95c313d35effbeb01598",
+      "publisher_metadata": {
+        "doi": "10.1016/j.bspc.2026.111553",
+        "coverDate": "2027-02-28",
+        "openaccess": "0",
+        "openaccessArticle": "false"
+      },
+      "article_body_available": false,
+      "inspection": "publisher XML; article-body availability recorded separately"
+    }
+  ],
+  "scope": "Public discovery; failures and empty searches do not prove worldwide absence.",
+  "numerical_processing": false
+}

@@ -100,3 +100,39 @@ no paired artifact-free target; reconstruction SNR and clean-target CC are not
 available. Neither zero correlation nor fitting A/B weights proves pure ocular
 removal. These limits also explain why the removed LEMON generator could not
 establish that its estimated mixing fields were ground-truth ocular signals.
+
+## Pretrained-only frontal extension — 17 October 2026
+
+**EEG-WNet** (10.1016/j.bspc.2026.111553): time-domain/wavelet branches,
+cross-attention and residual refinement. Publisher reports EEGdenoiseNet EOG
+RRMSE-t0.212, SNR15.42dB and CC0.967; DEAP transfer is qualitative. These are
+literature numbers, not this project's results. Publisher reports8.48M parameters;
+the description "lightweight" must not imply smaller than our measured0.205M
+BandRouteNet. No separate lateral-eye validation is established by the preview.
+Primary: https://www.sciencedirect.com/science/article/pii/S1746809426021117
+
+Crossref records February2027 print publication, no published-online field, and
+DOI-record creation2026-09-25. Creation is not proof of online publication.
+Publisher XML verifies coverDate2027-02-28 and openaccess0 but supplies no body.
+Do not assign an inferred online-publication date.
+
+**Diff-ADN** (10.1088/1741-2552/aeab36), published online2026-09-22: two-stage
+severity-conditioned reconstruction and diffusion-supervised residual refinement.
+Inference uses one deterministic correction, not reverse-diffusion sampling.
+The publication abstract reports independent artifact-source and four
+motor-imagery-dataset evaluations; EOG mean CC0.936 is not a frontal/lateral
+score and cannot be ranked against our Klados CC. Exact preprocessing and
+checkpoint contracts remain unverified.
+Primary: https://pubmed.ncbi.nlm.nih.gov/42772331/
+
+The user explicitly restricts new models to released pretrained weights: no
+training, fine-tuning, guessed architectures or paper-inspired substitutes.
+Exact/compact-name GitHub repository and Hugging Face model searches found
+zero matching releases. Publisher supplement inspection is incomplete: WNet
+HTML access failed and IOP redirected to a bot challenge. Europe PMC lists
+subscription access, no linked data and no PMC full text for Diff-ADN.
+Neither compatible source+checkpoint pair is verified. Both are **not run—
+pretrained reproduction unavailable** within the inspected sources. This does
+not establish worldwide absence. No authors were contacted. Timestamped API
+queries, response identities, counts, dates and access failures are preserved
+in docs/provenance/frontal_pretrained_discovery.json.

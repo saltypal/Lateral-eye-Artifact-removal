@@ -125,3 +125,18 @@ Source templates and reusable modules are published; actual executed notebooks
 and all numerical artifacts are local under notebooks/executed/ and results/.
 Representative paired mode heatmap visually inspected. Readiness of a production
 frontal system remains false because native preservation is unresolved.
+
+### Pretrained-only extension: source discovery and eligibility
+
+User approved assessing EEG-WNet and Diff-ADN only if pretrained weights are
+available. No training or adaptations authorized. Eight successful exact/compact
+GitHub and Hugging Face release searches returned no matches. Crossref and
+Europe PMC records verified DOIs/dates/access metadata. WNet publisher HTML
+returned403; publisher XML eventually returned200 but metadata only, no article
+body. IOP returned200 after redirecting to a bot challenge; this is not full-text
+access. Original XML429 attempt was an access failure, not absent supplements.
+No compatible source/checkpoint pair was verified; neither new model is eligible.
+A numbered CPU notebook will verify completed Klados/mode-audit parents and
+preserve an executed closeout with blocked-candidate table and existing metrics.
+It creates no new predictions or denoising scores. Existing frontal failures and
+central/posterior boundaries remain unchanged. No GPU job or author contact.

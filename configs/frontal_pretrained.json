@@ -1,0 +1,52 @@
+{
+  "campaign_id": "frontal-pretrained-20261017",
+  "training_allowed": false,
+  "discovery_sha256": "0ef14f0c14386f6cbb9ae3a5a455943a9e3abeb60c008cd695c4a4106c54498a",
+  "candidates": [
+    {
+      "model": "EEG-WNet",
+      "doi": "10.1016/j.bspc.2026.111553",
+      "eligible": false,
+      "status": "not run\u2014pretrained reproduction unavailable",
+      "checkpoint_sha256": null,
+      "reason": "No compatible public source/checkpoint verified in exact and compact-name GitHub/Hugging Face searches; publisher supplement inspection limited by access errors.",
+      "inference_contract": "unverified; no sampling, normalization or montage values guessed",
+      "pretraining_exposure": "EEGdenoiseNet reported; DEAP qualitative transfer; Klados/OSF overlap unknown"
+    },
+    {
+      "model": "Diff-ADN",
+      "doi": "10.1088/1741-2552/aeab36",
+      "eligible": false,
+      "status": "not run\u2014pretrained reproduction unavailable",
+      "checkpoint_sha256": null,
+      "reason": "No compatible public source/checkpoint verified in exact and compact-name GitHub/Hugging Face searches; publisher redirected to bot challenge, Europe PMC lists subscription access.",
+      "inference_contract": "unverified; no sampling, normalization or montage values guessed",
+      "pretraining_exposure": "Independent artifact-source and four motor-imagery dataset evaluation reported; exact Klados/OSF overlap unknown"
+    }
+  ],
+  "parents": [
+    {
+      "role": "klados",
+      "run_id": "frontal-six-full-001",
+      "git_sha": "c19637465e5a5c29991c2a988f25e6527a156f09",
+      "kernel": "satyapaladugu/klados-frontal-six-methods/5",
+      "tables": [
+        "comparison.csv",
+        "data_contract.json"
+      ]
+    },
+    {
+      "role": "native_audit",
+      "run_id": "frontal-mode-clean-audit-002",
+      "git_sha": "0876931804df1c4344b70f165f0fb907f3a28bc8",
+      "kernel": "satyapaladugu/frontal-mode-clean-eeg-audit/2",
+      "tables": [
+        "native_frontal_before_after_summary.csv",
+        "native_rest_participant_summary.csv",
+        "native_parent_identity.json",
+        "native_reference_audit.json"
+      ]
+    }
+  ],
+  "qualification": "Existing frontal native preservation fails; no new model is evaluated."
+}
