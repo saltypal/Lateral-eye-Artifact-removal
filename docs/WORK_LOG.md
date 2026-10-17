@@ -220,3 +220,22 @@ project gates; paired-source uncertainty; separate blink/lateral outcomes and
 regional scoring; no forced winner from conflicting trade-offs. Fitting-scope
 choice presented asynchronously (full montage recommended, region only, both).
 No implementation choice dependent on that answer has been executed.
+
+## Full montage explicitly approved
+
+User selected full-montage fitting and asked that the choice and reason be
+explained explicitly. Updated REGIONAL_SELECTION.md: all verified EEG inputs
+(19Klados,58 in current OSFstudy01 sessions), separate frontal/central/temporal
+scoring, EOG/annotations kept distinct. More spatial observations may help
+separate ocular and neural activity; restricting Klados central ICA to3channels
+limits separable components. This is a rationale, not proven improvement.
+The shared spatial fit is not explicit frontal-to-back messaging. VMD remains
+frontal-only. New author-code comparisons remain unexecuted; backend/calibration
+contracts must pass before reporting numerical results.
+
+Additional static author-code inspection: REG-ICA standalone regica.m refers
+to regression function names not shipped under those exact names; the archive
+contains crls_regica/scrls_regica. A runtime adapter must call verified routines
+explicitly and document compatibility repairs rather than claim the untouched
+wrapper works. scrls_regica depends on shipped fl.m; no symbolic toolbox was
+identified in that routine. No numerical solver was run locally.

@@ -1,9 +1,42 @@
 # Regional candidate selection: matched SGEYESUB and REG-ICA comparison
 
-Status: author sources inspected; numerical comparison not launched. Fitting
-scope was presented to the user: full montage, region only, or both. Recommended
-primary experiment is full-montage fitting with region-specific scoring; this
-is distinct from the completed region-only central/temporal experiment.
+Status: the user explicitly approved full-montage spatial fitting on17October2026,
+with frontal, central and temporal scores reported separately. Author sources
+are inspected; the SGEYESUB/REG-ICA numerical comparison has not yet run.
+This is distinct from the completed region-only central/temporal experiment.
+
+## Approved fitting scope and rationale
+
+Use all verified EEG channels available in each recording to fit the spatial
+model:19 Klados channels under the disclosed paper-list mapping assumption,
+and the verified EEG montage returned by the OSF reader (58 channels in the
+current study01 sessions). EOG channels remain separate reference inputs where
+the algorithm requires them; annotation channels are never EEG inputs.
+
+Spatial methods estimate source patterns from relationships across channels.
+Frontal electrodes may provide a stronger view of ocular activity, while other
+channels help characterize neural/spatial variation. Restricting ICA to the
+three Klados central channels would constrain the number of separable
+components. Full montage offers more information but does not guarantee better
+separation, preservation or generalization. This is an experimental rationale,
+not a measured superiority claim.
+
+After fitting, apply the model to the original scoring EEG and evaluate the
+frontal, FC/C/CP and FT/T/TP rows separately. Outputs share one fitted model;
+these are not independently fitted regional algorithms. The posterior channels
+may inform the full-montage fit, but posterior candidate selection is outside
+this comparison. No cross-region dB summation. No inferred electrode aliases.
+
+This is not explicit frontal-to-back information passing: no separately cleaned
+frontal output or frontal VMD artifact estimate is sent into a second model.
+VMD remains frontal-only. A later regional composition must estimate every
+candidate artifact from original input and subtract disjoint regional output
+corrections once; it cannot serially clean an already corrected EEG without a
+separate declared experiment.
+
+Report the fitting montage, scored electrode names, EOG/annotation access and
+full-montage versus old region-only protocol prominently in every notebook,
+results table and final report. Match controls before claiming an improvement.
 
 ## Candidates and reproducibility
 

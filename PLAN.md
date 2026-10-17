@@ -103,3 +103,20 @@ legacy regional definitions. Do not pool temporal rows into central metrics.
 
 Klados calibration/scoring filter boundaries differ from archived frontal
 caches, so region scores must not be combined or claimed a matched comparison.
+
+## Approved next comparison: full-montage SGEYESUB and REG-ICA
+
+User explicitly approved full verified EEG montage for fitting, with separate
+frontal, central FC/C/CP and temporal FT/T/TP evaluation. This differs from
+earlier region-only fits and must be disclosed with its spatial-information
+rationale. EOG and annotation channels are not EEG montage inputs. VMD remains
+frontal-only; no explicit inter-region messaging is introduced here.
+
+- [x] Record user-approved fitting scope and explanation.
+- [x] Locate author sources and identify calibration/runtime requirements.
+- [ ] Validate original OSF six-class calibration and author-code backend on Kaggle.
+- [ ] Run matched full-montage candidates/controls and report each region separately.
+- [ ] Apply preservation-first selection with paired uncertainty; no forced winner.
+
+Detailed selection, information-access and non-reproduction rules are in
+docs/REGIONAL_SELECTION.md. No new numerical scores are available yet.
