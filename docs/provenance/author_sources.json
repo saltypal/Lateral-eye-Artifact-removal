@@ -1,0 +1,99 @@
+{
+  "eegoar": {
+    "repository": "dmarcos97/EEGOAR-Net",
+    "git_sha": "4abeaee2b999e78a4abf01a00b9033c745dde8bc",
+    "files": [
+      {
+        "path": "LICENSE",
+        "sha": "4c9e23ad1dfdaf73603b0692ef78c0f8552b5bb4",
+        "size": 1069
+      },
+      {
+        "path": "README.md",
+        "sha": "5d37962333a26f5b6ea0a5bf70874d14ea0b28d6",
+        "size": 3324
+      },
+      {
+        "path": "materials/channel_set_64ch.npy",
+        "sha": "61df02d2de78fbadcddde7d4e093e88869ee2a49",
+        "size": 1408
+      },
+      {
+        "path": "model/eegoarnet_torch.py",
+        "sha": "a804b34c82fb1f92c75d9df5e3daf20b66b522d3",
+        "size": 10502
+      },
+      {
+        "path": "weights/EEGOARNet_torch_weights.pt",
+        "sha": "5308b46df1ed1ab2c92181835cd23047e13ec66b",
+        "size": 2433875
+      }
+    ]
+  },
+  "bandroute": {
+    "repository": "LTPhat/BandRouteNet-BRN",
+    "git_sha": "7f4dc0304b780cd15ada4caa829c7405cf4aa7d5",
+    "files": [
+      {
+        "path": "README.md",
+        "sha": "55eaed16e1a1de8f43fde62b934f336fe03a3725",
+        "size": 4640
+      },
+      {
+        "path": "configs/braanetv2_config.py",
+        "sha": "93a46369ae63571b2b6d2192f9b5fcf288719703",
+        "size": 1972
+      },
+      {
+        "path": "model.py",
+        "sha": "be91a9fb82d9a2437ea625796ddc6e78dc223524",
+        "size": 7068
+      },
+      {
+        "path": "modules/bands_decompose.py",
+        "sha": "73a0927217451f409739e871bc4a64b13084b46c",
+        "size": 3286
+      },
+      {
+        "path": "modules/basic_blocks.py",
+        "sha": "d719400f60a065440f7337d66ed83606d180311e",
+        "size": 3081
+      },
+      {
+        "path": "modules/crossband_fusion.py",
+        "sha": "343a489ef069b97c1c4742c8cc3c9edb5e946952",
+        "size": 2887
+      },
+      {
+        "path": "modules/denoiser.py",
+        "sha": "a7b054ab072ac927e33d423e77b8f92a0292eec6",
+        "size": 880
+      },
+      {
+        "path": "modules/enc_dec.py",
+        "sha": "677003d8182567f695d70c65478b8a18f9946b40",
+        "size": 4323
+      },
+      {
+        "path": "modules/fullband_conditioner.py",
+        "sha": "4aaa81fa96f69048d428da6d88ea0b68bcf24059",
+        "size": 2104
+      },
+      {
+        "path": "modules/loss.py",
+        "sha": "fb9497bce12430fd2d646d28990071f439c811d9",
+        "size": 8220
+      },
+      {
+        "path": "modules/router.py",
+        "sha": "81f9a5591897ab089d22173186fface743ef5d76",
+        "size": 1481
+      },
+      {
+        "path": "modules/utils.py",
+        "sha": "97869afed93d1d199947f5493225071d1955f540",
+        "size": 669
+      }
+    ]
+  }
+}

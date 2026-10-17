@@ -1,0 +1,29 @@
+{
+  "campaign_id": "klados-frontal-six-20261017",
+  "seed": 42,
+  "sampling_rate": 200,
+  "window": 1024,
+  "historical_checkpoint_sha256": "4bb7c1b0cfa0e8341c4053ab3099efb16832f045f99e37afde1904a93c2cd0a9",
+  "historical_test_cache_sha256": "8202b73390d31f587945b9a1891df95fa15f2b07c42744cbbbf4d64a1b9f7db4",
+  "kernel_sources": ["satyapaladugu/region-aware-eog-snr-context/1"],
+  "dataset_sources": [],
+  "bandroute_epochs": 15,
+  "bandroute_batch_size": 8,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "svmd": {"max_modes": 16},
+  "vme_gmetv": {"lambda": 0.5},
+  "mwf_rank": 2,
+  "mwf_strength": 1.0,
+  "reference_access": {
+    "historical_vmd": "HEOG and VEOG required at inference",
+    "svmd_fcm_adaptation": "EEG only; references used for evaluation only",
+    "vme_gmetv_adaptation": "EEG only; references used for evaluation only",
+    "eegoarnet_pretrained": "EEG only; published frozen weights",
+    "gevd_mwf": "training EOG activity defines covariance masks; no runtime EOG",
+    "bandroutenet": "paired Klados training; EEG-only inference"
+  },
+  "autovmd": "preserved; no broad search or neural screening",
+  "excluded_datasets": ["LEMON"],
+  "qualification": "development-exposed record split; participant identities unknown"
+}

@@ -1,3 +1,7 @@
+# Active six-method update
+
+The current authoritative comparison decisions are in [FRONTAL_SIX_METHODS.md](FRONTAL_SIX_METHODS.md). Apply the user-requested paper-listed Klados order with its saved row-binding assumption; earlier restrictions below are historical notes. No LEMON is active.
+
 # What is established, adapted and unavailable
 
 Verified 17 October 2026. This file governs claims in the replacement notebook.

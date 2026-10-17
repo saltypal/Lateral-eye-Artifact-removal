@@ -7,12 +7,12 @@ artifact estimate out. No new invented method names or broad parameter search.
 
 | Order | Method | What we implement | Current status |
 |---|---|---|---|
-| 1 | Our fixed VMD | K=3, alpha=2000; inspect every mode against HEOG and VEOG; retain residual | Kaggle pilot passed |
-| 2 | Historical VMD model | Frozen EOG-assisted 2499-parameter checkpoint; separate replay and frontal adaptation | 17.927210 dB replay verified; native adaptation failed resting preservation |
-| 3 | SVMD + FCM | True successive decomposition, paper features and moving-window fuzzy clustering | Full ocular-paper settings unavailable; author solver and clearly labelled adaptation under audit |
-| 4 | VME + GMETV | Extract ocular-dominated mode, recover EEG inside it, add EEG back | Full settings unavailable; verify original extraction and GMETV equations before implementation |
-| 5 | EEGOAR-Net | Pinned author architecture and pretrained weights; verified frontal channel mask | Author repository located; adapter next |
-| 6 | BandRouteNet v2 | Pinned published architecture/author code; paired Klados training and OSF frontal inference | Author repository located; code/split audit next |
+| 1 | Historical VMD model | Frozen EOG-assisted 2499-parameter checkpoint, K3/alpha2000; seven frontal rows only | All-19-row 17.927210 dB replay verified; frontal result must be measured separately |
+| 2 | SVMD + FCM | PySDKit successive solver, EEG-demo parameters, declared moving-window FCM adaptation | Implemented; Kaggle numerical check pending |
+| 3 | VME + GMETV | PySDKit VME, original GMETV Algorithm 3 with explicit diagonal C | Implemented adaptation; unavailable ocular settings remain a limitation |
+| 4 | EEGOAR-Net | Hash-verified author architecture, weights and 64-channel presence mask | Adapter implemented; Kaggle loading/inference check pending |
+| 5 | GEVD–MWF | Rank-two spatial filter; covariance masks from training EOG only | Existing tested core; matched frontal evaluation pending |
+| 6 | BandRouteNet v2 | Pinned author BRAANetV2, paired training, validation-only checkpoint selection | Training adapter implemented; Kaggle GPU smoke then 15 epochs |
 
 Identity and direct HEOG/VEOG regression remain the two simple controls.
 Reproductions and adaptations are labelled separately. Missing paper details
@@ -29,15 +29,17 @@ and record exact remaining reproduction gaps.
 - [x] Reproduce the historical 17.9272 dB checkpoint on its exact archived cache.
 - [x] Run one native OSF session and save every frontal mode's H/V correlation.
 - [ ] Finish paper adapters and method-specific tests.
-- [ ] Run all eligible frontal methods on identical OSF scoring trials.
-- [ ] Run eligible paired methods on identical Klados records/windows.
+- [ ] Run the six frontal methods on identical archived Klados records/windows.
+- [ ] Download real executed notebooks, including result tables and plot cells.
 - [ ] Save per-record/channel SNR, improvement, MSE/RMSE, RRMSE and Pearson CC.
 - [ ] Save lateral/blink correlation, resting preservation, runtime and failures.
 - [ ] Inspect waveform, mode, correlation, PSD, preservation and metric plots.
 - [ ] Publish one measured comparison and select a frontal method only from evidence.
 
 No native OSF reconstruction SNR is reported because no clean target exists.
-No Klados electrode anatomy is guessed. The historical score is development-
+Use Klados paper-listed order as explicitly requested: frontal rows
+0/1/2/3/10/11/16 = FP1/FP2/F3/F4/F7/F8/Fz. Save the assumption because row-to-list
+binding has not been independently verified. The historical score is development-
 exposed and requires runtime VMD plus HEOG/VEOG. It is not VMD alone.
 
 ## Then: posterior
