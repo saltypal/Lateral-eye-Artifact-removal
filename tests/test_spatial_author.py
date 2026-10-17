@@ -27,3 +27,16 @@ def test_uncertainty_pairs_cluster_id_instead_of_row_position():
     assert result['ci95_lower']==result['ci95_upper']==1.
     with pytest.raises(ValueError,match='clusters'):
         bootstrap_difference(first.iloc[:1],second)
+
+
+def test_scored_input_uses_archived_bits_and_rejects_larger_changes():
+    from eog_clean.frontal_spatial import canonical_scoring_input
+    original=np.array([[1.,2.,3.],[4.,5.,6.]],dtype=np.float32)
+    archived=original[[1]].copy()
+    archived[0,0]=np.nextafter(archived[0,0],np.float32(np.inf))
+    restored,diagnostic=canonical_scoring_input(original,[1],archived)
+    np.testing.assert_array_equal(restored[1],archived[0])
+    np.testing.assert_array_equal(restored[0],original[0])
+    assert diagnostic['different_float32_values']==1
+    changed=archived.copy();changed[0,0]=np.nextafter(changed[0,0],np.float32(np.inf))
+    with pytest.raises(AssertionError):canonical_scoring_input(original,[1],changed)

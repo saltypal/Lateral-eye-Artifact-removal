@@ -3,6 +3,7 @@ from pathlib import Path
 import json
 import tempfile
 import time
+import shutil
 import numpy as np
 import pandas as pd
 from .data import save_json, prepare_sources, osf_trials, osf_sessions, calibration_split,klados,preprocess,sha256
@@ -12,6 +13,54 @@ from .spatial_author import (prepare_backend, fit_sgeyesub, fit_regica,
 from .pretrained_review import verified_table_parent
 from .central import correlation_rows
 from .metrics import preservation
+
+
+def canonical_scoring_input(full,indices,archived):
+    """Use exact archived scored rows; reject differences larger than one float32 ULP.
+
+    Different CPU/library execution can round a filtered float32 value to its
+    adjacent representation. This is an input-identity check, not a metric or
+    scientific acceptance tolerance. All scored model inputs use archived bits.
+    """
+    current=np.asarray(full[indices],np.float32)
+    archived=np.asarray(archived,np.float32)
+    if current.shape!=archived.shape or not np.isfinite(current).all() or not np.isfinite(archived).all():
+        raise ValueError('Scoring identity shape/finiteness differs')
+    np.testing.assert_array_max_ulp(current,archived,maxulp=1)
+    result=full.copy();result[indices]=archived
+    np.testing.assert_array_equal(result[indices],archived)
+    return result,{'different_float32_values':int(np.count_nonzero(current!=archived)),
+                   'max_absolute_rounding_difference':float(np.max(np.abs(current.astype(float)-archived))),
+                   'maximum_permitted_float32_ulp':1,'actual_scored_frontal_values':'exact archived bytes'}
+
+
+def restore_failed_parent(input_root,output):
+    """Restore declared failed run only; verify every copied file before reuse."""
+    matches=[]
+    for path in Path(input_root).rglob('artifact_manifest.json'):
+        manifest=json.loads(path.read_text())
+        if manifest.get('run_id')=='frontal-spatial-full-001':matches.append((path,manifest))
+    if not matches:return
+    if len(matches)!=1:raise ValueError('Failed parent must be unique')
+    path,manifest=matches[0]
+    if manifest['git_sha']!='e8d0021bf1c2e67b28babb370411b1e7590fa868' or manifest['complete']:
+        raise ValueError('Unexpected recovery parent identity/state')
+    copied=[]
+    names={'new_klados_per_channel.csv','new_klados_clean_controls.csv','klados_all_per_channel.csv',
+           'new_klados_summary.csv','klados_comparison.csv','paired_protocol.json',
+           'new_osf_per_channel.csv','new_osf_rest_preservation.csv','method_failures.json'}
+    for entry in manifest['files']:
+        name=entry['path']
+        if not (name.startswith(('klados/','osf/')) or name in names):continue
+        source=path.parent/name;destination=Path(output)/name
+        if not destination.resolve().is_relative_to(Path(output).resolve()):raise ValueError('Invalid recovery path')
+        if source.stat().st_size!=entry['bytes'] or sha256(source)!=entry['sha256']:
+            raise ValueError('Failed parent payload hash differs: '+name)
+        destination.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source,destination);copied.append(name)
+    save_json(Path(output)/'recovery_parent.json',{'run_id':manifest['run_id'],'git_sha':manifest['git_sha'],
+        'parent_completed':False,'copied_verified_files':copied,'calibration_model_reuse_requires_input_identity_check':True,
+        'repair':'one-float32-ULP preprocessing identity check; actual scored frontal rows use archived bytes',
+        'scientific_acceptance_thresholds_changed':False})
 
 
 def run_paired(root,input_root,source_root,output,backend,failures):
@@ -30,6 +79,18 @@ def run_paired(root,input_root,source_root,output,backend,failures):
         arrays={key:archive[key].copy() for key in ['raw','clean','eyes','keys']}
     verify=verified_table_parent(input_root,'frontal-six-full-001','c19637465e5a5c29991c2a988f25e6527a156f09')
     old_metrics=pd.read_csv(verify('per_channel_window.csv'))
+    if (output/'paired_protocol.json').is_file():
+        protocol=json.loads((output/'paired_protocol.json').read_text())
+        if protocol['original_test_cache_sha256']!=sha256(cache_path) or protocol['scored_channels']!=names:
+            raise ValueError('Paired recovery protocol differs')
+        expected={(int(key[0]),int(key[1])) for key in arrays['keys']}
+        recovered=pd.read_csv(output/'new_klados_per_channel.csv')
+        for method in ['regica','direct_calibrated_ridge']:
+            selected=recovered[recovered.method==method]
+            if set(zip(selected.record,selected.start))!=expected or len(selected)!=len(expected)*len(names):
+                raise ValueError('Paired recovery incomplete')
+        print('SPATIAL_KLADOS_RECOVERED',len(expected),'exact parent windows',flush=True)
+        return
     dirty,_,references,_=klados(root)
     rows=[];controls=[]
     for record in sorted(set(int(key[0]) for key in arrays['keys'])):
@@ -148,6 +209,7 @@ def readiness(input_root, source_root, output):
 def run_native(input_root,source_root,output):
     if not Path('/kaggle/input').exists():raise RuntimeError('Numerical work runs on Kaggle')
     output=Path(output);source_root=Path(source_root)
+    restore_failed_parent(input_root,output)
     backend=prepare_backend(source_root,output/'author_sources')
     config=json.loads((source_root/'configs/frontal_osf.json').read_text())
     work=Path(tempfile.mkdtemp(prefix='frontal-spatial-originals-'))
@@ -157,7 +219,10 @@ def run_native(input_root,source_root,output):
     previous=pd.read_csv(old/'osf_frontal_before_after_per_channel.csv')
     # Existing raw/prediction payloads are verified individually before use.
     partition=json.loads((source_root/'docs/provenance/osf_partition.json').read_text())['partitions']
-    rows=[];rest_rows=[];failures=[];timings=[]
+    rows=pd.read_csv(output/'new_osf_per_channel.csv').to_dict('records') if (output/'new_osf_per_channel.csv').exists() else []
+    rest_rows=pd.read_csv(output/'new_osf_rest_preservation.csv').to_dict('records') if (output/'new_osf_rest_preservation.csv').exists() else []
+    failures=json.loads((output/'method_failures.json').read_text()) if (output/'method_failures.json').exists() else []
+    timings=[];rounding=[]
     run_paired(root,input_root,source_root,output,backend,failures)
     for path in osf_sessions(root,partition,4):
         trials,metadata=osf_trials(path);calibration,scoring,policy=calibration_split(trials)
@@ -168,12 +233,23 @@ def run_native(input_root,source_root,output):
         for method,function in [('sgeyesub',lambda:fit_sgeyesub(values,labels,backend,directory/'sgeyesub_fit')),
                                 ('regica',lambda:fit_regica(values,backend,directory/'regica_fit'))]:
             began=time.perf_counter()
-            try:models[method]=function()
+            try:
+                fit_directory=directory/(method+'_fit')
+                if (fit_directory/'model.mat').is_file():
+                    from scipy.io import loadmat
+                    saved=loadmat(fit_directory/'input.mat')
+                    np.testing.assert_array_max_ulp(np.asarray(saved['X'],np.float32),values.astype(np.float32),maxulp=1)
+                    if method=='sgeyesub':np.testing.assert_array_equal(saved['labels'].reshape(-1),labels)
+                    restored=loadmat(fit_directory/'model.mat')
+                    models[method]=restored['C'] if method=='sgeyesub' else restored
+                    phase='restore_verified_calibration_model'
+                else:models[method]=function();phase='fit'
             except (ValueError,RuntimeError,np.linalg.LinAlgError) as error:
                 models[method]=None
                 failures.append({'record':metadata['record'],'method':method,'phase':'calibration',
                     'error':str(error),'fallback':'identity, all cases retained'})
-            timings.append({'record':metadata['record'],'method':method,'phase':'fit','runtime_s':time.perf_counter()-began})
+                phase='failed_fit'
+            timings.append({'record':metadata['record'],'method':method,'phase':phase,'runtime_s':time.perf_counter()-began})
             print('SPATIAL_FIT_SAVED',metadata['record'],method,models[method] is not None,flush=True)
         selected=previous[(previous.record==metadata['record'])&(previous.method=='identity')]
         trial_ids=set(int(value) for value in selected.trial)
@@ -188,16 +264,25 @@ def run_native(input_root,source_root,output):
             parent_name=f'osf/{metadata["record"]}/trial_{trial["index"]:03d}_predictions.npz'
             with np.load(verify(parent_name),allow_pickle=False) as archive:
                 old_raw=archive['raw'];evaluation=np.stack([archive['heog'],archive['veog']])
-            np.testing.assert_allclose(trial['eeg'][indices],old_raw,rtol=0,atol=0,
-                err_msg='Native frontal scoring inputs differ from completed parent')
+            scoring_values,detail=canonical_scoring_input(trial['eeg'],indices,old_raw)
+            rounding.append({'record':metadata['record'],'trial':trial['index'],**detail})
+            save_json(output/'scoring_input_identity.json',rounding)
             np.testing.assert_array_equal(trial['evaluation_eyes'],evaluation)
+            previous_rows=[row for row in rows if row['record']==metadata['record'] and int(row['trial'])==trial['index']]
+            if previous_rows:
+                if len(previous_rows)!=2*len(names) or {row['method'] for row in previous_rows}!={'sgeyesub','regica'}:
+                    raise ValueError('Incomplete recovered trial')
+                with np.load(directory/f'trial_{trial["index"]:03d}_frontal.npz',allow_pickle=False) as archive:
+                    np.testing.assert_array_equal(archive['raw'],old_raw)
+                print('SPATIAL_TRIAL_RECOVERED',metadata['record'],trial['index'],flush=True)
+                continue
             stored={'raw':old_raw,'heog':evaluation[0],'veog':evaluation[1],'channel_names':np.asarray(names)}
             for method,model in models.items():
                 began=time.perf_counter()
                 try:
                     if model is None:prediction=old_raw.copy()
-                    elif method=='sgeyesub':prediction=(model@trial['eeg'])[indices]
-                    else:prediction=predict_regica(trial['eeg'],trial['eyes'],model,backend,
+                    elif method=='sgeyesub':prediction=(model@scoring_values)[indices]
+                    else:prediction=predict_regica(scoring_values,trial['eyes'],model,backend,
                         directory/f'regica_trial_{trial["index"]:03d}')[indices]
                 except (ValueError,RuntimeError,np.linalg.LinAlgError) as error:
                     prediction=old_raw.copy()

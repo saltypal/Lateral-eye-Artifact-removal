@@ -41,6 +41,10 @@ No neural training, AutoVMD search, LEMON or confirmation access.
 The full stage also evaluates REG-ICA on the exact paired Klados windows and
 seven frontal rows of the completed benchmark. All19 EEG rows fit its ICA;
 SGEYESUB is ineligible on Klados without its six-class calibration labels.
+Recovery verifies failed version2 payload hashes and calibration inputs before
+reuse. One-float32-ULP filter-rounding differences are logged; actual scored
+frontal rows use exact archived bytes. Larger discrepancies fail. Scientific
+acceptance limits are unchanged.
 '''),md('## 1. Exact source, numerical dependencies and original-code runtime'),bootstrap,
     md('''## 2. Numerical contracts, then declared execution stage
 
@@ -113,11 +117,14 @@ save_json(OUTPUT/'execution_state.json',{'state':'complete','git_sha':actual,
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('action',choices=['build','submit','status'])
     parser.add_argument('--run-id',default='frontal-spatial-readiness-001')
-    parser.add_argument('--full',action='store_true');args=parser.parse_args()
+    parser.add_argument('--full',action='store_true')
+    parser.add_argument('--resume-failed-parent',action='store_true');args=parser.parse_args()
+    if args.resume_failed_parent and not args.full:raise ValueError('Recovery applies only to the full stage')
     if args.action=='status':print(cli('kernels','status',KERNEL));return
     spec={'run_id':args.run_id,'campaign_id':'frontal-spatial-20261017','kernel':KERNEL,
         'git_sha':git('rev-parse','HEAD'),'git_url':git('remote','get-url','origin'),
         'created_utc':datetime.now(timezone.utc).isoformat(),'stage':'full' if args.full else 'readiness',
+        'recovery_parent':'frontal-spatial-full-001/e8d0021' if args.resume_failed_parent else None,
         'output':'/kaggle/working/results/frontal-spatial-20261017/'+args.run_id}
     if args.action=='build':
         spec['git_sha']='RESOLVED_TO_PUBLISHED_SHA_AT_SUBMISSION'
@@ -133,6 +140,7 @@ def main():
             'satyapaladugu/frontal-klados-and-osf-correlations/1',
             'satyapaladugu/klados-frontal-six-methods/5',
             'satyapaladugu/region-aware-eog-snr-context/1'],'competition_sources':[]}
+    if args.resume_failed_parent:metadata['kernel_sources'].append(KERNEL+'/2')
     (folder/'kernel-metadata.json').write_text(json.dumps(metadata,indent=2))
     (folder/'run_spec.json').write_text(json.dumps(spec,indent=2))
     message=cli('kernels','push','-p',str(folder));(folder/'submission.txt').write_text(message);print(message)

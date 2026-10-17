@@ -270,3 +270,25 @@ calibration classes. New paired calibration uses first2000 independently
 preprocessed samples and a matched calibrated ridge control; earlier scoring-
 window ridge remains distinct. No new VMD, LEMON, central/posterior scoring,
 message passing or neural training. Full numerical results pending.
+
+### Full spatial version2 input-contract failure and bounded repair
+
+Sourcee8d0021/runfrontal-spatial-full-001 passed41 contracts, completed all8
+Klados records with no method exceptions, fitted original SGEYESUB/REGICA for
+OSFp02/p03 and saved all8p02 scoring trials. At p03 scoring, strict zero-
+tolerance equality found1/8000 values differed by1.4901161e-08 (onefloat32ULP)
+from the archived frontal input. Preprocessing source files are unchanged;
+the difference is consistent with rounding, but its hardware/library cause
+has not been isolated. The algorithm fits did not raise the error.
+Recovered359/359 verified payloads, actual2/3-cell notebook with1error, no plots.
+This remains an incomplete failed run, not a completed native result.
+
+Repair: reject shape/nonfinite and differences above onefloat32ULP, log each
+representational difference, replace only frontal scoring rows with the exact
+verified archived bytes before new inference, and assert exact equality.
+Scientific thresholds are unchanged. Add a Kaggle regression fixture accepting
+one step and rejecting two. Resume only the declared failed parent/source;
+verify copied bytes/hashes, paired-window coverage and calibration-input
+identity before reusing outputs/models. Reused fit costs remain in parent logs,
+distinct from new-runtime rows. No clean EEG selects this repair, no missing
+trials excluded and no other regions run.
