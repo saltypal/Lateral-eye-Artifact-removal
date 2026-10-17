@@ -1,7 +1,7 @@
 """Meaningful numerical contracts; executed only inside the Kaggle notebook."""
 import numpy as np
 import pytest
-from eog_clean.data import region, calibration_split
+from eog_clean.data import region, calibration_split, osf_sessions, prepare_sources
 from eog_clean.frontal import overlap_add, window_starts, combine
 from eog_clean.metrics import paired, correlations, preservation
 from eog_clean.methods import fit_ridge, fit_mwf
@@ -106,3 +106,42 @@ def test_historical_model_starts_at_identity_and_requires_eog():
     assert torch.count_nonzero(result["artifact"]) == 0
     with pytest.raises(ValueError, match="HEOG"):
         model(raw, modes, references[:, :1], torch.ones(2, 3), torch.full((2, 3), 3))
+
+
+def test_confirmation_sources_are_excluded_before_waveform_loading(tmp_path):
+    folder = tmp_path/"Dataset1_OSF/study01"
+    folder.mkdir(parents=True)
+    for name in ("p01", "p02"):
+        (folder/f"study01_{name}_prep.set").touch()
+    partition = {"osf:p01": {"role": "confirmation"}, "osf:p02": {"role": "development"}}
+    selected = osf_sessions(tmp_path, partition, 0)
+    assert [path.stem for path in selected] == ["study01_p02_prep"]
+
+
+def test_corrupted_source_container_fails_before_extraction(tmp_path):
+    import json
+    source = tmp_path/"inputs"
+    source.mkdir()
+    (source/"data.eogbundle").write_bytes(b"corrupted")
+    (source/"source_manifest.json").write_text(json.dumps({"archive": {
+        "name": "data.eogbundle", "bytes": 9, "sha256": "0"*64}}))
+    with pytest.raises(ValueError, match="checksum"):
+        prepare_sources(source, tmp_path/"extract", tmp_path/"output", "0"*64)
+    assert not (tmp_path/"extract").exists()
+
+
+def test_vmd_solver_cap_is_visible_instead_of_claimed_success():
+    signal = np.random.default_rng(5).normal(size=1024)
+    _, _, diagnostic = rolling_decompose(signal, 3, 2000, max_iterations=3)
+    assert diagnostic["hit_iteration_limit"]
+
+
+def test_new_window_regression_matches_per_window_reference_access():
+    from eog_clean.experiment import _artifacts
+    values = np.random.default_rng(2).normal(size=(3, 2049)).astype(np.float32)
+    eyes = np.random.default_rng(3).normal(size=(2, 2049)).astype(np.float32)
+    config = {"window": 1024, "hop": 512, "ridge": .001}
+    empty_fits = {"direct_calibrated": None, "ica_component_regression": None, "mwf": None}
+    result = _artifacts(values, eyes, empty_fits, config)["direct_window"]
+    assert result.shape == values.shape and np.isfinite(result).all()
+    assert not np.allclose(result, fit_ridge(values, eyes).artifact(values, eyes))

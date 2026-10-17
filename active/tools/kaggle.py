@@ -50,14 +50,16 @@ if not pathlib.Path('/kaggle/input').exists():
     raise RuntimeError('Numerical work for this campaign must run on Kaggle')
 os.environ.update(OMP_NUM_THREADS='2', MKL_NUM_THREADS='2', OPENBLAS_NUM_THREADS='2')
 print('BOOTSTRAP_START', RUN_SPEC['run_id'], RUN_SPEC['git_sha'], flush=True)
-CHECKOUT = pathlib.Path(tempfile.mkdtemp(prefix='klados-osf-source-', dir='/kaggle/working'))
+CHECKOUT = pathlib.Path(tempfile.mkdtemp(prefix='klados-osf-source-'))
 subprocess.run(['git', 'clone', '--quiet', RUN_SPEC['git_url'], str(CHECKOUT)], check=True)
 subprocess.run(['git', '-C', str(CHECKOUT), 'checkout', '--quiet', RUN_SPEC['git_sha']], check=True)
 actual = subprocess.check_output(['git','-C',str(CHECKOUT),'rev-parse','HEAD'], text=True).strip()
 assert actual == RUN_SPEC['git_sha']
+print('BOOTSTRAP_DEPENDENCIES', flush=True)
+# Use the existing coherent Kaggle numerical stack; install only small readers
+# and test/report tools. The actual complete environment is recorded below.
 subprocess.run([sys.executable, '-m', 'pip', 'install', '-q',
-    'numpy==1.26.4', 'scipy==1.14.1', 'scikit-learn==1.5.2', 'pandas==2.2.3',
-    'matplotlib==3.8.4', 'pymatreader==1.0.0', 'pytest==8.3.5'], check=True)
+    'pymatreader==1.0.0', 'pytest==8.3.5', 'tabulate==0.9.0'], check=True, timeout=180)
 sys.path.insert(0, str(CHECKOUT/'active/src'))
 OUTPUT = pathlib.Path('/kaggle/working/results')/RUN_SPEC['campaign_id']/RUN_SPEC['run_id']
 OUTPUT.mkdir(parents=True, exist_ok=False)
@@ -69,7 +71,7 @@ save_json(OUTPUT/'run_spec.json', RUN_SPEC)
 save_json(OUTPUT/'environment.json', {
     'actual_git_sha':actual, 'python':sys.version, 'platform':platform.platform(),
     'packages':{name:importlib.metadata.version(name) for name in
-        ['numpy','scipy','scikit-learn','pandas','matplotlib','pymatreader','pytest','torch']},
+        ['numpy','scipy','scikit-learn','pandas','matplotlib','pymatreader','pytest','torch','tabulate']},
     'hardware':'Kaggle CPU', 'torch_cuda_available':torch.cuda.is_available(),
     'utc':datetime.now(timezone.utc).isoformat()})
 CONFIG = json.loads((CHECKOUT/'active/config.json').read_text())
@@ -97,7 +99,7 @@ Only Klados and OSF members are extracted. OSF confirmation participants stay
 excluded using the existing frozen participant manifest. Annotation channels are
 never scaled or filtered as EEG. Each trial is filtered independently.
 """), code('''from eog_clean.data import prepare_sources, osf_sessions, osf_trials
-source_work = pathlib.Path(tempfile.mkdtemp(prefix='klados-osf-data-', dir='/kaggle/working'))
+source_work = pathlib.Path(tempfile.mkdtemp(prefix='klados-osf-data-'))
 ROOT_DATA = prepare_sources('/kaggle/input', source_work/'originals', OUTPUT, CONFIG['source_supplement_sha256'])
 PARTITION = json.loads((CHECKOUT/CONFIG['confirmation_manifest']).read_text())['partitions']
 selected = osf_sessions(ROOT_DATA, PARTITION, CONFIG['osf_max_sessions'])
@@ -126,6 +128,8 @@ Direct-window regression is the reference-access-matched VMD control. Native
 EEG–EOG correlation is a suppression proxy; resting change guards preservation.
 """), code('''from eog_clean.experiment import run
 run(ROOT_DATA, '/kaggle/input', OUTPUT, CONFIG, PARTITION)
+from eog_clean.report import write_review
+write_review(OUTPUT)
 '''), markdown("""## 5. Result tables
 
 Paper metrics: MSE, RMSE, temporal RRMSE and ordinary Pearson CC. Project output
@@ -155,6 +159,8 @@ Every payload below is hashed for retrieval. Completion means the notebook ran;
 accuracy, clean preservation and generalization must be assessed from the saved
 tables. A 17.9 dB archived replay cannot qualify fresh regional performance.
 """), code('''from eog_clean.data import sha256
+save_json(OUTPUT/'execution_state.json', {'state':'complete', 'run_id':RUN_SPEC['run_id'],
+    'git_sha':actual, 'research_qualified':False, 'plots_saved':len(FIGURES)})
 files = [{'path':str(path.relative_to(OUTPUT)), 'bytes':path.stat().st_size, 'sha256':sha256(path)}
          for path in sorted(OUTPUT.rglob('*')) if path.is_file() and path.name != 'artifact_manifest.json']
 save_json(OUTPUT/'artifact_manifest.json', {'run_id':RUN_SPEC['run_id'], 'git_sha':actual,

@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from .data import (save_json, sha256, klados, preprocess, osf_trials,
                    osf_sessions, calibration_split)
-from .frontal import estimate, combine
+from .frontal import estimate, combine, window_starts, overlap_add
 from .methods import fit_ridge, window_regression, fit_ica, fit_mwf
 from .metrics import paired, correlations, preservation
 
@@ -34,7 +34,11 @@ def _fit(values, eyes, ocular, rest, config, failures, record):
 
 
 def _artifacts(values, eyes, fits, config):
-    result = {"identity": np.zeros_like(values), "direct_window": window_regression(values, eyes, config["ridge"])}
+    starts = window_starts(values.shape[-1], config["window"], config["hop"])
+    projections = [window_regression(values[:, start:start+config["window"]],
+        eyes[:, start:start+config["window"]], config["ridge"]) for start in starts]
+    result = {"identity": np.zeros_like(values),
+              "direct_window": overlap_add(np.stack(projections), starts, values.shape[-1])}
     for method, model in fits.items():
         result[method] = model.artifact(values, eyes) if model is not None else np.zeros_like(values)
     ica = fits["ica_component_regression"]
@@ -136,7 +140,31 @@ def _regional_fits(calibration, names, groups, config, failures, record):
     return fits
 
 
-def run_osf(root, output, config, partition):
+def _historical_frontal_artifact(model, values, eyes, cache, diagnostics, names):
+    """Adapt frozen historical weights to verified frontal inputs; no refitting.
+
+    Unlike the archived unnamed montage, metadata here really is frontal. This
+    changes a model feature and is explicitly an adaptation, not score replay.
+    """
+    import torch
+    artifacts = []
+    for window, start in enumerate(cache["starts"]):
+        raw = torch.from_numpy(values[:, start:start+1024].copy())[None]
+        modes = torch.from_numpy(cache["modes"][window].copy())[None]
+        references = torch.from_numpy(eyes[:, start:start+1024].copy())[None]
+        valid = np.array([all(detail["valid"] for detail in diagnostics
+            if detail["channel"] == name and detail["window_start"] == int(start)) for name in names])
+        with torch.no_grad():
+            result = model(raw, modes, references, torch.ones(raw.shape[:2]),
+                           torch.zeros(raw.shape[:2], dtype=torch.long))
+            artifact = result["artifact"][0].numpy()*valid[:, None]
+        if not np.isfinite(artifact).all():
+            raise ValueError("Historical frontal adaptation produced nonfinite values")
+        artifacts.append(artifact)
+    return overlap_add(np.stack(artifacts), cache["starts"], values.shape[-1])
+
+
+def run_osf(root, output, config, partition, historical_model=None):
     failures, rows, rest_rows, all_diagnostics, timing = [], [], [], [], []
     for path in osf_sessions(root, partition, config["osf_max_sessions"]):
         began = time.perf_counter()
@@ -164,6 +192,7 @@ def run_osf(root, output, config, partition):
                 for name, artifact in _artifacts(values[indices], eyes, group_fits, config).items():
                     artifacts[name][indices] = artifact
             frontal_artifact = np.zeros_like(values)
+            learned_frontal_artifact = np.zeros_like(values)
             if len(frontal_indices):
                 estimate_values, cache, diagnostics = estimate(values[frontal_indices], eyes, config,
                     [names[index] for index in frontal_indices])
@@ -172,10 +201,17 @@ def run_osf(root, output, config, partition):
                 for detail in diagnostics:
                     all_diagnostics.append({"record": record, "trial": trial["index"],
                         "condition": CONDITIONS[condition], **detail})
+                if historical_model is not None:
+                    learned_frontal_artifact[frontal_indices] = _historical_frontal_artifact(
+                        historical_model, values[frontal_indices], eyes, cache, diagnostics,
+                        [names[index] for index in frontal_indices])
             artifacts["frontal_vmd_only"] = frontal_artifact
+            artifacts["historical_model_frontal_adaptation"] = learned_frontal_artifact
             for name in ("direct_calibrated", "ica_component_regression", "mwf"):
                 _, artifact = combine(values, frontal_artifact, artifacts[name], groups)
                 artifacts["hybrid_vmd_"+name] = artifact
+                _, learned_artifact = combine(values, learned_frontal_artifact, artifacts[name], groups)
+                artifacts["hybrid_historical_"+name] = learned_artifact
             predictions = {"raw": values, "eyes": eyes, "evaluation_eyes": eval_eyes}
             for method, artifact in artifacts.items():
                 cleaned = values-artifact
@@ -262,6 +298,7 @@ def replay_historical(input_root, output, config):
         "aggregation": "pooled-energy SNR per window; average windows within record, then records in dB"})
     np.savez_compressed(output/"historical_predictions.npz", prediction=prediction, **arrays)
     print("HISTORICAL_REPLAY_SAVED", mean_snr, flush=True)
+    return model
 
 
 def run(root, input_root, output, config, partition):
@@ -271,10 +308,10 @@ def run(root, input_root, output, config, partition):
     output.mkdir(parents=True, exist_ok=True)
     save_json(output/"execution_state.json", {"state": "running", "config": config})
     try:
-        replay_historical(input_root, output, config)
+        historical_model = replay_historical(input_root, output, config)
         run_klados(root, output, config)
-        run_osf(root, output, config, partition)
-        save_json(output/"execution_state.json", {"state": "complete", "config": config,
+        run_osf(root, output, config, partition, historical_model)
+        save_json(output/"execution_state.json", {"state": "numerical_complete", "config": config,
             "research_qualified": False, "reason": "Candidate preservation and independent validation require review"})
     except Exception as error:
         save_json(output/"execution_state.json", {"state": "failed", "config": config,
