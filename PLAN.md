@@ -10,7 +10,7 @@ artifact estimate out. No new invented method names or broad parameter search.
 | 1 | Historical VMD model | Frozen EOG-assisted 2499-parameter checkpoint, K3/alpha2000; seven frontal rows only | All-19-row 17.927210 dB replay verified; frontal result must be measured separately |
 | 2 | SVMD + FCM | PySDKit successive solver, EEG-demo parameters, declared moving-window FCM adaptation | Implemented; Kaggle numerical check pending |
 | 3 | VME + GMETV | PySDKit VME, original GMETV Algorithm 3 with explicit diagonal C | Implemented adaptation; unavailable ocular settings remain a limitation |
-| 4 | EEGOAR-Net | Hash-verified author architecture, weights and 64-channel presence mask | Adapter implemented; Kaggle loading/inference check pending |
+| 4 | EEGOAR-Net | Author architecture/pretrained initialization; explicit seven+padding montage; Klados training/validation only | Frozen 64-label mapping lacks FP1/FP2; custom-montage fine-tuning adaptation under Kaggle validation |
 | 5 | GEVD–MWF | Rank-two spatial filter; covariance masks from training EOG only | Existing tested core; matched frontal evaluation pending |
 | 6 | BandRouteNet v2 | Pinned author BRAANetV2, paired training, validation-only checkpoint selection | Training adapter implemented; Kaggle GPU smoke then 15 epochs |
 

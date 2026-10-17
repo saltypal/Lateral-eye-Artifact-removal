@@ -19,7 +19,7 @@ from .author_models import (fetch_author_source, EEGOAR, bandroute_model,
 
 
 METHODS = ['historical_vmd', 'svmd_fcm_adaptation', 'vme_gmetv_adaptation',
-           'eegoarnet_pretrained', 'gevd_mwf', 'bandroutenet']
+           'eegoarnet_finetuned', 'gevd_mwf', 'bandroutenet']
 
 
 def load_caches(input_root, output, source_root, config):
@@ -88,14 +88,17 @@ def training_blocks(cache):
             (clean/scale).reshape(-1,1,512).astype(np.float32))
 
 
-def train_bandroute(model, caches, output, config, device):
+def train_paired(model, caches, output, config, device, name='bandroute', adapter=None):
     random.seed(config['seed'])
     np.random.seed(config['seed'])
     torch.manual_seed(config['seed'])
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(config['seed'])
-    train_x, train_y = training_blocks(caches['train'])
-    valid_x, valid_y = training_blocks(caches['val'])
+    make_blocks = training_blocks if adapter is None else adapter.training_blocks
+    train_x, train_y = make_blocks(caches['train'])
+    valid_x, valid_y = make_blocks(caches['val'])
+    def predict(inputs):
+        return model(inputs)['y_hat'] if adapter is None else adapter.forward_training(inputs)
     generator = torch.Generator().manual_seed(config['seed'])
     loader = DataLoader(TensorDataset(torch.from_numpy(train_x),torch.from_numpy(train_y)),
                         batch_size=config['bandroute_batch_size'], shuffle=True,
@@ -112,10 +115,10 @@ def train_bandroute(model, caches, output, config, device):
         for inputs, targets in loader:
             inputs, targets = inputs.to(device), targets.to(device)
             optimizer.zero_grad(set_to_none=True)
-            prediction = model(inputs)['y_hat']
+            prediction = predict(inputs)
             loss = torch.mean((prediction-targets)**2)
             if not torch.isfinite(loss):
-                raise ValueError('Nonfinite BandRoute training loss')
+                raise ValueError('Nonfinite '+name+' training loss')
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.)
             optimizer.step()
@@ -126,7 +129,7 @@ def train_bandroute(model, caches, output, config, device):
         with torch.inference_mode():
             for inputs, targets in validation:
                 inputs, targets = inputs.to(device), targets.to(device)
-                loss = torch.mean((model(inputs)['y_hat']-targets)**2)
+                loss = torch.mean((predict(inputs)-targets)**2)
                 error += float(loss)*len(inputs)
                 valid_count += len(inputs)
         value = error/valid_count
@@ -135,20 +138,21 @@ def train_bandroute(model, caches, output, config, device):
         state = {'model':model.state_dict(),'optimizer':optimizer.state_dict(),
                  'epoch':epoch+1,'validation_mse':value,'config':config,
                  'rng_state':torch.get_rng_state(),'shuffle_rng_state':generator.get_state()}
-        torch.save(state, output/'bandroute_last.pt')
+        torch.save(state, output/f'{name}_last.pt')
         if value < best:
             best = value
-            torch.save(state, output/'bandroute_best.pt')
-        pd.DataFrame(history).to_csv(output/'bandroute_training.csv', index=False)
-        print('BANDROUTE_EPOCH_SAVED', epoch+1, 'train',total/count,'validation',value,
+            torch.save(state, output/f'{name}_best.pt')
+        pd.DataFrame(history).to_csv(output/f'{name}_training.csv', index=False)
+        print(name.upper()+'_EPOCH_SAVED', epoch+1, 'train',total/count,'validation',value,
               'elapsed_s', round(time.perf_counter()-began,1), flush=True)
-    checkpoint = torch.load(output/'bandroute_best.pt', map_location=device, weights_only=True)
+    checkpoint = torch.load(output/f'{name}_best.pt', map_location=device, weights_only=True)
     model.load_state_dict(checkpoint['model'])
     model.eval()
-    save_json(output/'bandroute_selection.json', {'best_epoch':checkpoint['epoch'],
+    save_json(output/f'{name}_selection.json', {'best_epoch':checkpoint['epoch'],
         'validation_mse':checkpoint['validation_mse'],'selection_uses_test':False,
         'epochs_completed':len(history),'parameters':sum(p.numel() for p in model.parameters()),
-        'source':'pinned author BRAANetV2; fs200 and explicit bands adapted',
+        'source':'pinned author BRAANetV2; fs200 and explicit bands adapted' if adapter is None else
+                 'pinned author EEGOARNET; pretrained initialization, custom seven+absent montage, fs128',
         'batch_size_adaptation':8, 'clean_target_normalization':'input RMS only'})
 
 
@@ -193,7 +197,9 @@ def run(input_root, output, source_root, config):
         for cache in caches.values():
             for name in cache:
                 cache[name] = cache[name][:1]
-    train_bandroute(bandroute, caches, output, config, device)
+    train_paired(eegoar.model, caches, output, config, device,name='eegoar',adapter=eegoar)
+    eegoar.finetuned = True
+    train_paired(bandroute, caches, output, config, device)
     training = caches['train']
     values = training['raw'].transpose(1,0,2).reshape(7,-1)
     eyes = training['eyes'].transpose(1,0,2).reshape(2,-1)
@@ -224,7 +230,7 @@ def run(input_root, output, source_root, config):
                 if method == 'resampling_identity':
                     return resample_poly(resample_poly(values,16,25,axis=-1),25,16,axis=-1)[:,:values.shape[-1]]
                 if method == 'gevd_mwf':return values-mwf.artifact(values)
-                if method == 'eegoarnet_pretrained':return eegoar.predict(values)
+                if method == 'eegoarnet_finetuned':return eegoar.predict(values)
                 if method == 'bandroutenet':return bandroute_predict(bandroute,values,device)
                 if method == 'historical_vmd':
                     modes = test['clean_modes' if clean_input else 'modes'][window]

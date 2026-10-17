@@ -26,7 +26,7 @@ every method. Test records are historically development-exposed: this is a
 matched development comparison, not a fresh confirmation or SOTA claim.
 
 **Six methods:** historical EOG-assisted VMD model, SVMD–FCM adaptation,
-VME–GMETV adaptation, author-pretrained EEGOAR-Net, GEVD–MWF, and author-code
+VME–GMETV adaptation, Klados-fine-tuned EEGOAR-Net, GEVD–MWF, and author-code
 BandRouteNet trained on the Klados training split. Identity, direct EOG regression
 and resampling-only are additional controls. No LEMON or AutoVMD search is used.
 
@@ -93,13 +93,15 @@ VME uses compactness 20000 and initial center 0 Hz. GMETV follows the original
 2020 Algorithm 3 with C=cI, gamma=0.8 and lambda=0.5 after input RMS scaling.
 The ocular paper's unspecified optimized matrix is not claimed reproduced.
 
-EEGOAR-Net uses frozen author weights, 128 Hz 1-second segments, a 64-channel
-presence mask and only the seven frontal inputs. Its released montage omits
-FP1/FP2, so this adapter uses anonymous computational slots, not electrode aliases.
-The author network has temporal-only convolutions. Equal output in first/last
-slots must pass numerically before this adaptation is permitted. This contract
-and the unchanged author label list are saved. Resampling-only is a control.
-No amplitude unit conversion is assumed; original Klados unit ambiguity remains.
+EEGOAR-Net uses the author architecture and pretrained initialization, 128 Hz
+1-second segments, and a custom fixed seven-frontal-channel plus one absent
+column layout. The released 64-label montage omits FP1/FP2 and the network mixes
+channels spatially, so frozen anonymous-slot inference is invalid. Fine-tune on
+Klados training records only, paired MSE, AdamW, lr0.001, weight decay0.0001,
+batch8 and the same 15-epoch budget. Select on validation MSE. Input-window RMS
+scales both input and target; never normalize targets separately. This is a
+custom-montage fine-tuning adaptation, not unchanged pretrained inference.
+Resampling-only remains a control. Original physical-unit ambiguity remains.
 
 GEVD–MWF covariance masks use training EOG activity only (upper/lower 30%), with
 rank two and full correction strength. Test targets and test calibration never

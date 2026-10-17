@@ -55,12 +55,15 @@ Source: https://doi.org/10.1016/j.dib.2016.06.032
    are saved; failures remain scored as pass-through.
 4. **EEGOAR-Net.** Author architecture and weights from dmarcos97/EEGOAR-Net,
    exact SHA in author_sources.json. The original paper is DOI
-   10.1016/j.bspc.2025.108147. Use author default 128Hz, 128samples, 64-channel
-   mask. Only seven requested frontal channels are present, others zero/masked.
-   Resample200→128 and back, with a separate resampling-only control. No Klados
-   physical-unit conversion is guessed; pretrained cross-domain amplitude
-   mismatch is an interpretation limitation. Do not silently tune pretrained
-   inference on test targets.
+   10.1016/j.bspc.2025.108147. Keep128Hz/128samples and the author architecture,
+   initialize released weights, then fine-tune an explicit seven-channel plus
+   one absent-column montage on Klados training records only. The released
+   64-label list omits FP1/FP2 and the architecture mixes spatial neighbors;
+   arbitrary frozen slots or electrode aliases are not valid. Use input-window
+   RMS for both input/target, paired MSE, AdamW lr0.001/wd0.0001/batch8/15epochs,
+   validation-only checkpoint selection. Resample200→128 and back, with a
+   separate resampling-only control. This is a fine-tuning adaptation, not
+   unchanged frozen pretrained inference; no test targets fit the model.
 5. **GEVD–MWF.** Existing regularized instantaneous implementation following
    Somers et al.2018, *A generic EEG artifact removal algorithm based on the
    multi-channel Wiener filter*, NeuroImage171:403–416,
@@ -105,4 +108,5 @@ source notebook and executed notebook are downloaded and verified.
 
 Runtime rows explicitly state device and cached historical decomposition cost exclusion. Historical correction timing must not be advertised as complete runtime VMD latency. SVMD/VME include their on-demand decomposition; neural adapters run on the available GPU. These timings are practical execution costs, not a hardware-matched speed ranking.
 
-EEGOAR montage correction: the released label array omits FP1/FP2. The adaptation uses anonymous computational columns only after verifying every convolution has spatial width1 and equal first/last-slot outputs. This uses shared temporal weights; it does not claim FP1 is FPz or another electrode. The source architecture and weights remain unchanged; the channel-slot contract is saved.
+EEGOAR correction history is preserved in WORK_LOG.md. The anonymous-slot idea
+was rejected by the spatial-convolution contract and is not in the experiment.

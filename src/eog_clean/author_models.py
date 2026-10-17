@@ -58,10 +58,17 @@ def import_file(name, path):
 
 
 class EEGOAR:
-    """Author pretrained weights, seven present electrodes in a 64-row mask."""
+    """Author architecture, pretrained initialisation, custom-montage fine-tuning.
+
+    The published 64-row montage omits FP1/FP2 and uses spatial convolutions.
+    Therefore frozen inference with renamed/anonymous slots is invalid. A fixed
+    seven-row Klados order plus one absent row defines a new eight-column layout;
+    its spatial adaptation must be trained on the training split before scoring.
+    """
     def __init__(self, source, names, device):
         module = import_file('pinned_eegoar', Path(source)/'model/eegoarnet_torch.py')
-        self.model = module.EEGOARNET().to(device).eval()
+        self.width = 8
+        self.model = module.EEGOARNET(ncha=self.width).to(device).eval()
         weights = torch.load(Path(source)/'weights/EEGOARNet_torch_weights.pt',
                              map_location=device, weights_only=True)
         self.model.load_state_dict(weights, strict=True)
@@ -73,47 +80,55 @@ class EEGOAR:
         order = list(channel_set) if isinstance(channel_set,dict) else list(np.asarray(channel_set).ravel())
         if len(order) != 64:
             raise ValueError('Author montage must contain exactly 64 labels')
-        # The released 64-label list omits FP1/FP2. Every author Conv2d has
-        # spatial width one and no electrode embedding: columns are shared
-        # temporal processing slots. Verify that property rather than aliasing
-        # a missing electrode to another anatomical location.
-        for layer in self.model.modules():
-            if isinstance(layer,torch.nn.Conv2d) and layer.kernel_size[1] != 1:
-                raise ValueError('Author network now mixes electrodes; anonymous slots are invalid')
         self.indices = list(range(len(names)))
-        probe = torch.sin(torch.arange(128,device=device)*.1)
-        inputs = torch.zeros((2,1,128,64),device=device)
-        masks = torch.zeros((2,64),device=device)
-        inputs[0,0,:,0],inputs[1,0,:,-1] = probe,probe
-        masks[0,0],masks[1,-1] = 1,1
-        with torch.inference_mode():
-            check = self.model(inputs,masks)
-        torch.testing.assert_close(check[0,0,:,0],check[1,0,:,-1],atol=1e-6,rtol=1e-5)
         self.slot_contract = {'anatomical_aliasing':False,
-            'mode':'shared channel-independent temporal processing in anonymous slots',
-            'input_channel_names':names,'computational_slots':self.indices,
-            'all_convolution_spatial_widths_one':True,
-            'first_last_slot_equal_output_verified':True,
+            'mode':'author architecture with custom montage, requires Klados paired fine-tuning',
+            'input_channel_names':names,'fixed_column_indices':self.indices,
+            'padded_width':self.width,'absent_column':7,
+            'frozen_original_montage_inference_claimed':False,
+            'spatial_convolutions_present':True,
             'author_labels':order}
         self.device = device
         self.parameters = sum(value.numel() for value in self.model.parameters())
+        self.finetuned = False
+
+    def training_blocks(self, cache):
+        inputs,targets=[],[]
+        for raw,clean in zip(cache['raw'],cache['clean']):
+            scale=max(float(np.sqrt(np.mean(raw**2))),1e-8)
+            noisy=resample_poly(raw/scale,16,25,axis=-1)
+            target=resample_poly(clean/scale,16,25,axis=-1)
+            for start in range(0,noisy.shape[-1]-128+1,128):
+                x,y=np.zeros((1,128,self.width),np.float32),np.zeros((1,128,self.width),np.float32)
+                x[0,:,:len(raw)]=noisy[:,start:start+128].T
+                y[0,:,:len(raw)]=target[:,start:start+128].T
+                inputs.append(x);targets.append(y)
+        return np.stack(inputs),np.stack(targets)
+
+    def forward_training(self, inputs):
+        mask=torch.zeros((len(inputs),self.width),device=inputs.device)
+        mask[:,self.indices]=1
+        return self.model(inputs,mask)
 
     def predict(self, values):
+        if not self.finetuned:
+            raise RuntimeError('Custom EEGOAR montage must be fine-tuned before evaluation')
         values = np.asarray(values)
-        downsampled = resample_poly(values, 16, 25, axis=-1)
+        scale=max(float(np.sqrt(np.mean(values**2))),1e-8)
+        downsampled = resample_poly(values/scale, 16, 25, axis=-1)
         samples = downsampled.shape[-1]
         padded = np.pad(downsampled, ((0,0),(0,(-samples)%128)), mode='reflect')
         windows = padded.shape[-1]//128
-        inputs = np.zeros((windows, 1, 128, 64), dtype=np.float32)
+        inputs = np.zeros((windows, 1, 128, self.width), dtype=np.float32)
         for channel, index in enumerate(self.indices):
             inputs[:, 0, :, index] = padded[channel].reshape(windows, 128)
-        mask = torch.zeros((windows,64), device=self.device)
+        mask = torch.zeros((windows,self.width), device=self.device)
         mask[:, self.indices] = 1
         with torch.inference_mode():
             outputs = self.model(torch.from_numpy(inputs).to(self.device), mask).cpu().numpy()
         selected = np.stack([outputs[:, 0, :, index].reshape(-1)[:samples]
                              for index in self.indices])
-        return resample_poly(selected, 25, 16, axis=-1)[:, :values.shape[-1]]
+        return resample_poly(selected, 25, 16, axis=-1)[:, :values.shape[-1]]*scale
 
 
 def bandroute_model(source, device):

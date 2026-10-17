@@ -11,7 +11,7 @@ from .frontal_benchmark import METHODS
 LABELS = {'historical_vmd':'Historical VMD + EOG model',
           'svmd_fcm_adaptation':'SVMD–FCM adaptation',
           'vme_gmetv_adaptation':'VME–GMETV adaptation',
-          'eegoarnet_pretrained':'EEGOAR-Net pretrained',
+          'eegoarnet_finetuned':'EEGOAR-Net Klados fine-tuned',
           'gevd_mwf':'GEVD–MWF', 'bandroutenet':'BandRouteNet trained',
           'identity':'Unprocessed input','direct_eog_regression':'Direct EOG regression',
           'resampling_identity':'Resampling only'}

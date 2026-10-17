@@ -24,7 +24,7 @@
     "historical_vmd": "HEOG and VEOG required at inference",
     "svmd_fcm_adaptation": "EEG only; references used for evaluation only",
     "vme_gmetv_adaptation": "EEG only; references used for evaluation only",
-    "eegoarnet_pretrained": "EEG only; published frozen weights",
+    "eegoarnet_finetuned": "EEG only; author pretrained initialization, Klados training on explicit seven-channel montage",
     "gevd_mwf": "training EOG activity defines covariance masks; no runtime EOG",
     "bandroutenet": "paired Klados training; EEG-only inference"
   },
