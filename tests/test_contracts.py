@@ -1,87 +1,147 @@
+"""Meaningful numerical contracts; executed only inside the Kaggle notebook."""
 import numpy as np
 import pytest
-from vmd_eog.reference import lag_matrix, project, correlations, signed_context
-from vmd_eog.signal import overlap_add_correction, calibration_trials
-from vmd_eog.metrics import paired
-from vmd_eog.vmd import rolling_decompose
-from vmd_eog.contracts import RunSpec
+from eog_clean.data import region, calibration_split, osf_sessions, prepare_sources
+from eog_clean.frontal import overlap_add, window_starts, combine
+from eog_clean.metrics import paired, correlations, preservation
+from eog_clean.methods import fit_ridge, fit_mwf
+from eog_clean.vmd import rolling_decompose
 
 
-def test_lag_positive_leading_negative_trailing_without_wrap():
-    references = np.array([[1., 2., 3., 4., 5.]])
-    positive, valid = lag_matrix(references, (2,))
-    np.testing.assert_array_equal(positive, [[0, 0, 1, 2, 3]])
-    np.testing.assert_array_equal(valid, [False, False, True, True, True])
-    negative, valid = lag_matrix(references, (-2,))
-    np.testing.assert_array_equal(negative, [[3, 4, 5, 0, 0]])
-    np.testing.assert_array_equal(valid, [True, True, True, False, False])
+def test_known_mixture_regression_and_signed_horizontal_polarity():
+    t = np.arange(2000)/200
+    eyes = np.stack([np.sin(2*np.pi*t), np.cos(4*np.pi*t)])
+    neural = np.stack([np.sin(34*np.pi*t), np.cos(40*np.pi*t)])
+    field = np.array([[2., 1.], [-2., .5]])@eyes
+    dirty = neural+field
+    fit = fit_ridge(dirty, eyes, penalty=1e-9)
+    np.testing.assert_allclose(dirty-fit.artifact(dirty, eyes), neural, atol=1e-7)
+    assert fit.coefficients[0, 0] > 0 and fit.coefficients[1, 0] < 0
 
 
-def test_lagged_correlation_is_per_channel_and_axis():
-    rng = np.random.default_rng(4)
-    refs = rng.normal(size=(2, 400))
-    eeg = np.stack([np.roll(refs[0], 3), np.roll(refs[1], -2)])
-    result = correlations(eeg, refs, 5)
-    assert abs(result[0, 0]) > .99 and abs(result[1, 1]) > .99
-    assert abs(result[0, 1]) < .4 and abs(result[1, 0]) < .4
+def test_zero_reference_fails_instead_of_nan():
+    with pytest.raises(ValueError, match="nonzero"):
+        fit_ridge(np.ones((2, 128)), np.zeros((2, 128)))
 
 
-def test_projection_sign_and_collinear_references():
-    t = np.arange(1024) / 200
-    refs = np.stack([np.sin(2*np.pi*2*t), np.sin(2*np.pi*3*t)])
-    eeg = 2 * refs[:1] + .1 * np.sin(2*np.pi*12*t)
-    a, _ = project(eeg, refs, penalty=1e-4)
-    b, _ = project(eeg, -refs, penalty=1e-4)
-    np.testing.assert_allclose(a, b, atol=1e-10)
-    c, _ = project(eeg, np.stack([refs[0], refs[0]]))
-    assert np.isfinite(c).all()
+def test_pearson_is_not_scale_sensitive_snr():
+    target = np.sin(np.arange(200)/10)[None]
+    score = paired(2*target+3, target)
+    assert score["pearson_cc"][0] == pytest.approx(1.)
+    assert score["snr_out_db"][0] < 0
+    assert paired(target, target)["snr_out_db"][0] == np.inf
 
 
-@pytest.mark.parametrize("length", [128, 129])
-def test_vmd_normalized_reference_parity_and_units(length):
-    from vmdpy import VMD
-    t = np.arange(length) / 200
-    raw = np.sin(2*np.pi*4*t) + .25*np.sin(2*np.pi*18*t)
-    modes, residual, info = rolling_decompose(raw, modes=3, alpha=1000, max_iterations=500)
-    np.testing.assert_allclose(modes.sum(0) + residual, raw, atol=2e-7)
-    scaled, _, _ = rolling_decompose(raw*1e-6, modes=3, alpha=1000, max_iterations=500)
-    np.testing.assert_allclose(scaled/1e-6, modes, atol=2e-6)
-    padded = np.pad(raw, (0, length % 2), mode="edge")
-    scale = np.sqrt(np.mean(padded**2))
-    expected, _, centers = VMD(padded/scale, 1000, 0, 3, 0, 1, 1e-6)
-    expected = expected[np.argsort(centers[-1])][:, :length]*scale
-    np.testing.assert_allclose(modes, expected, atol=3e-5, rtol=3e-4)
+def test_correlation_separate_horizontal_and_vertical():
+    t = np.arange(1024)/1024
+    eyes = np.stack([np.sin(2*np.pi*t), np.cos(2*np.pi*t)])
+    result = correlations(np.stack([-eyes[0], eyes[1]]), eyes)
+    np.testing.assert_allclose(result, [[-1, 0], [0, 1]], atol=1e-12)
 
 
-def test_overlap_add_identity_all_samples():
-    raw = np.random.default_rng(3).normal(size=(3, 2300))
-    cleaned, artifact = overlap_add_correction(raw, lambda window: np.zeros_like(window))
-    np.testing.assert_array_equal(cleaned, raw)
-    assert artifact.shape == raw.shape
+def test_identity_has_zero_preservation_error():
+    target = np.random.default_rng(1).normal(size=(4, 1024))
+    scores = preservation(target, target)
+    assert all(value == 0 for value in scores.values())
 
 
-def test_metrics_perfect_zero_and_waveform_error():
-    raw = np.random.default_rng(1).normal(size=(2, 1024))
-    assert paired(raw, raw)["snr_status"] == "perfect_reconstruction"
-    assert paired(raw, np.zeros_like(raw))["snr_status"] == "zero_target_energy"
-    result = paired(raw+.1, raw)
-    assert result["snr_db"] > 10
+@pytest.mark.parametrize("samples", [1024, 1025, 1536, 2049, 3200])
+def test_overlap_add_has_exact_identity_and_complete_boundary_coverage(samples):
+    target = np.random.default_rng(samples).normal(size=(3, samples))
+    starts = window_starts(samples)
+    windows = np.stack([target[:, start:start+1024] for start in starts])
+    np.testing.assert_allclose(overlap_add(windows, starts, samples), target, atol=1e-12)
 
 
-def test_calibration_never_uses_scoring_samples():
-    raw = np.ones((2, 6000))
-    calibration, scoring, error = calibration_trials([raw], 200)
-    assert error is None and calibration[0].shape[-1] == 2000
-    assert scoring[0].shape[-1] == 4000
+def test_fixed_vmd_retains_reconstruction_residual():
+    t = np.arange(1024)/200
+    signal = np.sin(2*np.pi*2*t)+.2*np.cos(2*np.pi*17*t)
+    modes, residual, diagnostic = rolling_decompose(signal, 3, 2000, max_iterations=2000)
+    assert modes.shape == (3, 1024)
+    np.testing.assert_allclose(modes.sum(axis=0)+residual, signal, atol=4e-7)
+    assert np.diff(diagnostic["centers_hz"]).min() >= 0
 
 
-def test_signed_context_does_not_cancel_lateral_evidence():
-    eeg = np.stack([np.ones(20), -np.ones(20), np.zeros(20)])
-    context = signed_context(eeg, ["F3", "F4", "Pz"], [0,0,1], [0,1,2])
-    np.testing.assert_array_equal(context["lateral"], -2*np.ones(20))
-    np.testing.assert_array_equal(context["common"], np.zeros(20))
+def test_no_anatomy_is_inferred_from_unknown_labels():
+    assert [region(name) for name in ["Fp1", "Fz", "FC1", "Cz", "CP2", "POz", "O2", "row0", "EOG1"]] == [
+        "frontal", "frontal", "central", "central", "central", "posterior", "posterior", "unknown", "unknown"]
 
 
-def test_run_spec_unsafe_id_rejected():
-    with pytest.raises(ValueError):
-        RunSpec("../unsafe", "contracts", "a"*40).validate()
+def test_regional_composition_is_one_subtraction_and_keeps_unknown():
+    raw = np.ones((4, 16))
+    prediction, artifact = combine(raw, raw*.2, raw*.3, ["frontal", "posterior", "central", "unknown"])
+    np.testing.assert_allclose(prediction[:, 0], [.8, .7, .7, 1.])
+    np.testing.assert_allclose(raw-prediction, artifact)
+
+
+def test_whole_trials_calibration_never_overlap_scoring():
+    trials = [{"index": i, "condition": i%4+1, "block": i//4+1} for i in range(8)]
+    calibration, scoring, policy = calibration_split(trials)
+    assert [t["index"] for t in calibration] == [0, 1, 2, 3]
+    assert [t["index"] for t in scoring] == [4, 5, 6, 7]
+    assert "block" in policy
+
+
+def test_mwf_suppresses_excess_variance_and_is_channel_permutation_equivariant():
+    generator = np.random.default_rng(42)
+    rest = generator.normal(size=(3, 8000))
+    ocular = generator.normal(size=(3, 8000))*np.array([[5], [1], [1]])
+    model = fit_mwf(ocular, rest, rank=1, strength=1)
+    cleaned = ocular-model.artifact(ocular)
+    assert np.std(cleaned[0]) < .2*np.std(ocular[0])
+    order = [2, 0, 1]
+    permuted = fit_mwf(ocular[order], rest[order], rank=1, strength=1)
+    np.testing.assert_allclose(permuted.artifact(ocular[order]), model.artifact(ocular)[order], atol=1e-9)
+
+
+def test_historical_model_starts_at_identity_and_requires_eog():
+    import torch
+    from eog_clean.historical_model import EOGContextGainStudent
+    model = EOGContextGainStudent()
+    assert sum(parameter.numel() for parameter in model.parameters()) == 2499
+    raw = torch.randn(2, 3, 1024)
+    modes = torch.randn(2, 3, 3, 1024)
+    references = torch.randn(2, 2, 1024)
+    result = model(raw, modes, references, torch.ones(2, 3), torch.full((2, 3), 3))
+    assert torch.count_nonzero(result["artifact"]) == 0
+    with pytest.raises(ValueError, match="HEOG"):
+        model(raw, modes, references[:, :1], torch.ones(2, 3), torch.full((2, 3), 3))
+
+
+def test_confirmation_sources_are_excluded_before_waveform_loading(tmp_path):
+    folder = tmp_path/"Dataset1_OSF/study01"
+    folder.mkdir(parents=True)
+    for name in ("p01", "p02"):
+        (folder/f"study01_{name}_prep.set").touch()
+    partition = {"osf:p01": {"role": "confirmation"}, "osf:p02": {"role": "development"}}
+    selected = osf_sessions(tmp_path, partition, 0)
+    assert [path.stem for path in selected] == ["study01_p02_prep"]
+
+
+def test_corrupted_source_container_fails_before_extraction(tmp_path):
+    import json
+    source = tmp_path/"inputs"
+    source.mkdir()
+    (source/"data.eogbundle").write_bytes(b"corrupted")
+    (source/"source_manifest.json").write_text(json.dumps({"archive": {
+        "name": "data.eogbundle", "bytes": 9, "sha256": "0"*64}}))
+    with pytest.raises(ValueError, match="checksum"):
+        prepare_sources(source, tmp_path/"extract", tmp_path/"output", "0"*64)
+    assert not (tmp_path/"extract").exists()
+
+
+def test_vmd_solver_cap_is_visible_instead_of_claimed_success():
+    signal = np.random.default_rng(5).normal(size=1024)
+    _, _, diagnostic = rolling_decompose(signal, 3, 2000, max_iterations=3)
+    assert diagnostic["hit_iteration_limit"]
+
+
+def test_new_window_regression_matches_per_window_reference_access():
+    from eog_clean.experiment import _artifacts
+    values = np.random.default_rng(2).normal(size=(3, 2049)).astype(np.float32)
+    eyes = np.random.default_rng(3).normal(size=(2, 2049)).astype(np.float32)
+    config = {"window": 1024, "hop": 512, "ridge": .001}
+    empty_fits = {"direct_calibrated": None, "ica_component_regression": None, "mwf": None}
+    result = _artifacts(values, eyes, empty_fits, config)["direct_window"]
+    assert result.shape == values.shape and np.isfinite(result).all()
+    assert not np.allclose(result, fit_ridge(values, eyes).artifact(values, eyes))

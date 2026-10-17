@@ -10,7 +10,7 @@ import sys
 import nbformat
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 BRANCH = "research/vmd-eog-removal-notebooks"
 KERNEL = "satyapaladugu/klados-osf-clean-comparison"
 
@@ -33,7 +33,7 @@ def notebook(spec):
     markdown, code = nbformat.v4.new_markdown_cell, nbformat.v4.new_code_cell
     cells = [markdown("""# Klados and OSF: paired comparison and regional validation
 
-This notebook runs the small replacement implementation under `active/`.
+This notebook runs the small source package under `src/eog_clean/`.
 It consumes Klados and original OSF only. No generated recipient EEG mixtures,
 VMD–SOBI, anchored corrections or AutoVMD search enter this run.
 
@@ -61,7 +61,7 @@ print('BOOTSTRAP_DEPENDENCIES', flush=True)
 # and test/report tools. The actual complete environment is recorded below.
 subprocess.run([sys.executable, '-m', 'pip', 'install', '-q',
     'pymatreader==1.0.0', 'pytest==8.3.5', 'tabulate==0.9.0'], check=True, timeout=180)
-sys.path.insert(0, str(CHECKOUT/'active/src'))
+sys.path.insert(0, str(CHECKOUT/'src'))
 OUTPUT = pathlib.Path('/kaggle/working/results')/RUN_SPEC['campaign_id']/RUN_SPEC['run_id']
 OUTPUT.mkdir(parents=True, exist_ok=False)
 import importlib.metadata
@@ -75,7 +75,7 @@ save_json(OUTPUT/'environment.json', {
         ['numpy','scipy','scikit-learn','pandas','matplotlib','pymatreader','pytest','torch','tabulate']},
     'hardware':'Kaggle CPU', 'torch_cuda_available':torch.cuda.is_available(),
     'utc':datetime.now(timezone.utc).isoformat()})
-CONFIG = json.loads((CHECKOUT/'active/config.json').read_text())
+CONFIG = json.loads((CHECKOUT/'configs/experiment.json').read_text())
 CONFIG.update(RUN_SPEC.get('config_overrides', {}))
 save_json(OUTPUT/'configuration.json', CONFIG)
 print('SOURCE_VERIFIED', actual, flush=True)
@@ -85,8 +85,8 @@ These tests check reconstruction, reference axes, signed lateral projection,
 calibration boundaries, identity initialization and overlap-add boundaries.
 They validate implementation contracts, not denoising accuracy.
 """), code('''environment = os.environ.copy()
-environment['PYTHONPATH'] = str(CHECKOUT/'active/src')
-tests = subprocess.run([sys.executable,'-m','pytest','-q',str(CHECKOUT/'active/tests'),
+environment['PYTHONPATH'] = str(CHECKOUT/'src')
+tests = subprocess.run([sys.executable,'-m','pytest','-q',str(CHECKOUT/'tests'),
     '--junitxml='+str(OUTPUT/'contract_tests.xml')], text=True, capture_output=True, env=environment)
 (OUTPUT/'contract_tests.txt').write_text(tests.stdout+'\\n'+tests.stderr)
 print(tests.stdout, flush=True)
@@ -186,7 +186,7 @@ def main():
     if args.action == "retrieve":
         destination = ROOT/"results/klados-osf-20261017"/args.run_id
         destination.mkdir(parents=True, exist_ok=True)
-        print(cli("kernels", "output", KERNEL, "-p", str(destination), "-f", "results/|log|ipynb"))
+        print(cli("kernels", "output", KERNEL, "-p", str(destination), "--file-pattern", "results/|log|ipynb", "--page-size", "200"))
         manifests = list(destination.rglob("artifact_manifest.json"))
         if len(manifests) != 1:
             raise RuntimeError("No unique completed artifact manifest; partial/failed outputs remain saved")
@@ -209,7 +209,7 @@ def main():
         (destination/"retrieval_receipt.json").write_text(json.dumps(receipt, indent=2))
         print(json.dumps(receipt, indent=2))
         return
-    config = json.loads((ROOT/"active/config.json").read_text())
+    config = json.loads((ROOT/"configs/experiment.json").read_text())
     sha = git("rev-parse", "HEAD")
     spec = {"run_id": args.run_id, "campaign_id": config["campaign_id"], "git_sha": sha,
             "git_url": git("remote", "get-url", "origin"), "kernel": KERNEL,
@@ -218,7 +218,7 @@ def main():
                                  "osf_max_scoring_trials_per_condition": 1} if args.pilot else {}}
     if args.action == "build":
         spec["git_sha"] = "RESOLVED_TO_PUBLISHED_SHA_AT_SUBMISSION"
-        destination = ROOT/"active/notebooks/Klados_OSF_Comparison.ipynb"
+        destination = ROOT/"notebooks/Frontal_Comparison.ipynb"
         destination.parent.mkdir(parents=True, exist_ok=True)
         nbformat.write(notebook(spec), destination)
         print(destination)

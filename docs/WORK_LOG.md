@@ -31,3 +31,15 @@
 
 No new measured cleaning score is claimed at this point. Contract and quality
 results will be entered only after the repaired notebook produces them.
+
+## 09:39–09:55 IST: verified baseline and simplified tree
+
+- Pilot version 2 completed with 20 contracts passed in 5.22 seconds.
+- The historical checkpoint reproduced 17.92720970519272 dB on its exact cached eight-record benchmark.
+- Eight new paired Klados records and one native OSF session completed. Eleven figures were rendered.
+- All 101 manifest payloads were downloaded and SHA256 verified. This receipt does not imply scientific qualification.
+- Legacy code was physically relocated under archive/legacy_20261017; 380 moved files were hash verified. Other chats' untracked/open documents were preserved.
+- The user requested six frontal methods on Klados and use of paper-listed electrode names. The operational mapping is saved in docs/provenance/klados_montage.json, with its row-binding assumption explicit.
+- The two full ocular-method PDFs are unavailable to the user. No further request for them is pending. Exact reproduction gaps remain documented while available author implementations are pursued.
+- BandRouteNet source pinned to 7f4dc0304b780cd15ada4caa829c7405cf4aa7d5; EEGOAR-Net source pinned to 4abeaee2b999e78a4abf01a00b9033c745dde8bc. No claim that these adapters have yet been evaluated.
+- Kaggle GPU quota check returned 30.00 hours remaining; this is a quota snapshot, not a completion-time estimate.

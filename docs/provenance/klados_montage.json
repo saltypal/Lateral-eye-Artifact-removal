@@ -1,0 +1,47 @@
+{
+  "channel_names_in_paper_list_order": [
+    "FP1",
+    "FP2",
+    "F3",
+    "F4",
+    "C3",
+    "C4",
+    "P3",
+    "P4",
+    "O1",
+    "O2",
+    "F7",
+    "F8",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "Fz",
+    "Cz",
+    "Pz"
+  ],
+  "frontal_indices": [
+    0,
+    1,
+    2,
+    3,
+    10,
+    11,
+    16
+  ],
+  "frontal_names": [
+    "FP1",
+    "FP2",
+    "F3",
+    "F4",
+    "F7",
+    "F8",
+    "Fz"
+  ],
+  "policy": "Use the paper-listed order, explicitly requested by user on 2026-10-17",
+  "row_binding_independently_verified": false,
+  "participant_mapping_known": false,
+  "source_doi": "10.1016/j.dib.2016.06.032",
+  "source_pdf_sha256": "a77e9bc0cb613dda07db0fbeca7c77e06739dd8b6f8daa34f7f796f907729195",
+  "limitation": "The paper lists electrodes but does not explicitly bind MATLAB rows to list positions. All regional results carry this mapping assumption."
+}
