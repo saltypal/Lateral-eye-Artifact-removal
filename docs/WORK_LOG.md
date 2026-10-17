@@ -167,3 +167,26 @@ blocked, parents pinned and unchanged, no native preservation resolution.
 Source snapshot dates and access limitations remain explicit. This closes the
 requested frontal experiment/release-review scope without claiming a qualified
 frontal method or starting central/posterior information passing.
+
+## Central stage — user-confirmed anatomical boundary
+
+User selected FC/C/CP as central and temporal results separate. This stage
+fits/evaluates the two groups independently; it does not alter the historical
+broad data.region grouping or relabel frontal/posterior channels. Klados
+core central C3/C4/Cz follows the requested paper-list binding assumption;
+T3/T4/T5/T6 are temporal. Native OSF uses exact FC/C/CP and FT/T/TP labels.
+
+Predeclared recipes: identity, calibration-only joint HEOG/VEOG ridge penalty
+0.001 at strengths0.25/1, calibration-only GEVD–MWF rank1 at strengths0.25/1.
+No search, per-scoring-window fitting, VMD, neural training or frontal messaging.
+Use eight archived test record identities, first2000samples calibration and
+three1024-sample scoring windows after independently filtering both sides of
+the boundary. This protocol differs from archived frontal cache preprocessing,
+so cross-region dB values are not a matched comparison and are not added.
+Four native development sessions use disjoint whole-trial calibration/scoring,
+2trials per rest/blink/lateral/vertical condition; confirmation remains closed.
+
+Save per-channel metrics, clean-input preservation, original H/V evaluation
+references, named predictions, calibration operators, failures and eight figures.
+Native preservation is a proxy, not reconstruction accuracy. Reference-access
+and failure outcomes stay visible. Numerical tests execute on Kaggle only.
