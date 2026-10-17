@@ -65,9 +65,14 @@ class EEGOAR:
         weights = torch.load(Path(source)/'weights/EEGOARNet_torch_weights.pt',
                              map_location=device, weights_only=True)
         self.model.load_state_dict(weights, strict=True)
-        # Only this hash-verified author metadata dictionary needs pickle.
-        channel_set = np.load(Path(source)/'materials/channel_set_64ch.npy', allow_pickle=True).item()
-        order = list(channel_set.keys())
+        # Author example uses list(np.load(...)[()]); the payload is currently
+        # a label array, not a scalar dictionary. Accept either explicit form.
+        channel_set = np.load(Path(source)/'materials/channel_set_64ch.npy', allow_pickle=True)
+        if channel_set.ndim == 0:
+            channel_set = channel_set.item()
+        order = list(channel_set) if isinstance(channel_set,dict) else list(np.asarray(channel_set).ravel())
+        if len(order) != 64:
+            raise ValueError('Author montage must contain exactly 64 labels')
         upper = [str(name).upper() for name in order]
         self.indices = [upper.index(name.upper()) for name in names]
         self.device = device

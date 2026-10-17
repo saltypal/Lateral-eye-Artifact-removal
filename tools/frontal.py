@@ -115,7 +115,9 @@ remain in scoring as identity fallbacks and are listed separately.
 run('/kaggle/input',OUTPUT,CHECKOUT,CONFIG)
 '''),markdown('''## 4. Complete result tables
 
-Primary paper metrics: MSE, RMSE, temporal RRMSE and ordinary Pearson CC.
+Primary paper metrics: MSE, RMSE, MAE, temporal/spectral RRMSE and ordinary Pearson CC.
+Spectral RRMSE follows the released BandRouteNet periodogram implementation:
+RMS difference of |rFFT|²/T divided by RMS target spectrum.
 Output SNR = 10 log10(sum(clean^2)/sum((clean-prediction)^2)). Improvement is
 separate. Pooled window SNR is averaged within record, then across records;
 mean per-channel SNR is an additional different aggregation. Report all records.

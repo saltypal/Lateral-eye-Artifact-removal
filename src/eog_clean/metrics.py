@@ -27,17 +27,24 @@ def paired(prediction, target):
         raise ValueError("Paired values must be finite")
     error = target - prediction
     mse = np.mean(error ** 2, axis=-1)
+    # BandRouteNet author metrics.py / utils.py: periodogram |rFFT|²/T,
+    # followed by RMS spectral error divided by RMS target spectrum.
+    predicted_spectrum = np.abs(np.fft.rfft(prediction,axis=-1))**2/target.shape[-1]
+    target_spectrum = np.abs(np.fft.rfft(target,axis=-1))**2/target.shape[-1]
     power = np.mean(target ** 2, axis=-1)
     with np.errstate(divide="ignore", invalid="ignore"):
         snr = 10 * np.log10(power / mse)
         rrmse = np.sqrt(mse / power)
         pooled_snr = float(10 * np.log10(np.sum(target ** 2) / np.sum(error ** 2)))
+        spectral_rrmse = np.sqrt(np.mean((predicted_spectrum-target_spectrum)**2,axis=-1)/
+                                  np.mean(target_spectrum**2,axis=-1))
     first = prediction - prediction.mean(axis=-1, keepdims=True)
     second = target - target.mean(axis=-1, keepdims=True)
     denominator = np.linalg.norm(first, axis=-1) * np.linalg.norm(second, axis=-1)
     cc = np.divide(np.sum(first * second, axis=-1), denominator,
                    out=np.full(len(target), np.nan), where=denominator > 0)
-    return {"mse": mse, "rmse": np.sqrt(mse), "rrmse_t": rrmse,
+    return {"mse": mse, "rmse": np.sqrt(mse), "mae":np.mean(np.abs(error),axis=-1),
+            "rrmse_t": rrmse, "rrmse_s":spectral_rrmse,
             "pearson_cc": cc, "snr_out_db": snr, "pooled_window_snr_db": pooled_snr}
 
 

@@ -57,3 +57,26 @@ def test_published_solver_classes_available_and_vme_reconstruction():
     np.testing.assert_allclose(mode+(x-mode),x,atol=1e-12)
     assert 0<=solver.omega<=.5
     assert SVMD(max_modes=3).max_modes==3
+
+
+def test_spectral_rrmse_uses_power_and_not_amplitude():
+    from eog_clean.metrics import paired
+    t=np.arange(256)/256
+    target=np.sin(2*np.pi*8*t)[None]
+    result=paired(2*target,target)
+    assert result['rrmse_t'][0]==pytest.approx(1.)
+    assert result['rrmse_s'][0]==pytest.approx(3.)
+
+
+def test_gmetv_reduces_declared_convex_objective():
+    x=np.r_[np.zeros(40),np.ones(40)*3]+np.random.default_rng(4).normal(0,.2,80)
+    lam,gamma=.5,.8
+    coefficient=gamma/(4*lam)
+    def objective(estimate):
+        gradient=np.diff(estimate)
+        inner=np.sign(gradient)*np.maximum(np.abs(gradient)-1/coefficient,0)
+        envelope=np.abs(inner).sum()+.5*coefficient*np.sum((gradient-inner)**2)
+        return .5*np.sum((x-estimate)**2)+lam*(np.abs(gradient).sum()-envelope)
+    answer,detail=gmetv(x,lam,gamma)
+    assert detail['converged']
+    assert objective(answer)<=objective(x)+1e-8

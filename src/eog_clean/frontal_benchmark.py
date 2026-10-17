@@ -264,7 +264,7 @@ def run(input_root, output, source_root, config):
                     'snr_improvement_db':scores['snr_out_db'][channel]-baseline['snr_out_db'][channel],
                     'pooled_window_snr_db':scores['pooled_window_snr_db'],
                     'pooled_snr_improvement_db':scores['pooled_window_snr_db']-baseline['pooled_window_snr_db'],
-                    **{name:float(scores[name][channel]) for name in ['mse','rmse','rrmse_t','pearson_cc']},
+                    **{name:float(scores[name][channel]) for name in ['mse','rmse','mae','rrmse_t','rrmse_s','pearson_cc']},
                     'heog_cc':associations[channel,0],'veog_cc':associations[channel,1]})
             clean_rows.append({'method':method,'record':int(record),'start':int(start),
                                'status':status,**preservation(clean_prediction,target)})

@@ -48,3 +48,7 @@ results will be entered only after the repaired notebook produces them.
 ## 17 October: six-method frontal scope
 
 User requested historical VMD vs SVMD-FCM vs VME-GMETV vs EEGOAR-Net vs GEVD-MWF vs BandRouteNet, all on Klados frontal rows using paper-listed order. Added seven-row matched cached-record comparison, pinned author-file hashes, original GMETV Algorithm3 adapter, real successive decomposition, author pretrained and training adapters, method contracts, and nbclient-based executed-notebook recovery. Numerical checks and new scores remain pending Kaggle execution at this entry. See FRONTAL_SIX_METHODS.md for assumptions and unavailable reproduction settings. No LEMON or AutoVMD search launched.
+
+### Six-method smoke001: adapter failure preserved
+
+Kaggle GPU source53a8cd3 passed27 numerical tests in4.76s and verified all author-source Git blobs. EEGOAR weights loaded strictly, then label loading failed because the64-channel metadata is a vector, not a scalar dictionary. Retrieved9 hash-verified payloads including actual partially executed notebook (3of6 code cells,1error). Repair accepts the original array format, validates64 labels and retains strict source/weight identities. Added MAE and source-defined spectral RRMSE plus numerical fixtures; repaired run must pass before full launch.

@@ -96,9 +96,30 @@ def main():
         for count, name in enumerate(pool.map(recover, jobs), 1):
             if count%10 == 0 or count == len(jobs):
                 print("VERIFIED_PAYLOADS", count, "/",len(jobs), flush=True)
+    executed = [destination/item.file_name for item,entry in jobs
+                if entry['path'].endswith('.executed.ipynb')]
+    notebook_receipt = None
+    if manifest.get('executed_notebook_included'):
+        if len(executed) != 1:
+            raise ValueError('Expected one executed result notebook in manifest')
+        import nbformat
+        notebook = nbformat.read(executed[0],as_version=4)
+        nbformat.validate(notebook)
+        cells = [cell for cell in notebook.cells if cell.cell_type=='code']
+        outputs = [value for cell in cells for value in cell.get('outputs',[])]
+        notebook_receipt = {'path':str(executed[0]),'code_cells':len(cells),
+            'executed_code_cells':sum(cell.execution_count is not None for cell in cells),
+            'error_outputs':sum(value.output_type=='error' for value in outputs),
+            'inline_image_outputs':sum('image/png' in value.get('data',{}) for value in outputs),
+            'html_table_outputs':sum('text/html' in value.get('data',{}) for value in outputs)}
+        if manifest['complete'] and (notebook_receipt['error_outputs'] or
+             notebook_receipt['executed_code_cells']!=notebook_receipt['code_cells'] or
+             notebook_receipt['inline_image_outputs']<1 or notebook_receipt['html_table_outputs']<1):
+            raise ValueError('Completed notebook is missing executed cells, result tables or images')
     receipt = {"run_id": args.run_id, "git_sha": spec["git_sha"],
         "payloads_verified": len(jobs), "all_manifest_payloads_verified": True,
-        "accuracy_qualification_claimed": False}
+        "execution_complete":manifest.get('complete',False),
+        "executed_notebook":notebook_receipt,"accuracy_qualification_claimed": False}
     (destination/"retrieval_receipt.json").write_text(json.dumps(receipt, indent=2))
     print(json.dumps(receipt, indent=2))
 

@@ -76,7 +76,10 @@ def main():
     markers = []
     for event in events:
         data = event.get("data", "")
-        if (data.startswith(("FROZEN_NATIVE_TRIAL_SAVED ", "BOOTSTRAP_PHASE ", "Traceback (most recent call last)"))
+        if (data.startswith(("FROZEN_NATIVE_TRIAL_SAVED ", "BOOTSTRAP_PHASE ",
+                             "SOURCE_VERIFIED ","AUTHOR_SOURCES_VERIFIED", "AUTHOR_MODELS_LOADED ",
+                             "BANDROUTE_EPOCH_SAVED ", "METHOD_SAVED ", "METHOD_FAILED ",
+                             "RUN_COMPLETE ", "Traceback (most recent call last)"))
                 or (" passed" in data and data[:1].isdigit())):
             markers.append({"runtime_s": event.get("time"), "message": data.strip()[:800]})
     summary = {"run_id": spec["run_id"], "git_sha": spec["git_sha"],
